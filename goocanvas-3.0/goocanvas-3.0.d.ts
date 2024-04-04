@@ -708,41 +708,41 @@ export namespace GooCanvas {
         static create_path(commands: CanvasPathCommand[], cr: cairo.Context): void;
         static marshal_BOOLEAN__BOXED(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
         static marshal_BOOLEAN__DOUBLE_DOUBLE_BOOLEAN_OBJECT(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
         static marshal_BOOLEAN__OBJECT_BOXED(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
         static marshal_VOID__INT_INT(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
         static marshal_VOID__OBJECT_OBJECT(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -976,6 +976,7 @@ export namespace GooCanvas {
          * @param item the item to grab the focus.
          */
         grab_focus(item: CanvasItem): void;
+        // Conflicted with Gtk.Widget.grab_focus
         grab_focus(...args: never[]): any;
         /**
          * Attempts to grab the keyboard for the given item.
@@ -1337,6 +1338,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1379,7 +1381,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1580,7 +1582,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1595,7 +1597,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1824,7 +1826,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -2023,7 +2025,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -2165,7 +2167,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -2313,7 +2315,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -2454,6 +2456,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2496,7 +2499,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2697,7 +2700,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2712,7 +2715,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2876,7 +2879,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -2965,7 +2968,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -3044,7 +3047,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -3079,7 +3082,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -3195,6 +3198,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3237,7 +3241,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3438,7 +3442,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3453,7 +3457,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3817,7 +3821,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -4016,7 +4020,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -4158,7 +4162,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -4306,7 +4310,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -4447,6 +4451,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4489,7 +4494,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4690,7 +4695,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4705,7 +4710,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5004,7 +5009,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -5093,7 +5098,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -5172,7 +5177,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -5207,7 +5212,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -5323,6 +5328,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5365,7 +5371,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5566,7 +5572,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5581,7 +5587,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5775,7 +5781,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -5974,7 +5980,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -6116,7 +6122,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -6264,7 +6270,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -6405,6 +6411,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6447,7 +6454,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6648,7 +6655,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6663,7 +6670,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6805,7 +6812,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -6894,7 +6901,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -6973,7 +6980,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -7008,7 +7015,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -7124,6 +7131,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7166,7 +7174,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7367,7 +7375,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7382,7 +7390,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7585,7 +7593,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -7784,7 +7792,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -7926,7 +7934,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -8074,7 +8082,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -8215,6 +8223,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8257,7 +8266,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8458,7 +8467,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8473,7 +8482,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8629,7 +8638,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -8718,7 +8727,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -8797,7 +8806,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -8832,7 +8841,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -8948,6 +8957,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8990,7 +9000,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9191,7 +9201,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9206,7 +9216,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9474,7 +9484,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -9563,7 +9573,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -9642,7 +9652,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -9677,7 +9687,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -9793,6 +9803,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9835,7 +9846,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -10036,7 +10047,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10051,7 +10062,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10466,7 +10477,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -10665,7 +10676,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -10802,7 +10813,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -10950,7 +10961,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -11091,6 +11102,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11133,7 +11145,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11334,7 +11346,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11349,7 +11361,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -11545,7 +11557,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -11744,7 +11756,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -11886,7 +11898,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -12034,7 +12046,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -12175,6 +12187,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -12217,7 +12230,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -12418,7 +12431,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12433,7 +12446,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -12576,7 +12589,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -12665,7 +12678,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -12744,7 +12757,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -12779,7 +12792,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -12895,6 +12908,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -12937,7 +12951,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13138,7 +13152,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13153,7 +13167,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -13378,7 +13392,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -13577,7 +13591,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -13719,7 +13733,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -13867,7 +13881,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -14008,6 +14022,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14050,7 +14065,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -14251,7 +14266,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14266,7 +14281,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -14443,7 +14458,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -14532,7 +14547,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -14611,7 +14626,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -14646,7 +14661,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -14762,6 +14777,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14804,7 +14820,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15005,7 +15021,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15020,7 +15036,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15264,7 +15280,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -15463,7 +15479,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -15605,7 +15621,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -15753,7 +15769,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -15894,6 +15910,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -15936,7 +15953,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -16137,7 +16154,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16152,7 +16169,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -16348,7 +16365,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -16437,7 +16454,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -16516,7 +16533,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -16551,7 +16568,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -16667,6 +16684,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -16709,7 +16727,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -16910,7 +16928,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16925,7 +16943,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -16995,7 +17013,8 @@ export namespace GooCanvas {
          * @param property_id the property identifier.
          * @returns the property value, or %NULL if it isn't set.
          */
-        get_property(property_id: GLib.Quark): GObject.Value;
+        get_property(property_id: GLib.Quark): unknown;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Sets the standard cairo fill options using the given style.
@@ -17016,7 +17035,8 @@ export namespace GooCanvas {
          * @param property_id the property identifier.
          * @param value the value of the property.
          */
-        set_property(property_id: GLib.Quark, value: GObject.Value): void;
+        set_property(property_id: GLib.Quark, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
          * Sets the standard cairo stroke options using the given style.
@@ -17211,6 +17231,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -17253,7 +17274,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -17454,7 +17475,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17469,7 +17490,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -17666,6 +17687,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -17708,7 +17730,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -17909,7 +17931,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17924,7 +17946,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -18144,7 +18166,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -18343,7 +18365,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -18485,7 +18507,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -18633,7 +18655,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -18774,6 +18796,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -18816,7 +18839,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -19017,7 +19040,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19032,7 +19055,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -19189,7 +19212,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -19278,7 +19301,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -19357,7 +19380,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -19392,7 +19415,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -19508,6 +19531,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -19550,7 +19574,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -19751,7 +19775,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19766,7 +19790,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -19966,7 +19990,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -20165,7 +20189,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -20307,7 +20331,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -20455,7 +20479,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -20596,6 +20620,7 @@ export namespace GooCanvas {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -20638,7 +20663,7 @@ export namespace GooCanvas {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -20839,7 +20864,7 @@ export namespace GooCanvas {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20854,7 +20879,7 @@ export namespace GooCanvas {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -21524,7 +21549,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns %TRUE if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -21723,7 +21748,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
@@ -21868,7 +21893,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -22016,7 +22041,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItem,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -22205,7 +22230,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
@@ -22294,7 +22319,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as #GooCanvasGroupModel).
@@ -22376,7 +22401,7 @@ export namespace GooCanvas {
         vfunc_get_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -22411,7 +22436,7 @@ export namespace GooCanvas {
         vfunc_set_child_property(
             child: CanvasItemModel,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**

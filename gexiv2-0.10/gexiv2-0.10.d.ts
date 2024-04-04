@@ -331,7 +331,7 @@ export namespace GExiv2 {
          * @param data A buffer containing the data to be read
          * @returns Boolean success indicator.
          */
-        from_app1_segment(data: Uint8Array): boolean;
+        from_app1_segment(data: Uint8Array | string): boolean;
         /**
          * This function does not work and will be removed in a future release.
          * @param stream
@@ -561,7 +561,7 @@ export namespace GExiv2 {
          * @param data A buffer containing the data to be read
          * @returns Boolean success indicator
          */
-        open_buf(data: Uint8Array): boolean;
+        open_buf(data: Uint8Array | string): boolean;
         /**
          * The file must be an image format supported by Exiv2.
          * @param path Path to the file you want to open
@@ -596,7 +596,7 @@ export namespace GExiv2 {
          * @returns Boolean success value
          */
         set_exif_tag_rational(tag: string, nom: number, den: number): boolean;
-        set_exif_thumbnail_from_buffer(buffer: Uint8Array): void;
+        set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
         /**
          * Sets or replaces the EXIF thumbnail with the image in the file
          * @param path Path of image file
@@ -852,7 +852,7 @@ export namespace GExiv2 {
          * @returns Boolean success value
          */
         try_set_exif_tag_rational(tag: string, nom: number, den: number): boolean;
-        try_set_exif_thumbnail_from_buffer(buffer: Uint8Array): void;
+        try_set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
         /**
          * Convenience function to create a new set of simple GPS data. Warning: Will remove any other
          * GPS information that is currently set. See gexiv2_metadata_update_gps_info() for
@@ -963,6 +963,7 @@ export namespace GExiv2 {
          */
         free(): void;
         get_data(): Uint8Array;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         get_extension(): string;
         get_height(): number;

@@ -570,7 +570,10 @@ export namespace GstTag {
      * @param image_type type of the image, or #GST_TAG_IMAGE_TYPE_UNDEFINED. Pass     #GST_TAG_IMAGE_TYPE_NONE if no image type should be set at all (e.g.     for preview images)
      * @returns a newly-allocated image sample for use in tag lists, or NULL
      */
-    function tag_image_data_to_image_sample(image_data: Uint8Array, image_type: TagImageType): Gst.Sample | null;
+    function tag_image_data_to_image_sample(
+        image_data: Uint8Array | string,
+        image_type: TagImageType,
+    ): Gst.Sample | null;
     /**
      * Adds an image from an ID3 APIC frame (or similar, such as used in FLAC)
      * to the given tag list. Also see gst_tag_image_data_to_image_sample() for
@@ -580,7 +583,11 @@ export namespace GstTag {
      * @param id3_picture_type picture type as per the ID3 (v2.4.0) specification for    the APIC frame (0 = unknown/other)
      * @returns %TRUE if the image was processed, otherwise %FALSE
      */
-    function tag_list_add_id3_image(tag_list: Gst.TagList, image_data: Uint8Array, id3_picture_type: number): boolean;
+    function tag_list_add_id3_image(
+        tag_list: Gst.TagList,
+        image_data: Uint8Array | string,
+        id3_picture_type: number,
+    ): boolean;
     /**
      * Parses the IFD and IFD tags data contained in the buffer and puts it
      * on a taglist. The base_offset is used to subtract from the offset in
@@ -612,7 +619,10 @@ export namespace GstTag {
      * @param id_data identification data at start of stream
      * @returns A new #GstTagList with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
      */
-    function tag_list_from_vorbiscomment(data: Uint8Array, id_data: Uint8Array): [Gst.TagList | null, string];
+    function tag_list_from_vorbiscomment(
+        data: Uint8Array | string,
+        id_data: Uint8Array | string,
+    ): [Gst.TagList | null, string];
     /**
      * Creates a new tag list that contains the information parsed out of a
      * vorbiscomment packet.
@@ -620,7 +630,10 @@ export namespace GstTag {
      * @param id_data identification data at start of stream
      * @returns A new #GstTagList with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
      */
-    function tag_list_from_vorbiscomment_buffer(buffer: Gst.Buffer, id_data: Uint8Array): [Gst.TagList | null, string];
+    function tag_list_from_vorbiscomment_buffer(
+        buffer: Gst.Buffer,
+        id_data: Uint8Array | string,
+    ): [Gst.TagList | null, string];
     /**
      * Parse a xmp packet into a taglist.
      * @param buffer buffer
@@ -633,7 +646,7 @@ export namespace GstTag {
      * @param data 128 bytes of data containing the ID3v1 tag
      * @returns A new tag list or NULL if the data was not an ID3v1 tag.
      */
-    function tag_list_new_from_id3v1(data: Uint8Array): Gst.TagList | null;
+    function tag_list_new_from_id3v1(data: Uint8Array | string): Gst.TagList | null;
     /**
      * Formats the tags in taglist on exif format. The resulting buffer contains
      * the tags IFD and is followed by the data pointed by the tag entries.
@@ -659,7 +672,7 @@ export namespace GstTag {
      */
     function tag_list_to_vorbiscomment_buffer(
         list: Gst.TagList,
-        id_data: Uint8Array,
+        id_data: Uint8Array | string,
         vendor_string?: string | null,
     ): Gst.Buffer;
     /**
@@ -914,7 +927,7 @@ export namespace GstTag {
          * @param tag tag to set
          * @param value GValue to set for the tag
          */
-        add_tag_value(mode: Gst.TagMergeMode, tag: string, value: GObject.Value): void;
+        add_tag_value(mode: Gst.TagMergeMode, tag: string, value: GObject.Value | any): void;
         /**
          * Returns the current list of tags the setter uses.  The list should not be
          * modified or freed.

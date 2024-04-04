@@ -296,11 +296,11 @@ export namespace Grl {
      * up all the resources created.
      */
     function deinit(): void;
-    function g_value_dup(value: GObject.Value): GObject.Value;
-    function g_value_free(value: GObject.Value): void;
+    function g_value_dup(value: GObject.Value | any): unknown;
+    function g_value_free(value: GObject.Value | any): void;
     function g_value_hashtable_new(): GLib.HashTable<string, GObject.Value>;
     function g_value_hashtable_new_direct(): GLib.HashTable<any, GObject.Value>;
-    function g_value_new(g_type: GObject.GType): GObject.Value;
+    function g_value_new(g_type: GObject.GType): unknown;
     /**
      * Initializes the Grilo library
      * @param argv list of arguments
@@ -350,9 +350,9 @@ export namespace Grl {
     function log_configure(config: string): void;
     function marshal_VOID__BOXED_ENUM_BOOLEAN(
         closure: GObject.Closure,
-        return_value: GObject.Value,
+        return_value: GObject.Value | any,
         n_param_values: number,
-        param_values: GObject.Value,
+        param_values: GObject.Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -501,10 +501,10 @@ export namespace Grl {
         internal_offset: number,
     ): void;
     function range_value_hashtable_insert(
-        hash_table: GLib.HashTable<any, any>,
+        hash_table: { [key: string]: any } | GLib.HashTable<any, any>,
         key: any | null,
-        min: GObject.Value,
-        max: GObject.Value,
+        min: GObject.Value | any,
+        max: GObject.Value | any,
     ): void;
     function range_value_hashtable_new(): GLib.HashTable<any, RangeValue>;
     interface OperationCancelCb {
@@ -701,7 +701,7 @@ export namespace Grl {
          * @param value the value corresponding to @key to test against @caps
          * @returns %TRUE if (@key, @value) obey to @caps, %FALSE otherwise.
          */
-        test_option(key: string, value: GObject.Value): boolean;
+        test_option(key: string, value: GObject.Value | any): boolean;
     }
 
     module Config {
@@ -750,7 +750,8 @@ export namespace Grl {
          * @param param a parameter
          * @param value value
          */
-        set(param: string, value: GObject.Value): void;
+        set(param: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Set the webservice API key in the configuration
@@ -907,7 +908,7 @@ export namespace Grl {
          * @param key key to look up.
          * @returns a #GValue. This value should not be modified nor freed by user.
          */
-        get(key: KeyID): GObject.Value;
+        get(key: KeyID): unknown;
         /**
          * Returns the first binary value associated with `key` from `data`. If `key` has
          * no first value, or value is not a gfloat, or `key` is not in data, then %NULL
@@ -970,7 +971,7 @@ export namespace Grl {
          * @param key a metadata key
          * @returns a #GList with values. Do not change or free the values. Free the list with #g_list_free.
          */
-        get_single_values_for_key(key: KeyID): GObject.Value[];
+        get_single_values_for_key(key: KeyID): unknown[];
         /**
          * Returns all non-%NULL values for `key` from `data`. `key` must have been
          * registered as a string-type key. This ignores related keys.
@@ -1031,7 +1032,8 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: KeyID, value: GObject.Value): void;
+        set(key: KeyID, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets the first binary value associated with `key` in `data`. If `key` already
@@ -1449,6 +1451,7 @@ export namespace Grl {
          * @param bitrate the @url bitrate, or -1 to ignore
          */
         add_url_data(url: string, mime: string, bitrate: number): void;
+        // Conflicted with Grl.Media.add_url_data
         add_url_data(...args: never[]): any;
         get_album(): string;
         get_artist(): string;
@@ -1465,8 +1468,10 @@ export namespace Grl {
         get_mb_track_id(): string;
         get_track_number(): number;
         get_url_data(): [string, string, number];
+        // Conflicted with Grl.Media.get_url_data
         get_url_data(...args: never[]): any;
         get_url_data_nth(index: number): [string, string, number];
+        // Conflicted with Grl.Media.get_url_data_nth
         get_url_data_nth(...args: never[]): any;
         /**
          * Set the album of the audio
@@ -1525,6 +1530,7 @@ export namespace Grl {
          * @param bitrate the @url bitrate, or -1 to ignore
          */
         set_url_data(url: string, mime: string, bitrate: number): void;
+        // Conflicted with Grl.Media.set_url_data
         set_url_data(...args: never[]): any;
     }
 
@@ -1588,6 +1594,7 @@ export namespace Grl {
          * @param height image height, or -1 to ignore
          */
         add_url_data(url: string, mime: string, width: number, height: number): void;
+        // Conflicted with Grl.Media.add_url_data
         add_url_data(...args: never[]): any;
         get_camera_model(): string;
         get_exposure_time(): number;
@@ -1596,8 +1603,10 @@ export namespace Grl {
         get_iso_speed(): number;
         get_orientation(): number;
         get_url_data(width: number, height: number): [string, string];
+        // Conflicted with Grl.Media.get_url_data
         get_url_data(...args: never[]): any;
         get_url_data_nth(index: number, width: number, height: number): [string, string];
+        // Conflicted with Grl.Media.get_url_data_nth
         get_url_data_nth(...args: never[]): any;
         get_width(): number;
         set_camera_model(camera_model: string): void;
@@ -1624,6 +1633,7 @@ export namespace Grl {
          * @param height the image's height
          */
         set_size(width: number, height: number): void;
+        // Conflicted with Grl.Media.set_size
         set_size(...args: never[]): any;
         /**
          * Sets all the keys related with the URL of an image resource in one go.
@@ -1633,6 +1643,7 @@ export namespace Grl {
          * @param height image height, or -1 to ignore
          */
         set_url_data(url: string, mime: string, width: number, height: number): void;
+        // Conflicted with Grl.Media.set_url_data
         set_url_data(...args: never[]): any;
         /**
          * Set the width of the image
@@ -1685,6 +1696,7 @@ export namespace Grl {
          * @param height video height, or -1 to ignore
          */
         add_url_data(url: string, mime: string, framerate: number, width: number, height: number): void;
+        // Conflicted with Grl.Media.add_url_data
         add_url_data(...args: never[]): any;
         get_director(): string;
         get_director_nth(index: number): string;
@@ -1700,8 +1712,10 @@ export namespace Grl {
         get_season(): number;
         get_show(): string;
         get_url_data(framerate: number, width: number, height: number): [string, string];
+        // Conflicted with Grl.Media.get_url_data
         get_url_data(...args: never[]): any;
         get_url_data_nth(index: number, framerate: number, width: number, height: number): [string, string];
+        // Conflicted with Grl.Media.get_url_data_nth
         get_url_data_nth(...args: never[]): any;
         get_width(): number;
         /**
@@ -1760,6 +1774,7 @@ export namespace Grl {
          * @param height the video's height
          */
         set_size(width: number, height: number): void;
+        // Conflicted with Grl.Media.set_size
         set_size(...args: never[]): any;
         /**
          * Sets all the keys related with the URL of a video resource in one go.
@@ -1770,6 +1785,7 @@ export namespace Grl {
          * @param height video height, or -1 to ignore
          */
         set_url_data(url: string, mime: string, framerate: number, width: number, height: number): void;
+        // Conflicted with Grl.Media.set_url_data
         set_url_data(...args: never[]): any;
         /**
          * Set the width of the video
@@ -1805,7 +1821,7 @@ export namespace Grl {
          */
         get_count(): number;
         get_flags(): ResolutionFlags;
-        get_key_filter(key: KeyID): GObject.Value;
+        get_key_filter(key: KeyID): unknown;
         get_key_filter_list(): KeyID[];
         /**
          * Stores the limits of the range in the filter for `key` in `min_value` and
@@ -1852,14 +1868,14 @@ export namespace Grl {
          * @returns %TRUE if @flags could be set, %FALSE otherwise.
          */
         set_flags(flags: ResolutionFlags): boolean;
-        set_key_filters(filters: GLib.HashTable<KeyID, GObject.Value>): boolean;
+        set_key_filters(filters: { [key: string]: any } | GLib.HashTable<KeyID, GObject.Value>): boolean;
         /**
          * Set filter as "`key` == `value"`.
          * @param key a #GrlKeyID
          * @param value a #GValue
          * @returns %TRUE on success
          */
-        set_key_filter_value(key: KeyID, value: GObject.Value): boolean;
+        set_key_filter_value(key: KeyID, value: GObject.Value | any): boolean;
         /**
          * Set filter as "`min_value` <= `key` <= `max_value"`.
          *
@@ -1995,7 +2011,7 @@ export namespace Grl {
         set_info(key: string, value: string): void;
         set_load_func(load_function?: any | null): void;
         set_module(module: GModule.Module): void;
-        set_optional_info(info: GLib.HashTable<any, any>): void;
+        set_optional_info(info: { [key: string]: any } | GLib.HashTable<any, any>): void;
         set_register_keys_func(register_keys_function?: any | null): void;
         set_unload_func(unload_function?: any | null): void;
         unload(): void;
@@ -2195,7 +2211,7 @@ export namespace Grl {
          * @param value value to be validate
          * @returns %TRUE if complies
          */
-        metadata_key_validate(key: KeyID, value: GObject.Value): boolean;
+        metadata_key_validate(key: KeyID, value: GObject.Value | any): boolean;
         /**
          * Registers a metadata key
          * @param param_spec The definition of the key to register
@@ -2271,7 +2287,7 @@ export namespace Grl {
          * @param key key to look up.
          * @returns a #GValue. This value should not be modified nor freed by user.
          */
-        get(key: KeyID): GObject.Value;
+        get(key: KeyID): unknown;
         /**
          * Returns the value associated with `key` from `relkeys`. If `key` has no value,
          * or value is not a binary, or `key` is not in `relkeys,` then 0 is returned.
@@ -2349,7 +2365,8 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: KeyID, value: GObject.Value): void;
+        set(key: KeyID, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
@@ -3156,18 +3173,18 @@ export namespace Grl {
 
         // Constructors of Grl.RangeValue
 
-        constructor(min: GObject.Value, max: GObject.Value);
+        constructor(min: GObject.Value | any, max: GObject.Value | any);
         _init(...args: any[]): void;
 
-        static ['new'](min: GObject.Value, max: GObject.Value): RangeValue;
+        static ['new'](min: GObject.Value | any, max: GObject.Value | any): RangeValue;
 
         // Own static methods of Grl.RangeValue
 
         static hashtable_insert(
-            hash_table: GLib.HashTable<any, any>,
+            hash_table: { [key: string]: any } | GLib.HashTable<any, any>,
             key: any | null,
-            min: GObject.Value,
-            max: GObject.Value,
+            min: GObject.Value | any,
+            max: GObject.Value | any,
         ): void;
         static hashtable_new(): GLib.HashTable<any, RangeValue>;
 

@@ -636,6 +636,7 @@ export namespace GstMse {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -678,7 +679,7 @@ export namespace GstMse {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -753,6 +754,7 @@ export namespace GstMse {
          * @returns the same @object
          */
         ref(): GObject.Object;
+        // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object,` and possibly remove the
@@ -880,7 +882,7 @@ export namespace GstMse {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -895,7 +897,7 @@ export namespace GstMse {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

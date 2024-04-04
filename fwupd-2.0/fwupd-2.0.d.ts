@@ -1287,7 +1287,7 @@ export namespace Fwupd {
          * @param cancellable the #GCancellable, or %NULL
          * @returns an array of results
          */
-        get_details_bytes(bytes: GLib.Bytes, cancellable?: Gio.Cancellable | null): Device[];
+        get_details_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Gio.Cancellable | null): Device[];
         /**
          * Gets details about a specific firmware file.
          * @param bytes a #GBytes for the firmware, e.g. `firmware.cab`
@@ -1295,7 +1295,7 @@ export namespace Fwupd {
          * @param callback the function to run on completion
          */
         get_details_bytes_async(
-            bytes: GLib.Bytes,
+            bytes: GLib.Bytes | Uint8Array,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1711,7 +1711,7 @@ export namespace Fwupd {
          */
         install_bytes(
             device_id: string,
-            bytes: GLib.Bytes,
+            bytes: GLib.Bytes | Uint8Array,
             install_flags: InstallFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -1729,7 +1729,7 @@ export namespace Fwupd {
          */
         install_bytes_async(
             device_id: string,
-            bytes: GLib.Bytes,
+            bytes: GLib.Bytes | Uint8Array,
             install_flags: InstallFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2136,8 +2136,8 @@ export namespace Fwupd {
          */
         update_metadata_bytes(
             remote_id: string,
-            metadata: GLib.Bytes,
-            signature: GLib.Bytes,
+            metadata: GLib.Bytes | Uint8Array,
+            signature: GLib.Bytes | Uint8Array,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2159,8 +2159,8 @@ export namespace Fwupd {
          */
         update_metadata_bytes_async(
             remote_id: string,
-            metadata: GLib.Bytes,
-            signature: GLib.Bytes,
+            metadata: GLib.Bytes | Uint8Array,
+            signature: GLib.Bytes | Uint8Array,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2972,7 +2972,7 @@ export namespace Fwupd {
          * Sets multiple release metadata items.
          * @param hash the key-values
          */
-        add_metadata(hash: GLib.HashTable<any, any>): void;
+        add_metadata(hash: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
          * Sets a release metadata item.
          * @param key the key
@@ -3560,7 +3560,7 @@ export namespace Fwupd {
          * @param bytes A #GBytes
          * @returns %TRUE for success
          */
-        load_signature_bytes(bytes: GLib.Bytes): boolean;
+        load_signature_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
         /**
          * Sets the remote agreement in AppStream markup format
          * @param agreement Agreement markup

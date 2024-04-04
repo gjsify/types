@@ -2063,6 +2063,7 @@ export namespace Colord {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
          * Gets the result from the asynchronous function.
@@ -2204,7 +2205,7 @@ export namespace Colord {
          * @param edid_data data to parse
          * @returns %TRUE for success
          */
-        parse(edid_data: GLib.Bytes): boolean;
+        parse(edid_data: GLib.Bytes | Uint8Array): boolean;
         /**
          * Resets all cached data.
          */
@@ -2484,7 +2485,7 @@ export namespace Colord {
          * @param data binary data
          * @param flags a set of #CdIccLoadFlags
          */
-        load_data(data: Uint8Array, flags: IccLoadFlags): boolean;
+        load_data(data: Uint8Array | string, flags: IccLoadFlags): boolean;
         /**
          * Loads an ICC profile from an open file descriptor.
          * @param fd a file descriptor
@@ -2566,7 +2567,7 @@ export namespace Colord {
          * Sets the profile copyrights for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_copyright_items(values: GLib.HashTable<any, any>): void;
+        set_copyright_items(values: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
          * Sets the ICC creation date and time.
          * @param creation_time
@@ -2582,7 +2583,7 @@ export namespace Colord {
          * Sets the profile descriptions for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_description_items(values: GLib.HashTable<any, any>): void;
+        set_description_items(values: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
          * Sets the filename, which may be required if the ICC profile has been loaded
          * using cd_icc_load_fd() from a disk cache.
@@ -2604,7 +2605,7 @@ export namespace Colord {
          * Sets the profile manufacturers for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_manufacturer_items(values: GLib.HashTable<any, any>): void;
+        set_manufacturer_items(values: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
          * Sets the profile model for a specific locale.
          * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
@@ -2615,14 +2616,14 @@ export namespace Colord {
          * Sets the profile models for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_model_items(values: GLib.HashTable<any, any>): void;
+        set_model_items(values: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
          * Sets the raw data for the specific tag.
          * Most users do not need to do this.
          * @param tag a 4 bytes tag description, e.g. "cprt" or "vcgt"
          * @param data a variable sized data entry
          */
-        set_tag_data(tag: string, data: GLib.Bytes): boolean;
+        set_tag_data(tag: string, data: GLib.Bytes | Uint8Array): boolean;
         /**
          * Sets the Video Card Gamma Table from the profile.
          *
@@ -3229,6 +3230,7 @@ export namespace Colord {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
          * Gets the result from the asynchronous function.
@@ -3615,7 +3617,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         set_options(
-            values: GLib.HashTable<string, GLib.Variant>,
+            values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3634,7 +3636,10 @@ export namespace Colord {
          * @param cancellable a #GCancellable or %NULL
          * @returns %TRUE for success, else %FALSE.
          */
-        set_options_sync(values: GLib.HashTable<string, GLib.Variant>, cancellable?: Gio.Cancellable | null): boolean;
+        set_options_sync(
+            values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         to_string(): string;
         /**
          * Unlocks the sensor for use by other programs.

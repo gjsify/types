@@ -211,7 +211,11 @@ export namespace Dex {
         count: number,
         io_priority: number,
     ): Future;
-    function output_stream_write_bytes(self: Gio.OutputStream, bytes: GLib.Bytes, io_priority: number): Future;
+    function output_stream_write_bytes(
+        self: Gio.OutputStream,
+        bytes: GLib.Bytes | Uint8Array,
+        io_priority: number,
+    ): Future;
     function resolver_lookup_by_name(resolver: Gio.Resolver, address: string): Future;
     function socket_client_connect(socket_client: Gio.SocketClient, socket_connectable: Gio.SocketConnectable): Future;
     function socket_listener_accept(listener: Gio.SocketListener): Future;
@@ -227,7 +231,7 @@ export namespace Dex {
      * @param value a `GValue` initialized with type `DEX_TYPE_OBJECT`
      * @returns a `DexObject`
      */
-    function value_get_object(value: GObject.Value): Object | null;
+    function value_get_object(value: GObject.Value | any): Object | null;
     /**
      * Stores the given `DexObject` inside `value`.
      *
@@ -235,7 +239,7 @@ export namespace Dex {
      * @param value a [struct@GObject.Value] initialized with type `DEX_TYPE_OBJECT`
      * @param object a `DexObject` or %NULL
      */
-    function value_set_object(value: GObject.Value, object?: Object | null): void;
+    function value_set_object(value: GObject.Value | any, object?: Object | null): void;
     /**
      * Stores the given `DexObject` inside `value`.
      *
@@ -243,7 +247,7 @@ export namespace Dex {
      * @param value a [struct@GObject.Value] initialized with type `DEX_TYPE_OBJECT`
      * @param object a `DexObject`
      */
-    function value_take_object(value: GObject.Value, object?: Object | null): void;
+    function value_take_object(value: GObject.Value | any, object?: Object | null): void;
     interface FiberFunc {
         (): Future | null;
     }
@@ -496,6 +500,7 @@ export namespace Dex {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -538,7 +543,7 @@ export namespace Dex {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -739,7 +744,7 @@ export namespace Dex {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -754,7 +759,7 @@ export namespace Dex {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -936,7 +941,7 @@ export namespace Dex {
 
         static new_for_uint64(v_uint64: number): Future;
 
-        static new_for_value(value: GObject.Value): Future;
+        static new_for_value(value: GObject.Value | any): Future;
 
         static new_infinite(): Future;
 
@@ -1065,7 +1070,7 @@ export namespace Dex {
         disown(): void;
         get_name(): string;
         get_status(): FutureStatus;
-        get_value(): GObject.Value;
+        get_value(): unknown;
     }
 
     class FutureSet extends Future {
@@ -1098,7 +1103,7 @@ export namespace Dex {
          * @param position the #DexFuture position within the set
          * @returns a #GValue if successful; otherwise %NULL   and @error is set.
          */
-        get_value_at(position: number): GObject.Value;
+        get_value_at(position: number): unknown;
     }
 
     class MainScheduler extends Scheduler {
@@ -1173,7 +1178,7 @@ export namespace Dex {
          * Sets the result for a #DexPromise.
          * @param value a #GValue containing the resolved value
          */
-        resolve(value: GObject.Value): void;
+        resolve(value: GObject.Value | any): void;
         resolve_boolean(value: boolean): void;
         resolve_double(value: number): void;
         resolve_float(value: number): void;

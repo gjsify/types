@@ -386,6 +386,7 @@ export namespace GFBGraph {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -428,7 +429,7 @@ export namespace GFBGraph {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -629,7 +630,7 @@ export namespace GFBGraph {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -644,7 +645,7 @@ export namespace GFBGraph {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -942,7 +943,7 @@ export namespace GFBGraph {
          */
         default_deserialize_property(
             property_name: string,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
             property_node: Json.Node,
         ): boolean;
@@ -973,7 +974,7 @@ export namespace GFBGraph {
          */
         default_serialize_property(
             property_name: string,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): Json.Node | null;
         /**
@@ -1015,6 +1016,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          */
         get_property(pspec: GObject.ParamSpec): unknown;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Calls the [vfunc`Json`.Serializable.list_properties] implementation on
@@ -1031,7 +1033,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: GObject.Value, pspec: GObject.ParamSpec): Json.Node;
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node;
         /**
          * Calls the [vfunc`Json`.Serializable.set_property] implementation
          * on the `JsonSerializable` instance, which will set the property
@@ -1039,7 +1041,8 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: GObject.Value): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
          * Asks a `JsonSerializable` implementation to deserialize the
@@ -1078,6 +1081,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          */
         vfunc_get_property(pspec: GObject.ParamSpec): unknown;
+        // Conflicted with GObject.Object.vfunc_get_property
         vfunc_get_property(...args: never[]): any;
         /**
          * Asks a `JsonSerializable` implementation to serialize an object
@@ -1086,7 +1090,11 @@ export namespace GFBGraph {
          * @param value the value of the property to serialize
          * @param pspec a property description
          */
-        vfunc_serialize_property(property_name: string, value: GObject.Value, pspec: GObject.ParamSpec): Json.Node;
+        vfunc_serialize_property(
+            property_name: string,
+            value: GObject.Value | any,
+            pspec: GObject.ParamSpec,
+        ): Json.Node;
         /**
          * Calls the [vfunc`Json`.Serializable.set_property] implementation
          * on the `JsonSerializable` instance, which will set the property
@@ -1094,7 +1102,8 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @param value the property value to set
          */
-        vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value): void;
+        vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.vfunc_set_property
         vfunc_set_property(...args: never[]): any;
         /**
          * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
@@ -1249,6 +1258,7 @@ export namespace GFBGraph {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1290,7 +1300,7 @@ export namespace GFBGraph {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1676,6 +1686,7 @@ export namespace GFBGraph {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1718,7 +1729,7 @@ export namespace GFBGraph {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1919,7 +1930,7 @@ export namespace GFBGraph {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1934,7 +1945,7 @@ export namespace GFBGraph {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

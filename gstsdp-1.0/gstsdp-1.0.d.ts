@@ -433,7 +433,7 @@ export namespace GstSdp {
      * @param msg the result #GstSDPMessage
      * @returns #GST_SDP_OK on success.
      */
-    function sdp_message_parse_buffer(data: Uint8Array, msg: SDPMessage): SDPResult;
+    function sdp_message_parse_buffer(data: Uint8Array | string, msg: SDPMessage): SDPResult;
     /**
      * Parse the null-terminated `uri` and store the result in `msg`.
      *
@@ -524,11 +524,11 @@ export namespace GstSdp {
 
         static ['new'](): MIKEYMessage;
 
-        static new_from_bytes(bytes: GLib.Bytes, info: MIKEYDecryptInfo): MIKEYMessage;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array, info: MIKEYDecryptInfo): MIKEYMessage;
 
         static new_from_caps(caps: Gst.Caps): MIKEYMessage;
 
-        static new_from_data(data: Uint8Array, info: MIKEYDecryptInfo): MIKEYMessage;
+        static new_from_data(data: Uint8Array | string, info: MIKEYDecryptInfo): MIKEYMessage;
 
         // Own methods of GstSdp.MIKEYMessage
 
@@ -552,13 +552,13 @@ export namespace GstSdp {
          * @param data the encrypted envelope key
          * @returns %TRUE on success
          */
-        add_pke(C: MIKEYCacheType, data: Uint8Array): boolean;
+        add_pke(C: MIKEYCacheType, data: Uint8Array | string): boolean;
         /**
          * Add a new RAND payload to `msg` with the given parameters.
          * @param rand random data
          * @returns %TRUE on success
          */
-        add_rand(rand: Uint8Array): boolean;
+        add_rand(rand: Uint8Array | string): boolean;
         /**
          * Add a new RAND payload to `msg` with `len` random bytes.
          * @param len length
@@ -571,7 +571,7 @@ export namespace GstSdp {
          * @param ts_value The timestamp value of the specified @type
          * @returns %TRUE on success
          */
-        add_t(type: MIKEYTSType, ts_value: Uint8Array): boolean;
+        add_t(type: MIKEYTSType, ts_value: Uint8Array | string): boolean;
         /**
          * Add a new T payload to `msg` that contains the current time
          * in NTP-UTC format.
@@ -737,7 +737,7 @@ export namespace GstSdp {
          * @param vt_data the Valid To data
          * @returns %TRUE on success
          */
-        key_data_set_interval(vf_data: Uint8Array, vt_data: Uint8Array): boolean;
+        key_data_set_interval(vf_data: Uint8Array | string, vt_data: Uint8Array | string): boolean;
         /**
          * Set `key_len` bytes of `key_data` of type `key_type` as the key for the
          * %GST_MIKEY_PT_KEY_DATA `payload`.
@@ -745,7 +745,7 @@ export namespace GstSdp {
          * @param key_data the key of type @key_type
          * @returns %TRUE on success
          */
-        key_data_set_key(key_type: MIKEYKeyDataType, key_data: Uint8Array): boolean;
+        key_data_set_key(key_type: MIKEYKeyDataType, key_data: Uint8Array | string): boolean;
         /**
          * Set the salt key data. If `salt_len` is 0 and `salt_data` is %NULL, the
          * salt data will be removed.
@@ -758,7 +758,7 @@ export namespace GstSdp {
          * @param spi_data the SPI/MKI data
          * @returns %TRUE on success
          */
-        key_data_set_spi(spi_data: Uint8Array): boolean;
+        key_data_set_spi(spi_data: Uint8Array | string): boolean;
         /**
          * Set the PKE values in `payload`. `payload` must be of type
          * %GST_MIKEY_PT_PKE.
@@ -766,13 +766,13 @@ export namespace GstSdp {
          * @param data the encrypted envelope key
          * @returns %TRUE on success
          */
-        pke_set(C: MIKEYCacheType, data: Uint8Array): boolean;
+        pke_set(C: MIKEYCacheType, data: Uint8Array | string): boolean;
         /**
          * Set the random values in a %GST_MIKEY_PT_RAND `payload`.
          * @param rand random values
          * @returns %TRUE on success
          */
-        rand_set(rand: Uint8Array): boolean;
+        rand_set(rand: Uint8Array | string): boolean;
         /**
          * Add a new parameter to the %GST_MIKEY_PT_SP `payload` with `type,` `len`
          * and `val`.
@@ -780,7 +780,7 @@ export namespace GstSdp {
          * @param val @len bytes of data
          * @returns %TRUE on success
          */
-        sp_add_param(type: number, val: Uint8Array): boolean;
+        sp_add_param(type: number, val: Uint8Array | string): boolean;
         /**
          * Get the number of security policy parameters in a %GST_MIKEY_PT_SP
          * `payload`.
@@ -814,7 +814,7 @@ export namespace GstSdp {
          * @param ts_value the timestamp value
          * @returns %TRUE on success
          */
-        t_set(type: MIKEYTSType, ts_value: Uint8Array): boolean;
+        t_set(type: MIKEYTSType, ts_value: Uint8Array | string): boolean;
     }
 
     /**
@@ -1533,7 +1533,7 @@ export namespace GstSdp {
          * @param data the start of the buffer
          * @param msg the result #GstSDPMessage
          */
-        static parse_buffer(data: Uint8Array, msg: SDPMessage): SDPResult;
+        static parse_buffer(data: Uint8Array | string, msg: SDPMessage): SDPResult;
         /**
          * Parse the null-terminated `uri` and store the result in `msg`.
          *

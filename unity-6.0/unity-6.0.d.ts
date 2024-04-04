@@ -109,6 +109,17 @@ export namespace Unity {
      * @param input
      * @param io_priority
      * @param cancellable
+     */
+    function io_read_stream_async(
+        input: Gio.InputStream,
+        io_priority: number,
+        cancellable: Gio.Cancellable,
+    ): Promise<[Uint8Array, number]>;
+    /**
+     * <para>Asynchronously read a stream into memory. This method will close the input stream when done.</para>
+     * @param input
+     * @param io_priority
+     * @param cancellable
      * @param _callback_
      */
     function io_read_stream_async(
@@ -117,7 +128,28 @@ export namespace Unity {
         cancellable: Gio.Cancellable,
         _callback_: Gio.AsyncReadyCallback<Gio.InputStream>,
     ): void;
+    /**
+     * <para>Asynchronously read a stream into memory. This method will close the input stream when done.</para>
+     * @param input
+     * @param io_priority
+     * @param cancellable
+     * @param _callback_
+     */
+    function io_read_stream_async(
+        input: Gio.InputStream,
+        io_priority: number,
+        cancellable: Gio.Cancellable,
+        _callback_: Gio.AsyncReadyCallback<Gio.InputStream>,
+    ): Promise<[Uint8Array, number]> | void;
     function io_read_stream_finish(_res_: Gio.AsyncResult): [Uint8Array, number];
+    /**
+     * <para>Asynchronously looks for a file with base name &apos;filename&apos; in all the directories defined in &apos;dirs&apos; and returns a file input
+     * stream for it.</para>
+     * <para>If the file can not be found this method returns null.</para>
+     * @param filename
+     * @param dirs
+     */
+    function io_open_from_dirs(filename: string, dirs: string[]): Promise<Gio.FileInputStream>;
     /**
      * <para>Asynchronously looks for a file with base name &apos;filename&apos; in all the directories defined in &apos;dirs&apos; and returns a file input
      * stream for it.</para>
@@ -127,7 +159,26 @@ export namespace Unity {
      * @param _callback_
      */
     function io_open_from_dirs(filename: string, dirs: string[], _callback_: Gio.AsyncReadyCallback<string>): void;
+    /**
+     * <para>Asynchronously looks for a file with base name &apos;filename&apos; in all the directories defined in &apos;dirs&apos; and returns a file input
+     * stream for it.</para>
+     * <para>If the file can not be found this method returns null.</para>
+     * @param filename
+     * @param dirs
+     * @param _callback_
+     */
+    function io_open_from_dirs(
+        filename: string,
+        dirs: string[],
+        _callback_: Gio.AsyncReadyCallback<string>,
+    ): Promise<Gio.FileInputStream> | void;
     function io_open_from_dirs_finish(_res_: Gio.AsyncResult): Gio.FileInputStream;
+    /**
+     * <para>Like open_from_dirs&lpar;&rpar; but scans first the user data dir and then the system data dirs as defined by the XDG_DATA_DIRS environment
+     * variable.</para>
+     * @param filename
+     */
+    function io_open_from_data_dirs(filename: string): Promise<Gio.FileInputStream>;
     /**
      * <para>Like open_from_dirs&lpar;&rpar; but scans first the user data dir and then the system data dirs as defined by the XDG_DATA_DIRS environment
      * variable.</para>
@@ -135,6 +186,16 @@ export namespace Unity {
      * @param _callback_
      */
     function io_open_from_data_dirs(filename: string, _callback_: Gio.AsyncReadyCallback<string>): void;
+    /**
+     * <para>Like open_from_dirs&lpar;&rpar; but scans first the user data dir and then the system data dirs as defined by the XDG_DATA_DIRS environment
+     * variable.</para>
+     * @param filename
+     * @param _callback_
+     */
+    function io_open_from_data_dirs(
+        filename: string,
+        _callback_: Gio.AsyncReadyCallback<string>,
+    ): Promise<Gio.FileInputStream> | void;
     function io_open_from_data_dirs_finish(_res_: Gio.AsyncResult): Gio.FileInputStream;
     function io_get_system_data_dirs(): string[];
     module AppInfoManager {
@@ -497,6 +558,7 @@ export namespace Unity {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -539,7 +601,7 @@ export namespace Unity {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -740,7 +802,7 @@ export namespace Unity {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -755,7 +817,7 @@ export namespace Unity {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1204,7 +1266,7 @@ export namespace Unity {
 
         static ['new'](
             search_string: string,
-            hints: GLib.HashTable<string, GLib.Variant>,
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             results_model: Dee.SerializableModel,
         ): LensSearch;
 
@@ -1489,6 +1551,7 @@ export namespace Unity {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1531,7 +1594,7 @@ export namespace Unity {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1732,7 +1795,7 @@ export namespace Unity {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1747,7 +1810,7 @@ export namespace Unity {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1938,6 +2001,7 @@ export namespace Unity {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1980,7 +2044,7 @@ export namespace Unity {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2181,7 +2245,7 @@ export namespace Unity {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2196,7 +2260,7 @@ export namespace Unity {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

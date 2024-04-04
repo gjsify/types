@@ -1335,12 +1335,14 @@ export namespace GIRepository {
          * @returns the type init function name
          */
         get_type_init_function_name(): string;
+        // Conflicted with GIRepository.RegisteredTypeInfo.get_type_init_function_name
         get_type_init_function_name(...args: never[]): any;
         /**
          * Obtain the name of the object’s class/type.
          * @returns name of the object’s type
          */
         get_type_name(): string;
+        // Conflicted with GIRepository.RegisteredTypeInfo.get_type_name
         get_type_name(...args: never[]): any;
         /**
          * Obtain the symbol name of the function that should be called to unref this
@@ -2331,10 +2333,10 @@ export namespace GIRepository {
 
         // Constructors of GIRepository.Typelib
 
-        constructor(bytes: GLib.Bytes);
+        constructor(bytes: GLib.Bytes | Uint8Array);
         _init(...args: any[]): void;
 
-        static new_from_bytes(bytes: GLib.Bytes): Typelib;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array): Typelib;
 
         // Own methods of GIRepository.Typelib
 

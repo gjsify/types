@@ -3419,7 +3419,12 @@ export namespace HarfBuzz {
      * @param item_offset the offset of the first character to add to the @buffer
      * @param item_length the number of characters to add to the @buffer, or -1 for the               end of @text (assuming it is `NULL` terminated)
      */
-    function buffer_add_latin1(buffer: buffer_t, text: Uint8Array, item_offset: number, item_length: number): void;
+    function buffer_add_latin1(
+        buffer: buffer_t,
+        text: Uint8Array | string,
+        item_offset: number,
+        item_length: number,
+    ): void;
     /**
      * See hb_buffer_add_codepoints().
      *
@@ -3452,7 +3457,12 @@ export namespace HarfBuzz {
      * @param item_offset The offset of the first character to add to the @buffer.
      * @param item_length The number of characters to add to the @buffer, or -1 for the               end of @text (assuming it is `NULL` terminated).
      */
-    function buffer_add_utf8(buffer: buffer_t, text: Uint8Array, item_offset: number, item_length: number): void;
+    function buffer_add_utf8(
+        buffer: buffer_t,
+        text: Uint8Array | string,
+        item_offset: number,
+        item_length: number,
+    ): void;
     /**
      * Check if allocating memory for the buffer succeeded.
      * @param buffer An #hb_buffer_t
@@ -3729,7 +3739,7 @@ export namespace HarfBuzz {
      * @param str a string to parse
      * @returns The parsed #hb_buffer_serialize_format_t.
      */
-    function buffer_serialize_format_from_string(str: Uint8Array): buffer_serialize_format_t;
+    function buffer_serialize_format_from_string(str: Uint8Array | string): buffer_serialize_format_t;
     /**
      * Converts `format` to the string corresponding it, or `NULL` if it is not a valid
      * #hb_buffer_serialize_format_t.
@@ -4048,7 +4058,7 @@ export namespace HarfBuzz {
      * @param str String to convert
      * @returns The #hb_direction_t matching @str
      */
-    function direction_from_string(str: Uint8Array): direction_t;
+    function direction_from_string(str: Uint8Array | string): direction_t;
     /**
      * Converts an #hb_direction_t to a string.
      * @param direction The #hb_direction_t to convert
@@ -4430,7 +4440,7 @@ export namespace HarfBuzz {
      * @param str a string to parse
      * @returns `true` if @str is successfully parsed, `false` otherwise
      */
-    function feature_from_string(str: Uint8Array): [bool_t, feature_t];
+    function feature_from_string(str: Uint8Array | string): [bool_t, feature_t];
     /**
      * Converts a #hb_feature_t into a `NULL`-terminated string in the format
      * understood by hb_feature_from_string(). The client in responsible for
@@ -5161,7 +5171,7 @@ export namespace HarfBuzz {
      * @param s string to query
      * @returns `true` if data found, `false` otherwise
      */
-    function font_glyph_from_string(font: font_t, s: Uint8Array): [bool_t, codepoint_t];
+    function font_glyph_from_string(font: font_t, s: Uint8Array | string): [bool_t, codepoint_t];
     /**
      * Fetches the name of the specified glyph ID in `font` and returns
      * it in string `s`.
@@ -5570,7 +5580,7 @@ export namespace HarfBuzz {
      * @param gbytes the GBytes structure to work upon
      * @returns the new #hb_blob_t blob object
      */
-    function glib_blob_create(gbytes: GLib.Bytes): blob_t;
+    function glib_blob_create(gbytes: GLib.Bytes | Uint8Array): blob_t;
     /**
      * Fetches a Unicode-functions structure that is populated
      * with the appropriate GLib function for each method.
@@ -5603,7 +5613,7 @@ export namespace HarfBuzz {
      * @param str a string representing       a BCP 47 language tag
      * @returns The #hb_language_t corresponding to the BCP 47 language tag.
      */
-    function language_from_string(str: Uint8Array): language_t;
+    function language_from_string(str: Uint8Array | string): language_t;
     /**
      * Fetch the default language from current locale.
      *
@@ -7264,7 +7274,7 @@ export namespace HarfBuzz {
      * @param str a string representing an       ISO 15924 tag.
      * @returns An #hb_script_t corresponding to the ISO 15924 tag.
      */
-    function script_from_string(str: Uint8Array): script_t;
+    function script_from_string(str: Uint8Array | string): script_t;
     /**
      * Fetches the #hb_direction_t of a script when it is
      * set horizontally. All right-to-left scripts will return
@@ -7690,7 +7700,7 @@ export namespace HarfBuzz {
      * @param str String to convert
      * @returns The #hb_tag_t corresponding to @str
      */
-    function tag_from_string(str: Uint8Array): tag_t;
+    function tag_from_string(str: Uint8Array | string): tag_t;
     /**
      * Converts an #hb_tag_t to a string and returns it in `buf`.
      * Strings will be four characters long.
@@ -7902,7 +7912,7 @@ export namespace HarfBuzz {
      * @param str a string to parse
      * @returns `true` if @str is successfully parsed, `false` otherwise
      */
-    function variation_from_string(str: Uint8Array): [bool_t, variation_t];
+    function variation_from_string(str: Uint8Array | string): [bool_t, variation_t];
     /**
      * Converts an #hb_variation_t into a `NULL`-terminated string in the format
      * understood by hb_variation_from_string(). The client in responsible for

@@ -3046,7 +3046,7 @@ export namespace Pango {
          * back to a `PangoCoverage`.
          * @param bytes binary data   representing a `PangoCoverage`
          */
-        static from_bytes(bytes: Uint8Array): Coverage | null;
+        static from_bytes(bytes: Uint8Array | string): Coverage | null;
 
         // Own methods of Pango.Coverage
 
@@ -3079,6 +3079,7 @@ export namespace Pango {
          * @param level the new level for @index_
          */
         set(index_: number, level: CoverageLevel): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Convert a `PangoCoverage` structure into a flat binary format.
@@ -3129,7 +3130,7 @@ export namespace Pango {
          * @param context a `PangoContext`
          * @param bytes the bytes containing the data
          */
-        static deserialize(context: Context, bytes: GLib.Bytes): Font | null;
+        static deserialize(context: Context, bytes: GLib.Bytes | Uint8Array): Font | null;
 
         // Own virtual methods of Pango.Font
 
@@ -3766,6 +3767,7 @@ export namespace Pango {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3808,7 +3810,7 @@ export namespace Pango {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4009,7 +4011,7 @@ export namespace Pango {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4024,7 +4026,7 @@ export namespace Pango {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4395,6 +4397,7 @@ export namespace Pango {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4437,7 +4440,7 @@ export namespace Pango {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4638,7 +4641,7 @@ export namespace Pango {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4653,7 +4656,7 @@ export namespace Pango {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4841,7 +4844,11 @@ export namespace Pango {
          * @param bytes the bytes containing the data
          * @param flags `PangoLayoutDeserializeFlags`
          */
-        static deserialize(context: Context, bytes: GLib.Bytes, flags: LayoutDeserializeFlags): Layout | null;
+        static deserialize(
+            context: Context,
+            bytes: GLib.Bytes | Uint8Array,
+            flags: LayoutDeserializeFlags,
+        ): Layout | null;
 
         // Own methods of Pango.Layout
 

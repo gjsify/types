@@ -234,6 +234,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -276,7 +277,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -477,7 +478,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -492,7 +493,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -973,6 +974,7 @@ export namespace Gd {
         get_symbolic_icon_name(): string;
         get_use_markup(): boolean;
         set_label(label?: string | null): void;
+        // Conflicted with Gtk.Button.set_label
         set_label(...args: never[]): any;
         set_symbolic_icon_name(symbolic_icon_name?: string | null): void;
         set_use_markup(use_markup: boolean): void;
@@ -1066,6 +1068,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1108,7 +1111,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1309,7 +1312,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1324,7 +1327,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1607,6 +1610,7 @@ export namespace Gd {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -2249,6 +2253,7 @@ export namespace Gd {
          * @returns the reading direction for the widget.
          */
         get_direction(): Gtk.TextDirection;
+        // Conflicted with Gtk.MenuButton.get_direction
         get_direction(...args: never[]): any;
         /**
          * Get the #GdkDisplay for the toplevel window associated with
@@ -3660,6 +3665,7 @@ export namespace Gd {
          * @param dir the new direction
          */
         set_direction(dir: Gtk.TextDirection): void;
+        // Conflicted with Gtk.MenuButton.set_direction
         set_direction(...args: never[]): any;
         /**
          * Widgets are double buffered by default; you can use this function
@@ -4210,7 +4216,7 @@ export namespace Gd {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -5110,6 +5116,7 @@ export namespace Gd {
         get_symbolic_icon_name(): string;
         get_use_markup(): boolean;
         set_label(label?: string | null): void;
+        // Conflicted with Gtk.Button.set_label
         set_label(...args: never[]): any;
         set_symbolic_icon_name(symbolic_icon_name?: string | null): void;
         set_use_markup(use_markup: boolean): void;
@@ -5203,6 +5210,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5245,7 +5253,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5446,7 +5454,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5461,7 +5469,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5744,6 +5752,7 @@ export namespace Gd {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -8345,7 +8354,7 @@ export namespace Gd {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -9299,6 +9308,7 @@ export namespace Gd {
         get_symbolic_icon_name(): string;
         get_use_markup(): boolean;
         set_label(label?: string | null): void;
+        // Conflicted with Gtk.Button.set_label
         set_label(...args: never[]): any;
         set_symbolic_icon_name(symbolic_icon_name?: string | null): void;
         set_use_markup(use_markup: boolean): void;
@@ -9576,6 +9586,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9618,7 +9629,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9819,7 +9830,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9834,7 +9845,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10117,6 +10128,7 @@ export namespace Gd {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -12718,7 +12730,7 @@ export namespace Gd {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -13618,6 +13630,7 @@ export namespace Gd {
         get_symbolic_icon_name(): string;
         get_use_markup(): boolean;
         set_label(label?: string | null): void;
+        // Conflicted with Gtk.Button.set_label
         set_label(...args: never[]): any;
         set_symbolic_icon_name(symbolic_icon_name?: string | null): void;
         set_use_markup(use_markup: boolean): void;
@@ -13711,6 +13724,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -13753,7 +13767,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13954,7 +13968,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13969,7 +13983,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -14252,6 +14266,7 @@ export namespace Gd {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -16853,7 +16868,7 @@ export namespace Gd {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -17704,14 +17719,17 @@ export namespace Gd {
 
         // Inherited methods
         get_model(): Gtk.TreeModel;
+        // Conflicted with Gtk.IconView.get_model
         get_model(...args: never[]): any;
         get_path_at_pos(x: number, y: number): Gtk.TreePath;
+        // Conflicted with Gtk.IconView.get_path_at_pos
         get_path_at_pos(...args: never[]): any;
         scroll_to_path(path: Gtk.TreePath): void;
         select_all(): void;
         set_model(model?: Gtk.TreeModel | null): void;
         set_rubberband_range(start: Gtk.TreePath, end: Gtk.TreePath): void;
         set_selection_mode(selection_mode: boolean): void;
+        // Conflicted with Gtk.IconView.set_selection_mode
         set_selection_mode(...args: never[]): any;
         unselect_all(): void;
         vfunc_get_model(): Gtk.TreeModel;
@@ -18020,6 +18038,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -18062,7 +18081,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -18263,7 +18282,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18278,7 +18297,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -18410,6 +18429,7 @@ export namespace Gd {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -21025,7 +21045,7 @@ export namespace Gd {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -21879,8 +21899,10 @@ export namespace Gd {
 
         // Inherited methods
         get_model(): Gtk.TreeModel;
+        // Conflicted with Gtk.TreeView.get_model
         get_model(...args: never[]): any;
         get_path_at_pos(x: number, y: number): Gtk.TreePath;
+        // Conflicted with Gtk.TreeView.get_path_at_pos
         get_path_at_pos(...args: never[]): any;
         scroll_to_path(path: Gtk.TreePath): void;
         select_all(): void;
@@ -22044,6 +22066,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -22086,7 +22109,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -22287,7 +22310,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22302,7 +22325,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -22434,6 +22457,7 @@ export namespace Gd {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -25049,7 +25073,7 @@ export namespace Gd {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -25913,6 +25937,7 @@ export namespace Gd {
          * @returns the current size (#GtkIconSize) for icons of @shell
          */
         get_icon_size(): number;
+        // Conflicted with Gtk.Toolbar.get_icon_size
         get_icon_size(...args: never[]): any;
         /**
          * Returns the relief style of buttons on `shell`. Tool items must not call this
@@ -25927,6 +25952,7 @@ export namespace Gd {
          * @returns the current style of @shell
          */
         get_style(): Gtk.ToolbarStyle;
+        // Conflicted with Gtk.Widget.get_style
         get_style(...args: never[]): any;
         /**
          * Retrieves the current text alignment for the tool shell. Tool items must not
@@ -26099,6 +26125,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -26141,7 +26168,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -26342,7 +26369,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -26357,7 +26384,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -26489,6 +26516,7 @@ export namespace Gd {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -28899,6 +28927,7 @@ export namespace Gd {
          * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
          */
         set_style(style?: Gtk.Style | null): void;
+        // Conflicted with Gtk.Toolbar.set_style
         set_style(...args: never[]): any;
         /**
          * Enables or disables multiple pointer awareness. If this setting is %TRUE,
@@ -29100,7 +29129,7 @@ export namespace Gd {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -29705,6 +29734,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -29747,7 +29777,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -29948,7 +29978,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -29963,7 +29993,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -30115,6 +30145,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -30157,7 +30188,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -30358,7 +30389,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -30373,7 +30404,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -30544,6 +30575,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -30586,7 +30618,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -30787,7 +30819,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -30802,7 +30834,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -30964,6 +30996,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -31006,7 +31039,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -31207,7 +31240,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -31222,7 +31255,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -31767,6 +31800,7 @@ export namespace Gd {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -31809,7 +31843,7 @@ export namespace Gd {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -32010,7 +32044,7 @@ export namespace Gd {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -32025,7 +32059,7 @@ export namespace Gd {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -34771,7 +34805,7 @@ export namespace Gd {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -35479,6 +35513,7 @@ export namespace Gd {
         get_symbolic_icon_name(): string;
         get_use_markup(): boolean;
         set_label(label?: string | null): void;
+        // Conflicted with Gtk.Button.set_label
         set_label(...args: never[]): any;
         set_symbolic_icon_name(symbolic_icon_name?: string | null): void;
         set_use_markup(use_markup: boolean): void;

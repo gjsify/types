@@ -300,7 +300,7 @@ export namespace SocialWebClient {
         banishable_hide_item(uid: string): void;
         contacts_query_open_view(
             query: string,
-            params: GLib.HashTable<string, string>,
+            params: { [key: string]: any } | GLib.HashTable<string, string>,
             cb: ClientServiceContactsQueryOpenViewCallback,
         ): void;
         credentials_updated(): void;
@@ -310,7 +310,7 @@ export namespace SocialWebClient {
         get_static_capabilities(cb: ClientServiceGetCapabilitiesCallback): void;
         query_open_view(
             query: string,
-            params: GLib.HashTable<string, string>,
+            params: { [key: string]: any } | GLib.HashTable<string, string>,
             cb: ClientServiceQueryOpenViewCallback,
         ): void;
         request_avatar(): void;
@@ -318,7 +318,7 @@ export namespace SocialWebClient {
         update_status_with_fields(
             cb: ClientServiceUpdateStatusCallback,
             status_msg: string,
-            fields: GLib.HashTable<string, string>,
+            fields: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
         upload_photo_finish(res: Gio.AsyncResult): boolean;
         upload_video_finish(res: Gio.AsyncResult): boolean;

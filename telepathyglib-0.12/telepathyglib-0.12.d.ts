@@ -2689,7 +2689,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns a boolean value for @key
      */
-    function asv_get_boolean(asv: GLib.HashTable<string, GObject.Value>, key: string): [boolean, boolean];
+    function asv_get_boolean(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): [boolean, boolean];
     /**
      * If a value for `key` in `asv` is present and is of the desired type,
      * return it.
@@ -2704,7 +2707,11 @@ export namespace TelepathyGLib {
      * @param type The type that the key's value should have, which must be derived  from %G_TYPE_BOXED
      * @returns the value of @key, or %NULL
      */
-    function asv_get_boxed(asv: GLib.HashTable<string, GObject.Value>, key: string, type: GObject.GType): any | null;
+    function asv_get_boxed(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+        type: GObject.GType,
+    ): any | null;
     /**
      * If a value for `key` in `asv` is present and is an array of bytes
      * (its GType is %DBUS_TYPE_G_UCHAR_ARRAY), return it.
@@ -2719,7 +2726,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns the string value of @key, or %NULL
      */
-    function asv_get_bytes(asv: GLib.HashTable<string, GObject.Value>, key: string): Uint8Array | null;
+    function asv_get_bytes(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): Uint8Array | null;
     /**
      * If a value for `key` in `asv` is present and has any numeric type used by
      * dbus-glib (guchar, gint, guint, gint64, guint64 or gdouble),
@@ -2730,7 +2740,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns the double precision floating-point value of @key, or 0.0
      */
-    function asv_get_double(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_double(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): [number, boolean];
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
      * dbus-glib (guchar, gint, guint, gint64 or guint64) and fits in the
@@ -2742,7 +2755,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns the 32-bit signed integer value of @key, or 0
      */
-    function asv_get_int32(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_int32(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): [number, boolean];
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
      * dbus-glib (guchar, gint, guint, gint64 or guint64) and fits in the
@@ -2754,7 +2770,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns the 64-bit signed integer value of @key, or 0
      */
-    function asv_get_int64(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_int64(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): [number, boolean];
     /**
      * If a value for `key` in `asv` is present and is an object path, return it.
      *
@@ -2767,7 +2786,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns the object-path value of @key, or %NULL
      */
-    function asv_get_object_path(asv: GLib.HashTable<string, GObject.Value>, key: string): string | null;
+    function asv_get_object_path(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): string | null;
     /**
      * If a value for `key` in `asv` is present and is a string, return it.
      *
@@ -2780,7 +2802,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns the string value of @key, or %NULL
      */
-    function asv_get_string(asv: GLib.HashTable<string, GObject.Value>, key: string): string | null;
+    function asv_get_string(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): string | null;
     /**
      * If a value for `key` in `asv` is present and is an array of strings (strv),
      * return it.
@@ -2794,7 +2819,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns the %NULL-terminated string-array value of @key, or %NULL
      */
-    function asv_get_strv(asv: GLib.HashTable<string, GObject.Value>, key: string): string[] | null;
+    function asv_get_strv(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): string[] | null;
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
      * dbus-glib (guchar, gint, guint, gint64 or guint64) and fits in the
@@ -2806,7 +2834,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns the 32-bit unsigned integer value of @key, or 0
      */
-    function asv_get_uint32(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_uint32(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): [number, boolean];
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
      * dbus-glib (guchar, gint, guint, gint64 or guint64) and is non-negative,
@@ -2817,7 +2848,10 @@ export namespace TelepathyGLib {
      * @param key The key to look up
      * @returns the 64-bit unsigned integer value of @key, or 0
      */
-    function asv_get_uint64(asv: GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_uint64(
+        asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        key: string,
+    ): [number, boolean];
     /**
      * Check that the given string is a valid D-Bus bus name of an appropriate
      * type.
@@ -2948,7 +2982,7 @@ export namespace TelepathyGLib {
         self: GObject.Object,
         interface_name: string,
         property_name: string,
-        value: GObject.Value,
+        value: GObject.Value | any,
     ): boolean;
     /**
      * An implementation of #TpDBusPropertiesMixinGetter which assumes that
@@ -2964,7 +2998,7 @@ export namespace TelepathyGLib {
         object: GObject.Object,
         iface: GLib.Quark,
         name: GLib.Quark,
-        value: GObject.Value,
+        value: GObject.Value | any,
         getter_data?: any | null,
     ): void;
     /**
@@ -2989,7 +3023,7 @@ export namespace TelepathyGLib {
         self: GObject.Object,
         interface_name: string,
         property_name: string,
-        value: GObject.Value,
+        value: GObject.Value | any,
     ): boolean;
     /**
      * An implementation of #TpDBusPropertiesMixinSetter which assumes that the
@@ -3006,7 +3040,7 @@ export namespace TelepathyGLib {
         object: GObject.Object,
         iface: GLib.Quark,
         name: GLib.Quark,
-        value: GObject.Value,
+        value: GObject.Value | any,
         setter_data?: any | null,
     ): boolean;
     /**
@@ -3258,12 +3292,30 @@ export namespace TelepathyGLib {
      * asynchronously, and wait for their %TP_CONNECTION_MANAGER_FEATURE_CORE
      * feature to be ready.
      * @param dbus_daemon a #TpDBusDaemon, or %NULL to use  tp_dbus_daemon_dup()
+     */
+    function list_connection_managers_async(dbus_daemon?: DBusDaemon | null): Promise<ConnectionManager[]>;
+    /**
+     * List the available (running or installed) connection managers,
+     * asynchronously, and wait for their %TP_CONNECTION_MANAGER_FEATURE_CORE
+     * feature to be ready.
+     * @param dbus_daemon a #TpDBusDaemon, or %NULL to use  tp_dbus_daemon_dup()
+     * @param callback a callback to call with a list of CMs
+     */
+    function list_connection_managers_async(
+        dbus_daemon: DBusDaemon | null,
+        callback: Gio.AsyncReadyCallback<DBusDaemon | null> | null,
+    ): void;
+    /**
+     * List the available (running or installed) connection managers,
+     * asynchronously, and wait for their %TP_CONNECTION_MANAGER_FEATURE_CORE
+     * feature to be ready.
+     * @param dbus_daemon a #TpDBusDaemon, or %NULL to use  tp_dbus_daemon_dup()
      * @param callback a callback to call with a list of CMs
      */
     function list_connection_managers_async(
         dbus_daemon?: DBusDaemon | null,
         callback?: Gio.AsyncReadyCallback<DBusDaemon | null> | null,
-    ): void;
+    ): Promise<ConnectionManager[]> | void;
     /**
      * Finish listing the available connection managers.
      *
@@ -3420,7 +3472,7 @@ export namespace TelepathyGLib {
             connection: Connection,
             contacts: Contact[],
             requested_ids: string[],
-            failed_id_errors: GLib.HashTable<string, GLib.Error>,
+            failed_id_errors: { [key: string]: any } | GLib.HashTable<string, GLib.Error>,
             error: GLib.Error,
             weak_object: A,
         ): void;
@@ -3467,10 +3519,10 @@ export namespace TelepathyGLib {
         (bus_daemon: DBusDaemon, name: string, new_owner: string): void;
     }
     interface DBusPropertiesMixinGetter<A = GObject.Object> {
-        (object: A, iface: GLib.Quark, name: GLib.Quark, value: GObject.Value, getter_data?: any | null): void;
+        (object: A, iface: GLib.Quark, name: GLib.Quark, value: GObject.Value | any, getter_data?: any | null): void;
     }
     interface DBusPropertiesMixinSetter<A = GObject.Object> {
-        (object: A, iface: GLib.Quark, name: GLib.Quark, value: GObject.Value, setter_data?: any | null): boolean;
+        (object: A, iface: GLib.Quark, name: GLib.Quark, value: GObject.Value | any, setter_data?: any | null): boolean;
     }
     interface GroupMixinAddMemberFunc<A = GObject.Object> {
         (obj: A, handle: Handle, message: string): boolean;
@@ -4105,7 +4157,7 @@ export namespace TelepathyGLib {
                 new_status: number,
                 reason: number,
                 dbus_error_name: string | null,
-                details: GLib.HashTable<string, GObject.Value>,
+                details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             ): void;
         }
 
@@ -5073,7 +5125,7 @@ export namespace TelepathyGLib {
             new_status: number,
             reason: number,
             dbus_error_name: string | null,
-            details: GLib.HashTable<string, GObject.Value>,
+            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
 
         // Own static methods of TelepathyGLib.Account
@@ -5359,7 +5411,7 @@ export namespace TelepathyGLib {
          * <!-- -->
          * @returns the same as the #TpAccount:storage-identifier property
          */
-        get_storage_identifier(): GObject.Value;
+        get_storage_identifier(): unknown;
         /**
          * <!-- -->
          * @returns the same as the #TpAccount:storage-provider property
@@ -5630,7 +5682,7 @@ export namespace TelepathyGLib {
          * @param callback a callback to call when the request is satisfied
          */
         update_parameters_async(
-            parameters: GLib.HashTable<string, GObject.Value>,
+            parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             unset_parameters: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -5812,7 +5864,7 @@ export namespace TelepathyGLib {
 
         static ['new'](
             account: Account,
-            request: GLib.HashTable<string, GObject.Value>,
+            request: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             user_action_time: number,
         ): AccountChannelRequest;
 
@@ -6247,7 +6299,7 @@ export namespace TelepathyGLib {
          * instead.
          * @param hints a #TP_HASH_TYPE_STRING_VARIANT_MAP
          */
-        set_hints(hints: GLib.HashTable<any, any>): void;
+        set_hints(hints: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
          * Indicate that the contacts listed in `ids` have to be invited to the
          * conference represented by the channel which is going to be requested
@@ -6486,8 +6538,8 @@ export namespace TelepathyGLib {
             connection_manager: string,
             protocol: string,
             display_name: string,
-            parameters: GLib.HashTable<string, GObject.Value>,
-            properties: GLib.HashTable<string, GObject.Value>,
+            parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -7174,7 +7226,11 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or %NULL on invalid arguments
          */
-        create_channel(conn: Connection, path: string, properties: GLib.HashTable<string, GObject.Value>): Channel;
+        create_channel(
+            conn: Connection,
+            path: string,
+            properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): Channel;
         /**
          * Return a zero terminated #GArray containing the #TpChannel features that
          * should be prepared on `channel`.
@@ -7276,6 +7332,7 @@ export namespace TelepathyGLib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7318,7 +7375,7 @@ export namespace TelepathyGLib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7519,7 +7576,7 @@ export namespace TelepathyGLib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7534,7 +7591,7 @@ export namespace TelepathyGLib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7774,7 +7831,7 @@ export namespace TelepathyGLib {
          * #TpBaseClientClass.add_dispatch_operation.
          * @param filter a %TP_HASH_TYPE_CHANNEL_CLASS
          */
-        add_approver_filter(filter: GLib.HashTable<string, GObject.Value>): void;
+        add_approver_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
         /**
          * Register a new channel class as Approver.ApproverChannelFilter.
          * The #TpBaseClientClass.add_dispatch_operation virtual method will be called
@@ -7840,7 +7897,7 @@ export namespace TelepathyGLib {
          * #TpBaseClientClass.handle_channels.
          * @param filter a %TP_HASH_TYPE_CHANNEL_CLASS
          */
-        add_handler_filter(filter: GLib.HashTable<string, GObject.Value>): void;
+        add_handler_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
         /**
          * Register a new channel class as Handler.HandlerChannelFilter.
          * The #TpBaseClientClass.handle_channels virtual method will be called
@@ -7866,7 +7923,7 @@ export namespace TelepathyGLib {
          * #TpBaseClientClass.observe_channels.
          * @param filter a %TP_HASH_TYPE_CHANNEL_CLASS
          */
-        add_observer_filter(filter: GLib.HashTable<string, GObject.Value>): void;
+        add_observer_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
         /**
          * Register a new channel class as Observer.ObserverChannelFilter.
          * The #TpBaseClientClass.observe_channels virtual method will be called
@@ -8407,7 +8464,11 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or %NULL on invalid arguments
          */
-        create_channel(conn: Connection, path: string, properties: GLib.HashTable<string, GObject.Value>): Channel;
+        create_channel(
+            conn: Connection,
+            path: string,
+            properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): Channel;
         /**
          * Return a zero terminated #GArray containing the #TpChannel features that
          * should be prepared on `channel`.
@@ -8509,6 +8570,7 @@ export namespace TelepathyGLib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8551,7 +8613,7 @@ export namespace TelepathyGLib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8752,7 +8814,7 @@ export namespace TelepathyGLib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8767,7 +8829,7 @@ export namespace TelepathyGLib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8787,7 +8849,11 @@ export namespace TelepathyGLib {
         }
 
         interface MembersChanged {
-            (updates: GLib.HashTable<Contact, number>, removed: Contact[], reason: CallStateReason): void;
+            (
+                updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
+                removed: Contact[],
+                reason: CallStateReason,
+            ): void;
         }
 
         interface StateChanged {
@@ -8795,7 +8861,7 @@ export namespace TelepathyGLib {
                 state: number,
                 flags: number,
                 reason: CallStateReason,
-                details: GLib.HashTable<string, GObject.Value>,
+                details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             ): void;
         }
 
@@ -8982,7 +9048,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(
             signal: 'members-changed',
-            updates: GLib.HashTable<Contact, number>,
+            updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
             removed: Contact[],
             reason: CallStateReason,
         ): void;
@@ -9011,7 +9077,7 @@ export namespace TelepathyGLib {
             state: number,
             flags: number,
             reason: CallStateReason,
-            details: GLib.HashTable<string, GObject.Value>,
+            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
 
         // Own static methods of TelepathyGLib.CallChannel
@@ -9362,7 +9428,11 @@ export namespace TelepathyGLib {
         }
 
         interface RemoteMembersChanged {
-            (updates: GLib.HashTable<Contact, number>, removed: Contact[], reason: CallStateReason): void;
+            (
+                updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
+                removed: Contact[],
+                reason: CallStateReason,
+            ): void;
         }
 
         // Constructor properties interface
@@ -9452,7 +9522,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(
             signal: 'remote-members-changed',
-            updates: GLib.HashTable<Contact, number>,
+            updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
             removed: Contact[],
             reason: CallStateReason,
         ): void;
@@ -9799,7 +9869,7 @@ export namespace TelepathyGLib {
                 local_pending: Contact[],
                 remote_pending: Contact[],
                 actor: Contact,
-                details: GLib.HashTable<string, GObject.Value>,
+                details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             ): void;
         }
 
@@ -9825,7 +9895,7 @@ export namespace TelepathyGLib {
                 removed: number[],
                 local_pending: number[],
                 remote_pending: number[],
-                details: GLib.HashTable<string, GObject.Value>,
+                details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             ): void;
         }
 
@@ -10167,7 +10237,7 @@ export namespace TelepathyGLib {
         static new_from_properties(
             conn: Connection,
             object_path: string,
-            immutable_properties: GLib.HashTable<string, GObject.Value>,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): Channel;
 
         // Own signals of TelepathyGLib.Channel
@@ -10215,7 +10285,7 @@ export namespace TelepathyGLib {
             local_pending: Contact[],
             remote_pending: Contact[],
             actor: Contact,
-            details: GLib.HashTable<string, GObject.Value>,
+            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
         connect(
             signal: 'group-flags-changed',
@@ -10290,7 +10360,7 @@ export namespace TelepathyGLib {
             removed: number[],
             local_pending: number[],
             remote_pending: number[],
-            details: GLib.HashTable<string, GObject.Value>,
+            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
 
         // Own static methods of TelepathyGLib.Channel
@@ -10860,7 +10930,7 @@ export namespace TelepathyGLib {
         static ['new'](
             bus_daemon: DBusDaemon,
             object_path: string,
-            immutable_properties: GLib.HashTable<any, any>,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<any, any>,
         ): ChannelDispatchOperation;
 
         // Own signals of TelepathyGLib.ChannelDispatchOperation
@@ -11336,7 +11406,7 @@ export namespace TelepathyGLib {
         static ['new'](
             bus_daemon: DBusDaemon,
             object_path: string,
-            immutable_properties: GLib.HashTable<any, any>,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<any, any>,
         ): ChannelRequest;
 
         // Own signals of TelepathyGLib.ChannelRequest
@@ -14007,7 +14077,7 @@ export namespace TelepathyGLib {
          * call tp_contact_search_reset_async().
          * @param criteria a map from keys returned by tp_contact_search_get_search_keys() to values to search for
          */
-        start(criteria: GLib.HashTable<string, string>): void;
+        start(criteria: { [key: string]: any } | GLib.HashTable<string, string>): void;
 
         // Inherited methods
         /**
@@ -14212,6 +14282,7 @@ export namespace TelepathyGLib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14254,7 +14325,7 @@ export namespace TelepathyGLib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -14455,7 +14526,7 @@ export namespace TelepathyGLib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14470,7 +14541,7 @@ export namespace TelepathyGLib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15111,7 +15182,7 @@ export namespace TelepathyGLib {
         static ['new'](
             conn: Connection,
             object_path: string,
-            immutable_properties: GLib.HashTable<string, GObject.Value>,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): FileTransferChannel;
         // Conflicted with TelepathyGLib.Channel.new
 
@@ -15535,7 +15606,8 @@ export namespace TelepathyGLib {
          * @param key a key in the mapping representing the part
          * @param source a value, encoded as dbus-glib would
          */
-        set(part: number, key: string, source: GObject.Value): void;
+        set(part: number, key: string, source: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Set `key` in part `part` of `self` to have `b` as a boolean value.
@@ -15971,7 +16043,7 @@ export namespace TelepathyGLib {
             dbus: DBusDaemon,
             cm_name: string,
             protocol_name: string,
-            immutable_properties: GLib.HashTable<any, any>,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<any, any>,
         ): Protocol;
 
         static new_vardict(
@@ -16804,6 +16876,7 @@ export namespace TelepathyGLib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -16846,7 +16919,7 @@ export namespace TelepathyGLib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -17047,7 +17120,7 @@ export namespace TelepathyGLib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17062,7 +17135,7 @@ export namespace TelepathyGLib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -17333,7 +17406,10 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the account, or %NULL.
          * @returns a reference to a #TpAccount;  see tp_account_new().
          */
-        ensure_account(object_path: string, immutable_properties: GLib.HashTable<string, GObject.Value>): Account;
+        ensure_account(
+            object_path: string,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): Account;
         /**
          * Returns a #TpChannel proxy for the channel at `object_path` on `connection`.
          * The returned #TpChannel is cached; the same #TpChannel object
@@ -17355,7 +17431,7 @@ export namespace TelepathyGLib {
         ensure_channel(
             connection: Connection,
             object_path: string,
-            immutable_properties: GLib.HashTable<string, GObject.Value>,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): Channel;
         /**
          * Returns a #TpConnection proxy for the connection at `object_path`.
@@ -17373,7 +17449,10 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the connection.
          * @returns a reference to a #TpConnection;  see tp_connection_new().
          */
-        ensure_connection(object_path: string, immutable_properties: GLib.HashTable<string, GObject.Value>): Connection;
+        ensure_connection(
+            object_path: string,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): Connection;
         /**
          * Returns a #TpContact representing `identifier` (and `handle)` on `connection`.
          * The returned #TpContact is cached; the same #TpContact object
@@ -17654,7 +17733,7 @@ export namespace TelepathyGLib {
         static ['new'](
             conn: Connection,
             object_path: string,
-            immutable_properties: GLib.HashTable<string, GObject.Value>,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): StreamTubeChannel;
         // Conflicted with TelepathyGLib.Channel.new
 
@@ -18193,7 +18272,7 @@ export namespace TelepathyGLib {
         static ['new'](
             conn: Connection,
             object_path: string,
-            immutable_properties: GLib.HashTable<string, GObject.Value>,
+            immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): TextChannel;
         // Conflicted with TelepathyGLib.Channel.new
 
@@ -18326,6 +18405,7 @@ export namespace TelepathyGLib {
          * @returns the chat state for @contact, or %TP_CHANNEL_CHAT_STATE_INACTIVE  if their chat state is not known
          */
         get_chat_state(contact: Contact): ChannelChatState;
+        // Conflicted with TelepathyGLib.Channel.get_chat_state
         get_chat_state(...args: never[]): any;
         /**
          * Return the #TpTextChannel:delivery-reporting-support property
@@ -18738,7 +18818,7 @@ export namespace TelepathyGLib {
          * @param value pointer to an unset (all zeroes) #GValue into which the default's         type and value are written
          * @returns %TRUE if there is a default value
          */
-        get_default(value: GObject.Value): boolean;
+        get_default(value: GObject.Value | any): boolean;
         /**
          * <!-- -->
          * @returns the name of the parameter
@@ -19915,7 +19995,11 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or %NULL on invalid arguments
          */
-        create_channel(conn: Connection, path: string, properties: GLib.HashTable<string, GObject.Value>): Channel;
+        create_channel(
+            conn: Connection,
+            path: string,
+            properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): Channel;
         /**
          * Return a zero terminated #GArray containing the #TpChannel features that
          * should be prepared on `channel`.

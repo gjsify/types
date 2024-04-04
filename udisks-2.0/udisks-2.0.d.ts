@@ -386,6 +386,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<BlockProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_block_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -409,6 +410,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<BlockProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -761,6 +763,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): BlockProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1461,6 +1464,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1503,7 +1507,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1704,7 +1708,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1719,7 +1723,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2602,6 +2606,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2644,7 +2649,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2845,7 +2850,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2860,7 +2865,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3508,6 +3513,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3550,7 +3556,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3751,7 +3757,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3766,7 +3772,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3853,6 +3859,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<DriveAtaProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_drive_ata_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -3876,6 +3883,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<DriveAtaProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -4291,6 +4299,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): DriveAtaProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4922,6 +4931,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4964,7 +4974,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5165,7 +5175,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5180,7 +5190,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6057,6 +6067,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6099,7 +6110,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6300,7 +6311,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6315,7 +6326,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6402,6 +6413,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<DriveProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_drive_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -6425,6 +6437,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<DriveProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -6805,6 +6818,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): DriveProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -7192,6 +7206,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7234,7 +7249,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7435,7 +7450,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7450,7 +7465,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8048,6 +8063,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8090,7 +8106,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8291,7 +8307,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8306,7 +8322,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8393,6 +8409,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<EncryptedProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_encrypted_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -8416,6 +8433,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<EncryptedProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -8495,6 +8513,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): EncryptedProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -8899,6 +8918,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8941,7 +8961,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9142,7 +9162,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9157,7 +9177,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9471,6 +9491,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9513,7 +9534,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9714,7 +9735,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9729,7 +9750,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9816,6 +9837,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<FilesystemProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_filesystem_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -9839,6 +9861,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<FilesystemProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -9918,6 +9941,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): FilesystemProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -10306,6 +10330,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -10348,7 +10373,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -10549,7 +10574,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10564,7 +10589,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10862,6 +10887,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -10904,7 +10930,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11105,7 +11131,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11120,7 +11146,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -11204,6 +11230,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<JobProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_job_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -11227,6 +11254,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<JobProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -11390,6 +11418,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): JobProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -11697,6 +11726,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11739,7 +11769,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11940,7 +11970,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11955,7 +11985,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -12256,6 +12286,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -12298,7 +12329,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -12499,7 +12530,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12514,7 +12545,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -12601,6 +12632,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<LoopProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_loop_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -12624,6 +12656,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<LoopProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -12724,6 +12757,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): LoopProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -13073,6 +13107,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -13115,7 +13150,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13316,7 +13351,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13331,7 +13366,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -13611,6 +13646,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -13653,7 +13689,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13854,7 +13890,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13869,7 +13905,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -13956,6 +13992,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<MDRaidProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_mdraid_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -13979,6 +14016,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<MDRaidProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -14212,6 +14250,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): MDRaidProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -14784,6 +14823,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14826,7 +14866,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15027,7 +15067,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15042,7 +15082,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15678,6 +15718,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -15720,7 +15761,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15921,7 +15962,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15936,7 +15977,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -16023,6 +16064,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<ManagerProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_manager_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -16046,6 +16088,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<ManagerProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -16132,6 +16175,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): ManagerProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -16557,6 +16601,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -16599,7 +16644,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -16800,7 +16845,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16815,7 +16860,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -17157,6 +17202,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -17199,7 +17245,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -17400,7 +17446,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17415,7 +17461,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -17606,6 +17652,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
         ): void;
+        // Conflicted with Gio.DBusObjectManagerClient.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_object_manager_client_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -17629,6 +17676,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
         ): void;
+        // Conflicted with Gio.DBusObjectManagerClient.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited methods
@@ -17692,6 +17740,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): ObjectManagerClient;
+        // Conflicted with Gio.DBusObjectManagerClient.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -17968,6 +18017,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -18010,7 +18060,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -18211,7 +18261,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18226,7 +18276,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -18541,6 +18591,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -18583,7 +18634,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -18784,7 +18835,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18799,7 +18850,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -19177,6 +19228,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -19219,7 +19271,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -19420,7 +19472,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19435,7 +19487,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -19522,6 +19574,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<PartitionProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_partition_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -19545,6 +19598,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<PartitionProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -19694,6 +19748,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): PartitionProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -20133,6 +20188,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -20175,7 +20231,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -20376,7 +20432,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20391,7 +20447,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -20810,6 +20866,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -20852,7 +20909,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -21053,7 +21110,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21068,7 +21125,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -21155,6 +21212,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<PartitionTableProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_partition_table_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -21178,6 +21236,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<PartitionTableProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -21250,6 +21309,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): PartitionTableProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -21652,6 +21712,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -21694,7 +21755,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -21895,7 +21956,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21910,7 +21971,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -22215,6 +22276,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -22257,7 +22319,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -22458,7 +22520,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22473,7 +22535,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -22560,6 +22622,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<SwapspaceProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like udisks_swapspace_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -22583,6 +22646,7 @@ export namespace UDisks {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<SwapspaceProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -22655,6 +22719,7 @@ export namespace UDisks {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): SwapspaceProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -22993,6 +23058,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -23035,7 +23101,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -23236,7 +23302,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23251,7 +23317,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -23492,6 +23558,7 @@ export namespace UDisks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -23534,7 +23601,7 @@ export namespace UDisks {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -23735,7 +23802,7 @@ export namespace UDisks {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23750,7 +23817,7 @@ export namespace UDisks {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

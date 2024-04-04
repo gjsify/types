@@ -87,6 +87,7 @@ export namespace GUPnPDLNA {
          * @returns TRUE if @uri was successfully queued, FALSE otherwise.
          */
         discover_uri(uri: string): boolean;
+        // Conflicted with GstPbutils.Discoverer.discover_uri
         discover_uri(...args: never[]): any;
         /**
          * Synchronously gathers metadata for `uri`.

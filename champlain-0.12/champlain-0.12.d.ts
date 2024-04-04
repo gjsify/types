@@ -395,6 +395,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -437,7 +438,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -638,7 +639,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -653,7 +654,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -824,6 +825,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -866,7 +868,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1067,7 +1069,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1082,7 +1084,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1369,10 +1371,10 @@ export namespace Champlain {
         animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -1385,7 +1387,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -1407,7 +1409,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Calls the animate_property() virtual function for `animatable`.
          *
@@ -1427,10 +1429,10 @@ export namespace Champlain {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -1442,7 +1444,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -1467,7 +1469,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -1492,7 +1494,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -1507,7 +1509,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -1735,7 +1737,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -1743,7 +1745,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -1766,7 +1768,12 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -1774,7 +1781,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -1875,6 +1882,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1917,7 +1925,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2118,7 +2126,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2133,7 +2141,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2584,6 +2592,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2626,7 +2635,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2827,7 +2836,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2842,7 +2851,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2931,10 +2940,10 @@ export namespace Champlain {
         animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -2947,7 +2956,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -2969,7 +2978,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Calls the animate_property() virtual function for `animatable`.
          *
@@ -2989,10 +2998,10 @@ export namespace Champlain {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -3004,7 +3013,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -3029,7 +3038,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -3054,7 +3063,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -3069,7 +3078,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -3297,7 +3306,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -3305,7 +3314,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -3328,7 +3337,12 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -3336,7 +3350,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -3437,6 +3451,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3479,7 +3494,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3680,7 +3695,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3695,7 +3710,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3813,10 +3828,10 @@ export namespace Champlain {
         animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -3829,7 +3844,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -3851,7 +3866,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Calls the animate_property() virtual function for `animatable`.
          *
@@ -3871,10 +3886,10 @@ export namespace Champlain {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -3886,7 +3901,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -3911,7 +3926,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -3936,7 +3951,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -3951,7 +3966,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -4179,7 +4194,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -4187,7 +4202,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -4210,7 +4225,12 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -4218,7 +4238,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -4319,6 +4339,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4361,7 +4382,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4562,7 +4583,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4577,7 +4598,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5279,10 +5300,10 @@ export namespace Champlain {
         animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -5295,7 +5316,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -5317,7 +5338,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Calls the animate_property() virtual function for `animatable`.
          *
@@ -5337,10 +5358,10 @@ export namespace Champlain {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -5352,7 +5373,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -5377,7 +5398,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -5402,7 +5423,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -5417,7 +5438,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -5645,7 +5666,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -5653,7 +5674,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -5676,7 +5697,12 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -5684,7 +5710,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -5785,6 +5811,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5827,7 +5854,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6028,7 +6055,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6043,7 +6070,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6289,6 +6316,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6331,7 +6359,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6532,7 +6560,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6547,7 +6575,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7219,6 +7247,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7261,7 +7290,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7462,7 +7491,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7477,7 +7506,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7548,6 +7577,7 @@ export namespace Champlain {
          * @returns the size.
          */
         get_size(): number;
+        // Conflicted with Clutter.Actor.get_size
         get_size(...args: never[]): any;
         /**
          * Set the color of the point.
@@ -7717,6 +7747,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7759,7 +7790,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7960,7 +7991,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7975,7 +8006,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8016,7 +8047,7 @@ export namespace Champlain {
          * Sets the data which is used to render tiles by the renderer.
          * @param data data used for tile rendering
          */
-        vfunc_set_data(data: Uint8Array): void;
+        vfunc_set_data(data: Uint8Array | string): void;
 
         // Own methods of Champlain.Renderer
 
@@ -8032,7 +8063,8 @@ export namespace Champlain {
          * Sets the data which is used to render tiles by the renderer.
          * @param data data used for tile rendering
          */
-        set_data(data: Uint8Array): void;
+        set_data(data: Uint8Array | string): void;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
     }
 
@@ -8141,10 +8173,10 @@ export namespace Champlain {
         animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -8157,7 +8189,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -8179,7 +8211,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Calls the animate_property() virtual function for `animatable`.
          *
@@ -8199,10 +8231,10 @@ export namespace Champlain {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -8214,7 +8246,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -8239,7 +8271,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -8264,7 +8296,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -8279,7 +8311,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -8507,7 +8539,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -8515,7 +8547,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -8538,7 +8570,12 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -8546,7 +8583,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -8647,6 +8684,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8689,7 +8727,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8890,7 +8928,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8905,7 +8943,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9048,6 +9086,7 @@ export namespace Champlain {
          * @returns the tile's content, this actor will change each time the tile's content changes. You should not unref this content, it is owned by the tile.
          */
         get_content(): Clutter.Actor;
+        // Conflicted with Clutter.Actor.get_content
         get_content(...args: never[]): any;
         /**
          * Gets the tile's ETag.
@@ -9069,6 +9108,7 @@ export namespace Champlain {
          * @returns the tile's size in pixels
          */
         get_size(): number;
+        // Conflicted with Clutter.Actor.get_size
         get_size(...args: never[]): any;
         /**
          * Gets the current state of tile loading.
@@ -9096,6 +9136,7 @@ export namespace Champlain {
          * @param actor the new content
          */
         set_content(actor: Clutter.Actor): void;
+        // Conflicted with Clutter.Actor.set_content
         set_content(...args: never[]): any;
         /**
          * Sets the tile's ETag
@@ -9185,10 +9226,10 @@ export namespace Champlain {
         animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -9201,7 +9242,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -9223,7 +9264,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Calls the animate_property() virtual function for `animatable`.
          *
@@ -9243,10 +9284,10 @@ export namespace Champlain {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -9258,7 +9299,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -9283,7 +9324,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -9308,7 +9349,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -9323,7 +9364,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -9551,7 +9592,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -9559,7 +9600,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -9582,7 +9623,12 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -9590,7 +9636,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -9691,6 +9737,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9733,7 +9780,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9934,7 +9981,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9949,7 +9996,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10740,10 +10787,10 @@ export namespace Champlain {
         animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -10756,7 +10803,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -10778,7 +10825,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Calls the animate_property() virtual function for `animatable`.
          *
@@ -10798,10 +10845,10 @@ export namespace Champlain {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -10813,7 +10860,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -10838,7 +10885,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -10863,7 +10910,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -10878,7 +10925,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -11106,7 +11153,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -11114,7 +11161,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -11137,7 +11184,12 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -11145,7 +11197,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -11246,6 +11298,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11288,7 +11341,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11489,7 +11542,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11504,7 +11557,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -11606,10 +11659,10 @@ export namespace Champlain {
         animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -11622,7 +11675,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -11644,7 +11697,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Calls the animate_property() virtual function for `animatable`.
          *
@@ -11664,10 +11717,10 @@ export namespace Champlain {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value,
-            final_value: GObject.Value,
+            initial_value: GObject.Value | any,
+            final_value: GObject.Value | any,
             progress: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * Finds the #GParamSpec for `property_name`
@@ -11679,7 +11732,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -11704,7 +11757,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -11729,7 +11782,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -11744,7 +11797,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -11972,7 +12025,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -11980,7 +12033,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -12003,7 +12056,12 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -12011,7 +12069,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -12112,6 +12170,7 @@ export namespace Champlain {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -12154,7 +12213,7 @@ export namespace Champlain {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -12355,7 +12414,7 @@ export namespace Champlain {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12370,7 +12429,7 @@ export namespace Champlain {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

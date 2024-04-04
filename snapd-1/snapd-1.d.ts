@@ -463,6 +463,36 @@ export namespace Snapd {
      * @param password password to log in with.
      * @param otp response to one-time password challenge.
      * @param cancellable a #GCancellable or %NULL.
+     */
+    function login_async(
+        username: string,
+        password: string,
+        otp?: string | null,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<AuthData>;
+    /**
+     * Asynchronously get authorization to install/remove snaps.
+     * See snapd_login_sync() for more information.
+     * @param username username to log in with.
+     * @param password password to log in with.
+     * @param otp response to one-time password challenge.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+     */
+    function login_async(
+        username: string,
+        password: string,
+        otp: string | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * Asynchronously get authorization to install/remove snaps.
+     * See snapd_login_sync() for more information.
+     * @param username username to log in with.
+     * @param password password to log in with.
+     * @param otp response to one-time password challenge.
+     * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     function login_async(
@@ -471,7 +501,7 @@ export namespace Snapd {
         otp?: string | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): void;
+    ): Promise<AuthData> | void;
     /**
      * Complete login started with snapd_login_async().
      * See snapd_login_sync() for more information.
@@ -2748,7 +2778,7 @@ export namespace Snapd {
          */
         set_snap_conf_async(
             name: string,
-            key_values: GLib.HashTable<string, GLib.Variant>,
+            key_values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2768,7 +2798,7 @@ export namespace Snapd {
          */
         set_snap_conf_sync(
             name: string,
-            key_values: GLib.HashTable<string, GLib.Variant>,
+            key_values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3043,6 +3073,7 @@ export namespace Snapd {
          * @returns the binary data.
          */
         get_data(): GLib.Bytes;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Get the mime-type for this icon, e.g. "image/png".

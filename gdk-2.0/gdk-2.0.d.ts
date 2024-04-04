@@ -4046,7 +4046,7 @@ export namespace Gdk {
      * @param value location to store the value of the setting.
      * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
      */
-    function setting_get(name: string, value: GObject.Value): boolean;
+    function setting_get(name: string, value: GObject.Value | any): boolean;
     /**
      * Like g_spawn_command_line_async(), except the child process is
      * spawned in such an environment that on calling gdk_display_open()
@@ -5380,6 +5380,7 @@ export namespace Gdk {
          * Deprecated function; use g_object_ref() instead.
          */
         ref(): void;
+        // Conflicted with GObject.Object.ref
         ref(...args: never[]): any;
         /**
          * Deprecated function; use g_object_unref() instead.
@@ -5551,6 +5552,7 @@ export namespace Gdk {
          * @param destroy_func function to free @data, or %NULL
          */
         set_data(key: string, data?: any | null, destroy_func?: GLib.DestroyNotify | null): void;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         /**
          * Deprecated equivalent of calling g_object_unref() on `drawable`.
@@ -6547,7 +6549,7 @@ export namespace Gdk {
          * @returns the root window
          */
         get_root_window(): Window;
-        get_setting(name: string, value: GObject.Value): boolean;
+        get_setting(name: string, value: GObject.Value | any): boolean;
         /**
          * Gets the system's default colormap for `screen`
          * @returns the default colormap for @screen.

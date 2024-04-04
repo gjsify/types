@@ -356,7 +356,10 @@ export namespace Rest {
          * @param extra_params any extra parameters to add to the login url (e.g. facebook uses 'scope=foo,bar' to request extended permissions).
          * @returns a newly allocated uri string
          */
-        build_login_url_full(redirect_uri: string, extra_params: GLib.HashTable<any, any>): string;
+        build_login_url_full(
+            redirect_uri: string,
+            extra_params: { [key: string]: any } | GLib.HashTable<any, any>,
+        ): string;
         /**
          * Get the current request or access token.
          * @returns the token, or %NULL if there is no token yet.  This string is owned by #OAuth2Proxy and should not be freed.
@@ -1003,16 +1006,22 @@ export namespace Rest {
 
         // Constructors of Rest.Param
 
-        constructor(name: string, use: MemoryUse, data: Uint8Array, content_type: string, filename: string);
+        constructor(name: string, use: MemoryUse, data: Uint8Array | string, content_type: string, filename: string);
         _init(...args: any[]): void;
 
-        static new_full(name: string, use: MemoryUse, data: Uint8Array, content_type: string, filename: string): Param;
+        static new_full(
+            name: string,
+            use: MemoryUse,
+            data: Uint8Array | string,
+            content_type: string,
+            filename: string,
+        ): Param;
 
         static new_string(name: string, use: MemoryUse, string: string): Param;
 
         static new_with_owner(
             name: string,
-            data: Uint8Array,
+            data: Uint8Array | string,
             content_type: string,
             filename?: string | null,
             owner?: any | null,

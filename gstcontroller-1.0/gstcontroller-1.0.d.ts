@@ -72,7 +72,7 @@ export namespace GstController {
      */
     function timed_value_control_invalidate_cache(self: TimedValueControlSource): void;
     interface DirectControlBindingConvertGValue {
-        (self: DirectControlBinding, src_value: number, dest_value: GObject.Value): void;
+        (self: DirectControlBinding, src_value: number, dest_value: GObject.Value | any): void;
     }
     interface DirectControlBindingConvertValue {
         (self: DirectControlBinding, src_value: number, dest_value?: any | null): void;
@@ -391,6 +391,7 @@ export namespace GstController {
          * @returns FALSE if the values couldn't be set, TRUE otherwise.
          */
         set(timestamp: Gst.ClockTime, value: number): boolean;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets multiple timed values at once.

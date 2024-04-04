@@ -1033,7 +1033,7 @@ export namespace GstAudio {
      * @param info a #GstAudioFormatInfo
      * @param dest a destination   to fill
      */
-    function audio_format_fill_silence(info: AudioFormatInfo, dest: Uint8Array): void;
+    function audio_format_fill_silence(info: AudioFormatInfo, dest: Uint8Array | string): void;
     /**
      * Convert the `format` string to its #GstAudioFormat.
      * @param format a format string
@@ -1090,8 +1090,8 @@ export namespace GstAudio {
      * @returns transfer-full: %TRUE if the payloading was successful, %FALSE otherwise.
      */
     function audio_iec61937_payload(
-        src: Uint8Array,
-        dst: Uint8Array,
+        src: Uint8Array | string,
+        dst: Uint8Array | string,
         spec: AudioRingBufferSpec,
         endianness: number,
     ): boolean;
@@ -1139,7 +1139,7 @@ export namespace GstAudio {
      * @returns %TRUE if the reordering was possible.
      */
     function audio_reorder_channels(
-        data: Uint8Array,
+        data: Uint8Array | string,
         format: AudioFormat,
         from: AudioChannelPosition[],
         to: AudioChannelPosition[],
@@ -1287,13 +1287,25 @@ export namespace GstAudio {
         (clock: Gst.Clock): Gst.ClockTime;
     }
     interface AudioFormatPack {
-        (info: AudioFormatInfo, flags: AudioPackFlags, src: Uint8Array, data: Uint8Array, length: number): void;
+        (
+            info: AudioFormatInfo,
+            flags: AudioPackFlags,
+            src: Uint8Array | string,
+            data: Uint8Array | string,
+            length: number,
+        ): void;
     }
     interface AudioFormatUnpack {
-        (info: AudioFormatInfo, flags: AudioPackFlags, dest: Uint8Array, data: Uint8Array, length: number): void;
+        (
+            info: AudioFormatInfo,
+            flags: AudioPackFlags,
+            dest: Uint8Array | string,
+            data: Uint8Array | string,
+            length: number,
+        ): void;
     }
     interface AudioRingBufferCallback {
-        (rbuf: AudioRingBuffer, data: Uint8Array): void;
+        (rbuf: AudioRingBuffer, data: Uint8Array | string): void;
     }
     /**
      * Flags passed to gst_audio_channel_mixer_new()
@@ -2187,6 +2199,7 @@ export namespace GstAudio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2229,7 +2242,7 @@ export namespace GstAudio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2304,6 +2317,7 @@ export namespace GstAudio {
          * @returns the same @object
          */
         ref(): GObject.Object;
+        // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object,` and possibly remove the
@@ -2431,7 +2445,7 @@ export namespace GstAudio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2446,7 +2460,7 @@ export namespace GstAudio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3475,6 +3489,7 @@ export namespace GstAudio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3517,7 +3532,7 @@ export namespace GstAudio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3592,6 +3607,7 @@ export namespace GstAudio {
          * @returns the same @object
          */
         ref(): GObject.Object;
+        // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object,` and possibly remove the
@@ -3719,7 +3735,7 @@ export namespace GstAudio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3734,7 +3750,7 @@ export namespace GstAudio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3895,7 +3911,12 @@ export namespace GstAudio {
          * @param out_samples the number of samples to write to the ringbuffer
          * @param accum accumulator for rate conversion.
          */
-        vfunc_commit(sample: number, data: Uint8Array, out_samples: number, accum: number): [number, number, number];
+        vfunc_commit(
+            sample: number,
+            data: Uint8Array | string,
+            out_samples: number,
+            accum: number,
+        ): [number, number, number];
         /**
          * Get the number of samples queued in the audio device. This is
          * usually less than the segment size but can be bigger when the
@@ -4005,7 +4026,7 @@ export namespace GstAudio {
          * @param accum accumulator for rate conversion.
          * @returns The number of samples written to the ringbuffer or -1 on error. The number of samples written can be less than @out_samples when @buf was interrupted with a flush or stop.
          */
-        commit(sample: number, data: Uint8Array, out_samples: number, accum: number): [number, number, number];
+        commit(sample: number, data: Uint8Array | string, out_samples: number, accum: number): [number, number, number];
         /**
          * Convert `src_val` in `src_fmt` to the equivalent value in `dest_fmt`. The result
          * will be put in `dest_val`.
@@ -4093,7 +4114,7 @@ export namespace GstAudio {
          * @param data where the data should be read
          * @returns The number of samples read from the ringbuffer or -1 on error. MT safe.
          */
-        read(sample: number, data: Uint8Array): [number, Gst.ClockTime];
+        read(sample: number, data: Uint8Array | string): [number, Gst.ClockTime];
         /**
          * Free the resources of the ringbuffer.
          * @returns TRUE if the device could be released, FALSE on error. MT safe.
@@ -4201,17 +4222,19 @@ export namespace GstAudio {
         vfunc_open(): boolean;
         vfunc_pause(): void;
         vfunc_prepare(spec: AudioRingBufferSpec): boolean;
+        // Conflicted with GstBase.BaseSink.vfunc_prepare
         vfunc_prepare(...args: never[]): any;
         vfunc_reset(): void;
         vfunc_resume(): void;
         vfunc_stop(): void;
+        // Conflicted with GstBase.BaseSink.vfunc_stop
         vfunc_stop(...args: never[]): any;
         vfunc_unprepare(): boolean;
         /**
          * Write samples to the device.
          * @param data the sample data
          */
-        vfunc_write(data: Uint8Array): number;
+        vfunc_write(data: Uint8Array | string): number;
     }
 
     module AudioSrc {
@@ -4259,7 +4282,7 @@ export namespace GstAudio {
          * Read samples from the device.
          * @param data the sample data
          */
-        vfunc_read(data: Uint8Array): [number, Gst.ClockTime];
+        vfunc_read(data: Uint8Array | string): [number, Gst.ClockTime];
         vfunc_reset(): void;
         vfunc_unprepare(): boolean;
     }
@@ -4564,7 +4587,7 @@ export namespace GstAudio {
          * @param _in input data
          * @returns %TRUE is the conversion could be performed.
          */
-        convert(flags: AudioConverterFlags, _in: Uint8Array): [boolean, Uint8Array];
+        convert(flags: AudioConverterFlags, _in: Uint8Array | string): [boolean, Uint8Array];
         /**
          * Free a previously allocated `convert` instance.
          */
@@ -4744,7 +4767,7 @@ export namespace GstAudio {
          * Fill `length` bytes in `dest` with silence samples for `info`.
          * @param dest a destination   to fill
          */
-        fill_silence(dest: Uint8Array): void;
+        fill_silence(dest: Uint8Array | string): void;
     }
 
     /**

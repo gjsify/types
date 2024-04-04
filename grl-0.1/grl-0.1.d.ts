@@ -148,9 +148,9 @@ export namespace Grl {
     function log_configure(config: string): void;
     function marshal_VOID__BOXED_ENUM_BOOLEAN(
         closure: GObject.Closure,
-        return_value: GObject.Value,
+        return_value: GObject.Value | any,
         n_param_values: number,
-        param_values: GObject.Value,
+        param_values: GObject.Value | any,
         invocation_hint: any,
         marshal_data: any,
     ): void;
@@ -367,7 +367,8 @@ export namespace Grl {
          * @returns TRUE if @params has a defined value within @config, FALSE
          */
         has_param(param: string): boolean;
-        set(param: string, value: GObject.Value): void;
+        set(param: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Set the webservice API key in the configuration
@@ -495,7 +496,7 @@ export namespace Grl {
          * @param key key to look up.
          * @returns a #GValue. This value should not be modified nor
          */
-        get(key: GObject.ParamSpec): GObject.Value;
+        get(key: GObject.ParamSpec): unknown;
         /**
          * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
          *
@@ -503,7 +504,7 @@ export namespace Grl {
          * @param key a metadata key
          * @returns a #GList with
          */
-        get_all_single_related_keys(key: KeyID): GObject.Value[];
+        get_all_single_related_keys(key: KeyID): unknown[];
         /**
          * Returns all non-%NULL values for `key` from `data`. `key` must have been
          * registered as a string-type key. This ignores related keys.
@@ -570,7 +571,7 @@ export namespace Grl {
          * @param key a metadata key
          * @returns a #GList with
          */
-        get_single_values_for_key(key: KeyID): GObject.Value[];
+        get_single_values_for_key(key: KeyID): unknown[];
         /**
          * Returns all non-%NULL values for `key` from `data`. `key` must have been
          * registered as a string-type key. This ignores related keys.
@@ -641,7 +642,8 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: GObject.ParamSpec, value: GObject.Value): void;
+        set(key: GObject.ParamSpec, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets the first binary value associated with `key` in `data`. If `key` already
@@ -963,6 +965,7 @@ export namespace Grl {
          * @param bitrate the @url bitrate, or -1 to ignore
          */
         add_url_data(url: string, mime: string, bitrate: number): void;
+        // Conflicted with Grl.Media.add_url_data
         add_url_data(...args: never[]): any;
         get_album(): string;
         get_artist(): string;
@@ -974,6 +977,7 @@ export namespace Grl {
         get_lyrics_nth(index: number): string;
         get_track_number(): number;
         get_url_data(): [string, string, number];
+        // Conflicted with Grl.Media.get_url_data
         get_url_data(...args: never[]): any;
         /**
          * in one go.
@@ -981,6 +985,7 @@ export namespace Grl {
          * @returns all the keys related with the URL number @index of an audio resource
          */
         get_url_data_nth(index: number): [string, string, number];
+        // Conflicted with Grl.Media.get_url_data_nth
         get_url_data_nth(...args: never[]): any;
         /**
          * Set the album of the audio
@@ -1019,6 +1024,7 @@ export namespace Grl {
          * @param bitrate the @url bitrate, or -1 to ignore
          */
         set_url_data(url: string, mime: string, bitrate: number): void;
+        // Conflicted with Grl.Media.set_url_data
         set_url_data(...args: never[]): any;
     }
 
@@ -1084,6 +1090,7 @@ export namespace Grl {
          * @param height image height, or -1 to ignore
          */
         add_url_data(url: string, mime: string, width: number, height: number): void;
+        // Conflicted with Grl.Media.add_url_data
         add_url_data(...args: never[]): any;
         get_camera_model(): string;
         get_exposure_time(): number;
@@ -1097,6 +1104,7 @@ export namespace Grl {
         get_iso_speed(): number;
         get_orientation(): number;
         get_url_data(width: number, height: number): [string, string];
+        // Conflicted with Grl.Media.get_url_data
         get_url_data(...args: never[]): any;
         /**
          * in one go.
@@ -1106,6 +1114,7 @@ export namespace Grl {
          * @returns all the keys related with the URL number @index of an image resource
          */
         get_url_data_nth(index: number, width: number, height: number): [string, string];
+        // Conflicted with Grl.Media.get_url_data_nth
         get_url_data_nth(...args: never[]): any;
         get_width(): number;
         set_camera_model(camera_model: string): void;
@@ -1132,6 +1141,7 @@ export namespace Grl {
          * @param height image height, or -1 to ignore
          */
         set_url_data(url: string, mime: string, width: number, height: number): void;
+        // Conflicted with Grl.Media.set_url_data
         set_url_data(...args: never[]): any;
         /**
          * Set the width of the image
@@ -1703,6 +1713,7 @@ export namespace Grl {
          * @param height video height, or -1 to ignore
          */
         add_url_data(url: string, mime: string, framerate: number, width: number, height: number): void;
+        // Conflicted with Grl.Media.add_url_data
         add_url_data(...args: never[]): any;
         get_episode(): number;
         get_framerate(): number;
@@ -1710,6 +1721,7 @@ export namespace Grl {
         get_season(): number;
         get_show(): string;
         get_url_data(framerate: number, width: number, height: number): [string, string];
+        // Conflicted with Grl.Media.get_url_data
         get_url_data(...args: never[]): any;
         /**
          * in one go.
@@ -1720,6 +1732,7 @@ export namespace Grl {
          * @returns all the keys related with the URL number @index of a video resource
          */
         get_url_data_nth(index: number, framerate: number, width: number, height: number): [string, string];
+        // Conflicted with Grl.Media.get_url_data_nth
         get_url_data_nth(...args: never[]): any;
         get_width(): number;
         /**
@@ -1762,6 +1775,7 @@ export namespace Grl {
          * @param height video height, or -1 to ignore
          */
         set_url_data(url: string, mime: string, framerate: number, width: number, height: number): void;
+        // Conflicted with Grl.Media.set_url_data
         set_url_data(...args: never[]): any;
         /**
          * Set the width of the video
@@ -2333,7 +2347,7 @@ export namespace Grl {
          * @param key key to look up.
          * @returns a #GValue. This value should not be modified nor
          */
-        get(key: GObject.ParamSpec): GObject.Value;
+        get(key: GObject.ParamSpec): unknown;
         /**
          * Returns the value associated with `key` from `relkeys`. If `key` has no value,
          * or value is not a binary, or `key` is not in `relkeys,` then 0 is returned.
@@ -2396,7 +2410,8 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: GObject.ParamSpec, value: GObject.Value): void;
+        set(key: GObject.ParamSpec, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been

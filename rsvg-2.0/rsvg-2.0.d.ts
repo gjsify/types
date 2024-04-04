@@ -546,7 +546,7 @@ export namespace Rsvg {
 
         static ['new'](): Handle;
 
-        static new_from_data(data: Uint8Array): Handle;
+        static new_from_data(data: Uint8Array | string): Handle;
 
         static new_from_file(filename: string): Handle;
 
@@ -1081,7 +1081,7 @@ export namespace Rsvg {
          * @param css String with CSS data; must be valid UTF-8.
          * @returns `TRUE` on success, `FALSE` on error.  Errors are returned in the @error argument.
          */
-        set_stylesheet(css: Uint8Array): boolean;
+        set_stylesheet(css: Uint8Array | string): boolean;
         /**
          * Loads the next `count` bytes of the image.  You can call this function multiple
          * times until the whole document is consumed; then you must call [method`Rsvg`.Handle.close]
@@ -1095,7 +1095,7 @@ export namespace Rsvg {
          * @param buf pointer to svg data
          * @returns `TRUE` on success, or `FALSE` on error.
          */
-        write(buf: Uint8Array): boolean;
+        write(buf: Uint8Array | string): boolean;
     }
 
     /**

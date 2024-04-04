@@ -5285,6 +5285,7 @@ export namespace Mbim {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5327,7 +5328,7 @@ export namespace Mbim {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5528,7 +5529,7 @@ export namespace Mbim {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5543,7 +5544,7 @@ export namespace Mbim {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6396,11 +6397,16 @@ export namespace Mbim {
 
         static atds_signal_query_new(): Message;
 
-        static auth_aka_query_new(rand: Uint8Array, autn: Uint8Array): Message;
+        static auth_aka_query_new(rand: Uint8Array | string, autn: Uint8Array | string): Message;
 
-        static auth_akap_query_new(rand: Uint8Array, autn: Uint8Array, network_name: string): Message;
+        static auth_akap_query_new(rand: Uint8Array | string, autn: Uint8Array | string, network_name: string): Message;
 
-        static auth_sim_query_new(rand1: Uint8Array, rand2: Uint8Array, rand3: Uint8Array, n: number): Message;
+        static auth_sim_query_new(
+            rand1: Uint8Array | string,
+            rand2: Uint8Array | string,
+            rand3: Uint8Array | string,
+            n: number,
+        ): Message;
 
         static close_done_new(transaction_id: number, error_status_code: StatusError): Message;
 
@@ -6458,7 +6464,7 @@ export namespace Mbim {
 
         static google_carrier_lock_query_new(): Message;
 
-        static google_carrier_lock_set_new(data: Uint8Array): Message;
+        static google_carrier_lock_set_new(data: Uint8Array | string): Message;
 
         static home_provider_query_new(): Message;
 
@@ -6644,7 +6650,7 @@ export namespace Mbim {
             channel: number,
             secure_messaging: UiccSecureMessaging,
             class_byte_type: UiccClassByteType,
-            command: Uint8Array,
+            command: Uint8Array | string,
         ): Message;
 
         static ms_uicc_low_level_access_application_list_query_new(): Message;
@@ -6655,33 +6661,33 @@ export namespace Mbim {
 
         static ms_uicc_low_level_access_file_status_query_new(
             version: number,
-            application_id: Uint8Array,
-            file_path: Uint8Array,
+            application_id: Uint8Array | string,
+            file_path: Uint8Array | string,
         ): Message;
 
         static ms_uicc_low_level_access_open_channel_set_new(
-            app_id: Uint8Array,
+            app_id: Uint8Array | string,
             select_p2_arg: number,
             channel_group: number,
         ): Message;
 
         static ms_uicc_low_level_access_read_binary_query_new(
             version: number,
-            application_id: Uint8Array,
-            file_path: Uint8Array,
+            application_id: Uint8Array | string,
+            file_path: Uint8Array | string,
             read_offset: number,
             read_size: number,
             local_pin: string,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): Message;
 
         static ms_uicc_low_level_access_read_record_query_new(
             version: number,
-            application_id: Uint8Array,
-            file_path: Uint8Array,
+            application_id: Uint8Array | string,
+            file_path: Uint8Array | string,
             record_number: number,
             local_pin: string,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): Message;
 
         static ms_uicc_low_level_access_reset_query_new(): Message;
@@ -6759,7 +6765,7 @@ export namespace Mbim {
 
         static qdu_file_open_set_new(file_type: QduFileType, file_size: number): Message;
 
-        static qdu_file_write_set_new(data_buffer: Uint8Array): Message;
+        static qdu_file_write_set_new(data_buffer: Uint8Array | string): Message;
 
         static qdu_quectel_read_version_set_new(version_type: QduQuectelVersionType): Message;
 
@@ -6769,7 +6775,7 @@ export namespace Mbim {
 
         static qdu_update_session_set_new(session_action: QduSessionAction, session_type: QduSessionType): Message;
 
-        static qmi_msg_set_new(qmi_msg: Uint8Array): Message;
+        static qmi_msg_set_new(qmi_msg: Uint8Array | string): Message;
 
         static quectel_radio_state_query_new(): Message;
 
@@ -6787,7 +6793,7 @@ export namespace Mbim {
             data_class: DataClass,
         ): Message;
 
-        static service_activation_set_new(buffer: Uint8Array): Message;
+        static service_activation_set_new(buffer: Uint8Array | string): Message;
 
         static signal_state_query_new(): Message;
 
@@ -6815,17 +6821,17 @@ export namespace Mbim {
 
         static stk_envelope_query_new(): Message;
 
-        static stk_envelope_set_new(data: Uint8Array): Message;
+        static stk_envelope_set_new(data: Uint8Array | string): Message;
 
         static stk_pac_query_new(): Message;
 
-        static stk_pac_set_new(pac_host_control: Uint8Array): Message;
+        static stk_pac_set_new(pac_host_control: Uint8Array | string): Message;
 
-        static stk_terminal_response_set_new(response: Uint8Array): Message;
+        static stk_terminal_response_set_new(response: Uint8Array | string): Message;
 
         static subscriber_ready_status_query_new(): Message;
 
-        static ussd_set_new(action: UssdAction, data_coding_scheme: number, payload: Uint8Array): Message;
+        static ussd_set_new(action: UssdAction, data_coding_scheme: number, payload: Uint8Array | string): Message;
 
         static visible_providers_query_new(action: VisibleProvidersAction): Message;
 

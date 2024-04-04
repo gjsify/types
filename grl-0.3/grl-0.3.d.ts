@@ -316,11 +316,11 @@ export namespace Grl {
      * up all the resources created.
      */
     function deinit(): void;
-    function g_value_dup(value: GObject.Value): GObject.Value;
-    function g_value_free(value: GObject.Value): void;
+    function g_value_dup(value: GObject.Value | any): unknown;
+    function g_value_free(value: GObject.Value | any): void;
     function g_value_hashtable_new(): GLib.HashTable<string, GObject.Value>;
     function g_value_hashtable_new_direct(): GLib.HashTable<any, GObject.Value>;
-    function g_value_new(g_type: GObject.GType): GObject.Value;
+    function g_value_new(g_type: GObject.GType): unknown;
     /**
      * Initializes the Grilo library
      * @param argv list of arguments
@@ -504,10 +504,10 @@ export namespace Grl {
         internal_offset: number,
     ): void;
     function range_value_hashtable_insert(
-        hash_table: GLib.HashTable<any, any>,
+        hash_table: { [key: string]: any } | GLib.HashTable<any, any>,
         key: any | null,
-        min: GObject.Value,
-        max: GObject.Value,
+        min: GObject.Value | any,
+        max: GObject.Value | any,
     ): void;
     function range_value_hashtable_new(): GLib.HashTable<any, RangeValue>;
     interface PluginDeinitFunc {
@@ -707,7 +707,7 @@ export namespace Grl {
          * @param value the value corresponding to @key to test against @caps
          * @returns %TRUE if (@key, @value) obey to @caps, %FALSE otherwise.
          */
-        test_option(key: string, value: GObject.Value): boolean;
+        test_option(key: string, value: GObject.Value | any): boolean;
     }
 
     module Config {
@@ -756,7 +756,8 @@ export namespace Grl {
          * @param param a parameter
          * @param value value
          */
-        set(param: string, value: GObject.Value): void;
+        set(param: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Set the webservice API key in the configuration
@@ -889,7 +890,7 @@ export namespace Grl {
          * @param value the new value
          * @returns TRUE if @value was added to @key_name, FALSE otherwise.
          */
-        add_for_id(key_name: string, value: GObject.Value): boolean;
+        add_for_id(key_name: string, value: GObject.Value | any): boolean;
         /**
          * Appends a new int value for `key` in `data`.
          * @param key key to append
@@ -927,7 +928,7 @@ export namespace Grl {
          * @param key key to look up.
          * @returns a #GValue. This value should not be modified nor freed by user.
          */
-        get(key: KeyID): GObject.Value;
+        get(key: KeyID): unknown;
         /**
          * Returns the first binary value associated with `key` from `data`. If `key` has
          * no first value, or value is not a gfloat, or `key` is not in data, then %NULL
@@ -990,7 +991,7 @@ export namespace Grl {
          * @param key a metadata key
          * @returns a #GList with values. Do not change or free the values. Free the list with #g_list_free.
          */
-        get_single_values_for_key(key: KeyID): GObject.Value[];
+        get_single_values_for_key(key: KeyID): unknown[];
         /**
          * Returns all non-%NULL values for `key` from `data`. `key` must have been
          * registered as a string-type key. This ignores related keys.
@@ -1051,7 +1052,8 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: KeyID, value: GObject.Value): void;
+        set(key: KeyID, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets the first binary value associated with `key` in `data`. If `key` already
@@ -1096,7 +1098,7 @@ export namespace Grl {
          * @param value the new value
          * @returns TRUE if @value was set to @key_name, FALSE otherwise.
          */
-        set_for_id(key_name: string, value: GObject.Value): boolean;
+        set_for_id(key_name: string, value: GObject.Value | any): boolean;
         /**
          * Sets the first int value associated with `key` in `data`. If `key` already has a
          * first value old value is replaced by the new one.
@@ -1771,7 +1773,7 @@ export namespace Grl {
          * @returns the value of the count option, or a default value if it is not set.
          */
         get_count(): number;
-        get_key_filter(key: KeyID): GObject.Value;
+        get_key_filter(key: KeyID): unknown;
         get_key_filter_list(): KeyID[];
         /**
          * Stores the limits of the range in the filter for `key` in `min_value` and
@@ -1805,14 +1807,14 @@ export namespace Grl {
          * @returns %TRUE if @count could be set, %FALSE otherwise.
          */
         set_count(count: number): boolean;
-        set_key_filters(filters: GLib.HashTable<KeyID, GObject.Value>): boolean;
+        set_key_filters(filters: { [key: string]: any } | GLib.HashTable<KeyID, GObject.Value>): boolean;
         /**
          * Set filter as "`key` == `value"`.
          * @param key a #GrlKeyID
          * @param value a #GValue
          * @returns %TRUE on success
          */
-        set_key_filter_value(key: KeyID, value: GObject.Value): boolean;
+        set_key_filter_value(key: KeyID, value: GObject.Value | any): boolean;
         /**
          * Set filter as "`min_value` <= `key` <= `max_value"`.
          *
@@ -2131,7 +2133,7 @@ export namespace Grl {
          * @param value value to be validate
          * @returns %TRUE if complies
          */
-        metadata_key_validate(key: KeyID, value: GObject.Value): boolean;
+        metadata_key_validate(key: KeyID, value: GObject.Value | any): boolean;
         /**
          * Registers a new metadata key, creating a relation between the new key and
          * `bind_key`.
@@ -2201,7 +2203,7 @@ export namespace Grl {
          * @param key key to look up.
          * @returns a #GValue. This value should not be modified nor freed by user.
          */
-        get(key: KeyID): GObject.Value;
+        get(key: KeyID): unknown;
         /**
          * Returns the value associated with `key` from `relkeys`. If `key` has no value,
          * or value is not a binary, or `key` is not in `relkeys,` then 0 is returned.
@@ -2279,7 +2281,8 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: KeyID, value: GObject.Value): void;
+        set(key: KeyID, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
@@ -2324,7 +2327,7 @@ export namespace Grl {
          * @param value the new value
          * @returns TRUE if @value was set to @key_name, FALSE otherwise.
          */
-        set_for_id(key_name: string, value: GObject.Value): boolean;
+        set_for_id(key_name: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
          * registered as an int-type key. Old value is replaced by the new one.
@@ -3115,18 +3118,18 @@ export namespace Grl {
 
         // Constructors of Grl.RangeValue
 
-        constructor(min: GObject.Value, max: GObject.Value);
+        constructor(min: GObject.Value | any, max: GObject.Value | any);
         _init(...args: any[]): void;
 
-        static ['new'](min: GObject.Value, max: GObject.Value): RangeValue;
+        static ['new'](min: GObject.Value | any, max: GObject.Value | any): RangeValue;
 
         // Own static methods of Grl.RangeValue
 
         static hashtable_insert(
-            hash_table: GLib.HashTable<any, any>,
+            hash_table: { [key: string]: any } | GLib.HashTable<any, any>,
             key: any | null,
-            min: GObject.Value,
-            max: GObject.Value,
+            min: GObject.Value | any,
+            max: GObject.Value | any,
         ): void;
         static hashtable_new(): GLib.HashTable<any, RangeValue>;
 

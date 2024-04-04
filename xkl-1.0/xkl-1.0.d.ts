@@ -508,17 +508,17 @@ export namespace Xkl {
 
         static INT__LONG_LONG(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint: any,
             marshal_data: any,
         ): void;
         static VOID__ENUM_INT_BOOLEAN(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint: any,
             marshal_data: any,
         ): void;

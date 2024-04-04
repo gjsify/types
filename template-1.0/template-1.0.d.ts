@@ -394,7 +394,7 @@ export namespace Template {
          * @param strv the value to set, or %NULL
          */
         assign_strv(strv?: string[] | null): void;
-        assign_value(value: GObject.Value): void;
+        assign_value(value: GObject.Value | any): void;
         /**
          * Sets the value to the #GVariant `v_variant`.
          *
@@ -405,7 +405,7 @@ export namespace Template {
         get_boxed(): any | null;
         get_expr(): [Expr, string[] | null];
         get_symbol_type(): SymbolType;
-        get_value(value: GObject.Value): void;
+        get_value(value: GObject.Value | any): void;
         holds(type: GObject.GType): boolean;
         ref(): Symbol;
         unref(): void;
@@ -455,7 +455,7 @@ export namespace Template {
 
         // Own methods of Template.Expr
 
-        ['eval'](scope: Scope, return_value: GObject.Value): boolean;
+        ['eval'](scope: Scope, return_value: GObject.Value | any): boolean;
         new_anon_call(params: Expr): Expr;
         new_getattr(attr: string): Expr;
         new_gi_call(name: string, params: Expr): Expr;

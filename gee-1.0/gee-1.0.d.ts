@@ -172,6 +172,7 @@ export namespace Gee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -214,7 +215,7 @@ export namespace Gee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -415,7 +416,7 @@ export namespace Gee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -430,7 +431,7 @@ export namespace Gee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -479,6 +480,7 @@ export namespace Gee {
         list_iterator(): ListIterator;
         get(index: number): any;
         set(index: number, item: any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         index_of(item: any): number;
         insert(index: number, item: any): void;
@@ -577,6 +579,7 @@ export namespace Gee {
         has(key: any, value: any): boolean;
         get(key: any): any;
         set(key: any, value: any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         unset(key: any): [boolean, any];
         map_iterator(): MapIterator;
@@ -694,6 +697,7 @@ export namespace Gee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -736,7 +740,7 @@ export namespace Gee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -937,7 +941,7 @@ export namespace Gee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -952,7 +956,7 @@ export namespace Gee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         block_signal_handler(id: number): any;
         unblock_signal_handler(id: number): any;
@@ -996,6 +1000,7 @@ export namespace Gee {
         contains(key: any): boolean;
         get(key: any): Collection;
         set(key: any, value: any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         remove(key: any, value: any): boolean;
         remove_all(key: any): boolean;
@@ -1099,6 +1104,7 @@ export namespace Gee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1141,7 +1147,7 @@ export namespace Gee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1342,7 +1348,7 @@ export namespace Gee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1357,7 +1363,7 @@ export namespace Gee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         block_signal_handler(id: number): any;
         unblock_signal_handler(id: number): any;
@@ -2406,6 +2412,7 @@ export namespace Gee {
         list_iterator(): ListIterator;
         get(index: number): any;
         set(index: number, item: any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         index_of(item: any): number;
         insert(index: number, item: any): void;
@@ -2447,6 +2454,7 @@ export namespace Gee {
         // Own methods of Gee.ListIterator
 
         set(item: any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         insert(item: any): void;
         add(item: any): void;
@@ -2510,6 +2518,7 @@ export namespace Gee {
         has(key: any, value: any): boolean;
         get(key: any): any;
         set(key: any, value: any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         unset(key: any): [boolean, any];
         remove(key: any): [boolean, any];
@@ -2600,6 +2609,7 @@ export namespace Gee {
         contains(key: any): boolean;
         get(key: any): Collection;
         set(key: any, value: any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         remove(key: any, value: any): boolean;
         remove_all(key: any): boolean;

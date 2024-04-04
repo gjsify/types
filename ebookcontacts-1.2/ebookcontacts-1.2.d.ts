@@ -1882,6 +1882,7 @@ export namespace EBookContacts {
          * @returns A #GList of pointers to #EVCardAttribute, owned by the caller.
          */
         get_attributes(field_id: ContactField): VCardAttribute[];
+        // Conflicted with EBookContacts.VCard.get_attributes
         get_attributes(...args: never[]): any;
         /**
          * Gets a list of the vcard attributes for `contact'`s `field_ids`.
@@ -1910,6 +1911,7 @@ export namespace EBookContacts {
          * @param value a value whose type depends on the @field_id
          */
         set(field_id: ContactField, value?: any | null): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets the vcard attributes for `contact'`s `field_id`.
@@ -2636,7 +2638,7 @@ export namespace EBookContacts {
          * Sets the `photo'`s inlined data.
          * @param data the inlined image data
          */
-        set_inlined(data: Uint8Array): void;
+        set_inlined(data: Uint8Array | string): void;
         /**
          * Sets the `photo'`s mime type.
          * @param mime_type the mime type

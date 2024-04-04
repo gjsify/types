@@ -2093,6 +2093,7 @@ export namespace Atk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2135,7 +2136,7 @@ export namespace Atk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2336,7 +2337,7 @@ export namespace Atk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2351,7 +2352,7 @@ export namespace Atk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2586,6 +2587,7 @@ export namespace Atk {
          * @returns a description string, or %NULL if @action does not implement this interface.
          */
         get_description(i: number): string | null;
+        // Conflicted with Atk.Object.get_description
         get_description(...args: never[]): any;
         /**
          * Gets the keybinding which can be used to activate this action, if one
@@ -2646,6 +2648,7 @@ export namespace Atk {
          * @returns a name string, or %NULL if @action does not implement this interface.
          */
         get_name(i: number): string | null;
+        // Conflicted with Atk.Object.get_name
         get_name(...args: never[]): any;
         /**
          * Sets a description of the specified action of the object.
@@ -2654,6 +2657,7 @@ export namespace Atk {
          * @returns a gboolean representing if the description was successfully set;
          */
         set_description(i: number, desc: string): boolean;
+        // Conflicted with Atk.Object.set_description
         set_description(...args: never[]): any;
         /**
          * Perform the specified action on the object.
@@ -2665,6 +2669,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          */
         vfunc_get_description(i: number): string | null;
+        // Conflicted with Atk.Object.vfunc_get_description
         vfunc_get_description(...args: never[]): any;
         /**
          * Gets the keybinding which can be used to activate this action, if one
@@ -2721,6 +2726,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          */
         vfunc_get_name(i: number): string | null;
+        // Conflicted with Atk.Object.vfunc_get_name
         vfunc_get_name(...args: never[]): any;
         /**
          * Sets a description of the specified action of the object.
@@ -2728,6 +2734,7 @@ export namespace Atk {
          * @param desc the description to be assigned to this action
          */
         vfunc_set_description(i: number, desc: string): boolean;
+        // Conflicted with Atk.Object.vfunc_set_description
         vfunc_set_description(...args: never[]): any;
         /**
          * Checks whether the specified point is within the extent of the `component`.
@@ -2776,6 +2783,7 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_position(coord_type: CoordType): [number, number];
+        // Conflicted with Atk.TableCell.get_position
         get_position(...args: never[]): any;
         /**
          * Gets the size of the `component` in terms of width and height.
@@ -2896,6 +2904,7 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         vfunc_get_position(coord_type: CoordType): [number, number];
+        // Conflicted with Atk.TableCell.vfunc_get_position
         vfunc_get_position(...args: never[]): any;
         /**
          * Gets the size of the `component` in terms of width and height.
@@ -4267,7 +4276,7 @@ export namespace Atk {
          * @param value a #GValue which is the desired new accessible value.
          * @returns %TRUE if new value is successfully set, %FALSE otherwise.
          */
-        set_current_value(value: GObject.Value): boolean;
+        set_current_value(value: GObject.Value | any): boolean;
         /**
          * Sets the value of this object.
          *
@@ -4330,7 +4339,7 @@ export namespace Atk {
          * Sets the value of this object.
          * @param value a #GValue which is the desired new accessible value.
          */
-        vfunc_set_current_value(value: GObject.Value): boolean;
+        vfunc_set_current_value(value: GObject.Value | any): boolean;
         /**
          * Sets the value of this object.
          *
@@ -4439,6 +4448,7 @@ export namespace Atk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4481,7 +4491,7 @@ export namespace Atk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4682,7 +4692,7 @@ export namespace Atk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4697,7 +4707,7 @@ export namespace Atk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5875,6 +5885,7 @@ export namespace Atk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5917,7 +5928,7 @@ export namespace Atk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6118,7 +6129,7 @@ export namespace Atk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6133,7 +6144,7 @@ export namespace Atk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6755,6 +6766,7 @@ export namespace Atk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6797,7 +6809,7 @@ export namespace Atk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6998,7 +7010,7 @@ export namespace Atk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7013,7 +7025,7 @@ export namespace Atk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9464,7 +9476,7 @@ export namespace Atk {
          * @param value a #GValue which is the desired new accessible value.
          * @returns %TRUE if new value is successfully set, %FALSE otherwise.
          */
-        set_current_value(value: GObject.Value): boolean;
+        set_current_value(value: GObject.Value | any): boolean;
         /**
          * Sets the value of this object.
          *
@@ -9530,7 +9542,7 @@ export namespace Atk {
          * Sets the value of this object.
          * @param value a #GValue which is the desired new accessible value.
          */
-        vfunc_set_current_value(value: GObject.Value): boolean;
+        vfunc_set_current_value(value: GObject.Value | any): boolean;
         /**
          * Sets the value of this object.
          *

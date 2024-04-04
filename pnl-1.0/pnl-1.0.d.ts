@@ -142,7 +142,7 @@ export namespace Pnl {
          * @param pspec A #ParamSpec of @target or a #GtkWidget<!-- -->'s parent.
          * @param value The new value for the property at the end of the animation.
          */
-        add_property(pspec: GObject.ParamSpec, value: GObject.Value): void;
+        add_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
         /**
          * Start the animation. When the animation stops, the internal reference will
          * be dropped and the animation may be finalized.
@@ -567,6 +567,7 @@ export namespace Pnl {
         // Inherited methods
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
+        // Conflicted with Gtk.Widget.get_child_visible
         get_child_visible(...args: never[]): any;
         /**
          * Gets the dock manager for this dock item.
@@ -586,6 +587,7 @@ export namespace Pnl {
         present(): void;
         present_child(child: DockItem): void;
         set_child_visible(child: DockItem, child_visible: boolean): void;
+        // Conflicted with Gtk.Widget.set_child_visible
         set_child_visible(...args: never[]): any;
         /**
          * Sets the dock manager for this #PnlDockItem.
@@ -697,6 +699,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -739,7 +742,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -940,7 +943,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -955,7 +958,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -984,7 +987,7 @@ export namespace Pnl {
          * @param property_name the name of the property to get
          * @param value a location to return the value
          */
-        child_get_property(child: Gtk.Widget, property_name: string, value: GObject.Value): void;
+        child_get_property(child: Gtk.Widget, property_name: string, value: GObject.Value | any): void;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties]
@@ -997,6 +1000,7 @@ export namespace Pnl {
          * @param child_property the name of a child property installed on     the class of @container
          */
         child_notify(child: Gtk.Widget, child_property: string): void;
+        // Conflicted with Gtk.Widget.child_notify
         child_notify(...args: never[]): any;
         /**
          * Emits a #GtkWidget::child-notify signal for the
@@ -1014,7 +1018,7 @@ export namespace Pnl {
          * @param property_name the name of the property to set
          * @param value the value to set the property to
          */
-        child_set_property(child: Gtk.Widget, property_name: string, value: GObject.Value): void;
+        child_set_property(child: Gtk.Widget, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns the type of the children supported by the container.
          *
@@ -1263,7 +1267,7 @@ export namespace Pnl {
         vfunc_get_child_property(
             child: Gtk.Widget,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -1288,7 +1292,7 @@ export namespace Pnl {
         vfunc_set_child_property(
             child: Gtk.Widget,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -3996,7 +4000,7 @@ export namespace Pnl {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -4836,6 +4840,7 @@ export namespace Pnl {
         // Inherited methods
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
+        // Conflicted with Gtk.Widget.get_child_visible
         get_child_visible(...args: never[]): any;
         /**
          * Gets the dock manager for this dock item.
@@ -4855,6 +4860,7 @@ export namespace Pnl {
         present(): void;
         present_child(child: DockItem): void;
         set_child_visible(child: DockItem, child_visible: boolean): void;
+        // Conflicted with Gtk.Widget.set_child_visible
         set_child_visible(...args: never[]): any;
         /**
          * Sets the dock manager for this #PnlDockItem.
@@ -4966,6 +4972,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5008,7 +5015,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5209,7 +5216,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5224,7 +5231,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5356,6 +5363,7 @@ export namespace Pnl {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -7935,7 +7943,7 @@ export namespace Pnl {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -8832,6 +8840,7 @@ export namespace Pnl {
         // Inherited methods
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
+        // Conflicted with Gtk.Widget.get_child_visible
         get_child_visible(...args: never[]): any;
         /**
          * Gets the dock manager for this dock item.
@@ -8851,6 +8860,7 @@ export namespace Pnl {
         present(): void;
         present_child(child: DockItem): void;
         set_child_visible(child: DockItem, child_visible: boolean): void;
+        // Conflicted with Gtk.Widget.set_child_visible
         set_child_visible(...args: never[]): any;
         /**
          * Sets the dock manager for this #PnlDockItem.
@@ -8962,6 +8972,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9004,7 +9015,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9205,7 +9216,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9220,7 +9231,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9249,7 +9260,7 @@ export namespace Pnl {
          * @param property_name the name of the property to get
          * @param value a location to return the value
          */
-        child_get_property(child: Gtk.Widget, property_name: string, value: GObject.Value): void;
+        child_get_property(child: Gtk.Widget, property_name: string, value: GObject.Value | any): void;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties]
@@ -9262,6 +9273,7 @@ export namespace Pnl {
          * @param child_property the name of a child property installed on     the class of @container
          */
         child_notify(child: Gtk.Widget, child_property: string): void;
+        // Conflicted with Gtk.Widget.child_notify
         child_notify(...args: never[]): any;
         /**
          * Emits a #GtkWidget::child-notify signal for the
@@ -9279,7 +9291,7 @@ export namespace Pnl {
          * @param property_name the name of the property to set
          * @param value the value to set the property to
          */
-        child_set_property(child: Gtk.Widget, property_name: string, value: GObject.Value): void;
+        child_set_property(child: Gtk.Widget, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns the type of the children supported by the container.
          *
@@ -9528,7 +9540,7 @@ export namespace Pnl {
         vfunc_get_child_property(
             child: Gtk.Widget,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -9553,7 +9565,7 @@ export namespace Pnl {
         vfunc_set_child_property(
             child: Gtk.Widget,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -12261,7 +12273,7 @@ export namespace Pnl {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -13087,6 +13099,7 @@ export namespace Pnl {
         // Inherited methods
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
+        // Conflicted with Gtk.Widget.get_child_visible
         get_child_visible(...args: never[]): any;
         /**
          * Gets the dock manager for this dock item.
@@ -13106,6 +13119,7 @@ export namespace Pnl {
         present(): void;
         present_child(child: DockItem): void;
         set_child_visible(child: DockItem, child_visible: boolean): void;
+        // Conflicted with Gtk.Widget.set_child_visible
         set_child_visible(...args: never[]): any;
         /**
          * Sets the dock manager for this #PnlDockItem.
@@ -13217,6 +13231,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -13259,7 +13274,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13460,7 +13475,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13475,7 +13490,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -13607,6 +13622,7 @@ export namespace Pnl {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -16186,7 +16202,7 @@ export namespace Pnl {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -17017,6 +17033,7 @@ export namespace Pnl {
         set_orientation(orientation: Gtk.Orientation): void;
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
+        // Conflicted with Gtk.Widget.get_child_visible
         get_child_visible(...args: never[]): any;
         /**
          * Gets the dock manager for this dock item.
@@ -17036,6 +17053,7 @@ export namespace Pnl {
         present(): void;
         present_child(child: DockItem): void;
         set_child_visible(child: DockItem, child_visible: boolean): void;
+        // Conflicted with Gtk.Widget.set_child_visible
         set_child_visible(...args: never[]): any;
         /**
          * Sets the dock manager for this #PnlDockItem.
@@ -17147,6 +17165,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -17189,7 +17208,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -17390,7 +17409,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17405,7 +17424,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -17537,6 +17556,7 @@ export namespace Pnl {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -20116,7 +20136,7 @@ export namespace Pnl {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -20713,6 +20733,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -20755,7 +20776,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -20956,7 +20977,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20971,7 +20992,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -21391,6 +21412,7 @@ export namespace Pnl {
         set_orientation(orientation: Gtk.Orientation): void;
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
+        // Conflicted with Gtk.Widget.get_child_visible
         get_child_visible(...args: never[]): any;
         /**
          * Gets the dock manager for this dock item.
@@ -21410,6 +21432,7 @@ export namespace Pnl {
         present(): void;
         present_child(child: DockItem): void;
         set_child_visible(child: DockItem, child_visible: boolean): void;
+        // Conflicted with Gtk.Widget.set_child_visible
         set_child_visible(...args: never[]): any;
         /**
          * Sets the dock manager for this #PnlDockItem.
@@ -21521,6 +21544,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -21563,7 +21587,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -21764,7 +21788,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21779,7 +21803,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -21911,6 +21935,7 @@ export namespace Pnl {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -24490,7 +24515,7 @@ export namespace Pnl {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -25029,6 +25054,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -25071,7 +25097,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -25272,7 +25298,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25287,7 +25313,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -25731,6 +25757,7 @@ export namespace Pnl {
         // Inherited methods
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
+        // Conflicted with Gtk.Widget.get_child_visible
         get_child_visible(...args: never[]): any;
         /**
          * Gets the dock manager for this dock item.
@@ -25750,6 +25777,7 @@ export namespace Pnl {
         present(): void;
         present_child(child: DockItem): void;
         set_child_visible(child: DockItem, child_visible: boolean): void;
+        // Conflicted with Gtk.Widget.set_child_visible
         set_child_visible(...args: never[]): any;
         /**
          * Sets the dock manager for this #PnlDockItem.
@@ -25861,6 +25889,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -25903,7 +25932,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -26104,7 +26133,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -26119,7 +26148,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -26251,6 +26280,7 @@ export namespace Pnl {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -28830,7 +28860,7 @@ export namespace Pnl {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -29653,6 +29683,7 @@ export namespace Pnl {
         // Inherited methods
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
+        // Conflicted with Gtk.Widget.get_child_visible
         get_child_visible(...args: never[]): any;
         /**
          * Gets the dock manager for this dock item.
@@ -29672,6 +29703,7 @@ export namespace Pnl {
         present(): void;
         present_child(child: DockItem): void;
         set_child_visible(child: DockItem, child_visible: boolean): void;
+        // Conflicted with Gtk.Widget.set_child_visible
         set_child_visible(...args: never[]): any;
         /**
          * Sets the dock manager for this #PnlDockItem.
@@ -29783,6 +29815,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -29825,7 +29858,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -30026,7 +30059,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -30041,7 +30074,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -30070,7 +30103,7 @@ export namespace Pnl {
          * @param property_name the name of the property to get
          * @param value a location to return the value
          */
-        child_get_property(child: Gtk.Widget, property_name: string, value: GObject.Value): void;
+        child_get_property(child: Gtk.Widget, property_name: string, value: GObject.Value | any): void;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties]
@@ -30083,6 +30116,7 @@ export namespace Pnl {
          * @param child_property the name of a child property installed on     the class of @container
          */
         child_notify(child: Gtk.Widget, child_property: string): void;
+        // Conflicted with Gtk.Widget.child_notify
         child_notify(...args: never[]): any;
         /**
          * Emits a #GtkWidget::child-notify signal for the
@@ -30100,7 +30134,7 @@ export namespace Pnl {
          * @param property_name the name of the property to set
          * @param value the value to set the property to
          */
-        child_set_property(child: Gtk.Widget, property_name: string, value: GObject.Value): void;
+        child_set_property(child: Gtk.Widget, property_name: string, value: GObject.Value | any): void;
         /**
          * Returns the type of the children supported by the container.
          *
@@ -30349,7 +30383,7 @@ export namespace Pnl {
         vfunc_get_child_property(
             child: Gtk.Widget,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -30374,7 +30408,7 @@ export namespace Pnl {
         vfunc_set_child_property(
             child: Gtk.Widget,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         /**
@@ -31974,6 +32008,7 @@ export namespace Pnl {
          * @returns %TRUE if the signal has been handled
          */
         mnemonic_activate(group_cycling: boolean): boolean;
+        // Conflicted with Gtk.Window.mnemonic_activate
         mnemonic_activate(...args: never[]): any;
         /**
          * Sets the base color for a widget in a particular state.
@@ -33083,7 +33118,7 @@ export namespace Pnl {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -33675,6 +33710,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -33717,7 +33753,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -33918,7 +33954,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -33933,7 +33969,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -34434,6 +34470,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -34476,7 +34513,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -34677,7 +34714,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -34692,7 +34729,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -34824,6 +34861,7 @@ export namespace Pnl {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -37439,7 +37477,7 @@ export namespace Pnl {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -38014,6 +38052,7 @@ export namespace Pnl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -38056,7 +38095,7 @@ export namespace Pnl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -38257,7 +38296,7 @@ export namespace Pnl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -38272,7 +38311,7 @@ export namespace Pnl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -38334,6 +38373,7 @@ export namespace Pnl {
 
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
+        // Conflicted with Gtk.Widget.get_child_visible
         get_child_visible(...args: never[]): any;
         /**
          * Gets the dock manager for this dock item.
@@ -38353,6 +38393,7 @@ export namespace Pnl {
         present(): void;
         present_child(child: DockItem): void;
         set_child_visible(child: DockItem, child_visible: boolean): void;
+        // Conflicted with Gtk.Widget.set_child_visible
         set_child_visible(...args: never[]): any;
         /**
          * Sets the dock manager for this #PnlDockItem.

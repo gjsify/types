@@ -1140,7 +1140,7 @@ export namespace GMime {
      * @param text text to encode
      * @returns a #GMimeContentEncoding that is determined to be the best encoding type for the specified block of text. ("best" in this particular case means smallest output size)
      */
-    function utils_best_encoding(text: Uint8Array): ContentEncoding;
+    function utils_best_encoding(text: Uint8Array | string): ContentEncoding;
     /**
      * Attempts to convert text in an unknown 8bit/multibyte charset into
      * UTF-8 by finding the charset which will convert the most bytes into
@@ -1151,7 +1151,7 @@ export namespace GMime {
      * @param text input text in   unknown 8bit/multibyte character set
      * @returns a UTF-8 string representation of @text.
      */
-    function utils_decode_8bit(options: ParserOptions | null, text: Uint8Array): string;
+    function utils_decode_8bit(options: ParserOptions | null, text: Uint8Array | string): string;
     /**
      * Decodes a msg-id as defined by rfc822.
      * @param message_id string containing a message-id
@@ -1237,7 +1237,7 @@ export namespace GMime {
      * @param text text to check for 8bit chars
      * @returns %TRUE if the text contains 8bit characters or %FALSE otherwise.
      */
-    function utils_text_is_8bit(text: Uint8Array): boolean;
+    function utils_text_is_8bit(text: Uint8Array | string): boolean;
     /**
      * Unquotes and unescapes a string.
      * @param str input string
@@ -1633,7 +1633,7 @@ export namespace GMime {
          * Set the raw key data associated with the Autocrypt header.
          * @param data
          */
-        set_keydata(data: GLib.Bytes): void;
+        set_keydata(data: GLib.Bytes | Uint8Array): void;
         /**
          * Set the encryption preference associated with the Autocrypt header.
          * @param pref a #GMimeAutocryptPreferEncrypt value
@@ -2643,7 +2643,7 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param prespace prespace buffer length
          */
-        vfunc_complete(inbuf: Uint8Array, prespace: number): [Uint8Array, number];
+        vfunc_complete(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
          * Copies `filter` into a new #GMimeFilter object.
          */
@@ -2653,7 +2653,7 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param prespace prespace buffer length
          */
-        vfunc_filter(inbuf: Uint8Array, prespace: number): [Uint8Array, number];
+        vfunc_filter(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
          * Resets the filter.
          */
@@ -2666,13 +2666,13 @@ export namespace GMime {
          * previous ones
          * @param data data to backup
          */
-        backup(data: Uint8Array): void;
+        backup(data: Uint8Array | string): void;
         /**
          * Completes the filtering.
          * @param inbuf input buffer
          * @param prespace prespace buffer length
          */
-        complete(inbuf: Uint8Array, prespace: number): [Uint8Array, number];
+        complete(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
          * Copies `filter` into a new #GMimeFilter object.
          * @returns a duplicate of @filter.
@@ -2683,7 +2683,7 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param prespace prespace buffer length
          */
-        filter(inbuf: Uint8Array, prespace: number): [Uint8Array, number];
+        filter(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
          * Resets the filter.
          */
@@ -3473,6 +3473,7 @@ export namespace GMime {
          * @param charset a charset
          */
         set(name: string, value: string, charset: string): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Allocates a string buffer containing the raw rfc822 headers
@@ -5384,7 +5385,7 @@ export namespace GMime {
          * Attempts to read up to `len` bytes from `stream` into `buf`.
          * @param buf buffer
          */
-        vfunc_read(buf: Uint8Array): number;
+        vfunc_read(buf: Uint8Array | string): number;
         /**
          * Resets the stream.
          */
@@ -5420,7 +5421,7 @@ export namespace GMime {
          * Attempts to write up to `len` bytes of `buf` to `stream`.
          * @param buf buffer
          */
-        vfunc_write(buf: Uint8Array): number;
+        vfunc_write(buf: Uint8Array | string): number;
 
         // Own methods of GMime.Stream
 
@@ -5433,12 +5434,12 @@ export namespace GMime {
          * @param buf line buffer
          * @returns the number of characters read into @buf on success or %-1 on fail.
          */
-        buffer_gets(buf: Uint8Array): number;
+        buffer_gets(buf: Uint8Array | string): number;
         /**
          * Reads a single line into `buffer`.
          * @param buffer output buffer
          */
-        buffer_readln(buffer: Uint8Array): void;
+        buffer_readln(buffer: Uint8Array | string): void;
         /**
          * Closes the stream.
          * @returns %0 on success or %-1 on fail.
@@ -5470,7 +5471,7 @@ export namespace GMime {
          * @param buf buffer
          * @returns the number of bytes read or %-1 on fail.
          */
-        read(buf: Uint8Array): number;
+        read(buf: Uint8Array | string): number;
         /**
          * Resets the stream.
          * @returns %0 on success or %-1 on fail.
@@ -5517,7 +5518,7 @@ export namespace GMime {
          * @param buf buffer
          * @returns the number of bytes written or %-1 on fail.
          */
-        write(buf: Uint8Array): number;
+        write(buf: Uint8Array | string): number;
         /**
          * Writes `string` to `stream`.
          * @param str string to write
@@ -5850,9 +5851,9 @@ export namespace GMime {
 
         static ['new'](): StreamMem;
 
-        static new_with_buffer(buffer: Uint8Array): StreamMem;
+        static new_with_buffer(buffer: Uint8Array | string): StreamMem;
 
-        static new_with_byte_array(array: Uint8Array): StreamMem;
+        static new_with_byte_array(array: Uint8Array | string): StreamMem;
 
         // Own methods of GMime.StreamMem
 
@@ -5873,7 +5874,7 @@ export namespace GMime {
          * array. Use g_mime_stream_mem_set_owner() to change this behavior.
          * @param array stream data
          */
-        set_byte_array(array: Uint8Array): void;
+        set_byte_array(array: Uint8Array | string): void;
         /**
          * Sets whether or not `mem` owns the backend memory buffer.
          *

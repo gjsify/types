@@ -287,6 +287,7 @@ export namespace GdkX11 {
          * @returns the startup notification ID for @display
          */
         get_startup_notification_id(): string;
+        // Conflicted with Gdk.Display.get_startup_notification_id
         get_startup_notification_id(...args: never[]): any;
         /**
          * Returns the timestamp of the last user interaction on

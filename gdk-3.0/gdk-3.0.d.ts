@@ -4983,7 +4983,7 @@ export namespace Gdk {
      * @param value location to store the value of the setting.
      * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
      */
-    function setting_get(name: string, value: GObject.Value): boolean;
+    function setting_get(name: string, value: GObject.Value | any): boolean;
     function synthesize_window_state(window: Window, unset_flags: WindowState, set_flags: WindowState): void;
     /**
      * Retrieves a pixel from `window` to force the windowing
@@ -5069,7 +5069,7 @@ export namespace Gdk {
         display: Display,
         encoding: Atom,
         format: number,
-        text: Uint8Array,
+        text: Uint8Array | string,
     ): [number, string[]];
     /**
      * Adds a function to be called whenever there are no higher priority
@@ -8724,7 +8724,7 @@ export namespace Gdk {
          * @param value location to store the value of the setting
          * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
          */
-        get_setting(name: string, value: GObject.Value): boolean;
+        get_setting(name: string, value: GObject.Value | any): boolean;
         /**
          * Get the system’s default visual for `screen`.
          * This is the visual for the root window of the display.

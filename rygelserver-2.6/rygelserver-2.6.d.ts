@@ -299,7 +299,7 @@ export namespace RygelServer {
         // Own methods of RygelServer.MediaArtStore
 
         lookup_media_art(item: MusicItem): Thumbnail | null;
-        add(item: MusicItem, file: Gio.File, data: Uint8Array, mime: string): void;
+        add(item: MusicItem, file: Gio.File, data: Uint8Array | string, mime: string): void;
         search_media_art_for_file(item: MusicItem, file: Gio.File): void;
     }
 
@@ -1019,7 +1019,7 @@ export namespace RygelServer {
         // Own static methods of RygelServer.MediaObject
 
         static apply_replacements(
-            replacement_pairs: GLib.HashTable<string, string>,
+            replacement_pairs: { [key: string]: any } | GLib.HashTable<string, string>,
             source_string?: string | null,
         ): string | null;
 
@@ -1419,7 +1419,7 @@ export namespace RygelServer {
         vfunc_create_data_source_for_resource(
             item: MediaObject,
             resource: MediaResource,
-            replacements: GLib.HashTable<string, string>,
+            replacements: { [key: string]: any } | GLib.HashTable<string, string>,
         ): DataSource | null;
         vfunc_create_data_source_for_uri(uri: string): DataSource | null;
         vfunc_get_internal_protocol_schemes(): string[];
@@ -1432,7 +1432,7 @@ export namespace RygelServer {
         create_data_source_for_resource(
             item: MediaObject,
             resource: MediaResource,
-            replacements: GLib.HashTable<string, string>,
+            replacements: { [key: string]: any } | GLib.HashTable<string, string>,
         ): DataSource | null;
         create_data_source_for_uri(uri: string): DataSource | null;
         get_internal_protocol_schemes(): string[];
@@ -1916,6 +1916,7 @@ export namespace RygelServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1958,7 +1959,7 @@ export namespace RygelServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2159,7 +2160,7 @@ export namespace RygelServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2174,7 +2175,7 @@ export namespace RygelServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2328,6 +2329,7 @@ export namespace RygelServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2370,7 +2372,7 @@ export namespace RygelServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2571,7 +2573,7 @@ export namespace RygelServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2586,7 +2588,7 @@ export namespace RygelServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2778,6 +2780,7 @@ export namespace RygelServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2820,7 +2823,7 @@ export namespace RygelServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3021,7 +3024,7 @@ export namespace RygelServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3036,7 +3039,7 @@ export namespace RygelServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

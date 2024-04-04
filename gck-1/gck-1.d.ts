@@ -164,12 +164,26 @@ export namespace Gck {
     /**
      * Load and initialize all the registered modules asynchronously.
      * @param cancellable optional cancellation object
+     */
+    function modules_initialize_registered_async(cancellable?: Gio.Cancellable | null): Promise<Module[]>;
+    /**
+     * Load and initialize all the registered modules asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback a callback which will be called when the operation completes
+     */
+    function modules_initialize_registered_async(
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
+    ): void;
+    /**
+     * Load and initialize all the registered modules asynchronously.
+     * @param cancellable optional cancellation object
      * @param callback a callback which will be called when the operation completes
      */
     function modules_initialize_registered_async(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
-    ): void;
+    ): Promise<Module[]> | void;
     /**
      * Finishes the asynchronous operation to initialize the registered
      * PKCS#11 modules.
@@ -258,13 +272,13 @@ export namespace Gck {
      * @param value memory to convert
      * @returns Whether the conversion was successful.
      */
-    function value_to_boolean(value: Uint8Array): [boolean, boolean];
+    function value_to_boolean(value: Uint8Array | string): [boolean, boolean];
     /**
      * Convert `CK_ULONG` type memory to a boolean.
      * @param value memory to convert
      * @returns Whether the conversion was successful.
      */
-    function value_to_ulong(value: Uint8Array): [boolean, number];
+    function value_to_ulong(value: Uint8Array | string): [boolean, number];
     interface Allocator {
         (data: any | null, length: number): any | null;
     }
@@ -737,6 +751,7 @@ export namespace Gck {
          * @returns the resulting PKCS#11          attribute data, or %NULL if an error occurred
          */
         get_data(attr_type: number, cancellable?: Gio.Cancellable | null): Uint8Array;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Get the data for the specified attribute from the object.
@@ -849,6 +864,7 @@ export namespace Gck {
          * @returns Whether the call was successful or not.
          */
         set(attrs: Attributes, cancellable?: Gio.Cancellable | null): boolean;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Set PKCS#11 attributes on an object. This call will return
@@ -1153,7 +1169,12 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or %NULL
          * @returns the data that was decrypted,          or %NULL if an error occured
          */
-        decrypt(key: Object, mech_type: number, input: Uint8Array, cancellable?: Gio.Cancellable | null): Uint8Array;
+        decrypt(
+            key: Object,
+            mech_type: number,
+            input: Uint8Array | string,
+            cancellable?: Gio.Cancellable | null,
+        ): Uint8Array;
         /**
          * Decrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1166,7 +1187,7 @@ export namespace Gck {
         decrypt_async(
             key: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
+            input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1188,7 +1209,7 @@ export namespace Gck {
         decrypt_full(
             key: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
+            input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
         ): Uint8Array;
         /**
@@ -1253,7 +1274,12 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or %NULL
          * @returns the data that was encrypted,          or %NULL if an error occured.
          */
-        encrypt(key: Object, mech_type: number, input: Uint8Array, cancellable?: Gio.Cancellable | null): Uint8Array;
+        encrypt(
+            key: Object,
+            mech_type: number,
+            input: Uint8Array | string,
+            cancellable?: Gio.Cancellable | null,
+        ): Uint8Array;
         /**
          * Encrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1266,7 +1292,7 @@ export namespace Gck {
         encrypt_async(
             key: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
+            input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1288,7 +1314,7 @@ export namespace Gck {
         encrypt_full(
             key: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
+            input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
         ): Uint8Array;
         /**
@@ -1623,7 +1649,12 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or %NULL
          * @returns the data that was signed,          or %NULL if an error occured
          */
-        sign(key: Object, mech_type: number, input: Uint8Array, cancellable?: Gio.Cancellable | null): Uint8Array;
+        sign(
+            key: Object,
+            mech_type: number,
+            input: Uint8Array | string,
+            cancellable?: Gio.Cancellable | null,
+        ): Uint8Array;
         /**
          * Sign data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1636,7 +1667,7 @@ export namespace Gck {
         sign_async(
             key: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
+            input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1659,7 +1690,7 @@ export namespace Gck {
         sign_full(
             key: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
+            input: Uint8Array | string,
             n_result: number,
             cancellable?: Gio.Cancellable | null,
         ): number;
@@ -1678,7 +1709,7 @@ export namespace Gck {
         unwrap_key(
             wrapper: Object,
             mech_type: number,
-            input: Uint8Array,
+            input: Uint8Array | string,
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
         ): Object;
@@ -1697,7 +1728,7 @@ export namespace Gck {
         unwrap_key_async(
             wrapper: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
+            input: Uint8Array | string,
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -1723,7 +1754,7 @@ export namespace Gck {
         unwrap_key_full(
             wrapper: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
+            input: Uint8Array | string,
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
         ): Object;
@@ -1740,8 +1771,8 @@ export namespace Gck {
         verify(
             key: Object,
             mech_type: number,
-            input: Uint8Array,
-            signature: Uint8Array,
+            input: Uint8Array | string,
+            signature: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1757,8 +1788,8 @@ export namespace Gck {
         verify_async(
             key: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
-            signature: Uint8Array,
+            input: Uint8Array | string,
+            signature: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1781,8 +1812,8 @@ export namespace Gck {
         verify_full(
             key: Object,
             mechanism: Mechanism,
-            input: Uint8Array,
-            signature: Uint8Array,
+            input: Uint8Array | string,
+            signature: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2121,6 +2152,7 @@ export namespace Gck {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2163,7 +2195,7 @@ export namespace Gck {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2364,7 +2396,7 @@ export namespace Gck {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2379,7 +2411,7 @@ export namespace Gck {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

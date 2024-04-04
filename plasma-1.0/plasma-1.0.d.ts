@@ -45,6 +45,7 @@ export namespace Plasma {
 
         create(id: ObjectID, data_size: number, options?: ClientCreateOptions | null): CreatedObject | null;
         disconnect(): boolean;
+        // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         refer_object(id: ObjectID, timeout_ms: number): ReferredObject | null;
     }
@@ -201,7 +202,7 @@ export namespace Plasma {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: Uint8Array): ObjectID;
+        static ['new'](id: Uint8Array | string): ObjectID;
 
         // Own methods of Plasma.ObjectID
 

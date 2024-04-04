@@ -287,6 +287,7 @@ export namespace GUdev {
          * @returns The value for @key or %NULL if @key doesn't exist on @device. Do not free this string, it is owned by @device.
          */
         get_property(key: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Look up the value for `key` on `device` and convert it to an

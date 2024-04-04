@@ -410,7 +410,7 @@ export namespace GeocodeGlib {
 
         _init(...args: any[]): void;
 
-        static new_for_params(params: GLib.HashTable<string, GObject.Value>): Forward;
+        static new_for_params(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Forward;
 
         static new_for_string(str: string): Forward;
 
@@ -690,7 +690,7 @@ export namespace GeocodeGlib {
          * @param error error to return for the query, or %NULL if @results     should be returned instead; errors must match those returned by     geocode_forward_search()
          */
         add_forward_result(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             results?: Place[] | null,
             error?: GLib.Error | null,
         ): void;
@@ -710,7 +710,7 @@ export namespace GeocodeGlib {
          * @param error error to return for the query, or %NULL if @results     should be returned instead; errors must match those returned by     geocode_reverse_resolve()
          */
         add_reverse_result(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             results?: Place[] | null,
             error?: GLib.Error | null,
         ): void;
@@ -753,7 +753,10 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable, %NULL to ignore.
          * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
          */
-        forward_search(params: GLib.HashTable<string, GObject.Value>, cancellable?: Gio.Cancellable | null): Place[];
+        forward_search(
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            cancellable?: Gio.Cancellable | null,
+        ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
          * geocode_backend_forward_search() to do the same thing synchronously.
@@ -770,7 +773,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         forward_search_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -796,7 +799,10 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns A list of    #GeocodePlace instances, or %NULL in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with g_object_unref() and the list with g_list_free() when done.
          */
-        reverse_resolve(params: GLib.HashTable<string, GObject.Value>, cancellable?: Gio.Cancellable | null): Place[];
+        reverse_resolve(
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            cancellable?: Gio.Cancellable | null,
+        ): Place[];
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
          * backend.
@@ -821,7 +827,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         reverse_resolve_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -844,7 +850,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable, %NULL to ignore.
          */
         vfunc_forward_search(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
         ): Place[];
         /**
@@ -863,7 +869,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         vfunc_forward_search_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -888,7 +894,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         vfunc_reverse_resolve(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
         ): Place[];
         /**
@@ -915,7 +921,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         vfunc_reverse_resolve_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1014,6 +1020,7 @@ export namespace GeocodeGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1056,7 +1063,7 @@ export namespace GeocodeGlib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1257,7 +1264,7 @@ export namespace GeocodeGlib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1272,7 +1279,7 @@ export namespace GeocodeGlib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1396,7 +1403,10 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable, %NULL to ignore.
          * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
          */
-        forward_search(params: GLib.HashTable<string, GObject.Value>, cancellable?: Gio.Cancellable | null): Place[];
+        forward_search(
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            cancellable?: Gio.Cancellable | null,
+        ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
          * geocode_backend_forward_search() to do the same thing synchronously.
@@ -1413,7 +1423,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         forward_search_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1439,7 +1449,10 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns A list of    #GeocodePlace instances, or %NULL in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with g_object_unref() and the list with g_list_free() when done.
          */
-        reverse_resolve(params: GLib.HashTable<string, GObject.Value>, cancellable?: Gio.Cancellable | null): Place[];
+        reverse_resolve(
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            cancellable?: Gio.Cancellable | null,
+        ): Place[];
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
          * backend.
@@ -1464,7 +1477,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         reverse_resolve_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1487,7 +1500,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable, %NULL to ignore.
          */
         vfunc_forward_search(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
         ): Place[];
         /**
@@ -1506,7 +1519,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         vfunc_forward_search_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1531,7 +1544,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         vfunc_reverse_resolve(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
         ): Place[];
         /**
@@ -1558,7 +1571,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         vfunc_reverse_resolve_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1657,6 +1670,7 @@ export namespace GeocodeGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1699,7 +1713,7 @@ export namespace GeocodeGlib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1900,7 +1914,7 @@ export namespace GeocodeGlib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1915,7 +1929,7 @@ export namespace GeocodeGlib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2451,7 +2465,10 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable, %NULL to ignore.
          * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
          */
-        forward_search(params: GLib.HashTable<string, GObject.Value>, cancellable?: Gio.Cancellable | null): Place[];
+        forward_search(
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            cancellable?: Gio.Cancellable | null,
+        ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
          * geocode_backend_forward_search() to do the same thing synchronously.
@@ -2468,7 +2485,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         forward_search_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2494,7 +2511,10 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns A list of    #GeocodePlace instances, or %NULL in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with g_object_unref() and the list with g_list_free() when done.
          */
-        reverse_resolve(params: GLib.HashTable<string, GObject.Value>, cancellable?: Gio.Cancellable | null): Place[];
+        reverse_resolve(
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            cancellable?: Gio.Cancellable | null,
+        ): Place[];
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
          * backend.
@@ -2519,7 +2539,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         reverse_resolve_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2545,7 +2565,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable, %NULL to ignore.
          */
         vfunc_forward_search(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
         ): Place[];
         /**
@@ -2564,7 +2584,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         vfunc_forward_search_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2589,7 +2609,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         vfunc_reverse_resolve(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
         ): Place[];
         /**
@@ -2616,7 +2636,7 @@ export namespace GeocodeGlib {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         vfunc_reverse_resolve_async(
-            params: GLib.HashTable<string, GObject.Value>,
+            params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;

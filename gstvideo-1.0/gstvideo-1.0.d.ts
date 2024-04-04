@@ -1999,7 +1999,7 @@ export namespace GstVideo {
     function buffer_add_video_caption_meta(
         buffer: Gst.Buffer,
         caption_type: VideoCaptionType,
-        data: Uint8Array,
+        data: Uint8Array | string,
     ): VideoCaptionMeta;
     /**
      * Attaches a #GstVideoCodecAlphaMeta metadata to `buffer` with
@@ -3190,11 +3190,11 @@ export namespace GstVideo {
      * @returns a #GQuark
      */
     function video_meta_transform_scale_get_quark(): GLib.Quark;
-    function video_multiview_get_doubled_height_modes(): GObject.Value;
-    function video_multiview_get_doubled_size_modes(): GObject.Value;
-    function video_multiview_get_doubled_width_modes(): GObject.Value;
-    function video_multiview_get_mono_modes(): GObject.Value;
-    function video_multiview_get_unpacked_modes(): GObject.Value;
+    function video_multiview_get_doubled_height_modes(): unknown;
+    function video_multiview_get_doubled_size_modes(): unknown;
+    function video_multiview_get_doubled_width_modes(): unknown;
+    function video_multiview_get_mono_modes(): unknown;
+    function video_multiview_get_unpacked_modes(): unknown;
     function video_multiview_guess_half_aspect(
         mv_mode: VideoMultiviewMode,
         width: number,
@@ -3256,7 +3256,7 @@ export namespace GstVideo {
         object: GObject.Object,
         last_prop_id: number,
         property_id: number,
-        value: GObject.Value,
+        value: GObject.Value | any,
     ): boolean;
     function video_region_of_interest_meta_api_get_type(): GObject.GType;
     function video_region_of_interest_meta_get_info(): Gst.MetaInfo;
@@ -5376,6 +5376,7 @@ export namespace GstVideo {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5418,7 +5419,7 @@ export namespace GstVideo {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5493,6 +5494,7 @@ export namespace GstVideo {
          * @returns the same @object
          */
         ref(): GObject.Object;
+        // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object,` and possibly remove the
@@ -5620,7 +5622,7 @@ export namespace GstVideo {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5635,7 +5637,7 @@ export namespace GstVideo {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7801,7 +7803,7 @@ export namespace GstVideo {
          * @param data The user data content of the Ancillary packet.    Does not contain the ADF, DID, SDID nor CS.
          * @returns %TRUE if enough space was left in the current line, %FALSE          otherwise.
          */
-        add_ancillary(composite: boolean, DID: number, SDID_block_number: number, data: Uint8Array): boolean;
+        add_ancillary(composite: boolean, DID: number, SDID_block_number: number, data: Uint8Array | string): boolean;
         copy(): VideoVBIEncoder;
         /**
          * Frees the `encoder`.
@@ -7831,7 +7833,7 @@ export namespace GstVideo {
          * to get the Ancillary data that might be present on that line.
          * @param data The line of data to parse
          */
-        add_line(data: Uint8Array): void;
+        add_line(data: Uint8Array | string): void;
         copy(): VideoVBIParser;
         /**
          * Frees the `parser`.
@@ -8449,7 +8451,12 @@ export namespace GstVideo {
          * @param property_id The property ID
          * @param value The #GValue to be set
          */
-        set_property(object: GObject.Object, last_prop_id: number, property_id: number, value: GObject.Value): boolean;
+        set_property(
+            object: GObject.Object,
+            last_prop_id: number,
+            property_id: number,
+            value: GObject.Value | any,
+        ): boolean;
     }
     interface VideoOverlay extends GObject.Object {
         // Own methods of GstVideo.VideoOverlay

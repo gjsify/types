@@ -115,41 +115,41 @@ export namespace GstInterfaces {
     }
     function interfaces_marshal_VOID__OBJECT_BOOLEAN(
         closure: GObject.Closure,
-        return_value: GObject.Value,
+        return_value: GObject.Value | any,
         n_param_values: number,
-        param_values: GObject.Value,
+        param_values: GObject.Value | any,
         invocation_hint: any,
         marshal_data: any,
     ): void;
     function interfaces_marshal_VOID__OBJECT_INT(
         closure: GObject.Closure,
-        return_value: GObject.Value,
+        return_value: GObject.Value | any,
         n_param_values: number,
-        param_values: GObject.Value,
+        param_values: GObject.Value | any,
         invocation_hint: any,
         marshal_data: any,
     ): void;
     function interfaces_marshal_VOID__OBJECT_POINTER(
         closure: GObject.Closure,
-        return_value: GObject.Value,
+        return_value: GObject.Value | any,
         n_param_values: number,
-        param_values: GObject.Value,
+        param_values: GObject.Value | any,
         invocation_hint: any,
         marshal_data: any,
     ): void;
     function interfaces_marshal_VOID__OBJECT_STRING(
         closure: GObject.Closure,
-        return_value: GObject.Value,
+        return_value: GObject.Value | any,
         n_param_values: number,
-        param_values: GObject.Value,
+        param_values: GObject.Value | any,
         invocation_hint: any,
         marshal_data: any,
     ): void;
     function interfaces_marshal_VOID__OBJECT_ULONG(
         closure: GObject.Closure,
-        return_value: GObject.Value,
+        return_value: GObject.Value | any,
         n_param_values: number,
-        param_values: GObject.Value,
+        param_values: GObject.Value | any,
         invocation_hint: any,
         marshal_data: any,
     ): void;
@@ -852,6 +852,7 @@ export namespace GstInterfaces {
          * @returns the #GParamSpec of %NULL.
          */
         get_property(name: string): GObject.ParamSpec;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Gets the possible (probed) values for the given property,

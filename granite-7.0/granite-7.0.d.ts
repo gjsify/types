@@ -107,22 +107,42 @@ export namespace Granite {
     function date_time_is_same_day(day1: GLib.DateTime, day2: GLib.DateTime): boolean;
     function date_time_get_default_date_format(with_weekday: boolean, with_day: boolean, with_year: boolean): string;
     function date_time_seconds_to_time(seconds: number): string;
-    function services_application_set_badge(count: number, _callback_?: Gio.AsyncReadyCallback<number> | null): void;
+    function services_application_set_badge(count: number): Promise<boolean>;
+    function services_application_set_badge(count: number, _callback_: Gio.AsyncReadyCallback<number> | null): void;
+    function services_application_set_badge(
+        count: number,
+        _callback_?: Gio.AsyncReadyCallback<number> | null,
+    ): Promise<boolean> | void;
     function services_application_set_badge_finish(_res_: Gio.AsyncResult): boolean;
+    function services_application_set_badge_visible(visible: boolean): Promise<boolean>;
+    function services_application_set_badge_visible(
+        visible: boolean,
+        _callback_: Gio.AsyncReadyCallback<boolean> | null,
+    ): void;
     function services_application_set_badge_visible(
         visible: boolean,
         _callback_?: Gio.AsyncReadyCallback<boolean> | null,
-    ): void;
+    ): Promise<boolean> | void;
     function services_application_set_badge_visible_finish(_res_: Gio.AsyncResult): boolean;
+    function services_application_set_progress(progress: number): Promise<boolean>;
+    function services_application_set_progress(
+        progress: number,
+        _callback_: Gio.AsyncReadyCallback<number> | null,
+    ): void;
     function services_application_set_progress(
         progress: number,
         _callback_?: Gio.AsyncReadyCallback<number> | null,
-    ): void;
+    ): Promise<boolean> | void;
     function services_application_set_progress_finish(_res_: Gio.AsyncResult): boolean;
+    function services_application_set_progress_visible(visible: boolean): Promise<boolean>;
+    function services_application_set_progress_visible(
+        visible: boolean,
+        _callback_: Gio.AsyncReadyCallback<boolean> | null,
+    ): void;
     function services_application_set_progress_visible(
         visible: boolean,
         _callback_?: Gio.AsyncReadyCallback<boolean> | null,
-    ): void;
+    ): Promise<boolean> | void;
     function services_application_set_progress_visible_finish(_res_: Gio.AsyncResult): boolean;
     function widgets_utils_set_color_primary(
         window: Gtk.Widget,
@@ -479,6 +499,7 @@ export namespace Granite {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -521,7 +542,7 @@ export namespace Granite {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -722,7 +743,7 @@ export namespace Granite {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -737,7 +758,7 @@ export namespace Granite {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

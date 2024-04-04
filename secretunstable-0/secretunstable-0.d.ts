@@ -352,6 +352,7 @@ export namespace SecretUnstable {
          * @returns the flags for features initialized
          */
         get_flags(): CollectionFlags;
+        // Conflicted with Gio.DBusProxy.get_flags
         get_flags(...args: never[]): any;
         /**
          * Get the list of items in this collection.
@@ -448,7 +449,7 @@ export namespace SecretUnstable {
          */
         search(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
@@ -477,7 +478,7 @@ export namespace SecretUnstable {
          */
         search_for_dbus_paths(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -509,7 +510,7 @@ export namespace SecretUnstable {
          */
         search_for_dbus_paths_sync(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
         ): string[];
         /**
@@ -537,7 +538,7 @@ export namespace SecretUnstable {
          */
         search_sync(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
             cancellable: Gio.Cancellable,
         ): Item[];
@@ -628,6 +629,7 @@ export namespace SecretUnstable {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): Collection;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -890,6 +892,7 @@ export namespace SecretUnstable {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -932,7 +935,7 @@ export namespace SecretUnstable {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1133,7 +1136,7 @@ export namespace SecretUnstable {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1148,7 +1151,7 @@ export namespace SecretUnstable {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1261,7 +1264,7 @@ export namespace SecretUnstable {
         static create(
             collection: Collection,
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             label: string,
             value: Value,
             flags: ItemCreateFlags,
@@ -1294,7 +1297,7 @@ export namespace SecretUnstable {
         static create_sync(
             collection: Collection,
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             label: string,
             value: Value,
             flags: ItemCreateFlags,
@@ -1408,6 +1411,7 @@ export namespace SecretUnstable {
          * @returns the flags for features initialized
          */
         get_flags(): ItemFlags;
+        // Conflicted with Gio.DBusProxy.get_flags
         get_flags(...args: never[]): any;
         /**
          * Get the label of this item.
@@ -1504,7 +1508,7 @@ export namespace SecretUnstable {
          */
         set_attributes(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -1530,7 +1534,7 @@ export namespace SecretUnstable {
          */
         set_attributes_sync(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
         ): boolean;
         /**
@@ -1651,6 +1655,7 @@ export namespace SecretUnstable {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): Item;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1913,6 +1918,7 @@ export namespace SecretUnstable {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1955,7 +1961,7 @@ export namespace SecretUnstable {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2156,7 +2162,7 @@ export namespace SecretUnstable {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2171,7 +2177,7 @@ export namespace SecretUnstable {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2337,6 +2343,7 @@ export namespace SecretUnstable {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): Prompt;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2599,6 +2606,7 @@ export namespace SecretUnstable {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2641,7 +2649,7 @@ export namespace SecretUnstable {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2842,7 +2850,7 @@ export namespace SecretUnstable {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2857,7 +2865,7 @@ export namespace SecretUnstable {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3058,7 +3066,7 @@ export namespace SecretUnstable {
          */
         clear(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -3086,7 +3094,7 @@ export namespace SecretUnstable {
          */
         clear_sync(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
         ): boolean;
         /**
@@ -3120,7 +3128,7 @@ export namespace SecretUnstable {
          * @param callback called when the operation completes
          */
         create_collection_dbus_path(
-            properties: GLib.HashTable<string, GLib.Variant>,
+            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             alias: string,
             flags: CollectionCreateFlags,
             cancellable: Gio.Cancellable,
@@ -3162,7 +3170,7 @@ export namespace SecretUnstable {
          * @returns a new string containing the D-Bus object path of the collection
          */
         create_collection_dbus_path_sync(
-            properties: GLib.HashTable<string, GLib.Variant>,
+            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             alias: string,
             flags: CollectionCreateFlags,
             cancellable: Gio.Cancellable,
@@ -3196,7 +3204,7 @@ export namespace SecretUnstable {
          */
         create_item_dbus_path(
             collection_path: string,
-            properties: GLib.HashTable<string, GLib.Variant>,
+            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             value: Value,
             flags: ItemCreateFlags,
             cancellable: Gio.Cancellable,
@@ -3238,7 +3246,7 @@ export namespace SecretUnstable {
          */
         create_item_dbus_path_sync(
             collection_path: string,
-            properties: GLib.HashTable<string, GLib.Variant>,
+            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             value: Value,
             flags: ItemCreateFlags,
             cancellable: Gio.Cancellable,
@@ -3340,6 +3348,7 @@ export namespace SecretUnstable {
          * @returns the flags for features initialized
          */
         get_flags(): ServiceFlags;
+        // Conflicted with Gio.DBusProxy.get_flags
         get_flags(...args: never[]): any;
         /**
          * Get the GObject type for items instantiated by this collection.
@@ -3594,7 +3603,7 @@ export namespace SecretUnstable {
          */
         lookup(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -3623,7 +3632,7 @@ export namespace SecretUnstable {
          */
         lookup_sync(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
         ): Value;
         /**
@@ -3767,7 +3776,7 @@ export namespace SecretUnstable {
          */
         search(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
@@ -3796,7 +3805,7 @@ export namespace SecretUnstable {
          */
         search_for_dbus_paths(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -3836,7 +3845,7 @@ export namespace SecretUnstable {
          */
         search_for_dbus_paths_sync(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
         ): [boolean, string[] | null, string[] | null];
         /**
@@ -3869,7 +3878,7 @@ export namespace SecretUnstable {
          */
         search_sync(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
             cancellable: Gio.Cancellable,
         ): Item[];
@@ -3973,7 +3982,7 @@ export namespace SecretUnstable {
          */
         store(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             collection: string,
             label: string,
             value: Value,
@@ -4013,7 +4022,7 @@ export namespace SecretUnstable {
          */
         store_sync(
             schema: Secret.Schema,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             collection: string,
             label: string,
             value: Value,
@@ -4171,6 +4180,7 @@ export namespace SecretUnstable {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): Service;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4433,6 +4443,7 @@ export namespace SecretUnstable {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4475,7 +4486,7 @@ export namespace SecretUnstable {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4676,7 +4687,7 @@ export namespace SecretUnstable {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4691,7 +4702,7 @@ export namespace SecretUnstable {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

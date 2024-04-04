@@ -2863,7 +2863,9 @@ export namespace NetworkManager {
      * @param hash a #GHashTable mapping string:GValue
      * @returns a newly allocated duplicated #GHashTable, caller must free the returned hash with g_hash_table_unref() or g_hash_table_destroy()
      */
-    function utils_gvalue_hash_dup(hash: GLib.HashTable<any, any>): GLib.HashTable<string, GObject.Value>;
+    function utils_gvalue_hash_dup(
+        hash: { [key: string]: any } | GLib.HashTable<any, any>,
+    ): GLib.HashTable<string, GObject.Value>;
     /**
      * Converts a hex string (2 characters) into its byte representation.
      * @param hex a string representing a hex byte
@@ -2966,7 +2968,7 @@ export namespace NetworkManager {
      * @param value #GValue containing a #GPtrArray of #GArrays of #guint32s
      * @returns a newly allocated #GSList of #NMIP4Address objects
      */
-    function utils_ip4_addresses_from_gvalue(value: GObject.Value): IP4Address[];
+    function utils_ip4_addresses_from_gvalue(value: GObject.Value | any): IP4Address[];
     /**
      * Utility function to convert a #GSList of #NMIP4Address objects into a
      * #GPtrArray of #GArrays of #guint32s representing a list of NetworkManager IPv4
@@ -2976,7 +2978,7 @@ export namespace NetworkManager {
      * @param list a list of #NMIP4Address objects
      * @param value a pointer to a #GValue into which to place the converted addresses, which should be unset by the caller (when no longer needed) with g_value_unset().
      */
-    function utils_ip4_addresses_to_gvalue(list: IP4Address[], value: GObject.Value): void;
+    function utils_ip4_addresses_to_gvalue(list: IP4Address[], value: GObject.Value | any): void;
     /**
      * When the Internet was originally set up, various ranges of IP addresses were
      * segmented into three network classes: A, B, and C.  This function will return
@@ -2997,7 +2999,7 @@ export namespace NetworkManager {
      * @param value #GValue containing a #GPtrArray of #GArrays of #guint32s
      * @returns a newly allocated #GSList of #NMIP4Route objects
      */
-    function utils_ip4_routes_from_gvalue(value: GObject.Value): IP4Route[];
+    function utils_ip4_routes_from_gvalue(value: GObject.Value | any): IP4Route[];
     /**
      * Utility function to convert a #GSList of #NMIP4Route objects into a
      * #GPtrArray of #GArrays of #guint32s representing a list of NetworkManager IPv4
@@ -3007,7 +3009,7 @@ export namespace NetworkManager {
      * @param list a list of #NMIP4Route objects
      * @param value a pointer to a #GValue into which to place the converted routes, which should be unset by the caller (when no longer needed) with g_value_unset().
      */
-    function utils_ip4_routes_to_gvalue(list: IP4Route[], value: GObject.Value): void;
+    function utils_ip4_routes_to_gvalue(list: IP4Route[], value: GObject.Value | any): void;
     /**
      * Utility function to convert a #GPtrArray of #GValueArrays of (#GArray of guchars) and #guint32
      * representing a list of NetworkManager IPv6 addresses (which is a tuple of address,
@@ -3017,7 +3019,7 @@ export namespace NetworkManager {
      * @param value gvalue containing a GPtrArray of GValueArrays of (GArray of guchars) and #guint32
      * @returns a newly allocated #GSList of #NMIP6Address objects
      */
-    function utils_ip6_addresses_from_gvalue(value: GObject.Value): IP6Address[];
+    function utils_ip6_addresses_from_gvalue(value: GObject.Value | any): IP6Address[];
     /**
      * Utility function to convert a #GSList of #NMIP6Address objects into a
      * #GPtrArray of #GValueArrays representing a list of NetworkManager IPv6 addresses
@@ -3027,7 +3029,7 @@ export namespace NetworkManager {
      * @param list a list of #NMIP6Address objects
      * @param value a pointer to a #GValue into which to place the converted addresses, which should be unset by the caller (when no longer needed) with g_value_unset().
      */
-    function utils_ip6_addresses_to_gvalue(list: IP6Address[], value: GObject.Value): void;
+    function utils_ip6_addresses_to_gvalue(list: IP6Address[], value: GObject.Value | any): void;
     /**
      * Utility function #GPtrArray of #GValueArrays of (#GArray of #guchars), #guint32,
      * (#GArray of #guchars), and #guint32 representing a list of NetworkManager IPv6
@@ -3037,7 +3039,7 @@ export namespace NetworkManager {
      * @param value #GValue containing a #GPtrArray of #GValueArrays of (#GArray of #guchars), #guint32, (#GArray of #guchars), and #guint32
      * @returns a newly allocated #GSList of #NMIP6Route objects
      */
-    function utils_ip6_routes_from_gvalue(value: GObject.Value): IP6Route[];
+    function utils_ip6_routes_from_gvalue(value: GObject.Value | any): IP6Route[];
     /**
      * Utility function to convert a #GSList of #NMIP6Route objects into a #GPtrArray of
      * #GValueArrays of (#GArray of #guchars), #guint32, (#GArray of #guchars), and #guint32
@@ -3047,7 +3049,7 @@ export namespace NetworkManager {
      * @param list a list of #NMIP6Route objects
      * @param value a pointer to a #GValue into which to place the converted routes, which should be unset by the caller (when no longer needed) with g_value_unset().
      */
-    function utils_ip6_routes_to_gvalue(list: IP6Route[], value: GObject.Value): void;
+    function utils_ip6_routes_to_gvalue(list: IP6Route[], value: GObject.Value | any): void;
     /**
      * Different manufacturers use different mechanisms for not broadcasting the
      * AP's SSID.  This function attempts to detect blank/empty SSIDs using a
@@ -3071,7 +3073,7 @@ export namespace NetworkManager {
      * @param in_password existing password to use, if any
      * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
      */
-    function utils_rsa_key_encrypt(data: Uint8Array, in_password: string | null): [Uint8Array, string];
+    function utils_rsa_key_encrypt(data: Uint8Array | string, in_password: string | null): [Uint8Array, string];
     /**
      * Encrypts the given RSA private key data with the given password (or generates
      * a password if no password was given) and converts the data to PEM format
@@ -3080,7 +3082,7 @@ export namespace NetworkManager {
      * @param in_password existing password to use, if any
      * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
      */
-    function utils_rsa_key_encrypt_aes(data: Uint8Array, in_password: string | null): [Uint8Array, string];
+    function utils_rsa_key_encrypt_aes(data: Uint8Array | string, in_password: string | null): [Uint8Array, string];
     /**
      * Earlier versions of the Linux kernel added a NULL byte to the end of the
      * SSID to enable easy printing of the SSID on the console or in a terminal,
@@ -3093,7 +3095,11 @@ export namespace NetworkManager {
      * @param ignore_trailing_null %TRUE to ignore one trailing NULL byte
      * @returns %TRUE if the SSIDs are the same, %FALSE if they are not
      */
-    function utils_same_ssid(ssid1: Uint8Array, ssid2: Uint8Array, ignore_trailing_null: boolean): boolean;
+    function utils_same_ssid(
+        ssid1: Uint8Array | string,
+        ssid2: Uint8Array | string,
+        ignore_trailing_null: boolean,
+    ): boolean;
     /**
      * Given a set of device capabilities, and a desired security type to check
      * against, determines whether the combination of device, desired security
@@ -3145,7 +3151,7 @@ export namespace NetworkManager {
      * @param ssid a byte array containing the SSID data
      * @returns an allocated string containing a UTF-8 representation of the SSID, which must be freed by the caller using g_free(). Returns %NULL on errors.
      */
-    function utils_ssid_to_utf8(ssid: Uint8Array): string;
+    function utils_ssid_to_utf8(ssid: Uint8Array | string): string;
     function utils_uuid_generate(): string;
     /**
      * For a given `s,` this function will always return the same UUID.
@@ -3198,7 +3204,7 @@ export namespace NetworkManager {
         (setting: Setting, secret: string, flags: SettingSecretFlags): boolean;
     }
     interface SettingValueIterFn {
-        (setting: Setting, key: string, value: GObject.Value, flags: GObject.ParamFlags): void;
+        (setting: Setting, key: string, value: GObject.Value | any, flags: GObject.ParamFlags): void;
     }
     interface UtilsFileSearchInPathsPredicate {
         (filename: string): boolean;
@@ -3447,7 +3453,7 @@ export namespace NetworkManager {
 
         static ['new'](): Connection;
 
-        static new_from_hash(hash: GLib.HashTable<string, GLib.HashTable>): Connection;
+        static new_from_hash(hash: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): Connection;
 
         // Own signals of NetworkManager.Connection
 
@@ -3527,7 +3533,11 @@ export namespace NetworkManager {
          * @param out_settings if the connections differ, on return a hash table mapping setting names to second-level GHashTable (utf8 to guint32), which contains the key names that differ mapped to one or more of %NMSettingDiffResult as a bitfield
          * @returns %TRUE if the connections contain the same values, %FALSE if they do not
          */
-        diff(b: Connection, flags: SettingCompareFlags, out_settings: GLib.HashTable<string, GLib.HashTable>): boolean;
+        diff(
+            b: Connection,
+            flags: SettingCompareFlags,
+            out_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>,
+        ): boolean;
         /**
          * Print the connection to stdout.  For debugging purposes ONLY, should NOT
          * be used for serialization of the connection or machine-parsed in any way. The
@@ -3770,7 +3780,7 @@ export namespace NetworkManager {
          * @param setting_type the #GType of the setting object to remove
          */
         remove_setting(setting_type: GObject.GType): void;
-        replace_settings(new_settings: GLib.HashTable<string, GLib.HashTable>): boolean;
+        replace_settings(new_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): boolean;
         /**
          * Deep-copies the settings of `new_conenction` and replaces the settings of `connection`
          * with the copied settings.
@@ -3807,7 +3817,10 @@ export namespace NetworkManager {
          * @param secrets a #GHashTable mapping string:#GValue of setting property names and secrets of the given @setting_name
          * @returns %TRUE if the secrets were successfully updated, %FALSE if the update failed (tried to update secrets for a setting that doesn't exist, etc)
          */
-        update_secrets(setting_name: string, secrets: GLib.HashTable<string, GObject.Value>): boolean;
+        update_secrets(
+            setting_name: string,
+            secrets: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): boolean;
         /**
          * Validates the connection and all its settings.  Each setting's properties
          * have allowed values, and some values are dependent on other values.  For
@@ -3854,7 +3867,10 @@ export namespace NetworkManager {
 
         _init(...args: any[]): void;
 
-        static new_from_hash(setting_type: GObject.GType, hash: GLib.HashTable<string, GObject.Value>): Setting;
+        static new_from_hash(
+            setting_type: GObject.GType,
+            hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): Setting;
 
         // Own virtual methods of NetworkManager.Setting
 
@@ -3873,7 +3889,7 @@ export namespace NetworkManager {
          */
         vfunc_need_secrets(): string[];
         vfunc_set_secret_flags(secret_name: string, verify_secret: boolean, flags: SettingSecretFlags): boolean;
-        vfunc_update_one_secret(key: string, value: GObject.Value): number;
+        vfunc_update_one_secret(key: string, value: GObject.Value | any): number;
 
         // Own methods of NetworkManager.Setting
 
@@ -3913,7 +3929,7 @@ export namespace NetworkManager {
             b: Setting,
             flags: SettingCompareFlags,
             invert_results: boolean,
-            results: GLib.HashTable<string, number>,
+            results: { [key: string]: any } | GLib.HashTable<string, number>,
         ): [boolean, GLib.HashTable<string, number>];
         /**
          * Duplicates a #NMSetting.
@@ -3982,7 +3998,7 @@ export namespace NetworkManager {
          * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
          * @returns %TRUE if the secrets were successfully updated, %FALSE on failure to update one or more of the secrets.
          */
-        update_secrets(secrets: GLib.HashTable<string, GObject.Value>): boolean;
+        update_secrets(secrets: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): boolean;
         /**
          * Validates the setting.  Each setting's properties have allowed values, and
          * some are dependent on other values (hence the need for `all_settings)`.  The

@@ -324,6 +324,7 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<ClientGlueProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like up_client_glue_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -347,6 +348,7 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<ClientGlueProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -468,6 +470,7 @@ export namespace UPowerGlib {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): ClientGlueProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -850,6 +853,7 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -892,7 +896,7 @@ export namespace UPowerGlib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1093,7 +1097,7 @@ export namespace UPowerGlib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1108,7 +1112,7 @@ export namespace UPowerGlib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1442,6 +1446,7 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1484,7 +1489,7 @@ export namespace UPowerGlib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1685,7 +1690,7 @@ export namespace UPowerGlib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1700,7 +1705,7 @@ export namespace UPowerGlib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2165,6 +2170,7 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<DeviceGlueProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like up_device_glue_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -2188,6 +2194,7 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<DeviceGlueProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -2554,6 +2561,7 @@ export namespace UPowerGlib {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): DeviceGlueProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2942,6 +2950,7 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2984,7 +2993,7 @@ export namespace UPowerGlib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3185,7 +3194,7 @@ export namespace UPowerGlib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3200,7 +3209,7 @@ export namespace UPowerGlib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3785,6 +3794,7 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3827,7 +3837,7 @@ export namespace UPowerGlib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4028,7 +4038,7 @@ export namespace UPowerGlib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4043,7 +4053,7 @@ export namespace UPowerGlib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4430,6 +4440,7 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<WakeupsGlueProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
          * Like up_wakeups_glue_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
@@ -4453,6 +4464,7 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<WakeupsGlueProxy> | null,
         ): void;
+        // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
 
         // Inherited properties
@@ -4532,6 +4544,7 @@ export namespace UPowerGlib {
          * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
          */
         new_finish(res: Gio.AsyncResult): WakeupsGlueProxy;
+        // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4871,6 +4884,7 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4913,7 +4927,7 @@ export namespace UPowerGlib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5114,7 +5128,7 @@ export namespace UPowerGlib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5129,7 +5143,7 @@ export namespace UPowerGlib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5378,6 +5392,7 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5420,7 +5435,7 @@ export namespace UPowerGlib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5621,7 +5636,7 @@ export namespace UPowerGlib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5636,7 +5651,7 @@ export namespace UPowerGlib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

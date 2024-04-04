@@ -135,12 +135,14 @@ export namespace Bump {
 
         vfunc_release(): void;
         vfunc_init(cancellable: Gio.Cancellable): boolean;
+        // Conflicted with Gio.Initable.vfunc_init
         vfunc_init(...args: never[]): any;
         vfunc_init_async(
             io_priority: number,
             cancellable: Gio.Cancellable,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        // Conflicted with Gio.AsyncInitable.vfunc_init_async
         vfunc_init_async(...args: never[]): any;
         vfunc_init_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -148,8 +150,10 @@ export namespace Bump {
 
         release(): void;
         init(cancellable: Gio.Cancellable): boolean;
+        // Conflicted with Gio.Initable.init
         init(...args: never[]): any;
         init_async(io_priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+        // Conflicted with Gio.AsyncInitable.init_async
         init_async(...args: never[]): any;
         init_finish(_res_: Gio.AsyncResult): boolean;
         get_active(): boolean;
@@ -255,6 +259,7 @@ export namespace Bump {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -297,7 +302,7 @@ export namespace Bump {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -498,7 +503,7 @@ export namespace Bump {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -513,7 +518,7 @@ export namespace Bump {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1191,6 +1196,7 @@ export namespace Bump {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1233,7 +1239,7 @@ export namespace Bump {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1434,7 +1440,7 @@ export namespace Bump {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1449,7 +1455,7 @@ export namespace Bump {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

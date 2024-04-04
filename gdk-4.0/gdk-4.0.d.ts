@@ -3321,6 +3321,50 @@ export namespace Gdk {
      * @param type the GType to deserialize from
      * @param io_priority the I/O priority of the operation
      * @param cancellable optional `GCancellable` object
+     */
+    function content_deserialize_async(
+        stream: Gio.InputStream,
+        mime_type: string,
+        type: GObject.GType,
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<[GObject.Value]>;
+    /**
+     * Read content from the given input stream and deserialize it, asynchronously.
+     *
+     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * indicate a higher priority.
+     *
+     * When the operation is finished, `callback` will be called. You must then
+     * call [func`Gdk`.content_deserialize_finish] to get the result of the operation.
+     * @param stream a `GInputStream` to read the serialized content from
+     * @param mime_type the mime type to deserialize from
+     * @param type the GType to deserialize from
+     * @param io_priority the I/O priority of the operation
+     * @param cancellable optional `GCancellable` object
+     * @param callback callback to call when the operation is done
+     */
+    function content_deserialize_async(
+        stream: Gio.InputStream,
+        mime_type: string,
+        type: GObject.GType,
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.InputStream> | null,
+    ): void;
+    /**
+     * Read content from the given input stream and deserialize it, asynchronously.
+     *
+     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * indicate a higher priority.
+     *
+     * When the operation is finished, `callback` will be called. You must then
+     * call [func`Gdk`.content_deserialize_finish] to get the result of the operation.
+     * @param stream a `GInputStream` to read the serialized content from
+     * @param mime_type the mime type to deserialize from
+     * @param type the GType to deserialize from
+     * @param io_priority the I/O priority of the operation
+     * @param cancellable optional `GCancellable` object
      * @param callback callback to call when the operation is done
      */
     function content_deserialize_async(
@@ -3330,7 +3374,7 @@ export namespace Gdk {
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.InputStream> | null,
-    ): void;
+    ): Promise<[GObject.Value]> | void;
     /**
      * Finishes a content deserialization operation.
      * @param result the `GAsyncResult`
@@ -3381,16 +3425,60 @@ export namespace Gdk {
      * @param value the content to serialize
      * @param io_priority the I/O priority of the operation
      * @param cancellable optional `GCancellable` object
+     */
+    function content_serialize_async(
+        stream: Gio.OutputStream,
+        mime_type: string,
+        value: GObject.Value | any,
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Serialize content and write it to the given output stream, asynchronously.
+     *
+     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * indicate a higher priority.
+     *
+     * When the operation is finished, `callback` will be called. You must then
+     * call [func`Gdk`.content_serialize_finish] to get the result of the operation.
+     * @param stream a `GOutputStream` to write the serialized content to
+     * @param mime_type the mime type to serialize to
+     * @param value the content to serialize
+     * @param io_priority the I/O priority of the operation
+     * @param cancellable optional `GCancellable` object
      * @param callback callback to call when the operation is done
      */
     function content_serialize_async(
         stream: Gio.OutputStream,
         mime_type: string,
-        value: GObject.Value,
+        value: GObject.Value | any,
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.OutputStream> | null,
+    ): void;
+    /**
+     * Serialize content and write it to the given output stream, asynchronously.
+     *
+     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * indicate a higher priority.
+     *
+     * When the operation is finished, `callback` will be called. You must then
+     * call [func`Gdk`.content_serialize_finish] to get the result of the operation.
+     * @param stream a `GOutputStream` to write the serialized content to
+     * @param mime_type the mime type to serialize to
+     * @param value the content to serialize
+     * @param io_priority the I/O priority of the operation
+     * @param cancellable optional `GCancellable` object
+     * @param callback callback to call when the operation is done
+     */
+    function content_serialize_async(
+        stream: Gio.OutputStream,
+        mime_type: string,
+        value: GObject.Value | any,
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.OutputStream> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes a content serialization operation.
      * @param result the `GAsyncResult`
@@ -4042,6 +4130,7 @@ export namespace Gdk {
          * @returns the display of @context
          */
         get_display(): Display;
+        // Conflicted with Gio.AppLaunchContext.get_display
         get_display(...args: never[]): any;
         /**
          * Sets the workspace on which applications will be launched.
@@ -4360,7 +4449,7 @@ export namespace Gdk {
          * @param result a `GAsyncResult`
          * @returns a `GValue` containing the result.
          */
-        read_value_finish(result: Gio.AsyncResult): GObject.Value;
+        read_value_finish(result: Gio.AsyncResult): unknown;
         /**
          * Sets a new content provider on `clipboard`.
          *
@@ -4382,7 +4471,8 @@ export namespace Gdk {
          * Sets the `clipboard` to contain the given `value`.
          * @param value a `GValue` to set
          */
-        set(value: GObject.Value): void;
+        set(value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Asynchronously instructs the `clipboard` to store its contents remotely.
@@ -4494,7 +4584,7 @@ export namespace Gdk {
          * Gets the `GValue` to store the deserialized object in.
          * @returns the `GValue` for the current operation
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Indicate that the deserialization has ended with an error.
          *
@@ -4643,6 +4733,7 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4685,7 +4776,7 @@ export namespace Gdk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4886,7 +4977,7 @@ export namespace Gdk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4901,7 +4992,7 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4960,9 +5051,9 @@ export namespace Gdk {
 
         _init(...args: any[]): void;
 
-        static new_for_bytes(mime_type: string, bytes: GLib.Bytes): ContentProvider;
+        static new_for_bytes(mime_type: string, bytes: GLib.Bytes | Uint8Array): ContentProvider;
 
-        static new_for_value(value: GObject.Value): ContentProvider;
+        static new_for_value(value: GObject.Value | any): ContentProvider;
 
         static new_union(providers?: ContentProvider[] | null): ContentProvider;
 
@@ -5186,7 +5277,7 @@ export namespace Gdk {
          * Gets the `GValue` to read the object to serialize from.
          * @returns the `GValue` for the current operation
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Indicate that the serialization has ended with an error.
          *
@@ -5335,6 +5426,7 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5377,7 +5469,7 @@ export namespace Gdk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5578,7 +5670,7 @@ export namespace Gdk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5593,7 +5685,7 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6472,7 +6564,7 @@ export namespace Gdk {
          * @param value location to store the value of the setting
          * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise
          */
-        get_setting(name: string, value: GObject.Value): boolean;
+        get_setting(name: string, value: GObject.Value | any): boolean;
         /**
          * Gets the startup notification ID for a Wayland display, or %NULL
          * if no ID has been defined.
@@ -7274,7 +7366,7 @@ export namespace Gdk {
          * @param result a `GAsyncResult`
          * @returns a `GValue` containing the result.
          */
-        read_value_finish(result: Gio.AsyncResult): GObject.Value;
+        read_value_finish(result: Gio.AsyncResult): unknown;
         /**
          * Selects all actions that are potentially supported by the destination.
          *
@@ -8435,6 +8527,7 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8477,7 +8570,7 @@ export namespace Gdk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8678,7 +8771,7 @@ export namespace Gdk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8693,7 +8786,7 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9090,7 +9183,7 @@ export namespace Gdk {
             width: number,
             height: number,
             format: MemoryFormat,
-            bytes: GLib.Bytes,
+            bytes: GLib.Bytes | Uint8Array,
             stride: number,
         ): MemoryTexture;
 
@@ -9500,6 +9593,7 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9542,7 +9636,7 @@ export namespace Gdk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9743,7 +9837,7 @@ export namespace Gdk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9758,7 +9852,7 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10661,7 +10755,7 @@ export namespace Gdk {
 
         static new_for_pixbuf(pixbuf: GdkPixbuf.Pixbuf): Texture;
 
-        static new_from_bytes(bytes: GLib.Bytes): Texture;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array): Texture;
 
         static new_from_file(file: Gio.File): Texture;
 
@@ -10697,7 +10791,7 @@ export namespace Gdk {
          * @param data pointer to enough memory to be filled with the   downloaded data of @texture
          * @param stride rowstride in bytes
          */
-        download(data: Uint8Array, stride: number): void;
+        download(data: Uint8Array | string, stride: number): void;
         /**
          * Gets the memory format most closely associated with the data of
          * the texture.
@@ -11182,6 +11276,7 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11224,7 +11319,7 @@ export namespace Gdk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11425,7 +11520,7 @@ export namespace Gdk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11440,7 +11535,7 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -11727,6 +11822,7 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11769,7 +11865,7 @@ export namespace Gdk {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11970,7 +12066,7 @@ export namespace Gdk {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11985,7 +12081,7 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -12811,7 +12907,7 @@ export namespace Gdk {
          * @param data pointer to enough memory to be filled with the   downloaded data of the texture
          * @param stride rowstride in bytes
          */
-        download_into(data: Uint8Array, stride: number): void;
+        download_into(data: Uint8Array | string, stride: number): void;
         /**
          * Frees the given downloader and all its associated resources.
          */

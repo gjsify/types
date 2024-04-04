@@ -836,6 +836,7 @@ export namespace Arrow {
         // Own methods of Arrow.ArraySortOptions
 
         equal(other_options: ArraySortOptions): boolean;
+        // Conflicted with Arrow.FunctionOptions.equal
         equal(...args: never[]): any;
     }
 
@@ -947,9 +948,9 @@ export namespace Arrow {
 
         // Own methods of Arrow.BinaryArrayBuilder
 
-        append(value: Uint8Array): boolean;
-        append_value(value: Uint8Array): boolean;
-        append_value_bytes(value: GLib.Bytes): boolean;
+        append(value: Uint8Array | string): boolean;
+        append_value(value: Uint8Array | string): boolean;
+        append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -957,7 +958,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
          * @returns %TRUE on success, %FALSE if there was an error.
          */
-        append_values(values: GLib.Bytes[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids?: boolean[] | null): boolean;
     }
 
     module BinaryDataType {
@@ -1005,8 +1006,8 @@ export namespace Arrow {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         append_indices(values: number[], is_valids?: boolean[] | null): boolean;
-        append_value(value: Uint8Array): boolean;
-        append_value_bytes(value: GLib.Bytes): boolean;
+        append_value(value: Uint8Array | string): boolean;
+        append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
         finish_delta(): [boolean, Array, Array];
         get_dictionary_length(): number;
         insert_memo_values(values: BinaryArray): boolean;
@@ -1157,9 +1158,9 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](data: Uint8Array): Buffer;
+        static ['new'](data: Uint8Array | string): Buffer;
 
-        static new_bytes(data: GLib.Bytes): Buffer;
+        static new_bytes(data: GLib.Bytes | Uint8Array): Buffer;
 
         // Own methods of Arrow.Buffer
 
@@ -1168,6 +1169,7 @@ export namespace Arrow {
         equal_n_bytes(other_buffer: Buffer, n_bytes: number): boolean;
         get_capacity(): number;
         get_data(): GLib.Bytes;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         get_mutable_data(): GLib.Bytes | null;
         get_parent(): Buffer | null;
@@ -1297,6 +1299,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1339,7 +1342,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1540,7 +1543,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1555,7 +1558,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1596,7 +1599,7 @@ export namespace Arrow {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         flush(): boolean;
-        write(data: Uint8Array): boolean;
+        write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1687,6 +1690,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1729,7 +1733,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1930,7 +1934,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1945,7 +1949,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2462,8 +2466,10 @@ export namespace Arrow {
         is_closed(): boolean;
         tell(): number;
         read(n_bytes: number): Buffer | null;
+        // Conflicted with Gio.InputStream.read
         read(...args: never[]): any;
         read_bytes(n_bytes: number): GLib.Bytes | null;
+        // Conflicted with Gio.InputStream.read_bytes
         read_bytes(...args: never[]): any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -2555,6 +2561,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2597,7 +2604,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2798,7 +2805,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2813,7 +2820,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2859,7 +2866,7 @@ export namespace Arrow {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         flush(): boolean;
-        write(data: Uint8Array): boolean;
+        write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2950,6 +2957,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2992,7 +3000,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3193,7 +3201,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3208,7 +3216,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3586,6 +3594,7 @@ export namespace Arrow {
 
         format_value(i: number): string;
         get_value(i: number): Decimal128;
+        // Conflicted with Arrow.FixedSizeBinaryArray.get_value
         get_value(...args: never[]): any;
     }
 
@@ -3610,6 +3619,7 @@ export namespace Arrow {
 
         append(value: Decimal128): boolean;
         append_value(value?: Decimal128 | null): boolean;
+        // Conflicted with Arrow.FixedSizeBinaryArrayBuilder.append_value
         append_value(...args: never[]): any;
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -3619,6 +3629,7 @@ export namespace Arrow {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         append_values(values: Decimal128[], is_valids?: boolean[] | null): boolean;
+        // Conflicted with Arrow.FixedSizeBinaryArrayBuilder.append_values
         append_values(...args: never[]): any;
     }
 
@@ -3748,6 +3759,7 @@ export namespace Arrow {
 
         format_value(i: number): string;
         get_value(i: number): Decimal256;
+        // Conflicted with Arrow.FixedSizeBinaryArray.get_value
         get_value(...args: never[]): any;
     }
 
@@ -3771,6 +3783,7 @@ export namespace Arrow {
         // Own methods of Arrow.Decimal256ArrayBuilder
 
         append_value(value?: Decimal256 | null): boolean;
+        // Conflicted with Arrow.FixedSizeBinaryArrayBuilder.append_value
         append_value(...args: never[]): any;
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -3780,6 +3793,7 @@ export namespace Arrow {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         append_values(values: Decimal256[], is_valids?: boolean[] | null): boolean;
+        // Conflicted with Arrow.FixedSizeBinaryArrayBuilder.append_values
         append_values(...args: never[]): any;
     }
 
@@ -3913,7 +3927,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](fields: Field[], type_codes: Uint8Array): DenseUnionDataType;
+        static ['new'](fields: Field[], type_codes: Uint8Array | string): DenseUnionDataType;
     }
 
     module DenseUnionScalar {
@@ -4540,8 +4554,8 @@ export namespace Arrow {
         remove_metadata(): Field;
         to_string(): string;
         to_string_metadata(show_metadata: boolean): string;
-        with_merged_metadata(metadata: GLib.HashTable<string, string>): Field;
-        with_metadata(metadata: GLib.HashTable<string, string>): Field;
+        with_merged_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Field;
+        with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Field;
     }
 
     module FieldExpression {
@@ -4758,6 +4772,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4800,7 +4815,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5001,7 +5016,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5016,7 +5031,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5057,7 +5072,7 @@ export namespace Arrow {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         flush(): boolean;
-        write(data: Uint8Array): boolean;
+        write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5148,6 +5163,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5190,7 +5206,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5391,7 +5407,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5406,7 +5422,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5713,7 +5729,7 @@ export namespace Arrow {
         // Own methods of Arrow.FixedSizeBinaryArrayBuilder
 
         append_value(value?: Uint8Array | null): boolean;
-        append_value_bytes(value: GLib.Bytes): boolean;
+        append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -5721,7 +5737,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
          * @returns %TRUE on success, %FALSE if there was an error.
          */
-        append_values(values: GLib.Bytes[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids?: boolean[] | null): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -5732,7 +5748,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
          * @returns %TRUE on success, %FALSE if there was an error.
          */
-        append_values_packed(values: GLib.Bytes, is_valids?: boolean[] | null): boolean;
+        append_values_packed(values: GLib.Bytes | Uint8Array, is_valids?: boolean[] | null): boolean;
     }
 
     module FixedSizeBinaryDataType {
@@ -6117,6 +6133,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6159,7 +6176,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6360,7 +6377,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6375,7 +6392,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6426,7 +6443,7 @@ export namespace Arrow {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         flush(): boolean;
-        write(data: Uint8Array): boolean;
+        write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6517,6 +6534,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6559,7 +6577,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6760,7 +6778,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6775,7 +6793,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6861,8 +6879,10 @@ export namespace Arrow {
         is_closed(): boolean;
         tell(): number;
         read(n_bytes: number): Buffer | null;
+        // Conflicted with Gio.InputStream.read
         read(...args: never[]): any;
         read_bytes(n_bytes: number): GLib.Bytes | null;
+        // Conflicted with Gio.InputStream.read_bytes
         read_bytes(...args: never[]): any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6954,6 +6974,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6996,7 +7017,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7197,7 +7218,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7212,7 +7233,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7557,7 +7578,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns %TRUE on success, %FALSE if there was an error.
          */
-        append_values(values: Uint8Array, is_valids?: boolean[] | null): boolean;
+        append_values(values: Uint8Array | string, is_valids?: boolean[] | null): boolean;
     }
 
     module Int8DataType {
@@ -7833,8 +7854,8 @@ export namespace Arrow {
 
         // Own methods of Arrow.LargeBinaryArrayBuilder
 
-        append_value(value: Uint8Array): boolean;
-        append_value_bytes(value: GLib.Bytes): boolean;
+        append_value(value: Uint8Array | string): boolean;
+        append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -7842,7 +7863,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
          * @returns %TRUE on success, %FALSE if there was an error.
          */
-        append_values(values: GLib.Bytes[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids?: boolean[] | null): boolean;
     }
 
     module LargeBinaryDataType {
@@ -7920,6 +7941,7 @@ export namespace Arrow {
         get_value_offset(i: number): number;
         get_value_offsets(): number[];
         get_value_type(): DataType;
+        // Conflicted with Arrow.Array.get_value_type
         get_value_type(...args: never[]): any;
         get_values(): Array;
     }
@@ -8120,6 +8142,7 @@ export namespace Arrow {
         get_value_offset(i: number): number;
         get_value_offsets(): number[];
         get_value_type(): DataType;
+        // Conflicted with Arrow.Array.get_value_type
         get_value_type(...args: never[]): any;
         get_values(): Array;
     }
@@ -8485,6 +8508,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8527,7 +8551,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8728,7 +8752,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8743,7 +8767,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8818,13 +8842,14 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](data: Uint8Array): MutableBuffer;
+        static ['new'](data: Uint8Array | string): MutableBuffer;
 
-        static new_bytes(data: GLib.Bytes): MutableBuffer;
+        static new_bytes(data: GLib.Bytes | Uint8Array): MutableBuffer;
 
         // Own methods of Arrow.MutableBuffer
 
-        set_data(offset: number, data: Uint8Array): boolean;
+        set_data(offset: number, data: Uint8Array | string): boolean;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         slice(offset: number, size: number): MutableBuffer;
     }
@@ -8979,7 +9004,7 @@ export namespace Arrow {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         flush(): boolean;
-        write(data: Uint8Array): boolean;
+        write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -9070,6 +9095,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9112,7 +9138,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9313,7 +9339,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9328,7 +9354,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9911,7 +9937,7 @@ export namespace Arrow {
 
         // Own static methods of Arrow.Scalar
 
-        static parse(data_type: DataType, data: Uint8Array): Scalar | null;
+        static parse(data_type: DataType, data: Uint8Array | string): Scalar | null;
 
         // Own methods of Arrow.Scalar
 
@@ -10036,7 +10062,7 @@ export namespace Arrow {
         replace_field(i: number, field: Field): Schema | null;
         to_string(): string;
         to_string_metadata(show_metadata: boolean): string;
-        with_metadata(metadata: GLib.HashTable<string, string>): Schema;
+        with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Schema;
     }
 
     module SeekableInputStream {
@@ -10071,8 +10097,10 @@ export namespace Arrow {
         is_closed(): boolean;
         tell(): number;
         read(n_bytes: number): Buffer | null;
+        // Conflicted with Gio.InputStream.read
         read(...args: never[]): any;
         read_bytes(n_bytes: number): GLib.Bytes | null;
+        // Conflicted with Gio.InputStream.read_bytes
         read_bytes(...args: never[]): any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -10164,6 +10192,7 @@ export namespace Arrow {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -10206,7 +10235,7 @@ export namespace Arrow {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -10407,7 +10436,7 @@ export namespace Arrow {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10422,7 +10451,7 @@ export namespace Arrow {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10595,6 +10624,7 @@ export namespace Arrow {
          */
         add_sort_key(sort_key: SortKey): void;
         equal(other_options: SortOptions): boolean;
+        // Conflicted with Arrow.FunctionOptions.equal
         equal(...args: never[]): any;
         get_sort_keys(): SortKey[];
         /**
@@ -10671,7 +10701,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](fields: Field[], type_codes: Uint8Array): SparseUnionDataType;
+        static ['new'](fields: Field[], type_codes: Uint8Array | string): SparseUnionDataType;
     }
 
     module SparseUnionScalar {
@@ -10740,6 +10770,7 @@ export namespace Arrow {
         // Own methods of Arrow.StringArrayBuilder
 
         append(value: string): boolean;
+        // Conflicted with Arrow.BinaryArrayBuilder.append
         append(...args: never[]): any;
         append_string(value: string): boolean;
         /**
@@ -11866,7 +11897,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns %TRUE on success, %FALSE if there was an error.
          */
-        append_values(values: Uint8Array, is_valids?: boolean[] | null): boolean;
+        append_values(values: Uint8Array | string, is_valids?: boolean[] | null): boolean;
     }
 
     module UInt8DataType {
@@ -12493,7 +12524,7 @@ export namespace Arrow {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         flush(): boolean;
-        write(data: Uint8Array): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
     export const Writable: WritableNamespace;
@@ -12511,7 +12542,7 @@ export namespace Arrow {
     interface WritableFile extends GObject.Object {
         // Own methods of Arrow.WritableFile
 
-        write_at(position: number, data: Uint8Array): boolean;
+        write_at(position: number, data: Uint8Array | string): boolean;
     }
 
     export const WritableFile: WritableFileNamespace;

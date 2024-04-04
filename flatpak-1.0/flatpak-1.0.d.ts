@@ -862,7 +862,7 @@ export namespace Flatpak {
          * @param cancellable a #GCancellable
          * @returns a #FlatpakRemoteRef if the remote has been added successfully, %NULL on error.
          */
-        install_ref_file(ref_file_data: GLib.Bytes, cancellable?: Gio.Cancellable | null): RemoteRef;
+        install_ref_file(ref_file_data: GLib.Bytes | Uint8Array, cancellable?: Gio.Cancellable | null): RemoteRef;
         /**
          * Launch an installed application.
          *
@@ -1687,7 +1687,7 @@ export namespace Flatpak {
 
         static ['new'](name: string): Remote;
 
-        static new_from_file(name: string, data: GLib.Bytes): Remote;
+        static new_from_file(name: string, data: GLib.Bytes | Uint8Array): Remote;
 
         // Own methods of Flatpak.Remote
 
@@ -1853,7 +1853,7 @@ export namespace Flatpak {
          * effect.
          * @param gpg_key a #GBytes with gpg binary key data
          */
-        set_gpg_key(gpg_key: GLib.Bytes): void;
+        set_gpg_key(gpg_key: GLib.Bytes | Uint8Array): void;
         /**
          * Sets the gpg_verify config of this remote. See flatpak_remote_get_gpg_verify().
          *
@@ -2365,7 +2365,7 @@ export namespace Flatpak {
          * @param flatpakref_data data from a flatpakref file
          * @returns %TRUE on success; %FALSE with @error set on failure.
          */
-        add_install_flatpakref(flatpakref_data: GLib.Bytes): boolean;
+        add_install_flatpakref(flatpakref_data: GLib.Bytes | Uint8Array): boolean;
         /**
          * Adds updating the `previous_ids` of the given ref to this transaction, via either
          * installing the `ref` if it was not already present. The will treat `ref` as the
@@ -2721,6 +2721,7 @@ export namespace Flatpak {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2763,7 +2764,7 @@ export namespace Flatpak {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2964,7 +2965,7 @@ export namespace Flatpak {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2979,7 +2980,7 @@ export namespace Flatpak {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

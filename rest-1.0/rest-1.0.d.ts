@@ -355,7 +355,7 @@ export namespace Rest {
 
         // Own virtual methods of Rest.OAuth2Proxy
 
-        vfunc_parse_access_token(payload: GLib.Bytes, task: Gio.Task): void;
+        vfunc_parse_access_token(payload: GLib.Bytes | Uint8Array, task: Gio.Task): void;
 
         // Own methods of Rest.OAuth2Proxy
 
@@ -768,13 +768,19 @@ export namespace Rest {
 
         // Constructors of Rest.Param
 
-        constructor(name: string, use: MemoryUse, data: Uint8Array, content_type: string, filename?: string | null);
+        constructor(
+            name: string,
+            use: MemoryUse,
+            data: Uint8Array | string,
+            content_type: string,
+            filename?: string | null,
+        );
         _init(...args: any[]): void;
 
         static new_full(
             name: string,
             use: MemoryUse,
-            data: Uint8Array,
+            data: Uint8Array | string,
             content_type: string,
             filename?: string | null,
         ): Param;
@@ -783,7 +789,7 @@ export namespace Rest {
 
         static new_with_owner(
             name: string,
-            data: Uint8Array,
+            data: Uint8Array | string,
             content_type: string,
             filename?: string | null,
             owner?: any | null,

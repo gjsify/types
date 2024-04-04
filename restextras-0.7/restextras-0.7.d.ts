@@ -124,7 +124,7 @@ export namespace RestExtras {
          * @param token the access token
          */
         set_token(token: string): void;
-        sign(params: GLib.HashTable<any, any>): string;
+        sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
     }
 
     module FlickrProxyCall {
@@ -230,7 +230,7 @@ export namespace RestExtras {
          * @param session_key the access session_key
          */
         set_session_key(session_key: string): void;
-        sign(params: GLib.HashTable<any, any>): string;
+        sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
     }
 
     module LastfmProxyCall {
@@ -302,7 +302,7 @@ export namespace RestExtras {
          */
         upload_async(
             filename: string,
-            fields: GLib.HashTable<any, any>,
+            fields: { [key: string]: any } | GLib.HashTable<any, any>,
             incomplete: boolean,
             callback: YoutubeProxyUploadCallback,
             weak_object: GObject.Object,

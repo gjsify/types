@@ -126,7 +126,7 @@ export namespace Shell {
      * @param rowstride
      */
     function util_create_pixbuf_from_data(
-        data: Uint8Array,
+        data: Uint8Array | string,
         colorspace: GdkPixbuf.Colorspace,
         has_alpha: boolean,
         bits_per_sample: number,
@@ -180,23 +180,52 @@ export namespace Shell {
         unit: string,
         mode: string,
         cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<string> | null,
+    ): Promise<boolean>;
+    function util_start_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): void;
+    function util_start_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
+    ): Promise<boolean> | void;
     function util_start_systemd_unit_finish(res: Gio.AsyncResult): boolean;
+    function util_stop_systemd_unit(unit: string, mode: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    function util_stop_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
+    ): void;
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): void;
+    ): Promise<boolean> | void;
     function util_stop_systemd_unit_finish(res: Gio.AsyncResult): boolean;
+    function util_systemd_unit_exists(unit: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    function util_systemd_unit_exists(
+        unit: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
+    ): void;
     function util_systemd_unit_exists(
         unit: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): void;
+    ): Promise<boolean> | void;
     function util_systemd_unit_exists_finish(res: Gio.AsyncResult): boolean;
-    function util_touch_file_async(file: Gio.File, callback?: Gio.AsyncReadyCallback<Gio.File> | null): void;
+    function util_touch_file_async(file: Gio.File): Promise<boolean>;
+    function util_touch_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
+    function util_touch_file_async(
+        file: Gio.File,
+        callback?: Gio.AsyncReadyCallback<Gio.File> | null,
+    ): Promise<boolean> | void;
     function util_touch_file_finish(file: Gio.File, res: Gio.AsyncResult): boolean;
     /**
      * Translate `str` according to the locale defined by LC_TIME; unlike
@@ -225,7 +254,7 @@ export namespace Shell {
         (data?: any | null): void;
     }
     interface PerfReplayFunction {
-        (time: number, name: string, signature: string, arg: GObject.Value): void;
+        (time: number, name: string, signature: string, arg: GObject.Value | any): void;
     }
     interface PerfStatisticsCallback {
         (perf_log: PerfLog, data?: any | null): void;
@@ -737,6 +766,7 @@ export namespace Shell {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -779,7 +809,7 @@ export namespace Shell {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -980,7 +1010,7 @@ export namespace Shell {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -995,7 +1025,7 @@ export namespace Shell {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1346,7 +1376,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -1361,7 +1391,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -1568,6 +1598,7 @@ export namespace Shell {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1610,7 +1641,7 @@ export namespace Shell {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1811,7 +1842,7 @@ export namespace Shell {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1826,7 +1857,7 @@ export namespace Shell {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2582,6 +2613,7 @@ export namespace Shell {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2624,7 +2656,7 @@ export namespace Shell {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2825,7 +2857,7 @@ export namespace Shell {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2840,7 +2872,7 @@ export namespace Shell {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3229,6 +3261,7 @@ export namespace Shell {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3271,7 +3304,7 @@ export namespace Shell {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3472,7 +3505,7 @@ export namespace Shell {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3487,7 +3520,7 @@ export namespace Shell {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3677,6 +3710,7 @@ export namespace Shell {
 
         complete(dismissed: boolean): void;
         register(): void;
+        // Conflicted with PolkitAgent.Listener.register
         register(...args: never[]): any;
         unregister(): void;
     }
@@ -3915,7 +3949,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -3930,7 +3964,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -4137,6 +4171,7 @@ export namespace Shell {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4179,7 +4214,7 @@ export namespace Shell {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4380,7 +4415,7 @@ export namespace Shell {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4395,7 +4430,7 @@ export namespace Shell {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4451,7 +4486,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -4466,7 +4501,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -4673,6 +4708,7 @@ export namespace Shell {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4715,7 +4751,7 @@ export namespace Shell {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4916,7 +4952,7 @@ export namespace Shell {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4931,7 +4967,7 @@ export namespace Shell {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5016,7 +5052,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -5031,7 +5067,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -5238,6 +5274,7 @@ export namespace Shell {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5280,7 +5317,7 @@ export namespace Shell {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5481,7 +5518,7 @@ export namespace Shell {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5496,7 +5533,7 @@ export namespace Shell {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5847,7 +5884,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -5862,7 +5899,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -6069,6 +6106,7 @@ export namespace Shell {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6111,7 +6149,7 @@ export namespace Shell {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6312,7 +6350,7 @@ export namespace Shell {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6327,7 +6365,7 @@ export namespace Shell {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6513,7 +6551,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -6528,7 +6566,7 @@ export namespace Shell {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -6735,6 +6773,7 @@ export namespace Shell {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6777,7 +6816,7 @@ export namespace Shell {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6978,7 +7017,7 @@ export namespace Shell {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6993,7 +7032,7 @@ export namespace Shell {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

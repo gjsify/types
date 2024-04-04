@@ -43,7 +43,7 @@ export namespace ArrowCUDA {
 
         // Own methods of ArrowCUDA.Buffer
 
-        copy_from_host(data: Uint8Array): boolean;
+        copy_from_host(data: Uint8Array | string): boolean;
         copy_to_host(position: number, size: number): GLib.Bytes;
         ['export'](): IPCMemoryHandle;
         get_context(): Context;
@@ -161,6 +161,7 @@ export namespace ArrowCUDA {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -203,7 +204,7 @@ export namespace ArrowCUDA {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -404,7 +405,7 @@ export namespace ArrowCUDA {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -419,7 +420,7 @@ export namespace ArrowCUDA {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -463,7 +464,7 @@ export namespace ArrowCUDA {
          * @returns %TRUE on success, %FALSE if there was an error.
          */
         flush(): boolean;
-        write(data: Uint8Array): boolean;
+        write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -554,6 +555,7 @@ export namespace ArrowCUDA {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -596,7 +598,7 @@ export namespace ArrowCUDA {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -797,7 +799,7 @@ export namespace ArrowCUDA {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -812,7 +814,7 @@ export namespace ArrowCUDA {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -913,7 +915,7 @@ export namespace ArrowCUDA {
 
         _init(...args: any[]): void;
 
-        static ['new'](data: Uint8Array): IPCMemoryHandle;
+        static ['new'](data: Uint8Array | string): IPCMemoryHandle;
 
         // Own methods of ArrowCUDA.IPCMemoryHandle
 

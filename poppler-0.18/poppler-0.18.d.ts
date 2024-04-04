@@ -1026,7 +1026,7 @@ export namespace Poppler {
      * @param data the bytestring data
      * @returns the named dest
      */
-    function named_dest_from_bytestring(data: Uint8Array): string;
+    function named_dest_from_bytestring(data: Uint8Array | string): string;
     /**
      * Converts a named dest string (e.g. from #PopplerDest.named_dest) into a
      * bytestring, inverting the transformation of
@@ -1043,10 +1043,10 @@ export namespace Poppler {
      */
     function named_dest_to_bytestring(name: string): Uint8Array | null;
     interface AttachmentSaveFunc {
-        (buf: Uint8Array): boolean;
+        (buf: Uint8Array | string): boolean;
     }
     interface MediaSaveFunc {
-        (buf: Uint8Array): boolean;
+        (buf: Uint8Array | string): boolean;
     }
     enum AnnotFlag {
         UNKNOWN,
@@ -2037,9 +2037,9 @@ export namespace Poppler {
 
         _init(...args: any[]): void;
 
-        static new_from_bytes(bytes: GLib.Bytes, password?: string | null): Document;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array, password?: string | null): Document;
 
-        static new_from_data(data: Uint8Array, password?: string | null): Document;
+        static new_from_data(data: Uint8Array | string, password?: string | null): Document;
 
         static new_from_fd(fd: number, password?: string | null): Document;
 

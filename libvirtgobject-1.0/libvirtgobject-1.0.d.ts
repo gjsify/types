@@ -1405,7 +1405,7 @@ export namespace LibvirtGObject {
          * @param cancellable a %GCancellable or %NULL
          * @returns Number of bytes read, or 0 if the end of stream reached, or -1 on error.
          */
-        receive(buffer: Uint8Array, cancellable?: Gio.Cancellable | null): number;
+        receive(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): number;
         /**
          * Receive the entire data stream, sending the data to the
          * requested data sink. This is simply a convenient alternative

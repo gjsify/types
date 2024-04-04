@@ -86,9 +86,9 @@ export namespace Gandiva {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: Uint8Array): BinaryLiteralNode;
+        static ['new'](value: Uint8Array | string): BinaryLiteralNode;
 
-        static new_bytes(value: GLib.Bytes): BinaryLiteralNode;
+        static new_bytes(value: GLib.Bytes | Uint8Array): BinaryLiteralNode;
 
         // Own methods of Gandiva.BinaryLiteralNode
 

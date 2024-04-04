@@ -3791,7 +3791,7 @@ export namespace NM {
      * @param final_len an index where to cut off the returned string, or -1
      * @returns the textual form of @bytes
      */
-    function utils_bin2hexstr(src: Uint8Array, final_len: number): string;
+    function utils_bin2hexstr(src: Uint8Array | string, final_len: number): string;
     /**
      * Convert bonding mode from integer value to descriptive name.
      * See https://www.kernel.org/doc/Documentation/networking/bonding.txt for
@@ -3876,7 +3876,7 @@ export namespace NM {
      * @param ssid pointer to a buffer containing the SSID data
      * @returns pointer to the escaped SSID, which uses an internal static buffer and will be overwritten by subsequent calls to this function
      */
-    function utils_escape_ssid(ssid: Uint8Array): string;
+    function utils_escape_ssid(ssid: Uint8Array | string): string;
     /**
      * Tests if `filename` has a valid extension for an X.509 certificate file
      * (".cer", ".crt", ".der", or ".pem"), and contains a certificate in a format
@@ -3923,7 +3923,7 @@ export namespace NM {
      * @returns the string representing attributes, or %NULL    in case there are no attributes
      */
     function utils_format_variant_attributes(
-        attributes: GLib.HashTable<string, GLib.Variant>,
+        attributes: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
         attr_separator: number,
         key_value_separator: number,
     ): string;
@@ -3956,7 +3956,7 @@ export namespace NM {
      * @param buffer buffer to store the result into
      * @returns @buffer, or %NULL if @asc couldn't be parsed   or would be shorter or longer than @length.
      */
-    function utils_hwaddr_aton(asc: string, buffer: Uint8Array): number;
+    function utils_hwaddr_aton(asc: string, buffer: Uint8Array | string): number;
     /**
      * Parses `asc` to see if it is a valid hardware address of the given
      * length, and if so, returns it in canonical form (uppercase, with
@@ -4016,7 +4016,7 @@ export namespace NM {
      * @param addr a binary hardware address
      * @returns the textual form of @addr
      */
-    function utils_hwaddr_ntoa(addr: Uint8Array): string;
+    function utils_hwaddr_ntoa(addr: Uint8Array | string): string;
     /**
      * Parses `asc` to see if it is a valid hardware address of the given
      * length.
@@ -4204,7 +4204,7 @@ export namespace NM {
      * @param ssid pointer to a buffer containing the SSID data
      * @returns %TRUE if the SSID is "empty", %FALSE if it is not
      */
-    function utils_is_empty_ssid(ssid: Uint8Array): boolean;
+    function utils_is_empty_ssid(ssid: Uint8Array | string): boolean;
     function utils_is_json_object(str: string): boolean;
     /**
      * Checks if `str` is a UUID
@@ -4265,7 +4265,11 @@ export namespace NM {
      * @param ignore_trailing_null %TRUE to ignore one trailing NULL byte
      * @returns %TRUE if the SSIDs are the same, %FALSE if they are not
      */
-    function utils_same_ssid(ssid1: Uint8Array, ssid2: Uint8Array, ignore_trailing_null: boolean): boolean;
+    function utils_same_ssid(
+        ssid1: Uint8Array | string,
+        ssid2: Uint8Array | string,
+        ignore_trailing_null: boolean,
+    ): boolean;
     /**
      * Given a set of device capabilities, and a desired security type to check
      * against, determines whether the combination of device, desired security
@@ -4330,7 +4334,7 @@ export namespace NM {
      * @param ssid pointer to a buffer containing the SSID data
      * @returns an allocated string containing a UTF-8 representation of the SSID, which must be freed by the caller using g_free(). Returns %NULL on errors.
      */
-    function utils_ssid_to_utf8(ssid: Uint8Array): string;
+    function utils_ssid_to_utf8(ssid: Uint8Array | string): string;
     /**
      * Parses the tc style string action representation of the queueing
      * discipline to a %NMTCAction instance. Supports a subset of the tc language.
@@ -4504,7 +4508,7 @@ export namespace NM {
         (setting: Setting, secret: string, flags: SettingSecretFlags): boolean;
     }
     interface SettingValueIterFn {
-        (setting: Setting, key: string, value: GObject.Value, flags: GObject.ParamFlags): void;
+        (setting: Setting, key: string, value: GObject.Value | any, flags: GObject.ParamFlags): void;
     }
     interface UtilsCheckFilePredicate {
         (filename: string, stat?: any | null): boolean;
@@ -7839,6 +7843,7 @@ export namespace NM {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7881,7 +7886,7 @@ export namespace NM {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8082,7 +8087,7 @@ export namespace NM {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8097,7 +8102,7 @@ export namespace NM {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8494,6 +8499,7 @@ export namespace NM {
          * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
          */
         disconnect(cancellable?: Gio.Cancellable | null): boolean;
+        // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         /**
          * Asynchronously begins disconnecting the device if currently connected, and
@@ -8983,6 +8989,7 @@ export namespace NM {
          * @returns a combination of #NMBluetoothCapabilities
          */
         get_capabilities(): BluetoothCapabilities;
+        // Conflicted with NM.Device.get_capabilities
         get_capabilities(...args: never[]): any;
         /**
          * Gets the name of the #NMDeviceBt.
@@ -10334,6 +10341,7 @@ export namespace NM {
          * @returns the capabilities
          */
         get_capabilities(): DeviceWifiCapabilities;
+        // Conflicted with NM.Device.get_capabilities
         get_capabilities(...args: never[]): any;
         /**
          * Returns the timestamp (in CLOCK_BOOTTIME milliseconds) for the last finished
@@ -11668,6 +11676,7 @@ export namespace NM {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11710,7 +11719,7 @@ export namespace NM {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11911,7 +11920,7 @@ export namespace NM {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11926,7 +11935,7 @@ export namespace NM {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -12522,6 +12531,7 @@ export namespace NM {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -12564,7 +12574,7 @@ export namespace NM {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -12765,7 +12775,7 @@ export namespace NM {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12780,7 +12790,7 @@ export namespace NM {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -12849,7 +12859,7 @@ export namespace NM {
             b: Setting,
             flags: SettingCompareFlags,
             invert_results: boolean,
-            results: GLib.HashTable<string, number>,
+            results: { [key: string]: any } | GLib.HashTable<string, number>,
         ): [boolean, GLib.HashTable<string, number>];
         /**
          * Duplicates a #NMSetting.
@@ -19859,9 +19869,11 @@ export namespace NM {
         // Own methods of NM.SettingOvsExternalIDs
 
         get_data(key: string): string;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         get_data_keys(): string[];
         set_data(key: string, val?: string | null): void;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
     }
 
@@ -19956,9 +19968,11 @@ export namespace NM {
         // Own methods of NM.SettingOvsOtherConfig
 
         get_data(key: string): string;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         get_data_keys(): string[];
         set_data(key: string, val?: string | null): void;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
     }
 
@@ -21443,9 +21457,11 @@ export namespace NM {
         // Own methods of NM.SettingUser
 
         get_data(key: string): string;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         get_keys(): string[];
         set_data(key: string, val?: string | null): boolean;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
     }
 
@@ -24445,6 +24461,7 @@ export namespace NM {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -24487,7 +24504,7 @@ export namespace NM {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -24688,7 +24705,7 @@ export namespace NM {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24703,7 +24720,7 @@ export namespace NM {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -25060,6 +25077,7 @@ export namespace NM {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -25102,7 +25120,7 @@ export namespace NM {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -25303,7 +25321,7 @@ export namespace NM {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25318,7 +25336,7 @@ export namespace NM {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -25437,7 +25455,10 @@ export namespace NM {
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
          */
-        static get_secret_flags(data: GLib.HashTable<any, any>, secret_name: string): [boolean, SettingSecretFlags];
+        static get_secret_flags(
+            data: { [key: string]: any } | GLib.HashTable<any, any>,
+            secret_name: string,
+        ): [boolean, SettingSecretFlags];
         /**
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
          * an applet when the applet calls the authentication dialog of the VPN plugin.
@@ -25463,6 +25484,7 @@ export namespace NM {
         // Own methods of NM.VpnPluginOld
 
         disconnect(): boolean;
+        // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         failure(reason: VpnPluginFailure): void;
         get_connection(): Gio.DBusConnection;
@@ -25657,6 +25679,7 @@ export namespace NM {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -25699,7 +25722,7 @@ export namespace NM {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -25900,7 +25923,7 @@ export namespace NM {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25915,7 +25938,7 @@ export namespace NM {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
         unblock_signal_handler(id: number): any;
@@ -26043,7 +26066,10 @@ export namespace NM {
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
          */
-        static get_secret_flags(data: GLib.HashTable<any, any>, secret_name: string): [boolean, SettingSecretFlags];
+        static get_secret_flags(
+            data: { [key: string]: any } | GLib.HashTable<any, any>,
+            secret_name: string,
+        ): [boolean, SettingSecretFlags];
         /**
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
          * an applet when the applet calls the authentication dialog of the VPN plugin.
@@ -26069,6 +26095,7 @@ export namespace NM {
         // Own methods of NM.VpnServicePlugin
 
         disconnect(): boolean;
+        // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         failure(reason: VpnPluginFailure): void;
         get_connection(): Gio.DBusConnection;
@@ -26272,6 +26299,7 @@ export namespace NM {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -26314,7 +26342,7 @@ export namespace NM {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -26515,7 +26543,7 @@ export namespace NM {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -26530,7 +26558,7 @@ export namespace NM {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
         unblock_signal_handler(id: number): any;

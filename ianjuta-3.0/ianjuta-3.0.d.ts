@@ -3263,6 +3263,7 @@ export namespace IAnjuta {
          * @param mode Line mode to set.
          */
         set(mode: EditorLineModeType): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
 
         // Own virtual methods of IAnjuta.EditorLineMode
@@ -3425,6 +3426,7 @@ export namespace IAnjuta {
          * @param scroll Scroll selection onscreen
          */
         set(start: Iterable, end: Iterable, scroll: boolean): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
 
         // Own virtual methods of IAnjuta.EditorSelection
@@ -3995,6 +3997,7 @@ export namespace IAnjuta {
          * @param indicator the indicator to use
          */
         set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
 
         // Own virtual methods of IAnjuta.Indicable
@@ -4834,6 +4837,7 @@ export namespace IAnjuta {
             name: string | null,
             value: string,
         ): Anjuta.ProjectProperty | null;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
 
         // Own virtual methods of IAnjuta.Project
@@ -4919,6 +4923,7 @@ export namespace IAnjuta {
             name: string | null,
             value: string,
         ): Anjuta.ProjectProperty | null;
+        // Conflicted with GObject.Object.vfunc_set_property
         vfunc_set_property(...args: never[]): any;
     }
 

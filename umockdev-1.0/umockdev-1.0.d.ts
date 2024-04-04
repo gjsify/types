@@ -52,13 +52,15 @@ export namespace UMockdev {
         get_root_dir(): string;
         get_sys_dir(): string;
         set_attribute(devpath: string, name: string, value: string): void;
-        set_attribute_binary(devpath: string, name: string, value: Uint8Array): void;
+        set_attribute_binary(devpath: string, name: string, value: Uint8Array | string): void;
         set_attribute_int(devpath: string, name: string, value: number): void;
         set_attribute_hex(devpath: string, name: string, value: number): void;
         set_attribute_link(devpath: string, name: string, value: string): void;
         get_property(devpath: string, name: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         set_property(devpath: string, name: string, value: string): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         set_property_int(devpath: string, name: string, value: number): void;
         set_property_hex(devpath: string, name: string, value: number): void;
@@ -114,7 +116,7 @@ export namespace UMockdev {
         resolve(offset: number, len: number): IoctlData | null;
         set_ptr(offset: number, child: IoctlData): boolean;
         reload(): boolean;
-        update(offset: number, new_data: Uint8Array): void;
+        update(offset: number, new_data: Uint8Array | string): void;
         retrieve(): Uint8Array;
     }
 

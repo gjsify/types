@@ -334,10 +334,10 @@ export namespace Wp {
      */
     function spa_log_get_instance(): any | null;
     interface IteratorFoldFunc {
-        (item: GObject.Value, ret: GObject.Value, data?: any | null): boolean;
+        (item: GObject.Value | any, ret: GObject.Value | any, data?: any | null): boolean;
     }
     interface IteratorForeachFunc {
-        (item: GObject.Value, data?: any | null): void;
+        (item: GObject.Value | any, data?: any | null): void;
     }
     interface RuleMatchCallback {
         (data: any | null, action: string, value: SpaJson): boolean;
@@ -581,6 +581,7 @@ export namespace Wp {
          * @returns the value of the pipewire property @key or NULL if the property doesn't exist
          */
         get_property(key: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Iterates over the object's PipeWire properties.
@@ -1177,6 +1178,7 @@ export namespace Wp {
          * @returns the value of the pipewire property @key or NULL if the property doesn't exist
          */
         get_property(key: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Iterates over the object's PipeWire properties.
@@ -1552,6 +1554,7 @@ export namespace Wp {
          * @returns the value of the pipewire property @key or NULL if the property doesn't exist
          */
         get_property(key: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Iterates over the object's PipeWire properties.
@@ -1829,6 +1832,7 @@ export namespace Wp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1855,6 +1859,7 @@ export namespace Wp {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
+        // Conflicted with Wp.Transition.get_data
         get_data(...args: never[]): any;
         get_property(property_name: string): any;
         /**
@@ -1872,7 +1877,7 @@ export namespace Wp {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1984,6 +1989,7 @@ export namespace Wp {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
+        // Conflicted with Wp.Transition.set_data
         set_data(...args: never[]): any;
         set_property(property_name: string, value: any): void;
         /**
@@ -2074,7 +2080,7 @@ export namespace Wp {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2089,7 +2095,7 @@ export namespace Wp {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2360,6 +2366,7 @@ export namespace Wp {
          * @returns the value of the pipewire property @key or NULL if the property doesn't exist
          */
         get_property(key: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Iterates over the object's PipeWire properties.
@@ -2644,6 +2651,7 @@ export namespace Wp {
          * @returns the value of the pipewire property @key or NULL if the property doesn't exist
          */
         get_property(key: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Iterates over the object's PipeWire properties.
@@ -2830,6 +2838,7 @@ export namespace Wp {
          * @param value the value to set, or NULL to unset the given @key
          */
         set(subject: number, key?: string | null, type?: string | null, value?: string | null): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
     }
 
@@ -3054,6 +3063,7 @@ export namespace Wp {
          * @returns the value of the pipewire property @key or NULL if the property doesn't exist
          */
         get_property(key: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Iterates over the object's PipeWire properties.
@@ -3607,6 +3617,7 @@ export namespace Wp {
          * @returns the value of the pipewire property @key or NULL if the property doesn't exist
          */
         get_property(key: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Iterates over the object's PipeWire properties.
@@ -3924,6 +3935,7 @@ export namespace Wp {
          * @returns the item property value for the given key.
          */
         get_property(key: string): string;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Checks if the session item is configured.
@@ -4055,6 +4067,7 @@ export namespace Wp {
          * @returns TRUE if the setting could be set, FALSE otherwise
          */
         set(name: string, value: SpaJson): boolean;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Subscribes callback for a given setting pattern(a glob-style pattern matched using g_pattern_match_simple), this allows clients to look for any changes made in settings through metadata.
@@ -4516,6 +4529,7 @@ export namespace Wp {
          * @param data_destroy GDestroyNotify for @data
          */
         set_data(data?: any | null, data_destroy?: GLib.DestroyNotify | null): void;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         /**
          * Sets `self` 's source tag.
@@ -4650,6 +4664,7 @@ export namespace Wp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4686,7 +4701,7 @@ export namespace Wp {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4872,7 +4887,7 @@ export namespace Wp {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4887,7 +4902,7 @@ export namespace Wp {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5030,7 +5045,7 @@ export namespace Wp {
          * @param ret the accumulator data
          * @returns TRUE if all the items were processed, FALSE otherwise.
          */
-        fold(func: IteratorFoldFunc, ret: GObject.Value): [boolean, unknown];
+        fold(func: IteratorFoldFunc, ret: GObject.Value | any): [boolean, unknown];
         /**
          * Iterates over all items of the iterator calling a function.
          * @param func the foreach function
@@ -6544,6 +6559,7 @@ export namespace Wp {
          * @returns the value of the pipewire property @key or NULL if the property doesn't exist
          */
         get_property(key: string): string | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Iterates over the object's PipeWire properties.
@@ -6803,6 +6819,7 @@ export namespace Wp {
          * @returns the properties of the link
          */
         get_properties(): Properties | null;
+        // Conflicted with Wp.SessionItem.get_properties
         get_properties(...args: never[]): any;
         /**
          * This should return information that is used for registering the link, as a GVariant of type a{ss} that contains additional properties to be added to the list of global properties.

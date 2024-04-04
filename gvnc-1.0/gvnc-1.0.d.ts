@@ -345,6 +345,7 @@ export namespace GVnc {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -387,7 +388,7 @@ export namespace GVnc {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -588,7 +589,7 @@ export namespace GVnc {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -603,7 +604,7 @@ export namespace GVnc {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -653,7 +654,7 @@ export namespace GVnc {
         _init(...args: any[]): void;
 
         static ['new'](
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             width: number,
             height: number,
             rowstride: number,
@@ -686,7 +687,7 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        fill(src: Uint8Array, x: number, y: number, width: number, height: number): void;
+        fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
         /**
          * Get a pointer to the framebuffer contents
          * @returns the framebuffer data
@@ -730,7 +731,14 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        rgb24_blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void;
+        rgb24_blt(
+            src: Uint8Array | string,
+            rowstride: number,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+        ): void;
         /**
          * Set the color map to use for the framebuffer
          * @param map the new color map
@@ -744,7 +752,7 @@ export namespace GVnc {
          * @param x the horizontal pixel to set
          * @param y the vertical pixel to set
          */
-        set_pixel_at(src: Uint8Array, x: number, y: number): void;
+        set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
         vfunc_blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
          * Copies data from the range (`srcx,` `srcy)` to
@@ -769,7 +777,7 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        vfunc_fill(src: Uint8Array, x: number, y: number, width: number, height: number): void;
+        vfunc_fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
         vfunc_get_buffer(): number;
         /**
          * Query the height of the remote framebuffer
@@ -804,7 +812,14 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        vfunc_rgb24_blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void;
+        vfunc_rgb24_blt(
+            src: Uint8Array | string,
+            rowstride: number,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+        ): void;
         /**
          * Set the color map to use for the framebuffer
          * @param map the new color map
@@ -818,7 +833,7 @@ export namespace GVnc {
          * @param x the horizontal pixel to set
          * @param y the vertical pixel to set
          */
-        vfunc_set_pixel_at(src: Uint8Array, x: number, y: number): void;
+        vfunc_set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -909,6 +924,7 @@ export namespace GVnc {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -951,7 +967,7 @@ export namespace GVnc {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1152,7 +1168,7 @@ export namespace GVnc {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1167,7 +1183,7 @@ export namespace GVnc {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1709,7 +1725,7 @@ export namespace GVnc {
 
         _init(...args: any[]): void;
 
-        static ['new'](data: Uint8Array, hotx: number, hoty: number, width: number, height: number): Cursor;
+        static ['new'](data: Uint8Array | string, hotx: number, hoty: number, width: number, height: number): Cursor;
 
         // Own methods of GVnc.Cursor
 
@@ -1718,6 +1734,7 @@ export namespace GVnc {
          * @returns the bitmap data
          */
         get_data(): Uint8Array;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Get the height of the cursor bitmap
@@ -2060,7 +2077,7 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        fill(src: Uint8Array, x: number, y: number, width: number, height: number): void;
+        fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
         /**
          * Get a pointer to the framebuffer contents
          * @returns the framebuffer data
@@ -2104,7 +2121,14 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        rgb24_blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void;
+        rgb24_blt(
+            src: Uint8Array | string,
+            rowstride: number,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+        ): void;
         /**
          * Set the color map to use for the framebuffer
          * @param map the new color map
@@ -2118,7 +2142,7 @@ export namespace GVnc {
          * @param x the horizontal pixel to set
          * @param y the vertical pixel to set
          */
-        set_pixel_at(src: Uint8Array, x: number, y: number): void;
+        set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
 
         // Own virtual methods of GVnc.Framebuffer
 
@@ -2146,7 +2170,7 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        vfunc_fill(src: Uint8Array, x: number, y: number, width: number, height: number): void;
+        vfunc_fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
         vfunc_get_buffer(): number;
         /**
          * Query the height of the remote framebuffer
@@ -2181,7 +2205,14 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        vfunc_rgb24_blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void;
+        vfunc_rgb24_blt(
+            src: Uint8Array | string,
+            rowstride: number,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+        ): void;
         /**
          * Set the color map to use for the framebuffer
          * @param map the new color map
@@ -2195,7 +2226,7 @@ export namespace GVnc {
          * @param x the horizontal pixel to set
          * @param y the vertical pixel to set
          */
-        vfunc_set_pixel_at(src: Uint8Array, x: number, y: number): void;
+        vfunc_set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
     }
 
     export const Framebuffer: FramebufferNamespace;

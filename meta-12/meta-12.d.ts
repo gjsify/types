@@ -1930,6 +1930,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1972,7 +1973,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2173,7 +2174,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2188,7 +2189,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2322,7 +2323,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -2344,7 +2345,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Finds the [class`GObject`.ParamSpec] for `property_name`
          * @param property_name the name of the animatable property to find
@@ -2359,7 +2360,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -2384,7 +2385,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -2409,7 +2410,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -2424,7 +2425,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -2555,7 +2556,7 @@ export namespace Meta {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -2563,7 +2564,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -2586,7 +2587,12 @@ export namespace Meta {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -2594,7 +2600,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -2695,6 +2701,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2737,7 +2744,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2938,7 +2945,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2953,7 +2960,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3194,6 +3201,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3236,7 +3244,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3437,7 +3445,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3452,7 +3460,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3502,7 +3510,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -3524,7 +3532,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Finds the [class`GObject`.ParamSpec] for `property_name`
          * @param property_name the name of the animatable property to find
@@ -3539,7 +3547,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -3564,7 +3572,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -3589,7 +3597,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -3604,7 +3612,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -3735,7 +3743,7 @@ export namespace Meta {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -3743,7 +3751,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -3766,7 +3774,12 @@ export namespace Meta {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -3774,7 +3787,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -3875,6 +3888,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3917,7 +3931,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4118,7 +4132,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4133,7 +4147,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4486,6 +4500,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4528,7 +4543,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4729,7 +4744,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4744,7 +4759,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6098,7 +6113,7 @@ export namespace Meta {
 
         _init(...args: any[]): void;
 
-        static ['new'](mimetype: string, content: GLib.Bytes): SelectionSourceMemory;
+        static ['new'](mimetype: string, content: GLib.Bytes | Uint8Array): SelectionSourceMemory;
     }
 
     module ShadowFactory {
@@ -6367,6 +6382,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6409,7 +6425,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6610,7 +6626,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6625,7 +6641,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6733,7 +6749,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -6748,7 +6764,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -6955,6 +6971,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6997,7 +7014,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7198,7 +7215,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7213,7 +7230,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8105,6 +8122,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8147,7 +8165,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8348,7 +8366,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8363,7 +8381,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8495,7 +8513,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -8517,7 +8535,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Finds the [class`GObject`.ParamSpec] for `property_name`
          * @param property_name the name of the animatable property to find
@@ -8532,7 +8550,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -8557,7 +8575,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -8582,7 +8600,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -8597,7 +8615,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -8728,7 +8746,7 @@ export namespace Meta {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -8736,7 +8754,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -8759,7 +8777,12 @@ export namespace Meta {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -8767,7 +8790,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -8868,6 +8891,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8910,7 +8934,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9111,7 +9135,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9126,7 +9150,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9174,7 +9198,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -9196,7 +9220,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Finds the [class`GObject`.ParamSpec] for `property_name`
          * @param property_name the name of the animatable property to find
@@ -9211,7 +9235,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a #GValue initialized to the type of the property to retrieve
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value): void;
+        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Asks a #ClutterAnimatable implementation to interpolate a
          * a named property between the initial and final values of
@@ -9236,7 +9260,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value): void;
+        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -9261,7 +9285,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value): void;
+        child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Calls the #ClutterContainerIface.child_notify() virtual function
          * of #ClutterContainer. The default implementation will emit the
@@ -9276,7 +9300,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value): void;
+        child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
          * Creates the #ClutterChildMeta wrapping `actor` inside the
          * `container,` if the #ClutterContainerIface::child_meta_type
@@ -9407,7 +9431,7 @@ export namespace Meta {
          * @param node the JSON node to be parsed
          * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -9415,7 +9439,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -9438,7 +9462,12 @@ export namespace Meta {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          */
-        vfunc_parse_custom_node(script: Clutter.Script, value: GObject.Value, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(
+            script: Clutter.Script,
+            value: GObject.Value | any,
+            name: string,
+            node: Json.Node,
+        ): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -9446,7 +9475,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * #ClutterScriptableIface.
@@ -9547,6 +9576,7 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9589,7 +9619,7 @@ export namespace Meta {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9790,7 +9820,7 @@ export namespace Meta {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9805,7 +9835,7 @@ export namespace Meta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

@@ -84,7 +84,7 @@ export namespace MediaArt {
      * @param target Output file name (not URI) to save converted content to
      * @returns %TRUE if conversion was successful, otherwise %FALSE is returned if @error is set.
      */
-    function buffer_to_jpeg(buffer: Uint8Array, buffer_mime: string, target: string): boolean;
+    function buffer_to_jpeg(buffer: Uint8Array | string, buffer_mime: string, target: string): boolean;
     /**
      * The error domain for #MediaArtError.
      * @returns the #GQuark used to identify media art errors in GError structures.
@@ -199,6 +199,78 @@ export namespace MediaArt {
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param source_object the #GObject this task belongs to, can be %NULL.
      * @param cancellable optional #GCancellable object, %NULL to ignore
+     */
+    function remove_async(
+        artist: string,
+        album: string | null,
+        io_priority: number,
+        source_object?: GObject.Object | null,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Removes media art for given album/artist provided. Precisely the
+     * same operation as media_art_remove() is performing, but
+     * asynchronously.
+     *
+     * When all i/o for the operation is finished the `callback` will be
+     * called.
+     *
+     * In case of a partial error the callback will be called with any
+     * succeeding items and no error, and on the next request the error
+     * will be reported. If a request is cancelled the callback will be
+     * called with %G_IO_ERROR_CANCELLED.
+     *
+     * During an async request no other sync and async calls are allowed,
+     * and will result in %G_IO_ERROR_PENDING errors.
+     *
+     * Any outstanding i/o request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     *
+     * All string inputs must be valid UTF8. Use g_utf8_validate() if the
+     * input has not already been validated.
+     * @param artist artist the media art belongs to
+     * @param album album the media art belongs or %NULL
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param source_object the #GObject this task belongs to, can be %NULL.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    function remove_async(
+        artist: string,
+        album: string | null,
+        io_priority: number,
+        source_object: GObject.Object | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * Removes media art for given album/artist provided. Precisely the
+     * same operation as media_art_remove() is performing, but
+     * asynchronously.
+     *
+     * When all i/o for the operation is finished the `callback` will be
+     * called.
+     *
+     * In case of a partial error the callback will be called with any
+     * succeeding items and no error, and on the next request the error
+     * will be reported. If a request is cancelled the callback will be
+     * called with %G_IO_ERROR_CANCELLED.
+     *
+     * During an async request no other sync and async calls are allowed,
+     * and will result in %G_IO_ERROR_PENDING errors.
+     *
+     * Any outstanding i/o request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     *
+     * All string inputs must be valid UTF8. Use g_utf8_validate() if the
+     * input has not already been validated.
+     * @param artist artist the media art belongs to
+     * @param album album the media art belongs or %NULL
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param source_object the #GObject this task belongs to, can be %NULL.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     function remove_async(
@@ -208,7 +280,7 @@ export namespace MediaArt {
         source_object?: GObject.Object | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes the asynchronous operation started with
      * media_art_remove_async().
@@ -678,6 +750,7 @@ export namespace MediaArt {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -720,7 +793,7 @@ export namespace MediaArt {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -921,7 +994,7 @@ export namespace MediaArt {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -936,7 +1009,7 @@ export namespace MediaArt {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

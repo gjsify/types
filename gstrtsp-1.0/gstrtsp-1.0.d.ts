@@ -1129,7 +1129,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value or %NULL
          * @returns #GST_RTSP_OK on success.
          */
-        read(data: Uint8Array, timeout: GLib.TimeVal): RTSPResult;
+        read(data: Uint8Array | string, timeout: GLib.TimeVal): RTSPResult;
         /**
          * Attempt to read `size` bytes into `data` from the connected `conn,` blocking up to
          * the specified `timeout`. `timeout` can be 0, in which case this function
@@ -1140,7 +1140,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on success.
          */
-        read_usec(data: Uint8Array, timeout: number): RTSPResult;
+        read_usec(data: Uint8Array | string, timeout: number): RTSPResult;
         /**
          * Attempt to read into `message` from the connected `conn,` blocking up to
          * the specified `timeout`. `timeout` can be %NULL, in which case this function
@@ -1333,7 +1333,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value or %NULL
          * @returns #GST_RTSP_OK on success.
          */
-        write(data: Uint8Array, timeout: GLib.TimeVal): RTSPResult;
+        write(data: Uint8Array | string, timeout: GLib.TimeVal): RTSPResult;
         /**
          * Attempt to write `size` bytes of `data` to the connected `conn,` blocking up to
          * the specified `timeout`. `timeout` can be 0, in which case this function
@@ -1344,7 +1344,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value or 0
          * @returns #GST_RTSP_OK on success.
          */
-        write_usec(data: Uint8Array, timeout: number): RTSPResult;
+        write_usec(data: Uint8Array | string, timeout: number): RTSPResult;
     }
 
     type RTSPExtensionInterface = typeof RTSPExtension;
@@ -1533,7 +1533,7 @@ export namespace GstRtsp {
          * @param data the data
          * @returns #GST_RTSP_OK.
          */
-        set_body(data: Uint8Array): RTSPResult;
+        set_body(data: Uint8Array | string): RTSPResult;
         /**
          * Set the body of `msg` to `buffer`. Any existing body or body buffer
          * will be replaced by the new body.
@@ -1563,7 +1563,7 @@ export namespace GstRtsp {
          * @param data the data
          * @returns #GST_RTSP_OK.
          */
-        take_body(data: Uint8Array): RTSPResult;
+        take_body(data: Uint8Array | string): RTSPResult;
         /**
          * Set the body of `msg` to `buffer`. This method takes ownership of `buffer`.
          * Any existing body or body buffer will be replaced by the new body.
@@ -2000,7 +2000,7 @@ export namespace GstRtsp {
          * @param data the data to queue
          * @returns #GST_RTSP_OK on success. #GST_RTSP_ENOMEM when the backlog limits are reached. #GST_RTSP_EINTR when @watch was flushing.
          */
-        write_data(data: Uint8Array): [RTSPResult, number];
+        write_data(data: Uint8Array | string): [RTSPResult, number];
     }
 
     /**

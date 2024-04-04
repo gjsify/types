@@ -1984,7 +1984,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](context: Context, data: Uint8Array): AttributeBuffer;
+        static ['new'](context: Context, data: Uint8Array | string): AttributeBuffer;
 
         static new_with_size(context: Context, bytes: number): AttributeBuffer;
     }
@@ -2016,7 +2016,7 @@ export namespace Cogl {
             height: number,
             format: PixelFormat,
             rowstride: number,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): Bitmap;
 
         static new_from_buffer(
@@ -2157,7 +2157,8 @@ export namespace Cogl {
          * @param size number of bytes to copy
          * @returns %TRUE is the operation succeeded, %FALSE otherwise
          */
-        set_data(offset: number, data: Uint8Array, size: number): boolean;
+        set_data(offset: number, data: Uint8Array | string, size: number): boolean;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         /**
          * Sets the update hint on a buffer. See #CoglBufferUpdateHint for a description
@@ -3516,6 +3517,7 @@ export namespace Cogl {
          * @param matrix A #graphene_matrix_t replace the current matrix value with
          */
         set(matrix: Graphene.Matrix): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Multiplies the current matrix by one that translates along all
@@ -4661,7 +4663,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](context: Context, data: Uint8Array): PixelBuffer;
+        static ['new'](context: Context, data: Uint8Array | string): PixelBuffer;
     }
 
     module Primitive {
@@ -5553,6 +5555,7 @@ export namespace Cogl {
          * @returns the size of the texture data in bytes
          */
         get_data(format: PixelFormat, rowstride: number, data?: Uint8Array | null): number;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Queries the GL handles for a GPU side texture through its #CoglTexture.
@@ -5662,7 +5665,8 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns %TRUE if the data upload was successful, and               %FALSE otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: Uint8Array, level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: Uint8Array | string, level: number): boolean;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         /**
          * Affects the internal storage format for this texture by specifying
@@ -5718,7 +5722,7 @@ export namespace Cogl {
             height: number,
             format: PixelFormat,
             rowstride: number,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): boolean;
         /**
          * Copies a specified source region from `bitmap` to the position
@@ -5778,7 +5782,7 @@ export namespace Cogl {
             height: number,
             format: PixelFormat,
             rowstride: number,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): Texture2D;
 
         static new_with_format(ctx: Context, width: number, height: number, format: PixelFormat): Texture2D;
@@ -5839,7 +5843,7 @@ export namespace Cogl {
             max_waste: number,
             format: PixelFormat,
             rowstride: number,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): Texture2DSliced;
 
         static new_with_size(ctx: Context, width: number, height: number, max_waste: number): Texture2DSliced;

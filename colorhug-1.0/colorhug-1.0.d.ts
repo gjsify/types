@@ -1606,6 +1606,46 @@ export namespace ColorHug {
      * @param buffer_out The output buffer of data, or %NULL
      * @param buffer_out_len The output buffer length
      * @param cancellable A #GCancellable, or %NULL
+     */
+    function device_write_command_async(
+        device: GUsb.Device,
+        cmd: number,
+        buffer_in: number,
+        buffer_in_len: number,
+        buffer_out: number,
+        buffer_out_len: number,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Sends a message to the device and waits for a reply.
+     * @param device A #GUsbDevice
+     * @param cmd The command to use, e.g. %CH_CMD_GET_COLOR_SELECT
+     * @param buffer_in The input buffer of data, or %NULL
+     * @param buffer_in_len The input buffer length
+     * @param buffer_out The output buffer of data, or %NULL
+     * @param buffer_out_len The output buffer length
+     * @param cancellable A #GCancellable, or %NULL
+     * @param callback A #GAsyncReadyCallback that will be called when finished.
+     */
+    function device_write_command_async(
+        device: GUsb.Device,
+        cmd: number,
+        buffer_in: number,
+        buffer_in_len: number,
+        buffer_out: number,
+        buffer_out_len: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<GUsb.Device> | null,
+    ): void;
+    /**
+     * Sends a message to the device and waits for a reply.
+     * @param device A #GUsbDevice
+     * @param cmd The command to use, e.g. %CH_CMD_GET_COLOR_SELECT
+     * @param buffer_in The input buffer of data, or %NULL
+     * @param buffer_in_len The input buffer length
+     * @param buffer_out The output buffer of data, or %NULL
+     * @param buffer_out_len The output buffer length
+     * @param cancellable A #GCancellable, or %NULL
      * @param callback A #GAsyncReadyCallback that will be called when finished.
      */
     function device_write_command_async(
@@ -1617,7 +1657,7 @@ export namespace ColorHug {
         buffer_out_len: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<GUsb.Device> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Gets the result from the asynchronous function.
      * @param device a #GUsbDevice instance.
@@ -1636,7 +1676,7 @@ export namespace ColorHug {
     function device_write_sram(
         device: GUsb.Device,
         addr: number,
-        data: GLib.Bytes,
+        data: GLib.Bytes | Uint8Array,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     function measure_mode_to_string(measure_mode: MeasureMode): string;

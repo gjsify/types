@@ -584,9 +584,9 @@ export namespace GIRepository {
     function callable_info_skip_return(info: CallableInfo): boolean;
     function cclosure_marshal_generic(
         closure: GObject.Closure,
-        return_gvalue: GObject.Value,
+        return_gvalue: GObject.Value | any,
         n_param_values: number,
-        param_values: GObject.Value,
+        param_values: GObject.Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;

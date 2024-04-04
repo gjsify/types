@@ -3476,6 +3476,7 @@ export namespace Cogl {
          * @returns the size of the texture data in bytes
          */
         get_data(format: PixelFormat, rowstride: number, data: number): number;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Queries the GL handles for a GPU side texture through its #CoglTexture.

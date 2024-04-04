@@ -188,9 +188,9 @@ export namespace Jcat {
 
         _init(...args: any[]): void;
 
-        static ['new'](kind: BlobKind, data: GLib.Bytes): Blob;
+        static ['new'](kind: BlobKind, data: GLib.Bytes | Uint8Array): Blob;
 
-        static new_full(kind: BlobKind, data: GLib.Bytes, flags: BlobFlags): Blob;
+        static new_full(kind: BlobKind, data: GLib.Bytes | Uint8Array, flags: BlobFlags): Blob;
 
         static new_utf8(kind: BlobKind, data: string): Blob;
 
@@ -224,6 +224,7 @@ export namespace Jcat {
          * @returns a #GBytes, or %NULL if the filename was not found
          */
         get_data(): GLib.Bytes;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Gets the data stored in the blob, in human readable form.
@@ -282,7 +283,7 @@ export namespace Jcat {
 
         _init(...args: any[]): void;
 
-        static ['new'](blob: GLib.Bytes): BtCheckpoint;
+        static ['new'](blob: GLib.Bytes | Uint8Array): BtCheckpoint;
 
         // Own methods of Jcat.BtCheckpoint
 
@@ -344,7 +345,7 @@ export namespace Jcat {
 
         _init(...args: any[]): void;
 
-        static ['new'](blob: GLib.Bytes): BtVerifier;
+        static ['new'](blob: GLib.Bytes | Uint8Array): BtVerifier;
 
         // Own methods of Jcat.BtVerifier
 
@@ -442,7 +443,7 @@ export namespace Jcat {
          * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
          * @returns #JcatResult, or %NULL for failed
          */
-        verify_blob(data: GLib.Bytes, blob: Blob, flags: VerifyFlags): Result;
+        verify_blob(data: GLib.Bytes | Uint8Array, blob: Blob, flags: VerifyFlags): Result;
         /**
          * Verifies a #JcatItem using the public keys added to the context. All
          * `verify=CHECKSUM` engines (e.g. SHA256) must verify correctly,
@@ -452,7 +453,7 @@ export namespace Jcat {
          * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_REQUIRE_SIGNATURE
          * @returns array of #JcatResult, or %NULL for failed
          */
-        verify_item(data: GLib.Bytes, item: Item, flags: VerifyFlags): Result[];
+        verify_item(data: GLib.Bytes | Uint8Array, item: Item, flags: VerifyFlags): Result[];
         /**
          * Verifies a #JcatItem using the target to an item. At least one `verify=CHECKSUM` (e.g. SHA256)
          * must exist and all checksum types that do exist must verify correctly.
@@ -500,7 +501,7 @@ export namespace Jcat {
          * Adds a public key manually.
          * @param blob #GBytes
          */
-        vfunc_add_public_key_raw(blob: GLib.Bytes): boolean;
+        vfunc_add_public_key_raw(blob: GLib.Bytes | Uint8Array): boolean;
         /**
          * Signs a chunk of data.
          * @param blob #GBytes
@@ -508,27 +509,40 @@ export namespace Jcat {
          * @param privkey #GBytes
          * @param flags #JcatSignFlags, e.g. %JCAT_SIGN_FLAG_ADD_TIMESTAMP
          */
-        vfunc_pubkey_sign(blob: GLib.Bytes, cert: GLib.Bytes, privkey: GLib.Bytes, flags: SignFlags): Blob;
+        vfunc_pubkey_sign(
+            blob: GLib.Bytes | Uint8Array,
+            cert: GLib.Bytes | Uint8Array,
+            privkey: GLib.Bytes | Uint8Array,
+            flags: SignFlags,
+        ): Blob;
         /**
          * Verifies a chunk of data.
          * @param blob #GBytes
          * @param blob_signature #GBytes
          * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
          */
-        vfunc_pubkey_verify(blob: GLib.Bytes, blob_signature: GLib.Bytes, flags: VerifyFlags): Result;
+        vfunc_pubkey_verify(
+            blob: GLib.Bytes | Uint8Array,
+            blob_signature: GLib.Bytes | Uint8Array,
+            flags: VerifyFlags,
+        ): Result;
         /**
          * Signs a chunk of data.
          * @param blob #GBytes
          * @param flags #JcatSignFlags, e.g. %JCAT_SIGN_FLAG_ADD_TIMESTAMP
          */
-        vfunc_self_sign(blob: GLib.Bytes, flags: SignFlags): Blob;
+        vfunc_self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
         /**
          * Verifies a chunk of data.
          * @param blob #GBytes
          * @param blob_signature #GBytes
          * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
          */
-        vfunc_self_verify(blob: GLib.Bytes, blob_signature: GLib.Bytes, flags: VerifyFlags): Result;
+        vfunc_self_verify(
+            blob: GLib.Bytes | Uint8Array,
+            blob_signature: GLib.Bytes | Uint8Array,
+            flags: VerifyFlags,
+        ): Result;
         vfunc_setup(): boolean;
 
         // Own methods of Jcat.Engine
@@ -538,7 +552,7 @@ export namespace Jcat {
          * @param blob #GBytes
          * @returns %
          */
-        add_public_key_raw(blob: GLib.Bytes): boolean;
+        add_public_key_raw(blob: GLib.Bytes | Uint8Array): boolean;
         /**
          * Gets the blob kind.
          * @returns #JcatBlobKind, e.g. %JCAT_BLOB_KIND_SHA256
@@ -557,7 +571,12 @@ export namespace Jcat {
          * @param flags #JcatSignFlags, e.g. %JCAT_SIGN_FLAG_ADD_TIMESTAMP
          * @returns #JcatBlob, or %NULL for failed
          */
-        pubkey_sign(blob: GLib.Bytes, cert: GLib.Bytes, privkey: GLib.Bytes, flags: SignFlags): Blob;
+        pubkey_sign(
+            blob: GLib.Bytes | Uint8Array,
+            cert: GLib.Bytes | Uint8Array,
+            privkey: GLib.Bytes | Uint8Array,
+            flags: SignFlags,
+        ): Blob;
         /**
          * Verifies a chunk of data.
          * @param blob #GBytes
@@ -565,14 +584,18 @@ export namespace Jcat {
          * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
          * @returns #JcatResult, or %NULL for failed
          */
-        pubkey_verify(blob: GLib.Bytes, blob_signature: GLib.Bytes, flags: VerifyFlags): Result;
+        pubkey_verify(
+            blob: GLib.Bytes | Uint8Array,
+            blob_signature: GLib.Bytes | Uint8Array,
+            flags: VerifyFlags,
+        ): Result;
         /**
          * Signs a chunk of data.
          * @param blob #GBytes
          * @param flags #JcatSignFlags, e.g. %JCAT_SIGN_FLAG_ADD_TIMESTAMP
          * @returns #JcatBlob, or %NULL for failed
          */
-        self_sign(blob: GLib.Bytes, flags: SignFlags): Blob;
+        self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
         /**
          * Verifies a chunk of data.
          * @param blob #GBytes
@@ -580,7 +603,7 @@ export namespace Jcat {
          * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
          * @returns #JcatResult, or %NULL for failed
          */
-        self_verify(blob: GLib.Bytes, blob_signature: GLib.Bytes, flags: VerifyFlags): Result;
+        self_verify(blob: GLib.Bytes | Uint8Array, blob_signature: GLib.Bytes | Uint8Array, flags: VerifyFlags): Result;
     }
 
     module File {

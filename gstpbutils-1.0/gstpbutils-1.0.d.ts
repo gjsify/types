@@ -221,13 +221,13 @@ export namespace GstPbutils {
      * @param audio_config a pointer to the AudioSpecificConfig                as specified in the Elementary Stream Descriptor (esds)                in ISO/IEC 14496-1. (See below for more details)
      * @returns %TRUE if the level and profile could be set, %FALSE otherwise.
      */
-    function codec_utils_aac_caps_set_level_and_profile(caps: Gst.Caps, audio_config: Uint8Array): boolean;
+    function codec_utils_aac_caps_set_level_and_profile(caps: Gst.Caps, audio_config: Uint8Array | string): boolean;
     /**
      * Returns the channels of the given AAC stream.
      * @param audio_config a pointer to the AudioSpecificConfig                as specified in the Elementary Stream Descriptor (esds)                in ISO/IEC 14496-1.
      * @returns The channels or 0 if the channel could not be determined.
      */
-    function codec_utils_aac_get_channels(audio_config: Uint8Array): number;
+    function codec_utils_aac_get_channels(audio_config: Uint8Array | string): number;
     /**
      * Translates the sample rate to the index corresponding to it in AAC spec.
      * @param rate Sample rate
@@ -251,7 +251,7 @@ export namespace GstPbutils {
      * @param audio_config a pointer to the AudioSpecificConfig                as specified in the Elementary Stream Descriptor (esds)                in ISO/IEC 14496-1.
      * @returns The level as a const string and %NULL if the level could not be determined.
      */
-    function codec_utils_aac_get_level(audio_config: Uint8Array): string | null;
+    function codec_utils_aac_get_level(audio_config: Uint8Array | string): string | null;
     /**
      * Returns the profile of the given AAC stream as a string. The profile is
      * normally determined using the AudioObjectType field which is in the first
@@ -259,14 +259,14 @@ export namespace GstPbutils {
      * @param audio_config a pointer to the AudioSpecificConfig                as specified in the Elementary Stream Descriptor (esds)                in ISO/IEC 14496-1.
      * @returns The profile as a const string and %NULL if the profile could not be determined.
      */
-    function codec_utils_aac_get_profile(audio_config: Uint8Array): string | null;
+    function codec_utils_aac_get_profile(audio_config: Uint8Array | string): string | null;
     /**
      * Translates the sample rate index found in AAC headers to the actual sample
      * rate.
      * @param audio_config a pointer to the AudioSpecificConfig                as specified in the Elementary Stream Descriptor (esds)                in ISO/IEC 14496-1.
      * @returns The sample rate if sr_idx is valid, 0 otherwise.
      */
-    function codec_utils_aac_get_sample_rate(audio_config: Uint8Array): number;
+    function codec_utils_aac_get_sample_rate(audio_config: Uint8Array | string): number;
     /**
      * Translates the sample rate index found in AAC headers to the actual sample
      * rate.
@@ -302,7 +302,7 @@ export namespace GstPbutils {
      * @param sps Pointer to the sequence parameter set for the stream.
      * @returns %TRUE if the level and profile could be set, %FALSE otherwise.
      */
-    function codec_utils_h264_caps_set_level_and_profile(caps: Gst.Caps, sps: Uint8Array): boolean;
+    function codec_utils_h264_caps_set_level_and_profile(caps: Gst.Caps, sps: Uint8Array | string): boolean;
     /**
      * Converts the level indication (level_idc) in the stream's
      * sequence parameter set into a string. The SPS is expected to have the
@@ -310,7 +310,7 @@ export namespace GstPbutils {
      * @param sps Pointer to the sequence parameter set for the stream.
      * @returns The level as a const string, or %NULL if there is an error.
      */
-    function codec_utils_h264_get_level(sps: Uint8Array): string | null;
+    function codec_utils_h264_get_level(sps: Uint8Array | string): string | null;
     /**
      * Transform a level string from the caps into the level_idc
      * @param level A level string from caps
@@ -335,7 +335,7 @@ export namespace GstPbutils {
      * @param sps Pointer to the sequence parameter set for the stream.
      * @returns The profile as a const string, or %NULL if there is an error.
      */
-    function codec_utils_h264_get_profile(sps: Uint8Array): string | null;
+    function codec_utils_h264_get_profile(sps: Uint8Array | string): string | null;
     /**
      * Parses profile, flags, and level from a H264 AVCC extradata/sequence_header.
      * These are most commonly retrieved from a video/x-h264 caps with a codec_data
@@ -347,7 +347,9 @@ export namespace GstPbutils {
      * @param codec_data H264 AVCC extradata
      * @returns %TRUE on success, %FALSE on failure
      */
-    function codec_utils_h264_get_profile_flags_level(codec_data: Uint8Array): [boolean, number, number, number];
+    function codec_utils_h264_get_profile_flags_level(
+        codec_data: Uint8Array | string,
+    ): [boolean, number, number, number];
     /**
      * Sets the level, tier and profile in `caps` if it can be determined from
      * `profile_tier_level`. See gst_codec_utils_h265_get_level(),
@@ -357,7 +359,10 @@ export namespace GstPbutils {
      * @param profile_tier_level Pointer to the profile_tier_level   struct
      * @returns %TRUE if the level, tier, profile could be set, %FALSE otherwise.
      */
-    function codec_utils_h265_caps_set_level_tier_and_profile(caps: Gst.Caps, profile_tier_level: Uint8Array): boolean;
+    function codec_utils_h265_caps_set_level_tier_and_profile(
+        caps: Gst.Caps,
+        profile_tier_level: Uint8Array | string,
+    ): boolean;
     /**
      * Converts the level indication (general_level_idc) in the stream's
      * profile_tier_level structure into a string. The profiel_tier_level is
@@ -365,7 +370,7 @@ export namespace GstPbutils {
      * @param profile_tier_level Pointer to the profile_tier_level   for the stream
      * @returns The level as a const string, or %NULL if there is an error.
      */
-    function codec_utils_h265_get_level(profile_tier_level: Uint8Array): string | null;
+    function codec_utils_h265_get_level(profile_tier_level: Uint8Array | string): string | null;
     /**
      * Transform a level string from the caps into the level_idc
      * @param level A level string from caps
@@ -392,7 +397,7 @@ export namespace GstPbutils {
      * @param profile_tier_level Pointer to the profile_tier_level   structure for the stream.
      * @returns The profile as a const string, or %NULL if there is an error.
      */
-    function codec_utils_h265_get_profile(profile_tier_level: Uint8Array): string | null;
+    function codec_utils_h265_get_profile(profile_tier_level: Uint8Array | string): string | null;
     /**
      * Converts the tier indication (general_tier_flag) in the stream's
      * profile_tier_level structure into a string. The profile_tier_level
@@ -400,7 +405,7 @@ export namespace GstPbutils {
      * @param profile_tier_level Pointer to the profile_tier_level   for the stream.
      * @returns The tier as a const string, or %NULL if there is an error.
      */
-    function codec_utils_h265_get_tier(profile_tier_level: Uint8Array): string | null;
+    function codec_utils_h265_get_tier(profile_tier_level: Uint8Array | string): string | null;
     /**
      * Sets the level and profile in `caps` if it can be determined from
      * `vis_obj_seq`. See gst_codec_utils_mpeg4video_get_level() and
@@ -410,7 +415,10 @@ export namespace GstPbutils {
      * @param vis_obj_seq Pointer to the visual object   sequence for the stream.
      * @returns %TRUE if the level and profile could be set, %FALSE otherwise.
      */
-    function codec_utils_mpeg4video_caps_set_level_and_profile(caps: Gst.Caps, vis_obj_seq: Uint8Array): boolean;
+    function codec_utils_mpeg4video_caps_set_level_and_profile(
+        caps: Gst.Caps,
+        vis_obj_seq: Uint8Array | string,
+    ): boolean;
     /**
      * Converts the level indication in the stream's visual object sequence into
      * a string. `vis_obj_seq` is expected to be the data following the visual
@@ -419,7 +427,7 @@ export namespace GstPbutils {
      * @param vis_obj_seq Pointer to the visual object   sequence for the stream.
      * @returns The level as a const string, or NULL if there is an error.
      */
-    function codec_utils_mpeg4video_get_level(vis_obj_seq: Uint8Array): string | null;
+    function codec_utils_mpeg4video_get_level(vis_obj_seq: Uint8Array | string): string | null;
     /**
      * Converts the profile indication in the stream's visual object sequence into
      * a string. `vis_obj_seq` is expected to be the data following the visual
@@ -428,7 +436,7 @@ export namespace GstPbutils {
      * @param vis_obj_seq Pointer to the visual object   sequence for the stream.
      * @returns The profile as a const string, or NULL if there is an error.
      */
-    function codec_utils_mpeg4video_get_profile(vis_obj_seq: Uint8Array): string | null;
+    function codec_utils_mpeg4video_get_profile(vis_obj_seq: Uint8Array | string): string | null;
     /**
      * Creates Opus caps from the given parameters.
      * @param rate the sample rate

@@ -400,7 +400,7 @@ export namespace Gladeui {
         flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     function propert_get_insensitive_tooltip(property: Property): string;
-    function property_def_get_default_from_spec(spec: GObject.ParamSpec): GObject.Value;
+    function property_def_get_default_from_spec(spec: GObject.ParamSpec): unknown;
     function property_def_make_flags_from_string(type: GObject.GType, string: string): number;
     /**
      * This function assigns "weight" to each property in its natural order staring from 1.
@@ -625,7 +625,7 @@ export namespace Gladeui {
      * @param value a #GValue to convert
      * @returns A newly allocated string
      */
-    function utils_string_from_value(value: GObject.Value): string;
+    function utils_string_from_value(value: GObject.Value | any): string;
     /**
      * Allocates and sets a #GValue of type `type`
      * set to `string` (using glade conversion routines)
@@ -634,7 +634,7 @@ export namespace Gladeui {
      * @param project the #GladeProject to look for formats of object names when needed
      * @returns A newly allocated and set #GValue
      */
-    function utils_value_from_string(type: GObject.GType, string: string, project: Project): GObject.Value;
+    function utils_value_from_string(type: GObject.GType, string: string, project: Project): unknown;
     /**
      * Dump the XML string from the context.
      * @param context a #GladeXmlContext
@@ -728,13 +728,13 @@ export namespace Gladeui {
         (adaptor: WidgetAdaptor, container: A, object: B, action_path: string): void;
     }
     interface ChildGetPropertyFunc<A = GObject.Object, B = GObject.Object> {
-        (adaptor: WidgetAdaptor, container: A, child: B, property_name: string, value: GObject.Value): void;
+        (adaptor: WidgetAdaptor, container: A, child: B, property_name: string, value: GObject.Value | any): void;
     }
     interface ChildSetPropertyFunc<A = GObject.Object, B = GObject.Object> {
-        (adaptor: WidgetAdaptor, container: A, child: B, property_name: string, value: GObject.Value): void;
+        (adaptor: WidgetAdaptor, container: A, child: B, property_name: string, value: GObject.Value | any): void;
     }
     interface ChildVerifyPropertyFunc<A = GObject.Object, B = GObject.Object> {
-        (adaptor: WidgetAdaptor, container: A, child: B, property_name: string, value: GObject.Value): boolean;
+        (adaptor: WidgetAdaptor, container: A, child: B, property_name: string, value: GObject.Value | any): boolean;
     }
     interface ConstructObjectFunc {
         (adaptor: WidgetAdaptor, n_parameters: number, parameters: GObject.Parameter): GObject.Object;
@@ -758,7 +758,7 @@ export namespace Gladeui {
         (adaptor: WidgetAdaptor, object: A, internal_name: string): GObject.Object | null;
     }
     interface GetPropertyFunc<A = GObject.Object> {
-        (adaptor: WidgetAdaptor, object: A, property_name: string, value: GObject.Value): void;
+        (adaptor: WidgetAdaptor, object: A, property_name: string, value: GObject.Value | any): void;
     }
     interface PostCreateFunc<A = GObject.Object> {
         (adaptor: WidgetAdaptor, object: A, reason: CreateReason): void;
@@ -773,13 +773,13 @@ export namespace Gladeui {
         (adaptor: WidgetAdaptor, container: A, old_obj: B, new_obj: C): void;
     }
     interface SetPropertyFunc<A = GObject.Object> {
-        (adaptor: WidgetAdaptor, object: A, property_name: string, value: GObject.Value): void;
+        (adaptor: WidgetAdaptor, object: A, property_name: string, value: GObject.Value | any): void;
     }
     interface StringFromValueFunc {
-        (adaptor: WidgetAdaptor, def: PropertyDef, value: GObject.Value): string;
+        (adaptor: WidgetAdaptor, def: PropertyDef, value: GObject.Value | any): string;
     }
     interface VerifyPropertyFunc<A = GObject.Object> {
-        (adaptor: WidgetAdaptor, object: A, property_name: string, value: GObject.Value): boolean;
+        (adaptor: WidgetAdaptor, object: A, property_name: string, value: GObject.Value | any): boolean;
     }
     interface WriteWidgetFunc {
         (adaptor: WidgetAdaptor, widget: Widget, context: XmlContext, node: XmlNode): void;
@@ -962,6 +962,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1004,7 +1005,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1205,7 +1206,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1220,7 +1221,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1601,6 +1602,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1643,7 +1645,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1844,7 +1846,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1859,7 +1861,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1912,6 +1914,7 @@ export namespace Gladeui {
         // Own virtual methods of Gladeui.CellRendererIcon
 
         vfunc_activate(path: string): void;
+        // Conflicted with Gtk.CellRenderer.vfunc_activate
         vfunc_activate(...args: never[]): any;
 
         // Own methods of Gladeui.CellRendererIcon
@@ -2124,7 +2127,7 @@ export namespace Gladeui {
          * @param enabled Whether the property should be enabled
          */
         static set_property_enabled(property: Property, enabled: boolean): void;
-        static set_property_value(property: Property, value: GObject.Value): void;
+        static set_property_value(property: Property, value: GObject.Value | any): void;
         /**
          * Unlocks `widget` so that it can be removed
          * from the project again
@@ -2330,6 +2333,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2372,7 +2376,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2573,7 +2577,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2588,7 +2592,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2985,6 +2989,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -3004,6 +3009,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -3103,6 +3109,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3130,6 +3137,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -3146,7 +3154,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3347,7 +3355,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3362,7 +3370,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3494,6 +3502,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -6109,7 +6118,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -6925,6 +6934,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -6944,6 +6954,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -7043,6 +7054,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7070,6 +7082,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -7086,7 +7099,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7287,7 +7300,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7302,7 +7315,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7434,6 +7447,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -10049,7 +10063,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -10865,6 +10879,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -10884,6 +10899,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -10983,6 +10999,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11010,6 +11027,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -11026,7 +11044,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11227,7 +11245,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11242,7 +11260,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -11374,6 +11392,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -13989,7 +14008,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -14805,6 +14824,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -14824,6 +14844,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -14923,6 +14944,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14950,6 +14972,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -14966,7 +14989,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15167,7 +15190,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15182,7 +15205,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15314,6 +15337,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -17929,7 +17953,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -18745,6 +18769,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -18764,6 +18789,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -18863,6 +18889,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -18890,6 +18917,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -18906,7 +18934,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -19107,7 +19135,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19122,7 +19150,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -19254,6 +19282,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -21869,7 +21898,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -22688,6 +22717,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -22707,6 +22737,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -22806,6 +22837,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -22833,6 +22865,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -22849,7 +22882,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -23050,7 +23083,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23065,7 +23098,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -23197,6 +23230,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -25812,7 +25846,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -26628,6 +26662,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -26647,6 +26682,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -26746,6 +26782,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -26773,6 +26810,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -26789,7 +26827,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -26990,7 +27028,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -27005,7 +27043,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -27137,6 +27175,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -29752,7 +29791,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -30568,6 +30607,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -30587,6 +30627,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -30686,6 +30727,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -30713,6 +30755,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -30729,7 +30772,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -30930,7 +30973,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -30945,7 +30988,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -31077,6 +31120,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -33692,7 +33736,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -34508,6 +34552,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -34527,6 +34572,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -34626,6 +34672,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -34653,6 +34700,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -34669,7 +34717,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -34870,7 +34918,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -34885,7 +34933,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -35017,6 +35065,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -37632,7 +37681,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -38448,6 +38497,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -38467,6 +38517,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -38566,6 +38617,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -38593,6 +38645,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -38609,7 +38662,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -38810,7 +38863,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -38825,7 +38878,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -38957,6 +39010,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -41572,7 +41626,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -42388,6 +42442,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.load
         load(...args: never[]): any;
         loaded_widget(): Widget | null;
         loading(): boolean;
@@ -42407,6 +42462,7 @@ export namespace Gladeui {
          * @param widget the #GladeWidget to load
          */
         vfunc_load(widget: Widget): void;
+        // Conflicted with Gladeui.EditorProperty.vfunc_load
         vfunc_load(...args: never[]): any;
         /**
          * This only applies for the general page in the property
@@ -42506,6 +42562,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -42533,6 +42590,7 @@ export namespace Gladeui {
          */
         get_data(key: string): any | null;
         get_property(property_name: string): any;
+        // Conflicted with Gladeui.EditorProperty.get_property
         get_property(...args: never[]): any;
         /**
          * This function gets back user data pointers stored via
@@ -42549,7 +42607,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -42750,7 +42808,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -42765,7 +42823,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -42897,6 +42955,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -45512,7 +45571,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -46120,6 +46179,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -46162,7 +46222,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -46363,7 +46423,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -46378,7 +46438,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -46488,7 +46548,7 @@ export namespace Gladeui {
          * Commits `value` to the property currently being edited by `eprop`.
          * @param value The #GValue to commit
          */
-        vfunc_commit(value: GObject.Value): void;
+        vfunc_commit(value: GObject.Value | any): void;
         /**
          * Loads `property` values into `eprop` and connects.
          * (the editor property will watch the property's value
@@ -46496,6 +46556,7 @@ export namespace Gladeui {
          * @param property A #GladeProperty
          */
         vfunc_load(property: Property): void;
+        // Conflicted with Gladeui.Editable.vfunc_load
         vfunc_load(...args: never[]): any;
 
         // Own methods of Gladeui.EditorProperty
@@ -46504,12 +46565,13 @@ export namespace Gladeui {
          * Commits `value` to the property currently being edited by `eprop`.
          * @param value The #GValue to commit
          */
-        commit(value: GObject.Value): void;
-        commit_no_callback(value: GObject.Value): void;
+        commit(value: GObject.Value | any): void;
+        commit_no_callback(value: GObject.Value | any): void;
         get_custom_text(): string;
         get_disable_check(): boolean;
         get_item_label(): Gtk.Widget;
         get_property(): Property;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         get_property_def(): PropertyDef;
         /**
@@ -46519,6 +46581,7 @@ export namespace Gladeui {
          * @param property A #GladeProperty
          */
         load(property: Property): void;
+        // Conflicted with Gladeui.Editable.load
         load(...args: never[]): any;
         /**
          * Convenience function to load the appropriate #GladeProperty into
@@ -47015,6 +47078,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -47056,7 +47120,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -47257,7 +47321,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -47272,7 +47336,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -47404,6 +47468,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -50019,7 +50084,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -50972,6 +51037,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -51014,7 +51080,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -51215,7 +51281,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -51230,7 +51296,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -51362,6 +51428,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -53977,7 +54044,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -54937,6 +55004,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -54979,7 +55047,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -55180,7 +55248,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -55195,7 +55263,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -55327,6 +55395,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -57942,7 +58011,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -58556,6 +58625,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -58598,7 +58668,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -58799,7 +58869,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -58814,7 +58884,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -58871,9 +58941,11 @@ export namespace Gladeui {
 
         get_context(): string;
         get_icon_name(): string;
+        // Conflicted with Gtk.Window.get_icon_name
         get_icon_name(...args: never[]): any;
         set_context(context: string): boolean;
         set_icon_name(icon_name: string): void;
+        // Conflicted with Gtk.Window.set_icon_name
         set_icon_name(...args: never[]): any;
 
         // Inherited methods
@@ -58967,6 +59039,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -59009,7 +59082,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -59210,7 +59283,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -59225,7 +59298,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -59430,6 +59503,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -59472,7 +59546,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -59673,7 +59747,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -59688,7 +59762,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -59724,6 +59798,7 @@ export namespace Gladeui {
         // Own methods of Gladeui.Placeholder
 
         get_parent(): Widget | null;
+        // Conflicted with Gtk.Widget.get_parent
         get_parent(...args: never[]): any;
         get_project(): Project | null;
         packing_actions(): WidgetAction[];
@@ -59846,7 +59921,7 @@ export namespace Gladeui {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -59937,7 +60012,7 @@ export namespace Gladeui {
          * @param name name of property
          * @param value value of property
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void;
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -60094,6 +60169,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -60136,7 +60212,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -60337,7 +60413,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -60352,7 +60428,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -60688,6 +60764,7 @@ export namespace Gladeui {
         get_name(): string;
         get_objects(): GObject.Object[];
         get_path(): string;
+        // Conflicted with Gtk.TreeModel.get_path
         get_path(...args: never[]): any;
         get_pointer_mode(): PointerMode;
         /**
@@ -61419,6 +61496,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -61461,7 +61539,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -61662,7 +61740,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -61677,7 +61755,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -61745,7 +61823,7 @@ export namespace Gladeui {
 
         _init(...args: any[]): void;
 
-        static ['new'](def: PropertyDef, widget: Widget, value: GObject.Value): Property;
+        static ['new'](def: PropertyDef, widget: Widget, value: GObject.Value | any): Property;
 
         // Own signals of Gladeui.Property
 
@@ -61777,12 +61855,12 @@ export namespace Gladeui {
         // Own virtual methods of Gladeui.Property
 
         vfunc_dup(widget: Widget): Property;
-        vfunc_equals_value(value: GObject.Value): boolean;
+        vfunc_equals_value(value: GObject.Value | any): boolean;
         /**
          * Retrieve the property value
          * @param value a #GValue
          */
-        vfunc_get_value(value: GObject.Value): void;
+        vfunc_get_value(value: GObject.Value | any): void;
         /**
          * Loads the value of `property` from the corresponding object instance
          */
@@ -61791,13 +61869,13 @@ export namespace Gladeui {
          * Sets the property's value
          * @param value a #GValue
          */
-        vfunc_set_value(value: GObject.Value): boolean;
+        vfunc_set_value(value: GObject.Value | any): boolean;
         /**
          * Synchronize the object with this property
          */
         vfunc_sync(): void;
         vfunc_tooltip_changed(tooltip: string, insensitive_tooltip: string, support_warning: string): void;
-        vfunc_value_changed(old_value: GObject.Value, new_value: GObject.Value): void;
+        vfunc_value_changed(old_value: GObject.Value | any, new_value: GObject.Value | any): void;
 
         // Own methods of Gladeui.Property
 
@@ -61811,7 +61889,7 @@ export namespace Gladeui {
         add_object(object: GObject.Object): void;
         ['default'](): boolean;
         dup(widget: Widget): Property;
-        equals_value(value: GObject.Value): boolean;
+        equals_value(value: GObject.Value | any): boolean;
         /**
          * Get the #GladePropertyDef this property was created for.
          * @returns a #GladePropertyDef
@@ -61821,7 +61899,7 @@ export namespace Gladeui {
          * Retrieve the default property value
          * @param value a #GValue
          */
-        get_default(value: GObject.Value): void;
+        get_default(value: GObject.Value | any): void;
         get_enabled(): boolean;
         get_save_always(): boolean;
         get_sensitive(): boolean;
@@ -61831,7 +61909,7 @@ export namespace Gladeui {
          * Retrieve the property value
          * @param value a #GValue
          */
-        get_value(value: GObject.Value): void;
+        get_value(value: GObject.Value | any): void;
         get_widget(): Widget;
         i18n_get_comment(): string;
         i18n_get_context(): string;
@@ -61839,7 +61917,7 @@ export namespace Gladeui {
         i18n_set_comment(str: string): void;
         i18n_set_context(str: string): void;
         i18n_set_translatable(translatable: boolean): void;
-        inline_value(): GObject.Value;
+        inline_value(): unknown;
         /**
          * Loads the value of `property` from the corresponding object instance
          */
@@ -61889,7 +61967,7 @@ export namespace Gladeui {
          * @param value a #GValue
          * @returns Whether the property was successfully set.
          */
-        set_value(value: GObject.Value): boolean;
+        set_value(value: GObject.Value | any): boolean;
         set_widget(widget: Widget): void;
         /**
          * Synchronize the object with this property
@@ -61966,6 +62044,7 @@ export namespace Gladeui {
         get_custom_tooltip(): string;
         get_packing(): boolean;
         get_property(): Property;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         get_property_name(): string;
         set_append_colon(append_colon: boolean): void;
@@ -61973,6 +62052,7 @@ export namespace Gladeui {
         set_custom_tooltip(custom_tooltip: string): void;
         set_packing(packing: boolean): void;
         set_property(property: Property): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         set_property_name(property_name: string): void;
 
@@ -62461,6 +62541,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -62502,7 +62583,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -62702,7 +62783,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -62717,7 +62798,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -62849,6 +62930,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -65464,7 +65546,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -66483,6 +66565,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -66525,7 +66608,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -66726,7 +66809,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -66741,7 +66824,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -66873,6 +66956,7 @@ export namespace Gladeui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -69488,7 +69572,7 @@ export namespace Gladeui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -70234,6 +70318,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -70276,7 +70361,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -70477,7 +70562,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -70492,7 +70577,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -70534,7 +70619,7 @@ export namespace Gladeui {
          * @param widget The #GladeWidget the signals belong to
          * @param signals The signals of the #GladeWidget
          */
-        static ['new'](widget: Widget, signals: GLib.HashTable<any, any>): Gtk.TreeModel;
+        static ['new'](widget: Widget, signals: { [key: string]: any } | GLib.HashTable<any, any>): Gtk.TreeModel;
 
         // Inherited methods
         /**
@@ -71081,6 +71166,7 @@ export namespace Gladeui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -71123,7 +71209,7 @@ export namespace Gladeui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -71324,7 +71410,7 @@ export namespace Gladeui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -71339,7 +71425,7 @@ export namespace Gladeui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -71617,14 +71703,14 @@ export namespace Gladeui {
          * @param property_name The id of the property
          * @param value The @GValue
          */
-        child_get_property(child: Widget, property_name: string, value: GObject.Value): void;
+        child_get_property(child: Widget, property_name: string, value: GObject.Value | any): void;
         /**
          * Sets `child'`s packing property identified by `property_name` to `value`.
          * @param child The #GladeWidget child
          * @param property_name The id of the property
          * @param value The @GValue
          */
-        child_set_property(child: Widget, property_name: string, value: GObject.Value): void;
+        child_set_property(child: Widget, property_name: string, value: GObject.Value | any): void;
         /**
          * Sets properties in `widget` based on the values of
          * matching properties in `template_widget`
@@ -71745,6 +71831,7 @@ export namespace Gladeui {
         get_project(): Project;
         get_properties(): Property[];
         get_property(id_property: string): Property | null;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Compiles a list of #GladeSignal elements
@@ -71784,14 +71871,14 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The #GValue
          */
-        object_get_property(property_name: string, value: GObject.Value): void;
+        object_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * This function applies `value` to the property `property_name` on
          * the runtime object of `widget`.
          * @param property_name The property identifier
          * @param value The #GValue
          */
-        object_set_property(property_name: string, value: GObject.Value): void;
+        object_set_property(property_name: string, value: GObject.Value | any): void;
         pack_property_default(id_property: string): boolean;
         /**
          * Resets `id_property` in `widget'`s packing properties to it's default value
@@ -71833,7 +71920,7 @@ export namespace Gladeui {
          * @param value the #GValue to print or %NULL
          * @returns A newly allocated string representing @id_property
          */
-        pack_property_string(id_property: string, value: GObject.Value): string;
+        pack_property_string(id_property: string, value: GObject.Value | any): string;
         /**
          * Returns whether placeholders should be used
          * in operations concerning this parent & child.
@@ -71890,7 +71977,7 @@ export namespace Gladeui {
          * @param value the #GValue to print or %NULL
          * @returns A newly allocated string representing @id_property
          */
-        property_string(id_property: string, value: GObject.Value): string;
+        property_string(id_property: string, value: GObject.Value | any): string;
         /**
          * Reads in a child widget from the xml (handles 'child' tag)
          * @param node a #GladeXmlNode
@@ -72208,7 +72295,7 @@ export namespace Gladeui {
             container: GObject.Object,
             child: GObject.Object,
             property_name: string,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): void;
         /**
          * Sets `child'`s packing property identified by `property_name` to `value`.
@@ -72221,7 +72308,7 @@ export namespace Gladeui {
             container: GObject.Object,
             child: GObject.Object,
             property_name: string,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): void;
         /**
          * This delegate function is always called whenever setting any
@@ -72238,7 +72325,7 @@ export namespace Gladeui {
             container: GObject.Object,
             child: GObject.Object,
             property_name: string,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * This function is called to construct a GObject instance for
@@ -72291,7 +72378,8 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The #GValue
          */
-        vfunc_get_property(object: GObject.Object, property_name: string, value: GObject.Value): void;
+        vfunc_get_property(object: GObject.Object, property_name: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.vfunc_get_property
         vfunc_get_property(...args: never[]): any;
         /**
          * An adaptor function to be called after the object is created
@@ -72336,7 +72424,8 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The #GValue
          */
-        vfunc_set_property(object: GObject.Object, property_name: string, value: GObject.Value): void;
+        vfunc_set_property(object: GObject.Object, property_name: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.vfunc_set_property
         vfunc_set_property(...args: never[]): any;
         /**
          * For normal properties this is used to serialize
@@ -72345,7 +72434,7 @@ export namespace Gladeui {
          * @param def The #GladePropertyDef
          * @param value The #GValue to convert to a string
          */
-        vfunc_string_from_value(def: PropertyDef, value: GObject.Value): string;
+        vfunc_string_from_value(def: PropertyDef, value: GObject.Value | any): string;
         /**
          * This delegate function is always called whenever setting any
          * properties with the exception of load time, and copy/paste time
@@ -72356,7 +72445,7 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The #GValue
          */
-        vfunc_verify_property(object: GObject.Object, property_name: string, value: GObject.Value): boolean;
+        vfunc_verify_property(object: GObject.Object, property_name: string, value: GObject.Value | any): boolean;
         /**
          * This function is called to write the child `widget` to `node`
          * when writing xml files (takes care of packing and recurses
@@ -72456,7 +72545,7 @@ export namespace Gladeui {
             container: GObject.Object,
             child: GObject.Object,
             property_name: string,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): void;
         /**
          * Sets `child'`s packing property identified by `property_name` to `value`.
@@ -72469,7 +72558,7 @@ export namespace Gladeui {
             container: GObject.Object,
             child: GObject.Object,
             property_name: string,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): void;
         /**
          * This delegate function is always called whenever setting any
@@ -72487,7 +72576,7 @@ export namespace Gladeui {
             container: GObject.Object,
             child: GObject.Object,
             property_name: string,
-            value: GObject.Value,
+            value: GObject.Value | any,
         ): boolean;
         /**
          * This function is called to construct a GObject instance for
@@ -72587,7 +72676,8 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The #GValue
          */
-        get_property(object: GObject.Object, property_name: string, value: GObject.Value): void;
+        get_property(object: GObject.Object, property_name: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Retrieves the #GladePropertyDef for `name` in `adaptor`
@@ -72686,7 +72776,8 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The #GValue
          */
-        set_property(object: GObject.Object, property_name: string, value: GObject.Value): void;
+        set_property(object: GObject.Object, property_name: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
          * For normal properties this is used to serialize
@@ -72696,7 +72787,7 @@ export namespace Gladeui {
          * @param value The #GValue to convert to a string
          * @returns A newly allocated string representation of @value
          */
-        string_from_value(def: PropertyDef, value: GObject.Value): string;
+        string_from_value(def: PropertyDef, value: GObject.Value | any): string;
         /**
          * This delegate function is always called whenever setting any
          * properties with the exception of load time, and copy/paste time
@@ -72708,7 +72799,7 @@ export namespace Gladeui {
          * @param value The #GValue
          * @returns whether or not its OK to set @value on @object, this function will silently return TRUE if the class did not provide a verify function.
          */
-        verify_property(object: GObject.Object, property_name: string, value: GObject.Value): boolean;
+        verify_property(object: GObject.Object, property_name: string, value: GObject.Value | any): boolean;
         /**
          * This function is called to write the child `widget` to `node`
          * when writing xml files (takes care of packing and recurses
@@ -72953,7 +73044,7 @@ export namespace Gladeui {
 
         // Own static methods of Gladeui.PropertyDef
 
-        static get_default_from_spec(spec: GObject.ParamSpec): GObject.Value;
+        static get_default_from_spec(spec: GObject.ParamSpec): unknown;
         static make_flags_from_string(type: GObject.GType, string: string): number;
         /**
          * This function assigns "weight" to each property in its natural order staring from 1.
@@ -72989,7 +73080,7 @@ export namespace Gladeui {
          * @param value2 a GValue of correct type for @property_def
          * @returns -1, 0 or +1, if value1 is found to be less than, equal to or greater than value2, respectively.
          */
-        compare(value1: GObject.Value, value2: GObject.Value): number;
+        compare(value1: GObject.Value | any, value2: GObject.Value | any): number;
         create_type(): string;
         custom_layout(): boolean;
         deprecated(): boolean;
@@ -73001,11 +73092,11 @@ export namespace Gladeui {
         free(): void;
         get_adaptor(): WidgetAdaptor;
         get_construct_only(): boolean;
-        get_default(): GObject.Value;
+        get_default(): unknown;
         get_ignore(): boolean;
         get_is_packing(): boolean;
         get_name(): string;
-        get_original_default(): GObject.Value;
+        get_original_default(): unknown;
         get_pspec(): GObject.ParamSpec;
         get_tooltip(): string;
         get_virtual(): boolean;
@@ -73018,8 +73109,8 @@ export namespace Gladeui {
          * @returns An appropriate #GtkAdjustment for use in the Property editor
          */
         make_adjustment(): Gtk.Adjustment;
-        make_gvalue_from_string(string: string, project: Project): GObject.Value;
-        make_string_from_gvalue(value: GObject.Value): string;
+        make_gvalue_from_string(string: string, project: Project): unknown;
+        make_string_from_gvalue(value: GObject.Value | any): string;
         match(comp: PropertyDef): boolean;
         multiline(): boolean;
         needs_sync(): boolean;
@@ -73044,7 +73135,7 @@ export namespace Gladeui {
         themed_icon(): boolean;
         transfer_on_paste(): boolean;
         translatable(): boolean;
-        void_value(value: GObject.Value): boolean;
+        void_value(value: GObject.Value | any): boolean;
         weight(): number;
     }
 

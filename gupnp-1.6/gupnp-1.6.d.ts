@@ -278,7 +278,7 @@ export namespace GUPnP {
         (proxy: ServiceProxy, action: ServiceProxyAction): void;
     }
     interface ServiceProxyNotifyCallback {
-        (proxy: ServiceProxy, variable: string, value: GObject.Value): void;
+        (proxy: ServiceProxy, variable: string, value: GObject.Value | any): void;
     }
     type BinBase64 = object | null;
     type BinHex = object | null;
@@ -658,6 +658,7 @@ export namespace GUPnP {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -700,7 +701,7 @@ export namespace GUPnP {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -901,7 +902,7 @@ export namespace GUPnP {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -916,7 +917,7 @@ export namespace GUPnP {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2092,6 +2093,7 @@ export namespace GUPnP {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2134,7 +2136,7 @@ export namespace GUPnP {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2335,7 +2337,7 @@ export namespace GUPnP {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2350,7 +2352,7 @@ export namespace GUPnP {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2370,7 +2372,7 @@ export namespace GUPnP {
         }
 
         interface QueryVariable {
-            (variable: string, value: GObject.Value): void;
+            (variable: string, value: GObject.Value | any): void;
         }
 
         // Constructor properties interface
@@ -2438,7 +2440,7 @@ export namespace GUPnP {
             signal: 'query-variable',
             callback: (_source: this, variable: string, value: GObject.Value) => void,
         ): number;
-        emit(signal: 'query-variable', variable: string, value: GObject.Value): void;
+        emit(signal: 'query-variable', variable: string, value: GObject.Value | any): void;
 
         // Own virtual methods of GUPnP.Service
 
@@ -2464,7 +2466,7 @@ export namespace GUPnP {
          * @param variable the name of the variable that was queried
          * @param value a value that should be filled to the current value of @variable
          */
-        vfunc_query_variable(variable: string, value: GObject.Value): void;
+        vfunc_query_variable(variable: string, value: GObject.Value | any): void;
 
         // Own methods of GUPnP.Service
 
@@ -2494,7 +2496,7 @@ export namespace GUPnP {
          * @param variable the name of the variable to notify
          * @param value the value of the variable
          */
-        notify_value(variable: string, value: GObject.Value): void;
+        notify_value(variable: string, value: GObject.Value | any): void;
         /**
          * Default handler for [signal`GUPnP`.Service::query_variable]. See its documentation for details.
          *
@@ -2502,7 +2504,7 @@ export namespace GUPnP {
          * @param variable the name of the variable that was queried
          * @param value a value that should be filled to the current value of @variable
          */
-        query_variable(variable: string, value: GObject.Value): void;
+        query_variable(variable: string, value: GObject.Value | any): void;
         /**
          * Sends out any pending notifications, and stops queuing of new ones.
          */
@@ -2907,6 +2909,7 @@ export namespace GUPnP {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2949,7 +2952,7 @@ export namespace GUPnP {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3150,7 +3153,7 @@ export namespace GUPnP {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3165,7 +3168,7 @@ export namespace GUPnP {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3535,6 +3538,7 @@ export namespace GUPnP {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3577,7 +3581,7 @@ export namespace GUPnP {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3778,7 +3782,7 @@ export namespace GUPnP {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3793,7 +3797,7 @@ export namespace GUPnP {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3836,7 +3840,7 @@ export namespace GUPnP {
          * @param type The type of argument to retrieve
          * @returns Value as #GValue associated with @action. g_value_unset() and g_slice_free() it after usage.
          */
-        get_value(argument: string, type: GObject.GType): GObject.Value;
+        get_value(argument: string, type: GObject.GType): unknown;
         /**
          * Get an ordered (preferred first) #GList of locales preferred by
          * the client. Free list and elements after use.
@@ -3860,7 +3864,7 @@ export namespace GUPnP {
          * @param arg_types A #GList of argument types as #GType
          * @returns The values as #GList of #GValue. g_list_free() the returned list and g_value_unset() and g_slice_free() each element.
          */
-        get_values(arg_names: string[], arg_types: GObject.GType[]): GObject.Value[];
+        get_values(arg_names: string[], arg_types: GObject.GType[]): unknown[];
         /**
          * Return `error_code`.
          * @param error_code The error code
@@ -3876,13 +3880,13 @@ export namespace GUPnP {
          * @param argument The name of the return value to retrieve
          * @param value The #GValue to store the return value
          */
-        set_value(argument: string, value: GObject.Value): void;
+        set_value(argument: string, value: GObject.Value | any): void;
         /**
          * Sets the specified action return values.
          * @param arg_names A #GList of argument names
          * @param arg_values The #GList of values (as #GValue<!-- -->s) that line up with @arg_names.
          */
-        set_values(arg_names: string[], arg_values: GObject.Value[]): void;
+        set_values(arg_names: string[], arg_values: (GObject.Value | any)[]): void;
     }
 
     /**
@@ -3932,7 +3936,11 @@ export namespace GUPnP {
         constructor(action: string, ___: any[]);
         _init(...args: any[]): void;
 
-        static new_from_list(action: string, in_names: string[], in_values: GObject.Value[]): ServiceProxyAction;
+        static new_from_list(
+            action: string,
+            in_names: string[],
+            in_values: (GObject.Value | any)[],
+        ): ServiceProxyAction;
 
         // Own methods of GUPnP.ServiceProxyAction
 
@@ -3986,7 +3994,7 @@ export namespace GUPnP {
          * @returns %TRUE on success.
          */
         get_result_hash(
-            out_hash: GLib.HashTable<string, GObject.Value>,
+            out_hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): [boolean, GLib.HashTable<string, GObject.Value>];
         /**
          * A variant of gupnp_service_proxy_action_get_result() that takes lists of
@@ -4043,7 +4051,7 @@ export namespace GUPnP {
          * @param out_types #GList of types (as #GType) that line up with @out_names
          * @returns %TRUE on success.
          */
-        get_result_list(out_names: string[], out_types: GObject.GType[]): [boolean, GObject.Value[]];
+        get_result_list(out_names: string[], out_types: GObject.GType[]): [boolean, unknown[]];
         /**
          * Increases reference count of `action`
          * @returns @action with an increased reference count
@@ -4057,7 +4065,7 @@ export namespace GUPnP {
          * @param value the new value of @key
          * @returns true if successfully modified, false otherwise
          */
-        set(key: string, value: GObject.Value): boolean;
+        set(key: string, value: GObject.Value | any): boolean;
         /**
          * Decreases reference count of `action`. If reference count drops to 0,
          * the action and its contents will be freed.

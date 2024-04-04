@@ -258,7 +258,7 @@ export namespace OSTree {
     const TIMESTAMP: number;
     const TREE_GVARIANT_STRING: string;
     const WITH_AUTOCLEANUPS: number;
-    function checksum_b64_from_bytes(csum: Uint8Array): string;
+    function checksum_b64_from_bytes(csum: Uint8Array | string): string;
     function checksum_b64_to_bytes(checksum: string): Uint8Array;
     function checksum_bytes_peek(bytes: GLib.Variant): Uint8Array;
     /**
@@ -285,6 +285,36 @@ export namespace OSTree {
      * @param objtype Object type
      * @param io_priority Priority for operation, see %G_IO_PRIORITY_DEFAULT
      * @param cancellable Cancellable
+     */
+    function checksum_file_async(
+        f: Gio.File,
+        objtype: ObjectType,
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<[Uint8Array]>;
+    /**
+     * Asynchronously compute the OSTree checksum for a given file;
+     * complete with ostree_checksum_file_async_finish().
+     * @param f File path
+     * @param objtype Object type
+     * @param io_priority Priority for operation, see %G_IO_PRIORITY_DEFAULT
+     * @param cancellable Cancellable
+     * @param callback Invoked when operation is complete
+     */
+    function checksum_file_async(
+        f: Gio.File,
+        objtype: ObjectType,
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.File> | null,
+    ): void;
+    /**
+     * Asynchronously compute the OSTree checksum for a given file;
+     * complete with ostree_checksum_file_async_finish().
+     * @param f File path
+     * @param objtype Object type
+     * @param io_priority Priority for operation, see %G_IO_PRIORITY_DEFAULT
+     * @param cancellable Cancellable
      * @param callback Invoked when operation is complete
      */
     function checksum_file_async(
@@ -293,7 +323,7 @@ export namespace OSTree {
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.File> | null,
-    ): void;
+    ): Promise<[Uint8Array]> | void;
     /**
      * Finish computing the OSTree checksum for a given file; see
      * ostree_checksum_file_async().
@@ -316,7 +346,7 @@ export namespace OSTree {
         objtype: ObjectType,
         cancellable?: Gio.Cancellable | null,
     ): [boolean, Uint8Array];
-    function checksum_from_bytes(csum: Uint8Array): string;
+    function checksum_from_bytes(csum: Uint8Array | string): string;
     function checksum_from_bytes_v(csum_v: GLib.Variant): string;
     /**
      * Convert `checksum` from a string to binary in-place, without
@@ -685,6 +715,7 @@ export namespace OSTree {
          */
         parse_at(dfd: number, path: string, cancellable?: Gio.Cancellable | null): boolean;
         set(key: string, value: string): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         write(output: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
         write_at(dfd: number, path: string, cancellable?: Gio.Cancellable | null): boolean;
@@ -1076,6 +1107,7 @@ export namespace OSTree {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1118,7 +1150,7 @@ export namespace OSTree {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1319,7 +1351,7 @@ export namespace OSTree {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1334,7 +1366,7 @@ export namespace OSTree {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1493,7 +1525,7 @@ export namespace OSTree {
          */
         append_gpg_signature(
             commit_checksum: string,
-            signature_bytes: GLib.Bytes,
+            signature_bytes: GLib.Bytes | Uint8Array,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1648,8 +1680,8 @@ export namespace OSTree {
          */
         gpg_verify_data(
             remote_name: string | null,
-            data: GLib.Bytes,
-            signatures: GLib.Bytes,
+            data: GLib.Bytes | Uint8Array,
+            signatures: GLib.Bytes | Uint8Array,
             keyringdir?: Gio.File | null,
             extra_keyring?: Gio.File | null,
             cancellable?: Gio.Cancellable | null,
@@ -1718,7 +1750,7 @@ export namespace OSTree {
          */
         list_commit_objects_starting_with(
             start: string,
-            out_commits: GLib.HashTable<any, any>,
+            out_commits: { [key: string]: any } | GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2326,8 +2358,8 @@ export namespace OSTree {
          */
         verify_summary(
             remote_name: string,
-            summary: GLib.Bytes,
-            signatures: GLib.Bytes,
+            summary: GLib.Bytes | Uint8Array,
+            signatures: GLib.Bytes | Uint8Array,
             cancellable?: Gio.Cancellable | null,
         ): GpgVerifyResult;
         /**
@@ -4099,7 +4131,7 @@ export namespace OSTree {
          * @returns %TRUE if successful. If an error has occurred, this function   will return %FALSE and set @error appropriately if present.
          */
         replace_contents(
-            contents: Uint8Array,
+            contents: Uint8Array | string,
             etag: string | null,
             make_backup: boolean,
             flags: Gio.FileCreateFlags,
@@ -4133,13 +4165,14 @@ export namespace OSTree {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         replace_contents_async(
-            contents: Uint8Array,
+            contents: Uint8Array | string,
             etag: string | null,
             make_backup: boolean,
             flags: Gio.FileCreateFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with Gio.File.replace_contents_async
         replace_contents_async(...args: never[]): any;
         /**
          * Same as g_file_replace_contents_async() but takes a #GBytes input instead.
@@ -4158,7 +4191,7 @@ export namespace OSTree {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         replace_contents_bytes_async(
-            contents: GLib.Bytes,
+            contents: GLib.Bytes | Uint8Array,
             etag: string | null,
             make_backup: boolean,
             flags: Gio.FileCreateFlags,
@@ -6241,6 +6274,7 @@ export namespace OSTree {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6283,7 +6317,7 @@ export namespace OSTree {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6484,7 +6518,7 @@ export namespace OSTree {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6499,7 +6533,7 @@ export namespace OSTree {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6745,6 +6779,7 @@ export namespace OSTree {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6787,7 +6822,7 @@ export namespace OSTree {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6988,7 +7023,7 @@ export namespace OSTree {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7003,7 +7038,7 @@ export namespace OSTree {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7543,6 +7578,7 @@ export namespace OSTree {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7585,7 +7621,7 @@ export namespace OSTree {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7786,7 +7822,7 @@ export namespace OSTree {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7801,7 +7837,7 @@ export namespace OSTree {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

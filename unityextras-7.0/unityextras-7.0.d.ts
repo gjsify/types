@@ -17,7 +17,9 @@ import type GObject from '@girs/gobject-2.0';
 import type Unity from '@girs/unity-7.0';
 
 export namespace UnityExtras {
+    function show_in_folder(uri: string): Promise<void>;
     function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): void;
+    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): Promise<void> | void;
     function show_in_folder_finish(_res_: Gio.AsyncResult): void;
     function dbus_name_has_owner(name: string): boolean;
     function dbus_own_name(name: string, scope_creation_cb: CreateScopeCallback): Gio.Application;

@@ -667,7 +667,7 @@ export namespace GUPnPDLNA {
          * #GUPNP_TYPE_DLNA_FRACTION_RANGE or #GUPNP_TYPE_DLNA_INT_RANGE.
          * @returns A list. Free it with g_list_free_full() with g_free().
          */
-        get_g_values(): GObject.Value[];
+        get_g_values(): unknown[];
         is_empty(): boolean;
         /**
          * Creates a string representation of `list`.

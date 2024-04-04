@@ -11497,7 +11497,11 @@ export namespace Qmi {
      * @param qmi_data data buffer containing only the QMI part of the message.
      * @returns a newly created #QmiMessage, which should be freed with qmi_message_unref(). If @qmi_data doesn't contain a complete QMI data payload %NULL is returned. If there is a complete QMI data payload but it appears not to be valid, %NULL is returned and @error is set.
      */
-    function message_new_from_data(service: Service, client_id: number, qmi_data: Uint8Array): [Message, Uint8Array];
+    function message_new_from_data(
+        service: Service,
+        client_id: number,
+        qmi_data: Uint8Array | string,
+    ): [Message, Uint8Array];
     /**
      * Create a new #QmiMessage from the given raw data buffer.
      *
@@ -11505,7 +11509,7 @@ export namespace Qmi {
      * @param raw raw data buffer.
      * @returns a newly created #QmiMessage, which should be freed with qmi_message_unref(). If @raw doesn't contain a complete QMI message %NULL is returned. If there is a complete QMI message but it appears not to be valid, %NULL is returned and @error is set.
      */
-    function message_new_from_raw(raw: Uint8Array): [Message, Uint8Array];
+    function message_new_from_raw(raw: Uint8Array | string): [Message, Uint8Array];
     /**
      * Parses a #QmiMessage and builds a #QmiMessageOmaCancelSessionOutput out of it.
      * The operation fails if the message is of the wrong type.
@@ -13152,7 +13156,7 @@ export namespace Qmi {
      */
     function nas_read_string_from_network_description_encoded_array(
         encoding: NasNetworkDescriptionEncoding,
-        array: Uint8Array,
+        array: Uint8Array | string,
     ): string;
     /**
      * Converts the encoded data in `array` to UTF-8 and returns a newly allocated
@@ -13161,7 +13165,10 @@ export namespace Qmi {
      * @param array a #GArray with the encoded data.
      * @returns the UTF-8 encoded string, or %NULL if an error happened during the conversion. The returned value should be freed with g_free().
      */
-    function nas_read_string_from_plmn_encoded_array(encoding: NasPlmnEncodingScheme, array: Uint8Array): string;
+    function nas_read_string_from_plmn_encoded_array(
+        encoding: NasPlmnEncodingScheme,
+        array: Uint8Array | string,
+    ): string;
     /**
      * Gets the nickname string for the #QmiNasRegistrationState specified at `val`.
      * @param val a QmiNasRegistrationState.
@@ -23905,7 +23912,7 @@ export namespace Qmi {
         }
 
         interface Indication {
-            (output: Uint8Array): void;
+            (output: Uint8Array | string): void;
         }
 
         // Constructor properties interface
@@ -23971,7 +23978,7 @@ export namespace Qmi {
         emit(signal: 'device-removed'): void;
         connect(signal: 'indication', callback: (_source: this, output: Uint8Array) => void): number;
         connect_after(signal: 'indication', callback: (_source: this, output: Uint8Array) => void): number;
-        emit(signal: 'indication', output: Uint8Array): void;
+        emit(signal: 'indication', output: Uint8Array | string): void;
 
         // Own static methods of Qmi.Device
 
@@ -24671,6 +24678,7 @@ export namespace Qmi {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -24713,7 +24721,7 @@ export namespace Qmi {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -24914,7 +24922,7 @@ export namespace Qmi {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24929,7 +24937,7 @@ export namespace Qmi {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -28415,7 +28423,7 @@ export namespace Qmi {
         set_prl(
             value_prl_prl_total_length: number,
             value_prl_prl_segment_sequence: number,
-            value_prl_prl_segment: Uint8Array,
+            value_prl_prl_segment: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -28489,7 +28497,7 @@ export namespace Qmi {
          */
         set_image_details(
             value_image_details_type: DmsFirmwareImageType,
-            value_image_details_unique_id: Uint8Array,
+            value_image_details_unique_id: Uint8Array | string,
             value_image_details_build_id: string,
         ): boolean;
         /**
@@ -29597,7 +29605,7 @@ export namespace Qmi {
          */
         set_image_details(
             value_image_details_type: DmsFirmwareImageType,
-            value_image_details_unique_id: Uint8Array,
+            value_image_details_unique_id: Uint8Array | string,
             value_image_details_build_id: string,
         ): boolean;
         /**
@@ -31893,7 +31901,7 @@ export namespace Qmi {
          * @param value_user_data a #GArray of #guint8 elements. A new reference to @value_user_data will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_user_data(value_user_data: Uint8Array): boolean;
+        set_user_data(value_user_data: Uint8Array | string): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -33366,7 +33374,7 @@ export namespace Qmi {
          * @param value_part_data a #GArray of #guint8 elements. A new reference to @value_part_data will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_part_data(value_part_data: Uint8Array): boolean;
+        set_part_data(value_part_data: Uint8Array | string): boolean;
         /**
          * Set the 'Part Number' field in the message.
          * @param value_part_number a #guint16.
@@ -33468,7 +33476,7 @@ export namespace Qmi {
          * @param value_part_data a #GArray of #guint8 elements. A new reference to @value_part_data will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_part_data(value_part_data: Uint8Array): boolean;
+        set_part_data(value_part_data: Uint8Array | string): boolean;
         /**
          * Set the 'Part Number' field in the message.
          * @param value_part_number a #guint16.
@@ -34240,7 +34248,7 @@ export namespace Qmi {
          * @param value_rscp_threshold a #GArray of #gint8 elements. A new reference to @value_rscp_threshold will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_rscp_threshold(value_rscp_threshold: Uint8Array): boolean;
+        set_rscp_threshold(value_rscp_threshold: Uint8Array | string): boolean;
         /**
          * Set the 'RSRP Threshold' field in the message.
          * @param value_rsrp_threshold a #GArray of #gint16 elements. A new reference to @value_rsrp_threshold will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
@@ -34252,19 +34260,19 @@ export namespace Qmi {
          * @param value_rsrq_threshold a #GArray of #gint8 elements. A new reference to @value_rsrq_threshold will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_rsrq_threshold(value_rsrq_threshold: Uint8Array): boolean;
+        set_rsrq_threshold(value_rsrq_threshold: Uint8Array | string): boolean;
         /**
          * Set the 'RSSI Threshold' field in the message.
          * @param value_rssi_threshold a #GArray of #gint8 elements. A new reference to @value_rssi_threshold will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_rssi_threshold(value_rssi_threshold: Uint8Array): boolean;
+        set_rssi_threshold(value_rssi_threshold: Uint8Array | string): boolean;
         /**
          * Set the 'SINR Threshold' field in the message.
          * @param value_sinr_threshold a #GArray of #guint8 elements. A new reference to @value_sinr_threshold will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_sinr_threshold(value_sinr_threshold: Uint8Array): boolean;
+        set_sinr_threshold(value_sinr_threshold: Uint8Array | string): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -37887,7 +37895,7 @@ export namespace Qmi {
          */
         set_signal_strength_indicator(
             value_signal_strength_indicator_report: boolean,
-            value_signal_strength_indicator_thresholds: Uint8Array,
+            value_signal_strength_indicator_thresholds: Uint8Array | string,
         ): boolean;
         /**
          * Set the 'SINR Indicator' field in the message.
@@ -37902,7 +37910,10 @@ export namespace Qmi {
          * @param value_sinr_threshold_thresholds a #GArray of #guint8 elements. A new reference to @value_sinr_threshold_thresholds will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_sinr_threshold(value_sinr_threshold_report: boolean, value_sinr_threshold_thresholds: Uint8Array): boolean;
+        set_sinr_threshold(
+            value_sinr_threshold_report: boolean,
+            value_sinr_threshold_thresholds: Uint8Array | string,
+        ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -39586,7 +39597,7 @@ export namespace Qmi {
          */
         set_type_with_id_v2(
             value_type_with_id_v2_config_type: PdcConfigurationType,
-            value_type_with_id_v2_id: Uint8Array,
+            value_type_with_id_v2_id: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -39762,7 +39773,7 @@ export namespace Qmi {
          * @param value_id a #GArray of #guint8 elements. A new reference to @value_id will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_id(value_id: Uint8Array): boolean;
+        set_id(value_id: Uint8Array | string): boolean;
         /**
          * Set the 'Token' field in the message.
          * @param value_token a #guint32.
@@ -39856,7 +39867,7 @@ export namespace Qmi {
          */
         set_type_with_id_v2(
             value_type_with_id_v2_config_type: PdcConfigurationType,
-            value_type_with_id_v2_id: Uint8Array,
+            value_type_with_id_v2_id: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -40296,9 +40307,9 @@ export namespace Qmi {
          */
         set_config_chunk(
             value_config_chunk_type: PdcConfigurationType,
-            value_config_chunk_id: Uint8Array,
+            value_config_chunk_id: Uint8Array | string,
             value_config_chunk_total_size: number,
-            value_config_chunk_chunk: Uint8Array,
+            value_config_chunk_chunk: Uint8Array | string,
         ): boolean;
         /**
          * Set the 'Token' field in the message.
@@ -40503,7 +40514,7 @@ export namespace Qmi {
          */
         set_type_with_id_v2(
             value_type_with_id_v2_config_type: PdcConfigurationType,
-            value_type_with_id_v2_id: Uint8Array,
+            value_type_with_id_v2_id: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -40812,7 +40823,7 @@ export namespace Qmi {
          * @param value_location_server_url a #GArray of #guint8 elements. A new reference to @value_location_server_url will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_location_server_url(value_location_server_url: Uint8Array): boolean;
+        set_location_server_url(value_location_server_url: Uint8Array | string): boolean;
         /**
          * Set the 'Network Mode' field in the message.
          * @param value_network_mode a #QmiPdsNetworkMode.
@@ -41768,7 +41779,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -41861,7 +41872,7 @@ export namespace Qmi {
          */
         set_application_information(
             value_application_information_slot: number,
-            value_application_information_application_identifier: Uint8Array,
+            value_application_information_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Set the 'Session Change' field in the message.
@@ -42291,7 +42302,7 @@ export namespace Qmi {
          * @param value_file_file_path a #GArray of #guint8 elements. A new reference to @value_file_file_path will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_file(value_file_file_id: number, value_file_file_path: Uint8Array): boolean;
+        set_file(value_file_file_id: number, value_file_file_path: Uint8Array | string): boolean;
         /**
          * Set the 'Response In Indication Token' field in the message.
          * @param value_response_in_indication_token a #guint32.
@@ -42306,7 +42317,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -42659,7 +42670,7 @@ export namespace Qmi {
          * @param value_file_file_path a #GArray of #guint8 elements. A new reference to @value_file_file_path will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_file(value_file_file_id: number, value_file_file_path: Uint8Array): boolean;
+        set_file(value_file_file_id: number, value_file_file_path: Uint8Array | string): boolean;
         /**
          * Set the 'Last Record' field in the message.
          * @param value_last_record a #guint16.
@@ -42687,7 +42698,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -42804,7 +42815,7 @@ export namespace Qmi {
          * @param value_file_file_path a #GArray of #guint8 elements. A new reference to @value_file_file_path will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_file(value_file_file_id: number, value_file_file_path: Uint8Array): boolean;
+        set_file(value_file_file_id: number, value_file_file_path: Uint8Array | string): boolean;
         /**
          * Set the 'Read Information' field in the message.
          * @param value_read_information_offset a #guint16.
@@ -42826,7 +42837,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -42930,7 +42941,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -43014,7 +43025,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -43107,7 +43118,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -43278,13 +43289,13 @@ export namespace Qmi {
          * @param value_simlock_data a #GArray of #guint8 elements. A new reference to @value_simlock_data will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_simlock_data(value_simlock_data: Uint8Array): boolean;
+        set_simlock_data(value_simlock_data: Uint8Array | string): boolean;
         /**
          * Set the 'SimLock Extended Data' field in the message.
          * @param value_simlock_extended_data a #GArray of #guint8 elements. A new reference to @value_simlock_extended_data will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_simlock_extended_data(value_simlock_extended_data: Uint8Array): boolean;
+        set_simlock_extended_data(value_simlock_extended_data: Uint8Array | string): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -43410,7 +43421,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -43597,7 +43608,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -43708,7 +43719,7 @@ export namespace Qmi {
          */
         set_session(
             value_session_session_type: UimSessionType,
-            value_session_application_identifier: Uint8Array,
+            value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -43870,7 +43881,7 @@ export namespace Qmi {
          */
         set_uss_data(
             value_uss_data_data_coding_scheme: VoiceUssDataCodingScheme,
-            value_uss_data_data: Uint8Array,
+            value_uss_data_data: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -44878,7 +44889,7 @@ export namespace Qmi {
          */
         set_uss_data(
             value_uss_data_data_coding_scheme: VoiceUssDataCodingScheme,
-            value_uss_data_data: Uint8Array,
+            value_uss_data_data: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -44921,7 +44932,7 @@ export namespace Qmi {
          */
         set_uss_data(
             value_uss_data_data_coding_scheme: VoiceUssDataCodingScheme,
-            value_uss_data_data: Uint8Array,
+            value_uss_data_data: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -50575,7 +50586,7 @@ export namespace Qmi {
          */
         set_raw_message_data(
             value_raw_message_data_format: WmsMessageFormat,
-            value_raw_message_data_raw_data: Uint8Array,
+            value_raw_message_data_raw_data: Uint8Array | string,
         ): boolean;
         /**
          * Set the 'SMS on IMS' field in the message.
@@ -50681,7 +50692,7 @@ export namespace Qmi {
         set_raw_message_data(
             value_raw_message_data_storage_type: WmsStorageType,
             value_raw_message_data_format: WmsMessageFormat,
-            value_raw_message_data_raw_data: Uint8Array,
+            value_raw_message_data_raw_data: Uint8Array | string,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.

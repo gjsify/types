@@ -2199,7 +2199,7 @@ export namespace Json {
          * a value node.
          * @param value the value to set
          */
-        set_value(value: GObject.Value): void;
+        set_value(value: GObject.Value | any): void;
         /**
          * Sets `array` inside `node`.
          *
@@ -2725,7 +2725,7 @@ export namespace Json {
          */
         default_deserialize_property(
             property_name: string,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
             property_node: Node,
         ): boolean;
@@ -2754,7 +2754,11 @@ export namespace Json {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: GObject.Value, pspec: GObject.ParamSpec): Node | null;
+        default_serialize_property(
+            property_name: string,
+            value: GObject.Value | any,
+            pspec: GObject.ParamSpec,
+        ): Node | null;
         /**
          * Asks a `JsonSerializable` implementation to deserialize the
          * property contained inside `property_node` and place its value
@@ -2790,6 +2794,7 @@ export namespace Json {
          * @param pspec a property description
          */
         get_property(pspec: GObject.ParamSpec): unknown;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Calls the [vfunc`Json`.Serializable.list_properties] implementation on
@@ -2806,7 +2811,7 @@ export namespace Json {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: GObject.Value, pspec: GObject.ParamSpec): Node;
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Node;
         /**
          * Calls the [vfunc`Json`.Serializable.set_property] implementation
          * on the `JsonSerializable` instance, which will set the property
@@ -2814,7 +2819,8 @@ export namespace Json {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: GObject.Value): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
 
         // Own virtual methods of Json.Serializable
@@ -2856,6 +2862,7 @@ export namespace Json {
          * @param pspec a property description
          */
         vfunc_get_property(pspec: GObject.ParamSpec): unknown;
+        // Conflicted with GObject.Object.vfunc_get_property
         vfunc_get_property(...args: never[]): any;
         /**
          * Asks a `JsonSerializable` implementation to serialize an object
@@ -2864,7 +2871,7 @@ export namespace Json {
          * @param value the value of the property to serialize
          * @param pspec a property description
          */
-        vfunc_serialize_property(property_name: string, value: GObject.Value, pspec: GObject.ParamSpec): Node;
+        vfunc_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Node;
         /**
          * Calls the [vfunc`Json`.Serializable.set_property] implementation
          * on the `JsonSerializable` instance, which will set the property
@@ -2872,7 +2879,8 @@ export namespace Json {
          * @param pspec a property description
          * @param value the property value to set
          */
-        vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value): void;
+        vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.vfunc_set_property
         vfunc_set_property(...args: never[]): any;
     }
 

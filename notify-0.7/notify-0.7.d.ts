@@ -325,7 +325,7 @@ export namespace Notify {
          * @param key The hint.
          * @param value The hint's value.
          */
-        set_hint_byte_array(key: string, value: Uint8Array): void;
+        set_hint_byte_array(key: string, value: Uint8Array | string): void;
         /**
          * Sets a hint with a double value.
          * @param key The hint.

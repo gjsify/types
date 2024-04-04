@@ -721,9 +721,9 @@ export namespace Gst {
     function caps_load_thyself(parent: libxml2.NodePtr): Caps;
     function child_proxy_child_added(object: Object, child: Object): void;
     function child_proxy_child_removed(object: Object, child: Object): void;
-    function child_proxy_get_property(object: Object, name: string, value: GObject.Value): void;
+    function child_proxy_get_property(object: Object, name: string, value: GObject.Value | any): void;
     function child_proxy_lookup(object: Object, name: string, target: Object, pspec: GObject.ParamSpec): boolean;
-    function child_proxy_set_property(object: Object, name: string, value: GObject.Value): void;
+    function child_proxy_set_property(object: Object, name: string, value: GObject.Value | any): void;
     function class_signal_connect(klass: typeof Object, name: string, func: any, func_data: any): number;
     function class_signal_emit_by_name(object: Object, name: string, self: libxml2.NodePtr): void;
     function debug_add_log_function(func: LogFunction): void;
@@ -818,9 +818,9 @@ export namespace Gst {
     function tag_get_nick(tag: string): string;
     function tag_get_type(tag: string): GObject.GType;
     function tag_is_fixed(tag: string): boolean;
-    function tag_list_copy_value(dest: GObject.Value, list: TagList, tag: string): boolean;
-    function tag_merge_strings_with_comma(dest: GObject.Value, src: GObject.Value): void;
-    function tag_merge_use_first(dest: GObject.Value, src: GObject.Value): void;
+    function tag_list_copy_value(dest: GObject.Value | any, list: TagList, tag: string): boolean;
+    function tag_merge_strings_with_comma(dest: GObject.Value | any, src: GObject.Value | any): void;
+    function tag_merge_use_first(dest: GObject.Value | any, src: GObject.Value | any): void;
     function tag_register(
         name: string,
         flag: TagFlag,
@@ -898,47 +898,63 @@ export namespace Gst {
     function util_seqnum_compare(s1: number, s2: number): number;
     function util_seqnum_next(): number;
     function util_set_object_arg(object: GObject.Object, name: string, value: string): void;
-    function util_set_value_from_string(value: GObject.Value, value_str: string): void;
+    function util_set_value_from_string(value: GObject.Value | any, value_str: string): void;
     function util_uint64_scale(val: number, num: number, denom: number): number;
     function util_uint64_scale_ceil(val: number, num: number, denom: number): number;
     function util_uint64_scale_int(val: number, num: number, denom: number): number;
     function util_uint64_scale_int_ceil(val: number, num: number, denom: number): number;
     function util_uint64_scale_int_round(val: number, num: number, denom: number): number;
     function util_uint64_scale_round(val: number, num: number, denom: number): number;
-    function value_array_append_value(value: GObject.Value, append_value: GObject.Value): void;
-    function value_array_get_size(value: GObject.Value): number;
-    function value_array_get_value(value: GObject.Value, index: number): GObject.Value;
-    function value_array_prepend_value(value: GObject.Value, prepend_value: GObject.Value): void;
-    function value_can_compare(value1: GObject.Value, value2: GObject.Value): boolean;
-    function value_can_intersect(value1: GObject.Value, value2: GObject.Value): boolean;
-    function value_can_subtract(minuend: GObject.Value, subtrahend: GObject.Value): boolean;
-    function value_can_union(value1: GObject.Value, value2: GObject.Value): boolean;
-    function value_compare(value1: GObject.Value, value2: GObject.Value): number;
-    function value_deserialize(dest: GObject.Value, src: string): boolean;
-    function value_dup_mini_object(value: GObject.Value): MiniObject;
-    function value_fraction_multiply(product: GObject.Value, factor1: GObject.Value, factor2: GObject.Value): boolean;
-    function value_fraction_subtract(dest: GObject.Value, minuend: GObject.Value, subtrahend: GObject.Value): boolean;
-    function value_get_caps(value: GObject.Value): Caps;
-    function value_get_date(value: GObject.Value): GLib.Date;
-    function value_get_double_range_max(value: GObject.Value): number;
-    function value_get_double_range_min(value: GObject.Value): number;
-    function value_get_fourcc(value: GObject.Value): number;
-    function value_get_fraction_denominator(value: GObject.Value): number;
-    function value_get_fraction_numerator(value: GObject.Value): number;
-    function value_get_fraction_range_max(value: GObject.Value): GObject.Value;
-    function value_get_fraction_range_min(value: GObject.Value): GObject.Value;
-    function value_get_int_range_max(value: GObject.Value): number;
-    function value_get_int_range_min(value: GObject.Value): number;
-    function value_get_mini_object(value: GObject.Value): MiniObject;
-    function value_get_structure(value: GObject.Value): Structure;
-    function value_init_and_copy(dest: GObject.Value, src: GObject.Value): void;
-    function value_intersect(dest: GObject.Value, value1: GObject.Value, value2: GObject.Value): boolean;
-    function value_is_fixed(value: GObject.Value): boolean;
-    function value_list_append_value(value: GObject.Value, append_value: GObject.Value): void;
-    function value_list_concat(dest: GObject.Value, value1: GObject.Value, value2: GObject.Value): void;
-    function value_list_get_size(value: GObject.Value): number;
-    function value_list_get_value(value: GObject.Value, index: number): GObject.Value;
-    function value_list_prepend_value(value: GObject.Value, prepend_value: GObject.Value): void;
+    function value_array_append_value(value: GObject.Value | any, append_value: GObject.Value | any): void;
+    function value_array_get_size(value: GObject.Value | any): number;
+    function value_array_get_value(value: GObject.Value | any, index: number): unknown;
+    function value_array_prepend_value(value: GObject.Value | any, prepend_value: GObject.Value | any): void;
+    function value_can_compare(value1: GObject.Value | any, value2: GObject.Value | any): boolean;
+    function value_can_intersect(value1: GObject.Value | any, value2: GObject.Value | any): boolean;
+    function value_can_subtract(minuend: GObject.Value | any, subtrahend: GObject.Value | any): boolean;
+    function value_can_union(value1: GObject.Value | any, value2: GObject.Value | any): boolean;
+    function value_compare(value1: GObject.Value | any, value2: GObject.Value | any): number;
+    function value_deserialize(dest: GObject.Value | any, src: string): boolean;
+    function value_dup_mini_object(value: GObject.Value | any): MiniObject;
+    function value_fraction_multiply(
+        product: GObject.Value | any,
+        factor1: GObject.Value | any,
+        factor2: GObject.Value | any,
+    ): boolean;
+    function value_fraction_subtract(
+        dest: GObject.Value | any,
+        minuend: GObject.Value | any,
+        subtrahend: GObject.Value | any,
+    ): boolean;
+    function value_get_caps(value: GObject.Value | any): Caps;
+    function value_get_date(value: GObject.Value | any): GLib.Date;
+    function value_get_double_range_max(value: GObject.Value | any): number;
+    function value_get_double_range_min(value: GObject.Value | any): number;
+    function value_get_fourcc(value: GObject.Value | any): number;
+    function value_get_fraction_denominator(value: GObject.Value | any): number;
+    function value_get_fraction_numerator(value: GObject.Value | any): number;
+    function value_get_fraction_range_max(value: GObject.Value | any): unknown;
+    function value_get_fraction_range_min(value: GObject.Value | any): unknown;
+    function value_get_int_range_max(value: GObject.Value | any): number;
+    function value_get_int_range_min(value: GObject.Value | any): number;
+    function value_get_mini_object(value: GObject.Value | any): MiniObject;
+    function value_get_structure(value: GObject.Value | any): Structure;
+    function value_init_and_copy(dest: GObject.Value | any, src: GObject.Value | any): void;
+    function value_intersect(
+        dest: GObject.Value | any,
+        value1: GObject.Value | any,
+        value2: GObject.Value | any,
+    ): boolean;
+    function value_is_fixed(value: GObject.Value | any): boolean;
+    function value_list_append_value(value: GObject.Value | any, append_value: GObject.Value | any): void;
+    function value_list_concat(
+        dest: GObject.Value | any,
+        value1: GObject.Value | any,
+        value2: GObject.Value | any,
+    ): void;
+    function value_list_get_size(value: GObject.Value | any): number;
+    function value_list_get_value(value: GObject.Value | any, index: number): unknown;
+    function value_list_prepend_value(value: GObject.Value | any, prepend_value: GObject.Value | any): void;
     function value_register(table: ValueTable): void;
     function value_register_intersect_func(type1: GObject.GType, type2: GObject.GType, func: ValueIntersectFunc): void;
     function value_register_subtract_func(
@@ -947,26 +963,34 @@ export namespace Gst {
         func: ValueSubtractFunc,
     ): void;
     function value_register_union_func(type1: GObject.GType, type2: GObject.GType, func: ValueUnionFunc): void;
-    function value_serialize(value: GObject.Value): string;
-    function value_set_caps(value: GObject.Value, caps: Caps): void;
-    function value_set_date(value: GObject.Value, date: GLib.Date): void;
-    function value_set_double_range(value: GObject.Value, start: number, end: number): void;
-    function value_set_fourcc(value: GObject.Value, fourcc: number): void;
-    function value_set_fraction(value: GObject.Value, numerator: number, denominator: number): void;
-    function value_set_fraction_range(value: GObject.Value, start: GObject.Value, end: GObject.Value): void;
+    function value_serialize(value: GObject.Value | any): string;
+    function value_set_caps(value: GObject.Value | any, caps: Caps): void;
+    function value_set_date(value: GObject.Value | any, date: GLib.Date): void;
+    function value_set_double_range(value: GObject.Value | any, start: number, end: number): void;
+    function value_set_fourcc(value: GObject.Value | any, fourcc: number): void;
+    function value_set_fraction(value: GObject.Value | any, numerator: number, denominator: number): void;
+    function value_set_fraction_range(
+        value: GObject.Value | any,
+        start: GObject.Value | any,
+        end: GObject.Value | any,
+    ): void;
     function value_set_fraction_range_full(
-        value: GObject.Value,
+        value: GObject.Value | any,
         numerator_start: number,
         denominator_start: number,
         numerator_end: number,
         denominator_end: number,
     ): void;
-    function value_set_int_range(value: GObject.Value, start: number, end: number): void;
-    function value_set_mini_object(value: GObject.Value, mini_object: MiniObject): void;
-    function value_set_structure(value: GObject.Value, structure: Structure): void;
-    function value_subtract(dest: GObject.Value, minuend: GObject.Value, subtrahend: GObject.Value): boolean;
-    function value_take_mini_object(value: GObject.Value, mini_object: MiniObject): void;
-    function value_union(dest: GObject.Value, value1: GObject.Value, value2: GObject.Value): boolean;
+    function value_set_int_range(value: GObject.Value | any, start: number, end: number): void;
+    function value_set_mini_object(value: GObject.Value | any, mini_object: MiniObject): void;
+    function value_set_structure(value: GObject.Value | any, structure: Structure): void;
+    function value_subtract(
+        dest: GObject.Value | any,
+        minuend: GObject.Value | any,
+        subtrahend: GObject.Value | any,
+    ): boolean;
+    function value_take_mini_object(value: GObject.Value | any, mini_object: MiniObject): void;
+    function value_union(dest: GObject.Value | any, value1: GObject.Value | any, value2: GObject.Value | any): boolean;
     function version(): [number, number, number, number];
     function version_string(): string;
     interface BufferListDoFunction {
@@ -1021,7 +1045,7 @@ export namespace Gst {
         (owner: any): void;
     }
     interface IteratorFoldFunction {
-        (item: any, ret: GObject.Value): boolean;
+        (item: any, ret: GObject.Value | any): boolean;
     }
     interface IteratorFreeFunction {
         (it: Iterator): void;
@@ -1126,16 +1150,16 @@ export namespace Gst {
         (plugin: Plugin): boolean;
     }
     interface StructureForeachFunc {
-        (field_id: GLib.Quark, value: GObject.Value): boolean;
+        (field_id: GLib.Quark, value: GObject.Value | any): boolean;
     }
     interface StructureMapFunc {
-        (field_id: GLib.Quark, value: GObject.Value): boolean;
+        (field_id: GLib.Quark, value: GObject.Value | any): boolean;
     }
     interface TagForeachFunc {
         (list: TagList, tag: string): void;
     }
     interface TagMergeFunc {
-        (dest: GObject.Value, src: GObject.Value): void;
+        (dest: GObject.Value | any, src: GObject.Value | any): void;
     }
     interface TaskFunction {
         (data: any): void;
@@ -1150,22 +1174,22 @@ export namespace Gst {
         (obj: Object, offset: number, length: number, buffer: Buffer): FlowReturn;
     }
     interface ValueCompareFunc {
-        (value1: GObject.Value, value2: GObject.Value): number;
+        (value1: GObject.Value | any, value2: GObject.Value | any): number;
     }
     interface ValueDeserializeFunc {
-        (dest: GObject.Value, s: string): boolean;
+        (dest: GObject.Value | any, s: string): boolean;
     }
     interface ValueIntersectFunc {
-        (dest: GObject.Value, value1: GObject.Value, value2: GObject.Value): boolean;
+        (dest: GObject.Value | any, value1: GObject.Value | any, value2: GObject.Value | any): boolean;
     }
     interface ValueSerializeFunc {
-        (value1: GObject.Value): string;
+        (value1: GObject.Value | any): string;
     }
     interface ValueSubtractFunc {
-        (dest: GObject.Value, minuend: GObject.Value, subtrahend: GObject.Value): boolean;
+        (dest: GObject.Value | any, minuend: GObject.Value | any, subtrahend: GObject.Value | any): boolean;
     }
     interface ValueUnionFunc {
-        (dest: GObject.Value, value1: GObject.Value, value2: GObject.Value): boolean;
+        (dest: GObject.Value | any, value1: GObject.Value | any, value2: GObject.Value | any): boolean;
     }
     type Date = object | null;
     type GError = object | null;
@@ -2914,8 +2938,8 @@ export namespace Gst {
         parse_async_start(): boolean;
         parse_structure_change(type: StructureChangeType, owner: Element): boolean;
         parse_stream_status(type: StreamStatusType, owner: Element): void;
-        set_stream_status_object(object: GObject.Value): void;
-        get_stream_status_object(): GObject.Value;
+        set_stream_status_object(object: GObject.Value | any): void;
+        get_stream_status_object(): unknown;
         parse_request_state(state: State): void;
         parse_step_start(format: Format): [boolean, number, number, boolean, boolean];
         set_qos_values(jitter: number, proportion: number, quality: number): void;
@@ -3534,6 +3558,7 @@ export namespace Gst {
         type_name_filter(data: TypeNameData): boolean;
         set_rank(rank: number): void;
         set_name(name: string): void;
+        // Conflicted with Gst.Object.set_name
         set_name(...args: never[]): any;
         get_rank(): number;
         get_name(): string;
@@ -3581,6 +3606,7 @@ export namespace Gst {
         // Own virtual methods of Gst.PushSrc
 
         vfunc_create(buf: Buffer): FlowReturn;
+        // Conflicted with Gst.BaseSrc.vfunc_create
         vfunc_create(...args: never[]): any;
     }
 
@@ -4315,7 +4341,7 @@ export namespace Gst {
         steal_structure(index: number): Structure;
         copy_nth(nth: number): Caps;
         truncate(): void;
-        set_value(field: string, value: GObject.Value): void;
+        set_value(field: string, value: GObject.Value | any): void;
         is_any(): boolean;
         is_empty(): boolean;
         is_fixed(): boolean;
@@ -4656,7 +4682,7 @@ export namespace Gst {
         free(): void;
         push(other: Iterator): void;
         filter(func: GLib.CompareFunc, user_data: any): Iterator;
-        fold(func: IteratorFoldFunction, ret: GObject.Value, user_data: any): IteratorResult;
+        fold(func: IteratorFoldFunction, ret: GObject.Value | any, user_data: any): IteratorResult;
         foreach(func: GLib.Func, user_data: any): IteratorResult;
         find_custom(func: GLib.CompareFunc, user_data: any): any;
     }
@@ -5013,10 +5039,10 @@ export namespace Gst {
         get_name_id(): GLib.Quark;
         has_name(name: string): boolean;
         set_name(name: string): void;
-        id_set_value(field: GLib.Quark, value: GObject.Value): void;
-        set_value(fieldname: string, value: GObject.Value): void;
-        id_get_value(field: GLib.Quark): GObject.Value;
-        get_value(fieldname: string): GObject.Value;
+        id_set_value(field: GLib.Quark, value: GObject.Value | any): void;
+        set_value(fieldname: string, value: GObject.Value | any): void;
+        id_get_value(field: GLib.Quark): unknown;
+        get_value(fieldname: string): unknown;
         remove_field(fieldname: string): void;
         remove_all_fields(): void;
         get_field_type(fieldname: string): GObject.GType;
@@ -5287,7 +5313,7 @@ export namespace Gst {
 
         reset_tags(): void;
         merge_tags(list: TagList, mode: TagMergeMode): void;
-        add_tag_value(mode: TagMergeMode, tag: string, value: GObject.Value): void;
+        add_tag_value(mode: TagMergeMode, tag: string, value: GObject.Value | any): void;
         get_tag_list(): TagList;
         set_tag_merge_mode(mode: TagMergeMode): void;
         get_tag_merge_mode(): TagMergeMode;

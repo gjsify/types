@@ -4471,7 +4471,7 @@ export namespace GLib {
      * @param text zero-terminated        string with base64 text to decode
      * @returns The binary data that @text responds. This pointer               is the same as the input @text.
      */
-    function base64_decode_inplace(text: Uint8Array): [number, Uint8Array];
+    function base64_decode_inplace(text: Uint8Array | string): [number, Uint8Array];
     /**
      * Encode a sequence of binary data into its Base-64 stringified
      * representation.
@@ -4524,7 +4524,7 @@ export namespace GLib {
      * @returns The number of bytes of output that was written
      */
     function base64_encode_step(
-        _in: Uint8Array,
+        _in: Uint8Array | string,
         break_lines: boolean,
         state: number,
         save: number,
@@ -4650,7 +4650,7 @@ export namespace GLib {
      * @param free_segment if %TRUE the actual byte data is freed as well
      * @returns the element data if @free_segment is %FALSE, otherwise          %NULL.  The element data should be freed using g_free().
      */
-    function byte_array_free(array: Uint8Array, free_segment: boolean): number;
+    function byte_array_free(array: Uint8Array | string, free_segment: boolean): number;
     /**
      * Transfers the data from the #GByteArray into a new immutable #GBytes.
      *
@@ -4663,7 +4663,7 @@ export namespace GLib {
      * @param array a #GByteArray
      * @returns a new immutable #GBytes representing same     byte data that was in the array
      */
-    function byte_array_free_to_bytes(array: Uint8Array): Bytes;
+    function byte_array_free_to_bytes(array: Uint8Array | string): Bytes;
     /**
      * Creates a new #GByteArray with a reference count of 1.
      * @returns the new #GByteArray
@@ -4681,7 +4681,7 @@ export namespace GLib {
      * @param data byte data for the array
      * @returns a new #GByteArray
      */
-    function byte_array_new_take(data: Uint8Array): Uint8Array;
+    function byte_array_new_take(data: Uint8Array | string): Uint8Array;
     /**
      * Frees the data in the array and resets the size to zero, while
      * the underlying array is preserved for use elsewhere and returned
@@ -4689,7 +4689,7 @@ export namespace GLib {
      * @param array a #GByteArray.
      * @returns the element data, which should be     freed using g_free().
      */
-    function byte_array_steal(array: Uint8Array): [number, number];
+    function byte_array_steal(array: Uint8Array | string): [number, number];
     /**
      * Atomically decrements the reference count of `array` by one. If the
      * reference count drops to 0, all memory allocated by the array is
@@ -4697,7 +4697,7 @@ export namespace GLib {
      * thread.
      * @param array A #GByteArray
      */
-    function byte_array_unref(array: Uint8Array): void;
+    function byte_array_unref(array: Uint8Array | string): void;
     /**
      * Gets the canonical file name from `filename`. All triple slashes are turned into
      * single slashes, and all `..` and `.`s resolved against `relative_to`.
@@ -4874,7 +4874,7 @@ export namespace GLib {
      * @param data binary blob to compute the digest of
      * @returns the digest of the binary data as a   string in hexadecimal, or %NULL if g_checksum_new() fails for   @checksum_type. The returned string should be freed with g_free() when   done using it.
      */
-    function compute_checksum_for_bytes(checksum_type: ChecksumType, data: Bytes): string | null;
+    function compute_checksum_for_bytes(checksum_type: ChecksumType, data: Bytes | Uint8Array): string | null;
     /**
      * Computes the checksum for a binary `data` of `length`. This is a
      * convenience wrapper for g_checksum_new(), g_checksum_get_string()
@@ -4885,7 +4885,7 @@ export namespace GLib {
      * @param data binary blob to compute the digest of
      * @returns the digest of the binary data as a   string in hexadecimal, or %NULL if g_checksum_new() fails for   @checksum_type. The returned string should be freed with g_free() when   done using it.
      */
-    function compute_checksum_for_data(checksum_type: ChecksumType, data: Uint8Array): string | null;
+    function compute_checksum_for_data(checksum_type: ChecksumType, data: Uint8Array | string): string | null;
     /**
      * Computes the checksum of a string.
      *
@@ -4907,7 +4907,11 @@ export namespace GLib {
      * @param data binary blob to compute the HMAC of
      * @returns the HMAC of the binary data as a string in hexadecimal.   The returned string should be freed with g_free() when done using it.
      */
-    function compute_hmac_for_bytes(digest_type: ChecksumType, key: Bytes, data: Bytes): string;
+    function compute_hmac_for_bytes(
+        digest_type: ChecksumType,
+        key: Bytes | Uint8Array,
+        data: Bytes | Uint8Array,
+    ): string;
     /**
      * Computes the HMAC for a binary `data` of `length`. This is a
      * convenience wrapper for g_hmac_new(), g_hmac_get_string()
@@ -4919,7 +4923,11 @@ export namespace GLib {
      * @param data binary blob to compute the HMAC of
      * @returns the HMAC of the binary data as a string in hexadecimal.   The returned string should be freed with g_free() when done using it.
      */
-    function compute_hmac_for_data(digest_type: ChecksumType, key: Uint8Array, data: Uint8Array): string;
+    function compute_hmac_for_data(
+        digest_type: ChecksumType,
+        key: Uint8Array | string,
+        data: Uint8Array | string,
+    ): string;
     /**
      * Computes the HMAC for a string.
      *
@@ -4930,7 +4938,12 @@ export namespace GLib {
      * @param length the length of the string, or -1 if the string is nul-terminated
      * @returns the HMAC as a hexadecimal string.     The returned string should be freed with g_free()     when done using it.
      */
-    function compute_hmac_for_string(digest_type: ChecksumType, key: Uint8Array, str: string, length: number): string;
+    function compute_hmac_for_string(
+        digest_type: ChecksumType,
+        key: Uint8Array | string,
+        str: string,
+        length: number,
+    ): string;
     /**
      * Converts a string from one character set to another.
      *
@@ -4951,7 +4964,7 @@ export namespace GLib {
      * @param from_codeset character set of @str.
      * @returns If the conversion was successful, a newly allocated buffer          containing the converted string, which must be freed with g_free().          Otherwise %NULL and @error will be set.
      */
-    function convert(str: Uint8Array, to_codeset: string, from_codeset: string): [Uint8Array, number];
+    function convert(str: Uint8Array | string, to_codeset: string, from_codeset: string): [Uint8Array, number];
     function convert_error_quark(): Quark;
     /**
      * Converts a string from one character set to another, possibly
@@ -4978,7 +4991,7 @@ export namespace GLib {
      * @returns If the conversion was successful, a newly allocated buffer          containing the converted string, which must be freed with g_free().          Otherwise %NULL and @error will be set.
      */
     function convert_with_fallback(
-        str: Uint8Array,
+        str: Uint8Array | string,
         to_codeset: string,
         from_codeset: string,
         fallback: string,
@@ -5458,7 +5471,7 @@ export namespace GLib {
      * @param contents string to write to the file
      * @returns %TRUE on success, %FALSE if an error occurred
      */
-    function file_set_contents(filename: string, contents: Uint8Array): boolean;
+    function file_set_contents(filename: string, contents: Uint8Array | string): boolean;
     /**
      * Writes all of `contents` to a file named `filename,` with good error checking.
      * If a file called `filename` already exists it will be overwritten.
@@ -5522,7 +5535,7 @@ export namespace GLib {
      */
     function file_set_contents_full(
         filename: string,
-        contents: Uint8Array,
+        contents: Uint8Array | string,
         flags: FileSetContentsFlags,
         mode: number,
     ): boolean;
@@ -6301,14 +6314,14 @@ export namespace GLib {
      * @param key a key to insert
      * @returns %TRUE if the key did not exist yet
      */
-    function hash_table_add(hash_table: HashTable<any, any>, key?: any | null): boolean;
+    function hash_table_add(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
     /**
      * Checks if `key` is in `hash_table`.
      * @param hash_table a #GHashTable
      * @param key a key to check
      * @returns %TRUE if @key is in @hash_table, %FALSE otherwise.
      */
-    function hash_table_contains(hash_table: HashTable<any, any>, key?: any | null): boolean;
+    function hash_table_contains(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
     /**
      * Destroys all keys and values in the #GHashTable and decrements its
      * reference count by 1. If keys and/or values are dynamically allocated,
@@ -6318,7 +6331,7 @@ export namespace GLib {
      * destruction phase.
      * @param hash_table a #GHashTable
      */
-    function hash_table_destroy(hash_table: HashTable<any, any>): void;
+    function hash_table_destroy(hash_table: { [key: string]: any } | HashTable<any, any>): void;
     /**
      * Inserts a new key and value into a #GHashTable.
      *
@@ -6337,7 +6350,11 @@ export namespace GLib {
      * @param value the value to associate with the key
      * @returns %TRUE if the key did not exist yet
      */
-    function hash_table_insert(hash_table: HashTable<any, any>, key?: any | null, value?: any | null): boolean;
+    function hash_table_insert(
+        hash_table: { [key: string]: any } | HashTable<any, any>,
+        key?: any | null,
+        value?: any | null,
+    ): boolean;
     /**
      * Looks up a key in a #GHashTable. Note that this function cannot
      * distinguish between a key that is not present and one which is present
@@ -6347,7 +6364,7 @@ export namespace GLib {
      * @param key the key to look up
      * @returns the associated value, or %NULL if the key is not found
      */
-    function hash_table_lookup(hash_table: HashTable<any, any>, key?: any | null): any | null;
+    function hash_table_lookup(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): any | null;
     /**
      * Looks up a key in the #GHashTable, returning the original key and the
      * associated value and a #gboolean which is %TRUE if the key was found. This
@@ -6361,7 +6378,10 @@ export namespace GLib {
      * @param lookup_key the key to look up
      * @returns %TRUE if the key was found in the #GHashTable
      */
-    function hash_table_lookup_extended(hash_table: HashTable<any, any>, lookup_key: any | null): [boolean, any, any];
+    function hash_table_lookup_extended(
+        hash_table: { [key: string]: any } | HashTable<any, any>,
+        lookup_key: any | null,
+    ): [boolean, any, any];
     /**
      * Creates a new #GHashTable like g_hash_table_new_full() with a reference
      * count of 1.
@@ -6374,7 +6394,9 @@ export namespace GLib {
      * @param other_hash_table Another #GHashTable
      * @returns a new #GHashTable
      */
-    function hash_table_new_similar(other_hash_table: HashTable<any, any>): HashTable<any, any>;
+    function hash_table_new_similar(
+        other_hash_table: { [key: string]: any } | HashTable<any, any>,
+    ): HashTable<any, any>;
     /**
      * Removes a key and its associated value from a #GHashTable.
      *
@@ -6386,7 +6408,7 @@ export namespace GLib {
      * @param key the key to remove
      * @returns %TRUE if the key was found and removed from the #GHashTable
      */
-    function hash_table_remove(hash_table: HashTable<any, any>, key?: any | null): boolean;
+    function hash_table_remove(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
     /**
      * Removes all keys and their associated values from a #GHashTable.
      *
@@ -6396,7 +6418,7 @@ export namespace GLib {
      * values are freed yourself.
      * @param hash_table a #GHashTable
      */
-    function hash_table_remove_all(hash_table: HashTable<any, any>): void;
+    function hash_table_remove_all(hash_table: { [key: string]: any } | HashTable<any, any>): void;
     /**
      * Inserts a new key and value into a #GHashTable similar to
      * g_hash_table_insert(). The difference is that if the key
@@ -6414,13 +6436,17 @@ export namespace GLib {
      * @param value the value to associate with the key
      * @returns %TRUE if the key did not exist yet
      */
-    function hash_table_replace(hash_table: HashTable<any, any>, key?: any | null, value?: any | null): boolean;
+    function hash_table_replace(
+        hash_table: { [key: string]: any } | HashTable<any, any>,
+        key?: any | null,
+        value?: any | null,
+    ): boolean;
     /**
      * Returns the number of elements contained in the #GHashTable.
      * @param hash_table a #GHashTable
      * @returns the number of key/value pairs in the #GHashTable.
      */
-    function hash_table_size(hash_table: HashTable<any, any>): number;
+    function hash_table_size(hash_table: { [key: string]: any } | HashTable<any, any>): number;
     /**
      * Removes a key and its associated value from a #GHashTable without
      * calling the key and value destroy functions.
@@ -6428,13 +6454,13 @@ export namespace GLib {
      * @param key the key to remove
      * @returns %TRUE if the key was found and removed from the #GHashTable
      */
-    function hash_table_steal(hash_table: HashTable<any, any>, key?: any | null): boolean;
+    function hash_table_steal(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
     /**
      * Removes all keys and their associated values from a #GHashTable
      * without calling the key and value destroy functions.
      * @param hash_table a #GHashTable
      */
-    function hash_table_steal_all(hash_table: HashTable<any, any>): void;
+    function hash_table_steal_all(hash_table: { [key: string]: any } | HashTable<any, any>): void;
     /**
      * Looks up a key in the #GHashTable, stealing the original key and the
      * associated value and returning %TRUE if the key was found. If the key was
@@ -6456,7 +6482,10 @@ export namespace GLib {
      * @param lookup_key the key to look up
      * @returns %TRUE if the key was found in the #GHashTable
      */
-    function hash_table_steal_extended(hash_table: HashTable<any, any>, lookup_key: any | null): [boolean, any, any];
+    function hash_table_steal_extended(
+        hash_table: { [key: string]: any } | HashTable<any, any>,
+        lookup_key: any | null,
+    ): [boolean, any, any];
     /**
      * Atomically decrements the reference count of `hash_table` by one.
      * If the reference count drops to 0, all keys and values will be
@@ -6464,7 +6493,7 @@ export namespace GLib {
      * This function is MT-safe and may be called from any thread.
      * @param hash_table a valid #GHashTable
      */
-    function hash_table_unref(hash_table: HashTable<any, any>): void;
+    function hash_table_unref(hash_table: { [key: string]: any } | HashTable<any, any>): void;
     /**
      * Destroys a #GHook, given its ID.
      * @param hook_list a #GHookList
@@ -6756,7 +6785,7 @@ export namespace GLib {
      * @param opsysstring a string in the                 encoding of the current locale. On Windows                 this means the system codepage.
      * @returns The converted string, or %NULL on an error.
      */
-    function locale_to_utf8(opsysstring: Uint8Array): [string, number, number];
+    function locale_to_utf8(opsysstring: Uint8Array | string): [string, number, number];
     /**
      * The default log handler set up by GLib; g_log_set_default_handler()
      * allows to install an alternate default log handler.
@@ -10749,7 +10778,7 @@ export namespace GLib {
      * @param reserved_chars_allowed a string of reserved   characters that are allowed to be used, or %NULL.
      * @returns an escaped version of @unescaped.     The returned string should be freed when no longer needed.
      */
-    function uri_escape_bytes(unescaped: Uint8Array, reserved_chars_allowed?: string | null): string;
+    function uri_escape_bytes(unescaped: Uint8Array | string, reserved_chars_allowed?: string | null): string;
     /**
      * Escapes a string for use in a URI.
      *
@@ -11450,7 +11479,7 @@ export namespace GLib {
      * @param str a pointer to character data
      * @returns %TRUE if the text was valid UTF-8
      */
-    function utf8_validate(str: Uint8Array): [boolean, string];
+    function utf8_validate(str: Uint8Array | string): [boolean, string];
     /**
      * Validates UTF-8 encoded text.
      *
@@ -11459,7 +11488,7 @@ export namespace GLib {
      * @param str a pointer to character data
      * @returns %TRUE if the text was valid UTF-8
      */
-    function utf8_validate_len(str: Uint8Array): [boolean, string];
+    function utf8_validate_len(str: Uint8Array | string): [boolean, string];
     /**
      * Parses the string `str` and verify if it is a UUID.
      *
@@ -13310,7 +13339,7 @@ export namespace GLib {
          * @param data desktop bookmarks    loaded in memory
          * @returns %TRUE if a desktop bookmark could be loaded.
          */
-        load_from_data(data: Uint8Array): boolean;
+        load_from_data(data: Uint8Array | string): boolean;
         /**
          * This function looks for a desktop bookmark file named `file` in the
          * paths returned from g_get_user_data_dir() and g_get_system_data_dirs(),
@@ -13619,7 +13648,7 @@ export namespace GLib {
          * @param array a #GByteArray
          * @param free_segment if %TRUE the actual byte data is freed as well
          */
-        static free(array: Uint8Array, free_segment: boolean): number;
+        static free(array: Uint8Array | string, free_segment: boolean): number;
         /**
          * Transfers the data from the #GByteArray into a new immutable #GBytes.
          *
@@ -13631,7 +13660,7 @@ export namespace GLib {
          * together.
          * @param array a #GByteArray
          */
-        static free_to_bytes(array: Uint8Array): Bytes;
+        static free_to_bytes(array: Uint8Array | string): Bytes;
         /**
          * Creates a new #GByteArray with a reference count of 1.
          */
@@ -13647,14 +13676,14 @@ export namespace GLib {
          * #gsize.
          * @param data byte data for the array
          */
-        static new_take(data: Uint8Array): Uint8Array;
+        static new_take(data: Uint8Array | string): Uint8Array;
         /**
          * Frees the data in the array and resets the size to zero, while
          * the underlying array is preserved for use elsewhere and returned
          * to the caller.
          * @param array a #GByteArray.
          */
-        static steal(array: Uint8Array): [number, number];
+        static steal(array: Uint8Array | string): [number, number];
         /**
          * Atomically decrements the reference count of `array` by one. If the
          * reference count drops to 0, all memory allocated by the array is
@@ -13662,7 +13691,7 @@ export namespace GLib {
          * thread.
          * @param array A #GByteArray
          */
-        static unref(array: Uint8Array): void;
+        static unref(array: Uint8Array | string): void;
     }
 
     /**
@@ -13718,7 +13747,7 @@ export namespace GLib {
          * @param bytes2 a pointer to a #GBytes to compare with @bytes1
          * @returns a negative value if @bytes1 is less than @bytes2, a positive value          if @bytes1 is greater than @bytes2, and zero if @bytes1 is equal to          @bytes2
          */
-        compare(bytes2: Bytes): number;
+        compare(bytes2: Bytes | Uint8Array): number;
         /**
          * Compares the two #GBytes values being pointed to and returns
          * %TRUE if they are equal.
@@ -13728,7 +13757,7 @@ export namespace GLib {
          * @param bytes2 a pointer to a #GBytes to compare with @bytes1
          * @returns %TRUE if the two keys match.
          */
-        equal(bytes2: Bytes): boolean;
+        equal(bytes2: Bytes | Uint8Array): boolean;
         /**
          * Get the byte data in the #GBytes. This data should not be modified.
          *
@@ -13895,7 +13924,7 @@ export namespace GLib {
          * not have been called on `checksum`.
          * @param data buffer used to compute the checksum
          */
-        update(data: Uint8Array): void;
+        update(data: Uint8Array | string): void;
     }
 
     /**
@@ -15176,13 +15205,13 @@ export namespace GLib {
          * @param hash_table a #GHashTable
          * @param key a key to insert
          */
-        static add(hash_table: HashTable<any, any>, key?: any | null): boolean;
+        static add(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
         /**
          * Checks if `key` is in `hash_table`.
          * @param hash_table a #GHashTable
          * @param key a key to check
          */
-        static contains(hash_table: HashTable<any, any>, key?: any | null): boolean;
+        static contains(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
         /**
          * Destroys all keys and values in the #GHashTable and decrements its
          * reference count by 1. If keys and/or values are dynamically allocated,
@@ -15192,7 +15221,7 @@ export namespace GLib {
          * destruction phase.
          * @param hash_table a #GHashTable
          */
-        static destroy(hash_table: HashTable<any, any>): void;
+        static destroy(hash_table: { [key: string]: any } | HashTable<any, any>): void;
         /**
          * Inserts a new key and value into a #GHashTable.
          *
@@ -15210,7 +15239,11 @@ export namespace GLib {
          * @param key a key to insert
          * @param value the value to associate with the key
          */
-        static insert(hash_table: HashTable<any, any>, key?: any | null, value?: any | null): boolean;
+        static insert(
+            hash_table: { [key: string]: any } | HashTable<any, any>,
+            key?: any | null,
+            value?: any | null,
+        ): boolean;
         /**
          * Looks up a key in a #GHashTable. Note that this function cannot
          * distinguish between a key that is not present and one which is present
@@ -15219,7 +15252,7 @@ export namespace GLib {
          * @param hash_table a #GHashTable
          * @param key the key to look up
          */
-        static lookup(hash_table: HashTable<any, any>, key?: any | null): any | null;
+        static lookup(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): any | null;
         /**
          * Looks up a key in the #GHashTable, returning the original key and the
          * associated value and a #gboolean which is %TRUE if the key was found. This
@@ -15232,7 +15265,10 @@ export namespace GLib {
          * @param hash_table a #GHashTable
          * @param lookup_key the key to look up
          */
-        static lookup_extended(hash_table: HashTable<any, any>, lookup_key: any | null): [boolean, any, any];
+        static lookup_extended(
+            hash_table: { [key: string]: any } | HashTable<any, any>,
+            lookup_key: any | null,
+        ): [boolean, any, any];
         /**
          * Creates a new #GHashTable like g_hash_table_new_full() with a reference
          * count of 1.
@@ -15244,7 +15280,7 @@ export namespace GLib {
          * or values from `other_hash_table`.
          * @param other_hash_table Another #GHashTable
          */
-        static new_similar(other_hash_table: HashTable<any, any>): HashTable<any, any>;
+        static new_similar(other_hash_table: { [key: string]: any } | HashTable<any, any>): HashTable<any, any>;
         /**
          * Removes a key and its associated value from a #GHashTable.
          *
@@ -15255,7 +15291,7 @@ export namespace GLib {
          * @param hash_table a #GHashTable
          * @param key the key to remove
          */
-        static remove(hash_table: HashTable<any, any>, key?: any | null): boolean;
+        static remove(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
         /**
          * Removes all keys and their associated values from a #GHashTable.
          *
@@ -15265,7 +15301,7 @@ export namespace GLib {
          * values are freed yourself.
          * @param hash_table a #GHashTable
          */
-        static remove_all(hash_table: HashTable<any, any>): void;
+        static remove_all(hash_table: { [key: string]: any } | HashTable<any, any>): void;
         /**
          * Inserts a new key and value into a #GHashTable similar to
          * g_hash_table_insert(). The difference is that if the key
@@ -15282,25 +15318,29 @@ export namespace GLib {
          * @param key a key to insert
          * @param value the value to associate with the key
          */
-        static replace(hash_table: HashTable<any, any>, key?: any | null, value?: any | null): boolean;
+        static replace(
+            hash_table: { [key: string]: any } | HashTable<any, any>,
+            key?: any | null,
+            value?: any | null,
+        ): boolean;
         /**
          * Returns the number of elements contained in the #GHashTable.
          * @param hash_table a #GHashTable
          */
-        static size(hash_table: HashTable<any, any>): number;
+        static size(hash_table: { [key: string]: any } | HashTable<any, any>): number;
         /**
          * Removes a key and its associated value from a #GHashTable without
          * calling the key and value destroy functions.
          * @param hash_table a #GHashTable
          * @param key the key to remove
          */
-        static steal(hash_table: HashTable<any, any>, key?: any | null): boolean;
+        static steal(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
         /**
          * Removes all keys and their associated values from a #GHashTable
          * without calling the key and value destroy functions.
          * @param hash_table a #GHashTable
          */
-        static steal_all(hash_table: HashTable<any, any>): void;
+        static steal_all(hash_table: { [key: string]: any } | HashTable<any, any>): void;
         /**
          * Looks up a key in the #GHashTable, stealing the original key and the
          * associated value and returning %TRUE if the key was found. If the key was
@@ -15321,7 +15361,10 @@ export namespace GLib {
          * @param hash_table a #GHashTable
          * @param lookup_key the key to look up
          */
-        static steal_extended(hash_table: HashTable<any, any>, lookup_key: any | null): [boolean, any, any];
+        static steal_extended(
+            hash_table: { [key: string]: any } | HashTable<any, any>,
+            lookup_key: any | null,
+        ): [boolean, any, any];
         /**
          * Atomically decrements the reference count of `hash_table` by one.
          * If the reference count drops to 0, all keys and values will be
@@ -15329,7 +15372,7 @@ export namespace GLib {
          * This function is MT-safe and may be called from any thread.
          * @param hash_table a valid #GHashTable
          */
-        static unref(hash_table: HashTable<any, any>): void;
+        static unref(hash_table: { [key: string]: any } | HashTable<any, any>): void;
     }
 
     /**
@@ -15373,7 +15416,7 @@ export namespace GLib {
          *
          * @param hash_table a #GHashTable
          */
-        init(hash_table: HashTable<any, any>): void;
+        init(hash_table: { [key: string]: any } | HashTable<any, any>): void;
         /**
          * Advances `iter` and retrieves the key and/or value that are now
          * pointed to as a result of this advancement. If %FALSE is returned,
@@ -15446,7 +15489,7 @@ export namespace GLib {
          * no longer be updated with g_checksum_update().
          * @param buffer output buffer
          */
-        get_digest(buffer: Uint8Array): void;
+        get_digest(buffer: Uint8Array | string): void;
         /**
          * Gets the HMAC as a hexadecimal string.
          *
@@ -15473,7 +15516,7 @@ export namespace GLib {
          * g_hmac_get_digest() must not have been called on `hmac`.
          * @param data buffer used to compute the checksum
          */
-        update(data: Uint8Array): void;
+        update(data: Uint8Array | string): void;
     }
 
     /**
@@ -15875,7 +15918,7 @@ export namespace GLib {
          * @param count the size of the buffer. If -1, the buffer         is taken to be a nul-terminated string.
          * @returns the status of the operation.
          */
-        write_chars(buf: Uint8Array, count: number): [IOStatus, number];
+        write_chars(buf: Uint8Array | string, count: number): [IOStatus, number];
         /**
          * Writes a Unicode character to `channel`.
          * This function cannot be called on a channel with %NULL encoding.
@@ -16297,7 +16340,7 @@ export namespace GLib {
          * @param flags flags from #GKeyFileFlags
          * @returns %TRUE if a key file could be loaded, %FALSE otherwise
          */
-        load_from_bytes(bytes: Bytes, flags: KeyFileFlags): boolean;
+        load_from_bytes(bytes: Bytes | Uint8Array, flags: KeyFileFlags): boolean;
         /**
          * Loads a key file from memory into an empty #GKeyFile structure.
          * If the object cannot be created then %error is set to a #GKeyFileError.
@@ -22122,7 +22165,7 @@ export namespace GLib {
          * @param unescaped the unescaped input data.
          * @param reserved_chars_allowed a string of reserved   characters that are allowed to be used, or %NULL.
          */
-        static escape_bytes(unescaped: Uint8Array, reserved_chars_allowed?: string | null): string;
+        static escape_bytes(unescaped: Uint8Array | string, reserved_chars_allowed?: string | null): string;
         /**
          * Escapes a string for use in a URI.
          *
@@ -22856,7 +22899,7 @@ export namespace GLib {
      * management for those dictionaries, but the type information would
      * be shared.
      */
-    abstract class Variant<A extends string = any> {
+    class Variant<A extends string = any> {
         static $gtype: GObject.GType<Variant>;
 
         // Constructors of GLib.Variant
@@ -22874,7 +22917,7 @@ export namespace GLib {
 
         static new_byte(value: number): Variant;
 
-        static new_bytestring(string: Uint8Array): Variant;
+        static new_bytestring(string: Uint8Array | string): Variant;
 
         static new_bytestring_array(strv: string[]): Variant;
 
@@ -22889,9 +22932,14 @@ export namespace GLib {
             element_size: number,
         ): Variant;
 
-        static new_from_bytes(type: VariantType, bytes: Bytes, trusted: boolean): Variant;
+        static new_from_bytes(type: VariantType, bytes: Bytes | Uint8Array, trusted: boolean): Variant;
 
-        static new_from_data(type: VariantType, data: Uint8Array, trusted: boolean, user_data?: any | null): Variant;
+        static new_from_data(
+            type: VariantType,
+            data: Uint8Array | string,
+            trusted: boolean,
+            user_data?: any | null,
+        ): Variant;
 
         static new_handle(value: number): Variant;
 
@@ -23675,9 +23723,9 @@ export namespace GLib {
          * drops to 0, the memory used by the variant is freed.
          */
         unref(): void;
-        unpack(): unknown;
-        deepUnpack(): unknown;
-        deep_unpack(): unknown;
+        unpack<T>(): T;
+        deepUnpack<T>(): T;
+        deep_unpack<T>(): T;
         recursiveUnpack(): any;
         _init(sig: A, value: any): Variant;
     }

@@ -523,7 +523,7 @@ export namespace GstRtp {
      * @param data data for the new buffer
      * @returns A newly allocated buffer with a copy of @data and of size @len.
      */
-    function rtcp_buffer_new_copy_data(data: Uint8Array): Gst.Buffer;
+    function rtcp_buffer_new_copy_data(data: Uint8Array | string): Gst.Buffer;
     /**
      * Create a new buffer and set the data and size of the buffer to `data` and `len`
      * respectively. `data` will be freed when the buffer is unreffed, so this
@@ -531,7 +531,7 @@ export namespace GstRtp {
      * @param data data for the new buffer
      * @returns A newly allocated buffer with @data and of size @len.
      */
-    function rtcp_buffer_new_take_data(data: Uint8Array): Gst.Buffer;
+    function rtcp_buffer_new_take_data(data: Uint8Array | string): Gst.Buffer;
     /**
      * Check if the data pointed to by `buffer` is a valid RTCP packet using
      * gst_rtcp_buffer_validate_data().
@@ -547,7 +547,7 @@ export namespace GstRtp {
      * @param data the data to validate
      * @returns TRUE if the data points to a valid RTCP packet.
      */
-    function rtcp_buffer_validate_data(data: Uint8Array): boolean;
+    function rtcp_buffer_validate_data(data: Uint8Array | string): boolean;
     /**
      * Check if the `data` and `size` point to the data of a valid RTCP packet.
      * Use this function to validate a packet before using the other functions in
@@ -559,7 +559,7 @@ export namespace GstRtp {
      * @param data the data to validate
      * @returns TRUE if the data points to a valid RTCP packet.
      */
-    function rtcp_buffer_validate_data_reduced(data: Uint8Array): boolean;
+    function rtcp_buffer_validate_data_reduced(data: Uint8Array | string): boolean;
     /**
      * Check if the data pointed to by `buffer` is a valid RTCP packet using
      * gst_rtcp_buffer_validate_reduced().
@@ -682,7 +682,7 @@ export namespace GstRtp {
      * @returns TRUE if @bytes had the requested header extension
      */
     function rtp_buffer_get_extension_onebyte_header_from_bytes(
-        bytes: GLib.Bytes,
+        bytes: GLib.Bytes | Uint8Array,
         bit_pattern: number,
         id: number,
         nth: number,
@@ -722,7 +722,7 @@ export namespace GstRtp {
      * @param data data for the new   buffer
      * @returns A newly allocated buffer with a copy of @data and of size @len.
      */
-    function rtp_buffer_new_copy_data(data: Uint8Array): Gst.Buffer;
+    function rtp_buffer_new_copy_data(data: Uint8Array | string): Gst.Buffer;
     /**
      * Create a new buffer and set the data and size of the buffer to `data` and `len`
      * respectively. `data` will be freed when the buffer is unreffed, so this
@@ -730,7 +730,7 @@ export namespace GstRtp {
      * @param data data for the new buffer
      * @returns A newly allocated buffer with @data and of size @len.
      */
-    function rtp_buffer_new_take_data(data: Uint8Array): Gst.Buffer;
+    function rtp_buffer_new_take_data(data: Uint8Array | string): Gst.Buffer;
     /**
      * Retrieve all the factories of the currently registered RTP header
      * extensions.  Call gst_element_factory_create() with each factory to create
@@ -744,14 +744,14 @@ export namespace GstRtp {
      * @param data the data to read from
      * @returns %TRUE on success.
      */
-    function rtp_hdrext_get_ntp_56(data: Uint8Array): [boolean, number];
+    function rtp_hdrext_get_ntp_56(data: Uint8Array | string): [boolean, number];
     /**
      * Reads the NTP time from the `size` NTP-64 extension bytes in `data` and store the
      * result in `ntptime`.
      * @param data the data to read from
      * @returns %TRUE on success.
      */
-    function rtp_hdrext_get_ntp_64(data: Uint8Array): [boolean, number];
+    function rtp_hdrext_get_ntp_64(data: Uint8Array | string): [boolean, number];
     /**
      * Writes the NTP time in `ntptime` to the format required for the NTP-56 header
      * extension. `data` must hold at least #GST_RTP_HDREXT_NTP_56_SIZE bytes.
@@ -965,7 +965,8 @@ export namespace GstRtp {
          * @param timestamp a #GstClockTime
          * @returns a #GstFlowReturn
          */
-        push(data: Uint8Array, timestamp: Gst.ClockTime): Gst.FlowReturn;
+        push(data: Uint8Array | string, timestamp: Gst.ClockTime): Gst.FlowReturn;
+        // Conflicted with GstRtp.RTPBasePayload.push
         push(...args: never[]): any;
         /**
          * Tells #GstRTPBaseAudioPayload that the child element is for a frame based
@@ -1417,6 +1418,7 @@ export namespace GstRtp {
         vfunc_get_caps(pad: Gst.Pad, filter: Gst.Caps): Gst.Caps;
         vfunc_handle_buffer(buffer: Gst.Buffer): Gst.FlowReturn;
         vfunc_query(pad: Gst.Pad, query: Gst.Query): boolean;
+        // Conflicted with Gst.Element.vfunc_query
         vfunc_query(...args: never[]): any;
         vfunc_set_caps(caps: Gst.Caps): boolean;
         vfunc_sink_event(event: Gst.Event): boolean;
@@ -1541,7 +1543,7 @@ export namespace GstRtp {
          * @param data location to read the rtp header extension from
          * @param buffer a #GstBuffer to modify if necessary
          */
-        vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer): boolean;
+        vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array | string, buffer: Gst.Buffer): boolean;
         vfunc_set_attributes(direction: RTPHeaderExtensionDirection, attributes: string): boolean;
         /**
          * gst_rtp_header_extension_set_id() must have been called with a valid
@@ -1577,7 +1579,7 @@ export namespace GstRtp {
             input_meta: Gst.Buffer,
             write_flags: RTPHeaderExtensionFlags,
             output: Gst.Buffer,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): number;
 
         // Own methods of GstRtp.RTPHeaderExtension
@@ -1609,7 +1611,7 @@ export namespace GstRtp {
          * @param buffer a #GstBuffer to modify if necessary
          * @returns whether the extension could be read from @data
          */
-        read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer): boolean;
+        read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array | string, buffer: Gst.Buffer): boolean;
         /**
          * gst_rtp_header_extension_set_id() must have been called with a valid
          * extension id that is contained in these caps.
@@ -1700,7 +1702,7 @@ export namespace GstRtp {
             input_meta: Gst.Buffer,
             write_flags: RTPHeaderExtensionFlags,
             output: Gst.Buffer,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): number;
     }
 
@@ -1745,14 +1747,14 @@ export namespace GstRtp {
          * is freed.
          * @param data data for the new buffer
          */
-        static new_copy_data(data: Uint8Array): Gst.Buffer;
+        static new_copy_data(data: Uint8Array | string): Gst.Buffer;
         /**
          * Create a new buffer and set the data and size of the buffer to `data` and `len`
          * respectively. `data` will be freed when the buffer is unreffed, so this
          * function transfers ownership of `data` to the new buffer.
          * @param data data for the new buffer
          */
-        static new_take_data(data: Uint8Array): Gst.Buffer;
+        static new_take_data(data: Uint8Array | string): Gst.Buffer;
         /**
          * Check if the data pointed to by `buffer` is a valid RTCP packet using
          * gst_rtcp_buffer_validate_data().
@@ -1766,7 +1768,7 @@ export namespace GstRtp {
          * this module.
          * @param data the data to validate
          */
-        static validate_data(data: Uint8Array): boolean;
+        static validate_data(data: Uint8Array | string): boolean;
         /**
          * Check if the `data` and `size` point to the data of a valid RTCP packet.
          * Use this function to validate a packet before using the other functions in
@@ -1777,7 +1779,7 @@ export namespace GstRtp {
          * size RTCP packets.
          * @param data the data to validate
          */
-        static validate_data_reduced(data: Uint8Array): boolean;
+        static validate_data_reduced(data: Uint8Array | string): boolean;
         /**
          * Check if the data pointed to by `buffer` is a valid RTCP packet using
          * gst_rtcp_buffer_validate_reduced().
@@ -1841,7 +1843,7 @@ export namespace GstRtp {
          * @param data profile-specific data
          * @returns %TRUE if the profile specific extension data was added.
          */
-        add_profile_specific_ext(data: Uint8Array): boolean;
+        add_profile_specific_ext(data: Uint8Array | string): boolean;
         /**
          * Add a new report block to `packet` with the given values.
          * @param ssrc data source being reported
@@ -2064,7 +2066,7 @@ export namespace GstRtp {
          * @param data the data
          * @returns %TRUE if the item could be added, %FALSE if the MTU has been reached.
          */
-        sdes_add_entry(type: RTCPSDESType, data: Uint8Array): boolean;
+        sdes_add_entry(type: RTCPSDESType, data: Uint8Array | string): boolean;
         /**
          * Add a new SDES item for `ssrc` to `packet`.
          * @param ssrc the SSRC of the new item to add
@@ -2406,7 +2408,7 @@ export namespace GstRtp {
          * @param nth Read the nth extension packet with the requested ID
          */
         static get_extension_onebyte_header_from_bytes(
-            bytes: GLib.Bytes,
+            bytes: GLib.Bytes | Uint8Array,
             bit_pattern: number,
             id: number,
             nth: number,
@@ -2442,14 +2444,14 @@ export namespace GstRtp {
          * is freed.
          * @param data data for the new   buffer
          */
-        static new_copy_data(data: Uint8Array): Gst.Buffer;
+        static new_copy_data(data: Uint8Array | string): Gst.Buffer;
         /**
          * Create a new buffer and set the data and size of the buffer to `data` and `len`
          * respectively. `data` will be freed when the buffer is unreffed, so this
          * function transfers ownership of `data` to the new buffer.
          * @param data data for the new buffer
          */
-        static new_take_data(data: Uint8Array): Gst.Buffer;
+        static new_take_data(data: Uint8Array | string): Gst.Buffer;
 
         // Own methods of GstRtp.RTPBuffer
 
@@ -2465,7 +2467,7 @@ export namespace GstRtp {
          * @param data location for data
          * @returns %TRUE if header extension could be added
          */
-        add_extension_onebyte_header(id: number, data: Uint8Array): boolean;
+        add_extension_onebyte_header(id: number, data: Uint8Array | string): boolean;
         /**
          * Adds a RFC 5285 header extension with a two bytes header to the end of the
          * RTP header. If there is already a RFC 5285 header extension with a two bytes
@@ -2479,7 +2481,7 @@ export namespace GstRtp {
          * @param data location for data
          * @returns %TRUE if header extension could be added
          */
-        add_extension_twobytes_header(appbits: number, id: number, data: Uint8Array): boolean;
+        add_extension_twobytes_header(appbits: number, id: number, data: Uint8Array | string): boolean;
         /**
          * Get the CSRC at index `idx` in `buffer`.
          * @param idx the index of the CSRC to get

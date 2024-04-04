@@ -321,7 +321,7 @@ export namespace Gcr {
      * @returns the          fingerprint or %NULL if the input was invalid.
      */
     function fingerprint_from_subject_public_key_info(
-        key_info: Uint8Array,
+        key_info: Uint8Array | string,
         checksum_type: GLib.ChecksumType,
     ): Uint8Array | null;
     /**
@@ -493,12 +493,26 @@ export namespace Gcr {
     /**
      * Asynchronously initialize the registered PKCS#11 modules.
      * @param cancellable optional cancellable used to cancel the operation
+     */
+    function pkcs11_initialize_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    /**
+     * Asynchronously initialize the registered PKCS#11 modules.
+     * @param cancellable optional cancellable used to cancel the operation
+     * @param callback callback which will be called when the operation completes
+     */
+    function pkcs11_initialize_async(
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
+    ): void;
+    /**
+     * Asynchronously initialize the registered PKCS#11 modules.
+     * @param cancellable optional cancellable used to cancel the operation
      * @param callback callback which will be called when the operation completes
      */
     function pkcs11_initialize_async(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Complete the asynchronous operation to initialize the registered PKCS#11
      * modules.
@@ -571,6 +585,52 @@ export namespace Gcr {
      * @param purpose the purpose string
      * @param peer the peer for this pinned certificate
      * @param cancellable a #GCancellable
+     */
+    function trust_add_pinned_certificate_async(
+        certificate: Certificate,
+        purpose: string,
+        peer: string,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Add a pinned certificate for communication with `peer` for `purpose`. A pinned
+     * certificate overrides all other certificate verification and should be used
+     * with care.
+     *
+     * If the same pinned certificate already exists, then this operation
+     * does not add another, and succeeds without error.
+     *
+     * When the operation is finished, callback will be called. You can then call
+     * [func`Gcr`.trust_add_pinned_certificate_finish] to get the result of the
+     * operation.
+     * @param certificate a #GcrCertificate
+     * @param purpose the purpose string
+     * @param peer the peer for this pinned certificate
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback to call when the operation completes
+     */
+    function trust_add_pinned_certificate_async(
+        certificate: Certificate,
+        purpose: string,
+        peer: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Certificate> | null,
+    ): void;
+    /**
+     * Add a pinned certificate for communication with `peer` for `purpose`. A pinned
+     * certificate overrides all other certificate verification and should be used
+     * with care.
+     *
+     * If the same pinned certificate already exists, then this operation
+     * does not add another, and succeeds without error.
+     *
+     * When the operation is finished, callback will be called. You can then call
+     * [func`Gcr`.trust_add_pinned_certificate_finish] to get the result of the
+     * operation.
+     * @param certificate a #GcrCertificate
+     * @param purpose the purpose string
+     * @param peer the peer for this pinned certificate
+     * @param cancellable a #GCancellable
      * @param callback a #GAsyncReadyCallback to call when the operation completes
      */
     function trust_add_pinned_certificate_async(
@@ -579,7 +639,7 @@ export namespace Gcr {
         peer: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Certificate> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
      * gcr_trust_add_pinned_certificate_async().
@@ -617,6 +677,40 @@ export namespace Gcr {
      * @param certificate a #GcrCertificate to check
      * @param purpose the purpose string
      * @param cancellable a #GCancellable
+     */
+    function trust_is_certificate_anchored_async(
+        certificate: Certificate,
+        purpose: string,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Check if the `certificate` is a trust anchor for the given `purpose`. A trust
+     * anchor is used to verify the signatures on other certificates when verifying
+     * a certificate chain. Also known as a trusted certificate authority.
+     *
+     * When the operation is finished, callback will be called. You can then call
+     * gcr_trust_is_certificate_anchored_finish() to get the result of the operation.
+     * @param certificate a #GcrCertificate to check
+     * @param purpose the purpose string
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback to call when the operation completes
+     */
+    function trust_is_certificate_anchored_async(
+        certificate: Certificate,
+        purpose: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Certificate> | null,
+    ): void;
+    /**
+     * Check if the `certificate` is a trust anchor for the given `purpose`. A trust
+     * anchor is used to verify the signatures on other certificates when verifying
+     * a certificate chain. Also known as a trusted certificate authority.
+     *
+     * When the operation is finished, callback will be called. You can then call
+     * gcr_trust_is_certificate_anchored_finish() to get the result of the operation.
+     * @param certificate a #GcrCertificate to check
+     * @param purpose the purpose string
+     * @param cancellable a #GCancellable
      * @param callback a #GAsyncReadyCallback to call when the operation completes
      */
     function trust_is_certificate_anchored_async(
@@ -624,7 +718,7 @@ export namespace Gcr {
         purpose: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Certificate> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
      * gcr_trust_is_certificate_anchored_async().
@@ -649,10 +743,31 @@ export namespace Gcr {
      * @returns %TRUE if the certificate is marked as distrusted
      */
     function trust_is_certificate_distrusted(
-        serial_nr: Uint8Array,
-        issuer: Uint8Array,
+        serial_nr: Uint8Array | string,
+        issuer: Uint8Array | string,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
+    /**
+     * Asynchronously checks whether the certificate that can be uniquely
+     * identified with the given `serial_nr` and `issuer` is marked as distrusted
+     * (for example by the user, or because it's part of a CRL).
+     *
+     * Since we can't directly use [iface`Certificate]` to fetch these values, you
+     * need to call these with the raw serial number and issuer as provided by the
+     * PKCS#11 fields `CKA_SERIAL_NR` and `CKA_ISSUER`.
+     *
+     * When the operation is finished, `callback` will be called. You can then call
+     * [func`trust_is_certificate_distrusted_finish]` to get the result of the
+     * operation.
+     * @param serial_nr The serial number of the certificate
+     * @param issuer The raw issuer
+     * @param cancellable a #GCancellable or %NULL
+     */
+    function trust_is_certificate_distrusted_async(
+        serial_nr: Uint8Array | string,
+        issuer: Uint8Array | string,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
     /**
      * Asynchronously checks whether the certificate that can be uniquely
      * identified with the given `serial_nr` and `issuer` is marked as distrusted
@@ -671,11 +786,34 @@ export namespace Gcr {
      * @param callback a #GAsyncReadyCallback to call when the operation completes
      */
     function trust_is_certificate_distrusted_async(
-        serial_nr: Uint8Array,
-        issuer: Uint8Array,
+        serial_nr: Uint8Array | string,
+        issuer: Uint8Array | string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Uint8Array> | null,
+    ): void;
+    /**
+     * Asynchronously checks whether the certificate that can be uniquely
+     * identified with the given `serial_nr` and `issuer` is marked as distrusted
+     * (for example by the user, or because it's part of a CRL).
+     *
+     * Since we can't directly use [iface`Certificate]` to fetch these values, you
+     * need to call these with the raw serial number and issuer as provided by the
+     * PKCS#11 fields `CKA_SERIAL_NR` and `CKA_ISSUER`.
+     *
+     * When the operation is finished, `callback` will be called. You can then call
+     * [func`trust_is_certificate_distrusted_finish]` to get the result of the
+     * operation.
+     * @param serial_nr The serial number of the certificate
+     * @param issuer The raw issuer
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the operation completes
+     */
+    function trust_is_certificate_distrusted_async(
+        serial_nr: Uint8Array | string,
+        issuer: Uint8Array | string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Uint8Array> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
      * [func`trust_is_certificate_distrusted_async]`.
@@ -718,6 +856,44 @@ export namespace Gcr {
      * @param purpose the purpose string
      * @param peer the peer for this pinned
      * @param cancellable a #GCancellable
+     */
+    function trust_is_certificate_pinned_async(
+        certificate: Certificate,
+        purpose: string,
+        peer: string,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Check if `certificate` is pinned for `purpose` to communicate with `peer`. A
+     * pinned certificate overrides all other certificate verification.
+     *
+     * When the operation is finished, callback will be called. You can then call
+     * [func`Gcr`.trust_is_certificate_pinned_finish] to get the result of the
+     * operation.
+     * @param certificate a #GcrCertificate to check
+     * @param purpose the purpose string
+     * @param peer the peer for this pinned
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback to call when the operation completes
+     */
+    function trust_is_certificate_pinned_async(
+        certificate: Certificate,
+        purpose: string,
+        peer: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Certificate> | null,
+    ): void;
+    /**
+     * Check if `certificate` is pinned for `purpose` to communicate with `peer`. A
+     * pinned certificate overrides all other certificate verification.
+     *
+     * When the operation is finished, callback will be called. You can then call
+     * [func`Gcr`.trust_is_certificate_pinned_finish] to get the result of the
+     * operation.
+     * @param certificate a #GcrCertificate to check
+     * @param purpose the purpose string
+     * @param peer the peer for this pinned
+     * @param cancellable a #GCancellable
      * @param callback a #GAsyncReadyCallback to call when the operation completes
      */
     function trust_is_certificate_pinned_async(
@@ -726,7 +902,7 @@ export namespace Gcr {
         peer: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Certificate> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
      * gcr_trust_is_certificate_pinned_async().
@@ -770,6 +946,48 @@ export namespace Gcr {
      * @param purpose the purpose string
      * @param peer the peer for this pinned certificate
      * @param cancellable a #GCancellable
+     */
+    function trust_remove_pinned_certificate_async(
+        certificate: Certificate,
+        purpose: string,
+        peer: string,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Remove a pinned certificate for communication with `peer` for `purpose`.
+     *
+     * If the same pinned certificate does not exist, or was already removed,
+     * then this operation succeeds without error.
+     *
+     * When the operation is finished, callback will be called. You can then call
+     * gcr_trust_remove_pinned_certificate_finish() to get the result of the
+     * operation.
+     * @param certificate a #GcrCertificate
+     * @param purpose the purpose string
+     * @param peer the peer for this pinned certificate
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback to call when the operation completes
+     */
+    function trust_remove_pinned_certificate_async(
+        certificate: Certificate,
+        purpose: string,
+        peer: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Certificate> | null,
+    ): void;
+    /**
+     * Remove a pinned certificate for communication with `peer` for `purpose`.
+     *
+     * If the same pinned certificate does not exist, or was already removed,
+     * then this operation succeeds without error.
+     *
+     * When the operation is finished, callback will be called. You can then call
+     * gcr_trust_remove_pinned_certificate_finish() to get the result of the
+     * operation.
+     * @param certificate a #GcrCertificate
+     * @param purpose the purpose string
+     * @param peer the peer for this pinned certificate
+     * @param cancellable a #GCancellable
      * @param callback a #GAsyncReadyCallback to call when the operation completes
      */
     function trust_remove_pinned_certificate_async(
@@ -778,7 +996,7 @@ export namespace Gcr {
         peer: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Certificate> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
      * gcr_trust_remove_pinned_certificate_async().
@@ -1413,7 +1631,7 @@ export namespace Gcr {
          * @param data the data to parse
          * @returns Whether the data was parsed successfully or not.
          */
-        parse_bytes(data: GLib.Bytes): boolean;
+        parse_bytes(data: GLib.Bytes | Uint8Array): boolean;
         /**
          * Parse the data. The [signal`Parser:`:parsed] and [signal`Parser:`:authenticate]
          * signals may fire during the parsing.
@@ -1423,7 +1641,7 @@ export namespace Gcr {
          * @param data the data to parse
          * @returns Whether the data was parsed successfully or not.
          */
-        parse_data(data: Uint8Array): boolean;
+        parse_data(data: Uint8Array | string): boolean;
         /**
          * Parse items from the data in a #GInputStream. This function may block while
          * reading from the input stream. Use [method`Parser`.parse_stream_async] for
@@ -1882,6 +2100,7 @@ export namespace Gcr {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1908,6 +2127,7 @@ export namespace Gcr {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
+        // Conflicted with Gck.Object.get_data
         get_data(...args: never[]): any;
         get_property(property_name: string): any;
         /**
@@ -1925,7 +2145,7 @@ export namespace Gcr {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2126,7 +2346,7 @@ export namespace Gcr {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2141,9 +2361,10 @@ export namespace Gcr {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
+        // Conflicted with Gck.Object.set
         set(...args: never[]): any;
         block_signal_handler(id: number): any;
         unblock_signal_handler(id: number): any;
@@ -2285,7 +2506,7 @@ export namespace Gcr {
 
         _init(...args: any[]): void;
 
-        static ['new'](data: Uint8Array): SimpleCertificate;
+        static ['new'](data: Uint8Array | string): SimpleCertificate;
 
         // Inherited properties
         /**
@@ -2584,6 +2805,7 @@ export namespace Gcr {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2626,7 +2848,7 @@ export namespace Gcr {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2827,7 +3049,7 @@ export namespace Gcr {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2842,7 +3064,7 @@ export namespace Gcr {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3066,6 +3288,7 @@ export namespace Gcr {
          * @returns whether close was cleanly completed
          */
         close(cancellable?: Gio.Cancellable | null): boolean;
+        // Conflicted with Gcr.Prompt.close
         close(...args: never[]): any;
         /**
          * Close this prompt asynchronously. After calling this function, no further
@@ -3870,6 +4093,7 @@ export namespace Gcr {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3912,7 +4136,7 @@ export namespace Gcr {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4113,7 +4337,7 @@ export namespace Gcr {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4128,7 +4352,7 @@ export namespace Gcr {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

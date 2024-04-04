@@ -415,7 +415,7 @@ export namespace Gsf {
      * @param len max length of data to decode
      * @returns the number of bytes converted
      */
-    function base64_decode_simple(data: Uint8Array, len: number): number;
+    function base64_decode_simple(data: Uint8Array | string, len: number): number;
     /**
      * Decodes a chunk of base64 encoded data
      * @param _in input stream
@@ -426,9 +426,9 @@ export namespace Gsf {
      * @returns the number of bytes converted
      */
     function base64_decode_step(
-        _in: Uint8Array,
+        _in: Uint8Array | string,
         len: number,
-        out: Uint8Array,
+        out: Uint8Array | string,
         state: number,
         save: number,
     ): [number, number, number];
@@ -443,9 +443,9 @@ export namespace Gsf {
      * @returns a count of the number of bytes in the final block.
      */
     function base64_encode_close(
-        _in: Uint8Array,
+        _in: Uint8Array | string,
         break_lines: boolean,
-        out: Uint8Array,
+        out: Uint8Array | string,
         state: number,
         save: number,
     ): [number, number, number];
@@ -455,7 +455,7 @@ export namespace Gsf {
      * @param len max length of data to encode
      * @returns the number of bytes encoded
      */
-    function base64_encode_simple(data: Uint8Array, len: number): number;
+    function base64_encode_simple(data: Uint8Array | string, len: number): number;
     /**
      * Performs an 'encode step', only encodes blocks of 3 characters from `in` into
      * the output `out` at a time, saves left-over state in `state` and `save`
@@ -469,10 +469,10 @@ export namespace Gsf {
      * @returns the number of bytes encoded
      */
     function base64_encode_step(
-        _in: Uint8Array,
+        _in: Uint8Array | string,
         len: number,
         break_lines: boolean,
-        out: Uint8Array,
+        out: Uint8Array | string,
         state: number,
         save: number,
     ): [number, number, number];
@@ -624,15 +624,15 @@ export namespace Gsf {
      * @param value A GValue of type #GsfDocPropVector.
      * @returns A #GArray of #GValue
      */
-    function value_get_docprop_array(value: GObject.Value): GObject.Value[] | null;
-    function value_get_docprop_varray(value: GObject.Value): GObject.ValueArray;
+    function value_get_docprop_array(value: GObject.Value | any): GObject.Value[] | null;
+    function value_get_docprop_varray(value: GObject.Value | any): GObject.ValueArray;
     /**
      * This function returns a pointer to the GsfDocPropVector structure in `value`.
      * No additional references are created.
      * @param value A GValue of type #GsfDocPropVector.
      * @returns A pointer to the #GsfDocPropVector structure in @value
      */
-    function value_get_docprop_vector(value: GObject.Value): DocPropVector;
+    function value_get_docprop_vector(value: GObject.Value | any): DocPropVector;
     /**
      * Decompresses VBA stream.
      * @param input stream to read from
@@ -658,7 +658,7 @@ export namespace Gsf {
      * @param str Value string
      * @returns True when parsing of @str as a value of type @t was succesfull; false otherwise.
      */
-    function xml_gvalue_from_str(res: GObject.Value, t: GObject.GType, str: string): boolean;
+    function xml_gvalue_from_str(res: GObject.Value | any, t: GObject.GType, str: string): boolean;
     function xml_probe(input: Input, func: XMLProbeFunc): boolean;
     interface OpenPkgIter {
         (opkg: Input, rel: OpenPkgRel): void;
@@ -700,7 +700,7 @@ export namespace Gsf {
 
         _init(...args: any[]): void;
 
-        static ['new'](data_to_copy: Uint8Array): Blob;
+        static ['new'](data_to_copy: Uint8Array | string): Blob;
 
         // Own methods of Gsf.Blob
 
@@ -806,7 +806,7 @@ export namespace Gsf {
          * @param name the id.
          * @param value #GValue
          */
-        insert(name: string, value: GObject.Value): void;
+        insert(name: string, value: GObject.Value | any): void;
         lookup(name: string): DocProp | null;
         /**
          * Extend `xin` so that it can parse a subtree in OpenDoc metadata format
@@ -863,7 +863,7 @@ export namespace Gsf {
          * Insert a copy of `value` as the last element of `vector`.
          * @param value The GValue to add to @vector
          */
-        append(value: GObject.Value): void;
+        append(value: GObject.Value | any): void;
         /**
          * This function returns a string which represents all the GValues in `vector`.
          * The caller is responsible for freeing the result.
@@ -1350,9 +1350,9 @@ export namespace Gsf {
 
         _init(...args: any[]): void;
 
-        static ['new'](buf: Uint8Array, needs_free: boolean): InputMemory;
+        static ['new'](buf: Uint8Array | string, needs_free: boolean): InputMemory;
 
-        static new_clone(buf: Uint8Array): InputMemory;
+        static new_clone(buf: Uint8Array | string): InputMemory;
 
         static new_from_bzip(source: Input): InputMemory;
 
@@ -1541,7 +1541,7 @@ export namespace Gsf {
          * @param clsid Identifier (often a GUID in MS Windows apps)
          * @returns %TRUE on success.
          */
-        set_class_id(clsid: Uint8Array): boolean;
+        set_class_id(clsid: Uint8Array | string): boolean;
     }
 
     module OutfileOpenPkg {
@@ -1755,7 +1755,7 @@ export namespace Gsf {
          * Write `num_bytes` of `data` to `output`.
          * @param data Data to write.
          */
-        vfunc_Write(data: Uint8Array): boolean;
+        vfunc_Write(data: Uint8Array | string): boolean;
 
         // Own methods of Gsf.Output
 
@@ -1818,7 +1818,7 @@ export namespace Gsf {
          * @param data Data to write.
          * @returns %FALSE on error.
          */
-        write(data: Uint8Array): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
     module OutputBzip {
@@ -2161,7 +2161,7 @@ export namespace Gsf {
          * @param id tag id, or %NULL for node content
          * @param data Data to be written
          */
-        add_base64(id: string | null, data: Uint8Array): void;
+        add_base64(id: string | null, data: Uint8Array | string): void;
         /**
          * dump boolean value `val` to an attribute named `id` or as the nodes content
          * Use '1' or '0' to simplify import
@@ -2216,7 +2216,7 @@ export namespace Gsf {
          * @param id tag id, or %NULL for node content
          * @param val #GValue
          */
-        add_gvalue(id: string | null, val: GObject.Value): void;
+        add_gvalue(id: string | null, val: GObject.Value | any): void;
         /**
          * dump integer value `val` to an attribute named `id` or as the nodes content
          * @param id tag id, or %NULL for node content
@@ -2318,7 +2318,7 @@ export namespace Gsf {
         free(): void;
         get_link(): string | null;
         get_name(): string;
-        get_val(): GObject.Value;
+        get_val(): unknown;
         /**
          * Sets `prop'`s link to `link`
          * @param link a link.
@@ -2328,8 +2328,8 @@ export namespace Gsf {
          * Assigns `val` to `prop,` and unsets and frees the current value.
          * @param val #GValue
          */
-        set_val(val: GObject.Value): void;
-        swap_val(val: GObject.Value): GObject.Value;
+        set_val(val: GObject.Value | any): void;
+        swap_val(val: GObject.Value | any): unknown;
     }
 
     type InfileClass = typeof Infile;
@@ -2438,7 +2438,7 @@ export namespace Gsf {
          * Calls g_value_set_box (value, stamp);
          * @param value #GValue
          */
-        to_value(value: GObject.Value): void;
+        to_value(value: GObject.Value | any): void;
     }
 
     abstract class XMLBlob {

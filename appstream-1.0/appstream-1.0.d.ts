@@ -3350,7 +3350,7 @@ export namespace AppStream {
          * @param bytes the data to load.
          * @returns %TRUE on success.
          */
-        load_from_bytes(context: Context, format: FormatKind, bytes: GLib.Bytes): boolean;
+        load_from_bytes(context: Context, format: FormatKind, bytes: GLib.Bytes | Uint8Array): boolean;
         /**
          * Load data from an external source, possibly a local file
          * or a network resource.
@@ -3364,7 +3364,7 @@ export namespace AppStream {
          * @param bytes the release XML data as #GBytes
          * @returns %TRUE on success.
          */
-        load_releases_from_bytes(bytes: GLib.Bytes): boolean;
+        load_releases_from_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
         /**
          * Remove a tag from this component
          * @param ns The namespace the tag belongs to
@@ -4048,7 +4048,7 @@ export namespace AppStream {
          * @param format The format of the data (XML or YAML).
          * @returns %TRUE on success.
          */
-        parse_bytes(bytes: GLib.Bytes, format: FormatKind): boolean;
+        parse_bytes(bytes: GLib.Bytes | Uint8Array, format: FormatKind): boolean;
         /**
          * Parses any AppStream metadata into one or more #AsComponent instances.
          * @param data Metadata describing one or more software components as string.
@@ -4084,7 +4084,7 @@ export namespace AppStream {
          * @param bytes Metadata describing release notes.
          * @returns A list of releases or %NULL on error.
          */
-        parse_releases_bytes(bytes: GLib.Bytes): Release[] | null;
+        parse_releases_bytes(bytes: GLib.Bytes | Uint8Array): Release[] | null;
         /**
          * Parses any AppStream release metadata into #AsRelease objects
          * using the provided file.
@@ -5362,7 +5362,7 @@ export namespace AppStream {
          * @param release_fname File basename of the release metadata file to add.
          * @param release_metadata Data of the release metadata file.
          */
-        add_release_bytes(release_fname: string, release_metadata: GLib.Bytes): boolean;
+        add_release_bytes(release_fname: string, release_metadata: GLib.Bytes | Uint8Array): boolean;
         /**
          * Add a release metadata file to the validation process.
          * @param release_file Release metadata file to add.
@@ -5434,7 +5434,7 @@ export namespace AppStream {
          * @param metadata XML metadata as #GBytes.
          * @returns %TRUE if bytes validated successfully.
          */
-        validate_bytes(metadata: GLib.Bytes): boolean;
+        validate_bytes(metadata: GLib.Bytes | Uint8Array): boolean;
         /**
          * Validate AppStream XML data.
          * Remember to run %as_validator_clear_issues if you do not want previous

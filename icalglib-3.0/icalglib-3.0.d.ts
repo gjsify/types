@@ -966,7 +966,7 @@ export namespace ICalGLib {
 
         _init(...args: any[]): void;
 
-        static new_from_bytes(bytes: GLib.Bytes): Attach;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array): Attach;
 
         static new_from_data(data: string, free_fn?: GLib.Func | null): Attach;
 
@@ -979,6 +979,7 @@ export namespace ICalGLib {
          * @returns The data component of the @attach. %NULL if it is built from url or there is an error.
          */
         get_data(): string | null;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Checks whether the #ICalAttach is built from url.
@@ -3518,6 +3519,7 @@ export namespace ICalGLib {
          * @param v The owner
          */
         set_owner(v: string): void;
+        // Conflicted with ICalGLib.Object.set_owner
         set_owner(...args: never[]): any;
         /**
          * Sets a #ICalParameter into the #ICalProperty. It behaves like set the copy of the #ICalParameter. Upon

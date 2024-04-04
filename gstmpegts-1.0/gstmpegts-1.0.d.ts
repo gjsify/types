@@ -1271,7 +1271,7 @@ export namespace GstMpegts {
      * @param data descriptor data (after tag and length field)
      * @returns #GstMpegtsDescriptor
      */
-    function descriptor_from_custom(tag: number, data: Uint8Array): Descriptor;
+    function descriptor_from_custom(tag: number, data: Uint8Array | string): Descriptor;
     /**
      * Creates a #GstMpegtsDescriptor with custom `tag,` `tag_extension` and `data`
      * @param tag descriptor tag
@@ -1279,7 +1279,11 @@ export namespace GstMpegts {
      * @param data descriptor data (after tag and length field)
      * @returns #GstMpegtsDescriptor
      */
-    function descriptor_from_custom_with_extension(tag: number, tag_extension: number, data: Uint8Array): Descriptor;
+    function descriptor_from_custom_with_extension(
+        tag: number,
+        tag_extension: number,
+        data: Uint8Array | string,
+    ): Descriptor;
     /**
      * Creates a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_NETWORK_NAME,
      * with the network name `name`. The data field of the #GstMpegtsDescriptor
@@ -2300,14 +2304,14 @@ export namespace GstMpegts {
          * @param tag descriptor tag
          * @param data descriptor data (after tag and length field)
          */
-        static from_custom(tag: number, data: Uint8Array): Descriptor;
+        static from_custom(tag: number, data: Uint8Array | string): Descriptor;
         /**
          * Creates a #GstMpegtsDescriptor with custom `tag,` `tag_extension` and `data`
          * @param tag descriptor tag
          * @param tag_extension descriptor tag extension
          * @param data descriptor data (after tag and length field)
          */
-        static from_custom_with_extension(tag: number, tag_extension: number, data: Uint8Array): Descriptor;
+        static from_custom_with_extension(tag: number, tag_extension: number, data: Uint8Array | string): Descriptor;
         /**
          * Creates a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_NETWORK_NAME,
          * with the network name `name`. The data field of the #GstMpegtsDescriptor
@@ -3278,10 +3282,10 @@ export namespace GstMpegts {
 
         // Constructors of GstMpegts.Section
 
-        constructor(pid: number, data: Uint8Array);
+        constructor(pid: number, data: Uint8Array | string);
         _init(...args: any[]): void;
 
-        static ['new'](pid: number, data: Uint8Array): Section;
+        static ['new'](pid: number, data: Uint8Array | string): Section;
 
         // Own static methods of GstMpegts.Section
 

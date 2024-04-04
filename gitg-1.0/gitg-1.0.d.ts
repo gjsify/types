@@ -314,6 +314,7 @@ export namespace Gitg {
 
         // Inherited methods
         get_owner(): Repository;
+        // Conflicted with Ggit.Ref.get_owner
         get_owner(...args: never[]): any;
         get_d_parsed_name(): ParsedRefName;
         set_d_parsed_name(value: ParsedRefName): void;
@@ -335,6 +336,7 @@ export namespace Gitg {
         vfunc_get_working(): boolean;
         vfunc_set_working(value: boolean): void;
         get_upstream(): Ref;
+        // Conflicted with Ggit.Branch.get_upstream
         get_upstream(...args: never[]): any;
         vfunc_get_upstream(): Ref;
         /**
@@ -724,6 +726,7 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -766,7 +769,7 @@ export namespace Gitg {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -967,7 +970,7 @@ export namespace Gitg {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -982,7 +985,7 @@ export namespace Gitg {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1578,6 +1581,7 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1620,7 +1624,7 @@ export namespace Gitg {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1821,7 +1825,7 @@ export namespace Gitg {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1836,7 +1840,7 @@ export namespace Gitg {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2143,6 +2147,7 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2185,7 +2190,7 @@ export namespace Gitg {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2386,7 +2391,7 @@ export namespace Gitg {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2401,7 +2406,7 @@ export namespace Gitg {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2946,6 +2951,7 @@ export namespace Gitg {
 
         // Inherited methods
         get_owner(): Repository;
+        // Conflicted with Ggit.Ref.get_owner
         get_owner(...args: never[]): any;
         get_d_parsed_name(): ParsedRefName;
         set_d_parsed_name(value: ParsedRefName): void;
@@ -3230,12 +3236,15 @@ export namespace Gitg {
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with Ggit.Remote.connect
         connect(...args: never[]): any;
         connect_finish(_res_: Gio.AsyncResult): void;
         disconnect(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        // Conflicted with Ggit.Remote.disconnect
         disconnect(...args: never[]): any;
         disconnect_finish(_res_: Gio.AsyncResult): void;
         download(callbacks?: Ggit.RemoteCallbacks | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        // Conflicted with Ggit.Remote.download
         download(...args: never[]): any;
         download_finish(_res_: Gio.AsyncResult): void;
         push(
@@ -3243,6 +3252,7 @@ export namespace Gitg {
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with Ggit.Remote.push
         push(...args: never[]): any;
         push_finish(_res_: Gio.AsyncResult): void;
         fetch(
@@ -3481,6 +3491,7 @@ export namespace Gitg {
         // Own static methods of Gitg.Repository
 
         static init_repository(location: Gio.File, is_bare: boolean): Repository;
+        // Conflicted with Ggit.Repository.init_repository
         static init_repository(...args: never[]): any;
 
         // Own methods of Gitg.Repository
@@ -3488,18 +3499,25 @@ export namespace Gitg {
         clear_refs_cache(): void;
         refs_for_id(id: Ggit.OId): Ref[];
         lookup(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, id: Ggit.OId): any | null;
+        // Conflicted with Ggit.Repository.lookup
         lookup(...args: never[]): any;
         lookup_reference(name: string): Ref;
+        // Conflicted with Ggit.Repository.lookup_reference
         lookup_reference(...args: never[]): any;
         lookup_reference_dwim(short_name: string): Ref;
+        // Conflicted with Ggit.Repository.lookup_reference_dwim
         lookup_reference_dwim(...args: never[]): any;
         create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch;
+        // Conflicted with Ggit.Repository.create_branch
         create_branch(...args: never[]): any;
         create_reference(name: string, oid: Ggit.OId, message: string): Ref;
+        // Conflicted with Ggit.Repository.create_reference
         create_reference(...args: never[]): any;
         create_symbolic_reference(name: string, target: string, message: string): Ref;
+        // Conflicted with Ggit.Repository.create_symbolic_reference
         create_symbolic_reference(...args: never[]): any;
         get_head(): Ref;
+        // Conflicted with Ggit.Repository.get_head
         get_head(...args: never[]): any;
         get_signature_with_environment(env: Gee.Map, envname: string): Ggit.Signature;
         get_name(): string | null;
@@ -3551,6 +3569,7 @@ export namespace Gitg {
 
         append_dummy(text: string): SidebarStore;
         append(item: SidebarItem): SidebarStore;
+        // Conflicted with Gtk.TreeStore.append
         append(...args: never[]): any;
         begin_header(text: string, id: number): SidebarStoreSidebarHeader;
         end_header(): SidebarStore;
@@ -3681,6 +3700,7 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3723,7 +3743,7 @@ export namespace Gitg {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3924,7 +3944,7 @@ export namespace Gitg {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3939,7 +3959,7 @@ export namespace Gitg {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4186,6 +4206,7 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4228,7 +4249,7 @@ export namespace Gitg {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4429,7 +4450,7 @@ export namespace Gitg {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4444,7 +4465,7 @@ export namespace Gitg {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4599,6 +4620,7 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4641,7 +4663,7 @@ export namespace Gitg {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4842,7 +4864,7 @@ export namespace Gitg {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4857,7 +4879,7 @@ export namespace Gitg {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5507,6 +5529,7 @@ export namespace Gitg {
         // Own methods of Gitg.Branch
 
         get_upstream(): Ref;
+        // Conflicted with Ggit.Branch.get_upstream
         get_upstream(...args: never[]): any;
 
         // Own virtual methods of Gitg.Branch
@@ -5552,6 +5575,7 @@ export namespace Gitg {
         // Own methods of Gitg.Ref
 
         get_owner(): Repository;
+        // Conflicted with Ggit.Ref.get_owner
         get_owner(...args: never[]): any;
         get_d_parsed_name(): ParsedRefName;
         set_d_parsed_name(value: ParsedRefName): void;

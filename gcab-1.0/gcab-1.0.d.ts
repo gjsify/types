@@ -263,7 +263,7 @@ export namespace GCab {
 
         _init(...args: any[]): void;
 
-        static new_with_bytes(name: string, bytes: GLib.Bytes): File;
+        static new_with_bytes(name: string, bytes: GLib.Bytes | Uint8Array): File;
 
         static new_with_file(name: string, file: Gio.File): File;
 
@@ -327,7 +327,7 @@ export namespace GCab {
          * gcab_file_new_with_bytes() and the data needs to be modified.
          * @param bytes a #GBytes
          */
-        set_bytes(bytes: GLib.Bytes): void;
+        set_bytes(bytes: GLib.Bytes | Uint8Array): void;
         /**
          * Sets the file modification date, instead of the value provided by the GFile.
          * @param tv a #GTimeVal

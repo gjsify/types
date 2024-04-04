@@ -405,7 +405,7 @@ export namespace Retro {
         // Signal callback interfaces
 
         interface AudioOutput {
-            (data: Uint8Array, sample_rate: number): void;
+            (data: Uint8Array | string, sample_rate: number): void;
         }
 
         interface Log {
@@ -562,7 +562,7 @@ export namespace Retro {
             signal: 'audio-output',
             callback: (_source: this, data: Uint8Array, sample_rate: number) => void,
         ): number;
-        emit(signal: 'audio-output', data: Uint8Array, sample_rate: number): void;
+        emit(signal: 'audio-output', data: Uint8Array | string, sample_rate: number): void;
         connect(
             signal: 'log',
             callback: (_source: this, log_domain: string, log_level: GLib.LogLevelFlags, message: string) => void,
@@ -732,7 +732,7 @@ export namespace Retro {
          * @param memory_type the type of memory
          * @param bytes a #GBytes
          */
-        set_memory(memory_type: MemoryType, bytes: GLib.Bytes): void;
+        set_memory(memory_type: MemoryType, bytes: GLib.Bytes | Uint8Array): void;
         set_runahead(runahead: number): void;
         /**
          * Sets the save directory of the core.
@@ -745,7 +745,7 @@ export namespace Retro {
          * Sets the state of the `self`.
          * @param bytes a #GBytes
          */
-        set_state(bytes: GLib.Bytes): void;
+        set_state(bytes: GLib.Bytes | Uint8Array): void;
         /**
          * Sets the system directory of the core.
          *
@@ -1111,6 +1111,7 @@ export namespace Retro {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1153,7 +1154,7 @@ export namespace Retro {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1354,7 +1355,7 @@ export namespace Retro {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1369,7 +1370,7 @@ export namespace Retro {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

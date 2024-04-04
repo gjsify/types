@@ -6698,7 +6698,7 @@ export namespace Guestfs {
          * @param val an array of binary data
          * @returns true on success, false on error
          */
-        hivex_node_set_value(nodeh: number, key: string, t: number, val: Uint8Array): boolean;
+        hivex_node_set_value(nodeh: number, key: string, t: number, val: Uint8Array | string): boolean;
         /**
          * return list of values attached to node
          *
@@ -7795,7 +7795,7 @@ export namespace Guestfs {
             integer64: number,
             filein: string,
             fileout: string,
-            bufferin: Uint8Array,
+            bufferin: Uint8Array | string,
             optargs?: InternalTest | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -11026,7 +11026,7 @@ export namespace Guestfs {
          * @param offset
          * @returns the returned value, or -1 on error
          */
-        pwrite(path: string, content: Uint8Array, offset: number): number;
+        pwrite(path: string, content: Uint8Array | string, offset: number): number;
         /**
          * write to part of a device
          *
@@ -11044,7 +11044,7 @@ export namespace Guestfs {
          * @param offset
          * @returns the returned value, or -1 on error
          */
-        pwrite_device(device: string, content: Uint8Array, offset: number): number;
+        pwrite_device(device: string, content: Uint8Array | string, offset: number): number;
         /**
          * read a file
          *
@@ -11754,7 +11754,7 @@ export namespace Guestfs {
          * @param cred an array of binary data
          * @returns true on success, false on error
          */
-        set_libvirt_requested_credential(index: number, cred: Uint8Array): boolean;
+        set_libvirt_requested_credential(index: number, cred: Uint8Array | string): boolean;
         /**
          * set libvirt credentials supported by calling program
          *
@@ -13158,7 +13158,7 @@ export namespace Guestfs {
          * @param content an array of binary data
          * @returns true on success, false on error
          */
-        write(path: string, content: Uint8Array): boolean;
+        write(path: string, content: Uint8Array | string): boolean;
         /**
          * append content to end of file
          *
@@ -13170,7 +13170,7 @@ export namespace Guestfs {
          * @param content an array of binary data
          * @returns true on success, false on error
          */
-        write_append(path: string, content: Uint8Array): boolean;
+        write_append(path: string, content: Uint8Array | string): boolean;
         /**
          * create a file
          *

@@ -194,6 +194,7 @@ export namespace GstCuda {
         // Own methods of GstCuda.CudaAllocator
 
         alloc(context: CudaContext, stream: CudaStream | null, info: GstVideo.VideoInfo): Gst.Memory | null;
+        // Conflicted with Gst.Allocator.alloc
         alloc(...args: never[]): any;
         /**
          * Allocates a new memory that wraps the given CUDA device memory.

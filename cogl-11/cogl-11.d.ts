@@ -3704,7 +3704,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns %TRUE if the data upload was successful, and               %FALSE otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: Uint8Array, level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: Uint8Array | string, level: number): boolean;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -3759,7 +3759,7 @@ export namespace Cogl {
             height: number,
             format: PixelFormat,
             rowstride: number,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): boolean;
         /**
          * Copies a specified source region from `bitmap` to the position
@@ -3943,7 +3943,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns %TRUE if the data upload was successful, and               %FALSE otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: Uint8Array, level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: Uint8Array | string, level: number): boolean;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -3998,7 +3998,7 @@ export namespace Cogl {
             height: number,
             format: PixelFormat,
             rowstride: number,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): boolean;
         /**
          * Copies a specified source region from `bitmap` to the position
@@ -4639,7 +4639,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns %TRUE if the data upload was successful, and               %FALSE otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: Uint8Array, level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: Uint8Array | string, level: number): boolean;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -4694,7 +4694,7 @@ export namespace Cogl {
             height: number,
             format: PixelFormat,
             rowstride: number,
-            data: Uint8Array,
+            data: Uint8Array | string,
         ): boolean;
         /**
          * Copies a specified source region from `bitmap` to the position

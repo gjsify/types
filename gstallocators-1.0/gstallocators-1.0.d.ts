@@ -158,6 +158,7 @@ export namespace GstAllocators {
          * @returns a new DRM Dumb #GstMemory. Use gst_memory_unref()   to release the memory after usage.
          */
         alloc(drm_fourcc: number, width: number, height: number): [Gst.Memory, number];
+        // Conflicted with Gst.Allocator.alloc
         alloc(...args: never[]): any;
         /**
          * This function allow verifying if the driver support dma-buf exportation.

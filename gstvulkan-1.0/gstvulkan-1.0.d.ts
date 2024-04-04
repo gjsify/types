@@ -476,6 +476,7 @@ export namespace GstVulkan {
         // Own methods of GstVulkan.VulkanDescriptorCache
 
         acquire(): VulkanDescriptorSet;
+        // Conflicted with GstVulkan.VulkanHandlePool.acquire
         acquire(...args: never[]): any;
     }
 
@@ -1075,6 +1076,7 @@ export namespace GstVulkan {
         // Own methods of GstVulkan.VulkanTrashList
 
         acquire(fence: VulkanFence, notify: VulkanTrashNotify): VulkanTrash;
+        // Conflicted with GstVulkan.VulkanHandlePool.acquire
         acquire(...args: never[]): any;
         add(trash: VulkanTrash): boolean;
         gc(): void;

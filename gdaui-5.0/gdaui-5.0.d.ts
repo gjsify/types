@@ -486,6 +486,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -528,7 +529,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -729,7 +730,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -744,7 +745,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1073,6 +1074,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1115,7 +1117,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1316,7 +1318,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1331,7 +1333,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1413,6 +1415,7 @@ export namespace Gdaui {
          * @param cols_index an array of columns to be shown, its size must be @n_cols
          */
         set_data(model: Gda.DataModel, cols_index: number[]): void;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
 
         // Inherited properties
@@ -1803,6 +1806,7 @@ export namespace Gdaui {
          * @returns the #GdaDataModel
          */
         get_model(): Gda.DataModel;
+        // Conflicted with Gtk.ComboBox.get_model
         get_model(...args: never[]): any;
         /**
          * Gat an array of selected rows. If no row is selected, the the returned value is %NULL.
@@ -1836,6 +1840,7 @@ export namespace Gdaui {
          * @param model a #GdaDataModel to use
          */
         set_model(model: Gda.DataModel): void;
+        // Conflicted with Gtk.ComboBox.set_model
         set_model(...args: never[]): any;
         /**
          * Please note that `row` refers to the "visible" row
@@ -2183,6 +2188,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2225,7 +2231,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2411,7 +2417,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2426,7 +2432,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2558,6 +2564,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -5173,7 +5180,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -5604,7 +5611,7 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Changed {
-            (object: string, p0: GObject.Value): void;
+            (object: string, p0: GObject.Value | any): void;
         }
 
         // Constructor properties interface
@@ -5653,18 +5660,18 @@ export namespace Gdaui {
         emit(id: string, ...args: any[]): void;
         connect(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
         connect_after(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
-        emit(signal: 'changed', object: string, p0: GObject.Value): void;
+        emit(signal: 'changed', object: string, p0: GObject.Value | any): void;
 
         // Own virtual methods of Gdaui.DataCellRendererBin
 
-        vfunc_changed(path: string, new_value: GObject.Value): void;
+        vfunc_changed(path: string, new_value: GObject.Value | any): void;
     }
 
     module DataCellRendererBoolean {
         // Signal callback interfaces
 
         interface Changed {
-            (object: string, p0: GObject.Value): void;
+            (object: string, p0: GObject.Value | any): void;
         }
 
         // Constructor properties interface
@@ -5713,11 +5720,11 @@ export namespace Gdaui {
         emit(id: string, ...args: any[]): void;
         connect(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
         connect_after(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
-        emit(signal: 'changed', object: string, p0: GObject.Value): void;
+        emit(signal: 'changed', object: string, p0: GObject.Value | any): void;
 
         // Own virtual methods of Gdaui.DataCellRendererBoolean
 
-        vfunc_changed(path: string, new_value: GObject.Value): void;
+        vfunc_changed(path: string, new_value: GObject.Value | any): void;
     }
 
     module DataCellRendererCombo {
@@ -5852,7 +5859,7 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Changed {
-            (object: string, p0: GObject.Value): void;
+            (object: string, p0: GObject.Value | any): void;
         }
 
         // Constructor properties interface
@@ -5899,11 +5906,11 @@ export namespace Gdaui {
         emit(id: string, ...args: any[]): void;
         connect(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
         connect_after(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
-        emit(signal: 'changed', object: string, p0: GObject.Value): void;
+        emit(signal: 'changed', object: string, p0: GObject.Value | any): void;
 
         // Own virtual methods of Gdaui.DataCellRendererTextual
 
-        vfunc_changed(path: string, new_value: GObject.Value): void;
+        vfunc_changed(path: string, new_value: GObject.Value | any): void;
     }
 
     module DataFilter {
@@ -6052,6 +6059,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6094,7 +6102,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6295,7 +6303,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6310,7 +6318,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6476,6 +6484,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6518,7 +6527,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6719,7 +6728,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6734,7 +6743,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6805,7 +6814,7 @@ export namespace Gdaui {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns %TRUE if the row has been identified @iter was set
          */
-        get_iter_from_values(values: GObject.Value[], cols_index: number): [boolean, Gtk.TreeIter];
+        get_iter_from_values(values: (GObject.Value | any)[], cols_index: number): [boolean, Gtk.TreeIter];
         get_proxy(): Gda.DataProxy;
         /**
          * Get the number of the row represented by `iter`
@@ -6820,7 +6829,7 @@ export namespace Gdaui {
          * @param value the value to store (gets copied)
          * @returns %TRUE on success
          */
-        set_value(iter: Gtk.TreeIter, col: number, value: GObject.Value): boolean;
+        set_value(iter: Gtk.TreeIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Remove the "to be deleted" mark the row pointed by `iter,` if it existed.
          * @param iter the considered row
@@ -7319,6 +7328,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7361,7 +7371,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7562,7 +7572,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7577,7 +7587,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7693,6 +7703,7 @@ export namespace Gdaui {
          * @param text the text to set into @entry, or %NULL
          */
         set_text(text?: string | null): void;
+        // Conflicted with Gtk.Entry.set_text
         set_text(...args: never[]): any;
         /**
          * Sets `entry'`s maximum width in characters, without taking into account
@@ -8407,6 +8418,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8449,7 +8461,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8650,7 +8662,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8665,7 +8677,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -11411,7 +11423,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -12254,7 +12266,7 @@ export namespace Gdaui {
          * Fetch the reference value held in the #GdauiDataEntry widget
          * @returns the #GValue (not modifiable)
          */
-        get_reference_value(): GObject.Value;
+        get_reference_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
@@ -12262,7 +12274,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          * @returns a new #GValue
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
@@ -12360,14 +12372,14 @@ export namespace Gdaui {
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          */
         vfunc_get_handler(): Gda.DataHandler;
-        vfunc_get_ref_value(): GObject.Value;
+        vfunc_get_ref_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          */
-        vfunc_get_value(): GObject.Value;
+        vfunc_get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          */
@@ -12388,7 +12400,7 @@ export namespace Gdaui {
          * @param editable set to %TRUE to have an editable data entry
          */
         vfunc_set_editable(editable: boolean): void;
-        vfunc_set_ref_value(value: GObject.Value): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
          * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -12409,7 +12421,7 @@ export namespace Gdaui {
          * @param value a #GValue, or %NULL
          */
         vfunc_set_value(value?: GObject.Value | null): void;
-        vfunc_set_value_default(value: GObject.Value): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
@@ -12513,6 +12525,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -12555,7 +12568,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -12756,7 +12769,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12771,7 +12784,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -12903,6 +12916,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -15505,7 +15519,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -16335,7 +16349,7 @@ export namespace Gdaui {
          * Fetch the reference value held in the #GdauiDataEntry widget
          * @returns the #GValue (not modifiable)
          */
-        get_reference_value(): GObject.Value;
+        get_reference_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
@@ -16343,7 +16357,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          * @returns a new #GValue
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
@@ -16441,14 +16455,14 @@ export namespace Gdaui {
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          */
         vfunc_get_handler(): Gda.DataHandler;
-        vfunc_get_ref_value(): GObject.Value;
+        vfunc_get_ref_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          */
-        vfunc_get_value(): GObject.Value;
+        vfunc_get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          */
@@ -16469,7 +16483,7 @@ export namespace Gdaui {
          * @param editable set to %TRUE to have an editable data entry
          */
         vfunc_set_editable(editable: boolean): void;
-        vfunc_set_ref_value(value: GObject.Value): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
          * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -16490,7 +16504,7 @@ export namespace Gdaui {
          * @param value a #GValue, or %NULL
          */
         vfunc_set_value(value?: GObject.Value | null): void;
-        vfunc_set_value_default(value: GObject.Value): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
@@ -16594,6 +16608,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -16636,7 +16651,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -16837,7 +16852,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16852,7 +16867,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -16984,6 +16999,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -19586,7 +19602,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -20046,32 +20062,32 @@ export namespace Gdaui {
          * must be freed by the caller.
          * @returns a new list of values
          */
-        get_all_values(): GObject.Value[];
+        get_all_values(): unknown[];
         /**
          * Get the original values stored within `combo`. The returned values are the ones
          * within `combo,` so they must not be freed afterwards; the list has to be freed afterwards.
          * @returns a new list of values
          */
-        get_reference_values(): GObject.Value[];
+        get_reference_values(): unknown[];
         /**
          * Get the values stored within `combo`. The returned values are the ones
          * within `combo,` so they must not be freed afterwards, however the returned
          * list has to be freed afterwards.
          * @returns a new list of values
          */
-        get_values(): GObject.Value[];
+        get_values(): unknown[];
         /**
          * Sets the default values of `combo` to the specified ones. None of the
          * values provided in the list is modified.
          * @param values a list of #GValue values
          */
-        set_default_values(values: GObject.Value[]): void;
+        set_default_values(values: (GObject.Value | any)[]): void;
         /**
          * Sets the original values of `combo` to the specified ones. None of the
          * values provided in the list is modified.
          * @param values a list of #GValue values
          */
-        set_reference_values(values: GObject.Value[]): void;
+        set_reference_values(values: (GObject.Value | any)[]): void;
         /**
          * Sets the values of `combo` to the specified ones. None of the
          * values provided in the list is modified.
@@ -20475,7 +20491,7 @@ export namespace Gdaui {
          * Fetch the reference value held in the #GdauiDataEntry widget
          * @returns the #GValue (not modifiable)
          */
-        get_reference_value(): GObject.Value;
+        get_reference_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
@@ -20483,7 +20499,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          * @returns a new #GValue
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
@@ -20581,14 +20597,14 @@ export namespace Gdaui {
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          */
         vfunc_get_handler(): Gda.DataHandler;
-        vfunc_get_ref_value(): GObject.Value;
+        vfunc_get_ref_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          */
-        vfunc_get_value(): GObject.Value;
+        vfunc_get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          */
@@ -20609,7 +20625,7 @@ export namespace Gdaui {
          * @param editable set to %TRUE to have an editable data entry
          */
         vfunc_set_editable(editable: boolean): void;
-        vfunc_set_ref_value(value: GObject.Value): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
          * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -20630,7 +20646,7 @@ export namespace Gdaui {
          * @param value a #GValue, or %NULL
          */
         vfunc_set_value(value?: GObject.Value | null): void;
-        vfunc_set_value_default(value: GObject.Value): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
@@ -20734,6 +20750,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -20776,7 +20793,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -20977,7 +20994,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20992,7 +21009,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -21124,6 +21141,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -23726,7 +23744,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -24568,7 +24586,7 @@ export namespace Gdaui {
          * Fetch the reference value held in the #GdauiDataEntry widget
          * @returns the #GValue (not modifiable)
          */
-        get_reference_value(): GObject.Value;
+        get_reference_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
@@ -24576,7 +24594,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          * @returns a new #GValue
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
@@ -24674,14 +24692,14 @@ export namespace Gdaui {
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          */
         vfunc_get_handler(): Gda.DataHandler;
-        vfunc_get_ref_value(): GObject.Value;
+        vfunc_get_ref_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          */
-        vfunc_get_value(): GObject.Value;
+        vfunc_get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          */
@@ -24702,7 +24720,7 @@ export namespace Gdaui {
          * @param editable set to %TRUE to have an editable data entry
          */
         vfunc_set_editable(editable: boolean): void;
-        vfunc_set_ref_value(value: GObject.Value): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
          * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -24723,7 +24741,7 @@ export namespace Gdaui {
          * @param value a #GValue, or %NULL
          */
         vfunc_set_value(value?: GObject.Value | null): void;
-        vfunc_set_value_default(value: GObject.Value): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
@@ -24871,6 +24889,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -24913,7 +24932,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -25114,7 +25133,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25129,7 +25148,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -25261,6 +25280,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -27863,7 +27883,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -28815,6 +28835,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -28857,7 +28878,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -29058,7 +29079,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -29073,7 +29094,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -29205,6 +29226,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -31820,7 +31842,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -32663,7 +32685,7 @@ export namespace Gdaui {
          * Fetch the reference value held in the #GdauiDataEntry widget
          * @returns the #GValue (not modifiable)
          */
-        get_reference_value(): GObject.Value;
+        get_reference_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
@@ -32671,7 +32693,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          * @returns a new #GValue
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
@@ -32769,14 +32791,14 @@ export namespace Gdaui {
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          */
         vfunc_get_handler(): Gda.DataHandler;
-        vfunc_get_ref_value(): GObject.Value;
+        vfunc_get_ref_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          */
-        vfunc_get_value(): GObject.Value;
+        vfunc_get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          */
@@ -32797,7 +32819,7 @@ export namespace Gdaui {
          * @param editable set to %TRUE to have an editable data entry
          */
         vfunc_set_editable(editable: boolean): void;
-        vfunc_set_ref_value(value: GObject.Value): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
          * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -32818,7 +32840,7 @@ export namespace Gdaui {
          * @param value a #GValue, or %NULL
          */
         vfunc_set_value(value?: GObject.Value | null): void;
-        vfunc_set_value_default(value: GObject.Value): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
@@ -32922,6 +32944,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -32964,7 +32987,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -33165,7 +33188,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -33180,7 +33203,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -33312,6 +33335,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -35914,7 +35938,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -36764,7 +36788,7 @@ export namespace Gdaui {
          * Fetch the reference value held in the #GdauiDataEntry widget
          * @returns the #GValue (not modifiable)
          */
-        get_reference_value(): GObject.Value;
+        get_reference_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
@@ -36772,7 +36796,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          * @returns a new #GValue
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
@@ -36870,14 +36894,14 @@ export namespace Gdaui {
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          */
         vfunc_get_handler(): Gda.DataHandler;
-        vfunc_get_ref_value(): GObject.Value;
+        vfunc_get_ref_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          */
-        vfunc_get_value(): GObject.Value;
+        vfunc_get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          */
@@ -36898,7 +36922,7 @@ export namespace Gdaui {
          * @param editable set to %TRUE to have an editable data entry
          */
         vfunc_set_editable(editable: boolean): void;
-        vfunc_set_ref_value(value: GObject.Value): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
          * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -36919,7 +36943,7 @@ export namespace Gdaui {
          * @param value a #GValue, or %NULL
          */
         vfunc_set_value(value?: GObject.Value | null): void;
-        vfunc_set_value_default(value: GObject.Value): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
@@ -37067,6 +37091,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -37109,7 +37134,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -37310,7 +37335,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -37325,7 +37350,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -37457,6 +37482,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -40059,7 +40085,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -40729,6 +40755,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -40771,7 +40798,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -40972,7 +40999,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -40987,7 +41014,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -41430,7 +41457,7 @@ export namespace Gdaui {
          * Fetch the reference value held in the #GdauiDataEntry widget
          * @returns the #GValue (not modifiable)
          */
-        get_reference_value(): GObject.Value;
+        get_reference_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
@@ -41438,7 +41465,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          * @returns a new #GValue
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
@@ -41536,14 +41563,14 @@ export namespace Gdaui {
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          */
         vfunc_get_handler(): Gda.DataHandler;
-        vfunc_get_ref_value(): GObject.Value;
+        vfunc_get_ref_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          */
-        vfunc_get_value(): GObject.Value;
+        vfunc_get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          */
@@ -41564,7 +41591,7 @@ export namespace Gdaui {
          * @param editable set to %TRUE to have an editable data entry
          */
         vfunc_set_editable(editable: boolean): void;
-        vfunc_set_ref_value(value: GObject.Value): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
          * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -41585,7 +41612,7 @@ export namespace Gdaui {
          * @param value a #GValue, or %NULL
          */
         vfunc_set_value(value?: GObject.Value | null): void;
-        vfunc_set_value_default(value: GObject.Value): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
@@ -41733,6 +41760,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -41775,7 +41803,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -41976,7 +42004,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -41991,7 +42019,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -42123,6 +42151,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -44725,7 +44754,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -45677,6 +45706,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -45719,7 +45749,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -45920,7 +45950,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -45935,7 +45965,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -46067,6 +46097,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -48682,7 +48713,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -49647,6 +49678,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -49689,7 +49721,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -49890,7 +49922,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -49905,7 +49937,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -50037,6 +50069,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -52652,7 +52685,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -53118,10 +53151,10 @@ export namespace Gdaui {
         vfunc_can_expand(horiz: boolean): boolean;
         vfunc_grab_focus(): void;
         vfunc_is_valid(): boolean;
-        vfunc_real_get_value(): GObject.Value;
-        vfunc_real_set_value(value: GObject.Value): void;
+        vfunc_real_get_value(): unknown;
+        vfunc_real_set_value(value: GObject.Value | any): void;
         vfunc_set_editable(editable: boolean): void;
-        vfunc_value_is_equal_to(value: GObject.Value): boolean;
+        vfunc_value_is_equal_to(value: GObject.Value | any): boolean;
         vfunc_value_is_null(): boolean;
 
         // Own methods of Gdaui.EntryWrapper
@@ -53523,7 +53556,7 @@ export namespace Gdaui {
          * Fetch the reference value held in the #GdauiDataEntry widget
          * @returns the #GValue (not modifiable)
          */
-        get_reference_value(): GObject.Value;
+        get_reference_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
@@ -53531,7 +53564,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          * @returns a new #GValue
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
@@ -53623,14 +53656,14 @@ export namespace Gdaui {
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          */
         vfunc_get_handler(): Gda.DataHandler;
-        vfunc_get_ref_value(): GObject.Value;
+        vfunc_get_ref_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          */
-        vfunc_get_value(): GObject.Value;
+        vfunc_get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          */
@@ -53642,7 +53675,7 @@ export namespace Gdaui {
          * @param mask the mask corresponding to the considered attributes
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
-        vfunc_set_ref_value(value: GObject.Value): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
          * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -53663,7 +53696,7 @@ export namespace Gdaui {
          * @param value a #GValue, or %NULL
          */
         vfunc_set_value(value?: GObject.Value | null): void;
-        vfunc_set_value_default(value: GObject.Value): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
@@ -53767,6 +53800,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -53809,7 +53843,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -54010,7 +54044,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -54025,7 +54059,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -54157,6 +54191,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -56759,7 +56794,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -57525,6 +57560,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -57567,7 +57603,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -57768,7 +57804,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -57783,7 +57819,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -58297,6 +58333,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -58339,7 +58376,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -58540,7 +58577,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -58555,7 +58592,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -61301,7 +61338,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -62090,6 +62127,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -62132,7 +62170,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -62333,7 +62371,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -62348,7 +62386,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -62554,6 +62592,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -62596,7 +62635,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -62797,7 +62836,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -62812,7 +62851,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -62876,7 +62915,7 @@ export namespace Gdaui {
 
         // Own methods of Gdaui.NumericEntry
 
-        get_value(): GObject.Value;
+        get_value(): unknown;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -63329,6 +63368,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -63371,7 +63411,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -63572,7 +63612,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -63587,7 +63627,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -66333,7 +66373,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -67183,6 +67223,7 @@ export namespace Gdaui {
          * @returns the #GdaDataModel
          */
         get_model(): Gda.DataModel;
+        // Conflicted with Gtk.ComboBox.get_model
         get_model(...args: never[]): any;
         /**
          * Gat an array of selected rows. If no row is selected, the the returned value is %NULL.
@@ -67216,6 +67257,7 @@ export namespace Gdaui {
          * @param model a #GdaDataModel to use
          */
         set_model(model: Gda.DataModel): void;
+        // Conflicted with Gtk.ComboBox.set_model
         set_model(...args: never[]): any;
         /**
          * Please note that `row` refers to the "visible" row
@@ -67369,6 +67411,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -67411,7 +67454,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -67523,6 +67566,7 @@ export namespace Gdaui {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
+        // Conflicted with Gdaui.Combo.set_data
         set_data(...args: never[]): any;
         set_property(property_name: string, value: any): void;
         /**
@@ -67613,7 +67657,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -67628,7 +67672,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -67760,6 +67804,7 @@ export namespace Gdaui {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         child_notify(child_property: string): void;
+        // Conflicted with Gtk.Container.child_notify
         child_notify(...args: never[]): any;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
@@ -70375,7 +70420,7 @@ export namespace Gdaui {
          * @param property_name the name of a style property
          * @param value location to return the property value
          */
-        style_get_property(property_name: string, value: GObject.Value): void;
+        style_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
          * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -71135,6 +71180,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -71177,7 +71223,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -71378,7 +71424,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -71393,7 +71439,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -71663,6 +71709,7 @@ export namespace Gdaui {
          * @returns the #GdaDataModel
          */
         get_model(): Gda.DataModel;
+        // Conflicted with Gtk.TreeView.get_model
         get_model(...args: never[]): any;
         /**
          * Gat an array of selected rows. If no row is selected, the the returned value is %NULL.
@@ -71696,6 +71743,7 @@ export namespace Gdaui {
          * @param model a #GdaDataModel to use
          */
         set_model(model: Gda.DataModel): void;
+        // Conflicted with Gtk.TreeView.set_model
         set_model(...args: never[]): any;
         /**
          * Please note that `row` refers to the "visible" row
@@ -71910,6 +71958,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -71952,7 +72001,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -72153,7 +72202,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -72168,7 +72217,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -72400,6 +72449,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -72442,7 +72492,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -72643,7 +72693,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -72658,7 +72708,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -72823,6 +72873,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -72865,7 +72916,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -73066,7 +73117,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -73081,7 +73132,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -73238,6 +73289,7 @@ export namespace Gdaui {
          * @param attribute_names an array of @n_columns strings to specify the attribute name                   to map each column on
          */
         static newv(tree: Gda.Tree, n_columns: number, types: GObject.GType, attribute_names: string): Gtk.TreeModel;
+        // Conflicted with GObject.Object.newv
         static newv(...args: never[]): any;
 
         // Own virtual methods of Gdaui.TreeStore
@@ -73853,6 +73905,7 @@ export namespace Gdaui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -73895,7 +73948,7 @@ export namespace Gdaui {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -74096,7 +74149,7 @@ export namespace Gdaui {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -74111,7 +74164,7 @@ export namespace Gdaui {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -74637,7 +74690,7 @@ export namespace Gdaui {
          * Fetch the reference value held in the #GdauiDataEntry widget
          * @returns the #GValue (not modifiable)
          */
-        get_reference_value(): GObject.Value;
+        get_reference_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
@@ -74645,7 +74698,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          * @returns a new #GValue
          */
-        get_value(): GObject.Value;
+        get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
@@ -74746,14 +74799,14 @@ export namespace Gdaui {
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          */
         vfunc_get_handler(): Gda.DataHandler;
-        vfunc_get_ref_value(): GObject.Value;
+        vfunc_get_ref_value(): unknown;
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de)`.
          */
-        vfunc_get_value(): GObject.Value;
+        vfunc_get_value(): unknown;
         /**
          * Fetch the type of data the GdauiDataEntry handles
          */
@@ -74774,7 +74827,7 @@ export namespace Gdaui {
          * @param editable set to %TRUE to have an editable data entry
          */
         vfunc_set_editable(editable: boolean): void;
-        vfunc_set_ref_value(value: GObject.Value): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
          * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -74795,7 +74848,7 @@ export namespace Gdaui {
          * @param value a #GValue, or %NULL
          */
         vfunc_set_value(value?: GObject.Value | null): void;
-        vfunc_set_value_default(value: GObject.Value): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.

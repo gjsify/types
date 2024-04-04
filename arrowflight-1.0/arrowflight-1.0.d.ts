@@ -129,7 +129,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ['new'](expression: GLib.Bytes): Criteria;
+        static ['new'](expression: GLib.Bytes | Uint8Array): Criteria;
     }
 
     module DataStream {
@@ -459,6 +459,7 @@ export namespace ArrowFlight {
         // Own methods of ArrowFlight.StreamChunk
 
         get_data(): Arrow.RecordBatch;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         get_metadata(): Arrow.Buffer | null;
     }
@@ -505,7 +506,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ['new'](data: GLib.Bytes): Ticket;
+        static ['new'](data: GLib.Bytes | Uint8Array): Ticket;
 
         // Own methods of ArrowFlight.Ticket
 

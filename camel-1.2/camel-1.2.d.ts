@@ -1631,7 +1631,11 @@ export namespace Camel {
      * @param saveme leftover bits that have not yet been decoded
      * @returns the number of bytes decoded
      */
-    function quoted_decode_step(_in: Uint8Array, out: Uint8Array, saveme: number[]): [number, Uint8Array, number[]];
+    function quoted_decode_step(
+        _in: Uint8Array | string,
+        out: Uint8Array | string,
+        saveme: number[],
+    ): [number, Uint8Array, number[]];
     /**
      * Quoted-printable encodes a block of text. Call this when finished
      * encoding data with camel_quoted_encode_step() to flush off
@@ -1641,7 +1645,11 @@ export namespace Camel {
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded
      */
-    function quoted_encode_close(_in: Uint8Array, out: Uint8Array, save: number[]): [number, Uint8Array, number[]];
+    function quoted_encode_close(
+        _in: Uint8Array | string,
+        out: Uint8Array | string,
+        save: number[],
+    ): [number, Uint8Array, number[]];
     /**
      * Quoted-printable encodes a block of text. Performs an 'encode
      * step', saves left-over state in state and save (initialise to -1 on
@@ -1651,7 +1659,11 @@ export namespace Camel {
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded
      */
-    function quoted_encode_step(_in: Uint8Array, out: Uint8Array, save: number[]): [number, Uint8Array, number[]];
+    function quoted_encode_step(
+        _in: Uint8Array | string,
+        out: Uint8Array | string,
+        save: number[],
+    ): [number, Uint8Array, number[]];
     /**
      * Cancellable libc read() replacement.
      *
@@ -2006,7 +2018,11 @@ export namespace Camel {
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes decoded
      */
-    function uudecode_step(_in: Uint8Array, out: Uint8Array, save: number[]): [number, Uint8Array, number[]];
+    function uudecode_step(
+        _in: Uint8Array | string,
+        out: Uint8Array | string,
+        save: number[],
+    ): [number, Uint8Array, number[]];
     /**
      * Uuencodes a chunk of data. Call this when finished encoding data
      * with camel_uuencode_step() to flush off the last little bit.
@@ -2017,9 +2033,9 @@ export namespace Camel {
      * @returns the number of bytes encoded
      */
     function uuencode_close(
-        _in: Uint8Array,
-        out: Uint8Array,
-        uubuf: Uint8Array,
+        _in: Uint8Array | string,
+        out: Uint8Array | string,
+        uubuf: Uint8Array | string,
         save: number[],
     ): [number, Uint8Array, Uint8Array, number[]];
     /**
@@ -2034,9 +2050,9 @@ export namespace Camel {
      * @returns the number of bytes encoded
      */
     function uuencode_step(
-        _in: Uint8Array,
-        out: Uint8Array,
-        uubuf: Uint8Array,
+        _in: Uint8Array | string,
+        out: Uint8Array | string,
+        uubuf: Uint8Array | string,
         save: number[],
     ): [number, Uint8Array, Uint8Array, number[]];
     /**
@@ -2064,7 +2080,7 @@ export namespace Camel {
      * @param _in input buffer
      * @returns the number of bytes decoded
      */
-    function ydecode_step(_in: Uint8Array): [number, Uint8Array, number, number, number];
+    function ydecode_step(_in: Uint8Array | string): [number, Uint8Array, number, number, number];
     /**
      * Call this function when finished encoding data with
      * camel_yencode_step() to flush off the remaining state.
@@ -2077,7 +2093,7 @@ export namespace Camel {
      * @param _in input buffer
      * @returns the number of bytes encoded.
      */
-    function yencode_close(_in: Uint8Array): [number, Uint8Array, number, number, number];
+    function yencode_close(_in: Uint8Array | string): [number, Uint8Array, number, number, number];
     /**
      * Performs an yEncode 'encode step' on a chunk of raw data of length
      * `inlen` pointed to by `in` and writes to `out`.
@@ -2091,7 +2107,7 @@ export namespace Camel {
      * @param _in input buffer
      * @returns the number of bytes encoded
      */
-    function yencode_step(_in: Uint8Array): [number, Uint8Array, number, number, number];
+    function yencode_step(_in: Uint8Array | string): [number, Uint8Array, number, number, number];
     interface CipherCloneFunc {
         (value?: any | null): any | null;
     }
@@ -3155,7 +3171,7 @@ export namespace Camel {
          * @param col_names column names to traverse
          */
         static get_column_ident(
-            hash: GLib.HashTable<any, any>,
+            hash: { [key: string]: any } | GLib.HashTable<any, any>,
             index: number,
             col_names: string[],
         ): [DBKnownColumnNames, GLib.HashTable<any, any>];
@@ -3301,7 +3317,7 @@ export namespace Camel {
             folder_name: string,
             sort_by: string | null,
             collate: string | null,
-            hash: GLib.HashTable<string, number>,
+            hash: { [key: string]: any } | GLib.HashTable<string, number>,
         ): number;
         /**
          * Runs a `cdb` maintenance, which includes vacuum, if necessary.
@@ -5776,6 +5792,7 @@ export namespace Camel {
         attr_list(values?: string[] | null): [string[], string[] | null];
         left(lenp: number): string;
         set_data(start: string, len: number, last: number): void;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         step(datap: string, lenp: number): HTMLParserState;
         tag(): string;
@@ -6045,6 +6062,7 @@ export namespace Camel {
         lookup(keyid: _key_t, key: string, flags: number): _block_t;
         next(next: _key_t, keyp: string, flagsp: number, datap: _block_t): _key_t;
         set_data(keyid: _key_t, data: _block_t): boolean;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         set_flags(keyid: _key_t, flags: number, set: number): boolean;
         sync(): number;
@@ -7336,14 +7354,14 @@ export namespace Camel {
          * @param _in input buffer
          * @param prespace amount of prespace
          */
-        vfunc_complete(_in: Uint8Array, prespace: number): [Uint8Array, number];
+        vfunc_complete(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
          * Passes the input buffer, `in,` through `filter` and generates an
          * output buffer, `out`.
          * @param _in input buffer
          * @param prespace amount of prespace
          */
-        vfunc_filter(_in: Uint8Array, prespace: number): [Uint8Array, number];
+        vfunc_filter(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
          * Resets the state on `filter` so that it may be used again.
          */
@@ -7358,7 +7376,7 @@ export namespace Camel {
          * Note: New calls replace old data.
          * @param data data buffer to backup
          */
-        backup(data: Uint8Array): void;
+        backup(data: Uint8Array | string): void;
         /**
          * Passes the input buffer, `in,` through `filter` and generates an
          * output buffer, `out` and makes sure that all data is flushed to the
@@ -7368,14 +7386,14 @@ export namespace Camel {
          * @param _in input buffer
          * @param prespace amount of prespace
          */
-        complete(_in: Uint8Array, prespace: number): [Uint8Array, number];
+        complete(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
          * Passes the input buffer, `in,` through `filter` and generates an
          * output buffer, `out`.
          * @param _in input buffer
          * @param prespace amount of prespace
          */
-        filter(_in: Uint8Array, prespace: number): [Uint8Array, number];
+        filter(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
          * Resets the state on `filter` so that it may be used again.
          */
@@ -8046,7 +8064,7 @@ export namespace Camel {
          * it off to camel_mime_parser_init_with_input_stream().
          * @param bytes a #GBytes containing the message content
          */
-        init_with_bytes(bytes: GLib.Bytes): void;
+        init_with_bytes(bytes: GLib.Bytes | Uint8Array): void;
         /**
          * Initialise the scanner with an fd.  The scanner's offsets
          * will be relative to the current file position of the file
@@ -8163,7 +8181,7 @@ export namespace Camel {
          * @param databuffer Pointer to accept a pointer to the data associated with this step (if any).  May be %NULL, in which case datalength is also ingored.
          * @returns The current new state of the parser is returned.
          */
-        step(databuffer?: Uint8Array): [MimeParserState, Uint8Array];
+        step(databuffer?: Uint8Array | string): [MimeParserState, Uint8Array];
         /**
          * Get the stream, if any, the parser has been initialised
          * with.  May be used to setup sub-streams, but should not
@@ -8366,6 +8384,7 @@ export namespace Camel {
          * @param type Content-Type of the data
          */
         set_content(data?: Uint8Array | null, type?: string | null): void;
+        // Conflicted with Camel.Medium.set_content
         set_content(...args: never[]): any;
         /**
          * Set the content-id field on a MIME part.
@@ -9064,6 +9083,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9106,7 +9126,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9307,7 +9327,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9322,8 +9342,9 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
+        // Conflicted with Camel.Service.disconnect
         disconnect(...args: never[]): any;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10156,6 +10177,7 @@ export namespace Camel {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         /**
          * Finishes the operation started with camel_service_disconnect().
@@ -10540,6 +10562,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -10582,7 +10605,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -10783,7 +10806,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10798,7 +10821,7 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
         unblock_signal_handler(id: number): any;
@@ -12438,6 +12461,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -12480,7 +12504,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -12681,7 +12705,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12696,8 +12720,9 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
+        // Conflicted with Camel.Service.disconnect
         disconnect(...args: never[]): any;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -13211,6 +13236,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -13253,7 +13279,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13454,7 +13480,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13469,7 +13495,7 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -13719,6 +13745,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -13761,7 +13788,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13962,7 +13989,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13977,7 +14004,7 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -14214,6 +14241,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14256,7 +14284,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -14457,7 +14485,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14472,7 +14500,7 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -14693,6 +14721,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14735,7 +14764,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -14936,7 +14965,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14951,7 +14980,7 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -14976,9 +15005,9 @@ export namespace Camel {
 
         static ['new'](): StreamMem;
 
-        static new_with_buffer(buffer: Uint8Array): StreamMem;
+        static new_with_buffer(buffer: Uint8Array | string): StreamMem;
 
-        static new_with_byte_array(buffer: Uint8Array): StreamMem;
+        static new_with_byte_array(buffer: Uint8Array | string): StreamMem;
 
         // Own methods of Camel.StreamMem
 
@@ -14990,7 +15019,7 @@ export namespace Camel {
          * and so may have resource implications to consider.
          * @param buffer a memory buffer
          */
-        set_buffer(buffer: Uint8Array): void;
+        set_buffer(buffer: Uint8Array | string): void;
         /**
          * Set `buffer` to be the backing data to the existing #CamelStreamMem, `mem`.
          *
@@ -14998,7 +15027,7 @@ export namespace Camel {
          * be freed separately from `mem`.
          * @param buffer a #GByteArray
          */
-        set_byte_array(buffer: Uint8Array): void;
+        set_byte_array(buffer: Uint8Array | string): void;
         /**
          * Mark the memory stream as secure.  At the very least this means the
          * data in the buffer will be cleared when the buffer is finalized.
@@ -15196,6 +15225,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -15238,7 +15268,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15439,7 +15469,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15454,7 +15484,7 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15674,6 +15704,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -15716,7 +15747,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15917,7 +15948,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15932,7 +15963,7 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -16152,6 +16183,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -16194,7 +16226,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -16395,7 +16427,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16410,7 +16442,7 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -16764,6 +16796,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -16806,7 +16839,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -17007,7 +17040,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17022,8 +17055,9 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
+        // Conflicted with Camel.Service.disconnect
         disconnect(...args: never[]): any;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -17518,6 +17552,7 @@ export namespace Camel {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -17560,7 +17595,7 @@ export namespace Camel {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -17761,7 +17796,7 @@ export namespace Camel {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17776,8 +17811,9 @@ export namespace Camel {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
+        // Conflicted with Camel.Service.disconnect
         disconnect(...args: never[]): any;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -17837,6 +17873,7 @@ export namespace Camel {
          * @returns A new #CamelVeeMessageInfo object.
          */
         add(mi_data: VeeMessageInfoData): VeeMessageInfo;
+        // Conflicted with Camel.FolderSummary.add
         add(...args: never[]): any;
         /**
          * Returns a hash table of all virtual message info UID-s known to the `summary`.
@@ -17852,6 +17889,7 @@ export namespace Camel {
          * @param subfolder a #CamelFolder to which @vuid belongs
          */
         remove(vuid: string, subfolder: Folder): void;
+        // Conflicted with Camel.FolderSummary.remove
         remove(...args: never[]): any;
         /**
          * Makes sure `summary` flags on `uid` corresponds to those
@@ -17860,6 +17898,7 @@ export namespace Camel {
          * @param uid a message UID to update flags for
          */
         replace_flags(uid: string): void;
+        // Conflicted with Camel.FolderSummary.replace_flags
         replace_flags(...args: never[]): any;
     }
 
@@ -17966,7 +18005,7 @@ export namespace Camel {
 
         load_cert_file(): boolean;
         ref(): Cert;
-        save_cert_file(der_data: Uint8Array): boolean;
+        save_cert_file(der_data: Uint8Array | string): boolean;
         unref(): void;
     }
 
@@ -20950,6 +20989,7 @@ export namespace Camel {
          * @returns a #GIOStream, or %NULL on error
          */
         connect_sync(cancellable?: Gio.Cancellable | null): Gio.IOStream;
+        // Conflicted with Camel.Service.connect_sync
         connect_sync(...args: never[]): any;
         /**
          * Returns the default network port number for `service` and the security
@@ -21015,6 +21055,7 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, or %NULL
          */
         vfunc_connect_sync(cancellable?: Gio.Cancellable | null): Gio.IOStream;
+        // Conflicted with Camel.Service.vfunc_connect_sync
         vfunc_connect_sync(...args: never[]): any;
         /**
          * Returns the default network port number for `service` and the security

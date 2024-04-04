@@ -1590,7 +1590,7 @@ export namespace Vips {
      * @param data data to store
      * @returns the new #VipsBlob.
      */
-    function blob_copy(data: Uint8Array): Blob;
+    function blob_copy(data: Uint8Array | string): Blob;
     /**
      * Set the block state on all untrusted operations.
      *
@@ -2588,7 +2588,7 @@ export namespace Vips {
      * @param value get from this value
      * @returns The pointer held by @value.
      */
-    function value_get_area(value: GObject.Value): [any | null, number];
+    function value_get_area(value: GObject.Value | any): [any | null, number];
     /**
      * Return the pointer to the array held by `value`.
      * Optionally return the other properties of the array in `n,` `type,`
@@ -2598,7 +2598,7 @@ export namespace Vips {
      * @param value %GValue to get from
      * @returns The array address.
      */
-    function value_get_array(value: GObject.Value): [any | null, number, GObject.GType | null, number];
+    function value_get_array(value: GObject.Value | any): [any | null, number, GObject.GType | null, number];
     /**
      * Return the start of the array of doubles held by `value`.
      * optionally return the number of elements in `n`.
@@ -2607,7 +2607,7 @@ export namespace Vips {
      * @param value %GValue to get from
      * @returns The array address.
      */
-    function value_get_array_double(value: GObject.Value): number[];
+    function value_get_array_double(value: GObject.Value | any): number[];
     /**
      * Return the start of the array of images held by `value`.
      * optionally return the number of elements in `n`.
@@ -2616,7 +2616,7 @@ export namespace Vips {
      * @param value %GValue to get from
      * @returns The array address.
      */
-    function value_get_array_image(value: GObject.Value): Image[];
+    function value_get_array_image(value: GObject.Value | any): Image[];
     /**
      * Return the start of the array of ints held by `value`.
      * optionally return the number of elements in `n`.
@@ -2625,7 +2625,7 @@ export namespace Vips {
      * @param value %GValue to get from
      * @returns The array address.
      */
-    function value_get_array_int(value: GObject.Value): number[];
+    function value_get_array_int(value: GObject.Value | any): number[];
     /**
      * Returns the data pointer from a blob. Optionally returns the length too.
      *
@@ -2637,26 +2637,26 @@ export namespace Vips {
      * @param value GValue to set
      * @returns The pointer held by @value.
      */
-    function value_get_blob(value: GObject.Value): [any | null, number];
+    function value_get_blob(value: GObject.Value | any): [any | null, number];
     /**
      * Get the C string held internally by the %GValue.
      * @param value %GValue to get from
      * @returns The C string held by @value.
      */
-    function value_get_ref_string(value: GObject.Value): [string, number];
+    function value_get_ref_string(value: GObject.Value | any): [string, number];
     /**
      * Get the C string held internally by the GValue.
      * @param value GValue to get from
      * @returns The C string held by @value.
      */
-    function value_get_save_string(value: GObject.Value): string;
-    function value_is_null(psoec: GObject.ParamSpec, value: GObject.Value): boolean;
+    function value_get_save_string(value: GObject.Value | any): string;
+    function value_is_null(psoec: GObject.ParamSpec, value: GObject.Value | any): boolean;
     /**
      * Set value to be a ref-counted area of memory with a free function.
      * @param value set this value
      * @param free_fn data will be freed with this function
      */
-    function value_set_area(value: GObject.Value, free_fn: CallbackFn): void;
+    function value_set_area(value: GObject.Value | any, free_fn: CallbackFn): void;
     /**
      * Set `value` to be an array of things.
      *
@@ -2674,7 +2674,7 @@ export namespace Vips {
      * @param value %GValue to get from
      * @param array array of doubles
      */
-    function value_set_array_double(value: GObject.Value, array?: number[] | null): void;
+    function value_set_array_double(value: GObject.Value | any, array?: number[] | null): void;
     /**
      * Set `value` to hold an array of images. Pass in the array length in `n`.
      *
@@ -2682,7 +2682,7 @@ export namespace Vips {
      * @param value %GValue to get from
      * @param n the number of elements
      */
-    function value_set_array_image(value: GObject.Value, n: number): void;
+    function value_set_array_image(value: GObject.Value | any, n: number): void;
     /**
      * Set `value` to hold a copy of `array`. Pass in the array length in `n`.
      *
@@ -2690,7 +2690,7 @@ export namespace Vips {
      * @param value %GValue to get from
      * @param array array of ints
      */
-    function value_set_array_int(value: GObject.Value, array?: number[] | null): void;
+    function value_set_array_int(value: GObject.Value | any, array?: number[] | null): void;
     /**
      * Set `value` to hold an array of %GObject. Pass in the array length in `n`.
      *
@@ -2724,7 +2724,7 @@ export namespace Vips {
      * @param data pointer to area of memory
      * @param length length of memory area
      */
-    function value_set_blob_free(value: GObject.Value, data: any | null, length: number): void;
+    function value_set_blob_free(value: GObject.Value | any, data: any | null, length: number): void;
     /**
      * Copies the C string `str` into `value`.
      *
@@ -2788,7 +2788,7 @@ export namespace Vips {
         (out: Region, seq: any | null, a: any | null, b: any | null, stop: boolean): number;
     }
     interface ImageMapFn {
-        (image: Image, name: string, value: GObject.Value, a?: any | null): any | null;
+        (image: Image, name: string, value: GObject.Value | any, a?: any | null): any | null;
     }
     interface InterpolateMethod {
         (interpolate: Interpolate, out: any | null, _in: Region, x: number, y: number): void;
@@ -3042,7 +3042,7 @@ export namespace Vips {
          * See also: vips_image_new_from_buffer().
          * @param data start of memory buffer
          */
-        static find_load_buffer(data: Uint8Array): string;
+        static find_load_buffer(data: Uint8Array | string): string;
         /**
          * Searches for an operation you could use to load a source. To see the
          * range of source loaders supported by your vips, try something like:
@@ -3101,7 +3101,7 @@ export namespace Vips {
          * @param loader name of loader to use for test
          * @param data pointer to the buffer to test
          */
-        static is_a_buffer(loader: string, data: Uint8Array): boolean;
+        static is_a_buffer(loader: string, data: Uint8Array | string): boolean;
         /**
          * Return %TRUE if `source` can be loaded by `loader`. `loader` is something
          * like "tiffload_source" or "VipsForeignLoadTiffSource".
@@ -3182,6 +3182,7 @@ export namespace Vips {
         // Own virtual methods of Vips.ForeignLoad
 
         vfunc_get_flags(): ForeignFlags;
+        // Conflicted with Vips.Operation.vfunc_get_flags
         vfunc_get_flags(...args: never[]): any;
         vfunc_header(): number;
         vfunc_load(): number;
@@ -3344,7 +3345,7 @@ export namespace Vips {
         static new_from_image1(image: Image, c: number): Image;
 
         static new_from_memory(
-            data: Uint8Array,
+            data: Uint8Array | string,
             width: number,
             height: number,
             bands: number,
@@ -3352,7 +3353,7 @@ export namespace Vips {
         ): Image;
 
         static new_from_memory_copy(
-            data: Uint8Array,
+            data: Uint8Array | string,
             width: number,
             height: number,
             bands: number,
@@ -3972,7 +3973,8 @@ export namespace Vips {
          * @param name the name to give the metadata
          * @param value the %GValue to copy into the image
          */
-        set(name: string, value: GObject.Value): void;
+        set(name: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Attaches `data` as a metadata item on `image` under the name `name`. When
@@ -4011,7 +4013,7 @@ export namespace Vips {
          * @param free_fn free function for @data
          * @param data pointer to area of memory
          */
-        set_blob(name: string, free_fn: CallbackFn, data: Uint8Array): void;
+        set_blob(name: string, free_fn: CallbackFn, data: Uint8Array | string): void;
         /**
          * Attaches `blob` as a metadata item on `image` under the name `name,` taking
          * a copy of the memory area. A convenience function over
@@ -4021,7 +4023,7 @@ export namespace Vips {
          * @param name metadata name
          * @param data pointer to area of memory
          */
-        set_blob_copy(name: string, data: Uint8Array): void;
+        set_blob_copy(name: string, data: Uint8Array | string): void;
         /**
          * Sets the delete_on_close flag for the image. If this flag is set, when
          * `image` is finalized, the filename held in `image->`filename at the time of
@@ -4281,7 +4283,7 @@ export namespace Vips {
         static get_property(
             gobject: GObject.Object,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         static print_all(): void;
@@ -4290,7 +4292,7 @@ export namespace Vips {
         static set_property(
             gobject: GObject.Object,
             property_id: number,
-            value: GObject.Value,
+            value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
         static install_argument(pspec: GObject.ParamSpec, flags: ArgumentFlags, priority: number, offset: number): void;
@@ -4849,10 +4851,10 @@ export namespace Vips {
 
         // Constructors of Vips.Blob
 
-        constructor(free_fn: CallbackFn | null, data: Uint8Array);
+        constructor(free_fn: CallbackFn | null, data: Uint8Array | string);
         _init(...args: any[]): void;
 
-        static ['new'](free_fn: CallbackFn | null, data: Uint8Array): Blob;
+        static ['new'](free_fn: CallbackFn | null, data: Uint8Array | string): Blob;
 
         // Own static methods of Vips.Blob
 
@@ -4863,7 +4865,7 @@ export namespace Vips {
          * See also: vips_blob_new().
          * @param data data to store
          */
-        static copy(data: Uint8Array): Blob;
+        static copy(data: Uint8Array | string): Blob;
 
         // Own methods of Vips.Blob
 
@@ -4884,7 +4886,7 @@ export namespace Vips {
          * @param free_fn @data will be freed with this function
          * @param data data to store
          */
-        set(free_fn: CallbackFn | null, data: Uint8Array): void;
+        set(free_fn: CallbackFn | null, data: Uint8Array | string): void;
     }
 
     abstract class Buf {

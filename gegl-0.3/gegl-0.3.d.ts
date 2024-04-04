@@ -198,7 +198,7 @@ export namespace Gegl {
      * @returns the format pointer
      */
     function format(format_name: string): GObject.Value | null;
-    function format_get_name(format: GObject.Value): string | null;
+    function format_get_name(format: GObject.Value | any): string | null;
     /**
      * This function fetches the version of the GEGL library being used by
      * the running process.
@@ -759,7 +759,8 @@ export namespace Gegl {
          * @param format_name the format of the input data.
          * @param src pixel data to write to @buffer.
          */
-        set(rect: Rectangle, format_name: string, src: Uint8Array): void;
+        set(rect: Rectangle, format_name: string, src: Uint8Array | string): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * This function makes sure GeglBuffer and underlying code is aware of changes
@@ -868,7 +869,7 @@ export namespace Gegl {
          * @param format A Babl pointer
          * @returns The color components
          */
-        get_components(format: GObject.Value): number[];
+        get_components(format: GObject.Value | any): number[];
         /**
          * Retrieves the current set color as linear light non premultipled RGBA data,
          * any of the return pointers can be omitted.
@@ -879,7 +880,7 @@ export namespace Gegl {
          * @param format A Babl pointer
          * @param components The color components.
          */
-        set_components(format: GObject.Value, components: number[]): void;
+        set_components(format: GObject.Value | any, components: number[]): void;
         /**
          * Retrieves the current set color as linear light non premultipled RGBA data
          * @param red red value
@@ -1170,6 +1171,7 @@ export namespace Gegl {
          * @param input_pad the input pad to disconnect.
          */
         disconnect(input_pad: string): boolean;
+        // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         find_property(property_name: string): GObject.ParamSpec;
         get_children(): Node[];
@@ -1217,7 +1219,8 @@ export namespace Gegl {
          * @returns pointer a #GeglRectangle
          */
         get_bounding_box(): Rectangle;
-        get_property(property_name: string): GObject.Value;
+        get_property(property_name: string): unknown;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Synthetic sugar for linking the "output" pad of `source` to the "input"
@@ -1289,7 +1292,8 @@ export namespace Gegl {
          * @param property_name the name of the property to set
          * @param value a GValue containing the value to be set in the property.
          */
-        set_property(property_name: string, value: GObject.Value): void;
+        set_property(property_name: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
          * Returns a freshly allocated \0 terminated string containing a XML
@@ -1330,12 +1334,14 @@ export namespace Gegl {
         // Own static methods of Gegl.Operation
 
         static find_property(operation_type: string, property_name: string): GObject.ParamSpec;
+        // Conflicted with GObject.Object.find_property
         static find_property(...args: never[]): any;
         static get_key(operation_type: string, key_name: string): string;
         static get_op_version(op_name: string): string;
         static get_property_key(operation_type: string, property_name: string, property_key_name: string): string;
         static list_keys(operation_type: string): string[];
         static list_properties(operation_type: string): GObject.ParamSpec[];
+        // Conflicted with GObject.Object.list_properties
         static list_properties(...args: never[]): any;
         static list_property_keys(operation_type: string, property_name: string): string[];
     }

@@ -132,7 +132,7 @@ export namespace GstVideo {
     function format_parse_caps(caps: Gst.Caps, format: Format): [boolean, number, number];
     function format_parse_caps_interlaced(caps: Gst.Caps): [boolean, boolean];
     function format_to_fourcc(format: Format): number;
-    function frame_rate(pad: Gst.Pad): GObject.Value;
+    function frame_rate(pad: Gst.Pad): unknown;
     function get_size(pad: Gst.Pad): [boolean, number, number];
     function parse_caps_chroma_site(caps: Gst.Caps): string;
     function parse_caps_color_matrix(caps: Gst.Caps): string;

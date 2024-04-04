@@ -1328,6 +1328,7 @@ export namespace EDataBook {
          * @returns %TRUE when found the @email_address, %FALSE on failure
          */
         contains_email(email_address: string, cancellable?: Gio.Cancellable | null): boolean;
+        // Conflicted with EDataBook.BookBackend.contains_email
         contains_email(...args: never[]): any;
         /**
          * Creates one or more new contacts from `vcards,` and deposits an #EContact
@@ -1347,6 +1348,7 @@ export namespace EDataBook {
             opflags: number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, EBookContacts.Contact[]];
+        // Conflicted with EDataBook.BookBackend.create_contacts
         create_contacts(...args: never[]): any;
         /**
          * Obtains an #EContact for `uid`.
@@ -1360,6 +1362,7 @@ export namespace EDataBook {
          * @returns an #EContact, or %NULL on error
          */
         get_contact(uid: string, cancellable?: Gio.Cancellable | null): EBookContacts.Contact;
+        // Conflicted with EDataBook.BookBackend.get_contact
         get_contact(...args: never[]): any;
         /**
          * Obtains a set of #EContact instances which satisfy the criteria specified
@@ -1375,6 +1378,7 @@ export namespace EDataBook {
          * @returns %TRUE on success, %FALSE on failure
          */
         get_contact_list(query: string, cancellable?: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
+        // Conflicted with EDataBook.BookBackend.get_contact_list
         get_contact_list(...args: never[]): any;
         /**
          * Obtains a set of ID strings for contacts which satisfy the criteria
@@ -1390,6 +1394,7 @@ export namespace EDataBook {
          * @returns %TRUE on success, %FALSE on failure
          */
         get_contact_list_uids(query: string, cancellable?: Gio.Cancellable | null): [boolean, string[]];
+        // Conflicted with EDataBook.BookBackend.get_contact_list_uids
         get_contact_list_uids(...args: never[]): any;
         /**
          * Modifies one or more contacts according to `vcards`.
@@ -1405,6 +1410,7 @@ export namespace EDataBook {
             opflags: number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, EBookContacts.Contact[]];
+        // Conflicted with EDataBook.BookBackend.modify_contacts
         modify_contacts(...args: never[]): any;
         /**
          * "Opens" the `backend`.  Opening a backend is something of an outdated
@@ -1417,6 +1423,7 @@ export namespace EDataBook {
          * @returns %TRUE on success, %FALSE on failure
          */
         open(cancellable?: Gio.Cancellable | null): boolean;
+        // Conflicted with EDataBook.BookBackend.open
         open(...args: never[]): any;
         /**
          * Initiates a refresh for `backend,` if the `backend` supports refreshing.
@@ -1431,6 +1438,7 @@ export namespace EDataBook {
          * @returns %TRUE on success, %FALSE on failure
          */
         refresh(cancellable?: Gio.Cancellable | null): boolean;
+        // Conflicted with EDataBook.BookBackend.refresh
         refresh(...args: never[]): any;
         /**
          * Removes one or more contacts according to `uids`.
@@ -1442,6 +1450,7 @@ export namespace EDataBook {
          * @returns %TRUE on success, %FALSE on failure
          */
         remove_contacts(uids: string, opflags: number, cancellable?: Gio.Cancellable | null): [boolean, string[]];
+        // Conflicted with EDataBook.BookBackend.remove_contacts
         remove_contacts(...args: never[]): any;
     }
 
@@ -2056,6 +2065,7 @@ export namespace EDataBook {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2098,7 +2108,7 @@ export namespace EDataBook {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2299,7 +2309,7 @@ export namespace EDataBook {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2314,7 +2324,7 @@ export namespace EDataBook {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3549,6 +3559,7 @@ export namespace EDataBook {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3591,7 +3602,7 @@ export namespace EDataBook {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3792,7 +3803,7 @@ export namespace EDataBook {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3807,7 +3818,7 @@ export namespace EDataBook {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4134,6 +4145,7 @@ export namespace EDataBook {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4176,7 +4188,7 @@ export namespace EDataBook {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4377,7 +4389,7 @@ export namespace EDataBook {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4392,7 +4404,7 @@ export namespace EDataBook {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4896,6 +4908,7 @@ export namespace EDataBook {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4938,7 +4951,7 @@ export namespace EDataBook {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5139,7 +5152,7 @@ export namespace EDataBook {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5154,7 +5167,7 @@ export namespace EDataBook {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5605,6 +5618,7 @@ export namespace EDataBook {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5647,7 +5661,7 @@ export namespace EDataBook {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5848,7 +5862,7 @@ export namespace EDataBook {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5863,7 +5877,7 @@ export namespace EDataBook {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6196,6 +6210,7 @@ export namespace EDataBook {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6238,7 +6253,7 @@ export namespace EDataBook {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6439,7 +6454,7 @@ export namespace EDataBook {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6454,7 +6469,7 @@ export namespace EDataBook {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

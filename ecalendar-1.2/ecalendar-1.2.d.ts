@@ -318,25 +318,25 @@ export namespace ECalendar {
         static get_error_message(status: CalendarStatus): string;
         static marshal_VOID__ENUM_ENUM(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint: any,
             marshal_data: any,
         ): void;
         static marshal_VOID__STRING_UINT(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint: any,
             marshal_data: any,
         ): void;
         static marshal_VOID__UINT_STRING(
             closure: GObject.Closure,
-            return_value: GObject.Value,
+            return_value: GObject.Value | any,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             invocation_hint: any,
             marshal_data: any,
         ): void;
@@ -578,6 +578,7 @@ export namespace ECalendar {
         // Own static methods of ECalendar.CalClient
 
         static error_create(code: CalClientError, custom_msg: string): GLib.Error;
+        // Conflicted with EDataServer.Client.error_create
         static error_create(...args: never[]): any;
         static error_quark(): GLib.Quark;
         /**
@@ -585,6 +586,7 @@ export namespace ECalendar {
          * @param code
          */
         static error_to_string(code: CalClientError): string;
+        // Conflicted with EDataServer.Client.error_to_string
         static error_to_string(...args: never[]): any;
         /**
          * Frees each element of the `ecalcomps` list and the list itself.

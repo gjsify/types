@@ -118,9 +118,9 @@ export namespace GObject {
      */
     function cclosure_marshal_BOOLEAN__BOXED_BOXED(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -137,9 +137,9 @@ export namespace GObject {
      */
     function cclosure_marshal_BOOLEAN__FLAGS(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -155,9 +155,9 @@ export namespace GObject {
      */
     function cclosure_marshal_STRING__OBJECT_POINTER(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -173,9 +173,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__BOOLEAN(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -191,9 +191,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__BOXED(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -209,9 +209,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__CHAR(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -227,9 +227,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__DOUBLE(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -245,9 +245,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__ENUM(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -263,9 +263,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__FLAGS(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -281,9 +281,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__FLOAT(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -299,9 +299,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__INT(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -317,9 +317,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__LONG(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -335,9 +335,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__OBJECT(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -353,9 +353,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__PARAM(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -371,9 +371,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__POINTER(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -389,9 +389,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__STRING(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -407,9 +407,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__UCHAR(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -425,9 +425,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__UINT(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -443,9 +443,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__UINT_POINTER(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -461,9 +461,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__ULONG(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -479,9 +479,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__VARIANT(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -497,9 +497,9 @@ export namespace GObject {
      */
     function cclosure_marshal_VOID__VOID(
         closure: Closure,
-        return_value: Value,
+        return_value: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -518,9 +518,9 @@ export namespace GObject {
      */
     function cclosure_marshal_generic(
         closure: Closure,
-        return_gvalue: Value,
+        return_gvalue: Value | any,
         n_param_values: number,
-        param_values: Value,
+        param_values: Value | any,
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
@@ -1119,8 +1119,8 @@ export namespace GObject {
      */
     function param_value_convert(
         pspec: ParamSpec,
-        src_value: Value,
-        dest_value: Value,
+        src_value: Value | any,
+        dest_value: Value | any,
         strict_validation: boolean,
     ): boolean;
     /**
@@ -1129,7 +1129,7 @@ export namespace GObject {
      * @param value a #GValue of correct type for @pspec
      * @returns whether @value contains the canonical default for this @pspec
      */
-    function param_value_defaults(pspec: ParamSpec, value: Value): boolean;
+    function param_value_defaults(pspec: ParamSpec, value: Value | any): boolean;
     /**
      * Return whether the contents of `value` comply with the specifications
      * set out by `pspec`.
@@ -1137,13 +1137,13 @@ export namespace GObject {
      * @param value a #GValue of correct type for @pspec
      * @returns whether the contents of @value comply with the specifications   set out by @pspec.
      */
-    function param_value_is_valid(pspec: ParamSpec, value: Value): boolean;
+    function param_value_is_valid(pspec: ParamSpec, value: Value | any): boolean;
     /**
      * Sets `value` to its default value as specified in `pspec`.
      * @param pspec a valid #GParamSpec
      * @param value a #GValue of correct type for @pspec; since 2.64, you   can also pass an empty #GValue, initialized with %G_VALUE_INIT
      */
-    function param_value_set_default(pspec: ParamSpec, value: Value): void;
+    function param_value_set_default(pspec: ParamSpec, value: Value | any): void;
     /**
      * Ensures that the contents of `value` comply with the specifications
      * set out by `pspec`. For example, a #GParamSpecInt might require
@@ -1155,7 +1155,7 @@ export namespace GObject {
      * @param value a #GValue of correct type for @pspec
      * @returns whether modifying @value was necessary to ensure validity
      */
-    function param_value_validate(pspec: ParamSpec, value: Value): boolean;
+    function param_value_validate(pspec: ParamSpec, value: Value | any): boolean;
     /**
      * Compares `value1` with `value2` according to `pspec,` and return -1, 0 or +1,
      * if `value1` is found to be less than, equal to or greater than `value2`,
@@ -1165,7 +1165,7 @@ export namespace GObject {
      * @param value2 a #GValue of correct type for @pspec
      * @returns -1, 0 or +1, for a less than, equal to or greater than result
      */
-    function param_values_cmp(pspec: ParamSpec, value1: Value, value2: Value): number;
+    function param_values_cmp(pspec: ParamSpec, value1: Value | any, value2: Value | any): number;
     /**
      * Creates a new %G_TYPE_POINTER derived type id for a new
      * pointer type with name `name`.
@@ -1192,8 +1192,8 @@ export namespace GObject {
      */
     function signal_accumulator_first_wins(
         ihint: SignalInvocationHint,
-        return_accu: Value,
-        handler_return: Value,
+        return_accu: Value | any,
+        handler_return: Value | any,
         dummy?: any | null,
     ): boolean;
     /**
@@ -1212,8 +1212,8 @@ export namespace GObject {
      */
     function signal_accumulator_true_handled(
         ihint: SignalInvocationHint,
-        return_accu: Value,
-        handler_return: Value,
+        return_accu: Value | any,
+        handler_return: Value | any,
         dummy?: any | null,
     ): boolean;
     /**
@@ -1238,7 +1238,7 @@ export namespace GObject {
      * @param instance_and_params the argument list of the signal emission.  The first element in the array is a #GValue for the instance the signal  is being emitted on. The rest are any arguments to be passed to the signal.
      * @param return_value Location for the return value.
      */
-    function signal_chain_from_overridden(instance_and_params: Value[], return_value: Value): void;
+    function signal_chain_from_overridden(instance_and_params: (Value | any)[], return_value: Value | any): void;
     /**
      * Connects a closure to a signal for a particular object.
      *
@@ -1287,10 +1287,10 @@ export namespace GObject {
      * @param return_value Location to store the return value of the signal emission. This must be provided if the specified signal returns a value, but may be ignored otherwise.
      */
     function signal_emitv(
-        instance_and_params: Value[],
+        instance_and_params: (Value | any)[],
         signal_id: number,
         detail: GLib.Quark,
-        return_value?: Value,
+        return_value?: Value | any,
     ): unknown;
     /**
      * Returns the invocation hint of the innermost signal emission of instance.
@@ -1639,7 +1639,7 @@ export namespace GObject {
      * @param value #GValue which contents are to be described.
      * @returns Newly allocated string.
      */
-    function strdup_value_contents(value: Value): string;
+    function strdup_value_contents(value: Value | any): string;
     /**
      * Registers a private class structure for a classed type;
      * when the class is allocated, the private structures for
@@ -1685,8 +1685,8 @@ export namespace GObject {
     function type_check_instance_is_a(instance: TypeInstance, iface_type: GType): boolean;
     function type_check_instance_is_fundamentally_a(instance: TypeInstance, fundamental_type: GType): boolean;
     function type_check_is_value_type(type: GType): boolean;
-    function type_check_value(value: Value): boolean;
-    function type_check_value_holds(value: Value, type: GType): boolean;
+    function type_check_value(value: Value | any): boolean;
+    function type_check_value_holds(value: Value | any, type: GType): boolean;
     /**
      * Return a newly allocated and 0-terminated array of type IDs, listing
      * the child types of `type`.
@@ -2049,7 +2049,7 @@ export namespace GObject {
         (g_class: TypeClass): void;
     }
     interface BindingTransformFunc {
-        (binding: Binding, from_value: Value, to_value: Value): boolean;
+        (binding: Binding, from_value: Value | any, to_value: Value | any): boolean;
     }
     interface BoxedCopyFunc {
         (boxed: any): any;
@@ -2070,7 +2070,7 @@ export namespace GObject {
         (
             closure: Closure,
             return_value: Value | null,
-            param_values: Value[],
+            param_values: (Value | any)[],
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -2091,16 +2091,21 @@ export namespace GObject {
         (object: A): void;
     }
     interface ObjectGetPropertyFunc<A = Object> {
-        (object: A, property_id: number, value: Value, pspec: ParamSpec): void;
+        (object: A, property_id: number, value: Value | any, pspec: ParamSpec): void;
     }
     interface ObjectSetPropertyFunc<A = Object> {
-        (object: A, property_id: number, value: Value, pspec: ParamSpec): void;
+        (object: A, property_id: number, value: Value | any, pspec: ParamSpec): void;
     }
     interface SignalAccumulator {
-        (ihint: SignalInvocationHint, return_accu: Value, handler_return: Value, data?: any | null): boolean;
+        (
+            ihint: SignalInvocationHint,
+            return_accu: Value | any,
+            handler_return: Value | any,
+            data?: any | null,
+        ): boolean;
     }
     interface SignalEmissionHook {
-        (ihint: SignalInvocationHint, param_values: Value[], data?: any | null): boolean;
+        (ihint: SignalInvocationHint, param_values: (Value | any)[], data?: any | null): boolean;
     }
     interface ToggleNotify<A = Object> {
         (data: any | null, object: A, is_last_ref: boolean): void;
@@ -2124,25 +2129,25 @@ export namespace GObject {
         (plugin: TypePlugin): void;
     }
     interface TypeValueCollectFunc {
-        (value: Value, collect_values: TypeCValue[], collect_flags: number): string | null;
+        (value: Value | any, collect_values: TypeCValue[], collect_flags: number): string | null;
     }
     interface TypeValueCopyFunc {
-        (src_value: Value): void;
+        (src_value: Value | any): void;
     }
     interface TypeValueFreeFunc {
-        (value: Value): void;
+        (value: Value | any): void;
     }
     interface TypeValueInitFunc {
-        (value: Value): void;
+        (value: Value | any): void;
     }
     interface TypeValueLCopyFunc {
-        (value: Value, collect_values: TypeCValue[], collect_flags: number): string | null;
+        (value: Value | any, collect_values: TypeCValue[], collect_flags: number): string | null;
     }
     interface TypeValuePeekPointerFunc {
-        (value: Value): any | null;
+        (value: Value | any): any | null;
     }
     interface ValueTransform {
-        (src_value: Value, dest_value: Value): void;
+        (src_value: Value | any, dest_value: Value | any): void;
     }
     interface WeakNotify<A = Object> {
         (data: any | null, where_the_object_was: A): void;
@@ -2917,7 +2922,7 @@ export namespace GObject {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: Value, pspec: ParamSpec): void;
+        vfunc_get_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2932,7 +2937,7 @@ export namespace GObject {
          * @param pspec
          */
         vfunc_notify(pspec: ParamSpec): void;
-        vfunc_set_property(property_id: number, value: Value, pspec: ParamSpec): void;
+        vfunc_set_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
 
         // Own methods of GObject.Object
 
@@ -3086,7 +3091,7 @@ export namespace GObject {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: Value[]): void;
+        getv(names: string[], values: (Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3463,10 +3468,10 @@ export namespace GObject {
         // Own virtual methods of GObject.ParamSpec
 
         vfunc_finalize(): void;
-        vfunc_value_is_valid(value: Value): boolean;
-        vfunc_value_set_default(value: Value): void;
-        vfunc_value_validate(value: Value): boolean;
-        vfunc_values_cmp(value1: Value, value2: Value): number;
+        vfunc_value_is_valid(value: Value | any): boolean;
+        vfunc_value_set_default(value: Value | any): void;
+        vfunc_value_validate(value: Value | any): boolean;
+        vfunc_values_cmp(value1: Value | any, value2: Value | any): number;
 
         // Own methods of GObject.ParamSpec
 
@@ -3481,7 +3486,7 @@ export namespace GObject {
          * The #GValue will remain valid for the life of `pspec`.
          * @returns a pointer to a #GValue which must not be modified
          */
-        get_default_value(): Value;
+        get_default_value(): unknown;
         /**
          * Get the name of a #GParamSpec.
          *
@@ -3846,6 +3851,7 @@ export namespace GObject {
          * @returns %FALSE if the plugin needed to be loaded and  loading the plugin failed.
          */
         use(): boolean;
+        // Conflicted with GObject.TypePlugin.use
         use(...args: never[]): any;
 
         // Inherited methods
@@ -3952,6 +3958,7 @@ export namespace GObject {
             transform_from?: BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3994,7 +4001,7 @@ export namespace GObject {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: Value[]): void;
+        getv(names: string[], values: (Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4195,7 +4202,7 @@ export namespace GObject {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: Value, pspec: ParamSpec): void;
+        vfunc_get_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4210,7 +4217,7 @@ export namespace GObject {
          * @param pspec
          */
         vfunc_notify(pspec: ParamSpec): void;
-        vfunc_set_property(property_id: number, value: Value, pspec: ParamSpec): void;
+        vfunc_set_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4248,9 +4255,9 @@ export namespace GObject {
          */
         static marshal_BOOLEAN__BOXED_BOXED(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4267,9 +4274,9 @@ export namespace GObject {
          */
         static marshal_BOOLEAN__FLAGS(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4285,9 +4292,9 @@ export namespace GObject {
          */
         static marshal_STRING__OBJECT_POINTER(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4303,9 +4310,9 @@ export namespace GObject {
          */
         static marshal_VOID__BOOLEAN(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4321,9 +4328,9 @@ export namespace GObject {
          */
         static marshal_VOID__BOXED(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4339,9 +4346,9 @@ export namespace GObject {
          */
         static marshal_VOID__CHAR(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4357,9 +4364,9 @@ export namespace GObject {
          */
         static marshal_VOID__DOUBLE(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4375,9 +4382,9 @@ export namespace GObject {
          */
         static marshal_VOID__ENUM(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4393,9 +4400,9 @@ export namespace GObject {
          */
         static marshal_VOID__FLAGS(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4411,9 +4418,9 @@ export namespace GObject {
          */
         static marshal_VOID__FLOAT(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4429,9 +4436,9 @@ export namespace GObject {
          */
         static marshal_VOID__INT(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4447,9 +4454,9 @@ export namespace GObject {
          */
         static marshal_VOID__LONG(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4465,9 +4472,9 @@ export namespace GObject {
          */
         static marshal_VOID__OBJECT(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4483,9 +4490,9 @@ export namespace GObject {
          */
         static marshal_VOID__PARAM(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4501,9 +4508,9 @@ export namespace GObject {
          */
         static marshal_VOID__POINTER(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4519,9 +4526,9 @@ export namespace GObject {
          */
         static marshal_VOID__STRING(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4537,9 +4544,9 @@ export namespace GObject {
          */
         static marshal_VOID__UCHAR(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4555,9 +4562,9 @@ export namespace GObject {
          */
         static marshal_VOID__UINT(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4573,9 +4580,9 @@ export namespace GObject {
          */
         static marshal_VOID__UINT_POINTER(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4591,9 +4598,9 @@ export namespace GObject {
          */
         static marshal_VOID__ULONG(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4609,9 +4616,9 @@ export namespace GObject {
          */
         static marshal_VOID__VARIANT(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4627,9 +4634,9 @@ export namespace GObject {
          */
         static marshal_VOID__VOID(
             closure: Closure,
-            return_value: Value,
+            return_value: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -4648,9 +4655,9 @@ export namespace GObject {
          */
         static marshal_generic(
             closure: Closure,
-            return_gvalue: Value,
+            return_gvalue: Value | any,
             n_param_values: number,
-            param_values: Value,
+            param_values: Value | any,
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -5288,7 +5295,7 @@ export namespace GObject {
          * Copies the value of `src_value` into `dest_value`.
          * @param dest_value An initialized #GValue structure of the same type as @src_value.
          */
-        copy(dest_value: Value): void;
+        copy(dest_value: Value | any): void;
         /**
          * Get the contents of a %G_TYPE_OBJECT derived #GValue, increasing
          * its reference count. If the contents of the #GValue are %NULL, then
@@ -5426,7 +5433,7 @@ export namespace GObject {
          * @param g_type Type the #GValue should hold values of.
          * @returns the #GValue structure that has been passed in
          */
-        init(g_type: GType): Value;
+        init(g_type: GType): unknown;
         /**
          * Initializes and sets `value` from an instantiatable type via the
          * value_table's collect_value() function.
@@ -5450,7 +5457,7 @@ export namespace GObject {
          * (as if the value had just been initialized).
          * @returns the #GValue structure that has been passed in
          */
-        reset(): Value;
+        reset(): unknown;
         /**
          * Set the contents of a %G_TYPE_BOOLEAN #GValue to `v_boolean`.
          * @param v_boolean boolean value to be set
@@ -5647,7 +5654,7 @@ export namespace GObject {
          * @param dest_value Target value.
          * @returns Whether a transformation rule was found and could be applied.  Upon failing transformations, @dest_value is left untouched.
          */
-        transform(dest_value: Value): boolean;
+        transform(dest_value: Value | any): boolean;
         /**
          * Clears the current value in `value` (if any) and "unsets" the type,
          * this releases all resources associated with this GValue. An unset
@@ -5694,7 +5701,7 @@ export namespace GObject {
          * @param index_ index of the value of interest
          * @returns pointer to a value at @index_ in @value_array
          */
-        get_nth(index_: number): Value;
+        get_nth(index_: number): unknown;
         /**
          * Insert a copy of `value` at specified position into `value_array`. If `value`
          * is %NULL, an uninitialized value is inserted.
@@ -5975,6 +5982,7 @@ export namespace GObject {
     // See https://gitlab.gnome.org/ewlsh/gi.ts/-/blob/master/packages/lib/src/generators/dts/gobject.ts
     // Copyright Evan Welsh
 
+    // __type__ forces all GTypes to not match structurally.
     export type GType<T = unknown> = {
         __type__(arg: never): T;
         name: string;
@@ -6001,7 +6009,9 @@ export namespace GObject {
         InternalChildren?: string[];
     }
 
-    /** Interface of GObject Interface should be implemented by all GObject interfaces */
+    // Correctly types interface checks.
+    export function type_is_a<T extends Object>(obj: Object, is_a_type: { $gtype: GType<T> }): obj is T;
+
     export class Interface<T = unknown> {
         static _classInit: (cls: any) => any;
         __name__: string;
@@ -6017,6 +6027,11 @@ export namespace GObject {
     export class NotImplementedError extends Error {
         get name(): 'NotImplementedError';
     }
+
+    export const __gtkCssName__: unique symbol;
+    export const __gtkTemplate__: unique symbol;
+    export const __gtkChildren__: unique symbol;
+    export const __gtkInternalChildren__: unique symbol;
 
     // Expose GObject static properties for ES6 classes
 
@@ -6065,7 +6080,7 @@ export namespace GObject {
     // we need our own handling of signal argument marshalling
     export function signal_connect(object: Object, name: string, handler: (...args: any[]) => any): number;
     export function signal_connect_after(object: Object, name: string, handler: (...args: any[]) => any): number;
-    export function signal_emit_by_name(object: Object, ...nameAndArgs: any[]): void;
+    export function signal_emit_by_name(object: Object, name: string, ...args: any[]): void;
 
     /**
      * Finds the first signal handler that matches certain selection criteria.
@@ -6182,11 +6197,8 @@ export namespace GObject {
     // TODO: What about the generated class Closure
     export type TClosure<R = any, P = any> = (...args: P[]) => R;
 
-    // This should be replaces by a class of GObject.Object as soon as once we have implemented inheritance
-    export class AnyClass {}
-
     export function registerClass<
-        T extends AnyClass,
+        T extends Object,
         Props extends { [key: string]: ParamSpec },
         Interfaces extends { $gtype: GType }[],
         Sigs extends {
@@ -6197,7 +6209,7 @@ export namespace GObject {
         },
     >(options: MetaInfo<Props, Interfaces, Sigs>, cls: T): T;
 
-    export function registerClass<T extends AnyClass>(cls: T): T;
+    export function registerClass<T extends Object>(cls: T): T;
 
     /**
      * Name of the imported GIR library

@@ -150,6 +150,74 @@ export namespace GnomeDesktop {
      * @param description A description to use for the unit, or %NULL
      * @param connection An #GDBusConnection to the session bus, or %NULL
      * @param cancellable #GCancellable to use
+     */
+    function start_systemd_scope(
+        name: string,
+        pid: number,
+        description?: string | null,
+        connection?: Gio.DBusConnection | null,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * If the current process is running inside a user systemd instance, then move
+     * the launched PID into a transient scope. The given `name` will be used to
+     * create a unit name. It should be the application ID or the executable in all
+     * other cases. If a desktop-id is passed then the .desktop suffix will be
+     * stripped.
+     *
+     * It is advisable to use this function every time where the started application
+     * can be considered reasonably independent of the launching application. Placing
+     * it in a scope creates proper separation between the programs rather than being
+     * considered a single entity by systemd.
+     *
+     * It is always safe to call this function. Note that a successful return code
+     * does not imply that a unit has been created. It solely means that no error
+     * condition was hit sending the request.
+     *
+     * If `connection` is %NULL then g_dbus_get() will be called internally.
+     *
+     * Note that most callers will not need to handle errors. As such, it is normal
+     * to pass a %NULL `callback`.
+     * @param name Name for the application
+     * @param pid The PID of the application
+     * @param description A description to use for the unit, or %NULL
+     * @param connection An #GDBusConnection to the session bus, or %NULL
+     * @param cancellable #GCancellable to use
+     * @param callback Callback to call when the operation is done
+     */
+    function start_systemd_scope(
+        name: string,
+        pid: number,
+        description: string | null,
+        connection: Gio.DBusConnection | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * If the current process is running inside a user systemd instance, then move
+     * the launched PID into a transient scope. The given `name` will be used to
+     * create a unit name. It should be the application ID or the executable in all
+     * other cases. If a desktop-id is passed then the .desktop suffix will be
+     * stripped.
+     *
+     * It is advisable to use this function every time where the started application
+     * can be considered reasonably independent of the launching application. Placing
+     * it in a scope creates proper separation between the programs rather than being
+     * considered a single entity by systemd.
+     *
+     * It is always safe to call this function. Note that a successful return code
+     * does not imply that a unit has been created. It solely means that no error
+     * condition was hit sending the request.
+     *
+     * If `connection` is %NULL then g_dbus_get() will be called internally.
+     *
+     * Note that most callers will not need to handle errors. As such, it is normal
+     * to pass a %NULL `callback`.
+     * @param name Name for the application
+     * @param pid The PID of the application
+     * @param description A description to use for the unit, or %NULL
+     * @param connection An #GDBusConnection to the session bus, or %NULL
+     * @param cancellable #GCancellable to use
      * @param callback Callback to call when the operation is done
      */
     function start_systemd_scope(
@@ -159,7 +227,7 @@ export namespace GnomeDesktop {
         connection?: Gio.DBusConnection | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finish an asynchronous operation to create a transient scope that was
      * started with gnome_start_systemd_scope().
@@ -520,6 +588,7 @@ export namespace GnomeDesktop {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -562,7 +631,7 @@ export namespace GnomeDesktop {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -763,7 +832,7 @@ export namespace GnomeDesktop {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -778,7 +847,7 @@ export namespace GnomeDesktop {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

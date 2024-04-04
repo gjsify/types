@@ -2977,6 +2977,30 @@ export namespace Gio {
      * @param content_type the content type to find a #GAppInfo for
      * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
      * @param cancellable optional #GCancellable object, %NULL to ignore
+     */
+    function app_info_get_default_for_type_async(
+        content_type: string,
+        must_support_uris: boolean,
+        cancellable?: Cancellable | null,
+    ): Promise<AppInfo>;
+    /**
+     * Asynchronously gets the default #GAppInfo for a given content type.
+     * @param content_type the content type to find a #GAppInfo for
+     * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is done
+     */
+    function app_info_get_default_for_type_async(
+        content_type: string,
+        must_support_uris: boolean,
+        cancellable: Cancellable | null,
+        callback: AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * Asynchronously gets the default #GAppInfo for a given content type.
+     * @param content_type the content type to find a #GAppInfo for
+     * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function app_info_get_default_for_type_async(
@@ -2984,7 +3008,7 @@ export namespace Gio {
         must_support_uris: boolean,
         cancellable?: Cancellable | null,
         callback?: AsyncReadyCallback<string> | null,
-    ): void;
+    ): Promise<AppInfo> | void;
     /**
      * Finishes a default #GAppInfo lookup started by
      * g_app_info_get_default_for_type_async().
@@ -3010,13 +3034,39 @@ export namespace Gio {
      * "ftp" or "sip".
      * @param uri_scheme a string containing a URI scheme.
      * @param cancellable optional #GCancellable object, %NULL to ignore
+     */
+    function app_info_get_default_for_uri_scheme_async(
+        uri_scheme: string,
+        cancellable?: Cancellable | null,
+    ): Promise<AppInfo>;
+    /**
+     * Asynchronously gets the default application for handling URIs with
+     * the given URI scheme. A URI scheme is the initial part
+     * of the URI, up to but not including the ':', e.g. "http",
+     * "ftp" or "sip".
+     * @param uri_scheme a string containing a URI scheme.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is done
+     */
+    function app_info_get_default_for_uri_scheme_async(
+        uri_scheme: string,
+        cancellable: Cancellable | null,
+        callback: AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * Asynchronously gets the default application for handling URIs with
+     * the given URI scheme. A URI scheme is the initial part
+     * of the URI, up to but not including the ':', e.g. "http",
+     * "ftp" or "sip".
+     * @param uri_scheme a string containing a URI scheme.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function app_info_get_default_for_uri_scheme_async(
         uri_scheme: string,
         cancellable?: Cancellable | null,
         callback?: AsyncReadyCallback<string> | null,
-    ): void;
+    ): Promise<AppInfo> | void;
     /**
      * Finishes a default #GAppInfo lookup started by
      * g_app_info_get_default_for_uri_scheme_async().
@@ -3073,6 +3123,48 @@ export namespace Gio {
      * @param uri the uri to show
      * @param context an optional #GAppLaunchContext
      * @param cancellable a #GCancellable
+     */
+    function app_info_launch_default_for_uri_async(
+        uri: string,
+        context?: AppLaunchContext | null,
+        cancellable?: Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Async version of g_app_info_launch_default_for_uri().
+     *
+     * This version is useful if you are interested in receiving
+     * error information in the case where the application is
+     * sandboxed and the portal may present an application chooser
+     * dialog to the user.
+     *
+     * This is also useful if you want to be sure that the D-Bus–activated
+     * applications are really started before termination and if you are interested
+     * in receiving error information from their activation.
+     * @param uri the uri to show
+     * @param context an optional #GAppLaunchContext
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback to call when the request is done
+     */
+    function app_info_launch_default_for_uri_async(
+        uri: string,
+        context: AppLaunchContext | null,
+        cancellable: Cancellable | null,
+        callback: AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * Async version of g_app_info_launch_default_for_uri().
+     *
+     * This version is useful if you are interested in receiving
+     * error information in the case where the application is
+     * sandboxed and the portal may present an application chooser
+     * dialog to the user.
+     *
+     * This is also useful if you want to be sure that the D-Bus–activated
+     * applications are really started before termination and if you are interested
+     * in receiving error information from their activation.
+     * @param uri the uri to show
+     * @param context an optional #GAppLaunchContext
+     * @param cancellable a #GCancellable
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function app_info_launch_default_for_uri_async(
@@ -3080,7 +3172,7 @@ export namespace Gio {
         context?: AppLaunchContext | null,
         cancellable?: Cancellable | null,
         callback?: AsyncReadyCallback<string> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes an asynchronous launch-default-for-uri operation.
      * @param result a #GAsyncResult
@@ -3128,13 +3220,42 @@ export namespace Gio {
      * the synchronous version.
      * @param bus_type a #GBusType
      * @param cancellable a #GCancellable or %NULL
+     */
+    function bus_get(bus_type: BusType, cancellable?: Cancellable | null): Promise<DBusConnection>;
+    /**
+     * Asynchronously connects to the message bus specified by `bus_type`.
+     *
+     * When the operation is finished, `callback` will be invoked. You can
+     * then call g_bus_get_finish() to get the result of the operation.
+     *
+     * This is an asynchronous failable function. See g_bus_get_sync() for
+     * the synchronous version.
+     * @param bus_type a #GBusType
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    function bus_get(
+        bus_type: BusType,
+        cancellable: Cancellable | null,
+        callback: AsyncReadyCallback<BusType> | null,
+    ): void;
+    /**
+     * Asynchronously connects to the message bus specified by `bus_type`.
+     *
+     * When the operation is finished, `callback` will be invoked. You can
+     * then call g_bus_get_finish() to get the result of the operation.
+     *
+     * This is an asynchronous failable function. See g_bus_get_sync() for
+     * the synchronous version.
+     * @param bus_type a #GBusType
+     * @param cancellable a #GCancellable or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     function bus_get(
         bus_type: BusType,
         cancellable?: Cancellable | null,
         callback?: AsyncReadyCallback<BusType> | null,
-    ): void;
+    ): Promise<DBusConnection> | void;
     /**
      * Finishes an operation started with g_bus_get().
      *
@@ -3455,13 +3576,50 @@ export namespace Gio {
      * g_dbus_address_get_stream_sync() for the synchronous version.
      * @param address A valid D-Bus address.
      * @param cancellable A #GCancellable or %NULL.
+     */
+    function dbus_address_get_stream(address: string, cancellable?: Cancellable | null): Promise<[IOStream, string]>;
+    /**
+     * Asynchronously connects to an endpoint specified by `address` and
+     * sets up the connection so it is in a state to run the client-side
+     * of the D-Bus authentication conversation. `address` must be in the
+     * [D-Bus address format](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses).
+     *
+     * When the operation is finished, `callback` will be invoked. You can
+     * then call g_dbus_address_get_stream_finish() to get the result of
+     * the operation.
+     *
+     * This is an asynchronous failable function. See
+     * g_dbus_address_get_stream_sync() for the synchronous version.
+     * @param address A valid D-Bus address.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+     */
+    function dbus_address_get_stream(
+        address: string,
+        cancellable: Cancellable | null,
+        callback: AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * Asynchronously connects to an endpoint specified by `address` and
+     * sets up the connection so it is in a state to run the client-side
+     * of the D-Bus authentication conversation. `address` must be in the
+     * [D-Bus address format](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses).
+     *
+     * When the operation is finished, `callback` will be invoked. You can
+     * then call g_dbus_address_get_stream_finish() to get the result of
+     * the operation.
+     *
+     * This is an asynchronous failable function. See
+     * g_dbus_address_get_stream_sync() for the synchronous version.
+     * @param address A valid D-Bus address.
+     * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
     function dbus_address_get_stream(
         address: string,
         cancellable?: Cancellable | null,
         callback?: AsyncReadyCallback<string> | null,
-    ): void;
+    ): Promise<[IOStream, string]> | void;
     /**
      * Finishes an operation started with g_dbus_address_get_stream().
      *
@@ -3638,7 +3796,7 @@ export namespace Gio {
      * @param bytes the string of bytes to escape
      * @returns an escaped version of @bytes. Free with g_free().
      */
-    function dbus_escape_object_path_bytestring(bytes: Uint8Array): string;
+    function dbus_escape_object_path_bytestring(bytes: Uint8Array | string): string;
     /**
      * Generate a D-Bus GUID that can be used with
      * e.g. g_dbus_connection_new().
@@ -3687,7 +3845,7 @@ export namespace Gio {
      * @param type A #GVariantType
      * @returns A #GVariant (never floating) of     #GVariantType @type holding the data from @gvalue or an empty #GVariant     in case of failure. Free with g_variant_unref().
      */
-    function dbus_gvalue_to_gvariant(gvalue: GObject.Value, type: GLib.VariantType): GLib.Variant;
+    function dbus_gvalue_to_gvariant(gvalue: GObject.Value | any, type: GLib.VariantType): GLib.Variant;
     /**
      * Converts a #GVariant to a #GValue. If `value` is floating, it is consumed.
      *
@@ -3888,6 +4046,40 @@ export namespace Gio {
      * @param tmpl Template for the file   name, as in g_file_open_tmp(), or %NULL for a default template
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
+     */
+    function file_new_tmp_async(
+        tmpl: string | null,
+        io_priority: number,
+        cancellable?: Cancellable | null,
+    ): Promise<[File, FileIOStream]>;
+    /**
+     * Asynchronously opens a file in the preferred directory for temporary files
+     *  (as returned by g_get_tmp_dir()) as g_file_new_tmp().
+     *
+     * `tmpl` should be a string in the GLib file name encoding
+     * containing a sequence of six 'X' characters, and containing no
+     * directory components. If it is %NULL, a default template is used.
+     * @param tmpl Template for the file   name, as in g_file_open_tmp(), or %NULL for a default template
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is done
+     */
+    function file_new_tmp_async(
+        tmpl: string | null,
+        io_priority: number,
+        cancellable: Cancellable | null,
+        callback: AsyncReadyCallback<string | null> | null,
+    ): void;
+    /**
+     * Asynchronously opens a file in the preferred directory for temporary files
+     *  (as returned by g_get_tmp_dir()) as g_file_new_tmp().
+     *
+     * `tmpl` should be a string in the GLib file name encoding
+     * containing a sequence of six 'X' characters, and containing no
+     * directory components. If it is %NULL, a default template is used.
+     * @param tmpl Template for the file   name, as in g_file_open_tmp(), or %NULL for a default template
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function file_new_tmp_async(
@@ -3895,6 +4087,40 @@ export namespace Gio {
         io_priority: number,
         cancellable?: Cancellable | null,
         callback?: AsyncReadyCallback<string | null> | null,
+    ): Promise<[File, FileIOStream]> | void;
+    /**
+     * Asynchronously creates a directory in the preferred directory for
+     * temporary files (as returned by g_get_tmp_dir()) as g_dir_make_tmp().
+     *
+     * `tmpl` should be a string in the GLib file name encoding
+     * containing a sequence of six 'X' characters, and containing no
+     * directory components. If it is %NULL, a default template is used.
+     * @param tmpl Template for the file   name, as in g_dir_make_tmp(), or %NULL for a default template
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     */
+    function file_new_tmp_dir_async(
+        tmpl: string | null,
+        io_priority: number,
+        cancellable?: Cancellable | null,
+    ): Promise<File>;
+    /**
+     * Asynchronously creates a directory in the preferred directory for
+     * temporary files (as returned by g_get_tmp_dir()) as g_dir_make_tmp().
+     *
+     * `tmpl` should be a string in the GLib file name encoding
+     * containing a sequence of six 'X' characters, and containing no
+     * directory components. If it is %NULL, a default template is used.
+     * @param tmpl Template for the file   name, as in g_dir_make_tmp(), or %NULL for a default template
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is done
+     */
+    function file_new_tmp_dir_async(
+        tmpl: string | null,
+        io_priority: number,
+        cancellable: Cancellable | null,
+        callback: AsyncReadyCallback<string | null> | null,
     ): void;
     /**
      * Asynchronously creates a directory in the preferred directory for
@@ -3913,7 +4139,7 @@ export namespace Gio {
         io_priority: number,
         cancellable?: Cancellable | null,
         callback?: AsyncReadyCallback<string | null> | null,
-    ): void;
+    ): Promise<File> | void;
     /**
      * Finishes a temporary directory creation started by
      * g_file_new_tmp_dir_async().
@@ -4240,7 +4466,7 @@ export namespace Gio {
      */
     function pollable_stream_read(
         stream: InputStream,
-        buffer: Uint8Array,
+        buffer: Uint8Array | string,
         blocking: boolean,
         cancellable?: Cancellable | null,
     ): number;
@@ -4263,7 +4489,7 @@ export namespace Gio {
      */
     function pollable_stream_write(
         stream: OutputStream,
-        buffer: Uint8Array,
+        buffer: Uint8Array | string,
         blocking: boolean,
         cancellable?: Cancellable | null,
     ): number;
@@ -4294,7 +4520,7 @@ export namespace Gio {
      */
     function pollable_stream_write_all(
         stream: OutputStream,
-        buffer: Uint8Array,
+        buffer: Uint8Array | string,
         blocking: boolean,
         cancellable?: Cancellable | null,
     ): [boolean, number];
@@ -4809,10 +5035,10 @@ export namespace Gio {
         (data: any | null, size: number): any | null;
     }
     interface SettingsBindGetMapping {
-        (value: GObject.Value, variant: GLib.Variant): boolean;
+        (value: GObject.Value | any, variant: GLib.Variant): boolean;
     }
     interface SettingsBindSetMapping {
-        (value: GObject.Value, expected_type: GLib.VariantType): GLib.Variant;
+        (value: GObject.Value | any, expected_type: GLib.VariantType): GLib.Variant;
     }
     interface SettingsGetMapping {
         (value: GLib.Variant): boolean;
@@ -7670,6 +7896,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7712,7 +7939,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7913,7 +8140,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7928,7 +8155,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8484,7 +8711,7 @@ export namespace Gio {
          * @param offset a #gsize
          * @returns a #gsize of the number of bytes peeked, or -1 on error.
          */
-        peek(buffer: Uint8Array, offset: number): number;
+        peek(buffer: Uint8Array | string, offset: number): number;
         /**
          * Returns the buffer with the currently available bytes. The returned
          * buffer must not be modified and will become invalid when reading from
@@ -8708,6 +8935,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8750,7 +8978,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8951,7 +9179,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8966,7 +9194,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9241,6 +9469,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9283,7 +9512,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9484,7 +9713,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9499,7 +9728,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9538,7 +9767,7 @@ export namespace Gio {
 
         _init(...args: any[]): void;
 
-        static ['new'](bytes: GLib.Bytes): BytesIcon;
+        static ['new'](bytes: GLib.Bytes | Uint8Array): BytesIcon;
 
         // Own methods of Gio.BytesIcon
 
@@ -9749,6 +9978,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9791,7 +10021,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9992,7 +10222,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10007,7 +10237,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10382,7 +10612,11 @@ export namespace Gio {
          * @param flags a #GConverterFlags controlling the conversion details
          * @returns a #GConverterResult, %G_CONVERTER_ERROR on error.
          */
-        convert(inbuf: Uint8Array, outbuf: Uint8Array, flags: ConverterFlags): [ConverterResult, number, number];
+        convert(
+            inbuf: Uint8Array | string,
+            outbuf: Uint8Array | string,
+            flags: ConverterFlags,
+        ): [ConverterResult, number, number];
         /**
          * Resets all internal state in the converter, making it behave
          * as if it was just created. If the converter has any internal
@@ -10478,7 +10712,7 @@ export namespace Gio {
          */
         vfunc_convert(
             inbuf: Uint8Array | null,
-            outbuf: Uint8Array,
+            outbuf: Uint8Array | string,
             flags: ConverterFlags,
         ): [ConverterResult, number, number];
         /**
@@ -10662,6 +10896,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -10704,7 +10939,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -10905,7 +11140,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10920,7 +11155,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -11640,7 +11875,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable, or %NULL
          * @returns the number of bytes written, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
          */
-        write_nonblocking(buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        write_nonblocking(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream,`
          * as with g_output_stream_writev(). If `stream` is not currently writable,
@@ -11936,7 +12171,7 @@ export namespace Gio {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write(buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        write(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * Tries to write `count` bytes from `buffer` into the stream. Will block
          * during the operation.
@@ -11961,7 +12196,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE on success, %FALSE if there was an error
          */
-        write_all(buffer: Uint8Array, cancellable?: Cancellable | null): [boolean, number];
+        write_all(buffer: Uint8Array | string, cancellable?: Cancellable | null): [boolean, number];
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -11984,7 +12219,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_all_async(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -12046,7 +12281,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_async(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -12067,7 +12302,7 @@ export namespace Gio {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write_bytes(bytes: GLib.Bytes, cancellable?: Cancellable | null): number;
+        write_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Cancellable | null): number;
         /**
          * This function is similar to g_output_stream_write_async(), but
          * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
@@ -12088,7 +12323,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_bytes_async(
-            bytes: GLib.Bytes,
+            bytes: GLib.Bytes | Uint8Array,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -13262,6 +13497,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -13304,7 +13540,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13505,7 +13741,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13520,7 +13756,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15125,6 +15361,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -15167,7 +15404,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15368,7 +15605,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15383,7 +15620,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15669,6 +15906,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -15711,7 +15949,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15912,7 +16150,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15927,7 +16165,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -16000,7 +16238,7 @@ export namespace Gio {
 
         static ['new'](): DBusMessage;
 
-        static new_from_blob(blob: Uint8Array, capabilities: DBusCapabilityFlags): DBusMessage;
+        static new_from_blob(blob: Uint8Array | string, capabilities: DBusCapabilityFlags): DBusMessage;
 
         static new_method_call(
             name: string | null,
@@ -16018,7 +16256,7 @@ export namespace Gio {
          * completely deserialize the D-Bus message stored at `blob`.
          * @param blob A blob representing a binary D-Bus message.
          */
-        static bytes_needed(blob: Uint8Array): number;
+        static bytes_needed(blob: Uint8Array | string): number;
 
         // Own methods of Gio.DBusMessage
 
@@ -17239,6 +17477,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -17281,7 +17520,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -17482,7 +17721,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17497,7 +17736,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -17757,6 +17996,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -17799,7 +18039,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -18000,7 +18240,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18015,7 +18255,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -18202,6 +18442,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -18244,7 +18485,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -18445,7 +18686,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18460,7 +18701,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -18695,6 +18936,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -18737,7 +18979,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -18938,7 +19180,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18953,7 +19195,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -19646,7 +19888,7 @@ export namespace Gio {
          * @param info Minimum interface this proxy conforms to    or %NULL to unset.
          */
         set_interface_info(info?: DBusInterfaceInfo | null): void;
-        connectSignal(...args: any[]): any;
+        connectSignal(proxy: this, name: string, args: any[]): any;
         disconnectSignal(...args: any[]): any;
 
         // Inherited methods
@@ -19971,6 +20213,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -20013,7 +20256,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -20214,7 +20457,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20229,7 +20472,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -20555,6 +20798,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -20597,7 +20841,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -20798,7 +21042,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20813,7 +21057,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -21335,6 +21579,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -21377,7 +21622,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -21578,7 +21823,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21593,7 +21838,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -21899,6 +22144,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -21941,7 +22187,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -22142,7 +22388,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22157,7 +22403,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -22555,6 +22801,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -22597,7 +22844,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -22798,7 +23045,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22813,7 +23060,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -23594,6 +23841,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -23636,7 +23884,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -23837,7 +24085,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23852,7 +24100,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -24061,6 +24309,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -24103,7 +24352,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -24304,7 +24553,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24319,7 +24568,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -24533,6 +24782,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -24575,7 +24825,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -24776,7 +25026,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24791,7 +25041,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -25508,6 +25758,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -25550,7 +25801,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -25751,7 +26002,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25766,7 +26017,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -26016,6 +26267,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -26058,7 +26310,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -26259,7 +26511,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -26274,7 +26526,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -27124,6 +27376,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -27166,7 +27419,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -27367,7 +27620,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -27382,7 +27635,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -27787,6 +28040,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -27829,7 +28083,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -28030,7 +28284,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -28045,7 +28299,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -28318,6 +28572,7 @@ export namespace Gio {
          * the GObject type system itself.
          */
         use(): void;
+        // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -28409,6 +28664,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -28451,7 +28707,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -28652,7 +28908,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -28667,7 +28923,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -29078,7 +29334,7 @@ export namespace Gio {
 
         static new_any(family: SocketFamily): InetAddress;
 
-        static new_from_bytes(bytes: Uint8Array, family: SocketFamily): InetAddress;
+        static new_from_bytes(bytes: Uint8Array | string, family: SocketFamily): InetAddress;
 
         static new_from_string(string: string): InetAddress;
 
@@ -29420,6 +29676,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -29462,7 +29719,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -29663,7 +29920,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -29678,7 +29935,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -29893,6 +30150,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -29935,7 +30193,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -30136,7 +30394,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -30151,7 +30409,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -30997,6 +31255,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -31039,7 +31298,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -31240,7 +31499,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -31255,7 +31514,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -31290,9 +31549,9 @@ export namespace Gio {
 
         static ['new'](): MemoryInputStream;
 
-        static new_from_bytes(bytes: GLib.Bytes): MemoryInputStream;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array): MemoryInputStream;
 
-        static new_from_data(data: Uint8Array, destroy?: GLib.DestroyNotify | null): MemoryInputStream;
+        static new_from_data(data: Uint8Array | string, destroy?: GLib.DestroyNotify | null): MemoryInputStream;
 
         // Own methods of Gio.MemoryInputStream
 
@@ -31300,13 +31559,13 @@ export namespace Gio {
          * Appends `bytes` to data that can be read from the input stream.
          * @param bytes input data
          */
-        add_bytes(bytes: GLib.Bytes): void;
+        add_bytes(bytes: GLib.Bytes | Uint8Array): void;
         /**
          * Appends `data` to data that can be read from the input stream
          * @param data input data
          * @param destroy function that is called to free @data, or %NULL
          */
-        add_data(data: Uint8Array, destroy?: GLib.DestroyNotify | null): void;
+        add_data(data: Uint8Array | string, destroy?: GLib.DestroyNotify | null): void;
 
         // Inherited methods
         /**
@@ -32065,6 +32324,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -32107,7 +32367,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -32308,7 +32568,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -32323,7 +32583,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -32500,7 +32760,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable, or %NULL
          * @returns the number of bytes written, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
          */
-        write_nonblocking(buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        write_nonblocking(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream,`
          * as with g_output_stream_writev(). If `stream` is not currently writable,
@@ -32895,7 +33155,7 @@ export namespace Gio {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write(buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        write(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * Tries to write `count` bytes from `buffer` into the stream. Will block
          * during the operation.
@@ -32920,7 +33180,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE on success, %FALSE if there was an error
          */
-        write_all(buffer: Uint8Array, cancellable?: Cancellable | null): [boolean, number];
+        write_all(buffer: Uint8Array | string, cancellable?: Cancellable | null): [boolean, number];
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -32943,7 +33203,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_all_async(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -33005,7 +33265,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_async(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -33026,7 +33286,7 @@ export namespace Gio {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write_bytes(bytes: GLib.Bytes, cancellable?: Cancellable | null): number;
+        write_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Cancellable | null): number;
         /**
          * This function is similar to g_output_stream_write_async(), but
          * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
@@ -33047,7 +33307,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_bytes_async(
-            bytes: GLib.Bytes,
+            bytes: GLib.Bytes | Uint8Array,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -33548,6 +33808,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -33584,7 +33845,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -33778,7 +34039,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -33793,7 +34054,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -35162,6 +35423,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -35204,7 +35466,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -35405,7 +35667,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -35420,7 +35682,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -35686,6 +35948,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -35728,7 +35991,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -35929,7 +36192,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -35944,7 +36207,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -36166,6 +36429,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -36208,7 +36472,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -36409,7 +36673,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -36424,7 +36688,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -37055,7 +37319,7 @@ export namespace Gio {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write(buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        write(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * Tries to write `count` bytes from `buffer` into the stream. Will block
          * during the operation.
@@ -37080,7 +37344,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE on success, %FALSE if there was an error
          */
-        write_all(buffer: Uint8Array, cancellable?: Cancellable | null): [boolean, number];
+        write_all(buffer: Uint8Array | string, cancellable?: Cancellable | null): [boolean, number];
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -37103,7 +37367,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_all_async(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -37165,7 +37429,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_async(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -37186,7 +37450,7 @@ export namespace Gio {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write_bytes(bytes: GLib.Bytes, cancellable?: Cancellable | null): number;
+        write_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Cancellable | null): number;
         /**
          * This function is similar to g_output_stream_write_async(), but
          * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
@@ -37207,7 +37471,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_bytes_async(
-            bytes: GLib.Bytes,
+            bytes: GLib.Bytes | Uint8Array,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -38068,6 +38332,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -38110,7 +38375,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -38311,7 +38576,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -38326,7 +38591,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -38535,6 +38800,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -38577,7 +38843,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -38778,7 +39044,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -38793,7 +39059,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -41035,6 +41301,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -41077,7 +41344,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -41278,7 +41545,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -41293,7 +41560,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -42014,6 +42281,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -42056,7 +42324,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -42257,7 +42525,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -42272,7 +42540,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -42720,6 +42988,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -42762,7 +43031,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -42963,7 +43232,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -42978,7 +43247,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -43409,6 +43678,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -43451,7 +43721,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -43652,7 +43922,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -43667,7 +43937,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -43975,6 +44245,7 @@ export namespace Gio {
          * @returns %TRUE if the condition was met, %FALSE otherwise
          */
         condition_wait(condition: GLib.IOCondition, cancellable?: Cancellable | null): boolean;
+        // Conflicted with Gio.DatagramBased.condition_wait
         condition_wait(...args: never[]): any;
         /**
          * Connect the socket to the specified remote address.
@@ -44425,6 +44696,7 @@ export namespace Gio {
          * @returns number of messages received, or -1 on error. Note that the number     of messages received may be smaller than @num_messages if in non-blocking     mode, if the peer closed the connection, or if @num_messages     was larger than `UIO_MAXIOV` (1024), in which case the caller may re-try     to receive the remaining messages.
          */
         receive_messages(messages: InputMessage[], flags: number, cancellable?: Cancellable | null): number;
+        // Conflicted with Gio.DatagramBased.receive_messages
         receive_messages(...args: never[]): any;
         /**
          * This behaves exactly the same as g_socket_receive(), except that
@@ -44454,7 +44726,7 @@ export namespace Gio {
          * @param cancellable a %GCancellable or %NULL
          * @returns Number of bytes written (which may be less than @size), or -1 on error
          */
-        send(buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        send(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * Send data to `address` on `socket`.  For sending multiple messages see
          * g_socket_send_messages(); for easier use, see
@@ -44577,6 +44849,7 @@ export namespace Gio {
          * @returns number of messages sent, or -1 on error. Note that the number of     messages sent may be smaller than @num_messages if the socket is     non-blocking or if @num_messages was larger than UIO_MAXIOV (1024),     in which case the caller may re-try to send the remaining messages.
          */
         send_messages(messages: OutputMessage[], flags: number, cancellable?: Cancellable | null): number;
+        // Conflicted with Gio.DatagramBased.send_messages
         send_messages(...args: never[]): any;
         /**
          * Tries to send `size` bytes from `buffer` to `address`. If `address` is
@@ -44589,7 +44862,7 @@ export namespace Gio {
          * @param cancellable a %GCancellable or %NULL
          * @returns Number of bytes written (which may be less than @size), or -1 on error
          */
-        send_to(address: SocketAddress | null, buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        send_to(address: SocketAddress | null, buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * This behaves exactly the same as g_socket_send(), except that
          * the choice of blocking or non-blocking behavior is determined by
@@ -44599,7 +44872,7 @@ export namespace Gio {
          * @param cancellable a %GCancellable or %NULL
          * @returns Number of bytes written (which may be less than @size), or -1 on error
          */
-        send_with_blocking(buffer: Uint8Array, blocking: boolean, cancellable?: Cancellable | null): number;
+        send_with_blocking(buffer: Uint8Array | string, blocking: boolean, cancellable?: Cancellable | null): number;
         /**
          * Sets the blocking mode of the socket. In blocking mode
          * all operations (which don’t take an explicit blocking parameter) block until
@@ -45125,6 +45398,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -45167,7 +45441,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -45368,7 +45642,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -45383,7 +45657,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -45612,6 +45886,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -45654,7 +45929,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -45855,7 +46130,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -45870,7 +46145,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -46725,7 +47000,7 @@ export namespace Gio {
          * @param type a socket control message type for the given @level
          * @param data pointer to the message data
          */
-        static deserialize(level: number, type: number, data: Uint8Array): SocketControlMessage | null;
+        static deserialize(level: number, type: number, data: Uint8Array | string): SocketControlMessage | null;
 
         // Own virtual methods of Gio.SocketControlMessage
 
@@ -47674,6 +47949,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -47716,7 +47992,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -47917,7 +48193,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -47932,7 +48208,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -49268,6 +49544,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -49310,7 +49587,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -49511,7 +49788,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -49526,7 +49803,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -50058,6 +50335,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -50100,7 +50378,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -50301,7 +50579,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -50316,7 +50594,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -50679,7 +50957,7 @@ export namespace Gio {
 
         static new_from_pkcs11_uris(pkcs11_uri: string, private_key_pkcs11_uri?: string | null): TlsCertificate;
 
-        static new_from_pkcs12(data: Uint8Array, password?: string | null): TlsCertificate;
+        static new_from_pkcs12(data: Uint8Array | string, password?: string | null): TlsCertificate;
 
         // Own static methods of Gio.TlsCertificate
 
@@ -51075,7 +51353,7 @@ export namespace Gio {
         // Own virtual methods of Gio.TlsConnection
 
         vfunc_accept_certificate(peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean;
-        vfunc_get_binding_data(type: TlsChannelBindingType, data: Uint8Array): boolean;
+        vfunc_get_binding_data(type: TlsChannelBindingType, data: Uint8Array | string): boolean;
         /**
          * Gets the name of the application-layer protocol negotiated during
          * the handshake.
@@ -51575,7 +51853,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable, or %NULL
          */
         vfunc_lookup_certificates_issued_by(
-            issuer_raw_dn: Uint8Array,
+            issuer_raw_dn: Uint8Array | string,
             interaction: TlsInteraction | null,
             flags: TlsDatabaseLookupFlags,
             cancellable?: Cancellable | null,
@@ -51594,7 +51872,7 @@ export namespace Gio {
          * @param callback callback to call when the operation completes
          */
         vfunc_lookup_certificates_issued_by_async(
-            issuer_raw_dn: Uint8Array,
+            issuer_raw_dn: Uint8Array | string,
             interaction: TlsInteraction | null,
             flags: TlsDatabaseLookupFlags,
             cancellable?: Cancellable | null,
@@ -51853,7 +52131,7 @@ export namespace Gio {
          * @returns a newly allocated list of #GTlsCertificate objects. Use g_object_unref() on each certificate, and g_list_free() on the release the list.
          */
         lookup_certificates_issued_by(
-            issuer_raw_dn: Uint8Array,
+            issuer_raw_dn: Uint8Array | string,
             interaction: TlsInteraction | null,
             flags: TlsDatabaseLookupFlags,
             cancellable?: Cancellable | null,
@@ -51872,7 +52150,7 @@ export namespace Gio {
          * @param callback callback to call when the operation completes
          */
         lookup_certificates_issued_by_async(
-            issuer_raw_dn: Uint8Array,
+            issuer_raw_dn: Uint8Array | string,
             interaction: TlsInteraction | null,
             flags: TlsDatabaseLookupFlags,
             cancellable?: Cancellable | null,
@@ -52394,7 +52672,7 @@ export namespace Gio {
          * @param value the value for the password
          * @param destroy a function to use to free the password.
          */
-        vfunc_set_value(value: Uint8Array, destroy?: GLib.DestroyNotify | null): void;
+        vfunc_set_value(value: Uint8Array | string, destroy?: GLib.DestroyNotify | null): void;
 
         // Own methods of Gio.TlsPassword
 
@@ -52444,7 +52722,7 @@ export namespace Gio {
          * considered part of the password in this case.)
          * @param value the new password value
          */
-        set_value(value: Uint8Array): void;
+        set_value(value: Uint8Array | string): void;
         /**
          * Provide the value for this password.
          *
@@ -52458,7 +52736,7 @@ export namespace Gio {
          * @param value the value for the password
          * @param destroy a function to use to free the password.
          */
-        set_value_full(value: Uint8Array, destroy?: GLib.DestroyNotify | null): void;
+        set_value_full(value: Uint8Array | string, destroy?: GLib.DestroyNotify | null): void;
         /**
          * Set a user readable translated warning. Usually this warning is a
          * representation of the password flags returned from
@@ -53163,6 +53441,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -53205,7 +53484,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -53406,7 +53685,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -53421,7 +53700,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -54093,7 +54372,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable, or %NULL
          * @returns the number of bytes written, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
          */
-        write_nonblocking(buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        write_nonblocking(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream,`
          * as with g_output_stream_writev(). If `stream` is not currently writable,
@@ -54293,6 +54572,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -54335,7 +54615,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -54536,7 +54816,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -54551,7 +54831,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -54743,7 +55023,7 @@ export namespace Gio {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write(buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        write(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * Tries to write `count` bytes from `buffer` into the stream. Will block
          * during the operation.
@@ -54768,7 +55048,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE on success, %FALSE if there was an error
          */
-        write_all(buffer: Uint8Array, cancellable?: Cancellable | null): [boolean, number];
+        write_all(buffer: Uint8Array | string, cancellable?: Cancellable | null): [boolean, number];
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -54791,7 +55071,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_all_async(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -54853,7 +55133,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_async(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -54874,7 +55154,7 @@ export namespace Gio {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write_bytes(bytes: GLib.Bytes, cancellable?: Cancellable | null): number;
+        write_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Cancellable | null): number;
         /**
          * This function is similar to g_output_stream_write_async(), but
          * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
@@ -54895,7 +55175,7 @@ export namespace Gio {
          * @param callback callback to call when the request is satisfied
          */
         write_bytes_async(
-            bytes: GLib.Bytes,
+            bytes: GLib.Bytes | Uint8Array,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -55547,6 +55827,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -55589,7 +55870,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -55790,7 +56071,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -55805,7 +56086,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -56370,7 +56651,11 @@ export namespace Gio {
          * @param flags a #GConverterFlags controlling the conversion details
          * @returns a #GConverterResult, %G_CONVERTER_ERROR on error.
          */
-        convert(inbuf: Uint8Array, outbuf: Uint8Array, flags: ConverterFlags): [ConverterResult, number, number];
+        convert(
+            inbuf: Uint8Array | string,
+            outbuf: Uint8Array | string,
+            flags: ConverterFlags,
+        ): [ConverterResult, number, number];
         /**
          * Resets all internal state in the converter, making it behave
          * as if it was just created. If the converter has any internal
@@ -56466,7 +56751,7 @@ export namespace Gio {
          */
         vfunc_convert(
             inbuf: Uint8Array | null,
-            outbuf: Uint8Array,
+            outbuf: Uint8Array | string,
             flags: ConverterFlags,
         ): [ConverterResult, number, number];
         /**
@@ -56565,6 +56850,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -56607,7 +56893,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -56808,7 +57094,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -56823,7 +57109,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -56975,7 +57261,11 @@ export namespace Gio {
          * @param flags a #GConverterFlags controlling the conversion details
          * @returns a #GConverterResult, %G_CONVERTER_ERROR on error.
          */
-        convert(inbuf: Uint8Array, outbuf: Uint8Array, flags: ConverterFlags): [ConverterResult, number, number];
+        convert(
+            inbuf: Uint8Array | string,
+            outbuf: Uint8Array | string,
+            flags: ConverterFlags,
+        ): [ConverterResult, number, number];
         /**
          * Resets all internal state in the converter, making it behave
          * as if it was just created. If the converter has any internal
@@ -57071,7 +57361,7 @@ export namespace Gio {
          */
         vfunc_convert(
             inbuf: Uint8Array | null,
-            outbuf: Uint8Array,
+            outbuf: Uint8Array | string,
             flags: ConverterFlags,
         ): [ConverterResult, number, number];
         /**
@@ -57170,6 +57460,7 @@ export namespace Gio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -57212,7 +57503,7 @@ export namespace Gio {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -57413,7 +57704,7 @@ export namespace Gio {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -57428,7 +57719,7 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -58927,10 +59218,10 @@ export namespace Gio {
 
         // Constructors of Gio.Resource
 
-        constructor(data: GLib.Bytes);
+        constructor(data: GLib.Bytes | Uint8Array);
         _init(...args: any[]): void;
 
-        static new_from_data(data: GLib.Bytes): Resource;
+        static new_from_data(data: GLib.Bytes | Uint8Array): Resource;
 
         // Own static methods of Gio.Resource
 
@@ -61706,7 +61997,11 @@ export namespace Gio {
          * @param flags a #GConverterFlags controlling the conversion details
          * @returns a #GConverterResult, %G_CONVERTER_ERROR on error.
          */
-        convert(inbuf: Uint8Array, outbuf: Uint8Array, flags: ConverterFlags): [ConverterResult, number, number];
+        convert(
+            inbuf: Uint8Array | string,
+            outbuf: Uint8Array | string,
+            flags: ConverterFlags,
+        ): [ConverterResult, number, number];
         /**
          * Resets all internal state in the converter, making it behave
          * as if it was just created. If the converter has any internal
@@ -61805,7 +62100,7 @@ export namespace Gio {
          */
         vfunc_convert(
             inbuf: Uint8Array | null,
-            outbuf: Uint8Array,
+            outbuf: Uint8Array | string,
             flags: ConverterFlags,
         ): [ConverterResult, number, number];
         /**
@@ -63609,7 +63904,7 @@ export namespace Gio {
         // Own virtual methods of Gio.DtlsConnection
 
         vfunc_accept_certificate(peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean;
-        vfunc_get_binding_data(type: TlsChannelBindingType, data: Uint8Array): boolean;
+        vfunc_get_binding_data(type: TlsChannelBindingType, data: Uint8Array | string): boolean;
         /**
          * Gets the name of the application-layer protocol negotiated during
          * the handshake.
@@ -65408,7 +65703,7 @@ export namespace Gio {
          * @returns %TRUE if successful. If an error has occurred, this function   will return %FALSE and set @error appropriately if present.
          */
         replace_contents(
-            contents: Uint8Array,
+            contents: Uint8Array | string,
             etag: string | null,
             make_backup: boolean,
             flags: FileCreateFlags,
@@ -65442,7 +65737,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         replace_contents_async(
-            contents: Uint8Array,
+            contents: Uint8Array | string,
             etag: string | null,
             make_backup: boolean,
             flags: FileCreateFlags,
@@ -65466,7 +65761,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         replace_contents_bytes_async(
-            contents: GLib.Bytes,
+            contents: GLib.Bytes | Uint8Array,
             etag: string | null,
             make_backup: boolean,
             flags: FileCreateFlags,
@@ -68870,7 +69165,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable, or %NULL
          * @returns the number of bytes written, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
          */
-        write_nonblocking(buffer: Uint8Array, cancellable?: Cancellable | null): number;
+        write_nonblocking(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
         /**
          * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream,`
          * as with g_output_stream_writev(). If `stream` is not currently writable,

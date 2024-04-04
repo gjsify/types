@@ -895,8 +895,8 @@ export namespace EDataServer {
      */
     function binding_transform_enum_nick_to_value(
         binding: GObject.Binding,
-        source_value: GObject.Value,
-        target_value: GObject.Value,
+        source_value: GObject.Value | any,
+        target_value: GObject.Value | any,
         not_used?: any | null,
     ): boolean;
     /**
@@ -909,8 +909,8 @@ export namespace EDataServer {
      */
     function binding_transform_enum_value_to_nick(
         binding: GObject.Binding,
-        source_value: GObject.Value,
-        target_value: GObject.Value,
+        source_value: GObject.Value | any,
+        target_value: GObject.Value | any,
         not_used?: any | null,
     ): boolean;
     /**
@@ -1104,6 +1104,46 @@ export namespace EDataServer {
      * @param file a #GFile to delete
      * @param io_priority the I/O priority of the request
      * @param cancellable optional #GCancellable object, or %NULL
+     */
+    function file_recursive_delete(
+        file: Gio.File,
+        io_priority: number,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Asynchronously deletes `file`.  If `file` is a directory, its contents
+     * are deleted recursively before `file` itself is deleted.  The recursive
+     * delete operation will stop on the first error.
+     *
+     * If `cancellable` is not %NULL, then the operation can be cancelled
+     * by triggering the cancellable object before the operation finishes.
+     *
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_file_recursive_delete_finish() to get the result of the operation.
+     * @param file a #GFile to delete
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    function file_recursive_delete(
+        file: Gio.File,
+        io_priority: number,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.File> | null,
+    ): void;
+    /**
+     * Asynchronously deletes `file`.  If `file` is a directory, its contents
+     * are deleted recursively before `file` itself is deleted.  The recursive
+     * delete operation will stop on the first error.
+     *
+     * If `cancellable` is not %NULL, then the operation can be cancelled
+     * by triggering the cancellable object before the operation finishes.
+     *
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_file_recursive_delete_finish() to get the result of the operation.
+     * @param file a #GFile to delete
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     function file_recursive_delete(
@@ -1111,7 +1151,7 @@ export namespace EDataServer {
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.File> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes the operation started with e_file_recursive_delete().
      *
@@ -1418,7 +1458,7 @@ export namespace EDataServer {
      * @param value a property value
      */
     function oauth2_service_util_set_to_form(
-        form: GLib.HashTable<string, string>,
+        form: { [key: string]: any } | GLib.HashTable<string, string>,
         name: string,
         value?: string | null,
     ): void;
@@ -1436,7 +1476,7 @@ export namespace EDataServer {
      * @param value a property value
      */
     function oauth2_service_util_take_to_form(
-        form: GLib.HashTable<string, string>,
+        form: { [key: string]: any } | GLib.HashTable<string, string>,
         name: string,
         value?: string | null,
     ): void;
@@ -2031,6 +2071,54 @@ export namespace EDataServer {
      * @param only_supports bit-or of EWebDAVDiscoverSupports, to limit what type of sources to search
      * @param credentials credentials to use for authentication to the server
      * @param cancellable optional #GCancellable object, or %NULL
+     */
+    function webdav_discover_sources(
+        source: Source,
+        url_use_path: string | null,
+        only_supports: number,
+        credentials?: NamedParameters | null,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<[string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null]>;
+    /**
+     * Asynchronously runs discovery of the WebDAV sources (CalDAV and CardDAV), eventually
+     * limited by the `only_supports` filter, which can be %E_WEBDAV_DISCOVER_SUPPORTS_NONE
+     * to search all types. Note that the list of returned calendars can be more general,
+     * thus check for its actual support type for further filtering of the results.
+     * The `url_use_path` can be used to override actual server path, or even complete URL,
+     * for the given `source`.
+     *
+     * When the operation is finished, `callback` will be called. You can then
+     * call e_webdav_discover_sources_finish() to get the result of the operation.
+     * @param source an #ESource from which to take connection details
+     * @param url_use_path optional URL override, or %NULL
+     * @param only_supports bit-or of EWebDAVDiscoverSupports, to limit what type of sources to search
+     * @param credentials credentials to use for authentication to the server
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    function webdav_discover_sources(
+        source: Source,
+        url_use_path: string | null,
+        only_supports: number,
+        credentials: NamedParameters | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Source> | null,
+    ): void;
+    /**
+     * Asynchronously runs discovery of the WebDAV sources (CalDAV and CardDAV), eventually
+     * limited by the `only_supports` filter, which can be %E_WEBDAV_DISCOVER_SUPPORTS_NONE
+     * to search all types. Note that the list of returned calendars can be more general,
+     * thus check for its actual support type for further filtering of the results.
+     * The `url_use_path` can be used to override actual server path, or even complete URL,
+     * for the given `source`.
+     *
+     * When the operation is finished, `callback` will be called. You can then
+     * call e_webdav_discover_sources_finish() to get the result of the operation.
+     * @param source an #ESource from which to take connection details
+     * @param url_use_path optional URL override, or %NULL
+     * @param only_supports bit-or of EWebDAVDiscoverSupports, to limit what type of sources to search
+     * @param credentials credentials to use for authentication to the server
+     * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     function webdav_discover_sources(
@@ -2040,7 +2128,7 @@ export namespace EDataServer {
         credentials?: NamedParameters | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Source> | null,
-    ): void;
+    ): Promise<[string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null]> | void;
     /**
      * Finishes the operation started with e_webdav_discover_sources(). If an
      * error occurred, the function will set `error` and return %FALSE. The function
@@ -2170,7 +2258,7 @@ export namespace EDataServer {
      * Frees the memory used by `hash` and its contents.
      * @param hash the #GHashTable to destroy
      */
-    function xml_destroy_hash(hash: GLib.HashTable<string, string>): void;
+    function xml_destroy_hash(hash: { [key: string]: any } | GLib.HashTable<string, string>): void;
     /**
      * Writes the given XML document structure to the file given by `filename`.
      * If an error occurs while saving, the function returns -1 and sets errno.
@@ -3316,6 +3404,7 @@ export namespace EDataServer {
          * the GObject type system itself.
          */
         use(): void;
+        // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3407,6 +3496,7 @@ export namespace EDataServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3449,7 +3539,7 @@ export namespace EDataServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3650,7 +3740,7 @@ export namespace EDataServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3665,7 +3755,7 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4142,6 +4232,7 @@ export namespace EDataServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4184,7 +4275,7 @@ export namespace EDataServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4385,7 +4476,7 @@ export namespace EDataServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4400,7 +4491,7 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4598,7 +4689,10 @@ export namespace EDataServer {
          * @param source an associated #ESource
          * @param uri_query query for the URI to use
          */
-        prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        prepare_authentication_uri_query(
+            source: Source,
+            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -4613,7 +4707,11 @@ export namespace EDataServer {
          * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
          * @param form form parameters to be used in the POST request
          */
-        prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable<string, string>): void;
+        prepare_get_token_form(
+            source: Source,
+            authorization_code: string,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * The `service` can change the `message` before it's sent to
          * the e_oauth2_service_get_authentication_uri(), with POST data
@@ -4637,7 +4735,11 @@ export namespace EDataServer {
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
          */
-        prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable<string, string>): void;
+        prepare_refresh_token_form(
+            source: Source,
+            refresh_token: string,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * The `service` can change the `message` before it's sent to
          * the e_oauth2_service_get_refresh_uri(), with POST data
@@ -4807,7 +4909,10 @@ export namespace EDataServer {
          * @param source an associated #ESource
          * @param uri_query query for the URI to use
          */
-        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        vfunc_prepare_authentication_uri_query(
+            source: Source,
+            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -4825,7 +4930,7 @@ export namespace EDataServer {
         vfunc_prepare_get_token_form(
             source: Source,
             authorization_code: string,
-            form: GLib.HashTable<string, string>,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -4853,7 +4958,7 @@ export namespace EDataServer {
         vfunc_prepare_refresh_token_form(
             source: Source,
             refresh_token: string,
-            form: GLib.HashTable<string, string>,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -4954,6 +5059,7 @@ export namespace EDataServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4996,7 +5102,7 @@ export namespace EDataServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5197,7 +5303,7 @@ export namespace EDataServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5212,7 +5318,7 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5394,7 +5500,10 @@ export namespace EDataServer {
          * @param source an associated #ESource
          * @param uri_query query for the URI to use
          */
-        prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        prepare_authentication_uri_query(
+            source: Source,
+            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -5409,7 +5518,11 @@ export namespace EDataServer {
          * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
          * @param form form parameters to be used in the POST request
          */
-        prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable<string, string>): void;
+        prepare_get_token_form(
+            source: Source,
+            authorization_code: string,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * The `service` can change the `message` before it's sent to
          * the e_oauth2_service_get_authentication_uri(), with POST data
@@ -5433,7 +5546,11 @@ export namespace EDataServer {
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
          */
-        prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable<string, string>): void;
+        prepare_refresh_token_form(
+            source: Source,
+            refresh_token: string,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * The `service` can change the `message` before it's sent to
          * the e_oauth2_service_get_refresh_uri(), with POST data
@@ -5603,7 +5720,10 @@ export namespace EDataServer {
          * @param source an associated #ESource
          * @param uri_query query for the URI to use
          */
-        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        vfunc_prepare_authentication_uri_query(
+            source: Source,
+            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -5621,7 +5741,7 @@ export namespace EDataServer {
         vfunc_prepare_get_token_form(
             source: Source,
             authorization_code: string,
-            form: GLib.HashTable<string, string>,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -5649,7 +5769,7 @@ export namespace EDataServer {
         vfunc_prepare_refresh_token_form(
             source: Source,
             refresh_token: string,
-            form: GLib.HashTable<string, string>,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -5750,6 +5870,7 @@ export namespace EDataServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5792,7 +5913,7 @@ export namespace EDataServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5993,7 +6114,7 @@ export namespace EDataServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6008,7 +6129,7 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6190,7 +6311,10 @@ export namespace EDataServer {
          * @param source an associated #ESource
          * @param uri_query query for the URI to use
          */
-        prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        prepare_authentication_uri_query(
+            source: Source,
+            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -6205,7 +6329,11 @@ export namespace EDataServer {
          * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
          * @param form form parameters to be used in the POST request
          */
-        prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable<string, string>): void;
+        prepare_get_token_form(
+            source: Source,
+            authorization_code: string,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * The `service` can change the `message` before it's sent to
          * the e_oauth2_service_get_authentication_uri(), with POST data
@@ -6229,7 +6357,11 @@ export namespace EDataServer {
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
          */
-        prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable<string, string>): void;
+        prepare_refresh_token_form(
+            source: Source,
+            refresh_token: string,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * The `service` can change the `message` before it's sent to
          * the e_oauth2_service_get_refresh_uri(), with POST data
@@ -6399,7 +6531,10 @@ export namespace EDataServer {
          * @param source an associated #ESource
          * @param uri_query query for the URI to use
          */
-        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        vfunc_prepare_authentication_uri_query(
+            source: Source,
+            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -6417,7 +6552,7 @@ export namespace EDataServer {
         vfunc_prepare_get_token_form(
             source: Source,
             authorization_code: string,
-            form: GLib.HashTable<string, string>,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -6445,7 +6580,7 @@ export namespace EDataServer {
         vfunc_prepare_refresh_token_form(
             source: Source,
             refresh_token: string,
-            form: GLib.HashTable<string, string>,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -6546,6 +6681,7 @@ export namespace EDataServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6588,7 +6724,7 @@ export namespace EDataServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6789,7 +6925,7 @@ export namespace EDataServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6804,7 +6940,7 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7007,6 +7143,7 @@ export namespace EDataServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7049,7 +7186,7 @@ export namespace EDataServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7250,7 +7387,7 @@ export namespace EDataServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7265,7 +7402,7 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9120,6 +9257,7 @@ export namespace EDataServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9162,7 +9300,7 @@ export namespace EDataServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9363,7 +9501,7 @@ export namespace EDataServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9378,7 +9516,7 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10579,6 +10717,7 @@ export namespace EDataServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -10621,7 +10760,7 @@ export namespace EDataServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -10822,7 +10961,7 @@ export namespace EDataServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10837,7 +10976,7 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -13992,6 +14131,7 @@ export namespace EDataServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14034,7 +14174,7 @@ export namespace EDataServer {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -14235,7 +14375,7 @@ export namespace EDataServer {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14250,7 +14390,7 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15708,6 +15848,7 @@ export namespace EDataServer {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         new_message(method: string, uri?: string | null): Soup.Message;
+        // Conflicted with EDataServer.SoupSession.new_message
         new_message(...args: never[]): any;
         /**
          * Issues OPTIONS request on the provided `uri,` or, in case it's %NULL, on the URI
@@ -16032,7 +16173,7 @@ export namespace EDataServer {
          * @param xml_data a #GByteArray containing CALDAV:mkcalendar-response response
          * @returns Whether succeeded.
          */
-        traverse_mkcalendar_response(message: Soup.Message | null, xml_data: Uint8Array): boolean;
+        traverse_mkcalendar_response(message: Soup.Message | null, xml_data: Uint8Array | string): boolean;
         /**
          * Traverses a DAV:mkcol-response response and calls `func` for each returned DAV:propstat.
          *
@@ -16042,7 +16183,7 @@ export namespace EDataServer {
          * @param xml_data a #GByteArray containing DAV:mkcol-response response
          * @returns Whether succeeded.
          */
-        traverse_mkcol_response(message: Soup.Message | null, xml_data: Uint8Array): boolean;
+        traverse_mkcol_response(message: Soup.Message | null, xml_data: Uint8Array | string): boolean;
         /**
          * Traverses a DAV:multistatus response and calls `func` for each returned DAV:propstat.
          *
@@ -16052,7 +16193,7 @@ export namespace EDataServer {
          * @param xml_data a #GByteArray containing DAV:multistatus response
          * @returns Whether succeeded.
          */
-        traverse_multistatus_response(message: Soup.Message | null, xml_data: Uint8Array): boolean;
+        traverse_multistatus_response(message: Soup.Message | null, xml_data: Uint8Array | string): boolean;
         /**
          * Releases (unlocks) existing lock `lock_token` for a resource identified by `uri,`
          * or, in case it's %NULL, on the URI defined in associated #ESource.
@@ -17495,7 +17636,11 @@ export namespace EDataServer {
          * @param name a property name
          * @param value a property value
          */
-        util_set_to_form(form: GLib.HashTable<string, string>, name: string, value?: string | null): void;
+        util_set_to_form(
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+            name: string,
+            value?: string | null,
+        ): void;
         /**
          * Takes ownership of `value` and sets it for `name` to `form`. The `value`
          * will be freed with g_free(), when no longer needed. The `form` should be
@@ -17509,7 +17654,11 @@ export namespace EDataServer {
          * @param name a property name
          * @param value a property value
          */
-        util_take_to_form(form: GLib.HashTable<string, string>, name: string, value?: string | null): void;
+        util_take_to_form(
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+            name: string,
+            value?: string | null,
+        ): void;
     }
     interface OAuth2Service extends GObject.Object {
         // Own methods of EDataServer.OAuth2Service
@@ -17672,7 +17821,10 @@ export namespace EDataServer {
          * @param source an associated #ESource
          * @param uri_query query for the URI to use
          */
-        prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        prepare_authentication_uri_query(
+            source: Source,
+            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -17687,7 +17839,11 @@ export namespace EDataServer {
          * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
          * @param form form parameters to be used in the POST request
          */
-        prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable<string, string>): void;
+        prepare_get_token_form(
+            source: Source,
+            authorization_code: string,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * The `service` can change the `message` before it's sent to
          * the e_oauth2_service_get_authentication_uri(), with POST data
@@ -17711,7 +17867,11 @@ export namespace EDataServer {
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
          */
-        prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable<string, string>): void;
+        prepare_refresh_token_form(
+            source: Source,
+            refresh_token: string,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * The `service` can change the `message` before it's sent to
          * the e_oauth2_service_get_refresh_uri(), with POST data
@@ -17884,7 +18044,10 @@ export namespace EDataServer {
          * @param source an associated #ESource
          * @param uri_query query for the URI to use
          */
-        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        vfunc_prepare_authentication_uri_query(
+            source: Source,
+            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -17902,7 +18065,7 @@ export namespace EDataServer {
         vfunc_prepare_get_token_form(
             source: Source,
             authorization_code: string,
-            form: GLib.HashTable<string, string>,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -17930,7 +18093,7 @@ export namespace EDataServer {
         vfunc_prepare_refresh_token_form(
             source: Source,
             refresh_token: string,
-            form: GLib.HashTable<string, string>,
+            form: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to

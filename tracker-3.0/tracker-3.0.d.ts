@@ -466,7 +466,7 @@ export namespace Tracker {
          * @param variable_names The names of each bound parameter
          * @param values The values of each bound parameter
          */
-        add_statement(stmt: SparqlStatement, variable_names: string[], values: GObject.Value[]): void;
+        add_statement(stmt: SparqlStatement, variable_names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Executes the batch. This operations happens synchronously.
          * @param cancellable Optional [type@Gio.Cancellable]
@@ -806,6 +806,7 @@ export namespace Tracker {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -848,7 +849,7 @@ export namespace Tracker {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1049,7 +1050,7 @@ export namespace Tracker {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1064,7 +1065,7 @@ export namespace Tracker {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1356,6 +1357,7 @@ export namespace Tracker {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1398,7 +1400,7 @@ export namespace Tracker {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1599,7 +1601,7 @@ export namespace Tracker {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1614,7 +1616,7 @@ export namespace Tracker {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1950,7 +1952,7 @@ export namespace Tracker {
          * @param property_uri a string identifying the property to set
          * @param value an initialised [struct@GObject.Value]
          */
-        add_gvalue(property_uri: string, value: GObject.Value): void;
+        add_gvalue(property_uri: string, value: GObject.Value | any): void;
         /**
          * Adds a numeric property with integer precision. Previous values for the same property are kept.
          *
@@ -2211,7 +2213,7 @@ export namespace Tracker {
          * @param property_uri a string identifying the property to set
          * @param value an initialised [struct@GObject.Value]
          */
-        set_gvalue(property_uri: string, value: GObject.Value): void;
+        set_gvalue(property_uri: string, value: GObject.Value | any): void;
         /**
          * Changes the identifier of a `TrackerResource`. The identifier should be a
          * URI or compact URI, but this is not necessarily enforced. Invalid

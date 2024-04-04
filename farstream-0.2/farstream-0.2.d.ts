@@ -429,7 +429,7 @@ export namespace Farstream {
      * @param value a #GValue of type #FS_TYPE_CANDIDATE_LIST
      * @param candidates A #GList of #FsCandidate
      */
-    function value_set_candidate_list(value: GObject.Value, candidates?: Candidate[] | null): void;
+    function value_set_candidate_list(value: GObject.Value | any, candidates?: Candidate[] | null): void;
     type CandidateList = object | null;
     type CodecGList = object | null;
     type RtpHeaderExtensionGList = object | null;
@@ -551,6 +551,7 @@ export namespace Farstream {
          * @param name name of the property
          */
         get_property(name: string): unknown;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Looks up which object and #GParamSpec would be effected by the given `name`.
@@ -563,7 +564,8 @@ export namespace Farstream {
          * @param name name of the property to set
          * @param value new #GValue for the property
          */
-        set_property(name: string, value: GObject.Value): void;
+        set_property(name: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
          * Emits the #GstChildProxy::child-added signal.
@@ -685,6 +687,7 @@ export namespace Farstream {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -726,7 +729,7 @@ export namespace Farstream {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -801,6 +804,7 @@ export namespace Farstream {
          * @returns the same @object
          */
         ref(): GObject.Object;
+        // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object,` and possibly remove the
@@ -927,7 +931,7 @@ export namespace Farstream {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -942,7 +946,7 @@ export namespace Farstream {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1113,6 +1117,7 @@ export namespace Farstream {
          * the GObject type system itself.
          */
         use(): void;
+        // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1204,6 +1209,7 @@ export namespace Farstream {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1246,7 +1252,7 @@ export namespace Farstream {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1447,7 +1453,7 @@ export namespace Farstream {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1462,7 +1468,7 @@ export namespace Farstream {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

@@ -1394,7 +1394,7 @@ export namespace Gda {
      * @param value2 the other #GValue to be compared to @value1 (not %NULL)
      * @returns if both values have the same type, returns 0 if both contain the same value, an integer less than 0 if @value1 is less than @value2 or an integer greater than 0 if @value1 is greater than @value2.
      */
-    function value_compare(value1: GObject.Value, value2: GObject.Value): number;
+    function value_compare(value1: GObject.Value | any, value2: GObject.Value | any): number;
     /**
      * Tells if two values are equal or not, by comparing memory representations. Unlike gda_value_compare(),
      * the returned value is boolean, and gives no idea about ordering.
@@ -1411,7 +1411,7 @@ export namespace Gda {
      * @param value2 the other #GValue to be compared to @value1.
      * @returns a non 0 value if @value1 and @value2 differ, and 0 if they are equal
      */
-    function value_differ(value1: GObject.Value, value2: GObject.Value): number;
+    function value_differ(value1: GObject.Value | any, value2: GObject.Value | any): number;
     /**
      * Converts a GValue to its string representation which is a human readable value. Note that the
      * returned string does not take into account the current locale of the user (on the contrary to the
@@ -1422,12 +1422,12 @@ export namespace Gda {
      * @param value a #GValue.
      * @returns a new string, or %NULL if the conversion cannot be done. Free the value with a g_free() when you've finished using it.
      */
-    function value_stringify(value: GObject.Value): string;
+    function value_stringify(value: GObject.Value | any): string;
     interface AttributesManagerFunc {
-        (att_name: string, value: GObject.Value, data?: any | null): void;
+        (att_name: string, value: GObject.Value | any, data?: any | null): void;
     }
     interface AttributesManagerSignal<A = GObject.Object> {
-        (obj: A, att_name: string, value: GObject.Value, data?: any | null): void;
+        (obj: A, att_name: string, value: GObject.Value | any, data?: any | null): void;
     }
     interface ServerProviderAsyncCallback {
         (
@@ -1450,7 +1450,7 @@ export namespace Gda {
         ): void;
     }
     interface SqlRenderingValue {
-        (value: GObject.Value, context: SqlRenderingContext): string;
+        (value: GObject.Value | any, context: SqlRenderingContext): string;
     }
     interface SqlReservedKeywordsFunc {
         (word: string): boolean;
@@ -1461,7 +1461,7 @@ export namespace Gda {
             instance: any | null,
             signame: string,
             n_param_values: number,
-            param_values: GObject.Value,
+            param_values: GObject.Value | any,
             gda_reserved?: any | null,
             data?: any | null,
         ): void;
@@ -1934,7 +1934,7 @@ export namespace Gda {
          * @param attribute attribute name as a string
          * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @column
          */
-        get_attribute(attribute: string): GObject.Value;
+        get_attribute(attribute: string): unknown;
         get_auto_increment(): boolean;
         get_dbms_type(): string;
         get_default_value(): GObject.Value | null;
@@ -2697,7 +2697,11 @@ export namespace Gda {
          * @param condition_value the @condition_column_type's GType
          * @returns TRUE if no error occurred, FALSE otherwise
          */
-        delete_row_from_table(table: string, condition_column_name: string, condition_value: GObject.Value): boolean;
+        delete_row_from_table(
+            table: string,
+            condition_column_name: string,
+            condition_value: GObject.Value | any,
+        ): boolean;
         /**
          * Delete the SAVEPOINT named `name` when not used anymore.
          * @param name name of the savepoint to delete
@@ -2799,7 +2803,7 @@ export namespace Gda {
          * @param values a list of values (as #GValue)
          * @returns TRUE if no error occurred, FALSE otherwise
          */
-        insert_row_into_table_v(table: string, col_names: string[], values: GObject.Value[]): boolean;
+        insert_row_into_table_v(table: string, col_names: string[], values: (GObject.Value | any)[]): boolean;
         /**
          * Checks whether a connection is open or not.
          * @returns %TRUE if the connection is open, %FALSE if it's not.
@@ -3094,16 +3098,16 @@ export namespace Gda {
         update_row_in_table_v(
             table: string,
             condition_column_name: string,
-            condition_value: GObject.Value,
+            condition_value: GObject.Value | any,
             col_names: string[],
-            values: GObject.Value[],
+            values: (GObject.Value | any)[],
         ): boolean;
         /**
          * Produces a fully quoted and escaped string from a GValue
          * @param from #GValue to convert from
          * @returns escaped and quoted value or NULL if not supported.
          */
-        value_to_sql_string(from: GObject.Value): string;
+        value_to_sql_string(from: GObject.Value | any): string;
 
         // Inherited methods
         /**
@@ -3227,6 +3231,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3269,7 +3274,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3470,7 +3475,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3485,7 +3490,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3877,7 +3882,7 @@ export namespace Gda {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns the requested row number, of -1 if not found
          */
-        get_row_from_values(values: GObject.Value[], cols_index: number[]): number;
+        get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Upon errors %NULL will be returned and `error` will be assigned a
          * #GError from the #GDA_DATA_MODEL_ERROR domain.
@@ -4004,7 +4009,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -4077,7 +4082,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -4160,7 +4165,7 @@ export namespace Gda {
          * @param values a list of #GValue values (no %NULL is allowed)
          * @param cols_index an array of #gint containing the column number to match each value of @values
          */
-        vfunc_i_find_row(values: GObject.Value[], cols_index: number[]): number;
+        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          */
@@ -4237,7 +4242,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -4267,7 +4272,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a #GValue (not %NULL)
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -4399,6 +4404,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4441,7 +4447,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4642,7 +4648,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4657,7 +4663,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5057,7 +5063,7 @@ export namespace Gda {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns the requested row number, of -1 if not found
          */
-        get_row_from_values(values: GObject.Value[], cols_index: number[]): number;
+        get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Upon errors %NULL will be returned and `error` will be assigned a
          * #GError from the #GDA_DATA_MODEL_ERROR domain.
@@ -5184,7 +5190,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -5257,7 +5263,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -5340,7 +5346,7 @@ export namespace Gda {
          * @param values a list of #GValue values (no %NULL is allowed)
          * @param cols_index an array of #gint containing the column number to match each value of @values
          */
-        vfunc_i_find_row(values: GObject.Value[], cols_index: number[]): number;
+        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          */
@@ -5417,7 +5423,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -5447,7 +5453,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a #GValue (not %NULL)
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -5579,6 +5585,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5621,7 +5628,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5822,7 +5829,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5837,7 +5844,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6120,7 +6127,7 @@ export namespace Gda {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns the requested row number, of -1 if not found
          */
-        get_row_from_values(values: GObject.Value[], cols_index: number[]): number;
+        get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Upon errors %NULL will be returned and `error` will be assigned a
          * #GError from the #GDA_DATA_MODEL_ERROR domain.
@@ -6247,7 +6254,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -6320,7 +6327,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -6403,7 +6410,7 @@ export namespace Gda {
          * @param values a list of #GValue values (no %NULL is allowed)
          * @param cols_index an array of #gint containing the column number to match each value of @values
          */
-        vfunc_i_find_row(values: GObject.Value[], cols_index: number[]): number;
+        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          */
@@ -6480,7 +6487,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -6510,7 +6517,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a #GValue (not %NULL)
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -6642,6 +6649,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6684,7 +6692,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6885,7 +6893,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6900,7 +6908,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7266,7 +7274,7 @@ export namespace Gda {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns the requested row number, of -1 if not found
          */
-        get_row_from_values(values: GObject.Value[], cols_index: number[]): number;
+        get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Upon errors %NULL will be returned and `error` will be assigned a
          * #GError from the #GDA_DATA_MODEL_ERROR domain.
@@ -7393,7 +7401,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -7466,7 +7474,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -7549,7 +7557,7 @@ export namespace Gda {
          * @param values a list of #GValue values (no %NULL is allowed)
          * @param cols_index an array of #gint containing the column number to match each value of @values
          */
-        vfunc_i_find_row(values: GObject.Value[], cols_index: number[]): number;
+        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          */
@@ -7626,7 +7634,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -7656,7 +7664,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a #GValue (not %NULL)
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -7788,6 +7796,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7830,7 +7839,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8031,7 +8040,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8046,7 +8055,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8240,7 +8249,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if no error occurred
          */
-        set_value_at(col: number, value: GObject.Value): boolean;
+        set_value_at(col: number, value: GObject.Value | any): boolean;
     }
 
     module DataModelLdap {
@@ -8562,7 +8571,7 @@ export namespace Gda {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns the requested row number, of -1 if not found
          */
-        get_row_from_values(values: GObject.Value[], cols_index: number[]): number;
+        get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Upon errors %NULL will be returned and `error` will be assigned a
          * #GError from the #GDA_DATA_MODEL_ERROR domain.
@@ -8689,7 +8698,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -8762,7 +8771,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -8845,7 +8854,7 @@ export namespace Gda {
          * @param values a list of #GValue values (no %NULL is allowed)
          * @param cols_index an array of #gint containing the column number to match each value of @values
          */
-        vfunc_i_find_row(values: GObject.Value[], cols_index: number[]): number;
+        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          */
@@ -8922,7 +8931,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -8952,7 +8961,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a #GValue (not %NULL)
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -9084,6 +9093,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9126,7 +9136,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -9327,7 +9337,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9342,7 +9352,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -9665,7 +9675,7 @@ export namespace Gda {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns the requested row number, of -1 if not found
          */
-        get_row_from_values(values: GObject.Value[], cols_index: number[]): number;
+        get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Upon errors %NULL will be returned and `error` will be assigned a
          * #GError from the #GDA_DATA_MODEL_ERROR domain.
@@ -9792,7 +9802,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -9865,7 +9875,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -9948,7 +9958,7 @@ export namespace Gda {
          * @param values a list of #GValue values (no %NULL is allowed)
          * @param cols_index an array of #gint containing the column number to match each value of @values
          */
-        vfunc_i_find_row(values: GObject.Value[], cols_index: number[]): number;
+        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          */
@@ -10025,7 +10035,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -10055,7 +10065,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a #GValue (not %NULL)
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -10187,6 +10197,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -10229,7 +10240,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -10430,7 +10441,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10445,7 +10456,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10739,7 +10750,7 @@ export namespace Gda {
          * @param cols_index array containing the columns for which the values are requested
          * @returns a new list of values (the list must be freed, not the values), or %NULL if an error occurred
          */
-        get_values(proxy_row: number, cols_index: number[]): GObject.Value[];
+        get_values(proxy_row: number, cols_index: number[]): unknown[];
         /**
          * Tells if `proxy` contains any modifications not applied to the proxied data model.
          * @returns TRUE if there are some modifications in @proxy
@@ -11043,7 +11054,7 @@ export namespace Gda {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns the requested row number, of -1 if not found
          */
-        get_row_from_values(values: GObject.Value[], cols_index: number[]): number;
+        get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Upon errors %NULL will be returned and `error` will be assigned a
          * #GError from the #GDA_DATA_MODEL_ERROR domain.
@@ -11170,7 +11181,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -11243,7 +11254,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -11326,7 +11337,7 @@ export namespace Gda {
          * @param values a list of #GValue values (no %NULL is allowed)
          * @param cols_index an array of #gint containing the column number to match each value of @values
          */
-        vfunc_i_find_row(values: GObject.Value[], cols_index: number[]): number;
+        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          */
@@ -11403,7 +11414,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -11433,7 +11444,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a #GValue (not %NULL)
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -11565,6 +11576,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11607,7 +11619,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11808,7 +11820,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11823,7 +11835,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -12306,7 +12318,7 @@ export namespace Gda {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns the requested row number, of -1 if not found
          */
-        get_row_from_values(values: GObject.Value[], cols_index: number[]): number;
+        get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Upon errors %NULL will be returned and `error` will be assigned a
          * #GError from the #GDA_DATA_MODEL_ERROR domain.
@@ -12433,7 +12445,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -12506,7 +12518,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -12589,7 +12601,7 @@ export namespace Gda {
          * @param values a list of #GValue values (no %NULL is allowed)
          * @param cols_index an array of #gint containing the column number to match each value of @values
          */
-        vfunc_i_find_row(values: GObject.Value[], cols_index: number[]): number;
+        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          */
@@ -12666,7 +12678,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -12696,7 +12708,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a #GValue (not %NULL)
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -12828,6 +12840,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -12870,7 +12883,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13071,7 +13084,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13086,7 +13099,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -13174,7 +13187,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -13189,7 +13202,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a #GType
@@ -13237,7 +13250,7 @@ export namespace Gda {
          * @param sql an SQL string, or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -13251,7 +13264,7 @@ export namespace Gda {
          * @param str a string or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -13342,6 +13355,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -13384,7 +13398,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -13585,7 +13599,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13600,7 +13614,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -13688,7 +13702,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -13703,7 +13717,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a #GType
@@ -13751,7 +13765,7 @@ export namespace Gda {
          * @param sql an SQL string, or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -13765,7 +13779,7 @@ export namespace Gda {
          * @param str a string or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -13856,6 +13870,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -13898,7 +13913,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -14099,7 +14114,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14114,7 +14129,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -14202,7 +14217,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -14217,7 +14232,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a #GType
@@ -14265,7 +14280,7 @@ export namespace Gda {
          * @param sql an SQL string, or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -14279,7 +14294,7 @@ export namespace Gda {
          * @param str a string or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -14370,6 +14385,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14412,7 +14428,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -14613,7 +14629,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14628,7 +14644,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -14723,7 +14739,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -14738,7 +14754,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a #GType
@@ -14786,7 +14802,7 @@ export namespace Gda {
          * @param sql an SQL string, or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -14800,7 +14816,7 @@ export namespace Gda {
          * @param str a string or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -14891,6 +14907,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14933,7 +14950,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15134,7 +15151,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15149,7 +15166,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15197,7 +15214,7 @@ export namespace Gda {
          * @returns a new string
          */
         get_format(type: GObject.GType): string;
-        get_no_locale_str_from_value(value: GObject.Value): string;
+        get_no_locale_str_from_value(value: GObject.Value | any): string;
         /**
          * Specifies the SQL output style of the `dh` data handler. The general format is "FIRSTsSECsTHIRD"
          * where FIRST, SEC and THIRD are specified by `first,` `sec` and `trird` and 's' is the separator,
@@ -15294,7 +15311,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -15309,7 +15326,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a #GType
@@ -15357,7 +15374,7 @@ export namespace Gda {
          * @param sql an SQL string, or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -15371,7 +15388,7 @@ export namespace Gda {
          * @param str a string or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15462,6 +15479,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -15504,7 +15522,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15705,7 +15723,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15720,7 +15738,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -15808,7 +15826,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -15823,7 +15841,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a #GType
@@ -15871,7 +15889,7 @@ export namespace Gda {
          * @param sql an SQL string, or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -15885,7 +15903,7 @@ export namespace Gda {
          * @param str a string or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15976,6 +15994,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -16018,7 +16037,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -16219,7 +16238,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16234,7 +16253,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -16246,7 +16265,7 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface AttributeChanged {
-            (att_name: string, att_value: GObject.Value): void;
+            (att_name: string, att_value: GObject.Value | any): void;
         }
 
         interface Changed {
@@ -16258,7 +16277,7 @@ export namespace Gda {
         }
 
         interface ValidateChange {
-            (new_value: GObject.Value): GLib.Error;
+            (new_value: GObject.Value | any): GLib.Error;
         }
 
         // Constructor properties interface
@@ -16357,7 +16376,7 @@ export namespace Gda {
             signal: 'attribute-changed',
             callback: (_source: this, att_name: string, att_value: GObject.Value) => void,
         ): number;
-        emit(signal: 'attribute-changed', att_name: string, att_value: GObject.Value): void;
+        emit(signal: 'attribute-changed', att_name: string, att_value: GObject.Value | any): void;
         connect(signal: 'changed', callback: (_source: this) => void): number;
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
@@ -16369,7 +16388,7 @@ export namespace Gda {
             signal: 'validate-change',
             callback: (_source: this, new_value: GObject.Value) => GLib.Error,
         ): number;
-        emit(signal: 'validate-change', new_value: GObject.Value): void;
+        emit(signal: 'validate-change', new_value: GObject.Value | any): void;
 
         // Own static methods of Gda.Holder
 
@@ -16377,10 +16396,10 @@ export namespace Gda {
 
         // Own virtual methods of Gda.Holder
 
-        vfunc_att_changed(att_name: string, att_value: GObject.Value): void;
+        vfunc_att_changed(att_name: string, att_value: GObject.Value | any): void;
         vfunc_changed(): void;
         vfunc_source_changed(): void;
-        vfunc_validate_change(new_value: GObject.Value): GLib.Error;
+        vfunc_validate_change(new_value: GObject.Value | any): GLib.Error;
 
         // Own methods of Gda.Holder
 
@@ -16423,7 +16442,7 @@ export namespace Gda {
          * @param attribute attribute name as a string
          * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @holder
          */
-        get_attribute(attribute: string): GObject.Value;
+        get_attribute(attribute: string): unknown;
         /**
          * Get the holder which makes `holder` change its value when the holder's value is changed.
          * @returns the #GdaHolder or %NULL
@@ -16434,7 +16453,7 @@ export namespace Gda {
          * the same type as the one required by `holder`.
          * @returns the default value
          */
-        get_default_value(): GObject.Value;
+        get_default_value(): unknown;
         get_g_type(): GObject.GType;
         /**
          * Get the ID of `holder`. The ID can be set using `holder'`s "id" property
@@ -16502,7 +16521,7 @@ export namespace Gda {
          * @param attribute attribute name
          * @param value a #GValue, or %NULL
          */
-        set_attribute(attribute: string, value: GObject.Value): void;
+        set_attribute(attribute: string, value: GObject.Value | any): void;
         /**
          * Sets `holder` to change when `bind_to` changes (and does not make `bind_to` change when `holder` changes).
          * For the operation to succeed, the GType of `holder` and `bind_to` must be the same, with the exception that
@@ -16522,7 +16541,7 @@ export namespace Gda {
          * NOTE: the default value does not need to be of the same type as the one required by `holder`.
          * @param value a value to set the holder's default value, or %NULL
          */
-        set_default_value(value: GObject.Value): void;
+        set_default_value(value: GObject.Value | any): void;
         /**
          * Sets if the holder can have a NULL value. If `not_null` is TRUE, then that won't be allowed
          * @param not_null TRUE if @holder should not accept %NULL values
@@ -16600,7 +16619,7 @@ export namespace Gda {
          * @param value_changed a boolean set with TRUE if the value changes, FALSE elsewhere.
          * @returns NULL if an error occurred or if the previous GValue was NULL itself. It returns the static GValue user set previously, so that he can free it.
          */
-        take_static_value(value: GObject.Value, value_changed: boolean): GObject.Value;
+        take_static_value(value: GObject.Value | any, value_changed: boolean): unknown;
         /**
          * Sets the value within the holder. If `holder` is an alias for another
          * holder, then the value is also set for that other holder.
@@ -16624,7 +16643,7 @@ export namespace Gda {
          * @param value a value to set the holder to
          * @returns TRUE if value has been set
          */
-        take_value(value: GObject.Value): boolean;
+        take_value(value: GObject.Value | any): boolean;
         /**
          * Tells if `holder'`s current value is the default one.
          * @returns TRUE if @holder @holder's current value is the default one
@@ -16753,6 +16772,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -16795,7 +16815,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -16996,7 +17016,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17011,7 +17031,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -17215,7 +17235,7 @@ export namespace Gda {
             new_data: DataModel | null,
             condition: string | null,
             value_names: string[],
-            values: GObject.Value[],
+            values: (GObject.Value | any)[],
         ): boolean;
         /**
          * Propagates an update to `store,` the update's contents is represented by `new_data,` this function is
@@ -17430,7 +17450,7 @@ export namespace Gda {
             type: MetaDbObjectType,
             catalog: GObject.Value | null,
             schema: GObject.Value | null,
-            name: GObject.Value,
+            name: GObject.Value | any,
         ): MetaDbObject;
         /**
          * This method is similar to gda_meta_struct_complement() and gda_meta_struct_complement_default()
@@ -17494,7 +17514,11 @@ export namespace Gda {
          * @param name the object's name (as a G_TYPE_STRING GValue), not %NULL
          * @returns the #GdaMetaDbObject or %NULL if not found
          */
-        get_db_object(catalog: GObject.Value | null, schema: GObject.Value | null, name: GObject.Value): MetaDbObject;
+        get_db_object(
+            catalog: GObject.Value | null,
+            schema: GObject.Value | null,
+            name: GObject.Value | any,
+        ): MetaDbObject;
         /**
          * Loads an XML description into `mstruct`. This method is still experimental and no description
          * the XML file structure is given, and no guarantee that it will remain as it is given.
@@ -17655,14 +17679,14 @@ export namespace Gda {
          * providers' implementations to report any error while reading a value from the database.
          * @param value a #GValue belonging to @row (obtained with gda_row_get_value()).
          */
-        invalidate_value(value: GObject.Value): void;
+        invalidate_value(value: GObject.Value | any): void;
         /**
          * Marks `value` as being invalid. This method is mainly used by database
          * providers' implementations to report any error while reading a value from the database.
          * @param value a #GValue belonging to @row (obtained with gda_row_get_value()).
          * @param error the error which lead to the invalidation
          */
-        invalidate_value_e(value: GObject.Value, error?: GLib.Error | null): void;
+        invalidate_value_e(value: GObject.Value | any, error?: GLib.Error | null): void;
         /**
          * Tells if `value` has been marked as being invalid by gda_row_invalidate_value().
          * This method is mainly used by database
@@ -17670,7 +17694,7 @@ export namespace Gda {
          * @param value a #GValue belonging to @row (obtained with gda_row_get_value()).
          * @returns %TRUE if @value is valid
          */
-        value_is_valid(value: GObject.Value): boolean;
+        value_is_valid(value: GObject.Value | any): boolean;
         /**
          * Tells if `value` has been marked as being invalid by gda_row_invalidate_value().
          * This method is mainly used by database
@@ -17678,7 +17702,7 @@ export namespace Gda {
          * @param value a #GValue belonging to @row (obtained with gda_row_get_value()).
          * @returns %TRUE if @value is valid
          */
-        value_is_valid_e(value: GObject.Value): boolean;
+        value_is_valid_e(value: GObject.Value | any): boolean;
     }
 
     module ServerOperation {
@@ -18229,7 +18253,7 @@ export namespace Gda {
             string: string,
             preferred_type: GObject.GType,
             dbms_type?: string | null,
-        ): GObject.Value;
+        ): unknown;
         /**
          * Tests if a feature is supported
          * @param cnc a #GdaConnection object, or %NULL
@@ -18259,14 +18283,14 @@ export namespace Gda {
          * @param from #GValue to convert from
          * @returns escaped and quoted value or NULL if not supported.
          */
-        value_to_sql_string(cnc: Connection | null, from: GObject.Value): string;
+        value_to_sql_string(cnc: Connection | null, from: GObject.Value | any): string;
     }
 
     module Set {
         // Signal callback interfaces
 
         interface HolderAttrChanged {
-            (holder: Holder, attr_name: string, attr_value: GObject.Value): void;
+            (holder: Holder, attr_name: string, attr_value: GObject.Value | any): void;
         }
 
         interface HolderChanged {
@@ -18286,7 +18310,7 @@ export namespace Gda {
         }
 
         interface ValidateHolderChange {
-            (holder: Holder, new_value: GObject.Value): GLib.Error;
+            (holder: Holder, new_value: GObject.Value | any): GLib.Error;
         }
 
         interface ValidateSet {
@@ -18363,7 +18387,7 @@ export namespace Gda {
             signal: 'holder-attr-changed',
             callback: (_source: this, holder: Holder, attr_name: string, attr_value: GObject.Value) => void,
         ): number;
-        emit(signal: 'holder-attr-changed', holder: Holder, attr_name: string, attr_value: GObject.Value): void;
+        emit(signal: 'holder-attr-changed', holder: Holder, attr_name: string, attr_value: GObject.Value | any): void;
         connect(signal: 'holder-changed', callback: (_source: this, object: Holder) => void): number;
         connect_after(signal: 'holder-changed', callback: (_source: this, object: Holder) => void): number;
         emit(signal: 'holder-changed', object: Holder): void;
@@ -18384,7 +18408,7 @@ export namespace Gda {
             signal: 'validate-holder-change',
             callback: (_source: this, holder: Holder, new_value: GObject.Value) => GLib.Error,
         ): number;
-        emit(signal: 'validate-holder-change', holder: Holder, new_value: GObject.Value): void;
+        emit(signal: 'validate-holder-change', holder: Holder, new_value: GObject.Value | any): void;
         connect(signal: 'validate-set', callback: (_source: this) => GLib.Error): number;
         connect_after(signal: 'validate-set', callback: (_source: this) => GLib.Error): number;
         emit(signal: 'validate-set'): void;
@@ -18395,12 +18419,12 @@ export namespace Gda {
 
         // Own virtual methods of Gda.Set
 
-        vfunc_holder_attr_changed(holder: Holder, attr_name: string, attr_value: GObject.Value): void;
+        vfunc_holder_attr_changed(holder: Holder, attr_name: string, attr_value: GObject.Value | any): void;
         vfunc_holder_changed(holder: Holder): void;
         vfunc_holder_type_set(holder: Holder): void;
         vfunc_public_data_changed(): void;
         vfunc_source_model_changed(source: SetSource): void;
-        vfunc_validate_holder_change(holder: Holder, new_value: GObject.Value): GLib.Error;
+        vfunc_validate_holder_change(holder: Holder, new_value: GObject.Value | any): GLib.Error;
         vfunc_validate_set(): GLib.Error;
 
         // Own methods of Gda.Set
@@ -19007,6 +19031,7 @@ export namespace Gda {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -19049,7 +19074,7 @@ export namespace Gda {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -19250,7 +19275,7 @@ export namespace Gda {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19265,7 +19290,7 @@ export namespace Gda {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -19766,7 +19791,7 @@ export namespace Gda {
          * @param attribute attribute name
          * @param value a #GValue, or %NULL
          */
-        set_attribute(attribute: string, value: GObject.Value): void;
+        set_attribute(attribute: string, value: GObject.Value | any): void;
         /**
          * Requests that `tree` be populated with nodes. If an error occurs, then `tree'`s contents is left
          * unchanged, and otherwise `tree'`s previous contents is completely replaced by the new one.
@@ -20212,7 +20237,7 @@ export namespace Gda {
          * @param attribute attribute name as a string
          * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @node
          */
-        fetch_attribute(attribute: string): GObject.Value;
+        fetch_attribute(attribute: string): unknown;
         /**
          * Get the #GdaTreeNode child of `node` at position `index` (starting at 0).
          * @param index a index
@@ -20240,7 +20265,7 @@ export namespace Gda {
          * @param attribute attribute name as a string
          * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @node
          */
-        get_node_attribute(attribute: string): GObject.Value;
+        get_node_attribute(attribute: string): unknown;
         /**
          * Get the #GdaTreeNode parent of `node` in the #GdaTree node belongs to. If `node` is at the top level,
          * then this method return %NULL.
@@ -20816,7 +20841,7 @@ export namespace Gda {
          * @param value the column's value
          * @param cnc a #GdaConnection to be used when identifier are normalized, or NULL
          */
-        set_column(column: string, value: GObject.Value, cnc?: Connection | null): void;
+        set_column(column: string, value: GObject.Value | any, cnc?: Connection | null): void;
         /**
          * Set columns to use in the context. The #GHashTable use column's name as key and a #GValue as value,
          * to represent its value.
@@ -20825,7 +20850,10 @@ export namespace Gda {
          * @param columns a #GHashTable with the table's columns' name and their values to use in context.
          * @param cnc a #GdaConnection to used to normalize identifiers quoting, or NULL
          */
-        set_columns(columns: GLib.HashTable<string, GObject.Value>, cnc?: Connection | null): void;
+        set_columns(
+            columns: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            cnc?: Connection | null,
+        ): void;
         /**
          * Set table's name to use in the context. The table is one of <link linkend="information_schema">database
          * schema</link> used to store meta information about the database. Use "_tables" to update meta information
@@ -20957,7 +20985,7 @@ export namespace Gda {
          * @param attribute attribute name as a string
          * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @column
          */
-        get_attribute(attribute: string): GObject.Value;
+        get_attribute(attribute: string): unknown;
         /**
          * Set the value associated to a named attribute.
          *
@@ -21928,7 +21956,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -21943,7 +21971,7 @@ export namespace Gda {
          * @param type a GType
          * @returns the new #GValue or %NULL on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        get_value_from_str(str: string | null, type: GObject.GType): unknown;
 
         // Own virtual methods of Gda.DataHandler
 
@@ -21994,7 +22022,7 @@ export namespace Gda {
          * @param sql an SQL string, or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
@@ -22008,7 +22036,7 @@ export namespace Gda {
          * @param str a string or %NULL
          * @param type a GType
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
     }
 
     export const DataHandler: DataHandlerNamespace;
@@ -22257,7 +22285,7 @@ export namespace Gda {
          * @param cols_index an array of #gint containing the column number to match each value of @values
          * @returns the requested row number, of -1 if not found
          */
-        get_row_from_values(values: GObject.Value[], cols_index: number[]): number;
+        get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Upon errors %NULL will be returned and `error` will be assigned a
          * #GError from the #GDA_DATA_MODEL_ERROR domain.
@@ -22384,7 +22412,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -22457,7 +22485,7 @@ export namespace Gda {
          * @param value a #GValue (not %NULL)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.
@@ -22543,7 +22571,7 @@ export namespace Gda {
          * @param values a list of #GValue values (no %NULL is allowed)
          * @param cols_index an array of #gint containing the column number to match each value of @values
          */
-        vfunc_i_find_row(values: GObject.Value[], cols_index: number[]): number;
+        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          */
@@ -22620,7 +22648,7 @@ export namespace Gda {
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -22650,7 +22678,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a #GValue (not %NULL)
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
         /**
          * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
          * by setting several values at once.

@@ -2586,6 +2586,7 @@ export namespace Atspi {
          * @returns An #AtspiPoint giving the @obj's position.
          */
         get_position(ctype: CoordType): Point;
+        // Conflicted with Atspi.TableCell.get_position
         get_position(...args: never[]): any;
         /**
          * Gets the size of the specified #AtspiComponent.
@@ -3256,6 +3257,7 @@ export namespace Atspi {
          * @returns a text string containing characters from @start_offset          to @end_offset-1, inclusive, encoded as UTF-8.
          */
         get_text(start_offset: number, end_offset: number): string;
+        // Conflicted with Atspi.Value.get_text
         get_text(...args: never[]): any;
         /**
          * Gets delimited text from an #AtspiText object which follows a given
@@ -3443,6 +3445,7 @@ export namespace Atspi {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3485,7 +3488,7 @@ export namespace Atspi {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3686,7 +3689,7 @@ export namespace Atspi {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3701,7 +3704,7 @@ export namespace Atspi {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4189,7 +4192,7 @@ export namespace Atspi {
         static ['new'](
             states: StateSet,
             statematchtype: CollectionMatchType,
-            attributes: GLib.HashTable<string, string>,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             attributematchtype: CollectionMatchType,
             roles: Role[],
             rolematchtype: CollectionMatchType,

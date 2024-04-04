@@ -224,6 +224,7 @@ export namespace EDataCal {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with ECal.TimezoneCache.add_timezone
         add_timezone(...args: never[]): any;
         /**
          * Finishes the operation started with e_cal_backend_add_timezone().
@@ -599,6 +600,7 @@ export namespace EDataCal {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with ECal.TimezoneCache.get_timezone
         get_timezone(...args: never[]): any;
         /**
          * Finishes the operation started with e_cal_backend_get_timezone().
@@ -1144,6 +1146,7 @@ export namespace EDataCal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1186,7 +1189,7 @@ export namespace EDataCal {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1387,7 +1390,7 @@ export namespace EDataCal {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1402,7 +1405,7 @@ export namespace EDataCal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1547,6 +1550,7 @@ export namespace EDataCal {
          * @param tzobject VTIMEZONE object to be added.
          */
         add_timezone(cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string): void;
+        // Conflicted with EDataCal.CalBackend.add_timezone
         add_timezone(...args: never[]): any;
         /**
          * Calls the create_objects_sync method on the given backend.
@@ -1561,6 +1565,7 @@ export namespace EDataCal {
             calobjs: string[],
             opflags: ECal.OperationFlags,
         ): [string[], ECal.Component[]];
+        // Conflicted with EDataCal.CalBackend.create_objects
         create_objects(...args: never[]): any;
         /**
          * Calls the discard_alarm_sync method on the given backend.
@@ -1579,6 +1584,7 @@ export namespace EDataCal {
             auid: string,
             opflags: ECal.OperationFlags,
         ): void;
+        // Conflicted with EDataCal.CalBackend.discard_alarm
         discard_alarm(...args: never[]): any;
         /**
          * Calls the get_attachment_uris_sync method on the given backend.
@@ -1595,6 +1601,7 @@ export namespace EDataCal {
             rid: string,
             attachments: string[],
         ): void;
+        // Conflicted with EDataCal.CalBackend.get_attachment_uris
         get_attachment_uris(...args: never[]): any;
         /**
          * Calls the get_free_busy_sync method on the given backend.
@@ -1611,6 +1618,7 @@ export namespace EDataCal {
             start: number,
             end: number,
         ): string[];
+        // Conflicted with EDataCal.CalBackend.get_free_busy
         get_free_busy(...args: never[]): any;
         /**
          * Calls the get_object_sync method on the given backend.
@@ -1620,6 +1628,7 @@ export namespace EDataCal {
          * @param rid Recurrence ID of the specific instance to get, or %NULL if    getting the master object.
          */
         get_object(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string | null): string;
+        // Conflicted with EDataCal.CalBackend.get_object
         get_object(...args: never[]): any;
         /**
          * Calls the get_object_list_sync method on the given backend.
@@ -1628,6 +1637,7 @@ export namespace EDataCal {
          * @param sexp Search query.
          */
         get_object_list(cal: DataCal, cancellable: Gio.Cancellable | null, sexp: string): string[];
+        // Conflicted with EDataCal.CalBackend.get_object_list
         get_object_list(...args: never[]): any;
         /**
          * Calls the get_timezone_sync method on the given backend.
@@ -1643,6 +1653,7 @@ export namespace EDataCal {
          * @param tzobject Placeholder for the returned timezone.
          */
         get_timezone(cal: DataCal, cancellable: Gio.Cancellable | null, tzid: string, tzobject: string): void;
+        // Conflicted with EDataCal.CalBackend.get_timezone
         get_timezone(...args: never[]): any;
         /**
          * Calls the modify_objects_sync method on the given backend.
@@ -1659,6 +1670,7 @@ export namespace EDataCal {
             mod: ECal.ObjModType,
             opflags: ECal.OperationFlags,
         ): [ECal.Component[], ECal.Component[]];
+        // Conflicted with EDataCal.CalBackend.modify_objects
         modify_objects(...args: never[]): any;
         /**
          * Calls the open_sync method on the given backend.
@@ -1666,6 +1678,7 @@ export namespace EDataCal {
          * @param cancellable a #GCancellable for the operation or just create it when it does not exist.
          */
         open(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
+        // Conflicted with EDataCal.CalBackend.open
         open(...args: never[]): any;
         /**
          * Calls the receive_objects_sync method on the given backend.
@@ -1680,6 +1693,7 @@ export namespace EDataCal {
             calobj: string,
             opflags: ECal.OperationFlags,
         ): void;
+        // Conflicted with EDataCal.CalBackend.receive_objects
         receive_objects(...args: never[]): any;
         /**
          * Calls the refresh_sync method on the given backend.
@@ -1687,6 +1701,7 @@ export namespace EDataCal {
          * @param cancellable a #GCancellable for the operation
          */
         refresh(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
+        // Conflicted with EDataCal.CalBackend.refresh
         refresh(...args: never[]): any;
         /**
          * Calls the remove_objects_sync method on the given backend.
@@ -1703,6 +1718,7 @@ export namespace EDataCal {
             mod: ECal.ObjModType,
             opflags: ECal.OperationFlags,
         ): [ECal.Component[], ECal.Component[]];
+        // Conflicted with EDataCal.CalBackend.remove_objects
         remove_objects(...args: never[]): any;
         /**
          * Calls the send_objects_sync method on the given backend.
@@ -1719,6 +1735,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
             users: string[],
         ): string;
+        // Conflicted with EDataCal.CalBackend.send_objects
         send_objects(...args: never[]): any;
 
         // Inherited methods
@@ -1825,6 +1842,7 @@ export namespace EDataCal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1867,7 +1885,7 @@ export namespace EDataCal {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2068,7 +2086,7 @@ export namespace EDataCal {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2083,7 +2101,7 @@ export namespace EDataCal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2182,6 +2200,7 @@ export namespace EDataCal {
          * @returns Whether the object had been found.
          */
         contains(uid: string, rid: string | null, deleted_flag: EBackend.CacheDeletedFlag): boolean;
+        // Conflicted with EBackend.Cache.contains
         contains(...args: never[]): any;
         /**
          * Deletes all locally stored attachments beside the cache file from the disk.
@@ -2319,6 +2338,7 @@ export namespace EDataCal {
          * @returns A newly allocated list of all    offline changes. Free it with g_slist_free_full (slist, e_cal_cache_offline_change_free);    when no longer needed.
          */
         get_offline_changes(cancellable?: Gio.Cancellable | null): CalCacheOfflineChange[];
+        // Conflicted with EBackend.Cache.get_offline_changes
         get_offline_changes(...args: never[]): any;
         /**
          * This is a wrapper of e_cache_get_offline_state(), ensuring that
@@ -2333,6 +2353,7 @@ export namespace EDataCal {
             rid?: string | null,
             cancellable?: Gio.Cancellable | null,
         ): EBackend.OfflineState;
+        // Conflicted with EBackend.Cache.get_offline_state
         get_offline_state(...args: never[]): any;
         /**
          * Gets a timezone with given `tzid,` which had been previously put
@@ -2344,6 +2365,7 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         get_timezone(tzid: string, cancellable?: Gio.Cancellable | null): [boolean, ICalGLib.Timezone];
+        // Conflicted with ECal.TimezoneCache.get_timezone
         get_timezone(...args: never[]): any;
         /**
          * Gets a list of all stored timezones by the `cal_cache`.
@@ -2358,6 +2380,7 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         list_timezones(cancellable?: Gio.Cancellable | null): [boolean, ICalGLib.Timezone[]];
+        // Conflicted with ECal.TimezoneCache.list_timezones
         list_timezones(...args: never[]): any;
         /**
          * Adds a `component` into the `cal_cache`. Any existing with the same UID
@@ -2669,6 +2692,7 @@ export namespace EDataCal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2711,7 +2735,7 @@ export namespace EDataCal {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2912,7 +2936,7 @@ export namespace EDataCal {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2927,7 +2951,7 @@ export namespace EDataCal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3739,6 +3763,7 @@ export namespace EDataCal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3781,7 +3806,7 @@ export namespace EDataCal {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3982,7 +4007,7 @@ export namespace EDataCal {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3997,7 +4022,7 @@ export namespace EDataCal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4362,6 +4387,7 @@ export namespace EDataCal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4404,7 +4430,7 @@ export namespace EDataCal {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4605,7 +4631,7 @@ export namespace EDataCal {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4620,7 +4646,7 @@ export namespace EDataCal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4824,6 +4850,7 @@ export namespace EDataCal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4866,7 +4893,7 @@ export namespace EDataCal {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5067,7 +5094,7 @@ export namespace EDataCal {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5082,7 +5109,7 @@ export namespace EDataCal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5428,6 +5455,7 @@ export namespace EDataCal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5470,7 +5498,7 @@ export namespace EDataCal {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5671,7 +5699,7 @@ export namespace EDataCal {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5686,7 +5714,7 @@ export namespace EDataCal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5917,6 +5945,7 @@ export namespace EDataCal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5959,7 +5988,7 @@ export namespace EDataCal {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6160,7 +6189,7 @@ export namespace EDataCal {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6175,7 +6204,7 @@ export namespace EDataCal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

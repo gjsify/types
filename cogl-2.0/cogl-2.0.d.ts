@@ -3312,8 +3312,8 @@ export namespace Cogl {
 
         // Own static methods of Cogl.Object
 
-        static value_get_object(value: GObject.Value): any | null;
-        static value_set_object(value: GObject.Value, object?: any | null): void;
+        static value_get_object(value: GObject.Value | any): any | null;
+        static value_set_object(value: GObject.Value | any, object?: any | null): void;
     }
 
     class Onscreen extends Object implements Framebuffer {

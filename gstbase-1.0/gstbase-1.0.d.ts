@@ -143,7 +143,7 @@ export namespace GstBase {
      */
     function type_find_helper_for_data(
         obj: Gst.Object | null,
-        data: Uint8Array,
+        data: Uint8Array | string,
     ): [Gst.Caps | null, Gst.TypeFindProbability | null];
     /**
      * Tries to find if type of media contained in the given `data,` matches the
@@ -162,7 +162,7 @@ export namespace GstBase {
      */
     function type_find_helper_for_data_with_caps(
         obj: Gst.Object | null,
-        data: Uint8Array,
+        data: Uint8Array | string,
         caps: Gst.Caps,
     ): [Gst.Caps | null, Gst.TypeFindProbability | null];
     /**
@@ -189,7 +189,7 @@ export namespace GstBase {
      */
     function type_find_helper_for_data_with_extension(
         obj: Gst.Object | null,
-        data: Uint8Array,
+        data: Uint8Array | string,
         extension?: string | null,
     ): [Gst.Caps | null, Gst.TypeFindProbability | null];
     /**
@@ -2859,6 +2859,7 @@ export namespace GstBase {
         vfunc_prepare_output_buffer(input: Gst.Buffer): [Gst.FlowReturn, Gst.Buffer];
         vfunc_propose_allocation(decide_query: Gst.Query, query: Gst.Query): boolean;
         vfunc_query(direction: Gst.PadDirection, query: Gst.Query): boolean;
+        // Conflicted with Gst.Element.vfunc_query
         vfunc_query(...args: never[]): any;
         vfunc_set_caps(incaps: Gst.Caps, outcaps: Gst.Caps): boolean;
         vfunc_sink_event(event: Gst.Event): boolean;
@@ -3457,8 +3458,10 @@ export namespace GstBase {
          * @param buf
          */
         vfunc_create(buf?: Gst.Buffer | null): [Gst.FlowReturn, Gst.Buffer | null];
+        // Conflicted with GstBase.BaseSrc.vfunc_create
         vfunc_create(...args: never[]): any;
         vfunc_fill(buf: Gst.Buffer): Gst.FlowReturn;
+        // Conflicted with GstBase.BaseSrc.vfunc_fill
         vfunc_fill(...args: never[]): any;
     }
 
@@ -3641,7 +3644,7 @@ export namespace GstBase {
          * can be called on already initialized instances.
          * @param data data from which the bit reader should read
          */
-        init(data: Uint8Array): void;
+        init(data: Uint8Array | string): void;
         /**
          * Read `nbits` bits into `val` but keep the current position.
          * @param nbits number of bits to read
@@ -3782,7 +3785,7 @@ export namespace GstBase {
          * @param nbytes number of bytes to write
          * @returns %TRUE if successful, %FALSE otherwise.
          */
-        put_bytes(data: Uint8Array, nbytes: number): boolean;
+        put_bytes(data: Uint8Array | string, nbytes: number): boolean;
         /**
          * Resets `bitwriter` and frees the data if it's owned by `bitwriter`.
          */
@@ -4066,7 +4069,7 @@ export namespace GstBase {
          * can be called on already initialized instances.
          * @param data data from which     the #GstByteReader should read
          */
-        init(data: Uint8Array): void;
+        init(data: Uint8Array | string): void;
         /**
          * Scan for pattern `pattern` with applied mask `mask` in the byte reader data,
          * starting from offset `offset` relative to the current position.
@@ -4379,7 +4382,7 @@ export namespace GstBase {
          * @param data Memory area for writing
          * @param initialized If %TRUE the complete data can be read from the beginning
          */
-        init_with_data(data: Uint8Array, initialized: boolean): void;
+        init_with_data(data: Uint8Array | string, initialized: boolean): void;
         /**
          * Initializes `writer` with the given initial data size.
          * @param size Initial size of data
@@ -4399,7 +4402,7 @@ export namespace GstBase {
          * @param data Data to write
          * @returns %TRUE if the value could be written
          */
-        put_data(data: Uint8Array): boolean;
+        put_data(data: Uint8Array | string): boolean;
         /**
          * Writes a big endian 32 bit float to `writer`.
          * @param val Value to write

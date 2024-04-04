@@ -922,7 +922,7 @@ export namespace AppStreamCompose {
          * @param bytes Source data used to generate the GCID hash, or %NULL if nonexistent.
          * @returns %TRUE on success.
          */
-        add_component(cpt: AppStream.Component, bytes: GLib.Bytes): boolean;
+        add_component(cpt: AppStream.Component, bytes: GLib.Bytes | Uint8Array): boolean;
         /**
          * Add component to the results set, using string data.
          * @param cpt The #AsComponent to add.

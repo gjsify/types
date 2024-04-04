@@ -189,7 +189,7 @@ export namespace GdkPixdata {
          * @param stream stream of bytes containing a   serialized #GdkPixdata structure.
          * @returns Upon successful deserialization `TRUE` is returned, `FALSE` otherwise.
          */
-        deserialize(stream: Uint8Array): boolean;
+        deserialize(stream: Uint8Array | string): boolean;
         /**
          * Serializes a #GdkPixdata structure into a byte stream.
          * The byte stream consists of a straightforward writeout of the

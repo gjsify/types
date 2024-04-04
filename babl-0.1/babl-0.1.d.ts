@@ -221,7 +221,7 @@ export namespace Babl {
      * @param data The pixel data
      * @param count The number of pixels in @data
      */
-    function palette_set_palette(babl: Object, format: Object, data: Uint8Array, count: number): void;
+    function palette_set_palette(babl: Object, format: Object, data: Uint8Array | string, count: number): void;
     /**
      * Process n pixels from source to destination using babl_fish,
      *  returns number of pixels converted.

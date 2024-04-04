@@ -710,7 +710,7 @@ export namespace BlockDev {
         extra?: CryptoIntegrityExtra | null,
     ): boolean;
     function crypto_is_tech_avail(tech: CryptoTech, mode: number): boolean;
-    function crypto_keyring_add_key(key_desc: string, key_data: Uint8Array): boolean;
+    function crypto_keyring_add_key(key_desc: string, key_data: Uint8Array | string): boolean;
     /**
      * Supported `context` types for this function: passphrase, key file
      * @param device device to add new key to
@@ -2381,9 +2381,9 @@ export namespace BlockDev {
 
         static new_keyring(key_desc: string): CryptoKeyslotContext;
 
-        static new_passphrase(pass_data: Uint8Array): CryptoKeyslotContext;
+        static new_passphrase(pass_data: Uint8Array | string): CryptoKeyslotContext;
 
-        static new_volume_key(volume_key: Uint8Array): CryptoKeyslotContext;
+        static new_volume_key(volume_key: Uint8Array | string): CryptoKeyslotContext;
     }
 
     class CryptoLUKSExtra {

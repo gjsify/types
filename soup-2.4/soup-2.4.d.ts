@@ -1631,7 +1631,7 @@ export namespace Soup {
      * @param form_data_set a hash table containing name/value pairs (as strings)
      * @returns the encoded form
      */
-    function form_encode_hash(form_data_set: GLib.HashTable<string, string>): string;
+    function form_encode_hash(form_data_set: { [key: string]: any } | GLib.HashTable<string, string>): string;
     /**
      * Creates a new %SoupMessage and sets it up to send `form_data_set` to
      * `uri` via `method,` as with soup_form_request_new().
@@ -1652,7 +1652,7 @@ export namespace Soup {
     function form_request_new_from_hash(
         method: string,
         uri: string,
-        form_data_set: GLib.HashTable<string, string>,
+        form_data_set: { [key: string]: any } | GLib.HashTable<string, string>,
     ): Message;
     /**
      * Creates a new %SoupMessage and sets it up to send `multipart` to
@@ -1719,7 +1719,7 @@ export namespace Soup {
      * Frees `param_list`.
      * @param param_list a #GHashTable returned from soup_header_parse_param_list() or soup_header_parse_semi_param_list()
      */
-    function header_free_param_list(param_list: GLib.HashTable<string, string>): void;
+    function header_free_param_list(param_list: { [key: string]: any } | GLib.HashTable<string, string>): void;
     /**
      * Appends something like <literal>`name=``value<`/literal> to `string,`
      * taking care to quote `value` if needed, and if so, to escape any
@@ -2005,9 +2005,9 @@ export namespace Soup {
      * @param value a value
      */
     function value_hash_insert_value(
-        hash: GLib.HashTable<string, GObject.Value>,
+        hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         key: string,
-        value: GObject.Value,
+        value: GObject.Value | any,
     ): void;
     /**
      * Creates a #GHashTable whose keys are strings and whose values
@@ -2238,7 +2238,7 @@ export namespace Soup {
      * @param params arguments to @method
      * @returns the text of the methodCall, or %NULL on error
      */
-    function xmlrpc_build_method_call(method_name: string, params: GObject.Value[]): string | null;
+    function xmlrpc_build_method_call(method_name: string, params: (GObject.Value | any)[]): string | null;
     /**
      * This creates a (successful) XML-RPC methodResponse and returns it
      * as a string. To create a fault response, use
@@ -2249,7 +2249,7 @@ export namespace Soup {
      * @param value the return value
      * @returns the text of the methodResponse, or %NULL on error
      */
-    function xmlrpc_build_method_response(value: GObject.Value): string | null;
+    function xmlrpc_build_method_response(value: GObject.Value | any): string | null;
     /**
      * This creates an XML-RPC methodCall and returns it as a string.
      * This is the low-level method that soup_xmlrpc_message_new() is
@@ -2891,6 +2891,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2933,7 +2934,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3134,7 +3135,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3149,7 +3150,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3252,7 +3253,7 @@ export namespace Soup {
          * @param msg the #SoupMessage @auth is being updated for
          * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
          */
-        vfunc_update(msg: Message, auth_header: GLib.HashTable<any, any>): boolean;
+        vfunc_update(msg: Message, auth_header: { [key: string]: any } | GLib.HashTable<any, any>): boolean;
 
         // Own methods of Soup.Auth
 
@@ -3888,6 +3889,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3930,7 +3932,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4131,7 +4133,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4146,7 +4148,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4409,6 +4411,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4451,7 +4454,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4652,7 +4655,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4667,7 +4670,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4831,6 +4834,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -4873,7 +4877,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5074,7 +5078,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5089,7 +5093,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5289,6 +5293,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5331,7 +5336,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5532,7 +5537,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5547,7 +5552,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5920,6 +5925,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5962,7 +5968,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6163,7 +6169,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6178,7 +6184,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6353,6 +6359,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6395,7 +6402,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -6596,7 +6603,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6611,7 +6618,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6786,6 +6793,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6828,7 +6836,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7029,7 +7037,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7044,7 +7052,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7297,6 +7305,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7339,7 +7348,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7540,7 +7549,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7555,7 +7564,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7733,6 +7742,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -7775,7 +7785,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7976,7 +7986,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7991,7 +8001,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8223,6 +8233,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -8265,7 +8276,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -8466,7 +8477,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8481,7 +8492,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -8493,7 +8504,7 @@ export namespace Soup {
         // Signal callback interfaces
 
         interface ContentSniffed {
-            (type: string, params: GLib.HashTable<string, string>): void;
+            (type: string, params: { [key: string]: any } | GLib.HashTable<string, string>): void;
         }
 
         interface Finished {
@@ -8751,7 +8762,11 @@ export namespace Soup {
             signal: 'content-sniffed',
             callback: (_source: this, type: string, params: GLib.HashTable<string, string>) => void,
         ): number;
-        emit(signal: 'content-sniffed', type: string, params: GLib.HashTable<string, string>): void;
+        emit(
+            signal: 'content-sniffed',
+            type: string,
+            params: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         connect(signal: 'finished', callback: (_source: this) => void): number;
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
@@ -8814,7 +8829,7 @@ export namespace Soup {
 
         // Own methods of Soup.Message
 
-        content_sniffed(content_type: string, params: GLib.HashTable<any, any>): void;
+        content_sniffed(content_type: string, params: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
          * This disables the actions of #SoupSessionFeature<!-- -->s with the
          * given `feature_type` (or a subclass of that type) on `msg,` so that
@@ -9907,6 +9922,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -9949,7 +9965,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -10150,7 +10166,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10165,7 +10181,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10480,6 +10496,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -10522,7 +10539,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -10723,7 +10740,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10738,7 +10755,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -10937,6 +10954,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -10979,7 +10997,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11180,7 +11198,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11195,7 +11213,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -11402,6 +11420,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11444,7 +11463,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -11645,7 +11664,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11660,7 +11679,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -11867,6 +11886,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -11909,7 +11929,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -12110,7 +12130,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12125,7 +12145,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -12296,6 +12316,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -12338,7 +12359,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -12539,7 +12560,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12554,7 +12575,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -14684,7 +14705,7 @@ export namespace Soup {
          * @param cancellable a #GCancellable, or %NULL
          * @returns a #SoupSocketIOStatus, as described above (or %SOUP_SOCKET_EOF if the socket is no longer connected, or %SOUP_SOCKET_ERROR on any other error, in which case @error will also be set).
          */
-        read(buffer: Uint8Array, cancellable?: Gio.Cancellable | null): [SocketIOStatus, number];
+        read(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): [SocketIOStatus, number];
         /**
          * Like soup_socket_read(), but reads no further than the first
          * occurrence of `boundary`. (If the boundary is found, it will be
@@ -14705,7 +14726,7 @@ export namespace Soup {
          * @returns as for soup_socket_read()
          */
         read_until(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             boundary: any | null,
             boundary_len: number,
             cancellable?: Gio.Cancellable | null,
@@ -14741,7 +14762,7 @@ export namespace Soup {
          * @param cancellable a #GCancellable, or %NULL
          * @returns a #SoupSocketIOStatus, as described above (or %SOUP_SOCKET_EOF or %SOUP_SOCKET_ERROR. @error will be set if the return value is %SOUP_SOCKET_ERROR.)
          */
-        write(buffer: Uint8Array, cancellable?: Gio.Cancellable | null): [SocketIOStatus, number];
+        write(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): [SocketIOStatus, number];
 
         // Inherited methods
         /**
@@ -14919,6 +14940,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -14961,7 +14983,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15162,7 +15184,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15177,7 +15199,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
         unblock_signal_handler(id: number): any;
@@ -15200,11 +15222,11 @@ export namespace Soup {
         }
 
         interface Message {
-            (type: number, message: GLib.Bytes): void;
+            (type: number, message: GLib.Bytes | Uint8Array): void;
         }
 
         interface Pong {
-            (message: GLib.Bytes): void;
+            (message: GLib.Bytes | Uint8Array): void;
         }
 
         // Constructor properties interface
@@ -15346,18 +15368,18 @@ export namespace Soup {
         emit(signal: 'error', error: GLib.Error): void;
         connect(signal: 'message', callback: (_source: this, type: number, message: GLib.Bytes) => void): number;
         connect_after(signal: 'message', callback: (_source: this, type: number, message: GLib.Bytes) => void): number;
-        emit(signal: 'message', type: number, message: GLib.Bytes): void;
+        emit(signal: 'message', type: number, message: GLib.Bytes | Uint8Array): void;
         connect(signal: 'pong', callback: (_source: this, message: GLib.Bytes) => void): number;
         connect_after(signal: 'pong', callback: (_source: this, message: GLib.Bytes) => void): number;
-        emit(signal: 'pong', message: GLib.Bytes): void;
+        emit(signal: 'pong', message: GLib.Bytes | Uint8Array): void;
 
         // Own virtual methods of Soup.WebsocketConnection
 
         vfunc_closed(): void;
         vfunc_closing(): void;
         vfunc_error(error: GLib.Error): void;
-        vfunc_message(type: WebsocketDataType, message: GLib.Bytes): void;
-        vfunc_pong(message: GLib.Bytes): void;
+        vfunc_message(type: WebsocketDataType, message: GLib.Bytes | Uint8Array): void;
+        vfunc_pong(message: GLib.Bytes | Uint8Array): void;
 
         // Own methods of Soup.WebsocketConnection
 
@@ -15460,7 +15482,7 @@ export namespace Soup {
          * @param type the type of message contents
          * @param message the message data as #GBytes
          */
-        send_message(type: WebsocketDataType, message: GLib.Bytes): void;
+        send_message(type: WebsocketDataType, message: GLib.Bytes | Uint8Array): void;
         /**
          * Send a %NULL-terminated text (UTF-8) message to the peer. If you need
          * to send text messages containing %NULL characters use
@@ -15527,7 +15549,7 @@ export namespace Soup {
          * @param header the message header
          * @param payload the payload data
          */
-        vfunc_process_incoming_message(header: number, payload: GLib.Bytes): [GLib.Bytes, number];
+        vfunc_process_incoming_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
         /**
          * Process a message before it's sent. If the payload isn't changed the given
          * `payload` is just returned, otherwise g_bytes_unref() is called on the given
@@ -15537,7 +15559,7 @@ export namespace Soup {
          * @param header the message header
          * @param payload the payload data
          */
-        vfunc_process_outgoing_message(header: number, payload: GLib.Bytes): [GLib.Bytes, number];
+        vfunc_process_outgoing_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
 
         // Own methods of Soup.WebsocketExtension
 
@@ -15570,7 +15592,7 @@ export namespace Soup {
          * @param payload the payload data
          * @returns the message payload data, or %NULL in case of error
          */
-        process_incoming_message(header: number, payload: GLib.Bytes): [GLib.Bytes, number];
+        process_incoming_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
         /**
          * Process a message before it's sent. If the payload isn't changed the given
          * `payload` is just returned, otherwise g_bytes_unref() is called on the given
@@ -15581,7 +15603,7 @@ export namespace Soup {
          * @param payload the payload data
          * @returns the message payload data, or %NULL in case of error
          */
-        process_outgoing_message(header: number, payload: GLib.Bytes): [GLib.Bytes, number];
+        process_outgoing_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
     }
 
     module WebsocketExtensionDeflate {
@@ -15756,6 +15778,7 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -15798,7 +15821,7 @@ export namespace Soup {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -15999,7 +16022,7 @@ export namespace Soup {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16014,7 +16037,7 @@ export namespace Soup {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -16061,11 +16084,15 @@ export namespace Soup {
         );
         _init(...args: any[]): void;
 
-        static ['new'](use: MemoryUse, data: Uint8Array): Buffer;
+        static ['new'](use: MemoryUse, data: Uint8Array | string): Buffer;
 
-        static ['new'](data: Uint8Array): Buffer;
+        static ['new'](data: Uint8Array | string): Buffer;
 
-        static new_with_owner(data: Uint8Array, owner?: any | null, owner_dnotify?: GLib.DestroyNotify | null): Buffer;
+        static new_with_owner(
+            data: Uint8Array | string,
+            owner?: any | null,
+            owner_dnotify?: GLib.DestroyNotify | null,
+        ): Buffer;
 
         // Own methods of Soup.Buffer
 
@@ -16748,7 +16775,7 @@ export namespace Soup {
          * @param use how to use @data
          * @param data data to append
          */
-        append(use: MemoryUse, data: Uint8Array): void;
+        append(use: MemoryUse, data: Uint8Array | string): void;
         /**
          * Appends the data from `buffer` to `body`. (#SoupMessageBody uses
          * #SoupBuffers internally, so this is normally a constant-time
@@ -16765,7 +16792,7 @@ export namespace Soup {
          * convenience and simplifying language bindings.
          * @param data data to append
          */
-        append(data: Uint8Array): void;
+        append(data: Uint8Array | string): void;
         /**
          * Tags `body` as being complete; Call this when using chunked encoding
          * after you have appended the last chunk.
@@ -17660,7 +17687,7 @@ export namespace Soup {
          * HTML form rules. See soup_form_encode_hash() for more information.
          * @param form a #GHashTable containing HTML form information
          */
-        set_query_from_form(form: GLib.HashTable<string, string>): void;
+        set_query_from_form(form: { [key: string]: any } | GLib.HashTable<string, string>): void;
         /**
          * Sets `uri'`s scheme to `scheme`. This will also set `uri'`s port to
          * the default port for `scheme,` if known.

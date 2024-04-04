@@ -4367,6 +4367,7 @@ export namespace PackageKitGlib {
          * @returns the data, or %NULL if unset
          */
         get_data(): string;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Gets the package object ID
@@ -5753,6 +5754,7 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with PackageKitGlib.Client.install_files_async
         install_files_async(...args: never[]): any;
         /**
          * Install a file locally, and get the deps from the repositories.
@@ -5783,6 +5785,7 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with PackageKitGlib.Client.install_packages_async
         install_packages_async(...args: never[]): any;
         /**
          * Install a package of the newest and most correct version.
@@ -5843,6 +5846,7 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with PackageKitGlib.Client.remove_packages_async
         remove_packages_async(...args: never[]): any;
         /**
          * Remove a package (optionally with dependancies) from the system.
@@ -5876,6 +5880,7 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with PackageKitGlib.Client.repair_system_async
         repair_system_async(...args: never[]): any;
         /**
          * Recover from broken dependencies of installed packages or incomplete
@@ -6135,6 +6140,7 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with PackageKitGlib.Client.update_packages_async
         update_packages_async(...args: never[]): any;
         /**
          * Update specific packages to the newest available versions.
@@ -6170,6 +6176,7 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        // Conflicted with PackageKitGlib.Client.upgrade_system_async
         upgrade_system_async(...args: never[]): any;
         /**
          * This transaction will update the distro to the next version, which may
@@ -6342,6 +6349,7 @@ export namespace PackageKitGlib {
          * @returns The transaction data
          */
         get_data(): string;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Gets the past transaction date & time value;

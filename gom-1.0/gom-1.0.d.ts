@@ -64,10 +64,10 @@ export namespace Gom {
         (repository: Repository, adapter: Adapter, version: number): boolean;
     }
     interface ResourceFromBytesFunc {
-        (bytes: GLib.Bytes, value: GObject.Value): void;
+        (bytes: GLib.Bytes | Uint8Array, value: GObject.Value | any): void;
     }
     interface ResourceToBytesFunc {
-        (value: GObject.Value): GLib.Bytes;
+        (value: GObject.Value | any): GLib.Bytes;
     }
     module Adapter {
         // Constructor properties interface
@@ -158,7 +158,7 @@ export namespace Gom {
         execute(cursor: Cursor): boolean;
         get_param_index(param_name: string): number;
         reset(): void;
-        set_param(param: number, value: GObject.Value): void;
+        set_param(param: number, value: GObject.Value | any): void;
         set_param_double(param: number, value: number): void;
         set_param_float(param: number, value: number): void;
         set_param_int(param: number, value: number): void;
@@ -282,7 +282,7 @@ export namespace Gom {
 
         // Own methods of Gom.Cursor
 
-        get_column(column: number, value: GObject.Value): void;
+        get_column(column: number, value: GObject.Value | any): void;
         get_column_boolean(column: number): boolean;
         get_column_double(column: number): number;
         get_column_float(column: number): number;
@@ -323,41 +323,41 @@ export namespace Gom {
 
         static new_and_fullv(filter_array: Filter): Filter;
 
-        static new_eq(resource_type: GObject.GType, property_name: string, value: GObject.Value): Filter;
+        static new_eq(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_glob(resource_type: GObject.GType, property_name: string, value: GObject.Value): Filter;
+        static new_glob(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_gt(resource_type: GObject.GType, property_name: string, value: GObject.Value): Filter;
+        static new_gt(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_gte(resource_type: GObject.GType, property_name: string, value: GObject.Value): Filter;
+        static new_gte(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
         static new_is_not_null(resource_type: GObject.GType, property_name: string): Filter;
 
         static new_is_null(resource_type: GObject.GType, property_name: string): Filter;
 
-        static new_like(resource_type: GObject.GType, property_name: string, value: GObject.Value): Filter;
+        static new_like(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_lt(resource_type: GObject.GType, property_name: string, value: GObject.Value): Filter;
+        static new_lt(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_lte(resource_type: GObject.GType, property_name: string, value: GObject.Value): Filter;
+        static new_lte(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_neq(resource_type: GObject.GType, property_name: string, value: GObject.Value): Filter;
+        static new_neq(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
         static new_or(left: Filter, right: Filter): Filter;
 
         static new_or_fullv(filter_array: Filter): Filter;
 
-        static new_sql(sql: string, values: GObject.Value[]): Filter;
+        static new_sql(sql: string, values: (GObject.Value | any)[]): Filter;
 
         // Own methods of Gom.Filter
 
-        get_sql(table_map: GLib.HashTable<any, any>): string;
+        get_sql(table_map: { [key: string]: any } | GLib.HashTable<any, any>): string;
         /**
          * Fetches the list of values that should be applied in order when building
          * the #GomCommand.
          * @returns An array of values for the SQL.
          */
-        get_values(): GObject.Value[];
+        get_values(): unknown[];
     }
 
     module Repository {
@@ -684,7 +684,7 @@ export namespace Gom {
          * @param sorting_mode A #GomSortingMode.
          */
         add(resource_type: GObject.GType, property_name: string, sorting_mode: SortingMode): void;
-        get_sql(table_map: GLib.HashTable<any, any>): string;
+        get_sql(table_map: { [key: string]: any } | GLib.HashTable<any, any>): string;
     }
 
     type AdapterClass = typeof Adapter;

@@ -632,6 +632,7 @@ export namespace Dee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -674,7 +675,7 @@ export namespace Dee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -875,7 +876,7 @@ export namespace Dee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -890,7 +891,7 @@ export namespace Dee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1087,6 +1088,7 @@ export namespace Dee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1129,7 +1131,7 @@ export namespace Dee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1330,7 +1332,7 @@ export namespace Dee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1345,7 +1347,7 @@ export namespace Dee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1541,6 +1543,7 @@ export namespace Dee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1583,7 +1586,7 @@ export namespace Dee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1784,7 +1787,7 @@ export namespace Dee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1799,7 +1802,7 @@ export namespace Dee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2452,7 +2455,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove
@@ -2733,7 +2736,10 @@ export namespace Dee {
          * @param num_column
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+        vfunc_register_vardict_schema(
+            num_column: number,
+            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove
@@ -2904,6 +2910,7 @@ export namespace Dee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2946,7 +2953,7 @@ export namespace Dee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3147,7 +3154,7 @@ export namespace Dee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3162,7 +3169,7 @@ export namespace Dee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -3479,7 +3486,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove
@@ -3760,7 +3767,10 @@ export namespace Dee {
          * @param num_column
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+        vfunc_register_vardict_schema(
+            num_column: number,
+            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove
@@ -3931,6 +3941,7 @@ export namespace Dee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -3973,7 +3984,7 @@ export namespace Dee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -4174,7 +4185,7 @@ export namespace Dee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4189,7 +4200,7 @@ export namespace Dee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -4517,7 +4528,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove
@@ -4798,7 +4809,10 @@ export namespace Dee {
          * @param num_column
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+        vfunc_register_vardict_schema(
+            num_column: number,
+            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove
@@ -4969,6 +4983,7 @@ export namespace Dee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5011,7 +5026,7 @@ export namespace Dee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5212,7 +5227,7 @@ export namespace Dee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5227,7 +5242,7 @@ export namespace Dee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -5574,6 +5589,7 @@ export namespace Dee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -5616,7 +5632,7 @@ export namespace Dee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -5817,7 +5833,7 @@ export namespace Dee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5832,7 +5848,7 @@ export namespace Dee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -6312,7 +6328,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove
@@ -6593,7 +6609,10 @@ export namespace Dee {
          * @param num_column
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+        vfunc_register_vardict_schema(
+            num_column: number,
+            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove
@@ -6764,6 +6783,7 @@ export namespace Dee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -6806,7 +6826,7 @@ export namespace Dee {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -7007,7 +7027,7 @@ export namespace Dee {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7022,7 +7042,7 @@ export namespace Dee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -7744,7 +7764,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove
@@ -8028,7 +8048,10 @@ export namespace Dee {
          * @param num_column
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+        vfunc_register_vardict_schema(
+            num_column: number,
+            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a #DeeModelIter pointing to the row to remove

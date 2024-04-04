@@ -249,7 +249,7 @@ export namespace Gegl {
      * @returns the format pointer
      */
     function format(format_name: string): GObject.Value | null;
-    function format_get_name(format: GObject.Value): string | null;
+    function format_get_name(format: GObject.Value | any): string | null;
     /**
      * This function fetches the version of the GEGL library being used by
      * the running process.
@@ -890,7 +890,8 @@ export namespace Gegl {
          * @param format_name the format of the input data.
          * @param src pixel data to write to @buffer.
          */
-        set(rect: Rectangle, format_name: string, src: Uint8Array): void;
+        set(rect: Rectangle, format_name: string, src: Uint8Array | string): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * This function makes sure GeglBuffer and underlying code is aware of changes
@@ -1017,7 +1018,7 @@ export namespace Gegl {
          * @param format A Babl pointer
          * @returns The color components If value format not supported return NULL and components_length set to 0.
          */
-        get_components(format: GObject.Value): number[];
+        get_components(format: GObject.Value | any): number[];
         get_format(): Babl.Object;
         /**
          * Retrieves the current set color as linear light non premultipled RGBA data,
@@ -1029,7 +1030,7 @@ export namespace Gegl {
          * @param format A Babl pointer
          * @param components The color components.
          */
-        set_components(format: GObject.Value, components: number[]): void;
+        set_components(format: GObject.Value | any, components: number[]): void;
         /**
          * Set color as linear light non premultipled RGBA data
          * @param red red value
@@ -1225,7 +1226,7 @@ export namespace Gegl {
          * @param value Value to set in the interface
          * @returns %TRUE if successful.
          */
-        iter_get_value(iter: MetadataIter, value: GObject.Value): boolean;
+        iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
          * @param iter #GeglMetadataIter to be initialised
@@ -1255,7 +1256,7 @@ export namespace Gegl {
          * @param value Value to set in the interface
          * @returns %TRUE if successful.
          */
-        iter_set_value(iter: MetadataIter, value: GObject.Value): boolean;
+        iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Set the name of the file module and pass an array of mappings from
          * file-format specific metadata names to those used by Gegl. A GValue
@@ -1298,7 +1299,7 @@ export namespace Gegl {
          * @param iter #GeglMetadataIter referencing the value to get
          * @param value Value to set in the interface
          */
-        vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value): boolean;
+        vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
          * @param iter #GeglMetadataIter to be initialised
@@ -1325,7 +1326,7 @@ export namespace Gegl {
          * @param iter #GeglMetadataIter referencing the value to set
          * @param value Value to set in the interface
          */
-        vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value): boolean;
+        vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Set the name of the file module and pass an array of mappings from
          * file-format specific metadata names to those used by Gegl. A GValue
@@ -1434,6 +1435,7 @@ export namespace Gegl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1476,7 +1478,7 @@ export namespace Gegl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1496,6 +1498,7 @@ export namespace Gegl {
          * @param property_name the name of a property installed on the class of @object.
          */
         notify(property_name: string): void;
+        // Conflicted with Gegl.MetadataStore.notify
         notify(...args: never[]): any;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
@@ -1678,7 +1681,7 @@ export namespace Gegl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1693,7 +1696,7 @@ export namespace Gegl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1709,7 +1712,7 @@ export namespace Gegl {
         }
 
         interface GenerateValue {
-            (pspec: GObject.ParamSpec, value: GObject.Value): boolean;
+            (pspec: GObject.ParamSpec, value: GObject.Value | any): boolean;
         }
 
         interface Mapped {
@@ -1717,7 +1720,7 @@ export namespace Gegl {
         }
 
         interface ParseValue {
-            (pspec: GObject.ParamSpec, value: GObject.Value): boolean;
+            (pspec: GObject.ParamSpec, value: GObject.Value | any): boolean;
         }
 
         interface Unmapped {
@@ -1868,7 +1871,7 @@ export namespace Gegl {
             signal: 'generate-value',
             callback: (_source: this, pspec: GObject.ParamSpec, value: GObject.Value) => boolean,
         ): number;
-        emit(signal: 'generate-value', pspec: GObject.ParamSpec, value: GObject.Value): void;
+        emit(signal: 'generate-value', pspec: GObject.ParamSpec, value: GObject.Value | any): void;
         connect(
             signal: 'mapped',
             callback: (_source: this, file_module: string, exclude_unmapped: boolean) => void,
@@ -1886,7 +1889,7 @@ export namespace Gegl {
             signal: 'parse-value',
             callback: (_source: this, pspec: GObject.ParamSpec, value: GObject.Value) => boolean,
         ): number;
-        emit(signal: 'parse-value', pspec: GObject.ParamSpec, value: GObject.Value): void;
+        emit(signal: 'parse-value', pspec: GObject.ParamSpec, value: GObject.Value | any): void;
         connect(signal: 'unmapped', callback: (_source: this, file_module: string, local_name: string) => void): number;
         connect_after(
             signal: 'unmapped',
@@ -1897,7 +1900,7 @@ export namespace Gegl {
         // Own virtual methods of Gegl.MetadataStore
 
         vfunc__declare(pspec: GObject.ParamSpec, shadow: boolean): void;
-        vfunc__get_value(name: string): GObject.Value;
+        vfunc__get_value(name: string): unknown;
         /**
          * Test whether the #GeglMetadataStore contains a value for the specified name.
          * @param name Metadata name
@@ -1913,7 +1916,7 @@ export namespace Gegl {
          * @param name Metadata name
          * @param value (nullable): A valid #GValue or %NULL
          */
-        vfunc_set_value(name: string, value: GObject.Value): void;
+        vfunc_set_value(name: string, value: GObject.Value | any): void;
 
         // Own methods of Gegl.MetadataStore
 
@@ -2002,7 +2005,7 @@ export namespace Gegl {
          * @param name Metadata name
          * @param value An initialised #GValue.
          */
-        get_value(name: string, value: GObject.Value): unknown;
+        get_value(name: string, value: GObject.Value | any): unknown;
         /**
          * Get warning.
          * @returns Warning or %NULL if not set
@@ -2024,6 +2027,7 @@ export namespace Gegl {
          * @param shadow The metadata variable shadows a property.
          */
         notify(pspec: GObject.ParamSpec, shadow: boolean): void;
+        // Conflicted with GObject.Object.notify
         notify(...args: never[]): any;
         register(local_name: string, name: string, transform: GObject.ValueTransform): void;
         /**
@@ -2103,7 +2107,7 @@ export namespace Gegl {
          * @param name Metadata name
          * @param value (nullable): A valid #GValue or %NULL
          */
-        set_value(name: string, value: GObject.Value): void;
+        set_value(name: string, value: GObject.Value | any): void;
         /**
          * Set the warning of nature of content.
          * @param warning Warning string
@@ -2136,7 +2140,7 @@ export namespace Gegl {
          * @param value Value to set in the interface
          * @returns %TRUE if successful.
          */
-        iter_get_value(iter: MetadataIter, value: GObject.Value): boolean;
+        iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
          * @param iter #GeglMetadataIter to be initialised
@@ -2166,7 +2170,7 @@ export namespace Gegl {
          * @param value Value to set in the interface
          * @returns %TRUE if successful.
          */
-        iter_set_value(iter: MetadataIter, value: GObject.Value): boolean;
+        iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Set the name of the file module and pass an array of mappings from
          * file-format specific metadata names to those used by Gegl. A GValue
@@ -2209,7 +2213,7 @@ export namespace Gegl {
          * @param iter #GeglMetadataIter referencing the value to get
          * @param value Value to set in the interface
          */
-        vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value): boolean;
+        vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
          * @param iter #GeglMetadataIter to be initialised
@@ -2236,7 +2240,7 @@ export namespace Gegl {
          * @param iter #GeglMetadataIter referencing the value to set
          * @param value Value to set in the interface
          */
-        vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value): boolean;
+        vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Set the name of the file module and pass an array of mappings from
          * file-format specific metadata names to those used by Gegl. A GValue
@@ -2345,6 +2349,7 @@ export namespace Gegl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2387,7 +2392,7 @@ export namespace Gegl {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2574,7 +2579,7 @@ export namespace Gegl {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2589,7 +2594,7 @@ export namespace Gegl {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2754,6 +2759,7 @@ export namespace Gegl {
          * @param input_pad the input pad to disconnect.
          */
         disconnect(input_pad: string): boolean;
+        // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         find_property(property_name: string): GObject.ParamSpec;
         get_children(): Node[];
@@ -2801,7 +2807,8 @@ export namespace Gegl {
          * @returns pointer a #GeglRectangle
          */
         get_bounding_box(): Rectangle;
-        get_property(property_name: string): GObject.Value;
+        get_property(property_name: string): unknown;
+        // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         is_graph(): boolean;
         /**
@@ -2874,7 +2881,8 @@ export namespace Gegl {
          * @param property_name the name of the property to set
          * @param value a GValue containing the value to be set in the property.
          */
-        set_property(property_name: string, value: GObject.Value): void;
+        set_property(property_name: string, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
          * Sets the right value in animated properties of this node and all its
@@ -2921,12 +2929,14 @@ export namespace Gegl {
         // Own static methods of Gegl.Operation
 
         static find_property(operation_type: string, property_name: string): GObject.ParamSpec;
+        // Conflicted with GObject.Object.find_property
         static find_property(...args: never[]): any;
         static get_key(operation_type: string, key_name: string): string;
         static get_op_version(op_name: string): string;
         static get_property_key(operation_type: string, property_name: string, property_key_name: string): string;
         static list_keys(operation_type: string): string[];
         static list_properties(operation_type: string): GObject.ParamSpec[];
+        // Conflicted with GObject.Object.list_properties
         static list_properties(...args: never[]): any;
         static list_property_keys(operation_type: string, property_name: string): string[];
     }
@@ -4186,7 +4196,7 @@ export namespace Gegl {
          * @param value Value to set in the interface
          * @returns %TRUE if successful.
          */
-        iter_get_value(iter: MetadataIter, value: GObject.Value): boolean;
+        iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
          * @param iter #GeglMetadataIter to be initialised
@@ -4216,7 +4226,7 @@ export namespace Gegl {
          * @param value Value to set in the interface
          * @returns %TRUE if successful.
          */
-        iter_set_value(iter: MetadataIter, value: GObject.Value): boolean;
+        iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Set the name of the file module and pass an array of mappings from
          * file-format specific metadata names to those used by Gegl. A GValue
@@ -4262,7 +4272,7 @@ export namespace Gegl {
          * @param iter #GeglMetadataIter referencing the value to get
          * @param value Value to set in the interface
          */
-        vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value): boolean;
+        vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
          * @param iter #GeglMetadataIter to be initialised
@@ -4289,7 +4299,7 @@ export namespace Gegl {
          * @param iter #GeglMetadataIter referencing the value to set
          * @param value Value to set in the interface
          */
-        vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value): boolean;
+        vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Set the name of the file module and pass an array of mappings from
          * file-format specific metadata names to those used by Gegl. A GValue

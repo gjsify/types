@@ -254,7 +254,7 @@ export namespace TotemPlParser {
         // Signal callback interfaces
 
         interface EntryParsed {
-            (uri: string, metadata: GLib.HashTable<string, string>): void;
+            (uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, string>): void;
         }
 
         interface PlaylistEnded {
@@ -262,7 +262,7 @@ export namespace TotemPlParser {
         }
 
         interface PlaylistStarted {
-            (uri: string, metadata: GLib.HashTable<string, string>): void;
+            (uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, string>): void;
         }
 
         // Constructor properties interface
@@ -337,7 +337,11 @@ export namespace TotemPlParser {
             signal: 'entry-parsed',
             callback: (_source: this, uri: string, metadata: GLib.HashTable<string, string>) => void,
         ): number;
-        emit(signal: 'entry-parsed', uri: string, metadata: GLib.HashTable<string, string>): void;
+        emit(
+            signal: 'entry-parsed',
+            uri: string,
+            metadata: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
         connect(signal: 'playlist-ended', callback: (_source: this, uri: string) => void): number;
         connect_after(signal: 'playlist-ended', callback: (_source: this, uri: string) => void): number;
         emit(signal: 'playlist-ended', uri: string): void;
@@ -349,7 +353,11 @@ export namespace TotemPlParser {
             signal: 'playlist-started',
             callback: (_source: this, uri: string, metadata: GLib.HashTable<string, string>) => void,
         ): number;
-        emit(signal: 'playlist-started', uri: string, metadata: GLib.HashTable<string, string>): void;
+        emit(
+            signal: 'playlist-started',
+            uri: string,
+            metadata: { [key: string]: any } | GLib.HashTable<string, string>,
+        ): void;
 
         // Own static methods of TotemPlParser.Parser
 
@@ -395,9 +403,9 @@ export namespace TotemPlParser {
 
         // Own virtual methods of TotemPlParser.Parser
 
-        vfunc_entry_parsed(uri: string, metadata: GLib.HashTable<any, any>): void;
+        vfunc_entry_parsed(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
         vfunc_playlist_ended(uri: string): void;
-        vfunc_playlist_started(uri: string, metadata: GLib.HashTable<any, any>): void;
+        vfunc_playlist_started(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
 
         // Own methods of TotemPlParser.Parser
 
@@ -582,7 +590,7 @@ export namespace TotemPlParser {
          * @param value an empty #GValue to set
          * @returns %TRUE if @iter contains data for @key.
          */
-        get_value(iter: PlaylistIter, key: string, value: GObject.Value): boolean;
+        get_value(iter: PlaylistIter, key: string, value: GObject.Value | any): boolean;
         /**
          * Inserts a new empty element to `playlist` at `position,` and modifies
          * `iter` so it points to it. To fill in values, you need to call
@@ -629,7 +637,7 @@ export namespace TotemPlParser {
          * @param value #GValue containing the key value
          * @returns %TRUE if the value could be stored in @playlist
          */
-        set_value(iter: PlaylistIter, key: string, value: GObject.Value): boolean;
+        set_value(iter: PlaylistIter, key: string, value: GObject.Value | any): boolean;
         /**
          * Returns the number of elements in `playlist`.
          * @returns The number of elements

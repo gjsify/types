@@ -272,7 +272,11 @@ export namespace gSignon {
      */
     function security_context_list_deconstruct_variant(variant: GLib.Variant): SecurityContext[];
     interface AuthSessionProcessCb {
-        (self: AuthSession, session_data: GLib.HashTable<string, GObject.Value>, error: GLib.Error): void;
+        (
+            self: AuthSession,
+            session_data: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            error: GLib.Error,
+        ): void;
     }
     interface AuthSessionQueryAvailableMechanismsCb {
         (self: AuthSession, mechanisms: string[], error: GLib.Error): void;
@@ -384,7 +388,7 @@ export namespace gSignon {
          * @param cb callback to be invoked.
          */
         query_identities(
-            filter: GLib.HashTable<string, GLib.Variant>,
+            filter: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             application_context: string,
             cb: QueryIdentitiesCb,
         ): void;
@@ -469,7 +473,11 @@ export namespace gSignon {
          * @param mechanism the authentication mechanism to be used.
          * @param cb a callback which will be called with the result.
          */
-        process(session_data: GLib.HashTable<string, GObject.Value>, mechanism: string, cb: AuthSessionProcessCb): void;
+        process(
+            session_data: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            mechanism: string,
+            cb: AuthSessionProcessCb,
+        ): void;
         /**
          * Performs one step of the authentication process.
          * `session_data` should be used to add additional authentication parameters to the
@@ -648,7 +656,7 @@ export namespace gSignon {
             username: string | null,
             secret: string | null,
             store_secret: boolean,
-            methods: GLib.HashTable,
+            methods: { [key: string]: any } | GLib.HashTable,
             caption: string | null,
             realms: string | null,
             owner: SecurityContext | null,
@@ -773,7 +781,7 @@ export namespace gSignon {
          * it should be constructed with #g_hash_table_new_full.
          * @param methods methods.
          */
-        own_methods(methods: GLib.HashTable): void;
+        own_methods(methods: { [key: string]: any } | GLib.HashTable): void;
         /**
          * Remove `method` from the list of allowed authentication methods.
          * @param method an authentication method.
@@ -804,7 +812,7 @@ export namespace gSignon {
          * Set authentication methods that are allowed to be used with this identity.
          * @param methods methods.
          */
-        set_methods(methods: GLib.HashTable): void;
+        set_methods(methods: { [key: string]: any } | GLib.HashTable): void;
         /**
          * Set identity owner's security context.
          * @param owner a security context of owner.

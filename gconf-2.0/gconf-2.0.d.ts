@@ -243,6 +243,7 @@ export namespace GConf {
         remove_dir(dir: string): void;
         reverse_change_set(cs: ChangeSet): ChangeSet;
         set(key: string, val: Value): void;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         set_bool(key: string, val: boolean): boolean;
         set_error_handling(mode: ClientErrorHandlingMode): void;

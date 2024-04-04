@@ -1751,7 +1751,7 @@ export namespace AppStreamGlib {
         parent: GLib.Node,
         name: string,
         attr_key: string,
-        hash: GLib.HashTable<any, any>,
+        hash: { [key: string]: any } | GLib.HashTable<any, any>,
         insert_flags: NodeInsertFlags,
     ): void;
     /**
@@ -1764,7 +1764,7 @@ export namespace AppStreamGlib {
     function node_insert_localized(
         parent: GLib.Node,
         name: string,
-        localized: GLib.HashTable<any, any>,
+        localized: { [key: string]: any } | GLib.HashTable<any, any>,
         insert_flags: NodeInsertFlags,
     ): void;
     /**
@@ -3414,7 +3414,7 @@ export namespace AppStreamGlib {
          * @param flags #AsAppParseFlags, e.g. %AS_APP_PARSE_FLAG_USE_HEURISTICS
          * @returns %TRUE for success
          */
-        parse_data(data: GLib.Bytes, flags: number): boolean;
+        parse_data(data: GLib.Bytes | Uint8Array, flags: number): boolean;
         /**
          * Parses a desktop or AppData file and populates the application state.
          *
@@ -4564,7 +4564,7 @@ export namespace AppStreamGlib {
          * @param filename a filename
          * @param blob the #GBytes data blob
          */
-        set_blob(filename: string, blob: GLib.Bytes): void;
+        set_blob(filename: string, blob: GLib.Bytes | Uint8Array): void;
         /**
          * Sets the description release markup.
          * @param locale the locale. e.g. "en_GB"
@@ -5157,7 +5157,7 @@ export namespace AppStreamGlib {
          * @param cancellable a #GCancellable.
          * @returns %TRUE for success
          */
-        from_bytes(bytes: GLib.Bytes, cancellable?: Gio.Cancellable | null): boolean;
+        from_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Parses an AppStream XML or DEP-11 YAML file and adds any valid applications
          * to the store.

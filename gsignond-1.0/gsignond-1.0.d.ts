@@ -658,6 +658,7 @@ export namespace GSignond {
          * @returns %TRUE if successful, %FALSE otherwise.
          */
         set_data(id: number, username: string, password: string): boolean;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         /**
          * Sets the identity id of the #GSignondCredentials object
@@ -782,6 +783,7 @@ export namespace GSignond {
          * @returns %TRUE if successful, %FALSE otherwise.
          */
         set(key: string, value: GLib.Variant): boolean;
+        // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets or replaces a gboolean value in the dictionary.

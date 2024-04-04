@@ -63,6 +63,66 @@ export namespace EDataServerUI {
      * @param error_text an optional error text to show in the dialog; can be %NULL
      * @param allow_source_save whether can also save any @source changes
      * @param cancellable a #GCancellable, or %NULL
+     */
+    function trust_prompt_run_for_source(
+        parent: Gtk.Window,
+        source: EDataServer.Source,
+        certificate_pem: string,
+        certificate_errors: Gio.TlsCertificateFlags,
+        error_text: string | null,
+        allow_source_save: boolean,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<boolean>;
+    /**
+     * Similar to e_trust_prompt_run_modal(), except it also manages all the necessary things
+     * around the `source<`!-- -->'s SSL/TLS trust properties when it also contains %E_SOURCE_EXTENSION_WEBDAV,
+     * thus the SSL/TLS trust on the WebDAV `source` is properly updated based on the user's choice.
+     * The call is finished with e_trust_prompt_run_for_source_finish(),
+     * which also returns the user's choice. The finish happens in the `callback`.
+     * This is necessary, because the `source` can be also saved.
+     *
+     * The function fails, if the `source` doesn't contain the %E_SOURCE_EXTENSION_AUTHENTICATION.
+     *
+     * Note: The dialog is not shown when the stored certificate trust in the WebDAV `source`
+     *    matches the `certificate_pem` and the stored result is #E_TRUST_PROMPT_RESPONSE_REJECT.
+     * @param parent A #GtkWindow to use as a parent for the trust prompt dialog
+     * @param source an #ESource, with %E_SOURCE_EXTENSION_AUTHENTICATION
+     * @param certificate_pem a PEM-encoded certificate for which to show the trust prompt
+     * @param certificate_errors errors of the @certificate_pem
+     * @param error_text an optional error text to show in the dialog; can be %NULL
+     * @param allow_source_save whether can also save any @source changes
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback a callback to call, when the prompt (an @source save) is done
+     */
+    function trust_prompt_run_for_source(
+        parent: Gtk.Window,
+        source: EDataServer.Source,
+        certificate_pem: string,
+        certificate_errors: Gio.TlsCertificateFlags,
+        error_text: string | null,
+        allow_source_save: boolean,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gtk.Window> | null,
+    ): void;
+    /**
+     * Similar to e_trust_prompt_run_modal(), except it also manages all the necessary things
+     * around the `source<`!-- -->'s SSL/TLS trust properties when it also contains %E_SOURCE_EXTENSION_WEBDAV,
+     * thus the SSL/TLS trust on the WebDAV `source` is properly updated based on the user's choice.
+     * The call is finished with e_trust_prompt_run_for_source_finish(),
+     * which also returns the user's choice. The finish happens in the `callback`.
+     * This is necessary, because the `source` can be also saved.
+     *
+     * The function fails, if the `source` doesn't contain the %E_SOURCE_EXTENSION_AUTHENTICATION.
+     *
+     * Note: The dialog is not shown when the stored certificate trust in the WebDAV `source`
+     *    matches the `certificate_pem` and the stored result is #E_TRUST_PROMPT_RESPONSE_REJECT.
+     * @param parent A #GtkWindow to use as a parent for the trust prompt dialog
+     * @param source an #ESource, with %E_SOURCE_EXTENSION_AUTHENTICATION
+     * @param certificate_pem a PEM-encoded certificate for which to show the trust prompt
+     * @param certificate_errors errors of the @certificate_pem
+     * @param error_text an optional error text to show in the dialog; can be %NULL
+     * @param allow_source_save whether can also save any @source changes
+     * @param cancellable a #GCancellable, or %NULL
      * @param callback a callback to call, when the prompt (an @source save) is done
      */
     function trust_prompt_run_for_source(
@@ -74,7 +134,7 @@ export namespace EDataServerUI {
         allow_source_save: boolean,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gtk.Window> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes the operation started with e_trust_prompt_run_for_source().
      * The `response` will contain a code of the user's choice.
@@ -309,6 +369,7 @@ export namespace EDataServerUI {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -351,7 +412,7 @@ export namespace EDataServerUI {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -552,7 +613,7 @@ export namespace EDataServerUI {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -567,7 +628,7 @@ export namespace EDataServerUI {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -959,6 +1020,7 @@ export namespace EDataServerUI {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1001,7 +1063,7 @@ export namespace EDataServerUI {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1202,7 +1264,7 @@ export namespace EDataServerUI {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1217,7 +1279,7 @@ export namespace EDataServerUI {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -1449,6 +1511,7 @@ export namespace EDataServerUI {
 
         get_paned(): Gtk.Paned;
         get_settings(): Gio.Settings;
+        // Conflicted with Gtk.Widget.get_settings
         get_settings(...args: never[]): any;
         get_tree_view(): Gtk.TreeView;
         get_watcher(): ECal.ReminderWatcher;
@@ -1594,6 +1657,7 @@ export namespace EDataServerUI {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1636,7 +1700,7 @@ export namespace EDataServerUI {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1837,7 +1901,7 @@ export namespace EDataServerUI {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1852,7 +1916,7 @@ export namespace EDataServerUI {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2079,6 +2143,7 @@ export namespace EDataServerUI {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2121,7 +2186,7 @@ export namespace EDataServerUI {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2322,7 +2387,7 @@ export namespace EDataServerUI {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2337,7 +2402,7 @@ export namespace EDataServerUI {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2478,6 +2543,7 @@ export namespace EDataServerUI {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2520,7 +2586,7 @@ export namespace EDataServerUI {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -2721,7 +2787,7 @@ export namespace EDataServerUI {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2736,7 +2802,7 @@ export namespace EDataServerUI {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

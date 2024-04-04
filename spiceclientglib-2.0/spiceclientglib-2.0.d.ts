@@ -354,6 +354,38 @@ export namespace SpiceClientGLib {
      * @param flags set of #GFileCopyFlags
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
+     */
+    function main_file_copy_async(
+        channel: MainChannel,
+        sources: Gio.File[],
+        flags: Gio.FileCopyFlags,
+        cancellable?: Gio.Cancellable | null,
+        progress_callback?: Gio.FileProgressCallback | null,
+    ): Promise<boolean>;
+    /**
+     * See: spice_main_channel_file_copy_async()
+     * @param channel a #SpiceMainChannel
+     * @param sources a %NULL-terminated array of #GFile objects to be transferred
+     * @param flags set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    function main_file_copy_async(
+        channel: MainChannel,
+        sources: Gio.File[],
+        flags: Gio.FileCopyFlags,
+        cancellable: Gio.Cancellable | null,
+        progress_callback: Gio.FileProgressCallback | null,
+        callback: Gio.AsyncReadyCallback<MainChannel> | null,
+    ): void;
+    /**
+     * See: spice_main_channel_file_copy_async()
+     * @param channel a #SpiceMainChannel
+     * @param sources a %NULL-terminated array of #GFile objects to be transferred
+     * @param flags set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     function main_file_copy_async(
@@ -363,7 +395,7 @@ export namespace SpiceClientGLib {
         cancellable?: Gio.Cancellable | null,
         progress_callback?: Gio.FileProgressCallback | null,
         callback?: Gio.AsyncReadyCallback<MainChannel> | null,
-    ): void;
+    ): Promise<boolean> | void;
     /**
      * Finishes copying the file started with
      * spice_main_file_copy_async().
@@ -472,14 +504,44 @@ export namespace SpiceClientGLib {
      * @param port A #SpicePortChannel
      * @param buffer the buffer containing the data to write
      * @param cancellable optional GCancellable object, NULL to ignore
+     */
+    function port_write_async(
+        port: PortChannel,
+        buffer: Uint8Array | string,
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<number>;
+    /**
+     * Request an asynchronous write of count bytes from `buffer` into the
+     * `port`. When the operation is finished `callback` will be called. You
+     * can then call spice_port_write_finish() to get the result of
+     * the operation.
+     * @param port A #SpicePortChannel
+     * @param buffer the buffer containing the data to write
+     * @param cancellable optional GCancellable object, NULL to ignore
      * @param callback callback to call when the request is satisfied
      */
     function port_write_async(
         port: PortChannel,
-        buffer: Uint8Array,
+        buffer: Uint8Array | string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<PortChannel> | null,
+    ): void;
+    /**
+     * Request an asynchronous write of count bytes from `buffer` into the
+     * `port`. When the operation is finished `callback` will be called. You
+     * can then call spice_port_write_finish() to get the result of
+     * the operation.
+     * @param port A #SpicePortChannel
+     * @param buffer the buffer containing the data to write
+     * @param cancellable optional GCancellable object, NULL to ignore
+     * @param callback callback to call when the request is satisfied
+     */
+    function port_write_async(
+        port: PortChannel,
+        buffer: Uint8Array | string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<PortChannel> | null,
-    ): void;
+    ): Promise<number> | void;
     /**
      * Finishes a port write operation.
      * @param port a #SpicePortChannel
@@ -741,6 +803,7 @@ export namespace SpiceClientGLib {
          * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
          */
         disconnect(reason: ChannelEvent): void;
+        // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         /**
          * Forces an asynchronous write of all user-space buffered data for
@@ -1691,7 +1754,7 @@ export namespace SpiceClientGLib {
          * @param callback callback to call when the request is satisfied
          */
         write_async(
-            buffer: Uint8Array,
+            buffer: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2927,6 +2990,7 @@ export namespace SpiceClientGLib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -2969,7 +3033,7 @@ export namespace SpiceClientGLib {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -3170,7 +3234,7 @@ export namespace SpiceClientGLib {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3185,7 +3249,7 @@ export namespace SpiceClientGLib {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

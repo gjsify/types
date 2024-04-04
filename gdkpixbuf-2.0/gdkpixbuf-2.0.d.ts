@@ -201,7 +201,7 @@ export namespace GdkPixbuf {
     const PIXBUF_VERSION: string;
     function pixbuf_error_quark(): GLib.Quark;
     interface PixbufDestroyNotify {
-        (pixels: Uint8Array): void;
+        (pixels: Uint8Array | string): void;
     }
     interface PixbufModuleFillInfoFunc {
         (info: PixbufFormat): void;
@@ -219,7 +219,7 @@ export namespace GdkPixbuf {
         (pixbuf: Pixbuf, x: number, y: number, width: number, height: number): void;
     }
     interface PixbufSaveFunc {
-        (buf: Uint8Array): boolean;
+        (buf: Uint8Array | string): boolean;
     }
     /**
      * Flags which allow a module to specify further details about the supported
@@ -481,7 +481,7 @@ export namespace GdkPixbuf {
         ): Pixbuf;
 
         static new_from_bytes(
-            data: GLib.Bytes,
+            data: GLib.Bytes | Uint8Array,
             colorspace: Colorspace,
             has_alpha: boolean,
             bits_per_sample: number,
@@ -491,7 +491,7 @@ export namespace GdkPixbuf {
         ): Pixbuf;
 
         static new_from_data(
-            data: Uint8Array,
+            data: Uint8Array | string,
             colorspace: Colorspace,
             has_alpha: boolean,
             bits_per_sample: number,
@@ -512,7 +512,7 @@ export namespace GdkPixbuf {
 
         static new_from_file_at_size(filename: string, width: number, height: number): Pixbuf;
 
-        static new_from_inline(data: Uint8Array, copy_pixels: boolean): Pixbuf;
+        static new_from_inline(data: Uint8Array | string, copy_pixels: boolean): Pixbuf;
 
         static new_from_resource(resource_path: string): Pixbuf;
 
@@ -1401,6 +1401,7 @@ export namespace GdkPixbuf {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -1443,7 +1444,7 @@ export namespace GdkPixbuf {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -1644,7 +1645,7 @@ export namespace GdkPixbuf {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1659,7 +1660,7 @@ export namespace GdkPixbuf {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;
@@ -2223,13 +2224,13 @@ export namespace GdkPixbuf {
          * @param buf Pointer to image data.
          * @returns `TRUE` if the write was successful, or   `FALSE` if the loader cannot parse the buffer
          */
-        write(buf: Uint8Array): boolean;
+        write(buf: Uint8Array | string): boolean;
         /**
          * Parses the next contents of the given image buffer.
          * @param buffer The image data as a `GBytes` buffer.
          * @returns `TRUE` if the write was successful, or `FALSE` if   the loader cannot parse the buffer
          */
-        write_bytes(buffer: GLib.Bytes): boolean;
+        write_bytes(buffer: GLib.Bytes | Uint8Array): boolean;
     }
 
     module PixbufNonAnim {

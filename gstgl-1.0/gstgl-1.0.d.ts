@@ -714,8 +714,8 @@ export namespace GstGL {
      * @param value an initialized #GValue of type G_TYPE_STRING
      * @returns the mask of #GstGLTextureTarget's in @value or     %GST_GL_TEXTURE_TARGET_NONE on failure
      */
-    function gl_value_get_texture_target_mask(value: GObject.Value): GLTextureTarget;
-    function gl_value_set_texture_target(value: GObject.Value, target: GLTextureTarget): boolean;
+    function gl_value_get_texture_target_mask(value: GObject.Value | any): GLTextureTarget;
+    function gl_value_set_texture_target(value: GObject.Value | any, target: GLTextureTarget): boolean;
     /**
      * A mask is a bitwise OR of (1 << target) where target is a valid
      * #GstGLTextureTarget
@@ -723,7 +723,7 @@ export namespace GstGL {
      * @param target_mask a bitwise mask of #GstGLTextureTarget's
      * @returns whether the @target_mask could be set on @value
      */
-    function gl_value_set_texture_target_from_mask(value: GObject.Value, target_mask: GLTextureTarget): boolean;
+    function gl_value_set_texture_target_from_mask(value: GObject.Value | any, target_mask: GLTextureTarget): boolean;
     function gl_version_to_glsl_version(gl_api: GLAPI, maj: number, min: number): GLSLVersion;
     function gl_window_error_quark(): GLib.Quark;
     function glsl_error_quark(): GLib.Quark;
@@ -1028,6 +1028,7 @@ export namespace GstGL {
         // Own virtual methods of GstGL.GLBaseMemoryAllocator
 
         vfunc_alloc(params: GLAllocationParams): GLBaseMemory | null;
+        // Conflicted with Gst.Allocator.vfunc_alloc
         vfunc_alloc(...args: never[]): any;
     }
 

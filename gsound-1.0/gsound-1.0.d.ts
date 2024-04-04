@@ -361,7 +361,7 @@ export namespace GSound {
          * This function is intented to be used by language bindings.
          * @param attrs Hash table of attrerties
          */
-        cache(attrs: GLib.HashTable<string, string>): boolean;
+        cache(attrs: { [key: string]: any } | GLib.HashTable<string, string>): boolean;
         /**
          * Attempts to open a connection to the backend sound driver. It is recommended
          * that you set context attributes with gsound_context_set_attributes() before
@@ -397,7 +397,7 @@ export namespace GSound {
          * @param callback callback
          */
         play_full(
-            attrs: GLib.HashTable<string, string>,
+            attrs: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -416,7 +416,10 @@ export namespace GSound {
          * @param cancellable A #GCancellable
          * @returns %TRUE on success, %FALSE on error
          */
-        play_simple(attrs: GLib.HashTable<string, string>, cancellable?: Gio.Cancellable | null): boolean;
+        play_simple(
+            attrs: { [key: string]: any } | GLib.HashTable<string, string>,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Set attributes or change attributes on `context`. Subsequent calls to this
          * function calling the same attributes will override the earlier values.
@@ -429,7 +432,7 @@ export namespace GSound {
          * @param attrs Hash table of attributes to set
          * @returns %TRUE if attributes were updated successfully
          */
-        set_attributes(attrs: GLib.HashTable<string, string>): boolean;
+        set_attributes(attrs: { [key: string]: any } | GLib.HashTable<string, string>): boolean;
         /**
          * Sets the libcanberra driver to `driver,` for example "pulse", "alsa" or "null".
          * You normally do not need to set this yourself.
@@ -617,6 +620,7 @@ export namespace GSound {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for #GObject implementations to re-enforce
@@ -659,7 +663,7 @@ export namespace GSound {
          * @param names the names of each property to get
          * @param values the values of each property to get
          */
-        getv(names: string[], values: GObject.Value[]): void;
+        getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns %TRUE if @object has a floating reference
@@ -860,7 +864,7 @@ export namespace GSound {
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         vfunc_dispose(): void;
         vfunc_finalize(): void;
-        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -875,7 +879,7 @@ export namespace GSound {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
-        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
         block_signal_handler(id: number): any;

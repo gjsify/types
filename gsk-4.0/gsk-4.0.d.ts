@@ -429,13 +429,13 @@ export namespace Gsk {
      * @param value a [struct@GObject.Value] initialized with type `GSK_TYPE_RENDER_NODE`
      * @returns a `GskRenderNode`
      */
-    function value_dup_render_node(value: GObject.Value): RenderNode | null;
+    function value_dup_render_node(value: GObject.Value | any): RenderNode | null;
     /**
      * Retrieves the `GskRenderNode` stored inside the given `value`.
      * @param value a `GValue` initialized with type `GSK_TYPE_RENDER_NODE`
      * @returns a `GskRenderNode`
      */
-    function value_get_render_node(value: GObject.Value): RenderNode | null;
+    function value_get_render_node(value: GObject.Value | any): RenderNode | null;
     /**
      * Stores the given `GskRenderNode` inside `value`.
      *
@@ -443,7 +443,7 @@ export namespace Gsk {
      * @param value a [struct@GObject.Value] initialized with type `GSK_TYPE_RENDER_NODE`
      * @param node a `GskRenderNode`
      */
-    function value_set_render_node(value: GObject.Value, node: RenderNode): void;
+    function value_set_render_node(value: GObject.Value | any, node: RenderNode): void;
     /**
      * Stores the given `GskRenderNode` inside `value`.
      *
@@ -451,7 +451,7 @@ export namespace Gsk {
      * @param value a [struct@GObject.Value] initialized with type `GSK_TYPE_RENDER_NODE`
      * @param node a `GskRenderNode`
      */
-    function value_take_render_node(value: GObject.Value, node?: RenderNode | null): void;
+    function value_take_render_node(value: GObject.Value | any, node?: RenderNode | null): void;
     interface ParseErrorFunc {
         (start: ParseLocation, end: ParseLocation, error: GLib.Error): void;
     }
@@ -991,7 +991,7 @@ export namespace Gsk {
 
         _init(...args: any[]): void;
 
-        static new_from_bytes(sourcecode: GLib.Bytes): GLShader;
+        static new_from_bytes(sourcecode: GLib.Bytes | Uint8Array): GLShader;
 
         static new_from_resource(resource_path: string): GLShader;
 
@@ -1029,7 +1029,7 @@ export namespace Gsk {
          * @param idx index of the uniform
          * @returns The value
          */
-        get_arg_bool(args: GLib.Bytes, idx: number): boolean;
+        get_arg_bool(args: GLib.Bytes | Uint8Array, idx: number): boolean;
         /**
          * Gets the value of the uniform `idx` in the `args` block.
          *
@@ -1038,7 +1038,7 @@ export namespace Gsk {
          * @param idx index of the uniform
          * @returns The value
          */
-        get_arg_float(args: GLib.Bytes, idx: number): number;
+        get_arg_float(args: GLib.Bytes | Uint8Array, idx: number): number;
         /**
          * Gets the value of the uniform `idx` in the `args` block.
          *
@@ -1047,7 +1047,7 @@ export namespace Gsk {
          * @param idx index of the uniform
          * @returns The value
          */
-        get_arg_int(args: GLib.Bytes, idx: number): number;
+        get_arg_int(args: GLib.Bytes | Uint8Array, idx: number): number;
         /**
          * Gets the value of the uniform `idx` in the `args` block.
          *
@@ -1056,7 +1056,7 @@ export namespace Gsk {
          * @param idx index of the uniform
          * @returns The value
          */
-        get_arg_uint(args: GLib.Bytes, idx: number): number;
+        get_arg_uint(args: GLib.Bytes | Uint8Array, idx: number): number;
         /**
          * Gets the value of the uniform `idx` in the `args` block.
          *
@@ -1065,7 +1065,7 @@ export namespace Gsk {
          * @param idx index of the uniform
          * @param out_value location to store the uniform value in
          */
-        get_arg_vec2(args: GLib.Bytes, idx: number, out_value: Graphene.Vec2): void;
+        get_arg_vec2(args: GLib.Bytes | Uint8Array, idx: number, out_value: Graphene.Vec2): void;
         /**
          * Gets the value of the uniform `idx` in the `args` block.
          *
@@ -1074,7 +1074,7 @@ export namespace Gsk {
          * @param idx index of the uniform
          * @param out_value location to store the uniform value in
          */
-        get_arg_vec3(args: GLib.Bytes, idx: number, out_value: Graphene.Vec3): void;
+        get_arg_vec3(args: GLib.Bytes | Uint8Array, idx: number, out_value: Graphene.Vec3): void;
         /**
          * Gets the value of the uniform `idx` in the `args` block.
          *
@@ -1083,7 +1083,7 @@ export namespace Gsk {
          * @param idx index of the uniform
          * @param out_value location to store set the uniform value in
          */
-        get_arg_vec4(args: GLib.Bytes, idx: number, out_value: Graphene.Vec4): void;
+        get_arg_vec4(args: GLib.Bytes | Uint8Array, idx: number, out_value: Graphene.Vec4): void;
         /**
          * Get the size of the data block used to specify arguments for this shader.
          * @returns The size of the data block
@@ -1147,7 +1147,7 @@ export namespace Gsk {
         static ['new'](
             shader: GLShader,
             bounds: Graphene.Rect,
-            args: GLib.Bytes,
+            args: GLib.Bytes | Uint8Array,
             children?: RenderNode[] | null,
         ): GLShaderNode;
 
@@ -1487,7 +1487,7 @@ export namespace Gsk {
          * For a discussion of the supported format, see that function.
          * @param bytes the bytes containing the data
          */
-        static deserialize(bytes: GLib.Bytes): RenderNode | null;
+        static deserialize(bytes: GLib.Bytes | Uint8Array): RenderNode | null;
 
         // Own methods of Gsk.RenderNode
 

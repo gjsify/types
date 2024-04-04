@@ -704,7 +704,7 @@ export namespace Xmlb {
          * @param flags some #XbBuilderSourceFlags, e.g. %XB_BUILDER_SOURCE_FLAG_LITERAL_TEXT
          * @returns %TRUE for success
          */
-        load_bytes(bytes: GLib.Bytes, flags: BuilderSourceFlags): boolean;
+        load_bytes(bytes: GLib.Bytes | Uint8Array, flags: BuilderSourceFlags): boolean;
         /**
          * Loads an optionally compressed XML file to build a #XbSilo.
          * @param file a #GFile
@@ -1007,6 +1007,7 @@ export namespace Xmlb {
          * @returns a #GBytes, or %NULL if not found
          */
         get_data(key: string): GLib.Bytes;
+        // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Gets the depth of the node to a root.
@@ -1191,7 +1192,8 @@ export namespace Xmlb {
          * @param key a string key, e.g. `fwupd::RemoteId`
          * @param data a #GBytes
          */
-        set_data(key: string, data: GLib.Bytes): void;
+        set_data(key: string, data: GLib.Bytes | Uint8Array): void;
+        // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         /**
          * Traverses a tree starting from `self`. It calls the given functions for each
@@ -1402,7 +1404,7 @@ export namespace Xmlb {
          * @param flags #XbSiloLoadFlags, e.g. %XB_SILO_LOAD_FLAG_NONE
          * @returns %TRUE for success, otherwise @error is set.
          */
-        load_from_bytes(blob: GLib.Bytes, flags: SiloLoadFlags): boolean;
+        load_from_bytes(blob: GLib.Bytes | Uint8Array, flags: SiloLoadFlags): boolean;
         /**
          * Loads a silo from file.
          * @param file a #GFile
