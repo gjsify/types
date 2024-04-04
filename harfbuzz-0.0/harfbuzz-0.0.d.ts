@@ -1044,7 +1044,7 @@ export namespace HarfBuzz {
         /**
          * [Cursive Connection](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type2)
          */
-        CURISVE_CONNECTION,
+        CURSIVE_CONNECTION,
         /**
          * [Letter Case](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type3)
          */
@@ -3236,9 +3236,21 @@ export namespace HarfBuzz {
      * See Unicode 6.1 for details on the maximum decomposition length.
      */
     const UNICODE_MAX_DECOMPOSITION_LEN: number;
+    /**
+     * The major component of the library version available at compile-time.
+     */
     const VERSION_MAJOR: number;
+    /**
+     * The micro component of the library version available at compile-time.
+     */
     const VERSION_MICRO: number;
+    /**
+     * The minor component of the library version available at compile-time.
+     */
     const VERSION_MINOR: number;
+    /**
+     * A string literal containing the library version available at compile-time.
+     */
     const VERSION_STRING: string;
     /**
      * Fetches the name identifier of the specified feature type in the face's `name` table.
@@ -3304,6 +3316,11 @@ export namespace HarfBuzz {
     /**
      * Creates a new blob containing the data from the
      * specified binary font file.
+     *
+     * The filename is passed directly to the system on all platforms,
+     * except on Windows, where the filename is interpreted as UTF-8.
+     * Only if the filename is not valid UTF-8, it will be interpreted
+     * according to the system codepage.
      * @param file_name A font filename
      * @returns An #hb_blob_t pointer with the content of the file, or hb_blob_get_empty() if failed.
      */
@@ -3311,6 +3328,11 @@ export namespace HarfBuzz {
     /**
      * Creates a new blob containing the data from the
      * specified binary font file.
+     *
+     * The filename is passed directly to the system on all platforms,
+     * except on Windows, where the filename is interpreted as UTF-8.
+     * Only if the filename is not valid UTF-8, it will be interpreted
+     * according to the system codepage.
      * @param file_name A font filename
      * @returns An #hb_blob_t pointer with the content of the file, or `NULL` if failed.
      */
@@ -3529,7 +3551,7 @@ export namespace HarfBuzz {
      * callers if just comparing two buffers is needed.
      * @param buffer a buffer.
      * @param reference other buffer to compare to.
-     * @param dottedcircle_glyph glyph id of U+25CC DOTTED CIRCLE, or (hb_codepont_t) -1.
+     * @param dottedcircle_glyph glyph id of U+25CC DOTTED CIRCLE, or (hb_codepoint_t) -1.
      * @param position_fuzz allowed absolute difference in position values.
      */
     function buffer_diff(
@@ -3963,7 +3985,7 @@ export namespace HarfBuzz {
      * Sets the #hb_codepoint_t that replaces characters not found in
      * the font during shaping.
      *
-     * The not-found glyph defaults to zero, sometimes knows as the
+     * The not-found glyph defaults to zero, sometimes known as the
      * ".notdef" glyph.  This API allows for differentiating the two.
      * @param buffer An #hb_buffer_t
      * @param not_found the not-found #hb_codepoint_t
@@ -5050,7 +5072,7 @@ export namespace HarfBuzz {
     function font_get_nominal_glyph(font: font_t, unicode: codepoint_t): [bool_t, codepoint_t];
     /**
      * Fetches the nominal glyph IDs for a sequence of Unicode code points. Glyph
-     * IDs must be returned in a #hb_codepoint_t output parameter. Stopes at the
+     * IDs must be returned in a #hb_codepoint_t output parameter. Stops at the
      * first unsupported glyph ID.
      * @param font #hb_font_t to work upon
      * @param count number of code points to query
@@ -5521,7 +5543,7 @@ export namespace HarfBuzz {
      * Fetches the FT_Load_Glyph load flags of the specified #hb_font_t.
      *
      * For more information, see
-     * https://www.freetype.org/freetype2/docs/reference/ft2-base_interface.html#ft_load_xxx
+     * <https://freetype.org/freetype2/docs/reference/ft2-glyph_retrieval.html#ft_load_xxx>
      *
      * This function works with #hb_font_t objects created by
      * hb_ft_font_create() or hb_ft_font_create_referenced().
@@ -5556,7 +5578,7 @@ export namespace HarfBuzz {
      * Sets the FT_Load_Glyph load flags for the specified #hb_font_t.
      *
      * For more information, see
-     * https://www.freetype.org/freetype2/docs/reference/ft2-base_interface.html#ft_load_xxx
+     * <https://freetype.org/freetype2/docs/reference/ft2-glyph_retrieval.html#ft_load_xxx>
      *
      * This function works with #hb_font_t objects created by
      * hb_ft_font_create() or hb_ft_font_create_referenced().
@@ -5720,7 +5742,7 @@ export namespace HarfBuzz {
      */
     function map_keys(map: map_t, keys: set_t): void;
     /**
-     * Fetches the next key/value paire in `map`.
+     * Fetches the next key/value pair in `map`.
      *
      * Set `idx` to -1 to get started.
      *
@@ -6916,6 +6938,14 @@ export namespace HarfBuzz {
      */
     function paint_color(funcs: paint_funcs_t, paint_data: any | null, is_foreground: bool_t, color: color_t): void;
     /**
+     * Perform a "color-glyph" paint operation.
+     * @param funcs paint functions
+     * @param paint_data associated data passed by the caller
+     * @param glyph the glyph ID
+     * @param font the font
+     */
+    function paint_color_glyph(funcs: paint_funcs_t, paint_data: any | null, glyph: codepoint_t, font: font_t): bool_t;
+    /**
      * Gets the custom palette color for `color_index`.
      * @param funcs paint functions
      * @param paint_data associated data passed by the caller
@@ -6965,6 +6995,17 @@ export namespace HarfBuzz {
     function paint_funcs_set_color_func(
         funcs: paint_funcs_t,
         func: paint_color_func_t,
+        destroy?: destroy_func_t | null,
+    ): void;
+    /**
+     * Sets the color-glyph callback on the paint functions struct.
+     * @param funcs A paint functions struct
+     * @param func The color-glyph callback
+     * @param destroy Function to call when @user_data is no longer needed
+     */
+    function paint_funcs_set_color_glyph_func(
+        funcs: paint_funcs_t,
+        func: paint_color_glyph_func_t,
         destroy?: destroy_func_t | null,
     ): void;
     /**
@@ -7920,6 +7961,24 @@ export namespace HarfBuzz {
      * @param variation an #hb_variation_t to convert
      */
     function variation_to_string(variation: variation_t): string[];
+    /**
+     * Returns library version as three integer components.
+     */
+    function version(): [number, number, number];
+    /**
+     * Tests the library version against a minimum value,
+     * as three integer components.
+     * @param major Library major version component
+     * @param minor Library minor version component
+     * @param micro Library micro version component
+     * @returns `true` if the library is equal to or greater than the test value, `false` otherwise
+     */
+    function version_atleast(major: number, minor: number, micro: number): bool_t;
+    /**
+     * Returns library version as a string with three components.
+     * @returns Library version string
+     */
+    function version_string(): string;
     interface buffer_message_func_t {
         (buffer: buffer_t, font: font_t, message: string): bool_t;
     }
@@ -8049,6 +8108,9 @@ export namespace HarfBuzz {
     }
     interface paint_color_func_t {
         (funcs: paint_funcs_t, paint_data: any | null, is_foreground: bool_t, color: color_t): void;
+    }
+    interface paint_color_glyph_func_t {
+        (funcs: paint_funcs_t, paint_data: any | null, glyph: codepoint_t, font: font_t): bool_t;
     }
     interface paint_custom_palette_color_func_t {
         (funcs: paint_funcs_t, paint_data: any | null, color_index: number): bool_t;
@@ -8357,7 +8419,7 @@ export namespace HarfBuzz {
          * 				   layout, by avoiding re-shaping of each line
          * 				   after line-breaking, by limiting the
          * 				   reshaping to a small piece around the
-         * 				   breaking positin only, even if the breaking
+         * 				   breaking position only, even if the breaking
          * 				   position carries the
          * 				   #HB_GLYPH_FLAG_UNSAFE_TO_BREAK or when
          * 				   hyphenation or other text transformation

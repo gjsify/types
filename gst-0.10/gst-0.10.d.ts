@@ -3827,7 +3827,7 @@ export namespace Gst {
         // Own methods of Gst.Task
 
         set_lock(mutex: never): void;
-        set_priority(priority: never): void;
+        set_priority(priority: GLib.ThreadPriority): void;
         get_pool(): TaskPool;
         set_pool(pool: TaskPool): void;
         set_thread_callbacks(callbacks: TaskThreadCallbacks, user_data: any): void;

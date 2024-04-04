@@ -23,8 +23,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace GtkSource {
@@ -682,7 +682,7 @@ export namespace GtkSource {
          * @param category category to search for, or %NULL
          * @returns whether @iter was moved.
          */
-        backward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): [boolean, Gtk.TextIter];
+        backward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): boolean;
         /**
          * Marks the beginning of a not undoable action on the buffer,
          * disabling the undo manager.  Typically you would call this function
@@ -749,7 +749,7 @@ export namespace GtkSource {
          * @param category category to search for, or %NULL
          * @returns whether @iter was moved.
          */
-        forward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): [boolean, Gtk.TextIter];
+        forward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): boolean;
         /**
          * Get all defined context classes at `iter`.
          *
@@ -825,7 +825,7 @@ export namespace GtkSource {
          * @param context_class the context class.
          * @returns whether we found a context class toggle before @iter
          */
-        iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): [boolean, Gtk.TextIter];
+        iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean;
         /**
          * Moves forward to the next toggle (on or off) of the context class. If no
          * matching context class toggles are found, returns %FALSE, otherwise %TRUE.
@@ -838,7 +838,7 @@ export namespace GtkSource {
          * @param context_class the context class.
          * @returns whether we found a context class toggle after @iter
          */
-        iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): [boolean, Gtk.TextIter];
+        iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean;
         /**
          * Check if the class `context_class` is set on `iter`.
          *
@@ -1626,7 +1626,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2129,7 +2129,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2717,7 +2717,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3379,7 +3379,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5057,7 +5057,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7794,7 +7794,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -11375,7 +11375,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12527,7 +12527,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12763,7 +12763,7 @@ export namespace GtkSource {
         _init(...args: any[]): void;
     }
 
-    class Encoding {
+    abstract class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
         // Constructors of GtkSource.Encoding

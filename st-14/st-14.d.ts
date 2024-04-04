@@ -19,6 +19,7 @@ import type Graphene from '@girs/graphene-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
 import type CoglPango from '@girs/coglpango-14';
 import type PangoCairo from '@girs/pangocairo-1.0';
@@ -31,7 +32,6 @@ import type GL from '@girs/gl-1.0';
 import type Clutter from '@girs/clutter-14';
 import type Atk from '@girs/atk-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Cally from '@girs/cally-14';
 
 export namespace St {
@@ -763,7 +763,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1166,7 +1166,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1700,7 +1700,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2234,7 +2234,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2737,7 +2737,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3336,7 +3336,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3946,7 +3946,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4455,7 +4455,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5172,7 +5172,7 @@ export namespace St {
         equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
-         * @returns a #guint containing a hash for the @icon, suitable for use in a #GHashTable or similar data structure.
+         * @returns a #guint containing a hash for the @icon, suitable for   use in a #GHashTable or similar data structure.
          */
         hash(): number;
         /**
@@ -5240,7 +5240,7 @@ export namespace St {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -5266,7 +5266,7 @@ export namespace St {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_load_async(
             size: number,
@@ -5455,7 +5455,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5881,7 +5881,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6314,7 +6314,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6747,7 +6747,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7310,7 +7310,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -8741,7 +8741,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9647,7 +9647,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -10418,7 +10418,7 @@ export namespace St {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

@@ -23,8 +23,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace GtkSource {
     enum BackgroundPatternType {
@@ -1276,6 +1276,20 @@ export namespace GtkSource {
 
         // Inherited methods
         /**
+         * Requests the user's screen reader to announce the given message.
+         *
+         * This kind of notification is useful for messages that
+         * either have only a visual representation or that are not
+         * exposed visually at all, e.g. a notification about a
+         * successful operation.
+         *
+         * Also, by using this API, you can ensure that the message
+         * does not interrupts the user's current screen reader output.
+         * @param message the string to announce
+         * @param priority the priority of the announcement
+         */
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -1485,6 +1499,10 @@ export namespace GtkSource {
             child: GObject.Object | null,
             tagname: string,
         ): [boolean, Gtk.BuildableParser, any];
+        /**
+         * The getter corresponding to `set_id`. Implement this
+         *   if you implement `set_id`.
+         */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
@@ -1492,8 +1510,32 @@ export namespace GtkSource {
          * @param childname name of child
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Called when a builder finishes the parsing
+         *  of a UI definition. It is normally not necessary to implement this,
+         *  unless you need to perform special cleanup actions. `GtkWindow` sets
+         *  the `GtkWidget:visible` property here.
+         * @param builder
+         */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets a property of a buildable object.
+         *  It is normally not necessary to implement this, g_object_set_property()
+         *  is used by default. `GtkWindow` implements this to delay showing itself
+         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  interface is created.
+         * @param builder
+         * @param name
+         * @param value
+         */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        /**
+         * Stores the id attribute given in the `GtkBuilder` UI definition.
+         *   `GtkWidget` stores the name as object data. Implement this method if your
+         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   attribute to it.
+         * @param id
+         */
         vfunc_set_id(id: string): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1672,7 +1714,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2092,6 +2134,8 @@ export namespace GtkSource {
          *
          * %NULL is never returned for an index that is smaller than the length
          * of the list.  See g_list_model_get_n_items().
+         *
+         * The same #GObject instance may not appear more than once in a #GListModel.
          * @param position the position of the item to fetch
          */
         vfunc_get_item(position: number): A | null;
@@ -2291,7 +2335,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2926,7 +2970,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3592,7 +3636,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4282,6 +4326,20 @@ export namespace GtkSource {
 
         // Inherited methods
         /**
+         * Requests the user's screen reader to announce the given message.
+         *
+         * This kind of notification is useful for messages that
+         * either have only a visual representation or that are not
+         * exposed visually at all, e.g. a notification about a
+         * successful operation.
+         *
+         * Also, by using this API, you can ensure that the message
+         * does not interrupts the user's current screen reader output.
+         * @param message the string to announce
+         * @param priority the priority of the announcement
+         */
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -4491,6 +4549,10 @@ export namespace GtkSource {
             child: GObject.Object | null,
             tagname: string,
         ): [boolean, Gtk.BuildableParser, any];
+        /**
+         * The getter corresponding to `set_id`. Implement this
+         *   if you implement `set_id`.
+         */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
@@ -4498,8 +4560,32 @@ export namespace GtkSource {
          * @param childname name of child
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Called when a builder finishes the parsing
+         *  of a UI definition. It is normally not necessary to implement this,
+         *  unless you need to perform special cleanup actions. `GtkWindow` sets
+         *  the `GtkWidget:visible` property here.
+         * @param builder
+         */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets a property of a buildable object.
+         *  It is normally not necessary to implement this, g_object_set_property()
+         *  is used by default. `GtkWindow` implements this to delay showing itself
+         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  interface is created.
+         * @param builder
+         * @param name
+         * @param value
+         */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        /**
+         * Stores the id attribute given in the `GtkBuilder` UI definition.
+         *   `GtkWidget` stores the name as object data. Implement this method if your
+         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   attribute to it.
+         * @param id
+         */
         vfunc_set_id(id: string): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -4678,7 +4764,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5374,6 +5460,20 @@ export namespace GtkSource {
 
         // Inherited methods
         /**
+         * Requests the user's screen reader to announce the given message.
+         *
+         * This kind of notification is useful for messages that
+         * either have only a visual representation or that are not
+         * exposed visually at all, e.g. a notification about a
+         * successful operation.
+         *
+         * Also, by using this API, you can ensure that the message
+         * does not interrupts the user's current screen reader output.
+         * @param message the string to announce
+         * @param priority the priority of the announcement
+         */
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -5583,6 +5683,10 @@ export namespace GtkSource {
             child: GObject.Object | null,
             tagname: string,
         ): [boolean, Gtk.BuildableParser, any];
+        /**
+         * The getter corresponding to `set_id`. Implement this
+         *   if you implement `set_id`.
+         */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
@@ -5590,8 +5694,32 @@ export namespace GtkSource {
          * @param childname name of child
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Called when a builder finishes the parsing
+         *  of a UI definition. It is normally not necessary to implement this,
+         *  unless you need to perform special cleanup actions. `GtkWindow` sets
+         *  the `GtkWidget:visible` property here.
+         * @param builder
+         */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets a property of a buildable object.
+         *  It is normally not necessary to implement this, g_object_set_property()
+         *  is used by default. `GtkWindow` implements this to delay showing itself
+         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  interface is created.
+         * @param builder
+         * @param name
+         * @param value
+         */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        /**
+         * Stores the id attribute given in the `GtkBuilder` UI definition.
+         *   `GtkWidget` stores the name as object data. Implement this method if your
+         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   attribute to it.
+         * @param id
+         */
         vfunc_set_id(id: string): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -5770,7 +5898,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6205,7 +6333,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6619,7 +6747,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6957,6 +7085,20 @@ export namespace GtkSource {
 
         // Inherited methods
         /**
+         * Requests the user's screen reader to announce the given message.
+         *
+         * This kind of notification is useful for messages that
+         * either have only a visual representation or that are not
+         * exposed visually at all, e.g. a notification about a
+         * successful operation.
+         *
+         * Also, by using this API, you can ensure that the message
+         * does not interrupts the user's current screen reader output.
+         * @param message the string to announce
+         * @param priority the priority of the announcement
+         */
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -7166,6 +7308,10 @@ export namespace GtkSource {
             child: GObject.Object | null,
             tagname: string,
         ): [boolean, Gtk.BuildableParser, any];
+        /**
+         * The getter corresponding to `set_id`. Implement this
+         *   if you implement `set_id`.
+         */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
@@ -7173,8 +7319,32 @@ export namespace GtkSource {
          * @param childname name of child
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Called when a builder finishes the parsing
+         *  of a UI definition. It is normally not necessary to implement this,
+         *  unless you need to perform special cleanup actions. `GtkWindow` sets
+         *  the `GtkWidget:visible` property here.
+         * @param builder
+         */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets a property of a buildable object.
+         *  It is normally not necessary to implement this, g_object_set_property()
+         *  is used by default. `GtkWindow` implements this to delay showing itself
+         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  interface is created.
+         * @param builder
+         * @param name
+         * @param value
+         */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        /**
+         * Stores the id attribute given in the `GtkBuilder` UI definition.
+         *   `GtkWidget` stores the name as object data. Implement this method if your
+         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   attribute to it.
+         * @param id
+         */
         vfunc_set_id(id: string): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -7353,7 +7523,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -8038,7 +8208,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -11424,7 +11594,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12271,7 +12441,7 @@ export namespace GtkSource {
          * the required height for the natural width is generally smaller than the
          * required height for the minimum width.
          *
-         * Use [id`gtk_widget_measure]` if you want to support baseline alignment.
+         * Use [method`Gtk`.Widget.measure] if you want to support baseline alignment.
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
@@ -13389,6 +13559,12 @@ export namespace GtkSource {
          * @param flags State flags to turn off
          */
         unset_state_flags(flags: Gtk.StateFlags): void;
+        /**
+         * Computes whether a container should give this
+         *   widget extra space when possible.
+         * @param hexpand_p
+         * @param vexpand_p
+         */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
         /**
          * Tests if the point at (`x,` `y)` is contained in `widget`.
@@ -13399,8 +13575,24 @@ export namespace GtkSource {
          * @param y Y coordinate to test, relative to @widget's origin
          */
         vfunc_contains(x: number, y: number): boolean;
+        /**
+         * Vfunc called when the CSS used by widget was changed. Widgets
+         *   should then discard their caches that depend on CSS and queue resizes or
+         *   redraws accordingly. The default implementation will take care of this for
+         *   all the default CSS properties, so implementations must chain up.
+         * @param change
+         */
         vfunc_css_changed(change: Gtk.CssStyleChange): void;
+        /**
+         * Signal emitted when the text direction of a
+         *   widget changes.
+         * @param previous_direction
+         */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
+        /**
+         * Vfunc for gtk_widget_child_focus()
+         * @param direction
+         */
         vfunc_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Gets whether the widget prefers a height-for-width layout
@@ -13486,7 +13678,20 @@ export namespace GtkSource {
          * @param group_cycling %TRUE if there are other widgets with the same mnemonic
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
+        /**
+         * Signal emitted when a change of focus is requested
+         * @param direction
+         */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
+        /**
+         * Signal emitted when “has-tooltip” is %TRUE and the
+         *   hover timeout has expired with the cursor hovering “above”
+         *   widget; or emitted when widget got focus in keyboard mode.
+         * @param x
+         * @param y
+         * @param keyboard_tooltip
+         * @param tooltip
+         */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
          * Creates the GDK resources associated with a widget.
@@ -13507,6 +13712,10 @@ export namespace GtkSource {
          * [signal`Gtk`.Widget::realize].
          */
         vfunc_realize(): void;
+        /**
+         * Called when the widget gets added to a `GtkRoot` widget. Must
+         *   chain up
+         */
         vfunc_root(): void;
         /**
          * Set `child` as the current focus child of `widget`.
@@ -13530,9 +13739,29 @@ export namespace GtkSource {
          * toplevel container is realized and mapped.
          */
         vfunc_show(): void;
+        /**
+         * Called to set the allocation, if the widget does
+         *   not have a layout manager.
+         * @param width
+         * @param height
+         * @param baseline
+         */
         vfunc_size_allocate(width: number, height: number, baseline: number): void;
+        /**
+         * Vfunc called when a new snapshot of the widget has to be taken.
+         * @param snapshot
+         */
         vfunc_snapshot(snapshot: Gtk.Snapshot): void;
+        /**
+         * Signal emitted when the widget state changes,
+         *   see gtk_widget_get_state_flags().
+         * @param previous_state_flags
+         */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
+        /**
+         * Emitted when a system setting was changed. Must chain up.
+         * @param settings
+         */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
          * Causes a widget to be unmapped if it’s currently mapped.
@@ -13547,6 +13776,10 @@ export namespace GtkSource {
          * This function is only useful in widget implementations.
          */
         vfunc_unrealize(): void;
+        /**
+         * Called when the widget is about to be removed from its
+         *   `GtkRoot` widget. Must chain up
+         */
         vfunc_unroot(): void;
     }
 
@@ -13618,6 +13851,20 @@ export namespace GtkSource {
         set styleScheme(val: StyleScheme);
 
         // Inherited methods
+        /**
+         * Requests the user's screen reader to announce the given message.
+         *
+         * This kind of notification is useful for messages that
+         * either have only a visual representation or that are not
+         * exposed visually at all, e.g. a notification about a
+         * successful operation.
+         *
+         * Also, by using this API, you can ensure that the message
+         * does not interrupts the user's current screen reader output.
+         * @param message the string to announce
+         * @param priority the priority of the announcement
+         */
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -13828,6 +14075,10 @@ export namespace GtkSource {
             child: GObject.Object | null,
             tagname: string,
         ): [boolean, Gtk.BuildableParser, any];
+        /**
+         * The getter corresponding to `set_id`. Implement this
+         *   if you implement `set_id`.
+         */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
@@ -13835,8 +14086,32 @@ export namespace GtkSource {
          * @param childname name of child
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Called when a builder finishes the parsing
+         *  of a UI definition. It is normally not necessary to implement this,
+         *  unless you need to perform special cleanup actions. `GtkWindow` sets
+         *  the `GtkWidget:visible` property here.
+         * @param builder
+         */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets a property of a buildable object.
+         *  It is normally not necessary to implement this, g_object_set_property()
+         *  is used by default. `GtkWindow` implements this to delay showing itself
+         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  interface is created.
+         * @param builder
+         * @param name
+         * @param value
+         */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        /**
+         * Stores the id attribute given in the `GtkBuilder` UI definition.
+         *   `GtkWidget` stores the name as object data. Implement this method if your
+         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   attribute to it.
+         * @param id
+         */
         vfunc_set_id(id: string): void;
         /**
          * Gets the currently-selected scheme.
@@ -14034,7 +14309,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -14803,6 +15078,20 @@ export namespace GtkSource {
 
         // Inherited methods
         /**
+         * Requests the user's screen reader to announce the given message.
+         *
+         * This kind of notification is useful for messages that
+         * either have only a visual representation or that are not
+         * exposed visually at all, e.g. a notification about a
+         * successful operation.
+         *
+         * Also, by using this API, you can ensure that the message
+         * does not interrupts the user's current screen reader output.
+         * @param message the string to announce
+         * @param priority the priority of the announcement
+         */
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -15117,6 +15406,10 @@ export namespace GtkSource {
             child: GObject.Object | null,
             tagname: string,
         ): [boolean, Gtk.BuildableParser, any];
+        /**
+         * The getter corresponding to `set_id`. Implement this
+         *   if you implement `set_id`.
+         */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
@@ -15124,8 +15417,32 @@ export namespace GtkSource {
          * @param childname name of child
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Called when a builder finishes the parsing
+         *  of a UI definition. It is normally not necessary to implement this,
+         *  unless you need to perform special cleanup actions. `GtkWindow` sets
+         *  the `GtkWidget:visible` property here.
+         * @param builder
+         */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets a property of a buildable object.
+         *  It is normally not necessary to implement this, g_object_set_property()
+         *  is used by default. `GtkWindow` implements this to delay showing itself
+         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  interface is created.
+         * @param builder
+         * @param name
+         * @param value
+         */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        /**
+         * Stores the id attribute given in the `GtkBuilder` UI definition.
+         *   `GtkWidget` stores the name as object data. Implement this method if your
+         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   attribute to it.
+         * @param id
+         */
         vfunc_set_id(id: string): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -15304,7 +15621,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -16151,7 +16468,7 @@ export namespace GtkSource {
          * the required height for the natural width is generally smaller than the
          * required height for the minimum width.
          *
-         * Use [id`gtk_widget_measure]` if you want to support baseline alignment.
+         * Use [method`Gtk`.Widget.measure] if you want to support baseline alignment.
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
@@ -17269,6 +17586,12 @@ export namespace GtkSource {
          * @param flags State flags to turn off
          */
         unset_state_flags(flags: Gtk.StateFlags): void;
+        /**
+         * Computes whether a container should give this
+         *   widget extra space when possible.
+         * @param hexpand_p
+         * @param vexpand_p
+         */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
         /**
          * Tests if the point at (`x,` `y)` is contained in `widget`.
@@ -17279,8 +17602,24 @@ export namespace GtkSource {
          * @param y Y coordinate to test, relative to @widget's origin
          */
         vfunc_contains(x: number, y: number): boolean;
+        /**
+         * Vfunc called when the CSS used by widget was changed. Widgets
+         *   should then discard their caches that depend on CSS and queue resizes or
+         *   redraws accordingly. The default implementation will take care of this for
+         *   all the default CSS properties, so implementations must chain up.
+         * @param change
+         */
         vfunc_css_changed(change: Gtk.CssStyleChange): void;
+        /**
+         * Signal emitted when the text direction of a
+         *   widget changes.
+         * @param previous_direction
+         */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
+        /**
+         * Vfunc for gtk_widget_child_focus()
+         * @param direction
+         */
         vfunc_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Gets whether the widget prefers a height-for-width layout
@@ -17366,7 +17705,20 @@ export namespace GtkSource {
          * @param group_cycling %TRUE if there are other widgets with the same mnemonic
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
+        /**
+         * Signal emitted when a change of focus is requested
+         * @param direction
+         */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
+        /**
+         * Signal emitted when “has-tooltip” is %TRUE and the
+         *   hover timeout has expired with the cursor hovering “above”
+         *   widget; or emitted when widget got focus in keyboard mode.
+         * @param x
+         * @param y
+         * @param keyboard_tooltip
+         * @param tooltip
+         */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
          * Creates the GDK resources associated with a widget.
@@ -17387,6 +17739,10 @@ export namespace GtkSource {
          * [signal`Gtk`.Widget::realize].
          */
         vfunc_realize(): void;
+        /**
+         * Called when the widget gets added to a `GtkRoot` widget. Must
+         *   chain up
+         */
         vfunc_root(): void;
         /**
          * Set `child` as the current focus child of `widget`.
@@ -17410,9 +17766,29 @@ export namespace GtkSource {
          * toplevel container is realized and mapped.
          */
         vfunc_show(): void;
+        /**
+         * Called to set the allocation, if the widget does
+         *   not have a layout manager.
+         * @param width
+         * @param height
+         * @param baseline
+         */
         vfunc_size_allocate(width: number, height: number, baseline: number): void;
+        /**
+         * Vfunc called when a new snapshot of the widget has to be taken.
+         * @param snapshot
+         */
         vfunc_snapshot(snapshot: Gtk.Snapshot): void;
+        /**
+         * Signal emitted when the widget state changes,
+         *   see gtk_widget_get_state_flags().
+         * @param previous_state_flags
+         */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
+        /**
+         * Emitted when a system setting was changed. Must chain up.
+         * @param settings
+         */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
          * Causes a widget to be unmapped if it’s currently mapped.
@@ -17427,6 +17803,10 @@ export namespace GtkSource {
          * This function is only useful in widget implementations.
          */
         vfunc_unrealize(): void;
+        /**
+         * Called when the widget is about to be removed from its
+         *   `GtkRoot` widget. Must chain up
+         */
         vfunc_unroot(): void;
     }
 
@@ -18471,7 +18851,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

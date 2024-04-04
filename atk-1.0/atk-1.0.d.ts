@@ -94,6 +94,26 @@ export namespace Atk {
         WINDOW,
     }
     /**
+     * Enumeration used to indicate a type of live region and how assertive it
+     * should be in terms of speaking notifications. Currently, this is only used
+     * for "notification" events, but it may be used for additional purposes
+     * in the future.
+     */
+    enum Live {
+        /**
+         * No live region.
+         */
+        NONE,
+        /**
+         * This live region should be considered polite.
+         */
+        POLITE,
+        /**
+         * This live region should be considered assertive.
+         */
+        ASSERTIVE,
+    }
+    /**
      * Describes the type of the relation
      */
     enum RelationType {
@@ -805,6 +825,11 @@ export namespace Atk {
          * actual change is. (Since: 2.36)
          */
         SUGGESTION,
+        /**
+         * A specialized push button to open a menu.
+         * (Since: 2.46)
+         */
+        PUSH_BUTTON_MENU,
         /**
          * not a valid role, used for finding end of the enumeration
          */
@@ -1655,6 +1680,8 @@ export namespace Atk {
     }
 
     /**
+     * This object class is derived from AtkObject and can be used as a basis implementing accessible objects.
+     *
      * This object class is derived from AtkObject. It can be used as a
      * basis for implementing accessible objects for GObjects which are
      * not derived from GtkWidget. One example of its use is in providing
@@ -1708,6 +1735,8 @@ export namespace Atk {
     }
 
     /**
+     * An ATK object which encapsulates a link or set of links in a hypertext document.
+     *
      * An ATK object which encapsulates a link or set of links (for
      * instance in the case of client-side image maps) in a hypertext
      * document.  It may implement the AtkAction interface.  AtkHyperlink
@@ -2180,7 +2209,7 @@ export namespace Atk {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2367,6 +2396,8 @@ export namespace Atk {
     }
 
     /**
+     * A set of ATK utility functions for thread locking
+     *
      * A set of utility functions for thread locking. This interface and
      * all his related methods are deprecated since 2.12.
      */
@@ -2451,6 +2482,8 @@ export namespace Atk {
     }
 
     /**
+     * An AtkObject which purports to implement all ATK interfaces.
+     *
      * An AtkNoOpObject is an AtkObject which purports to implement all
      * ATK interfaces. It is the type of AtkObject which is created if an
      * accessible object is requested for an object type for which no
@@ -2491,8 +2524,16 @@ export namespace Atk {
         set accessible_description(val: string);
         get accessibleDescription(): string;
         set accessibleDescription(val: string);
+        get accessible_help_text(): string;
+        set accessible_help_text(val: string);
+        get accessibleHelpText(): string;
+        set accessibleHelpText(val: string);
         get accessible_hypertext_nlinks(): number;
         get accessibleHypertextNlinks(): number;
+        get accessible_id(): string;
+        set accessible_id(val: string);
+        get accessibleId(): string;
+        set accessibleId(val: string);
         get accessible_name(): string;
         set accessible_name(val: string);
         get accessibleName(): string;
@@ -3018,12 +3059,27 @@ export namespace Atk {
          */
         get_page_count(): number;
         /**
+         * Returns an array of AtkTextSelections within this document.
+         * @returns a GArray of AtkTextSelection structures representing the selection.
+         */
+        get_text_selections(): TextSelection[];
+        /**
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
          * @param attribute_value a string value to be associated with @attribute_name.
          * @returns %TRUE if @attribute_value is successfully associated   with @attribute_name for this @document, and %FALSE if if the   document does not allow the attribute to be modified
          */
         set_attribute_value(attribute_name: string, attribute_value: string): boolean;
+        /**
+         * Makes 1 or more selections within this document denoted by the given
+         * array of AtkTextSelections. Any existing physical selection (inside or
+         * outside this document) is replaced by the new selections. All objects within
+         * the given selection ranges must be descendants of this document. Otherwise
+         * FALSE will be returned.
+         * @param selections a GArray of AtkTextSelections              to be selected.
+         * @returns TRUE if the selection was made successfully; FALSE otherwise.
+         */
+        set_text_selections(selections: TextSelection[]): boolean;
         /**
          * Retrieves the current page number inside `document`.
          */
@@ -3061,11 +3117,24 @@ export namespace Atk {
          */
         vfunc_get_page_count(): number;
         /**
+         * Returns an array of AtkTextSelections within this document.
+         */
+        vfunc_get_text_selections(): TextSelection[];
+        /**
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
          * @param attribute_value a string value to be associated with @attribute_name.
          */
         vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean;
+        /**
+         * Makes 1 or more selections within this document denoted by the given
+         * array of AtkTextSelections. Any existing physical selection (inside or
+         * outside this document) is replaced by the new selections. All objects within
+         * the given selection ranges must be descendants of this document. Otherwise
+         * FALSE will be returned.
+         * @param selections a GArray of AtkTextSelections              to be selected.
+         */
+        vfunc_set_text_selections(selections: TextSelection[]): boolean;
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
          * to the clipboard.
@@ -4226,6 +4295,13 @@ export namespace Atk {
         vfunc_set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
         vfunc_text_attributes_changed(): void;
         vfunc_text_caret_moved(location: number): void;
+        /**
+         * the signal handler which is executed when there is a
+         *   text change. This virtual function is deprecated sice 2.9.4 and
+         *   it should not be overriden.
+         * @param position
+         * @param length
+         */
         vfunc_text_changed(position: number, length: number): void;
         vfunc_text_selection_changed(): void;
         /**
@@ -4535,7 +4611,7 @@ export namespace Atk {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4726,6 +4802,11 @@ export namespace Atk {
          */
         get_accessible_id(): string;
         /**
+         * Gets the help text associated with the accessible.
+         * @returns a character string representing the help text or the object, or NULL if no such string was set.
+         */
+        get_help_text(): string;
+        /**
          * Gets the 0-based index of this accessible in its parent; returns -1 if the
          * accessible does not have an accessible parent.
          * @returns an integer which is the index of the accessible in its parent
@@ -4824,9 +4905,16 @@ export namespace Atk {
          * Typically, this is the gtkbuilder ID. Such an ID will be available for
          * instance to identify a given well-known accessible object for tailored screen
          * reading, or for automatic regression testing.
-         * @param name a character string to be set as the accessible id
+         * @param id a character string to be set as the accessible id
          */
-        set_accessible_id(name: string): void;
+        set_accessible_id(id: string): void;
+        /**
+         * Sets the help text associated with the accessible. This can be used to
+         * expose context-sensitive information to help a user understand how to
+         * interact with the object.
+         * @param help_text a character string to be set as the accessible's help text
+         */
+        set_help_text(help_text: string): void;
         /**
          * Sets the accessible name of the accessible. You can't set the name
          * to NULL. This is reserved for the initial value. In this aspect
@@ -4847,6 +4935,13 @@ export namespace Atk {
         set_role(role: Role): void;
         vfunc_active_descendant_changed(child?: any | null): void;
         vfunc_children_changed(change_index: number, changed_child?: any | null): void;
+        /**
+         * The signal handler which is executed when there is a
+         *   focus event for an object. This virtual function is deprecated
+         *   since 2.9.4 and it should not be overriden. Use
+         *   the #AtkObject::state-change "focused" signal instead.
+         * @param focus_in
+         */
         vfunc_focus_event(focus_in: boolean): void;
         /**
          * Get a list of properties applied to this object as a whole, as an #AtkAttributeSet consisting of
@@ -4933,6 +5028,8 @@ export namespace Atk {
     }
 
     /**
+     * The AtkObjectFactory which creates an AtkNoOpObject.
+     *
      * The AtkObjectFactory which creates an AtkNoOpObject. An instance of
      * this is created by an AtkRegistry if no factory type has not been
      * specified to create an accessible object of a particular type.
@@ -4956,12 +5053,24 @@ export namespace Atk {
             (arg1: Object): void;
         }
 
+        interface Announcement {
+            (arg1: string): void;
+        }
+
+        interface AttributeChanged {
+            (arg1: string, arg2: string): void;
+        }
+
         interface ChildrenChanged {
             (arg1: number, arg2: Object): void;
         }
 
         interface FocusEvent {
             (arg1: boolean): void;
+        }
+
+        interface Notification {
+            (arg1: string, arg2: number): void;
         }
 
         interface PropertyChange {
@@ -4985,8 +5094,12 @@ export namespace Atk {
             accessibleComponentMdiZorder: number;
             accessible_description: string;
             accessibleDescription: string;
+            accessible_help_text: string;
+            accessibleHelpText: string;
             accessible_hypertext_nlinks: number;
             accessibleHypertextNlinks: number;
+            accessible_id: string;
+            accessibleId: string;
             accessible_name: string;
             accessibleName: string;
             accessible_parent: Object;
@@ -5013,6 +5126,8 @@ export namespace Atk {
     }
 
     /**
+     * The base object class for the Accessibility Toolkit API.
+     *
      * This class is the primary class for accessibility support via the
      * Accessibility ToolKit (ATK).  Objects which are instances of
      * #AtkObject (or instances of AtkObject-derived types) are queried
@@ -5031,7 +5146,7 @@ export namespace Atk {
      * implementation is insufficient, via instances of a new #AtkObject
      * subclass.
      *
-     * See also: #AtkObjectFactory, #AtkRegistry.  (GTK+ users see also
+     * See [class`AtkObjectFactory]`, [class`AtkRegistry]`.  (GTK+ users see also
      * #GtkAccessible).
      */
     class Object extends GObject.Object {
@@ -5047,8 +5162,16 @@ export namespace Atk {
         set accessible_description(val: string);
         get accessibleDescription(): string;
         set accessibleDescription(val: string);
+        get accessible_help_text(): string;
+        set accessible_help_text(val: string);
+        get accessibleHelpText(): string;
+        set accessibleHelpText(val: string);
         get accessible_hypertext_nlinks(): number;
         get accessibleHypertextNlinks(): number;
+        get accessible_id(): string;
+        set accessible_id(val: string);
+        get accessibleId(): string;
+        set accessibleId(val: string);
         get accessible_name(): string;
         set accessible_name(val: string);
         get accessibleName(): string;
@@ -5152,6 +5275,15 @@ export namespace Atk {
         connect(signal: 'active-descendant-changed', callback: (_source: this, arg1: Object) => void): number;
         connect_after(signal: 'active-descendant-changed', callback: (_source: this, arg1: Object) => void): number;
         emit(signal: 'active-descendant-changed', arg1: Object): void;
+        connect(signal: 'announcement', callback: (_source: this, arg1: string) => void): number;
+        connect_after(signal: 'announcement', callback: (_source: this, arg1: string) => void): number;
+        emit(signal: 'announcement', arg1: string): void;
+        connect(signal: 'attribute-changed', callback: (_source: this, arg1: string, arg2: string) => void): number;
+        connect_after(
+            signal: 'attribute-changed',
+            callback: (_source: this, arg1: string, arg2: string) => void,
+        ): number;
+        emit(signal: 'attribute-changed', arg1: string, arg2: string): void;
         connect(signal: 'children-changed', callback: (_source: this, arg1: number, arg2: Object) => void): number;
         connect_after(
             signal: 'children-changed',
@@ -5161,6 +5293,9 @@ export namespace Atk {
         connect(signal: 'focus-event', callback: (_source: this, arg1: boolean) => void): number;
         connect_after(signal: 'focus-event', callback: (_source: this, arg1: boolean) => void): number;
         emit(signal: 'focus-event', arg1: boolean): void;
+        connect(signal: 'notification', callback: (_source: this, arg1: string, arg2: number) => void): number;
+        connect_after(signal: 'notification', callback: (_source: this, arg1: string, arg2: number) => void): number;
+        emit(signal: 'notification', arg1: string, arg2: number): void;
         connect(signal: 'property-change', callback: (_source: this, arg1: PropertyValues) => void): number;
         connect_after(signal: 'property-change', callback: (_source: this, arg1: PropertyValues) => void): number;
         emit(signal: 'property-change', arg1: PropertyValues): void;
@@ -5175,6 +5310,13 @@ export namespace Atk {
 
         vfunc_active_descendant_changed(child?: any | null): void;
         vfunc_children_changed(change_index: number, changed_child?: any | null): void;
+        /**
+         * The signal handler which is executed when there is a
+         *   focus event for an object. This virtual function is deprecated
+         *   since 2.9.4 and it should not be overriden. Use
+         *   the #AtkObject::state-change "focused" signal instead.
+         * @param focus_in
+         */
         vfunc_focus_event(focus_in: boolean): void;
         /**
          * Get a list of properties applied to this object as a whole, as an #AtkAttributeSet consisting of
@@ -5306,6 +5448,11 @@ export namespace Atk {
          */
         get_description(): string;
         /**
+         * Gets the help text associated with the accessible.
+         * @returns a character string representing the help text or the object, or NULL if no such string was set.
+         */
+        get_help_text(): string;
+        /**
          * Gets the 0-based index of this accessible in its parent; returns -1 if the
          * accessible does not have an accessible parent.
          * @returns an integer which is the index of the accessible in its parent
@@ -5420,9 +5567,9 @@ export namespace Atk {
          * Typically, this is the gtkbuilder ID. Such an ID will be available for
          * instance to identify a given well-known accessible object for tailored screen
          * reading, or for automatic regression testing.
-         * @param name a character string to be set as the accessible id
+         * @param id a character string to be set as the accessible id
          */
-        set_accessible_id(name: string): void;
+        set_accessible_id(id: string): void;
         /**
          * Sets the accessible description of the accessible. You can't set
          * the description to NULL. This is reserved for the initial value. In
@@ -5431,6 +5578,13 @@ export namespace Atk {
          * @param description a character string to be set as the accessible description
          */
         set_description(description: string): void;
+        /**
+         * Sets the help text associated with the accessible. This can be used to
+         * expose context-sensitive information to help a user understand how to
+         * interact with the object.
+         * @param help_text a character string to be set as the accessible's help text
+         */
+        set_help_text(help_text: string): void;
         /**
          * Sets the accessible name of the accessible. You can't set the name
          * to NULL. This is reserved for the initial value. In this aspect
@@ -5458,6 +5612,9 @@ export namespace Atk {
     }
 
     /**
+     * The base object class for a factory used to
+     *  create accessible objects for objects of a specific GType.
+     *
      * This class is the base object class for a factory used to create an
      * accessible object for a specific GType. The function
      * atk_registry_set_factory_type() is normally called to store in the
@@ -5515,7 +5672,9 @@ export namespace Atk {
     }
 
     /**
-     * See #AtkSocket
+     * Toplevel for embedding into other processes
+     *
+     * See [class`AtkSocket]`
      */
     class Plug extends Object implements Component {
         static $gtype: GObject.GType<Plug>;
@@ -5972,7 +6131,7 @@ export namespace Atk {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6159,6 +6318,10 @@ export namespace Atk {
     }
 
     /**
+     * An object used to store the GType of the
+     * factories used to create an accessible object for an object of a
+     * particular GType.
+     *
      * The AtkRegistry is normally used to create appropriate ATK "peers"
      * for user interface components.  Application developers usually need
      * only interact with the AtkRegistry by associating appropriate ATK
@@ -6213,6 +6376,9 @@ export namespace Atk {
     }
 
     /**
+     * An object used to describe a relation between a
+     *  object and one or more other objects.
+     *
      * An AtkRelation describes a relation between an object and one or
      * more other objects. The actual relations that an object has with
      * other objects are defined as an AtkRelationSet, which is a set of
@@ -6275,6 +6441,9 @@ export namespace Atk {
     }
 
     /**
+     * A set of AtkRelations, normally the set of
+     *  AtkRelations which an AtkObject has.
+     *
      * The AtkRelationSet held by an object establishes its relationships
      * with objects beyond the normal "parent/child" hierarchical
      * relationships that all user interface objects have.
@@ -6368,6 +6537,8 @@ export namespace Atk {
     }
 
     /**
+     * Container for AtkPlug objects from other processes
+     *
      * Together with #AtkPlug, #AtkSocket provides the ability to embed
      * accessibles from one process into another in a fashion that is
      * transparent to assistive technologies. #AtkSocket works as the
@@ -6390,6 +6561,8 @@ export namespace Atk {
      * atk_object_get_n_accessible_children() and
      * atk_object_ref_accessible_child(). All the logic related to those
      * functions will be implemented by the IPC layer.
+     *
+     * See [class`AtkPlug]`
      */
     class Socket extends Object implements Component {
         static $gtype: GObject.GType<Socket>;
@@ -6853,7 +7026,7 @@ export namespace Atk {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7040,6 +7213,8 @@ export namespace Atk {
     }
 
     /**
+     * An AtkStateSet contains the states of an object.
+     *
      * An AtkStateSet is a read-only representation of the full set of #AtkStates
      * that apply to an object at a given time. This set is not meant to be
      * modified, but rather created when #atk_object_ref_state_set() is called.
@@ -7142,6 +7317,8 @@ export namespace Atk {
     }
 
     /**
+     * A set of ATK utility functions for event and toolkit support.
+     *
      * A set of ATK utility functions which are used to support event
      * registration of various types, and obtaining the 'root' accessible
      * of a process and information about the current ATK implementation
@@ -7280,6 +7457,8 @@ export namespace Atk {
     }
 
     /**
+     * A given range or subrange, to be used with #AtkValue
+     *
      * #AtkRange are used on #AtkValue, in order to represent the full
      * range of a given component (for example an slider or a range
      * control), or to define each individual subrange this full range is
@@ -7410,6 +7589,43 @@ export namespace Atk {
                 height: number;
             }>,
         );
+        _init(...args: any[]): void;
+    }
+
+    /**
+     * This structure represents a single  text selection within a document. This
+     * selection is defined by two points in the content, where each one is defined
+     * by an AtkObject supporting the AtkText interface and a character offset
+     * relative to it.
+     *
+     * The end object must appear after the start object in the accessibility tree,
+     * i.e. the end object must be reachable from the start object by navigating
+     * forward (next, first child etc).
+     *
+     * This struct also contains a `start_is_active` boolean, to communicate if the
+     * start of the selection is the active point or not.
+     *
+     * The active point corresponds to the user's focus or point of interest. The
+     * user moves the active point to expand or collapse the range. The anchor
+     * point is the other point of the range and typically remains constant. In
+     * most cases, anchor is the start of the range and active is the end. However,
+     * when selecting backwards (e.g. pressing shift+left arrow in a text field),
+     * the start of the range is the active point, as the user moves this to
+     * manipulate the selection.
+     */
+    class TextSelection {
+        static $gtype: GObject.GType<TextSelection>;
+
+        // Own fields of Atk.TextSelection
+
+        start_object: Object;
+        start_offset: number;
+        end_object: Object;
+        end_offset: number;
+        start_is_active: boolean;
+
+        // Constructors of Atk.TextSelection
+
         _init(...args: any[]): void;
     }
 
@@ -7896,12 +8112,27 @@ export namespace Atk {
          */
         get_page_count(): number;
         /**
+         * Returns an array of AtkTextSelections within this document.
+         * @returns a GArray of AtkTextSelection structures representing the selection.
+         */
+        get_text_selections(): TextSelection[];
+        /**
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
          * @param attribute_value a string value to be associated with @attribute_name.
          * @returns %TRUE if @attribute_value is successfully associated   with @attribute_name for this @document, and %FALSE if if the   document does not allow the attribute to be modified
          */
         set_attribute_value(attribute_name: string, attribute_value: string): boolean;
+        /**
+         * Makes 1 or more selections within this document denoted by the given
+         * array of AtkTextSelections. Any existing physical selection (inside or
+         * outside this document) is replaced by the new selections. All objects within
+         * the given selection ranges must be descendants of this document. Otherwise
+         * FALSE will be returned.
+         * @param selections a GArray of AtkTextSelections              to be selected.
+         * @returns TRUE if the selection was made successfully; FALSE otherwise.
+         */
+        set_text_selections(selections: TextSelection[]): boolean;
 
         // Own virtual methods of Atk.Document
 
@@ -7942,11 +8173,24 @@ export namespace Atk {
          */
         vfunc_get_page_count(): number;
         /**
+         * Returns an array of AtkTextSelections within this document.
+         */
+        vfunc_get_text_selections(): TextSelection[];
+        /**
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
          * @param attribute_value a string value to be associated with @attribute_name.
          */
         vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean;
+        /**
+         * Makes 1 or more selections within this document denoted by the given
+         * array of AtkTextSelections. Any existing physical selection (inside or
+         * outside this document) is replaced by the new selections. All objects within
+         * the given selection ranges must be descendants of this document. Otherwise
+         * FALSE will be returned.
+         * @param selections a GArray of AtkTextSelections              to be selected.
+         */
+        vfunc_set_text_selections(selections: TextSelection[]): boolean;
     }
 
     export const Document: DocumentNamespace;
@@ -9409,6 +9653,13 @@ export namespace Atk {
         vfunc_set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
         vfunc_text_attributes_changed(): void;
         vfunc_text_caret_moved(location: number): void;
+        /**
+         * the signal handler which is executed when there is a
+         *   text change. This virtual function is deprecated sice 2.9.4 and
+         *   it should not be overriden.
+         * @param position
+         * @param length
+         */
         vfunc_text_changed(position: number, length: number): void;
         vfunc_text_selection_changed(): void;
     }

@@ -14,6 +14,7 @@ import './ostree-1.0-ambient.d.ts';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace OSTree {
     enum DeploymentUnlockedState {
@@ -1194,7 +1195,7 @@ export namespace OSTree {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2666,7 +2667,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         append_to_async(
             flags: Gio.FileCreateFlags,
@@ -2764,12 +2765,16 @@ export namespace OSTree {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         copy_async(
             destination: Gio.File,
             flags: Gio.FileCopyFlags,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
+            progress_callback?: Gio.FileProgressCallback | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Copies the file attributes from `source` to `destination`.
@@ -2830,7 +2835,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_async(
             flags: Gio.FileCreateFlags,
@@ -2887,7 +2892,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_readwrite_async(
             flags: Gio.FileCreateFlags,
@@ -2974,7 +2979,7 @@ export namespace OSTree {
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable(
             flags: Gio.MountUnmountFlags,
@@ -3000,7 +3005,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable_with_operation(
             flags: Gio.MountUnmountFlags,
@@ -3066,7 +3071,7 @@ export namespace OSTree {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         enumerate_children_async(
             attributes: string,
@@ -3119,7 +3124,7 @@ export namespace OSTree {
          * get the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         find_enclosing_mount_async(
             io_priority: number,
@@ -3329,7 +3334,7 @@ export namespace OSTree {
          *
          * See g_file_load_bytes() for more information.
          * @param cancellable a #GCancellable or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_bytes_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         /**
@@ -3486,6 +3491,35 @@ export namespace OSTree {
          */
         make_symbolic_link_finish(result: Gio.AsyncResult): boolean;
         /**
+         * Recursively measures the disk usage of `file`.
+         *
+         * This is essentially an analog of the 'du' command, but it also
+         * reports the number of directories and non-directory files encountered
+         * (including things like symbolic links).
+         *
+         * By default, errors are only reported against the toplevel file
+         * itself.  Errors found while recursing are silently ignored, unless
+         * %G_FILE_MEASURE_REPORT_ANY_ERROR is given in `flags`.
+         *
+         * The returned size, `disk_usage,` is in bytes and should be formatted
+         * with g_format_size() in order to get something reasonable for showing
+         * in a user interface.
+         *
+         * `progress_callback` and `progress_data` can be given to request
+         * periodic progress updates while scanning.  See the documentation for
+         * #GFileMeasureProgressCallback for information about when and how the
+         * callback will be invoked.
+         * @param flags #GFileMeasureFlags
+         * @param cancellable optional #GCancellable
+         * @param progress_callback a #GFileMeasureProgressCallback
+         * @returns %TRUE if successful, with the out parameters set.   %FALSE otherwise, with @error set.
+         */
+        measure_disk_usage(
+            flags: Gio.FileMeasureFlags,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileMeasureProgressCallback | null,
+        ): [boolean, number, number, number];
+        /**
          * Collects the results from an earlier call to
          * g_file_measure_disk_usage_async().  See g_file_measure_disk_usage() for
          * more information.
@@ -3520,7 +3554,7 @@ export namespace OSTree {
          * you must register individual watches with g_file_monitor().
          * @param flags a set of #GFileMonitorFlags
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @returns a #GFileMonitor for the given @file,   or %NULL on error.   Free the returned object with g_object_unref().
+         * @returns a #GFileMonitor for the given @file,   or %NULL on error. Free the returned object with g_object_unref().
          */
         monitor_directory(flags: Gio.FileMonitorFlags, cancellable?: Gio.Cancellable | null): Gio.FileMonitor;
         /**
@@ -3586,7 +3620,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         mount_mountable(
             flags: Gio.MountMountFlags,
@@ -3663,8 +3697,8 @@ export namespace OSTree {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param progress_callback #GFileProgressCallback   function for updates
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param progress_callback #GFileProgressCallback function for updates
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         move_async(
             destination: Gio.File,
@@ -3713,7 +3747,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         open_readwrite_async(
             io_priority: number,
@@ -3873,7 +3907,7 @@ export namespace OSTree {
          * @param attributes an attribute query string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_filesystem_info_async(
             attributes: string,
@@ -3943,7 +3977,7 @@ export namespace OSTree {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_info_async(
             attributes: string,
@@ -4013,7 +4047,7 @@ export namespace OSTree {
          * of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -4069,7 +4103,7 @@ export namespace OSTree {
          * %G_IO_ERROR_INVALID_FILENAME error, and if the name is to long
          * %G_IO_ERROR_FILENAME_TOO_LONG will be returned. Other errors are
          * possible too, and depend on what kind of filesystem the file is on.
-         * @param etag an optional [entity tag][gfile-etag]   for the current #GFile, or #NULL to ignore
+         * @param etag an optional [entity tag](#entity-tags)   for the current #GFile, or #NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param cancellable optional #GCancellable object,   %NULL to ignore
@@ -4091,12 +4125,12 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_replace_finish() to get the result
          * of the operation.
-         * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+         * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         replace_async(
             etag: string | null,
@@ -4124,7 +4158,7 @@ export namespace OSTree {
          * The returned `new_etag` can be used to verify that the file hasn't
          * changed the next time it is saved over.
          * @param contents a string containing the new contents for @file
-         * @param etag the old [entity-tag][gfile-etag] for the document,   or %NULL
+         * @param etag the old [entity-tag](#entity-tags) for the document,   or %NULL
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param cancellable optional #GCancellable object, %NULL to ignore
@@ -4158,7 +4192,7 @@ export namespace OSTree {
          * for a #GBytes version that will automatically hold a reference to the
          * contents (without copying) for the duration of the call.
          * @param contents string of contents to replace the file with
-         * @param etag a new [entity tag][gfile-etag] for the @file, or %NULL
+         * @param etag a new [entity tag](#entity-tags) for the @file, or %NULL
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param cancellable optional #GCancellable object, %NULL to ignore
@@ -4184,7 +4218,7 @@ export namespace OSTree {
          * `user_user` data, and the operation can be finalized with
          * g_file_replace_contents_finish().
          * @param contents a #GBytes
-         * @param etag a new [entity tag][gfile-etag] for the @file, or %NULL
+         * @param etag a new [entity tag](#entity-tags) for the @file, or %NULL
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param cancellable optional #GCancellable object, %NULL to ignore
@@ -4224,7 +4258,7 @@ export namespace OSTree {
          * Note that in many non-local file cases read and write streams are not
          * supported, so make sure you really need to do read and write streaming,
          * rather than just opening for reading or writing.
-         * @param etag an optional [entity tag][gfile-etag]   for the current #GFile, or #NULL to ignore
+         * @param etag an optional [entity tag](#entity-tags)   for the current #GFile, or #NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param cancellable optional #GCancellable object,   %NULL to ignore
@@ -4247,12 +4281,12 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_replace_readwrite_finish() to get
          * the result of the operation.
-         * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+         * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         replace_readwrite_async(
             etag: string | null,
@@ -4431,7 +4465,7 @@ export namespace OSTree {
          * @param flags a #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         set_attributes_async(
             info: Gio.FileInfo,
@@ -4502,7 +4536,7 @@ export namespace OSTree {
          * @param display_name a string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         set_display_name_async(
             display_name: string,
@@ -4632,7 +4666,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable(
             flags: Gio.MountUnmountFlags,
@@ -4661,7 +4695,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable_with_operation(
             flags: Gio.MountUnmountFlags,
@@ -4713,7 +4747,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_append_to_async(
             flags: Gio.FileCreateFlags,
@@ -4794,12 +4828,16 @@ export namespace OSTree {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_copy_async(
             destination: Gio.File,
             flags: Gio.FileCopyFlags,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
+            progress_callback?: Gio.FileProgressCallback | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes copying the file started with g_file_copy_async().
@@ -4843,7 +4881,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_create_async(
             flags: Gio.FileCreateFlags,
@@ -4898,7 +4936,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_create_readwrite_async(
             flags: Gio.FileCreateFlags,
@@ -4981,7 +5019,7 @@ export namespace OSTree {
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_eject_mountable(
             flags: Gio.MountUnmountFlags,
@@ -5006,7 +5044,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_eject_mountable_with_operation(
             flags: Gio.MountUnmountFlags,
@@ -5070,7 +5108,7 @@ export namespace OSTree {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_enumerate_children_async(
             attributes: string,
@@ -5120,7 +5158,7 @@ export namespace OSTree {
          * get the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_find_enclosing_mount_async(
             io_priority: number,
@@ -5316,6 +5354,34 @@ export namespace OSTree {
          */
         vfunc_make_symbolic_link_finish(result: Gio.AsyncResult): boolean;
         /**
+         * Recursively measures the disk usage of `file`.
+         *
+         * This is essentially an analog of the 'du' command, but it also
+         * reports the number of directories and non-directory files encountered
+         * (including things like symbolic links).
+         *
+         * By default, errors are only reported against the toplevel file
+         * itself.  Errors found while recursing are silently ignored, unless
+         * %G_FILE_MEASURE_REPORT_ANY_ERROR is given in `flags`.
+         *
+         * The returned size, `disk_usage,` is in bytes and should be formatted
+         * with g_format_size() in order to get something reasonable for showing
+         * in a user interface.
+         *
+         * `progress_callback` and `progress_data` can be given to request
+         * periodic progress updates while scanning.  See the documentation for
+         * #GFileMeasureProgressCallback for information about when and how the
+         * callback will be invoked.
+         * @param flags #GFileMeasureFlags
+         * @param cancellable optional #GCancellable
+         * @param progress_callback a #GFileMeasureProgressCallback
+         */
+        vfunc_measure_disk_usage(
+            flags: Gio.FileMeasureFlags,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileMeasureProgressCallback | null,
+        ): [boolean, number, number, number];
+        /**
          * Collects the results from an earlier call to
          * g_file_measure_disk_usage_async().  See g_file_measure_disk_usage() for
          * more information.
@@ -5400,7 +5466,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_mount_mountable(
             flags: Gio.MountMountFlags,
@@ -5475,8 +5541,8 @@ export namespace OSTree {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param progress_callback #GFileProgressCallback   function for updates
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param progress_callback #GFileProgressCallback function for updates
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_move_async(
             destination: Gio.File,
@@ -5523,7 +5589,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_open_readwrite_async(
             io_priority: number,
@@ -5624,7 +5690,7 @@ export namespace OSTree {
          * @param attributes an attribute query string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_query_filesystem_info_async(
             attributes: string,
@@ -5692,7 +5758,7 @@ export namespace OSTree {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_query_info_async(
             attributes: string,
@@ -5743,7 +5809,7 @@ export namespace OSTree {
          * of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_read_async(
             io_priority: number,
@@ -5813,7 +5879,7 @@ export namespace OSTree {
          * %G_IO_ERROR_INVALID_FILENAME error, and if the name is to long
          * %G_IO_ERROR_FILENAME_TOO_LONG will be returned. Other errors are
          * possible too, and depend on what kind of filesystem the file is on.
-         * @param etag an optional [entity tag][gfile-etag]   for the current #GFile, or #NULL to ignore
+         * @param etag an optional [entity tag](#entity-tags)   for the current #GFile, or #NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param cancellable optional #GCancellable object,   %NULL to ignore
@@ -5834,12 +5900,12 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_replace_finish() to get the result
          * of the operation.
-         * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+         * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_replace_async(
             etag: string | null,
@@ -5866,7 +5932,7 @@ export namespace OSTree {
          * Note that in many non-local file cases read and write streams are not
          * supported, so make sure you really need to do read and write streaming,
          * rather than just opening for reading or writing.
-         * @param etag an optional [entity tag][gfile-etag]   for the current #GFile, or #NULL to ignore
+         * @param etag an optional [entity tag](#entity-tags)   for the current #GFile, or #NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param cancellable optional #GCancellable object,   %NULL to ignore
@@ -5888,12 +5954,12 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_replace_readwrite_finish() to get
          * the result of the operation.
-         * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+         * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_replace_readwrite_async(
             etag: string | null,
@@ -5954,7 +6020,7 @@ export namespace OSTree {
          * @param flags a #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_set_attributes_async(
             info: Gio.FileInfo,
@@ -6022,7 +6088,7 @@ export namespace OSTree {
          * @param display_name a string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_set_display_name_async(
             display_name: string,
@@ -6139,7 +6205,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_unmount_mountable(
             flags: Gio.MountUnmountFlags,
@@ -6167,7 +6233,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_unmount_mountable_with_operation(
             flags: Gio.MountUnmountFlags,
@@ -6361,7 +6427,7 @@ export namespace OSTree {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6866,7 +6932,7 @@ export namespace OSTree {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7665,7 +7731,7 @@ export namespace OSTree {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

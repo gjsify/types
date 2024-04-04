@@ -19,6 +19,7 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Json from '@girs/json-1.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GL from '@girs/gl-1.0';
 import type CoglPango from '@girs/coglpango-1.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
@@ -672,7 +673,7 @@ export namespace Cally {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1449,7 +1450,7 @@ export namespace Cally {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2226,7 +2227,7 @@ export namespace Cally {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3003,7 +3004,7 @@ export namespace Cally {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3239,8 +3240,16 @@ export namespace Cally {
         set accessible_description(val: string);
         get accessibleDescription(): string;
         set accessibleDescription(val: string);
+        get accessible_help_text(): string;
+        set accessible_help_text(val: string);
+        get accessibleHelpText(): string;
+        set accessibleHelpText(val: string);
         get accessible_hypertext_nlinks(): number;
         get accessibleHypertextNlinks(): number;
+        get accessible_id(): string;
+        set accessible_id(val: string);
+        get accessibleId(): string;
+        set accessibleId(val: string);
         get accessible_name(): string;
         set accessible_name(val: string);
         get accessibleName(): string;
@@ -3500,7 +3509,7 @@ export namespace Cally {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3706,6 +3715,11 @@ export namespace Cally {
         // Conflicted with Atk.Action.get_description
         get_description(...args: never[]): any;
         /**
+         * Gets the help text associated with the accessible.
+         * @returns a character string representing the help text or the object, or NULL if no such string was set.
+         */
+        get_help_text(): string;
+        /**
          * Gets the 0-based index of this accessible in its parent; returns -1 if the
          * accessible does not have an accessible parent.
          * @returns an integer which is the index of the accessible in its parent
@@ -3822,9 +3836,9 @@ export namespace Cally {
          * Typically, this is the gtkbuilder ID. Such an ID will be available for
          * instance to identify a given well-known accessible object for tailored screen
          * reading, or for automatic regression testing.
-         * @param name a character string to be set as the accessible id
+         * @param id a character string to be set as the accessible id
          */
-        set_accessible_id(name: string): void;
+        set_accessible_id(id: string): void;
         /**
          * Sets the accessible description of the accessible. You can't set
          * the description to NULL. This is reserved for the initial value. In
@@ -3835,6 +3849,13 @@ export namespace Cally {
         set_description(description: string): void;
         // Conflicted with Atk.Action.set_description
         set_description(...args: never[]): any;
+        /**
+         * Sets the help text associated with the accessible. This can be used to
+         * expose context-sensitive information to help a user understand how to
+         * interact with the object.
+         * @param help_text a character string to be set as the accessible's help text
+         */
+        set_help_text(help_text: string): void;
         /**
          * Sets the accessible name of the accessible. You can't set the name
          * to NULL. This is reserved for the initial value. In this aspect
@@ -3855,6 +3876,13 @@ export namespace Cally {
         set_role(role: Atk.Role): void;
         vfunc_active_descendant_changed(child?: any | null): void;
         vfunc_children_changed(change_index: number, changed_child?: any | null): void;
+        /**
+         * The signal handler which is executed when there is a
+         *   focus event for an object. This virtual function is deprecated
+         *   since 2.9.4 and it should not be overriden. Use
+         *   the #AtkObject::state-change "focused" signal instead.
+         * @param focus_in
+         */
         vfunc_focus_event(focus_in: boolean): void;
         /**
          * Get a list of properties applied to this object as a whole, as an #AtkAttributeSet consisting of
@@ -4956,6 +4984,13 @@ export namespace Cally {
         vfunc_set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
         vfunc_text_attributes_changed(): void;
         vfunc_text_caret_moved(location: number): void;
+        /**
+         * the signal handler which is executed when there is a
+         *   text change. This virtual function is deprecated sice 2.9.4 and
+         *   it should not be overriden.
+         * @param position
+         * @param length
+         */
         vfunc_text_changed(position: number, length: number): void;
         vfunc_text_selection_changed(): void;
         /**
@@ -5135,7 +5170,7 @@ export namespace Cally {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5912,7 +5947,7 @@ export namespace Cally {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

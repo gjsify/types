@@ -15,6 +15,7 @@ import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type JavaScriptCore from '@girs/javascriptcore-5.0';
 import type Gtk from '@girs/gtk-4.0';
 import type Gsk from '@girs/gsk-4.0';
@@ -26,7 +27,6 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace WebKit2 {
     /**
@@ -2598,7 +2598,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3906,7 +3906,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4734,7 +4734,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5136,7 +5136,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5767,7 +5767,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6300,7 +6300,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9606,7 +9606,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12628,7 +12628,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12852,6 +12852,20 @@ export namespace WebKit2 {
 
         // Inherited methods
         /**
+         * Requests the user's screen reader to announce the given message.
+         *
+         * This kind of notification is useful for messages that
+         * either have only a visual representation or that are not
+         * exposed visually at all, e.g. a notification about a
+         * successful operation.
+         *
+         * Also, by using this API, you can ensure that the message
+         * does not interrupts the user's current screen reader output.
+         * @param message the string to announce
+         * @param priority the priority of the announcement
+         */
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -13061,6 +13075,10 @@ export namespace WebKit2 {
             child: GObject.Object | null,
             tagname: string,
         ): [boolean, Gtk.BuildableParser, any];
+        /**
+         * The getter corresponding to `set_id`. Implement this
+         *   if you implement `set_id`.
+         */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
@@ -13068,8 +13086,32 @@ export namespace WebKit2 {
          * @param childname name of child
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Called when a builder finishes the parsing
+         *  of a UI definition. It is normally not necessary to implement this,
+         *  unless you need to perform special cleanup actions. `GtkWindow` sets
+         *  the `GtkWidget:visible` property here.
+         * @param builder
+         */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets a property of a buildable object.
+         *  It is normally not necessary to implement this, g_object_set_property()
+         *  is used by default. `GtkWindow` implements this to delay showing itself
+         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  interface is created.
+         * @param builder
+         * @param name
+         * @param value
+         */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        /**
+         * Stores the id attribute given in the `GtkBuilder` UI definition.
+         *   `GtkWidget` stores the name as object data. Implement this method if your
+         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   attribute to it.
+         * @param id
+         */
         vfunc_set_id(id: string): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -13248,7 +13290,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -13659,7 +13701,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

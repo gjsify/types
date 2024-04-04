@@ -14,8 +14,8 @@ import './gnomedesktop-4.0-ambient.d.ts';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
 
 export namespace GnomeDesktop {
@@ -65,6 +65,46 @@ export namespace GnomeDesktop {
      */
     function get_country_from_locale(locale: string, translation?: string | null): string;
     /**
+     * Asynchronously fetches a list of of default input sources based on locale and system
+     * configuration. This is for when a user has no input sources configured
+     * in GSettings.
+     * @param cancellable a #GCancellable
+     */
+    function get_default_input_sources(cancellable?: Gio.Cancellable | null): Promise<[string[], string[], string[]]>;
+    /**
+     * Asynchronously fetches a list of of default input sources based on locale and system
+     * configuration. This is for when a user has no input sources configured
+     * in GSettings.
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback
+     */
+    function get_default_input_sources(
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
+    ): void;
+    /**
+     * Asynchronously fetches a list of of default input sources based on locale and system
+     * configuration. This is for when a user has no input sources configured
+     * in GSettings.
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback
+     */
+    function get_default_input_sources(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
+    ): Promise<[string[], string[], string[]]> | void;
+    /**
+     * Returns a whether or not a list of default input sources based on locale and system
+     * configuration could be retrieved. This is for when a user has no input sources configured
+     * in GSettings.
+     * @param result
+     * @param model
+     */
+    function get_default_input_sources_finish(
+        result: Gio.AsyncResult,
+        model: string,
+    ): [boolean, string[], string[], string[]];
+    /**
      * Gets the default input source's type and identifier for a given
      * locale.
      * @param locale a locale string
@@ -104,6 +144,13 @@ export namespace GnomeDesktop {
      * @returns the translated modifier string. Caller takes ownership.
      */
     function get_translated_modifier(modifier: string, translation?: string | null): string;
+    /**
+     * Returns whether or not the input source has the ability to enter latin characters.
+     * @param type an input source type (e.g., "xkb" or "ibus")
+     * @param id an input source id (e.g., "us+dvorak" or "anthy")
+     * @returns %TRUE if it can't enter latin characters
+     */
+    function input_source_is_non_latin(type: string, id: string): boolean;
     /**
      * Returns %TRUE if there are translations for language `code`.
      * @param code an ISO 639 code string
@@ -675,7 +722,7 @@ export namespace GnomeDesktop {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

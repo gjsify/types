@@ -20,8 +20,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace GdkWayland {
     interface WaylandToplevelExported {
@@ -360,10 +360,8 @@ export namespace GdkWayland {
          */
         create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
         /**
-         * Creates a new `GdkVulkanContext` for rendering on `surface`.
-         *
-         * If the creation of the `GdkVulkanContext` failed, `error` will be set.
-         * @returns the newly created `GdkVulkanContext`, or   %NULL on error
+         * Sets an error and returns %NULL.
+         * @returns %NULL
          */
         create_vulkan_context(): Gdk.VulkanContext;
         /**
@@ -483,7 +481,7 @@ export namespace GdkWayland {
          * For toplevel surfaces, withdraws them, so they will no longer be
          * known to the window manager; for all surfaces, unmaps them, so
          * they won’t be displayed. Normally done automatically as
-         * part of [method`Gtk`.Widget.hide].
+         * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
          */
         hide(): void;
         /**
@@ -562,7 +560,7 @@ export namespace GdkWayland {
          * GTK will update this property automatically if the `surface` background
          * is opaque, as we know where the opaque regions are. If your surface
          * background is not opaque, please update this property in your
-         * [vfunc`Gtk`.Widget.css_changed] handler.
+         * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
          * @param region a region, or %NULL to make the entire   surface opaque
          */
         set_opaque_region(region?: cairo.Region | null): void;
@@ -881,8 +879,9 @@ export namespace GdkWayland {
         /**
          * Sets keyboard focus to `surface`.
          *
-         * In most cases, [method`Gtk`.Window.present_with_time] should be
-         * used on a [class`Gtk`.Window], rather than calling this function.
+         * In most cases, [gtk_window_present_with_time()](../gtk4/method.Window.present_with_time.html)
+         * should be used on a [GtkWindow](../gtk4/class.Window.html), rather than
+         * calling this function.
          * @param timestamp timestamp of the event triggering the surface focus
          */
         focus(timestamp: number): void;
@@ -1000,8 +999,8 @@ export namespace GdkWayland {
          * Sets the startup notification ID.
          *
          * When using GTK, typically you should use
-         * [method`Gtk`.Window.set_startup_id] instead of this
-         * low-level function.
+         * [gtk_window_set_startup_id()](../gtk4/method.Window.set_startup_id.html)
+         * instead of this low-level function.
          * @param startup_id a string with startup-notification identifier
          */
         set_startup_id(startup_id: string): void;
@@ -1021,8 +1020,8 @@ export namespace GdkWayland {
          * allows the window manager to do things like center `surface`
          * on `parent` and keep `surface` above `parent`.
          *
-         * See [method`Gtk`.Window.set_transient_for] if you’re using
-         * [class`Gtk`.Window] or [class`Gtk`.Dialog].
+         * See [gtk_window_set_transient_for()](../gtk4/method.Window.set_transient_for.html)
+         * if you’re using [GtkWindow](../gtk4/class.Window.html).
          * @param parent another toplevel `GdkSurface`
          */
         set_transient_for(parent: Gdk.Surface): void;
@@ -1089,10 +1088,8 @@ export namespace GdkWayland {
          */
         create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
         /**
-         * Creates a new `GdkVulkanContext` for rendering on `surface`.
-         *
-         * If the creation of the `GdkVulkanContext` failed, `error` will be set.
-         * @returns the newly created `GdkVulkanContext`, or   %NULL on error
+         * Sets an error and returns %NULL.
+         * @returns %NULL
          */
         create_vulkan_context(): Gdk.VulkanContext;
         /**
@@ -1212,7 +1209,7 @@ export namespace GdkWayland {
          * For toplevel surfaces, withdraws them, so they will no longer be
          * known to the window manager; for all surfaces, unmaps them, so
          * they won’t be displayed. Normally done automatically as
-         * part of [method`Gtk`.Widget.hide].
+         * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
          */
         hide(): void;
         /**
@@ -1291,7 +1288,7 @@ export namespace GdkWayland {
          * GTK will update this property automatically if the `surface` background
          * is opaque, as we know where the opaque regions are. If your surface
          * background is not opaque, please update this property in your
-         * [vfunc`Gtk`.Widget.css_changed] handler.
+         * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
          * @param region a region, or %NULL to make the entire   surface opaque
          */
         set_opaque_region(region?: cairo.Region | null): void;

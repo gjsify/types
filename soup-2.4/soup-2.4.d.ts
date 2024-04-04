@@ -16,6 +16,7 @@ import './soup-2.4-import.d.ts';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Soup {
     /**
@@ -2978,7 +2979,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3976,7 +3977,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4498,7 +4499,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4921,7 +4922,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5380,7 +5381,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6012,7 +6013,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6446,7 +6447,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6880,7 +6881,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7392,7 +7393,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7829,7 +7830,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -8320,7 +8321,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9303,7 +9304,7 @@ export namespace Soup {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -9389,7 +9390,7 @@ export namespace Soup {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
@@ -9436,7 +9437,7 @@ export namespace Soup {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -9496,7 +9497,7 @@ export namespace Soup {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
             count: number,
@@ -9570,7 +9571,7 @@ export namespace Soup {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
             count: number,
@@ -9597,7 +9598,7 @@ export namespace Soup {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -9636,7 +9637,7 @@ export namespace Soup {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_read_async(
             io_priority: number,
@@ -9695,7 +9696,7 @@ export namespace Soup {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_skip_async(
             count: number,
@@ -10009,7 +10010,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -10583,7 +10584,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -11041,7 +11042,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -11507,7 +11508,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -11973,7 +11974,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12403,7 +12404,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -15027,7 +15028,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -15865,7 +15866,7 @@ export namespace Soup {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

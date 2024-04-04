@@ -21,8 +21,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Gsk {
     /**
@@ -125,6 +125,37 @@ export namespace Gsk {
         BOTTOM_LEFT,
     }
     /**
+     * `GskFillRule` is used to select how paths are filled.
+     *
+     * Whether or not a point is included in the fill is determined by taking
+     * a ray from that point to infinity and looking at intersections with the
+     * path. The ray can be in any direction, as long as it doesn't pass through
+     * the end point of a segment or have a tricky intersection such as
+     * intersecting tangent to the path.
+     *
+     * (Note that filling is not actually implemented in this way. This
+     * is just a description of the rule that is applied.)
+     *
+     * New entries may be added in future versions.
+     */
+    enum FillRule {
+        /**
+         * If the path crosses the ray from
+         *   left-to-right, counts +1. If the path crosses the ray
+         *   from right to left, counts -1. (Left and right are determined
+         *   from the perspective of looking along the ray from the starting
+         *   point.) If the total count is non-zero, the point will be filled.
+         */
+        WINDING,
+        /**
+         * Counts the total number of
+         *   intersections, without regard to the orientation of the contour. If
+         *   the total number of intersections is odd, the point will be
+         *   filled.
+         */
+        EVEN_ODD,
+    }
+    /**
      * This defines the types of the uniforms that `GskGLShaders`
      * declare.
      *
@@ -166,6 +197,70 @@ export namespace Gsk {
         VEC4,
     }
     /**
+     * Specifies how to render the start and end points of contours or
+     * dashes when stroking.
+     *
+     * The default line cap style is `GSK_LINE_CAP_BUTT`.
+     *
+     * New entries may be added in future versions.
+     *
+     * <figure>
+     *   <picture>
+     *     <source srcset="caps-dark.png" media="(prefers-color-scheme: dark)">
+     *     <img alt="Line Cap Styles" src="caps-light.png">
+     *   </picture>
+     *   <figcaption>GSK_LINE_CAP_BUTT, GSK_LINE_CAP_ROUND, GSK_LINE_CAP_SQUARE</figcaption>
+     * </figure>
+     */
+    enum LineCap {
+        /**
+         * Start and stop the line exactly at the start
+         *   and end point
+         */
+        BUTT,
+        /**
+         * Use a round ending, the center of the circle
+         *   is the start or end point
+         */
+        ROUND,
+        /**
+         * use squared ending, the center of the square
+         *   is the start or end point
+         */
+        SQUARE,
+    }
+    /**
+     * Specifies how to render the junction of two lines when stroking.
+     *
+     * The default line join style is `GSK_LINE_JOIN_MITER`.
+     *
+     * New entries may be added in future versions.
+     *
+     * <figure>
+     *   <picture>
+     *     <source srcset="join-dark.png" media="(prefers-color-scheme: dark)">
+     *     <img alt="Line Join Styles" src="join-light.png">
+     *   </picture>
+     *   <figcaption>GSK_LINE_JOINT_MITER, GSK_LINE_JOINT_ROUND, GSK_LINE_JOIN_BEVEL</figcaption>
+     * </figure>
+     */
+    enum LineJoin {
+        /**
+         * Use a sharp angled corner
+         */
+        MITER,
+        /**
+         * Use a round join, the center of the circle is
+         *   the join point
+         */
+        ROUND,
+        /**
+         * use a cut-off join, the join is cut off at half
+         *   the line width from the joint point
+         */
+        BEVEL,
+    }
+    /**
      * The mask modes available for mask nodes.
      */
     enum MaskMode {
@@ -187,6 +282,80 @@ export namespace Gsk {
          *     multiplied by mask alpha
          */
         INVERTED_LUMINANCE,
+    }
+    /**
+     * The values of the `GskPathDirection` enum are used to pick one
+     * of the four tangents at a given point on the path.
+     *
+     * Note that the directions for `GSK_PATH_FROM_START/``GSK_PATH_TO_END` and
+     * `GSK_PATH_TO_START/``GSK_PATH_FROM_END` will coincide for smooth points.
+     * Only sharp turns will exhibit four different directions.
+     *
+     * <picture>
+     *   <source srcset="directions-dark.png" media="(prefers-color-scheme: dark)">
+     *   <img alt="Path Tangents" src="directions-light.png">
+     * </picture>
+     */
+    enum PathDirection {
+        /**
+         * The tangent in path direction of the incoming side
+         *   of the path
+         */
+        FROM_START,
+        /**
+         * The tangent against path direction of the incoming side
+         *   of the path
+         */
+        TO_START,
+        /**
+         * The tangent in path direction of the outgoing side
+         *   of the path
+         */
+        TO_END,
+        /**
+         * The tangent against path direction of the outgoing
+         *   side of the path
+         */
+        FROM_END,
+    }
+    /**
+     * Path operations are used to describe the segments of a `GskPath`.
+     *
+     * More values may be added in the future.
+     */
+    enum PathOperation {
+        /**
+         * A move-to operation, with 1 point describing the target point.
+         */
+        MOVE,
+        /**
+         * A close operation ending the current contour with a line back
+         *   to the starting point. Two points describe the start and end of the line.
+         */
+        CLOSE,
+        /**
+         * A line-to operation, with 2 points describing the start and
+         *   end point of a straight line.
+         */
+        LINE,
+        /**
+         * A curve-to operation describing a quadratic Bézier curve
+         *   with 3 points describing the start point, the control point and the end
+         *   point of the curve.
+         */
+        QUAD,
+        /**
+         * A curve-to operation describing a cubic Bézier curve with 4
+         *   points describing the start point, the two control points and the end point
+         *   of the curve.
+         */
+        CUBIC,
+        /**
+         * A rational quadratic Bézier curve with 3 points describing
+         *   the start point, control point and end point of the curve. A weight for the
+         *   curve will be passed, too.
+         */
+        CONIC,
     }
     /**
      * The type of a node determines what the node is rendering.
@@ -297,13 +466,25 @@ export namespace Gsk {
          */
         GL_SHADER_NODE,
         /**
-         * A node drawing a `GdkTexture` scaled and filtered (Since: 4.10)
+         * A node drawing a `GdkTexture` scaled and filtered.
          */
         TEXTURE_SCALE_NODE,
         /**
-         * A node that masks one child with another (Since: 4.10)
+         * A node that masks one child with another.
          */
         MASK_NODE,
+        /**
+         * A node that fills a path.
+         */
+        FILL_NODE,
+        /**
+         * A node that strokes a path.
+         */
+        STROKE_NODE,
+        /**
+         * A node that possibly redirects part of the scene graph to a subsurface.
+         */
+        SUBSURFACE_NODE,
     }
     /**
      * The filters used when scaling texture data.
@@ -409,7 +590,44 @@ export namespace Gsk {
          */
         IDENTITY,
     }
+    /**
+     * This is a convenience function that constructs a `GskPath`
+     * from a serialized form.
+     *
+     * The string is expected to be in (a superset of)
+     * [SVG path syntax](https://www.w3.org/TR/SVG11/paths.html#PathData),
+     * as e.g. produced by [method`Gsk`.Path.to_string].
+     *
+     * A high-level summary of the syntax:
+     *
+     * - `M x y` Move to `(x, y)`
+     * - `L x y` Add a line from the current point to `(x, y)`
+     * - `Q x1 y1 x2 y2` Add a quadratic Bézier from the current point to `(x2, y2)`, with control point `(x1, y1)`
+     * - `C x1 y1 x2 y2 x3 y3` Add a cubic Bézier from the current point to `(x3, y3)`, with control points `(x1, y1)` and `(x2, y2)`
+     * - `Z` Close the contour by drawing a line back to the start point
+     * - `H x` Add a horizontal line from the current point to the given x value
+     * - `V y` Add a vertical line from the current point to the given y value
+     * - `T x2 y2` Add a quadratic Bézier, using the reflection of the previous segments' control point as control point
+     * - `S x2 y2 x3 y3` Add a cubic Bézier, using the reflection of the previous segments' second control point as first control point
+     * - `A rx ry r l s x y` Add an elliptical arc from the current point to `(x, y)` with radii rx and ry. See the SVG documentation for how the other parameters influence the arc.
+     * - `O x1 y1 x2 y2 w` Add a rational quadratic Bézier from the current point to `(x2, y2)` with control point `(x1, y1)` and weight `w`.
+     *
+     * All the commands have lowercase variants that interpret coordinates
+     * relative to the current point.
+     *
+     * The `O` command is an extension that is not supported in SVG.
+     * @param string a string
+     * @returns a new `GskPath`, or `NULL` if @string could not be parsed
+     */
+    function path_parse(string: string): Path | null;
     function serialization_error_quark(): GLib.Quark;
+    /**
+     * Checks if 2 strokes are identical.
+     * @param stroke1 the first `GskStroke`
+     * @param stroke2 the second `GskStroke`
+     * @returns `TRUE` if the 2 strokes are equal, `FALSE` otherwise
+     */
+    function stroke_equal(stroke1?: any | null, stroke2?: any | null): boolean;
     /**
      * Parses the given `string` into a transform and puts it in
      * `out_transform`.
@@ -454,6 +672,36 @@ export namespace Gsk {
     function value_take_render_node(value: GObject.Value | any, node?: RenderNode | null): void;
     interface ParseErrorFunc {
         (start: ParseLocation, end: ParseLocation, error: GLib.Error): void;
+    }
+    interface PathForeachFunc {
+        (op: PathOperation, pts: Graphene.Point, n_pts: number, weight: number): boolean;
+    }
+    /**
+     * Flags that can be passed to gsk_path_foreach() to influence what
+     * kinds of operations the path is decomposed into.
+     *
+     * By default, [method`Gsk`.Path.foreach] will only emit a path with all
+     * operations flattened to straight lines to allow for maximum compatibility.
+     * The only operations emitted will be `GSK_PATH_MOVE`, `GSK_PATH_LINE` and
+     * `GSK_PATH_CLOSE`.
+     */
+    enum PathForeachFlags {
+        /**
+         * The default behavior, only allow lines.
+         */
+        ONLY_LINES,
+        /**
+         * Allow emission of `GSK_PATH_QUAD` operations
+         */
+        QUAD,
+        /**
+         * Allow emission of `GSK_PATH_CUBIC` operations.
+         */
+        CUBIC,
+        /**
+         * Allow emission of `GSK_PATH_CONIC` operations.
+         */
+        CONIC,
     }
     /**
      * A render node applying a blending function between its two child nodes.
@@ -827,6 +1075,39 @@ export namespace Gsk {
          * @returns The debug message
          */
         get_message(): string;
+    }
+
+    /**
+     * A render node filling the area given by [struct`Gsk`.Path]
+     * and [enum`Gsk`.FillRule] with the child node.
+     */
+    class FillNode extends RenderNode {
+        static $gtype: GObject.GType<FillNode>;
+
+        // Constructors of Gsk.FillNode
+
+        _init(...args: any[]): void;
+
+        static ['new'](child: RenderNode, path: Path, fill_rule: FillRule): FillNode;
+
+        // Own methods of Gsk.FillNode
+
+        /**
+         * Gets the child node that is getting drawn by the given `node`.
+         * @returns The child that is getting drawn
+         */
+        get_child(): RenderNode;
+        /**
+         * Retrieves the fill rule used to determine how the path is filled.
+         * @returns a `GskFillRule`
+         */
+        get_fill_rule(): FillRule;
+        /**
+         * Retrieves the path used to describe the area filled with the contents of
+         * the `node`.
+         * @returns a `GskPath`
+         */
+        get_path(): Path;
     }
 
     module GLRenderer {
@@ -1617,6 +1898,8 @@ export namespace Gsk {
          *
          * Since GTK 4.6, the surface may be `NULL`, which allows using
          * renderers without having to create a surface.
+         * Since GTK 4.14, it is recommended to use [method`Gsk`.Renderer.realize_for_display]
+         * instead.
          *
          * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
          * destroying the renderer.
@@ -1624,6 +1907,16 @@ export namespace Gsk {
          * @returns Whether the renderer was successfully realized
          */
         realize(surface?: Gdk.Surface | null): boolean;
+        /**
+         * Creates the resources needed by the `renderer` to render the scene
+         * graph.
+         *
+         * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
+         * destroying the renderer.
+         * @param display the `GdkDisplay` renderer will be used on
+         * @returns Whether the renderer was successfully realized
+         */
+        realize_for_display(display: Gdk.Display): boolean;
         /**
          * Renders the scene graph, described by a tree of `GskRenderNode` instances
          * to the renderer's surface,  ensuring that the given `region` gets redrawn.
@@ -1785,6 +2078,58 @@ export namespace Gsk {
     }
 
     /**
+     * A render node that will fill the area determined by stroking the the given
+     * [struct`Gsk`.Path] using the [struct`Gsk`.Stroke] attributes.
+     */
+    class StrokeNode extends RenderNode {
+        static $gtype: GObject.GType<StrokeNode>;
+
+        // Constructors of Gsk.StrokeNode
+
+        _init(...args: any[]): void;
+
+        static ['new'](child: RenderNode, path: Path, stroke: Stroke): StrokeNode;
+
+        // Own methods of Gsk.StrokeNode
+
+        /**
+         * Gets the child node that is getting drawn by the given `node`.
+         * @returns The child that is getting drawn
+         */
+        get_child(): RenderNode;
+        /**
+         * Retrieves the path that will be stroked with the contents of
+         * the `node`.
+         * @returns a #GskPath
+         */
+        get_path(): Path;
+        /**
+         * Retrieves the stroke attributes used in this `node`.
+         * @returns a #GskStroke
+         */
+        get_stroke(): Stroke;
+    }
+
+    /**
+     * A render node that potentially diverts a part of the scene graph to a subsurface.
+     */
+    class SubsurfaceNode extends RenderNode {
+        static $gtype: GObject.GType<SubsurfaceNode>;
+
+        // Constructors of Gsk.SubsurfaceNode
+
+        _init(...args: any[]): void;
+
+        // Own methods of Gsk.SubsurfaceNode
+
+        /**
+         * Gets the child node that is getting drawn by the given `node`.
+         * @returns the child `GskRenderNode`
+         */
+        get_child(): RenderNode;
+    }
+
+    /**
      * A render node drawing a set of glyphs.
      */
     class TextNode extends RenderNode {
@@ -1903,6 +2248,29 @@ export namespace Gsk {
         get_transform(): Transform;
     }
 
+    module VulkanRenderer {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Renderer.ConstructorProps {}
+    }
+
+    /**
+     * A GSK renderer that is using Vulkan.
+     *
+     * This renderer will fail to realize if Vulkan is not supported.
+     */
+    class VulkanRenderer extends Renderer {
+        static $gtype: GObject.GType<VulkanRenderer>;
+
+        // Constructors of Gsk.VulkanRenderer
+
+        constructor(properties?: Partial<VulkanRenderer.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): VulkanRenderer;
+    }
+
     type BroadwayRendererClass = typeof BroadwayRenderer;
     type CairoRendererClass = typeof CairoRenderer;
     /**
@@ -1955,6 +2323,816 @@ export namespace Gsk {
             }>,
         );
         _init(...args: any[]): void;
+    }
+
+    /**
+     * A `GskPath` describes lines and curves that are more complex
+     * than simple rectangles.
+     *
+     * Paths can used for rendering (filling or stroking) and for animations
+     * (e.g. as trajectories).
+     *
+     * `GskPath` is an immutable, opaque, reference-counted struct.
+     * After creation, you cannot change the types it represents. Instead,
+     * new `GskPath` objects have to be created. The [struct`Gsk`.PathBuilder]
+     * structure is meant to help in this endeavor.
+     *
+     * Conceptually, a path consists of zero or more contours (continuous, connected
+     * curves), each of which may or may not be closed. Contours are typically
+     * constructed from Bézier segments.
+     *
+     * <picture>
+     *   <source srcset="path-dark.png" media="(prefers-color-scheme: dark)">
+     *   <img alt="A Path" src="path-light.png">
+     * </picture>
+     */
+    abstract class Path {
+        static $gtype: GObject.GType<Path>;
+
+        // Constructors of Gsk.Path
+
+        _init(...args: any[]): void;
+
+        // Own static methods of Gsk.Path
+
+        /**
+         * This is a convenience function that constructs a `GskPath`
+         * from a serialized form.
+         *
+         * The string is expected to be in (a superset of)
+         * [SVG path syntax](https://www.w3.org/TR/SVG11/paths.html#PathData),
+         * as e.g. produced by [method`Gsk`.Path.to_string].
+         *
+         * A high-level summary of the syntax:
+         *
+         * - `M x y` Move to `(x, y)`
+         * - `L x y` Add a line from the current point to `(x, y)`
+         * - `Q x1 y1 x2 y2` Add a quadratic Bézier from the current point to `(x2, y2)`, with control point `(x1, y1)`
+         * - `C x1 y1 x2 y2 x3 y3` Add a cubic Bézier from the current point to `(x3, y3)`, with control points `(x1, y1)` and `(x2, y2)`
+         * - `Z` Close the contour by drawing a line back to the start point
+         * - `H x` Add a horizontal line from the current point to the given x value
+         * - `V y` Add a vertical line from the current point to the given y value
+         * - `T x2 y2` Add a quadratic Bézier, using the reflection of the previous segments' control point as control point
+         * - `S x2 y2 x3 y3` Add a cubic Bézier, using the reflection of the previous segments' second control point as first control point
+         * - `A rx ry r l s x y` Add an elliptical arc from the current point to `(x, y)` with radii rx and ry. See the SVG documentation for how the other parameters influence the arc.
+         * - `O x1 y1 x2 y2 w` Add a rational quadratic Bézier from the current point to `(x2, y2)` with control point `(x1, y1)` and weight `w`.
+         *
+         * All the commands have lowercase variants that interpret coordinates
+         * relative to the current point.
+         *
+         * The `O` command is an extension that is not supported in SVG.
+         * @param string a string
+         */
+        static parse(string: string): Path | null;
+
+        // Own methods of Gsk.Path
+
+        /**
+         * Calls `func` for every operation of the path.
+         *
+         * Note that this may only approximate `self,` because paths can contain
+         * optimizations for various specialized contours, and depending on the
+         * `flags,` the path may be decomposed into simpler curves than the ones
+         * that it contained originally.
+         *
+         * This function serves two purposes:
+         *
+         * - When the `flags` allow everything, it provides access to the raw,
+         *   unmodified data of the path.
+         * - When the `flags` disallow certain operations, it provides
+         *   an approximation of the path using just the allowed operations.
+         * @param flags flags to pass to the foreach function. See [flags@Gsk.PathForeachFlags]   for details about flags
+         * @param func the function to call for operations
+         * @returns `FALSE` if @func returned FALSE`, `TRUE` otherwise.
+         */
+        foreach(flags: PathForeachFlags, func: PathForeachFunc): boolean;
+        /**
+         * Computes the bounds of the given path.
+         *
+         * The returned bounds may be larger than necessary, because this
+         * function aims to be fast, not accurate. The bounds are guaranteed
+         * to contain the path.
+         *
+         * It is possible that the returned rectangle has 0 width and/or height.
+         * This can happen when the path only describes a point or an
+         * axis-aligned line.
+         *
+         * If the path is empty, `FALSE` is returned and `bounds` are set to
+         * graphene_rect_zero(). This is different from the case where the path
+         * is a single point at the origin, where the `bounds` will also be set to
+         * the zero rectangle but `TRUE` will be returned.
+         * @returns `TRUE` if the path has bounds, `FALSE` if the path is known   to be empty and have no bounds.
+         */
+        get_bounds(): [boolean, Graphene.Rect];
+        /**
+         * Computes the closest point on the path to the given point
+         * and sets the `result` to it.
+         *
+         * If there is no point closer than the given threshold,
+         * `FALSE` is returned.
+         * @param point the point
+         * @param threshold maximum allowed distance
+         * @returns `TRUE` if @point was set to the closest point   on @self, `FALSE` if no point is closer than @threshold
+         */
+        get_closest_point(point: Graphene.Point, threshold: number): [boolean, PathPoint, number];
+        /**
+         * Gets the end point of the path.
+         *
+         * An empty path has no points, so `FALSE`
+         * is returned in this case.
+         * @returns `TRUE` if @result was filled
+         */
+        get_end_point(): [boolean, PathPoint];
+        /**
+         * Gets the start point of the path.
+         *
+         * An empty path has no points, so `FALSE`
+         * is returned in this case.
+         * @returns `TRUE` if @result was filled
+         */
+        get_start_point(): [boolean, PathPoint];
+        /**
+         * Computes the bounds for stroking the given path with the
+         * parameters in `stroke`.
+         *
+         * The returned bounds may be larger than necessary, because this
+         * function aims to be fast, not accurate. The bounds are guaranteed
+         * to contain the area affected by the stroke, including protrusions
+         * like miters.
+         * @param stroke stroke parameters
+         * @returns `TRUE` if the path has bounds, `FALSE` if the path is known   to be empty and have no bounds.
+         */
+        get_stroke_bounds(stroke: Stroke): [boolean, Graphene.Rect];
+        /**
+         * Returns whether the given point is inside the area
+         * that would be affected if the path was filled according
+         * to `fill_rule`.
+         *
+         * Note that this function assumes that filling a contour
+         * implicitly closes it.
+         * @param point the point to test
+         * @param fill_rule the fill rule to follow
+         * @returns `TRUE` if @point is inside
+         */
+        in_fill(point: Graphene.Point, fill_rule: FillRule): boolean;
+        /**
+         * Returns if the path represents a single closed
+         * contour.
+         * @returns `TRUE` if the path is closed
+         */
+        is_closed(): boolean;
+        /**
+         * Checks if the path is empty, i.e. contains no lines or curves.
+         * @returns `TRUE` if the path is empty
+         */
+        is_empty(): boolean;
+        /**
+         * Converts `self` into a human-readable string representation suitable
+         * for printing.
+         *
+         * The string is compatible with (a superset of)
+         * [SVG path syntax](https://www.w3.org/TR/SVG11/paths.html#PathData),
+         * see [func`Gsk`.Path.parse] for a summary of the syntax.
+         * @param string The string to print into
+         */
+        print(string: GLib.String): void;
+        /**
+         * Increases the reference count of a `GskPath` by one.
+         * @returns the passed in `GskPath`.
+         */
+        ref(): Path;
+        /**
+         * Appends the given `path` to the given cairo context for drawing
+         * with Cairo.
+         *
+         * This may cause some suboptimal conversions to be performed as
+         * Cairo does not support all features of `GskPath`.
+         *
+         * This function does not clear the existing Cairo path. Call
+         * cairo_new_path() if you want this.
+         * @param cr a cairo context
+         */
+        to_cairo(cr: cairo.Context): void;
+        /**
+         * Converts the path into a string that is suitable for printing.
+         *
+         * You can use this function in a debugger to get a quick overview
+         * of the path.
+         *
+         * This is a wrapper around [method`Gsk`.Path.print], see that function
+         * for details.
+         * @returns A new string for @self
+         */
+        to_string(): string;
+        /**
+         * Decreases the reference count of a `GskPath` by one.
+         *
+         * If the resulting reference count is zero, frees the path.
+         */
+        unref(): void;
+    }
+
+    /**
+     * `GskPathBuilder` is an auxiliary object for constructing
+     * `GskPath` objects.
+     *
+     * A path is constructed like this:
+     *
+     *
+     * ```c
+     * GskPath *
+     * construct_path (void)
+     * {
+     *   GskPathBuilder *builder;
+     *
+     *   builder = gsk_path_builder_new ();
+     *
+     *   // add contours to the path here
+     *
+     *   return gsk_path_builder_free_to_path (builder);
+     * ```
+     *
+     *
+     * Adding contours to the path can be done in two ways.
+     * The easiest option is to use the `gsk_path_builder_add_*` group
+     * of functions that add predefined contours to the current path,
+     * either common shapes like [method`Gsk`.PathBuilder.add_circle]
+     * or by adding from other paths like [method`Gsk`.PathBuilder.add_path].
+     *
+     * The `gsk_path_builder_add_*` methods always add complete contours,
+     * and do not use or modify the current point.
+     *
+     * The other option is to define each line and curve manually with
+     * the `gsk_path_builder_*_to` group of functions. You start with
+     * a call to [method`Gsk`.PathBuilder.move_to] to set the starting point
+     * and then use multiple calls to any of the drawing functions to
+     * move the pen along the plane. Once you are done, you can call
+     * [method`Gsk`.PathBuilder.close] to close the path by connecting it
+     * back with a line to the starting point.
+     *
+     * This is similar to how paths are drawn in Cairo.
+     *
+     * Note that `GskPathBuilder` will reduce the degree of added Bézier
+     * curves as much as possible, to simplify rendering.
+     */
+    class PathBuilder {
+        static $gtype: GObject.GType<PathBuilder>;
+
+        // Constructors of Gsk.PathBuilder
+
+        constructor(properties?: Partial<{}>);
+        _init(...args: any[]): void;
+
+        static ['new'](): PathBuilder;
+
+        // Own methods of Gsk.PathBuilder
+
+        /**
+         * Adds a Cairo path to the builder.
+         *
+         * You can use cairo_copy_path() to access the path
+         * from a Cairo context.
+         * @param path
+         */
+        add_cairo_path(path: cairo.Path): void;
+        /**
+         * Adds a circle with the `center` and `radius`.
+         *
+         * The path is going around the circle in clockwise direction.
+         *
+         * If `radius` is zero, the contour will be a closed point.
+         * @param center the center of the circle
+         * @param radius the radius of the circle
+         */
+        add_circle(center: Graphene.Point, radius: number): void;
+        /**
+         * Adds the outlines for the glyphs in `layout` to the builder.
+         * @param layout the pango layout to add
+         */
+        add_layout(layout: Pango.Layout): void;
+        /**
+         * Appends all of `path` to the builder.
+         * @param path the path to append
+         */
+        add_path(path: Path): void;
+        /**
+         * Adds `rect` as a new contour to the path built by the builder.
+         *
+         * The path is going around the rectangle in clockwise direction.
+         *
+         * If the the width or height are 0, the path will be a closed
+         * horizontal or vertical line. If both are 0, it'll be a closed dot.
+         * @param rect The rectangle to create a path for
+         */
+        add_rect(rect: Graphene.Rect): void;
+        /**
+         * Appends all of `path` to the builder, in reverse order.
+         * @param path the path to append
+         */
+        add_reverse_path(path: Path): void;
+        /**
+         * Adds `rect` as a new contour to the path built in `self`.
+         *
+         * The path is going around the rectangle in clockwise direction.
+         * @param rect the rounded rect
+         */
+        add_rounded_rect(rect: RoundedRect): void;
+        /**
+         * Adds to `self` the segment of `path` from `start` to `end`.
+         *
+         * If `start` is equal to or after `end,` the path will first add the
+         * segment from `start` to the end of the path, and then add the segment
+         * from the beginning to `end`. If the path is closed, these segments
+         * will be connected.
+         *
+         * Note that this method always adds a path with the given start point
+         * and end point. To add a closed path, use [method`Gsk`.PathBuilder.add_path].
+         * @param path the `GskPath` to take the segment to
+         * @param start the point on @path to start at
+         * @param end the point on @path to end at
+         */
+        add_segment(path: Path, start: PathPoint, end: PathPoint): void;
+        /**
+         * Adds an elliptical arc from the current point to `x3`, `y3`
+         * with `x1`, `y1` determining the tangent directions.
+         *
+         * After this, `x3`, `y3` will be the new current point.
+         *
+         * Note: Two points and their tangents do not determine
+         * a unique ellipse, so GSK just picks one. If you need more
+         * precise control, use [method`Gsk`.PathBuilder.conic_to]
+         * or [method`Gsk`.PathBuilder.svg_arc_to].
+         *
+         * <picture>
+         *   <source srcset="arc-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Arc To" src="arc-light.png">
+         * </picture>
+         * @param x1 x coordinate of first control point
+         * @param y1 y coordinate of first control point
+         * @param x2 x coordinate of second control point
+         * @param y2 y coordinate of second control point
+         */
+        arc_to(x1: number, y1: number, x2: number, y2: number): void;
+        /**
+         * Ends the current contour with a line back to the start point.
+         *
+         * Note that this is different from calling [method`Gsk`.PathBuilder.line_to]
+         * with the start point in that the contour will be closed. A closed
+         * contour behaves differently from an open one. When stroking, its
+         * start and end point are considered connected, so they will be
+         * joined via the line join, and not ended with line caps.
+         */
+        close(): void;
+        /**
+         * Adds a [conic curve](https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline)
+         * from the current point to `x2`, `y2` with the given `weight` and `x1`, `y1` as the
+         * control point.
+         *
+         * The weight determines how strongly the curve is pulled towards the control point.
+         * A conic with weight 1 is identical to a quadratic Bézier curve with the same points.
+         *
+         * Conic curves can be used to draw ellipses and circles. They are also known as
+         * rational quadratic Bézier curves.
+         *
+         * After this, `x2`, `y2` will be the new current point.
+         *
+         * <picture>
+         *   <source srcset="conic-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Conic To" src="conic-light.png">
+         * </picture>
+         * @param x1 x coordinate of control point
+         * @param y1 y coordinate of control point
+         * @param x2 x coordinate of the end of the curve
+         * @param y2 y coordinate of the end of the curve
+         * @param weight weight of the control point, must be greater than zero
+         */
+        conic_to(x1: number, y1: number, x2: number, y2: number, weight: number): void;
+        /**
+         * Adds a [cubic Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+         * from the current point to `x3`, `y3` with `x1`, `y1` and `x2`, `y2` as the control
+         * points.
+         *
+         * After this, `x3`, `y3` will be the new current point.
+         *
+         * <picture>
+         *   <source srcset="cubic-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Cubic To" src="cubic-light.png">
+         * </picture>
+         * @param x1 x coordinate of first control point
+         * @param y1 y coordinate of first control point
+         * @param x2 x coordinate of second control point
+         * @param y2 y coordinate of second control point
+         * @param x3 x coordinate of the end of the curve
+         * @param y3 y coordinate of the end of the curve
+         */
+        cubic_to(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): void;
+        /**
+         * Gets the current point.
+         *
+         * The current point is used for relative drawing commands and
+         * updated after every operation.
+         *
+         * When the builder is created, the default current point is set
+         * to `0, 0`. Note that this is different from cairo, which starts
+         * out without a current point.
+         * @returns The current point
+         */
+        get_current_point(): Graphene.Point;
+        /**
+         * Implements arc-to according to the HTML Canvas spec.
+         *
+         * A convenience function that implements the
+         * [HTML arc_to](https://html.spec.whatwg.org/multipage/canvas.html#dom-context-2d-arcto-dev)
+         * functionality.
+         *
+         * After this, the current point will be the point where
+         * the circle with the given radius touches the line from
+         * `x1`, `y1` to `x2`, `y2`.
+         * @param x1 X coordinate of first control point
+         * @param y1 Y coordinate of first control point
+         * @param x2 X coordinate of second control point
+         * @param y2 Y coordinate of second control point
+         * @param radius Radius of the circle
+         */
+        html_arc_to(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+        /**
+         * Draws a line from the current point to `x,` `y` and makes it
+         * the new current point.
+         *
+         * <picture>
+         *   <source srcset="line-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Line To" src="line-light.png">
+         * </picture>
+         * @param x x coordinate
+         * @param y y coordinate
+         */
+        line_to(x: number, y: number): void;
+        /**
+         * Starts a new contour by placing the pen at `x,` `y`.
+         *
+         * If this function is called twice in succession, the first
+         * call will result in a contour made up of a single point.
+         * The second call will start a new contour.
+         * @param x x coordinate
+         * @param y y coordinate
+         */
+        move_to(x: number, y: number): void;
+        /**
+         * Adds a [quadratic Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+         * from the current point to `x2`, `y2` with `x1`, `y1` as the control point.
+         *
+         * After this, `x2`, `y2` will be the new current point.
+         *
+         * <picture>
+         *   <source srcset="quad-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Quad To" src="quad-light.png">
+         * </picture>
+         * @param x1 x coordinate of control point
+         * @param y1 y coordinate of control point
+         * @param x2 x coordinate of the end of the curve
+         * @param y2 y coordinate of the end of the curve
+         */
+        quad_to(x1: number, y1: number, x2: number, y2: number): void;
+        /**
+         * Acquires a reference on the given builder.
+         *
+         * This function is intended primarily for language bindings.
+         * `GskPathBuilder` objects should not be kept around.
+         * @returns the given `GskPathBuilder` with   its reference count increased
+         */
+        ref(): PathBuilder;
+        /**
+         * Adds an elliptical arc from the current point to `x3`, `y3`
+         * with `x1`, `y1` determining the tangent directions.
+         *
+         * All coordinates are given relative to the current point.
+         *
+         * This is the relative version of [method`Gsk`.PathBuilder.arc_to].
+         * @param x1 x coordinate of first control point
+         * @param y1 y coordinate of first control point
+         * @param x2 x coordinate of second control point
+         * @param y2 y coordinate of second control point
+         */
+        rel_arc_to(x1: number, y1: number, x2: number, y2: number): void;
+        /**
+         * Adds a [conic curve](https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline)
+         * from the current point to `x2`, `y2` with the given `weight` and `x1`, `y1` as the
+         * control point.
+         *
+         * All coordinates are given relative to the current point.
+         *
+         * This is the relative version of [method`Gsk`.PathBuilder.conic_to].
+         * @param x1 x offset of control point
+         * @param y1 y offset of control point
+         * @param x2 x offset of the end of the curve
+         * @param y2 y offset of the end of the curve
+         * @param weight weight of the curve, must be greater than zero
+         */
+        rel_conic_to(x1: number, y1: number, x2: number, y2: number, weight: number): void;
+        /**
+         * Adds a [cubic Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+         * from the current point to `x3`, `y3` with `x1`, `y1` and `x2`, `y2` as the control
+         * points.
+         *
+         * All coordinates are given relative to the current point.
+         *
+         * This is the relative version of [method`Gsk`.PathBuilder.cubic_to].
+         * @param x1 x offset of first control point
+         * @param y1 y offset of first control point
+         * @param x2 x offset of second control point
+         * @param y2 y offset of second control point
+         * @param x3 x offset of the end of the curve
+         * @param y3 y offset of the end of the curve
+         */
+        rel_cubic_to(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): void;
+        /**
+         * Implements arc-to according to the HTML Canvas spec.
+         *
+         * All coordinates are given relative to the current point.
+         *
+         * This is the relative version of [method`Gsk`.PathBuilder.html_arc_to].
+         * @param x1 X coordinate of first control point
+         * @param y1 Y coordinate of first control point
+         * @param x2 X coordinate of second control point
+         * @param y2 Y coordinate of second control point
+         * @param radius Radius of the circle
+         */
+        rel_html_arc_to(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+        /**
+         * Draws a line from the current point to a point offset from it
+         * by `x,` `y` and makes it the new current point.
+         *
+         * This is the relative version of [method`Gsk`.PathBuilder.line_to].
+         * @param x x offset
+         * @param y y offset
+         */
+        rel_line_to(x: number, y: number): void;
+        /**
+         * Starts a new contour by placing the pen at `x,` `y`
+         * relative to the current point.
+         *
+         * This is the relative version of [method`Gsk`.PathBuilder.move_to].
+         * @param x x offset
+         * @param y y offset
+         */
+        rel_move_to(x: number, y: number): void;
+        /**
+         * Adds a [quadratic Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+         * from the current point to `x2`, `y2` with `x1`, `y1` the control point.
+         *
+         * All coordinates are given relative to the current point.
+         *
+         * This is the relative version of [method`Gsk`.PathBuilder.quad_to].
+         * @param x1 x offset of control point
+         * @param y1 y offset of control point
+         * @param x2 x offset of the end of the curve
+         * @param y2 y offset of the end of the curve
+         */
+        rel_quad_to(x1: number, y1: number, x2: number, y2: number): void;
+        /**
+         * Implements arc-to according to the SVG spec.
+         *
+         * All coordinates are given relative to the current point.
+         *
+         * This is the relative version of [method`Gsk`.PathBuilder.svg_arc_to].
+         * @param rx X radius
+         * @param ry Y radius
+         * @param x_axis_rotation the rotation of the ellipsis
+         * @param large_arc whether to add the large arc
+         * @param positive_sweep whether to sweep in the positive direction
+         * @param x the X coordinate of the endpoint
+         * @param y the Y coordinate of the endpoint
+         */
+        rel_svg_arc_to(
+            rx: number,
+            ry: number,
+            x_axis_rotation: number,
+            large_arc: boolean,
+            positive_sweep: boolean,
+            x: number,
+            y: number,
+        ): void;
+        /**
+         * Implements arc-to according to the SVG spec.
+         *
+         * A convenience function that implements the
+         * [SVG arc_to](https://www.w3.org/TR/SVG11/paths.html#PathDataEllipticalArcCommands)
+         * functionality.
+         *
+         * After this, `x,` `y` will be the new current point.
+         * @param rx X radius
+         * @param ry Y radius
+         * @param x_axis_rotation the rotation of the ellipsis
+         * @param large_arc whether to add the large arc
+         * @param positive_sweep whether to sweep in the positive direction
+         * @param x the X coordinate of the endpoint
+         * @param y the Y coordinate of the endpoint
+         */
+        svg_arc_to(
+            rx: number,
+            ry: number,
+            x_axis_rotation: number,
+            large_arc: boolean,
+            positive_sweep: boolean,
+            x: number,
+            y: number,
+        ): void;
+        /**
+         * Creates a new `GskPath` from the given builder.
+         *
+         * The given `GskPathBuilder` is reset once this function returns;
+         * you cannot call this function multiple times on the same builder
+         * instance.
+         *
+         * This function is intended primarily for language bindings.
+         * C code should use [method`Gsk`.PathBuilder.free_to_path].
+         * @returns the newly created `GskPath`   with all the contours added to the builder
+         */
+        to_path(): Path;
+        /**
+         * Releases a reference on the given builder.
+         */
+        unref(): void;
+    }
+
+    /**
+     * `GskPathMeasure` is an object that allows measurements
+     * on `GskPath`s such as determining the length of the path.
+     *
+     * Many measuring operations require sampling the path length
+     * at intermediate points. Therefore, a `GskPathMeasure` has
+     * a tolerance that determines what precision is required
+     * for such approximations.
+     *
+     * A `GskPathMeasure` struct is a reference counted struct
+     * and should be treated as opaque.
+     */
+    class PathMeasure {
+        static $gtype: GObject.GType<PathMeasure>;
+
+        // Constructors of Gsk.PathMeasure
+
+        constructor(path: Path);
+        _init(...args: any[]): void;
+
+        static ['new'](path: Path): PathMeasure;
+
+        static new_with_tolerance(path: Path, tolerance: number): PathMeasure;
+
+        // Own methods of Gsk.PathMeasure
+
+        /**
+         * Gets the length of the path being measured.
+         *
+         * The length is cached, so this function does not do any work.
+         * @returns The length of the path measured by @self
+         */
+        get_length(): number;
+        /**
+         * Returns the path that the measure was created for.
+         * @returns the path of @self
+         */
+        get_path(): Path;
+        /**
+         * Sets `result` to the point at the given distance into the path.
+         *
+         * An empty path has no points, so `FALSE` is returned in that case.
+         * @param distance the distance
+         * @returns `TRUE` if @result was set
+         */
+        get_point(distance: number): [boolean, PathPoint];
+        /**
+         * Returns the tolerance that the measure was created with.
+         * @returns the tolerance of @self
+         */
+        get_tolerance(): number;
+        /**
+         * Increases the reference count of a `GskPathMeasure` by one.
+         * @returns the passed in `GskPathMeasure`.
+         */
+        ref(): PathMeasure;
+        /**
+         * Decreases the reference count of a `GskPathMeasure` by one.
+         *
+         * If the resulting reference count is zero, frees the object.
+         */
+        unref(): void;
+    }
+
+    /**
+     * `GskPathPoint` is an opaque type representing a point on a path.
+     *
+     * It can be queried for properties of the path at that point, such as
+     * its tangent or its curvature.
+     *
+     * To obtain a `GskPathPoint`, use [method`Gsk`.Path.get_closest_point],
+     * [method`Gsk`.Path.get_start_point], [method`Gsk`.Path.get_end_point]
+     * or [method`Gsk`.PathMeasure.get_point].
+     *
+     * Note that `GskPathPoint` structs are meant to be stack-allocated,
+     * and don't hold a reference to the path object they are obtained from.
+     * It is the callers responsibility to keep a reference to the path
+     * as long as the `GskPathPoint` is used.
+     */
+    class PathPoint {
+        static $gtype: GObject.GType<PathPoint>;
+
+        // Constructors of Gsk.PathPoint
+
+        _init(...args: any[]): void;
+
+        // Own methods of Gsk.PathPoint
+
+        /**
+         * Returns whether `point1` is before or after `point2`.
+         * @param point2 another `GskPathPoint`
+         * @returns -1 if @point1 is before @point2,   1 if @point1 is after @point2,   0 if they are equal
+         */
+        compare(point2: PathPoint): number;
+        copy(): PathPoint;
+        /**
+         * Returns whether the two path points refer to the same
+         * location on all paths.
+         *
+         * Note that the start- and endpoint of a closed contour
+         * will compare nonequal according to this definition.
+         * Use [method`Gsk`.Path.is_closed] to find out if the
+         * start- and endpoint of a concrete path refer to the
+         * same location.
+         * @param point2 another `GskPathPoint`
+         * @returns `TRUE` if @point1 and @point2 are equal
+         */
+        equal(point2: PathPoint): boolean;
+        free(): void;
+        /**
+         * Calculates the curvature of the path at the point.
+         *
+         * Optionally, returns the center of the osculating circle as well.
+         * The curvature is the inverse of the radius of the osculating circle.
+         *
+         * Lines have a curvature of zero (indicating an osculating circle of
+         * infinite radius. In this case, the `center` is not modified.
+         *
+         * Circles with a radius of zero have `INFINITY` as curvature
+         *
+         * Note that certain points on a path may not have a single curvature,
+         * such as sharp turns. At such points, there are two curvatures --
+         * the (limit of) the curvature of the path going into the point,
+         * and the (limit of) the curvature of the path coming out of it.
+         * The `direction` argument lets you choose which one to get.
+         *
+         * <picture>
+         *   <source srcset="curvature-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Osculating circle" src="curvature-light.png">
+         * </picture>
+         * @param path the path that @point is on
+         * @param direction the direction for which to return the curvature
+         * @returns The curvature of the path at the given point
+         */
+        get_curvature(path: Path, direction: PathDirection): [number, Graphene.Point | null];
+        /**
+         * Returns the distance from the beginning of the path
+         * to `point`.
+         * @param measure a `GskPathMeasure` for the path
+         * @returns the distance of @point
+         */
+        get_distance(measure: PathMeasure): number;
+        /**
+         * Gets the position of the point.
+         * @param path the path that @point is on
+         */
+        get_position(path: Path): Graphene.Point;
+        /**
+         * Gets the direction of the tangent at a given point.
+         *
+         * This is a convenience variant of [method`Gsk`.PathPoint.get_tangent]
+         * that returns the angle between the tangent and the X axis. The angle
+         * can e.g. be used in
+         * [gtk_snapshot_rotate()](../gtk4/method.Snapshot.rotate.html).
+         * @param path the path that @point is on
+         * @param direction the direction for which to return the rotation
+         * @returns the angle between the tangent and the X axis, in degrees
+         */
+        get_rotation(path: Path, direction: PathDirection): number;
+        /**
+         * Gets the tangent of the path at the point.
+         *
+         * Note that certain points on a path may not have a single
+         * tangent, such as sharp turns. At such points, there are
+         * two tangents -- the direction of the path going into the
+         * point, and the direction coming out of it. The `direction`
+         * argument lets you choose which one to get.
+         *
+         * If the path is just a single point (e.g. a circle with
+         * radius zero), then `tangent` is set to `0, 0`.
+         *
+         * If you want to orient something in the direction of the
+         * path, [method`Gsk`.PathPoint.get_rotation] may be more
+         * convenient to use.
+         * @param path the path that @point is on
+         * @param direction the direction for which to return the tangent
+         */
+        get_tangent(path: Path, direction: PathDirection): Graphene.Vec2;
     }
 
     type RendererClass = typeof Renderer;
@@ -2218,6 +3396,150 @@ export namespace Gsk {
     }
 
     /**
+     * A `GskStroke` struct collects the parameters that influence
+     * the operation of stroking a path.
+     */
+    class Stroke {
+        static $gtype: GObject.GType<Stroke>;
+
+        // Constructors of Gsk.Stroke
+
+        constructor(line_width: number);
+        _init(...args: any[]): void;
+
+        static ['new'](line_width: number): Stroke;
+
+        // Own static methods of Gsk.Stroke
+
+        /**
+         * Checks if 2 strokes are identical.
+         * @param stroke1 the first `GskStroke`
+         * @param stroke2 the second `GskStroke`
+         */
+        static equal(stroke1?: any | null, stroke2?: any | null): boolean;
+
+        // Own methods of Gsk.Stroke
+
+        /**
+         * Creates a copy of the given `other` stroke.
+         * @returns a new `GskStroke`. Use [method@Gsk.Stroke.free] to free it
+         */
+        copy(): Stroke;
+        /**
+         * Frees a `GskStroke`.
+         */
+        free(): void;
+        /**
+         * Gets the dash array in use or `NULL` if dashing is disabled.
+         * @returns The dash array or `NULL` if the dash array is empty.
+         */
+        get_dash(): number[] | null;
+        /**
+         * Returns the dash_offset of a `GskStroke`.
+         */
+        get_dash_offset(): number;
+        /**
+         * Gets the line cap used.
+         *
+         * See [enum`Gsk`.LineCap] for details.
+         * @returns The line cap
+         */
+        get_line_cap(): LineCap;
+        /**
+         * Gets the line join used.
+         *
+         * See [enum`Gsk`.LineJoin] for details.
+         * @returns The line join
+         */
+        get_line_join(): LineJoin;
+        /**
+         * Gets the line width used.
+         * @returns The line width
+         */
+        get_line_width(): number;
+        /**
+         * Returns the miter limit of a `GskStroke`.
+         */
+        get_miter_limit(): number;
+        /**
+         * Sets the dash pattern to use by this stroke.
+         *
+         * A dash pattern is specified by an array of alternating non-negative
+         * values. Each value provides the length of alternate "on" and "off"
+         * portions of the stroke.
+         *
+         * Each "on" segment will have caps applied as if the segment were a
+         * separate contour. In particular, it is valid to use an "on" length
+         * of 0 with `GSK_LINE_CAP_ROUND` or `GSK_LINE_CAP_SQUARE` to draw dots
+         * or squares along a path.
+         *
+         * If `n_dash` is 0, if all elements in `dash` are 0, or if there are
+         * negative values in `dash,` then dashing is disabled.
+         *
+         * If `n_dash` is 1, an alternating "on" and "off" pattern with the
+         * single dash length provided is assumed.
+         *
+         * If `n_dash` is uneven, the dash array will be used with the first
+         * element in `dash` defining an "on" or "off" in alternating passes
+         * through the array.
+         *
+         * You can specify a starting offset into the dash with
+         * [method`Gsk`.Stroke.set_dash_offset].
+         * @param dash the array of dashes
+         */
+        set_dash(dash?: number[] | null): void;
+        /**
+         * Sets the offset into the dash pattern where dashing should begin.
+         *
+         * This is an offset into the length of the path, not an index into
+         * the array values of the dash array.
+         *
+         * See [method`Gsk`.Stroke.set_dash] for more details on dashing.
+         * @param offset offset into the dash pattern
+         */
+        set_dash_offset(offset: number): void;
+        /**
+         * Sets the line cap to be used when stroking.
+         *
+         * See [enum`Gsk`.LineCap] for details.
+         * @param line_cap the `GskLineCap`
+         */
+        set_line_cap(line_cap: LineCap): void;
+        /**
+         * Sets the line join to be used when stroking.
+         *
+         * See [enum`Gsk`.LineJoin] for details.
+         * @param line_join The line join to use
+         */
+        set_line_join(line_join: LineJoin): void;
+        /**
+         * Sets the line width to be used when stroking.
+         *
+         * The line width must be > 0.
+         * @param line_width width of the line in pixels
+         */
+        set_line_width(line_width: number): void;
+        /**
+         * Sets the limit for the distance from the corner where sharp
+         * turns of joins get cut off.
+         *
+         * The miter limit is in units of line width and must be non-negative.
+         *
+         * For joins of type `GSK_LINE_JOIN_MITER` that exceed the miter
+         * limit, the join gets rendered as if it was of type
+         * `GSK_LINE_JOIN_BEVEL`.
+         * @param limit the miter limit
+         */
+        set_miter_limit(limit: number): void;
+        /**
+         * A helper function that sets the stroke parameters
+         * of `cr` from the values found in `self`.
+         * @param cr the cairo context to configure
+         */
+        to_cairo(cr: cairo.Context): void;
+    }
+
+    /**
      * `GskTransform` is an object to describe transform matrices.
      *
      * Unlike `graphene_matrix_t`, `GskTransform` retains the steps in how
@@ -2309,7 +3631,8 @@ export namespace Gsk {
          */
         ref(): Transform | null;
         /**
-         * Rotates `next` `angle` degrees in 2D - or in 3D-speak, around the z axis.
+         * Rotates `next` `angle` degrees in 2D - or in 3D-speak, around the Z axis.
+         * The rotation happens around the origin point of (0, 0).
          * @param angle the rotation angle, in degrees (clockwise)
          * @returns The new transform
          */
@@ -2471,6 +3794,7 @@ export namespace Gsk {
         unref(): void;
     }
 
+    type VulkanRendererClass = typeof VulkanRenderer;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

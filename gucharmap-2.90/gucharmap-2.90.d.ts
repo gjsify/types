@@ -18,11 +18,11 @@ import type GLib from '@girs/glib-2.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Gucharmap {
@@ -322,7 +322,7 @@ export namespace Gucharmap {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1553,7 +1553,7 @@ export namespace Gucharmap {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2062,7 +2062,7 @@ export namespace Gucharmap {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2593,7 +2593,7 @@ export namespace Gucharmap {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3220,7 +3220,7 @@ export namespace Gucharmap {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3454,8 +3454,16 @@ export namespace Gucharmap {
         set accessible_description(val: string);
         get accessibleDescription(): string;
         set accessibleDescription(val: string);
+        get accessible_help_text(): string;
+        set accessible_help_text(val: string);
+        get accessibleHelpText(): string;
+        set accessibleHelpText(val: string);
         get accessible_hypertext_nlinks(): number;
         get accessibleHypertextNlinks(): number;
+        get accessible_id(): string;
+        set accessible_id(val: string);
+        get accessibleId(): string;
+        set accessibleId(val: string);
         get accessible_name(): string;
         set accessible_name(val: string);
         get accessibleName(): string;
@@ -3981,12 +3989,27 @@ export namespace Gucharmap {
          */
         get_page_count(): number;
         /**
+         * Returns an array of AtkTextSelections within this document.
+         * @returns a GArray of AtkTextSelection structures representing the selection.
+         */
+        get_text_selections(): Atk.TextSelection[];
+        /**
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
          * @param attribute_value a string value to be associated with @attribute_name.
          * @returns %TRUE if @attribute_value is successfully associated   with @attribute_name for this @document, and %FALSE if if the   document does not allow the attribute to be modified
          */
         set_attribute_value(attribute_name: string, attribute_value: string): boolean;
+        /**
+         * Makes 1 or more selections within this document denoted by the given
+         * array of AtkTextSelections. Any existing physical selection (inside or
+         * outside this document) is replaced by the new selections. All objects within
+         * the given selection ranges must be descendants of this document. Otherwise
+         * FALSE will be returned.
+         * @param selections a GArray of AtkTextSelections              to be selected.
+         * @returns TRUE if the selection was made successfully; FALSE otherwise.
+         */
+        set_text_selections(selections: Atk.TextSelection[]): boolean;
         /**
          * Retrieves the current page number inside `document`.
          */
@@ -4024,11 +4047,24 @@ export namespace Gucharmap {
          */
         vfunc_get_page_count(): number;
         /**
+         * Returns an array of AtkTextSelections within this document.
+         */
+        vfunc_get_text_selections(): Atk.TextSelection[];
+        /**
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
          * @param attribute_value a string value to be associated with @attribute_name.
          */
         vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean;
+        /**
+         * Makes 1 or more selections within this document denoted by the given
+         * array of AtkTextSelections. Any existing physical selection (inside or
+         * outside this document) is replaced by the new selections. All objects within
+         * the given selection ranges must be descendants of this document. Otherwise
+         * FALSE will be returned.
+         * @param selections a GArray of AtkTextSelections              to be selected.
+         */
+        vfunc_set_text_selections(selections: Atk.TextSelection[]): boolean;
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
          * to the clipboard.
@@ -5189,6 +5225,13 @@ export namespace Gucharmap {
         vfunc_set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
         vfunc_text_attributes_changed(): void;
         vfunc_text_caret_moved(location: number): void;
+        /**
+         * the signal handler which is executed when there is a
+         *   text change. This virtual function is deprecated sice 2.9.4 and
+         *   it should not be overriden.
+         * @param position
+         * @param length
+         */
         vfunc_text_changed(position: number, length: number): void;
         vfunc_text_selection_changed(): void;
         /**
@@ -5498,7 +5541,7 @@ export namespace Gucharmap {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5689,6 +5732,11 @@ export namespace Gucharmap {
          */
         get_accessible_id(): string;
         /**
+         * Gets the help text associated with the accessible.
+         * @returns a character string representing the help text or the object, or NULL if no such string was set.
+         */
+        get_help_text(): string;
+        /**
          * Gets the 0-based index of this accessible in its parent; returns -1 if the
          * accessible does not have an accessible parent.
          * @returns an integer which is the index of the accessible in its parent
@@ -5787,9 +5835,16 @@ export namespace Gucharmap {
          * Typically, this is the gtkbuilder ID. Such an ID will be available for
          * instance to identify a given well-known accessible object for tailored screen
          * reading, or for automatic regression testing.
-         * @param name a character string to be set as the accessible id
+         * @param id a character string to be set as the accessible id
          */
-        set_accessible_id(name: string): void;
+        set_accessible_id(id: string): void;
+        /**
+         * Sets the help text associated with the accessible. This can be used to
+         * expose context-sensitive information to help a user understand how to
+         * interact with the object.
+         * @param help_text a character string to be set as the accessible's help text
+         */
+        set_help_text(help_text: string): void;
         /**
          * Sets the accessible name of the accessible. You can't set the name
          * to NULL. This is reserved for the initial value. In this aspect
@@ -5810,6 +5865,13 @@ export namespace Gucharmap {
         set_role(role: Atk.Role): void;
         vfunc_active_descendant_changed(child?: any | null): void;
         vfunc_children_changed(change_index: number, changed_child?: any | null): void;
+        /**
+         * The signal handler which is executed when there is a
+         *   focus event for an object. This virtual function is deprecated
+         *   since 2.9.4 and it should not be overriden. Use
+         *   the #AtkObject::state-change "focused" signal instead.
+         * @param focus_in
+         */
         vfunc_focus_event(focus_in: boolean): void;
         /**
          * Get a list of properties applied to this object as a whole, as an #AtkAttributeSet consisting of
@@ -6496,7 +6558,7 @@ export namespace Gucharmap {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6908,7 +6970,7 @@ export namespace Gucharmap {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
