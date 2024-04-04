@@ -7,6 +7,8 @@
 
 import './clutter-13-ambient.d.ts';
 
+import './clutter-13-import.d.ts';
+
 /**
  * Clutter-13
  */

@@ -5705,7 +5705,7 @@ export namespace St {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -5731,7 +5731,7 @@ export namespace St {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_load_async(
             size: number,

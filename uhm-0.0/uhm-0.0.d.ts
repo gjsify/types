@@ -7,6 +7,8 @@
 
 import './uhm-0.0-ambient.d.ts';
 
+import './uhm-0.0-import.d.ts';
+
 /**
  * Uhm-0.0
  */

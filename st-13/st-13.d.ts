@@ -7,6 +7,8 @@
 
 import './st-13-ambient.d.ts';
 
+import './st-13-import.d.ts';
+
 /**
  * St-13
  */
@@ -493,8 +495,8 @@ export namespace St {
          *
          * Use this function to avoid multiple emissions of the #GObject::notify and
          * #StAdjustment::changed signals. See st_adjustment_set_lower() for an
-         * alternative way of compressing multiple emissions of #GObject::notify into
-         * one.
+         * alternative way of compressing multiple emissions of #GObject::notify and
+         * #StAdjustmet::changed into one of each.
          * @param value the new value
          * @param lower the new minimum value
          * @param upper the new maximum value
@@ -2382,7 +2384,7 @@ export namespace St {
          */
         set_label(text?: string | null): void;
         /**
-         * Enables or disables toggle mode for the button. In toggle mode, the active
+         * Enables or disables toggle mode for the button. In toggle mode, the checked
          * state will be "toggled" when the user clicks the button.
          * @param toggle %TRUE or %FALSE
          */
@@ -6194,7 +6196,7 @@ export namespace St {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -6220,7 +6222,7 @@ export namespace St {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_load_async(
             size: number,

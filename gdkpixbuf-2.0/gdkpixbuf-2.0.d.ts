@@ -209,11 +209,32 @@ export namespace GdkPixbuf {
     interface PixbufModuleFillVtableFunc {
         (module: PixbufModule): void;
     }
+    interface PixbufModuleIncrementLoadFunc {
+        (context: any | null, buf: Uint8Array | string): boolean;
+    }
+    interface PixbufModuleLoadAnimationFunc {
+        (f?: any | null): PixbufAnimation;
+    }
+    interface PixbufModuleLoadFunc {
+        (f?: any | null): Pixbuf;
+    }
+    interface PixbufModuleLoadXpmDataFunc {
+        (data: string[]): Pixbuf;
+    }
     interface PixbufModulePreparedFunc {
         (pixbuf: Pixbuf, anim: PixbufAnimation): void;
     }
+    interface PixbufModuleSaveFunc {
+        (f: any | null, pixbuf: Pixbuf, param_keys?: string[] | null, param_values?: string[] | null): boolean;
+    }
+    interface PixbufModuleSaveOptionSupportedFunc {
+        (option_key: string): boolean;
+    }
     interface PixbufModuleSizeFunc {
         (width: number, height: number): void;
+    }
+    interface PixbufModuleStopLoadFunc {
+        (context?: any | null): boolean;
     }
     interface PixbufModuleUpdatedFunc {
         (pixbuf: Pixbuf, x: number, y: number, width: number, height: number): void;
@@ -1273,7 +1294,7 @@ export namespace GdkPixbuf {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -1299,7 +1320,7 @@ export namespace GdkPixbuf {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_load_async(
             size: number,
@@ -2498,6 +2519,13 @@ export namespace GdkPixbuf {
         module_name: string;
         module_path: string;
         info: PixbufFormat;
+        load: PixbufModuleLoadFunc;
+        load_xpm_data: PixbufModuleLoadXpmDataFunc;
+        stop_load: PixbufModuleStopLoadFunc;
+        load_increment: PixbufModuleIncrementLoadFunc;
+        load_animation: PixbufModuleLoadAnimationFunc;
+        save: PixbufModuleSaveFunc;
+        is_save_option_supported: PixbufModuleSaveOptionSupportedFunc;
 
         // Constructors of GdkPixbuf.PixbufModule
 

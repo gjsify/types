@@ -6201,7 +6201,7 @@ export namespace Gio {
          *
          * Support for the XDG Activation Protocol was added in GLib 2.76.
          * @param info a #GAppInfo
-         * @param files a #GList of of #GFile objects
+         * @param files a #GList of #GFile objects
          */
         vfunc_get_startup_notify_id(info: AppInfo, files: File[]): string | null;
         /**
@@ -6247,7 +6247,7 @@ export namespace Gio {
          *
          * Support for the XDG Activation Protocol was added in GLib 2.76.
          * @param info a #GAppInfo
-         * @param files a #GList of of #GFile objects
+         * @param files a #GList of #GFile objects
          * @returns a startup notification ID for the application, or %NULL if     not supported.
          */
         get_startup_notify_id(info: AppInfo, files: File[]): string | null;
@@ -6366,8 +6366,8 @@ export namespace Gio {
      * instance and g_application_run() promptly returns. See the code
      * examples below.
      *
-     * If used, the expected form of an application identifier is the same as
-     * that of of a
+     * If used, the expected form of an application identifier is the
+     * same as that of a
      * [D-Bus well-known bus name](https://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-names-bus).
      * Examples include: `com.example.MyApp`, `org.example.internal_apps.Calculator`,
      * `org._7_zip.Archiver`.
@@ -9854,7 +9854,7 @@ export namespace Gio {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_async(size: number, cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
         /**
@@ -9876,7 +9876,7 @@ export namespace Gio {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_load_async(
             size: number,
@@ -11364,7 +11364,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -11450,7 +11450,7 @@ export namespace Gio {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
@@ -11497,7 +11497,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -11557,7 +11557,7 @@ export namespace Gio {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
             count: number,
@@ -11631,7 +11631,7 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
             count: number,
@@ -11658,7 +11658,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -11697,7 +11697,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_read_async(
             io_priority: number,
@@ -11756,7 +11756,7 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_skip_async(
             count: number,
@@ -12036,7 +12036,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -12073,7 +12073,7 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         flush_async(
             io_priority: number,
@@ -12131,7 +12131,7 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
             source: InputStream,
@@ -12216,7 +12216,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write
          * @param io_priority the io priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_all_async(
             buffer: Uint8Array | string,
@@ -12278,7 +12278,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_async(
             buffer: Uint8Array | string,
@@ -12320,7 +12320,7 @@ export namespace Gio {
          * @param bytes The bytes to write
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         write_bytes_async(
             bytes: GLib.Bytes | Uint8Array,
@@ -12417,7 +12417,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_all_async(
             vectors: OutputVector[],
@@ -12474,7 +12474,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_async(
             vectors: OutputVector[],
@@ -12501,7 +12501,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -12537,7 +12537,7 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_flush_async(
             io_priority: number,
@@ -12568,7 +12568,7 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_splice_async(
             source: InputStream,
@@ -12621,7 +12621,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_write_async(
             buffer: Uint8Array | null,
@@ -12693,7 +12693,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_writev_async(
             vectors: OutputVector[],
@@ -15706,6 +15706,12 @@ export namespace Gio {
          * Gets all D-Bus properties for `interface_`.
          */
         vfunc_get_properties(): GLib.Variant;
+        /**
+         * Gets the interface vtable for the D-Bus interface implemented by
+         * `interface_`. The returned function pointers should expect `interface_`
+         * itself to be passed as `user_data`.
+         */
+        vfunc_get_vtable(): DBusInterfaceVTable;
 
         // Own methods of Gio.DBusInterfaceSkeleton
 
@@ -15765,6 +15771,13 @@ export namespace Gio {
          * @returns A #GVariant of type ['a{sv}'][G-VARIANT-TYPE-VARDICT:CAPS]. Free with g_variant_unref().
          */
         get_properties(): GLib.Variant;
+        /**
+         * Gets the interface vtable for the D-Bus interface implemented by
+         * `interface_`. The returned function pointers should expect `interface_`
+         * itself to be passed as `user_data`.
+         * @returns the vtable of the D-Bus interface implemented by the skeleton
+         */
+        get_vtable(): DBusInterfaceVTable;
         /**
          * Checks if `interface_` is exported on `connection`.
          * @param connection A #GDBusConnection.
@@ -25109,7 +25122,7 @@ export namespace Gio {
          * g_file_enumerator_close_finish().
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -25216,7 +25229,7 @@ export namespace Gio {
          * @param num_files the number of file info objects to request
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_next_files_async(
             num_files: number,
@@ -25252,7 +25265,7 @@ export namespace Gio {
          * g_file_enumerator_close_finish().
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -25439,7 +25452,7 @@ export namespace Gio {
          * @param num_files the number of file info objects to request
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         next_files_async(
             num_files: number,
@@ -25539,7 +25552,7 @@ export namespace Gio {
          * @param attributes a file attribute query string.
          * @param io_priority the [I/O priority][gio-GIOScheduler] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_query_info_async(
             attributes: string,
@@ -25599,7 +25612,7 @@ export namespace Gio {
          * @param attributes a file attribute query string.
          * @param io_priority the [I/O priority][gio-GIOScheduler] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_info_async(
             attributes: string,
@@ -26143,7 +26156,7 @@ export namespace Gio {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_async(size: number, cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
         /**
@@ -26165,7 +26178,7 @@ export namespace Gio {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_load_async(
             size: number,
@@ -26647,6 +26660,17 @@ export namespace Gio {
          */
         get_attribute_data(attribute: string): [boolean, FileAttributeType | null, any, FileAttributeStatus | null];
         /**
+         * Gets the value of a byte string attribute as a file path.
+         *
+         * If the attribute does not contain a byte string, `NULL` will be returned.
+         *
+         * This function is meant to be used by language bindings that have specific
+         * handling for Unix paths.
+         * @param attribute a file attribute key.
+         * @returns the contents of the @attribute value as a file path, or %NULL otherwise.
+         */
+        get_attribute_file_path(attribute: string): string | null;
+        /**
          * Gets a signed 32-bit integer contained within the attribute. If the
          * attribute does not contain a signed 32-bit integer, or is invalid,
          * 0 will be returned.
@@ -26930,6 +26954,16 @@ export namespace Gio {
         /**
          * Sets the `attribute` to contain the given `attr_value,`
          * if possible.
+         *
+         * This function is meant to be used by language bindings that have specific
+         * handling for Unix paths.
+         * @param attribute a file attribute key.
+         * @param attr_value a file path.
+         */
+        set_attribute_file_path(attribute: string, attr_value: string): void;
+        /**
+         * Sets the `attribute` to contain the given `attr_value,`
+         * if possible.
          * @param attribute a file attribute key.
          * @param attr_value a signed 32-bit integer
          */
@@ -27155,7 +27189,7 @@ export namespace Gio {
          * @param attributes a file attribute query string.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_query_info_async(
             attributes: string,
@@ -27199,7 +27233,7 @@ export namespace Gio {
          * @param attributes a file attribute query string.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_info_async(
             attributes: string,
@@ -29031,7 +29065,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -29112,7 +29146,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -29166,7 +29200,7 @@ export namespace Gio {
          * @param flags a set of #GIOStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
             stream2: IOStream,
@@ -30460,7 +30494,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -30499,7 +30533,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_read_async(
             io_priority: number,
@@ -30558,7 +30592,7 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_skip_async(
             count: number,
@@ -30619,7 +30653,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -30705,7 +30739,7 @@ export namespace Gio {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
@@ -30752,7 +30786,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -30812,7 +30846,7 @@ export namespace Gio {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
             count: number,
@@ -30886,7 +30920,7 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
             count: number,
@@ -31143,6 +31177,8 @@ export namespace Gio {
          *
          * %NULL is never returned for an index that is smaller than the length
          * of the list.  See g_list_model_get_n_items().
+         *
+         * The same #GObject instance may not appear more than once in a #GListModel.
          * @param position the position of the item to fetch
          */
         vfunc_get_item(position: number): A | null;
@@ -31829,7 +31865,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -31915,7 +31951,7 @@ export namespace Gio {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
@@ -31962,7 +31998,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -32022,7 +32058,7 @@ export namespace Gio {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
             count: number,
@@ -32096,7 +32132,7 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
             count: number,
@@ -32123,7 +32159,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -32162,7 +32198,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_read_async(
             io_priority: number,
@@ -32221,7 +32257,7 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_skip_async(
             count: number,
@@ -33020,7 +33056,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -33057,7 +33093,7 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         flush_async(
             io_priority: number,
@@ -33115,7 +33151,7 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
             source: InputStream,
@@ -33200,7 +33236,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write
          * @param io_priority the io priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_all_async(
             buffer: Uint8Array | string,
@@ -33262,7 +33298,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_async(
             buffer: Uint8Array | string,
@@ -33304,7 +33340,7 @@ export namespace Gio {
          * @param bytes The bytes to write
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         write_bytes_async(
             bytes: GLib.Bytes | Uint8Array,
@@ -33401,7 +33437,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_all_async(
             vectors: OutputVector[],
@@ -33458,7 +33494,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_async(
             vectors: OutputVector[],
@@ -33485,7 +33521,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -33521,7 +33557,7 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_flush_async(
             io_priority: number,
@@ -33552,7 +33588,7 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_splice_async(
             source: InputStream,
@@ -33605,7 +33641,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_write_async(
             buffer: Uint8Array | null,
@@ -33677,7 +33713,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_writev_async(
             vectors: OutputVector[],
@@ -36897,7 +36933,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -36933,7 +36969,7 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_flush_async(
             io_priority: number,
@@ -36964,7 +37000,7 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_splice_async(
             source: InputStream,
@@ -37017,7 +37053,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_write_async(
             buffer: Uint8Array | null,
@@ -37089,7 +37125,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_writev_async(
             vectors: OutputVector[],
@@ -37184,7 +37220,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -37221,7 +37257,7 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         flush_async(
             io_priority: number,
@@ -37279,7 +37315,7 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
             source: InputStream,
@@ -37364,7 +37400,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write
          * @param io_priority the io priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_all_async(
             buffer: Uint8Array | string,
@@ -37426,7 +37462,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_async(
             buffer: Uint8Array | string,
@@ -37468,7 +37504,7 @@ export namespace Gio {
          * @param bytes The bytes to write
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         write_bytes_async(
             bytes: GLib.Bytes | Uint8Array,
@@ -37565,7 +37601,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_all_async(
             vectors: OutputVector[],
@@ -37622,7 +37658,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_async(
             vectors: OutputVector[],
@@ -46210,7 +46246,7 @@ export namespace Gio {
          *
          * It is an error to call this multiple times before the previous callback has finished.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request     is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_next_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
         /**
@@ -46249,7 +46285,7 @@ export namespace Gio {
          *
          * It is an error to call this multiple times before the previous callback has finished.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request     is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         next_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
         /**
@@ -51863,7 +51899,7 @@ export namespace Gio {
          * g_tls_database_lookup_certificates_issued_by() for more information.
          *
          * The database may choose to hold a reference to the issuer byte array for the duration
-         * of of this asynchronous operation. The byte array should not be modified during
+         * of this asynchronous operation. The byte array should not be modified during
          * this time.
          * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
          * @param interaction used to interact with the user if necessary
@@ -52141,7 +52177,7 @@ export namespace Gio {
          * g_tls_database_lookup_certificates_issued_by() for more information.
          *
          * The database may choose to hold a reference to the issuer byte array for the duration
-         * of of this asynchronous operation. The byte array should not be modified during
+         * of this asynchronous operation. The byte array should not be modified during
          * this time.
          * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
          * @param interaction used to interact with the user if necessary
@@ -52809,7 +52845,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called. You can then call
          * g_unix_connection_receive_credentials_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         receive_credentials_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
         /**
@@ -52864,7 +52900,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called. You can then call
          * g_unix_connection_send_credentials_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         send_credentials_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
         /**
@@ -53751,7 +53787,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -53837,7 +53873,7 @@ export namespace Gio {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
@@ -53884,7 +53920,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -53944,7 +53980,7 @@ export namespace Gio {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
             count: number,
@@ -54018,7 +54054,7 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
             count: number,
@@ -54045,7 +54081,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -54084,7 +54120,7 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_read_async(
             io_priority: number,
@@ -54143,7 +54179,7 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_skip_async(
             count: number,
@@ -54888,7 +54924,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -54925,7 +54961,7 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         flush_async(
             io_priority: number,
@@ -54983,7 +55019,7 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
             source: InputStream,
@@ -55068,7 +55104,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write
          * @param io_priority the io priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_all_async(
             buffer: Uint8Array | string,
@@ -55130,7 +55166,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_async(
             buffer: Uint8Array | string,
@@ -55172,7 +55208,7 @@ export namespace Gio {
          * @param bytes The bytes to write
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         write_bytes_async(
             bytes: GLib.Bytes | Uint8Array,
@@ -55269,7 +55305,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_all_async(
             vectors: OutputVector[],
@@ -55326,7 +55362,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_async(
             vectors: OutputVector[],
@@ -55353,7 +55389,7 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_close_async(
             io_priority: number,
@@ -55389,7 +55425,7 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_flush_async(
             io_priority: number,
@@ -55420,7 +55456,7 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_splice_async(
             source: InputStream,
@@ -55473,7 +55509,7 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_write_async(
             buffer: Uint8Array | null,
@@ -55545,7 +55581,7 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback callback to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_writev_async(
             vectors: OutputVector[],
@@ -64242,7 +64278,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         append_to_async(
             flags: FileCreateFlags,
@@ -64340,12 +64376,16 @@ export namespace Gio {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         copy_async(
             destination: File,
             flags: FileCopyFlags,
             io_priority: number,
             cancellable?: Cancellable | null,
+            progress_callback?: FileProgressCallback | null,
+            callback?: AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Copies the file attributes from `source` to `destination`.
@@ -64406,7 +64446,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_async(
             flags: FileCreateFlags,
@@ -64463,7 +64503,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_readwrite_async(
             flags: FileCreateFlags,
@@ -64550,7 +64590,7 @@ export namespace Gio {
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable(
             flags: MountUnmountFlags,
@@ -64576,7 +64616,7 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable_with_operation(
             flags: MountUnmountFlags,
@@ -64642,7 +64682,7 @@ export namespace Gio {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         enumerate_children_async(
             attributes: string,
@@ -64695,7 +64735,7 @@ export namespace Gio {
          * get the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         find_enclosing_mount_async(
             io_priority: number,
@@ -64905,7 +64945,7 @@ export namespace Gio {
          *
          * See g_file_load_bytes() for more information.
          * @param cancellable a #GCancellable or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_bytes_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
         /**
@@ -65162,7 +65202,7 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         mount_mountable(
             flags: MountMountFlags,
@@ -65239,8 +65279,8 @@ export namespace Gio {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param progress_callback #GFileProgressCallback   function for updates
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param progress_callback #GFileProgressCallback function for updates
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         move_async(
             destination: File,
@@ -65289,7 +65329,7 @@ export namespace Gio {
          * the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         open_readwrite_async(
             io_priority: number,
@@ -65449,7 +65489,7 @@ export namespace Gio {
          * @param attributes an attribute query string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_filesystem_info_async(
             attributes: string,
@@ -65515,7 +65555,7 @@ export namespace Gio {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_info_async(
             attributes: string,
@@ -65585,7 +65625,7 @@ export namespace Gio {
          * of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -65668,7 +65708,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         replace_async(
             etag: string | null,
@@ -65822,7 +65862,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         replace_readwrite_async(
             etag: string | null,
@@ -66001,7 +66041,7 @@ export namespace Gio {
          * @param flags a #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         set_attributes_async(
             info: FileInfo,
@@ -66068,7 +66108,7 @@ export namespace Gio {
          * @param display_name a string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         set_display_name_async(
             display_name: string,
@@ -66198,7 +66238,7 @@ export namespace Gio {
          * the result of the operation.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable(
             flags: MountUnmountFlags,
@@ -66227,7 +66267,7 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable_with_operation(
             flags: MountUnmountFlags,
@@ -66290,7 +66330,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_append_to_async(
             flags: FileCreateFlags,
@@ -66371,12 +66411,16 @@ export namespace Gio {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_copy_async(
             destination: File,
             flags: FileCopyFlags,
             io_priority: number,
             cancellable?: Cancellable | null,
+            progress_callback?: FileProgressCallback | null,
+            callback?: AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes copying the file started with g_file_copy_async().
@@ -66420,7 +66464,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_create_async(
             flags: FileCreateFlags,
@@ -66475,7 +66519,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_create_readwrite_async(
             flags: FileCreateFlags,
@@ -66558,7 +66602,7 @@ export namespace Gio {
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_eject_mountable(
             flags: MountUnmountFlags,
@@ -66583,7 +66627,7 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_eject_mountable_with_operation(
             flags: MountUnmountFlags,
@@ -66647,7 +66691,7 @@ export namespace Gio {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_enumerate_children_async(
             attributes: string,
@@ -66697,7 +66741,7 @@ export namespace Gio {
          * get the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_find_enclosing_mount_async(
             io_priority: number,
@@ -66977,7 +67021,7 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_mount_mountable(
             flags: MountMountFlags,
@@ -67052,8 +67096,8 @@ export namespace Gio {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param progress_callback #GFileProgressCallback   function for updates
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param progress_callback #GFileProgressCallback function for updates
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_move_async(
             destination: File,
@@ -67100,7 +67144,7 @@ export namespace Gio {
          * the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_open_readwrite_async(
             io_priority: number,
@@ -67198,7 +67242,7 @@ export namespace Gio {
          * @param attributes an attribute query string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_query_filesystem_info_async(
             attributes: string,
@@ -67262,7 +67306,7 @@ export namespace Gio {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_query_info_async(
             attributes: string,
@@ -67313,7 +67357,7 @@ export namespace Gio {
          * of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_read_async(
             io_priority: number,
@@ -67409,7 +67453,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_replace_async(
             etag: string | null,
@@ -67463,7 +67507,7 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_replace_readwrite_async(
             etag: string | null,
@@ -67524,7 +67568,7 @@ export namespace Gio {
          * @param flags a #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_set_attributes_async(
             info: FileInfo,
@@ -67592,7 +67636,7 @@ export namespace Gio {
          * @param display_name a string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_set_display_name_async(
             display_name: string,
@@ -67709,7 +67753,7 @@ export namespace Gio {
          * the result of the operation.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_unmount_mountable(
             flags: MountUnmountFlags,
@@ -67737,7 +67781,7 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_unmount_mountable_with_operation(
             flags: MountUnmountFlags,
@@ -68091,6 +68135,8 @@ export namespace Gio {
          *
          * %NULL is never returned for an index that is smaller than the length
          * of the list.  See g_list_model_get_n_items().
+         *
+         * The same #GObject instance may not appear more than once in a #GListModel.
          * @param position the position of the item to fetch
          */
         vfunc_get_item(position: number): A | null;
@@ -68144,7 +68190,7 @@ export namespace Gio {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_async(size: number, cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
         /**
@@ -68169,7 +68215,7 @@ export namespace Gio {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_load_async(
             size: number,
@@ -68767,14 +68813,18 @@ export namespace Gio {
          */
         get networkAvailable(): boolean;
         /**
-         * Whether the network is considered metered. That is, whether the
+         * Whether the network is considered metered.
+         *
+         * That is, whether the
          * system has traffic flowing through the default connection that is
          * subject to limitations set by service providers. For example, traffic
          * might be billed by the amount of data transmitted, or there might be a
          * quota on the amount of traffic per month. This is typical with tethered
          * connections (3G and 4G) and in such situations, bandwidth intensive
          * applications may wish to avoid network activity where possible if it will
-         * cost the user money or use up their limited quota.
+         * cost the user money or use up their limited quota. Anything more than a
+         * few hundreds of kilobytes of data usage per hour should be avoided without
+         * asking permission from the user.
          *
          * If more information is required about specific devices then the
          * system network management API should be used instead (for example,
@@ -68787,14 +68837,18 @@ export namespace Gio {
          */
         get network_metered(): boolean;
         /**
-         * Whether the network is considered metered. That is, whether the
+         * Whether the network is considered metered.
+         *
+         * That is, whether the
          * system has traffic flowing through the default connection that is
          * subject to limitations set by service providers. For example, traffic
          * might be billed by the amount of data transmitted, or there might be a
          * quota on the amount of traffic per month. This is typical with tethered
          * connections (3G and 4G) and in such situations, bandwidth intensive
          * applications may wish to avoid network activity where possible if it will
-         * cost the user money or use up their limited quota.
+         * cost the user money or use up their limited quota. Anything more than a
+         * few hundreds of kilobytes of data usage per hour should be avoided without
+         * asking permission from the user.
          *
          * If more information is required about specific devices then the
          * system network management API should be used instead (for example,
@@ -68844,7 +68898,7 @@ export namespace Gio {
          * to get the result of the operation.
          * @param connectable a #GSocketConnectable
          * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         can_reach_async(
             connectable: SocketConnectable,
@@ -68932,7 +68986,7 @@ export namespace Gio {
          * to get the result of the operation.
          * @param connectable a #GSocketConnectable
          * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_can_reach_async(
             connectable: SocketConnectable,

@@ -1,7 +1,7 @@
 {
     "name": "@girs/adw-1",
-    "version": "1.4.0-4.0.0",
-    "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.4.0",
+    "version": "1.4.3-4.0.0",
+    "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.4.3",
     "type": "module",
     "module": "adw-1.js",
     "main": "adw-1.js",

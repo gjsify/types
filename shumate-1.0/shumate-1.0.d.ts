@@ -4786,6 +4786,8 @@ export namespace Shumate {
          *
          * %NULL is never returned for an index that is smaller than the length
          * of the list.  See g_list_model_get_n_items().
+         *
+         * The same #GObject instance may not appear more than once in a #GListModel.
          * @param position the position of the item to fetch
          */
         vfunc_get_item(position: number): A | null;

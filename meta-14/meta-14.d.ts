@@ -5557,13 +5557,6 @@ export namespace Meta {
         vfunc_show_tile_preview(window: Window, tile_rect: Mtk.Rectangle, tile_monitor_number: number): void;
         vfunc_show_window_menu(window: Window, menu: WindowMenuType, x: number, y: number): void;
         vfunc_show_window_menu_for_rect(window: Window, menu: WindowMenuType, rect: Mtk.Rectangle): void;
-        /**
-         * virtual function called when a window changes size to/from constraints
-         * @param actor
-         * @param which_change
-         * @param old_frame_rect
-         * @param old_buffer_rect
-         */
         vfunc_size_change(
             actor: WindowActor,
             which_change: SizeChange,
