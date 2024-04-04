@@ -1,7 +1,7 @@
 {
     "name": "@girs/appstream-1.0",
-    "version": "0.16.1-4.0.0",
-    "description": "GJS TypeScript type definitions for AppStream-1.0, generated from library version 0.16.1",
+    "version": "1.0.0-4.0.0-beta.1",
+    "description": "GJS TypeScript type definitions for AppStream-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "appstream-1.0.js",
     "main": "appstream-1.0.js",

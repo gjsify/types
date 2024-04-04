@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/harfbuzz-0.0)
 
 
-GJS TypeScript type definitions for HarfBuzz-0.0, generated from library version 8.2.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0.
+GJS TypeScript type definitions for HarfBuzz-0.0, generated from library version 8.1.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.1.
 
 
 ## Install

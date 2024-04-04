@@ -1,7 +1,7 @@
 {
     "name": "@girs/gdk-3.0",
-    "version": "3.24.41-4.0.0",
-    "description": "GJS TypeScript type definitions for Gdk-3.0, generated from library version 3.24.41",
+    "version": "3.24.39-4.0.0-beta.1",
+    "description": "GJS TypeScript type definitions for Gdk-3.0, generated from library version 3.24.39",
     "type": "module",
     "module": "gdk-3.0.js",
     "main": "gdk-3.0.js",

@@ -1,6 +1,6 @@
 {
     "name": "@girs/gexiv2-0.10",
-    "version": "0.14.2-4.0.0",
+    "version": "0.14.2-4.0.0-beta.1",
     "description": "GJS TypeScript type definitions for GExiv2-0.10, generated from library version 0.14.2",
     "type": "module",
     "module": "gexiv2-0.10.js",

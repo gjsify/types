@@ -94,26 +94,6 @@ export namespace Atk {
         WINDOW,
     }
     /**
-     * Enumeration used to indicate a type of live region and how assertive it
-     * should be in terms of speaking notifications. Currently, this is only used
-     * for "notification" events, but it may be used for additional purposes
-     * in the future.
-     */
-    enum Live {
-        /**
-         * No live region.
-         */
-        NONE,
-        /**
-         * This live region should be considered polite.
-         */
-        POLITE,
-        /**
-         * This live region should be considered assertive.
-         */
-        ASSERTIVE,
-    }
-    /**
      * Describes the type of the relation
      */
     enum RelationType {
@@ -825,11 +805,6 @@ export namespace Atk {
          * actual change is. (Since: 2.36)
          */
         SUGGESTION,
-        /**
-         * A specialized push button to open a menu.
-         * (Since: 2.46)
-         */
-        PUSH_BUTTON_MENU,
         /**
          * not a valid role, used for finding end of the enumeration
          */
@@ -1680,8 +1655,6 @@ export namespace Atk {
     }
 
     /**
-     * This object class is derived from AtkObject and can be used as a basis implementing accessible objects.
-     *
      * This object class is derived from AtkObject. It can be used as a
      * basis for implementing accessible objects for GObjects which are
      * not derived from GtkWidget. One example of its use is in providing
@@ -1735,8 +1708,6 @@ export namespace Atk {
     }
 
     /**
-     * An ATK object which encapsulates a link or set of links in a hypertext document.
-     *
      * An ATK object which encapsulates a link or set of links (for
      * instance in the case of client-side image maps) in a hypertext
      * document.  It may implement the AtkAction interface.  AtkHyperlink
@@ -2396,8 +2367,6 @@ export namespace Atk {
     }
 
     /**
-     * A set of ATK utility functions for thread locking
-     *
      * A set of utility functions for thread locking. This interface and
      * all his related methods are deprecated since 2.12.
      */
@@ -2482,8 +2451,6 @@ export namespace Atk {
     }
 
     /**
-     * An AtkObject which purports to implement all ATK interfaces.
-     *
      * An AtkNoOpObject is an AtkObject which purports to implement all
      * ATK interfaces. It is the type of AtkObject which is created if an
      * accessible object is requested for an object type for which no
@@ -4966,8 +4933,6 @@ export namespace Atk {
     }
 
     /**
-     * The AtkObjectFactory which creates an AtkNoOpObject.
-     *
      * The AtkObjectFactory which creates an AtkNoOpObject. An instance of
      * this is created by an AtkRegistry if no factory type has not been
      * specified to create an accessible object of a particular type.
@@ -4991,20 +4956,12 @@ export namespace Atk {
             (arg1: Object): void;
         }
 
-        interface Announcement {
-            (arg1: string): void;
-        }
-
         interface ChildrenChanged {
             (arg1: number, arg2: Object): void;
         }
 
         interface FocusEvent {
             (arg1: boolean): void;
-        }
-
-        interface Notification {
-            (arg1: string, arg2: number): void;
         }
 
         interface PropertyChange {
@@ -5056,8 +5013,6 @@ export namespace Atk {
     }
 
     /**
-     * The base object class for the Accessibility Toolkit API.
-     *
      * This class is the primary class for accessibility support via the
      * Accessibility ToolKit (ATK).  Objects which are instances of
      * #AtkObject (or instances of AtkObject-derived types) are queried
@@ -5076,7 +5031,7 @@ export namespace Atk {
      * implementation is insufficient, via instances of a new #AtkObject
      * subclass.
      *
-     * See [class`AtkObjectFactory]`, [class`AtkRegistry]`.  (GTK+ users see also
+     * See also: #AtkObjectFactory, #AtkRegistry.  (GTK+ users see also
      * #GtkAccessible).
      */
     class Object extends GObject.Object {
@@ -5197,9 +5152,6 @@ export namespace Atk {
         connect(signal: 'active-descendant-changed', callback: (_source: this, arg1: Object) => void): number;
         connect_after(signal: 'active-descendant-changed', callback: (_source: this, arg1: Object) => void): number;
         emit(signal: 'active-descendant-changed', arg1: Object): void;
-        connect(signal: 'announcement', callback: (_source: this, arg1: string) => void): number;
-        connect_after(signal: 'announcement', callback: (_source: this, arg1: string) => void): number;
-        emit(signal: 'announcement', arg1: string): void;
         connect(signal: 'children-changed', callback: (_source: this, arg1: number, arg2: Object) => void): number;
         connect_after(
             signal: 'children-changed',
@@ -5209,9 +5161,6 @@ export namespace Atk {
         connect(signal: 'focus-event', callback: (_source: this, arg1: boolean) => void): number;
         connect_after(signal: 'focus-event', callback: (_source: this, arg1: boolean) => void): number;
         emit(signal: 'focus-event', arg1: boolean): void;
-        connect(signal: 'notification', callback: (_source: this, arg1: string, arg2: number) => void): number;
-        connect_after(signal: 'notification', callback: (_source: this, arg1: string, arg2: number) => void): number;
-        emit(signal: 'notification', arg1: string, arg2: number): void;
         connect(signal: 'property-change', callback: (_source: this, arg1: PropertyValues) => void): number;
         connect_after(signal: 'property-change', callback: (_source: this, arg1: PropertyValues) => void): number;
         emit(signal: 'property-change', arg1: PropertyValues): void;
@@ -5509,9 +5458,6 @@ export namespace Atk {
     }
 
     /**
-     * The base object class for a factory used to
-     *  create accessible objects for objects of a specific GType.
-     *
      * This class is the base object class for a factory used to create an
      * accessible object for a specific GType. The function
      * atk_registry_set_factory_type() is normally called to store in the
@@ -5569,9 +5515,7 @@ export namespace Atk {
     }
 
     /**
-     * Toplevel for embedding into other processes
-     *
-     * See [class`AtkSocket]`
+     * See #AtkSocket
      */
     class Plug extends Object implements Component {
         static $gtype: GObject.GType<Plug>;
@@ -6215,10 +6159,6 @@ export namespace Atk {
     }
 
     /**
-     * An object used to store the GType of the
-     * factories used to create an accessible object for an object of a
-     * particular GType.
-     *
      * The AtkRegistry is normally used to create appropriate ATK "peers"
      * for user interface components.  Application developers usually need
      * only interact with the AtkRegistry by associating appropriate ATK
@@ -6273,9 +6213,6 @@ export namespace Atk {
     }
 
     /**
-     * An object used to describe a relation between a
-     *  object and one or more other objects.
-     *
      * An AtkRelation describes a relation between an object and one or
      * more other objects. The actual relations that an object has with
      * other objects are defined as an AtkRelationSet, which is a set of
@@ -6338,9 +6275,6 @@ export namespace Atk {
     }
 
     /**
-     * A set of AtkRelations, normally the set of
-     *  AtkRelations which an AtkObject has.
-     *
      * The AtkRelationSet held by an object establishes its relationships
      * with objects beyond the normal "parent/child" hierarchical
      * relationships that all user interface objects have.
@@ -6434,8 +6368,6 @@ export namespace Atk {
     }
 
     /**
-     * Container for AtkPlug objects from other processes
-     *
      * Together with #AtkPlug, #AtkSocket provides the ability to embed
      * accessibles from one process into another in a fashion that is
      * transparent to assistive technologies. #AtkSocket works as the
@@ -6458,8 +6390,6 @@ export namespace Atk {
      * atk_object_get_n_accessible_children() and
      * atk_object_ref_accessible_child(). All the logic related to those
      * functions will be implemented by the IPC layer.
-     *
-     * See [class`AtkPlug]`
      */
     class Socket extends Object implements Component {
         static $gtype: GObject.GType<Socket>;
@@ -7110,8 +7040,6 @@ export namespace Atk {
     }
 
     /**
-     * An AtkStateSet contains the states of an object.
-     *
      * An AtkStateSet is a read-only representation of the full set of #AtkStates
      * that apply to an object at a given time. This set is not meant to be
      * modified, but rather created when #atk_object_ref_state_set() is called.
@@ -7214,8 +7142,6 @@ export namespace Atk {
     }
 
     /**
-     * A set of ATK utility functions for event and toolkit support.
-     *
      * A set of ATK utility functions which are used to support event
      * registration of various types, and obtaining the 'root' accessible
      * of a process and information about the current ATK implementation
@@ -7354,8 +7280,6 @@ export namespace Atk {
     }
 
     /**
-     * A given range or subrange, to be used with #AtkValue
-     *
      * #AtkRange are used on #AtkValue, in order to represent the full
      * range of a given component (for example an slider or a range
      * control), or to define each individual subrange this full range is

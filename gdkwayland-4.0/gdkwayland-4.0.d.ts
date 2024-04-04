@@ -483,7 +483,7 @@ export namespace GdkWayland {
          * For toplevel surfaces, withdraws them, so they will no longer be
          * known to the window manager; for all surfaces, unmaps them, so
          * they won’t be displayed. Normally done automatically as
-         * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
+         * part of [method`Gtk`.Widget.hide].
          */
         hide(): void;
         /**
@@ -562,7 +562,7 @@ export namespace GdkWayland {
          * GTK will update this property automatically if the `surface` background
          * is opaque, as we know where the opaque regions are. If your surface
          * background is not opaque, please update this property in your
-         * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
+         * [vfunc`Gtk`.Widget.css_changed] handler.
          * @param region a region, or %NULL to make the entire   surface opaque
          */
         set_opaque_region(region?: cairo.Region | null): void;
@@ -881,9 +881,8 @@ export namespace GdkWayland {
         /**
          * Sets keyboard focus to `surface`.
          *
-         * In most cases, [gtk_window_present_with_time()](../gtk4/method.Window.present_with_time.html)
-         * should be used on a [GtkWindow](../gtk4/class.Window.html), rather than
-         * calling this function.
+         * In most cases, [method`Gtk`.Window.present_with_time] should be
+         * used on a [class`Gtk`.Window], rather than calling this function.
          * @param timestamp timestamp of the event triggering the surface focus
          */
         focus(timestamp: number): void;
@@ -1001,8 +1000,8 @@ export namespace GdkWayland {
          * Sets the startup notification ID.
          *
          * When using GTK, typically you should use
-         * [gtk_window_set_startup_id()](../gtk4/method.Window.set_startup_id.html)
-         * instead of this low-level function.
+         * [method`Gtk`.Window.set_startup_id] instead of this
+         * low-level function.
          * @param startup_id a string with startup-notification identifier
          */
         set_startup_id(startup_id: string): void;
@@ -1022,8 +1021,8 @@ export namespace GdkWayland {
          * allows the window manager to do things like center `surface`
          * on `parent` and keep `surface` above `parent`.
          *
-         * See [gtk_window_set_transient_for()](../gtk4/method.Window.set_transient_for.html)
-         * if you’re using [GtkWindow](../gtk4/class.Window.html).
+         * See [method`Gtk`.Window.set_transient_for] if you’re using
+         * [class`Gtk`.Window] or [class`Gtk`.Dialog].
          * @param parent another toplevel `GdkSurface`
          */
         set_transient_for(parent: Gdk.Surface): void;
@@ -1213,7 +1212,7 @@ export namespace GdkWayland {
          * For toplevel surfaces, withdraws them, so they will no longer be
          * known to the window manager; for all surfaces, unmaps them, so
          * they won’t be displayed. Normally done automatically as
-         * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
+         * part of [method`Gtk`.Widget.hide].
          */
         hide(): void;
         /**
@@ -1292,7 +1291,7 @@ export namespace GdkWayland {
          * GTK will update this property automatically if the `surface` background
          * is opaque, as we know where the opaque regions are. If your surface
          * background is not opaque, please update this property in your
-         * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
+         * [vfunc`Gtk`.Widget.css_changed] handler.
          * @param region a region, or %NULL to make the entire   surface opaque
          */
         set_opaque_region(region?: cairo.Region | null): void;

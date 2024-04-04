@@ -1,6 +1,6 @@
 {
     "name": "@girs/poppler-0.18",
-    "version": "22.12.0-4.0.0",
+    "version": "22.12.0-4.0.0-beta.1",
     "description": "GJS TypeScript type definitions for Poppler-0.18, generated from library version 22.12.0",
     "type": "module",
     "module": "poppler-0.18.js",

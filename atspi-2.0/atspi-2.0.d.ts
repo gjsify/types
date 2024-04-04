@@ -289,26 +289,6 @@ export namespace Atspi {
         UNLOCKMODIFIERS,
     }
     /**
-     * Enumeration used to indicate a type of live region and how assertive it
-     * should be in terms of speaking notifications. Currently, this is only used
-     * for "announcement" events, but it may be used for additional purposes
-     * in the future.
-     */
-    enum Live {
-        /**
-         * No live region.
-         */
-        NONE,
-        /**
-         * This live region should be considered polite.
-         */
-        POLITE,
-        /**
-         * This live region should be considered assertive.
-         */
-        ASSERTIVE,
-    }
-    /**
      * Used by interfaces #AtspiText and #AtspiDocument, this
      * enumeration corresponds to the POSIX 'setlocale' enum values.
      */
@@ -623,7 +603,7 @@ export namespace Atspi {
          */
         DATE_EDITOR,
         /**
-         * An inconifed internal frame within a DESKTOP_FRAME.
+         * An inconifed internal frame within a DESKTOP_PANE.
          */
         DESKTOP_ICON,
         /**
@@ -646,14 +626,14 @@ export namespace Atspi {
          */
         DIRECTORY_PANE,
         /**
-         * An object used for drawing custom user interface
-         * elements.
-         */
-        DRAWING_AREA,
-        /**
          * A specialized dialog that displays the files in
          * the directory and lets the user select a file, browse a different
          * directory, or specify a filename.
+         */
+        DRAWING_AREA,
+        /**
+         * An object used for drawing custom user interface
+         * elements.
          */
         FILE_CHOOSER,
         /**
@@ -813,13 +793,14 @@ export namespace Atspi {
         SEPARATOR,
         /**
          * An object that allows the user to select from a bounded
-         * range.  Unlike `ATSPI_ROLE_SCROLL_BAR,` `ATSPI_ROLE_SLIDER` objects need not control
-         * 'viewport'-like objects.
+         * range.
          */
         SLIDER,
         /**
          * An object which allows one of a set of choices to
-         * be selected, and which displays the current choice.
+         * be selected, and which displays the current choice.  Unlike
+         * `ATSPI_ROLE_SCROLL_BAR,` `ATSPI_ROLE_SLIDER` objects need not control
+         * 'viewport'-like objects.
          */
         SPIN_BUTTON,
         /**
@@ -942,7 +923,7 @@ export namespace Atspi {
         /**
          * An object corresponding to the toplevel accessible
          * of an application, which may contain `ATSPI_ROLE_FRAME` objects or other
-         * accessible objects. Children of objects with the #ATSPI_ROLE_DESKTOP_FRAME role are generally
+         * accessible objects. Children of #AccessibleDesktop objects  are generally
          * `ATSPI_ROLE_APPLICATION` objects.
          */
         APPLICATION,
@@ -1278,18 +1259,14 @@ export namespace Atspi {
         /**
          * A container for content that is called out as a proposed
          * change from the current version of the document, such as by a reviewer of the
-         * content. An object with this role should include children with %ATSPI_ROLE_CONTENT_DELETION and/or
-         * %ATSPI_ROLE_CONTENT_INSERTION, in any order, to indicate what the
+         * content. This role should include either %ATSPI_ROLE_CONTENT_DELETION and/or
+         * %ATSPI_ROLE_CONTENT_INSERTION children, in any order, to indicate what the
          * actual change is. `Since:` 2.36
          */
         SUGGESTION,
         /**
-         * A specialized push button to open a menu. `Since` 2.46
-         */
-        PUSH_BUTTON_MENU,
-        /**
          * Not a valid role, used for finding end of
-         * enumeration.
+         *  enumeration.
          */
         LAST_DEFINED,
     }
@@ -1915,19 +1892,6 @@ export namespace Atspi {
      */
     function generate_mouse_event(x: number, y: number, name: string): boolean;
     /**
-     * Like atspi_generate_mouse_event, but asynchronous.
-     * @param x a #glong indicating the screen x coordinate of the mouse event.
-     * @param y a #glong indicating the screen y coordinate of the mouse event.
-     * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
-     * @param callback a callback to be called when a reply is received. May be NULL.
-     */
-    function generate_mouse_event_async(
-        x: number,
-        y: number,
-        name: string,
-        callback?: GenerateMouseEventCB | null,
-    ): void;
-    /**
      * Gets the virtual desktop indicated by index `i`.
      * NOTE: currently multiple virtual desktops are not implemented;
      * as a consequence, any `i` value different from 0 will not return a
@@ -1956,10 +1920,6 @@ export namespace Atspi {
      */
     function get_desktop_list(): Accessible[];
     /**
-     * Returns the version of the AT-SPI library being used at runtime.
-     */
-    function get_version(): [number, number, number];
-    /**
      * Connects to the accessibility registry and initializes the SPI.
      * @returns 0 on success, 1 if already initialized, or an integer error code.
      */
@@ -1970,11 +1930,11 @@ export namespace Atspi {
      */
     function is_initialized(): boolean;
     /**
-     * This function does nothing and should not be called.
-     * @param listener
-     * @param event_types
-     * @param filter
-     * @returns Always returns %FALSE.
+     * Registers a listener for device events, for instance button events.
+     * @param listener a pointer to the #AtspiDeviceListener which requests             the events.
+     * @param event_types an #AtspiDeviceEventMask mask indicating which             types of key events are requested (%ATSPI_KEY_PRESSED, etc.).
+     * @param filter Unused parameter.
+     * @returns %TRUE if successful, otherwise %FALSE.
      */
     function register_device_event_listener(
         listener: DeviceListener,
@@ -2004,13 +1964,8 @@ export namespace Atspi {
         sync_type: KeyListenerSyncType,
     ): boolean;
     /**
-     * Gets the localized description string describing the #AtspiRole `role`.
-     * @param role an #AtspiRole object to query.
-     * @returns the localized string describing the AtspiRole
-     */
-    function role_get_localized_name(role: Role): string;
-    /**
      * Gets a localizable string that indicates the name of an #AtspiRole.
+     * <em>DEPRECATED.</em>
      * @param role an #AtspiRole object to query.
      * @returns a localizable string name for an #AtspiRole enumerated type.
      */
@@ -2024,13 +1979,18 @@ export namespace Atspi {
      */
     function set_main_context(cnx: GLib.MainContext): void;
     /**
-     * Deprecated. This function no longer does anything and should not be used.
+     * Sets the reference window that will be used when atspi_generate_mouse_event
+     * is called. Coordinates will be assumed to be relative to this window. This
+     * is needed because, due to Wayland's security model, it is not currently
+     * possible to retrieve global coordinates.
+     * If NULL is passed, then AT-SPI will use the window that has focus at the
+     * time that atspi_generate_mouse_event is called.
      * @param accessible the #AtspiAccessible corresponding to the window to select.              should be a top-level window with a role of              ATSPI_ROLE_APPLICATION.
      */
     function set_reference_window(accessible: Accessible): void;
     /**
      * Set the timeout used for method calls. If this is not set explicitly,
-     * a default of 800 ms is used.
+     * a default of 0.8 ms is used.
      * Note that at-spi2-registryd currently uses a timeout of 3 seconds when
      * sending a keyboard event notification. This means that, if an AT makes
      * a call in response to the keyboard notification and the application
@@ -2057,9 +2017,6 @@ export namespace Atspi {
     }
     interface EventListenerSimpleCB {
         (event: Event): void;
-    }
-    interface GenerateMouseEventCB {
-        (): void;
     }
     interface KeyCallback {
         (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void;
@@ -2096,7 +2053,7 @@ export namespace Atspi {
         NOSYNC,
         /**
          * Events are delivered synchronously, before the
-         * currently focused application sees them.
+         * currently focussed application sees them.
          */
         SYNCHRONOUS,
         /**
@@ -2144,13 +2101,6 @@ export namespace Atspi {
                 Value.ConstructorProps {}
     }
 
-    /**
-     * The base interface which is implemented by all accessible objects.
-     *
-     * All objects support interfaces for querying their contained 'children'
-     * and position in the accessible-object hierarchy, whether or not they
-     * actually have children.
-     */
     class Accessible
         extends Object
         implements
@@ -2210,10 +2160,6 @@ export namespace Atspi {
          * descendants.
          */
         clear_cache(): void;
-        /**
-         * Clears the cached information only for the given accessible.
-         */
-        clear_cache_single(): void;
         /**
          * Gets the accessible id of the accessible.  This is not meant to be presented
          * to the user, but to be an id which is stable over application development.
@@ -2673,8 +2619,8 @@ export namespace Atspi {
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
         /**
          * Moves and resizes the specified component.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
@@ -2683,14 +2629,14 @@ export namespace Atspi {
         set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean;
         /**
          * Moves the component to the specified position.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if successful; #FALSE otherwise.
          */
         set_position(x: number, y: number, ctype: CoordType): boolean;
         /**
-         * Resizes the specified component to the given pixel dimensions.
+         * Resizes the specified component to the given coordinates.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @returns #TRUE if successful; #FALSE otherwise.
@@ -3175,6 +3121,7 @@ export namespace Atspi {
          * Gets the attributes applied to a range of text from an #AtspiText
          * object. The text attributes correspond to CSS attributes
          * where possible.
+         * <em>DEPRECATED</em>
          * @param offset a #gint indicating the offset from which the attribute        search is based.
          * @returns a #GHashTable describing the attributes at the given character offset.
          */
@@ -3771,13 +3718,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * An interface identifying the root object associated
-     * with a running application.
-     *
-     * An interface identifying an object which is the root of the
-     * hierarchy associated with a running application.
-     */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
@@ -3824,7 +3764,7 @@ export namespace Atspi {
          */
         vfunc_get_locked_modifiers(): number;
         /**
-         * Gets the modifier for a given keycode, if one exists. Does not create a new
+         * Gets the modifier for a given keycode, if one exists. Does not creatt a new
          * mapping. This function should be used when the intention is to query a
          * locking modifier such as num lock via atspi_device_get_locked_modifiers,
          * rather than to add key grabs.
@@ -3880,7 +3820,7 @@ export namespace Atspi {
          */
         get_locked_modifiers(): number;
         /**
-         * Gets the modifier for a given keycode, if one exists. Does not create a new
+         * Gets the modifier for a given keycode, if one exists. Does not creatt a new
          * mapping. This function should be used when the intention is to query a
          * locking modifier such as num lock via atspi_device_get_locked_modifiers,
          * rather than to add key grabs.
@@ -4008,15 +3948,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * A generic interface implemented by objects for the receipt of event
-     * notifications.
-     *
-     * A generic interface implemented by objects for the receipt of event
-     * notifications. atspi-event-listener is the interface via which clients of
-     * the atspi-registry receive notification of changes to an application's user
-     * interface and content.
-     */
     class EventListener extends GObject.Object {
         static $gtype: GObject.GType<EventListener>;
 
@@ -4102,7 +4033,6 @@ export namespace Atspi {
          *            object:column-deleted
          *            object:model-changed
          *            object:active-descendant-changed
-         *            object:announcement
          *
          *  (screen reader events)
          *             screen-reader:region-changed
@@ -4176,18 +4106,6 @@ export namespace Atspi {
         interface ConstructorProps extends Object.ConstructorProps {}
     }
 
-    /**
-     * Instances of atspi-hyperlink are the means by which end users
-     * and clients interact with linked content.
-     *
-     *  Instances of atspi-hyperlink are returned by
-     * atspi-hypertext objects, and are the means by
-     * which end users and clients interact with linked,
-     * and in some cases embedded, content. These instances
-     * may have multiple "anchors", where an anchor corresponds to a
-     * reference to a particular resource with a corresponding resource
-     * identified (URI).
-     */
     class Hyperlink extends Object {
         static $gtype: GObject.GType<Hyperlink>;
 
@@ -4251,10 +4169,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * An interface that allows the definition of match rules
-     * for accessible objects.
-     */
     class MatchRule extends GObject.Object {
         static $gtype: GObject.GType<MatchRule>;
 
@@ -4315,14 +4229,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * An interface via which non-hierarchical relationships
-     * are indicated.
-     *
-     * An interface via which non-hierarchical relationships
-     * are indicated. An instance of this interface represents
-     * a "one-to-many" correspondence.
-     */
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
 
@@ -4365,10 +4271,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * The atspi-stateset objects implement wrappers around a
-     * bitmap of accessible states.
-     */
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
 
@@ -4931,8 +4833,8 @@ export namespace Atspi {
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
         /**
          * Moves and resizes the specified component.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
@@ -4941,14 +4843,14 @@ export namespace Atspi {
         set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean;
         /**
          * Moves the component to the specified position.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if successful; #FALSE otherwise.
          */
         set_position(x: number, y: number, ctype: CoordType): boolean;
         /**
-         * Resizes the specified component to the given pixel dimensions.
+         * Resizes the specified component to the given coordinates.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @returns #TRUE if successful; #FALSE otherwise.
@@ -5586,6 +5488,7 @@ export namespace Atspi {
          * Gets the attributes applied to a range of text from an #AtspiText
          * object. The text attributes correspond to CSS attributes
          * where possible.
+         * <em>DEPRECATED</em>
          * @param offset a #gint indicating the offset from which the attribute        search is based.
          * @returns a #GHashTable describing the attributes at the given character offset.
          */
@@ -5748,6 +5651,7 @@ export namespace Atspi {
          * Gets the attributes applied to a range of text from an #AtspiText
          * object. The text attributes correspond to CSS attributes
          * where possible.
+         * <em>DEPRECATED</em>
          * @param offset a #gint indicating the offset from which the attribute        search is based.
          * @returns a #GHashTable describing the attributes at the given character offset.
          */
