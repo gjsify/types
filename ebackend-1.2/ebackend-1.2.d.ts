@@ -6742,7 +6742,7 @@ export namespace EBackend {
         copy(): CacheColumnInfo | null;
     }
 
-    abstract class CacheColumnValues {
+    class CacheColumnValues {
         static $gtype: GObject.GType<CacheColumnValues>;
 
         // Constructors of EBackend.CacheColumnValues

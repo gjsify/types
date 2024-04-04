@@ -10675,7 +10675,7 @@ export namespace Soup {
      * code (eg, javascript), so as to minimize the danger posed by
      * cross-site scripting attacks.
      */
-    abstract class Cookie {
+    class Cookie {
         static $gtype: GObject.GType<Cookie>;
 
         // Constructors of Soup.Cookie
@@ -10892,7 +10892,7 @@ export namespace Soup {
      * If `include_subdomains` is %TRUE, the Strict Transport Security policy
      * must also be enforced on subdomains of `domain`.
      */
-    abstract class HSTSPolicy {
+    class HSTSPolicy {
         static $gtype: GObject.GType<HSTSPolicy>;
 
         // Constructors of Soup.HSTSPolicy
@@ -11132,7 +11132,7 @@ export namespace Soup {
     /**
      * The HTTP message headers associated with a request or response.
      */
-    abstract class MessageHeaders {
+    class MessageHeaders {
         static $gtype: GObject.GType<MessageHeaders>;
 
         // Constructors of Soup.MessageHeaders
@@ -11682,7 +11682,7 @@ export namespace Soup {
      * explicitly state otherwise. In other words, don't try to use
      * #SoupMultipart for handling real MIME multiparts.
      */
-    abstract class Multipart {
+    class Multipart {
         static $gtype: GObject.GType<Multipart>;
 
         // Constructors of Soup.Multipart

@@ -14289,7 +14289,7 @@ export namespace Gst {
      * The #GstAtomicQueue object implements a queue that can be used from multiple
      * threads without performing any blocking operations.
      */
-    abstract class AtomicQueue {
+    class AtomicQueue {
         static $gtype: GObject.GType<AtomicQueue>;
 
         // Constructors of Gst.AtomicQueue
@@ -14928,7 +14928,7 @@ export namespace Gst {
      * interesting when multiple buffers need to be pushed in one go because it
      * can reduce the amount of overhead for pushing each buffer individually.
      */
-    abstract class BufferList {
+    class BufferList {
         static $gtype: GObject.GType<BufferList>;
 
         // Constructors of Gst.BufferList
@@ -15493,7 +15493,7 @@ export namespace Gst {
      * are given as a string of the format `memory:GstMemoryTypeName` or
      * `meta:GstMetaAPIName`.
      */
-    abstract class CapsFeatures {
+    class CapsFeatures {
         static $gtype: GObject.GType<CapsFeatures>;
 
         // Constructors of Gst.CapsFeatures
@@ -15670,7 +15670,7 @@ export namespace Gst {
      * Also, a non-persistent context won't override a previous persistent
      * context set to an element.
      */
-    abstract class Context {
+    class Context {
         static $gtype: GObject.GType<Context>;
 
         // Constructors of Gst.Context
@@ -15785,7 +15785,7 @@ export namespace Gst {
      *
      * [proleptic Gregorian calendar]: https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar
      */
-    abstract class DateTime {
+    class DateTime {
         static $gtype: GObject.GType<DateTime>;
 
         // Constructors of Gst.DateTime
@@ -17794,7 +17794,7 @@ export namespace Gst {
     /**
      * Opaque structure.
      */
-    abstract class ParseContext {
+    class ParseContext {
         static $gtype: GObject.GType<ParseContext>;
 
         // Constructors of Gst.ParseContext
@@ -18833,7 +18833,7 @@ export namespace Gst {
      * A #GstSample is a small object containing data, a type, timing and
      * extra arbitrary information.
      */
-    abstract class Sample {
+    class Sample {
         static $gtype: GObject.GType<Sample>;
 
         // Constructors of Gst.Sample
@@ -20399,7 +20399,7 @@ export namespace Gst {
      * each with track entries underneath, in case the source file has extracted
      * a track listing from different sources).
      */
-    abstract class Toc {
+    class Toc {
         static $gtype: GObject.GType<Toc>;
 
         // Constructors of Gst.Toc
@@ -20447,7 +20447,7 @@ export namespace Gst {
         set_tags(tags?: TagList | null): void;
     }
 
-    abstract class TocEntry {
+    class TocEntry {
         static $gtype: GObject.GType<TocEntry>;
 
         // Constructors of Gst.TocEntry
@@ -20631,7 +20631,7 @@ export namespace Gst {
      * constituent parts. Two #GstUri objects can be joined to make a new #GstUri
      * using the algorithm described in RFC3986.
      */
-    abstract class Uri {
+    class Uri {
         static $gtype: GObject.GType<Uri>;
 
         // Constructors of Gst.Uri

@@ -26103,7 +26103,7 @@ export namespace Clutter {
     }
 
     type PageTurnEffectClass = typeof PageTurnEffect;
-    abstract class PaintContext {
+    class PaintContext {
         static $gtype: GObject.GType<PaintContext>;
 
         // Constructors of Clutter.PaintContext

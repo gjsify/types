@@ -2833,7 +2833,7 @@ export namespace EBookContacts {
         _init(...args: any[]): void;
     }
 
-    abstract class VCardAttribute {
+    class VCardAttribute {
         static $gtype: GObject.GType<VCardAttribute>;
 
         // Constructors of EBookContacts.VCardAttribute
@@ -3023,7 +3023,7 @@ export namespace EBookContacts {
         remove_values(): void;
     }
 
-    abstract class VCardAttributeParam {
+    class VCardAttributeParam {
         static $gtype: GObject.GType<VCardAttributeParam>;
 
         // Constructors of EBookContacts.VCardAttributeParam

@@ -6377,7 +6377,7 @@ export namespace Mbim {
     /**
      * An opaque type representing a MBIM message.
      */
-    abstract class Message {
+    class Message {
         static $gtype: GObject.GType<Message>;
 
         // Constructors of Mbim.Message
@@ -8847,7 +8847,7 @@ export namespace Mbim {
     /**
      * An opaque type representing a MBIM TLV.
      */
-    abstract class Tlv {
+    class Tlv {
         static $gtype: GObject.GType<Tlv>;
 
         // Constructors of Mbim.Tlv

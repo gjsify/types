@@ -740,7 +740,7 @@ export namespace Amtk {
         get_menu_shell(): Gtk.MenuShell;
     }
 
-    abstract class ActionInfo {
+    class ActionInfo {
         static $gtype: GObject.GType<ActionInfo>;
 
         // Constructors of Amtk.ActionInfo

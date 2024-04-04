@@ -7003,7 +7003,7 @@ export namespace GstVideo {
      * on top of the video, and for surface buffers it can just attach them to
      * the buffer and let the sink render the overlays.
      */
-    abstract class VideoOverlayComposition {
+    class VideoOverlayComposition {
         static $gtype: GObject.GType<VideoOverlayComposition>;
 
         // Constructors of GstVideo.VideoOverlayComposition
@@ -7090,7 +7090,7 @@ export namespace GstVideo {
      * An opaque video overlay rectangle object. A rectangle contains a single
      * overlay rectangle which can be added to a composition.
      */
-    abstract class VideoOverlayRectangle {
+    class VideoOverlayRectangle {
         static $gtype: GObject.GType<VideoOverlayRectangle>;
 
         // Constructors of GstVideo.VideoOverlayRectangle
@@ -7780,7 +7780,7 @@ export namespace GstVideo {
      * An encoder for writing ancillary data to the
      * Vertical Blanking Interval lines of component signals.
      */
-    abstract class VideoVBIEncoder {
+    class VideoVBIEncoder {
         static $gtype: GObject.GType<VideoVBIEncoder>;
 
         // Constructors of GstVideo.VideoVBIEncoder
@@ -7816,7 +7816,7 @@ export namespace GstVideo {
      * A parser for detecting and extracting `GstVideoAncillary` data from
      * Vertical Blanking Interval lines of component signals.
      */
-    abstract class VideoVBIParser {
+    class VideoVBIParser {
         static $gtype: GObject.GType<VideoVBIParser>;
 
         // Constructors of GstVideo.VideoVBIParser

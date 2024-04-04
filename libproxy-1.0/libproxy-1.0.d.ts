@@ -24,7 +24,7 @@ export namespace Libproxy {
      * @param proxies a %NULL-terminated array of proxies
      */
     function proxy_factory_free_proxies(proxies: string[]): void;
-    abstract class ProxyFactory {
+    class ProxyFactory {
         static $gtype: GObject.GType<ProxyFactory>;
 
         // Constructors of Libproxy.ProxyFactory

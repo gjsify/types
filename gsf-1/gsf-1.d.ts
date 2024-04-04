@@ -2295,7 +2295,7 @@ export namespace Gsf {
     /**
      * Class representing a properties of a document.
      */
-    abstract class DocProp {
+    class DocProp {
         static $gtype: GObject.GType<DocProp>;
 
         // Constructors of Gsf.DocProp
@@ -2334,7 +2334,7 @@ export namespace Gsf {
 
     type InfileClass = typeof Infile;
     type InputClass = typeof Input;
-    abstract class MSOleSortingKey {
+    class MSOleSortingKey {
         static $gtype: GObject.GType<MSOleSortingKey>;
 
         // Constructors of Gsf.MSOleSortingKey
@@ -2502,7 +2502,7 @@ export namespace Gsf {
         set_silent_unknowns(silent: boolean): void;
     }
 
-    abstract class XMLInDoc {
+    class XMLInDoc {
         static $gtype: GObject.GType<XMLInDoc>;
 
         // Constructors of Gsf.XMLInDoc

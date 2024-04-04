@@ -28175,7 +28175,7 @@ export namespace Qmi {
      * The #QmiMessageAtrSendInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageAtrSendInput {
+    class MessageAtrSendInput {
         static $gtype: GObject.GType<MessageAtrSendInput>;
 
         // Constructors of Qmi.MessageAtrSendInput
@@ -28243,7 +28243,7 @@ export namespace Qmi {
     /**
      * An opaque type representing a QMI message context.
      */
-    abstract class MessageContext {
+    class MessageContext {
         static $gtype: GObject.GType<MessageContext>;
 
         // Constructors of Qmi.MessageContext
@@ -28281,7 +28281,7 @@ export namespace Qmi {
      * The #QmiMessageDmsActivateAutomaticInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsActivateAutomaticInput {
+    class MessageDmsActivateAutomaticInput {
         static $gtype: GObject.GType<MessageDmsActivateAutomaticInput>;
 
         // Constructors of Qmi.MessageDmsActivateAutomaticInput
@@ -28350,7 +28350,7 @@ export namespace Qmi {
      * The #QmiMessageDmsActivateManualInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsActivateManualInput {
+    class MessageDmsActivateManualInput {
         static $gtype: GObject.GType<MessageDmsActivateManualInput>;
 
         // Constructors of Qmi.MessageDmsActivateManualInput
@@ -28466,7 +28466,7 @@ export namespace Qmi {
      * The #QmiMessageDmsDeleteStoredImageInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsDeleteStoredImageInput {
+    class MessageDmsDeleteStoredImageInput {
         static $gtype: GObject.GType<MessageDmsDeleteStoredImageInput>;
 
         // Constructors of Qmi.MessageDmsDeleteStoredImageInput
@@ -28541,7 +28541,7 @@ export namespace Qmi {
      * The #QmiMessageDmsFoxconnChangeDeviceModeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsFoxconnChangeDeviceModeInput {
+    class MessageDmsFoxconnChangeDeviceModeInput {
         static $gtype: GObject.GType<MessageDmsFoxconnChangeDeviceModeInput>;
 
         // Constructors of Qmi.MessageDmsFoxconnChangeDeviceModeInput
@@ -28610,7 +28610,7 @@ export namespace Qmi {
      * The #QmiMessageDmsFoxconnGetFirmwareVersionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsFoxconnGetFirmwareVersionInput {
+    class MessageDmsFoxconnGetFirmwareVersionInput {
         static $gtype: GObject.GType<MessageDmsFoxconnGetFirmwareVersionInput>;
 
         // Constructors of Qmi.MessageDmsFoxconnGetFirmwareVersionInput
@@ -28684,7 +28684,7 @@ export namespace Qmi {
      * The #QmiMessageDmsFoxconnSetFccAuthenticationInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsFoxconnSetFccAuthenticationInput {
+    class MessageDmsFoxconnSetFccAuthenticationInput {
         static $gtype: GObject.GType<MessageDmsFoxconnSetFccAuthenticationInput>;
 
         // Constructors of Qmi.MessageDmsFoxconnSetFccAuthenticationInput
@@ -28753,7 +28753,7 @@ export namespace Qmi {
      * The #QmiMessageDmsFoxconnSetFccAuthenticationV2Input structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsFoxconnSetFccAuthenticationV2Input {
+    class MessageDmsFoxconnSetFccAuthenticationV2Input {
         static $gtype: GObject.GType<MessageDmsFoxconnSetFccAuthenticationV2Input>;
 
         // Constructors of Qmi.MessageDmsFoxconnSetFccAuthenticationV2Input
@@ -29205,7 +29205,7 @@ export namespace Qmi {
      * The #QmiMessageDmsGetMacAddressInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsGetMacAddressInput {
+    class MessageDmsGetMacAddressInput {
         static $gtype: GObject.GType<MessageDmsGetMacAddressInput>;
 
         // Constructors of Qmi.MessageDmsGetMacAddressInput
@@ -29574,7 +29574,7 @@ export namespace Qmi {
      * The #QmiMessageDmsGetStoredImageInfoInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsGetStoredImageInfoInput {
+    class MessageDmsGetStoredImageInfoInput {
         static $gtype: GObject.GType<MessageDmsGetStoredImageInfoInput>;
 
         // Constructors of Qmi.MessageDmsGetStoredImageInfoInput
@@ -29779,7 +29779,7 @@ export namespace Qmi {
      * The #QmiMessageDmsHpChangeDeviceModeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsHpChangeDeviceModeInput {
+    class MessageDmsHpChangeDeviceModeInput {
         static $gtype: GObject.GType<MessageDmsHpChangeDeviceModeInput>;
 
         // Constructors of Qmi.MessageDmsHpChangeDeviceModeInput
@@ -30033,7 +30033,7 @@ export namespace Qmi {
      * The #QmiMessageDmsRestoreFactoryDefaultsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsRestoreFactoryDefaultsInput {
+    class MessageDmsRestoreFactoryDefaultsInput {
         static $gtype: GObject.GType<MessageDmsRestoreFactoryDefaultsInput>;
 
         // Constructors of Qmi.MessageDmsRestoreFactoryDefaultsInput
@@ -30102,7 +30102,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSetAltNetConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSetAltNetConfigInput {
+    class MessageDmsSetAltNetConfigInput {
         static $gtype: GObject.GType<MessageDmsSetAltNetConfigInput>;
 
         // Constructors of Qmi.MessageDmsSetAltNetConfigInput
@@ -30171,7 +30171,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSetBootImageDownloadModeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSetBootImageDownloadModeInput {
+    class MessageDmsSetBootImageDownloadModeInput {
         static $gtype: GObject.GType<MessageDmsSetBootImageDownloadModeInput>;
 
         // Constructors of Qmi.MessageDmsSetBootImageDownloadModeInput
@@ -30240,7 +30240,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSetEventReportInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSetEventReportInput {
+    class MessageDmsSetEventReportInput {
         static $gtype: GObject.GType<MessageDmsSetEventReportInput>;
 
         // Constructors of Qmi.MessageDmsSetEventReportInput
@@ -30450,7 +30450,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSetFirmwarePreferenceInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSetFirmwarePreferenceInput {
+    class MessageDmsSetFirmwarePreferenceInput {
         static $gtype: GObject.GType<MessageDmsSetFirmwarePreferenceInput>;
 
         // Constructors of Qmi.MessageDmsSetFirmwarePreferenceInput
@@ -30566,7 +30566,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSetOperatingModeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSetOperatingModeInput {
+    class MessageDmsSetOperatingModeInput {
         static $gtype: GObject.GType<MessageDmsSetOperatingModeInput>;
 
         // Constructors of Qmi.MessageDmsSetOperatingModeInput
@@ -30635,7 +30635,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSetServiceProgrammingCodeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSetServiceProgrammingCodeInput {
+    class MessageDmsSetServiceProgrammingCodeInput {
         static $gtype: GObject.GType<MessageDmsSetServiceProgrammingCodeInput>;
 
         // Constructors of Qmi.MessageDmsSetServiceProgrammingCodeInput
@@ -30715,7 +30715,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSetTimeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSetTimeInput {
+    class MessageDmsSetTimeInput {
         static $gtype: GObject.GType<MessageDmsSetTimeInput>;
 
         // Constructors of Qmi.MessageDmsSetTimeInput
@@ -30795,7 +30795,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSetUserLockCodeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSetUserLockCodeInput {
+    class MessageDmsSetUserLockCodeInput {
         static $gtype: GObject.GType<MessageDmsSetUserLockCodeInput>;
 
         // Constructors of Qmi.MessageDmsSetUserLockCodeInput
@@ -30865,7 +30865,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSetUserLockStateInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSetUserLockStateInput {
+    class MessageDmsSetUserLockStateInput {
         static $gtype: GObject.GType<MessageDmsSetUserLockStateInput>;
 
         // Constructors of Qmi.MessageDmsSetUserLockStateInput
@@ -31050,7 +31050,7 @@ export namespace Qmi {
      * The #QmiMessageDmsSwiSetUsbCompositionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsSwiSetUsbCompositionInput {
+    class MessageDmsSwiSetUsbCompositionInput {
         static $gtype: GObject.GType<MessageDmsSwiSetUsbCompositionInput>;
 
         // Constructors of Qmi.MessageDmsSwiSetUsbCompositionInput
@@ -31119,7 +31119,7 @@ export namespace Qmi {
      * The #QmiMessageDmsUimChangePinInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsUimChangePinInput {
+    class MessageDmsUimChangePinInput {
         static $gtype: GObject.GType<MessageDmsUimChangePinInput>;
 
         // Constructors of Qmi.MessageDmsUimChangePinInput
@@ -31195,7 +31195,7 @@ export namespace Qmi {
      * The #QmiMessageDmsUimGetCkStatusInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsUimGetCkStatusInput {
+    class MessageDmsUimGetCkStatusInput {
         static $gtype: GObject.GType<MessageDmsUimGetCkStatusInput>;
 
         // Constructors of Qmi.MessageDmsUimGetCkStatusInput
@@ -31419,7 +31419,7 @@ export namespace Qmi {
      * The #QmiMessageDmsUimSetCkProtectionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsUimSetCkProtectionInput {
+    class MessageDmsUimSetCkProtectionInput {
         static $gtype: GObject.GType<MessageDmsUimSetCkProtectionInput>;
 
         // Constructors of Qmi.MessageDmsUimSetCkProtectionInput
@@ -31499,7 +31499,7 @@ export namespace Qmi {
      * The #QmiMessageDmsUimSetPinProtectionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsUimSetPinProtectionInput {
+    class MessageDmsUimSetPinProtectionInput {
         static $gtype: GObject.GType<MessageDmsUimSetPinProtectionInput>;
 
         // Constructors of Qmi.MessageDmsUimSetPinProtectionInput
@@ -31579,7 +31579,7 @@ export namespace Qmi {
      * The #QmiMessageDmsUimUnblockCkInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsUimUnblockCkInput {
+    class MessageDmsUimUnblockCkInput {
         static $gtype: GObject.GType<MessageDmsUimUnblockCkInput>;
 
         // Constructors of Qmi.MessageDmsUimUnblockCkInput
@@ -31654,7 +31654,7 @@ export namespace Qmi {
      * The #QmiMessageDmsUimUnblockPinInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsUimUnblockPinInput {
+    class MessageDmsUimUnblockPinInput {
         static $gtype: GObject.GType<MessageDmsUimUnblockPinInput>;
 
         // Constructors of Qmi.MessageDmsUimUnblockPinInput
@@ -31730,7 +31730,7 @@ export namespace Qmi {
      * The #QmiMessageDmsUimVerifyPinInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsUimVerifyPinInput {
+    class MessageDmsUimVerifyPinInput {
         static $gtype: GObject.GType<MessageDmsUimVerifyPinInput>;
 
         // Constructors of Qmi.MessageDmsUimVerifyPinInput
@@ -31805,7 +31805,7 @@ export namespace Qmi {
      * The #QmiMessageDmsValidateServiceProgrammingCodeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsValidateServiceProgrammingCodeInput {
+    class MessageDmsValidateServiceProgrammingCodeInput {
         static $gtype: GObject.GType<MessageDmsValidateServiceProgrammingCodeInput>;
 
         // Constructors of Qmi.MessageDmsValidateServiceProgrammingCodeInput
@@ -31874,7 +31874,7 @@ export namespace Qmi {
      * The #QmiMessageDmsWriteUserDataInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDmsWriteUserDataInput {
+    class MessageDmsWriteUserDataInput {
         static $gtype: GObject.GType<MessageDmsWriteUserDataInput>;
 
         // Constructors of Qmi.MessageDmsWriteUserDataInput
@@ -31973,7 +31973,7 @@ export namespace Qmi {
      * The #QmiMessageDpmOpenPortInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDpmOpenPortInput {
+    class MessageDpmOpenPortInput {
         static $gtype: GObject.GType<MessageDpmOpenPortInput>;
 
         // Constructors of Qmi.MessageDpmOpenPortInput
@@ -32129,7 +32129,7 @@ export namespace Qmi {
      * The #QmiMessageDsdGetApnInfoInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDsdGetApnInfoInput {
+    class MessageDsdGetApnInfoInput {
         static $gtype: GObject.GType<MessageDsdGetApnInfoInput>;
 
         // Constructors of Qmi.MessageDsdGetApnInfoInput
@@ -32258,7 +32258,7 @@ export namespace Qmi {
      * The #QmiMessageDsdSetApnTypeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDsdSetApnTypeInput {
+    class MessageDsdSetApnTypeInput {
         static $gtype: GObject.GType<MessageDsdSetApnTypeInput>;
 
         // Constructors of Qmi.MessageDsdSetApnTypeInput
@@ -32339,7 +32339,7 @@ export namespace Qmi {
      * The #QmiMessageDsdSystemStatusChangeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageDsdSystemStatusChangeInput {
+    class MessageDsdSystemStatusChangeInput {
         static $gtype: GObject.GType<MessageDsdSystemStatusChangeInput>;
 
         // Constructors of Qmi.MessageDsdSystemStatusChangeInput
@@ -32408,7 +32408,7 @@ export namespace Qmi {
      * The #QmiMessageFoxGetFirmwareVersionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageFoxGetFirmwareVersionInput {
+    class MessageFoxGetFirmwareVersionInput {
         static $gtype: GObject.GType<MessageFoxGetFirmwareVersionInput>;
 
         // Constructors of Qmi.MessageFoxGetFirmwareVersionInput
@@ -32482,7 +32482,7 @@ export namespace Qmi {
      * The #QmiMessageGasDmsGetFirmwareListInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageGasDmsGetFirmwareListInput {
+    class MessageGasDmsGetFirmwareListInput {
         static $gtype: GObject.GType<MessageGasDmsGetFirmwareListInput>;
 
         // Constructors of Qmi.MessageGasDmsGetFirmwareListInput
@@ -32664,7 +32664,7 @@ export namespace Qmi {
      * The #QmiMessageGasDmsSetActiveFirmwareInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageGasDmsSetActiveFirmwareInput {
+    class MessageGasDmsSetActiveFirmwareInput {
         static $gtype: GObject.GType<MessageGasDmsSetActiveFirmwareInput>;
 
         // Constructors of Qmi.MessageGasDmsSetActiveFirmwareInput
@@ -32755,7 +32755,7 @@ export namespace Qmi {
      * The #QmiMessageGasDmsSetUsbCompositionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageGasDmsSetUsbCompositionInput {
+    class MessageGasDmsSetUsbCompositionInput {
         static $gtype: GObject.GType<MessageGasDmsSetUsbCompositionInput>;
 
         // Constructors of Qmi.MessageGasDmsSetUsbCompositionInput
@@ -32908,7 +32908,7 @@ export namespace Qmi {
      * The #QmiMessageGmsTestSetValueInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageGmsTestSetValueInput {
+    class MessageGmsTestSetValueInput {
         static $gtype: GObject.GType<MessageGmsTestSetValueInput>;
 
         // Constructors of Qmi.MessageGmsTestSetValueInput
@@ -32988,7 +32988,7 @@ export namespace Qmi {
      * The #QmiMessageLocDeleteAssistanceDataInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocDeleteAssistanceDataInput {
+    class MessageLocDeleteAssistanceDataInput {
         static $gtype: GObject.GType<MessageLocDeleteAssistanceDataInput>;
 
         // Constructors of Qmi.MessageLocDeleteAssistanceDataInput
@@ -33241,7 +33241,7 @@ export namespace Qmi {
      * The #QmiMessageLocGetServerInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocGetServerInput {
+    class MessageLocGetServerInput {
         static $gtype: GObject.GType<MessageLocGetServerInput>;
 
         // Constructors of Qmi.MessageLocGetServerInput
@@ -33321,7 +33321,7 @@ export namespace Qmi {
      * The #QmiMessageLocInjectPredictedOrbitsDataInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocInjectPredictedOrbitsDataInput {
+    class MessageLocInjectPredictedOrbitsDataInput {
         static $gtype: GObject.GType<MessageLocInjectPredictedOrbitsDataInput>;
 
         // Constructors of Qmi.MessageLocInjectPredictedOrbitsDataInput
@@ -33434,7 +33434,7 @@ export namespace Qmi {
      * The #QmiMessageLocInjectXtraDataInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocInjectXtraDataInput {
+    class MessageLocInjectXtraDataInput {
         static $gtype: GObject.GType<MessageLocInjectXtraDataInput>;
 
         // Constructors of Qmi.MessageLocInjectXtraDataInput
@@ -33536,7 +33536,7 @@ export namespace Qmi {
      * The #QmiMessageLocRegisterEventsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocRegisterEventsInput {
+    class MessageLocRegisterEventsInput {
         static $gtype: GObject.GType<MessageLocRegisterEventsInput>;
 
         // Constructors of Qmi.MessageLocRegisterEventsInput
@@ -33605,7 +33605,7 @@ export namespace Qmi {
      * The #QmiMessageLocSetEngineLockInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocSetEngineLockInput {
+    class MessageLocSetEngineLockInput {
         static $gtype: GObject.GType<MessageLocSetEngineLockInput>;
 
         // Constructors of Qmi.MessageLocSetEngineLockInput
@@ -33674,7 +33674,7 @@ export namespace Qmi {
      * The #QmiMessageLocSetNmeaTypesInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocSetNmeaTypesInput {
+    class MessageLocSetNmeaTypesInput {
         static $gtype: GObject.GType<MessageLocSetNmeaTypesInput>;
 
         // Constructors of Qmi.MessageLocSetNmeaTypesInput
@@ -33743,7 +33743,7 @@ export namespace Qmi {
      * The #QmiMessageLocSetOperationModeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocSetOperationModeInput {
+    class MessageLocSetOperationModeInput {
         static $gtype: GObject.GType<MessageLocSetOperationModeInput>;
 
         // Constructors of Qmi.MessageLocSetOperationModeInput
@@ -33812,7 +33812,7 @@ export namespace Qmi {
      * The #QmiMessageLocSetServerInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocSetServerInput {
+    class MessageLocSetServerInput {
         static $gtype: GObject.GType<MessageLocSetServerInput>;
 
         // Constructors of Qmi.MessageLocSetServerInput
@@ -33916,7 +33916,7 @@ export namespace Qmi {
      * The #QmiMessageLocStartInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocStartInput {
+    class MessageLocStartInput {
         static $gtype: GObject.GType<MessageLocStartInput>;
 
         // Constructors of Qmi.MessageLocStartInput
@@ -34018,7 +34018,7 @@ export namespace Qmi {
      * The #QmiMessageLocStopInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageLocStopInput {
+    class MessageLocStopInput {
         static $gtype: GObject.GType<MessageLocStopInput>;
 
         // Constructors of Qmi.MessageLocStopInput
@@ -34087,7 +34087,7 @@ export namespace Qmi {
      * The #QmiMessageNasAttachDetachInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasAttachDetachInput {
+    class MessageNasAttachDetachInput {
         static $gtype: GObject.GType<MessageNasAttachDetachInput>;
 
         // Constructors of Qmi.MessageNasAttachDetachInput
@@ -34156,7 +34156,7 @@ export namespace Qmi {
      * The #QmiMessageNasConfigSignalInfoInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasConfigSignalInfoInput {
+    class MessageNasConfigSignalInfoInput {
         static $gtype: GObject.GType<MessageNasConfigSignalInfoInput>;
 
         // Constructors of Qmi.MessageNasConfigSignalInfoInput
@@ -34314,7 +34314,7 @@ export namespace Qmi {
      * The #QmiMessageNasConfigSignalInfoV2Input structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasConfigSignalInfoV2Input {
+    class MessageNasConfigSignalInfoV2Input {
         static $gtype: GObject.GType<MessageNasConfigSignalInfoV2Input>;
 
         // Constructors of Qmi.MessageNasConfigSignalInfoV2Input
@@ -35653,7 +35653,7 @@ export namespace Qmi {
      * The #QmiMessageNasGetPlmnNameInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasGetPlmnNameInput {
+    class MessageNasGetPlmnNameInput {
         static $gtype: GObject.GType<MessageNasGetPlmnNameInput>;
 
         // Constructors of Qmi.MessageNasGetPlmnNameInput
@@ -36324,7 +36324,7 @@ export namespace Qmi {
      * The #QmiMessageNasGetSignalStrengthInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasGetSignalStrengthInput {
+    class MessageNasGetSignalStrengthInput {
         static $gtype: GObject.GType<MessageNasGetSignalStrengthInput>;
 
         // Constructors of Qmi.MessageNasGetSignalStrengthInput
@@ -37120,7 +37120,7 @@ export namespace Qmi {
      * The #QmiMessageNasGetTxRxInfoInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasGetTxRxInfoInput {
+    class MessageNasGetTxRxInfoInput {
         static $gtype: GObject.GType<MessageNasGetTxRxInfoInput>;
 
         // Constructors of Qmi.MessageNasGetTxRxInfoInput
@@ -37214,7 +37214,7 @@ export namespace Qmi {
      * The #QmiMessageNasInitiateNetworkRegisterInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasInitiateNetworkRegisterInput {
+    class MessageNasInitiateNetworkRegisterInput {
         static $gtype: GObject.GType<MessageNasInitiateNetworkRegisterInput>;
 
         // Constructors of Qmi.MessageNasInitiateNetworkRegisterInput
@@ -37322,7 +37322,7 @@ export namespace Qmi {
      * The #QmiMessageNasNetworkScanInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasNetworkScanInput {
+    class MessageNasNetworkScanInput {
         static $gtype: GObject.GType<MessageNasNetworkScanInput>;
 
         // Constructors of Qmi.MessageNasNetworkScanInput
@@ -37482,7 +37482,7 @@ export namespace Qmi {
      * The #QmiMessageNasRegisterIndicationsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasRegisterIndicationsInput {
+    class MessageNasRegisterIndicationsInput {
         static $gtype: GObject.GType<MessageNasRegisterIndicationsInput>;
 
         // Constructors of Qmi.MessageNasRegisterIndicationsInput
@@ -37750,7 +37750,7 @@ export namespace Qmi {
      * The #QmiMessageNasSetEventReportInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasSetEventReportInput {
+    class MessageNasSetEventReportInput {
         static $gtype: GObject.GType<MessageNasSetEventReportInput>;
 
         // Constructors of Qmi.MessageNasSetEventReportInput
@@ -37955,7 +37955,7 @@ export namespace Qmi {
      * The #QmiMessageNasSetPreferredNetworksInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasSetPreferredNetworksInput {
+    class MessageNasSetPreferredNetworksInput {
         static $gtype: GObject.GType<MessageNasSetPreferredNetworksInput>;
 
         // Constructors of Qmi.MessageNasSetPreferredNetworksInput
@@ -38100,7 +38100,7 @@ export namespace Qmi {
      * The #QmiMessageNasSetSystemSelectionPreferenceInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasSetSystemSelectionPreferenceInput {
+    class MessageNasSetSystemSelectionPreferenceInput {
         static $gtype: GObject.GType<MessageNasSetSystemSelectionPreferenceInput>;
 
         // Constructors of Qmi.MessageNasSetSystemSelectionPreferenceInput
@@ -38417,7 +38417,7 @@ export namespace Qmi {
      * The #QmiMessageNasSetTechnologyPreferenceInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageNasSetTechnologyPreferenceInput {
+    class MessageNasSetTechnologyPreferenceInput {
         static $gtype: GObject.GType<MessageNasSetTechnologyPreferenceInput>;
 
         // Constructors of Qmi.MessageNasSetTechnologyPreferenceInput
@@ -38706,7 +38706,7 @@ export namespace Qmi {
      * The #QmiMessageOmaSendSelectionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageOmaSendSelectionInput {
+    class MessageOmaSendSelectionInput {
         static $gtype: GObject.GType<MessageOmaSendSelectionInput>;
 
         // Constructors of Qmi.MessageOmaSendSelectionInput
@@ -38779,7 +38779,7 @@ export namespace Qmi {
      * The #QmiMessageOmaSetEventReportInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageOmaSetEventReportInput {
+    class MessageOmaSetEventReportInput {
         static $gtype: GObject.GType<MessageOmaSetEventReportInput>;
 
         // Constructors of Qmi.MessageOmaSetEventReportInput
@@ -38859,7 +38859,7 @@ export namespace Qmi {
      * The #QmiMessageOmaSetFeatureSettingInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageOmaSetFeatureSettingInput {
+    class MessageOmaSetFeatureSettingInput {
         static $gtype: GObject.GType<MessageOmaSetFeatureSettingInput>;
 
         // Constructors of Qmi.MessageOmaSetFeatureSettingInput
@@ -38952,7 +38952,7 @@ export namespace Qmi {
      * The #QmiMessageOmaStartSessionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageOmaStartSessionInput {
+    class MessageOmaStartSessionInput {
         static $gtype: GObject.GType<MessageOmaStartSessionInput>;
 
         // Constructors of Qmi.MessageOmaStartSessionInput
@@ -39287,7 +39287,7 @@ export namespace Qmi {
      * The #QmiMessagePbmGetCapabilitiesInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePbmGetCapabilitiesInput {
+    class MessagePbmGetCapabilitiesInput {
         static $gtype: GObject.GType<MessagePbmGetCapabilitiesInput>;
 
         // Constructors of Qmi.MessagePbmGetCapabilitiesInput
@@ -39408,7 +39408,7 @@ export namespace Qmi {
      * The #QmiMessagePbmIndicationRegisterInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePbmIndicationRegisterInput {
+    class MessagePbmIndicationRegisterInput {
         static $gtype: GObject.GType<MessagePbmIndicationRegisterInput>;
 
         // Constructors of Qmi.MessagePbmIndicationRegisterInput
@@ -39482,7 +39482,7 @@ export namespace Qmi {
      * The #QmiMessagePdcActivateConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcActivateConfigInput {
+    class MessagePdcActivateConfigInput {
         static $gtype: GObject.GType<MessagePdcActivateConfigInput>;
 
         // Constructors of Qmi.MessagePdcActivateConfigInput
@@ -39567,7 +39567,7 @@ export namespace Qmi {
      * The #QmiMessagePdcConfigChangeInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcConfigChangeInput {
+    class MessagePdcConfigChangeInput {
         static $gtype: GObject.GType<MessagePdcConfigChangeInput>;
 
         // Constructors of Qmi.MessagePdcConfigChangeInput
@@ -39645,7 +39645,7 @@ export namespace Qmi {
      * The #QmiMessagePdcDeactivateConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcDeactivateConfigInput {
+    class MessagePdcDeactivateConfigInput {
         static $gtype: GObject.GType<MessagePdcDeactivateConfigInput>;
 
         // Constructors of Qmi.MessagePdcDeactivateConfigInput
@@ -39730,7 +39730,7 @@ export namespace Qmi {
      * The #QmiMessagePdcDeleteConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcDeleteConfigInput {
+    class MessagePdcDeleteConfigInput {
         static $gtype: GObject.GType<MessagePdcDeleteConfigInput>;
 
         // Constructors of Qmi.MessagePdcDeleteConfigInput
@@ -39826,7 +39826,7 @@ export namespace Qmi {
      * The #QmiMessagePdcGetConfigInfoInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcGetConfigInfoInput {
+    class MessagePdcGetConfigInfoInput {
         static $gtype: GObject.GType<MessagePdcGetConfigInfoInput>;
 
         // Constructors of Qmi.MessagePdcGetConfigInfoInput
@@ -39910,7 +39910,7 @@ export namespace Qmi {
      * The #QmiMessagePdcGetConfigLimitsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcGetConfigLimitsInput {
+    class MessagePdcGetConfigLimitsInput {
         static $gtype: GObject.GType<MessagePdcGetConfigLimitsInput>;
 
         // Constructors of Qmi.MessagePdcGetConfigLimitsInput
@@ -40005,7 +40005,7 @@ export namespace Qmi {
      * The #QmiMessagePdcGetDefaultConfigInfoInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcGetDefaultConfigInfoInput {
+    class MessagePdcGetDefaultConfigInfoInput {
         static $gtype: GObject.GType<MessagePdcGetDefaultConfigInfoInput>;
 
         // Constructors of Qmi.MessagePdcGetDefaultConfigInfoInput
@@ -40105,7 +40105,7 @@ export namespace Qmi {
      * The #QmiMessagePdcGetSelectedConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcGetSelectedConfigInput {
+    class MessagePdcGetSelectedConfigInput {
         static $gtype: GObject.GType<MessagePdcGetSelectedConfigInput>;
 
         // Constructors of Qmi.MessagePdcGetSelectedConfigInput
@@ -40190,7 +40190,7 @@ export namespace Qmi {
      * The #QmiMessagePdcListConfigsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcListConfigsInput {
+    class MessagePdcListConfigsInput {
         static $gtype: GObject.GType<MessagePdcListConfigsInput>;
 
         // Constructors of Qmi.MessagePdcListConfigsInput
@@ -40270,7 +40270,7 @@ export namespace Qmi {
      * The #QmiMessagePdcLoadConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcLoadConfigInput {
+    class MessagePdcLoadConfigInput {
         static $gtype: GObject.GType<MessagePdcLoadConfigInput>;
 
         // Constructors of Qmi.MessagePdcLoadConfigInput
@@ -40363,7 +40363,7 @@ export namespace Qmi {
      * The #QmiMessagePdcRegisterInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcRegisterInput {
+    class MessagePdcRegisterInput {
         static $gtype: GObject.GType<MessagePdcRegisterInput>;
 
         // Constructors of Qmi.MessagePdcRegisterInput
@@ -40473,7 +40473,7 @@ export namespace Qmi {
      * The #QmiMessagePdcSetSelectedConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdcSetSelectedConfigInput {
+    class MessagePdcSetSelectedConfigInput {
         static $gtype: GObject.GType<MessagePdcSetSelectedConfigInput>;
 
         // Constructors of Qmi.MessagePdcSetSelectedConfigInput
@@ -40562,7 +40562,7 @@ export namespace Qmi {
      * The #QmiMessagePdsGetAgpsConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdsGetAgpsConfigInput {
+    class MessagePdsGetAgpsConfigInput {
         static $gtype: GObject.GType<MessagePdsGetAgpsConfigInput>;
 
         // Constructors of Qmi.MessagePdsGetAgpsConfigInput
@@ -40776,7 +40776,7 @@ export namespace Qmi {
      * The #QmiMessagePdsSetAgpsConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdsSetAgpsConfigInput {
+    class MessagePdsSetAgpsConfigInput {
         static $gtype: GObject.GType<MessagePdsSetAgpsConfigInput>;
 
         // Constructors of Qmi.MessagePdsSetAgpsConfigInput
@@ -40871,7 +40871,7 @@ export namespace Qmi {
      * The #QmiMessagePdsSetAutoTrackingStateInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdsSetAutoTrackingStateInput {
+    class MessagePdsSetAutoTrackingStateInput {
         static $gtype: GObject.GType<MessagePdsSetAutoTrackingStateInput>;
 
         // Constructors of Qmi.MessagePdsSetAutoTrackingStateInput
@@ -40940,7 +40940,7 @@ export namespace Qmi {
      * The #QmiMessagePdsSetDefaultTrackingSessionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdsSetDefaultTrackingSessionInput {
+    class MessagePdsSetDefaultTrackingSessionInput {
         static $gtype: GObject.GType<MessagePdsSetDefaultTrackingSessionInput>;
 
         // Constructors of Qmi.MessagePdsSetDefaultTrackingSessionInput
@@ -41017,7 +41017,7 @@ export namespace Qmi {
      * The #QmiMessagePdsSetEventReportInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdsSetEventReportInput {
+    class MessagePdsSetEventReportInput {
         static $gtype: GObject.GType<MessagePdsSetEventReportInput>;
 
         // Constructors of Qmi.MessagePdsSetEventReportInput
@@ -41303,7 +41303,7 @@ export namespace Qmi {
      * The #QmiMessagePdsSetGpsServiceStateInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessagePdsSetGpsServiceStateInput {
+    class MessagePdsSetGpsServiceStateInput {
         static $gtype: GObject.GType<MessagePdsSetGpsServiceStateInput>;
 
         // Constructors of Qmi.MessagePdsSetGpsServiceStateInput
@@ -41372,7 +41372,7 @@ export namespace Qmi {
      * The #QmiMessageQosGetFlowStatusInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageQosGetFlowStatusInput {
+    class MessageQosGetFlowStatusInput {
         static $gtype: GObject.GType<MessageQosGetFlowStatusInput>;
 
         // Constructors of Qmi.MessageQosGetFlowStatusInput
@@ -41511,7 +41511,7 @@ export namespace Qmi {
      * The #QmiMessageQosSwiReadDataStatsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageQosSwiReadDataStatsInput {
+    class MessageQosSwiReadDataStatsInput {
         static $gtype: GObject.GType<MessageQosSwiReadDataStatsInput>;
 
         // Constructors of Qmi.MessageQosSwiReadDataStatsInput
@@ -41656,7 +41656,7 @@ export namespace Qmi {
      * The #QmiMessageSarRfSetStateInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageSarRfSetStateInput {
+    class MessageSarRfSetStateInput {
         static $gtype: GObject.GType<MessageSarRfSetStateInput>;
 
         // Constructors of Qmi.MessageSarRfSetStateInput
@@ -41725,7 +41725,7 @@ export namespace Qmi {
      * The #QmiMessageUimChangePinInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimChangePinInput {
+    class MessageUimChangePinInput {
         static $gtype: GObject.GType<MessageUimChangePinInput>;
 
         // Constructors of Qmi.MessageUimChangePinInput
@@ -41837,7 +41837,7 @@ export namespace Qmi {
      * The #QmiMessageUimChangeProvisioningSessionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimChangeProvisioningSessionInput {
+    class MessageUimChangeProvisioningSessionInput {
         static $gtype: GObject.GType<MessageUimChangeProvisioningSessionInput>;
 
         // Constructors of Qmi.MessageUimChangeProvisioningSessionInput
@@ -41925,7 +41925,7 @@ export namespace Qmi {
      * The #QmiMessageUimDepersonalizationInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimDepersonalizationInput {
+    class MessageUimDepersonalizationInput {
         static $gtype: GObject.GType<MessageUimDepersonalizationInput>;
 
         // Constructors of Qmi.MessageUimDepersonalizationInput
@@ -42116,7 +42116,7 @@ export namespace Qmi {
      * The #QmiMessageUimGetConfigurationInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimGetConfigurationInput {
+    class MessageUimGetConfigurationInput {
         static $gtype: GObject.GType<MessageUimGetConfigurationInput>;
 
         // Constructors of Qmi.MessageUimGetConfigurationInput
@@ -42264,7 +42264,7 @@ export namespace Qmi {
      * The #QmiMessageUimGetFileAttributesInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimGetFileAttributesInput {
+    class MessageUimGetFileAttributesInput {
         static $gtype: GObject.GType<MessageUimGetFileAttributesInput>;
 
         // Constructors of Qmi.MessageUimGetFileAttributesInput
@@ -42484,7 +42484,7 @@ export namespace Qmi {
      * The #QmiMessageUimPowerOffSimInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimPowerOffSimInput {
+    class MessageUimPowerOffSimInput {
         static $gtype: GObject.GType<MessageUimPowerOffSimInput>;
 
         // Constructors of Qmi.MessageUimPowerOffSimInput
@@ -42553,7 +42553,7 @@ export namespace Qmi {
      * The #QmiMessageUimPowerOnSimInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimPowerOnSimInput {
+    class MessageUimPowerOnSimInput {
         static $gtype: GObject.GType<MessageUimPowerOnSimInput>;
 
         // Constructors of Qmi.MessageUimPowerOnSimInput
@@ -42622,7 +42622,7 @@ export namespace Qmi {
      * The #QmiMessageUimReadRecordInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimReadRecordInput {
+    class MessageUimReadRecordInput {
         static $gtype: GObject.GType<MessageUimReadRecordInput>;
 
         // Constructors of Qmi.MessageUimReadRecordInput
@@ -42761,7 +42761,7 @@ export namespace Qmi {
      * The #QmiMessageUimReadTransparentInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimReadTransparentInput {
+    class MessageUimReadTransparentInput {
         static $gtype: GObject.GType<MessageUimReadTransparentInput>;
 
         // Constructors of Qmi.MessageUimReadTransparentInput
@@ -42900,7 +42900,7 @@ export namespace Qmi {
      * The #QmiMessageUimRefreshCompleteInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimRefreshCompleteInput {
+    class MessageUimRefreshCompleteInput {
         static $gtype: GObject.GType<MessageUimRefreshCompleteInput>;
 
         // Constructors of Qmi.MessageUimRefreshCompleteInput
@@ -42984,7 +42984,7 @@ export namespace Qmi {
      * The #QmiMessageUimRefreshRegisterAllInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimRefreshRegisterAllInput {
+    class MessageUimRefreshRegisterAllInput {
         static $gtype: GObject.GType<MessageUimRefreshRegisterAllInput>;
 
         // Constructors of Qmi.MessageUimRefreshRegisterAllInput
@@ -43068,7 +43068,7 @@ export namespace Qmi {
      * The #QmiMessageUimRefreshRegisterInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimRefreshRegisterInput {
+    class MessageUimRefreshRegisterInput {
         static $gtype: GObject.GType<MessageUimRefreshRegisterInput>;
 
         // Constructors of Qmi.MessageUimRefreshRegisterInput
@@ -43183,7 +43183,7 @@ export namespace Qmi {
      * The #QmiMessageUimRegisterEventsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimRegisterEventsInput {
+    class MessageUimRegisterEventsInput {
         static $gtype: GObject.GType<MessageUimRegisterEventsInput>;
 
         // Constructors of Qmi.MessageUimRegisterEventsInput
@@ -43257,7 +43257,7 @@ export namespace Qmi {
      * The #QmiMessageUimRemoteUnlockInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimRemoteUnlockInput {
+    class MessageUimRemoteUnlockInput {
         static $gtype: GObject.GType<MessageUimRemoteUnlockInput>;
 
         // Constructors of Qmi.MessageUimRemoteUnlockInput
@@ -43367,7 +43367,7 @@ export namespace Qmi {
      * The #QmiMessageUimSetPinProtectionInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimSetPinProtectionInput {
+    class MessageUimSetPinProtectionInput {
         static $gtype: GObject.GType<MessageUimSetPinProtectionInput>;
 
         // Constructors of Qmi.MessageUimSetPinProtectionInput
@@ -43474,7 +43474,7 @@ export namespace Qmi {
      * The #QmiMessageUimSwitchSlotInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimSwitchSlotInput {
+    class MessageUimSwitchSlotInput {
         static $gtype: GObject.GType<MessageUimSwitchSlotInput>;
 
         // Constructors of Qmi.MessageUimSwitchSlotInput
@@ -43554,7 +43554,7 @@ export namespace Qmi {
      * The #QmiMessageUimUnblockPinInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimUnblockPinInput {
+    class MessageUimUnblockPinInput {
         static $gtype: GObject.GType<MessageUimUnblockPinInput>;
 
         // Constructors of Qmi.MessageUimUnblockPinInput
@@ -43666,7 +43666,7 @@ export namespace Qmi {
      * The #QmiMessageUimVerifyPinInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageUimVerifyPinInput {
+    class MessageUimVerifyPinInput {
         static $gtype: GObject.GType<MessageUimVerifyPinInput>;
 
         // Constructors of Qmi.MessageUimVerifyPinInput
@@ -43777,7 +43777,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceAnswerCallInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceAnswerCallInput {
+    class MessageVoiceAnswerCallInput {
         static $gtype: GObject.GType<MessageVoiceAnswerCallInput>;
 
         // Constructors of Qmi.MessageVoiceAnswerCallInput
@@ -43851,7 +43851,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceAnswerUssdInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceAnswerUssdInput {
+    class MessageVoiceAnswerUssdInput {
         static $gtype: GObject.GType<MessageVoiceAnswerUssdInput>;
 
         // Constructors of Qmi.MessageVoiceAnswerUssdInput
@@ -43924,7 +43924,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceBurstDtmfInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceBurstDtmfInput {
+    class MessageVoiceBurstDtmfInput {
         static $gtype: GObject.GType<MessageVoiceBurstDtmfInput>;
 
         // Constructors of Qmi.MessageVoiceBurstDtmfInput
@@ -44029,7 +44029,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceDialCallInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceDialCallInput {
+    class MessageVoiceDialCallInput {
         static $gtype: GObject.GType<MessageVoiceDialCallInput>;
 
         // Constructors of Qmi.MessageVoiceDialCallInput
@@ -44103,7 +44103,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceEndCallInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceEndCallInput {
+    class MessageVoiceEndCallInput {
         static $gtype: GObject.GType<MessageVoiceEndCallInput>;
 
         // Constructors of Qmi.MessageVoiceEndCallInput
@@ -44261,7 +44261,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceGetCallWaitingInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceGetCallWaitingInput {
+    class MessageVoiceGetCallWaitingInput {
         static $gtype: GObject.GType<MessageVoiceGetCallWaitingInput>;
 
         // Constructors of Qmi.MessageVoiceGetCallWaitingInput
@@ -44335,7 +44335,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceGetConfigInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceGetConfigInput {
+    class MessageVoiceGetConfigInput {
         static $gtype: GObject.GType<MessageVoiceGetConfigInput>;
 
         // Constructors of Qmi.MessageVoiceGetConfigInput
@@ -44574,7 +44574,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceIndicationRegisterInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceIndicationRegisterInput {
+    class MessageVoiceIndicationRegisterInput {
         static $gtype: GObject.GType<MessageVoiceIndicationRegisterInput>;
 
         // Constructors of Qmi.MessageVoiceIndicationRegisterInput
@@ -44779,7 +44779,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceManageCallsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceManageCallsInput {
+    class MessageVoiceManageCallsInput {
         static $gtype: GObject.GType<MessageVoiceManageCallsInput>;
 
         // Constructors of Qmi.MessageVoiceManageCallsInput
@@ -44859,7 +44859,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceOriginateUssdInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceOriginateUssdInput {
+    class MessageVoiceOriginateUssdInput {
         static $gtype: GObject.GType<MessageVoiceOriginateUssdInput>;
 
         // Constructors of Qmi.MessageVoiceOriginateUssdInput
@@ -44902,7 +44902,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceOriginateUssdNoWaitInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceOriginateUssdNoWaitInput {
+    class MessageVoiceOriginateUssdNoWaitInput {
         static $gtype: GObject.GType<MessageVoiceOriginateUssdNoWaitInput>;
 
         // Constructors of Qmi.MessageVoiceOriginateUssdNoWaitInput
@@ -45040,7 +45040,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceSetSupplementaryServiceInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceSetSupplementaryServiceInput {
+    class MessageVoiceSetSupplementaryServiceInput {
         static $gtype: GObject.GType<MessageVoiceSetSupplementaryServiceInput>;
 
         // Constructors of Qmi.MessageVoiceSetSupplementaryServiceInput
@@ -45122,7 +45122,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceStartContinuousDtmfInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceStartContinuousDtmfInput {
+    class MessageVoiceStartContinuousDtmfInput {
         static $gtype: GObject.GType<MessageVoiceStartContinuousDtmfInput>;
 
         // Constructors of Qmi.MessageVoiceStartContinuousDtmfInput
@@ -45197,7 +45197,7 @@ export namespace Qmi {
      * The #QmiMessageVoiceStopContinuousDtmfInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageVoiceStopContinuousDtmfInput {
+    class MessageVoiceStopContinuousDtmfInput {
         static $gtype: GObject.GType<MessageVoiceStopContinuousDtmfInput>;
 
         // Constructors of Qmi.MessageVoiceStopContinuousDtmfInput
@@ -45271,7 +45271,7 @@ export namespace Qmi {
      * The #QmiMessageWdaGetDataFormatInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdaGetDataFormatInput {
+    class MessageWdaGetDataFormatInput {
         static $gtype: GObject.GType<MessageWdaGetDataFormatInput>;
 
         // Constructors of Qmi.MessageWdaGetDataFormatInput
@@ -45434,7 +45434,7 @@ export namespace Qmi {
      * The #QmiMessageWdaSetDataFormatInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdaSetDataFormatInput {
+    class MessageWdaSetDataFormatInput {
         static $gtype: GObject.GType<MessageWdaSetDataFormatInput>;
 
         // Constructors of Qmi.MessageWdaSetDataFormatInput
@@ -45665,7 +45665,7 @@ export namespace Qmi {
      * The #QmiMessageWdsBindDataPortInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsBindDataPortInput {
+    class MessageWdsBindDataPortInput {
         static $gtype: GObject.GType<MessageWdsBindDataPortInput>;
 
         // Constructors of Qmi.MessageWdsBindDataPortInput
@@ -45734,7 +45734,7 @@ export namespace Qmi {
      * The #QmiMessageWdsBindMuxDataPortInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsBindMuxDataPortInput {
+    class MessageWdsBindMuxDataPortInput {
         static $gtype: GObject.GType<MessageWdsBindMuxDataPortInput>;
 
         // Constructors of Qmi.MessageWdsBindMuxDataPortInput
@@ -45829,7 +45829,7 @@ export namespace Qmi {
      * The #QmiMessageWdsConfigureProfileEventListInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsConfigureProfileEventListInput {
+    class MessageWdsConfigureProfileEventListInput {
         static $gtype: GObject.GType<MessageWdsConfigureProfileEventListInput>;
 
         // Constructors of Qmi.MessageWdsConfigureProfileEventListInput
@@ -45917,7 +45917,7 @@ export namespace Qmi {
      * The #QmiMessageWdsCreateProfileInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsCreateProfileInput {
+    class MessageWdsCreateProfileInput {
         static $gtype: GObject.GType<MessageWdsCreateProfileInput>;
 
         // Constructors of Qmi.MessageWdsCreateProfileInput
@@ -46514,7 +46514,7 @@ export namespace Qmi {
      * The #QmiMessageWdsDeleteProfileInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsDeleteProfileInput {
+    class MessageWdsDeleteProfileInput {
         static $gtype: GObject.GType<MessageWdsDeleteProfileInput>;
 
         // Constructors of Qmi.MessageWdsDeleteProfileInput
@@ -46707,7 +46707,7 @@ export namespace Qmi {
      * The #QmiMessageWdsGetCurrentSettingsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsGetCurrentSettingsInput {
+    class MessageWdsGetCurrentSettingsInput {
         static $gtype: GObject.GType<MessageWdsGetCurrentSettingsInput>;
 
         // Constructors of Qmi.MessageWdsGetCurrentSettingsInput
@@ -46960,7 +46960,7 @@ export namespace Qmi {
      * The #QmiMessageWdsGetDefaultProfileNumberInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsGetDefaultProfileNumberInput {
+    class MessageWdsGetDefaultProfileNumberInput {
         static $gtype: GObject.GType<MessageWdsGetDefaultProfileNumberInput>;
 
         // Constructors of Qmi.MessageWdsGetDefaultProfileNumberInput
@@ -47040,7 +47040,7 @@ export namespace Qmi {
      * The #QmiMessageWdsGetDefaultSettingsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsGetDefaultSettingsInput {
+    class MessageWdsGetDefaultSettingsInput {
         static $gtype: GObject.GType<MessageWdsGetDefaultSettingsInput>;
 
         // Constructors of Qmi.MessageWdsGetDefaultSettingsInput
@@ -47497,7 +47497,7 @@ export namespace Qmi {
      * The #QmiMessageWdsGetPacketStatisticsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsGetPacketStatisticsInput {
+    class MessageWdsGetPacketStatisticsInput {
         static $gtype: GObject.GType<MessageWdsGetPacketStatisticsInput>;
 
         // Constructors of Qmi.MessageWdsGetPacketStatisticsInput
@@ -47626,7 +47626,7 @@ export namespace Qmi {
      * The #QmiMessageWdsGetPdnThrottleInfoInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsGetPdnThrottleInfoInput {
+    class MessageWdsGetPdnThrottleInfoInput {
         static $gtype: GObject.GType<MessageWdsGetPdnThrottleInfoInput>;
 
         // Constructors of Qmi.MessageWdsGetPdnThrottleInfoInput
@@ -47731,7 +47731,7 @@ export namespace Qmi {
      * The #QmiMessageWdsGetProfileListInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsGetProfileListInput {
+    class MessageWdsGetProfileListInput {
         static $gtype: GObject.GType<MessageWdsGetProfileListInput>;
 
         // Constructors of Qmi.MessageWdsGetProfileListInput
@@ -47830,7 +47830,7 @@ export namespace Qmi {
      * The #QmiMessageWdsGetProfileSettingsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsGetProfileSettingsInput {
+    class MessageWdsGetProfileSettingsInput {
         static $gtype: GObject.GType<MessageWdsGetProfileSettingsInput>;
 
         // Constructors of Qmi.MessageWdsGetProfileSettingsInput
@@ -48208,7 +48208,7 @@ export namespace Qmi {
      * The #QmiMessageWdsIndicationRegisterInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsIndicationRegisterInput {
+    class MessageWdsIndicationRegisterInput {
         static $gtype: GObject.GType<MessageWdsIndicationRegisterInput>;
 
         // Constructors of Qmi.MessageWdsIndicationRegisterInput
@@ -48288,7 +48288,7 @@ export namespace Qmi {
      * The #QmiMessageWdsModifyProfileInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsModifyProfileInput {
+    class MessageWdsModifyProfileInput {
         static $gtype: GObject.GType<MessageWdsModifyProfileInput>;
 
         // Constructors of Qmi.MessageWdsModifyProfileInput
@@ -48914,7 +48914,7 @@ export namespace Qmi {
      * The #QmiMessageWdsSetAutoconnectSettingsInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsSetAutoconnectSettingsInput {
+    class MessageWdsSetAutoconnectSettingsInput {
         static $gtype: GObject.GType<MessageWdsSetAutoconnectSettingsInput>;
 
         // Constructors of Qmi.MessageWdsSetAutoconnectSettingsInput
@@ -48994,7 +48994,7 @@ export namespace Qmi {
      * The #QmiMessageWdsSetDefaultProfileNumberInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsSetDefaultProfileNumberInput {
+    class MessageWdsSetDefaultProfileNumberInput {
         static $gtype: GObject.GType<MessageWdsSetDefaultProfileNumberInput>;
 
         // Constructors of Qmi.MessageWdsSetDefaultProfileNumberInput
@@ -49074,7 +49074,7 @@ export namespace Qmi {
      * The #QmiMessageWdsSetEventReportInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsSetEventReportInput {
+    class MessageWdsSetEventReportInput {
         static $gtype: GObject.GType<MessageWdsSetEventReportInput>;
 
         // Constructors of Qmi.MessageWdsSetEventReportInput
@@ -49290,7 +49290,7 @@ export namespace Qmi {
      * The #QmiMessageWdsSetIpFamilyInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsSetIpFamilyInput {
+    class MessageWdsSetIpFamilyInput {
         static $gtype: GObject.GType<MessageWdsSetIpFamilyInput>;
 
         // Constructors of Qmi.MessageWdsSetIpFamilyInput
@@ -49359,7 +49359,7 @@ export namespace Qmi {
      * The #QmiMessageWdsSetLteAttachPdnListInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsSetLteAttachPdnListInput {
+    class MessageWdsSetLteAttachPdnListInput {
         static $gtype: GObject.GType<MessageWdsSetLteAttachPdnListInput>;
 
         // Constructors of Qmi.MessageWdsSetLteAttachPdnListInput
@@ -49439,7 +49439,7 @@ export namespace Qmi {
      * The #QmiMessageWdsStartNetworkInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsStartNetworkInput {
+    class MessageWdsStartNetworkInput {
         static $gtype: GObject.GType<MessageWdsStartNetworkInput>;
 
         // Constructors of Qmi.MessageWdsStartNetworkInput
@@ -49690,7 +49690,7 @@ export namespace Qmi {
      * The #QmiMessageWdsStopNetworkInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsStopNetworkInput {
+    class MessageWdsStopNetworkInput {
         static $gtype: GObject.GType<MessageWdsStopNetworkInput>;
 
         // Constructors of Qmi.MessageWdsStopNetworkInput
@@ -49770,7 +49770,7 @@ export namespace Qmi {
      * The #QmiMessageWdsSwiCreateProfileIndexedInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWdsSwiCreateProfileIndexedInput {
+    class MessageWdsSwiCreateProfileIndexedInput {
         static $gtype: GObject.GType<MessageWdsSwiCreateProfileIndexedInput>;
 
         // Constructors of Qmi.MessageWdsSwiCreateProfileIndexedInput
@@ -49980,7 +49980,7 @@ export namespace Qmi {
      * The #QmiMessageWmsDeleteInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsDeleteInput {
+    class MessageWmsDeleteInput {
         static $gtype: GObject.GType<MessageWmsDeleteInput>;
 
         // Constructors of Qmi.MessageWmsDeleteInput
@@ -50213,7 +50213,7 @@ export namespace Qmi {
      * The #QmiMessageWmsListMessagesInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsListMessagesInput {
+    class MessageWmsListMessagesInput {
         static $gtype: GObject.GType<MessageWmsListMessagesInput>;
 
         // Constructors of Qmi.MessageWmsListMessagesInput
@@ -50328,7 +50328,7 @@ export namespace Qmi {
      * The #QmiMessageWmsModifyTagInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsModifyTagInput {
+    class MessageWmsModifyTagInput {
         static $gtype: GObject.GType<MessageWmsModifyTagInput>;
 
         // Constructors of Qmi.MessageWmsModifyTagInput
@@ -50414,7 +50414,7 @@ export namespace Qmi {
      * The #QmiMessageWmsRawReadInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsRawReadInput {
+    class MessageWmsRawReadInput {
         static $gtype: GObject.GType<MessageWmsRawReadInput>;
 
         // Constructors of Qmi.MessageWmsRawReadInput
@@ -50514,7 +50514,7 @@ export namespace Qmi {
      * The #QmiMessageWmsRawSendInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsRawSendInput {
+    class MessageWmsRawSendInput {
         static $gtype: GObject.GType<MessageWmsRawSendInput>;
 
         // Constructors of Qmi.MessageWmsRawSendInput
@@ -50660,7 +50660,7 @@ export namespace Qmi {
      * The #QmiMessageWmsRawWriteInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsRawWriteInput {
+    class MessageWmsRawWriteInput {
         static $gtype: GObject.GType<MessageWmsRawWriteInput>;
 
         // Constructors of Qmi.MessageWmsRawWriteInput
@@ -50770,7 +50770,7 @@ export namespace Qmi {
      * The #QmiMessageWmsSendAckInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsSendAckInput {
+    class MessageWmsSendAckInput {
         static $gtype: GObject.GType<MessageWmsSendAckInput>;
 
         // Constructors of Qmi.MessageWmsSendAckInput
@@ -50891,7 +50891,7 @@ export namespace Qmi {
      * The #QmiMessageWmsSendFromMemoryStorageInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsSendFromMemoryStorageInput {
+    class MessageWmsSendFromMemoryStorageInput {
         static $gtype: GObject.GType<MessageWmsSendFromMemoryStorageInput>;
 
         // Constructors of Qmi.MessageWmsSendFromMemoryStorageInput
@@ -51002,7 +51002,7 @@ export namespace Qmi {
      * The #QmiMessageWmsSetEventReportInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsSetEventReportInput {
+    class MessageWmsSetEventReportInput {
         static $gtype: GObject.GType<MessageWmsSetEventReportInput>;
 
         // Constructors of Qmi.MessageWmsSetEventReportInput
@@ -51071,7 +51071,7 @@ export namespace Qmi {
      * The #QmiMessageWmsSetRoutesInput structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class MessageWmsSetRoutesInput {
+    class MessageWmsSetRoutesInput {
         static $gtype: GObject.GType<MessageWmsSetRoutesInput>;
 
         // Constructors of Qmi.MessageWmsSetRoutesInput

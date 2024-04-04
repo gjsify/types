@@ -26814,7 +26814,7 @@ export namespace NM {
 
     type AccessPointClass = typeof AccessPoint;
     type ActiveConnectionClass = typeof ActiveConnection;
-    abstract class BridgeVlan {
+    class BridgeVlan {
         static $gtype: GObject.GType<BridgeVlan>;
 
         // Constructors of NM.BridgeVlan
@@ -26972,7 +26972,7 @@ export namespace NM {
         unref(): void;
     }
 
-    abstract class IPAddress {
+    class IPAddress {
         static $gtype: GObject.GType<IPAddress>;
 
         // Constructors of NM.IPAddress
@@ -27067,7 +27067,7 @@ export namespace NM {
     }
 
     type IPConfigClass = typeof IPConfig;
-    abstract class IPRoute {
+    class IPRoute {
         static $gtype: GObject.GType<IPRoute>;
 
         // Constructors of NM.IPRoute
@@ -27203,7 +27203,7 @@ export namespace NM {
         unref(): void;
     }
 
-    abstract class IPRoutingRule {
+    class IPRoutingRule {
         static $gtype: GObject.GType<IPRoutingRule>;
 
         // Constructors of NM.IPRoutingRule
@@ -27425,7 +27425,7 @@ export namespace NM {
      * - #NM_LLDP_ATTR_SYSTEM_DESCRIPTION (type: 's')
      * - #NM_LLDP_ATTR_SYSTEM_NAME (type: 's')
      */
-    abstract class LldpNeighbor {
+    class LldpNeighbor {
         static $gtype: GObject.GType<LldpNeighbor>;
 
         // Constructors of NM.LldpNeighbor
@@ -27482,7 +27482,7 @@ export namespace NM {
     }
 
     type ObjectClass = typeof Object;
-    abstract class Range {
+    class Range {
         static $gtype: GObject.GType<Range>;
 
         // Constructors of NM.Range
@@ -27593,7 +27593,7 @@ export namespace NM {
     type SettingWirelessSecurityClass = typeof SettingWirelessSecurity;
     type SettingWpanClass = typeof SettingWpan;
     type SimpleConnectionClass = typeof SimpleConnection;
-    abstract class SriovVF {
+    class SriovVF {
         static $gtype: GObject.GType<SriovVF>;
 
         // Constructors of NM.SriovVF
@@ -27702,7 +27702,7 @@ export namespace NM {
         unref(): void;
     }
 
-    abstract class TCAction {
+    class TCAction {
         static $gtype: GObject.GType<TCAction>;
 
         // Constructors of NM.TCAction
@@ -27755,7 +27755,7 @@ export namespace NM {
         unref(): void;
     }
 
-    abstract class TCQdisc {
+    class TCQdisc {
         static $gtype: GObject.GType<TCQdisc>;
 
         // Constructors of NM.TCQdisc
@@ -27815,7 +27815,7 @@ export namespace NM {
         unref(): void;
     }
 
-    abstract class TCTfilter {
+    class TCTfilter {
         static $gtype: GObject.GType<TCTfilter>;
 
         // Constructors of NM.TCTfilter
@@ -27864,7 +27864,7 @@ export namespace NM {
         unref(): void;
     }
 
-    abstract class TeamLinkWatcher {
+    class TeamLinkWatcher {
         static $gtype: GObject.GType<TeamLinkWatcher>;
 
         // Constructors of NM.TeamLinkWatcher
@@ -28008,7 +28008,7 @@ export namespace NM {
     /**
      * The settings of one WireGuard peer.
      */
-    abstract class WireGuardPeer {
+    class WireGuardPeer {
         static $gtype: GObject.GType<WireGuardPeer>;
 
         // Constructors of NM.WireGuardPeer

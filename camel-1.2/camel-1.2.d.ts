@@ -19370,7 +19370,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    abstract class NameValueArray {
+    class NameValueArray {
         static $gtype: GObject.GType<NameValueArray>;
 
         // Constructors of Camel.NameValueArray
@@ -19499,7 +19499,7 @@ export namespace Camel {
         set_value(index: number, value: string): boolean;
     }
 
-    abstract class NamedFlags {
+    class NamedFlags {
         static $gtype: GObject.GType<NamedFlags>;
 
         // Constructors of Camel.NamedFlags
@@ -20690,7 +20690,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    abstract class WeakRefGroup {
+    class WeakRefGroup {
         static $gtype: GObject.GType<WeakRefGroup>;
 
         // Constructors of Camel.WeakRefGroup
@@ -20721,7 +20721,7 @@ export namespace Camel {
         unref(): void;
     }
 
-    abstract class _KeyKey {
+    class _KeyKey {
         static $gtype: GObject.GType<_KeyKey>;
 
         // Own fields of Camel._KeyKey
@@ -20742,7 +20742,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    abstract class _LockHelperMsg {
+    class _LockHelperMsg {
         static $gtype: GObject.GType<_LockHelperMsg>;
 
         // Own fields of Camel._LockHelperMsg

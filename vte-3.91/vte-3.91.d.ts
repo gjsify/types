@@ -3375,7 +3375,7 @@ export namespace Vte {
     }
 
     type PtyClass = typeof Pty;
-    abstract class Regex {
+    class Regex {
         static $gtype: GObject.GType<Regex>;
 
         // Constructors of Vte.Regex

@@ -8679,7 +8679,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    abstract class _ColorSizeCheck {
+    class _ColorSizeCheck {
         static $gtype: GObject.GType<_ColorSizeCheck>;
 
         // Own fields of Cogl._ColorSizeCheck
@@ -8696,7 +8696,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    abstract class _EulerSizeCheck {
+    class _EulerSizeCheck {
         static $gtype: GObject.GType<_EulerSizeCheck>;
 
         // Own fields of Cogl._EulerSizeCheck
@@ -8713,7 +8713,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    abstract class _MatrixSizeCheck {
+    class _MatrixSizeCheck {
         static $gtype: GObject.GType<_MatrixSizeCheck>;
 
         // Own fields of Cogl._MatrixSizeCheck
@@ -8730,7 +8730,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    abstract class _QuaternionSizeCheck {
+    class _QuaternionSizeCheck {
         static $gtype: GObject.GType<_QuaternionSizeCheck>;
 
         // Own fields of Cogl._QuaternionSizeCheck
@@ -8747,7 +8747,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    abstract class _TextureVertexSizeCheck {
+    class _TextureVertexSizeCheck {
         static $gtype: GObject.GType<_TextureVertexSizeCheck>;
 
         // Own fields of Cogl._TextureVertexSizeCheck

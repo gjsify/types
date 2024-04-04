@@ -9805,7 +9805,7 @@ export namespace Meta {
      * #MetaWindowShape is designed to be used as part of a hash table key, so has
      * efficient hash and equal functions.
      */
-    abstract class WindowShape {
+    class WindowShape {
         static $gtype: GObject.GType<WindowShape>;
 
         // Constructors of Meta.WindowShape

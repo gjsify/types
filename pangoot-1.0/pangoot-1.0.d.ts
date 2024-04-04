@@ -323,7 +323,7 @@ export namespace PangoOT {
         substitute(buffer: Buffer): void;
     }
 
-    abstract class Buffer {
+    class Buffer {
         static $gtype: GObject.GType<Buffer>;
 
         // Constructors of PangoOT.Buffer

@@ -4650,7 +4650,7 @@ export namespace GstBase {
      * %GST_FLOW_ERROR or below, GST_FLOW_NOT_NEGOTIATED and GST_FLOW_FLUSHING are
      * returned immediately from the gst_flow_combiner_update_flow() function.
      */
-    abstract class FlowCombiner {
+    class FlowCombiner {
         static $gtype: GObject.GType<FlowCombiner>;
 
         // Constructors of GstBase.FlowCombiner

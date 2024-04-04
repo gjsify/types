@@ -19303,7 +19303,7 @@ export namespace TelepathyGLib {
      * A set of handles. This is similar to a #TpIntset (and implemented using
      * one), but adding a handle to the set also references it.
      */
-    abstract class HandleSet {
+    class HandleSet {
         static $gtype: GObject.GType<HandleSet>;
 
         // Constructors of TelepathyGLib.HandleSet
@@ -19334,7 +19334,7 @@ export namespace TelepathyGLib {
      * Before 0.11.16, this type was called <type>TpIntSet</type>, which is
      * now a backwards compatibility typedef.
      */
-    abstract class Intset {
+    class Intset {
         static $gtype: GObject.GType<Intset>;
 
         // Constructors of TelepathyGLib.Intset

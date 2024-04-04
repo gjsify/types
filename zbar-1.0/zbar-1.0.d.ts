@@ -11,7 +11,7 @@ import './zbar-1.0-ambient.d.ts';
  * ZBar-1.0
  */
 
-import type Gtk from '@girs/gtk-3.0';
+import Gtk__ from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
 import type cairo from '@girs/cairo-1.0';
@@ -40,9 +40,9 @@ export namespace ZBar {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends Gtk__.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+                Gtk__.Buildable.ConstructorProps {
             video_device: string;
             videoDevice: string;
             video_enabled: boolean;
@@ -52,7 +52,7 @@ export namespace ZBar {
         }
     }
 
-    class Gtk extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
+    class Gtk extends Gtk__.Widget implements Atk.ImplementorIface, Gtk__.Buildable {
         static $gtype: GObject.GType<Gtk>;
 
         // Own properties of ZBar.Gtk
@@ -70,7 +70,7 @@ export namespace ZBar {
 
         // Own fields of ZBar.Gtk
 
-        widget: Gtk.Widget;
+        widget: Gtk__.Widget;
 
         // Constructors of ZBar.Gtk
 
@@ -153,7 +153,7 @@ export namespace ZBar {
          * @param child child to add
          * @param type kind of child or %NULL
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        add_child(builder: Gtk__.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -163,7 +163,7 @@ export namespace ZBar {
          * @param name name of child to construct
          * @returns the constructed child
          */
-        construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+        construct_child<T = GObject.Object>(builder: Gtk__.Builder, name: string): T;
         /**
          * This is similar to gtk_buildable_parser_finished() but is
          * called once for each custom tag handled by the `buildable`.
@@ -172,7 +172,7 @@ export namespace ZBar {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_finished(builder: Gtk__.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -181,7 +181,7 @@ export namespace ZBar {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_tag_end(builder: Gtk__.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a #GtkBuilder used to construct this object
@@ -190,7 +190,7 @@ export namespace ZBar {
          * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
          */
         custom_tag_start(
-            builder: Gtk.Builder,
+            builder: Gtk__.Builder,
             child: GObject.Object | null,
             tagname: string,
         ): [boolean, GLib.MarkupParser, any];
@@ -200,7 +200,7 @@ export namespace ZBar {
          * @param childname name of child
          * @returns the internal child of the buildable object
          */
-        get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        get_internal_child<T = GObject.Object>(builder: Gtk__.Builder, childname: string): T;
         /**
          * Gets the name of the `buildable` object.
          *
@@ -218,14 +218,14 @@ export namespace ZBar {
          * is called on a builder.
          * @param builder a #GtkBuilder
          */
-        parser_finished(builder: Gtk.Builder): void;
+        parser_finished(builder: Gtk__.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a #GtkBuilder
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        set_buildable_property(builder: Gtk__.Builder, name: string, value: GObject.Value | any): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -238,7 +238,7 @@ export namespace ZBar {
          * @param child child to add
          * @param type kind of child or %NULL
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk__.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -247,7 +247,7 @@ export namespace ZBar {
          * @param builder #GtkBuilder used to construct this object
          * @param name name of child to construct
          */
-        vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+        vfunc_construct_child<T = GObject.Object>(builder: Gtk__.Builder, name: string): T;
         /**
          * This is similar to gtk_buildable_parser_finished() but is
          * called once for each custom tag handled by the `buildable`.
@@ -257,7 +257,7 @@ export namespace ZBar {
          * @param data user data created in custom_tag_start
          */
         vfunc_custom_finished(
-            builder: Gtk.Builder,
+            builder: Gtk__.Builder,
             child: GObject.Object | null,
             tagname: string,
             data?: any | null,
@@ -271,7 +271,7 @@ export namespace ZBar {
          * @param data user data that will be passed in to parser functions
          */
         vfunc_custom_tag_end(
-            builder: Gtk.Builder,
+            builder: Gtk__.Builder,
             child: GObject.Object | null,
             tagname: string,
             data?: any | null,
@@ -283,7 +283,7 @@ export namespace ZBar {
          * @param tagname name of tag
          */
         vfunc_custom_tag_start(
-            builder: Gtk.Builder,
+            builder: Gtk__.Builder,
             child: GObject.Object | null,
             tagname: string,
         ): [boolean, GLib.MarkupParser, any];
@@ -292,7 +292,7 @@ export namespace ZBar {
          * @param builder a #GtkBuilder
          * @param childname name of child
          */
-        vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        vfunc_get_internal_child<T = GObject.Object>(builder: Gtk__.Builder, childname: string): T;
         /**
          * Gets the name of the `buildable` object.
          *
@@ -309,14 +309,14 @@ export namespace ZBar {
          * is called on a builder.
          * @param builder a #GtkBuilder
          */
-        vfunc_parser_finished(builder: Gtk.Builder): void;
+        vfunc_parser_finished(builder: Gtk__.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a #GtkBuilder
          * @param name name of property
          * @param value value of property
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        vfunc_set_buildable_property(builder: Gtk__.Builder, name: string, value: GObject.Value | any): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set

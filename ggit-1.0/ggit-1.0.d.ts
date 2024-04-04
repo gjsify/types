@@ -7352,7 +7352,7 @@ export namespace Ggit {
     /**
      * Represents an annotated commit object.
      */
-    abstract class AnnotatedCommit {
+    class AnnotatedCommit {
         static $gtype: GObject.GType<AnnotatedCommit>;
 
         // Constructors of Ggit.AnnotatedCommit
@@ -7462,7 +7462,7 @@ export namespace Ggit {
     /**
      * Represents blame options.
      */
-    abstract class BlameOptions {
+    class BlameOptions {
         static $gtype: GObject.GType<BlameOptions>;
 
         // Constructors of Ggit.BlameOptions
@@ -7634,7 +7634,7 @@ export namespace Ggit {
     /**
      * Represents a ssh interactive prompt.
      */
-    abstract class CredSshInteractivePrompt {
+    class CredSshInteractivePrompt {
         static $gtype: GObject.GType<CredSshInteractivePrompt>;
 
         // Constructors of Ggit.CredSshInteractivePrompt
@@ -7941,7 +7941,7 @@ export namespace Ggit {
     /**
      * Represents a similarity metric.
      */
-    abstract class DiffSimilarityMetric {
+    class DiffSimilarityMetric {
         static $gtype: GObject.GType<DiffSimilarityMetric>;
 
         // Constructors of Ggit.DiffSimilarityMetric
@@ -7977,7 +7977,7 @@ export namespace Ggit {
     /**
      * Represents a git fetch options.
      */
-    abstract class FetchOptions {
+    class FetchOptions {
         static $gtype: GObject.GType<FetchOptions>;
 
         // Constructors of Ggit.FetchOptions
@@ -8323,7 +8323,7 @@ export namespace Ggit {
     /**
      * Represents the options used when merging.
      */
-    abstract class MergeOptions {
+    class MergeOptions {
         static $gtype: GObject.GType<MergeOptions>;
 
         // Constructors of Ggit.MergeOptions
@@ -8451,7 +8451,7 @@ export namespace Ggit {
     /**
      * Represents a unique ID of any object.
      */
-    abstract class OId {
+    class OId {
         static $gtype: GObject.GType<OId>;
 
         // Constructors of Ggit.OId
@@ -8516,7 +8516,7 @@ export namespace Ggit {
     /**
      * Represents a patch object.
      */
-    abstract class Patch {
+    class Patch {
         static $gtype: GObject.GType<Patch>;
 
         // Constructors of Ggit.Patch
@@ -8641,7 +8641,7 @@ export namespace Ggit {
     /**
      * Represents the options used when rebasing.
      */
-    abstract class RebaseOptions {
+    class RebaseOptions {
         static $gtype: GObject.GType<RebaseOptions>;
 
         // Constructors of Ggit.RebaseOptions
@@ -8882,7 +8882,7 @@ export namespace Ggit {
     /**
      * Represents the options used when reverting.
      */
-    abstract class RevertOptions {
+    class RevertOptions {
         static $gtype: GObject.GType<RevertOptions>;
 
         // Constructors of Ggit.RevertOptions
@@ -8914,7 +8914,7 @@ export namespace Ggit {
     /**
      * Represents the options used when creating getting file status.
      */
-    abstract class StatusOptions {
+    class StatusOptions {
         static $gtype: GObject.GType<StatusOptions>;
 
         // Constructors of Ggit.StatusOptions

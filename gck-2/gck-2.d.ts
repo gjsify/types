@@ -2674,7 +2674,7 @@ export namespace Gck {
      * [method`Object`.get] or [method`Object`.set] to set and retrieve attributes on
      * an object.
      */
-    abstract class Attributes {
+    class Attributes {
         static $gtype: GObject.GType<Attributes>;
 
         // Constructors of Gck.Attributes

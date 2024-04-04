@@ -4439,7 +4439,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    abstract class _ColorSizeCheck {
+    class _ColorSizeCheck {
         static $gtype: GObject.GType<_ColorSizeCheck>;
 
         // Own fields of Cogl._ColorSizeCheck
@@ -4456,7 +4456,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    abstract class _TextureVertexSizeCheck {
+    class _TextureVertexSizeCheck {
         static $gtype: GObject.GType<_TextureVertexSizeCheck>;
 
         // Own fields of Cogl._TextureVertexSizeCheck

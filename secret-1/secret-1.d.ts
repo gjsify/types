@@ -5226,7 +5226,7 @@ export namespace Secret {
      * #SecretValue is reference counted and immutable. The secret data is only
      * freed when all references have been released via [method`Value`.unref].
      */
-    abstract class Value {
+    class Value {
         static $gtype: GObject.GType<Value>;
 
         // Constructors of Secret.Value

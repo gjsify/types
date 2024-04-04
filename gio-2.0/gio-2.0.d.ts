@@ -58464,7 +58464,7 @@ export namespace Gio {
     /**
      * Determines if a string matches a file attribute.
      */
-    abstract class FileAttributeMatcher {
+    class FileAttributeMatcher {
         static $gtype: GObject.GType<FileAttributeMatcher>;
 
         // Constructors of Gio.FileAttributeMatcher
@@ -59213,7 +59213,7 @@ export namespace Gio {
      * the slash should ideally be absolute, but this is not strictly required.  It is possible to overlay the
      * location of a single resource with an individual file.
      */
-    abstract class Resource {
+    class Resource {
         static $gtype: GObject.GType<Resource>;
 
         // Constructors of Gio.Resource
@@ -59640,7 +59640,7 @@ export namespace Gio {
     /**
      * This is an opaque structure type.  You may not access it directly.
      */
-    abstract class SettingsSchemaSource {
+    class SettingsSchemaSource {
         static $gtype: GObject.GType<SettingsSchemaSource>;
 
         // Constructors of Gio.SettingsSchemaSource
@@ -59810,7 +59810,7 @@ export namespace Gio {
      * #GSocketConnectable interface and not need to worry about
      * #GSrvTarget at all.
      */
-    abstract class SrvTarget {
+    class SrvTarget {
         static $gtype: GObject.GType<SrvTarget>;
 
         // Constructors of Gio.SrvTarget

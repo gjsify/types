@@ -7286,7 +7286,7 @@ export namespace Atk {
      * splitted if available. See #AtkValue documentation for further
      * details.
      */
-    abstract class Range {
+    class Range {
         static $gtype: GObject.GType<Range>;
 
         // Constructors of Atk.Range

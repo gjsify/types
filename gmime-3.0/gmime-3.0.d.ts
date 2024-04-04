@@ -6399,7 +6399,7 @@ export namespace GMime {
     /**
      * Format options for serializing various GMime objects.
      */
-    abstract class FormatOptions {
+    class FormatOptions {
         static $gtype: GObject.GType<FormatOptions>;
 
         // Constructors of GMime.FormatOptions
@@ -6524,7 +6524,7 @@ export namespace GMime {
     /**
      * A set of parser options used by #GMimeParser and various other parsing functions.
      */
-    abstract class ParserOptions {
+    class ParserOptions {
         static $gtype: GObject.GType<ParserOptions>;
 
         // Constructors of GMime.ParserOptions
@@ -6667,7 +6667,7 @@ export namespace GMime {
     /**
      * A MIME part iterator.
      */
-    abstract class PartIter {
+    class PartIter {
         static $gtype: GObject.GType<PartIter>;
 
         // Constructors of GMime.PartIter

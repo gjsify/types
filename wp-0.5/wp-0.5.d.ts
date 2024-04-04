@@ -4919,7 +4919,7 @@ export namespace Wp {
     /**
      * WpEvent describes an event, an event is an entity which can be pushed on to event stack and the event dispatcher is going to pick and dispatch it.
      */
-    abstract class Event {
+    class Event {
         static $gtype: GObject.GType<Event>;
 
         // Constructors of Wp.Event
@@ -5027,7 +5027,7 @@ export namespace Wp {
     /**
      * A generic iterator API
      */
-    abstract class Iterator {
+    class Iterator {
         static $gtype: GObject.GType<Iterator>;
 
         // Constructors of Wp.Iterator
@@ -5186,7 +5186,7 @@ export namespace Wp {
      * An object interest is a helper that is used in WpObjectManager to declare interest in certain kinds of objects.
      * An interest is defined by a GType and a set of constraints on the object's properties. An object "matches" the interest if it is of the specified GType (either the same type or a descendant of it) and all the constraints are satisfied.
      */
-    abstract class ObjectInterest {
+    class ObjectInterest {
         static $gtype: GObject.GType<ObjectInterest>;
 
         // Constructors of Wp.ObjectInterest
@@ -5290,7 +5290,7 @@ export namespace Wp {
      * In most cases, it actually owns the struct pw_properties internally and manages its lifetime. The exception to that rule is when WpProperties is constructed with wp_properties_new_wrap(), in which case the ownership of the struct pw_properties remains outside. This must be used with care, as the struct pw_properties may be free'ed externally.
      * WpProperties is reference-counted with wp_properties_ref() and wp_properties_unref().
      */
-    abstract class Properties {
+    class Properties {
         static $gtype: GObject.GType<Properties>;
 
         // Constructors of Wp.Properties
@@ -5584,7 +5584,7 @@ export namespace Wp {
     type SiLinkableInterface = typeof SiLinkable;
     type SimpleEventHookClass = typeof SimpleEventHook;
     type SpaDeviceClass = typeof SpaDevice;
-    abstract class SpaJson {
+    class SpaJson {
         static $gtype: GObject.GType<SpaJson>;
 
         // Constructors of Wp.SpaJson
@@ -5725,7 +5725,7 @@ export namespace Wp {
         unref(): void;
     }
 
-    abstract class SpaJsonBuilder {
+    class SpaJsonBuilder {
         static $gtype: GObject.GType<SpaJsonBuilder>;
 
         // Constructors of Wp.SpaJsonBuilder
@@ -5800,7 +5800,7 @@ export namespace Wp {
         unref(): void;
     }
 
-    abstract class SpaJsonParser {
+    class SpaJsonParser {
         static $gtype: GObject.GType<SpaJsonParser>;
 
         // Constructors of Wp.SpaJsonParser
@@ -5861,7 +5861,7 @@ export namespace Wp {
         unref(): void;
     }
 
-    abstract class SpaPod {
+    class SpaPod {
         static $gtype: GObject.GType<SpaPod>;
 
         // Constructors of Wp.SpaPod
@@ -6211,7 +6211,7 @@ export namespace Wp {
         unref(): void;
     }
 
-    abstract class SpaPodBuilder {
+    class SpaPodBuilder {
         static $gtype: GObject.GType<SpaPodBuilder>;
 
         // Constructors of Wp.SpaPodBuilder
@@ -6336,7 +6336,7 @@ export namespace Wp {
         unref(): void;
     }
 
-    abstract class SpaPodParser {
+    class SpaPodParser {
         static $gtype: GObject.GType<SpaPodParser>;
 
         // Constructors of Wp.SpaPodParser

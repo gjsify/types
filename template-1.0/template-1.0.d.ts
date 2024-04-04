@@ -251,7 +251,7 @@ export namespace Template {
         prepend_search_path(path: string): void;
     }
 
-    abstract class Scope {
+    class Scope {
         static $gtype: GObject.GType<Scope>;
 
         // Constructors of Template.Scope
@@ -369,7 +369,7 @@ export namespace Template {
         unref(): void;
     }
 
-    abstract class Symbol {
+    class Symbol {
         static $gtype: GObject.GType<Symbol>;
 
         // Constructors of Template.Symbol

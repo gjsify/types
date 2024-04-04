@@ -3844,7 +3844,7 @@ export namespace Gegl {
         _init(...args: any[]): void;
     }
 
-    abstract class Random {
+    class Random {
         static $gtype: GObject.GType<Random>;
 
         // Constructors of Gegl.Random

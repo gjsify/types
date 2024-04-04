@@ -6155,7 +6155,7 @@ export namespace Pango {
      * suitable for storing attributes for large amounts of text. In general, you
      * should not use a single `PangoAttrList` for more than one paragraph of text.
      */
-    abstract class AttrList {
+    class AttrList {
         static $gtype: GObject.GType<AttrList>;
 
         // Constructors of Pango.AttrList
@@ -6654,7 +6654,7 @@ export namespace Pango {
      * available on the system and also for specifying the characteristics of
      * a font to load.
      */
-    abstract class FontDescription {
+    class FontDescription {
         static $gtype: GObject.GType<FontDescription>;
 
         // Constructors of Pango.FontDescription
@@ -8404,7 +8404,7 @@ export namespace Pango {
      * A `PangoScriptIter` is used to iterate through a string
      * and identify ranges in different scripts.
      */
-    abstract class ScriptIter {
+    class ScriptIter {
         static $gtype: GObject.GType<ScriptIter>;
 
         // Constructors of Pango.ScriptIter
@@ -8449,7 +8449,7 @@ export namespace Pango {
      * Each tab stop has an alignment, a position, and optionally
      * a character to use as decimal point.
      */
-    abstract class TabArray {
+    class TabArray {
         static $gtype: GObject.GType<TabArray>;
 
         // Constructors of Pango.TabArray

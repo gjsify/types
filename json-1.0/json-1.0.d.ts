@@ -1570,7 +1570,7 @@ export namespace Json {
      *
      * To retrieve the length of the array, use [method`Json`.Array.get_length].
      */
-    abstract class Array {
+    class Array {
         static $gtype: GObject.GType<Array>;
 
         // Constructors of Json.Array
@@ -1843,7 +1843,7 @@ export namespace Json {
      * have a reference count not equal to 1. To this end, JSON-GLib uses
      * [method`Json`.Node.copy] and [method`Json`.Node.unref] internally.
      */
-    abstract class Node {
+    class Node {
         static $gtype: GObject.GType<Node>;
 
         // Constructors of Json.Node
@@ -2256,7 +2256,7 @@ export namespace Json {
      * To retrieve the size of the object (that is, the number of members it has),
      * use [method`Json`.Object.get_size].
      */
-    abstract class Object {
+    class Object {
         static $gtype: GObject.GType<Object>;
 
         // Constructors of Json.Object

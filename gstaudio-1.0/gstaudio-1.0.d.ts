@@ -4562,7 +4562,7 @@ export namespace GstAudio {
      *
      *  * audio channels and channel layout
      */
-    abstract class AudioConverter {
+    class AudioConverter {
         static $gtype: GObject.GType<AudioConverter>;
 
         // Constructors of GstAudio.AudioConverter
@@ -5101,7 +5101,7 @@ export namespace GstAudio {
      * See gst_audio_stream_align_new() for a description of its parameters and
      * gst_audio_stream_align_process() for the details of the processing.
      */
-    abstract class AudioStreamAlign {
+    class AudioStreamAlign {
         static $gtype: GObject.GType<AudioStreamAlign>;
 
         // Constructors of GstAudio.AudioStreamAlign

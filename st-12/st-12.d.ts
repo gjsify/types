@@ -12835,7 +12835,7 @@ export namespace St {
         unref(): void;
     }
 
-    abstract class ShadowHelper {
+    class ShadowHelper {
         static $gtype: GObject.GType<ShadowHelper>;
 
         // Constructors of St.ShadowHelper

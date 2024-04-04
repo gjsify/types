@@ -57518,7 +57518,7 @@ export namespace ModemManager {
      * The #MMSimPreferredNetwork structure contains private data and should only be accessed
      * using the provided API.
      */
-    abstract class SimPreferredNetwork {
+    class SimPreferredNetwork {
         static $gtype: GObject.GType<SimPreferredNetwork>;
 
         // Constructors of ModemManager.SimPreferredNetwork

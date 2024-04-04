@@ -1785,7 +1785,7 @@ export namespace GstPbutils {
      * Opaque context structure for the plugin installation. Use the provided
      * API to set details on it.
      */
-    abstract class InstallPluginsContext {
+    class InstallPluginsContext {
         static $gtype: GObject.GType<InstallPluginsContext>;
 
         // Constructors of GstPbutils.InstallPluginsContext

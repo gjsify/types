@@ -1001,7 +1001,7 @@ export namespace Rest {
 
     type OAuthProxyCallClass = typeof OAuthProxyCall;
     type OAuthProxyClass = typeof OAuthProxy;
-    abstract class Param {
+    class Param {
         static $gtype: GObject.GType<Param>;
 
         // Constructors of Rest.Param

@@ -12123,7 +12123,7 @@ export namespace Gdk {
      * The [struct`Gdk`.ContentFormatsBuilder] structure is meant to help in this
      * endeavor.
      */
-    abstract class ContentFormats {
+    class ContentFormats {
         static $gtype: GObject.GType<ContentFormats>;
 
         // Constructors of Gdk.ContentFormats
@@ -12270,7 +12270,7 @@ export namespace Gdk {
      * A `GdkContentFormatsBuilder` is an auxiliary struct used to create
      * new `GdkContentFormats`, and should not be kept around.
      */
-    abstract class ContentFormatsBuilder {
+    class ContentFormatsBuilder {
         static $gtype: GObject.GType<ContentFormatsBuilder>;
 
         // Constructors of Gdk.ContentFormatsBuilder
@@ -12362,7 +12362,7 @@ export namespace Gdk {
     /**
      * An opaque type representing a list of files.
      */
-    abstract class FileList {
+    class FileList {
         static $gtype: GObject.GType<FileList>;
 
         // Constructors of Gdk.FileList
@@ -12554,7 +12554,7 @@ export namespace Gdk {
      * But you have to be careful avoid changing the size of the popover, or it
      * has to be presented again.
      */
-    abstract class PopupLayout {
+    class PopupLayout {
         static $gtype: GObject.GType<PopupLayout>;
 
         // Constructors of Gdk.PopupLayout
@@ -12872,7 +12872,7 @@ export namespace Gdk {
      * Create a `GdkTexture` for the existing format and then download it in a
      * different format.
      */
-    abstract class TextureDownloader {
+    class TextureDownloader {
         static $gtype: GObject.GType<TextureDownloader>;
 
         // Constructors of Gdk.TextureDownloader
@@ -12970,7 +12970,7 @@ export namespace Gdk {
      * to the user in various states (maximized, on all workspaces,
      * etc).
      */
-    abstract class ToplevelLayout {
+    class ToplevelLayout {
         static $gtype: GObject.GType<ToplevelLayout>;
 
         // Constructors of Gdk.ToplevelLayout

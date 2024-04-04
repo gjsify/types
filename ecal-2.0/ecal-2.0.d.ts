@@ -4655,7 +4655,7 @@ export namespace ECal {
     /**
      * Contains data used as lookup_data of e_cal_client_tzlookup_icalcomp_cb().
      */
-    abstract class ClientTzlookupICalCompData {
+    class ClientTzlookupICalCompData {
         static $gtype: GObject.GType<ClientTzlookupICalCompData>;
 
         // Constructors of ECal.ClientTzlookupICalCompData
@@ -4695,7 +4695,7 @@ export namespace ECal {
      * Opaque structure, which represents alarm subcomponents.
      * Use the functions below to work with it.
      */
-    abstract class ComponentAlarm {
+    class ComponentAlarm {
         static $gtype: GObject.GType<ComponentAlarm>;
 
         // Constructors of ECal.ComponentAlarm
@@ -4849,7 +4849,7 @@ export namespace ECal {
      * Opaque structure, which represents an alarm occurrence, i.e. a instance instance.
      * Use the functions below to work with it.
      */
-    abstract class ComponentAlarmInstance {
+    class ComponentAlarmInstance {
         static $gtype: GObject.GType<ComponentAlarmInstance>;
 
         // Constructors of ECal.ComponentAlarmInstance
@@ -4915,7 +4915,7 @@ export namespace ECal {
      * A structure holding whether and how an alarm repeats.
      * Use the functions below to work with it.
      */
-    abstract class ComponentAlarmRepeat {
+    class ComponentAlarmRepeat {
         static $gtype: GObject.GType<ComponentAlarmRepeat>;
 
         // Constructors of ECal.ComponentAlarmRepeat
@@ -4965,7 +4965,7 @@ export namespace ECal {
      * Opaque structure, which represents when an alarm is supposed to be triggered.
      * Use the functions below to work with it.
      */
-    abstract class ComponentAlarmTrigger {
+    class ComponentAlarmTrigger {
         static $gtype: GObject.GType<ComponentAlarmTrigger>;
 
         // Constructors of ECal.ComponentAlarmTrigger
@@ -5068,7 +5068,7 @@ export namespace ECal {
      * Opaque structure, which represents alarm trigger instances for a particular component.
      * Use the functions below to work with it.
      */
-    abstract class ComponentAlarms {
+    class ComponentAlarms {
         static $gtype: GObject.GType<ComponentAlarms>;
 
         // Constructors of ECal.ComponentAlarms
@@ -5134,7 +5134,7 @@ export namespace ECal {
     /**
      * Describes an attendee. Use the functions below to work with it.
      */
-    abstract class ComponentAttendee {
+    class ComponentAttendee {
         static $gtype: GObject.GType<ComponentAttendee>;
 
         // Constructors of ECal.ComponentAttendee
@@ -5269,7 +5269,7 @@ export namespace ECal {
      * the date/time value and also its TZID parameter. Use the functions
      * below to work with it.
      */
-    abstract class ComponentDateTime {
+    class ComponentDateTime {
         static $gtype: GObject.GType<ComponentDateTime>;
 
         // Constructors of ECal.ComponentDateTime
@@ -5340,7 +5340,7 @@ export namespace ECal {
      * its recurrence ID (which can be %NULL). Use the functions
      * below to work with it.
      */
-    abstract class ComponentId {
+    class ComponentId {
         static $gtype: GObject.GType<ComponentId>;
 
         // Constructors of ECal.ComponentId
@@ -5390,7 +5390,7 @@ export namespace ECal {
     /**
      * Describes an organizer. Use the functions below to work with it.
      */
-    abstract class ComponentOrganizer {
+    class ComponentOrganizer {
         static $gtype: GObject.GType<ComponentOrganizer>;
 
         // Constructors of ECal.ComponentOrganizer
@@ -5471,7 +5471,7 @@ export namespace ECal {
      * Opaque structure, which represents a bad (list) of #ICalParameter objects.
      * Use the functions below to work with it.
      */
-    abstract class ComponentParameterBag {
+    class ComponentParameterBag {
         static $gtype: GObject.GType<ComponentParameterBag>;
 
         // Constructors of ECal.ComponentParameterBag
@@ -5558,7 +5558,7 @@ export namespace ECal {
      * Period of time, can have explicit start/end times or start/duration instead.
      * Use the functions below to work with it.
      */
-    abstract class ComponentPeriod {
+    class ComponentPeriod {
         static $gtype: GObject.GType<ComponentPeriod>;
 
         // Constructors of ECal.ComponentPeriod
@@ -5653,7 +5653,7 @@ export namespace ECal {
      * Opaque structure, which represents a bad (list) of #ICalProperty objects.
      * Use the functions below to work with it.
      */
-    abstract class ComponentPropertyBag {
+    class ComponentPropertyBag {
         static $gtype: GObject.GType<ComponentPropertyBag>;
 
         // Constructors of ECal.ComponentPropertyBag
@@ -5739,7 +5739,7 @@ export namespace ECal {
     /**
      * Describes a range. Use the functions below to work with it.
      */
-    abstract class ComponentRange {
+    class ComponentRange {
         static $gtype: GObject.GType<ComponentRange>;
 
         // Constructors of ECal.ComponentRange
@@ -5776,7 +5776,7 @@ export namespace ECal {
      * Contains description string and an alternate representation URI
      * for text properties. Use the functions below to work with it.
      */
-    abstract class ComponentText {
+    class ComponentText {
         static $gtype: GObject.GType<ComponentText>;
 
         // Constructors of ECal.ComponentText
@@ -5826,7 +5826,7 @@ export namespace ECal {
     /**
      * Contains data related to single reminder occurrence.
      */
-    abstract class ReminderData {
+    class ReminderData {
         static $gtype: GObject.GType<ReminderData>;
 
         // Constructors of ECal.ReminderData

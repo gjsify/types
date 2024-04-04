@@ -73028,7 +73028,7 @@ export namespace Gladeui {
     }
 
     type PropertyClass = typeof Property;
-    abstract class PropertyDef {
+    class PropertyDef {
         static $gtype: GObject.GType<PropertyDef>;
 
         // Constructors of Gladeui.PropertyDef
@@ -73166,7 +73166,7 @@ export namespace Gladeui {
     }
 
     type SignalClass = typeof Signal;
-    abstract class SignalDef {
+    class SignalDef {
         static $gtype: GObject.GType<SignalDef>;
 
         // Constructors of Gladeui.SignalDef
@@ -73357,7 +73357,7 @@ export namespace Gladeui {
         _init(...args: any[]): void;
     }
 
-    abstract class XmlContext {
+    class XmlContext {
         static $gtype: GObject.GType<XmlContext>;
 
         // Constructors of Gladeui.XmlContext
@@ -73383,7 +73383,7 @@ export namespace Gladeui {
         get_doc(): XmlDoc;
     }
 
-    abstract class XmlDoc {
+    class XmlDoc {
         static $gtype: GObject.GType<XmlDoc>;
 
         // Constructors of Gladeui.XmlDoc
@@ -73410,7 +73410,7 @@ export namespace Gladeui {
         unref(): void;
     }
 
-    abstract class XmlNode {
+    class XmlNode {
         static $gtype: GObject.GType<XmlNode>;
 
         // Constructors of Gladeui.XmlNode

@@ -2351,7 +2351,7 @@ export namespace EvinceDocument {
         _init(...args: any[]): void;
     }
 
-    abstract class MappingList {
+    class MappingList {
         static $gtype: GObject.GType<MappingList>;
 
         // Constructors of EvinceDocument.MappingList

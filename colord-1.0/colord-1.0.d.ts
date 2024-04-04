@@ -3809,7 +3809,7 @@ export namespace Colord {
         _init(...args: any[]): void;
     }
 
-    abstract class ColorSwatch {
+    class ColorSwatch {
         static $gtype: GObject.GType<ColorSwatch>;
 
         // Constructors of Colord.ColorSwatch
@@ -4054,7 +4054,7 @@ export namespace Colord {
 
     type ProfileClass = typeof Profile;
     type SensorClass = typeof Sensor;
-    abstract class Spectrum {
+    class Spectrum {
         static $gtype: GObject.GType<Spectrum>;
 
         // Constructors of Colord.Spectrum

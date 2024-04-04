@@ -3928,7 +3928,7 @@ export namespace GUPnP {
     /**
      * Opaque structure for holding in-progress action data.
      */
-    abstract class ServiceProxyAction {
+    class ServiceProxyAction {
         static $gtype: GObject.GType<ServiceProxyAction>;
 
         // Constructors of GUPnP.ServiceProxyAction

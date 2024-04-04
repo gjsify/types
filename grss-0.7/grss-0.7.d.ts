@@ -1237,7 +1237,7 @@ export namespace Grss {
      * `GrssPerson` is an opaque structure whose members
      * cannot be accessed directly.
      */
-    abstract class Person {
+    class Person {
         static $gtype: GObject.GType<Person>;
 
         // Constructors of Grss.Person

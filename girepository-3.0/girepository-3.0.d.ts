@@ -2328,7 +2328,7 @@ export namespace GIRepository {
      * `GITypelib` represents a loaded `.typelib` file, which contains a description
      * of a single module’s API.
      */
-    abstract class Typelib {
+    class Typelib {
         static $gtype: GObject.GType<Typelib>;
 
         // Constructors of GIRepository.Typelib

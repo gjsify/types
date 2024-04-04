@@ -13065,7 +13065,7 @@ export namespace GLib {
      *
      * The #GBookmarkFile parser was added in GLib 2.12.
      */
-    abstract class BookmarkFile {
+    class BookmarkFile {
         static $gtype: GObject.GType<BookmarkFile>;
 
         // Constructors of GLib.BookmarkFile
@@ -13720,7 +13720,7 @@ export namespace GLib {
      * mutable array for a #GBytes sequence. To create an immutable #GBytes from
      * a mutable #GByteArray, use the g_byte_array_free_to_bytes() function.
      */
-    abstract class Bytes {
+    class Bytes {
         static $gtype: GObject.GType<Bytes>;
 
         // Constructors of GLib.Bytes
@@ -13873,7 +13873,7 @@ export namespace GLib {
      * To create a new GChecksum, use g_checksum_new(). To free
      * a GChecksum, use g_checksum_free().
      */
-    abstract class Checksum {
+    class Checksum {
         static $gtype: GObject.GType<Checksum>;
 
         // Constructors of GLib.Checksum
@@ -14543,7 +14543,7 @@ export namespace GLib {
     /**
      * An opaque structure that represents a date and time, including a time zone.
      */
-    abstract class DateTime {
+    class DateTime {
         static $gtype: GObject.GType<DateTime>;
 
         // Constructors of GLib.DateTime
@@ -16082,7 +16082,7 @@ export namespace GLib {
      * ```
      *
      */
-    abstract class KeyFile {
+    class KeyFile {
         static $gtype: GObject.GType<KeyFile>;
 
         // Constructors of GLib.KeyFile
@@ -16636,7 +16636,7 @@ export namespace GLib {
      * The `GMainContext` struct is an opaque data
      * type representing a set of sources to be handled in a main loop.
      */
-    abstract class MainContext {
+    class MainContext {
         static $gtype: GObject.GType<MainContext>;
 
         // Constructors of GLib.MainContext
@@ -16958,7 +16958,7 @@ export namespace GLib {
      * The `GMainLoop` struct is an opaque data type
      * representing the main event loop of a GLib or GTK application.
      */
-    abstract class MainLoop {
+    class MainLoop {
         static $gtype: GObject.GType<MainLoop>;
 
         // Constructors of GLib.MainLoop
@@ -17017,7 +17017,7 @@ export namespace GLib {
      * g_mapped_file_new(). It has only private members and should
      * not be accessed directly.
      */
-    abstract class MappedFile {
+    class MappedFile {
         static $gtype: GObject.GType<MappedFile>;
 
         // Constructors of GLib.MappedFile
@@ -17082,7 +17082,7 @@ export namespace GLib {
      * See g_markup_parse_context_new(), #GMarkupParser, and so
      * on for more details.
      */
-    abstract class MarkupParseContext {
+    class MarkupParseContext {
         static $gtype: GObject.GType<MarkupParseContext>;
 
         // Constructors of GLib.MarkupParseContext
@@ -18113,7 +18113,7 @@ export namespace GLib {
      * getting a `GOptionGroup` holding their options, which
      * the application can then add to its #GOptionContext.
      */
-    abstract class OptionGroup {
+    class OptionGroup {
         static $gtype: GObject.GType<OptionGroup>;
 
         // Constructors of GLib.OptionGroup
@@ -18411,7 +18411,7 @@ export namespace GLib {
      * A GPatternSpec struct is the 'compiled' form of a pattern. This
      * structure is opaque and its fields cannot be accessed directly.
      */
-    abstract class PatternSpec {
+    class PatternSpec {
         static $gtype: GObject.GType<PatternSpec>;
 
         // Constructors of GLib.PatternSpec
@@ -19103,7 +19103,7 @@ export namespace GLib {
      * [PCRE](http://www.pcre.org/)
      * library written by Philip Hazel.
      */
-    abstract class Regex {
+    class Regex {
         static $gtype: GObject.GType<Regex>;
 
         // Constructors of GLib.Regex
@@ -21171,7 +21171,7 @@ export namespace GLib {
      * The structure is opaque -- none of its fields may be directly
      * accessed.
      */
-    abstract class Thread {
+    class Thread {
         static $gtype: GObject.GType<Thread>;
 
         // Constructors of GLib.Thread
@@ -21526,7 +21526,7 @@ export namespace GLib {
      * #GTimeZone is an opaque structure whose members cannot be accessed
      * directly.
      */
-    abstract class TimeZone {
+    class TimeZone {
         static $gtype: GObject.GType<TimeZone>;
 
         // Constructors of GLib.TimeZone
@@ -21747,7 +21747,7 @@ export namespace GLib {
      * [balanced binary tree][glib-Balanced-Binary-Trees]. It should be
      * accessed only by using the following functions.
      */
-    abstract class Tree {
+    class Tree {
         static $gtype: GObject.GType<Tree>;
 
         // Constructors of GLib.Tree
@@ -24199,7 +24199,7 @@ export namespace GLib {
      * that, due to the restriction that the key of a dictionary entry must
      * be a basic type, "{**}" is not a valid type string.
      */
-    abstract class VariantType<A extends string = any> {
+    class VariantType<A extends string = any> {
         static $gtype: GObject.GType<VariantType>;
 
         // Constructors of GLib.VariantType

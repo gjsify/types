@@ -16432,7 +16432,7 @@ export namespace EDataServer {
      * An opaque object used for locale specific string comparisons
      * and sort ordering.
      */
-    abstract class Collator {
+    class Collator {
         static $gtype: GObject.GType<Collator>;
 
         // Constructors of EDataServer.Collator
@@ -16551,7 +16551,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    abstract class GDataQuery {
+    class GDataQuery {
         static $gtype: GObject.GType<GDataQuery>;
 
         // Constructors of EDataServer.GDataQuery
@@ -16744,7 +16744,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    abstract class NamedParameters {
+    class NamedParameters {
         static $gtype: GObject.GType<NamedParameters>;
 
         // Constructors of EDataServer.NamedParameters

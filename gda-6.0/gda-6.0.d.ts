@@ -22618,7 +22618,7 @@ export namespace Gda {
     }
 
     type BatchClass = typeof Batch;
-    abstract class Binary {
+    class Binary {
         static $gtype: GObject.GType<Binary>;
 
         // Constructors of Gda.Binary
@@ -22678,7 +22678,7 @@ export namespace Gda {
      * `op` is generally set up by database providers when giving access to an existing BLOB in
      * a database, but can be modified if needed using gda_blob_set_op().
      */
-    abstract class Blob {
+    class Blob {
         static $gtype: GObject.GType<Blob>;
 
         // Constructors of Gda.Blob
@@ -22828,7 +22828,7 @@ export namespace Gda {
         free(): void;
     }
 
-    abstract class GeometricPoint {
+    class GeometricPoint {
         static $gtype: GObject.GType<GeometricPoint>;
 
         // Constructors of Gda.GeometricPoint
@@ -22977,7 +22977,7 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    abstract class MetaStoreChange {
+    class MetaStoreChange {
         static $gtype: GObject.GType<MetaStoreChange>;
 
         // Constructors of Gda.MetaStoreChange
@@ -23086,7 +23086,7 @@ export namespace Gda {
      * This struct must be considered as opaque. Any access to its members must use its
      * accessors added since version 5.0.2.
      */
-    abstract class Numeric {
+    class Numeric {
         static $gtype: GObject.GType<Numeric>;
 
         // Constructors of Gda.Numeric
@@ -23168,7 +23168,7 @@ export namespace Gda {
 
     type ProviderInterface = typeof Provider;
     type ProviderMetaInterface = typeof ProviderMeta;
-    abstract class QuarkList {
+    class QuarkList {
         static $gtype: GObject.GType<QuarkList>;
 
         // Constructors of Gda.QuarkList
@@ -23248,7 +23248,7 @@ export namespace Gda {
     type RepetitiveStatementClass = typeof RepetitiveStatement;
     type RowClass = typeof Row;
     type ServerOperationClass = typeof ServerOperation;
-    abstract class ServerOperationCreateTableArg {
+    class ServerOperationCreateTableArg {
         static $gtype: GObject.GType<ServerOperationCreateTableArg>;
 
         // Constructors of Gda.ServerOperationCreateTableArg
@@ -23298,7 +23298,7 @@ export namespace Gda {
         set_flags(flags: ServerOperationCreateTableFlag): void;
     }
 
-    abstract class ServerOperationCreateTableArgFKeyRefField {
+    class ServerOperationCreateTableArgFKeyRefField {
         static $gtype: GObject.GType<ServerOperationCreateTableArgFKeyRefField>;
 
         // Constructors of Gda.ServerOperationCreateTableArgFKeyRefField
@@ -23421,7 +23421,7 @@ export namespace Gda {
      * Since 5.2, you must consider this struct as opaque. Any access to its internal must use public API.
      * Don't try to use #gda_set_group_free on a struct that was created manually.
      */
-    abstract class SetGroup {
+    class SetGroup {
         static $gtype: GObject.GType<SetGroup>;
 
         // Constructors of Gda.SetGroup
@@ -23463,7 +23463,7 @@ export namespace Gda {
      * Since 5.2, you must consider this struct as opaque. Any access to its internal must use public API.
      * Don't try to use #gda_set_node_free on a struct that was created manually.
      */
-    abstract class SetNode {
+    class SetNode {
         static $gtype: GObject.GType<SetNode>;
 
         // Constructors of Gda.SetNode
@@ -23511,7 +23511,7 @@ export namespace Gda {
      * Since 5.2, you must consider this struct as opaque. Any access to its internal must use public API.
      * Don't try to use #gda_set_source_free on a struct that was created manually.
      */
-    abstract class SetSource {
+    class SetSource {
         static $gtype: GObject.GType<SetSource>;
 
         // Constructors of Gda.SetSource
@@ -24620,7 +24620,7 @@ export namespace Gda {
     }
 
     type StatementClass = typeof Statement;
-    abstract class Text {
+    class Text {
         static $gtype: GObject.GType<Text>;
 
         // Constructors of Gda.Text
@@ -24662,7 +24662,7 @@ export namespace Gda {
     /**
      * Represents a time information.
      */
-    abstract class Time {
+    class Time {
         static $gtype: GObject.GType<Time>;
 
         // Constructors of Gda.Time
@@ -24794,7 +24794,7 @@ export namespace Gda {
     type TreeMgrSelectClass = typeof TreeMgrSelect;
     type TreeMgrTablesClass = typeof TreeMgrTables;
     type TreeNodeClass = typeof TreeNode;
-    abstract class Worker {
+    class Worker {
         static $gtype: GObject.GType<Worker>;
 
         // Constructors of Gda.Worker

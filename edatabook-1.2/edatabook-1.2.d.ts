@@ -6561,7 +6561,7 @@ export namespace EDataBook {
     /**
      * An opaque cursor pointer
      */
-    abstract class BookCacheCursor {
+    class BookCacheCursor {
         static $gtype: GObject.GType<BookCacheCursor>;
 
         // Constructors of EDataBook.BookCacheCursor

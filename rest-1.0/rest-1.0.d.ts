@@ -763,7 +763,7 @@ export namespace Rest {
 
     type OAuth2ProxyCallClass = typeof OAuth2ProxyCall;
     type OAuth2ProxyClass = typeof OAuth2Proxy;
-    abstract class Param {
+    class Param {
         static $gtype: GObject.GType<Param>;
 
         // Constructors of Rest.Param
@@ -942,7 +942,7 @@ export namespace Rest {
      * In order to play a Pkce Code Verification during a OAuth2 authorization
      * you need this structure which handles the algorithmic part.
      */
-    abstract class PkceCodeChallenge {
+    class PkceCodeChallenge {
         static $gtype: GObject.GType<PkceCodeChallenge>;
 
         // Constructors of Rest.PkceCodeChallenge

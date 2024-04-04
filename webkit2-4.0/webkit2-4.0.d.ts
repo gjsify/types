@@ -15140,7 +15140,7 @@ export namespace WebKit2 {
     /**
      * Information about an application running in automation mode.
      */
-    abstract class ApplicationInfo {
+    class ApplicationInfo {
         static $gtype: GObject.GType<ApplicationInfo>;
 
         // Constructors of WebKit2.ApplicationInfo
@@ -15287,7 +15287,7 @@ export namespace WebKit2 {
     /**
      * Groups information used for user authentication.
      */
-    abstract class Credential {
+    class Credential {
         static $gtype: GObject.GType<Credential>;
 
         // Constructors of WebKit2.Credential
@@ -15599,7 +15599,7 @@ export namespace WebKit2 {
      * WebKitGeolocationPosition is an opaque struct used to provide position updates to a
      * #WebKitGeolocationManager using webkit_geolocation_manager_update_position().
      */
-    abstract class GeolocationPosition {
+    class GeolocationPosition {
         static $gtype: GObject.GType<GeolocationPosition>;
 
         // Constructors of WebKit2.GeolocationPosition
@@ -15762,7 +15762,7 @@ export namespace WebKit2 {
     /**
      * Range of text in an preedit string to be shown underlined.
      */
-    abstract class InputMethodUnderline {
+    class InputMethodUnderline {
         static $gtype: GObject.GType<InputMethodUnderline>;
 
         // Constructors of WebKit2.InputMethodUnderline
@@ -15868,7 +15868,7 @@ export namespace WebKit2 {
      * and the settings will be applied to all the network processes created after that call by any instance of
      * #WebKitWebsiteDataManager.
      */
-    abstract class MemoryPressureSettings {
+    class MemoryPressureSettings {
         static $gtype: GObject.GType<MemoryPressureSettings>;
 
         // Constructors of WebKit2.MemoryPressureSettings
@@ -16097,7 +16097,7 @@ export namespace WebKit2 {
      * to a #WebKitWebContext. You need to call webkit_web_context_set_network_proxy_settings()
      * with %WEBKIT_NETWORK_PROXY_MODE_CUSTOM and a WebKitNetworkProxySettings.
      */
-    abstract class NetworkProxySettings {
+    class NetworkProxySettings {
         static $gtype: GObject.GType<NetworkProxySettings>;
 
         // Constructors of WebKit2.NetworkProxySettings
@@ -16467,7 +16467,7 @@ export namespace WebKit2 {
      * origins, beware that if both protocol and host are %NULL, the origins
      * should not be treated as equal.
      */
-    abstract class SecurityOrigin {
+    class SecurityOrigin {
         static $gtype: GObject.GType<SecurityOrigin>;
 
         // Constructors of WebKit2.SecurityOrigin
@@ -16661,7 +16661,7 @@ export namespace WebKit2 {
     /**
      * A JavaScript snippet which can be injected in loaded pages.
      */
-    abstract class UserScript {
+    class UserScript {
         static $gtype: GObject.GType<UserScript>;
 
         // Constructors of WebKit2.UserScript
@@ -16714,7 +16714,7 @@ export namespace WebKit2 {
     /**
      * A CSS style sheet which can be injected in loaded pages.
      */
-    abstract class UserStyleSheet {
+    class UserStyleSheet {
         static $gtype: GObject.GType<UserStyleSheet>;
 
         // Constructors of WebKit2.UserStyleSheet
@@ -16812,7 +16812,7 @@ export namespace WebKit2 {
     /**
      * Handles serialization of a web view's browsing state.
      */
-    abstract class WebViewSessionState {
+    class WebViewSessionState {
         static $gtype: GObject.GType<WebViewSessionState>;
 
         // Constructors of WebKit2.WebViewSessionState

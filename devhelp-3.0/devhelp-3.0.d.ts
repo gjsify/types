@@ -5119,7 +5119,7 @@ export namespace Devhelp {
     }
 
     type KeywordModelClass = typeof KeywordModel;
-    abstract class Link {
+    class Link {
         static $gtype: GObject.GType<Link>;
 
         // Constructors of Devhelp.Link

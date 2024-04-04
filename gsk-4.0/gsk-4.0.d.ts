@@ -2095,7 +2095,7 @@ export namespace Gsk {
     /**
      * An object to build the uniforms data for a `GskGLShader`.
      */
-    abstract class ShaderArgsBuilder {
+    class ShaderArgsBuilder {
         static $gtype: GObject.GType<ShaderArgsBuilder>;
 
         // Constructors of Gsk.ShaderArgsBuilder
@@ -2228,7 +2228,7 @@ export namespace Gsk {
      * This means code can safely expose them as properties of objects without
      * having to worry about others changing them.
      */
-    abstract class Transform {
+    class Transform {
         static $gtype: GObject.GType<Transform>;
 
         // Constructors of Gsk.Transform
