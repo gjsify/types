@@ -143,14 +143,14 @@ export namespace PangoFT2 {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends PangoFc.FontMap.ConstructorProps,
+            extends PangoFc.FontMap.ConstructorProps<A>,
                 Gio.ListModel.ConstructorProps {}
     }
 
     /**
      * The `PangoFT2FontMap` is the `PangoFontMap` implementation for FreeType fonts.
      */
-    class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap implements Gio.ListModel<A> {
+    class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap<A> implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
 
         // Constructors of PangoFT2.FontMap

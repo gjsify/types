@@ -204,7 +204,7 @@ export namespace PangoXft {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends PangoFc.FontMap.ConstructorProps<A>,
+            extends PangoFc.FontMap.ConstructorProps,
                 Gio.ListModel.ConstructorProps {}
     }
 
@@ -213,7 +213,7 @@ export namespace PangoXft {
      * the Xft library as the renderer.  It is used in to create fonts of
      * type `PangoXftFont`.
      */
-    class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap<A> implements Gio.ListModel<A> {
+    class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
 
         // Constructors of PangoXft.FontMap

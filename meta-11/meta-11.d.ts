@@ -6643,7 +6643,7 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends Clutter.Stage.ConstructorProps<A>,
+            extends Clutter.Stage.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -6651,7 +6651,7 @@ export namespace Meta {
     }
 
     class Stage<A extends Clutter.Actor = Clutter.Actor>
-        extends Clutter.Stage<A>
+        extends Clutter.Stage
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Stage>;

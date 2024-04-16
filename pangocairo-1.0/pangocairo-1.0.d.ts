@@ -309,8 +309,7 @@ export namespace PangoCairo {
     module FontMap {
         // Constructor properties interface
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Pango.FontMap.ConstructorProps<A> {}
+        interface ConstructorProps extends Pango.FontMap.ConstructorProps {}
     }
 
     export interface FontMapNamespace {
@@ -366,7 +365,7 @@ export namespace PangoCairo {
          */
         new_for_font_type(fonttype: cairo.FontType): Pango.FontMap | null;
     }
-    interface FontMap<A extends GObject.Object = GObject.Object> extends Pango.FontMap {
+    interface FontMap extends Pango.FontMap {
         // Own methods of PangoCairo.FontMap
 
         /**

@@ -284,7 +284,7 @@ export namespace PangoFc {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Pango.FontMap.ConstructorProps<A>,
+            extends Pango.FontMap.ConstructorProps,
                 Gio.ListModel.ConstructorProps {}
     }
 
@@ -298,7 +298,7 @@ export namespace PangoFc {
      * range of shapers implemented using FreeType that come with Pango.
      */
     abstract class FontMap<A extends GObject.Object = GObject.Object>
-        extends Pango.FontMap<A>
+        extends Pango.FontMap
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontMap>;
