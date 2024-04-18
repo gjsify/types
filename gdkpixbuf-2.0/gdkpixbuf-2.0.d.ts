@@ -1226,7 +1226,7 @@ export namespace GdkPixbuf {
         equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
-         * @returns a #guint containing a hash for the @icon, suitable for   use in a #GHashTable or similar data structure.
+         * @returns a #guint containing a hash for the @icon, suitable for use in a #GHashTable or similar data structure.
          */
         hash(): number;
         /**
@@ -1509,7 +1509,7 @@ export namespace GdkPixbuf {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

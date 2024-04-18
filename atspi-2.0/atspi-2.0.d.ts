@@ -2225,7 +2225,7 @@ export namespace Atspi {
          * Gets the #AtspiAction interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiAction interface          instance, or NULL if @obj does not implement #AtspiAction.
          */
-        get_action(): Action;
+        get_action_iface(): Action;
         /**
          * Gets the #AtspiAction interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiAction interface          instance, or NULL if @obj does not implement #AtspiAction.
@@ -2274,7 +2274,7 @@ export namespace Atspi {
          * Gets the #AtspiCollection interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiCollection interface          instance, or NULL if @obj does not implement #AtspiCollection.
          */
-        get_collection(): Collection;
+        get_collection_iface(): Collection;
         /**
          * Gets the #AtspiCollection interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiCollection interface          instance, or NULL if @obj does not implement #AtspiCollection.
@@ -2284,7 +2284,7 @@ export namespace Atspi {
          * Gets the #AtspiComponent interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiComponent interface          instance, or NULL if @obj does not implement #AtspiComponent.
          */
-        get_component(): Component;
+        get_component_iface(): Component;
         /**
          * Gets the #AtspiComponent interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiComponent interface          instance, or NULL if @obj does not implement #AtspiComponent.
@@ -2299,7 +2299,7 @@ export namespace Atspi {
          * Gets the #AtspiDocument interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiDocument interface          instance, or NULL if @obj does not implement #AtspiDocument.
          */
-        get_document(): Document;
+        get_document_iface(): Document;
         /**
          * Gets the #AtspiDocument interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiDocument interface          instance, or NULL if @obj does not implement #AtspiDocument.
@@ -2309,19 +2309,12 @@ export namespace Atspi {
          * Gets the #AtspiEditableText interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiEditableText interface          instance, or NULL if @obj does not implement #AtspiEditableText.
          */
-        get_editable_text(): EditableText;
+        get_editable_text_iface(): EditableText;
         /**
          * Gets the #AtspiEditableText interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiEditableText interface          instance, or NULL if @obj does not implement #AtspiEditableText.
          */
         get_editable_text_iface(): EditableText;
-        /**
-         * Gets the help text associated with the accessible, if set. When this is
-         * present, it provides information that a screen reader can relay to the user
-         * to explain how to interact with the object.
-         * @returns a character string representing the help text for the #AtspiAccessible object or NULL on exception.
-         */
-        get_help_text(): string;
         /**
          * Gets the #AtspiHyperlink interface for an #AtspiAccessible.
          * @returns the #AtspiHyperlink object associated with          the given #AtspiAccessible, or NULL if not supported.
@@ -2331,7 +2324,7 @@ export namespace Atspi {
          * Gets the #AtspiHypertext interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiHypertext interface          instance, or NULL if @obj does not implement #AtspiHypertext.
          */
-        get_hypertext(): Hypertext;
+        get_hypertext_iface(): Hypertext;
         /**
          * Gets the #AtspiHypertext interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiHypertext interface          instance, or NULL if @obj does not implement #AtspiHypertext.
@@ -2347,7 +2340,7 @@ export namespace Atspi {
          * Gets the #AtspiImage interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiImage interface instance, or          NULL if @obj does not implement #AtspiImage.
          */
-        get_image(): Image;
+        get_image_iface(): Image;
         /**
          * Gets the #AtspiImage interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiImage interface instance, or          NULL if @obj does not implement #AtspiImage.
@@ -2413,9 +2406,7 @@ export namespace Atspi {
          * Gets the #AtspiSelection interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiSelection interface          instance, or NULL if @obj does not implement #AtspiSelection.
          */
-        get_selection(): Selection;
-        // Conflicted with Atspi.Text.get_selection
-        get_selection(...args: never[]): any;
+        get_selection_iface(): Selection;
         /**
          * Gets the #AtspiSelection interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiSelection interface          instance, or NULL if @obj does not implement #AtspiSelection.
@@ -2430,9 +2421,7 @@ export namespace Atspi {
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiTable interface instance, or          NULL if @obj does not implement #AtspiTable.
          */
-        get_table(): Table;
-        // Conflicted with Atspi.TableCell.get_table
-        get_table(...args: never[]): any;
+        get_table_iface(): Table;
         /**
          * Gets the #AtspiTableCell interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiTableCell interface instance,          or NULL if @obj does not implement #AtspiTable.
@@ -2447,9 +2436,7 @@ export namespace Atspi {
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiText interface instance, or          NULL if @obj does not implement #AtspiText.
          */
-        get_text(): Text;
-        // Conflicted with Atspi.Text.get_text
-        get_text(...args: never[]): any;
+        get_text_iface(): Text;
         /**
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiText interface instance, or          NULL if @obj does not implement #AtspiText.
@@ -2471,7 +2458,7 @@ export namespace Atspi {
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiValue interface instance, or          NULL if @obj does not implement #AtspiValue.
          */
-        get_value(): Value;
+        get_value_iface(): Value;
         /**
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiValue interface instance, or          NULL if @obj does not implement #AtspiValue.
@@ -2737,21 +2724,6 @@ export namespace Atspi {
          * @returns a #gint indicating the page count of an #AccessibleDocument object.
          */
         get_page_count(): number;
-        /**
-         * Returns an array of AtspiTextSelections within this document.
-         * @returns a GArray of AtspiTextSelection structures representing the selection.
-         */
-        get_text_selections(): TextSelection[];
-        /**
-         * Makes 1 or more selections within this document denoted by the given
-         * array of AtspiTextSelections. Any existing physical selection (inside or
-         * outside this document) is replaced by the new selections. All objects within
-         * the given selection ranges must be descendants of this document. Otherwise
-         * FALSE will be returned.
-         * @param selections a GArray of AtspiTextSelections              to be selected.
-         * @returns TRUE if the selection was made successfully; FALSE otherwise.
-         */
-        set_text_selections(selections: TextSelection[]): boolean;
         /**
          * Copies text from an #AtspiEditableText object into the system clipboard.
          *
@@ -3173,6 +3145,11 @@ export namespace Atspi {
          */
         get_row_span(): number;
         /**
+         * Returns a reference to the accessible of the containing table.
+         * @returns the AtspiAccessible for the containing table.
+         */
+        get_table(): Accessible;
+        /**
          * Selects some text (adds a text selection) in an #AtspiText object.
          * @param start_offset the starting offset of the desired new selection.
          * @param end_offset the offset of the first character after the new selection.
@@ -3283,6 +3260,12 @@ export namespace Atspi {
          */
         get_range_extents(start_offset: number, end_offset: number, type: CoordType): Rect;
         /**
+         * Gets the bounds of the `selection_num-th` active text selection for an
+         *         #AtspiText object.
+         * @param selection_num a #gint indicating which selection to query.
+         */
+        get_selection(selection_num: number): Range;
+        /**
          * Gets a portion of the text exposed through an #AtspiText according to a given `offset`
          * and a specific `granularity,` along with the start and end offsets defining the
          * boundaries of such a portion of text.
@@ -3318,6 +3301,17 @@ export namespace Atspi {
          * @returns a newly allocated string containing the text at the @offset bounded   by the specified @granularity. Use g_free() to free the returned string.   Returns %NULL if the offset is invalid or no implementation is available.
          */
         get_string_at_offset(offset: number, granularity: TextGranularity): TextRange;
+        /**
+         * Gets a range of text from an #AtspiText object.  The number of bytes
+         *          in the returned string may exceed either end_offset or start_offset, since
+         *          UTF-8 is a variable-width encoding.
+         * @param start_offset a #gint indicating the start of the desired text range.
+         * @param end_offset a #gint indicating the first character past the desired range.
+         * @returns a text string containing characters from @start_offset          to @end_offset-1, inclusive, encoded as UTF-8.
+         */
+        get_text(start_offset: number, end_offset: number): string;
+        // Conflicted with Atspi.Value.get_text
+        get_text(...args: never[]): any;
         /**
          * Gets delimited text from an #AtspiText object which follows a given
          *          text offset.
@@ -3591,7 +3585,7 @@ export namespace Atspi {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3823,20 +3817,7 @@ export namespace Atspi {
 
         // Own virtual methods of Atspi.Device
 
-        vfunc_add_key_grab(kd: KeyDefinition): boolean;
-        /**
-         * Synthesizes a mouse event at a specific screen coordinate.
-         * Most AT clients should use the #AccessibleAction interface when
-         * tempted to generate mouse events, rather than this method.
-         * Event names: b1p = button 1 press; b2r = button 2 release;
-         *              b3c = button 3 click; b2d = button 2 double-click;
-         *              abs = absolute motion; rel = relative motion.
-         * @param obj The #AtspiAccessible that should receive the click.
-         * @param x a #gint indicating the x coordinate of the mouse event, relative to     @obj..
-         * @param y a #gint indicating the y coordinate of the mouse event, relative to     @obj..
-         * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
-         */
-        vfunc_generate_mouse_event(obj: Accessible, x: number, y: number, name: string): void;
+        vfunc_add_key_grab(kd: KeyDefinition): void;
         /**
          * Returns the locked modifiers (ie, num lock, caps lock) associated with this
          * keyboard.
@@ -3891,19 +3872,6 @@ export namespace Atspi {
          * pressed or released.
          */
         add_key_watcher(): void;
-        /**
-         * Synthesizes a mouse event at a specific screen coordinate.
-         * Most AT clients should use the #AccessibleAction interface when
-         * tempted to generate mouse events, rather than this method.
-         * Event names: b1p = button 1 press; b2r = button 2 release;
-         *              b3c = button 3 click; b2d = button 2 double-click;
-         *              abs = absolute motion; rel = relative motion.
-         * @param obj The #AtspiAccessible that should receive the click.
-         * @param x a #gint indicating the x coordinate of the mouse event, relative to     @obj..
-         * @param y a #gint indicating the y coordinate of the mouse event, relative to     @obj..
-         * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
-         */
-        generate_mouse_event(obj: Accessible, x: number, y: number, name: string): void;
         get_grab_by_id(id: number): KeyDefinition;
         /**
          * Returns the locked modifiers (ie, num lock, caps lock) associated with this
@@ -4708,43 +4676,6 @@ export namespace Atspi {
         _init(...args: any[]): void;
     }
 
-    /**
-     * This structure represents a single  text selection within a document. This
-     * selection is defined by two points in the content, where each one is defined
-     * by an AtkObject supporting the AtkText interface and a character offset
-     * relative to it.
-     *
-     * The end object must appear after the start object in the accessibility tree,
-     * i.e. the end object must be reachable from the start object by navigating
-     * forward (next, first child etc).
-     *
-     * This struct also contains a `start_is_active` boolean, to communicate if the
-     * start of the selection is the active point or not.
-     *
-     * The active point corresponds to the user's focus or point of interest. The
-     * user moves the active point to expand or collapse the range. The anchor
-     * point is the other point of the range and typically remains constant. In
-     * most cases, anchor is the start of the range and active is the end. However,
-     * when selecting backwards (e.g. pressing shift+left arrow in a text field),
-     * the start of the range is the active point, as the user moves this to
-     * manipulate the selection.
-     */
-    class TextSelection {
-        static $gtype: GObject.GType<TextSelection>;
-
-        // Own fields of Atspi.TextSelection
-
-        start_object: Accessible;
-        start_offset: number;
-        end_object: Accessible;
-        end_offset: number;
-        start_is_active: boolean;
-
-        // Constructors of Atspi.TextSelection
-
-        _init(...args: any[]): void;
-    }
-
     module Action {
         // Constructor properties interface
 
@@ -5080,21 +5011,6 @@ export namespace Atspi {
          * @returns a #gint indicating the page count of an #AccessibleDocument object.
          */
         get_page_count(): number;
-        /**
-         * Returns an array of AtspiTextSelections within this document.
-         * @returns a GArray of AtspiTextSelection structures representing the selection.
-         */
-        get_text_selections(): TextSelection[];
-        /**
-         * Makes 1 or more selections within this document denoted by the given
-         * array of AtspiTextSelections. Any existing physical selection (inside or
-         * outside this document) is replaced by the new selections. All objects within
-         * the given selection ranges must be descendants of this document. Otherwise
-         * FALSE will be returned.
-         * @param selections a GArray of AtspiTextSelections              to be selected.
-         * @returns TRUE if the selection was made successfully; FALSE otherwise.
-         */
-        set_text_selections(selections: TextSelection[]): boolean;
     }
 
     export const Document: DocumentNamespace;

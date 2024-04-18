@@ -14,7 +14,6 @@ import './manette-0.2-ambient.d.ts';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type GUdev from '@girs/gudev-1.0';
 
 export namespace Manette {

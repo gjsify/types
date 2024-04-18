@@ -17,7 +17,6 @@ import type Soup from '@girs/soup-2.4';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type JavaScriptCore from '@girs/javascriptcore-4.0';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
@@ -27,6 +26,7 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace WebKit2 {
@@ -1974,8 +1974,8 @@ export namespace WebKit2 {
          */
         get_original_uri(): string;
         /**
-         * Obtain the title of the item.
-         * @returns the page title of @list_item or %NULL    when the title is empty.
+         * Since 2.44, page titles are no longer stored in history. This function now returns an empty string.
+         * @returns an empty string
          */
         get_title(): string;
         /**
@@ -2208,7 +2208,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2823,7 +2823,7 @@ export namespace WebKit2 {
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_all_cookies().
          *
-         * The return value is a #GSList of #SoupCookie instances which should be released
+         * The return value is a #GList of #SoupCookie instances which should be released
          * with g_list_free_full() and soup_cookie_free().
          * @param result a #GAsyncResult
          * @returns A #GList of #SoupCookie instances.
@@ -2849,7 +2849,7 @@ export namespace WebKit2 {
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_cookies().
          *
-         * The return value is a #GSList of #SoupCookie instances which should be released
+         * The return value is a #GList of #SoupCookie instances which should be released
          * with g_list_free_full() and soup_cookie_free().
          * @param result a #GAsyncResult
          * @returns A #GList of #SoupCookie instances.
@@ -3143,7 +3143,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3551,6 +3551,12 @@ export namespace WebKit2 {
     }
 
     module EditorState {
+        // Signal callback interfaces
+
+        interface Changed {
+            (): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3587,6 +3593,15 @@ export namespace WebKit2 {
         constructor(properties?: Partial<EditorState.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Own signals of WebKit2.EditorState
+
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'changed', callback: (_source: this) => void): number;
+        connect_after(signal: 'changed', callback: (_source: this) => void): number;
+        emit(signal: 'changed'): void;
 
         // Own methods of WebKit2.EditorState
 
@@ -4445,7 +4460,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5266,7 +5281,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5668,7 +5683,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6299,7 +6314,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6839,7 +6854,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -8137,22 +8152,12 @@ export namespace WebKit2 {
         get enableMockCaptureDevices(): boolean;
         set enableMockCaptureDevices(val: boolean);
         /**
-         * Whether to enable HTML5 offline web application cache support. Offline
-         * web application cache allows web applications to run even when
-         * the user is not connected to the network.
-         *
-         * HTML5 offline web application specification is available at
-         * http://dev.w3.org/html5/spec/offline.html.
+         * Unsupported setting. This property does nothing.
          */
         get enable_offline_web_application_cache(): boolean;
         set enable_offline_web_application_cache(val: boolean);
         /**
-         * Whether to enable HTML5 offline web application cache support. Offline
-         * web application cache allows web applications to run even when
-         * the user is not connected to the network.
-         *
-         * HTML5 offline web application specification is available at
-         * http://dev.w3.org/html5/spec/offline.html.
+         * Unsupported setting. This property does nothing.
          */
         get enableOfflineWebApplicationCache(): boolean;
         set enableOfflineWebApplicationCache(val: boolean);
@@ -8788,7 +8793,7 @@ export namespace WebKit2 {
         get_enable_mock_capture_devices(): boolean;
         /**
          * Get the #WebKitSettings:enable-offline-web-application-cache property.
-         * @returns %TRUE If HTML5 offline web application cache support is enabled or %FALSE otherwise.
+         * @returns %FALSE.
          */
         get_enable_offline_web_application_cache(): boolean;
         /**
@@ -9100,7 +9105,7 @@ export namespace WebKit2 {
          */
         set_enable_mock_capture_devices(enabled: boolean): void;
         /**
-         * Set the #WebKitSettings:enable-offline-web-application-cache property.
+         * Setting no longer supported. This function does nothing.
          * @param enabled Value to be set
          */
         set_enable_offline_web_application_cache(enabled: boolean): void;
@@ -10263,7 +10268,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12343,7 +12348,7 @@ export namespace WebKit2 {
          *     } else {
          *         g_warning ("Error running javascript: unexpected return value");
          *     }
-         *     webkit_javascript_result_unref (js_result);
+         *     g_object_unref (value);
          * }
          *
          * static void
@@ -12465,7 +12470,7 @@ export namespace WebKit2 {
          *     } else {
          *         g_warning ("Error running javascript: unexpected return value");
          *     }
-         *     webkit_javascript_result_unref (js_result);
+         *     g_object_unref (value);
          * }
          *
          * static void
@@ -12981,15 +12986,15 @@ export namespace WebKit2 {
          * }
          * ```
          * @param body the JavaScript function body
-         * @param _arguments a #GVariant with format `{&sv}` storing the function arguments. Function argument values must be one of the following types, or contain only the following GVariant types: number, string, array, and dictionary. @world_name (nullable): the name of a #WebKitScriptWorld, if no name (i.e. %NULL) is provided, the default world is used. Any value that is not %NULL is a distinct world.
-         * @param world_name
+         * @param _arguments a #GVariant with format `{&sv}` storing the function arguments. Function argument values must be one of the following types, or contain only the following GVariant types: number, string, array, and dictionary.
+         * @param world_name the name of a #WebKitScriptWorld, if no name (i.e. %NULL) is provided, the default world is used. Any value that is not %NULL is a distinct world.
          * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the script finished
          */
         run_async_javascript_function_in_world(
             body: string,
             _arguments: GLib.Variant,
-            world_name: string,
+            world_name?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -13524,7 +13529,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -13900,7 +13905,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -14311,7 +14316,7 @@ export namespace WebKit2 {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
