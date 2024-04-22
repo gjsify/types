@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./thunarx-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Thunarx-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

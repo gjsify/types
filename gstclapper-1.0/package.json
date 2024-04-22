@@ -1,0 +1,61 @@
+{
+    "name": "@girs/gstclapper-1.0",
+    "version": "1.0.0-4.0.0-beta.3",
+    "description": "GJS TypeScript type definitions for GstClapper-1.0, generated from library version 1.0.0",
+    "type": "module",
+    "module": "gstclapper-1.0.js",
+    "main": "gstclapper-1.0.js",
+    "exports": {
+        "./ambient": {
+            "types": "./gstclapper-1.0-ambient.d.ts",
+            "import": "./gstclapper-1.0-ambient.js",
+            "default": "./gstclapper-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gstclapper-1.0-import.d.ts",
+            "import": "./gstclapper-1.0-import.js",
+            "default": "./gstclapper-1.0-import.js"
+        },
+        ".": {
+            "types": "./gstclapper-1.0.d.ts",
+            "import": "./gstclapper-1.0.js",
+            "default": "./gstclapper-1.0.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstclapper-1.0.d.ts"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-1.0": "workspace:^",
+        "@girs/gstaudio-1.0": "workspace:^",
+        "@girs/gstbase-1.0": "workspace:^",
+        "@girs/gstpbutils-1.0": "workspace:^",
+        "@girs/gsttag-1.0": "workspace:^",
+        "@girs/gstvideo-1.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GstClapper-1.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/gstclapper-1.0#readme"
+}

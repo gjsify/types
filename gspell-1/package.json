@@ -1,6 +1,6 @@
 {
     "name": "@girs/gspell-1",
-    "version": "1.0.0-4.0.0-beta.2",
+    "version": "1.0.0-4.0.0-beta.3",
     "description": "GJS TypeScript type definitions for Gspell-1, generated from library version 1.0.0",
     "type": "module",
     "module": "gspell-1.js",

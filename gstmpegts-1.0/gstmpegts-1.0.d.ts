@@ -458,27 +458,6 @@ export namespace GstMpegts {
         VISUAL_IMPAIRED_COMMENTARY,
     }
     /**
-     * metadata_descriptor metadata_format valid values. See ISO/IEC 13818-1:2018(E) Table 2-85.
-     */
-    enum MetadataFormat {
-        /**
-         * ISO/IEC 15938-1 TeM.
-         */
-        TEM,
-        /**
-         * ISO/IEC 15938-1 BiM.
-         */
-        BIM,
-        /**
-         * Defined by metadata application format.
-         */
-        APPLICATION_FORMAT,
-        /**
-         * Defined by metadata_format_identifier field.
-         */
-        IDENTIFIER_FIELD,
-    }
-    /**
      * The type of #GstMpegtsDescriptor
      *
      * These values correspond to miscellaneous descriptor types that are
@@ -1396,16 +1375,6 @@ export namespace GstMpegts {
      * @returns A newly allocated #GPtrArray
      */
     function pat_new(): PatProgram[];
-    /**
-     * Return the #GType associated with #GstMpegtsPESMetadataMeta
-     * @returns a #GType
-     */
-    function pes_metadata_meta_api_get_type(): GObject.GType;
-    /**
-     * Gets the global #GstMetaInfo describing the #GstMpegtsPESMetadataMeta meta.
-     * @returns The #GstMetaInfo
-     */
-    function pes_metadata_meta_get_info(): Gst.MetaInfo;
     /**
      * Allocates and initializes a new INSERT command #GstMpegtsSCTESIT
      * setup to cancel the specified `event_id`.
@@ -2529,29 +2498,6 @@ export namespace GstMpegts {
          */
         parse_logical_channel(): [boolean, LogicalChannelDescriptor];
         /**
-         * Parses out the metadata descriptor from the `descriptor`.
-         *
-         * See ISO/IEC 13818-1:2018 Section 2.6.60 and 2.6.61 for details.
-         * metadata_application_format is provided in Table 2-82. metadata_format is
-         * provided in Table 2-85.
-         * @returns %TRUE if the parsing worked correctly, else %FALSE.
-         */
-        parse_metadata(): [boolean, MetadataDescriptor];
-        /**
-         * Extracts the metadata STD descriptor from `descriptor`.
-         *
-         * See ISO/IEC 13818-1:2018 Section 2.6.62 and 2.6.63 for details.
-         * @param metadata_input_leak_rate
-         * @param metadata_buffer_size
-         * @param metadata_output_leak_rate
-         * @returns %TRUE if parsing succeeded, else %FALSE.
-         */
-        parse_metadata_std(
-            metadata_input_leak_rate: number,
-            metadata_buffer_size: number,
-            metadata_output_leak_rate: number,
-        ): boolean;
-        /**
          * Extracts the Registration information from `descriptor`.
          * @returns %TRUE if parsing succeeded, else %FALSE.
          */
@@ -2804,31 +2750,6 @@ export namespace GstMpegts {
     }
 
     /**
-     * The metadata descriptor specifies parameters of a metadata service carried in an MPEG-2 Transport Stream (or Program Stream). The descriptor is included in the PMT in the descriptor loop for the elementary stream that carries the
-     * metadata service. The descriptor specifies the format of the associated metadata, and contains the value of the
-     * metadata_service_id to identify the metadata service to which the metadata descriptor applies.
-     *
-     * Note that this structure does not include all of the metadata_descriptor items, and will need extension to support DSM-CC and private data.
-     * See ISO/IEC 13818-1:2018 Section 2.6.60 and Section 2.6.61 for more information.
-     */
-    class MetadataDescriptor {
-        static $gtype: GObject.GType<MetadataDescriptor>;
-
-        // Own fields of GstMpegts.MetadataDescriptor
-
-        metadata_application_format: number;
-        metadata_format: MetadataFormat;
-        metadata_format_identifier: number;
-        metadata_service_id: number;
-        decoder_config_flags: number;
-        dsm_cc_flag: boolean;
-
-        // Constructors of GstMpegts.MetadataDescriptor
-
-        _init(...args: any[]): void;
-    }
-
-    /**
      * Network Information Table (ISO/IEC 13818-1 / EN 300 468)
      */
     class NIT {
@@ -2877,33 +2798,6 @@ export namespace GstMpegts {
         _init(...args: any[]): void;
 
         static ['new'](): NITStream;
-    }
-
-    /**
-     * Extra buffer metadata describing the PES Metadata context.
-     * This is based on the Metadata AU cell header in
-     * ISO/IEC 13818-1:2018 Section 2.12.4.
-     *
-     * AU_cell_data_length is not provided, since it matches the length of the buffer
-     */
-    class PESMetadataMeta {
-        static $gtype: GObject.GType<PESMetadataMeta>;
-
-        // Own fields of GstMpegts.PESMetadataMeta
-
-        metadata_service_id: number;
-        flags: number;
-
-        // Constructors of GstMpegts.PESMetadataMeta
-
-        _init(...args: any[]): void;
-
-        // Own static methods of GstMpegts.PESMetadataMeta
-
-        /**
-         * Gets the global #GstMetaInfo describing the #GstMpegtsPESMetadataMeta meta.
-         */
-        static get_info(): Gst.MetaInfo;
     }
 
     /**

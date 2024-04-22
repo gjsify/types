@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./lightdm-1.d.ts"],
+    "readme": "./README.md",
+    "name": "LightDM-1",
+    "tsconfig": "./tsconfig.json"
+}
+

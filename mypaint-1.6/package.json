@@ -1,6 +1,6 @@
 {
     "name": "@girs/mypaint-1.6",
-    "version": "1.6.0-4.0.0",
+    "version": "1.6.0-4.0.0-beta.3",
     "description": "GJS TypeScript type definitions for MyPaint-1.6, generated from library version 1.6.0",
     "type": "module",
     "module": "mypaint-1.6.js",

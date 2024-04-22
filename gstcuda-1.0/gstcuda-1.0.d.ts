@@ -26,20 +26,6 @@ export namespace GstCuda {
         GL_BUFFER,
         D3D11_RESOURCE,
     }
-    /**
-     * CUDA memory allocation method
-     */
-    enum CudaMemoryAllocMethod {
-        UNKNOWN,
-        /**
-         * Memory allocated via cuMemAlloc or cuMemAllocPitch
-         */
-        MALLOC,
-        /**
-         * Memory allocated via cuMemCreate and cuMemMap
-         */
-        MMAP,
-    }
     enum CudaQuarkId {
         GRAPHICS_RESOURCE,
         MAX,
@@ -64,30 +50,7 @@ export namespace GstCuda {
      * CUDA device/host memory
      */
     const MAP_CUDA: number;
-    /**
-     * Gets configured allocation method
-     * @param config a buffer pool config
-     */
-    function buffer_pool_config_get_cuda_alloc_method(config: Gst.Structure): CudaMemoryAllocMethod;
-    function buffer_pool_config_get_cuda_stream(config: Gst.Structure): CudaStream | null;
-    /**
-     * Sets allocation method
-     * @param config a buffer pool config
-     * @param method
-     */
-    function buffer_pool_config_set_cuda_alloc_method(config: Gst.Structure, method: CudaMemoryAllocMethod): void;
-    /**
-     * Sets `stream` on `config`
-     * @param config a buffer pool config
-     * @param stream a #GstCudaStream
-     */
-    function buffer_pool_config_set_cuda_stream(config: Gst.Structure, stream: CudaStream): void;
     function context_new_cuda_context(cuda_ctx: CudaContext): Gst.Context;
-    /**
-     * Creates new user token value
-     * @returns user token value
-     */
-    function cuda_create_user_token(): number;
     /**
      * Perform the steps necessary for retrieving a #GstCudaContext from the
      * surrounding elements or from the application using the #GstContext mechanism.
@@ -132,7 +95,6 @@ export namespace GstCuda {
      */
     function cuda_memory_init_once(): void;
     function cuda_nvrtc_compile(source: string): string;
-    function cuda_nvrtc_compile_cubin(source: string, device: number): string;
     /**
      * Loads the nvrtc library.
      * @returns %TRUE if the library could be loaded, %FALSE otherwise
@@ -143,22 +105,17 @@ export namespace GstCuda {
      * @param mem A #GstMemory
      */
     function is_cuda_memory(mem: Gst.Memory): boolean;
-    /**
-     * CUDA memory transfer flags
-     */
     enum CudaMemoryTransfer {
         /**
-         * the device memory needs downloading to the staging memory
+         * the device memory needs downloading
+         *                                          to the staging memory
          */
         DOWNLOAD,
         /**
-         * the staging memory needs uploading to the device memory
+         * the staging memory needs uploading
+         *                                          to the device memory
          */
         UPLOAD,
-        /**
-         * the device memory needs synchronization
-         */
-        SYNC,
     }
     module CudaAllocator {
         // Constructor properties interface
@@ -178,75 +135,11 @@ export namespace GstCuda {
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstCuda.CudaAllocator
-
-        /**
-         * Controls the active state of `allocator`. Default #GstCudaAllocator is
-         * stateless and therefore active state is ignored, but subclass implementation
-         * (e.g., #GstCudaPoolAllocator) will require explicit active state control
-         * for its internal resource management.
-         *
-         * This method is conceptually identical to gst_buffer_pool_set_active method.
-         * @param active the new active state
-         */
-        vfunc_set_active(active: boolean): boolean;
-
         // Own methods of GstCuda.CudaAllocator
 
-        alloc(context: CudaContext, stream: CudaStream | null, info: GstVideo.VideoInfo): Gst.Memory | null;
+        alloc(context: CudaContext, info: GstVideo.VideoInfo): Gst.Memory;
         // Conflicted with Gst.Allocator.alloc
         alloc(...args: never[]): any;
-        /**
-         * Allocates a new memory that wraps the given CUDA device memory.
-         *
-         * `info` must represent actual memory layout, in other words, offset, stride
-         * and size fields of `info` should be matched with memory layout of `dev_ptr`
-         *
-         * By default, wrapped `dev_ptr` will be freed at the time when #GstMemory
-         * is freed if `notify` is %NULL. Otherwise, if caller sets `notify,`
-         * freeing `dev_ptr` is callers responsibility and default #GstCudaAllocator
-         * will not free it.
-         * @param context a #GstCudaContext
-         * @param stream a #GstCudaStream
-         * @param info a #GstVideoInfo
-         * @param dev_ptr a CUdeviceptr CUDA device memory
-         * @param notify Called with @user_data when the memory is freed
-         * @returns a new #GstMemory
-         */
-        alloc_wrapped(
-            context: CudaContext,
-            stream: CudaStream | null,
-            info: GstVideo.VideoInfo,
-            dev_ptr: CudaGst.deviceptr,
-            notify?: GLib.DestroyNotify | null,
-        ): Gst.Memory;
-        /**
-         * Controls the active state of `allocator`. Default #GstCudaAllocator is
-         * stateless and therefore active state is ignored, but subclass implementation
-         * (e.g., #GstCudaPoolAllocator) will require explicit active state control
-         * for its internal resource management.
-         *
-         * This method is conceptually identical to gst_buffer_pool_set_active method.
-         * @param active the new active state
-         * @returns %TRUE if active state of @allocator was successfully updated.
-         */
-        set_active(active: boolean): boolean;
-        /**
-         * Allocates new #GstMemory object with CUDA virtual memory.
-         * @param context a #GstCudaContext
-         * @param stream a #GstCudaStream
-         * @param info a #GstVideoInfo
-         * @param prop allocation property
-         * @param granularity_flags allocation flags
-         * @returns a newly allocated memory object or %NULL if allocation is not supported
-         */
-        virtual_alloc(
-            context: CudaContext,
-            stream: CudaStream,
-            info: GstVideo.VideoInfo,
-            prop: CudaGst.memAllocationProp,
-            granularity_flags: CudaGst.memAllocationGranularity_flags,
-        ): Gst.Memory | null;
     }
 
     module CudaBufferPool {
@@ -280,10 +173,6 @@ export namespace GstCuda {
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             cuda_device_id: number;
             cudaDeviceId: number;
-            os_handle: boolean;
-            osHandle: boolean;
-            virtual_memory: boolean;
-            virtualMemory: boolean;
         }
     }
 
@@ -294,22 +183,6 @@ export namespace GstCuda {
 
         get cuda_device_id(): number;
         get cudaDeviceId(): number;
-        /**
-         * OS handle supportability in virtual memory management
-         */
-        get os_handle(): boolean;
-        /**
-         * OS handle supportability in virtual memory management
-         */
-        get osHandle(): boolean;
-        /**
-         * Virtual memory management supportability
-         */
-        get virtual_memory(): boolean;
-        /**
-         * Virtual memory management supportability
-         */
-        get virtualMemory(): boolean;
 
         // Own fields of GstCuda.CudaContext
 
@@ -361,57 +234,7 @@ export namespace GstCuda {
         push(): boolean;
     }
 
-    module CudaPoolAllocator {
-        // Constructor properties interface
-
-        interface ConstructorProps extends CudaAllocator.ConstructorProps {}
-    }
-
-    /**
-     * A #GstCudaAllocator subclass for cuda memory pool
-     */
-    class CudaPoolAllocator extends CudaAllocator {
-        static $gtype: GObject.GType<CudaPoolAllocator>;
-
-        // Own fields of GstCuda.CudaPoolAllocator
-
-        context: CudaContext;
-
-        // Constructors of GstCuda.CudaPoolAllocator
-
-        constructor(properties?: Partial<CudaPoolAllocator.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](context: CudaContext, stream: CudaStream | null, info: GstVideo.VideoInfo): CudaPoolAllocator;
-
-        static new_for_virtual_memory(
-            context: CudaContext,
-            stream: CudaStream | null,
-            info: GstVideo.VideoInfo,
-            prop: CudaGst.memAllocationProp,
-            granularity_flags: CudaGst.memAllocationGranularity_flags,
-        ): CudaPoolAllocator;
-
-        // Own methods of GstCuda.CudaPoolAllocator
-
-        /**
-         * Acquires a #GstMemory from `allocator`. `memory` should point to a memory
-         * location that can hold a pointer to the new #GstMemory.
-         * @returns a #GstFlowReturn such as %GST_FLOW_FLUSHING when the allocator is inactive.
-         */
-        acquire_memory(): [Gst.FlowReturn, Gst.Memory];
-    }
-
     type CudaAllocatorClass = typeof CudaAllocator;
-    abstract class CudaAllocatorPrivate {
-        static $gtype: GObject.GType<CudaAllocatorPrivate>;
-
-        // Constructors of GstCuda.CudaAllocatorPrivate
-
-        _init(...args: any[]): void;
-    }
-
     type CudaBufferPoolClass = typeof CudaBufferPool;
     abstract class CudaBufferPoolPrivate {
         static $gtype: GObject.GType<CudaBufferPoolPrivate>;
@@ -465,112 +288,12 @@ export namespace GstCuda {
          * Ensures that the #GstCudaAllocator is initialized and ready to be used.
          */
         static init_once(): void;
-
-        // Own methods of GstCuda.CudaMemory
-
-        /**
-         * Exports virtual memory handle to OS specific handle.
-         *
-         * On Windows, `os_handle` should be pointer to HANDLE (i.e., void **), and
-         * pointer to file descriptor (i.e., int *) on Linux.
-         *
-         * The returned `os_handle` is owned by `mem` and therefore caller shouldn't
-         * close the handle.
-         * @returns %TRUE if successful
-         */
-        ['export'](): [boolean, any];
-        /**
-         * Query allocation method
-         */
-        get_alloc_method(): CudaMemoryAllocMethod;
-        /**
-         * Gets CUDA stream object associated with `mem`
-         * @returns a #GstCudaStream or %NULL if default CUDA stream is in use
-         */
-        get_stream(): CudaStream | null;
-        /**
-         * Creates CUtexObject with given parameters
-         * @param plane the plane index
-         * @param filter_mode filter mode
-         * @returns %TRUE if successful
-         */
-        get_texture(plane: number, filter_mode: CudaGst.filter_mode): [boolean, CudaGst.texObject];
-        /**
-         * Gets back user data pointer stored via gst_cuda_memory_set_token_data()
-         * @param token an user token
-         * @returns user data pointer or %NULL
-         */
-        get_token_data(token: number): any | null;
-        /**
-         * Gets user data pointer stored via gst_cuda_allocator_alloc_wrapped()
-         * @returns the user data pointer
-         */
-        get_user_data(): any | null;
-        /**
-         * Sets an opaque user data on a #GstCudaMemory
-         * @param token an user token
-         * @param data an user data
-         */
-        set_token_data(token: number, data?: any | null): void;
-        /**
-         * Performs synchronization if needed
-         */
-        sync(): void;
     }
 
     abstract class CudaMemoryPrivate {
         static $gtype: GObject.GType<CudaMemoryPrivate>;
 
         // Constructors of GstCuda.CudaMemoryPrivate
-
-        _init(...args: any[]): void;
-    }
-
-    type CudaPoolAllocatorClass = typeof CudaPoolAllocator;
-    abstract class CudaPoolAllocatorPrivate {
-        static $gtype: GObject.GType<CudaPoolAllocatorPrivate>;
-
-        // Constructors of GstCuda.CudaPoolAllocatorPrivate
-
-        _init(...args: any[]): void;
-    }
-
-    class CudaStream {
-        static $gtype: GObject.GType<CudaStream>;
-
-        // Own fields of GstCuda.CudaStream
-
-        context: CudaContext;
-
-        // Constructors of GstCuda.CudaStream
-
-        constructor(context: CudaContext);
-        _init(...args: any[]): void;
-
-        static ['new'](context: CudaContext): CudaStream;
-
-        // Own methods of GstCuda.CudaStream
-
-        /**
-         * Get CUDA stream handle
-         * @returns a `CUstream` handle of @stream or %NULL if @stream is %NULL
-         */
-        get_handle(): CudaGst.stream;
-        /**
-         * Increase the reference count of `stream`.
-         * @returns @stream
-         */
-        ref(): CudaStream;
-        /**
-         * Decrease the reference count of `stream`.
-         */
-        unref(): void;
-    }
-
-    abstract class CudaStreamPrivate {
-        static $gtype: GObject.GType<CudaStreamPrivate>;
-
-        // Constructors of GstCuda.CudaStreamPrivate
 
         _init(...args: any[]): void;
     }

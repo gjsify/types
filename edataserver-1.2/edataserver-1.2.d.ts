@@ -1898,6 +1898,17 @@ export namespace EDataServer {
      */
     function util_gthread_id(thread: GLib.Thread): number;
     /**
+     * Guesses whether the `source` is read only. This is done on some heuristic
+     * like the source backend, where some are known to be read only. That this
+     * function returns %FALSE does not necessarily mean the source is writable,
+     * it only means the source is not well-known read-only source. To know
+     * for sure open the corresponding #EClient, if the `source` references such,
+     * and use e_client_is_readonly().
+     * @param source an #ESource
+     * @returns %TRUE, when the @source is well-known read-only source, or %FALSE otherwise
+     */
+    function util_guess_source_is_readonly(source?: any | null): boolean;
+    /**
      * Checks whether the `identity_source` can be used for sending, which means
      * whether it has configures send mail source.
      * @param registry an #ESourceRegistry

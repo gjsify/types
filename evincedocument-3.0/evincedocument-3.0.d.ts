@@ -173,6 +173,11 @@ export namespace EvinceDocument {
      * (e.g. in version 3.1.4 this is 3).
      */
     const MAJOR_VERSION: number;
+    /**
+     * The minor version number of the EV library
+     * (e.g. in version 3.1.4 this is 1).
+     */
+    const MINOR_VERSION: number;
     function backends_manager_get_document(mime_type: string): Document;
     function backends_manager_get_document_module_name(document: Document): string;
     function document_error_quark(): GLib.Quark;

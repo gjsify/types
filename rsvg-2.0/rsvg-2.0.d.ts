@@ -893,7 +893,7 @@ export namespace Rsvg {
          * context to be in an error state in various situations, for example, if it was
          * passed an invalid matrix or if it was created for an invalid surface.
          * @param cr A Cairo context
-         * @returns `TRUE` if drawing succeeded; `FALSE` otherwise.
+         * @returns `TRUE` if drawing succeeded; `FALSE` otherwise.  This function will emit a g_warning() if a rendering error occurs.
          */
         render_cairo(cr: cairo.Context): boolean;
         /**
@@ -946,7 +946,7 @@ export namespace Rsvg {
          * has an `id="foo"` attribute.
          * @param cr A Cairo context
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to render the whole SVG.
-         * @returns `TRUE` if drawing succeeded; `FALSE` otherwise.
+         * @returns `TRUE` if drawing succeeded; `FALSE` otherwise.  This function will emit a g_warning() if a rendering error occurs.
          */
         render_cairo_sub(cr: cairo.Context, id?: string | null): boolean;
         /**

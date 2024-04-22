@@ -75,10 +75,6 @@ export namespace GstApp {
             (): boolean;
         }
 
-        interface ProposeAllocation {
-            (query: Gst.Query): boolean;
-        }
-
         interface PullPreroll {
             (): Gst.Sample | null;
         }
@@ -209,9 +205,6 @@ export namespace GstApp {
         connect(signal: 'new-serialized-event', callback: (_source: this) => boolean): number;
         connect_after(signal: 'new-serialized-event', callback: (_source: this) => boolean): number;
         emit(signal: 'new-serialized-event'): void;
-        connect(signal: 'propose-allocation', callback: (_source: this, query: Gst.Query) => boolean): number;
-        connect_after(signal: 'propose-allocation', callback: (_source: this, query: Gst.Query) => boolean): number;
-        emit(signal: 'propose-allocation', query: Gst.Query): void;
         connect(signal: 'pull-preroll', callback: (_source: this) => Gst.Sample | null): number;
         connect_after(signal: 'pull-preroll', callback: (_source: this) => Gst.Sample | null): number;
         emit(signal: 'pull-preroll'): void;

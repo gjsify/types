@@ -28538,7 +28538,7 @@ export namespace Anjuta {
     }
 
     type DropEntryClass = typeof DropEntry;
-    class Encoding {
+    abstract class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
         // Constructors of Anjuta.Encoding

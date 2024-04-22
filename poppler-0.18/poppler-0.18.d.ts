@@ -339,6 +339,7 @@ export namespace Poppler {
          * Document is damaged
          */
         static DAMAGED: number;
+        static SIGNING: number;
 
         // Constructors of Poppler.Error
 
@@ -1006,10 +1007,26 @@ export namespace Poppler {
     function date_parse(date: string, timet: number): boolean;
     function error_quark(): GLib.Quark;
     /**
+     * Get all available signing certificate information
+     * @returns all available signing certificate information
+     */
+    function get_available_signing_certificates(): CertificateInfo[];
+    /**
      * Returns the backend compiled into the poppler library.
      * @returns The backend used by poppler
      */
     function get_backend(): Backend;
+    /**
+     * Get certificate by nick name
+     * @param id
+     * @returns a #PopplerCertificateInfo or %NULL if not found
+     */
+    function get_certificate_info_by_id(id: string): CertificateInfo;
+    /**
+     * Get NSS directory
+     * @returns nss directroy.
+     */
+    function get_nss_dir(): string;
     /**
      * Returns the version of poppler in use.  This result is not to be freed.
      * @returns the version of poppler.
@@ -1042,11 +1059,24 @@ export namespace Poppler {
      * @returns a new bytestring,   or %NULL
      */
     function named_dest_to_bytestring(name: string): Uint8Array | null;
+    /**
+     * Set NSS directory
+     * @param path
+     */
+    function set_nss_dir(path: string): void;
+    /**
+     * A callback which asks for certificate password
+     * @param func a #PopplerNssPasswordFunc that represents a signature annotation
+     */
+    function set_nss_password_callback(func: NssPasswordFunc): void;
     interface AttachmentSaveFunc {
         (buf: Uint8Array | string): boolean;
     }
     interface MediaSaveFunc {
         (buf: Uint8Array | string): boolean;
+    }
+    interface NssPasswordFunc {
+        (text: string): string;
     }
     enum AnnotFlag {
         UNKNOWN,
@@ -2400,6 +2430,23 @@ export namespace Poppler {
          * @param title A new title
          */
         set_title(title: string): void;
+        /**
+         * Sign #document using #signing_data.
+         * @param signing_data a #PopplerSigningData
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback
+         */
+        sign(
+            signing_data: SigningData,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finish poppler_sign_document and get return status or error.
+         * @param result a #GAsyncResult
+         * @returns %TRUE on successful signing a document, otherwise %FALSE and error is set.
+         */
+        sign_finish(result: Gio.AsyncResult): boolean;
     }
 
     module FontInfo {
@@ -3956,6 +4003,77 @@ export namespace Poppler {
 
     type AttachmentClass = typeof Attachment;
     /**
+     * PopplerCertificateInfo contains detailed info about a signing certificate.
+     */
+    class CertificateInfo {
+        static $gtype: GObject.GType<CertificateInfo>;
+
+        // Constructors of Poppler.CertificateInfo
+
+        constructor(properties?: Partial<{}>);
+        _init(...args: any[]): void;
+
+        static ['new'](): CertificateInfo;
+
+        // Own methods of Poppler.CertificateInfo
+
+        /**
+         * Copies `certificate_info,` creating an identical #PopplerCertificateInfo.
+         * @returns a new #PopplerCertificateInfo structure identical to @certificate_info
+         */
+        copy(): CertificateInfo;
+        /**
+         * Frees `certificate_info`
+         */
+        free(): void;
+        /**
+         * Get certificate expiration time
+         * @returns certificate expiration time
+         */
+        get_expiration_time(): GLib.DateTime;
+        /**
+         * Get certificate nick name
+         * @returns certificate nick name
+         */
+        get_id(): string;
+        /**
+         * Get certificate issuance time
+         * @returns certificate issuance time
+         */
+        get_issuance_time(): GLib.DateTime;
+        /**
+         * Get certificate issuer common name
+         * @returns certificate issuer common name
+         */
+        get_issuer_common_name(): string;
+        /**
+         * Get certificate issuer email
+         * @returns certificate issuer email
+         */
+        get_issuer_email(): string;
+        /**
+         * Get certificate issuer organization
+         * @returns certificate issuer organization
+         */
+        get_issuer_organization(): string;
+        /**
+         * Get certificate subject common name
+         * @returns certificate subject common name
+         */
+        get_subject_common_name(): string;
+        /**
+         * Get certificate subject email
+         * @returns certificate subject email
+         */
+        get_subject_email(): string;
+        /**
+         * Get certificate subject organization
+         * @returns certificate subject organization
+         */
+        get_subject_organization(): string;
+    }
+
+    /**
      * A #PopplerColor describes a RGB color. Color components
      * are values between 0 and 65535
      */
@@ -4039,7 +4157,7 @@ export namespace Poppler {
         free(): void;
     }
 
-    class FontsIter {
+    abstract class FontsIter {
         static $gtype: GObject.GType<FontsIter>;
 
         // Constructors of Poppler.FontsIter
@@ -4541,7 +4659,7 @@ export namespace Poppler {
      * PopplerSignatureInfo contains detailed info about a signature
      * contained in a form field.
      */
-    class SignatureInfo {
+    abstract class SignatureInfo {
         static $gtype: GObject.GType<SignatureInfo>;
 
         // Constructors of Poppler.SignatureInfo
@@ -4559,6 +4677,11 @@ export namespace Poppler {
          * Frees `siginfo`
          */
         free(): void;
+        /**
+         * Returns PopplerCertificateInfo for given PopplerSignatureInfo.
+         * @returns certificate info of the signature
+         */
+        get_certificate_info(): CertificateInfo;
         /**
          * Returns status of the certificate for given PopplerSignatureInfo.
          * @returns certificate status of the signature
@@ -4583,6 +4706,219 @@ export namespace Poppler {
          * @returns A string.
          */
         get_signer_name(): string;
+    }
+
+    class SigningData {
+        static $gtype: GObject.GType<SigningData>;
+
+        // Constructors of Poppler.SigningData
+
+        constructor(properties?: Partial<{}>);
+        _init(...args: any[]): void;
+
+        static ['new'](): SigningData;
+
+        // Own methods of Poppler.SigningData
+
+        /**
+         * Copies `signing_data,` creating an identical #PopplerSigningData.
+         * @returns a new #PopplerSigningData structure identical to @signing_data
+         */
+        copy(): SigningData;
+        /**
+         * Frees `signing_data`
+         */
+        free(): void;
+        /**
+         * Get signature background color.
+         * @returns a #PopplerColor
+         */
+        get_background_color(): Color;
+        /**
+         * Get signature border color.
+         * @returns a #PopplerColor
+         */
+        get_border_color(): Color;
+        /**
+         * Get signature border width.
+         * @returns border width
+         */
+        get_border_width(): number;
+        /**
+         * Get certification information.
+         * @returns a #PopplerCertificateInfo
+         */
+        get_certificate_info(): CertificateInfo;
+        /**
+         * Get destination file name.
+         * @returns destination filename
+         */
+        get_destination_filename(): string;
+        /**
+         * Get document owner password.
+         * @returns document owner password (for encrypted files)
+         */
+        get_document_owner_password(): string;
+        /**
+         * Get document user password.
+         * @returns document user password (for encrypted files)
+         */
+        get_document_user_password(): string;
+        /**
+         * Get field partial name.
+         * @returns field partial name
+         */
+        get_field_partial_name(): string;
+        /**
+         * Get signature font color.
+         * @returns a #PopplerColor
+         */
+        get_font_color(): Color;
+        /**
+         * Get signature font size.
+         * @returns font size
+         */
+        get_font_size(): number;
+        /**
+         * Get image path.
+         * @returns image path
+         */
+        get_image_path(): string;
+        /**
+         * Get signature left font size.
+         * @returns left font size
+         */
+        get_left_font_size(): number;
+        /**
+         * Get location.
+         * @returns location
+         */
+        get_location(): string;
+        /**
+         * Get page.
+         * @returns page number
+         */
+        get_page(): number;
+        /**
+         * Get signing key password.
+         * @returns password
+         */
+        get_password(): string;
+        /**
+         * Get reason.
+         * @returns reason
+         */
+        get_reason(): string;
+        /**
+         * Get signature rectangle.
+         * @returns a #PopplerRectangle
+         */
+        get_signature_rectangle(): Rectangle;
+        /**
+         * Get signature text.
+         * @returns signature text
+         */
+        get_signature_text(): string;
+        /**
+         * Get signature text left.
+         * @returns signature text left
+         */
+        get_signature_text_left(): string;
+        /**
+         * Set signature background color.
+         * @param background_color a #PopplerColor to be used for signature background
+         */
+        set_background_color(background_color: Color): void;
+        /**
+         * Set signature border color.
+         * @param border_color a #PopplerColor to be used for signature border
+         */
+        set_border_color(border_color: Color): void;
+        /**
+         * Set signature border width.
+         * @param border_width border width
+         */
+        set_border_width(border_width: number): void;
+        /**
+         * Set certification information.
+         * @param certificate_info a #PopplerCertificateInfo
+         */
+        set_certificate_info(certificate_info: CertificateInfo): void;
+        /**
+         * Set destination file name.
+         * @param filename destination filename
+         */
+        set_destination_filename(filename: string): void;
+        /**
+         * Set document owner password (for encrypted files).
+         * @param document_owner_password document owner password
+         */
+        set_document_owner_password(document_owner_password: string): void;
+        /**
+         * Set document user password (for encrypted files).
+         * @param document_user_password document user password
+         */
+        set_document_user_password(document_user_password: string): void;
+        /**
+         * Set field partial name (existing field id or a new one) where signature is placed.
+         * @param field_partial_name a field partial name
+         */
+        set_field_partial_name(field_partial_name: string): void;
+        /**
+         * Set signature font color.
+         * @param font_color a #PopplerColor to be used as signature font color
+         */
+        set_font_color(font_color: Color): void;
+        /**
+         * Set signature font size (>0).
+         * @param font_size signature font size
+         */
+        set_font_size(font_size: number): void;
+        /**
+         * Set signature background (watermark) image path.
+         * @param image_path signature image path
+         */
+        set_image_path(image_path: string): void;
+        /**
+         * Set signature left font size (> 0).
+         * @param font_size signature font size
+         */
+        set_left_font_size(font_size: number): void;
+        /**
+         * Set signature location (e.g. "At my desk").
+         * @param location a location
+         */
+        set_location(location: string): void;
+        /**
+         * Set page (>=0).
+         * @param page a page number
+         */
+        set_page(page: number): void;
+        /**
+         * Set password for the signing key.
+         * @param password a password
+         */
+        set_password(password: string): void;
+        /**
+         * Set reason for signature (e.g. I'm approver).
+         * @param reason a reason
+         */
+        set_reason(reason: string): void;
+        /**
+         * Set signature rectangle.
+         * @param signature_rect a #PopplerRectangle where signature should be shown
+         */
+        set_signature_rectangle(signature_rect: Rectangle): void;
+        /**
+         * Set signature text.
+         * @param signature_text text to show as main signature
+         */
+        set_signature_text(signature_text: string): void;
+        /**
+         * Set small signature text on the left hand.
+         * @param signature_text_left text to show as small left signature
+         */
+        set_signature_text_left(signature_text_left: string): void;
     }
 
     class StructureElementIter {
@@ -4672,7 +5008,7 @@ export namespace Poppler {
         free(): void;
     }
 
-    class TextSpan {
+    abstract class TextSpan {
         static $gtype: GObject.GType<TextSpan>;
 
         // Constructors of Poppler.TextSpan

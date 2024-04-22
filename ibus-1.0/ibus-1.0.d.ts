@@ -17,6 +17,66 @@ import type GLib from '@girs/glib-2.0';
 
 export namespace IBus {
     /**
+     * Type of Pre-edit style as the semantic name.
+     * The Wayland specs prefers to express the semantic values rather than RGB
+     * values and text-input protocol version 1 defines some values:
+     * https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/unstable/text-input/text-input-unstable-v1.xml?ref_type=heads#L251
+     *
+     * IBus compiled the values for major input method engines:
+     * https://github.com/ibus/ibus/wiki/Wayland-Colors
+     */
+    enum AttrPreedit {
+        /**
+         * Default style for composing text.
+         */
+        DEFAULT,
+        /**
+         * Style should be the same as in non-composing text.
+         */
+        NONE,
+        /**
+         * Most language engines wish to draw underline in
+         *                           the typed whole preedit string except for the
+         *                           prediction string. (Chinese, Japanese,
+         *                           Typing-booster)
+         */
+        WHOLE,
+        /**
+         * Modifying an active segment is distinguished
+         *                               against whole the preedit text. (Hangul,
+         *                               Japanese)
+         */
+        SELECTION,
+        /**
+         * A prediction string can be appended after the
+         *                                typed string. (Typing-booster)
+         */
+        PREDICTION,
+        /**
+         * A prefix string can be an informative color.
+         *                            (Table)
+         */
+        PREFIX,
+        /**
+         * A suffix string can be an informative color.
+         *                            (Table)
+         */
+        SUFFIX,
+        /**
+         * An detected typo could be an error color
+         *                                    with a spelling check or the word could
+         *                                    not be found in a dictionary. The
+         *                                    underline color also might be more
+         *                                    visible. (Typing-booster, Table)
+         */
+        ERROR_SPELLING,
+        /**
+         * A wrong compose key could be an error
+         *                                   color. (Typing-booster)
+         */
+        ERROR_COMPOSE,
+    }
+    /**
      * Type enumeration of IBusText attribute.
      */
     enum AttrType {
@@ -57,6 +117,23 @@ export namespace IBus {
          * Error underline
          */
         ERROR,
+    }
+    /**
+     * Type enumeration of IBusBusGlobalBindingType.
+     */
+    enum BusGlobalBindingType {
+        /**
+         * Any types
+         */
+        ANY,
+        /**
+         * IME switcher
+         */
+        IME_SWITCHER,
+        /**
+         * Emoji typing
+         */
+        EMOJI_TYPING,
     }
     enum BusRequestNameReply {
         /**
@@ -119,6 +196,18 @@ export namespace IBus {
      * is particularly useful to implement intelligent behavior in
      * engines, such as automatic input-mode switch and text prediction.
      *
+     * Note that the purpose is not meant to impose a totally strict rule
+     * about allowed characters, and does not replace input validation.
+     * It is fine for an on-screen keyboard to let the user override the
+     * character set restriction that is expressed by the purpose. The
+     * application is expected to validate the entry contents, even if
+     * it specified a purpose.
+     *
+     * The difference between `IBUS_INPUT_PURPOSE_DIGITS` and
+     * `IBUS_INPUT_PURPOSE_NUMBER` is that the former accepts only digits
+     * while the latter also some punctuation (like commas or points, plus,
+     * minus) and “e” or “E” as in 3.14E+000.
+     *
      * This enumeration may be extended in the future; engines should
      * interpret unknown values as 'free form'.
      */
@@ -157,14 +246,19 @@ export namespace IBus {
         NAME,
         /**
          * Like `IBUS_INPUT_PURPOSE_FREE_FORM,`
-         * but characters are hidden
+         *     but characters are hidden
          */
         PASSWORD,
         /**
          * Like `IBUS_INPUT_PURPOSE_DIGITS,` but
-         * characters are hidden
+         *     characters are hidden
          */
         PIN,
+        /**
+         * Allow any character, in addition to control
+         *     codes. Since 1.5.24
+         */
+        TERMINAL,
     }
     /**
      * Orientation of UI.
@@ -252,6 +346,13 @@ export namespace IBus {
          * A separator for menu.
          */
         SEPARATOR,
+    }
+    enum XEventType {
+        NOTHING,
+        KEY_PRESS,
+        KEY_RELEASE,
+        OTHER,
+        EVENT_LAST,
     }
     const __0: number;
     const __1: number;
@@ -985,6 +1086,10 @@ export namespace IBus {
      * D-Bus interface for IBus panel.
      */
     const INTERFACE_PANEL: string;
+    /**
+     * D-Bus interface for IBus portal.
+     */
+    const INTERFACE_PORTAL: string;
     const ISO_Center_Object: number;
     const ISO_Continuous_Underline: number;
     const ISO_Discontinuous_Underline: number;
@@ -1098,6 +1203,7 @@ export namespace IBus {
     const KEY_Acircumflexgrave: number;
     const KEY_Acircumflexhook: number;
     const KEY_Acircumflextilde: number;
+    const KEY_AddFavorite: number;
     const KEY_Adiaeresis: number;
     const KEY_Agrave: number;
     const KEY_Ahook: number;
@@ -1105,6 +1211,8 @@ export namespace IBus {
     const KEY_Alt_R: number;
     const KEY_Amacron: number;
     const KEY_Aogonek: number;
+    const KEY_ApplicationLeft: number;
+    const KEY_ApplicationRight: number;
     const KEY_Arabic_0: number;
     const KEY_Arabic_1: number;
     const KEY_Arabic_2: number;
@@ -1278,20 +1386,48 @@ export namespace IBus {
     const KEY_Armenian_zhe: number;
     const KEY_Atilde: number;
     const KEY_AudibleBell_Enable: number;
+    const KEY_AudioCycleTrack: number;
+    const KEY_AudioForward: number;
+    const KEY_AudioLowerVolume: number;
+    const KEY_AudioMedia: number;
+    const KEY_AudioMicMute: number;
+    const KEY_AudioMute: number;
+    const KEY_AudioNext: number;
+    const KEY_AudioPause: number;
+    const KEY_AudioPlay: number;
+    const KEY_AudioPreset: number;
+    const KEY_AudioPrev: number;
+    const KEY_AudioRaiseVolume: number;
+    const KEY_AudioRandomPlay: number;
+    const KEY_AudioRecord: number;
+    const KEY_AudioRepeat: number;
+    const KEY_AudioRewind: number;
+    const KEY_AudioStop: number;
+    const KEY_Away: number;
     const KEY_B: number;
     const KEY_Babovedot: number;
+    const KEY_Back: number;
+    const KEY_BackForward: number;
     const KEY_BackSpace: number;
+    const KEY_Battery: number;
     const KEY_Begin: number;
+    const KEY_Blue: number;
+    const KEY_Bluetooth: number;
+    const KEY_Book: number;
     const KEY_BounceKeys_Enable: number;
     const KEY_Break: number;
+    const KEY_BrightnessAdjust: number;
     const KEY_Byelorussian_SHORTU: number;
     const KEY_Byelorussian_shortu: number;
     const KEY_C: number;
+    const KEY_CD: number;
     const KEY_CH: number;
     const KEY_C_H: number;
     const KEY_C_h: number;
     const KEY_Cabovedot: number;
     const KEY_Cacute: number;
+    const KEY_Calculator: number;
+    const KEY_Calendar: number;
     const KEY_Cancel: number;
     const KEY_Caps_Lock: number;
     const KEY_Ccaron: number;
@@ -1299,11 +1435,18 @@ export namespace IBus {
     const KEY_Ccircumflex: number;
     const KEY_Ch: number;
     const KEY_Clear: number;
+    const KEY_ClearGrab: number;
+    const KEY_Close: number;
     const KEY_Codeinput: number;
     const KEY_ColonSign: number;
+    const KEY_Community: number;
+    const KEY_ContrastAdjust: number;
     const KEY_Control_L: number;
     const KEY_Control_R: number;
+    const KEY_Copy: number;
     const KEY_CruzeiroSign: number;
+    const KEY_Cut: number;
+    const KEY_CycleAngle: number;
     const KEY_Cyrillic_A: number;
     const KEY_Cyrillic_BE: number;
     const KEY_Cyrillic_CHE: number;
@@ -1409,9 +1552,12 @@ export namespace IBus {
     const KEY_Cyrillic_zhe: number;
     const KEY_Cyrillic_zhe_descender: number;
     const KEY_D: number;
+    const KEY_DOS: number;
     const KEY_Dabovedot: number;
     const KEY_Dcaron: number;
     const KEY_Delete: number;
+    const KEY_Display: number;
+    const KEY_Documents: number;
     const KEY_DongSign: number;
     const KEY_Down: number;
     const KEY_Dstroke: number;
@@ -1435,6 +1581,7 @@ export namespace IBus {
     const KEY_Ehook: number;
     const KEY_Eisu_Shift: number;
     const KEY_Eisu_toggle: number;
+    const KEY_Eject: number;
     const KEY_Emacron: number;
     const KEY_End: number;
     const KEY_Eogonek: number;
@@ -1442,7 +1589,9 @@ export namespace IBus {
     const KEY_Eth: number;
     const KEY_Etilde: number;
     const KEY_EuroSign: number;
+    const KEY_Excel: number;
     const KEY_Execute: number;
+    const KEY_Explorer: number;
     const KEY_F: number;
     const KEY_F1: number;
     const KEY_F10: number;
@@ -1492,10 +1641,16 @@ export namespace IBus {
     const KEY_Farsi_8: number;
     const KEY_Farsi_9: number;
     const KEY_Farsi_yeh: number;
+    const KEY_Favorites: number;
+    const KEY_Finance: number;
     const KEY_Find: number;
     const KEY_First_Virtual_Screen: number;
+    const KEY_Forward: number;
+    const KEY_FrameBack: number;
+    const KEY_FrameForward: number;
     const KEY_G: number;
     const KEY_Gabovedot: number;
+    const KEY_Game: number;
     const KEY_Gbreve: number;
     const KEY_Gcaron: number;
     const KEY_Gcedilla: number;
@@ -1539,6 +1694,7 @@ export namespace IBus {
     const KEY_Georgian_xan: number;
     const KEY_Georgian_zen: number;
     const KEY_Georgian_zhar: number;
+    const KEY_Go: number;
     const KEY_Greek_ALPHA: number;
     const KEY_Greek_ALPHAaccent: number;
     const KEY_Greek_BETA: number;
@@ -1614,6 +1770,7 @@ export namespace IBus {
     const KEY_Greek_upsilondieresis: number;
     const KEY_Greek_xi: number;
     const KEY_Greek_zeta: number;
+    const KEY_Green: number;
     const KEY_H: number;
     const KEY_Hangul: number;
     const KEY_Hangul_A: number;
@@ -1727,9 +1884,13 @@ export namespace IBus {
     const KEY_Help: number;
     const KEY_Henkan: number;
     const KEY_Henkan_Mode: number;
+    const KEY_Hibernate: number;
     const KEY_Hiragana: number;
     const KEY_Hiragana_Katakana: number;
+    const KEY_History: number;
     const KEY_Home: number;
+    const KEY_HomePage: number;
+    const KEY_HotLinks: number;
     const KEY_Hstroke: number;
     const KEY_Hyper_L: number;
     const KEY_Hyper_R: number;
@@ -1831,7 +1992,11 @@ export namespace IBus {
     const KEY_Kanji: number;
     const KEY_Kanji_Bangou: number;
     const KEY_Katakana: number;
+    const KEY_KbdBrightnessDown: number;
+    const KEY_KbdBrightnessUp: number;
+    const KEY_KbdLightOnOff: number;
     const KEY_Kcedilla: number;
+    const KEY_Keyboard: number;
     const KEY_Korean_Won: number;
     const KEY_L: number;
     const KEY_L1: number;
@@ -1846,12 +2011,32 @@ export namespace IBus {
     const KEY_L9: number;
     const KEY_Lacute: number;
     const KEY_Last_Virtual_Screen: number;
+    const KEY_Launch0: number;
+    const KEY_Launch1: number;
+    const KEY_Launch2: number;
+    const KEY_Launch3: number;
+    const KEY_Launch4: number;
+    const KEY_Launch5: number;
+    const KEY_Launch6: number;
+    const KEY_Launch7: number;
+    const KEY_Launch8: number;
+    const KEY_Launch9: number;
+    const KEY_LaunchA: number;
+    const KEY_LaunchB: number;
+    const KEY_LaunchC: number;
+    const KEY_LaunchD: number;
+    const KEY_LaunchE: number;
+    const KEY_LaunchF: number;
     const KEY_Lbelowdot: number;
     const KEY_Lcaron: number;
     const KEY_Lcedilla: number;
     const KEY_Left: number;
+    const KEY_LightBulb: number;
     const KEY_Linefeed: number;
     const KEY_LiraSign: number;
+    const KEY_LogGrabInfo: number;
+    const KEY_LogOff: number;
+    const KEY_LogWindowTree: number;
     const KEY_Lstroke: number;
     const KEY_M: number;
     const KEY_Mabovedot: number;
@@ -1862,24 +2047,41 @@ export namespace IBus {
     const KEY_Macedonia_gje: number;
     const KEY_Macedonia_kje: number;
     const KEY_Mae_Koho: number;
+    const KEY_Mail: number;
+    const KEY_MailForward: number;
+    const KEY_Market: number;
     const KEY_Massyo: number;
+    const KEY_Meeting: number;
+    const KEY_Memo: number;
     const KEY_Menu: number;
+    const KEY_MenuKB: number;
+    const KEY_MenuPB: number;
+    const KEY_Messenger: number;
     const KEY_Meta_L: number;
     const KEY_Meta_R: number;
     const KEY_MillSign: number;
+    const KEY_ModeLock: number;
     const KEY_Mode_switch: number;
+    const KEY_MonBrightnessDown: number;
+    const KEY_MonBrightnessUp: number;
     const KEY_MouseKeys_Accel_Enable: number;
     const KEY_MouseKeys_Enable: number;
     const KEY_Muhenkan: number;
     const KEY_Multi_key: number;
     const KEY_MultipleCandidate: number;
+    const KEY_Music: number;
+    const KEY_MyComputer: number;
+    const KEY_MySites: number;
     const KEY_N: number;
     const KEY_Nacute: number;
     const KEY_NairaSign: number;
     const KEY_Ncaron: number;
     const KEY_Ncedilla: number;
+    const KEY_New: number;
     const KEY_NewSheqelSign: number;
+    const KEY_News: number;
     const KEY_Next: number;
+    const KEY_Next_VMode: number;
     const KEY_Next_Virtual_Screen: number;
     const KEY_Ntilde: number;
     const KEY_Num_Lock: number;
@@ -1897,6 +2099,7 @@ export namespace IBus {
     const KEY_Ocircumflextilde: number;
     const KEY_Odiaeresis: number;
     const KEY_Odoubleacute: number;
+    const KEY_OfficeHome: number;
     const KEY_Ograve: number;
     const KEY_Ohook: number;
     const KEY_Ohorn: number;
@@ -1907,6 +2110,9 @@ export namespace IBus {
     const KEY_Ohorntilde: number;
     const KEY_Omacron: number;
     const KEY_Ooblique: number;
+    const KEY_Open: number;
+    const KEY_OpenURL: number;
+    const KEY_Option: number;
     const KEY_Oslash: number;
     const KEY_Otilde: number;
     const KEY_Overlay1_Enable: number;
@@ -1915,8 +2121,11 @@ export namespace IBus {
     const KEY_Pabovedot: number;
     const KEY_Page_Down: number;
     const KEY_Page_Up: number;
+    const KEY_Paste: number;
     const KEY_Pause: number;
     const KEY_PesetaSign: number;
+    const KEY_Phone: number;
+    const KEY_Pictures: number;
     const KEY_Pointer_Accelerate: number;
     const KEY_Pointer_Button1: number;
     const KEY_Pointer_Button2: number;
@@ -1947,6 +2156,9 @@ export namespace IBus {
     const KEY_Pointer_Up: number;
     const KEY_Pointer_UpLeft: number;
     const KEY_Pointer_UpRight: number;
+    const KEY_PowerDown: number;
+    const KEY_PowerOff: number;
+    const KEY_Prev_VMode: number;
     const KEY_Prev_Virtual_Screen: number;
     const KEY_PreviousCandidate: number;
     const KEY_Print: number;
@@ -1968,24 +2180,43 @@ export namespace IBus {
     const KEY_R7: number;
     const KEY_R8: number;
     const KEY_R9: number;
+    const KEY_RFKill: number;
     const KEY_Racute: number;
     const KEY_Rcaron: number;
     const KEY_Rcedilla: number;
+    const KEY_Red: number;
     const KEY_Redo: number;
+    const KEY_Refresh: number;
+    const KEY_Reload: number;
     const KEY_RepeatKeys_Enable: number;
+    const KEY_Reply: number;
     const KEY_Return: number;
     const KEY_Right: number;
+    const KEY_RockerDown: number;
+    const KEY_RockerEnter: number;
+    const KEY_RockerUp: number;
     const KEY_Romaji: number;
+    const KEY_RotateWindows: number;
+    const KEY_RotationKB: number;
+    const KEY_RotationPB: number;
     const KEY_RupeeSign: number;
     const KEY_S: number;
     const KEY_SCHWA: number;
     const KEY_Sabovedot: number;
     const KEY_Sacute: number;
+    const KEY_Save: number;
     const KEY_Scaron: number;
     const KEY_Scedilla: number;
     const KEY_Scircumflex: number;
+    const KEY_ScreenSaver: number;
+    const KEY_ScrollClick: number;
+    const KEY_ScrollDown: number;
+    const KEY_ScrollUp: number;
     const KEY_Scroll_Lock: number;
+    const KEY_Search: number;
     const KEY_Select: number;
+    const KEY_SelectButton: number;
+    const KEY_Send: number;
     const KEY_Serbian_DJE: number;
     const KEY_Serbian_DZE: number;
     const KEY_Serbian_JE: number;
@@ -2001,6 +2232,7 @@ export namespace IBus {
     const KEY_Shift_L: number;
     const KEY_Shift_Lock: number;
     const KEY_Shift_R: number;
+    const KEY_Shop: number;
     const KEY_SingleCandidate: number;
     const KEY_Sinh_a: number;
     const KEY_Sinh_aa: number;
@@ -2082,17 +2314,40 @@ export namespace IBus {
     const KEY_Sinh_uu2: number;
     const KEY_Sinh_va: number;
     const KEY_Sinh_ya: number;
+    const KEY_Sleep: number;
     const KEY_SlowKeys_Enable: number;
+    const KEY_Spell: number;
+    const KEY_SplitScreen: number;
+    const KEY_Standby: number;
+    const KEY_Start: number;
     const KEY_StickyKeys_Enable: number;
+    const KEY_Stop: number;
+    const KEY_Subtitle: number;
     const KEY_Super_L: number;
     const KEY_Super_R: number;
+    const KEY_Support: number;
+    const KEY_Suspend: number;
+    const KEY_Switch_VT_1: number;
+    const KEY_Switch_VT_10: number;
+    const KEY_Switch_VT_11: number;
+    const KEY_Switch_VT_12: number;
+    const KEY_Switch_VT_2: number;
+    const KEY_Switch_VT_3: number;
+    const KEY_Switch_VT_4: number;
+    const KEY_Switch_VT_5: number;
+    const KEY_Switch_VT_6: number;
+    const KEY_Switch_VT_7: number;
+    const KEY_Switch_VT_8: number;
+    const KEY_Switch_VT_9: number;
     const KEY_Sys_Req: number;
     const KEY_T: number;
     const KEY_THORN: number;
     const KEY_Tab: number;
     const KEY_Tabovedot: number;
+    const KEY_TaskPane: number;
     const KEY_Tcaron: number;
     const KEY_Tcedilla: number;
+    const KEY_Terminal: number;
     const KEY_Terminate_Server: number;
     const KEY_Thai_baht: number;
     const KEY_Thai_bobaimai: number;
@@ -2179,9 +2434,18 @@ export namespace IBus {
     const KEY_Thai_yoyak: number;
     const KEY_Thai_yoying: number;
     const KEY_Thorn: number;
+    const KEY_Time: number;
+    const KEY_ToDoList: number;
+    const KEY_Tools: number;
+    const KEY_TopMenu: number;
+    const KEY_TouchpadOff: number;
+    const KEY_TouchpadOn: number;
+    const KEY_TouchpadToggle: number;
     const KEY_Touroku: number;
+    const KEY_Travel: number;
     const KEY_Tslash: number;
     const KEY_U: number;
+    const KEY_UWB: number;
     const KEY_Uacute: number;
     const KEY_Ubelowdot: number;
     const KEY_Ubreve: number;
@@ -2212,25 +2476,42 @@ export namespace IBus {
     const KEY_Ukranian_yi: number;
     const KEY_Umacron: number;
     const KEY_Undo: number;
+    const KEY_Ungrab: number;
     const KEY_Uogonek: number;
     const KEY_Up: number;
     const KEY_Uring: number;
+    const KEY_User1KB: number;
+    const KEY_User2KB: number;
+    const KEY_UserPB: number;
     const KEY_Utilde: number;
     const KEY_V: number;
+    const KEY_VendorHome: number;
+    const KEY_Video: number;
+    const KEY_View: number;
     const KEY_VoidSymbol: number;
     const KEY_W: number;
+    const KEY_WLAN: number;
+    const KEY_WWAN: number;
+    const KEY_WWW: number;
     const KEY_Wacute: number;
+    const KEY_WakeUp: number;
     const KEY_Wcircumflex: number;
     const KEY_Wdiaeresis: number;
+    const KEY_WebCam: number;
     const KEY_Wgrave: number;
+    const KEY_WheelButton: number;
+    const KEY_WindowClear: number;
     const KEY_WonSign: number;
+    const KEY_Word: number;
     const KEY_X: number;
     const KEY_Xabovedot: number;
+    const KEY_Xfer: number;
     const KEY_Y: number;
     const KEY_Yacute: number;
     const KEY_Ybelowdot: number;
     const KEY_Ycircumflex: number;
     const KEY_Ydiaeresis: number;
+    const KEY_Yellow: number;
     const KEY_Ygrave: number;
     const KEY_Yhook: number;
     const KEY_Ytilde: number;
@@ -2241,6 +2522,8 @@ export namespace IBus {
     const KEY_Zen_Koho: number;
     const KEY_Zenkaku: number;
     const KEY_Zenkaku_Hankaku: number;
+    const KEY_ZoomIn: number;
+    const KEY_ZoomOut: number;
     const KEY_Zstroke: number;
     const KEY_a: number;
     const KEY_aacute: number;
@@ -2603,6 +2886,7 @@ export namespace IBus {
     const KEY_dead_abovedot: number;
     const KEY_dead_abovereversedcomma: number;
     const KEY_dead_abovering: number;
+    const KEY_dead_aboveverticalline: number;
     const KEY_dead_acute: number;
     const KEY_dead_belowbreve: number;
     const KEY_dead_belowcircumflex: number;
@@ -2612,6 +2896,7 @@ export namespace IBus {
     const KEY_dead_belowmacron: number;
     const KEY_dead_belowring: number;
     const KEY_dead_belowtilde: number;
+    const KEY_dead_belowverticalline: number;
     const KEY_dead_breve: number;
     const KEY_dead_capital_schwa: number;
     const KEY_dead_caron: number;
@@ -2630,6 +2915,8 @@ export namespace IBus {
     const KEY_dead_i: number;
     const KEY_dead_invertedbreve: number;
     const KEY_dead_iota: number;
+    const KEY_dead_longsolidusoverlay: number;
+    const KEY_dead_lowline: number;
     const KEY_dead_macron: number;
     const KEY_dead_o: number;
     const KEY_dead_ogonek: number;
@@ -2785,6 +3072,7 @@ export namespace IBus {
     const KEY_ht: number;
     const KEY_hyphen: number;
     const KEY_i: number;
+    const KEY_iTouch: number;
     const KEY_iacute: number;
     const KEY_ibelowdot: number;
     const KEY_ibreve: number;
@@ -2985,6 +3273,7 @@ export namespace IBus {
     const KEY_percent: number;
     const KEY_period: number;
     const KEY_periodcentered: number;
+    const KEY_permille: number;
     const KEY_phonographcopyright: number;
     const KEY_plus: number;
     const KEY_plusminus: number;
@@ -3307,6 +3596,11 @@ export namespace IBus {
      * D-Bus path for IBus panel.
      */
     const PATH_PANEL: string;
+    /**
+     * D-Bus path for IBus extension panel for emoji.
+     * This service provides emoji, Unicode code point, Unicode name features.
+     */
+    const PATH_PANEL_EXTENSION_EMOJI: string;
     const Pabovedot: number;
     const Page_Down: number;
     const Page_Up: number;
@@ -3393,6 +3687,19 @@ export namespace IBus {
      * Address of IBus panel service.
      */
     const SERVICE_PANEL: string;
+    /**
+     * Address of IBus panel extension service.
+     */
+    const SERVICE_PANEL_EXTENSION: string;
+    /**
+     * Address of IBus panel extension service for emoji.
+     * This service provides emoji, Unicode code point, Unicode name features.
+     */
+    const SERVICE_PANEL_EXTENSION_EMOJI: string;
+    /**
+     * Address of IBus portalservice.
+     */
+    const SERVICE_PORTAL: string;
     const Sabovedot: number;
     const Sacute: number;
     const Scaron: number;
@@ -4449,6 +4756,45 @@ export namespace IBus {
     const zerosuperior: number;
     const zstroke: number;
     /**
+     * Converts an accelerator keyval and modifier mask into a string
+     * parseable by gtk_accelerator_parse(). For example, if you pass in
+     * #IBUS_KEY_q and #IBUS_CONTROL_MASK, this function returns “&lt;Control&gt;q”.
+     *
+     * If you need to display accelerators in the user interface,
+     * see gtk_accelerator_get_label().
+     * @param accelerator_key accelerator keyval
+     * @param accelerator_mods accelerator modifier mask
+     * @returns a newly-allocated accelerator name
+     */
+    function accelerator_name(accelerator_key: number, accelerator_mods: ModifierType): string;
+    /**
+     * Parses a string representing an accelerator. The format looks like
+     * “&lt;Control&gt;a” or “&lt;Shift&gt;&lt;Alt&gt;F1” or “&lt;Release%gt;z”
+     * (the last one is for key release).
+     *
+     * The parser is fairly liberal and allows lower or upper case, and also
+     * abbreviations such as “&lt;Ctl&gt;” and “&lt;Ctrl&gt;”. Key names are
+     * parsed using gdk_keyval_from_name(). For character keys the name is not the
+     * symbol, but the lowercase name, e.g. one would use “&lt;Ctrl&gt;minus”
+     * instead of “&lt;Ctrl&gt;-”.
+     *
+     * If the parse fails, `accelerator_key` and `accelerator_mods` will
+     * be set to 0 (zero).
+     * @param accelerator string representing an accelerator
+     */
+    function accelerator_parse(accelerator: string): [number, ModifierType | null];
+    /**
+     * Determines whether a given keyval and modifier mask constitute
+     * a valid keyboard accelerator. For example, the #IBUS_KEY_a keyval
+     * plus #IBUS_CONTROL_MASK is valid - this is a “Ctrl+a” accelerator.
+     * But, you can't, for instance, use the #IBUS_KEY_Control_L keyval
+     * as an accelerator.
+     * @param keyval a GDK keyval
+     * @param modifiers modifier mask
+     * @returns %TRUE if the accelerator is valid
+     */
+    function accelerator_valid(keyval: number, modifiers: ModifierType): boolean;
+    /**
      * Creates a new background #IBusAttribute.
      * @param color Color in RGB.
      * @param start_index Where attribute starts.
@@ -4472,6 +4818,21 @@ export namespace IBus {
      * @returns A newly allocated #IBusAttribute.
      */
     function attr_underline_new(underline_type: number, start_index: number, end_index: number): Attribute;
+    function emoji_dict_load(path: string): GLib.HashTable<string, any>;
+    function emoji_dict_lookup(
+        dict: { [key: string]: any } | GLib.HashTable<string, EmojiData>,
+        emoji: string,
+    ): EmojiData;
+    /**
+     * Saves the Emoji dictionary to the cache file.
+     * Recommend to use ibus_emoji_data_save() instead becase GSList in
+     * GHashTable does not work with Gir and Vala.
+     * Calls ibus_emoji_data_save() internally. The format of the hash table
+     * changed and now is { emoji character, #IBusEmojiData object }.
+     * @param path A path of the saved dictionary file.
+     * @param dict An Emoji dictionary
+     */
+    function emoji_dict_save(path: string, dict: { [key: string]: any } | GLib.HashTable<string, any>): void;
     function error_quark(): GLib.Quark;
     /**
      * Free a list of strings.
@@ -4535,11 +4896,9 @@ export namespace IBus {
     /**
      * Parse key event string and return key symbol and modifiers.
      * @param string Key event string.
-     * @param keyval Variable that hold key symbol result.
-     * @param modifiers Variable that hold modifiers result.
      * @returns %TRUE for succeed; %FALSE if failed.
      */
-    function key_event_from_string(string: string, keyval: number, modifiers: number): boolean;
+    function key_event_from_string(string: string): [boolean, number, number];
     /**
      * Return the name of a key symbol and modifiers.
      *
@@ -4653,7 +5012,7 @@ export namespace IBus {
      */
     function xml_parse_file(name: string): XML;
     interface FreeFunc {
-        (object: any): void;
+        (object?: any | null): void;
     }
     interface ObjectDestroyFunc {
         (object: Object): void;
@@ -4666,6 +5025,9 @@ export namespace IBus {
     }
     interface SerializableSerializeFunc {
         (serializable: Serializable, builder: GLib.VariantBuilder): boolean;
+    }
+    interface UnicodeDataLoadAsyncFinish {
+        (data_list: UnicodeData[]): void;
     }
     enum BusNameFlag {
         /**
@@ -4710,11 +5072,28 @@ export namespace IBus {
          *  or IME can handle surround text.
          */
         SURROUNDING_TEXT,
+        /**
+         * UI is owned by on-screen keyboard.
+         */
+        OSK,
+        /**
+         * Asynchronous process key events are not
+         *  supported and the ibus_engine_forward_key_event() should not be
+         *  used for the return value of #IBusEngine::process_key_event().
+         */
+        SYNC_PROCESS_KEY,
+        SYNC_PROCESS_KEY_V2,
     }
     /**
      * Describes hints that might be taken into account by engines.  Note
      * that engines may already tailor their behaviour according to the
      * #IBusInputPurpose of the entry.
+     *
+     * Some common sense is expected when using these flags - mixing
+     * `IBUS_INPUT_HINT_LOWERCASE` with any of the uppercase hints makes no sense.
+     *
+     * This enumeration may be extended in the future; engines should
+     * ignore unknown values.
      */
     enum InputHints {
         /**
@@ -4757,9 +5136,22 @@ export namespace IBus {
          */
         INHIBIT_OSK,
         /**
-         * The text is vertical.
+         * The text is vertical. Since 1.5.11
          */
         VERTICAL_WRITING,
+        /**
+         * Suggest offering Emoji support. Since 1.5.24
+         */
+        EMOJI,
+        /**
+         * Suggest not offering Emoji support. Since 1.5.24
+         */
+        NO_EMOJI,
+        /**
+         * Request that the input method should not
+         *     update personalized data (like typing history). Since 1.5.26
+         */
+        PRIVATE,
     }
     /**
      * Handles key modifier such as control, shift and alt and release event.
@@ -4985,6 +5377,10 @@ export namespace IBus {
             (name: string): void;
         }
 
+        interface GlobalShortcutKeyResponded {
+            (type: number, is_pressed: boolean, is_backward: boolean): void;
+        }
+
         interface NameOwnerChanged {
             (name: string, old_owner: string, new_owner: string): void;
         }
@@ -4992,6 +5388,8 @@ export namespace IBus {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
+            client_only: boolean;
+            clientOnly: boolean;
             connect_async: boolean;
             connectAsync: boolean;
         }
@@ -5005,6 +5403,14 @@ export namespace IBus {
 
         // Own properties of IBus.Bus
 
+        /**
+         * Whether the #IBusBus object is for client use only.
+         */
+        get client_only(): boolean;
+        /**
+         * Whether the #IBusBus object is for client use only.
+         */
+        get clientOnly(): boolean;
         /**
          * Whether the #IBusBus object should connect asynchronously to the bus.
          */
@@ -5024,6 +5430,8 @@ export namespace IBus {
 
         static new_async(): Bus;
 
+        static new_async_client(): Bus;
+
         // Own signals of IBus.Bus
 
         connect(id: string, callback: (...args: any[]) => any): number;
@@ -5038,6 +5446,15 @@ export namespace IBus {
         connect(signal: 'global-engine-changed', callback: (_source: this, name: string) => void): number;
         connect_after(signal: 'global-engine-changed', callback: (_source: this, name: string) => void): number;
         emit(signal: 'global-engine-changed', name: string): void;
+        connect(
+            signal: 'global-shortcut-key-responded',
+            callback: (_source: this, type: number, is_pressed: boolean, is_backward: boolean) => void,
+        ): number;
+        connect_after(
+            signal: 'global-shortcut-key-responded',
+            callback: (_source: this, type: number, is_pressed: boolean, is_backward: boolean) => void,
+        ): number;
+        emit(signal: 'global-shortcut-key-responded', type: number, is_pressed: boolean, is_backward: boolean): void;
         connect(
             signal: 'name-owner-changed',
             callback: (_source: this, name: string, old_owner: string, new_owner: string) => void,
@@ -5077,8 +5494,8 @@ export namespace IBus {
         add_match_async_finish(res: Gio.AsyncResult): boolean;
         /**
          * Create an input context for client synchronously.
-         * @param client_name Name of client.      "CreateInputContext" call is suceeded, %NULL otherwise.
-         * @returns An newly allocated #IBusInputContext if the
+         * @param client_name Name of client.
+         * @returns A newly allocated #IBusInputContext if the      "CreateInputContext" call is succeeded, %NULL otherwise.
          */
         create_input_context(client_name: string): InputContext;
         /**
@@ -5097,12 +5514,12 @@ export namespace IBus {
         /**
          * Finishes an operation started with ibus_bus_create_input_context_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_create_input_context_async().
-         * @returns An newly allocated #IBusInputContext if the      "CreateInputContext" call is suceeded, %NULL otherwise.
+         * @returns A newly allocated #IBusInputContext if the      "CreateInputContext" call is succeeded, %NULL otherwise.
          */
         create_input_context_async_finish(res: Gio.AsyncResult): InputContext;
         /**
          * Get the current focused input context synchronously.
-         * @returns The named of currently focued #IBusInputContext if the          "CurrentInputContext" call suceeded, %NULL otherwise. The return          value must be freed with g_free().
+         * @returns Name of the currently focused #IBusInputContext if the          "CurrentInputContext" call succeeded, %NULL otherwise. The return          value must be freed with g_free().
          */
         current_input_context(): string;
         /**
@@ -5119,13 +5536,13 @@ export namespace IBus {
         /**
          * Finishes an operation started with ibus_bus_current_input_context_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_current_input_context_async().
-         * @returns The named of currently focued IBusInputContext if the          "CurrentInputContext" call suceeded, %NULL otherwise. The return          value must be freed with g_free().
+         * @returns Name of the currently focused IBusInputContext if the          "CurrentInputContext" call succeeded, %NULL otherwise. The return          value must be freed with g_free().
          */
         current_input_context_async_finish(res: Gio.AsyncResult): string;
         /**
          * Exit or restart ibus-daemon synchronously.
          * @param restart Whether restarting the ibus.
-         * @returns %TRUE if the "Exit" call is suceeded, %FALSE otherwise.
+         * @returns %TRUE if the "Exit" call is successful, %FALSE otherwise.
          */
         exit(restart: boolean): boolean;
         /**
@@ -5144,7 +5561,7 @@ export namespace IBus {
         /**
          * Finishes an operation started with ibus_bus_exit_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_exit_async().
-         * @returns %TRUE if the "Exit" call is suceeded, %FALSE otherwise.
+         * @returns %TRUE if the "Exit" call is successful, %FALSE otherwise.
          */
         exit_async_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -5237,6 +5654,11 @@ export namespace IBus {
          * @returns Owner of the name. The returned value must be freed with g_free().
          */
         get_name_owner_async_finish(res: Gio.AsyncResult): string;
+        /**
+         * Return the main service name to use for calls on the ibus connection.
+         * @returns at dbus name.
+         */
+        get_service_name(): string;
         /**
          * Check if the bus's "use_global_engine" option is enabled or not
          * synchronously.
@@ -5424,13 +5846,13 @@ export namespace IBus {
          */
         preload_engines_async_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Register a componet to an #IBusBus synchronously.
+         * Register a component to an #IBusBus synchronously.
          * @param component A input engine component.
-         * @returns %TRUE if the "RegisterComponent" call is suceeded, %FALSE otherwise.
+         * @returns %TRUE if the "RegisterComponent" call is successful, %FALSE otherwise.
          */
         register_component(component: Component): boolean;
         /**
-         * Register a componet to an #IBusBus asynchronously.
+         * Register a component to an #IBusBus asynchronously.
          * @param component A input engine component.
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
@@ -5445,7 +5867,7 @@ export namespace IBus {
         /**
          * Finishes an operation started with ibus_bus_register_component_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_register_component_async().
-         * @returns %TRUE if the "RegisterComponent" call is suceeded, %FALSE otherwise.
+         * @returns %TRUE if the "RegisterComponent" call is successful, %FALSE otherwise.
          */
         register_component_async_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -5551,6 +5973,34 @@ export namespace IBus {
          * @returns %TRUE if no IPC errros. %FALSE otherwise.
          */
         set_global_engine_async_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Set global shorcut keys for the Wayland session.
+         * @param gtype A #IBusBusGlobalBindingType.
+         * @param keys A %NULL-terminated array of #IBusProcessKeyEventData.        keycode is used for the selecting direction and the forward direction        in case of 0, otherwise the backward direction.
+         * @returns %TRUE if the global shortcut keys are set. %FALSE otherwise.
+         */
+        set_global_shortcut_keys(gtype: BusGlobalBindingType, keys: ProcessKeyEventData[]): boolean;
+        /**
+         * Sete global shorcut keys for the Wayland session asynchronously.
+         * @param gtype A #IBusBusGlobalBindingType.
+         * @param keys A %NULL-terminated array of #IBusProcessKeyEventData.
+         * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
+         */
+        set_global_shortcut_keys_async(
+            gtype: BusGlobalBindingType,
+            keys: ProcessKeyEventData[],
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an operation started with ibus_bus_set_global_shortcut_keys_async().
+         * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_set_global_shortcut_keys_async().
+         * @returns %TRUE if the global shortcut keys are set. %FALSE otherwise.
+         */
+        set_global_shortcut_keys_async_finish(res: Gio.AsyncResult): boolean;
         /**
          * Set org.freedesktop.DBus.Properties.
          * @param property_name property name in org.freedesktop.DBus.Properties.Set
@@ -6577,6 +7027,95 @@ export namespace IBus {
         value_changed(section: string, name: string, value: GLib.Variant): void;
     }
 
+    module EmojiData {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Serializable.ConstructorProps {
+            annotations: any;
+            category: string;
+            description: string;
+            emoji: string;
+        }
+    }
+
+    /**
+     * Emoji data likes emoji unicode, annotations, description, category.
+     * You can get extended values with g_object_get_properties.
+     */
+    class EmojiData extends Serializable {
+        static $gtype: GObject.GType<EmojiData>;
+
+        // Own properties of IBus.EmojiData
+
+        /**
+         * The emoji annotations
+         */
+        get annotations(): any;
+        set annotations(val: any);
+        /**
+         * The emoji category
+         */
+        get category(): string;
+        /**
+         * The emoji description
+         */
+        get description(): string;
+        set description(val: string);
+        /**
+         * The emoji character
+         */
+        get emoji(): string;
+
+        // Constructors of IBus.EmojiData
+
+        constructor(properties?: Partial<EmojiData.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of IBus.EmojiData
+
+        static load(path: string): EmojiData[];
+        /**
+         * Save the list of #IBusEmojiData to the cache file.
+         * @param path A path of the saved emoji data.
+         * @param list A list of emoji data.
+         */
+        static save(path: string, list: EmojiData[]): void;
+
+        // Own methods of IBus.EmojiData
+
+        /**
+         * Gets the annotation list in #IBusEmojiData. It should not be freed.
+         * @returns annotation list property in #IBusEmojiData
+         */
+        get_annotations(): string[];
+        /**
+         * Gets the emoji category in #IBusEmojiData. It should not be freed.
+         * @returns category property in #IBusEmojiData
+         */
+        get_category(): string;
+        /**
+         * Gets the emoji description in #IBusEmojiData. It should not be freed.
+         * @returns description property in #IBusEmojiData
+         */
+        get_description(): string;
+        /**
+         * Gets the emoji character in #IBusEmojiData. It should not be freed.
+         * @returns emoji property in #IBusEmojiData
+         */
+        get_emoji(): string;
+        /**
+         * Sets the annotation list in #IBusEmojiData.
+         * @param annotations List of emoji annotations
+         */
+        set_annotations(annotations: string[]): void;
+        /**
+         * Sets the description in #IBusEmojiData.
+         * @param description An emoji description
+         */
+        set_description(description: string): void;
+    }
+
     module Engine {
         // Signal callback interfaces
 
@@ -6608,8 +7147,16 @@ export namespace IBus {
             (): void;
         }
 
+        interface FocusInId {
+            (object_path: string, client: string): void;
+        }
+
         interface FocusOut {
             (): void;
+        }
+
+        interface FocusOutId {
+            (object_path: string): void;
         }
 
         interface PageDown {
@@ -6621,7 +7168,7 @@ export namespace IBus {
         }
 
         interface ProcessHandWritingEvent {
-            (coordinates: any, coordinates_len: number): void;
+            (coordinates: any | null, coordinates_len: number): void;
         }
 
         interface ProcessKeyEvent {
@@ -6663,8 +7210,12 @@ export namespace IBus {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {
+            active_surrounding_text: boolean;
+            activeSurroundingText: boolean;
             engine_name: string;
             engineName: string;
+            has_focus_id: boolean;
+            hasFocusId: boolean;
         }
     }
 
@@ -6679,8 +7230,46 @@ export namespace IBus {
 
         // Own properties of IBus.Engine
 
+        /**
+         * When this property is set to %TRUE, "RequireSurroundingText" D-Bus
+         * signal will be called by ibus-daemon on every focus-in/out event, with
+         * no need for the engine to call ibus_engine_get_surrounding_text().
+         * This property can only be set at construct time.
+         */
+        get active_surrounding_text(): boolean;
+        /**
+         * When this property is set to %TRUE, "RequireSurroundingText" D-Bus
+         * signal will be called by ibus-daemon on every focus-in/out event, with
+         * no need for the engine to call ibus_engine_get_surrounding_text().
+         * This property can only be set at construct time.
+         */
+        get activeSurroundingText(): boolean;
+        /**
+         * Name of this IBusEngine.
+         */
         get engine_name(): string;
+        /**
+         * Name of this IBusEngine.
+         */
         get engineName(): string;
+        /**
+         * Use #IBusEngine::focus_in_id()/focus_out_id() class method insteads of
+         * focus_in()/focus_out() class methods when this property is set to %TRUE.
+         * Otherwise, use #IBusEngine::focus_in()/focus_out class methods.
+         * This property can only be set at construct time.
+         *
+         * See also: IBusEngine::focus-in-id
+         */
+        get has_focus_id(): boolean;
+        /**
+         * Use #IBusEngine::focus_in_id()/focus_out_id() class method insteads of
+         * focus_in()/focus_out() class methods when this property is set to %TRUE.
+         * Otherwise, use #IBusEngine::focus_in()/focus_out class methods.
+         * This property can only be set at construct time.
+         *
+         * See also: IBusEngine::focus-in-id
+         */
+        get hasFocusId(): boolean;
 
         // Own fields of IBus.Engine
 
@@ -6739,9 +7328,18 @@ export namespace IBus {
         connect(signal: 'focus-in', callback: (_source: this) => void): number;
         connect_after(signal: 'focus-in', callback: (_source: this) => void): number;
         emit(signal: 'focus-in'): void;
+        connect(signal: 'focus-in-id', callback: (_source: this, object_path: string, client: string) => void): number;
+        connect_after(
+            signal: 'focus-in-id',
+            callback: (_source: this, object_path: string, client: string) => void,
+        ): number;
+        emit(signal: 'focus-in-id', object_path: string, client: string): void;
         connect(signal: 'focus-out', callback: (_source: this) => void): number;
         connect_after(signal: 'focus-out', callback: (_source: this) => void): number;
         emit(signal: 'focus-out'): void;
+        connect(signal: 'focus-out-id', callback: (_source: this, object_path: string) => void): number;
+        connect_after(signal: 'focus-out-id', callback: (_source: this, object_path: string) => void): number;
+        emit(signal: 'focus-out-id', object_path: string): void;
         connect(signal: 'page-down', callback: (_source: this) => void): number;
         connect_after(signal: 'page-down', callback: (_source: this) => void): number;
         emit(signal: 'page-down'): void;
@@ -6750,13 +7348,13 @@ export namespace IBus {
         emit(signal: 'page-up'): void;
         connect(
             signal: 'process-hand-writing-event',
-            callback: (_source: this, coordinates: any, coordinates_len: number) => void,
+            callback: (_source: this, coordinates: any | null, coordinates_len: number) => void,
         ): number;
         connect_after(
             signal: 'process-hand-writing-event',
-            callback: (_source: this, coordinates: any, coordinates_len: number) => void,
+            callback: (_source: this, coordinates: any | null, coordinates_len: number) => void,
         ): number;
-        emit(signal: 'process-hand-writing-event', coordinates: any, coordinates_len: number): void;
+        emit(signal: 'process-hand-writing-event', coordinates: any | null, coordinates_len: number): void;
         connect(
             signal: 'process-key-event',
             callback: (_source: this, keyval: number, keycode: number, state: number) => boolean,
@@ -6818,7 +7416,9 @@ export namespace IBus {
         vfunc_disable(): void;
         vfunc_enable(): void;
         vfunc_focus_in(): void;
+        vfunc_focus_in_id(object_path: string, client: string): void;
         vfunc_focus_out(): void;
+        vfunc_focus_out_id(object_path: string): void;
         vfunc_page_down(): void;
         vfunc_page_up(): void;
         vfunc_process_hand_writing_event(coordinates: number, coordinates_len: number): void;
@@ -6962,7 +7562,7 @@ export namespace IBus {
          * the behavior on focus out when the pre-edit buffer is visible.
          *
          * If `mode` is IBUS_ENGINE_PREEDIT_COMMIT, contents of the pre-edit buffer
-         * will be comitted and cleared.
+         * will be committed and cleared.
          * If `mode` is IBUS_ENGINE_PREEDIT_CLEAR, contents of the pre-edit buffer
          * will be cleared only.
          *
@@ -7254,7 +7854,7 @@ export namespace IBus {
 
         /**
          * Call ibus_engine_simple_add_table() internally by locale.
-         * @param file The compose file. If the @file is %NULL,        the current locale is used.
+         * @param file The compose file.
          * @returns %TRUE if the @file is loaded.
          */
         add_compose_file(file: string): boolean;
@@ -7267,7 +7867,7 @@ export namespace IBus {
          * The table must be sorted in dictionary order on the numeric value of the key
          * symbol fields. (Values beyond the length of the sequence should be zero.)
          * @param data The table which must be available      during the whole life of the simple engine.
-         * @param max_seq_len Maximum length of a swquence in the table (cannot be greater      than %IBUS_MAX_COMPOSE_LEN)
+         * @param max_seq_len Maximum length of a sequence in the table (cannot be greater      than %IBUS_MAX_COMPOSE_LEN)
          * @param n_seqs number of sequences in the table
          */
         add_table(data: number[], max_seq_len: number, n_seqs: number): void;
@@ -7277,6 +7877,78 @@ export namespace IBus {
          * @returns %TRUE if the @locale is matched to the table.
          */
         add_table_by_locale(locale?: string | null): boolean;
+    }
+
+    module ExtensionEvent {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Serializable.ConstructorProps {
+            is_enabled: boolean;
+            isEnabled: boolean;
+            is_extension: boolean;
+            isExtension: boolean;
+            name: string;
+            params: string;
+            version: number;
+        }
+    }
+
+    /**
+     * IBusExtensionEvent properties.
+     */
+    class ExtensionEvent extends Serializable {
+        static $gtype: GObject.GType<ExtensionEvent>;
+
+        // Own properties of IBus.ExtensionEvent
+
+        /**
+         * %TRUE if the extension is enabled in the #IBusExtensionEvent.
+         */
+        get is_enabled(): boolean;
+        /**
+         * %TRUE if the extension is enabled in the #IBusExtensionEvent.
+         */
+        get isEnabled(): boolean;
+        /**
+         * %TRUE if the #IBusExtensionEvent is called by an extension.
+         * %FALSE if the #IBusExtensionEvent is called by an active engine or
+         * panel.
+         * If this value is %TRUE, the event is send to ibus-daemon, an active
+         * engine. If it's %FALSE, the event is sned to ibus-daemon, panels.
+         */
+        get is_extension(): boolean;
+        /**
+         * %TRUE if the #IBusExtensionEvent is called by an extension.
+         * %FALSE if the #IBusExtensionEvent is called by an active engine or
+         * panel.
+         * If this value is %TRUE, the event is send to ibus-daemon, an active
+         * engine. If it's %FALSE, the event is sned to ibus-daemon, panels.
+         */
+        get isExtension(): boolean;
+        /**
+         * Name of the extension in the #IBusExtensionEvent.
+         */
+        get name(): string;
+        /**
+         * Parameters to enable the extension in the #IBusExtensionEvent.
+         */
+        get params(): string;
+        /**
+         * Version of the #IBusExtensionEvent.
+         */
+        get version(): number;
+
+        // Constructors of IBus.ExtensionEvent
+
+        constructor(properties?: Partial<ExtensionEvent.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own methods of IBus.ExtensionEvent
+
+        get_name(): string;
+        get_params(): string;
+        get_version(): number;
     }
 
     module Factory {
@@ -7349,7 +8021,7 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface Trigger {
-            (event: number, user_data: any): void;
+            (event: number, user_data?: any | null): void;
         }
 
         // Constructor properties interface
@@ -7376,9 +8048,12 @@ export namespace IBus {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
-        connect(signal: 'trigger', callback: (_source: this, event: number, user_data: any) => void): number;
-        connect_after(signal: 'trigger', callback: (_source: this, event: number, user_data: any) => void): number;
-        emit(signal: 'trigger', event: number, user_data: any): void;
+        connect(signal: 'trigger', callback: (_source: this, event: number, user_data: any | null) => void): number;
+        connect_after(
+            signal: 'trigger',
+            callback: (_source: this, event: number, user_data: any | null) => void,
+        ): number;
+        emit(signal: 'trigger', event: number, user_data?: any | null): void;
 
         // Own virtual methods of IBus.HotkeyProfile
 
@@ -7417,7 +8092,7 @@ export namespace IBus {
             modifiers: number,
             prev_keyval: number,
             prev_modifiers: number,
-            user_data: any,
+            user_data?: any | null,
         ): GLib.Quark;
         lookup_hotkey(keyval: number, modifiers: number): GLib.Quark;
         /**
@@ -7490,6 +8165,10 @@ export namespace IBus {
             (props: PropList): void;
         }
 
+        interface RequireSurroundingText {
+            (): void;
+        }
+
         interface ShowAuxiliaryText {
             (): void;
         }
@@ -7512,6 +8191,10 @@ export namespace IBus {
 
         interface UpdatePreeditText {
             (text: Text, cursor_pos: number, visible: boolean): void;
+        }
+
+        interface UpdatePreeditTextWithMode {
+            (text: Text, cursor_pos: number, visible: boolean, mode: number): void;
         }
 
         interface UpdateProperty {
@@ -7611,6 +8294,9 @@ export namespace IBus {
         connect(signal: 'register-properties', callback: (_source: this, props: PropList) => void): number;
         connect_after(signal: 'register-properties', callback: (_source: this, props: PropList) => void): number;
         emit(signal: 'register-properties', props: PropList): void;
+        connect(signal: 'require-surrounding-text', callback: (_source: this) => void): number;
+        connect_after(signal: 'require-surrounding-text', callback: (_source: this) => void): number;
+        emit(signal: 'require-surrounding-text'): void;
         connect(signal: 'show-auxiliary-text', callback: (_source: this) => void): number;
         connect_after(signal: 'show-auxiliary-text', callback: (_source: this) => void): number;
         emit(signal: 'show-auxiliary-text'): void;
@@ -7647,6 +8333,21 @@ export namespace IBus {
             callback: (_source: this, text: Text, cursor_pos: number, visible: boolean) => void,
         ): number;
         emit(signal: 'update-preedit-text', text: Text, cursor_pos: number, visible: boolean): void;
+        connect(
+            signal: 'update-preedit-text-with-mode',
+            callback: (_source: this, text: Text, cursor_pos: number, visible: boolean, mode: number) => void,
+        ): number;
+        connect_after(
+            signal: 'update-preedit-text-with-mode',
+            callback: (_source: this, text: Text, cursor_pos: number, visible: boolean, mode: number) => void,
+        ): number;
+        emit(
+            signal: 'update-preedit-text-with-mode',
+            text: Text,
+            cursor_pos: number,
+            visible: boolean,
+            mode: number,
+        ): void;
         connect(signal: 'update-property', callback: (_source: this, prop: Property) => void): number;
         connect_after(signal: 'update-property', callback: (_source: this, prop: Property) => void): number;
         emit(signal: 'update-property', prop: Property): void;
@@ -7743,6 +8444,14 @@ export namespace IBus {
          */
         needs_surrounding_text(): boolean;
         /**
+         * Call this API after ibus_input_context_process_key_event() returns
+         * to retrieve commit-text and forwar-key-event signals during
+         * calling ibus_input_context_process_key_event().
+         *
+         * See also ibus_input_context_set_post_process_key_event().
+         */
+        post_process_key_event(): void;
+        /**
          * Pass a handwriting stroke to an input method engine.
          *
          * In this API, a coordinate (0.0, 0.0) represents the top-left corner of an area for
@@ -7833,6 +8542,19 @@ export namespace IBus {
          */
         set_capabilities(capabilities: number): void;
         /**
+         * Set whether #IBusInputContext commits pre-edit texts or not.
+         * If %TRUE, 'update-preedit-text-with-mode' signal is emitted
+         * instead of 'update-preedit-text' signal.
+         * If your client receives the 'update-preedit-text-with-mode' signal,
+         * the client needs to implement commit_text() of pre-edit text when
+         * GtkIMContextClass.focus_out() is called in case an IME desires that
+         * behavior but it depends on each IME.
+         *
+         * See also ibus_engine_update_preedit_text_with_mode().
+         * @param client_commit %TRUE if your input context commits pre-edit texts     with Space or Enter key events or mouse click events. %FALSE if     ibus-daemon commits pre-edit texts with those events.     The default is %FALSE. The behavior is decided with     ibus_engine_update_preedit_text_with_mode() to commit, clear or     keep the pre-edit text and this API is important in ibus-hangul.
+         */
+        set_client_commit_preedit(client_commit: boolean): void;
+        /**
          * Set content-type (primary purpose and hints) of the context.  This
          * information is particularly useful to implement intelligent
          * behavior in engines, such as automatic input-mode switch and text
@@ -7856,11 +8578,20 @@ export namespace IBus {
          */
         set_cursor_location(x: number, y: number, w: number, h: number): void;
         /**
+         * Set the relative cursor location of IBus input context asynchronously.
+         * @param x X coordinate of the cursor.
+         * @param y Y coordinate of the cursor.
+         * @param w Width of the cursor.
+         * @param h Height of the cursor.
+         */
+        set_cursor_location_relative(x: number, y: number, w: number, h: number): void;
+        /**
          * Invoked when the IME engine is changed.
          * An asynchronous IPC will be performed.
          * @param name A name of the engine.
          */
         set_engine(name: string): void;
+        set_post_process_key_event(enable: boolean): void;
         set_surrounding_text(text: Text, cursor_pos: number, anchor_pos: number): void;
 
         // Inherited methods
@@ -8614,7 +9345,7 @@ export namespace IBus {
         // Own virtual methods of IBus.Object
 
         /**
-         * Emit the "destory" signal notifying all reference holders that they should
+         * Emit the "destroy" signal notifying all reference holders that they should
          * release the #IBusObject.
          *
          * The memory for the object itself won't be deleted until its reference count
@@ -8626,7 +9357,7 @@ export namespace IBus {
         // Own methods of IBus.Object
 
         /**
-         * Emit the "destory" signal notifying all reference holders that they should
+         * Emit the "destroy" signal notifying all reference holders that they should
          * release the #IBusObject.
          *
          * The memory for the object itself won't be deleted until its reference count
@@ -8697,6 +9428,14 @@ export namespace IBus {
     module PanelService {
         // Signal callback interfaces
 
+        interface CandidateClickedLookupTable {
+            (object: number, p0: number, p1: number): void;
+        }
+
+        interface CommitTextReceived {
+            (text: Text): void;
+        }
+
         interface CursorDownLookupTable {
             (): void;
         }
@@ -8741,6 +9480,14 @@ export namespace IBus {
             (): void;
         }
 
+        interface PanelExtensionReceived {
+            (data: ExtensionEvent): void;
+        }
+
+        interface ProcessKeyEvent {
+            (keyval: number, keycode: number, state: number): boolean;
+        }
+
         interface RegisterProperties {
             (prop_list: PropList): void;
         }
@@ -8754,6 +9501,10 @@ export namespace IBus {
         }
 
         interface SetCursorLocation {
+            (x: number, y: number, w: number, h: number): void;
+        }
+
+        interface SetCursorLocationRelative {
             (x: number, y: number, w: number, h: number): void;
         }
 
@@ -8825,6 +9576,18 @@ export namespace IBus {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
+        connect(
+            signal: 'candidate-clicked-lookup-table',
+            callback: (_source: this, object: number, p0: number, p1: number) => void,
+        ): number;
+        connect_after(
+            signal: 'candidate-clicked-lookup-table',
+            callback: (_source: this, object: number, p0: number, p1: number) => void,
+        ): number;
+        emit(signal: 'candidate-clicked-lookup-table', object: number, p0: number, p1: number): void;
+        connect(signal: 'commit-text-received', callback: (_source: this, text: Text) => void): number;
+        connect_after(signal: 'commit-text-received', callback: (_source: this, text: Text) => void): number;
+        emit(signal: 'commit-text-received', text: Text): void;
         connect(signal: 'cursor-down-lookup-table', callback: (_source: this) => void): number;
         connect_after(signal: 'cursor-down-lookup-table', callback: (_source: this) => void): number;
         emit(signal: 'cursor-down-lookup-table'): void;
@@ -8858,6 +9621,21 @@ export namespace IBus {
         connect(signal: 'page-up-lookup-table', callback: (_source: this) => void): number;
         connect_after(signal: 'page-up-lookup-table', callback: (_source: this) => void): number;
         emit(signal: 'page-up-lookup-table'): void;
+        connect(signal: 'panel-extension-received', callback: (_source: this, data: ExtensionEvent) => void): number;
+        connect_after(
+            signal: 'panel-extension-received',
+            callback: (_source: this, data: ExtensionEvent) => void,
+        ): number;
+        emit(signal: 'panel-extension-received', data: ExtensionEvent): void;
+        connect(
+            signal: 'process-key-event',
+            callback: (_source: this, keyval: number, keycode: number, state: number) => boolean,
+        ): number;
+        connect_after(
+            signal: 'process-key-event',
+            callback: (_source: this, keyval: number, keycode: number, state: number) => boolean,
+        ): number;
+        emit(signal: 'process-key-event', keyval: number, keycode: number, state: number): void;
         connect(signal: 'register-properties', callback: (_source: this, prop_list: PropList) => void): number;
         connect_after(signal: 'register-properties', callback: (_source: this, prop_list: PropList) => void): number;
         emit(signal: 'register-properties', prop_list: PropList): void;
@@ -8879,6 +9657,15 @@ export namespace IBus {
             callback: (_source: this, x: number, y: number, w: number, h: number) => void,
         ): number;
         emit(signal: 'set-cursor-location', x: number, y: number, w: number, h: number): void;
+        connect(
+            signal: 'set-cursor-location-relative',
+            callback: (_source: this, x: number, y: number, w: number, h: number) => void,
+        ): number;
+        connect_after(
+            signal: 'set-cursor-location-relative',
+            callback: (_source: this, x: number, y: number, w: number, h: number) => void,
+        ): number;
+        emit(signal: 'set-cursor-location-relative', x: number, y: number, w: number, h: number): void;
         connect(signal: 'show-auxiliary-text', callback: (_source: this) => void): number;
         connect_after(signal: 'show-auxiliary-text', callback: (_source: this) => void): number;
         emit(signal: 'show-auxiliary-text'): void;
@@ -8930,6 +9717,8 @@ export namespace IBus {
 
         // Own virtual methods of IBus.PanelService
 
+        vfunc_candidate_clicked_lookup_table(index: number, button: number, state: number): void;
+        vfunc_commit_text_received(text: Text): void;
         vfunc_cursor_down_lookup_table(): void;
         vfunc_cursor_up_lookup_table(): void;
         vfunc_destroy_context(input_context_path: string): void;
@@ -8941,10 +9730,13 @@ export namespace IBus {
         vfunc_hide_preedit_text(): void;
         vfunc_page_down_lookup_table(): void;
         vfunc_page_up_lookup_table(): void;
+        vfunc_panel_extension_received(event: ExtensionEvent): void;
+        vfunc_process_key_event(keyval: number, keycode: number, state: number): boolean;
         vfunc_register_properties(prop_list: PropList): void;
         vfunc_reset(): void;
         vfunc_set_content_type(purpose: number, hints: number): void;
         vfunc_set_cursor_location(x: number, y: number, w: number, h: number): void;
+        vfunc_set_cursor_location_relative(x: number, y: number, w: number, h: number): void;
         vfunc_show_auxiliary_text(): void;
         vfunc_show_language_bar(): void;
         vfunc_show_lookup_table(): void;
@@ -8967,6 +9759,12 @@ export namespace IBus {
          */
         candidate_clicked(index: number, button: number, state: number): void;
         /**
+         * Notify that a text is sent
+         * by sending a "CommitText" message to IBus service.
+         * @param text An #IBusText
+         */
+        commit_text(text: Text): void;
+        /**
          * Notify that the cursor is down
          * by sending a "CursorDown" to IBus service.
          */
@@ -8977,6 +9775,10 @@ export namespace IBus {
          */
         cursor_up(): void;
         /**
+         * Notify that the preedit is hidden by the panel extension
+         */
+        hide_preedit_text_received(): void;
+        /**
          * Notify that the page is down
          * by sending a "PageDown" to IBus service.
          */
@@ -8986,6 +9788,13 @@ export namespace IBus {
          * by sending a "PageUp" to IBus service.
          */
         page_up(): void;
+        /**
+         * Enable or disable a panel extension with #IBusExtensionEvent.
+         * Notify that a data is sent
+         * by sending a "PanelExtension" message to IBus panel extension service.
+         * @param event A #PanelExtensionEvent which is sent to a                          panel extension.
+         */
+        panel_extension(event: ExtensionEvent): void;
         /**
          * Notify that a property is active
          * by sending a "PropertyActivate" message to IBus service.
@@ -9005,6 +9814,41 @@ export namespace IBus {
          * @param prop_name A property name
          */
         property_show(prop_name: string): void;
+        /**
+         * Notify that the preedit is shown by the panel extension
+         */
+        show_preedit_text_received(): void;
+        /**
+         * Notify that the auxilirary is updated by the panel extension.
+         *
+         * (Note: The table object will be released, if it is floating.
+         *  If caller want to keep the object, caller should make the object
+         *  sink by g_object_ref_sink.)
+         * @param text An #IBusText
+         * @param visible Whether the auxilirary text is visible.
+         */
+        update_auxiliary_text_received(text: Text, visible: boolean): void;
+        /**
+         * Notify that the lookup table is updated by the panel extension.
+         *
+         * (Note: The table object will be released, if it is floating.
+         *  If caller want to keep the object, caller should make the object
+         *  sink by g_object_ref_sink.)
+         * @param table An #IBusLookupTable
+         * @param visible Whether the lookup table is visible.
+         */
+        update_lookup_table_received(table: LookupTable, visible: boolean): void;
+        /**
+         * Notify that the preedit is updated by the panel extension
+         *
+         * (Note: The table object will be released, if it is floating.
+         *  If caller want to keep the object, caller should make the object
+         *  sink by g_object_ref_sink.)
+         * @param text Update content.
+         * @param cursor_pos Current position of cursor
+         * @param visible Whether the pre-edit buffer is visible.
+         */
+        update_preedit_text_received(text: Text, cursor_pos: number, visible: boolean): void;
     }
 
     module PropList {
@@ -9222,7 +10066,7 @@ export namespace IBus {
          * #IBusProperty `prop_update` can either be sub-property of `prop,`
          * or holds new values for `prop`.
          * @param prop_update #IBusPropList that contains sub IBusProperties.
-         * @returns TRUE for update suceeded; FALSE otherwise.
+         * @returns TRUE if update succeeded; FALSE otherwise.
          */
         update(prop_update: Property): boolean;
     }
@@ -10044,7 +10888,7 @@ export namespace IBus {
          * The deserialize method should be implemented in extended class.
          * @param variant A #GVariant.
          */
-        static deserialize(variant: GLib.Variant): Serializable;
+        static deserialize_object(variant: GLib.Variant): Serializable;
 
         // Own virtual methods of IBus.Serializable
 
@@ -10077,7 +10921,7 @@ export namespace IBus {
          * The serialize method should be implemented in extended class.
          * @returns A #GVariant. See also: IBusSerializableCopyFunc().
          */
-        serialize(): GLib.Variant;
+        serialize_object(): GLib.Variant;
         /**
          * Attach a value to an #IBusSerializable. If the value is floating,
          * the serializable will take the ownership.
@@ -10111,6 +10955,7 @@ export namespace IBus {
          * The connection of service object.
          */
         get connection(): Gio.DBusConnection;
+        set connection(val: Gio.DBusConnection);
         /**
          * The path of service object.
          */
@@ -10134,6 +10979,7 @@ export namespace IBus {
         // Own static methods of IBus.Service
 
         static add_interfaces(xml_data: string): boolean;
+        static free_interfaces(depth: number): number;
 
         // Own virtual methods of IBus.Service
 
@@ -10288,6 +11134,363 @@ export namespace IBus {
         set_attributes(attrs: AttrList): void;
     }
 
+    module UnicodeBlock {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Serializable.ConstructorProps {
+            end: number;
+            name: string;
+            start: number;
+        }
+    }
+
+    class UnicodeBlock extends Serializable {
+        static $gtype: GObject.GType<UnicodeBlock>;
+
+        // Own properties of IBus.UnicodeBlock
+
+        /**
+         * The Uniode end code point
+         */
+        get end(): number;
+        /**
+         * The Uniode block name
+         */
+        get name(): string;
+        set name(val: string);
+        /**
+         * The Uniode start code point
+         */
+        get start(): number;
+
+        // Constructors of IBus.UnicodeBlock
+
+        constructor(properties?: Partial<UnicodeBlock.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of IBus.UnicodeBlock
+
+        static load(path: string): UnicodeBlock[];
+        /**
+         * Save the list of #IBusUnicodeBlock to the cache file.
+         * @param path A path of the saved Unicode block.
+         * @param list A list of unicode  block.
+         */
+        static save(path: string, list: UnicodeBlock[]): void;
+
+        // Own methods of IBus.UnicodeBlock
+
+        /**
+         * Gets the end code point in #IBusUnicodeBlock.
+         * @returns end property in #IBusUnicodeBlock
+         */
+        get_end(): number;
+        /**
+         * Gets the name in #IBusUnicodeBlock. It should not be freed.
+         * @returns name property in #IBusUnicodeBlock
+         */
+        get_name(): string;
+        /**
+         * Gets the start code point in #IBusUnicodeBlock.
+         * @returns start property in #IBusUnicodeBlock
+         */
+        get_start(): number;
+    }
+
+    module UnicodeData {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Serializable.ConstructorProps {
+            alias: string;
+            block_name: string;
+            blockName: string;
+            code: number;
+            name: string;
+        }
+    }
+
+    /**
+     * Unicode data likes code, name, alias, block-name.
+     * You can get extended values with g_object_get_properties.
+     */
+    class UnicodeData extends Serializable {
+        static $gtype: GObject.GType<UnicodeData>;
+
+        // Own properties of IBus.UnicodeData
+
+        /**
+         * The Uniode alias name
+         */
+        get alias(): string;
+        set alias(val: string);
+        /**
+         * The Uniode block name
+         */
+        get block_name(): string;
+        set block_name(val: string);
+        /**
+         * The Uniode block name
+         */
+        get blockName(): string;
+        set blockName(val: string);
+        /**
+         * The Uniode code point
+         */
+        get code(): number;
+        /**
+         * The Uniode name
+         */
+        get name(): string;
+        set name(val: string);
+
+        // Constructors of IBus.UnicodeData
+
+        constructor(properties?: Partial<UnicodeData.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of IBus.UnicodeData
+
+        static load(path: string, object?: GObject.Object | null): UnicodeData[];
+        /**
+         * IBusUnicodeDataLoadAsyncFinish can receive the list of #IBusUnicodeData.
+         * @param path A path of the saved dictionary file.
+         * @param object If the #GObject has "unicode-deserialize-progress"    signal, this function will emit (the number of desrialized    #IBusUnicodeData, * the total number of #IBusUnicodeData) of uint values    with that signal by 100 times. Otherwise %NULL.
+         * @param cancellable cancellable.
+         * @param callback IBusUnicodeDataLoadAsyncFinish.
+         */
+        static load_async(
+            path: string,
+            object: GObject.Object | null,
+            cancellable: Gio.Cancellable | null,
+            callback: UnicodeDataLoadAsyncFinish,
+        ): void;
+        /**
+         * Save the list of #IBusUnicodeData to the cache file.
+         * @param path A path of the saved Unicode data.
+         * @param list A list of unicode  data.
+         */
+        static save(path: string, list: UnicodeData[]): void;
+
+        // Own methods of IBus.UnicodeData
+
+        /**
+         * Gets the alias in #IBusUnicodeData. It should not be freed.
+         * @returns alias property in #IBusUnicodeData
+         */
+        get_alias(): string;
+        /**
+         * Gets the block name in #IBusUnicodeData. It should not be freed.
+         * @returns block-name property in #IBusUnicodeData
+         */
+        get_block_name(): string;
+        /**
+         * Gets the code point in #IBusUnicodeData.
+         * @returns code property in #IBusUnicodeData
+         */
+        get_code(): number;
+        /**
+         * Gets the name in #IBusUnicodeData. It should not be freed.
+         * @returns name property in #IBusUnicodeData
+         */
+        get_name(): string;
+        /**
+         * Sets the block name in #IBusUnicodeData.
+         * @param block_name A block name
+         */
+        set_block_name(block_name: string): void;
+    }
+
+    module XEvent {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Serializable.ConstructorProps {
+            event_type: number;
+            eventType: number;
+            group: number;
+            hardware_keycode: number;
+            hardwareKeycode: number;
+            is_modifier: boolean;
+            isModifier: boolean;
+            keyval: number;
+            length: number;
+            purpose: string;
+            root: number;
+            same_screen: boolean;
+            sameScreen: boolean;
+            send_event: number;
+            sendEvent: number;
+            serial: number;
+            state: number;
+            string: string;
+            subwindow: number;
+            time: number;
+            version: number;
+            window: number;
+            x: number;
+            x_root: number;
+            xRoot: number;
+            y: number;
+            y_root: number;
+            yRoot: number;
+        }
+    }
+
+    /**
+     * An IBusXEvent provides a wrapper of XEvent.
+     *
+     * see_also: #IBusComponent, #IBusEngineDesc
+     */
+    class XEvent extends Serializable {
+        static $gtype: GObject.GType<XEvent>;
+
+        // Own properties of IBus.XEvent
+
+        /**
+         * IBusXEventType of this IBusXEvent.
+         */
+        get event_type(): number;
+        /**
+         * IBusXEventType of this IBusXEvent.
+         */
+        get eventType(): number;
+        /**
+         * group of this IBusXEvent.
+         */
+        get group(): number;
+        /**
+         * hardware keycode of this IBusXEvent.
+         */
+        get hardware_keycode(): number;
+        /**
+         * hardware keycode of this IBusXEvent.
+         */
+        get hardwareKeycode(): number;
+        /**
+         * is_modifier of this IBusXEvent.
+         */
+        get is_modifier(): boolean;
+        /**
+         * is_modifier of this IBusXEvent.
+         */
+        get isModifier(): boolean;
+        /**
+         * keyval of this IBusXEvent.
+         */
+        get keyval(): number;
+        /**
+         * keyval of this IBusXEvent.
+         */
+        get length(): number;
+        /**
+         * purpose of this IBusXEvent.
+         */
+        get purpose(): string;
+        /**
+         * root window of this IBusXEvent.
+         */
+        get root(): number;
+        /**
+         * same_screen of this IBusXEvent.
+         */
+        get same_screen(): boolean;
+        /**
+         * same_screen of this IBusXEvent.
+         */
+        get sameScreen(): boolean;
+        /**
+         * send_event of this IBusXEvent.
+         */
+        get send_event(): number;
+        /**
+         * send_event of this IBusXEvent.
+         */
+        get sendEvent(): number;
+        /**
+         * serial of this IBusXEvent.
+         */
+        get serial(): number;
+        /**
+         * state of this IBusXEvent.
+         */
+        get state(): number;
+        /**
+         * string of this IBusXEvent.
+         */
+        get string(): string;
+        /**
+         * subwindow of this IBusXEvent.
+         */
+        get subwindow(): number;
+        /**
+         * time of this IBusXEvent.
+         */
+        get time(): number;
+        /**
+         * Version of this IBusXEvent.
+         */
+        get version(): number;
+        /**
+         * window of this IBusXEvent.
+         */
+        get window(): number;
+        /**
+         * x of this IBusXEvent.
+         */
+        get x(): number;
+        /**
+         * root-x of this IBusXEvent.
+         */
+        get x_root(): number;
+        /**
+         * root-x of this IBusXEvent.
+         */
+        get xRoot(): number;
+        /**
+         * x of this IBusXEvent.
+         */
+        get y(): number;
+        /**
+         * root-y of this IBusXEvent.
+         */
+        get y_root(): number;
+        /**
+         * root-y of this IBusXEvent.
+         */
+        get yRoot(): number;
+
+        // Constructors of IBus.XEvent
+
+        constructor(properties?: Partial<XEvent.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own methods of IBus.XEvent
+
+        get_event_type(): XEventType;
+        get_group(): number;
+        get_hardware_keycode(): number;
+        get_is_modifier(): boolean;
+        get_keyval(): number;
+        get_length(): number;
+        get_purpose(): string;
+        get_root(): number;
+        get_same_screen(): boolean;
+        get_send_event(): number;
+        get_serial(): number;
+        get_state(): number;
+        get_string(): string;
+        get_subwindow(): number;
+        get_time(): number;
+        get_version(): number;
+        get_window(): number;
+        get_x(): number;
+        get_x_root(): number;
+        get_y(): number;
+        get_y_root(): number;
+    }
+
     type AttrListClass = typeof AttrList;
     type AttributeClass = typeof Attribute;
     type BusClass = typeof Bus;
@@ -10318,6 +11521,15 @@ export namespace IBus {
     }
 
     type ConfigServiceClass = typeof ConfigService;
+    type EmojiDataClass = typeof EmojiData;
+    abstract class EmojiDataPrivate {
+        static $gtype: GObject.GType<EmojiDataPrivate>;
+
+        // Constructors of IBus.EmojiDataPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type EngineClass = typeof Engine;
     type EngineDescClass = typeof EngineDesc;
     abstract class EngineDescPrivate {
@@ -10341,6 +11553,15 @@ export namespace IBus {
         static $gtype: GObject.GType<EngineSimplePrivate>;
 
         // Constructors of IBus.EngineSimplePrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type ExtensionEventClass = typeof ExtensionEvent;
+    abstract class ExtensionEventPrivate {
+        static $gtype: GObject.GType<ExtensionEventPrivate>;
+
+        // Constructors of IBus.ExtensionEventPrivate
 
         _init(...args: any[]): void;
     }
@@ -10369,6 +11590,30 @@ export namespace IBus {
 
     type ObservedPathClass = typeof ObservedPath;
     type PanelServiceClass = typeof PanelService;
+    /**
+     * IBuProcessKeyEventData properties.
+     */
+    class ProcessKeyEventData {
+        static $gtype: GObject.GType<ProcessKeyEventData>;
+
+        // Own fields of IBus.ProcessKeyEventData
+
+        keyval: number;
+        keycode: number;
+        state: number;
+
+        // Constructors of IBus.ProcessKeyEventData
+
+        constructor(
+            properties?: Partial<{
+                keyval: number;
+                keycode: number;
+                state: number;
+            }>,
+        );
+        _init(...args: any[]): void;
+    }
+
     type PropListClass = typeof PropList;
     type PropertyClass = typeof Property;
     abstract class PropertyPrivate {
@@ -10434,6 +11679,33 @@ export namespace IBus {
     }
 
     type TextClass = typeof Text;
+    type UnicodeBlockClass = typeof UnicodeBlock;
+    abstract class UnicodeBlockPrivate {
+        static $gtype: GObject.GType<UnicodeBlockPrivate>;
+
+        // Constructors of IBus.UnicodeBlockPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type UnicodeDataClass = typeof UnicodeData;
+    abstract class UnicodeDataPrivate {
+        static $gtype: GObject.GType<UnicodeDataPrivate>;
+
+        // Constructors of IBus.UnicodeDataPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type XEventClass = typeof XEvent;
+    abstract class XEventPrivate {
+        static $gtype: GObject.GType<XEventPrivate>;
+
+        // Constructors of IBus.XEventPrivate
+
+        _init(...args: any[]): void;
+    }
+
     /**
      * IBusXML lists data structure and handling function for XML in IBus.
      */

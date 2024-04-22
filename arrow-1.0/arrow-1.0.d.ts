@@ -270,6 +270,53 @@ export namespace Arrow {
         V3,
     }
     /**
+     * They are corresponding to `arrow::compute::NullPlacement` values.
+     */
+    enum NullPlacement {
+        /**
+         * Place nulls and NaNs before any non-null values.
+         *   NaNs will come after nulls.
+         */
+        AT_START,
+        /**
+         * Place nulls and NaNs after any non-null values.
+         *   NaNs will come before nulls.
+         */
+        AT_END,
+    }
+    /**
+     * They correspond to the values of
+     * `arrow::compute::QuantileOptions::Interpolation`.
+     */
+    enum QuantileInterpolation {
+        /**
+         * Linear.
+         */
+        LINEAR,
+        /**
+         * Lower.
+         */
+        LOWER,
+        /**
+         * Higher.
+         */
+        HIGHER,
+        /**
+         * Nearest.
+         */
+        NEAREST,
+        /**
+         * Midpoint.
+         */
+        MIDPOINT,
+    }
+    enum RankTiebreaker {
+        MIN,
+        MAX,
+        FIRST,
+        DENSE,
+    }
+    /**
      * They correspond to the values of `arrow::compute::RoundMode`.
      */
     enum RoundMode {
@@ -534,6 +581,10 @@ export namespace Arrow {
          * MONTH_DAY_NANO interval in SQL style.
          */
         MONTH_DAY_NANO_INTERVAL,
+        /**
+         * Run-end encoded data.
+         */
+        RUN_END_ENCODED,
     }
     /**
      * They correspond to the values of `arrow::compute::Utf8NormalizeOptions::Form`.
@@ -720,6 +771,7 @@ export namespace Arrow {
         is_in_chunked_array(right: ChunkedArray): BooleanArray | null;
         is_null(i: number): boolean;
         is_valid(i: number): boolean;
+        run_end_encode(options?: RunEndEncodeOptions | null): RunEndEncodedArray | null;
         slice(offset: number, length: number): Array;
         sort_indices(order: SortOrder): UInt64Array | null;
         sort_to_indices(): UInt64Array | null;
@@ -773,6 +825,8 @@ export namespace Arrow {
         append_nulls(n: number): boolean;
         finish(): Array;
         get_capacity(): number;
+        get_child(i: number): ArrayBuilder;
+        get_children(): ArrayBuilder[];
         get_length(): number;
         get_n_nulls(): number;
         get_value_data_type(): DataType;
@@ -2338,6 +2392,8 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             chunked_array: any;
             chunkedArray: any;
+            data_type: DataType;
+            dataType: DataType;
         }
     }
 
@@ -2348,6 +2404,8 @@ export namespace Arrow {
 
         set chunked_array(val: any);
         set chunkedArray(val: any);
+        set data_type(val: DataType);
+        set dataType(val: DataType);
 
         // Constructors of Arrow.ChunkedArray
 
@@ -2356,6 +2414,8 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](chunks: Array[]): ChunkedArray;
+
+        static new_empty(data_type: DataType): ChunkedArray;
 
         // Own methods of Arrow.ChunkedArray
 
@@ -3504,6 +3564,98 @@ export namespace Arrow {
         to_string(): string;
     }
 
+    module DayMillisecond {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            day: number;
+            millisecond: number;
+        }
+    }
+
+    class DayMillisecond extends GObject.Object {
+        static $gtype: GObject.GType<DayMillisecond>;
+
+        // Own properties of Arrow.DayMillisecond
+
+        /**
+         * The day part value.
+         */
+        get day(): number;
+        set day(val: number);
+        /**
+         * The millisecond part value.
+         */
+        get millisecond(): number;
+        set millisecond(val: number);
+
+        // Constructors of Arrow.DayMillisecond
+
+        constructor(properties?: Partial<DayMillisecond.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](day: number, millisecond: number): DayMillisecond;
+
+        // Own methods of Arrow.DayMillisecond
+
+        equal(other_day_millisecond: DayMillisecond): boolean;
+        less_than(other_day_millisecond: DayMillisecond): boolean;
+    }
+
+    module DayTimeIntervalArray {
+        // Constructor properties interface
+
+        interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
+    }
+
+    class DayTimeIntervalArray extends PrimitiveArray {
+        static $gtype: GObject.GType<DayTimeIntervalArray>;
+
+        // Constructors of Arrow.DayTimeIntervalArray
+
+        constructor(properties?: Partial<DayTimeIntervalArray.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): DayTimeIntervalArray;
+
+        // Own methods of Arrow.DayTimeIntervalArray
+
+        get_value(i: number): DayMillisecond;
+        get_values(): DayMillisecond[] | null;
+    }
+
+    module DayTimeIntervalArrayBuilder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
+    }
+
+    class DayTimeIntervalArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<DayTimeIntervalArrayBuilder>;
+
+        // Constructors of Arrow.DayTimeIntervalArrayBuilder
+
+        constructor(properties?: Partial<DayTimeIntervalArrayBuilder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): DayTimeIntervalArrayBuilder;
+
+        // Own methods of Arrow.DayTimeIntervalArrayBuilder
+
+        append_value(value: DayMillisecond): boolean;
+        /**
+         * Append multiple values at once. It's more efficient than multiple
+         * `append` calls.
+         * @param values The array of a #GArrowDayMillisecond.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns %TRUE on success, %FALSE if there was an error.
+         */
+        append_values(values: DayMillisecond[], is_valids?: boolean[] | null): boolean;
+    }
+
     module DayTimeIntervalDataType {
         // Constructor properties interface
 
@@ -3520,6 +3672,28 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): DayTimeIntervalDataType;
+    }
+
+    module DayTimeIntervalScalar {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Scalar.ConstructorProps {}
+    }
+
+    class DayTimeIntervalScalar extends Scalar {
+        static $gtype: GObject.GType<DayTimeIntervalScalar>;
+
+        // Constructors of Arrow.DayTimeIntervalScalar
+
+        constructor(properties?: Partial<DayTimeIntervalScalar.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](value: DayMillisecond): DayTimeIntervalScalar;
+
+        // Own methods of Arrow.DayTimeIntervalScalar
+
+        get_value(): DayMillisecond;
     }
 
     module Decimal128 {
@@ -3910,6 +4084,28 @@ export namespace Arrow {
             value_offsets: Int32Array,
             fields: Array[],
         ): DenseUnionArray;
+
+        // Own methods of Arrow.DenseUnionArray
+
+        get_value_offset(i: number): number;
+    }
+
+    module DenseUnionArrayBuilder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
+    }
+
+    class DenseUnionArrayBuilder extends UnionArrayBuilder {
+        static $gtype: GObject.GType<DenseUnionArrayBuilder>;
+
+        // Constructors of Arrow.DenseUnionArrayBuilder
+
+        constructor(properties?: Partial<DenseUnionArrayBuilder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](data_type?: DenseUnionDataType | null): DenseUnionArrayBuilder;
     }
 
     module DenseUnionDataType {
@@ -4180,6 +4376,7 @@ export namespace Arrow {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             node: any;
+            options: ExecuteNodeOptions;
         }
     }
 
@@ -4189,6 +4386,7 @@ export namespace Arrow {
         // Own properties of Arrow.ExecuteNode
 
         set node(val: any);
+        get options(): ExecuteNodeOptions;
 
         // Constructors of Arrow.ExecuteNode
 
@@ -4258,6 +4456,14 @@ export namespace Arrow {
          */
         build_aggregate_node(input: ExecuteNode, options: AggregateNodeOptions): ExecuteNode;
         /**
+         * This is a shortcut of garrow_execute_plan_build_node() for filter
+         * node.
+         * @param input A #GArrowExecuteNode.
+         * @param options A #GArrowFilterNodeOptions.
+         * @returns A newly built and added #GArrowExecuteNode   for filter on success, %NULL on error.
+         */
+        build_filter_node(input: ExecuteNode, options: FilterNodeOptions): ExecuteNode;
+        /**
          * This is a shortcut of garrow_execute_plan_build_node() for hash
          * join node.
          * @param left A left #GArrowExecuteNode.
@@ -4267,6 +4473,14 @@ export namespace Arrow {
          */
         build_hash_join_node(left: ExecuteNode, right: ExecuteNode, options: HashJoinNodeOptions): ExecuteNode;
         build_node(factory_name: string, inputs: ExecuteNode[], options: ExecuteNodeOptions): ExecuteNode;
+        /**
+         * This is a shortcut of garrow_execute_plan_build_node() for project
+         * node.
+         * @param input A #GArrowExecuteNode.
+         * @param options A #GArrowProjectNodeOptions.
+         * @returns A newly built and added #GArrowExecuteNode   for project on success, %NULL on error.
+         */
+        build_project_node(input: ExecuteNode, options: ProjectNodeOptions): ExecuteNode;
         /**
          * This is a shortcut of garrow_execute_plan_build_node() for sink
          * node.
@@ -4282,11 +4496,11 @@ export namespace Arrow {
          * @returns A newly built and added #GArrowExecuteNode   for source on success, %NULL on error.
          */
         build_source_node(options: SourceNodeOptions): ExecuteNode;
+        get_nodes(): ExecuteNode[];
         /**
          * Starts this plan.
-         * @returns %TRUE on success, %FALSE on error.
          */
-        start(): boolean;
+        start(): void;
         /**
          * Stops this plan.
          */
@@ -4294,8 +4508,9 @@ export namespace Arrow {
         validate(): boolean;
         /**
          * Waits for finishing this plan.
+         * @returns %TRUE on success, %FALSE on error.
          */
-        wait(): void;
+        wait(): boolean;
     }
 
     module Expression {
@@ -5645,6 +5860,24 @@ export namespace Arrow {
         open_output_stream(path: string): OutputStream | null;
     }
 
+    module FilterNodeOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
+    }
+
+    class FilterNodeOptions extends ExecuteNodeOptions {
+        static $gtype: GObject.GType<FilterNodeOptions>;
+
+        // Constructors of Arrow.FilterNodeOptions
+
+        constructor(properties?: Partial<FilterNodeOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](expression: Expression): FilterNodeOptions;
+    }
+
     module FilterOptions {
         // Constructor properties interface
 
@@ -6007,6 +6240,22 @@ export namespace Arrow {
 
         equal(other_options?: FunctionOptions | null): boolean;
         to_string(): string;
+    }
+
+    module GCSFileSystem {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FileSystem.ConstructorProps {}
+    }
+
+    class GCSFileSystem extends FileSystem {
+        static $gtype: GObject.GType<GCSFileSystem>;
+
+        // Constructors of Arrow.GCSFileSystem
+
+        constructor(properties?: Partial<GCSFileSystem.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
     }
 
     module GIOInputStream {
@@ -6817,6 +7066,99 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
+    module HalfFloatArray {
+        // Constructor properties interface
+
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
+    }
+
+    class HalfFloatArray extends NumericArray {
+        static $gtype: GObject.GType<HalfFloatArray>;
+
+        // Constructors of Arrow.HalfFloatArray
+
+        constructor(properties?: Partial<HalfFloatArray.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): HalfFloatArray;
+
+        // Own methods of Arrow.HalfFloatArray
+
+        get_value(i: number): number;
+        get_values(): number[];
+    }
+
+    module HalfFloatArrayBuilder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
+    }
+
+    class HalfFloatArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<HalfFloatArrayBuilder>;
+
+        // Constructors of Arrow.HalfFloatArrayBuilder
+
+        constructor(properties?: Partial<HalfFloatArrayBuilder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): HalfFloatArrayBuilder;
+
+        // Own methods of Arrow.HalfFloatArrayBuilder
+
+        append_value(value: number): boolean;
+        /**
+         * Append multiple values at once. It's more efficient than multiple
+         * `append` and `append_null` calls.
+         * @param values The array of 16-bit float.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns %TRUE on success, %FALSE if there was an error.
+         */
+        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+    }
+
+    module HalfFloatDataType {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
+    }
+
+    class HalfFloatDataType extends FloatingPointDataType {
+        static $gtype: GObject.GType<HalfFloatDataType>;
+
+        // Constructors of Arrow.HalfFloatDataType
+
+        constructor(properties?: Partial<HalfFloatDataType.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): HalfFloatDataType;
+    }
+
+    module HalfFloatScalar {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Scalar.ConstructorProps {}
+    }
+
+    class HalfFloatScalar extends Scalar {
+        static $gtype: GObject.GType<HalfFloatScalar>;
+
+        // Constructors of Arrow.HalfFloatScalar
+
+        constructor(properties?: Partial<HalfFloatScalar.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](value: number): HalfFloatScalar;
+
+        // Own methods of Arrow.HalfFloatScalar
+
+        get_value(): number;
+    }
+
     module HashJoinNodeOptions {
         // Constructor properties interface
 
@@ -6838,6 +7180,34 @@ export namespace Arrow {
 
         set_left_outputs(outputs: string[]): boolean;
         set_right_outputs(outputs: string[]): boolean;
+    }
+
+    module IndexOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {
+            value: Scalar;
+        }
+    }
+
+    class IndexOptions extends FunctionOptions {
+        static $gtype: GObject.GType<IndexOptions>;
+
+        // Own properties of Arrow.IndexOptions
+
+        /**
+         * The value to be compared.
+         */
+        get value(): Scalar;
+        set value(val: Scalar);
+
+        // Constructors of Arrow.IndexOptions
+
+        constructor(properties?: Partial<IndexOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): IndexOptions;
     }
 
     module InputStream {
@@ -8057,6 +8427,7 @@ export namespace Arrow {
         // Own methods of Arrow.LargeStringArrayBuilder
 
         append_string(value: string): boolean;
+        append_string_len(value: string, length: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -8395,6 +8766,47 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: StructArray): MapScalar;
+    }
+
+    module MatchSubstringOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {
+            ignore_case: boolean;
+            ignoreCase: boolean;
+            pattern: string;
+        }
+    }
+
+    class MatchSubstringOptions extends FunctionOptions {
+        static $gtype: GObject.GType<MatchSubstringOptions>;
+
+        // Own properties of Arrow.MatchSubstringOptions
+
+        /**
+         * Whether to perform a case-insensitive match.
+         */
+        get ignore_case(): boolean;
+        set ignore_case(val: boolean);
+        /**
+         * Whether to perform a case-insensitive match.
+         */
+        get ignoreCase(): boolean;
+        set ignoreCase(val: boolean);
+        /**
+         * The exact substring (or regex, depending on kernel) to look for
+         * inside input values.
+         */
+        get pattern(): string;
+        set pattern(val: string);
+
+        // Constructors of Arrow.MatchSubstringOptions
+
+        constructor(properties?: Partial<MatchSubstringOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): MatchSubstringOptions;
     }
 
     module MemoryMappedInputStream {
@@ -8775,6 +9187,44 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
+    module MemoryPool {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            memory_pool: any;
+            memoryPool: any;
+        }
+    }
+
+    class MemoryPool extends GObject.Object {
+        static $gtype: GObject.GType<MemoryPool>;
+
+        // Own properties of Arrow.MemoryPool
+
+        set memory_pool(val: any);
+        set memoryPool(val: any);
+
+        // Constructors of Arrow.MemoryPool
+
+        constructor(properties?: Partial<MemoryPool.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of Arrow.MemoryPool
+
+        static ['default'](): MemoryPool;
+
+        // Own methods of Arrow.MemoryPool
+
+        get_backend_name(): string;
+        get_bytes_allocated(): number;
+        /**
+         * Return peak memory allocation in this memory pool.
+         * @returns Maximum bytes allocated. If not known (or not implemented),   returns -1.
+         */
+        get_max_memory(): number;
+    }
+
     module MockFileSystem {
         // Constructor properties interface
 
@@ -8789,6 +9239,108 @@ export namespace Arrow {
         constructor(properties?: Partial<MockFileSystem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+    }
+
+    module MonthDayNano {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            day: number;
+            month: number;
+            nanosecond: number;
+        }
+    }
+
+    class MonthDayNano extends GObject.Object {
+        static $gtype: GObject.GType<MonthDayNano>;
+
+        // Own properties of Arrow.MonthDayNano
+
+        /**
+         * The day part value.
+         */
+        get day(): number;
+        set day(val: number);
+        /**
+         * The month part value.
+         */
+        get month(): number;
+        set month(val: number);
+        /**
+         * The nanosecond part value.
+         */
+        get nanosecond(): number;
+        set nanosecond(val: number);
+
+        // Constructors of Arrow.MonthDayNano
+
+        constructor(properties?: Partial<MonthDayNano.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](month: number, day: number, nanosecond: number): MonthDayNano;
+
+        // Own methods of Arrow.MonthDayNano
+
+        equal(other_month_nano_day: MonthDayNano): boolean;
+    }
+
+    module MonthDayNanoIntervalArray {
+        // Constructor properties interface
+
+        interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
+    }
+
+    class MonthDayNanoIntervalArray extends PrimitiveArray {
+        static $gtype: GObject.GType<MonthDayNanoIntervalArray>;
+
+        // Constructors of Arrow.MonthDayNanoIntervalArray
+
+        constructor(properties?: Partial<MonthDayNanoIntervalArray.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](
+            length: number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: number,
+        ): MonthDayNanoIntervalArray;
+
+        // Own methods of Arrow.MonthDayNanoIntervalArray
+
+        get_value(i: number): MonthDayNano;
+        get_values(): MonthDayNano[] | null;
+    }
+
+    module MonthDayNanoIntervalArrayBuilder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
+    }
+
+    class MonthDayNanoIntervalArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<MonthDayNanoIntervalArrayBuilder>;
+
+        // Constructors of Arrow.MonthDayNanoIntervalArrayBuilder
+
+        constructor(properties?: Partial<MonthDayNanoIntervalArrayBuilder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): MonthDayNanoIntervalArrayBuilder;
+
+        // Own methods of Arrow.MonthDayNanoIntervalArrayBuilder
+
+        append_value(value: MonthDayNano): boolean;
+        /**
+         * Append multiple values at once. It's more efficient than multiple
+         * `append` calls.
+         * @param values The array of a #GArrowMonthDayNano.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns %TRUE on success, %FALSE if there was an error.
+         */
+        append_values(values: MonthDayNano[], is_valids?: boolean[] | null): boolean;
     }
 
     module MonthDayNanoIntervalDataType {
@@ -8809,6 +9361,81 @@ export namespace Arrow {
         static ['new'](): MonthDayNanoIntervalDataType;
     }
 
+    module MonthDayNanoIntervalScalar {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Scalar.ConstructorProps {}
+    }
+
+    class MonthDayNanoIntervalScalar extends Scalar {
+        static $gtype: GObject.GType<MonthDayNanoIntervalScalar>;
+
+        // Constructors of Arrow.MonthDayNanoIntervalScalar
+
+        constructor(properties?: Partial<MonthDayNanoIntervalScalar.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](value: MonthDayNano): MonthDayNanoIntervalScalar;
+
+        // Own methods of Arrow.MonthDayNanoIntervalScalar
+
+        get_value(): MonthDayNano;
+    }
+
+    module MonthIntervalArray {
+        // Constructor properties interface
+
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
+    }
+
+    class MonthIntervalArray extends NumericArray {
+        static $gtype: GObject.GType<MonthIntervalArray>;
+
+        // Constructors of Arrow.MonthIntervalArray
+
+        constructor(properties?: Partial<MonthIntervalArray.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): MonthIntervalArray;
+
+        // Own methods of Arrow.MonthIntervalArray
+
+        get_value(i: number): number;
+        get_values(): number[];
+    }
+
+    module MonthIntervalArrayBuilder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
+    }
+
+    class MonthIntervalArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<MonthIntervalArrayBuilder>;
+
+        // Constructors of Arrow.MonthIntervalArrayBuilder
+
+        constructor(properties?: Partial<MonthIntervalArrayBuilder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): MonthIntervalArrayBuilder;
+
+        // Own methods of Arrow.MonthIntervalArrayBuilder
+
+        append_value(value: number): boolean;
+        /**
+         * Append multiple values at once. It's more efficient than multiple
+         * `append` calls.
+         * @param values The array of the month.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns %TRUE on success, %FALSE if there was an error.
+         */
+        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+    }
+
     module MonthIntervalDataType {
         // Constructor properties interface
 
@@ -8825,6 +9452,28 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): MonthIntervalDataType;
+    }
+
+    module MonthIntervalScalar {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Scalar.ConstructorProps {}
+    }
+
+    class MonthIntervalScalar extends Scalar {
+        static $gtype: GObject.GType<MonthIntervalScalar>;
+
+        // Constructors of Arrow.MonthIntervalScalar
+
+        constructor(properties?: Partial<MonthIntervalScalar.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](value: number): MonthIntervalScalar;
+
+        // Own methods of Arrow.MonthIntervalScalar
+
+        get_value(): number;
     }
 
     module MutableBuffer {
@@ -8960,6 +9609,46 @@ export namespace Arrow {
         constructor(properties?: Partial<NumericDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+    }
+
+    module ORCFileReader {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            input: SeekableInputStream;
+            orc_file_reader: any;
+            orcFileReader: any;
+        }
+    }
+
+    class ORCFileReader extends GObject.Object {
+        static $gtype: GObject.GType<ORCFileReader>;
+
+        // Own properties of Arrow.ORCFileReader
+
+        get input(): SeekableInputStream;
+        set orc_file_reader(val: any);
+        set orcFileReader(val: any);
+
+        // Constructors of Arrow.ORCFileReader
+
+        constructor(properties?: Partial<ORCFileReader.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](file: SeekableInputStream): ORCFileReader;
+
+        // Own methods of Arrow.ORCFileReader
+
+        get_field_indexes(): number[] | null;
+        get_field_indices(): number[] | null;
+        get_n_rows(): number;
+        get_n_stripes(): number;
+        read_stripe(i: number): RecordBatch | null;
+        read_stripes(): Table | null;
+        read_type(): Schema | null;
+        set_field_indexes(field_indexes?: number[] | null): void;
+        set_field_indices(field_indices?: number[] | null): void;
     }
 
     module OutputStream {
@@ -9383,6 +10072,142 @@ export namespace Arrow {
         get_data_buffer(): Buffer;
     }
 
+    module ProjectNodeOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
+    }
+
+    class ProjectNodeOptions extends ExecuteNodeOptions {
+        static $gtype: GObject.GType<ProjectNodeOptions>;
+
+        // Constructors of Arrow.ProjectNodeOptions
+
+        constructor(properties?: Partial<ProjectNodeOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](expressions: Expression[], names?: string[] | null): ProjectNodeOptions;
+    }
+
+    module QuantileOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {
+            interpolation: QuantileInterpolation;
+            min_count: number;
+            minCount: number;
+            skip_nulls: boolean;
+            skipNulls: boolean;
+        }
+    }
+
+    class QuantileOptions extends FunctionOptions {
+        static $gtype: GObject.GType<QuantileOptions>;
+
+        // Own properties of Arrow.QuantileOptions
+
+        /**
+         * Interpolation method to use when quantile lies between two data
+         * points.
+         */
+        get interpolation(): QuantileInterpolation;
+        set interpolation(val: QuantileInterpolation);
+        /**
+         * If less than this many non-null values are observed, emit null.
+         */
+        get min_count(): number;
+        set min_count(val: number);
+        /**
+         * If less than this many non-null values are observed, emit null.
+         */
+        get minCount(): number;
+        set minCount(val: number);
+        /**
+         * If true (the default), null values are ignored. Otherwise, if any
+         * value is null, emit null.
+         */
+        get skip_nulls(): boolean;
+        set skip_nulls(val: boolean);
+        /**
+         * If true (the default), null values are ignored. Otherwise, if any
+         * value is null, emit null.
+         */
+        get skipNulls(): boolean;
+        set skipNulls(val: boolean);
+
+        // Constructors of Arrow.QuantileOptions
+
+        constructor(properties?: Partial<QuantileOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): QuantileOptions;
+
+        // Own methods of Arrow.QuantileOptions
+
+        get_qs(): number[];
+        set_q(q: number): void;
+        set_qs(qs: number[]): void;
+    }
+
+    module RankOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {
+            null_placement: NullPlacement;
+            nullPlacement: NullPlacement;
+            tiebreaker: RankTiebreaker;
+        }
+    }
+
+    class RankOptions extends FunctionOptions {
+        static $gtype: GObject.GType<RankOptions>;
+
+        // Own properties of Arrow.RankOptions
+
+        /**
+         * Whether nulls and NaNs are placed at the start or at the end.
+         */
+        get null_placement(): NullPlacement;
+        set null_placement(val: NullPlacement);
+        /**
+         * Whether nulls and NaNs are placed at the start or at the end.
+         */
+        get nullPlacement(): NullPlacement;
+        set nullPlacement(val: NullPlacement);
+        /**
+         * Tiebreaker for dealing with equal values in ranks.
+         */
+        get tiebreaker(): RankTiebreaker;
+        set tiebreaker(val: RankTiebreaker);
+
+        // Constructors of Arrow.RankOptions
+
+        constructor(properties?: Partial<RankOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): RankOptions;
+
+        // Own methods of Arrow.RankOptions
+
+        /**
+         * Add a sort key to be used.
+         * @param sort_key The sort key to be added.
+         */
+        add_sort_key(sort_key: SortKey): void;
+        equal(other_options: RankOptions): boolean;
+        // Conflicted with Arrow.FunctionOptions.equal
+        equal(...args: never[]): any;
+        get_sort_keys(): SortKey[];
+        /**
+         * Set sort keys to be used.
+         * @param sort_keys The sort keys to be used.
+         */
+        set_sort_keys(sort_keys: SortKey[]): void;
+    }
+
     module ReadOptions {
         // Constructor properties interface
 
@@ -9638,6 +10463,7 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             record_batch_reader: any;
             recordBatchReader: any;
+            sources: any;
         }
     }
 
@@ -9648,6 +10474,7 @@ export namespace Arrow {
 
         set record_batch_reader(val: any);
         set recordBatchReader(val: any);
+        set sources(val: any);
 
         // Constructors of Arrow.RecordBatchReader
 
@@ -9666,6 +10493,7 @@ export namespace Arrow {
         ['export'](): any | null;
         get_next_record_batch(): RecordBatch | null;
         get_schema(): Schema;
+        get_sources(): GObject.Object[];
         read_all(): Table | null;
         read_next(): RecordBatch | null;
         read_next_record_batch(): RecordBatch | null;
@@ -9852,6 +10680,107 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): RoundToMultipleOptions;
+    }
+
+    module RunEndEncodeOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {
+            run_end_data_type: DataType;
+            runEndDataType: DataType;
+        }
+    }
+
+    class RunEndEncodeOptions extends FunctionOptions {
+        static $gtype: GObject.GType<RunEndEncodeOptions>;
+
+        // Own properties of Arrow.RunEndEncodeOptions
+
+        /**
+         * The data type for run-end.
+         */
+        get run_end_data_type(): DataType;
+        set run_end_data_type(val: DataType);
+        /**
+         * The data type for run-end.
+         */
+        get runEndDataType(): DataType;
+        set runEndDataType(val: DataType);
+
+        // Constructors of Arrow.RunEndEncodeOptions
+
+        constructor(properties?: Partial<RunEndEncodeOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](run_end_data_type?: DataType | null): RunEndEncodeOptions;
+    }
+
+    module RunEndEncodedArray {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Array.ConstructorProps {
+            run_ends: Array;
+            runEnds: Array;
+            values: Array;
+        }
+    }
+
+    class RunEndEncodedArray extends Array {
+        static $gtype: GObject.GType<RunEndEncodedArray>;
+
+        // Own properties of Arrow.RunEndEncodedArray
+
+        get run_ends(): Array;
+        get runEnds(): Array;
+        get values(): Array;
+
+        // Constructors of Arrow.RunEndEncodedArray
+
+        constructor(properties?: Partial<RunEndEncodedArray.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](
+            data_type: DataType,
+            logical_length: number,
+            run_ends: Array,
+            values: Array,
+            logical_offset: number,
+        ): RunEndEncodedArray;
+
+        // Own methods of Arrow.RunEndEncodedArray
+
+        decode(): Array | null;
+        find_physical_length(): number;
+        find_physical_offset(): number;
+        get_logical_run_ends(): Array;
+        get_logical_values(): Array;
+        get_run_ends(): Array;
+        get_values(): Array;
+    }
+
+    module RunEndEncodedDataType {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
+    }
+
+    class RunEndEncodedDataType extends FixedWidthDataType {
+        static $gtype: GObject.GType<RunEndEncodedDataType>;
+
+        // Constructors of Arrow.RunEndEncodedDataType
+
+        constructor(properties?: Partial<RunEndEncodedDataType.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](run_end_data_type: DataType, value_data_type: DataType): RunEndEncodedDataType;
+
+        // Own methods of Arrow.RunEndEncodedDataType
+
+        get_run_end_data_type(): DataType;
+        get_value_data_type(): DataType;
     }
 
     module S3FileSystem {
@@ -10649,9 +11578,9 @@ export namespace Arrow {
 
         // Own properties of Arrow.SourceNodeOptions
 
-        set reader(val: RecordBatchReader);
-        set record_batch(val: RecordBatch);
-        set recordBatch(val: RecordBatch);
+        get reader(): RecordBatchReader;
+        get record_batch(): RecordBatch;
+        get recordBatch(): RecordBatch;
 
         // Constructors of Arrow.SourceNodeOptions
 
@@ -10684,6 +11613,24 @@ export namespace Arrow {
         static ['new'](type_ids: Int8Array, fields: Array[]): SparseUnionArray;
 
         static new_data_type(data_type: SparseUnionDataType, type_ids: Int8Array, fields: Array[]): SparseUnionArray;
+    }
+
+    module SparseUnionArrayBuilder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
+    }
+
+    class SparseUnionArrayBuilder extends UnionArrayBuilder {
+        static $gtype: GObject.GType<SparseUnionArrayBuilder>;
+
+        // Constructors of Arrow.SparseUnionArrayBuilder
+
+        constructor(properties?: Partial<SparseUnionArrayBuilder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](data_type?: SparseUnionDataType | null): SparseUnionArrayBuilder;
     }
 
     module SparseUnionDataType {
@@ -10773,6 +11720,7 @@ export namespace Arrow {
         // Conflicted with Arrow.BinaryArrayBuilder.append
         append(...args: never[]): any;
         append_string(value: string): boolean;
+        append_string_len(value: string, length: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -10908,7 +11856,7 @@ export namespace Arrow {
         append(): boolean;
         append_value(): boolean;
         get_field_builder(i: number): ArrayBuilder;
-        get_field_builders(): Array[];
+        get_field_builders(): ArrayBuilder[];
     }
 
     module StructDataType {
@@ -11060,6 +12008,17 @@ export namespace Arrow {
         // Conflicted with Arrow.RecordBatchReader.new
 
         static ['new'](...args: never[]): any;
+
+        // Own methods of Arrow.TableBatchReader
+
+        /**
+         * Set the desired maximum chunk size of record batches.
+         *
+         * The actual chunk size of each record batch may be smaller,
+         * depending on actual chunking characteristics of each table column.
+         * @param max_chunk_size The maximum chunk size of record batches.
+         */
+        set_max_chunk_size(max_chunk_size: number): void;
     }
 
     module TableConcatenateOptions {
@@ -12024,7 +12983,44 @@ export namespace Arrow {
 
         // Own methods of Arrow.UnionArray
 
+        get_child_id(i: number): number;
         get_field(i: number): Array | null;
+        get_type_code(i: number): number;
+    }
+
+    module UnionArrayBuilder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
+    }
+
+    abstract class UnionArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<UnionArrayBuilder>;
+
+        // Constructors of Arrow.UnionArrayBuilder
+
+        constructor(properties?: Partial<UnionArrayBuilder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own methods of Arrow.UnionArrayBuilder
+
+        append_child(child: ArrayBuilder, filed_name?: string | null): number;
+        /**
+         * Append an element to the union array.
+         *
+         * If `builder` is #GArrowDenseUnionArrayBuilder, this must be followed by an
+         * append to the appropriate child builder.
+         *
+         * If `builder` is #GArrowSparseUnionArrayBuilder, this must be
+         * followed by appends to all child builders. The corresponding child
+         * builder must be appended to independently after this method is
+         * called, and all other child builders must have null or empty value
+         * appended.
+         * @param value A type ID value.
+         * @returns %TRUE on success, %FALSE if there was an error.
+         */
+        append_value(value: number): boolean;
     }
 
     module UnionDataType {
@@ -12263,7 +13259,11 @@ export namespace Arrow {
     type Date64DataTypeClass = typeof Date64DataType;
     type Date64ScalarClass = typeof Date64Scalar;
     type DatumClass = typeof Datum;
+    type DayMillisecondClass = typeof DayMillisecond;
+    type DayTimeIntervalArrayBuilderClass = typeof DayTimeIntervalArrayBuilder;
+    type DayTimeIntervalArrayClass = typeof DayTimeIntervalArray;
     type DayTimeIntervalDataTypeClass = typeof DayTimeIntervalDataType;
+    type DayTimeIntervalScalarClass = typeof DayTimeIntervalScalar;
     type Decimal128ArrayBuilderClass = typeof Decimal128ArrayBuilder;
     type Decimal128ArrayClass = typeof Decimal128Array;
     type Decimal128Class = typeof Decimal128;
@@ -12275,6 +13275,7 @@ export namespace Arrow {
     type Decimal256DataTypeClass = typeof Decimal256DataType;
     type Decimal256ScalarClass = typeof Decimal256Scalar;
     type DecimalDataTypeClass = typeof DecimalDataType;
+    type DenseUnionArrayBuilderClass = typeof DenseUnionArrayBuilder;
     type DenseUnionArrayClass = typeof DenseUnionArray;
     type DenseUnionDataTypeClass = typeof DenseUnionDataType;
     type DenseUnionScalarClass = typeof DenseUnionScalar;
@@ -12304,6 +13305,7 @@ export namespace Arrow {
     type FileOutputStreamClass = typeof FileOutputStream;
     type FileSelectorClass = typeof FileSelector;
     type FileSystemClass = typeof FileSystem;
+    type FilterNodeOptionsClass = typeof FilterNodeOptions;
     type FilterOptionsClass = typeof FilterOptions;
     type FixedSizeBinaryArrayBuilderClass = typeof FixedSizeBinaryArrayBuilder;
     type FixedSizeBinaryArrayClass = typeof FixedSizeBinaryArray;
@@ -12318,10 +13320,16 @@ export namespace Arrow {
     type FunctionClass = typeof Function;
     type FunctionDocClass = typeof FunctionDoc;
     type FunctionOptionsClass = typeof FunctionOptions;
+    type GCSFileSystemClass = typeof GCSFileSystem;
     type GIOInputStreamClass = typeof GIOInputStream;
     type GIOOutputStreamClass = typeof GIOOutputStream;
     type HDFSFileSystemClass = typeof HDFSFileSystem;
+    type HalfFloatArrayBuilderClass = typeof HalfFloatArrayBuilder;
+    type HalfFloatArrayClass = typeof HalfFloatArray;
+    type HalfFloatDataTypeClass = typeof HalfFloatDataType;
+    type HalfFloatScalarClass = typeof HalfFloatScalar;
     type HashJoinNodeOptionsClass = typeof HashJoinNodeOptions;
+    type IndexOptionsClass = typeof IndexOptions;
     type InputStreamClass = typeof InputStream;
     type Int16ArrayBuilderClass = typeof Int16ArrayBuilder;
     type Int16ArrayClass = typeof Int16Array;
@@ -12367,10 +13375,19 @@ export namespace Arrow {
     type MapArrayClass = typeof MapArray;
     type MapDataTypeClass = typeof MapDataType;
     type MapScalarClass = typeof MapScalar;
+    type MatchSubstringOptionsClass = typeof MatchSubstringOptions;
     type MemoryMappedInputStreamClass = typeof MemoryMappedInputStream;
+    type MemoryPoolClass = typeof MemoryPool;
     type MockFileSystemClass = typeof MockFileSystem;
+    type MonthDayNanoClass = typeof MonthDayNano;
+    type MonthDayNanoIntervalArrayBuilderClass = typeof MonthDayNanoIntervalArrayBuilder;
+    type MonthDayNanoIntervalArrayClass = typeof MonthDayNanoIntervalArray;
     type MonthDayNanoIntervalDataTypeClass = typeof MonthDayNanoIntervalDataType;
+    type MonthDayNanoIntervalScalarClass = typeof MonthDayNanoIntervalScalar;
+    type MonthIntervalArrayBuilderClass = typeof MonthIntervalArrayBuilder;
+    type MonthIntervalArrayClass = typeof MonthIntervalArray;
     type MonthIntervalDataTypeClass = typeof MonthIntervalDataType;
+    type MonthIntervalScalarClass = typeof MonthIntervalScalar;
     type MutableBufferClass = typeof MutableBuffer;
     type NullArrayBuilderClass = typeof NullArrayBuilder;
     type NullArrayClass = typeof NullArray;
@@ -12378,8 +13395,12 @@ export namespace Arrow {
     type NullScalarClass = typeof NullScalar;
     type NumericArrayClass = typeof NumericArray;
     type NumericDataTypeClass = typeof NumericDataType;
+    type ORCFileReaderClass = typeof ORCFileReader;
     type OutputStreamClass = typeof OutputStream;
     type PrimitiveArrayClass = typeof PrimitiveArray;
+    type ProjectNodeOptionsClass = typeof ProjectNodeOptions;
+    type QuantileOptionsClass = typeof QuantileOptions;
+    type RankOptionsClass = typeof RankOptions;
     type ReadOptionsClass = typeof ReadOptions;
     type ReadableInterface = typeof Readable;
     type RecordBatchBuilderClass = typeof RecordBatchBuilder;
@@ -12395,6 +13416,9 @@ export namespace Arrow {
     type ResizableBufferClass = typeof ResizableBuffer;
     type RoundOptionsClass = typeof RoundOptions;
     type RoundToMultipleOptionsClass = typeof RoundToMultipleOptions;
+    type RunEndEncodeOptionsClass = typeof RunEndEncodeOptions;
+    type RunEndEncodedArrayClass = typeof RunEndEncodedArray;
+    type RunEndEncodedDataTypeClass = typeof RunEndEncodedDataType;
     type S3FileSystemClass = typeof S3FileSystem;
     type S3GlobalOptionsClass = typeof S3GlobalOptions;
     type ScalarAggregateOptionsClass = typeof ScalarAggregateOptions;
@@ -12408,6 +13432,7 @@ export namespace Arrow {
     type SortKeyClass = typeof SortKey;
     type SortOptionsClass = typeof SortOptions;
     type SourceNodeOptionsClass = typeof SourceNodeOptions;
+    type SparseUnionArrayBuilderClass = typeof SparseUnionArrayBuilder;
     type SparseUnionArrayClass = typeof SparseUnionArray;
     type SparseUnionDataTypeClass = typeof SparseUnionDataType;
     type SparseUnionScalarClass = typeof SparseUnionScalar;
@@ -12459,6 +13484,7 @@ export namespace Arrow {
     type UInt8ScalarClass = typeof UInt8Scalar;
     type UIntArrayBuilderClass = typeof UIntArrayBuilder;
     type UTF8NormalizeOptionsClass = typeof UTF8NormalizeOptions;
+    type UnionArrayBuilderClass = typeof UnionArrayBuilder;
     type UnionArrayClass = typeof UnionArray;
     type UnionDataTypeClass = typeof UnionDataType;
     type UnionScalarClass = typeof UnionScalar;

@@ -1920,8 +1920,8 @@ export namespace WebKit {
          */
         get_original_uri(): string;
         /**
-         * Obtain the title of the item.
-         * @returns the page title of @list_item or %NULL    when the title is empty.
+         * Since 2.44, page titles are no longer stored in history. This function now returns an empty string.
+         * @returns an empty string
          */
         get_title(): string;
         /**
@@ -2753,7 +2753,7 @@ export namespace WebKit {
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_all_cookies().
          *
-         * The return value is a #GSList of #SoupCookie instances which should be released
+         * The return value is a #GList of #SoupCookie instances which should be released
          * with g_list_free_full() and soup_cookie_free().
          * @param result a #GAsyncResult
          * @returns A #GList of #SoupCookie instances.
@@ -2779,7 +2779,7 @@ export namespace WebKit {
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_cookies().
          *
-         * The return value is a #GSList of #SoupCookie instances which should be released
+         * The return value is a #GList of #SoupCookie instances which should be released
          * with g_list_free_full() and soup_cookie_free().
          * @param result a #GAsyncResult
          * @returns A #GList of #SoupCookie instances.
@@ -3456,6 +3456,12 @@ export namespace WebKit {
     }
 
     module EditorState {
+        // Signal callback interfaces
+
+        interface Changed {
+            (): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3492,6 +3498,15 @@ export namespace WebKit {
         constructor(properties?: Partial<EditorState.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Own signals of WebKit.EditorState
+
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'changed', callback: (_source: this) => void): number;
+        connect_after(signal: 'changed', callback: (_source: this) => void): number;
+        emit(signal: 'changed'): void;
 
         // Own methods of WebKit.EditorState
 
@@ -5485,6 +5500,9 @@ export namespace WebKit {
 
         /**
          * Ignore further TLS errors on the `host` for the certificate present in `info`.
+         *
+         * If `host` is an IPv6 address, it should not be surrounded by brackets. This
+         * expectation matches g_uri_get_host().
          * @param certificate a #GTlsCertificate
          * @param host the host for which a certificate is to be allowed
          */
@@ -7536,22 +7554,12 @@ export namespace WebKit {
         get enableMockCaptureDevices(): boolean;
         set enableMockCaptureDevices(val: boolean);
         /**
-         * Whether to enable HTML5 offline web application cache support. Offline
-         * web application cache allows web applications to run even when
-         * the user is not connected to the network.
-         *
-         * HTML5 offline web application specification is available at
-         * http://dev.w3.org/html5/spec/offline.html.
+         * Unsupported setting. This property does nothing.
          */
         get enable_offline_web_application_cache(): boolean;
         set enable_offline_web_application_cache(val: boolean);
         /**
-         * Whether to enable HTML5 offline web application cache support. Offline
-         * web application cache allows web applications to run even when
-         * the user is not connected to the network.
-         *
-         * HTML5 offline web application specification is available at
-         * http://dev.w3.org/html5/spec/offline.html.
+         * Unsupported setting. This property does nothing.
          */
         get enableOfflineWebApplicationCache(): boolean;
         set enableOfflineWebApplicationCache(val: boolean);
@@ -8138,7 +8146,7 @@ export namespace WebKit {
         get_enable_mock_capture_devices(): boolean;
         /**
          * Get the #WebKitSettings:enable-offline-web-application-cache property.
-         * @returns %TRUE If HTML5 offline web application cache support is enabled or %FALSE otherwise.
+         * @returns %FALSE.
          */
         get_enable_offline_web_application_cache(): boolean;
         /**
@@ -8418,7 +8426,7 @@ export namespace WebKit {
          */
         set_enable_mock_capture_devices(enabled: boolean): void;
         /**
-         * Set the #WebKitSettings:enable-offline-web-application-cache property.
+         * Setting no longer supported. This function does nothing.
          * @param enabled Value to be set
          */
         set_enable_offline_web_application_cache(enabled: boolean): void;
@@ -11303,7 +11311,7 @@ export namespace WebKit {
          *     } else {
          *         g_warning ("Error running javascript: unexpected return value");
          *     }
-         *     webkit_javascript_result_unref (js_result);
+         *     g_object_unref (value);
          * }
          *
          * static void
@@ -11425,7 +11433,7 @@ export namespace WebKit {
          *     } else {
          *         g_warning ("Error running javascript: unexpected return value");
          *     }
-         *     webkit_javascript_result_unref (js_result);
+         *     g_object_unref (value);
          * }
          *
          * static void

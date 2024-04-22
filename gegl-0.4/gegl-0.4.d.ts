@@ -1013,6 +1013,14 @@ export namespace Gegl {
          * @returns A new copy of @color.
          */
         duplicate(): Color;
+        get_bytes(format: Babl.Object): GLib.Bytes;
+        /**
+         * Retrieves the current set color stored as `space`.
+         * If `space` is %NULL, this is equivalent to requesting color in the default
+         * naive CMYK space.
+         * @param space CMYK space.
+         */
+        get_cmyk(space?: Babl.Object | null): [number, number, number, number, number];
         /**
          * Get the component values of the color in `format`.
          * @param format A Babl pointer
@@ -1025,6 +1033,36 @@ export namespace Gegl {
          * any of the return pointers can be omitted.
          */
         get_rgba(): [number, number, number, number];
+        /**
+         * Retrieves the current set color stored as `space`.
+         * If `space` is %NULL, this is equivalent to requesting color in sRGB.
+         * @param space RGB space.
+         */
+        get_rgba_with_space(space: Babl.Object): [number, number, number, number];
+        /**
+         * Set a GeglColor from a pixel stored in a %GBytes and it's babl format.
+         * @param format a babl pixel format
+         * @param bytes color stored as @format
+         */
+        set_bytes(format: Babl.Object, bytes: GLib.Bytes | Uint8Array): void;
+        /**
+         * Set color as CMYK data stored as `space`. If `space` is %NULL, this is
+         * equivalent to storing with the default naive CMYK space.
+         * @param cyan cyan value
+         * @param magenta magenta value
+         * @param yellow yellow value
+         * @param key key value
+         * @param alpha alpha value
+         * @param space CMYK space.
+         */
+        set_cmyk(
+            cyan: number,
+            magenta: number,
+            yellow: number,
+            key: number,
+            alpha: number,
+            space?: Babl.Object | null,
+        ): void;
         /**
          * Set the color using the component values as `format`.
          * @param format A Babl pointer
@@ -1039,6 +1077,16 @@ export namespace Gegl {
          * @param alpha alpha value
          */
         set_rgba(red: number, green: number, blue: number, alpha: number): void;
+        /**
+         * Set color as RGBA data stored as `space`. If `space` is %NULL, this is
+         * equivalent to storing as sRGB.
+         * @param red red value
+         * @param green green value
+         * @param blue blue value
+         * @param alpha alpha value
+         * @param space RGB space.
+         */
+        set_rgba_with_space(red: number, green: number, blue: number, alpha: number, space: Babl.Object): void;
     }
 
     module Config {

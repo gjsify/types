@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./ayatanaappindicator-0.1.d.ts"],
+    "readme": "./README.md",
+    "name": "AyatanaAppIndicator-0.1",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -1,0 +1,59 @@
+{
+    "name": "@girs/gthree-1.0",
+    "version": "1.0.0-4.0.0-beta.3",
+    "description": "GJS TypeScript type definitions for Gthree-1.0, generated from library version 1.0.0",
+    "type": "module",
+    "module": "gthree-1.0.js",
+    "main": "gthree-1.0.js",
+    "exports": {
+        "./ambient": {
+            "types": "./gthree-1.0-ambient.d.ts",
+            "import": "./gthree-1.0-ambient.js",
+            "default": "./gthree-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gthree-1.0-import.d.ts",
+            "import": "./gthree-1.0-import.js",
+            "default": "./gthree-1.0-import.js"
+        },
+        ".": {
+            "types": "./gthree-1.0.d.ts",
+            "import": "./gthree-1.0.js",
+            "default": "./gthree-1.0.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gthree-1.0.d.ts"
+    },
+    "dependencies": {
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Gthree-1.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/gthree-1.0#readme"
+}

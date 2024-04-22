@@ -950,14 +950,12 @@ export namespace GtkClutter {
         // Own properties of GtkClutter.Embed
 
         /**
-         * Whether to use the reported size of the LayoutManager on the stage as the widget size.
-         * See gtk_clutter_embed_set_use_layout_size() for details.
+         * The #GtkWidget to be embedded into the #GtkClutterActor
          */
         get use_layout_size(): boolean;
         set use_layout_size(val: boolean);
         /**
-         * Whether to use the reported size of the LayoutManager on the stage as the widget size.
-         * See gtk_clutter_embed_set_use_layout_size() for details.
+         * The #GtkWidget to be embedded into the #GtkClutterActor
          */
         get useLayoutSize(): boolean;
         set useLayoutSize(val: boolean);

@@ -77,10 +77,10 @@ export namespace Xkl {
      */
     function set_debug_level(level: number): void;
     interface ConfigItemProcessFunc {
-        (config: ConfigRegistry, item: ConfigItem, data: any): void;
+        (config: ConfigRegistry, item: ConfigItem, data?: any | null): void;
     }
     interface TwoConfigItemsProcessFunc {
-        (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data: any): void;
+        (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data?: any | null): void;
     }
     /**
      * A set of flags used to indicate the capabilities of the active backend
@@ -511,16 +511,16 @@ export namespace Xkl {
             return_value: GObject.Value | any,
             n_param_values: number,
             param_values: GObject.Value | any,
-            invocation_hint: any,
-            marshal_data: any,
+            invocation_hint?: any | null,
+            marshal_data?: any | null,
         ): void;
         static VOID__ENUM_INT_BOOLEAN(
             closure: GObject.Closure,
             return_value: GObject.Value | any,
             n_param_values: number,
             param_values: GObject.Value | any,
-            invocation_hint: any,
-            marshal_data: any,
+            invocation_hint?: any | null,
+            marshal_data?: any | null,
         ): void;
         /**
          * Get the instance of the XklEngine. Within a process, there is always once instance.

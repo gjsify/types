@@ -1,0 +1,55 @@
+{
+    "name": "@girs/easyfc-0.14",
+    "version": "0.14.0-4.0.0-beta.3",
+    "description": "GJS TypeScript type definitions for Easyfc-0.14, generated from library version 0.14.0",
+    "type": "module",
+    "module": "easyfc-0.14.js",
+    "main": "easyfc-0.14.js",
+    "exports": {
+        "./ambient": {
+            "types": "./easyfc-0.14-ambient.d.ts",
+            "import": "./easyfc-0.14-ambient.js",
+            "default": "./easyfc-0.14-ambient.js"
+        },
+        "./import": {
+            "types": "./easyfc-0.14-import.d.ts",
+            "import": "./easyfc-0.14-import.js",
+            "default": "./easyfc-0.14-import.js"
+        },
+        ".": {
+            "types": "./easyfc-0.14.d.ts",
+            "import": "./easyfc-0.14.js",
+            "default": "./easyfc-0.14.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit easyfc-0.14.d.ts"
+    },
+    "dependencies": {
+        "@girs/fontconfig-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Easyfc-0.14"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/easyfc-0.14#readme"
+}

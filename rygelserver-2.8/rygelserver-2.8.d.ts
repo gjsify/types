@@ -1333,9 +1333,9 @@ export namespace RygelServer {
         // Own fields of RygelServer.SearchExpression
 
         ref_count: number;
-        op: any;
-        operand1: any;
-        operand2: any;
+        op: any | null;
+        operand1: any | null;
+        operand2: any | null;
 
         // Constructors of RygelServer.SearchExpression
 

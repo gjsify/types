@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./braseromedia-3.1.d.ts"],
+    "readme": "./README.md",
+    "name": "BraseroMedia-3.1",
+    "tsconfig": "./tsconfig.json"
+}
+

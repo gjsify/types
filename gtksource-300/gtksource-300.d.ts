@@ -233,19 +233,6 @@ export namespace GtkSource {
          */
         ALWAYS,
     }
-    /**
-     * The kind (or category) of a #GtkSourceStyleScheme.
-     */
-    enum StyleSchemeKind {
-        /**
-         * Light style.
-         */
-        LIGHT,
-        /**
-         * Dark style.
-         */
-        DARK,
-    }
     enum ViewGutterPosition {
         /**
          * the gutter position of the lines
@@ -5562,6 +5549,42 @@ export namespace GtkSource {
         set_types_for_locations(locations: SpaceLocationFlags, types: SpaceTypeFlags): void;
     }
 
+    module Style {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    class Style extends GObject.Object {
+        static $gtype: GObject.GType<Style>;
+
+        // Constructors of GtkSource.Style
+
+        constructor(properties?: Partial<Style.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own methods of GtkSource.Style
+
+        /**
+         * This function modifies the #GtkTextTag properties that are related to the
+         * #GtkSourceStyle attributes. Other #GtkTextTag properties are left untouched.
+         *
+         * If `style` is non-%NULL, applies `style` to `tag`.
+         *
+         * If `style` is %NULL, the related *-set properties of #GtkTextTag are set to
+         * %FALSE.
+         * @param tag a #GtkTextTag to apply styles to.
+         */
+        apply(tag: Gtk.TextTag): void;
+        /**
+         * Creates a copy of `style,` that is a new #GtkSourceStyle instance which
+         * has the same attributes set.
+         * @returns copy of @style, call g_object_unref() when you are done with it.
+         */
+        copy(): Style;
+    }
+
     module StyleScheme {
         // Constructor properties interface
 
@@ -5579,10 +5602,10 @@ export namespace GtkSource {
 
         // Own methods of GtkSource.StyleScheme
 
+        get_authors(): string[] | null;
         get_description(): string | null;
         get_filename(): string | null;
         get_id(): string;
-        get_kind(): StyleSchemeKind;
         get_name(): string;
         get_style(style_id: string): Style | null;
     }
@@ -6975,18 +6998,22 @@ export namespace GtkSource {
         _init(...args: any[]): void;
     }
 
+    type StyleClass = typeof Style;
     /**
+     * The data of a #GtkSourceStyle object.
+     *
      * Before using the value of a certain field, check the boolean value of the
-     * corresponding "`use_`" field.
+     * corresponding "use_" field.
      */
-    class Style {
-        static $gtype: GObject.GType<Style>;
+    class StyleData {
+        static $gtype: GObject.GType<StyleData>;
 
-        // Own fields of GtkSource.Style
+        // Own fields of GtkSource.StyleData
 
         foreground_color: Gdk.RGBA;
         background_color: Gdk.RGBA;
         underline_color: Gdk.RGBA;
+        paragraph_background_color: Gdk.RGBA;
         scale: number;
         underline: Pango.Underline;
         italic: number;
@@ -6995,61 +7022,16 @@ export namespace GtkSource {
         use_foreground_color: number;
         use_background_color: number;
         use_underline_color: number;
+        use_paragraph_background_color: number;
         use_scale: number;
         use_underline: number;
         use_italic: number;
         use_bold: number;
         use_strikethrough: number;
 
-        // Constructors of GtkSource.Style
+        // Constructors of GtkSource.StyleData
 
-        constructor(
-            properties?: Partial<{
-                foreground_color: Gdk.RGBA;
-                background_color: Gdk.RGBA;
-                underline_color: Gdk.RGBA;
-                scale: number;
-                underline: Pango.Underline;
-                italic: number;
-                bold: number;
-                strikethrough: number;
-                use_foreground_color: number;
-                use_background_color: number;
-                use_underline_color: number;
-                use_scale: number;
-                use_underline: number;
-                use_italic: number;
-                use_bold: number;
-                use_strikethrough: number;
-            }>,
-        );
         _init(...args: any[]): void;
-
-        static ['new'](): Style;
-
-        // Own methods of GtkSource.Style
-
-        /**
-         * This function modifies the #GtkTextTag properties that are related to the
-         * #GtkSourceStyle attributes. Other #GtkTextTag properties are left untouched.
-         *
-         * If `style` is non-%NULL, applies `style` to `tag`.
-         *
-         * If `style` is %NULL, the related `*-set` properties of #GtkTextTag are set to
-         * %FALSE.
-         * @param tag a #GtkTextTag to apply styles to.
-         */
-        apply(tag: Gtk.TextTag): void;
-        /**
-         * Increases the reference count of `style` by one.
-         * @returns the passed in @style.
-         */
-        ref(): Style;
-        /**
-         * Decreases the reference count of `style` by one. If the reference count drops
-         * to 0, `style` is freed.
-         */
-        unref(): void;
     }
 
     type StyleSchemeChooserInterface = typeof StyleSchemeChooser;

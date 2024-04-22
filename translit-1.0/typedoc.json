@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./translit-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Translit-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

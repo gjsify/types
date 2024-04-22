@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./xfconf-0.d.ts"],
+    "readme": "./README.md",
+    "name": "Xfconf-0",
+    "tsconfig": "./tsconfig.json"
+}
+

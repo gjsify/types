@@ -421,8 +421,6 @@ export namespace Retro {
             supportNoGame: boolean;
             system_directory: string;
             systemDirectory: string;
-            user_name: string;
-            userName: string;
         }
     }
 
@@ -531,16 +529,6 @@ export namespace Retro {
          */
         get systemDirectory(): string;
         set systemDirectory(val: string);
-        /**
-         * The name of the user.
-         */
-        get user_name(): string;
-        set user_name(val: string);
-        /**
-         * The name of the user.
-         */
-        get userName(): string;
-        set userName(val: string);
 
         // Constructors of Retro.Core
 
@@ -653,11 +641,6 @@ export namespace Retro {
          * @returns the system directory of the core
          */
         get_system_directory(): string;
-        /**
-         * Gets the name of the user.
-         * @returns the name of the user
-         */
-        get_user_name(): string;
         /**
          * Gets whether the core has an option for the given key.
          * @param key the key of the option
@@ -775,11 +758,6 @@ export namespace Retro {
          * @param system_directory the system directory
          */
         set_system_directory(system_directory: string): void;
-        /**
-         * Sets the name of the user.
-         * @param user_name the user name
-         */
-        set_user_name(user_name: string): void;
         /**
          * Stops running the core.
          */
@@ -1610,7 +1588,7 @@ export namespace Retro {
     type ModuleQueryClass = typeof ModuleQuery;
     type OptionClass = typeof Option;
     type OptionIteratorClass = typeof OptionIterator;
-    class Pixdata {
+    abstract class Pixdata {
         static $gtype: GObject.GType<Pixdata>;
 
         // Constructors of Retro.Pixdata

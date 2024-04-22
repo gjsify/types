@@ -1,0 +1,54 @@
+{
+    "name": "@girs/keybinder-3.0",
+    "version": "3.0.0-4.0.0-beta.3",
+    "description": "GJS TypeScript type definitions for Keybinder-3.0, generated from library version 3.0.0",
+    "type": "module",
+    "module": "keybinder-3.0.js",
+    "main": "keybinder-3.0.js",
+    "exports": {
+        "./ambient": {
+            "types": "./keybinder-3.0-ambient.d.ts",
+            "import": "./keybinder-3.0-ambient.js",
+            "default": "./keybinder-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./keybinder-3.0-import.d.ts",
+            "import": "./keybinder-3.0-import.js",
+            "default": "./keybinder-3.0-import.js"
+        },
+        ".": {
+            "types": "./keybinder-3.0.d.ts",
+            "import": "./keybinder-3.0.js",
+            "default": "./keybinder-3.0.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit keybinder-3.0.d.ts"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Keybinder-3.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/keybinder-3.0#readme"
+}

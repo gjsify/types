@@ -25,7 +25,7 @@ export namespace Flatpak {
         // Static fields of Flatpak.Error
 
         /**
-         * App/runtime is already installed
+         * App/runtime/remote is already installed
          */
         static ALREADY_INSTALLED: number;
         /**
@@ -361,7 +361,7 @@ export namespace Flatpak {
         NONE,
         /**
          * Do not reap the child. Use this if you want to wait
-         * for the child with g_child_watch_add(). (Snce: 1.1)
+         * for the child with g_child_watch_add(). (Since: 1.1)
          */
         DO_NOT_REAP,
     }
@@ -380,9 +380,14 @@ export namespace Flatpak {
          */
         ONLY_CACHED,
         /**
-         * Only list refs available from any eventuall sideload repos. (Snce: 1.7)
+         * Only list refs available from sideload
+         * repos; see flatpak(1). (Since: 1.7)
          */
         ONLY_SIDELOADED,
+        /**
+         * Include refs from all arches, not just the primary ones. (Since: 1.11.2)
+         */
+        ALL_ARCHES,
     }
     /**
      * The details for #FlatpakTransaction::operation-error.
@@ -942,17 +947,20 @@ export namespace Flatpak {
          */
         list_installed_refs_for_update(cancellable?: Gio.Cancellable | null): InstalledRef[];
         /**
-         * Lists all the locally installed refs from `remote_name` that are
-         * related to `ref`. These are things that are interesting to install,
-         * update, or uninstall together with `ref`. For instance, locale data
-         * or debug information.
+         * Lists all the locally installed refs that are related to `ref`. These are
+         * things that are interesting to install, update, or uninstall together with
+         * `ref`. For instance, locale data or debug information.
+         *
+         * Note that while the related refs are usually installed from the same remote
+         * as `ref` (`remote_name)`, it is possible they were installed from another
+         * remote.
          *
          * This function is similar to flatpak_installation_list_remote_related_refs_sync,
          * but instead of looking at what is available on the remote, it only looks
          * at the locally installed refs. This is useful for instance when you're
          * looking for related refs to uninstall, or when you're planning to use
          * FLATPAK_UPDATE_FLAGS_NO_PULL to install previously pulled refs.
-         * @param remote_name the name of the remote
+         * @param remote_name the name of the remote providing @ref
          * @param ref the ref
          * @param cancellable a #GCancellable
          * @returns a GPtrArray of   #FlatpakRelatedRef instances
@@ -962,6 +970,18 @@ export namespace Flatpak {
             ref: string,
             cancellable?: Gio.Cancellable | null,
         ): RelatedRef[];
+        /**
+         * Lists the installed references that are pinned, meaning they will not be
+         * returned by flatpak_installation_list_unused_refs() and won't be removed
+         * unless explicitly specified for removal.
+         *
+         * Refs appear here either because they have been pinned automatically by
+         * Flatpak or because the user pinned them; see flatpak-pin(1).
+         * @param arch if non-%NULL, the architecture of refs to collect
+         * @param cancellable a #GCancellable
+         * @returns a GPtrArray of   #FlatpakInstalledRef instances
+         */
+        list_pinned_refs(arch?: string | null, cancellable?: Gio.Cancellable | null): InstalledRef[];
         /**
          * Lists all the applications and runtimes in a remote.
          * @param remote_or_uri the name or URI of the remote
@@ -981,6 +1001,37 @@ export namespace Flatpak {
             flags: QueryFlags,
             cancellable?: Gio.Cancellable | null,
         ): RemoteRef[];
+        /**
+         * Lists all the available refs on `remote_name` that are related to `ref,` and
+         * which are appropriate for the installed version of `ref`. For example if the
+         * installed version of org.videolan.VLC has a related ref of
+         * org.videolan.VLC.Plugin.bdj//3-19.08 and the remote version of VLC has a
+         * related ref of org.videolan.VLC.Plugin.bdj//3-20.08, this function will only
+         * return the 3-19.08 branch.
+         *
+         * See also the related functions
+         * flatpak_installation_list_remote_related_refs_sync() and
+         * flatpak_installation_list_installed_related_refs_sync().
+         *
+         * The returned list contains all available related refs, but not
+         * every one should always be installed. For example,
+         * flatpak_related_ref_should_download() returns %TRUE if the
+         * reference should be installed/updated with the app, and
+         * flatpak_related_ref_should_delete() returns %TRUE if it
+         * should be uninstalled with the main ref.
+         *
+         * The commit property of each #FlatpakRelatedRef is not guaranteed to be
+         * non-%NULL.
+         * @param remote_name the name of the remote
+         * @param ref the ref
+         * @param cancellable a #GCancellable
+         * @returns a GPtrArray of   #FlatpakRelatedRef instances
+         */
+        list_remote_related_refs_for_installed_sync(
+            remote_name: string,
+            ref: string,
+            cancellable?: Gio.Cancellable | null,
+        ): RelatedRef[];
         /**
          * Lists all the available refs on `remote_name` that are related to
          * `ref,` and the subpaths to use. These are things that are
@@ -1027,13 +1078,37 @@ export namespace Flatpak {
         /**
          * Lists the installed references that are not 'used'.
          *
-         * A reference is used if it is either an application, or an sdk,
-         * or the runtime of a used ref, or an extension of a used ref.
+         * A reference is used if it is either an application,
+         * or the runtime or sdk of a used ref, or an extension of a used ref.
+         * Pinned runtimes are also considered used; see flatpak-pin(1) and
+         * flatpak_installation_list_pinned_refs().
          * @param arch if non-%NULL, the architecture of refs to collect
          * @param cancellable a #GCancellable
          * @returns a GPtrArray of   #FlatpakInstalledRef instances
          */
         list_unused_refs(arch?: string | null, cancellable?: Gio.Cancellable | null): InstalledRef[];
+        /**
+         * Like flatpak_installation_list_unused_refs() but supports an extensible set
+         * of options as well as an `metadata_injection` parameter. The following are
+         * currently defined:
+         *
+         *   * exclude-refs (as): Act as if these refs are not installed even if they
+         *       are when determining the set of unused refs
+         *   * filter-by-eol (b): Only return refs as unused if they are End-Of-Life.
+         *       Note that if this option is combined with other filters (of which there
+         *       are none currently) non-EOL refs may also be returned.
+         * @param arch if non-%NULL, the architecture of refs to collect
+         * @param metadata_injection if non-%NULL, a #GHashTable mapping refs to                                  #GKeyFile objects, which when available will                                  be used instead of installed metadata
+         * @param options if non-%NULL, a GVariant a{sv} with an extensible set                       of options
+         * @param cancellable a #GCancellable
+         * @returns a GPtrArray of   #FlatpakInstalledRef instances
+         */
+        list_unused_refs_with_options(
+            arch?: string | null,
+            metadata_injection?: GLib.HashTable<any, any> | null,
+            options?: GLib.Variant | null,
+            cancellable?: Gio.Cancellable | null,
+        ): InstalledRef[];
         /**
          * Loads the metadata overrides file for an application.
          * @param app_id an application id
@@ -1339,7 +1414,7 @@ export namespace Flatpak {
          * flatpak_installed_ref_get_appdata_content_rating_type()).
          * @returns the content rating or %NULL
          */
-        get_appdata_content_rating(): GLib.HashTable<any, any> | null;
+        get_appdata_content_rating(): GLib.HashTable<string, string> | null;
         /**
          * Returns the content rating type from the appdata. For example, `oars-1.0` or
          * `oars-1.1`.
@@ -1454,9 +1529,9 @@ export namespace Flatpak {
          * Gets the application ID of the application running in the instance.
          *
          * Note that this may return %NULL for sandboxes that don't have an application.
-         * @returns the application ID
+         * @returns the application ID or %NULL
          */
-        get_app(): string;
+        get_app(): string | null;
         /**
          * Gets the architecture of the application running in the instance.
          * @returns the architecture
@@ -1573,6 +1648,12 @@ export namespace Flatpak {
          * @returns string representation
          */
         format_ref(): string;
+        /**
+         * Like flatpak_ref_format_ref() but this returns the same string each time
+         * it's called rather than allocating a new one.
+         * @returns string representation
+         */
+        format_ref_cached(): string;
         /**
          * Gets the arch or the ref.
          * @returns the arch
@@ -1815,7 +1896,7 @@ export namespace Flatpak {
          * Note: This is a local modification of this object, you must commit changes
          * using flatpak_installation_modify_remote() for the changes to take
          * effect.
-         * @param default_branch The new default_branch
+         * @param default_branch The new default_branch, or %NULL to unset
          */
         set_default_branch(default_branch: string): void;
         /**
@@ -1924,7 +2005,7 @@ export namespace Flatpak {
          * Note: This is a local modification of this object, you must commit changes
          * using flatpak_installation_modify_remote() for the changes to take
          * effect.
-         * @param title The new title
+         * @param title The new title, or %NULL to unset
          */
         set_title(title: string): void;
         /**
@@ -2047,7 +2128,7 @@ export namespace Flatpak {
         }
 
         interface OperationDone {
-            (operation: TransactionOperation, commit: string, result: TransactionResult): void;
+            (operation: TransactionOperation, commit: string | null, result: TransactionResult): void;
         }
 
         interface OperationError {
@@ -2055,6 +2136,10 @@ export namespace Flatpak {
         }
 
         interface Ready {
+            (): boolean;
+        }
+
+        interface ReadyPreAuth {
             (): boolean;
         }
 
@@ -2070,6 +2155,8 @@ export namespace Flatpak {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             installation: Installation;
+            no_interaction: boolean;
+            noInteraction: boolean;
         }
     }
 
@@ -2082,6 +2169,20 @@ export namespace Flatpak {
          * The installation that the transaction operates on.
          */
         get installation(): Installation;
+        /**
+         * %TRUE if the transaction is not interactive, %FALSE otherwise.
+         *
+         * See flatpak_transaction_set_no_interaction().
+         */
+        get no_interaction(): boolean;
+        set no_interaction(val: boolean);
+        /**
+         * %TRUE if the transaction is not interactive, %FALSE otherwise.
+         *
+         * See flatpak_transaction_set_no_interaction().
+         */
+        get noInteraction(): boolean;
+        set noInteraction(val: boolean);
 
         // Constructors of Flatpak.Transaction
 
@@ -2203,7 +2304,7 @@ export namespace Flatpak {
             callback: (
                 _source: this,
                 operation: TransactionOperation,
-                commit: string,
+                commit: string | null,
                 result: TransactionResult,
             ) => void,
         ): number;
@@ -2212,14 +2313,14 @@ export namespace Flatpak {
             callback: (
                 _source: this,
                 operation: TransactionOperation,
-                commit: string,
+                commit: string | null,
                 result: TransactionResult,
             ) => void,
         ): number;
         emit(
             signal: 'operation-done',
             operation: TransactionOperation,
-            commit: string,
+            commit: string | null,
             result: TransactionResult,
         ): void;
         connect(
@@ -2249,6 +2350,9 @@ export namespace Flatpak {
         connect(signal: 'ready', callback: (_source: this) => boolean): number;
         connect_after(signal: 'ready', callback: (_source: this) => boolean): number;
         emit(signal: 'ready'): void;
+        connect(signal: 'ready-pre-auth', callback: (_source: this) => boolean): number;
+        connect_after(signal: 'ready-pre-auth', callback: (_source: this) => boolean): number;
+        emit(signal: 'ready-pre-auth'): void;
         connect(signal: 'webflow-done', callback: (_source: this, options: GLib.Variant, id: number) => void): number;
         connect_after(
             signal: 'webflow-done',
@@ -2292,6 +2396,7 @@ export namespace Flatpak {
             detail: TransactionErrorDetails,
         ): boolean;
         vfunc_ready(): boolean;
+        vfunc_ready_pre_auth(): boolean;
         /**
          * Executes the transaction.
          *
@@ -2368,9 +2473,13 @@ export namespace Flatpak {
         add_install_flatpakref(flatpakref_data: GLib.Bytes | Uint8Array): boolean;
         /**
          * Adds updating the `previous_ids` of the given ref to this transaction, via either
-         * installing the `ref` if it was not already present. The will treat `ref` as the
-         * result of following an eol-rebase, and data migration from the refs in
-         * `previous_ids` will be set up.
+         * installing the `ref` if it was not already present or updating it. This will
+         * treat `ref` as the result of following an eol-rebase, and data migration from
+         * the refs in `previous_ids` will be set up.
+         *
+         * If you want to rebase the ref and uninstall the old version of it, consider
+         * using flatpak_transaction_add_rebase_and_uninstall() instead. It will add
+         * appropriate dependencies between the rebase and uninstall operations.
          *
          * See flatpak_transaction_add_install() for a description of `remote`.
          * @param remote the name of the remote
@@ -2381,6 +2490,36 @@ export namespace Flatpak {
          */
         add_rebase(remote: string, ref: string, subpaths?: string | null, previous_ids?: string[] | null): boolean;
         /**
+         * Adds updating the `previous_ids` of the given `new_ref` to this transaction,
+         * via either installing the `new_ref` if it was not already present or updating
+         * it. This will treat `new_ref` as the result of following an eol-rebase, and
+         * data migration from the refs in `previous_ids` will be set up.
+         *
+         * Also adds an operation to uninstall `old_ref` to this transaction. This
+         * operation will only be run if the operation to install/update `new_ref`
+         * succeeds.
+         *
+         * If `old_ref` is not already installed (which can happen if requesting to
+         * install an EOLed app, rather than update one which is already installed), the
+         * uninstall operation will silently not be added, and this function will behave
+         * similarly to flatpak_transaction_add_rebase().
+         *
+         * See flatpak_transaction_add_install() for a description of `remote`.
+         * @param remote the name of the remote
+         * @param new_ref the ref to rebase to
+         * @param old_ref the ref to uninstall
+         * @param subpaths the subpaths to include, or %NULL to install the complete ref
+         * @param previous_ids Previous ids to add to the     given ref. These should simply be the ids, not the full ref names (e.g. org.foo.Bar,     not org.foo.Bar/x86_64/master).
+         * @returns %TRUE on success; %FALSE with @error set on failure.
+         */
+        add_rebase_and_uninstall(
+            remote: string,
+            new_ref: string,
+            old_ref: string,
+            subpaths?: string | null,
+            previous_ids?: string[] | null,
+        ): boolean;
+        /**
          * Adds an extra local ostree repo as source for installation. This is
          * equivalent to using the sideload-repos directories (see flatpak(1)), but can
          * be done dynamically. Any path added here is used in addition to ones in
@@ -2389,7 +2528,8 @@ export namespace Flatpak {
          */
         add_sideload_repo(path: string): void;
         /**
-         * Adds uninstalling the given ref to this transaction.
+         * Adds uninstalling the given ref to this transaction. If the transaction is
+         * set to not deploy updates, the request is ignored.
          * @param ref the ref
          * @returns %TRUE on success; %FALSE with @error set on failure.
          */
@@ -2397,7 +2537,7 @@ export namespace Flatpak {
         /**
          * Adds updating the given ref to this transaction.
          * @param ref the ref
-         * @param subpaths subpaths to install; %NULL  to use the current set plus the set of configured languages, or  `{ "", NULL }` to pull all subpaths.
+         * @param subpaths subpaths to install; %NULL  to use the current set plus the set of configured languages, or  `{ NULL }` or `{ "", NULL }` to pull all subpaths.
          * @param commit the commit to update to, or %NULL to use the latest
          * @returns %TRUE on success; %FALSE with @error set on failure.
          */
@@ -2411,10 +2551,28 @@ export namespace Flatpak {
          */
         complete_basic_auth(id: number, user: string, password: string, options: GLib.Variant): void;
         /**
+         * Gets the value set by
+         * flatpak_transaction_set_auto_install_debug().
+         * @returns %TRUE if auto_install_debug is set, %FALSE otherwise
+         */
+        get_auto_install_debug(): boolean;
+        /**
+         * Gets the value set by
+         * flatpak_transaction_set_auto_install_sdk().
+         * @returns %TRUE if auto_install_sdk is set, %FALSE otherwise
+         */
+        get_auto_install_sdk(): boolean;
+        /**
          * Gets the current operation.
          * @returns the current #FlatpakTransactionOperation
          */
         get_current_operation(): TransactionOperation;
+        /**
+         * Gets the value set by
+         * flatpak_transaction_set_include_unused_uninstall_ops().
+         * @returns %TRUE if include_unused_uninstall_ops is set, %FALSE otherwise
+         */
+        get_include_unused_uninstall_ops(): boolean;
         /**
          * Gets the installation this transaction was created for.
          * @returns a #FlatpakInstallation
@@ -2427,13 +2585,30 @@ export namespace Flatpak {
          */
         get_no_deploy(): boolean;
         /**
+         * Gets whether the transaction is interactive. See
+         * flatpak_transaction_set_no_interaction().
+         * @returns %TRUE if the transaction is not interactive, %FALSE otherwise
+         */
+        get_no_interaction(): boolean;
+        /**
          * Gets whether the transaction should operate only on locally
          * available data.
          * @returns %TRUE if no_pull is set, %FALSE otherwise
          */
         get_no_pull(): boolean;
         /**
-         * Gets the list of operations. Skipped operations are not included.
+         * Gets the operation for `ref,` if any match. If `remote` is non-%NULL, only an
+         * operation for that remote will be returned. If remote is %NULL and the
+         * transaction has more than one operation for `ref` from different remotes, an
+         * error will be returned.
+         * @param remote a remote name
+         * @param ref a ref
+         * @returns the #FlatpakTransactionOperation for @ref, or   %NULL with @error set
+         */
+        get_operation_for_ref(remote: string | null, ref: string): TransactionOperation;
+        /**
+         * Gets the list of operations. Skipped operations are not included. The order
+         * of the list is the order in which the operations are executed.
          * @returns a #GList of operations
          */
         get_operations(): TransactionOperation[];
@@ -2466,10 +2641,31 @@ export namespace Flatpak {
          */
         run(cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * When this is set to %TRUE, Flatpak will automatically install the debug info
+         * for each app currently being installed or updated, as well as its
+         * dependencies. Does nothing if an uninstall is taking place.
+         * @param auto_install_debug whether to auto install debug info for apps
+         */
+        set_auto_install_debug(auto_install_debug: boolean): void;
+        /**
+         * When this is set to %TRUE, Flatpak will automatically install the SDK for
+         * each app currently being installed or updated. Does nothing if an uninstall
+         * is taking place.
+         * @param auto_install_sdk whether to auto install SDKs for apps
+         */
+        set_auto_install_sdk(auto_install_sdk: boolean): void;
+        /**
          * Sets the architecture to default to where it is unspecified.
          * @param arch the arch to make default
          */
         set_default_arch(arch: string): void;
+        /**
+         * Normally the transaction pins any explicit installations so they will not
+         * be automatically removed. But this can be disabled if you don't want this
+         * behaviour.
+         * @param disable_pin whether to disable auto-pinning
+         */
+        set_disable_auto_pin(disable_pin: boolean): void;
         /**
          * Sets whether the transaction should ignore runtime dependencies
          * when resolving operations for applications.
@@ -2501,6 +2697,18 @@ export namespace Flatpak {
          * @param force_uninstall whether to force-uninstall refs
          */
         set_force_uninstall(force_uninstall: boolean): void;
+        /**
+         * When this is set to %TRUE, Flatpak will add uninstall operations to the
+         * transaction for each runtime it considers unused. This is used by the
+         * "update" CLI command to garbage collect runtimes and free disk space.
+         *
+         * No guarantees are made about the exact hueristic used; e.g. only end-of-life
+         * unused runtimes may be uninstalled with this set. To see the full list of
+         * unused runtimes in an installation, use
+         * flatpak_installation_list_unused_refs().
+         * @param include_unused_uninstall_ops whether to include unused uninstall ops
+         */
+        set_include_unused_uninstall_ops(include_unused_uninstall_ops: boolean): void;
         /**
          * Sets whether the transaction should download updates, but
          * not deploy them.
@@ -3090,12 +3298,13 @@ export namespace Flatpak {
          */
         get_ref(): string;
         /**
-         * Gets the operations which caused this operation to be added to the
-         * transaction. In the case of a runtime, it's the apps whose runtime it is (and
-         * this could be multiple apps, if they all require the same runtime). In
-         * the case of a related ref such as an extension, it's the main app or
-         * runtime. In the case of a main app or something added to the transaction by
-         * flatpak_transaction_add_ref(), %NULL or an empty array will be returned.
+         * Gets the operation(s) which caused this operation to be added to the
+         * transaction. In the case of a runtime, it's the app(s) whose runtime it is,
+         * and/or a runtime extension in the special case of an extra-data extension
+         * that doesn't define the "NoRuntime" key. In the case of a related ref such
+         * as an extension, it's the main app or runtime. In the case of a main app or
+         * something added to the transaction by e.g. flatpak_transaction_add_install()
+         * and which is not otherwise needed, %NULL or an empty array will be returned.
          *
          * Note that an op will be returned even if it’s marked as to be skipped when
          * the transaction is run. Check that using
@@ -3111,6 +3320,31 @@ export namespace Flatpak {
          * @returns the remote
          */
         get_remote(): string;
+        /**
+         * Gets whether the given operation will require authentication to acquire
+         * needed tokens. See also the documentation for
+         * #FlatpakTransaction::ready-pre-auth.
+         * @returns whether @self requires authentication
+         */
+        get_requires_authentication(): boolean;
+        /**
+         * Gets the set of subpaths that will be pulled from this ref.
+         *
+         * Some refs are only partially installed, such as translations. These
+         * are subset by the toplevel directory (typically by translation name).
+         * The subset to install can be specified at install time, but is otherwise
+         * decided based on configurations and things like the current locale and
+         * how the app was previously installed.
+         *
+         * If there is no subsetting active, this will always return %NULL
+         * (even though some other APIs also take an empty string to mean no
+         * subsetting).
+         *
+         * This information is available when the transaction is resolved,
+         * i.e. when #FlatpakTransaction::ready is emitted.
+         * @returns the set of subpaths that will be pulled, or %NULL if no subsetting.
+         */
+        get_subpaths(): string[];
     }
 
     module TransactionProgress {

@@ -332,6 +332,7 @@ export namespace Cogl {
          *    expected to return age values other than 0.
          */
         OGL_FEATURE_ID_BUFFER_AGE,
+        OGL_FEATURE_ID_SHADER_TEXTURE_LOD,
     }
     /**
      * Return values for the #CoglXlibFilterFunc and #CoglWin32FilterFunc functions.
@@ -2680,6 +2681,7 @@ export namespace Cogl {
          *     depth buffer to a texture.
          */
         DEPTH_TEXTURE,
+        SHADER_TEXTURE_LOD,
     }
     /**
      * Flags for cogl_framebuffer_read_pixels_into_bitmap()
@@ -5863,6 +5865,7 @@ export namespace Cogl {
          * @returns %TRUE if the texture was successfully allocated,               otherwise %FALSE and @error will be updated if it               wasn't %NULL.
          */
         allocate(): Bool;
+        copy_sub_image(xoffset: number, yoffset: number, x: number, y: number, width: number, height: number): Bool;
         /**
          * Queries what components the given `texture` stores internally as set
          * via cogl_texture_set_components().
@@ -6116,6 +6119,7 @@ export namespace Cogl {
          * @returns %TRUE if the texture was successfully allocated,               otherwise %FALSE and @error will be updated if it               wasn't %NULL.
          */
         allocate(): Bool;
+        copy_sub_image(xoffset: number, yoffset: number, x: number, y: number, width: number, height: number): Bool;
         /**
          * Queries what components the given `texture` stores internally as set
          * via cogl_texture_set_components().
@@ -6368,6 +6372,7 @@ export namespace Cogl {
          * @returns %TRUE if the texture was successfully allocated,               otherwise %FALSE and @error will be updated if it               wasn't %NULL.
          */
         allocate(): Bool;
+        copy_sub_image(xoffset: number, yoffset: number, x: number, y: number, width: number, height: number): Bool;
         /**
          * Queries what components the given `texture` stores internally as set
          * via cogl_texture_set_components().
@@ -6667,6 +6672,7 @@ export namespace Cogl {
          * @returns %TRUE if the texture was successfully allocated,               otherwise %FALSE and @error will be updated if it               wasn't %NULL.
          */
         allocate(): Bool;
+        copy_sub_image(xoffset: number, yoffset: number, x: number, y: number, width: number, height: number): Bool;
         /**
          * Queries what components the given `texture` stores internally as set
          * via cogl_texture_set_components().
@@ -9710,6 +9716,7 @@ export namespace Cogl {
          * @returns %TRUE if the texture was successfully allocated,               otherwise %FALSE and @error will be updated if it               wasn't %NULL.
          */
         allocate(): Bool;
+        copy_sub_image(xoffset: number, yoffset: number, x: number, y: number, width: number, height: number): Bool;
         /**
          * Queries what components the given `texture` stores internally as set
          * via cogl_texture_set_components().

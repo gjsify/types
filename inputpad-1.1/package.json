@@ -1,0 +1,65 @@
+{
+    "name": "@girs/inputpad-1.1",
+    "version": "1.1.0-4.0.0-beta.3",
+    "description": "GJS TypeScript type definitions for InputPad-1.1, generated from library version 1.1.0",
+    "type": "module",
+    "module": "inputpad-1.1.js",
+    "main": "inputpad-1.1.js",
+    "exports": {
+        "./ambient": {
+            "types": "./inputpad-1.1-ambient.d.ts",
+            "import": "./inputpad-1.1-ambient.js",
+            "default": "./inputpad-1.1-ambient.js"
+        },
+        "./import": {
+            "types": "./inputpad-1.1-import.d.ts",
+            "import": "./inputpad-1.1-import.js",
+            "default": "./inputpad-1.1-import.js"
+        },
+        ".": {
+            "types": "./inputpad-1.1.d.ts",
+            "import": "./inputpad-1.1.js",
+            "default": "./inputpad-1.1.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit inputpad-1.1.d.ts"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-3.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gtk-3.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "InputPad-1.1"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/inputpad-1.1#readme"
+}

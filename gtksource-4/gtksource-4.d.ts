@@ -5173,7 +5173,7 @@ export namespace GtkSource {
          * @param category a string specifying the mark category, or %NULL.
          * @returns the previous #GtkSourceMark, or %NULL.
          */
-        prev(category?: string | null): Mark | null;
+        prev(category: string): Mark | null;
     }
 
     module MarkAttributes {

@@ -1,0 +1,54 @@
+{
+    "name": "@girs/gamerzilla-0.1",
+    "version": "0.1.0-4.0.0-beta.3",
+    "description": "GJS TypeScript type definitions for Gamerzilla-0.1, generated from library version 0.1.0",
+    "type": "module",
+    "module": "gamerzilla-0.1.js",
+    "main": "gamerzilla-0.1.js",
+    "exports": {
+        "./ambient": {
+            "types": "./gamerzilla-0.1-ambient.d.ts",
+            "import": "./gamerzilla-0.1-ambient.js",
+            "default": "./gamerzilla-0.1-ambient.js"
+        },
+        "./import": {
+            "types": "./gamerzilla-0.1-import.d.ts",
+            "import": "./gamerzilla-0.1-import.js",
+            "default": "./gamerzilla-0.1-import.js"
+        },
+        ".": {
+            "types": "./gamerzilla-0.1.d.ts",
+            "import": "./gamerzilla-0.1.js",
+            "default": "./gamerzilla-0.1.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gamerzilla-0.1.d.ts"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Gamerzilla-0.1"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/gamerzilla-0.1#readme"
+}

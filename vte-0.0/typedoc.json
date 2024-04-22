@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./vte-0.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Vte-0.0",
+    "tsconfig": "./tsconfig.json"
+}
+

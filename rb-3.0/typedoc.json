@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./rb-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "RB-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

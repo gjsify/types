@@ -1,0 +1,55 @@
+{
+    "name": "@girs/lightdm-1",
+    "version": "1.0.0-4.0.0-beta.3",
+    "description": "GJS TypeScript type definitions for LightDM-1, generated from library version 1.0.0",
+    "type": "module",
+    "module": "lightdm-1.js",
+    "main": "lightdm-1.js",
+    "exports": {
+        "./ambient": {
+            "types": "./lightdm-1-ambient.d.ts",
+            "import": "./lightdm-1-ambient.js",
+            "default": "./lightdm-1-ambient.js"
+        },
+        "./import": {
+            "types": "./lightdm-1-import.d.ts",
+            "import": "./lightdm-1-import.js",
+            "default": "./lightdm-1-import.js"
+        },
+        ".": {
+            "types": "./lightdm-1.d.ts",
+            "import": "./lightdm-1.js",
+            "default": "./lightdm-1.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit lightdm-1.d.ts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "LightDM-1"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/lightdm-1#readme"
+}

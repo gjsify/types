@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./pqmarble-2.d.ts"],
+    "readme": "./README.md",
+    "name": "PQMarble-2",
+    "tsconfig": "./tsconfig.json"
+}
+

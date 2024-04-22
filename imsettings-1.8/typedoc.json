@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./imsettings-1.8.d.ts"],
+    "readme": "./README.md",
+    "name": "IMSettings-1.8",
+    "tsconfig": "./tsconfig.json"
+}
+

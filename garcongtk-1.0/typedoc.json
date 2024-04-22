@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./garcongtk-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GarconGtk-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

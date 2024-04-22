@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gucharmap-2.90)
 
 
-GJS TypeScript type definitions for Gucharmap-2.90, generated from library version 2.90.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.2.
+GJS TypeScript type definitions for Gucharmap-2.90, generated from library version 15.1.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.3.
 
 
 ## Install

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./wp-0.4.d.ts"],
+    "readme": "./README.md",
+    "name": "Wp-0.4",
+    "tsconfig": "./tsconfig.json"
+}
+

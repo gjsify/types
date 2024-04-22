@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/folkseds-0.7)
 
 
-GJS TypeScript type definitions for FolksEds-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.2.
+GJS TypeScript type definitions for FolksEds-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.3.
 
 
 ## Install

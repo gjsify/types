@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./fcitx-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Fcitx-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

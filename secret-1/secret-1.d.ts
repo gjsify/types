@@ -65,6 +65,26 @@ export namespace Secret {
          * the file format is not valid
          */
         INVALID_FILE_FORMAT,
+        /**
+         * the xdg:schema attribute of the table does
+         * not match the schema name
+         */
+        MISMATCHED_SCHEMA,
+        /**
+         * attribute contained in table not found
+         * in corresponding schema
+         */
+        NO_MATCHING_ATTRIBUTE,
+        /**
+         * attribute could not be parsed according to its type
+         * reported in the table's schema
+         */
+        WRONG_TYPE,
+        /**
+         * attribute list passed to secret_attributes_validate
+         * has no elements to validate
+         */
+        EMPTY_TABLE,
     }
     /**
      * The type of an attribute in a [struct`SecretSchema]`.
@@ -187,6 +207,19 @@ export namespace Secret {
      * The minor version of libsecret.
      */
     const MINOR_VERSION: number;
+    /**
+     * Check if attributes are valid according to the provided schema.
+     *
+     * Verifies schema name if available, attribute names and parsing
+     * of attribute values.
+     * @param schema the schema for the attributes
+     * @param attributes the attributes to be validated
+     * @returns whether or not the given attributes table is valid
+     */
+    function attributes_validate(
+        schema: Schema,
+        attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+    ): boolean;
     /**
      * Get a #SecretBackend instance.
      *
@@ -5116,7 +5149,7 @@ export namespace Secret {
      * items that are not stored by the libsecret library. Other libraries such as
      * libgnome-keyring don't store the schema name.
      *
-     * Additional schemas can be defined via the %SecretSchema structure like this:
+     * Additional schemas can be defined via the [struct`Schema]` structure like this:
      *
      * ```c
      * // in a header:

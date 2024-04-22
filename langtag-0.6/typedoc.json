@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./langtag-0.6.d.ts"],
+    "readme": "./README.md",
+    "name": "LangTag-0.6",
+    "tsconfig": "./tsconfig.json"
+}
+

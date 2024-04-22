@@ -121,13 +121,13 @@ export namespace FPrint {
          */
         VIRTUAL,
         /**
-         * The device is a USB device
-         */
-        USB,
-        /**
          * The device is a udev device
          */
         UDEV,
+        /**
+         * The device is a USB device
+         */
+        USB,
     }
     enum Finger {
         /**

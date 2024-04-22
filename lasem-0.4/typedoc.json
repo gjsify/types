@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./lasem-0.4.d.ts"],
+    "readme": "./README.md",
+    "name": "Lasem-0.4",
+    "tsconfig": "./tsconfig.json"
+}
+

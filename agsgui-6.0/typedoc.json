@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./agsgui-6.0.d.ts"],
+    "readme": "./README.md",
+    "name": "AgsGui-6.0",
+    "tsconfig": "./tsconfig.json"
+}
+

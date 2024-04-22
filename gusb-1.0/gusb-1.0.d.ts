@@ -57,17 +57,50 @@ export namespace GUsb {
      * The error code.
      */
     enum DeviceError {
+        /**
+         * Internal error
+         */
         INTERNAL,
+        /**
+         * IO error
+         */
         IO,
+        /**
+         * Operation timed out
+         */
         TIMED_OUT,
+        /**
+         * Operation not supported
+         */
         NOT_SUPPORTED,
+        /**
+         * No device found
+         */
         NO_DEVICE,
+        /**
+         * Device is not open
+         */
         NOT_OPEN,
+        /**
+         * Device is already open
+         */
         ALREADY_OPEN,
+        /**
+         * Operation was cancelled
+         */
         CANCELLED,
+        /**
+         * Operation failed
+         */
         FAILED,
+        /**
+         * Permission denied
+         */
         PERMISSION_DENIED,
-        LAST,
+        /**
+         * Device was busy
+         */
+        BUSY,
     }
     /**
      * The USB language ID.

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./atrilview-1.5.0.d.ts"],
+    "readme": "./README.md",
+    "name": "AtrilView-1.5.0",
+    "tsconfig": "./tsconfig.json"
+}
+

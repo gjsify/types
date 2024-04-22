@@ -1002,12 +1002,7 @@ export namespace GooCanvas {
          * @param time the time of the event that lead to the pointer grab. This should  come from the relevant #GdkEvent.
          * @returns %GDK_GRAB_SUCCESS if the grab succeeded.
          */
-        pointer_grab(
-            item: CanvasItem,
-            event_mask: Gdk.EventMask,
-            cursor: Gdk.Cursor | null,
-            time: number,
-        ): Gdk.GrabStatus;
+        pointer_grab(item: CanvasItem, event_mask: Gdk.EventMask, cursor: Gdk.Cursor, time: number): Gdk.GrabStatus;
         /**
          * Ungrabs the pointer, if the given item has the pointer grab.
          * @param item the item that has the grab.

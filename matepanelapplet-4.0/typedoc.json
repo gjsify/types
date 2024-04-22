@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./matepanelapplet-4.0.d.ts"],
+    "readme": "./README.md",
+    "name": "MatePanelApplet-4.0",
+    "tsconfig": "./tsconfig.json"
+}
+

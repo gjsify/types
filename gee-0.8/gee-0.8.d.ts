@@ -69,13 +69,13 @@ export namespace Gee {
     function async_task(_callback_?: Gio.AsyncReadyCallback | null): globalThis.Promise<void> | void;
     function async_task_finish(_res_: Gio.AsyncResult): void;
     interface HashDataFunc {
-        (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, v: any): number;
+        (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, v?: any | null): number;
     }
     interface EqualDataFunc {
-        (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, a: any, b: any): boolean;
+        (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, a?: any | null, b?: any | null): boolean;
     }
     interface LazyFunc {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any | null;
     }
     interface FoldMapFunc {
         (
@@ -85,10 +85,10 @@ export namespace Gee {
             k_dup_func: GObject.BoxedCopyFunc,
             v_type: GObject.GType,
             v_dup_func: GObject.BoxedCopyFunc,
-            k: any,
-            v: any,
-            a: any,
-        ): any;
+            k?: any | null,
+            v?: any | null,
+            a?: any | null,
+        ): any | null;
     }
     interface ForallMapFunc {
         (
@@ -96,12 +96,12 @@ export namespace Gee {
             k_dup_func: GObject.BoxedCopyFunc,
             v_type: GObject.GType,
             v_dup_func: GObject.BoxedCopyFunc,
-            k: any,
-            v: any,
+            k?: any | null,
+            v?: any | null,
         ): boolean;
     }
     interface Task {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any | null;
     }
     interface FoldFunc {
         (
@@ -109,12 +109,12 @@ export namespace Gee {
             a_dup_func: GObject.BoxedCopyFunc,
             g_type: GObject.GType,
             g_dup_func: GObject.BoxedCopyFunc,
-            g: any,
-            a: any,
-        ): any;
+            g?: any | null,
+            a?: any | null,
+        ): any | null;
     }
     interface ForallFunc {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: any): boolean;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g?: any | null): boolean;
     }
     interface UnfoldFunc {
         (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc): Lazy | null;
@@ -135,11 +135,11 @@ export namespace Gee {
             a_dup_func: GObject.BoxedCopyFunc,
             g_type: GObject.GType,
             g_dup_func: GObject.BoxedCopyFunc,
-            g: any,
-        ): any;
+            g?: any | null,
+        ): any | null;
     }
     interface Predicate {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: any): boolean;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g?: any | null): boolean;
     }
     interface FlatMapFunc {
         (
@@ -147,7 +147,7 @@ export namespace Gee {
             a_dup_func: GObject.BoxedCopyFunc,
             g_type: GObject.GType,
             g_dup_func: GObject.BoxedCopyFunc,
-            g: any,
+            g?: any | null,
         ): Iterator;
     }
     module AbstractBidirList {
@@ -217,27 +217,27 @@ export namespace Gee {
 
         // Inherited methods
         list_iterator(): ListIterator;
-        get(index: number): any;
-        set(index: number, item: any): void;
+        get(index: number): any | null;
+        set(index: number, item?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
-        index_of(item: any): number;
-        insert(index: number, item: any): void;
-        remove_at(index: number): any;
+        index_of(item?: any | null): number;
+        insert(index: number, item?: any | null): void;
+        remove_at(index: number): any | null;
         slice(start: number, stop: number): List | null;
-        first(): any;
-        last(): any;
+        first(): any | null;
+        last(): any | null;
         insert_all(index: number, collection: Collection): void;
         sort(compare_func?: GLib.CompareDataFunc | null): void;
         vfunc_list_iterator(): ListIterator;
-        vfunc_get(index: number): any;
-        vfunc_set(index: number, item: any): void;
-        vfunc_index_of(item: any): number;
-        vfunc_insert(index: number, item: any): void;
-        vfunc_remove_at(index: number): any;
+        vfunc_get(index: number): any | null;
+        vfunc_set(index: number, item?: any | null): void;
+        vfunc_index_of(item?: any | null): number;
+        vfunc_insert(index: number, item?: any | null): void;
+        vfunc_remove_at(index: number): any | null;
         vfunc_slice(start: number, stop: number): List | null;
-        vfunc_first(): any;
-        vfunc_last(): any;
+        vfunc_first(): any | null;
+        vfunc_last(): any | null;
         vfunc_insert_all(index: number, collection: Collection): void;
         vfunc_sort(compare_func?: GLib.CompareDataFunc | null): void;
     }
@@ -308,26 +308,26 @@ export namespace Gee {
         get_read_only_view(): BidirSortedSet;
 
         // Inherited methods
-        first(): any;
-        last(): any;
-        iterator_at(element: any): Iterator | null;
-        lower(element: any): any | null;
-        higher(element: any): any | null;
-        floor(element: any): any | null;
-        ceil(element: any): any | null;
-        head_set(before: any): SortedSet;
-        tail_set(after: any): SortedSet;
-        sub_set(from: any, to: any): SortedSet;
-        vfunc_first(): any;
-        vfunc_last(): any;
-        vfunc_iterator_at(element: any): Iterator | null;
-        vfunc_lower(element: any): any | null;
-        vfunc_higher(element: any): any | null;
-        vfunc_floor(element: any): any | null;
-        vfunc_ceil(element: any): any | null;
-        vfunc_head_set(before: any): SortedSet;
-        vfunc_tail_set(after: any): SortedSet;
-        vfunc_sub_set(from: any, to: any): SortedSet;
+        first(): any | null;
+        last(): any | null;
+        iterator_at(element?: any | null): Iterator | null;
+        lower(element?: any | null): any | null;
+        higher(element?: any | null): any | null;
+        floor(element?: any | null): any | null;
+        ceil(element?: any | null): any | null;
+        head_set(before?: any | null): SortedSet;
+        tail_set(after?: any | null): SortedSet;
+        sub_set(from?: any | null, to?: any | null): SortedSet;
+        vfunc_first(): any | null;
+        vfunc_last(): any | null;
+        vfunc_iterator_at(element?: any | null): Iterator | null;
+        vfunc_lower(element?: any | null): any | null;
+        vfunc_higher(element?: any | null): any | null;
+        vfunc_floor(element?: any | null): any | null;
+        vfunc_ceil(element?: any | null): any | null;
+        vfunc_head_set(before?: any | null): SortedSet;
+        vfunc_tail_set(after?: any | null): SortedSet;
+        vfunc_sub_set(from?: any | null, to?: any | null): SortedSet;
     }
 
     module AbstractBidirSortedMap {
@@ -416,14 +416,14 @@ export namespace Gee {
         get ascendingEntries(): SortedSet;
 
         // Inherited methods
-        head_map(before: any): SortedMap;
-        tail_map(after: any): SortedMap;
-        sub_map(before: any, after: any): SortedMap;
+        head_map(before?: any | null): SortedMap;
+        tail_map(after?: any | null): SortedMap;
+        sub_map(before?: any | null, after?: any | null): SortedMap;
         get_ascending_keys(): SortedSet;
         get_ascending_entries(): SortedSet;
-        vfunc_head_map(before: any): SortedMap;
-        vfunc_tail_map(after: any): SortedMap;
-        vfunc_sub_map(before: any, after: any): SortedMap;
+        vfunc_head_map(before?: any | null): SortedMap;
+        vfunc_tail_map(after?: any | null): SortedMap;
+        vfunc_sub_map(before?: any | null, after?: any | null): SortedMap;
         vfunc_get_ascending_keys(): SortedSet;
         vfunc_get_ascending_entries(): SortedSet;
     }
@@ -475,9 +475,9 @@ export namespace Gee {
 
         // Own virtual methods of Gee.AbstractCollection
 
-        vfunc_contains(item: any): boolean;
-        vfunc_add(item: any): boolean;
-        vfunc_remove(item: any): boolean;
+        vfunc_contains(item?: any | null): boolean;
+        vfunc_add(item?: any | null): boolean;
+        vfunc_remove(item?: any | null): boolean;
         vfunc_clear(): void;
         vfunc_iterator(): Iterator;
         vfunc_foreach(f: ForallFunc): boolean;
@@ -497,9 +497,9 @@ export namespace Gee {
 
         // Own methods of Gee.AbstractCollection
 
-        contains(item: any): boolean;
-        add(item: any): boolean;
-        remove(item: any): boolean;
+        contains(item?: any | null): boolean;
+        add(item?: any | null): boolean;
+        remove(item?: any | null): boolean;
         clear(): void;
         iterator(): Iterator;
         foreach(f: ForallFunc): boolean;
@@ -519,9 +519,9 @@ export namespace Gee {
 
         // Inherited methods
         stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: StreamFunc): Iterator;
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): any;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed?: any | null): any | null;
         map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: MapFunc): Iterator;
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed?: any | null): Iterator;
         filter(pred: Predicate): Iterator;
         chop(offset: number, length: number): Iterator;
         flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FlatMapFunc): Iterator;
@@ -529,14 +529,19 @@ export namespace Gee {
         first_match(pred: Predicate): any | null;
         any_match(pred: Predicate): boolean;
         all_match(pred: Predicate): boolean;
-        max(compare: GLib.CompareDataFunc): any;
-        min(compare: GLib.CompareDataFunc): any;
+        max(compare: GLib.CompareDataFunc): any | null;
+        min(compare: GLib.CompareDataFunc): any | null;
         order_by(compare?: GLib.CompareDataFunc | null): Iterator;
         get_element_type(): GObject.GType;
         vfunc_stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: StreamFunc): Iterator;
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): any;
+        vfunc_fold(
+            a_type: GObject.GType,
+            a_dup_func: GObject.BoxedCopyFunc,
+            f: FoldFunc,
+            seed?: any | null,
+        ): any | null;
         vfunc_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: MapFunc): Iterator;
-        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): Iterator;
+        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed?: any | null): Iterator;
         vfunc_filter(pred: Predicate): Iterator;
         vfunc_chop(offset: number, length: number): Iterator;
         vfunc_flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FlatMapFunc): Iterator;
@@ -544,8 +549,8 @@ export namespace Gee {
         vfunc_first_match(pred: Predicate): any | null;
         vfunc_any_match(pred: Predicate): boolean;
         vfunc_all_match(pred: Predicate): boolean;
-        vfunc_max(compare: GLib.CompareDataFunc): any;
-        vfunc_min(compare: GLib.CompareDataFunc): any;
+        vfunc_max(compare: GLib.CompareDataFunc): any | null;
+        vfunc_min(compare: GLib.CompareDataFunc): any | null;
         vfunc_order_by(compare?: GLib.CompareDataFunc | null): Iterator;
         vfunc_get_element_type(): GObject.GType;
         add_all(collection: Collection): boolean;
@@ -967,11 +972,11 @@ export namespace Gee {
         // Own virtual methods of Gee.AbstractList
 
         vfunc_list_iterator(): ListIterator;
-        vfunc_get(index: number): any;
-        vfunc_set(index: number, item: any): void;
-        vfunc_index_of(item: any): number;
-        vfunc_insert(index: number, item: any): void;
-        vfunc_remove_at(index: number): any;
+        vfunc_get(index: number): any | null;
+        vfunc_set(index: number, item?: any | null): void;
+        vfunc_index_of(item?: any | null): number;
+        vfunc_insert(index: number, item?: any | null): void;
+        vfunc_remove_at(index: number): any | null;
         vfunc_slice(start: number, stop: number): List | null;
         vfunc_reserved0(): void;
         vfunc_reserved1(): void;
@@ -988,13 +993,13 @@ export namespace Gee {
         // Own methods of Gee.AbstractList
 
         list_iterator(): ListIterator;
-        get(index: number): any;
-        set(index: number, item: any): void;
+        get(index: number): any | null;
+        set(index: number, item?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
-        index_of(item: any): number;
-        insert(index: number, item: any): void;
-        remove_at(index: number): any;
+        index_of(item?: any | null): number;
+        insert(index: number, item?: any | null): void;
+        remove_at(index: number): any | null;
         slice(start: number, stop: number): List | null;
         reserved0(): void;
         reserved1(): void;
@@ -1014,17 +1019,17 @@ export namespace Gee {
         get readOnly(): boolean;
 
         // Inherited methods
-        first(): any;
-        last(): any;
+        first(): any | null;
+        last(): any | null;
         insert_all(index: number, collection: Collection): void;
         sort(compare_func?: GLib.CompareDataFunc | null): void;
-        vfunc_first(): any;
-        vfunc_last(): any;
+        vfunc_first(): any | null;
+        vfunc_last(): any | null;
         vfunc_insert_all(index: number, collection: Collection): void;
         vfunc_sort(compare_func?: GLib.CompareDataFunc | null): void;
-        contains(item: any): boolean;
-        add(item: any): boolean;
-        remove(item: any): boolean;
+        contains(item?: any | null): boolean;
+        add(item?: any | null): boolean;
+        remove(item?: any | null): boolean;
         clear(): void;
         add_all(collection: Collection): boolean;
         contains_all(collection: Collection): boolean;
@@ -1040,9 +1045,9 @@ export namespace Gee {
         get_size(): number;
         get_is_empty(): boolean;
         get_read_only(): boolean;
-        vfunc_contains(item: any): boolean;
-        vfunc_add(item: any): boolean;
-        vfunc_remove(item: any): boolean;
+        vfunc_contains(item?: any | null): boolean;
+        vfunc_add(item?: any | null): boolean;
+        vfunc_remove(item?: any | null): boolean;
         vfunc_clear(): void;
         vfunc_add_all(collection: Collection): boolean;
         vfunc_contains_all(collection: Collection): boolean;
@@ -1127,11 +1132,11 @@ export namespace Gee {
 
         // Own virtual methods of Gee.AbstractMap
 
-        vfunc_has_key(key: any): boolean;
-        vfunc_has(key: any, value: any): boolean;
-        vfunc_get(key: any): any | null;
-        vfunc_set(key: any, value: any): void;
-        vfunc_unset(key: any): [boolean, any];
+        vfunc_has_key(key?: any | null): boolean;
+        vfunc_has(key?: any | null, value?: any | null): boolean;
+        vfunc_get(key?: any | null): any | null;
+        vfunc_set(key?: any | null, value?: any | null): void;
+        vfunc_unset(key: any | null): [boolean, any];
         vfunc_map_iterator(): MapIterator;
         vfunc_clear(): void;
         vfunc_foreach(f: ForallFunc): boolean;
@@ -1155,13 +1160,13 @@ export namespace Gee {
 
         // Own methods of Gee.AbstractMap
 
-        has_key(key: any): boolean;
-        has(key: any, value: any): boolean;
-        get(key: any): any | null;
-        set(key: any, value: any): void;
+        has_key(key?: any | null): boolean;
+        has(key?: any | null, value?: any | null): boolean;
+        get(key?: any | null): any | null;
+        set(key?: any | null, value?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
-        unset(key: any): [boolean, any];
+        unset(key: any | null): [boolean, any];
         map_iterator(): MapIterator;
         clear(): void;
         foreach(f: ForallFunc): boolean;
@@ -1184,9 +1189,9 @@ export namespace Gee {
         get_read_only_view(): Map;
 
         // Inherited methods
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): any;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed?: any | null): any | null;
         map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: MapFunc): Iterator;
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed?: any | null): Iterator;
         filter(pred: Predicate): Iterator;
         chop(offset: number, length: number): Iterator;
         flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FlatMapFunc): Iterator;
@@ -1194,13 +1199,18 @@ export namespace Gee {
         first_match(pred: Predicate): any | null;
         any_match(pred: Predicate): boolean;
         all_match(pred: Predicate): boolean;
-        max(compare: GLib.CompareDataFunc): any;
-        min(compare: GLib.CompareDataFunc): any;
+        max(compare: GLib.CompareDataFunc): any | null;
+        min(compare: GLib.CompareDataFunc): any | null;
         order_by(compare?: GLib.CompareDataFunc | null): Iterator;
         get_element_type(): GObject.GType;
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): any;
+        vfunc_fold(
+            a_type: GObject.GType,
+            a_dup_func: GObject.BoxedCopyFunc,
+            f: FoldFunc,
+            seed?: any | null,
+        ): any | null;
         vfunc_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: MapFunc): Iterator;
-        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): Iterator;
+        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed?: any | null): Iterator;
         vfunc_filter(pred: Predicate): Iterator;
         vfunc_chop(offset: number, length: number): Iterator;
         vfunc_flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FlatMapFunc): Iterator;
@@ -1208,14 +1218,14 @@ export namespace Gee {
         vfunc_first_match(pred: Predicate): any | null;
         vfunc_any_match(pred: Predicate): boolean;
         vfunc_all_match(pred: Predicate): boolean;
-        vfunc_max(compare: GLib.CompareDataFunc): any;
-        vfunc_min(compare: GLib.CompareDataFunc): any;
+        vfunc_max(compare: GLib.CompareDataFunc): any | null;
+        vfunc_min(compare: GLib.CompareDataFunc): any | null;
         vfunc_order_by(compare?: GLib.CompareDataFunc | null): Iterator;
         vfunc_get_element_type(): GObject.GType;
         iterator(): Iterator;
         vfunc_iterator(): Iterator;
-        contains(key: any): boolean;
-        remove(key: any): [boolean, any];
+        contains(key?: any | null): boolean;
+        remove(key: any | null): [boolean, any];
         set_all(map: Map): void;
         unset_all(map: Map): boolean;
         remove_all(map: Map): boolean;
@@ -1668,13 +1678,13 @@ export namespace Gee {
         get_keys(): Set;
         get_all_keys(): MultiSet;
         get_values(): Collection;
-        contains(key: any): boolean;
-        get(key: any): Collection;
-        set(key: any, value: any): void;
+        contains(key?: any | null): boolean;
+        get(key?: any | null): Collection;
+        set(key?: any | null, value?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
-        remove(key: any, value: any): boolean;
-        remove_all(key: any): boolean;
+        remove(key?: any | null, value?: any | null): boolean;
+        remove_all(key?: any | null): boolean;
         clear(): void;
         map_iterator(): MapIterator;
         get_size(): number;
@@ -1684,11 +1694,11 @@ export namespace Gee {
         vfunc_get_keys(): Set;
         vfunc_get_all_keys(): MultiSet;
         vfunc_get_values(): Collection;
-        vfunc_contains(key: any): boolean;
-        vfunc_get(key: any): Collection;
-        vfunc_set(key: any, value: any): void;
-        vfunc_remove(key: any, value: any): boolean;
-        vfunc_remove_all(key: any): boolean;
+        vfunc_contains(key?: any | null): boolean;
+        vfunc_get(key?: any | null): Collection;
+        vfunc_set(key?: any | null, value?: any | null): void;
+        vfunc_remove(key?: any | null, value?: any | null): boolean;
+        vfunc_remove_all(key?: any | null): boolean;
         vfunc_clear(): void;
         vfunc_map_iterator(): MapIterator;
         vfunc_get_size(): number;
@@ -2114,11 +2124,11 @@ export namespace Gee {
         get readOnlyView(): Collection;
 
         // Inherited methods
-        count(item: any): number;
-        vfunc_count(item: any): number;
-        contains(item: any): boolean;
-        add(item: any): boolean;
-        remove(item: any): boolean;
+        count(item?: any | null): number;
+        vfunc_count(item?: any | null): number;
+        contains(item?: any | null): boolean;
+        add(item?: any | null): boolean;
+        remove(item?: any | null): boolean;
         clear(): void;
         add_all(collection: Collection): boolean;
         contains_all(collection: Collection): boolean;
@@ -2134,9 +2144,9 @@ export namespace Gee {
         get_size(): number;
         get_is_empty(): boolean;
         get_read_only(): boolean;
-        vfunc_contains(item: any): boolean;
-        vfunc_add(item: any): boolean;
-        vfunc_remove(item: any): boolean;
+        vfunc_contains(item?: any | null): boolean;
+        vfunc_add(item?: any | null): boolean;
+        vfunc_remove(item?: any | null): boolean;
         vfunc_clear(): void;
         vfunc_add_all(collection: Collection): boolean;
         vfunc_contains_all(collection: Collection): boolean;
@@ -2241,13 +2251,13 @@ export namespace Gee {
         get readOnlyView(): Collection;
 
         // Inherited methods
-        offer(element: any): boolean;
+        offer(element?: any | null): boolean;
         drain(recipient: Collection, amount: number): number;
-        vfunc_offer(element: any): boolean;
+        vfunc_offer(element?: any | null): boolean;
         vfunc_drain(recipient: Collection, amount: number): number;
-        contains(item: any): boolean;
-        add(item: any): boolean;
-        remove(item: any): boolean;
+        contains(item?: any | null): boolean;
+        add(item?: any | null): boolean;
+        remove(item?: any | null): boolean;
         clear(): void;
         add_all(collection: Collection): boolean;
         contains_all(collection: Collection): boolean;
@@ -2264,9 +2274,9 @@ export namespace Gee {
         get_is_empty(): boolean;
         get_read_only(): boolean;
         get_read_only_view(): Collection;
-        vfunc_contains(item: any): boolean;
-        vfunc_add(item: any): boolean;
-        vfunc_remove(item: any): boolean;
+        vfunc_contains(item?: any | null): boolean;
+        vfunc_add(item?: any | null): boolean;
+        vfunc_remove(item?: any | null): boolean;
         vfunc_clear(): void;
         vfunc_add_all(collection: Collection): boolean;
         vfunc_contains_all(collection: Collection): boolean;
@@ -2356,9 +2366,9 @@ export namespace Gee {
         get readOnly(): boolean;
 
         // Inherited methods
-        contains(item: any): boolean;
-        add(item: any): boolean;
-        remove(item: any): boolean;
+        contains(item?: any | null): boolean;
+        add(item?: any | null): boolean;
+        remove(item?: any | null): boolean;
         clear(): void;
         add_all(collection: Collection): boolean;
         contains_all(collection: Collection): boolean;
@@ -2374,9 +2384,9 @@ export namespace Gee {
         get_size(): number;
         get_is_empty(): boolean;
         get_read_only(): boolean;
-        vfunc_contains(item: any): boolean;
-        vfunc_add(item: any): boolean;
-        vfunc_remove(item: any): boolean;
+        vfunc_contains(item?: any | null): boolean;
+        vfunc_add(item?: any | null): boolean;
+        vfunc_remove(item?: any | null): boolean;
         vfunc_clear(): void;
         vfunc_add_all(collection: Collection): boolean;
         vfunc_contains_all(collection: Collection): boolean;
@@ -2453,9 +2463,9 @@ export namespace Gee {
 
         // Own virtual methods of Gee.AbstractSortedMap
 
-        vfunc_head_map(before: any): SortedMap;
-        vfunc_tail_map(after: any): SortedMap;
-        vfunc_sub_map(before: any, after: any): SortedMap;
+        vfunc_head_map(before?: any | null): SortedMap;
+        vfunc_tail_map(after?: any | null): SortedMap;
+        vfunc_sub_map(before?: any | null, after?: any | null): SortedMap;
         vfunc_reserved0(): void;
         vfunc_reserved1(): void;
         vfunc_reserved2(): void;
@@ -2471,9 +2481,9 @@ export namespace Gee {
 
         // Own methods of Gee.AbstractSortedMap
 
-        head_map(before: any): SortedMap;
-        tail_map(after: any): SortedMap;
-        sub_map(before: any, after: any): SortedMap;
+        head_map(before?: any | null): SortedMap;
+        tail_map(after?: any | null): SortedMap;
+        sub_map(before?: any | null, after?: any | null): SortedMap;
         reserved0(): void;
         reserved1(): void;
         reserved2(): void;
@@ -2498,15 +2508,15 @@ export namespace Gee {
         // Inherited methods
         get_read_only_view(): SortedMap;
         vfunc_get_read_only_view(): SortedMap;
-        has_key(key: any): boolean;
-        contains(key: any): boolean;
-        has(key: any, value: any): boolean;
-        get(key: any): any | null;
-        set(key: any, value: any): void;
+        has_key(key?: any | null): boolean;
+        contains(key?: any | null): boolean;
+        has(key?: any | null, value?: any | null): boolean;
+        get(key?: any | null): any | null;
+        set(key?: any | null, value?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
-        unset(key: any): [boolean, any];
-        remove(key: any): [boolean, any];
+        unset(key: any | null): [boolean, any];
+        remove(key: any | null): [boolean, any];
         clear(): void;
         map_iterator(): MapIterator;
         set_all(map: Map): void;
@@ -2522,11 +2532,11 @@ export namespace Gee {
         get_entries(): Set;
         get_key_type(): GObject.GType;
         get_value_type(): GObject.GType;
-        vfunc_has_key(key: any): boolean;
-        vfunc_has(key: any, value: any): boolean;
-        vfunc_get(key: any): any | null;
-        vfunc_set(key: any, value: any): void;
-        vfunc_unset(key: any): [boolean, any];
+        vfunc_has_key(key?: any | null): boolean;
+        vfunc_has(key?: any | null, value?: any | null): boolean;
+        vfunc_get(key?: any | null): any | null;
+        vfunc_set(key?: any | null, value?: any | null): void;
+        vfunc_unset(key: any | null): [boolean, any];
         vfunc_clear(): void;
         vfunc_map_iterator(): MapIterator;
         vfunc_set_all(map: Map): void;
@@ -2577,16 +2587,16 @@ export namespace Gee {
 
         // Own virtual methods of Gee.AbstractSortedSet
 
-        vfunc_first(): any;
-        vfunc_last(): any;
-        vfunc_iterator_at(element: any): Iterator | null;
-        vfunc_lower(element: any): any | null;
-        vfunc_higher(element: any): any | null;
-        vfunc_floor(element: any): any | null;
-        vfunc_ceil(element: any): any | null;
-        vfunc_head_set(before: any): SortedSet;
-        vfunc_tail_set(after: any): SortedSet;
-        vfunc_sub_set(from: any, to: any): SortedSet;
+        vfunc_first(): any | null;
+        vfunc_last(): any | null;
+        vfunc_iterator_at(element?: any | null): Iterator | null;
+        vfunc_lower(element?: any | null): any | null;
+        vfunc_higher(element?: any | null): any | null;
+        vfunc_floor(element?: any | null): any | null;
+        vfunc_ceil(element?: any | null): any | null;
+        vfunc_head_set(before?: any | null): SortedSet;
+        vfunc_tail_set(after?: any | null): SortedSet;
+        vfunc_sub_set(from?: any | null, to?: any | null): SortedSet;
         vfunc_reserved0(): void;
         vfunc_reserved1(): void;
         vfunc_reserved2(): void;
@@ -2601,16 +2611,16 @@ export namespace Gee {
 
         // Own methods of Gee.AbstractSortedSet
 
-        first(): any;
-        last(): any;
-        iterator_at(element: any): Iterator | null;
-        lower(element: any): any | null;
-        higher(element: any): any | null;
-        floor(element: any): any | null;
-        ceil(element: any): any | null;
-        head_set(before: any): SortedSet;
-        tail_set(after: any): SortedSet;
-        sub_set(from: any, to: any): SortedSet;
+        first(): any | null;
+        last(): any | null;
+        iterator_at(element?: any | null): Iterator | null;
+        lower(element?: any | null): any | null;
+        higher(element?: any | null): any | null;
+        floor(element?: any | null): any | null;
+        ceil(element?: any | null): any | null;
+        head_set(before?: any | null): SortedSet;
+        tail_set(after?: any | null): SortedSet;
+        sub_set(from?: any | null, to?: any | null): SortedSet;
         reserved0(): void;
         reserved1(): void;
         reserved2(): void;
@@ -2728,30 +2738,30 @@ export namespace Gee {
         get isFull(): boolean;
 
         // Inherited methods
-        offer_head(element: any): boolean;
+        offer_head(element?: any | null): boolean;
         peek_head(): any | null;
         poll_head(): any | null;
         drain_head(recipient: Collection, amount: number): number;
-        offer_tail(element: any): boolean;
+        offer_tail(element?: any | null): boolean;
         peek_tail(): any | null;
         poll_tail(): any | null;
         drain_tail(recipient: Collection, amount: number): number;
-        vfunc_offer_head(element: any): boolean;
+        vfunc_offer_head(element?: any | null): boolean;
         vfunc_peek_head(): any | null;
         vfunc_poll_head(): any | null;
         vfunc_drain_head(recipient: Collection, amount: number): number;
-        vfunc_offer_tail(element: any): boolean;
+        vfunc_offer_tail(element?: any | null): boolean;
         vfunc_peek_tail(): any | null;
         vfunc_poll_tail(): any | null;
         vfunc_drain_tail(recipient: Collection, amount: number): number;
-        offer(element: any): boolean;
+        offer(element?: any | null): boolean;
         peek(): any | null;
         poll(): any | null;
         drain(recipient: Collection, amount: number): number;
         get_capacity(): number;
         get_remaining_capacity(): number;
         get_is_full(): boolean;
-        vfunc_offer(element: any): boolean;
+        vfunc_offer(element?: any | null): boolean;
         vfunc_peek(): any | null;
         vfunc_poll(): any | null;
         vfunc_drain(recipient: Collection, amount: number): number;
@@ -3075,13 +3085,13 @@ export namespace Gee {
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: LazyFunc): Lazy;
 
-        static from_value(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, item: any): Lazy;
+        static from_value(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, item?: any | null): Lazy;
 
         // Own methods of Gee.Lazy
 
         ['eval'](): void;
-        get(): any;
-        get_value(): any;
+        get(): any | null;
+        get_value(): any | null;
         get_future(): Future | null;
     }
 
@@ -3131,8 +3141,8 @@ export namespace Gee {
 
         // Own methods of Gee.LinkedList
 
-        first(): any;
-        last(): any;
+        first(): any | null;
+        last(): any | null;
         get_equal_func(): [EqualDataFunc, any];
 
         // Inherited properties
@@ -3143,33 +3153,33 @@ export namespace Gee {
         get isFull(): boolean;
 
         // Inherited methods
-        offer(element: any): boolean;
+        offer(element?: any | null): boolean;
         peek(): any | null;
         poll(): any | null;
         drain(recipient: Collection, amount: number): number;
         get_capacity(): number;
         get_remaining_capacity(): number;
         get_is_full(): boolean;
-        vfunc_offer(element: any): boolean;
+        vfunc_offer(element?: any | null): boolean;
         vfunc_peek(): any | null;
         vfunc_poll(): any | null;
         vfunc_drain(recipient: Collection, amount: number): number;
         vfunc_get_capacity(): number;
         vfunc_get_remaining_capacity(): number;
         vfunc_get_is_full(): boolean;
-        offer_head(element: any): boolean;
+        offer_head(element?: any | null): boolean;
         peek_head(): any | null;
         poll_head(): any | null;
         drain_head(recipient: Collection, amount: number): number;
-        offer_tail(element: any): boolean;
+        offer_tail(element?: any | null): boolean;
         peek_tail(): any | null;
         poll_tail(): any | null;
         drain_tail(recipient: Collection, amount: number): number;
-        vfunc_offer_head(element: any): boolean;
+        vfunc_offer_head(element?: any | null): boolean;
         vfunc_peek_head(): any | null;
         vfunc_poll_head(): any | null;
         vfunc_drain_head(recipient: Collection, amount: number): number;
-        vfunc_offer_tail(element: any): boolean;
+        vfunc_offer_tail(element?: any | null): boolean;
         vfunc_peek_tail(): any | null;
         vfunc_poll_tail(): any | null;
         vfunc_drain_tail(recipient: Collection, amount: number): number;
@@ -3214,7 +3224,7 @@ export namespace Gee {
 
         // Own methods of Gee.PriorityQueue
 
-        offer(element: any): boolean;
+        offer(element?: any | null): boolean;
         drain(recipient: Collection, amount: number): number;
         get_compare_func(): [GLib.CompareDataFunc, any];
     }
@@ -3234,7 +3244,7 @@ export namespace Gee {
 
         // Own methods of Gee.Promise
 
-        set_value(value: any): void;
+        set_value(value?: any | null): void;
         set_exception(exception: GLib.Error): void;
         get_future(): Future;
     }
@@ -3495,33 +3505,33 @@ export namespace Gee {
         get isFull(): boolean;
 
         // Inherited methods
-        offer(element: any): boolean;
+        offer(element?: any | null): boolean;
         peek(): any | null;
         poll(): any | null;
         drain(recipient: Collection, amount: number): number;
         get_capacity(): number;
         get_remaining_capacity(): number;
         get_is_full(): boolean;
-        vfunc_offer(element: any): boolean;
+        vfunc_offer(element?: any | null): boolean;
         vfunc_peek(): any | null;
         vfunc_poll(): any | null;
         vfunc_drain(recipient: Collection, amount: number): number;
         vfunc_get_capacity(): number;
         vfunc_get_remaining_capacity(): number;
         vfunc_get_is_full(): boolean;
-        offer_head(element: any): boolean;
+        offer_head(element?: any | null): boolean;
         peek_head(): any | null;
         poll_head(): any | null;
         drain_head(recipient: Collection, amount: number): number;
-        offer_tail(element: any): boolean;
+        offer_tail(element?: any | null): boolean;
         peek_tail(): any | null;
         poll_tail(): any | null;
         drain_tail(recipient: Collection, amount: number): number;
-        vfunc_offer_head(element: any): boolean;
+        vfunc_offer_head(element?: any | null): boolean;
         vfunc_peek_head(): any | null;
         vfunc_poll_head(): any | null;
         vfunc_drain_head(recipient: Collection, amount: number): number;
-        vfunc_offer_tail(element: any): boolean;
+        vfunc_offer_tail(element?: any | null): boolean;
         vfunc_peek_tail(): any | null;
         vfunc_poll_tail(): any | null;
         vfunc_drain_tail(recipient: Collection, amount: number): number;
@@ -3581,16 +3591,16 @@ export namespace Gee {
 
         // Own virtual methods of Gee.MapEntry
 
-        vfunc_get_key(): any;
-        vfunc_get_value(): any;
-        vfunc_set_value(value: any): void;
+        vfunc_get_key(): any | null;
+        vfunc_get_value(): any | null;
+        vfunc_set_value(value?: any | null): void;
         vfunc_get_read_only(): boolean;
 
         // Own methods of Gee.MapEntry
 
-        get_key(): any;
-        get_value(): any;
-        set_value(value: any): void;
+        get_key(): any | null;
+        get_value(): any | null;
+        set_value(value?: any | null): void;
         get_read_only(): boolean;
     }
 
@@ -3838,7 +3848,7 @@ export namespace Gee {
 
         // Own methods of Gee.HazardPointer
 
-        get(other_thread: boolean): any;
+        get(other_thread: boolean): any | null;
         release(): void;
     }
 
@@ -4047,11 +4057,11 @@ export namespace Gee {
     interface BidirListIterator extends BidirIterator {
         // Own methods of Gee.BidirListIterator
 
-        insert(item: any): void;
+        insert(item?: any | null): void;
 
         // Own virtual methods of Gee.BidirListIterator
 
-        vfunc_insert(item: any): void;
+        vfunc_insert(item?: any | null): void;
     }
 
     export const BidirListIterator: BidirListIteratorNamespace;
@@ -4186,9 +4196,9 @@ export namespace Gee {
 
         // Own methods of Gee.Collection
 
-        contains(item: any): boolean;
-        add(item: any): boolean;
-        remove(item: any): boolean;
+        contains(item?: any | null): boolean;
+        add(item?: any | null): boolean;
+        remove(item?: any | null): boolean;
         clear(): void;
         add_all(collection: Collection): boolean;
         contains_all(collection: Collection): boolean;
@@ -4208,9 +4218,9 @@ export namespace Gee {
 
         // Own virtual methods of Gee.Collection
 
-        vfunc_contains(item: any): boolean;
-        vfunc_add(item: any): boolean;
-        vfunc_remove(item: any): boolean;
+        vfunc_contains(item?: any | null): boolean;
+        vfunc_add(item?: any | null): boolean;
+        vfunc_remove(item?: any | null): boolean;
         vfunc_clear(): void;
         vfunc_add_all(collection: Collection): boolean;
         vfunc_contains_all(collection: Collection): boolean;
@@ -4244,11 +4254,11 @@ export namespace Gee {
     interface Comparable extends GObject.Object {
         // Own methods of Gee.Comparable
 
-        compare_to(object: any): number;
+        compare_to(object?: any | null): number;
 
         // Own virtual methods of Gee.Comparable
 
-        vfunc_compare_to(object: any): number;
+        vfunc_compare_to(object?: any | null): number;
     }
 
     export const Comparable: ComparableNamespace;
@@ -4266,22 +4276,22 @@ export namespace Gee {
     interface Deque extends Queue {
         // Own methods of Gee.Deque
 
-        offer_head(element: any): boolean;
+        offer_head(element?: any | null): boolean;
         peek_head(): any | null;
         poll_head(): any | null;
         drain_head(recipient: Collection, amount: number): number;
-        offer_tail(element: any): boolean;
+        offer_tail(element?: any | null): boolean;
         peek_tail(): any | null;
         poll_tail(): any | null;
         drain_tail(recipient: Collection, amount: number): number;
 
         // Own virtual methods of Gee.Deque
 
-        vfunc_offer_head(element: any): boolean;
+        vfunc_offer_head(element?: any | null): boolean;
         vfunc_peek_head(): any | null;
         vfunc_poll_head(): any | null;
         vfunc_drain_head(recipient: Collection, amount: number): number;
-        vfunc_offer_tail(element: any): boolean;
+        vfunc_offer_tail(element?: any | null): boolean;
         vfunc_peek_tail(): any | null;
         vfunc_poll_tail(): any | null;
         vfunc_drain_tail(recipient: Collection, amount: number): number;
@@ -4296,8 +4306,8 @@ export namespace Gee {
                 a_dup_func: GObject.BoxedCopyFunc,
                 g_type: GObject.GType,
                 g_dup_func: GObject.BoxedCopyFunc,
-                value: any,
-            ): any;
+                value?: any | null,
+            ): any | null;
         }
         interface LightMapFunc {
             (
@@ -4305,8 +4315,8 @@ export namespace Gee {
                 a_dup_func: GObject.BoxedCopyFunc,
                 g_type: GObject.GType,
                 g_dup_func: GObject.BoxedCopyFunc,
-                value: any,
-            ): any;
+                value?: any | null,
+            ): any | null;
         }
         interface ZipFunc {
             (
@@ -4316,9 +4326,9 @@ export namespace Gee {
                 b_dup_func: GObject.BoxedCopyFunc,
                 c_type: GObject.GType,
                 c_dup_func: GObject.BoxedCopyFunc,
-                a: any,
-                b: any,
-            ): any;
+                a?: any | null,
+                b?: any | null,
+            ): any | null;
         }
         interface FlatMapFunc {
             (
@@ -4326,7 +4336,7 @@ export namespace Gee {
                 a_dup_func: GObject.BoxedCopyFunc,
                 g_type: GObject.GType,
                 g_dup_func: GObject.BoxedCopyFunc,
-                value: any,
+                value?: any | null,
             ): Future;
         }
 
@@ -4350,10 +4360,10 @@ export namespace Gee {
 
         // Own methods of Gee.Future
 
-        wait(): any;
+        wait(): any | null;
         wait_until(end_time: number): [boolean, any];
         wait_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        wait_finish(_res_: Gio.AsyncResult): any;
+        wait_finish(_res_: Gio.AsyncResult): any | null;
         map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: MapFunc): Future;
         light_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: Future.LightMapFunc): Future;
         light_map_broken(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: Future.LightMapFunc): Future;
@@ -4372,10 +4382,10 @@ export namespace Gee {
 
         // Own virtual methods of Gee.Future
 
-        vfunc_wait(): any;
+        vfunc_wait(): any | null;
         vfunc_wait_until(end_time: number): [boolean, any];
         vfunc_wait_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_wait_finish(_res_: Gio.AsyncResult): any;
+        vfunc_wait_finish(_res_: Gio.AsyncResult): any | null;
         vfunc_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: MapFunc): Future;
         vfunc_light_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: Future.LightMapFunc): Future;
         vfunc_light_map_broken(
@@ -4413,12 +4423,12 @@ export namespace Gee {
         // Own methods of Gee.Hashable
 
         hash(): number;
-        equal_to(object: any): boolean;
+        equal_to(object?: any | null): boolean;
 
         // Own virtual methods of Gee.Hashable
 
         vfunc_hash(): number;
-        vfunc_equal_to(object: any): boolean;
+        vfunc_equal_to(object?: any | null): boolean;
     }
 
     export const Hashable: HashableNamespace;
@@ -4478,7 +4488,7 @@ export namespace Gee {
 
         next(): boolean;
         has_next(): boolean;
-        get(): any;
+        get(): any | null;
         remove(): void;
         get_valid(): boolean;
         get_read_only(): boolean;
@@ -4487,7 +4497,7 @@ export namespace Gee {
 
         vfunc_next(): boolean;
         vfunc_has_next(): boolean;
-        vfunc_get(): any;
+        vfunc_get(): any | null;
         vfunc_remove(): void;
         vfunc_get_valid(): boolean;
         vfunc_get_read_only(): boolean;
@@ -4519,16 +4529,16 @@ export namespace Gee {
         // Own methods of Gee.List
 
         list_iterator(): ListIterator;
-        get(index: number): any;
-        set(index: number, item: any): void;
+        get(index: number): any | null;
+        set(index: number, item?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
-        index_of(item: any): number;
-        insert(index: number, item: any): void;
-        remove_at(index: number): any;
+        index_of(item?: any | null): number;
+        insert(index: number, item?: any | null): void;
+        remove_at(index: number): any | null;
         slice(start: number, stop: number): List | null;
-        first(): any;
-        last(): any;
+        first(): any | null;
+        last(): any | null;
         insert_all(index: number, collection: Collection): void;
         sort(compare_func?: GLib.CompareDataFunc | null): void;
         get_read_only_view(): List;
@@ -4536,14 +4546,14 @@ export namespace Gee {
         // Own virtual methods of Gee.List
 
         vfunc_list_iterator(): ListIterator;
-        vfunc_get(index: number): any;
-        vfunc_set(index: number, item: any): void;
-        vfunc_index_of(item: any): number;
-        vfunc_insert(index: number, item: any): void;
-        vfunc_remove_at(index: number): any;
+        vfunc_get(index: number): any | null;
+        vfunc_set(index: number, item?: any | null): void;
+        vfunc_index_of(item?: any | null): number;
+        vfunc_insert(index: number, item?: any | null): void;
+        vfunc_remove_at(index: number): any | null;
         vfunc_slice(start: number, stop: number): List | null;
-        vfunc_first(): any;
-        vfunc_last(): any;
+        vfunc_first(): any | null;
+        vfunc_last(): any | null;
         vfunc_insert_all(index: number, collection: Collection): void;
         vfunc_sort(compare_func?: GLib.CompareDataFunc | null): void;
         vfunc_get_read_only_view(): List;
@@ -4564,16 +4574,16 @@ export namespace Gee {
     interface ListIterator extends Iterator {
         // Own methods of Gee.ListIterator
 
-        set(item: any): void;
+        set(item?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
-        add(item: any): void;
+        add(item?: any | null): void;
         index(): number;
 
         // Own virtual methods of Gee.ListIterator
 
-        vfunc_set(item: any): void;
-        vfunc_add(item: any): void;
+        vfunc_set(item?: any | null): void;
+        vfunc_add(item?: any | null): void;
         vfunc_index(): number;
     }
 
@@ -4619,15 +4629,15 @@ export namespace Gee {
 
         // Own methods of Gee.Map
 
-        has_key(key: any): boolean;
-        contains(key: any): boolean;
-        has(key: any, value: any): boolean;
-        get(key: any): any | null;
-        set(key: any, value: any): void;
+        has_key(key?: any | null): boolean;
+        contains(key?: any | null): boolean;
+        has(key?: any | null, value?: any | null): boolean;
+        get(key?: any | null): any | null;
+        set(key?: any | null, value?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
-        unset(key: any): [boolean, any];
-        remove(key: any): [boolean, any];
+        unset(key: any | null): [boolean, any];
+        remove(key: any | null): [boolean, any];
         clear(): void;
         map_iterator(): MapIterator;
         set_all(map: Map): void;
@@ -4647,11 +4657,11 @@ export namespace Gee {
 
         // Own virtual methods of Gee.Map
 
-        vfunc_has_key(key: any): boolean;
-        vfunc_has(key: any, value: any): boolean;
-        vfunc_get(key: any): any | null;
-        vfunc_set(key: any, value: any): void;
-        vfunc_unset(key: any): [boolean, any];
+        vfunc_has_key(key?: any | null): boolean;
+        vfunc_has(key?: any | null, value?: any | null): boolean;
+        vfunc_get(key?: any | null): any | null;
+        vfunc_set(key?: any | null, value?: any | null): void;
+        vfunc_unset(key: any | null): [boolean, any];
         vfunc_clear(): void;
         vfunc_map_iterator(): MapIterator;
         vfunc_set_all(map: Map): void;
@@ -4695,11 +4705,11 @@ export namespace Gee {
 
         next(): boolean;
         has_next(): boolean;
-        get_key(): any;
-        get_value(): any;
-        set_value(value: any): void;
+        get_key(): any | null;
+        get_value(): any | null;
+        set_value(value?: any | null): void;
         unset(): void;
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldMapFunc, seed: any): any;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldMapFunc, seed?: any | null): any | null;
         foreach(f: ForallMapFunc): boolean;
         get_valid(): boolean;
         get_mutable(): boolean;
@@ -4709,11 +4719,16 @@ export namespace Gee {
 
         vfunc_next(): boolean;
         vfunc_has_next(): boolean;
-        vfunc_get_key(): any;
-        vfunc_get_value(): any;
-        vfunc_set_value(value: any): void;
+        vfunc_get_key(): any | null;
+        vfunc_get_value(): any | null;
+        vfunc_set_value(value?: any | null): void;
         vfunc_unset(): void;
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldMapFunc, seed: any): any;
+        vfunc_fold(
+            a_type: GObject.GType,
+            a_dup_func: GObject.BoxedCopyFunc,
+            f: FoldMapFunc,
+            seed?: any | null,
+        ): any | null;
         vfunc_foreach(f: ForallMapFunc): boolean;
         vfunc_get_valid(): boolean;
         vfunc_get_mutable(): boolean;
@@ -4748,13 +4763,13 @@ export namespace Gee {
         get_keys(): Set;
         get_all_keys(): MultiSet;
         get_values(): Collection;
-        contains(key: any): boolean;
-        get(key: any): Collection;
-        set(key: any, value: any): void;
+        contains(key?: any | null): boolean;
+        get(key?: any | null): Collection;
+        set(key?: any | null, value?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
-        remove(key: any, value: any): boolean;
-        remove_all(key: any): boolean;
+        remove(key?: any | null, value?: any | null): boolean;
+        remove_all(key?: any | null): boolean;
         clear(): void;
         map_iterator(): MapIterator;
         get_size(): number;
@@ -4768,11 +4783,11 @@ export namespace Gee {
         vfunc_get_keys(): Set;
         vfunc_get_all_keys(): MultiSet;
         vfunc_get_values(): Collection;
-        vfunc_contains(key: any): boolean;
-        vfunc_get(key: any): Collection;
-        vfunc_set(key: any, value: any): void;
-        vfunc_remove(key: any, value: any): boolean;
-        vfunc_remove_all(key: any): boolean;
+        vfunc_contains(key?: any | null): boolean;
+        vfunc_get(key?: any | null): Collection;
+        vfunc_set(key?: any | null, value?: any | null): void;
+        vfunc_remove(key?: any | null, value?: any | null): boolean;
+        vfunc_remove_all(key?: any | null): boolean;
         vfunc_clear(): void;
         vfunc_map_iterator(): MapIterator;
         vfunc_get_size(): number;
@@ -4797,12 +4812,12 @@ export namespace Gee {
     interface MultiSet extends Collection {
         // Own methods of Gee.MultiSet
 
-        count(item: any): number;
+        count(item?: any | null): number;
         get_read_only_view(): MultiSet;
 
         // Own virtual methods of Gee.MultiSet
 
-        vfunc_count(item: any): number;
+        vfunc_count(item?: any | null): number;
         vfunc_get_read_only_view(): MultiSet;
     }
 
@@ -4835,7 +4850,7 @@ export namespace Gee {
 
         // Own methods of Gee.Queue
 
-        offer(element: any): boolean;
+        offer(element?: any | null): boolean;
         peek(): any | null;
         poll(): any | null;
         drain(recipient: Collection, amount: number): number;
@@ -4845,7 +4860,7 @@ export namespace Gee {
 
         // Own virtual methods of Gee.Queue
 
-        vfunc_offer(element: any): boolean;
+        vfunc_offer(element?: any | null): boolean;
         vfunc_peek(): any | null;
         vfunc_poll(): any | null;
         vfunc_drain(recipient: Collection, amount: number): number;
@@ -4924,18 +4939,18 @@ export namespace Gee {
 
         // Own methods of Gee.SortedMap
 
-        head_map(before: any): SortedMap;
-        tail_map(after: any): SortedMap;
-        sub_map(before: any, after: any): SortedMap;
+        head_map(before?: any | null): SortedMap;
+        tail_map(after?: any | null): SortedMap;
+        sub_map(before?: any | null, after?: any | null): SortedMap;
         get_ascending_keys(): SortedSet;
         get_ascending_entries(): SortedSet;
         get_read_only_view(): SortedMap;
 
         // Own virtual methods of Gee.SortedMap
 
-        vfunc_head_map(before: any): SortedMap;
-        vfunc_tail_map(after: any): SortedMap;
-        vfunc_sub_map(before: any, after: any): SortedMap;
+        vfunc_head_map(before?: any | null): SortedMap;
+        vfunc_tail_map(after?: any | null): SortedMap;
+        vfunc_sub_map(before?: any | null, after?: any | null): SortedMap;
         vfunc_get_ascending_keys(): SortedSet;
         vfunc_get_ascending_entries(): SortedSet;
         vfunc_get_read_only_view(): SortedMap;
@@ -4966,30 +4981,30 @@ export namespace Gee {
 
         // Own methods of Gee.SortedSet
 
-        first(): any;
-        last(): any;
-        iterator_at(element: any): Iterator | null;
-        lower(element: any): any | null;
-        higher(element: any): any | null;
-        floor(element: any): any | null;
-        ceil(element: any): any | null;
-        head_set(before: any): SortedSet;
-        tail_set(after: any): SortedSet;
-        sub_set(from: any, to: any): SortedSet;
+        first(): any | null;
+        last(): any | null;
+        iterator_at(element?: any | null): Iterator | null;
+        lower(element?: any | null): any | null;
+        higher(element?: any | null): any | null;
+        floor(element?: any | null): any | null;
+        ceil(element?: any | null): any | null;
+        head_set(before?: any | null): SortedSet;
+        tail_set(after?: any | null): SortedSet;
+        sub_set(from?: any | null, to?: any | null): SortedSet;
         get_read_only_view(): SortedSet;
 
         // Own virtual methods of Gee.SortedSet
 
-        vfunc_first(): any;
-        vfunc_last(): any;
-        vfunc_iterator_at(element: any): Iterator | null;
-        vfunc_lower(element: any): any | null;
-        vfunc_higher(element: any): any | null;
-        vfunc_floor(element: any): any | null;
-        vfunc_ceil(element: any): any | null;
-        vfunc_head_set(before: any): SortedSet;
-        vfunc_tail_set(after: any): SortedSet;
-        vfunc_sub_set(from: any, to: any): SortedSet;
+        vfunc_first(): any | null;
+        vfunc_last(): any | null;
+        vfunc_iterator_at(element?: any | null): Iterator | null;
+        vfunc_lower(element?: any | null): any | null;
+        vfunc_higher(element?: any | null): any | null;
+        vfunc_floor(element?: any | null): any | null;
+        vfunc_ceil(element?: any | null): any | null;
+        vfunc_head_set(before?: any | null): SortedSet;
+        vfunc_tail_set(after?: any | null): SortedSet;
+        vfunc_sub_set(from?: any | null, to?: any | null): SortedSet;
         vfunc_get_read_only_view(): SortedSet;
     }
 
@@ -5010,9 +5025,9 @@ export namespace Gee {
 
         foreach(f: ForallFunc): boolean;
         stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: StreamFunc): Iterator;
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): any;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed?: any | null): any | null;
         map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: MapFunc): Iterator;
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed?: any | null): Iterator;
         filter(pred: Predicate): Iterator;
         chop(offset: number, length: number): Iterator;
         flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FlatMapFunc): Iterator;
@@ -5020,8 +5035,8 @@ export namespace Gee {
         first_match(pred: Predicate): any | null;
         any_match(pred: Predicate): boolean;
         all_match(pred: Predicate): boolean;
-        max(compare: GLib.CompareDataFunc): any;
-        min(compare: GLib.CompareDataFunc): any;
+        max(compare: GLib.CompareDataFunc): any | null;
+        min(compare: GLib.CompareDataFunc): any | null;
         order_by(compare?: GLib.CompareDataFunc | null): Iterator;
         get_element_type(): GObject.GType;
 
@@ -5029,9 +5044,14 @@ export namespace Gee {
 
         vfunc_foreach(f: ForallFunc): boolean;
         vfunc_stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: StreamFunc): Iterator;
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): any;
+        vfunc_fold(
+            a_type: GObject.GType,
+            a_dup_func: GObject.BoxedCopyFunc,
+            f: FoldFunc,
+            seed?: any | null,
+        ): any | null;
         vfunc_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: MapFunc): Iterator;
-        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed: any): Iterator;
+        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FoldFunc, seed?: any | null): Iterator;
         vfunc_filter(pred: Predicate): Iterator;
         vfunc_chop(offset: number, length: number): Iterator;
         vfunc_flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: FlatMapFunc): Iterator;
@@ -5039,8 +5059,8 @@ export namespace Gee {
         vfunc_first_match(pred: Predicate): any | null;
         vfunc_any_match(pred: Predicate): boolean;
         vfunc_all_match(pred: Predicate): boolean;
-        vfunc_max(compare: GLib.CompareDataFunc): any;
-        vfunc_min(compare: GLib.CompareDataFunc): any;
+        vfunc_max(compare: GLib.CompareDataFunc): any | null;
+        vfunc_min(compare: GLib.CompareDataFunc): any | null;
         vfunc_order_by(compare?: GLib.CompareDataFunc | null): Iterator;
         vfunc_get_element_type(): GObject.GType;
     }

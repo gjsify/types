@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./ide-45.d.ts"],
+    "readme": "./README.md",
+    "name": "Ide-45",
+    "tsconfig": "./tsconfig.json"
+}
+

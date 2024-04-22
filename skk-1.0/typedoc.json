@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./skk-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Skk-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

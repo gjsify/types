@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gtkfrdp-0.2.d.ts"],
+    "readme": "./README.md",
+    "name": "GtkFrdp-0.2",
+    "tsconfig": "./tsconfig.json"
+}
+

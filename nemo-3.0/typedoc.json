@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./nemo-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Nemo-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -1,0 +1,54 @@
+{
+    "name": "@girs/langtag-0.6",
+    "version": "0.6.0-4.0.0-beta.3",
+    "description": "GJS TypeScript type definitions for LangTag-0.6, generated from library version 0.6.0",
+    "type": "module",
+    "module": "langtag-0.6.js",
+    "main": "langtag-0.6.js",
+    "exports": {
+        "./ambient": {
+            "types": "./langtag-0.6-ambient.d.ts",
+            "import": "./langtag-0.6-ambient.js",
+            "default": "./langtag-0.6-ambient.js"
+        },
+        "./import": {
+            "types": "./langtag-0.6-import.d.ts",
+            "import": "./langtag-0.6-import.js",
+            "default": "./langtag-0.6-import.js"
+        },
+        ".": {
+            "types": "./langtag-0.6.d.ts",
+            "import": "./langtag-0.6.js",
+            "default": "./langtag-0.6.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit langtag-0.6.d.ts"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "LangTag-0.6"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/langtag-0.6#readme"
+}

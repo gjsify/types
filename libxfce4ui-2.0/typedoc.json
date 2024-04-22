@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./libxfce4ui-2.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Libxfce4ui-2.0",
+    "tsconfig": "./tsconfig.json"
+}
+

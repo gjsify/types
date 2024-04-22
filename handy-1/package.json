@@ -1,6 +1,6 @@
 {
     "name": "@girs/handy-1",
-    "version": "1.0.0-4.0.0-beta.2",
+    "version": "1.0.0-4.0.0-beta.3",
     "description": "GJS TypeScript type definitions for Handy-1, generated from library version 1.0.0",
     "type": "module",
     "module": "handy-1.js",

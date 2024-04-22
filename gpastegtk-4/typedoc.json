@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gpastegtk-4.d.ts"],
+    "readme": "./README.md",
+    "name": "GPasteGtk-4",
+    "tsconfig": "./tsconfig.json"
+}
+

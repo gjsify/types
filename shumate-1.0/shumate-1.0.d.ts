@@ -235,6 +235,10 @@ export namespace Shumate {
      */
     const MAX_LONGITUDE: number;
     /**
+     * The micro version of libshumate (3, if %SHUMATE_VERSION is 1.2.3)
+     */
+    const MICRO_VERSION: number;
+    /**
      * The minor version of libshumate (2, if %SHUMATE_VERSION is 1.2.3)
      */
     const MINOR_VERSION: number;
@@ -271,6 +275,9 @@ export namespace Shumate {
      * @returns a #GQuark
      */
     function tile_downloader_error_quark(): GLib.Quark;
+    interface VectorSpriteFallbackFunc {
+        (sprite_sheet: VectorSpriteSheet, name: string, scale: number): VectorSprite | null;
+    }
     module Compass {
         // Constructor properties interface
 
@@ -9902,6 +9909,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps extends MapSource.ConstructorProps, Gio.Initable.ConstructorProps {
+            sprite_sheet: VectorSpriteSheet;
+            spriteSheet: VectorSpriteSheet;
             style_json: string;
             styleJson: string;
         }
@@ -9915,6 +9924,16 @@ export namespace Shumate {
 
         // Own properties of Shumate.VectorRenderer
 
+        /**
+         * The sprite sheet used to render icons and textures.
+         */
+        get sprite_sheet(): VectorSpriteSheet;
+        set sprite_sheet(val: VectorSpriteSheet);
+        /**
+         * The sprite sheet used to render icons and textures.
+         */
+        get spriteSheet(): VectorSpriteSheet;
+        set spriteSheet(val: VectorSpriteSheet);
         /**
          * A map style, in [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/)
          * format.
@@ -9949,11 +9968,20 @@ export namespace Shumate {
         // Own methods of Shumate.VectorRenderer
 
         /**
+         * Gets the sprite sheet used to render icons and textures.
+         * @returns the [class@VectorSpriteSheet]
+         */
+        get_sprite_sheet(): VectorSpriteSheet;
+        /**
+         * Sets the sprite sheet used to render icons and textures.
+         * @param sprites a [class@VectorSpriteSheet]
+         */
+        set_sprite_sheet(sprites: VectorSpriteSheet): void;
+        /**
          * Sets the sprite sheet used by the style JSON to render icons and textures.
          *
-         * See <https://maplibre.org/maplibre-gl-js-docs/style-spec/sprite/> for
-         * details about the spritesheet format. Most stylesheets provide these files
-         * along with the main style JSON.
+         * The existing [property`VectorRenderer:`sprite-sheet] property will be replaced
+         * with a new instance of [class`VectorSpriteSheet]`.
          * @param sprites_pixbuf a [class@GdkPixbuf.Pixbuf]
          * @param sprites_json a JSON string
          * @returns whether the sprite sheet was loaded successfully
@@ -10401,6 +10429,801 @@ export namespace Shumate {
         block_signal_handler(id: number): any;
         unblock_signal_handler(id: number): any;
         stop_emission_by_name(detailedName: string): any;
+    }
+
+    module VectorSprite {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends GObject.Object.ConstructorProps,
+                Gdk.Paintable.ConstructorProps,
+                Gtk.SymbolicPaintable.ConstructorProps {
+            height: number;
+            scale_factor: number;
+            scaleFactor: number;
+            source_paintable: Gdk.Paintable;
+            sourcePaintable: Gdk.Paintable;
+            source_rect: Gdk.Rectangle;
+            sourceRect: Gdk.Rectangle;
+            width: number;
+        }
+    }
+
+    /**
+     * A sprite used to draw textures or icons.
+     *
+     * ## Symbolic icons
+     *
+     * If a sprite is created from a [iface`Gtk`.SymbolicPaintable] source, such
+     * as a symbolic icon, then when the sprite is part of a symbol layer it
+     * will be drawn using the icon-color property (or the text color, if the
+     * sprite is part of a formatted string).
+     */
+    class VectorSprite extends GObject.Object implements Gdk.Paintable, Gtk.SymbolicPaintable {
+        static $gtype: GObject.GType<VectorSprite>;
+
+        // Own properties of Shumate.VectorSprite
+
+        /**
+         * The height at which the sprite should be drawn, in pixels.
+         */
+        get height(): number;
+        /**
+         * The intended scale factor of the sprite.
+         */
+        get scale_factor(): number;
+        /**
+         * The intended scale factor of the sprite.
+         */
+        get scaleFactor(): number;
+        /**
+         * The [iface`Gdk`.Paintable] used to draw the sprite.
+         */
+        get source_paintable(): Gdk.Paintable;
+        /**
+         * The [iface`Gdk`.Paintable] used to draw the sprite.
+         */
+        get sourcePaintable(): Gdk.Paintable;
+        /**
+         * The area of the source rectangle to draw, or %NULL to use the entire paintable.
+         */
+        get source_rect(): Gdk.Rectangle;
+        /**
+         * The area of the source rectangle to draw, or %NULL to use the entire paintable.
+         */
+        get sourceRect(): Gdk.Rectangle;
+        /**
+         * The width at which the sprite should be drawn, in pixels.
+         */
+        get width(): number;
+
+        // Constructors of Shumate.VectorSprite
+
+        constructor(properties?: Partial<VectorSprite.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](source_paintable: Gdk.Paintable): VectorSprite;
+
+        static new_full(
+            source_paintable: Gdk.Paintable,
+            width: number,
+            height: number,
+            scale_factor: number,
+            source_rect?: Gdk.Rectangle | null,
+        ): VectorSprite;
+
+        // Own methods of Shumate.VectorSprite
+
+        /**
+         * Gets the height at which the sprite should be drawn.
+         * @returns the sprite's height in pixels
+         */
+        get_height(): number;
+        /**
+         * Gets the intended scale factor of the sprite.
+         * @returns the sprite's scale factor
+         */
+        get_scale_factor(): number;
+        /**
+         * Gets the source [iface`Gdk`.Paintable] used to draw the sprite.
+         *
+         * Note that [class`VectorSprite]` also implements [iface`Gdk`.Paintable].
+         * In most cases, you should draw the sprite rather than the original paintable.
+         * @returns the source paintable
+         */
+        get_source_paintable(): Gdk.Paintable;
+        /**
+         * Gets the source rectangle of the sprite.
+         * @returns the sprite's source rectangle, or %NULL if the entire paintable is used
+         */
+        get_source_rect(): Gdk.Rectangle | null;
+        /**
+         * Gets the width at which the sprite should be drawn.
+         * @returns the sprite's width in pixels
+         */
+        get_width(): number;
+
+        // Inherited methods
+        /**
+         * Compute a concrete size for the `GdkPaintable`.
+         *
+         * Applies the sizing algorithm outlined in the
+         * [CSS Image spec](https://drafts.csswg.org/css-images-3/#default-sizing)
+         * to the given `paintable`. See that link for more details.
+         *
+         * It is not necessary to call this function when both `specified_width`
+         * and `specified_height` are known, but it is useful to call this
+         * function in GtkWidget:measure implementations to compute the
+         * other dimension when only one dimension is given.
+         * @param specified_width the width @paintable could be drawn into or   0.0 if unknown
+         * @param specified_height the height @paintable could be drawn into or   0.0 if unknown
+         * @param default_width the width @paintable would be drawn into if   no other constraints were given
+         * @param default_height the height @paintable would be drawn into if   no other constraints were given
+         */
+        compute_concrete_size(
+            specified_width: number,
+            specified_height: number,
+            default_width: number,
+            default_height: number,
+        ): [number, number];
+        /**
+         * Gets an immutable paintable for the current contents displayed by `paintable`.
+         *
+         * This is useful when you want to retain the current state of an animation,
+         * for example to take a screenshot of a running animation.
+         *
+         * If the `paintable` is already immutable, it will return itself.
+         * @returns An immutable paintable for the current   contents of @paintable
+         */
+        get_current_image(): Gdk.Paintable;
+        /**
+         * Get flags for the paintable.
+         *
+         * This is oftentimes useful for optimizations.
+         *
+         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         * @returns The `GdkPaintableFlags` for this paintable
+         */
+        get_flags(): Gdk.PaintableFlags;
+        /**
+         * Gets the preferred aspect ratio the `paintable` would like to be displayed at.
+         *
+         * The aspect ratio is the width divided by the height, so a value of 0.5
+         * means that the `paintable` prefers to be displayed twice as high as it
+         * is wide. Consumers of this interface can use this to preserve aspect
+         * ratio when displaying the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * Usually when a `paintable` returns nonzero values from
+         * [method`Gdk`.Paintable.get_intrinsic_width] and
+         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * should conform to those values, though that is not required.
+         *
+         * If the `paintable` does not have a preferred aspect ratio,
+         * it returns 0. Negative values are never returned.
+         * @returns the intrinsic aspect ratio of @paintable or 0 if none.
+         */
+        get_intrinsic_aspect_ratio(): number;
+        /**
+         * Gets the preferred height the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred height, it returns 0.
+         * Negative values are never returned.
+         * @returns the intrinsic height of @paintable or 0 if none.
+         */
+        get_intrinsic_height(): number;
+        /**
+         * Gets the preferred width the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred width, it returns 0.
+         * Negative values are never returned.
+         * @returns the intrinsic width of @paintable or 0 if none.
+         */
+        get_intrinsic_width(): number;
+        /**
+         * Called by implementations of `GdkPaintable` to invalidate their contents.
+         *
+         * Unless the contents are invalidated, implementations must guarantee that
+         * multiple calls of [method`Gdk`.Paintable.snapshot] produce the same output.
+         *
+         * This function will emit the [signal`Gdk`.Paintable::invalidate-contents]
+         * signal.
+         *
+         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_CONTENTS flag,
+         * it must not call this function.
+         */
+        invalidate_contents(): void;
+        /**
+         * Called by implementations of `GdkPaintable` to invalidate their size.
+         *
+         * As long as the size is not invalidated, `paintable` must return the same
+         * values for its intrinsic width, height and aspect ratio.
+         *
+         * This function will emit the [signal`Gdk`.Paintable::invalidate-size]
+         * signal.
+         *
+         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_SIZE flag,
+         * it must not call this function.
+         */
+        invalidate_size(): void;
+        /**
+         * Snapshots the given paintable with the given `width` and `height`.
+         *
+         * The paintable is drawn at the current (0,0) offset of the `snapshot`.
+         * If `width` and `height` are not larger than zero, this function will
+         * do nothing.
+         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         */
+        snapshot(snapshot: Gdk.Snapshot, width: number, height: number): void;
+        /**
+         * Gets an immutable paintable for the current contents displayed by `paintable`.
+         *
+         * This is useful when you want to retain the current state of an animation,
+         * for example to take a screenshot of a running animation.
+         *
+         * If the `paintable` is already immutable, it will return itself.
+         */
+        vfunc_get_current_image(): Gdk.Paintable;
+        /**
+         * Get flags for the paintable.
+         *
+         * This is oftentimes useful for optimizations.
+         *
+         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         */
+        vfunc_get_flags(): Gdk.PaintableFlags;
+        /**
+         * Gets the preferred aspect ratio the `paintable` would like to be displayed at.
+         *
+         * The aspect ratio is the width divided by the height, so a value of 0.5
+         * means that the `paintable` prefers to be displayed twice as high as it
+         * is wide. Consumers of this interface can use this to preserve aspect
+         * ratio when displaying the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * Usually when a `paintable` returns nonzero values from
+         * [method`Gdk`.Paintable.get_intrinsic_width] and
+         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * should conform to those values, though that is not required.
+         *
+         * If the `paintable` does not have a preferred aspect ratio,
+         * it returns 0. Negative values are never returned.
+         */
+        vfunc_get_intrinsic_aspect_ratio(): number;
+        /**
+         * Gets the preferred height the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred height, it returns 0.
+         * Negative values are never returned.
+         */
+        vfunc_get_intrinsic_height(): number;
+        /**
+         * Gets the preferred width the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred width, it returns 0.
+         * Negative values are never returned.
+         */
+        vfunc_get_intrinsic_width(): number;
+        /**
+         * Snapshots the given paintable with the given `width` and `height`.
+         *
+         * The paintable is drawn at the current (0,0) offset of the `snapshot`.
+         * If `width` and `height` are not larger than zero, this function will
+         * do nothing.
+         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         */
+        vfunc_snapshot(snapshot: Gdk.Snapshot, width: number, height: number): void;
+        /**
+         * Snapshots the paintable with the given colors.
+         *
+         * If less than 4 colors are provided, GTK will pad the array with default
+         * colors.
+         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         * @param colors a pointer to an array of colors
+         */
+        snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
+        /**
+         * Snapshots the paintable with the given colors.
+         *
+         * If less than 4 colors are provided, GTK will pad the array with default
+         * colors.
+         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         * @param colors a pointer to an array of colors
+         */
+        vfunc_snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module VectorSpriteSheet {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * A collection of [class`VectorSprite]`s.
+     *
+     * Sprites are used as icons in symbols or as the pattern for a fill layer.
+     *
+     * Most MapLibre stylesheets provide their spritesheet as a PNG image and a JSON
+     * description of the sprites. This spritesheet can be added using
+     * [method`VectorSpriteSheet`.add_page]. Sprites can also be added individually
+     * using [method`VectorSpriteSheet`.add_sprite].
+     *
+     * Some map styles rely on application code to provide some or all of their
+     * sprites. This is supported using a fallback function, which can be set using
+     * [method`VectorSpriteSheet`.set_fallback]. This function can generate sprites
+     * on demand. For example, it could load a symbolic icon from the [class`Gtk`.IconTheme]
+     * or render a custom highway shield.
+     *
+     * ## HiDPI support
+     *
+     * Map styles should provide a double resolution spritesheet for high DPI
+     * displays. That spritesheet can be added as a separate page.
+     * The [class`VectorSpriteSheet]` will pick the best sprites for the display's
+     * scale factor.
+     *
+     * If a fallback function is set, it receives the requested scale factor
+     * as an argument. It should use this to generate the sprite at the correct size.
+     * For example, if the scale factor is 2, the image should be twice as large
+     * (but the *sprite's* width and height should be the same).
+     *
+     * ## Thread Safety
+     *
+     * [class`VectorSpriteSheet]` is thread safe.
+     */
+    class VectorSpriteSheet extends GObject.Object {
+        static $gtype: GObject.GType<VectorSpriteSheet>;
+
+        // Constructors of Shumate.VectorSpriteSheet
+
+        constructor(properties?: Partial<VectorSpriteSheet.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): VectorSpriteSheet;
+
+        // Own methods of Shumate.VectorSpriteSheet
+
+        /**
+         * Adds a page to the spritesheet.
+         *
+         * See <https://maplibre.org/maplibre-gl-js-docs/style-spec/sprite/> for
+         * details about the spritesheet format. Most stylesheets provide these files
+         * along with the main style JSON.
+         *
+         * Map styles should provide a double resolution spritesheet for high DPI
+         * displays. That spritesheet should be added as its own page, with a
+         * `default_scale` of 2.
+         * @param texture a [class@Gdk.Texture]
+         * @param json a JSON string
+         * @param default_scale the default scale factor of the page
+         * @returns %TRUE if the page was added successfully, %FALSE otherwise
+         */
+        add_page(texture: Gdk.Texture, json: string, default_scale: number): boolean;
+        /**
+         * Adds a sprite to the spritesheet.
+         * @param name the name of the sprite
+         * @param sprite a [class@VectorSprite]
+         */
+        add_sprite(name: string, sprite: VectorSprite): void;
+        /**
+         * Gets a sprite from the spritesheet.
+         *
+         * The returned sprite might not be at the requested scale factor if an exact
+         * match is not found.
+         * @param name an icon name
+         * @param scale the scale factor of the icon
+         * @returns a [class@VectorSprite], or %NULL if the icon does not exist.
+         */
+        get_sprite(name: string, scale: number): VectorSprite | null;
+        /**
+         * Sets a fallback function to generate sprites.
+         *
+         * The fallback function is called when a texture is not found in the sprite
+         * sheet. It receives the icon name and scale factor, and should return a
+         * [class`VectorSprite]`, or %NULL if the icon could not be generated.
+         * It may be called in a different thread, and it may be called multiple times
+         * for the same icon name.
+         *
+         * If a previous fallback function was set, it will be replaced and any sprites
+         * it generated will be cleared.
+         *
+         * `fallback` may be %NULL to clear the fallback function.
+         * @param fallback a [callback@ShumateVectorSpriteFallbackFunc] or %NULL
+         */
+        set_fallback(fallback?: VectorSpriteFallbackFunc | null): void;
     }
 
     module Viewport {
@@ -10975,6 +11798,8 @@ export namespace Shumate {
     type TileClass = typeof Tile;
     type TileDownloaderClass = typeof TileDownloader;
     type VectorRendererClass = typeof VectorRenderer;
+    type VectorSpriteClass = typeof VectorSprite;
+    type VectorSpriteSheetClass = typeof VectorSpriteSheet;
     type ViewportClass = typeof Viewport;
     module Location {
         // Constructor properties interface

@@ -230,31 +230,6 @@ export namespace GMime {
         BINARY,
     }
     /**
-     * Encryption flags.
-     */
-    enum EncryptFlags {
-        /**
-         * No flags specified.
-         */
-        NONE,
-        /**
-         * Always trust the specified keys.
-         */
-        ALWAYS_TRUST,
-        /**
-         * Don't compress the plaintext before encrypting.
-         */
-        NO_COMPRESS,
-        /**
-         * Encrypt symmetrically.
-         */
-        SYMMETRIC,
-        /**
-         * Do not include the key ids in the ciphertext.
-         */
-        THROW_KEYIDS,
-    }
-    /**
      * The mode for a #GMimeFilterFrom filter.
      */
     enum FilterFromMode {
@@ -346,9 +321,9 @@ export namespace GMime {
     /**
      * The MIME specifications specify that the proper method for encoding Content-Type and
      * Content-Disposition parameter values is the method described in
-     * <a href="https://tools.ietf.org/html/rfc2231">rfc2231</a>. However, it is common for
+     * <ulink url="https://tools.ietf.org/html/rfc2231">rfc2231</ulink>. However, it is common for
      * some older email clients to improperly encode using the method described in
-     * <a href="https://tools.ietf.org/html/rfc2047">rfc2047</a> instead.
+     * <ulink url="https://tools.ietf.org/html/rfc2047">rfc2047</ulink> instead.
      */
     enum ParamEncodingMethod {
         /**
@@ -1373,6 +1348,31 @@ export namespace GMime {
         ENABLE_ONLINE_CERTIFICATE_CHECKS,
     }
     /**
+     * Encryption flags.
+     */
+    enum EncryptFlags {
+        /**
+         * No flags specified.
+         */
+        NONE,
+        /**
+         * Always trust the specified keys.
+         */
+        ALWAYS_TRUST,
+        /**
+         * Don't compress the plaintext before encrypting.
+         */
+        NO_COMPRESS,
+        /**
+         * Encrypt symmetrically.
+         */
+        SYMMETRIC,
+        /**
+         * Do not include the key ids in the ciphertext.
+         */
+        THROW_KEYIDS,
+    }
+    /**
      * Bit flags to enable charset and/or encoding scanning to make
      * educated guesses as to what the best charset and/or encodings to
      * use for the content passed through the filter.
@@ -1631,9 +1631,9 @@ export namespace GMime {
         set_effective_date(effective_date: GLib.DateTime): void;
         /**
          * Set the raw key data associated with the Autocrypt header.
-         * @param data
+         * @param keydata a #GBytes object
          */
-        set_keydata(data: GLib.Bytes | Uint8Array): void;
+        set_keydata(keydata: GLib.Bytes | Uint8Array): void;
         /**
          * Set the encryption preference associated with the Autocrypt header.
          * @param pref a #GMimeAutocryptPreferEncrypt value
@@ -2284,7 +2284,7 @@ export namespace GMime {
          * @param keys an array of key ids, terminated by a %NULL element
          * @param ostream output stream
          */
-        vfunc_export_keys(keys: string, ostream: Stream): number;
+        vfunc_export_keys(keys: string[], ostream: Stream): number;
         /**
          * Gets the encryption protocol for the crypto context.
          */
@@ -2399,7 +2399,7 @@ export namespace GMime {
          * @param ostream output stream
          * @returns %0 on success or %-1 on fail.
          */
-        export_keys(keys: string, ostream: Stream): number;
+        export_keys(keys: string[], ostream: Stream): number;
         /**
          * Gets the encryption protocol for the crypto context.
          * @returns the encryption protocol or %NULL if not supported.
@@ -2792,6 +2792,7 @@ export namespace GMime {
         parent_object: Filter;
         from_charset: string;
         to_charset: string;
+        cd: any;
 
         // Constructors of GMime.FilterCharset
 
@@ -2831,10 +2832,9 @@ export namespace GMime {
         /**
          * Outputs the checksum digest into `digest`.
          * @param digest the digest buffer
-         * @param len the length of the digest buffer
          * @returns the number of bytes used of the @digest buffer.
          */
-        get_digest(digest: number, len: number): number;
+        get_digest(digest: Uint8Array | string): number;
         /**
          * Outputs the checksum digest as a newly allocated hexadecimal string.
          * @returns the hexadecimal representation of the checksum. The returned string should be freed with g_free() when no longer needed.
@@ -3367,7 +3367,7 @@ export namespace GMime {
          * @param value the new header value
          * @param charset a charset
          */
-        set_value(options: FormatOptions | null, value: string, charset: string): void;
+        set_value(options: FormatOptions | null, value: string, charset?: string | null): void;
         /**
          * Write the header to the specified stream.
          * @param options a #GMimeFormatOptions or %NULL
@@ -3411,7 +3411,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        append(name: string, value: string, charset: string): void;
+        append(name: string, value: string, charset?: string | null): void;
         /**
          * Removes all of the headers from the #GMimeHeaderList.
          */
@@ -3447,7 +3447,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        prepend(name: string, value: string, charset: string): void;
+        prepend(name: string, value: string, charset?: string | null): void;
         /**
          * Remove the first instance of the specified header.
          * @param name header name
@@ -3472,7 +3472,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        set(name: string, value: string, charset: string): void;
+        set(name: string, value: string, charset?: string | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
@@ -3647,6 +3647,12 @@ export namespace GMime {
          */
         append(append: InternetAddressList): void;
         /**
+         * Adds all of the addresses in `str` to `list`.
+         * @param options a #GMimeParserOptions or %NULL
+         * @param str a string containing internet addresses
+         */
+        append_parse(options: ParserOptions | null, str: string): void;
+        /**
          * Clears the list of addresses.
          */
         clear(): void;
@@ -3810,7 +3816,7 @@ export namespace GMime {
          * @param name The name of the mailbox (or %NULL)
          * @param addr The address of the mailbox
          */
-        add_mailbox(type: AddressType, name: string, addr: string): void;
+        add_mailbox(type: AddressType, name: string | null, addr: string): void;
         /**
          * Recursively calls `callback` on each of the mime parts in the mime message.
          * @param callback function to call on each of the mime parts   contained by the mime message
@@ -3850,9 +3856,9 @@ export namespace GMime {
          * @returns a new #GMimeAutocryptHeaderList object, or %NULL on error.
          */
         get_autocrypt_gossip_headers(
-            now: GLib.DateTime,
+            now: GLib.DateTime | null,
             flags: DecryptFlags,
-            session_key: string,
+            session_key?: string | null,
         ): AutocryptHeaderList | null;
         /**
          * Creates a new #GMimeAutocryptHeaderList of relevant headers of the
@@ -3898,7 +3904,7 @@ export namespace GMime {
          * @returns a new #GMimeAutocryptHeaderList object, or %NULL on error.
          */
         get_autocrypt_gossip_headers_from_inner_part(
-            now: GLib.DateTime,
+            now: GLib.DateTime | null,
             inner_part: Object,
         ): AutocryptHeaderList | null;
         /**
@@ -3930,7 +3936,7 @@ export namespace GMime {
          * @param now a #GDateTime object, or %NULL
          * @returns a new #GMimeAutocryptHeader object, or %NULL if the message should be ignored for purposes of Autocrypt.
          */
-        get_autocrypt_header(now: GLib.DateTime): AutocryptHeader | null;
+        get_autocrypt_header(now?: GLib.DateTime | null): AutocryptHeader | null;
         /**
          * Gets combined list of parsed addresses in the Bcc header(s).
          * @returns the parsed list of addresses in the Bcc header(s).
@@ -3995,7 +4001,7 @@ export namespace GMime {
          * @param max_size max size
          * @returns an array of #GMimeMessage objects and sets @nparts to the number of messages returned or %NULL on fail.
          */
-        partial_split_message(max_size: number): [Message | null, number];
+        partial_split_message(max_size: number): Message[] | null;
         /**
          * Sets the Date header on a MIME Message.
          * @param date a date to be used in the Date header
@@ -4018,7 +4024,7 @@ export namespace GMime {
          * @param subject Subject string
          * @param charset The charset to use for encoding the subject or %NULL to use the default
          */
-        set_subject(subject: string, charset: string): void;
+        set_subject(subject: string, charset?: string | null): void;
     }
 
     module MessagePart {
@@ -4101,9 +4107,8 @@ export namespace GMime {
          * Reconstructs the GMimeMessage from the given message/partial parts
          * in `partials`.
          * @param partials an array of message/partial mime parts
-         * @param num the number of elements in @partials
          */
-        static reconstruct_message(partials: MessagePartial, num: number): Message;
+        static reconstruct_message(partials: MessagePartial[]): Message;
 
         // Own methods of GMime.MessagePartial
 
@@ -4386,7 +4391,7 @@ export namespace GMime {
          * @param session_key session key to use or %NULL
          * @returns the decrypted MIME part on success or %NULL on fail. If the decryption fails, an exception will be set on @err to provide information as to why the failure occurred.
          */
-        decrypt(flags: DecryptFlags, session_key: string): [Object | null, DecryptResult];
+        decrypt(flags: DecryptFlags, session_key: string | null): [Object | null, DecryptResult];
     }
 
     module MultipartSigned {
@@ -4517,7 +4522,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        append_header(header: string, value: string, charset: string): void;
+        append_header(header: string, value: string, charset?: string | null): void;
         /**
          * Calculates and sets the most efficient Content-Transfer-Encoding
          * for this #GMimeObject and all child parts based on the `constraint`
@@ -4525,6 +4530,48 @@ export namespace GMime {
          * @param constraint a #GMimeEncodingConstraint
          */
         encode(constraint: EncodingConstraint): void;
+        /**
+         * Creates a new #GMimeAutocryptHeaderList of relevant headers of the
+         * given type based on the `addresses` of an `mime_part`.
+         *
+         * Each header in the returned list will:
+         *
+         *  - have a valid address
+         *  - be of the type requested
+         *  - be complete
+         *
+         * If no Autocrypt header is found for an address, no
+         * #GMimeAutocryptHeader will be in the list associated with that e-mail address.
+         *
+         * Note that the following types of Autocrypt headers will not be
+         * returned by this function:
+         *
+         *  - headers of an unrequested type
+         *  - headers that do not match an address in "From:"
+         *  - unparseable headers
+         *  - headers with unknown critical attributes
+         *  - duplicate valid headers for a given address
+         *
+         * On error (e.g. if this version of GMime cannot handle the requested
+         * Autocrypt type, or if a parameter is missing or malformed), returns
+         * %NULL
+         *
+         * The returned Autocrypt headers will have it effective_date set to
+         * `effective_date`
+         *
+         * if `keep_incomplete` isn't set, incompletes are removed
+         * @param effective_date a #GDateTime object
+         * @param matchheader the header we want to match
+         * @param addresses a #InternetAddressList
+         * @param keep_incomplete %TRUE if the we should include incompletes
+         * @returns a new #GMimeAutocryptHeaderList object, or %NULL on error.
+         */
+        get_autocrypt_headers(
+            effective_date: GLib.DateTime,
+            matchheader: string,
+            addresses: InternetAddressList,
+            keep_incomplete: boolean,
+        ): AutocryptHeaderList | null;
         /**
          * Gets the #GMimeContentDisposition for the specified MIME object.
          * @returns the #GMimeContentDisposition set on the MIME object.
@@ -4584,7 +4631,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        prepend_header(header: string, value: string, charset: string): void;
+        prepend_header(header: string, value: string, charset?: string | null): void;
         /**
          * Removed the specified header if it exists.
          * @param header header name
@@ -4640,7 +4687,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        set_header(header: string, value: string, charset: string): void;
+        set_header(header: string, value: string, charset?: string | null): void;
         /**
          * Allocates a string buffer containing the contents of `object`.
          * @param options a #GMimeFormatOptions or %NULL
@@ -4778,9 +4825,8 @@ export namespace GMime {
          * Encodes the parameter list into `str,` folding lines if required.
          * @param options a #GMimeFormatOptions or %NULL
          * @param fold %TRUE if the parameter list should be folded; otherwise, %FALSE
-         * @param str the output string buffer
          */
-        encode(options: FormatOptions, fold: boolean, str: GLib.String): void;
+        encode(options: FormatOptions | null, fold: boolean): GLib.String;
         /**
          * Gets the #GMimeParam with the given `name`.
          * @param name the name of the parameter
@@ -6661,6 +6707,11 @@ export namespace GMime {
          * @param mode a #GMimeRfcComplianceMode
          */
         set_rfc2047_compliance_mode(mode: RfcComplianceMode): void;
+        /**
+         * Registers the callback function being called if the parser detects any issues.
+         * @param warning_cb a #GMimeParserWarningFunc or %NULL to clear the callback
+         */
+        set_warning_callback(warning_cb: ParserWarningFunc): void;
     }
 
     type PartClass = typeof Part;

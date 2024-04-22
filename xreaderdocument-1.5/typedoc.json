@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./xreaderdocument-1.5.d.ts"],
+    "readme": "./README.md",
+    "name": "XreaderDocument-1.5",
+    "tsconfig": "./tsconfig.json"
+}
+

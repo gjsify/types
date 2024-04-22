@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./keybinder-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Keybinder-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

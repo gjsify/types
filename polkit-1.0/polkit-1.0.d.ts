@@ -92,10 +92,7 @@ export namespace Polkit {
      * @returns A #PolkitIdentity or %NULL if @error is set. Free with g_object_unref().
      */
     function identity_from_string(str: string): Identity | null;
-    function implicit_authorization_from_string(
-        string: string,
-        out_implicit_authorization: ImplicitAuthorization,
-    ): boolean;
+    function implicit_authorization_from_string(string: string): [boolean, ImplicitAuthorization];
     function implicit_authorization_to_string(implicit_authorization: ImplicitAuthorization): string;
     /**
      * Creates an object from `str` that implements the #PolkitSubject
@@ -2705,7 +2702,7 @@ export namespace Polkit {
          * `name`.
          * @param name A UNIX group name.
          */
-        static new_for_name(name: string): Identity;
+        static new_for_name(name: string): Identity | null;
 
         // Own methods of Polkit.UnixGroup
 

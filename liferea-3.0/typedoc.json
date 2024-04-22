@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./liferea-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Liferea-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

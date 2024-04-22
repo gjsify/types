@@ -844,7 +844,6 @@ export namespace JavaScriptCore {
             data: any | null,
             size: number,
             destroy_notify?: GLib.DestroyNotify | null,
-            user_data?: any | null,
         ): Value;
 
         static new_array_from_garray(context: Context, array?: Value[] | null): Value;
