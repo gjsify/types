@@ -550,7 +550,35 @@ export namespace SugarExt {
 
     type ClientXSMPClass = typeof ClientXSMP;
     type CursorTrackerClass = typeof CursorTracker;
+    class CursorTrackerPrivate {
+        static $gtype: GObject.GType<CursorTrackerPrivate>;
+
+        // Own fields of SugarExt.CursorTrackerPrivate
+
+        root_window: Gdk.Window;
+        cursor_shown: boolean;
+
+        // Constructors of SugarExt.CursorTrackerPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type GestureGrabberClass = typeof GestureGrabber;
+    class GestureGrabberPrivate {
+        static $gtype: GObject.GType<GestureGrabberPrivate>;
+
+        // Own fields of SugarExt.GestureGrabberPrivate
+
+        root_window: Gdk.Window;
+        controllers: any[];
+        touches: any[];
+        cancel_timeout_id: number;
+
+        // Constructors of SugarExt.GestureGrabberPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type GridClass = typeof Grid;
     type KeyGrabberClass = typeof KeyGrabber;
     abstract class KeyGrabberPrivate {

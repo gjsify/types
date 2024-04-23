@@ -259,6 +259,7 @@ export namespace Vte {
     const SPAWN_REQUIRE_SYSTEMD_SCOPE: number;
     const TEST_FLAGS_ALL: number;
     const TEST_FLAGS_NONE: number;
+    function event_context_get_type(): GObject.GType;
     /**
      * Queries whether the legacy encoding `encoding` is supported.
      *
@@ -331,7 +332,7 @@ export namespace Vte {
         (terminal: Terminal, column: number, row: number): boolean;
     }
     interface TerminalSpawnAsyncCallback {
-        (terminal: Terminal, pid: GLib.Pid, error: GLib.Error): void;
+        (terminal: Terminal, pid: GLib.Pid, error?: GLib.Error | null): void;
     }
     /**
      * An enumeration type for features.
@@ -799,7 +800,7 @@ export namespace Vte {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1062,6 +1063,10 @@ export namespace Vte {
             (x: number, y: number): void;
         }
 
+        interface NotificationReceived {
+            (summary: string, body?: string | null): void;
+        }
+
         interface PasteClipboard {
             (): void;
         }
@@ -1083,6 +1088,18 @@ export namespace Vte {
         }
 
         interface SelectionChanged {
+            (): void;
+        }
+
+        interface SetupContextMenu {
+            (context?: EventContext | null): void;
+        }
+
+        interface ShellPrecmd {
+            (): void;
+        }
+
+        interface ShellPreexec {
             (): void;
         }
 
@@ -1129,6 +1146,14 @@ export namespace Vte {
             cellWidthScale: number;
             cjk_ambiguous_width: number;
             cjkAmbiguousWidth: number;
+            context_menu: Gtk.Menu;
+            contextMenu: Gtk.Menu;
+            context_menu_model: Gio.MenuModel;
+            contextMenuModel: Gio.MenuModel;
+            current_container_name: string;
+            currentContainerName: string;
+            current_container_runtime: string;
+            currentContainerRuntime: string;
             current_directory_uri: string;
             currentDirectoryUri: string;
             current_file_uri: string;
@@ -1139,6 +1164,8 @@ export namespace Vte {
             cursorShape: CursorShape;
             delete_binding: EraseBinding;
             deleteBinding: EraseBinding;
+            enable_a11y: boolean;
+            enableA11y: boolean;
             enable_bidi: boolean;
             enableBidi: boolean;
             enable_fallback_scrolling: boolean;
@@ -1165,10 +1192,14 @@ export namespace Vte {
             pty: Pty;
             rewrap_on_resize: boolean;
             rewrapOnResize: boolean;
+            scroll_on_insert: boolean;
+            scrollOnInsert: boolean;
             scroll_on_keystroke: boolean;
             scrollOnKeystroke: boolean;
             scroll_on_output: boolean;
             scrollOnOutput: boolean;
+            scroll_speed: number;
+            scrollSpeed: number;
             scroll_unit_is_pixels: boolean;
             scrollUnitIsPixels: boolean;
             scrollback_lines: number;
@@ -1294,6 +1325,52 @@ export namespace Vte {
         get cjkAmbiguousWidth(): number;
         set cjkAmbiguousWidth(val: number);
         /**
+         * The menu used for context menus. Note that context menu model set with the
+         * #VteTerminal::context-menu-model property or vte_terminal_set_context_menu_model()
+         * takes precedence over this.
+         */
+        get context_menu(): Gtk.Menu;
+        set context_menu(val: Gtk.Menu);
+        /**
+         * The menu used for context menus. Note that context menu model set with the
+         * #VteTerminal::context-menu-model property or vte_terminal_set_context_menu_model()
+         * takes precedence over this.
+         */
+        get contextMenu(): Gtk.Menu;
+        set contextMenu(val: Gtk.Menu);
+        /**
+         * The menu model used for context menus. If non-%NULL, the context menu is
+         * generated from this model, and overrides a context menu set with the
+         * #VteTerminal::context-menu property or vte_terminal_set_context_menu().
+         */
+        get context_menu_model(): Gio.MenuModel;
+        set context_menu_model(val: Gio.MenuModel);
+        /**
+         * The menu model used for context menus. If non-%NULL, the context menu is
+         * generated from this model, and overrides a context menu set with the
+         * #VteTerminal::context-menu property or vte_terminal_set_context_menu().
+         */
+        get contextMenuModel(): Gio.MenuModel;
+        set contextMenuModel(val: Gio.MenuModel);
+        /**
+         * The name of the current container, or %NULL if unset.
+         */
+        get current_container_name(): string;
+        /**
+         * The name of the current container, or %NULL if unset.
+         */
+        get currentContainerName(): string;
+        /**
+         * The name of the runtime toolset used to set up the current
+         * container, or %NULL if unset.
+         */
+        get current_container_runtime(): string;
+        /**
+         * The name of the runtime toolset used to set up the current
+         * container, or %NULL if unset.
+         */
+        get currentContainerRuntime(): string;
+        /**
          * The current directory URI, or %NULL if unset.
          */
         get current_directory_uri(): string;
@@ -1343,6 +1420,16 @@ export namespace Vte {
          */
         get deleteBinding(): EraseBinding;
         set deleteBinding(val: EraseBinding);
+        /**
+         * Controls whether or not a11y is enabled for the widget.
+         */
+        get enable_a11y(): boolean;
+        set enable_a11y(val: boolean);
+        /**
+         * Controls whether or not a11y is enabled for the widget.
+         */
+        get enableA11y(): boolean;
+        set enableA11y(val: boolean);
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
          */
@@ -1490,6 +1577,18 @@ export namespace Vte {
         set rewrapOnResize(val: boolean);
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
+         * the viewable history when the text is inserted (e.g. by a paste).
+         */
+        get scroll_on_insert(): boolean;
+        set scroll_on_insert(val: boolean);
+        /**
+         * Controls whether or not the terminal will forcibly scroll to the bottom of
+         * the viewable history when the text is inserted (e.g. by a paste).
+         */
+        get scrollOnInsert(): boolean;
+        set scrollOnInsert(val: boolean);
+        /**
+         * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the user presses a key.  Modifier keys do not
          * trigger this behavior.
          */
@@ -1514,6 +1613,24 @@ export namespace Vte {
          */
         get scrollOnOutput(): boolean;
         set scrollOnOutput(val: boolean);
+        /**
+         * The number of lines by which the buffer is moved when
+         * scrolling with a mouse wheel on top of the terminal
+         * Setting it to zero will cause the buffer to be moved by an
+         * amount depending on the number of visible rows the widget
+         * can display.
+         */
+        get scroll_speed(): number;
+        set scroll_speed(val: number);
+        /**
+         * The number of lines by which the buffer is moved when
+         * scrolling with a mouse wheel on top of the terminal
+         * Setting it to zero will cause the buffer to be moved by an
+         * amount depending on the number of visible rows the widget
+         * can display.
+         */
+        get scrollSpeed(): number;
+        set scrollSpeed(val: number);
         /**
          * Controls whether the terminal's GtkAdjustment values unit is lines
          * or pixels. This can be enabled when the terminal is the child of a
@@ -1598,7 +1715,10 @@ export namespace Vte {
         get yalign(): Align;
         set yalign(val: Align);
         /**
-         * The vertical fillment of `terminal` within its allocation
+         * The vertical fillment of `terminal` within its allocation.
+         * Note that #VteTerminal:yfill=%TRUE is only supported with
+         * #VteTerminal:yalign=%VTE_ALIGN_START, and is ignored for
+         * all other yalign values.
          */
         get yfill(): boolean;
         set yfill(val: boolean);
@@ -1689,6 +1809,15 @@ export namespace Vte {
         connect(signal: 'move-window', callback: (_source: this, x: number, y: number) => void): number;
         connect_after(signal: 'move-window', callback: (_source: this, x: number, y: number) => void): number;
         emit(signal: 'move-window', x: number, y: number): void;
+        connect(
+            signal: 'notification-received',
+            callback: (_source: this, summary: string, body: string | null) => void,
+        ): number;
+        connect_after(
+            signal: 'notification-received',
+            callback: (_source: this, summary: string, body: string | null) => void,
+        ): number;
+        emit(signal: 'notification-received', summary: string, body?: string | null): void;
         connect(signal: 'paste-clipboard', callback: (_source: this) => void): number;
         connect_after(signal: 'paste-clipboard', callback: (_source: this) => void): number;
         emit(signal: 'paste-clipboard'): void;
@@ -1710,6 +1839,18 @@ export namespace Vte {
         connect(signal: 'selection-changed', callback: (_source: this) => void): number;
         connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
         emit(signal: 'selection-changed'): void;
+        connect(signal: 'setup-context-menu', callback: (_source: this, context: EventContext | null) => void): number;
+        connect_after(
+            signal: 'setup-context-menu',
+            callback: (_source: this, context: EventContext | null) => void,
+        ): number;
+        emit(signal: 'setup-context-menu', context?: EventContext | null): void;
+        connect(signal: 'shell-precmd', callback: (_source: this) => void): number;
+        connect_after(signal: 'shell-precmd', callback: (_source: this) => void): number;
+        emit(signal: 'shell-precmd'): void;
+        connect(signal: 'shell-preexec', callback: (_source: this) => void): number;
+        connect_after(signal: 'shell-preexec', callback: (_source: this) => void): number;
+        emit(signal: 'shell-preexec'): void;
         connect(signal: 'text-deleted', callback: (_source: this) => void): number;
         connect_after(signal: 'text-deleted', callback: (_source: this) => void): number;
         emit(signal: 'text-deleted'): void;
@@ -1749,6 +1890,7 @@ export namespace Vte {
         vfunc_lower_window(): void;
         vfunc_maximize_window(): void;
         vfunc_move_window(x: number, y: number): void;
+        vfunc_notification_received(summary: string, body: string): void;
         /**
          * Sends the contents of the #GDK_SELECTION_CLIPBOARD selection to the
          * terminal's child. It's called on paste menu item, or when
@@ -1760,6 +1902,9 @@ export namespace Vte {
         vfunc_resize_window(width: number, height: number): void;
         vfunc_restore_window(): void;
         vfunc_selection_changed(): void;
+        vfunc_setup_context_menu(context: EventContext): void;
+        vfunc_shell_precmd(): void;
+        vfunc_shell_preexec(): void;
         vfunc_text_deleted(): void;
         vfunc_text_inserted(): void;
         vfunc_text_modified(): void;
@@ -1882,6 +2027,10 @@ export namespace Vte {
          */
         get_color_background_for_draw(): Gdk.RGBA;
         get_column_count(): number;
+        get_context_menu(): Gtk.Widget | null;
+        get_context_menu_model(): Gio.MenuModel | null;
+        get_current_container_name(): string | null;
+        get_current_container_runtime(): string | null;
         get_current_directory_uri(): string | null;
         get_current_file_uri(): string | null;
         /**
@@ -1901,6 +2050,11 @@ export namespace Vte {
          * @returns cursor shape.
          */
         get_cursor_shape(): CursorShape;
+        /**
+         * Checks whether the terminal communicates with a11y backends
+         * @returns %TRUE if a11y is enabled, %FALSE if not
+         */
+        get_enable_a11y(): boolean;
         /**
          * Checks whether the terminal performs bidirectional text rendering.
          * @returns %TRUE if BiDi is enabled, %FALSE if not
@@ -1972,6 +2126,7 @@ export namespace Vte {
          */
         get_rewrap_on_resize(): boolean;
         get_row_count(): number;
+        get_scroll_on_insert(): boolean;
         get_scroll_on_keystroke(): boolean;
         get_scroll_on_output(): boolean;
         get_scroll_unit_is_pixels(): boolean;
@@ -1982,8 +2137,8 @@ export namespace Vte {
          * This method is unaware of BiDi. The columns returned in `attributes` are
          * logical columns.
          *
-         * Note: since 0.68, passing a non-%NULL `array` parameter is deprecated. Starting with
-         * 0.72, passing a non-%NULL `array` parameter will make this function itself return %NULL.
+         * Note: since 0.68, passing a non-%NULL `attributes` parameter is deprecated. Starting with
+         * 0.72, passing a non-%NULL `attributes` parameter will make this function itself return %NULL.
          * Since 0.72, passing a non-%NULL `is_selected` parameter will make this function itself return %NULL.
          * @param is_selected a #VteSelectionFunc callback. Deprecated: 0.44: Always pass %NULL here.
          * @returns a newly allocated text string, or %NULL.
@@ -1994,6 +2149,15 @@ export namespace Vte {
          * @returns the blinking setting
          */
         get_text_blink_mode(): TextBlinkMode;
+        /**
+         * Returns text from the visible part of the terminal in the specified format.
+         *
+         * This method is unaware of BiDi. The columns returned in `attributes` are
+         * logical columns.
+         * @param format the #VteFormat to use
+         * @returns a newly allocated text string, or %NULL.
+         */
+        get_text_format(format: Format): string | null;
         /**
          * Extracts a view of the visible part of the terminal.
          *
@@ -2052,7 +2216,7 @@ export namespace Vte {
         ): [string | null, number];
         /**
          * Gets the currently selected text in the format specified by `format`.
-         * Since 0.72, this function also supports %VTE_FORMAT_HTML format.xg
+         * Since 0.72, this function also supports %VTE_FORMAT_HTML format.
          * @param format the #VteFormat to use
          * @returns a newly allocated string containing the selected text, or %NULL if there is no selection or the format is not supported
          */
@@ -2375,6 +2539,21 @@ export namespace Vte {
          */
         set_colors(foreground?: Gdk.RGBA | null, background?: Gdk.RGBA | null, palette?: Gdk.RGBA[] | null): void;
         /**
+         * Sets `menu` as the context menu in `terminal`.
+         * Use %NULL to unset the current menu.
+         *
+         * Note that a menu model set with vte_terminal_set_context_menu_model()
+         * takes precedence over a menu set using this function.
+         * @param menu a menu
+         */
+        set_context_menu(menu?: Gtk.Widget | null): void;
+        /**
+         * Sets `model` as the context menu model in `terminal`.
+         * Use %NULL to unset the current menu model.
+         * @param model a #GMenuModel
+         */
+        set_context_menu_model(model?: Gio.MenuModel | null): void;
+        /**
          * Sets whether or not the cursor will blink. Using %VTE_CURSOR_BLINK_SYSTEM
          * will use the #GtkSettings::gtk-cursor-blink setting.
          * @param mode the #VteCursorBlinkMode to use
@@ -2396,6 +2575,11 @@ export namespace Vte {
          * @param binding a #VteEraseBinding for the delete key
          */
         set_delete_binding(binding: EraseBinding): void;
+        /**
+         * Controls whether or not the terminal will communicate with a11y backends.
+         * @param enable_a11y %TRUE to enable a11y support
+         */
+        set_enable_a11y(enable_a11y: boolean): void;
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
          * @param enable_bidi %TRUE to enable BiDi support
@@ -2494,6 +2678,12 @@ export namespace Vte {
         set_rewrap_on_resize(rewrap: boolean): void;
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
+         * the viewable history when text is inserted, e.g. by a paste.
+         * @param scroll whether the terminal should scroll on insert
+         */
+        set_scroll_on_insert(scroll: boolean): void;
+        /**
+         * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the user presses a key.  Modifier keys do not
          * trigger this behavior.
          * @param scroll whether the terminal should scroll on keystrokes
@@ -2505,6 +2695,14 @@ export namespace Vte {
          * @param scroll whether the terminal should scroll on output
          */
         set_scroll_on_output(scroll: boolean): void;
+        /**
+         * Sets the number of lines by which the buffer is moved when
+         * scrolling with a mouse wheel. Setting it to zero will cause the
+         * buffer to be moved by an amount depending on the number of visible
+         * rows the widget can display.
+         * @param scroll_speed move the buffer by this number of lines while scrolling
+         */
+        set_scroll_speed(scroll_speed: number): void;
         /**
          * Controls whether the terminal's scroll unit is lines or pixels.
          *
@@ -2520,6 +2718,9 @@ export namespace Vte {
          * scrollback.
          *
          * A negative value means "infinite scrollback".
+         *
+         * Using a large scrollback buffer (roughly 1M+ lines) may lead to performance
+         * degradation or exhaustion of system resources, and is therefore not recommended.
          *
          * Note that this setting only affects the normal screen buffer.
          * No scrollback is allowed on the alternate screen buffer.
@@ -2575,6 +2776,8 @@ export namespace Vte {
         set_yalign(align: Align): void;
         /**
          * Sets the vertical fillment of `terminal` within its allocation.
+         * Note that yfill is only supported with yalign set to
+         * %VTE_ALIGN_START, and is ignored for all other yalign values.
          * @param fill fillment value from #VteFill
          */
         set_yfill(fill: boolean): void;
@@ -3205,7 +3408,7 @@ export namespace Vte {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3394,6 +3597,21 @@ export namespace Vte {
         _init(...args: any[]): void;
     }
 
+    /**
+     * Provides context information for a context menu event.
+     */
+    abstract class EventContext {
+        static $gtype: GObject.GType<EventContext>;
+
+        // Constructors of Vte.EventContext
+
+        _init(...args: any[]): void;
+
+        // Own methods of Vte.EventContext
+
+        get_event(): Gdk.Event;
+    }
+
     type PtyClass = typeof Pty;
     class Regex {
         static $gtype: GObject.GType<Regex>;
@@ -3405,7 +3623,11 @@ export namespace Vte {
 
         static new_for_match(pattern: string, pattern_length: number, flags: number): Regex;
 
+        static new_for_match_full(pattern: string, pattern_length: number, flags: number, extra_flags: number): Regex;
+
         static new_for_search(pattern: string, pattern_length: number, flags: number): Regex;
+
+        static new_for_search_full(pattern: string, pattern_length: number, flags: number, extra_flags: number): Regex;
 
         // Own methods of Vte.Regex
 

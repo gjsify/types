@@ -1714,7 +1714,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2335,7 +2335,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2970,7 +2970,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3636,7 +3636,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4764,7 +4764,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5898,7 +5898,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6333,7 +6333,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6747,7 +6747,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7523,7 +7523,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7963,6 +7963,7 @@ export namespace GtkSource {
         interface ConstructorProps
             extends View.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
+                Gtk.AccessibleText.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -7997,7 +7998,10 @@ export namespace GtkSource {
      * When FontConfig is available, `GtkSourceMap` will try to use a bundled
      * "block" font to make the map more legible.
      */
-    class Map extends View implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Scrollable {
+    class Map
+        extends View
+        implements Gtk.Accessible, Gtk.AccessibleText, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Scrollable
+    {
         static $gtype: GObject.GType<Map>;
 
         // Own properties of GtkSource.Map
@@ -8208,7 +8212,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9830,6 +9834,8 @@ export namespace GtkSource {
             regexEnabled: boolean;
             search_text: string;
             searchText: string;
+            visible_only: boolean;
+            visibleOnly: boolean;
             wrap_around: boolean;
             wrapAround: boolean;
         }
@@ -9898,6 +9904,18 @@ export namespace GtkSource {
         get searchText(): string;
         set searchText(val: string);
         /**
+         * Exclude invisible text from the search.
+         * A search match may have invisible text interspersed.
+         */
+        get visible_only(): boolean;
+        set visible_only(val: boolean);
+        /**
+         * Exclude invisible text from the search.
+         * A search match may have invisible text interspersed.
+         */
+        get visibleOnly(): boolean;
+        set visibleOnly(val: boolean);
+        /**
          * For a forward search, continue at the beginning of the buffer if no
          * search occurrence is found. For a backward search, continue at the
          * end of the buffer.
@@ -9935,6 +9953,7 @@ export namespace GtkSource {
          * @returns the text to search, or %NULL if the search is disabled.
          */
         get_search_text(): string | null;
+        get_visible_only(): boolean;
         get_wrap_around(): boolean;
         /**
          * Change whether the search is done at word boundaries.
@@ -9973,6 +9992,14 @@ export namespace GtkSource {
          * @param search_text the nul-terminated text to search, or %NULL to disable the search.
          */
         set_search_text(search_text?: string | null): void;
+        /**
+         * Enables or disables whether to exclude invisible text from the search.
+         *
+         * If enabled, only visible text will be searched.
+         * A search match may have invisible text interspersed.
+         * @param visible_only the setting.
+         */
+        set_visible_only(visible_only: boolean): void;
         /**
          * Enables or disables the wrap around search.
          *
@@ -11594,7 +11621,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -14309,7 +14336,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -15621,7 +15648,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -17927,6 +17954,7 @@ export namespace GtkSource {
         interface ConstructorProps
             extends Gtk.TextView.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
+                Gtk.AccessibleText.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -18025,7 +18053,10 @@ export namespace GtkSource {
      * [property`Gtk`.TextTag:scale] set so that the font size may be scaled relative to
      * the default font set in CSS.
      */
-    class View extends Gtk.TextView implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Scrollable {
+    class View
+        extends Gtk.TextView
+        implements Gtk.Accessible, Gtk.AccessibleText, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Scrollable
+    {
         static $gtype: GObject.GType<View>;
 
         // Own properties of GtkSource.View
@@ -18610,6 +18641,106 @@ export namespace GtkSource {
 
         // Inherited methods
         /**
+         * Updates the position of the caret.
+         *
+         * Implementations of the `GtkAccessibleText` interface should call this
+         * function every time the caret has moved, in order to notify assistive
+         * technologies.
+         */
+        update_caret_position(): void;
+        /**
+         * Notifies assistive technologies of a change in contents.
+         *
+         * Implementations of the `GtkAccessibleText` interface should call this
+         * function every time their contents change as the result of an operation,
+         * like an insertion or a removal.
+         *
+         * Note: If the change is a deletion, this function must be called *before*
+         * removing the contents, if it is an insertion, it must be called *after*
+         * inserting the new contents.
+         * @param change the type of change in the contents
+         * @param start the starting offset of the change, in characters
+         * @param end the end offset of the change, in characters
+         */
+        update_contents(change: Gtk.AccessibleTextContentChange, start: number, end: number): void;
+        /**
+         * Updates the boundary of the selection.
+         *
+         * Implementations of the `GtkAccessibleText` interface should call this
+         * function every time the selection has moved, in order to notify assistive
+         * technologies.
+         */
+        update_selection_bound(): void;
+        /**
+         * Retrieves the text attributes inside the accessible object.
+         *
+         * Each attribute is composed by:
+         *
+         * - a range
+         * - a name
+         * - a value
+         *
+         * It is left to the implementation to determine the serialization format
+         * of the value to a string.
+         *
+         * GTK provides support for various text attribute names and values, but
+         * implementations of this interface are free to add their own attributes.
+         *
+         * If this function returns true, `n_ranges` will be set to a value
+         * greater than or equal to one, `ranges` will be set to a newly
+         * allocated array of [struct#Gtk.AccessibleTextRange].
+         * @param offset the offset, in characters
+         */
+        vfunc_get_attributes(
+            offset: number,
+        ): [boolean, Gtk.AccessibleTextRange[] | null, string[] | null, string[] | null];
+        /**
+         * Retrieves the position of the caret inside the accessible object.
+         */
+        vfunc_get_caret_position(): number;
+        /**
+         * Retrieve the current contents of the accessible object within
+         * the given range.
+         *
+         * If `end` is `G_MAXUINT`, the end of the range is the full content
+         * of the accessible object.
+         * @param start the beginning of the range, in characters
+         * @param end the end of the range, in characters
+         */
+        vfunc_get_contents(start: number, end: number): GLib.Bytes;
+        /**
+         * Retrieve the current contents of the accessible object starting
+         * from the given offset, and using the given granularity.
+         *
+         * The `start` and `end` values contain the boundaries of the text.
+         * @param offset the offset, in characters
+         * @param granularity the granularity of the query
+         */
+        vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [GLib.Bytes, number, number];
+        /**
+         * Retrieves the default text attributes inside the accessible object.
+         *
+         * Each attribute is composed by:
+         *
+         * - a name
+         * - a value
+         *
+         * It is left to the implementation to determine the serialization format
+         * of the value to a string.
+         *
+         * GTK provides support for various text attribute names and values, but
+         * implementations of this interface are free to add their own attributes.
+         */
+        vfunc_get_default_attributes(): [string[] | null, string[] | null];
+        /**
+         * Retrieves the selection ranges in the accessible object.
+         *
+         * If this function returns true, `n_ranges` will be set to a value
+         * greater than or equal to one, and `ranges` will be set to a newly
+         * allocated array of [struct#Gtk.AccessibleTextRange].
+         */
+        vfunc_get_selection(): [boolean, Gtk.AccessibleTextRange[] | null];
+        /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable.
          *
@@ -18851,7 +18982,7 @@ export namespace GtkSource {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

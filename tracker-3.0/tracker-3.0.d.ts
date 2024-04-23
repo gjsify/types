@@ -146,6 +146,14 @@ export namespace Tracker {
         static INCOMPLETE_PROPERTY_DEFINITION: number;
         /**
          * A soft/hard corruption was found in the database during operation.
+         *   If this error is obtained during regular operations with an existing [class`Tracker`.SparqlConnection],
+         *   the corruption was newly found. This event will be persistently recorded so that the
+         *   [func`Tracker`.SparqlConnection.new_async] constructor (or its synchronous variant) will
+         *   perform database repair attempts. If this error is obtained during one of those constructors, the
+         *   database could not be repaired automatically and data loss is unavoidable. It is left to the discretion
+         *   of the API user to set up the appropriate fallbacks in this situation, to replace the
+         *   database and recover from the error. See [ctor`Tracker`.SparqlConnection.new] documentation
+         *   for more information on corruption handling.
          */
         static CORRUPT: number;
         /**
@@ -176,7 +184,7 @@ export namespace Tracker {
          */
         URI,
         /**
-         * String value type, xsd:string
+         * String value type, xsd:string or rdf:langString
          */
         STRING,
         /**
@@ -498,6 +506,11 @@ export namespace Tracker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            allowed_graphs: string[];
+            allowedGraphs: string[];
+            allowed_services: string[];
+            allowedServices: string[];
+            readonly: boolean;
             sparql_connection: SparqlConnection;
             sparqlConnection: SparqlConnection;
         }
@@ -517,12 +530,60 @@ export namespace Tracker {
      * [ctor`Tracker`.SparqlConnection.bus_new] or [ctor`Tracker`.SparqlConnection.remote_new]
      * to access this endpoint exclusively, or they may use the `SERVICE <uri> { ... }` SPARQL
      * syntax from their own [class`Tracker`.SparqlConnection]s to expand their data set.
+     *
+     * By default, and as long as the underlying [class`Tracker`.SparqlConnection]
+     * allows SPARQL updates and RDF graph changes, endpoints will allow updates
+     * and modifications to happen through them. Use [method`Tracker`.Endpoint.set_readonly]
+     * to change this behavior.
+     *
+     * By default, endpoints allow access to every RDF graph in the triple store
+     * and further external SPARQL endpoints to the queries performed on it. Use
+     * [method`Tracker`.Endpoint.set_allowed_graphs] and
+     * [method`Tracker`.Endpoint.set_allowed_services] to change this behavior. Users do
+     * not typically need to do this for D-Bus endpoints, as these do already have a layer
+     * of protection with the Tracker portal. This is the mechanism used by the portal
+     * itself. This access control API may not interoperate with other SPARQL endpoint
+     * implementations than Tracker.
      */
     abstract class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
 
         // Own properties of Tracker.Endpoint
 
+        /**
+         * RDF graphs that are allowed to be accessed
+         * through queries to this endpoint. See
+         * tracker_endpoint_set_allowed_graphs().
+         */
+        get allowed_graphs(): string[];
+        set allowed_graphs(val: string[]);
+        /**
+         * RDF graphs that are allowed to be accessed
+         * through queries to this endpoint. See
+         * tracker_endpoint_set_allowed_graphs().
+         */
+        get allowedGraphs(): string[];
+        set allowedGraphs(val: string[]);
+        /**
+         * External SPARQL endpoints that are allowed to be
+         * accessed through queries to this endpint. See
+         * tracker_endpoint_set_allowed_services().
+         */
+        get allowed_services(): string[];
+        set allowed_services(val: string[]);
+        /**
+         * External SPARQL endpoints that are allowed to be
+         * accessed through queries to this endpint. See
+         * tracker_endpoint_set_allowed_services().
+         */
+        get allowedServices(): string[];
+        set allowedServices(val: string[]);
+        /**
+         * Whether the endpoint allows SPARQL updates or not. See
+         * tracker_endpoint_set_readonly().
+         */
+        get readonly(): boolean;
+        set readonly(val: boolean);
         /**
          * The [class`Tracker`.SparqlConnection] being proxied by this endpoint.
          */
@@ -541,14 +602,85 @@ export namespace Tracker {
         // Own methods of Tracker.Endpoint
 
         /**
+         * Returns the list of RDF graphs that the endpoint allows
+         * access for.
+         * @returns The list of allowed RDF graphs
+         */
+        get_allowed_graphs(): string[];
+        /**
+         * Returns the list of external SPARQL endpoints that are
+         * allowed to be accessed through this endpoint.
+         * @returns The list of allowed services
+         */
+        get_allowed_services(): string[];
+        /**
+         * Returns whether the endpoint is readonly, thus SPARQL update
+         * queries are disallowed.
+         * @returns %TRUE if the endpoint is readonly
+         */
+        get_readonly(): boolean;
+        /**
          * Returns the [class`Tracker`.SparqlConnection] that this endpoint proxies
          * to a wider audience.
          * @returns The proxied SPARQL connection
          */
         get_sparql_connection(): SparqlConnection;
+        /**
+         * Sets the list of RDF graphs that this endpoint will allow access
+         * for. Any explicit (e.g. `GRAPH` keyword) or implicit (e.g. through the
+         * default anonymous graph) access to RDF graphs unespecified in this
+         * list in SPARQL queries will be seen as if those graphs did not exist, or
+         * (equivalently) had an empty set. Changes to these graphs through SPARQL
+         * updates will also be disallowed.
+         *
+         * If `graphs` is %NULL, access will be allowed to every RDF graph stored
+         * in the endpoint, this is the default behavior. If you want to forbid access
+         * to all RDF graphs, use an empty list.
+         *
+         * The empty string (`""`) is allowed as a special value, to allow access
+         * to the stock anonymous graph. All graph names are otherwise dependent
+         * on the endpoint and its contained data.
+         * @param graphs List of allowed graphs, or %NULL to allow all graphs
+         */
+        set_allowed_graphs(graphs: string): void;
+        /**
+         * Sets the list of external SPARQL endpoints that this endpoint
+         * will allow access for. Access through the `SERVICE` SPARQL syntax
+         * will fail for services not specified in this list.
+         *
+         * If `services` is %NULL, access will be allowed to every external endpoint,
+         * this is the default behavior. If you want to forbid access to all
+         * external SPARQL endpoints, use an empty list.
+         *
+         * This affects both remote SPARQL endpoints accessed through HTTP,
+         * and external SPARQL endpoints offered through D-Bus. For the latter,
+         * the following syntax is allowed to describe them as an URI:
+         *
+         * `DBUS_URI = 'dbus:' [ ('system' | 'session') ':' ]? dbus-name [ ':' object-path ]?`
+         *
+         * If the system/session part is omitted, it will default to the session
+         * bus. If the object path is omitted, the `/org/freedesktop/Tracker3/Endpoint`
+         * [class`Tracker`.EndpointDBus] default will be assumed.
+         * @param services List of allowed services, or %NULL to allow all services
+         */
+        set_allowed_services(services: string): void;
+        /**
+         * Sets whether the endpoint will be readonly. Readonly endpoints
+         * will not allow SPARQL update queries. The underlying
+         * [class`Tracker`.SparqlConnection] may be readonly of its own, this
+         * method does not change its behavior in any way.
+         * @param readonly Whether the endpoint will be readonly
+         */
+        set_readonly(readonly: boolean): void;
     }
 
     module EndpointDBus {
+        // Signal callback interfaces
+
+        interface BlockCall {
+            (object: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Endpoint.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -587,10 +719,17 @@ export namespace Tracker {
      * given the object will be at the default `/org/freedesktop/Tracker3/Endpoint`
      * location.
      *
-     * Access to these endpoints may be transparently managed through
-     * the Tracker portal service for applications sandboxed via Flatpak, and
-     * access to data constrained to the graphs defined in the applications
-     * manifest.
+     * Access to D-Bus endpoints may be managed via the
+     * [signal`Tracker`.EndpointDBus::block-call] signal, the boolean
+     * return value expressing whether the request is blocked or not.
+     * Inspection of the requester address is left up to the user. The
+     * default value allows all requests independently of their provenance.
+     *
+     * However, moderating access to D-Bus interfaces is typically not necessary
+     * in user code, as access to public D-Bus endpoints will be transparently
+     * managed through the Tracker portal service for applications sandboxed
+     * via XDG portals. These already have access to D-Bus SPARQL endpoints and
+     * their data naturally filtered as defined in the application manifest.
      *
      * A `TrackerEndpointDBus` may be created on a different thread/main
      * context from the one that created [class`Tracker`.SparqlConnection].
@@ -629,6 +768,15 @@ export namespace Tracker {
             object_path?: string | null,
             cancellable?: Gio.Cancellable | null,
         ): EndpointDBus;
+
+        // Own signals of Tracker.EndpointDBus
+
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'block-call', callback: (_source: this, object: string) => boolean): number;
+        connect_after(signal: 'block-call', callback: (_source: this, object: string) => boolean): number;
+        emit(signal: 'block-call', object: string): void;
 
         // Inherited methods
         /**
@@ -893,7 +1041,7 @@ export namespace Tracker {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1444,7 +1592,7 @@ export namespace Tracker {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1806,6 +1954,10 @@ export namespace Tracker {
         /**
          * Listens to notification events from a remote DBus SPARQL endpoint.
          *
+         * If `connection` refers to a message bus (system/session), `service` must refer
+         * to a D-Bus name (either unique or well-known). If `connection` is a non-message
+         * bus (e.g. a peer-to-peer D-Bus connection) the `service` argument may be %NULL.
+         *
          * If the `object_path` argument is %NULL, the default
          * `/org/freedesktop/Tracker3/Endpoint` path will be
          * used. If `graph` is %NULL, all graphs will be listened for.
@@ -1817,14 +1969,14 @@ export namespace Tracker {
          * a connection obtained through [ctor`Tracker`.SparqlConnection.bus_new],
          * only to listen to update notifications from additional DBus endpoints.
          * @param connection A [class@Gio.DBusConnection]
-         * @param service DBus service name to subscribe to events for
+         * @param service DBus service name to subscribe to events for, or %NULL
          * @param object_path DBus object path to subscribe to events for, or %NULL
          * @param graph Graph to listen events for, or %NULL
          * @returns An ID for this subscription
          */
         signal_subscribe(
             connection: Gio.DBusConnection,
-            service: string,
+            service?: string | null,
             object_path?: string | null,
             graph?: string | null,
         ): number;
@@ -2917,6 +3069,17 @@ export namespace Tracker {
          */
         get_integer(column: number): number;
         /**
+         * Retrieves a string representation of the data in the current
+         * row in `column`. If the string has language information (i.e. it is
+         * a `rdf:langString`](rdf-ontology.html#rdf:langString)), the language
+         * tag will be returned in the location provided through `langtag`. This
+         * language tag will typically be in a format conforming
+         * [RFC 5646](https://www.rfc-editor.org/rfc/rfc5646.html).
+         * @param column column number to retrieve
+         * @returns a string which must not be freed. %NULL is returned if the column is not in the `[0, n_columns]` range, or if the row/column refer to a nullable optional value in the result set.
+         */
+        get_langstring(column: number): [string | null, string, number];
+        /**
          * Retrieves the number of columns available in the result set.
          *
          * This method should only be called after a successful
@@ -3094,6 +3257,16 @@ export namespace Tracker {
          * @param value value
          */
         bind_int(name: string, value: number): void;
+        /**
+         * Binds the `value` to the parameterized variable given by `name,` tagged
+         * with the language defined by `langtag`. The language tag should follow
+         * [RFC 5646](https://www.rfc-editor.org/rfc/rfc5646.html). The parameter
+         * will be represented as a [`rdf:langString`](rdf-ontology.html#rdf:langString).
+         * @param name variable name
+         * @param value value
+         * @param langtag language tag
+         */
+        bind_langstring(name: string, value: string, langtag: string): void;
         /**
          * Binds the string `value` to the parameterized variable given by `name`.
          * @param name variable name

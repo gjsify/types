@@ -196,6 +196,13 @@ export namespace MatePanelApplet {
         set_background_widget(widget: Gtk.Widget): void;
         set_flags(flags: AppletFlags): void;
         set_size_hints(size_hints: number[], base_size: number): void;
+        /**
+         * `applet` A #MatePanelApplet
+         * `schema` applet's schema id
+         * @param schema
+         * @returns a #GSettings. free when you used it
+         */
+        settings_new(schema: string): Gio.Settings;
         setup_menu(xml: string, action_group: Gtk.ActionGroup): void;
         setup_menu_from_file(filename: string, action_group: Gtk.ActionGroup): void;
         /**
@@ -389,7 +396,7 @@ export namespace MatePanelApplet {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

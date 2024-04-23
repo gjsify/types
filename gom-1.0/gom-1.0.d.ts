@@ -123,7 +123,7 @@ export namespace Gom {
          */
         queue_read(callback: AdapterCallback): void;
         /**
-         * Queues a callback to be executed within the SQLite thwrite. The callback can
+         * Queues a callback to be executed within the SQLite thread. The callback can
          * perform reads and writes.
          * @param callback A callback to execute write queries on SQLite.
          */

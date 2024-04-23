@@ -996,6 +996,11 @@ export namespace NM {
          * The Wi-Fi P2P peer could not be found
          */
         PEER_NOT_FOUND,
+        /**
+         * The device handler dispatcher returned an
+         *   error. Since: 1.46
+         */
+        DEVICE_HANDLER_FAILED,
     }
     /**
      * #NMDeviceType values indicate the type of hardware represented by a
@@ -1135,6 +1140,10 @@ export namespace NM {
          * a loopback interface. Since: 1.42.
          */
         LOOPBACK,
+        /**
+         * A HSR/PRP device. Since: 1.46.
+         */
+        HSR,
     }
     /**
      * The tunneling mode.
@@ -1783,6 +1792,27 @@ export namespace NM {
         EAP,
     }
     /**
+     * These flags control the MACsec offload mode.
+     */
+    enum SettingMacsecOffload {
+        /**
+         * use the global default; disable if not defined
+         */
+        DEFAULT,
+        /**
+         * disable offload
+         */
+        OFF,
+        /**
+         * request offload to the PHY
+         */
+        PHY,
+        /**
+         * request offload to the MAC
+         */
+        MAC,
+    }
+    /**
      * #NMSettingMacsecValidation specifies a validation mode for incoming frames.
      */
     enum SettingMacsecValidation {
@@ -2007,6 +2037,56 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
+    enum SriovEswitchEncapMode {
+        /**
+         * don't modify current encap-mode
+         */
+        PRESERVE,
+        /**
+         * disable encapsulation mode
+         */
+        NONE,
+        /**
+         * enable encapsulation mode
+         */
+        BASIC,
+    }
+    enum SriovEswitchInlineMode {
+        /**
+         * don't modify current inline-mode
+         */
+        PRESERVE,
+        /**
+         * don't use inline mode
+         */
+        NONE,
+        /**
+         * L2 mode
+         */
+        LINK,
+        /**
+         * L3 mode
+         */
+        NETWORK,
+        /**
+         * L4 mode
+         */
+        TRANSPORT,
+    }
+    enum SriovEswitchMode {
+        /**
+         * don't modify current eswitch mode
+         */
+        PRESERVE,
+        /**
+         * use legacy SRIOV
+         */
+        LEGACY,
+        /**
+         * use switchdev mode
+         */
+        SWITCHDEV,
+    }
     /**
      * #NMSriovVFVlanProtocol indicates the VLAN protocol to use.
      */
@@ -2602,6 +2682,11 @@ export namespace NM {
     const DEVICE_FIRMWARE_VERSION: string;
     const DEVICE_GENERIC_HW_ADDRESS: string;
     const DEVICE_GENERIC_TYPE_DESCRIPTION: string;
+    const DEVICE_HSR_MULTICAST_SPEC: string;
+    const DEVICE_HSR_PORT1: string;
+    const DEVICE_HSR_PORT2: string;
+    const DEVICE_HSR_PRP: string;
+    const DEVICE_HSR_SUPERVISION_ADDRESS: string;
     const DEVICE_HW_ADDRESS: string;
     const DEVICE_INFINIBAND_CARRIER: string;
     const DEVICE_INFINIBAND_HW_ADDRESS: string;
@@ -2615,6 +2700,7 @@ export namespace NM {
     const DEVICE_IP_TUNNEL_ENCAPSULATION_LIMIT: string;
     const DEVICE_IP_TUNNEL_FLAGS: string;
     const DEVICE_IP_TUNNEL_FLOW_LABEL: string;
+    const DEVICE_IP_TUNNEL_FWMARK: string;
     const DEVICE_IP_TUNNEL_INPUT_KEY: string;
     const DEVICE_IP_TUNNEL_LOCAL: string;
     const DEVICE_IP_TUNNEL_MODE: string;
@@ -2727,6 +2813,10 @@ export namespace NM {
     const DEVICE_WPAN_HW_ADDRESS: string;
     const DHCP_CONFIG_FAMILY: string;
     const DHCP_CONFIG_OPTIONS: string;
+    const ETHTOOL_OPTNAME_CHANNELS_COMBINED: string;
+    const ETHTOOL_OPTNAME_CHANNELS_OTHER: string;
+    const ETHTOOL_OPTNAME_CHANNELS_RX: string;
+    const ETHTOOL_OPTNAME_CHANNELS_TX: string;
     const ETHTOOL_OPTNAME_COALESCE_ADAPTIVE_RX: string;
     const ETHTOOL_OPTNAME_COALESCE_ADAPTIVE_TX: string;
     const ETHTOOL_OPTNAME_COALESCE_PKT_RATE_HIGH: string;
@@ -2749,6 +2839,7 @@ export namespace NM {
     const ETHTOOL_OPTNAME_COALESCE_TX_USECS_HIGH: string;
     const ETHTOOL_OPTNAME_COALESCE_TX_USECS_IRQ: string;
     const ETHTOOL_OPTNAME_COALESCE_TX_USECS_LOW: string;
+    const ETHTOOL_OPTNAME_EEE_ENABLED: string;
     const ETHTOOL_OPTNAME_FEATURE_ESP_HW_OFFLOAD: string;
     const ETHTOOL_OPTNAME_FEATURE_ESP_TX_CSUM_HW_OFFLOAD: string;
     const ETHTOOL_OPTNAME_FEATURE_FCOE_MTU: string;
@@ -2899,6 +2990,9 @@ export namespace NM {
     const SECRET_AGENT_OLD_DBUS_CONNECTION: string;
     const SECRET_AGENT_OLD_IDENTIFIER: string;
     const SECRET_AGENT_OLD_REGISTERED: string;
+    const SECRET_TAG_DYNAMIC_CHALLENGE: string;
+    const SECRET_TAG_DYNAMIC_CHALLENGE_ECHO: string;
+    const SECRET_TAG_VPN_MSG: string;
     const SETTING_6LOWPAN_PARENT: string;
     const SETTING_6LOWPAN_SETTING_NAME: string;
     const SETTING_802_1X_ALTSUBJECT_MATCHES: string;
@@ -3060,12 +3154,14 @@ export namespace NM {
     const SETTING_CDMA_USERNAME: string;
     const SETTING_CONNECTION_AUTH_RETRIES: string;
     const SETTING_CONNECTION_AUTOCONNECT: string;
+    const SETTING_CONNECTION_AUTOCONNECT_PORTS: string;
     const SETTING_CONNECTION_AUTOCONNECT_PRIORITY: string;
     const SETTING_CONNECTION_AUTOCONNECT_PRIORITY_DEFAULT: number;
     const SETTING_CONNECTION_AUTOCONNECT_PRIORITY_MAX: number;
     const SETTING_CONNECTION_AUTOCONNECT_PRIORITY_MIN: number;
     const SETTING_CONNECTION_AUTOCONNECT_RETRIES: string;
     const SETTING_CONNECTION_AUTOCONNECT_SLAVES: string;
+    const SETTING_CONNECTION_CONTROLLER: string;
     const SETTING_CONNECTION_DNS_OVER_TLS: string;
     const SETTING_CONNECTION_GATEWAY_PING_TIMEOUT: string;
     const SETTING_CONNECTION_ID: string;
@@ -3079,6 +3175,7 @@ export namespace NM {
     const SETTING_CONNECTION_MUD_URL: string;
     const SETTING_CONNECTION_MULTI_CONNECT: string;
     const SETTING_CONNECTION_PERMISSIONS: string;
+    const SETTING_CONNECTION_PORT_TYPE: string;
     const SETTING_CONNECTION_READ_ONLY: string;
     const SETTING_CONNECTION_SECONDARIES: string;
     const SETTING_CONNECTION_SETTING_NAME: string;
@@ -3118,6 +3215,8 @@ export namespace NM {
     const SETTING_DNS_OPTION_DEBUG: string;
     const SETTING_DNS_OPTION_EDNS0: string;
     const SETTING_DNS_OPTION_INET6: string;
+    const SETTING_DNS_OPTION_INTERNAL_NO_ADD_EDNS0: string;
+    const SETTING_DNS_OPTION_INTERNAL_NO_ADD_TRUST_AD: string;
     const SETTING_DNS_OPTION_IP6_BYTESTRING: string;
     const SETTING_DNS_OPTION_IP6_DOTINT: string;
     const SETTING_DNS_OPTION_NDOTS: string;
@@ -3134,6 +3233,7 @@ export namespace NM {
     const SETTING_DNS_OPTION_USE_VC: string;
     const SETTING_DUMMY_SETTING_NAME: string;
     const SETTING_ETHTOOL_SETTING_NAME: string;
+    const SETTING_GENERIC_DEVICE_HANDLER: string;
     const SETTING_GENERIC_SETTING_NAME: string;
     const SETTING_GSM_APN: string;
     const SETTING_GSM_AUTO_CONFIG: string;
@@ -3157,6 +3257,11 @@ export namespace NM {
     const SETTING_HOSTNAME_ONLY_FROM_DEFAULT: string;
     const SETTING_HOSTNAME_PRIORITY: string;
     const SETTING_HOSTNAME_SETTING_NAME: string;
+    const SETTING_HSR_MULTICAST_SPEC: string;
+    const SETTING_HSR_PORT1: string;
+    const SETTING_HSR_PORT2: string;
+    const SETTING_HSR_PRP: string;
+    const SETTING_HSR_SETTING_NAME: string;
     const SETTING_INFINIBAND_MAC_ADDRESS: string;
     const SETTING_INFINIBAND_MTU: string;
     const SETTING_INFINIBAND_PARENT: string;
@@ -3249,6 +3354,7 @@ export namespace NM {
     const SETTING_IP_CONFIG_AUTO_ROUTE_EXT_GW: string;
     const SETTING_IP_CONFIG_DAD_TIMEOUT: string;
     const SETTING_IP_CONFIG_DAD_TIMEOUT_MAX: number;
+    const SETTING_IP_CONFIG_DHCP_DSCP: string;
     const SETTING_IP_CONFIG_DHCP_HOSTNAME: string;
     const SETTING_IP_CONFIG_DHCP_HOSTNAME_FLAGS: string;
     const SETTING_IP_CONFIG_DHCP_IAID: string;
@@ -3300,6 +3406,7 @@ export namespace NM {
     const SETTING_MACSEC_MKA_CKN: string;
     const SETTING_MACSEC_MKA_CKN_LENGTH: number;
     const SETTING_MACSEC_MODE: string;
+    const SETTING_MACSEC_OFFLOAD: string;
     const SETTING_MACSEC_PARENT: string;
     const SETTING_MACSEC_PORT: string;
     const SETTING_MACSEC_SEND_SCI: string;
@@ -3388,6 +3495,9 @@ export namespace NM {
     const SETTING_SERIAL_SETTING_NAME: string;
     const SETTING_SERIAL_STOPBITS: string;
     const SETTING_SRIOV_AUTOPROBE_DRIVERS: string;
+    const SETTING_SRIOV_ESWITCH_ENCAP_MODE: string;
+    const SETTING_SRIOV_ESWITCH_INLINE_MODE: string;
+    const SETTING_SRIOV_ESWITCH_MODE: string;
     const SETTING_SRIOV_SETTING_NAME: string;
     const SETTING_SRIOV_TOTAL_VFS: string;
     const SETTING_SRIOV_VFS: string;
@@ -3687,11 +3797,23 @@ export namespace NM {
     function crypto_error_quark(): GLib.Quark;
     function device_error_quark(): GLib.Quark;
     /**
+     * Checks whether `optname` is a valid option name for a channels setting.
+     * @param optname the option name to check
+     * @returns %TRUE, if @optname is valid
+     */
+    function ethtool_optname_is_channels(optname?: string | null): boolean;
+    /**
      * Checks whether `optname` is a valid option name for a coalesce setting.
      * @param optname the option name to check
      * @returns %TRUE, if @optname is valid
      */
     function ethtool_optname_is_coalesce(optname?: string | null): boolean;
+    /**
+     * Checks whether `optname` is a valid option name for an eee setting.
+     * @param optname the option name to check
+     * @returns %TRUE, if @optname is valid
+     */
+    function ethtool_optname_is_eee(optname?: string | null): boolean;
     /**
      * Checks whether `optname` is a valid option name for an offload feature.
      * @param optname the option name to check
@@ -3873,6 +3995,9 @@ export namespace NM {
      * replacing embedded NULLs and non-printable characters with the hexadecimal
      * representation of that character.  Intended for debugging only, should not
      * be used for display of SSIDs.
+     *
+     * Warning: this function uses a static buffer. It is not thread-safe. Don't
+     *   use this function.
      * @param ssid pointer to a buffer containing the SSID data
      * @returns pointer to the escaped SSID, which uses an internal static buffer and will be overwritten by subsequent calls to this function
      */
@@ -4036,7 +4161,11 @@ export namespace NM {
      * NetworkManager IPv4 addresses (which are tuples of address, prefix, and
      * gateway) into a #GPtrArray of #NMIPAddress objects. The "gateway" field of
      * the first address (if set) will be returned in `out_gateway;` the "gateway" fields
-     * of the other addresses are ignored.
+     * of the other addresses are ignored. Note that invalid addresses are discarded
+     * but the valid addresses are still returned.
+     *
+     * Since 1.46, an empty list is returned if the variant type is not valid
+     * (before it was checked as assertion)
      * @param value a #GVariant of type 'aau'
      * @returns a newly allocated   #GPtrArray of #NMIPAddress objects
      */
@@ -4055,6 +4184,9 @@ export namespace NM {
     /**
      * Utility function to convert a #GVariant of type 'au' representing a list of
      * IPv4 addresses into an array of IP address strings.
+     *
+     * Since 1.46, an empty list is returned if the variant type is not valid
+     * (before it was checked as assertion)
      * @param value a #GVariant of type 'au'
      * @returns a %NULL-terminated array of IP address strings.
      */
@@ -4080,7 +4212,11 @@ export namespace NM {
     /**
      * Utility function to convert a #GVariant of type 'aau' representing an array
      * of NetworkManager IPv4 routes (which are tuples of route, prefix, next hop,
-     * and metric) into a #GPtrArray of #NMIPRoute objects.
+     * and metric) into a #GPtrArray of #NMIPRoute objects. Note that invalid routes
+     * are discarded but the valid routes are still returned.
+     *
+     * Since 1.46, an empty list is returned if the variant type is not valid
+     * (before it was checked as assertion)
      * @param value #GVariant of type 'aau'
      * @returns a newly allocated   #GPtrArray of #NMIPRoute objects
      */
@@ -4099,7 +4235,11 @@ export namespace NM {
      * list of NetworkManager IPv6 addresses (which are tuples of address, prefix,
      * and gateway) into a #GPtrArray of #NMIPAddress objects. The "gateway" field
      * of the first address (if set) will be returned in `out_gateway;` the "gateway"
-     * fields of the other addresses are ignored.
+     * fields of the other addresses are ignored. Note that invalid addresses are
+     * discarded but the valid addresses are still returned.
+     *
+     * Since 1.46, an empty list is returned if the variant type is not valid
+     * (before it was checked as assertion)
      * @param value a #GVariant of type 'a(ayuay)'
      * @returns a newly allocated   #GPtrArray of #NMIPAddress objects
      */
@@ -4121,6 +4261,9 @@ export namespace NM {
      * IPv6 addresses into an array of IP address strings. Each "ay" entry must be
      * a IPv6 address in binary form (16 bytes long). Invalid entries are silently
      * ignored.
+     *
+     * Since 1.46, an empty list is returned if the variant type is not valid
+     * (before it was checked as assertion)
      * @param value a #GVariant of type 'aay'
      * @returns a %NULL-terminated array of IP address strings.
      */
@@ -4137,7 +4280,11 @@ export namespace NM {
     /**
      * Utility function to convert a #GVariant of type 'a(ayuayu)' representing an
      * array of NetworkManager IPv6 routes (which are tuples of route, prefix, next
-     * hop, and metric) into a #GPtrArray of #NMIPRoute objects.
+     * hop, and metric) into a #GPtrArray of #NMIPRoute objects. Note that invalid
+     * routes are ignored but the valid ones are still returned.
+     *
+     * Since 1.46, an empty list is returned if the variant type is not valid
+     * (before it was checked as assertion)
      * @param value #GVariant of type 'a(ayuayu)'
      * @returns a newly allocated   #GPtrArray of #NMIPRoute objects
      */
@@ -4155,7 +4302,11 @@ export namespace NM {
      * Utility function to convert a #GVariant representing a list of new-style
      * NetworkManager IPv4 or IPv6 addresses (as described in the documentation for
      * nm_utils_ip_addresses_to_variant()) into a #GPtrArray of #NMIPAddress
-     * objects.
+     * objects. Note that invalid addresses are discarded but the valid addresses
+     * are still returned.
+     *
+     * Since 1.46, an empty list is returned if the variant type is not valid
+     * (before it was checked as assertion)
      * @param value a #GVariant of type 'aa{sv}'
      * @param family an IP address family
      * @returns a newly allocated   #GPtrArray of #NMIPAddress objects
@@ -4173,9 +4324,12 @@ export namespace NM {
     function utils_ip_addresses_to_variant(addresses: IPAddress[]): GLib.Variant;
     /**
      * Utility function to convert a #GVariant representing a list of new-style
-     * NetworkManager IPv4 or IPv6 addresses (which are tuples of destination,
-     * prefix, next hop, metric, and additional attributes) into a #GPtrArray of
-     * #NMIPRoute objects.
+     * NetworkManager IPv4 or IPv6 addresses (as described in the documentation for
+     * nm_utils_ip_routes_to_variant()) into a #GPtrArray of #NMIPRoute objects.
+     * Invalid routes are discarded but the valid routes are still returned.
+     *
+     * Since 1.46, an empty list is returned if the variant type is not valid
+     * (before it was checked as assertion)
      * @param value a #GVariant of type 'aa{sv}'
      * @param family an IP address family
      * @returns a newly allocated   #GPtrArray of #NMIPRoute objects
@@ -4184,8 +4338,11 @@ export namespace NM {
     /**
      * Utility function to convert a #GPtrArray of #NMIPRoute objects representing
      * IPv4 or IPv6 routes into a #GVariant of type 'aa{sv}' representing an array
-     * of new-style NetworkManager IP routes (which are tuples of destination,
-     * prefix, next hop, metric, and additional attributes).
+     * of new-style NetworkManager IP routes. All routes will include "dest" (an IP
+     * address string), "prefix" (an uint) and optionally "next-hop" (an IP address
+     * string) and "metric" (an uint). Some routes may include additional attributes.
+     * Note that invalid routes are discarded and only a warning is emitted, but the
+     * valid routes are still returned.
      * @param routes an array of #NMIPRoute objects
      * @returns a new floating #GVariant representing @routes.
      */
@@ -4245,10 +4402,26 @@ export namespace NM {
      * with these functions (it implements additional buffering). By
      * using nm_utils_print(), the same logging mechanisms can be used.
      *
-     * Also, libnm honors LIBNM_CLIENT_DEBUG_FILE environment. If this
-     * is set to a filename pattern (accepting "%p" for the process ID),
-     * then the debug log is written to that file instead. With `output_mode`
-     * zero, the same location will be written. Since: 1.44.
+     * LIBNM_CLIENT_DEBUG is a list of keywords separated by commas. The keyword
+     * "trace" enables printing messages of the lowest up to the highest severity.
+     * Likewise, the severities "debug", "warn" ("warning") and "error" are honored
+     * in similar way. Setting the flags "ERROR" or "WARN" ("WARNING") implies that
+     * respective levels are enabled, but also are ERROR messages printed with
+     * g_critical() and WARN messages with g_warning(). Together with G_DEBUG="fatal-warnings"
+     * or G_DEBUG="fatal-critical" this can be used to abort the program on errors.
+     * Note that all &lt;error&gt; messages imply an unexpected data on the D-Bus API
+     * (due to a bug). &lt;warn&gt; also implies unexepected data, but that can happen
+     * when using different versions of libnm and daemon. For testing, it is
+     * good to turn these into assertions.
+     *
+     * By default, messages are printed to stderr, unless LIBNM_CLIENT_DEBUG
+     * contains "stdout" flag. Also, libnm honors LIBNM_CLIENT_DEBUG_FILE
+     * environment. If this is set to a filename pattern (accepting "%%p" for the
+     * process ID), then the debug log is written to that file instead of
+     * stderr/stdout. With `output_mode` zero, the same location will be written.
+     *
+     * LIBNM_CLIENT_DEBUG_FILE is supported since 1.44. "ERROR", "WARN" and "WARNING"
+     * are supported since 1.46.
      * @param output_mode if 1 it uses g_print(). If 2, it uses g_printerr().   If 0, it uses the same output as internal libnm debug logging   does. That is, depending on LIBNM_CLIENT_DEBUG's "stdout" flag   it uses g_print() or g_printerr() and if LIBNM_CLIENT_DEBUG_FILE is   set, it writes the output to file instead
      * @param msg the message to print. The function does not append   a trailing newline.
      */
@@ -4715,7 +4888,7 @@ export namespace NM {
         DISCONNECT_NEW_DEVICES,
         /**
          * by default, creating
-         *   a checkpoint fails if there are already existing checkoints that
+         *   a checkpoint fails if there are already existing checkpoints that
          *   reference the same devices. With this flag, creation of such
          *   checkpoints is allowed, however, if an older checkpoint
          *   that references overlapping devices gets rolled back, it will
@@ -4970,6 +5143,10 @@ export namespace NM {
          * device supports 5GHz frequencies
          */
         FREQ_5GHZ,
+        /**
+         * device supports 6GHz frequencies. Since: 1.46.
+         */
+        FREQ_6GHZ,
         /**
          * device supports acting as a mesh point. Since: 1.20.
          */
@@ -7930,7 +8107,7 @@ export namespace NM {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9121,6 +9298,69 @@ export namespace NM {
         _init(...args: any[]): void;
     }
 
+    module DeviceHsr {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Device.ConstructorProps {
+            multicast_spec: number;
+            multicastSpec: number;
+            port1: Device;
+            port2: Device;
+            prp: boolean;
+            supervision_address: string;
+            supervisionAddress: string;
+        }
+    }
+
+    class DeviceHsr extends Device {
+        static $gtype: GObject.GType<DeviceHsr>;
+
+        // Own properties of NM.DeviceHsr
+
+        /**
+         * The device last byte of the supervision address.
+         */
+        get multicast_spec(): number;
+        /**
+         * The device last byte of the supervision address.
+         */
+        get multicastSpec(): number;
+        /**
+         * The device's port1 device.
+         */
+        get port1(): Device;
+        /**
+         * The device's port2 device.
+         */
+        get port2(): Device;
+        /**
+         * Whether the PRP protocol is used or not.
+         */
+        get prp(): boolean;
+        /**
+         * The device supervision MAC adddress.
+         */
+        get supervision_address(): string;
+        /**
+         * The device supervision MAC adddress.
+         */
+        get supervisionAddress(): string;
+
+        // Constructors of NM.DeviceHsr
+
+        constructor(properties?: Partial<DeviceHsr.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own methods of NM.DeviceHsr
+
+        get_multicast_spec(): number;
+        get_port1(): Device;
+        get_port2(): Device;
+        get_prp(): boolean;
+        get_supervision_address(): string;
+    }
+
     module DeviceIPTunnel {
         // Constructor properties interface
 
@@ -9130,6 +9370,7 @@ export namespace NM {
             flags: number;
             flow_label: number;
             flowLabel: number;
+            fwmark: number;
             input_key: string;
             inputKey: string;
             local: string;
@@ -9176,6 +9417,11 @@ export namespace NM {
          * applies only to IPv6 tunnels.
          */
         get flowLabel(): number;
+        /**
+         * The fwmark value to assign to tunnel packets. This property applies only
+         * to VTI tunnels.
+         */
+        get fwmark(): number;
         /**
          * The key used for tunneled input packets, if applicable.
          */
@@ -9238,6 +9484,7 @@ export namespace NM {
         get_encapsulation_limit(): number;
         get_flags(): IPTunnelFlags;
         get_flow_label(): number;
+        get_fwmark(): number;
         get_input_key(): string;
         get_local(): string;
         get_mode(): IPTunnelMode;
@@ -11763,7 +12010,7 @@ export namespace NM {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12618,7 +12865,7 @@ export namespace NM {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12826,6 +13073,19 @@ export namespace NM {
 
         // Own static methods of NM.Setting
 
+        /**
+         * Get the type of the enum that defines the values that the property accepts. It is only
+         * useful for properties configured to accept values from certain enum type, otherwise
+         * it will return %G_TYPE_INVALID. Note that flags (children of G_TYPE_FLAGS) are also
+         * considered enums.
+         *
+         * Note that the GObject property might be implemented as an integer, actually, and not
+         * as enum. Find out what underlying type is used, checking the #GParamSpec, before
+         * setting the GObject property.
+         * @param setting_type the GType of the NMSetting instance
+         * @param property_name the name of the property
+         */
+        static get_enum_property_type(setting_type: GObject.GType, property_name: string): GObject.GType;
         /**
          * Returns the #GType of the setting's class for a given setting name.
          * @param name a setting name
@@ -15515,12 +15775,15 @@ export namespace NM {
             auth_retries: number;
             authRetries: number;
             autoconnect: boolean;
+            autoconnect_ports: number;
+            autoconnectPorts: number;
             autoconnect_priority: number;
             autoconnectPriority: number;
             autoconnect_retries: number;
             autoconnectRetries: number;
             autoconnect_slaves: SettingConnectionAutoconnectSlaves;
             autoconnectSlaves: SettingConnectionAutoconnectSlaves;
+            controller: string;
             dns_over_tls: number;
             dnsOverTls: number;
             gateway_ping_timeout: number;
@@ -15540,6 +15803,8 @@ export namespace NM {
             multi_connect: number;
             multiConnect: number;
             permissions: string[];
+            port_type: string;
+            portType: string;
             read_only: boolean;
             readOnly: boolean;
             secondaries: string[];
@@ -15610,6 +15875,32 @@ export namespace NM {
         get autoconnect(): boolean;
         set autoconnect(val: boolean);
         /**
+         * Whether or not ports of this connection should be automatically brought up
+         * when NetworkManager activates this connection. This only has a real effect
+         * for controller connections. The properties #NMSettingConnection:autoconnect,
+         * #NMSettingConnection:autoconnect-priority and #NMSettingConnection:autoconnect-retries
+         * are unrelated to this setting.
+         * The permitted values are: 0: leave port connections untouched,
+         * 1: activate all the port connections with this connection, -1: default.
+         * If -1 (default) is set, global connection.autoconnect-ports is read to
+         * determine the real value. If it is default as well, this fallbacks to 0.
+         */
+        get autoconnect_ports(): number;
+        set autoconnect_ports(val: number);
+        /**
+         * Whether or not ports of this connection should be automatically brought up
+         * when NetworkManager activates this connection. This only has a real effect
+         * for controller connections. The properties #NMSettingConnection:autoconnect,
+         * #NMSettingConnection:autoconnect-priority and #NMSettingConnection:autoconnect-retries
+         * are unrelated to this setting.
+         * The permitted values are: 0: leave port connections untouched,
+         * 1: activate all the port connections with this connection, -1: default.
+         * If -1 (default) is set, global connection.autoconnect-ports is read to
+         * determine the real value. If it is default as well, this fallbacks to 0.
+         */
+        get autoconnectPorts(): number;
+        set autoconnectPorts(val: number);
+        /**
          * The autoconnect priority in range -999 to 999. If the connection is set
          * to autoconnect, connections with higher priority will be preferred.
          * The higher number means higher priority. Defaults to 0.
@@ -15673,6 +15964,11 @@ export namespace NM {
          */
         get autoconnectSlaves(): SettingConnectionAutoconnectSlaves;
         set autoconnectSlaves(val: SettingConnectionAutoconnectSlaves);
+        /**
+         * Interface name of the controller device or UUID of the controller connection.
+         */
+        get controller(): string;
+        set controller(val: string);
         /**
          * Whether DNSOverTls (dns-over-tls) is enabled for the connection.
          * DNSOverTls is a technology which uses TLS to encrypt dns traffic.
@@ -15775,6 +16071,8 @@ export namespace NM {
         set llmnr(val: number);
         /**
          * Interface name of the master device or UUID of the master connection.
+         *
+         * Deprecated 1.46. Use #NMSettingConnection:controller instead, this is just an alias.
          */
         get master(): string;
         set master(val: string);
@@ -15952,6 +16250,20 @@ export namespace NM {
         get permissions(): string[];
         set permissions(val: string[]);
         /**
+         * Setting name of the device type of this port's controller connection (eg,
+         * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
+         * port.
+         */
+        get port_type(): string;
+        set port_type(val: string);
+        /**
+         * Setting name of the device type of this port's controller connection (eg,
+         * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
+         * port.
+         */
+        get portType(): string;
+        set portType(val: string);
+        /**
          * This property is deprecated and has no meaning.
          */
         get read_only(): boolean;
@@ -15972,6 +16284,8 @@ export namespace NM {
          * Setting name of the device type of this slave's master connection (eg,
          * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
          * slave.
+         *
+         * Deprecated 1.46. Use #NMSettingConnection:port-type instead, this is just an alias.
          */
         get slave_type(): string;
         set slave_type(val: string);
@@ -15979,6 +16293,8 @@ export namespace NM {
          * Setting name of the device type of this slave's master connection (eg,
          * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
          * slave.
+         *
+         * Deprecated 1.46. Use #NMSettingConnection:port-type instead, this is just an alias.
          */
         get slaveType(): string;
         set slaveType(val: string);
@@ -16006,13 +16322,15 @@ export namespace NM {
          *
          * The '$' character is treated special to perform dynamic substitutions at
          * activation time. Currently, supported are "${CONNECTION}", "${DEVICE}",
-         * "${MAC}", "${BOOT}", "${RANDOM}".  These effectively create unique IDs
-         * per-connection, per-device, per-boot, or every time. The "${CONNECTION}"
-         * uses the profile's connection.uuid, the "${DEVICE}" uses the interface
-         * name of the device and "${MAC}" the permanent MAC address of the device.
-         * Any unrecognized patterns following '$' are treated verbatim, however
-         * are reserved for future use. You are thus advised to avoid '$' or escape
-         * it as "$$".  For example, set it to "${CONNECTION}-${BOOT}-${DEVICE}" to
+         * "${MAC}", "${NETWORK_SSID}", "${BOOT}", "${RANDOM}".  These effectively
+         * create unique IDs per-connection, per-device, per-SSID, per-boot, or
+         * every time.  The "${CONNECTION}" uses the profile's connection.uuid, the
+         * "${DEVICE}" uses the interface name of the device and "${MAC}" the
+         * permanent MAC address of the device. "${NETWORK_SSID}" uses the SSID for
+         * Wi-Fi networks and falls back to "${CONNECTION}" on other networks. Any
+         * unrecognized patterns following '$' are treated verbatim, however are
+         * reserved for future use. You are thus advised to avoid '$' or escape it
+         * as "$$".  For example, set it to "${CONNECTION}-${BOOT}-${DEVICE}" to
          * create a unique id for this connection that changes with every reboot
          * and differs depending on the interface where the profile activates.
          *
@@ -16046,13 +16364,15 @@ export namespace NM {
          *
          * The '$' character is treated special to perform dynamic substitutions at
          * activation time. Currently, supported are "${CONNECTION}", "${DEVICE}",
-         * "${MAC}", "${BOOT}", "${RANDOM}".  These effectively create unique IDs
-         * per-connection, per-device, per-boot, or every time. The "${CONNECTION}"
-         * uses the profile's connection.uuid, the "${DEVICE}" uses the interface
-         * name of the device and "${MAC}" the permanent MAC address of the device.
-         * Any unrecognized patterns following '$' are treated verbatim, however
-         * are reserved for future use. You are thus advised to avoid '$' or escape
-         * it as "$$".  For example, set it to "${CONNECTION}-${BOOT}-${DEVICE}" to
+         * "${MAC}", "${NETWORK_SSID}", "${BOOT}", "${RANDOM}".  These effectively
+         * create unique IDs per-connection, per-device, per-SSID, per-boot, or
+         * every time.  The "${CONNECTION}" uses the profile's connection.uuid, the
+         * "${DEVICE}" uses the interface name of the device and "${MAC}" the
+         * permanent MAC address of the device. "${NETWORK_SSID}" uses the SSID for
+         * Wi-Fi networks and falls back to "${CONNECTION}" on other networks. Any
+         * unrecognized patterns following '$' are treated verbatim, however are
+         * reserved for future use. You are thus advised to avoid '$' or escape it
+         * as "$$".  For example, set it to "${CONNECTION}-${BOOT}-${DEVICE}" to
          * create a unique id for this connection that changes with every reboot
          * and differs depending on the interface where the profile activates.
          *
@@ -16191,6 +16511,11 @@ export namespace NM {
          */
         get_autoconnect(): boolean;
         /**
+         * Returns the #NMSettingConnection:autoconnect-ports property of the connection.
+         * @returns whether ports of the connection should be activated together          with the connection.
+         */
+        get_autoconnect_ports(): Ternary;
+        /**
          * Returns the #NMSettingConnection:autoconnect-priority property of the connection.
          * The higher number, the higher priority.
          * @returns the connection's autoconnect priority
@@ -16212,6 +16537,11 @@ export namespace NM {
          * @returns the connection type
          */
         get_connection_type(): string;
+        /**
+         * Returns the #NMSettingConnection:controller property of the connection.
+         * @returns interface name of the controller device or UUID of the controller connection.
+         */
+        get_controller(): string;
         get_dns_over_tls(): SettingConnectionDnsOverTls;
         get_gateway_ping_timeout(): number;
         /**
@@ -16261,6 +16591,11 @@ export namespace NM {
          * @returns %TRUE if a permission was returned, %FALSE if @idx was invalid
          */
         get_permission(idx: number, out_ptype: string, out_pitem: string, out_detail: string): boolean;
+        /**
+         * Returns the #NMSettingConnection:port-type property of the connection.
+         * @returns the type of port this connection is, if any.
+         */
+        get_port_type(): string;
         /**
          * Returns the #NMSettingConnection:read-only property of the connection.
          * @returns %TRUE if the connection is read-only, %FALSE if it is not
@@ -16736,7 +17071,10 @@ export namespace NM {
     module SettingGeneric {
         // Constructor properties interface
 
-        interface ConstructorProps extends Setting.ConstructorProps {}
+        interface ConstructorProps extends Setting.ConstructorProps {
+            device_handler: string;
+            deviceHandler: string;
+        }
     }
 
     /**
@@ -16745,6 +17083,39 @@ export namespace NM {
     class SettingGeneric extends Setting {
         static $gtype: GObject.GType<SettingGeneric>;
 
+        // Own properties of NM.SettingGeneric
+
+        /**
+         * Name of the device handler that will be invoked to add and delete
+         * the device for this connection. The name can only contain ASCII
+         * alphanumeric characters and '-', '_', '.'. It cannot start with '.'.
+         *
+         * See the NetworkManager-dispatcher(8) man page for more details
+         * about how to write the device handler.
+         *
+         * By setting this property the generic connection becomes "virtual",
+         * meaning that it can be activated without an existing device; the device
+         * will be created at the time the connection is started by invoking the
+         * device-handler.
+         */
+        get device_handler(): string;
+        set device_handler(val: string);
+        /**
+         * Name of the device handler that will be invoked to add and delete
+         * the device for this connection. The name can only contain ASCII
+         * alphanumeric characters and '-', '_', '.'. It cannot start with '.'.
+         *
+         * See the NetworkManager-dispatcher(8) man page for more details
+         * about how to write the device handler.
+         *
+         * By setting this property the generic connection becomes "virtual",
+         * meaning that it can be activated without an existing device; the device
+         * will be created at the time the connection is started by invoking the
+         * device-handler.
+         */
+        get deviceHandler(): string;
+        set deviceHandler(val: string);
+
         // Constructors of NM.SettingGeneric
 
         constructor(properties?: Partial<SettingGeneric.ConstructorProps>, ...args: any[]);
@@ -16752,6 +17123,14 @@ export namespace NM {
         _init(...args: any[]): void;
 
         static ['new'](): SettingGeneric;
+
+        // Own methods of NM.SettingGeneric
+
+        /**
+         * Returns the #NMSettingGeneric:device-handler property of the connection.
+         * @returns the device handler name, or %NULL if no device handler is set
+         */
+        get_device_handler(): string;
     }
 
     module SettingGsm {
@@ -16803,6 +17182,10 @@ export namespace NM {
          * is important to use the correct APN for the user's mobile broadband plan.
          * The APN may only be composed of the characters a-z, 0-9, ., and - per GSM
          * 03.60 Section 14.9.
+         *
+         * If the APN is unset (the default) then it may be detected based on
+         * "auto-config" setting. The property can be explicitly set to the
+         * empty string to prevent that and use no APN.
          */
         get apn(): string;
         set apn(val: string);
@@ -17156,6 +17539,68 @@ export namespace NM {
         get_priority(): number;
     }
 
+    module SettingHsr {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Setting.ConstructorProps {
+            multicast_spec: number;
+            multicastSpec: number;
+            port1: string;
+            port2: string;
+            prp: boolean;
+        }
+    }
+
+    /**
+     * HSR/PRP Settings
+     */
+    class SettingHsr extends Setting {
+        static $gtype: GObject.GType<SettingHsr>;
+
+        // Own properties of NM.SettingHsr
+
+        /**
+         * The last byte of supervision address.
+         */
+        get multicast_spec(): number;
+        set multicast_spec(val: number);
+        /**
+         * The last byte of supervision address.
+         */
+        get multicastSpec(): number;
+        set multicastSpec(val: number);
+        /**
+         * The port1 interface name of the HSR. This property is mandatory.
+         */
+        get port1(): string;
+        set port1(val: string);
+        /**
+         * The port2 interface name of the HSR. This property is mandatory.
+         */
+        get port2(): string;
+        set port2(val: string);
+        /**
+         * The protocol used by the interface, whether it is PRP or HSR.
+         */
+        get prp(): boolean;
+        set prp(val: boolean);
+
+        // Constructors of NM.SettingHsr
+
+        constructor(properties?: Partial<SettingHsr.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): SettingHsr;
+
+        // Own methods of NM.SettingHsr
+
+        get_multicast_spec(): number;
+        get_port1(): string;
+        get_port2(): string;
+        get_prp(): boolean;
+    }
+
     module SettingIP4Config {
         // Constructor properties interface
 
@@ -17207,8 +17652,14 @@ export namespace NM {
          * stable-id, you may want to include the "${DEVICE}" or "${MAC}" specifier to get a
          * per-device key.
          *
-         * If unset, a globally configured default is used. If still unset, the default
-         * depends on the DHCP plugin.
+         * The special value "none" prevents any client identifier from being sent. Note that
+         * this is normally not recommended.
+         *
+         * If unset, a globally configured default from NetworkManager.conf is
+         * used. If still unset, the default depends on the DHCP plugin. The
+         * internal dhcp client will default to "mac" and the dhclient plugin will
+         * try to use one from its config file if present, or won't sent any
+         * client-id otherwise.
          */
         get dhcp_client_id(): string;
         set dhcp_client_id(val: string);
@@ -17240,8 +17691,14 @@ export namespace NM {
          * stable-id, you may want to include the "${DEVICE}" or "${MAC}" specifier to get a
          * per-device key.
          *
-         * If unset, a globally configured default is used. If still unset, the default
-         * depends on the DHCP plugin.
+         * The special value "none" prevents any client identifier from being sent. Note that
+         * this is normally not recommended.
+         *
+         * If unset, a globally configured default from NetworkManager.conf is
+         * used. If still unset, the default depends on the DHCP plugin. The
+         * internal dhcp client will default to "mac" and the dhclient plugin will
+         * try to use one from its config file if present, or won't sent any
+         * client-id otherwise.
          */
         get dhcpClientId(): string;
         set dhcpClientId(val: string);
@@ -17675,6 +18132,8 @@ export namespace NM {
             autoRouteExtGw: Ternary;
             dad_timeout: number;
             dadTimeout: number;
+            dhcp_dscp: string;
+            dhcpDscp: string;
             dhcp_hostname: string;
             dhcpHostname: string;
             dhcp_hostname_flags: number;
@@ -17745,29 +18204,53 @@ export namespace NM {
         get autoRouteExtGw(): Ternary;
         set autoRouteExtGw(val: Ternary);
         /**
-         * Timeout in milliseconds used to check for the presence of duplicate IP
-         * addresses on the network.  If an address conflict is detected, the
-         * activation will fail.  A zero value means that no duplicate address
-         * detection is performed, -1 means the default value (either configuration
-         * ipvx.dad-timeout override or zero).  A value greater than zero is a
-         * timeout in milliseconds.
+         * Maximum timeout in milliseconds used to check for the presence of duplicate
+         * IP addresses on the network.  If an address conflict is detected, the
+         * activation will fail. The property is currently implemented only for IPv4.
          *
-         * The property is currently implemented only for IPv4.
+         * A zero value means that no duplicate address detection is performed, -1 means
+         * the default value (either the value configured globally in NetworkManger.conf
+         * or 200ms).  A value greater than zero is a timeout in milliseconds.  Note that
+         * the time intervals are subject to randomization as per RFC 5227 and so the
+         * actual duration can be between half and the full time specified in this
+         * property.
          */
         get dad_timeout(): number;
         set dad_timeout(val: number);
         /**
-         * Timeout in milliseconds used to check for the presence of duplicate IP
-         * addresses on the network.  If an address conflict is detected, the
-         * activation will fail.  A zero value means that no duplicate address
-         * detection is performed, -1 means the default value (either configuration
-         * ipvx.dad-timeout override or zero).  A value greater than zero is a
-         * timeout in milliseconds.
+         * Maximum timeout in milliseconds used to check for the presence of duplicate
+         * IP addresses on the network.  If an address conflict is detected, the
+         * activation will fail. The property is currently implemented only for IPv4.
          *
-         * The property is currently implemented only for IPv4.
+         * A zero value means that no duplicate address detection is performed, -1 means
+         * the default value (either the value configured globally in NetworkManger.conf
+         * or 200ms).  A value greater than zero is a timeout in milliseconds.  Note that
+         * the time intervals are subject to randomization as per RFC 5227 and so the
+         * actual duration can be between half and the full time specified in this
+         * property.
          */
         get dadTimeout(): number;
         set dadTimeout(val: number);
+        /**
+         * Specifies the value for the DSCP field (traffic class) of the IP header. When
+         * empty, the global default value is used; if no global default is specified, it is
+         * assumed to be "CS0". Allowed values are: "CS0", "CS4" and "CS6".
+         *
+         * The property is currently valid only for IPv4, and it is supported only by the
+         * "internal" DHCP plugin.
+         */
+        get dhcp_dscp(): string;
+        set dhcp_dscp(val: string);
+        /**
+         * Specifies the value for the DSCP field (traffic class) of the IP header. When
+         * empty, the global default value is used; if no global default is specified, it is
+         * assumed to be "CS0". Allowed values are: "CS0", "CS4" and "CS6".
+         *
+         * The property is currently valid only for IPv4, and it is supported only by the
+         * "internal" DHCP plugin.
+         */
+        get dhcpDscp(): string;
+        set dhcpDscp(val: string);
         /**
          * If the #NMSettingIPConfig:dhcp-send-hostname property is %TRUE, then the
          * specified name will be sent to the DHCP server when acquiring a lease.
@@ -17950,17 +18433,24 @@ export namespace NM {
         get dns(): string[];
         set dns(val: string[]);
         /**
-         * Array of DNS options as described in man 5 resolv.conf.
+         * Array of DNS options to be added to resolv.conf.
          *
          * %NULL means that the options are unset and left at the default.
          * In this case NetworkManager will use default options. This is
          * distinct from an empty list of properties.
          *
-         * The currently supported options are "attempts", "debug", "edns0",
+         * The following options are directly added to resolv.conf: "attempts",
+         *  "debug", "edns0",
          * "inet6", "ip6-bytestring", "ip6-dotint", "ndots", "no-aaaa",
          * "no-check-names", "no-ip6-dotint", "no-reload", "no-tld-query",
          * "rotate", "single-request", "single-request-reopen", "timeout",
-         * "trust-ad", "use-vc".
+         * "trust-ad", "use-vc". See the resolv.conf(5) man page for a
+         * detailed description of these options.
+         *
+         * In addition, NetworkManager supports the special options "_no-add-edns0"
+         * and "_no-add-trust-ad". They are not added to resolv.conf, and can be
+         * used to prevent the automatic addition of options "edns0" and "trust-ad"
+         * when using caching DNS plugins (see below).
          *
          * The "trust-ad" setting is only honored if the profile contributes
          * name servers to resolv.conf, and if all contributing profiles have
@@ -17968,22 +18458,29 @@ export namespace NM {
          *
          * When using a caching DNS plugin (dnsmasq or systemd-resolved in
          * NetworkManager.conf) then "edns0" and "trust-ad" are automatically
-         * added.
+         * added, unless "_no-add-edns0" and "_no-add-trust-ad" are present.
          */
         get dns_options(): string[];
         set dns_options(val: string[]);
         /**
-         * Array of DNS options as described in man 5 resolv.conf.
+         * Array of DNS options to be added to resolv.conf.
          *
          * %NULL means that the options are unset and left at the default.
          * In this case NetworkManager will use default options. This is
          * distinct from an empty list of properties.
          *
-         * The currently supported options are "attempts", "debug", "edns0",
+         * The following options are directly added to resolv.conf: "attempts",
+         *  "debug", "edns0",
          * "inet6", "ip6-bytestring", "ip6-dotint", "ndots", "no-aaaa",
          * "no-check-names", "no-ip6-dotint", "no-reload", "no-tld-query",
          * "rotate", "single-request", "single-request-reopen", "timeout",
-         * "trust-ad", "use-vc".
+         * "trust-ad", "use-vc". See the resolv.conf(5) man page for a
+         * detailed description of these options.
+         *
+         * In addition, NetworkManager supports the special options "_no-add-edns0"
+         * and "_no-add-trust-ad". They are not added to resolv.conf, and can be
+         * used to prevent the automatic addition of options "edns0" and "trust-ad"
+         * when using caching DNS plugins (see below).
          *
          * The "trust-ad" setting is only honored if the profile contributes
          * name servers to resolv.conf, and if all contributing profiles have
@@ -17991,7 +18488,7 @@ export namespace NM {
          *
          * When using a caching DNS plugin (dnsmasq or systemd-resolved in
          * NetworkManager.conf) then "edns0" and "trust-ad" are automatically
-         * added.
+         * added, unless "_no-add-edns0" and "_no-add-trust-ad" are present.
          */
         get dnsOptions(): string[];
         set dnsOptions(val: string[]);
@@ -18459,6 +18956,12 @@ export namespace NM {
         get_auto_route_ext_gw(): Ternary;
         get_dad_timeout(): number;
         /**
+         * Returns the value contained in the #NMSettingIPConfig:dhcp-dscp
+         * property.
+         * @returns the value for the DSCP field for DHCP
+         */
+        get_dhcp_dscp(): string;
+        /**
          * Returns the value contained in the #NMSettingIPConfig:dhcp-hostname
          * property.
          * @returns the configured hostname to send to the DHCP server
@@ -18490,8 +18993,18 @@ export namespace NM {
          */
         get_dhcp_timeout(): number;
         get_dns(idx: number): string;
+        /**
+         * Since 1.46, access at index "len" is allowed and returns NULL.
+         * @param idx index number of the DNS option
+         * @returns the DNS option at index @idx
+         */
         get_dns_option(idx: number): string;
         get_dns_priority(): number;
+        /**
+         * Since 1.46, access at index "len" is allowed and returns NULL.
+         * @param idx index number of the DNS search domain to return
+         * @returns the DNS search domain at index @idx
+         */
         get_dns_search(idx: number): string;
         get_gateway(): string;
         /**
@@ -18660,13 +19173,15 @@ export namespace NM {
 
         /**
          * How many additional levels of encapsulation are permitted to be prepended
-         * to packets. This property applies only to IPv6 tunnels. To disable this option, add %NM_IP_TUNNEL_FLAG_IP6_IGN_ENCAP_LIMIT to ip-tunnel flags.
+         * to packets. This property applies only to IPv6 tunnels. To disable this option,
+         * add %NM_IP_TUNNEL_FLAG_IP6_IGN_ENCAP_LIMIT to ip-tunnel flags.
          */
         get encapsulation_limit(): number;
         set encapsulation_limit(val: number);
         /**
          * How many additional levels of encapsulation are permitted to be prepended
-         * to packets. This property applies only to IPv6 tunnels. To disable this option, add %NM_IP_TUNNEL_FLAG_IP6_IGN_ENCAP_LIMIT to ip-tunnel flags.
+         * to packets. This property applies only to IPv6 tunnels. To disable this option,
+         * add %NM_IP_TUNNEL_FLAG_IP6_IGN_ENCAP_LIMIT to ip-tunnel flags.
          */
         get encapsulationLimit(): number;
         set encapsulationLimit(val: number);
@@ -18716,8 +19231,11 @@ export namespace NM {
         get local(): string;
         set local(val: string);
         /**
-         * The tunneling mode, for example %NM_IP_TUNNEL_MODE_IPIP or
-         * %NM_IP_TUNNEL_MODE_GRE.
+         * The tunneling mode. Valid values: %NM_IP_TUNNEL_MODE_IPIP,
+         * %NM_IP_TUNNEL_MODE_GRE, %NM_IP_TUNNEL_MODE_SIT, %NM_IP_TUNNEL_MODE_ISATAP,
+         * %NM_IP_TUNNEL_MODE_VTI, %NM_IP_TUNNEL_MODE_IP6IP6, %NM_IP_TUNNEL_MODE_IPIP6,
+         * %NM_IP_TUNNEL_MODE_IP6GRE, %NM_IP_TUNNEL_MODE_VTI6, %NM_IP_TUNNEL_MODE_GRETAP
+         * and %NM_IP_TUNNEL_MODE_IP6GRETAP
          */
         get mode(): number;
         set mode(val: number);
@@ -19152,6 +19670,7 @@ export namespace NM {
             mka_ckn: string;
             mkaCkn: string;
             mode: number;
+            offload: number;
             parent: string;
             port: number;
             send_sci: boolean;
@@ -19218,6 +19737,21 @@ export namespace NM {
         get mode(): number;
         set mode(val: number);
         /**
+         * Specifies the MACsec offload mode.
+         *
+         * %NM_SETTING_MACSEC_OFFLOAD_OFF disables MACsec offload.
+         *
+         * %NM_SETTING_MACSEC_OFFLOAD_PHY and %NM_SETTING_MACSEC_OFFLOAD_MAC request offload
+         * respectively to the PHY or to the MAC; if the selected mode is not available, the
+         * connection will fail.
+         *
+         * %NM_SETTING_MACSEC_OFFLOAD_DEFAULT uses the global default value specified in
+         * NetworkManager configuration; if no global default is defined, the built-in
+         * default is %NM_SETTING_MACSEC_OFFLOAD_OFF.
+         */
+        get offload(): number;
+        set offload(val: number);
+        /**
          * If given, specifies the parent interface name or parent connection UUID
          * from which this MACSEC interface should be created.  If this property is
          * not specified, the connection must contain an #NMSettingWired setting
@@ -19263,6 +19797,7 @@ export namespace NM {
         get_mka_cak_flags(): SettingSecretFlags;
         get_mka_ckn(): string;
         get_mode(): SettingMacsecMode;
+        get_offload(): SettingMacsecOffload;
         get_parent(): string;
         get_port(): number;
         get_send_sci(): boolean;
@@ -19495,18 +20030,33 @@ export namespace NM {
          * Removes all configured paths.
          */
         clear_paths(): void;
+        /**
+         * Since 1.46, access at index "len" is allowed and returns NULL.
+         * @param idx index number of the DNS search domain to return
+         * @returns the driver at index @idx
+         */
         get_driver(idx: number): string;
         /**
          * Returns all the drivers.
          * @returns the configured drivers.
          */
         get_drivers(): string[];
+        /**
+         * Since 1.46, access at index "len" is allowed and returns NULL.
+         * @param idx index number of the DNS search domain to return
+         * @returns the interface name at index @idx
+         */
         get_interface_name(idx: number): string;
         /**
          * Returns all the interface names.
          * @returns the NULL terminated list of   configured interface names. Before 1.26, the returned array was not %NULL terminated and you MUST provide a length.
          */
         get_interface_names(): string[];
+        /**
+         * Since 1.46, access at index "len" is allowed and returns NULL.
+         * @param idx index number of the kernel command line argument to return
+         * @returns the kernel command line argument at index @idx
+         */
         get_kernel_command_line(idx: number): string;
         /**
          * Returns all the interface names.
@@ -19517,6 +20067,11 @@ export namespace NM {
         get_num_interface_names(): number;
         get_num_kernel_command_lines(): number;
         get_num_paths(): number;
+        /**
+         * Since 1.46, access at index "len" is allowed and returns NULL.
+         * @param idx index number of the path to return
+         * @returns the path at index @idx
+         */
         get_path(idx: number): string;
         /**
          * Returns all the paths.
@@ -20630,6 +21185,12 @@ export namespace NM {
         interface ConstructorProps extends Setting.ConstructorProps {
             autoprobe_drivers: Ternary;
             autoprobeDrivers: Ternary;
+            eswitch_encap_mode: number;
+            eswitchEncapMode: number;
+            eswitch_inline_mode: number;
+            eswitchInlineMode: number;
+            eswitch_mode: number;
+            eswitchMode: number;
             total_vfs: number;
             totalVfs: number;
             vfs: SriovVF[];
@@ -20676,6 +21237,74 @@ export namespace NM {
          */
         get autoprobeDrivers(): Ternary;
         set autoprobeDrivers(val: Ternary);
+        /**
+         * Select the eswitch encapsulation support.
+         *
+         * Currently it's only supported for PCI PF devices, and only if the eswitch device
+         * is managed from the same PCI address than the PF.
+         *
+         * If set to %NM_SRIOV_ESWITCH_ENCAP_MODE_PRESERVE (default) the eswitch encap-mode
+         * won't be modified by NetworkManager.
+         */
+        get eswitch_encap_mode(): number;
+        set eswitch_encap_mode(val: number);
+        /**
+         * Select the eswitch encapsulation support.
+         *
+         * Currently it's only supported for PCI PF devices, and only if the eswitch device
+         * is managed from the same PCI address than the PF.
+         *
+         * If set to %NM_SRIOV_ESWITCH_ENCAP_MODE_PRESERVE (default) the eswitch encap-mode
+         * won't be modified by NetworkManager.
+         */
+        get eswitchEncapMode(): number;
+        set eswitchEncapMode(val: number);
+        /**
+         * Select the eswitch inline-mode of the device. Some HWs need the VF driver to put
+         * part of the packet headers on the TX descriptor so the e-switch can do proper
+         * matching and steering.
+         *
+         * Currently it's only supported for PCI PF devices, and only if the eswitch device
+         * is managed from the same PCI address than the PF.
+         *
+         * If set to %NM_SRIOV_ESWITCH_INLINE_MODE_PRESERVE (default) the eswitch inline-mode
+         * won't be modified by NetworkManager.
+         */
+        get eswitch_inline_mode(): number;
+        set eswitch_inline_mode(val: number);
+        /**
+         * Select the eswitch inline-mode of the device. Some HWs need the VF driver to put
+         * part of the packet headers on the TX descriptor so the e-switch can do proper
+         * matching and steering.
+         *
+         * Currently it's only supported for PCI PF devices, and only if the eswitch device
+         * is managed from the same PCI address than the PF.
+         *
+         * If set to %NM_SRIOV_ESWITCH_INLINE_MODE_PRESERVE (default) the eswitch inline-mode
+         * won't be modified by NetworkManager.
+         */
+        get eswitchInlineMode(): number;
+        set eswitchInlineMode(val: number);
+        /**
+         * Select the eswitch mode of the device. Currently it's only supported for
+         * PCI PF devices, and only if the eswitch device is managed from the same
+         * PCI address than the PF.
+         *
+         * If set to %NM_SRIOV_ESWITCH_MODE_PRESERVE (default) the eswitch mode won't be
+         * modified by NetworkManager.
+         */
+        get eswitch_mode(): number;
+        set eswitch_mode(val: number);
+        /**
+         * Select the eswitch mode of the device. Currently it's only supported for
+         * PCI PF devices, and only if the eswitch device is managed from the same
+         * PCI address than the PF.
+         *
+         * If set to %NM_SRIOV_ESWITCH_MODE_PRESERVE (default) the eswitch mode won't be
+         * modified by NetworkManager.
+         */
+        get eswitchMode(): number;
+        set eswitchMode(val: number);
         /**
          * The total number of virtual functions to create.
          *
@@ -20754,6 +21383,9 @@ export namespace NM {
          * @returns the autoprobe-drivers property value
          */
         get_autoprobe_drivers(): Ternary;
+        get_eswitch_encap_mode(): SriovEswitchEncapMode;
+        get_eswitch_inline_mode(): SriovEswitchInlineMode;
+        get_eswitch_mode(): SriovEswitchMode;
         get_num_vfs(): number;
         /**
          * Returns the value contained in the #NMSettingSriov:total-vfs
@@ -22851,6 +23483,11 @@ export namespace NM {
         get_generate_mac_address_mask(): string;
         get_mac_address(): string;
         get_mac_address_blacklist(): string[];
+        /**
+         * Since 1.46, access at index "len" is allowed and returns NULL.
+         * @param idx the zero-based index of the MAC address entry
+         * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index @idx
+         */
         get_mac_blacklist_item(idx: number): string;
         get_mtu(): number;
         get_num_mac_blacklist_items(): number;
@@ -23048,12 +23685,14 @@ export namespace NM {
          * This is known as MAC cloning or spoofing.
          *
          * Beside explicitly specifying a MAC address, the special values "preserve", "permanent",
-         * "random" and "stable" are supported.
+         * "random", "stable" and "stable-ssid" are supported.
          * "preserve" means not to touch the MAC address on activation.
          * "permanent" means to use the permanent hardware address of the device.
          * "random" creates a random MAC address on each connect.
          * "stable" creates a hashed MAC address based on connection.stable-id and a
          * machine dependent key.
+         * "stable-ssid" creates a hashed MAC address based on the SSID, the same as setting the
+         * stable-id to "${NETWORK_SSID}".
          *
          * If unspecified, the value can be overwritten via global defaults, see manual
          * of NetworkManager.conf. If still unspecified, it defaults to "preserve"
@@ -23069,12 +23708,14 @@ export namespace NM {
          * This is known as MAC cloning or spoofing.
          *
          * Beside explicitly specifying a MAC address, the special values "preserve", "permanent",
-         * "random" and "stable" are supported.
+         * "random", "stable" and "stable-ssid" are supported.
          * "preserve" means not to touch the MAC address on activation.
          * "permanent" means to use the permanent hardware address of the device.
          * "random" creates a random MAC address on each connect.
          * "stable" creates a hashed MAC address based on connection.stable-id and a
          * machine dependent key.
+         * "stable-ssid" creates a hashed MAC address based on the SSID, the same as setting the
+         * stable-id to "${NETWORK_SSID}".
          *
          * If unspecified, the value can be overwritten via global defaults, see manual
          * of NetworkManager.conf. If still unspecified, it defaults to "preserve"
@@ -23374,6 +24015,11 @@ export namespace NM {
         get_mac_address(): string;
         get_mac_address_blacklist(): string[];
         get_mac_address_randomization(): SettingMacRandomization;
+        /**
+         * Since 1.46, access at index "len" is allowed and returns NULL.
+         * @param idx the zero-based index of the MAC address entry
+         * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index @idx
+         */
         get_mac_blacklist_item(idx: number): string;
         get_mode(): string;
         get_mtu(): number;
@@ -24548,7 +25194,7 @@ export namespace NM {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -25164,7 +25810,7 @@ export namespace NM {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -25766,7 +26412,7 @@ export namespace NM {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -26386,7 +27032,7 @@ export namespace NM {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -26908,6 +27554,7 @@ export namespace NM {
     type DeviceDummyClass = typeof DeviceDummy;
     type DeviceEthernetClass = typeof DeviceEthernet;
     type DeviceGenericClass = typeof DeviceGeneric;
+    type DeviceHsrClass = typeof DeviceHsr;
     type DeviceIPTunnelClass = typeof DeviceIPTunnel;
     type DeviceInfinibandClass = typeof DeviceInfiniband;
     type DeviceLoopbackClass = typeof DeviceLoopback;
@@ -27552,6 +28199,7 @@ export namespace NM {
     type SettingGenericClass = typeof SettingGeneric;
     type SettingGsmClass = typeof SettingGsm;
     type SettingHostnameClass = typeof SettingHostname;
+    type SettingHsrClass = typeof SettingHsr;
     type SettingIP4ConfigClass = typeof SettingIP4Config;
     type SettingIP6ConfigClass = typeof SettingIP6Config;
     type SettingIPConfigClass = typeof SettingIPConfig;

@@ -3427,10 +3427,15 @@ export namespace Pango {
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
             extends GObject.Object.ConstructorProps,
                 Gio.ListModel.ConstructorProps {
+            is_monospace: boolean;
+            isMonospace: boolean;
+            is_variable: boolean;
+            isVariable: boolean;
             item_type: GObject.GType;
             itemType: GObject.GType;
             n_items: number;
             nItems: number;
+            name: string;
         }
     }
 
@@ -3450,6 +3455,22 @@ export namespace Pango {
         // Own properties of Pango.FontFamily
 
         /**
+         * Is this a monospace font
+         */
+        get is_monospace(): boolean;
+        /**
+         * Is this a monospace font
+         */
+        get isMonospace(): boolean;
+        /**
+         * Is this a variable font
+         */
+        get is_variable(): boolean;
+        /**
+         * Is this a variable font
+         */
+        get isVariable(): boolean;
+        /**
          * The type of items contained in this list.
          */
         get item_type(): GObject.GType;
@@ -3465,6 +3486,10 @@ export namespace Pango {
          * The number of items contained in this list.
          */
         get nItems(): number;
+        /**
+         * The name of the family
+         */
+        get name(): string;
 
         // Constructors of Pango.FontFamily
 
@@ -3543,33 +3568,6 @@ export namespace Pango {
          * @returns the name of the family. This string is owned   by the family object and must not be modified or freed.
          */
         get_name(): string;
-        /**
-         * A monospace font is a font designed for text display where the the
-         * characters form a regular grid.
-         *
-         * For Western languages this would
-         * mean that the advance width of all characters are the same, but
-         * this categorization also includes Asian fonts which include
-         * double-width characters: characters that occupy two grid cells.
-         * g_unichar_iswide() returns a result that indicates whether a
-         * character is typically double-width in a monospace font.
-         *
-         * The best way to find out the grid-cell size is to call
-         * [method`Pango`.FontMetrics.get_approximate_digit_width], since the
-         * results of [method`Pango`.FontMetrics.get_approximate_char_width] may
-         * be affected by double-width characters.
-         * @returns %TRUE if the family is monospace.
-         */
-        is_monospace(): boolean;
-        /**
-         * A variable font is a font which has axes that can be modified to
-         * produce different faces.
-         *
-         * Such axes are also known as _variations_; see
-         * [method`Pango`.FontDescription.set_variations] for more information.
-         * @returns %TRUE if the family is variable
-         */
-        is_variable(): boolean;
         /**
          * Lists the different font faces that make up `family`.
          *
@@ -3856,7 +3854,7 @@ export namespace Pango {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4215,6 +4213,18 @@ export namespace Pango {
          * @returns the newly allocated   `PangoFontset` loaded, or %NULL if no font matched.
          */
         load_fontset(context: Context, desc: FontDescription, language: Language): Fontset | null;
+        /**
+         * Returns a new font that is like `font,` except that its size
+         * is multiplied by `scale,` its backend-dependent configuration
+         * (e.g. cairo font options) is replaced by the one in `context,`
+         * and its variations are replaced by `variations`.
+         * @param font a font in @fontmap
+         * @param scale the scale factor to apply
+         * @param context a `PangoContext`
+         * @param variations font variations to use
+         * @returns the modified font
+         */
+        reload_font(font: Font, scale: number, context?: Context | null, variations?: string | null): Font;
 
         // Inherited methods
         /**
@@ -4488,7 +4498,7 @@ export namespace Pango {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4707,6 +4717,9 @@ export namespace Pango {
          * @param wc a Unicode character
          */
         vfunc_get_font(wc: number): Font;
+        /**
+         * a function to get the language of the fontset.
+         */
         vfunc_get_language(): Language;
         /**
          * Get overall metric information for the fonts in the fontset.
@@ -5590,6 +5603,9 @@ export namespace Pango {
 
         // Own virtual methods of Pango.Renderer
 
+        /**
+         * Do renderer-specific initialization before drawing
+         */
         vfunc_begin(): void;
         /**
          * Draw a squiggly line that approximately covers the given rectangle
@@ -5661,6 +5677,14 @@ export namespace Pango {
          * @param height height of rectangle in Pango units
          */
         vfunc_draw_rectangle(part: RenderPart, x: number, y: number, width: number, height: number): void;
+        /**
+         * draw content for a glyph shaped with `PangoAttrShape`
+         *   `x,` `y` are the coordinates of the left edge of the baseline,
+         *   in user coordinates.
+         * @param attr
+         * @param x
+         * @param y
+         */
         vfunc_draw_shape(attr: AttrShape, x: number, y: number): void;
         /**
          * Draws a trapezoid with the parallel sides aligned with the X axis
@@ -5682,6 +5706,9 @@ export namespace Pango {
             x12: number,
             x22: number,
         ): void;
+        /**
+         * Do renderer-specific cleanup after drawing
+         */
         vfunc_end(): void;
         /**
          * Informs Pango that the way that the rendering is done
@@ -5702,6 +5729,10 @@ export namespace Pango {
          * @param part the part for which rendering has changed.
          */
         vfunc_part_changed(part: RenderPart): void;
+        /**
+         * updates the renderer for a new run
+         * @param run
+         */
         vfunc_prepare_run(run: LayoutRun): void;
 
         // Own methods of Pango.Renderer

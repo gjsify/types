@@ -371,13 +371,46 @@ export namespace AyatanaAppIndicator3 {
 
         // Own virtual methods of AyatanaAppIndicator3.Indicator
 
+        /**
+         * Slot for #AppIndicator::connection-changed.
+         * @param connected
+         */
         vfunc_connection_changed(connected: boolean): void;
+        /**
+         * Slot for #AppIndicator::new-attention-icon.
+         */
         vfunc_new_attention_icon(): void;
+        /**
+         * Slot for #AppIndicator::new-icon.
+         */
         vfunc_new_icon(): void;
+        /**
+         * Slot for #AppIndicator::new-icon-theme-path
+         * @param icon_theme_path
+         */
         vfunc_new_icon_theme_path(icon_theme_path: string): void;
+        /**
+         * Slot for #AppIndicator::new-label.
+         * @param label
+         * @param guide
+         */
         vfunc_new_label(label: string, guide: string): void;
+        /**
+         * Slot for #AppIndicator::new-status.
+         * @param status
+         */
         vfunc_new_status(status: string): void;
+        /**
+         * Slot for #AppIndicator::scroll-event
+         * @param delta
+         * @param direction
+         */
         vfunc_scroll_event(delta: number, direction: Gdk.ScrollDirection): void;
+        /**
+         * The function that gets called if an Application
+         *              Indicator area appears after the fallback has been created.
+         * @param status_icon
+         */
         vfunc_unfallback(status_icon: Gtk.StatusIcon): void;
 
         // Own methods of AyatanaAppIndicator3.Indicator

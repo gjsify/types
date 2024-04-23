@@ -527,6 +527,8 @@ export namespace EDataServer {
         RESOURCE,
         SUBSCRIBED_ICALENDAR,
         WEBDAV_NOTES,
+        SCHEDULE_INBOX,
+        SCHEDULE_OUTBOX,
     }
     enum XmlHashStatus {
         /**
@@ -3594,7 +3596,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4338,7 +4340,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5165,7 +5167,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5976,7 +5978,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6787,7 +6789,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7249,7 +7251,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9363,7 +9365,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9583,6 +9585,8 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
+            for_every_event: boolean;
+            forEveryEvent: boolean;
             include_me: boolean;
             includeMe: boolean;
             last_notified: string;
@@ -9599,6 +9603,10 @@ export namespace EDataServer {
 
         // Own properties of EDataServer.SourceAlarms
 
+        get for_every_event(): boolean;
+        set for_every_event(val: boolean);
+        get forEveryEvent(): boolean;
+        set forEveryEvent(val: boolean);
         get include_me(): boolean;
         set include_me(val: boolean);
         get includeMe(): boolean;
@@ -9625,6 +9633,15 @@ export namespace EDataServer {
          */
         dup_last_notified(): string | null;
         /**
+         * Returns whether the user should be alerted about all upcoming appointments
+         * in the calendar described by the #ESource to which `extension` belongs.
+         *
+         * This is used in addition to the GSettings key defall-reminder-enabled
+         * in org.gnome.evolution-data-server.calendar.
+         * @returns whether to show alarms for every event
+         */
+        get_for_every_event(): boolean;
+        /**
          * Returns whether the user should be alerted about upcoming appointments
          * in the calendar described by the #ESource to which `extension` belongs.
          *
@@ -9641,6 +9658,15 @@ export namespace EDataServer {
          * @returns an ISO 8601 timestamp, or %NULL
          */
         get_last_notified(): string | null;
+        /**
+         * Sets whether the user should be alerted about every event in
+         * the calendar described by the #ESource to which `extension` belongs.
+         *
+         * This is used in addition to the GSettings key defall-reminder-enabled
+         * in org.gnome.evolution-data-server.calendar.
+         * @param for_every_event whether to show alarms for every event
+         */
+        set_for_every_event(for_every_event: boolean): void;
         /**
          * Sets whether the user should be alerted about upcoming appointments in
          * the calendar described by the #ESource to which `extension` belongs.
@@ -10823,7 +10849,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12493,6 +12519,8 @@ export namespace EDataServer {
         interface ConstructorProps extends SourceExtension.ConstructorProps {
             always_trust: boolean;
             alwaysTrust: boolean;
+            ask_send_public_key: boolean;
+            askSendPublicKey: boolean;
             encrypt_by_default: boolean;
             encryptByDefault: boolean;
             encrypt_to_self: boolean;
@@ -12527,6 +12555,10 @@ export namespace EDataServer {
         set always_trust(val: boolean);
         get alwaysTrust(): boolean;
         set alwaysTrust(val: boolean);
+        get ask_send_public_key(): boolean;
+        set ask_send_public_key(val: boolean);
+        get askSendPublicKey(): boolean;
+        set askSendPublicKey(val: boolean);
         get encrypt_by_default(): boolean;
         set encrypt_by_default(val: boolean);
         get encryptByDefault(): boolean;
@@ -12595,6 +12627,11 @@ export namespace EDataServer {
          */
         get_always_trust(): boolean;
         /**
+         * Returns, whether should ask before sending PGP public key in messages. The default is %TRUE.
+         * @returns whether should ask before sending PGP public key in messages
+         */
+        get_ask_send_public_key(): boolean;
+        /**
          * Returns whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
          * @returns whether to encrypt outgoing messages by default
@@ -12628,8 +12665,8 @@ export namespace EDataServer {
          */
         get_send_prefer_encrypt(): boolean;
         /**
-         * Returns, whether should send GPG public key in messages. The default is %TRUE.
-         * @returns whether should send GPG public key in messages
+         * Returns, whether should send PGP public key in messages. The default is %TRUE.
+         * @returns whether should send PGP public key in messages
          */
         get_send_public_key(): boolean;
         /**
@@ -12650,6 +12687,12 @@ export namespace EDataServer {
          * @param always_trust whether used keys are always fully trusted
          */
         set_always_trust(always_trust: boolean): void;
+        /**
+         * Sets the `ask_send_public_key` on the `extension,` which tells the client to
+         * ask before user sends public key in the messages in an Autocrypt header.
+         * @param ask_send_public_key value to set
+         */
+        set_ask_send_public_key(ask_send_public_key: boolean): void;
         /**
          * Sets whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
@@ -14237,7 +14280,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

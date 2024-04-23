@@ -54,6 +54,39 @@ export namespace Shumate {
     }
 
     /**
+     * A type of geometry.
+     */
+    enum GeometryType {
+        /**
+         * Unknown geometry type
+         */
+        UNKNOWN,
+        /**
+         * A single point
+         */
+        POINT,
+        /**
+         * A collection of points
+         */
+        MULTIPOINT,
+        /**
+         * A single line
+         */
+        LINESTRING,
+        /**
+         * A collection of lines
+         */
+        MULTILINESTRING,
+        /**
+         * A single polygon
+         */
+        POLYGON,
+        /**
+         * A collection of polygons
+         */
+        MULTIPOLYGON,
+    }
+    /**
      * Projections supported by the library.
      */
     enum MapProjection {
@@ -792,7 +825,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1008,6 +1041,16 @@ export namespace Shumate {
 
         // Inherited methods
         /**
+         * Calculates the distance in meters between two locations.
+         *
+         * This function uses the great-circle distance formula, which assumes
+         * Earth is a perfect sphere. This limits the accuracy of the result,
+         * but is good enough for most purposes.
+         * @param other a [iface@Location]
+         * @returns the distance in meters between @this and @other
+         */
+        distance(other: Location): number;
+        /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
@@ -1214,7 +1257,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1920,6 +1963,14 @@ export namespace Shumate {
 
         _init(...args: any[]): void;
 
+        // Own virtual methods of Shumate.Layer
+
+        /**
+         * Returns a string to show in the debug overlay, which can be
+         * enabled in the GTK inspector.
+         */
+        vfunc_get_debug_text(): string | null;
+
         // Own methods of Shumate.Layer
 
         /**
@@ -2384,7 +2435,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3097,7 +3148,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3966,7 +4017,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4372,7 +4423,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5162,7 +5213,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5718,6 +5769,16 @@ export namespace Shumate {
          */
         vfunc_set_id(id: string): void;
         /**
+         * Calculates the distance in meters between two locations.
+         *
+         * This function uses the great-circle distance formula, which assumes
+         * Earth is a perfect sphere. This limits the accuracy of the result,
+         * but is good enough for most purposes.
+         * @param other a [iface@Location]
+         * @returns the distance in meters between @this and @other
+         */
+        distance(other: Location): number;
+        /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
@@ -5924,7 +5985,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6415,7 +6476,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7009,7 +7070,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7229,6 +7290,16 @@ export namespace Shumate {
 
         // Inherited methods
         /**
+         * Calculates the distance in meters between two locations.
+         *
+         * This function uses the great-circle distance formula, which assumes
+         * Earth is a perfect sphere. This limits the accuracy of the result,
+         * but is good enough for most purposes.
+         * @param other a [iface@Location]
+         * @returns the distance in meters between @this and @other
+         */
+        distance(other: Location): number;
+        /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
@@ -7435,7 +7506,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -8226,7 +8297,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -8992,7 +9063,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9287,6 +9358,16 @@ export namespace Shumate {
 
         // Inherited methods
         /**
+         * Calculates the distance in meters between two locations.
+         *
+         * This function uses the great-circle distance formula, which assumes
+         * Earth is a perfect sphere. This limits the accuracy of the result,
+         * but is good enough for most purposes.
+         * @param other a [iface@Location]
+         * @returns the distance in meters between @this and @other
+         */
+        distance(other: Location): number;
+        /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
@@ -9493,7 +9574,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9767,13 +9848,11 @@ export namespace Shumate {
 
         // Own methods of Shumate.Tile
 
-        get_etag(): string;
         /**
          * Checks whether the tile should fade in.
          * @returns the return value determines whether the tile should fade in when loading.
          */
         get_fade_in(): boolean;
-        get_modified_time(): GLib.DateTime;
         /**
          * Get the [iface`Gdk`.Paintable] representing this tile.
          * @returns A [iface@Gdk.Paintable]
@@ -9809,13 +9888,11 @@ export namespace Shumate {
          * @returns the tile's zoom level
          */
         get_zoom_level(): number;
-        set_etag(etag: string): void;
         /**
          * Sets the flag determining whether the tile should fade in when loading
          * @param fade_in determines whether the tile should fade in when loading
          */
         set_fade_in(fade_in: boolean): void;
-        set_modified_time(modified_time: GLib.DateTime): void;
         /**
          * Sets the [iface`Gdk`.Paintable] representing this tile.
          * @param paintable a [iface@Gdk.Paintable]
@@ -9905,6 +9982,211 @@ export namespace Shumate {
         static ['new'](url_template: string): TileDownloader;
     }
 
+    module VectorReader {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * Provides low-level access to the contents of a vector tile.
+     *
+     * To create a new [class`VectorReader]`, use [ctor`VectorReader`.new] and pass
+     * the bytes of a vector tile, which you might get from a [class`DataSource]`.
+     * Then, use [method`VectorReader`.iterate] to get a [class`VectorReaderIter]`
+     * and iterate over the features in the tile. You can create multiple
+     * [class`VectorReaderIter]`s from the same [class`VectorReader]`.
+     */
+    class VectorReader extends GObject.Object {
+        static $gtype: GObject.GType<VectorReader>;
+
+        // Constructors of Shumate.VectorReader
+
+        constructor(properties?: Partial<VectorReader.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](bytes: GLib.Bytes | Uint8Array): VectorReader;
+
+        // Own methods of Shumate.VectorReader
+
+        /**
+         * Creates a new [class`VectorReaderIter]` for `self`.
+         * @returns A new [class@VectorReaderIter]
+         */
+        iterate(): VectorReaderIter;
+    }
+
+    module VectorReaderIter {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            reader: VectorReader;
+        }
+    }
+
+    /**
+     * Reads the layers and features of a vector tile.
+     *
+     * To create a new [class`VectorReaderIter]`, use [method`VectorReader`.iterate].
+     *
+     * A vector tile consists of named layers, which contain features. Each feature
+     * has an ID, a geometry, and a set of key/value tags. The meanings of
+     * the IDs and tags depends on the data source that the tile came from. The
+     * [OpenMapTiles schema](https://openmaptiles.org/schema/) is a common schema
+     * for vector tiles.
+     *
+     * To read all layers in a tile, use [method`VectorReaderIter`.get_layer_count] and
+     * [method`VectorReaderIter`.read_layer]. If you know the name of the layer you
+     * want, you can also use [method`VectorReaderIter`.read_layer_by_name].
+     * Once the iterator is reading a layer, you can call
+     * [method`VectorReaderIter`.next_feature] in a loop to read all the features in
+     * the layer.
+     *
+     * A [class`VectorReaderIter]` is not thread-safe, but iterators created
+     * from the same [class`VectorReader]` can be used in different threads.
+     *
+     * See [the Mapbox Vector Tile specification](https://github.com/mapbox/vector-tile-spec/tree/master/2.1)
+     * for more information about the vector tile format.
+     */
+    class VectorReaderIter extends GObject.Object {
+        static $gtype: GObject.GType<VectorReaderIter>;
+
+        // Own properties of Shumate.VectorReaderIter
+
+        get reader(): VectorReader;
+
+        // Constructors of Shumate.VectorReaderIter
+
+        constructor(properties?: Partial<VectorReaderIter.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own methods of Shumate.VectorReaderIter
+
+        /**
+         * Determines whether the current feature contains the given point.
+         *
+         * The point must be specified in tile space. See
+         * [method`VectorReaderIter`.get_layer_extent] to get the range of the
+         * coordinates.
+         *
+         * Only polygon or multipolygon features can contain a point. For all
+         * other feature types, this function returns %FALSE.
+         *
+         * If the point is on the border of the polygon, this function may return
+         * either %TRUE or %FALSE.
+         * @param x
+         * @param y
+         * @returns %TRUE if the feature contains the point, %FALSE otherwise.
+         */
+        feature_contains_point(x: number, y: number): boolean;
+        /**
+         * Gets the geometry type of the current feature.
+         * @returns The geometry type of the current feature.
+         */
+        get_feature_geometry_type(): GeometryType;
+        /**
+         * Gets the ID of the current feature.
+         * @returns The ID of the current feature.
+         */
+        get_feature_id(): number;
+        /**
+         * Gets the keys of the tags of the current feature.
+         * @returns The keys of the tags of the current feature.
+         */
+        get_feature_keys(): string[];
+        /**
+         * Gets the coordinates of the current feature in tile space, if the
+         * feature is a single point.
+         *
+         * See [method`VectorReaderIter`.get_layer_extent] to get the range
+         * of the coordinates.
+         *
+         * It is an error to call this function if the feature is not a single point.
+         * Use [method`VectorReaderIter`.get_feature_geometry_type] to check
+         * the feature's geometry type.
+         * @returns %TRUE if the feature is a point, %FALSE otherwise.
+         */
+        get_feature_point(): [boolean, number, number];
+        /**
+         * Gets the value of the tag with the given key.
+         * @param key The key of the tag to get.
+         * @returns %TRUE if the tag was found, %FALSE otherwise.
+         */
+        get_feature_tag(key: string): [boolean, unknown];
+        /**
+         * Gets the number of layers in the vector tile.
+         * @returns The number of layers.
+         */
+        get_layer_count(): number;
+        /**
+         * Gets the extent for coordinates in the current layer.
+         *
+         * 0 represents the top and left edges of the tile, and this value
+         * represents the bottom and right edges. Feature geometries may extend
+         * outside of this range, since tiles often include some margin.
+         *
+         * Tiles do not contain metadata about the location of the tile within
+         * the world, so it is up to the caller to know the tile's coordinates
+         * and convert latitude/longitude to tile-space coordinates.
+         * @returns The layer's extent
+         */
+        get_layer_extent(): number;
+        /**
+         * Gets the number of features in the current layer.
+         *
+         * You can loop over all features in the current layer by calling
+         * [method`VectorReaderIter`.read_feature] with each index from 0 to
+         * the feature count, but it might be easier to use
+         * [method`VectorReaderIter`.next_feature] instead.
+         * @returns The number of features in the current layer.
+         */
+        get_layer_feature_count(): number;
+        /**
+         * Gets the name of the current layer.
+         * @returns The name of the current layer.
+         */
+        get_layer_name(): string;
+        /**
+         * Gets the reader that the iterator is iterating over.
+         * @returns The reader that the iterator is iterating over.
+         */
+        get_reader(): VectorReader;
+        /**
+         * Advances the iterator to the next feature in the current layer.
+         * @returns %TRUE if there is a next feature, %FALSE otherwise.
+         */
+        next_feature(): boolean;
+        /**
+         * Moves the iterator to the feature at the given index in the current layer.
+         *
+         * You can get the number of features in the current layer with
+         * [method`VectorReaderIter`.get_layer_feature_count].
+         * @param index The index of the feature to read.
+         */
+        read_feature(index: number): void;
+        /**
+         * Sets the current layer of the reader to the layer at the given index.
+         * @param index The index of the layer to read.
+         */
+        read_layer(index: number): void;
+        /**
+         * Moves the iterator to the layer with the given name, if present.
+         *
+         * If the layer is not found, the current layer will be set to %NULL and the
+         * function will return %FALSE. Layers are typically omitted if they are empty,
+         * so don't assume that a layer in the schema will always be present.
+         *
+         * The iterator's current feature will be %NULL after calling this function;
+         * use [method`VectorReaderIter`.next_feature] to advance to the first feature
+         * in the layer.
+         * @param name
+         * @returns %TRUE if the layer was found, %FALSE otherwise.
+         */
+        read_layer_by_name(name: string): boolean;
+    }
+
     module VectorRenderer {
         // Constructor properties interface
 
@@ -9972,6 +10254,19 @@ export namespace Shumate {
          * @returns the [class@VectorSpriteSheet]
          */
         get_sprite_sheet(): VectorSpriteSheet;
+        /**
+         * Adds a data source to the renderer.
+         *
+         * Currently, [class`VectorRenderer]` only supports one data source
+         * and throws an error if the style does not contain exactly one
+         * data source. However, support for multiple sources may be added
+         * in the future, so this method accepts a name parameter. If the
+         * name does not match the one expected by the style, this method
+         * will have no effect.
+         * @param name the name of the data source
+         * @param data_source a [class@DataSource]
+         */
+        set_data_source(name: string, data_source: DataSource): void;
         /**
          * Sets the sprite sheet used to render icons and textures.
          * @param sprites a [class@VectorSpriteSheet]
@@ -10251,7 +10546,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -10945,7 +11240,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -11389,6 +11684,16 @@ export namespace Shumate {
 
         // Inherited methods
         /**
+         * Calculates the distance in meters between two locations.
+         *
+         * This function uses the great-circle distance formula, which assumes
+         * Earth is a perfect sphere. This limits the accuracy of the result,
+         * but is good enough for most purposes.
+         * @param other a [iface@Location]
+         * @returns the distance in meters between @this and @other
+         */
+        distance(other: Location): number;
+        /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
@@ -11595,7 +11900,7 @@ export namespace Shumate {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -11797,6 +12102,8 @@ export namespace Shumate {
     type SymbolEventClass = typeof SymbolEvent;
     type TileClass = typeof Tile;
     type TileDownloaderClass = typeof TileDownloader;
+    type VectorReaderClass = typeof VectorReader;
+    type VectorReaderIterClass = typeof VectorReaderIter;
     type VectorRendererClass = typeof VectorRenderer;
     type VectorSpriteClass = typeof VectorSprite;
     type VectorSpriteSheetClass = typeof VectorSpriteSheet;
@@ -11830,6 +12137,16 @@ export namespace Shumate {
 
         // Own methods of Shumate.Location
 
+        /**
+         * Calculates the distance in meters between two locations.
+         *
+         * This function uses the great-circle distance formula, which assumes
+         * Earth is a perfect sphere. This limits the accuracy of the result,
+         * but is good enough for most purposes.
+         * @param other a [iface@Location]
+         * @returns the distance in meters between @this and @other
+         */
+        distance(other: Location): number;
         /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.

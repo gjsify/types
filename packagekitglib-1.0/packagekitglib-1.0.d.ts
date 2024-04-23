@@ -2064,8 +2064,16 @@ export namespace PackageKitGlib {
 
         get background(): boolean;
         set background(val: boolean);
+        /**
+         * The cache age in seconds, where %G_MAXUINT means cache
+         * "never expires"
+         */
         get cache_age(): number;
         set cache_age(val: number);
+        /**
+         * The cache age in seconds, where %G_MAXUINT means cache
+         * "never expires"
+         */
         get cacheAge(): number;
         set cacheAge(val: number);
         get details_with_deps_size(): boolean;
@@ -3122,7 +3130,7 @@ export namespace PackageKitGlib {
         set_background(background: boolean): void;
         /**
          * Sets the maximum cache age value for the client.
-         * @param cache_age the cache age to set, where %G_MAXUINT means "never"
+         * @param cache_age the cache age to set in seconds, where %G_MAXUINT means cache "never expires"
          */
         set_cache_age(cache_age: number): void;
         /**

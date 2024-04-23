@@ -1,7 +1,7 @@
 {
     "name": "@girs/tracker-3.0",
-    "version": "3.6.0-4.0.0-beta.3",
-    "description": "GJS TypeScript type definitions for Tracker-3.0, generated from library version 3.6.0",
+    "version": "3.7.1-4.0.0-beta.3",
+    "description": "GJS TypeScript type definitions for Tracker-3.0, generated from library version 3.7.1",
     "type": "module",
     "module": "tracker-3.0.js",
     "main": "tracker-3.0.js",

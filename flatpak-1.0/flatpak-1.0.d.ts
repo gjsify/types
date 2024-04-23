@@ -1094,9 +1094,10 @@ export namespace Flatpak {
          *
          *   * exclude-refs (as): Act as if these refs are not installed even if they
          *       are when determining the set of unused refs
-         *   * filter-by-eol (b): Only return refs as unused if they are End-Of-Life.
-         *       Note that if this option is combined with other filters (of which there
-         *       are none currently) non-EOL refs may also be returned.
+         *   * filter-by-eol (b): Return refs as unused if they are End-Of-Life.
+         *       Note that if this option is combined with other filters then non-EOL refs may also be returned.
+         *   * filter-by-autoprune (b): Return refs as unused if they should be autopruned.
+         *       Note that if this option is combined with other filters then non-autoprune refs may also be returned.
          * @param arch if non-%NULL, the architecture of refs to collect
          * @param metadata_injection if non-%NULL, a #GHashTable mapping refs to                                  #GKeyFile objects, which when available will                                  be used instead of installed metadata
          * @param options if non-%NULL, a GVariant a{sv} with an extensible set                       of options
@@ -3016,7 +3017,7 @@ export namespace Flatpak {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

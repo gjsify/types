@@ -184,6 +184,10 @@ export namespace SugarGestures {
     class RotateController extends TouchController {
         static $gtype: GObject.GType<RotateController>;
 
+        // Own fields of SugarGestures.RotateController
+
+        priv: RotateControllerPrivate;
+
         // Constructors of SugarGestures.RotateController
 
         constructor(properties?: Partial<RotateController.ConstructorProps>, ...args: any[]);
@@ -335,6 +339,10 @@ export namespace SugarGestures {
     class ZoomController extends TouchController {
         static $gtype: GObject.GType<ZoomController>;
 
+        // Own fields of SugarGestures.ZoomController
+
+        priv: ZoomControllerPrivate;
+
         // Constructors of SugarGestures.ZoomController
 
         constructor(properties?: Partial<ZoomController.ConstructorProps>, ...args: any[]);
@@ -369,11 +377,108 @@ export namespace SugarGestures {
     }
 
     type EventControllerClass = typeof EventController;
+    class EventControllerPrivate {
+        static $gtype: GObject.GType<EventControllerPrivate>;
+
+        // Own fields of SugarGestures.EventControllerPrivate
+
+        widget: Gtk.Widget;
+
+        // Constructors of SugarGestures.EventControllerPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type LongPressControllerClass = typeof LongPressController;
+    class LongPressControllerPrivate {
+        static $gtype: GObject.GType<LongPressControllerPrivate>;
+
+        // Own fields of SugarGestures.LongPressControllerPrivate
+
+        device: Gdk.Device;
+        start_time: number;
+        x: number;
+        y: number;
+        root_x: number;
+        root_y: number;
+        timeout_id: number;
+        threshold: number;
+        delay: number;
+        cancelled: number;
+        triggered: number;
+
+        // Constructors of SugarGestures.LongPressControllerPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type RotateControllerClass = typeof RotateController;
+    class RotateControllerPrivate {
+        static $gtype: GObject.GType<RotateControllerPrivate>;
+
+        // Own fields of SugarGestures.RotateControllerPrivate
+
+        initial_angle: number;
+
+        // Constructors of SugarGestures.RotateControllerPrivate
+
+        constructor(
+            properties?: Partial<{
+                initial_angle: number;
+            }>,
+        );
+        _init(...args: any[]): void;
+    }
+
     type SwipeControllerClass = typeof SwipeController;
+    class SwipeControllerPrivate {
+        static $gtype: GObject.GType<SwipeControllerPrivate>;
+
+        // Own fields of SugarGestures.SwipeControllerPrivate
+
+        device: Gdk.Device;
+        event_data: any[];
+        swiping: number;
+        swiped: number;
+        directions: number;
+
+        // Constructors of SugarGestures.SwipeControllerPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type TouchControllerClass = typeof TouchController;
+    class TouchControllerPrivate {
+        static $gtype: GObject.GType<TouchControllerPrivate>;
+
+        // Own fields of SugarGestures.TouchControllerPrivate
+
+        min_touches: number;
+        max_touches: number;
+
+        // Constructors of SugarGestures.TouchControllerPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type ZoomControllerClass = typeof ZoomController;
+    class ZoomControllerPrivate {
+        static $gtype: GObject.GType<ZoomControllerPrivate>;
+
+        // Own fields of SugarGestures.ZoomControllerPrivate
+
+        initial_distance: number;
+
+        // Constructors of SugarGestures.ZoomControllerPrivate
+
+        constructor(
+            properties?: Partial<{
+                initial_distance: number;
+            }>,
+        );
+        _init(...args: any[]): void;
+    }
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

@@ -27,6 +27,21 @@ import type Atk from '@girs/atk-1.0';
 
 export namespace Libxfce4windowing {
     /**
+     * The type of the application.
+     *
+     * See #xfw_set_client_type() for details.
+     */
+    enum ClientType {
+        /**
+         * a regular application
+         */
+        APPLICATION,
+        /**
+         * a pager or other user-controlled desktop component
+         */
+        PAGER,
+    }
+    /**
      * Represents a direction, either of position ("This workspace is to the left
      * of the current workspace") or movement ("Move this window to the workspace to
      * the right of its current workspace").
@@ -184,6 +199,18 @@ export namespace Libxfce4windowing {
      * @returns an #XfwScreen instance, with a reference owned by the caller.
      */
     function screen_get_default(): Screen;
+    /**
+     * Sets the type of the application.  This is used when sending various
+     * messages to control the behavior of other windows, to indicate the source of
+     * the control.  In general, #XFW_CLIENT_TYPE_APPLICATION will be interpreted
+     * as automated control from a regular application, and #XFW_CLIENT_TYPE_PAGER
+     * will be interpreted as user-initiated control from a desktop component
+     * application like a pager or dock.
+     *
+     * This does nothing on Wayland, but is safe to call under a Wayland session.
+     * @param client_type A #XfwClientType
+     */
+    function set_client_type(client_type: ClientType): void;
     /**
      * Determines the windowing environment that is currently active.
      * @returns A value from the #XfwWindowing enum.
@@ -408,8 +435,9 @@ export namespace Libxfce4windowing {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            class_id: string;
+            classId: string;
             gicon: Gio.Icon;
-            id: number;
             instances: any;
             name: string;
             windows: any;
@@ -422,13 +450,17 @@ export namespace Libxfce4windowing {
         // Own properties of Libxfce4windowing.Application
 
         /**
+         * The application class id.
+         */
+        get class_id(): string;
+        /**
+         * The application class id.
+         */
+        get classId(): string;
+        /**
          * The #GIcon that represents this application.
          */
         get gicon(): Gio.Icon;
-        /**
-         * The #XfwWindow:id of the first window in #XfwApplication:windows.
-         */
-        get id(): number;
         /**
          * The list of #XfwApplicationInstance belonging to the application.
          */
@@ -460,6 +492,14 @@ export namespace Libxfce4windowing {
         // Own methods of Libxfce4windowing.Application
 
         /**
+         * Fetches this application's class id. On X11 this should be the class name of
+         * the [WM_CLASS property](https://x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html#wm_class_property).
+         * On Wayland, it's the [application ID](https://wayland.app/protocols/wlr-foreign-toplevel-management-unstable-v1#zwlr_foreign_toplevel_handle_v1:event:app_id),
+         * which should correspond to the basename of the application's desktop file.
+         * @returns A UTF-8 formatted string, owned by @app.
+         */
+        get_class_id(): string;
+        /**
          * Fetches `app'`s icon as a size-independent #GIcon.  If an icon cannot be
          * found, a #GIcon representing a fallback icon will be returned.  Whether or
          * not the returned icon is a fallback icon can be determined using
@@ -476,12 +516,6 @@ export namespace Libxfce4windowing {
          * @returns a #GdkPixbuf, owned by @app, or %NULL if @app has no icon and a fallback cannot be rendered.
          */
         get_icon(size: number, scale: number): GdkPixbuf.Pixbuf | null;
-        /**
-         * Fetches this application's ID, which is the #XfwWindow:id of the first window
-         * in #XfwApplication:windows.
-         * @returns A unique integer identifying the application.
-         */
-        get_id(): number;
         /**
          * Finds the #XfwApplicationInstance to which `window` belongs.
          * @param window the application window you want to get the instance of.
@@ -817,7 +851,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1262,7 +1296,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1449,6 +1483,10 @@ export namespace Libxfce4windowing {
             (changed_mask: WindowCapabilities, new_state: WindowCapabilities): void;
         }
 
+        interface ClassChanged {
+            (): void;
+        }
+
         interface Closed {
             (): void;
         }
@@ -1482,8 +1520,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             application: Application;
             capabilities: WindowCapabilities;
+            class_ids: string[];
+            classIds: string[];
             gicon: Gio.Icon;
-            id: number;
             monitors: any;
             name: string;
             screen: Screen;
@@ -1507,13 +1546,17 @@ export namespace Libxfce4windowing {
          */
         get capabilities(): WindowCapabilities;
         /**
+         * The window's class ids.
+         */
+        get class_ids(): string[];
+        /**
+         * The window's class ids.
+         */
+        get classIds(): string[];
+        /**
          * The #GIcon that represents this window.
          */
         get gicon(): Gio.Icon;
-        /**
-         * A windowing-platform dependent window ID.
-         */
-        get id(): number;
         /**
          * The list of monitors (if any) that the window is displayed on.
          */
@@ -1556,6 +1599,9 @@ export namespace Libxfce4windowing {
             callback: (_source: this, changed_mask: WindowCapabilities, new_state: WindowCapabilities) => void,
         ): number;
         emit(signal: 'capabilities-changed', changed_mask: WindowCapabilities, new_state: WindowCapabilities): void;
+        connect(signal: 'class-changed', callback: (_source: this) => void): number;
+        connect_after(signal: 'class-changed', callback: (_source: this) => void): number;
+        emit(signal: 'class-changed'): void;
         connect(signal: 'closed', callback: (_source: this) => void): number;
         connect_after(signal: 'closed', callback: (_source: this) => void): number;
         emit(signal: 'closed'): void;
@@ -1599,6 +1645,14 @@ export namespace Libxfce4windowing {
          */
         get_capabilities(): WindowCapabilities;
         /**
+         * Fetches `window'`s class ids. On X11 this should contain the class and instance
+         * names of the [WM_CLASS property](https://x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html#wm_class_property).
+         * On Wayland, it's likely to be limited to the [application ID](https://wayland.app/protocols/wlr-foreign-toplevel-management-unstable-v1#zwlr_foreign_toplevel_handle_v1:event:app_id),
+         * which should correspond to the basename of the application's desktop file.
+         * @returns a %NULL-terminated array of strings owned by the #XfwWindow.
+         */
+        get_class_ids(): string[];
+        /**
          * Fetches `window'`s position and size.
          * @returns A #GdkRectangle representing @window's geometry, which should not be modified or freed.
          */
@@ -1620,11 +1674,6 @@ export namespace Libxfce4windowing {
          * @returns a #GdkPixbuf, owned by @window, or %NULL if @window has no icon and a fallback cannot be rendered.
          */
         get_icon(size: number, scale: number): GdkPixbuf.Pixbuf | null;
-        /**
-         * Fetches the windowing-platform dependent window ID.
-         * @returns a 64-bit unsigned integer.
-         */
-        get_id(): number;
         /**
          * Fetches the list of monitors `window` is displayed on, if any.
          * @returns A list of #GdkMonitor instances, or %NULL.  The list and its contents are owned by @window and should not be modified or freed.
@@ -1685,6 +1734,15 @@ export namespace Libxfce4windowing {
         set_skip_tasklist(is_skip_tasklist: boolean): boolean;
         start_move(): boolean;
         start_resize(): boolean;
+        /**
+         * On X11, returns the platform-specific #Window handle to the underlying
+         * window.
+         *
+         * It is an error to call this function if the application is not currently
+         * running on X11.
+         * @returns An X11 #Window handle.
+         */
+        x11_get_xid(): xlib.Window;
     }
 
     module WindowWayland {
@@ -2129,7 +2187,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2331,13 +2389,29 @@ export namespace Libxfce4windowing {
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
         /**
-         * The #XfwWorkspaceGroup that this workspace is a member of.
+         * The #XfwWorkspaceGroup that this workspace is a member of, if any.
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
          */
         get id(): string;
+        /**
+         * The y-coordinate of the workspace on a 2D grid.
+         */
+        get layout_column(): number;
+        /**
+         * The y-coordinate of the workspace on a 2D grid.
+         */
+        get layoutColumn(): number;
+        /**
+         * The x-coordinate of the workspace on a 2D grid.
+         */
+        get layout_row(): number;
+        /**
+         * The x-coordinate of the workspace on a 2D grid.
+         */
+        get layoutRow(): number;
         /**
          * The human-readable name of this workspace.
          */
@@ -2362,6 +2436,15 @@ export namespace Libxfce4windowing {
          * @returns %TRUE if workspace activation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
          */
         activate(): boolean;
+        /**
+         * Attempts to assign `workspace` to `group`.
+         *
+         * On failure, `error` (if provided) will be set to a description of the error
+         * that occurred.
+         * @param group an #XfwWorkspaceGroup.
+         * @returns %TRUE if workspace assignment succeeded, %FALSE otherwise. If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using g_error_free().
+         */
+        assign_to_workspace_group(group: WorkspaceGroup): boolean;
         /**
          * Fetches this workspace's capabilities bitfield.
          *
@@ -2415,6 +2498,11 @@ export namespace Libxfce4windowing {
          * Fetches the ordinal number of this workspace.
          *
          * The number can be used to order workspaces in a UI representation.
+         *
+         * On X11, this number should be stable across runs of your application.
+         *
+         * On Wayland, this number depends on the order in which the compositor
+         * advertises the workspaces.  This order may be stable, but may not be.
          * @returns a non-negative, 0-indexed integer.
          */
         get_number(): number;
@@ -2424,10 +2512,10 @@ export namespace Libxfce4windowing {
          */
         get_state(): WorkspaceState;
         /**
-         * Fetches the group this workspace belongs to.
-         * @returns a #XfwWorkspaceGroup instance, owned by @workspace.
+         * Fetches the group this workspace belongs to, if any.
+         * @returns a #XfwWorkspaceGroup instance, owned by @workspace, or %NULL if the workspace is not a member of any groups.
          */
-        get_workspace_group(): WorkspaceGroup;
+        get_workspace_group(): WorkspaceGroup | null;
         /**
          * Attempts to remove `workspace` from its group.
          *
@@ -2613,7 +2701,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3102,7 +3190,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3584,7 +3672,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3793,6 +3881,11 @@ export namespace Libxfce4windowing {
          */
         list_workspace_groups(): WorkspaceGroup[] | null;
         /**
+         * List all workspaces known to the workspace manager.
+         * @returns the list of #XfwWorkspace managed by @manager, or %NULL if there are no workspaces.  The list and its contents are owned by @manager.
+         */
+        list_workspaces(): Workspace[] | null;
+        /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
          *
@@ -3969,7 +4062,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4190,6 +4283,11 @@ export namespace Libxfce4windowing {
          */
         list_workspace_groups(): WorkspaceGroup[] | null;
         /**
+         * List all workspaces known to the workspace manager.
+         * @returns the list of #XfwWorkspace managed by @manager, or %NULL if there are no workspaces.  The list and its contents are owned by @manager.
+         */
+        list_workspaces(): Workspace[] | null;
+        /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
          *
@@ -4366,7 +4464,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4575,6 +4673,11 @@ export namespace Libxfce4windowing {
          */
         list_workspace_groups(): WorkspaceGroup[] | null;
         /**
+         * List all workspaces known to the workspace manager.
+         * @returns the list of #XfwWorkspace managed by @manager, or %NULL if there are no workspaces.  The list and its contents are owned by @manager.
+         */
+        list_workspaces(): Workspace[] | null;
+        /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
          *
@@ -4751,7 +4854,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4974,13 +5077,29 @@ export namespace Libxfce4windowing {
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
         /**
-         * The #XfwWorkspaceGroup that this workspace is a member of.
+         * The #XfwWorkspaceGroup that this workspace is a member of, if any.
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
          */
         get id(): string;
+        /**
+         * The y-coordinate of the workspace on a 2D grid.
+         */
+        get layout_column(): number;
+        /**
+         * The y-coordinate of the workspace on a 2D grid.
+         */
+        get layoutColumn(): number;
+        /**
+         * The x-coordinate of the workspace on a 2D grid.
+         */
+        get layout_row(): number;
+        /**
+         * The x-coordinate of the workspace on a 2D grid.
+         */
+        get layoutRow(): number;
         /**
          * The human-readable name of this workspace.
          */
@@ -5005,6 +5124,15 @@ export namespace Libxfce4windowing {
          * @returns %TRUE if workspace activation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
          */
         activate(): boolean;
+        /**
+         * Attempts to assign `workspace` to `group`.
+         *
+         * On failure, `error` (if provided) will be set to a description of the error
+         * that occurred.
+         * @param group an #XfwWorkspaceGroup.
+         * @returns %TRUE if workspace assignment succeeded, %FALSE otherwise. If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using g_error_free().
+         */
+        assign_to_workspace_group(group: WorkspaceGroup): boolean;
         /**
          * Fetches this workspace's capabilities bitfield.
          *
@@ -5058,6 +5186,11 @@ export namespace Libxfce4windowing {
          * Fetches the ordinal number of this workspace.
          *
          * The number can be used to order workspaces in a UI representation.
+         *
+         * On X11, this number should be stable across runs of your application.
+         *
+         * On Wayland, this number depends on the order in which the compositor
+         * advertises the workspaces.  This order may be stable, but may not be.
          * @returns a non-negative, 0-indexed integer.
          */
         get_number(): number;
@@ -5067,10 +5200,10 @@ export namespace Libxfce4windowing {
          */
         get_state(): WorkspaceState;
         /**
-         * Fetches the group this workspace belongs to.
-         * @returns a #XfwWorkspaceGroup instance, owned by @workspace.
+         * Fetches the group this workspace belongs to, if any.
+         * @returns a #XfwWorkspaceGroup instance, owned by @workspace, or %NULL if the workspace is not a member of any groups.
          */
-        get_workspace_group(): WorkspaceGroup;
+        get_workspace_group(): WorkspaceGroup | null;
         /**
          * Attempts to remove `workspace` from its group.
          *
@@ -5256,7 +5389,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5458,13 +5591,29 @@ export namespace Libxfce4windowing {
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
         /**
-         * The #XfwWorkspaceGroup that this workspace is a member of.
+         * The #XfwWorkspaceGroup that this workspace is a member of, if any.
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
          */
         get id(): string;
+        /**
+         * The y-coordinate of the workspace on a 2D grid.
+         */
+        get layout_column(): number;
+        /**
+         * The y-coordinate of the workspace on a 2D grid.
+         */
+        get layoutColumn(): number;
+        /**
+         * The x-coordinate of the workspace on a 2D grid.
+         */
+        get layout_row(): number;
+        /**
+         * The x-coordinate of the workspace on a 2D grid.
+         */
+        get layoutRow(): number;
         /**
          * The human-readable name of this workspace.
          */
@@ -5489,6 +5638,15 @@ export namespace Libxfce4windowing {
          * @returns %TRUE if workspace activation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
          */
         activate(): boolean;
+        /**
+         * Attempts to assign `workspace` to `group`.
+         *
+         * On failure, `error` (if provided) will be set to a description of the error
+         * that occurred.
+         * @param group an #XfwWorkspaceGroup.
+         * @returns %TRUE if workspace assignment succeeded, %FALSE otherwise. If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using g_error_free().
+         */
+        assign_to_workspace_group(group: WorkspaceGroup): boolean;
         /**
          * Fetches this workspace's capabilities bitfield.
          *
@@ -5542,6 +5700,11 @@ export namespace Libxfce4windowing {
          * Fetches the ordinal number of this workspace.
          *
          * The number can be used to order workspaces in a UI representation.
+         *
+         * On X11, this number should be stable across runs of your application.
+         *
+         * On Wayland, this number depends on the order in which the compositor
+         * advertises the workspaces.  This order may be stable, but may not be.
          * @returns a non-negative, 0-indexed integer.
          */
         get_number(): number;
@@ -5551,10 +5714,10 @@ export namespace Libxfce4windowing {
          */
         get_state(): WorkspaceState;
         /**
-         * Fetches the group this workspace belongs to.
-         * @returns a #XfwWorkspaceGroup instance, owned by @workspace.
+         * Fetches the group this workspace belongs to, if any.
+         * @returns a #XfwWorkspaceGroup instance, owned by @workspace, or %NULL if the workspace is not a member of any groups.
          */
-        get_workspace_group(): WorkspaceGroup;
+        get_workspace_group(): WorkspaceGroup | null;
         /**
          * Attempts to remove `workspace` from its group.
          *
@@ -5740,7 +5903,7 @@ export namespace Libxfce4windowing {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6224,6 +6387,10 @@ export namespace Libxfce4windowing {
             capabilities: WorkspaceCapabilities;
             group: WorkspaceGroup;
             id: string;
+            layout_column: number;
+            layoutColumn: number;
+            layout_row: number;
+            layoutRow: number;
             name: string;
             number: number;
             state: WorkspaceState;
@@ -6243,13 +6410,29 @@ export namespace Libxfce4windowing {
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
         /**
-         * The #XfwWorkspaceGroup that this workspace is a member of.
+         * The #XfwWorkspaceGroup that this workspace is a member of, if any.
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
          */
         get id(): string;
+        /**
+         * The y-coordinate of the workspace on a 2D grid.
+         */
+        get layout_column(): number;
+        /**
+         * The y-coordinate of the workspace on a 2D grid.
+         */
+        get layoutColumn(): number;
+        /**
+         * The x-coordinate of the workspace on a 2D grid.
+         */
+        get layout_row(): number;
+        /**
+         * The x-coordinate of the workspace on a 2D grid.
+         */
+        get layoutRow(): number;
         /**
          * The human-readable name of this workspace.
          */
@@ -6275,6 +6458,15 @@ export namespace Libxfce4windowing {
          * @returns %TRUE if workspace activation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
          */
         activate(): boolean;
+        /**
+         * Attempts to assign `workspace` to `group`.
+         *
+         * On failure, `error` (if provided) will be set to a description of the error
+         * that occurred.
+         * @param group an #XfwWorkspaceGroup.
+         * @returns %TRUE if workspace assignment succeeded, %FALSE otherwise. If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using g_error_free().
+         */
+        assign_to_workspace_group(group: WorkspaceGroup): boolean;
         /**
          * Fetches this workspace's capabilities bitfield.
          *
@@ -6328,6 +6520,11 @@ export namespace Libxfce4windowing {
          * Fetches the ordinal number of this workspace.
          *
          * The number can be used to order workspaces in a UI representation.
+         *
+         * On X11, this number should be stable across runs of your application.
+         *
+         * On Wayland, this number depends on the order in which the compositor
+         * advertises the workspaces.  This order may be stable, but may not be.
          * @returns a non-negative, 0-indexed integer.
          */
         get_number(): number;
@@ -6337,10 +6534,10 @@ export namespace Libxfce4windowing {
          */
         get_state(): WorkspaceState;
         /**
-         * Fetches the group this workspace belongs to.
-         * @returns a #XfwWorkspaceGroup instance, owned by @workspace.
+         * Fetches the group this workspace belongs to, if any.
+         * @returns a #XfwWorkspaceGroup instance, owned by @workspace, or %NULL if the workspace is not a member of any groups.
          */
-        get_workspace_group(): WorkspaceGroup;
+        get_workspace_group(): WorkspaceGroup | null;
         /**
          * Attempts to remove `workspace` from its group.
          *
@@ -6501,6 +6698,11 @@ export namespace Libxfce4windowing {
          * @returns the list of #XfwWorkspaceGroup managed by @manager, or %NULL if there are no workspace groups.  The list and its contents are owned by @manager.
          */
         list_workspace_groups(): WorkspaceGroup[] | null;
+        /**
+         * List all workspaces known to the workspace manager.
+         * @returns the list of #XfwWorkspace managed by @manager, or %NULL if there are no workspaces.  The list and its contents are owned by @manager.
+         */
+        list_workspaces(): Workspace[] | null;
     }
 
     export const WorkspaceManager: WorkspaceManagerNamespace;

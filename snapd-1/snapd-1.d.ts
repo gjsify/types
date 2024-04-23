@@ -7,6 +7,8 @@
 
 import './snapd-1-ambient.d.ts';
 
+import './snapd-1-import.d.ts';
+
 /**
  * Snapd-1
  */
