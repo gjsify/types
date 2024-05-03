@@ -220,8 +220,8 @@ export namespace Folks {
         vfunc_parameters_equal(that: AbstractFieldDetails): boolean;
         vfunc_values_equal(that: AbstractFieldDetails): boolean;
         vfunc_hash(): number;
-        vfunc_get_value(): any | null;
-        vfunc_set_value(value?: any | null): void;
+        vfunc_get_value(): any;
+        vfunc_set_value(value: any): void;
         vfunc_get_id(): string;
         vfunc_set_id(value: string): void;
         vfunc_get_parameters(): Gee.MultiMap;
@@ -238,8 +238,8 @@ export namespace Folks {
         parameters_equal(that: AbstractFieldDetails): boolean;
         values_equal(that: AbstractFieldDetails): boolean;
         hash(): number;
-        get_value(): any | null;
-        set_value(value?: any | null): void;
+        get_value(): any;
+        set_value(value: any): void;
         get_value_type(): GObject.GType;
         get_id(): string;
         set_id(value: string): void;
@@ -1666,15 +1666,15 @@ export namespace Folks {
 
         vfunc_get_serialised_object_type(object_version: number): GLib.VariantType | null;
         vfunc_get_serialised_object_version(): number;
-        vfunc_serialise_object(object?: any | null): GLib.Variant;
-        vfunc_deserialise_object(variant: GLib.Variant, object_version: number): any | null;
+        vfunc_serialise_object(object: any): GLib.Variant;
+        vfunc_deserialise_object(variant: GLib.Variant, object_version: number): any;
 
         // Own methods of Folks.ObjectCache
 
         get_serialised_object_type(object_version: number): GLib.VariantType | null;
         get_serialised_object_version(): number;
-        serialise_object(object?: any | null): GLib.Variant;
-        deserialise_object(variant: GLib.Variant, object_version: number): any | null;
+        serialise_object(object: any): GLib.Variant;
+        deserialise_object(variant: GLib.Variant, object_version: number): any;
         load_objects(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         load_objects_finish(_res_: Gio.AsyncResult): Gee.Set | null;
         store_objects(

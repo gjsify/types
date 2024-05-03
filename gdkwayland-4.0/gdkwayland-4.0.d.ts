@@ -360,10 +360,8 @@ export namespace GdkWayland {
          */
         create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
         /**
-         * Creates a new `GdkVulkanContext` for rendering on `surface`.
-         *
-         * If the creation of the `GdkVulkanContext` failed, `error` will be set.
-         * @returns the newly created `GdkVulkanContext`, or   %NULL on error
+         * Sets an error and returns %NULL.
+         * @returns %NULL
          */
         create_vulkan_context(): Gdk.VulkanContext;
         /**
@@ -1090,10 +1088,8 @@ export namespace GdkWayland {
          */
         create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
         /**
-         * Creates a new `GdkVulkanContext` for rendering on `surface`.
-         *
-         * If the creation of the `GdkVulkanContext` failed, `error` will be set.
-         * @returns the newly created `GdkVulkanContext`, or   %NULL on error
+         * Sets an error and returns %NULL.
+         * @returns %NULL
          */
         create_vulkan_context(): Gdk.VulkanContext;
         /**

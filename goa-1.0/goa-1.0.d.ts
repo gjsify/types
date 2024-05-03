@@ -1069,7 +1069,15 @@ export namespace Goa {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_remove(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #GoaAccount::handle-ensure-credentials signal.
+         * @param invocation
+         */
         vfunc_handle_ensure_credentials(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GoaAccount::handle-remove signal.
+         * @param invocation
+         */
         vfunc_handle_remove(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1848,7 +1856,15 @@ export namespace Goa {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_remove(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #GoaAccount::handle-ensure-credentials signal.
+         * @param invocation
+         */
         vfunc_handle_ensure_credentials(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GoaAccount::handle-remove signal.
+         * @param invocation
+         */
         vfunc_handle_remove(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -11777,6 +11793,15 @@ export namespace Goa {
          * @param is_supported Parameter to return.
          */
         complete_is_supported_provider(invocation: Gio.DBusMethodInvocation, is_supported: boolean): void;
+        /**
+         * Handler for the #GoaManager::handle-add-account signal.
+         * @param invocation
+         * @param arg_provider
+         * @param arg_identity
+         * @param arg_presentation_identity
+         * @param arg_credentials
+         * @param arg_details
+         */
         vfunc_handle_add_account(
             invocation: Gio.DBusMethodInvocation,
             arg_provider: string,
@@ -11785,6 +11810,11 @@ export namespace Goa {
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #GoaManager::handle-is-supported-provider signal.
+         * @param invocation
+         * @param arg_provider_type
+         */
         vfunc_handle_is_supported_provider(invocation: Gio.DBusMethodInvocation, arg_provider_type: string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -12299,6 +12329,15 @@ export namespace Goa {
          * @param is_supported Parameter to return.
          */
         complete_is_supported_provider(invocation: Gio.DBusMethodInvocation, is_supported: boolean): void;
+        /**
+         * Handler for the #GoaManager::handle-add-account signal.
+         * @param invocation
+         * @param arg_provider
+         * @param arg_identity
+         * @param arg_presentation_identity
+         * @param arg_credentials
+         * @param arg_details
+         */
         vfunc_handle_add_account(
             invocation: Gio.DBusMethodInvocation,
             arg_provider: string,
@@ -12307,6 +12346,11 @@ export namespace Goa {
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #GoaManager::handle-is-supported-provider signal.
+         * @param invocation
+         * @param arg_provider_type
+         */
         vfunc_handle_is_supported_provider(invocation: Gio.DBusMethodInvocation, arg_provider_type: string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -16453,6 +16497,10 @@ export namespace Goa {
          * @param expires_in Parameter to return.
          */
         complete_get_access_token(invocation: Gio.DBusMethodInvocation, access_token: string, expires_in: number): void;
+        /**
+         * Handler for the #GoaOAuth2Based::handle-get-access-token signal.
+         * @param invocation
+         */
         vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -16935,6 +16983,10 @@ export namespace Goa {
          * @param expires_in Parameter to return.
          */
         complete_get_access_token(invocation: Gio.DBusMethodInvocation, access_token: string, expires_in: number): void;
+        /**
+         * Handler for the #GoaOAuth2Based::handle-get-access-token signal.
+         * @param invocation
+         */
         vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -17705,6 +17757,10 @@ export namespace Goa {
             access_token_secret: string,
             expires_in: number,
         ): void;
+        /**
+         * Handler for the #GoaOAuthBased::handle-get-access-token signal.
+         * @param invocation
+         */
         vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -18193,6 +18249,10 @@ export namespace Goa {
             access_token_secret: string,
             expires_in: number,
         ): void;
+        /**
+         * Handler for the #GoaOAuthBased::handle-get-access-token signal.
+         * @param invocation
+         */
         vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -21137,6 +21197,11 @@ export namespace Goa {
          * @param password Parameter to return.
          */
         complete_get_password(invocation: Gio.DBusMethodInvocation, password: string): void;
+        /**
+         * Handler for the #GoaPasswordBased::handle-get-password signal.
+         * @param invocation
+         * @param arg_id
+         */
         vfunc_handle_get_password(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -21591,6 +21656,11 @@ export namespace Goa {
          * @param password Parameter to return.
          */
         complete_get_password(invocation: Gio.DBusMethodInvocation, password: string): void;
+        /**
+         * Handler for the #GoaPasswordBased::handle-get-password signal.
+         * @param invocation
+         * @param arg_id
+         */
         vfunc_handle_get_password(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -25665,6 +25735,10 @@ export namespace Goa {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_get_ticket(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #GoaTicketing::handle-get-ticket signal.
+         * @param invocation
+         */
         vfunc_handle_get_ticket(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -26121,6 +26195,10 @@ export namespace Goa {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_get_ticket(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #GoaTicketing::handle-get-ticket signal.
+         * @param invocation
+         */
         vfunc_handle_get_ticket(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -28434,7 +28512,15 @@ export namespace Goa {
 
         // Own virtual methods of Goa.Account
 
+        /**
+         * Handler for the #GoaAccount::handle-ensure-credentials signal.
+         * @param invocation
+         */
         vfunc_handle_ensure_credentials(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GoaAccount::handle-remove signal.
+         * @param invocation
+         */
         vfunc_handle_remove(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
@@ -29144,6 +29230,15 @@ export namespace Goa {
 
         // Own virtual methods of Goa.Manager
 
+        /**
+         * Handler for the #GoaManager::handle-add-account signal.
+         * @param invocation
+         * @param arg_provider
+         * @param arg_identity
+         * @param arg_presentation_identity
+         * @param arg_credentials
+         * @param arg_details
+         */
         vfunc_handle_add_account(
             invocation: Gio.DBusMethodInvocation,
             arg_provider: string,
@@ -29152,6 +29247,11 @@ export namespace Goa {
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #GoaManager::handle-is-supported-provider signal.
+         * @param invocation
+         * @param arg_provider_type
+         */
         vfunc_handle_is_supported_provider(invocation: Gio.DBusMethodInvocation, arg_provider_type: string): boolean;
     }
 
@@ -29363,6 +29463,10 @@ export namespace Goa {
 
         // Own virtual methods of Goa.OAuth2Based
 
+        /**
+         * Handler for the #GoaOAuth2Based::handle-get-access-token signal.
+         * @param invocation
+         */
         vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
@@ -29474,6 +29578,10 @@ export namespace Goa {
 
         // Own virtual methods of Goa.OAuthBased
 
+        /**
+         * Handler for the #GoaOAuthBased::handle-get-access-token signal.
+         * @param invocation
+         */
         vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
@@ -29866,6 +29974,11 @@ export namespace Goa {
 
         // Own virtual methods of Goa.PasswordBased
 
+        /**
+         * Handler for the #GoaPasswordBased::handle-get-password signal.
+         * @param invocation
+         * @param arg_id
+         */
         vfunc_handle_get_password(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
     }
 
@@ -30020,6 +30133,10 @@ export namespace Goa {
 
         // Own virtual methods of Goa.Ticketing
 
+        /**
+         * Handler for the #GoaTicketing::handle-get-ticket signal.
+         * @param invocation
+         */
         vfunc_handle_get_ticket(invocation: Gio.DBusMethodInvocation): boolean;
     }
 

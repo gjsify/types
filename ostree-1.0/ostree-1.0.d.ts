@@ -4396,7 +4396,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         append_to_async(
             flags: Gio.FileCreateFlags,
@@ -4494,16 +4494,12 @@ export namespace OSTree {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         copy_async(
             destination: Gio.File,
             flags: Gio.FileCopyFlags,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Copies the file attributes from `source` to `destination`.
@@ -4564,7 +4560,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         create_async(
             flags: Gio.FileCreateFlags,
@@ -4621,7 +4617,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         create_readwrite_async(
             flags: Gio.FileCreateFlags,
@@ -4708,7 +4704,7 @@ export namespace OSTree {
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         eject_mountable(
             flags: Gio.MountUnmountFlags,
@@ -4734,7 +4730,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         eject_mountable_with_operation(
             flags: Gio.MountUnmountFlags,
@@ -4800,7 +4796,7 @@ export namespace OSTree {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
          */
         enumerate_children_async(
             attributes: string,
@@ -4853,7 +4849,7 @@ export namespace OSTree {
          * get the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         find_enclosing_mount_async(
             io_priority: number,
@@ -5063,7 +5059,7 @@ export namespace OSTree {
          *
          * See g_file_load_bytes() for more information.
          * @param cancellable a #GCancellable or %NULL
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
          */
         load_bytes_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         /**
@@ -5320,7 +5316,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         mount_mountable(
             flags: Gio.MountMountFlags,
@@ -5397,8 +5393,8 @@ export namespace OSTree {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param progress_callback #GFileProgressCallback function for updates
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param progress_callback #GFileProgressCallback   function for updates
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         move_async(
             destination: Gio.File,
@@ -5447,7 +5443,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         open_readwrite_async(
             io_priority: number,
@@ -5607,7 +5603,7 @@ export namespace OSTree {
          * @param attributes an attribute query string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         query_filesystem_info_async(
             attributes: string,
@@ -5677,7 +5673,7 @@ export namespace OSTree {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
          */
         query_info_async(
             attributes: string,
@@ -5747,7 +5743,7 @@ export namespace OSTree {
          * of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -5830,7 +5826,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         replace_async(
             etag: string | null,
@@ -5986,7 +5982,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         replace_readwrite_async(
             etag: string | null,
@@ -6165,7 +6161,7 @@ export namespace OSTree {
          * @param flags a #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback
          */
         set_attributes_async(
             info: Gio.FileInfo,
@@ -6236,7 +6232,7 @@ export namespace OSTree {
          * @param display_name a string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         set_display_name_async(
             display_name: string,
@@ -6366,7 +6362,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         unmount_mountable(
             flags: Gio.MountUnmountFlags,
@@ -6395,7 +6391,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         unmount_mountable_with_operation(
             flags: Gio.MountUnmountFlags,
@@ -6447,7 +6443,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_append_to_async(
             flags: Gio.FileCreateFlags,
@@ -6528,16 +6524,12 @@ export namespace OSTree {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         vfunc_copy_async(
             destination: Gio.File,
             flags: Gio.FileCopyFlags,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes copying the file started with g_file_copy_async().
@@ -6581,7 +6573,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_create_async(
             flags: Gio.FileCreateFlags,
@@ -6636,7 +6628,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_create_readwrite_async(
             flags: Gio.FileCreateFlags,
@@ -6719,7 +6711,7 @@ export namespace OSTree {
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         vfunc_eject_mountable(
             flags: Gio.MountUnmountFlags,
@@ -6744,7 +6736,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         vfunc_eject_mountable_with_operation(
             flags: Gio.MountUnmountFlags,
@@ -6808,7 +6800,7 @@ export namespace OSTree {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
          */
         vfunc_enumerate_children_async(
             attributes: string,
@@ -6858,7 +6850,7 @@ export namespace OSTree {
          * get the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_find_enclosing_mount_async(
             io_priority: number,
@@ -7138,7 +7130,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         vfunc_mount_mountable(
             flags: Gio.MountMountFlags,
@@ -7213,8 +7205,8 @@ export namespace OSTree {
          * @param flags set of #GFileCopyFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param progress_callback #GFileProgressCallback function for updates
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param progress_callback #GFileProgressCallback   function for updates
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_move_async(
             destination: Gio.File,
@@ -7261,7 +7253,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_open_readwrite_async(
             io_priority: number,
@@ -7362,7 +7354,7 @@ export namespace OSTree {
          * @param attributes an attribute query string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_query_filesystem_info_async(
             attributes: string,
@@ -7430,7 +7422,7 @@ export namespace OSTree {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
          */
         vfunc_query_info_async(
             attributes: string,
@@ -7481,7 +7473,7 @@ export namespace OSTree {
          * of the operation.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_read_async(
             io_priority: number,
@@ -7577,7 +7569,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_replace_async(
             etag: string | null,
@@ -7631,7 +7623,7 @@ export namespace OSTree {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_replace_readwrite_async(
             etag: string | null,
@@ -7692,7 +7684,7 @@ export namespace OSTree {
          * @param flags a #GFileQueryInfoFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback
          */
         vfunc_set_attributes_async(
             info: Gio.FileInfo,
@@ -7760,7 +7752,7 @@ export namespace OSTree {
          * @param display_name a string
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         vfunc_set_display_name_async(
             display_name: string,
@@ -7877,7 +7869,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         vfunc_unmount_mountable(
             flags: Gio.MountUnmountFlags,
@@ -7905,7 +7897,7 @@ export namespace OSTree {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         vfunc_unmount_mountable_with_operation(
             flags: Gio.MountUnmountFlags,

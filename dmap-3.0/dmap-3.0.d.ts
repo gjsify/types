@@ -272,12 +272,12 @@ export namespace DMAP {
     function hash_progressive_update(context: HashContext, buffer: number, length: number): void;
     function mdns_browser_error_quark(): GLib.Quark;
     function mdns_publisher_error_quark(): GLib.Quark;
+    function mime_to_format(transcode_mimetype: string): string;
     function structure_destroy(structure: GLib.Node): void;
     function structure_get_size(structure: GLib.Node): number;
     function structure_increase_by_predicted_size(structure: GLib.Node, size: number): void;
     function structure_print(structure: GLib.Node): void;
     function structure_serialize(structure: GLib.Node, length: number): string;
-    function utils_mime_to_format(transcode_mimetype: string): string;
     interface ConnectionCallback {
         (connection: Connection, result: boolean, reason: string): boolean;
     }
@@ -928,7 +928,7 @@ export namespace DMAP {
         // Signal callback interfaces
 
         interface ServiceAdded {
-            (service?: any | null): void;
+            (service: any): void;
         }
 
         interface ServiceRemoved {
@@ -960,9 +960,9 @@ export namespace DMAP {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
-        connect(signal: 'service-added', callback: (_source: this, service: any | null) => void): number;
-        connect_after(signal: 'service-added', callback: (_source: this, service: any | null) => void): number;
-        emit(signal: 'service-added', service?: any | null): void;
+        connect(signal: 'service-added', callback: (_source: this, service: any) => void): number;
+        connect_after(signal: 'service-added', callback: (_source: this, service: any) => void): number;
+        emit(signal: 'service-added', service: any): void;
         connect(signal: 'service-removed', callback: (_source: this, object: string) => void): number;
         connect_after(signal: 'service-removed', callback: (_source: this, object: string) => void): number;
         emit(signal: 'service-removed', object: string): void;
@@ -1061,7 +1061,10 @@ export namespace DMAP {
             password: string;
             revision_number: number;
             revisionNumber: number;
-            server: Soup.Server;
+            server_ipv4: Soup.Server;
+            serverIpv4: Soup.Server;
+            server_ipv6: Soup.Server;
+            serverIpv6: Soup.Server;
             transcode_mimetype: string;
             transcodeMimetype: string;
             txt_records: string[];
@@ -1089,7 +1092,10 @@ export namespace DMAP {
         set revision_number(val: number);
         get revisionNumber(): number;
         set revisionNumber(val: number);
-        get server(): Soup.Server;
+        get server_ipv4(): Soup.Server;
+        get serverIpv4(): Soup.Server;
+        get server_ipv6(): Soup.Server;
+        get serverIpv6(): Soup.Server;
         get transcode_mimetype(): string;
         get transcodeMimetype(): string;
         get txt_records(): string[];
@@ -1141,7 +1147,6 @@ export namespace DMAP {
             context: Soup.ClientContext,
         ): void;
         vfunc_get_desired_port(): number;
-        vfunc_get_meta_data_map(): any | null;
         vfunc_get_type_of_service(): string;
         vfunc_login(
             server: Soup.Server,
@@ -1241,7 +1246,7 @@ export namespace DMAP {
 
         buf: number[];
         bits: number[];
-        'in': Uint8Array;
+        'in': number[];
         version: number;
 
         // Constructors of DMAP.HashContext
@@ -1250,7 +1255,7 @@ export namespace DMAP {
             properties?: Partial<{
                 buf: number[];
                 bits: number[];
-                in: Uint8Array;
+                in: number[];
                 version: number;
             }>,
         );

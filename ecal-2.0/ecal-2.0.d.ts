@@ -208,6 +208,27 @@ export namespace ECal {
         TIMEZONE,
     }
     /**
+     * Declares interval units.
+     */
+    enum IntervalUnits {
+        /**
+         * No unit is set
+         */
+        NONE,
+        /**
+         * interval is in minutes
+         */
+        MINUTES,
+        /**
+         * interval is in hours
+         */
+        HOURS,
+        /**
+         * interval is in days
+         */
+        DAYS,
+    }
+    /**
      * An email address preferred for e-mail reminders by the calendar.
      */
     const BACKEND_PROPERTY_ALARM_EMAIL_ADDRESS: string;
@@ -716,6 +737,30 @@ export namespace ECal {
         locale?: string | null,
     ): ICalGLib.Property | null;
     /**
+     * Searches properties of kind `prop_kind` in the `icalcomp,` which can
+     * be filtered by the `func,` and returns one, which is usable for the `locale`.
+     * When `locale` is %NULL, the current locale is assumed. If no such property
+     * for the locale exists either the one with no language parameter or the first
+     * found is returned.
+     *
+     * The `func` is called before checking of the applicability for the `locale`.
+     * When the `func` is %NULL, all the properties of the `prop_kind` are considered.
+     *
+     * Free the returned non-NULL #ICalProperty with g_object_unref(),
+     * when no longer needed.
+     * @param icalcomp an #ICalComponent
+     * @param prop_kind an #ICalPropertyKind to traverse
+     * @param locale a locale identifier, or %NULL
+     * @param func an #ECalUtilFilterPropertyFunc, to determine whether a property can be considered
+     * @returns a property of kind @prop_kind for the @locale,    %NULL if no such property is set on the @comp.
+     */
+    function util_component_find_property_for_locale_filtered(
+        icalcomp: ICalGLib.Component,
+        prop_kind: ICalGLib.PropertyKind,
+        locale?: string | null,
+        func?: UtilFilterPropertyFunc | null,
+    ): ICalGLib.Property | null;
+    /**
      * Searches for an X property named `x_name` within X properties
      * of `icalcomp` and returns it. Free the non-NULL object
      * with g_object_unref(), when no longer needed.
@@ -925,6 +970,9 @@ export namespace ECal {
      * which is stored within the `client`. In contrast to e_cal_util_generate_alarms_for_comp(),
      * this function handles detached instances of recurring events properly.
      *
+     * The `def_reminder_before_start_seconds,` if not negative, causes addition of an alarm,
+     * which will trigger a "display" alarm these seconds before start of the event.
+     *
      * Returns the instances structure, or %NULL if no alarm instances occurred in the specified
      * time range. Free the returned structure with e_cal_component_alarms_free(),
      * when no longer needed.
@@ -935,7 +983,8 @@ export namespace ECal {
      * @param omit alarm types to omit
      * @param resolve_tzid Callback for resolving timezones
      * @param default_timezone The timezone used to resolve DATE and floating DATE-TIME values
-     * @param cancellable
+     * @param def_reminder_before_start_seconds add default reminder before start in seconds, when not negative value
+     * @param cancellable optional #GCancellable object, or %NULL
      * @returns a list of all the alarms found    for the given component in the given time range.
      */
     function util_generate_alarms_for_uid_sync(
@@ -946,6 +995,7 @@ export namespace ECal {
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
+        def_reminder_before_start_seconds: number,
         cancellable?: Gio.Cancellable | null,
     ): ComponentAlarms | null;
     /**
@@ -1308,6 +1358,9 @@ export namespace ECal {
     }
     interface RecurResolveTimezoneCb {
         (tzid: string, cancellable?: Gio.Cancellable | null): ICalGLib.Timezone | null;
+    }
+    interface UtilFilterPropertyFunc {
+        (prop: ICalGLib.Property): boolean;
     }
     interface UtilForeachCategoryFunc {
         (comp: ICalGLib.Component, inout_category: string): boolean;
@@ -3205,7 +3258,16 @@ export namespace ECal {
 
         // Own virtual methods of ECal.ClientView
 
+        /**
+         * A signal emitted when the backend finished initial view population
+         * @param error
+         */
         vfunc_complete(error: GLib.Error): void;
+        /**
+         * A signal emitted when the backend notifies about the progress
+         * @param percent
+         * @param message
+         */
         vfunc_progress(percent: number, message: string): void;
 
         // Own methods of ECal.ClientView

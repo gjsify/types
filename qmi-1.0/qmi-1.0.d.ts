@@ -842,82 +842,6 @@ export namespace Qmi {
         HSIC,
     }
     /**
-     * IMS registration status.
-     */
-    enum ImsaImsRegistrationStatus {
-        /**
-         * no registration for IMS.
-         */
-        NOT_REGISTERED,
-        /**
-         * IMS is registering.
-         */
-        REGISTERING,
-        /**
-         * IMS is fully registered.
-         */
-        REGISTERED,
-        /**
-         * IMS is limited registered, expect limited services.
-         */
-        LIMITED_REGISTERED,
-    }
-    /**
-     * Network technology on which service is available.
-     */
-    enum ImsaRegistrationTechnology {
-        /**
-         * registered on WLAN interface.
-         */
-        WLAN,
-        /**
-         * registered on WWAN interface.
-         */
-        WWAN,
-        /**
-         * registered on Interworking WLAN interface.
-         */
-        INTERWORKING_WLAN,
-    }
-    /**
-     * IMS Application Service availibility status.
-     */
-    enum ImsaServiceStatus {
-        /**
-         * Service unavailable.
-         */
-        UNAVAILABLE,
-        /**
-         * Service limited available.
-         */
-        LIMITED,
-        /**
-         * Service available.
-         */
-        AVAILABLE,
-    }
-    /**
-     * IMS Presence enabler state.
-     */
-    enum ImspEnablerState {
-        /**
-         * IMS is not initialized yet.
-         */
-        UNINITIALIZED,
-        /**
-         * IMS is initialized, but not registered yet with the network IMS service.
-         */
-        INITIALIZED,
-        /**
-         * IMS is initialized but device is in airplane mode.
-         */
-        AIRPLANE,
-        /**
-         * IMS is initialized and registered.
-         */
-        REGISTERED,
-    }
-    /**
      * State of the engine.
      *
      * Since 1.22
@@ -4670,10 +4594,6 @@ export namespace Qmi {
          * Telit AT Relay Service. Since: 1.34.
          */
         ATR,
-        /**
-         * Snapdragon Sensore Core Service. Since: 1.34.
-         */
-        SSC,
     }
     /**
      * SIO (serial I/O) port numbers. All ports available in the modem have a SIO
@@ -4717,19 +4637,6 @@ export namespace Qmi {
          * A2 MUX (BAM-DMUX) port for rmnet7.
          */
         A2_MUX_RMNET7,
-    }
-    /**
-     * SSC service report types.
-     */
-    enum SscReportType {
-        /**
-         * Small size report.
-         */
-        SMALL,
-        /**
-         * Large size report.
-         */
-        LARGE,
     }
     /**
      * Card application personalization feature, when a code is required.
@@ -9753,16 +9660,9 @@ export namespace Qmi {
      */
     const DEVICE_WWAN_IFACE: string;
     /**
-     * First byte of every QMI QMUX message.
+     * First byte of every QMI message.
      */
     const MESSAGE_QMUX_MARKER: number;
-    /**
-     * Fake header added by libqmi to re-use existing QMUX message parsers for QRTR messages.
-     * QRTR QMI services with a service ID > 0xFF use this fake header where the service ID
-     * is set to 16 bits instead of 8 bits. This header has no purpose outside of libqmi
-     * and is never send to the actual device implementing these QMI services.
-     */
-    const MESSAGE_QRTR_MARKER: number;
     /**
      * Generic vendor id (0x0000).
      */
@@ -10023,30 +9923,6 @@ export namespace Qmi {
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
     function gas_usb_composition_endpoint_type_get_string(val: GasUsbCompositionEndpointType): string;
-    /**
-     * Gets the nickname string for the #QmiImsaImsRegistrationStatus specified at `val`.
-     * @param val a QmiImsaImsRegistrationStatus.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
-     */
-    function imsa_ims_registration_status_get_string(val: ImsaImsRegistrationStatus): string;
-    /**
-     * Gets the nickname string for the #QmiImsaRegistrationTechnology specified at `val`.
-     * @param val a QmiImsaRegistrationTechnology.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
-     */
-    function imsa_registration_technology_get_string(val: ImsaRegistrationTechnology): string;
-    /**
-     * Gets the nickname string for the #QmiImsaServiceStatus specified at `val`.
-     * @param val a QmiImsaServiceStatus.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
-     */
-    function imsa_service_status_get_string(val: ImsaServiceStatus): string;
-    /**
-     * Gets the nickname string for the #QmiImspEnablerState specified at `val`.
-     * @param val a QmiImspEnablerState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
-     */
-    function imsp_enabler_state_get_string(val: ImspEnablerState): string;
     /**
      * Parses a #QmiMessage and builds a #QmiIndicationAtrReceivedOutput out of it.
      * The operation fails if the message is of the wrong type.
@@ -10332,20 +10208,6 @@ export namespace Qmi {
      * @returns a #QmiIndicationQosNetworkStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_indication_qos_network_status_output_unref().
      */
     function indication_qos_network_status_indication_parse(message: Message): IndicationQosNetworkStatusOutput;
-    /**
-     * Parses a #QmiMessage and builds a #QmiIndicationSscReportLargeOutput out of it.
-     * The operation fails if the message is of the wrong type.
-     * @param message a #QmiMessage.
-     * @returns a #QmiIndicationSscReportLargeOutput, or %NULL if @error is set. The returned value should be freed with qmi_indication_ssc_report_large_output_unref().
-     */
-    function indication_ssc_report_large_indication_parse(message: Message): IndicationSscReportLargeOutput;
-    /**
-     * Parses a #QmiMessage and builds a #QmiIndicationSscReportSmallOutput out of it.
-     * The operation fails if the message is of the wrong type.
-     * @param message a #QmiMessage.
-     * @returns a #QmiIndicationSscReportSmallOutput, or %NULL if @error is set. The returned value should be freed with qmi_indication_ssc_report_small_output_unref().
-     */
-    function indication_ssc_report_small_indication_parse(message: Message): IndicationSscReportSmallOutput;
     /**
      * Parses a #QmiMessage and builds a #QmiIndicationUimCardStatusOutput out of it.
      * The operation fails if the message is of the wrong type.
@@ -11187,12 +11049,6 @@ export namespace Qmi {
      */
     function message_get_length(self: Message): number;
     /**
-     * Gets the marker of the #QmiMessage.
-     * @param self a #QmiMessage.
-     * @returns The message marker.
-     */
-    function message_get_marker(self: Message): number;
-    /**
      * Gets the ID of the message.
      * @param self a #QmiMessage.
      * @returns the ID.
@@ -11271,40 +11127,6 @@ export namespace Qmi {
      * @returns a #QmiMessageGmsTestSetValueOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_gms_test_set_value_output_unref().
      */
     function message_gms_test_set_value_response_parse(message: Message): MessageGmsTestSetValueOutput;
-    /**
-     * Parses a #QmiMessage and builds a #QmiMessageImsGetImsServicesEnabledSettingOutput out of it.
-     * The operation fails if the message is of the wrong type.
-     * @param message a #QmiMessage.
-     * @returns a #QmiMessageImsGetImsServicesEnabledSettingOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_ims_get_ims_services_enabled_setting_output_unref().
-     */
-    function message_ims_get_ims_services_enabled_setting_response_parse(
-        message: Message,
-    ): MessageImsGetImsServicesEnabledSettingOutput;
-    /**
-     * Parses a #QmiMessage and builds a #QmiMessageImsaGetImsRegistrationStatusOutput out of it.
-     * The operation fails if the message is of the wrong type.
-     * @param message a #QmiMessage.
-     * @returns a #QmiMessageImsaGetImsRegistrationStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_imsa_get_ims_registration_status_output_unref().
-     */
-    function message_imsa_get_ims_registration_status_response_parse(
-        message: Message,
-    ): MessageImsaGetImsRegistrationStatusOutput;
-    /**
-     * Parses a #QmiMessage and builds a #QmiMessageImsaGetImsServicesStatusOutput out of it.
-     * The operation fails if the message is of the wrong type.
-     * @param message a #QmiMessage.
-     * @returns a #QmiMessageImsaGetImsServicesStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_imsa_get_ims_services_status_output_unref().
-     */
-    function message_imsa_get_ims_services_status_response_parse(
-        message: Message,
-    ): MessageImsaGetImsServicesStatusOutput;
-    /**
-     * Parses a #QmiMessage and builds a #QmiMessageImspGetEnablerStateOutput out of it.
-     * The operation fails if the message is of the wrong type.
-     * @param message a #QmiMessage.
-     * @returns a #QmiMessageImspGetEnablerStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_imsp_get_enabler_state_output_unref().
-     */
-    function message_imsp_get_enabler_state_response_parse(message: Message): MessageImspGetEnablerStateOutput;
     /**
      * Checks whether the given #QmiMessage is an indication.
      * @param self a #QmiMessage.
@@ -11991,13 +11813,6 @@ export namespace Qmi {
      * @param transaction_id transaction id.
      */
     function message_set_transaction_id(self: Message, transaction_id: number): void;
-    /**
-     * Parses a #QmiMessage and builds a #QmiMessageSscControlOutput out of it.
-     * The operation fails if the message is of the wrong type.
-     * @param message a #QmiMessage.
-     * @returns a #QmiMessageSscControlOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_ssc_control_output_unref().
-     */
-    function message_ssc_control_response_parse(message: Message): MessageSscControlOutput;
     /**
      * Reads a string from the TLV.
      *
@@ -13612,12 +13427,6 @@ export namespace Qmi {
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
     function sio_port_get_string(val: SioPort): string;
-    /**
-     * Gets the nickname string for the #QmiSscReportType specified at `val`.
-     * @param val a QmiSscReportType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
-     */
-    function ssc_report_type_get_string(val: SscReportType): string;
     /**
      * Gets the nickname string for the #QmiUimCardApplicationPersonalizationFeature specified at `val`.
      * @param val a QmiUimCardApplicationPersonalizationFeature.
@@ -19020,167 +18829,6 @@ export namespace Qmi {
         test_set_value_finish(res: Gio.AsyncResult): MessageGmsTestSetValueOutput;
     }
 
-    module ClientIms {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Client.ConstructorProps {}
-    }
-
-    /**
-     * The #QmiClientIms structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    class ClientIms extends Client {
-        static $gtype: GObject.GType<ClientIms>;
-
-        // Constructors of Qmi.ClientIms
-
-        constructor(properties?: Partial<ClientIms.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.ClientIms
-
-        /**
-         * Asynchronously sends a Get IMS Services Enabled Setting request to the device.
-         *
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-         *
-         * You can then call qmi_client_ims_get_ims_services_enabled_setting_finish() to get the result of the operation.
-         * @param unused %NULL. This message doesn't have any input bundle.
-         * @param timeout maximum time to wait for the method to complete, in seconds.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
-         */
-        get_ims_services_enabled_setting(
-            unused: any | null,
-            timeout: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an async operation started with qmi_client_ims_get_ims_services_enabled_setting().
-         * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_ims_get_ims_services_enabled_setting().
-         * @returns a #QmiMessageImsGetImsServicesEnabledSettingOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_ims_get_ims_services_enabled_setting_output_unref().
-         */
-        get_ims_services_enabled_setting_finish(res: Gio.AsyncResult): MessageImsGetImsServicesEnabledSettingOutput;
-    }
-
-    module ClientImsa {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Client.ConstructorProps {}
-    }
-
-    /**
-     * The #QmiClientImsa structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    class ClientImsa extends Client {
-        static $gtype: GObject.GType<ClientImsa>;
-
-        // Constructors of Qmi.ClientImsa
-
-        constructor(properties?: Partial<ClientImsa.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.ClientImsa
-
-        /**
-         * Asynchronously sends a Get IMS Registration Status request to the device.
-         *
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-         *
-         * You can then call qmi_client_imsa_get_ims_registration_status_finish() to get the result of the operation.
-         * @param unused %NULL. This message doesn't have any input bundle.
-         * @param timeout maximum time to wait for the method to complete, in seconds.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
-         */
-        get_ims_registration_status(
-            unused: any | null,
-            timeout: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an async operation started with qmi_client_imsa_get_ims_registration_status().
-         * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_imsa_get_ims_registration_status().
-         * @returns a #QmiMessageImsaGetImsRegistrationStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_imsa_get_ims_registration_status_output_unref().
-         */
-        get_ims_registration_status_finish(res: Gio.AsyncResult): MessageImsaGetImsRegistrationStatusOutput;
-        /**
-         * Asynchronously sends a Get IMS Services Status request to the device.
-         *
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-         *
-         * You can then call qmi_client_imsa_get_ims_services_status_finish() to get the result of the operation.
-         * @param unused %NULL. This message doesn't have any input bundle.
-         * @param timeout maximum time to wait for the method to complete, in seconds.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
-         */
-        get_ims_services_status(
-            unused: any | null,
-            timeout: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an async operation started with qmi_client_imsa_get_ims_services_status().
-         * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_imsa_get_ims_services_status().
-         * @returns a #QmiMessageImsaGetImsServicesStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_imsa_get_ims_services_status_output_unref().
-         */
-        get_ims_services_status_finish(res: Gio.AsyncResult): MessageImsaGetImsServicesStatusOutput;
-    }
-
-    module ClientImsp {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Client.ConstructorProps {}
-    }
-
-    /**
-     * The #QmiClientImsp structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    class ClientImsp extends Client {
-        static $gtype: GObject.GType<ClientImsp>;
-
-        // Constructors of Qmi.ClientImsp
-
-        constructor(properties?: Partial<ClientImsp.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.ClientImsp
-
-        /**
-         * Asynchronously sends a Get Enabler State request to the device.
-         *
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-         *
-         * You can then call qmi_client_imsp_get_enabler_state_finish() to get the result of the operation.
-         * @param unused %NULL. This message doesn't have any input bundle.
-         * @param timeout maximum time to wait for the method to complete, in seconds.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
-         */
-        get_enabler_state(
-            unused: any | null,
-            timeout: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an async operation started with qmi_client_imsp_get_enabler_state().
-         * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_imsp_get_enabler_state().
-         * @returns a #QmiMessageImspGetEnablerStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_imsp_get_enabler_state_output_unref().
-         */
-        get_enabler_state_finish(res: Gio.AsyncResult): MessageImspGetEnablerStateOutput;
-    }
-
     module ClientLoc {
         // Signal callback interfaces
 
@@ -21830,86 +21478,6 @@ export namespace Qmi {
          * @returns a #QmiMessageSarRfSetStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_sar_rf_set_state_output_unref().
          */
         rf_set_state_finish(res: Gio.AsyncResult): MessageSarRfSetStateOutput;
-    }
-
-    module ClientSsc {
-        // Signal callback interfaces
-
-        interface ReportLarge {
-            (output: IndicationSscReportLargeOutput): void;
-        }
-
-        interface ReportSmall {
-            (output: IndicationSscReportSmallOutput): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends Client.ConstructorProps {}
-    }
-
-    /**
-     * The #QmiClientSsc structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    class ClientSsc extends Client {
-        static $gtype: GObject.GType<ClientSsc>;
-
-        // Constructors of Qmi.ClientSsc
-
-        constructor(properties?: Partial<ClientSsc.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Own signals of Qmi.ClientSsc
-
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'report-large',
-            callback: (_source: this, output: IndicationSscReportLargeOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'report-large',
-            callback: (_source: this, output: IndicationSscReportLargeOutput) => void,
-        ): number;
-        emit(signal: 'report-large', output: IndicationSscReportLargeOutput): void;
-        connect(
-            signal: 'report-small',
-            callback: (_source: this, output: IndicationSscReportSmallOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'report-small',
-            callback: (_source: this, output: IndicationSscReportSmallOutput) => void,
-        ): number;
-        emit(signal: 'report-small', output: IndicationSscReportSmallOutput): void;
-
-        // Own methods of Qmi.ClientSsc
-
-        /**
-         * Asynchronously sends a Control request to the device.
-         *
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-         *
-         * You can then call qmi_client_ssc_control_finish() to get the result of the operation.
-         * @param input a #QmiMessageSscControlInput.
-         * @param timeout maximum time to wait for the method to complete, in seconds.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
-         */
-        control(
-            input: MessageSscControlInput,
-            timeout: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an async operation started with qmi_client_ssc_control().
-         * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_ssc_control().
-         * @returns a #QmiMessageSscControlOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_ssc_control_output_unref().
-         */
-        control_finish(res: Gio.AsyncResult): MessageSscControlOutput;
     }
 
     module ClientUim {
@@ -25423,9 +24991,6 @@ export namespace Qmi {
     type ClientFoxClass = typeof ClientFox;
     type ClientGasClass = typeof ClientGas;
     type ClientGmsClass = typeof ClientGms;
-    type ClientImsClass = typeof ClientIms;
-    type ClientImsaClass = typeof ClientImsa;
-    type ClientImspClass = typeof ClientImsp;
     type ClientLocClass = typeof ClientLoc;
     type ClientNasClass = typeof ClientNas;
     type ClientOmaClass = typeof ClientOma;
@@ -25442,7 +25007,6 @@ export namespace Qmi {
 
     type ClientQosClass = typeof ClientQos;
     type ClientSarClass = typeof ClientSar;
-    type ClientSscClass = typeof ClientSsc;
     type ClientUimClass = typeof ClientUim;
     type ClientVoiceClass = typeof ClientVoice;
     type ClientWdaClass = typeof ClientWda;
@@ -27787,76 +27351,6 @@ export namespace Qmi {
          * @returns the new reference to @self.
          */
         ref(): IndicationQosNetworkStatusOutput;
-        /**
-         * Atomically decrements the reference count of `self` by one.
-         * If the reference count drops to 0, `self` is completely disposed.
-         */
-        unref(): void;
-    }
-
-    /**
-     * The #QmiIndicationSscReportLargeOutput structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    abstract class IndicationSscReportLargeOutput {
-        static $gtype: GObject.GType<IndicationSscReportLargeOutput>;
-
-        // Constructors of Qmi.IndicationSscReportLargeOutput
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.IndicationSscReportLargeOutput
-
-        /**
-         * Get the 'Client ID' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_client_id(): [boolean, number];
-        /**
-         * Get the 'Data' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_data(): [boolean, Uint8Array | null];
-        /**
-         * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
-         */
-        ref(): IndicationSscReportLargeOutput;
-        /**
-         * Atomically decrements the reference count of `self` by one.
-         * If the reference count drops to 0, `self` is completely disposed.
-         */
-        unref(): void;
-    }
-
-    /**
-     * The #QmiIndicationSscReportSmallOutput structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    abstract class IndicationSscReportSmallOutput {
-        static $gtype: GObject.GType<IndicationSscReportSmallOutput>;
-
-        // Constructors of Qmi.IndicationSscReportSmallOutput
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.IndicationSscReportSmallOutput
-
-        /**
-         * Get the 'Client ID' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_client_id(): [boolean, number];
-        /**
-         * Get the 'Data' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_data(): [boolean, Uint8Array | null];
-        /**
-         * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
-         */
-        ref(): IndicationSscReportSmallOutput;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -33483,236 +32977,6 @@ export namespace Qmi {
          * @returns the new reference to @self.
          */
         ref(): MessageGmsTestSetValueOutput;
-        /**
-         * Atomically decrements the reference count of `self` by one.
-         * If the reference count drops to 0, `self` is completely disposed.
-         */
-        unref(): void;
-    }
-
-    /**
-     * The #QmiMessageImsGetImsServicesEnabledSettingOutput structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    abstract class MessageImsGetImsServicesEnabledSettingOutput {
-        static $gtype: GObject.GType<MessageImsGetImsServicesEnabledSettingOutput>;
-
-        // Constructors of Qmi.MessageImsGetImsServicesEnabledSettingOutput
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.MessageImsGetImsServicesEnabledSettingOutput
-
-        /**
-         * Get the 'IMS Registration Service Enabled' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_registration_service_enabled(): [boolean, boolean];
-        /**
-         * Get the 'IMS SMS Service Enabled' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_sms_service_enabled(): [boolean, boolean];
-        /**
-         * Get the 'IMS USSD Service Enabled' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_ussd_service_enabled(): [boolean, boolean];
-        /**
-         * Get the 'IMS UT Service Enabled' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_ut_service_enabled(): [boolean, boolean];
-        /**
-         * Get the 'IMS Video Telephony Service Enabled' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_video_telephony_service_enabled(): [boolean, boolean];
-        /**
-         * Get the 'IMS Voice Service Enabled' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_voice_service_enabled(): [boolean, boolean];
-        /**
-         * Get the 'IMS Voice WiFi Service Enabled' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_voice_wifi_service_enabled(): [boolean, boolean];
-        /**
-         * Get the result of the QMI operation.
-         * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
-         */
-        get_result(): boolean;
-        /**
-         * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
-         */
-        ref(): MessageImsGetImsServicesEnabledSettingOutput;
-        /**
-         * Atomically decrements the reference count of `self` by one.
-         * If the reference count drops to 0, `self` is completely disposed.
-         */
-        unref(): void;
-    }
-
-    /**
-     * The #QmiMessageImsaGetImsRegistrationStatusOutput structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    abstract class MessageImsaGetImsRegistrationStatusOutput {
-        static $gtype: GObject.GType<MessageImsaGetImsRegistrationStatusOutput>;
-
-        // Constructors of Qmi.MessageImsaGetImsRegistrationStatusOutput
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.MessageImsaGetImsRegistrationStatusOutput
-
-        /**
-         * Get the 'IMS Registration Error Code' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_registration_error_code(): [boolean, number];
-        /**
-         * Get the 'IMS Registration Error Message' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_registration_error_message(): [boolean, string];
-        /**
-         * Get the 'IMS Registration Status' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_registration_status(): [boolean, ImsaImsRegistrationStatus | null];
-        /**
-         * Get the 'IMS Registration Technology' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
-        /**
-         * Get the result of the QMI operation.
-         * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
-         */
-        get_result(): boolean;
-        /**
-         * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
-         */
-        ref(): MessageImsaGetImsRegistrationStatusOutput;
-        /**
-         * Atomically decrements the reference count of `self` by one.
-         * If the reference count drops to 0, `self` is completely disposed.
-         */
-        unref(): void;
-    }
-
-    /**
-     * The #QmiMessageImsaGetImsServicesStatusOutput structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    abstract class MessageImsaGetImsServicesStatusOutput {
-        static $gtype: GObject.GType<MessageImsaGetImsServicesStatusOutput>;
-
-        // Constructors of Qmi.MessageImsaGetImsServicesStatusOutput
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.MessageImsaGetImsServicesStatusOutput
-
-        /**
-         * Get the 'IMS SMS Service Registration Technology' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_sms_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
-        /**
-         * Get the 'IMS SMS Service Status' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_sms_service_status(): [boolean, ImsaServiceStatus | null];
-        /**
-         * Get the 'IMS UE to TAS Service Registration Technology' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_ue_to_tas_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
-        /**
-         * Get the 'IMS UE to TAS Service Status' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_ue_to_tas_service_status(): [boolean, ImsaServiceStatus | null];
-        /**
-         * Get the 'IMS Video Share Service Registration Technology' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_video_share_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
-        /**
-         * Get the 'IMS Video Share Service Status' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_video_share_service_status(): [boolean, ImsaServiceStatus | null];
-        /**
-         * Get the 'IMS Video Telephony Service Registration Technology' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_video_telephony_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
-        /**
-         * Get the 'IMS Video Telephony Service Status' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_video_telephony_service_status(): [boolean, ImsaServiceStatus | null];
-        /**
-         * Get the 'IMS Voice Service Registration Technology' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_voice_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
-        /**
-         * Get the 'IMS Voice Service Status' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_ims_voice_service_status(): [boolean, ImsaServiceStatus | null];
-        /**
-         * Get the result of the QMI operation.
-         * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
-         */
-        get_result(): boolean;
-        /**
-         * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
-         */
-        ref(): MessageImsaGetImsServicesStatusOutput;
-        /**
-         * Atomically decrements the reference count of `self` by one.
-         * If the reference count drops to 0, `self` is completely disposed.
-         */
-        unref(): void;
-    }
-
-    /**
-     * The #QmiMessageImspGetEnablerStateOutput structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    abstract class MessageImspGetEnablerStateOutput {
-        static $gtype: GObject.GType<MessageImspGetEnablerStateOutput>;
-
-        // Constructors of Qmi.MessageImspGetEnablerStateOutput
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.MessageImspGetEnablerStateOutput
-
-        /**
-         * Get the 'Enabler State' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_enabler_state(): [boolean, ImspEnablerState | null];
-        /**
-         * Get the result of the QMI operation.
-         * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
-         */
-        get_result(): boolean;
-        /**
-         * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
-         */
-        ref(): MessageImspGetEnablerStateOutput;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -42450,96 +41714,6 @@ export namespace Qmi {
          * @returns the new reference to @self.
          */
         ref(): MessageSarRfSetStateOutput;
-        /**
-         * Atomically decrements the reference count of `self` by one.
-         * If the reference count drops to 0, `self` is completely disposed.
-         */
-        unref(): void;
-    }
-
-    /**
-     * The #QmiMessageSscControlInput structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    class MessageSscControlInput {
-        static $gtype: GObject.GType<MessageSscControlInput>;
-
-        // Constructors of Qmi.MessageSscControlInput
-
-        constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
-
-        static ['new'](): MessageSscControlInput;
-
-        // Own methods of Qmi.MessageSscControlInput
-
-        /**
-         * Get the 'Data' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_data(): [boolean, Uint8Array | null];
-        /**
-         * Get the 'Report Type' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_report_type(): [boolean, SscReportType | null];
-        /**
-         * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
-         */
-        ref(): MessageSscControlInput;
-        /**
-         * Set the 'Data' field in the message.
-         * @param value_data a #GArray of #guint8 elements. A new reference to @value_data will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
-         * @returns %TRUE if @value was successfully set, %FALSE otherwise.
-         */
-        set_data(value_data: Uint8Array | string): boolean;
-        /**
-         * Set the 'Report Type' field in the message.
-         * @param value_report_type a #QmiSscReportType.
-         * @returns %TRUE if @value was successfully set, %FALSE otherwise.
-         */
-        set_report_type(value_report_type: SscReportType): boolean;
-        /**
-         * Atomically decrements the reference count of `self` by one.
-         * If the reference count drops to 0, `self` is completely disposed.
-         */
-        unref(): void;
-    }
-
-    /**
-     * The #QmiMessageSscControlOutput structure contains private data and should only be accessed
-     * using the provided API.
-     */
-    abstract class MessageSscControlOutput {
-        static $gtype: GObject.GType<MessageSscControlOutput>;
-
-        // Constructors of Qmi.MessageSscControlOutput
-
-        _init(...args: any[]): void;
-
-        // Own methods of Qmi.MessageSscControlOutput
-
-        /**
-         * Get the 'Client ID' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_client_id(): [boolean, number];
-        /**
-         * Get the 'Response' field from `self`.
-         * @returns %TRUE if the field is found, %FALSE otherwise.
-         */
-        get_response(): [boolean, number];
-        /**
-         * Get the result of the QMI operation.
-         * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
-         */
-        get_result(): boolean;
-        /**
-         * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
-         */
-        ref(): MessageSscControlOutput;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.

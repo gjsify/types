@@ -1549,7 +1549,14 @@ export namespace Gcr {
 
         // Own virtual methods of Gcr.Parser
 
+        /**
+         * The default handler for the authenticate signal.
+         * @param count
+         */
         vfunc_authenticate(count: number): boolean;
+        /**
+         * The default handler for the parsed signal.
+         */
         vfunc_parsed(): void;
 
         // Own methods of Gcr.Parser
@@ -1991,6 +1998,11 @@ export namespace Gcr {
          * @returns allocated memory          containing the raw subject
          */
         get_subject_raw(): Uint8Array | null;
+        /**
+         * Get the version of the X.509 certificate.
+         * @returns the version of the certificate
+         */
+        get_version(): number;
         /**
          * Check if `issuer` could be the issuer of this certificate. This is done by
          * comparing the relevant subject and issuer fields. No signature check is
@@ -2696,6 +2708,11 @@ export namespace Gcr {
          * @returns allocated memory          containing the raw subject
          */
         get_subject_raw(): Uint8Array | null;
+        /**
+         * Get the version of the X.509 certificate.
+         * @returns the version of the certificate
+         */
+        get_version(): number;
         /**
          * Check if `issuer` could be the issuer of this certificate. This is done by
          * comparing the relevant subject and issuer fields. No signature check is
@@ -3759,6 +3776,9 @@ export namespace Gcr {
          * @param warning the warning or %NULL
          */
         set_warning(warning?: string | null): void;
+        /**
+         * close a prompt
+         */
         vfunc_prompt_close(): void;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
@@ -4813,6 +4833,11 @@ export namespace Gcr {
          */
         get_subject_raw(): Uint8Array | null;
         /**
+         * Get the version of the X.509 certificate.
+         * @returns the version of the certificate
+         */
+        get_version(): number;
+        /**
          * Check if `issuer` could be the issuer of this certificate. This is done by
          * comparing the relevant subject and issuer fields. No signature check is
          * done. Proper verification of certificates must be done via a crypto
@@ -5563,6 +5588,9 @@ export namespace Gcr {
 
         // Own virtual methods of Gcr.Prompt
 
+        /**
+         * close a prompt
+         */
         vfunc_prompt_close(): void;
         /**
          * Prompts for confirmation asking a cancel/continue style question.

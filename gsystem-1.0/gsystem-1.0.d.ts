@@ -409,7 +409,7 @@ export namespace GSystem {
      * Use openat() to open a directory, using a standard set of flags.
      * This function sets errno.
      * @param dfd File descriptor for origin directory
-     * @param path
+     * @param path Pathname, relative to @dfd
      * @param follow Whether or not to follow symbolic links
      */
     function opendirat_with_errno(dfd: number, path: string, follow: boolean): number;
@@ -452,11 +452,11 @@ export namespace GSystem {
      * Recursively delete the filename referenced by the combination of
      * the directory fd`dfd` and `path;` it may be a file or directory.  No
      * error is thrown if `path` does not exist.
-     * @param fd
+     * @param dfd A directory file descriptor, or -1 for current
      * @param path Path
      * @param cancellable Cancellable
      */
-    function shutil_rm_rf_at(fd: number, path: string, cancellable?: Gio.Cancellable | null): boolean;
+    function shutil_rm_rf_at(dfd: number, path: string, cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Use this function when you want your code to behave differently
      * depeneding on whether your program was started as a systemd unit,

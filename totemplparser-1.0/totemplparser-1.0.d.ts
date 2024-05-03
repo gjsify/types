@@ -176,9 +176,15 @@ export namespace TotemPlParser {
      */
     const PARSER_FIELD_FILESIZE: string;
     /**
-     * Metadata field for an entry's genre.
+     * Metadata field for an entry's primary genre. This is a string of
+     * the form 'Genre1' or 'Genre1/SubGenre1".
      */
     const PARSER_FIELD_GENRE: string;
+    /**
+     * Metadata field for an entry's full genre. This is a concatenated
+     * string of the form 'Genre1/SubGenre1,Genre2/SubGenre2" etc.
+     */
+    const PARSER_FIELD_GENRES: string;
     /**
      * Metadata field for an entry's identifier. Its use is dependent on the format
      * of the playlist parsed, and its origin.

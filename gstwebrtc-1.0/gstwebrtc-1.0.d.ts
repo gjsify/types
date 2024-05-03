@@ -745,7 +745,7 @@ export namespace GstWebRTC {
 
         // Own virtual methods of GstWebRTC.WebRTCICE
 
-        vfunc_add_candidate(stream: WebRTCICEStream, candidate: string): void;
+        vfunc_add_candidate(stream: WebRTCICEStream, candidate: string, promise?: Gst.Promise | null): void;
         vfunc_add_stream(session_id: number): WebRTCICEStream | null;
         vfunc_add_turn_server(uri: string): boolean;
         vfunc_find_transport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null;
@@ -776,7 +776,7 @@ export namespace GstWebRTC {
 
         // Own methods of GstWebRTC.WebRTCICE
 
-        add_candidate(stream: WebRTCICEStream, candidate: string): void;
+        add_candidate(stream: WebRTCICEStream, candidate: string, promise?: Gst.Promise | null): void;
         add_stream(session_id: number): WebRTCICEStream | null;
         add_turn_server(uri: string): boolean;
         find_transport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null;

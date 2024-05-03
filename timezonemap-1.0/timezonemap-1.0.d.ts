@@ -11,17 +11,17 @@ import './timezonemap-1.0-ambient.d.ts';
  * TimezoneMap-1.0
  */
 
-import type Json from '@girs/json-1.0';
-import type Gio from '@girs/gio-2.0';
+import type xlib from '@girs/xlib-2.0';
+import type cairo from '@girs/cairo-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type Gtk from '@girs/gtk-3.0';
-import type xlib from '@girs/xlib-2.0';
-import type Gdk from '@girs/gdk-3.0';
-import type cairo from '@girs/cairo-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
+import type Gio from '@girs/gio-2.0';
+import type Json from '@girs/json-1.0';
+import type Gtk from '@girs/gtk-3.0';
+import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
@@ -749,13 +749,8 @@ export namespace TimezoneMap {
             Comment: string;
             country: string;
             dist: number;
-            en_name: string;
-            enName: string;
-            full_country: string;
-            fullCountry: string;
             latitude: number;
             longitude: number;
-            state: string;
             zone: string;
         }
     }
@@ -771,20 +766,10 @@ export namespace TimezoneMap {
         set country(val: string);
         get dist(): number;
         set dist(val: number);
-        get en_name(): string;
-        set en_name(val: string);
-        get enName(): string;
-        set enName(val: string);
-        get full_country(): string;
-        set full_country(val: string);
-        get fullCountry(): string;
-        set fullCountry(val: string);
         get latitude(): number;
         set latitude(val: number);
         get longitude(): number;
         set longitude(val: number);
-        get state(): string;
-        set state(val: string);
         get zone(): string;
         set zone(val: string);
 
@@ -795,27 +780,6 @@ export namespace TimezoneMap {
         _init(...args: any[]): void;
 
         static ['new'](): TimezoneLocation;
-
-        // Own methods of TimezoneMap.TimezoneLocation
-
-        get_comment(): string;
-        get_country(): string;
-        get_dist(): number;
-        get_en_name(): string;
-        get_full_country(): string;
-        get_latitude(): number;
-        get_longitude(): number;
-        get_state(): string;
-        get_zone(): string;
-        set_comment(comment: string): void;
-        set_country(country: string): void;
-        set_dist(dist: number): void;
-        set_en_name(en_name: string): void;
-        set_full_country(full_country: string): void;
-        set_latitude(lat: number): void;
-        set_longitude(lng: number): void;
-        set_state(state: string): void;
-        set_zone(zone: string): void;
     }
 
     module TimezoneMap {
@@ -830,21 +794,11 @@ export namespace TimezoneMap {
         interface ConstructorProps
             extends Gtk.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
-            selected_offset: string;
-            selectedOffset: string;
-        }
+                Gtk.Buildable.ConstructorProps {}
     }
 
     class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TimezoneMap>;
-
-        // Own properties of TimezoneMap.TimezoneMap
-
-        get selected_offset(): string;
-        set selected_offset(val: string);
-        get selectedOffset(): string;
-        set selectedOffset(val: string);
 
         // Constructors of TimezoneMap.TimezoneMap
 
@@ -865,30 +819,8 @@ export namespace TimezoneMap {
 
         // Own methods of TimezoneMap.TimezoneMap
 
-        /**
-         * Clear the location currently set for the #CcTimezoneMap. This will remove
-         * the highlight and reset the map to its original state.
-         */
-        clear_location(): void;
-        /**
-         * Returns the current location set for the map.
-         * @returns the map location.
-         */
-        get_location(): TimezoneLocation;
-        /**
-         * Returns the currently selected offset in hours from GMT.
-         * @returns The selected offset.
-         */
-        get_selected_offset(): number;
         get_timezone_at_coords(lon: number, lat: number): string;
         set_coords(lon: number, lat: number): void;
-        set_location(lon: number, lat: number): void;
-        /**
-         * Set the currently selected offset for the map and redraw the highlighted
-         * time zone.
-         * @param offset The offset from GMT in hours
-         */
-        set_selected_offset(offset: number): void;
         set_timezone(timezone: string): void;
         set_watermark(watermark: string): void;
 

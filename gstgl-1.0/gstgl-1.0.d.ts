@@ -1032,6 +1032,71 @@ export namespace GstGL {
         vfunc_alloc(...args: never[]): any;
     }
 
+    module GLBaseMixer {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GstVideo.VideoAggregator.ConstructorProps {
+            context: GLContext;
+        }
+    }
+
+    /**
+     * #GstGLBaseMixer handles the nitty gritty details of retrieving an OpenGL
+     * context.  It provides some virtual methods to know when the OpenGL context
+     * is available and is not available within this element.
+     */
+    abstract class GLBaseMixer extends GstVideo.VideoAggregator {
+        static $gtype: GObject.GType<GLBaseMixer>;
+
+        // Own properties of GstGL.GLBaseMixer
+
+        /**
+         * The #GstGLContext in use by this #GstGLBaseMixer
+         */
+        get context(): GLContext;
+
+        // Own fields of GstGL.GLBaseMixer
+
+        display: GLDisplay;
+
+        // Constructors of GstGL.GLBaseMixer
+
+        constructor(properties?: Partial<GLBaseMixer.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own virtual methods of GstGL.GLBaseMixer
+
+        /**
+         * called in the GL thread to setup the element GL state.
+         */
+        vfunc_gl_start(): boolean;
+        /**
+         * called in the GL thread to setup the element GL state.
+         */
+        vfunc_gl_stop(): void;
+
+        // Own methods of GstGL.GLBaseMixer
+
+        get_gl_context(): GLContext | null;
+    }
+
+    module GLBaseMixerPad {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GstVideo.VideoAggregatorPad.ConstructorProps {}
+    }
+
+    class GLBaseMixerPad extends GstVideo.VideoAggregatorPad {
+        static $gtype: GObject.GType<GLBaseMixerPad>;
+
+        // Constructors of GstGL.GLBaseMixerPad
+
+        constructor(properties?: Partial<GLBaseMixerPad.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+    }
+
     module GLBaseSrc {
         // Constructor properties interface
 
@@ -1638,6 +1703,14 @@ export namespace GstGL {
         create_context(other_context: GLContext | null): [boolean, GLContext];
         create_window(): GLWindow | null;
         /**
+         * Ensures that the display has a valid GL context for the current thread. If
+         * `context` already contains a valid context, this does nothing.
+         * @param other_context other #GstGLContext to share resources with.
+         * @param context the resulting #GstGLContext
+         * @returns wether @context contains a valid context.
+         */
+        ensure_context(other_context?: GLContext | null, context?: GLContext | null): [boolean, GLContext | null];
+        /**
          * limit the use of OpenGL to the requested `gl_api`.  This is intended to allow
          * application and elements to request a specific set of OpenGL API's based on
          * what they support.  See gst_gl_context_get_gl_api() for the retrieving the
@@ -1867,6 +1940,77 @@ export namespace GstGL {
         // Constructors of GstGL.GLMemoryPBOAllocator
 
         constructor(properties?: Partial<GLMemoryPBOAllocator.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+    }
+
+    module GLMixer {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GLBaseMixer.ConstructorProps {}
+    }
+
+    /**
+     * #GstGLMixer helps implement an element that operates on RGBA textures.
+     */
+    abstract class GLMixer extends GLBaseMixer {
+        static $gtype: GObject.GType<GLMixer>;
+
+        // Constructors of GstGL.GLMixer
+
+        constructor(properties?: Partial<GLMixer.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of GstGL.GLMixer
+
+        static add_rgba_pad_templates(): void;
+
+        // Own virtual methods of GstGL.GLMixer
+
+        /**
+         * Perform operations on the input buffers to produce an
+         * output buffer.
+         * @param outbuf
+         */
+        vfunc_process_buffers(outbuf: Gst.Buffer): boolean;
+        /**
+         * Perform processing required and call #GstGLMixerClass::process_textures().
+         * Intended for use within implementations of
+         * #GstGLMixerClass::process_buffers().
+         * @param out_tex
+         */
+        vfunc_process_textures(out_tex: GLMemory): boolean;
+
+        // Own methods of GstGL.GLMixer
+
+        get_framebuffer(): GLFramebuffer;
+        /**
+         * Perform processing required and call #GstGLMixerClass::process_textures().
+         * Intended for use within implementations of
+         * #GstGLMixerClass::process_buffers().
+         * @param outbuf output @GstBuffer
+         * @returns whether processing of textures succeeded
+         */
+        process_textures(outbuf: Gst.Buffer): boolean;
+    }
+
+    module GLMixerPad {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GLBaseMixerPad.ConstructorProps {}
+    }
+
+    class GLMixerPad extends GLBaseMixerPad {
+        static $gtype: GObject.GType<GLMixerPad>;
+
+        // Own fields of GstGL.GLMixerPad
+
+        current_texture: number;
+
+        // Constructors of GstGL.GLMixerPad
+
+        constructor(properties?: Partial<GLMixerPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
     }
@@ -2899,6 +3043,16 @@ export namespace GstGL {
     }
 
     type GLBaseMemoryAllocatorClass = typeof GLBaseMemoryAllocator;
+    type GLBaseMixerClass = typeof GLBaseMixer;
+    type GLBaseMixerPadClass = typeof GLBaseMixerPad;
+    abstract class GLBaseMixerPrivate {
+        static $gtype: GObject.GType<GLBaseMixerPrivate>;
+
+        // Constructors of GstGL.GLBaseMixerPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type GLBaseSrcClass = typeof GLBaseSrc;
     abstract class GLBaseSrcPrivate {
         static $gtype: GObject.GType<GLBaseSrcPrivate>;
@@ -3218,6 +3372,16 @@ export namespace GstGL {
     }
 
     type GLMemoryPBOAllocatorClass = typeof GLMemoryPBOAllocator;
+    type GLMixerClass = typeof GLMixer;
+    type GLMixerPadClass = typeof GLMixerPad;
+    abstract class GLMixerPrivate {
+        static $gtype: GObject.GType<GLMixerPrivate>;
+
+        // Constructors of GstGL.GLMixerPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type GLOverlayCompositorClass = typeof GLOverlayCompositor;
     /**
      * A #GstGLQuery represents and holds an OpenGL query object.  Various types of

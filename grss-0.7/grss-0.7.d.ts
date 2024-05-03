@@ -541,11 +541,9 @@ export namespace Grss {
         get_enclosures(): FeedEnclosure[];
         /**
          * Retrieves the geo reference of the `item`.
-         * @param latitude will be assigned to the latitude of the point, or %NULL.
-         * @param longitude will be assigned to the longitude of the point, or %NULL.
          * @returns %TRUE if @item has geographic coordinates assigned and @latitude and @longitude have been set, %FALSE if @item has not geo reference.
          */
-        get_geo_point(latitude: number, longitude: number): boolean;
+        get_geo_point(): [boolean, number, number];
         /**
          * Retrieves the ID assigned to the `item`. If no ID was set with
          * grss_feed_item_set_id() this returns the same of grss_feed_item_get_source().
@@ -730,8 +728,8 @@ export namespace Grss {
         // Own methods of Grss.FeedsGroup
 
         /**
-         * Creates a new file with the list of `channels` rappresented in the required
-         * `format`. It a file already exists at the `uri` location, it is overwritten.
+         * Creates a new file with the list of `channels` represented in the required
+         * `format`. If the file already exists at the `uri` location, it is overwritten.
          * @param channels list of #GrssFeedChannels.
          * @param format string rappresenting the desired export format, as returnes by          grss_feeds_group_get_formats().
          * @param uri URI of the file to write.

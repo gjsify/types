@@ -611,7 +611,7 @@ export namespace TelepathyFarstream {
         }
 
         interface StartReceiving {
-            (handles: any | null, handle_count: number): boolean;
+            (handles: any, handle_count: number): boolean;
         }
 
         interface StartSending {
@@ -619,7 +619,7 @@ export namespace TelepathyFarstream {
         }
 
         interface StopReceiving {
-            (handles: any | null, handle_count: number): void;
+            (handles: any, handle_count: number): void;
         }
 
         interface StopSending {
@@ -708,25 +708,25 @@ export namespace TelepathyFarstream {
         ): void;
         connect(
             signal: 'start-receiving',
-            callback: (_source: this, handles: any | null, handle_count: number) => boolean,
+            callback: (_source: this, handles: any, handle_count: number) => boolean,
         ): number;
         connect_after(
             signal: 'start-receiving',
-            callback: (_source: this, handles: any | null, handle_count: number) => boolean,
+            callback: (_source: this, handles: any, handle_count: number) => boolean,
         ): number;
-        emit(signal: 'start-receiving', handles: any | null, handle_count: number): void;
+        emit(signal: 'start-receiving', handles: any, handle_count: number): void;
         connect(signal: 'start-sending', callback: (_source: this) => boolean): number;
         connect_after(signal: 'start-sending', callback: (_source: this) => boolean): number;
         emit(signal: 'start-sending'): void;
         connect(
             signal: 'stop-receiving',
-            callback: (_source: this, handles: any | null, handle_count: number) => void,
+            callback: (_source: this, handles: any, handle_count: number) => void,
         ): number;
         connect_after(
             signal: 'stop-receiving',
-            callback: (_source: this, handles: any | null, handle_count: number) => void,
+            callback: (_source: this, handles: any, handle_count: number) => void,
         ): number;
-        emit(signal: 'stop-receiving', handles: any | null, handle_count: number): void;
+        emit(signal: 'stop-receiving', handles: any, handle_count: number): void;
         connect(signal: 'stop-sending', callback: (_source: this) => void): number;
         connect_after(signal: 'stop-sending', callback: (_source: this) => void): number;
         emit(signal: 'stop-sending'): void;

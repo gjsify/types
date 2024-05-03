@@ -926,11 +926,11 @@ export namespace GUsb {
         bulk_transfer_finish(res: Gio.AsyncResult): number;
         /**
          * Claim an interface of the device.
-         * @param _interface bInterfaceNumber of the interface you wish to claim
+         * @param iface bInterfaceNumber of the interface you wish to claim
          * @param flags #GUsbDeviceClaimInterfaceFlags
          * @returns %TRUE on success
          */
-        claim_interface(_interface: number, flags: DeviceClaimInterfaceFlags): boolean;
+        claim_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
         /**
          * Clear all the events saved by the device.
          */
@@ -1274,11 +1274,11 @@ export namespace GUsb {
         open(): boolean;
         /**
          * Release an interface of the device.
-         * @param _interface bInterfaceNumber of the interface you wish to release
+         * @param iface bInterfaceNumber of the interface you wish to release
          * @param flags #GUsbDeviceClaimInterfaceFlags
          * @returns %TRUE on success
          */
-        release_interface(_interface: number, flags: DeviceClaimInterfaceFlags): boolean;
+        release_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
         /**
          * Removes a tag, which is included in the JSON log to identify the specific device.
          * @param tag a tag, for example `bootloader` or `runtime-reload`
@@ -1305,11 +1305,11 @@ export namespace GUsb {
         set_configuration(configuration: number): boolean;
         /**
          * Sets an alternate setting on an interface.
-         * @param _interface bInterfaceNumber of the interface you wish to release
+         * @param iface bInterfaceNumber of the interface you wish to release
          * @param alt alternative setting number
          * @returns %TRUE on success
          */
-        set_interface_alt(_interface: number, alt: number): boolean;
+        set_interface_alt(iface: number, alt: number): boolean;
 
         // Inherited methods
         /**

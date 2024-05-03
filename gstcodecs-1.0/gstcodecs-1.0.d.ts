@@ -960,12 +960,6 @@ export namespace GstCodecs {
          */
         get_user_data(): any | null;
         /**
-         * Update reference picture type of `picture` with `reference`
-         * @param reference a GstH264PictureReference
-         * @param other_field %TRUE if @reference needs to be applied to the other field if any
-         */
-        set_reference(reference: H264PictureReference, other_field: boolean): void;
-        /**
          * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
          * the picture is freed.
          *

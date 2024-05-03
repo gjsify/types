@@ -186,6 +186,39 @@ export namespace Gdk {
         LENS,
     }
     /**
+     * Error enumeration for `GdkDmabufTexture`.
+     */
+    class DmabufError extends GLib.Error {
+        static $gtype: GObject.GType<DmabufError>;
+
+        // Static fields of Gdk.DmabufError
+
+        /**
+         * Dmabuf support is not available, because the OS
+         *   is not Linux, or it was explicitly disabled at compile- or runtime
+         */
+        static NOT_AVAILABLE: number;
+        /**
+         * The requested format is not supported
+         */
+        static UNSUPPORTED_FORMAT: number;
+        /**
+         * GTK failed to create the resource for other
+         *   reasons
+         */
+        static CREATION_FAILED: number;
+
+        // Constructors of Gdk.DmabufError
+
+        constructor(options: { message: string; code: number });
+        _init(...args: any[]): void;
+
+        // Own static methods of Gdk.DmabufError
+
+        static quark(): GLib.Quark;
+    }
+
+    /**
      * Used in `GdkDrag` to the reason of a cancelled DND operation.
      */
     enum DragCancelReason {
@@ -326,8 +359,8 @@ export namespace Gdk {
          */
         PAD_GROUP_MODE,
         /**
-         * A touchpad hold gesture event, the current state
-         *   is determined by its phase field. Since: 4.6
+         * A touchpad hold gesture event, the current state is determined by its phase
+         * field.
          */
         TOUCHPAD_HOLD,
         /**
@@ -494,9 +527,9 @@ export namespace Gdk {
      * `GdkMemoryFormat` describes formats that image data can have in memory.
      *
      * It describes formats by listing the contents of the memory passed to it.
-     * So GDK_MEMORY_A8R8G8B8 will be 1 byte (8 bits) of alpha, followed by a
+     * So `GDK_MEMORY_A8R8G8B8` will be 1 byte (8 bits) of alpha, followed by a
      * byte each of red, green and blue. It is not endian-dependent, so
-     * CAIRO_FORMAT_ARGB32 is represented by different `GdkMemoryFormats`
+     * `CAIRO_FORMAT_ARGB32` is represented by different `GdkMemoryFormats`
      * on architectures with different endiannesses.
      *
      * Its naming is modelled after
@@ -544,88 +577,107 @@ export namespace Gdk {
          */
         B8G8R8,
         /**
-         * 3 guint16 values; for red, green, blue. Since: 4.6
+         * 3 guint16 values; for red, green, blue.
          */
         R16G16B16,
         /**
-         * 4 guint16 values; for red, green,
-         *   blue, alpha. The color values are premultiplied with the alpha value.
-         *  Since: 4.6
+         * 4 guint16 values; for red, green, blue, alpha. The color values are
+         * premultiplied with the alpha value.
          */
         R16G16B16A16_PREMULTIPLIED,
         /**
          * 4 guint16 values; for red, green, blue, alpha.
-         *  Since: 4.6
          */
         R16G16B16A16,
         /**
-         * 3 half-float values; for red, green, blue.
-         *   The data is opaque. Since: 4.6
+         * 3 half-float values; for red, green, blue. The data is opaque.
          */
         R16G16B16_FLOAT,
         /**
-         * 4 half-float values; for
-         *   red, green, blue and alpha. The color values are premultiplied with
-         *   the alpha value. Since: 4.6
+         * 4 half-float values; for red, green, blue and alpha. The color values are
+         * premultiplied with the alpha value.
          */
         R16G16B16A16_FLOAT_PREMULTIPLIED,
         /**
-         * 4 half-float values; for red, green,
-         *   blue and alpha. Since: 4.6
+         * 4 half-float values; for red, green, blue and alpha.
          */
         R16G16B16A16_FLOAT,
+        /**
+         * 3 float values; for red, green, blue.
+         */
         R32G32B32_FLOAT,
         /**
-         * 4 float values; for
-         *   red, green, blue and alpha. The color values are premultiplied with
-         *   the alpha value. Since: 4.6
+         * 4 float values; for red, green, blue and alpha. The color values are
+         * premultiplied with the alpha value.
          */
         R32G32B32A32_FLOAT_PREMULTIPLIED,
         /**
-         * 4 float values; for red, green, blue and
-         *   alpha. Since: 4.6
+         * 4 float values; for red, green, blue and alpha.
          */
         R32G32B32A32_FLOAT,
         /**
-         * 2 bytes; for grayscale, alpha. The color
-         *   values are premultiplied with the alpha value. Since: 4.12
+         * 2 bytes; for grayscale, alpha. The color values are premultiplied with the
+         * alpha value.
          */
         G8A8_PREMULTIPLIED,
         /**
-         * 2 bytes; for grayscale, alpha. Since: 4.12
+         * 2 bytes; for grayscale, alpha.
          */
         G8A8,
         /**
          * One byte; for grayscale. The data is opaque.
-         *   Since: 4.12
          */
         G8,
         /**
-         * 2 guint16 values; for grayscale, alpha.
-         *  The color values are premultiplied with the alpha value. Since: 4.12
+         * 2 guint16 values; for grayscale, alpha. The color values are premultiplied
+         * with the alpha value.
          */
         G16A16_PREMULTIPLIED,
         /**
-         * 2 guint16 values; for grayscale, alpha. Since: 4.12
+         * 2 guint16 values; for grayscale, alpha.
          */
         G16A16,
         /**
          * One guint16 value; for grayscale. The data is opaque.
-         *   Since: 4.12
          */
         G16,
         /**
          * One byte; for alpha.
-         *   Since: 4.12
          */
         A8,
         /**
          * One guint16 value; for alpha.
-         *   Since: 4.12
          */
         A16,
+        /**
+         * One half-float value; for alpha.
+         */
         A16_FLOAT,
+        /**
+         * One float value; for alpha.
+         */
         A32_FLOAT,
+        /**
+         * 4 bytes; for alpha, blue, green, red, The color values are premultiplied with
+         * the alpha value.
+         */
+        A8B8G8R8_PREMULTIPLIED,
+        /**
+         * 4 bytes; for blue, green, red, unused.
+         */
+        B8G8R8X8,
+        /**
+         * 4 bytes; for unused, red, green, blue.
+         */
+        X8R8G8B8,
+        /**
+         * 4 bytes; for red, green, blue, unused.
+         */
+        R8G8B8X8,
+        /**
+         * 4 bytes; for unused, blue, green, red.
+         */
+        X8B8G8R8,
         /**
          * The number of formats. This value will change as
          *   more formats get added, so do not rely on its concrete integer.
@@ -3485,6 +3537,7 @@ export namespace Gdk {
      * @returns %TRUE if the operation was successful, %FALSE if an   error occurred. In this case, @error is set
      */
     function content_serialize_finish(result: Gio.AsyncResult): boolean;
+    function dmabuf_error_quark(): GLib.Quark;
     /**
      * Checks if `action` represents a single action or includes
      * multiple actions.
@@ -3892,6 +3945,10 @@ export namespace Gdk {
      * %GDK_MODIFIER_MASK to remove all private values.
      */
     enum ModifierType {
+        /**
+         * No modifier.
+         */
+        NO_MODIFIER_MASK,
         /**
          * the Shift key.
          */
@@ -6377,9 +6434,13 @@ export namespace Gdk {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             composited: boolean;
+            dmabuf_formats: DmabufFormats;
+            dmabufFormats: DmabufFormats;
             input_shapes: boolean;
             inputShapes: boolean;
             rgba: boolean;
+            shadow_width: boolean;
+            shadowWidth: boolean;
         }
     }
 
@@ -6409,6 +6470,14 @@ export namespace Gdk {
          */
         get composited(): boolean;
         /**
+         * The dma-buf formats that are supported on this display
+         */
+        get dmabuf_formats(): DmabufFormats;
+        /**
+         * The dma-buf formats that are supported on this display
+         */
+        get dmabufFormats(): DmabufFormats;
+        /**
          * %TRUE if the display supports input shapes.
          */
         get input_shapes(): boolean;
@@ -6420,6 +6489,14 @@ export namespace Gdk {
          * %TRUE if the display supports an alpha channel.
          */
         get rgba(): boolean;
+        /**
+         * %TRUE if the display supports extensible frames.
+         */
+        get shadow_width(): boolean;
+        /**
+         * %TRUE if the display supports extensible frames.
+         */
+        get shadowWidth(): boolean;
 
         // Constructors of Gdk.Display
 
@@ -6529,6 +6606,19 @@ export namespace Gdk {
          * @returns the default seat.
          */
         get_default_seat(): Seat | null;
+        /**
+         * Returns the dma-buf formats that are supported on this display.
+         *
+         * GTK may use OpenGL or Vulkan to support some formats.
+         * Calling this function will then initialize them if they aren't yet.
+         *
+         * The formats returned by this function can be used for negotiating
+         * buffer formats with producers such as v4l, pipewire or GStreamer.
+         *
+         * To learn more about dma-bufs, see [class`Gdk`.DmabufTextureBuilder].
+         * @returns a `GdkDmabufFormats` object
+         */
+        get_dmabuf_formats(): DmabufFormats;
         /**
          * Gets the monitor in which the largest area of `surface`
          * resides.
@@ -6691,6 +6781,14 @@ export namespace Gdk {
          * @returns %TRUE if surfaces with modified input shape are supported
          */
         supports_input_shapes(): boolean;
+        /**
+         * Returns whether it's possible for a surface to draw outside of the window area.
+         *
+         * If %TRUE is returned the application decides if it wants to draw shadows.
+         * If %FALSE is returned, the compositor decides if it wants to draw shadows.
+         * @returns %TRUE if surfaces can draw shadows or   %FALSE if the display does not support this functionality.
+         */
+        supports_shadow_width(): boolean;
         /**
          * Flushes any requests queued for the windowing system and waits until all
          * requests have been handled.
@@ -6864,6 +6962,1055 @@ export namespace Gdk {
          * @param display a `GdkDisplay`
          */
         set_default_display(display: Display): void;
+    }
+
+    module DmabufTexture {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Texture.ConstructorProps,
+                Paintable.ConstructorProps,
+                Gio.Icon.ConstructorProps,
+                Gio.LoadableIcon.ConstructorProps {}
+    }
+
+    /**
+     * A `GdkTexture` representing a DMA buffer.
+     *
+     * To create a `GdkDmabufTexture`, use the auxiliary
+     * [class`Gdk`.DmabufTextureBuilder] object.
+     *
+     * Dma-buf textures can only be created on Linux.
+     */
+    class DmabufTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
+        static $gtype: GObject.GType<DmabufTexture>;
+
+        // Constructors of Gdk.DmabufTexture
+
+        constructor(properties?: Partial<DmabufTexture.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Inherited methods
+        /**
+         * Compute a concrete size for the `GdkPaintable`.
+         *
+         * Applies the sizing algorithm outlined in the
+         * [CSS Image spec](https://drafts.csswg.org/css-images-3/#default-sizing)
+         * to the given `paintable`. See that link for more details.
+         *
+         * It is not necessary to call this function when both `specified_width`
+         * and `specified_height` are known, but it is useful to call this
+         * function in GtkWidget:measure implementations to compute the
+         * other dimension when only one dimension is given.
+         * @param specified_width the width @paintable could be drawn into or   0.0 if unknown
+         * @param specified_height the height @paintable could be drawn into or   0.0 if unknown
+         * @param default_width the width @paintable would be drawn into if   no other constraints were given
+         * @param default_height the height @paintable would be drawn into if   no other constraints were given
+         */
+        compute_concrete_size(
+            specified_width: number,
+            specified_height: number,
+            default_width: number,
+            default_height: number,
+        ): [number, number];
+        /**
+         * Gets an immutable paintable for the current contents displayed by `paintable`.
+         *
+         * This is useful when you want to retain the current state of an animation,
+         * for example to take a screenshot of a running animation.
+         *
+         * If the `paintable` is already immutable, it will return itself.
+         * @returns An immutable paintable for the current   contents of @paintable
+         */
+        get_current_image(): Paintable;
+        /**
+         * Get flags for the paintable.
+         *
+         * This is oftentimes useful for optimizations.
+         *
+         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         * @returns The `GdkPaintableFlags` for this paintable
+         */
+        get_flags(): PaintableFlags;
+        /**
+         * Gets the preferred aspect ratio the `paintable` would like to be displayed at.
+         *
+         * The aspect ratio is the width divided by the height, so a value of 0.5
+         * means that the `paintable` prefers to be displayed twice as high as it
+         * is wide. Consumers of this interface can use this to preserve aspect
+         * ratio when displaying the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * Usually when a `paintable` returns nonzero values from
+         * [method`Gdk`.Paintable.get_intrinsic_width] and
+         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * should conform to those values, though that is not required.
+         *
+         * If the `paintable` does not have a preferred aspect ratio,
+         * it returns 0. Negative values are never returned.
+         * @returns the intrinsic aspect ratio of @paintable or 0 if none.
+         */
+        get_intrinsic_aspect_ratio(): number;
+        /**
+         * Gets the preferred height the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred height, it returns 0.
+         * Negative values are never returned.
+         * @returns the intrinsic height of @paintable or 0 if none.
+         */
+        get_intrinsic_height(): number;
+        /**
+         * Gets the preferred width the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred width, it returns 0.
+         * Negative values are never returned.
+         * @returns the intrinsic width of @paintable or 0 if none.
+         */
+        get_intrinsic_width(): number;
+        /**
+         * Called by implementations of `GdkPaintable` to invalidate their contents.
+         *
+         * Unless the contents are invalidated, implementations must guarantee that
+         * multiple calls of [method`Gdk`.Paintable.snapshot] produce the same output.
+         *
+         * This function will emit the [signal`Gdk`.Paintable::invalidate-contents]
+         * signal.
+         *
+         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_CONTENTS flag,
+         * it must not call this function.
+         */
+        invalidate_contents(): void;
+        /**
+         * Called by implementations of `GdkPaintable` to invalidate their size.
+         *
+         * As long as the size is not invalidated, `paintable` must return the same
+         * values for its intrinsic width, height and aspect ratio.
+         *
+         * This function will emit the [signal`Gdk`.Paintable::invalidate-size]
+         * signal.
+         *
+         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_SIZE flag,
+         * it must not call this function.
+         */
+        invalidate_size(): void;
+        /**
+         * Snapshots the given paintable with the given `width` and `height`.
+         *
+         * The paintable is drawn at the current (0,0) offset of the `snapshot`.
+         * If `width` and `height` are not larger than zero, this function will
+         * do nothing.
+         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         */
+        snapshot(snapshot: Snapshot, width: number, height: number): void;
+        /**
+         * Gets an immutable paintable for the current contents displayed by `paintable`.
+         *
+         * This is useful when you want to retain the current state of an animation,
+         * for example to take a screenshot of a running animation.
+         *
+         * If the `paintable` is already immutable, it will return itself.
+         */
+        vfunc_get_current_image(): Paintable;
+        /**
+         * Get flags for the paintable.
+         *
+         * This is oftentimes useful for optimizations.
+         *
+         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         */
+        vfunc_get_flags(): PaintableFlags;
+        /**
+         * Gets the preferred aspect ratio the `paintable` would like to be displayed at.
+         *
+         * The aspect ratio is the width divided by the height, so a value of 0.5
+         * means that the `paintable` prefers to be displayed twice as high as it
+         * is wide. Consumers of this interface can use this to preserve aspect
+         * ratio when displaying the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * Usually when a `paintable` returns nonzero values from
+         * [method`Gdk`.Paintable.get_intrinsic_width] and
+         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * should conform to those values, though that is not required.
+         *
+         * If the `paintable` does not have a preferred aspect ratio,
+         * it returns 0. Negative values are never returned.
+         */
+        vfunc_get_intrinsic_aspect_ratio(): number;
+        /**
+         * Gets the preferred height the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred height, it returns 0.
+         * Negative values are never returned.
+         */
+        vfunc_get_intrinsic_height(): number;
+        /**
+         * Gets the preferred width the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred width, it returns 0.
+         * Negative values are never returned.
+         */
+        vfunc_get_intrinsic_width(): number;
+        /**
+         * Snapshots the given paintable with the given `width` and `height`.
+         *
+         * The paintable is drawn at the current (0,0) offset of the `snapshot`.
+         * If `width` and `height` are not larger than zero, this function will
+         * do nothing.
+         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         */
+        vfunc_snapshot(snapshot: Snapshot, width: number, height: number): void;
+        /**
+         * Checks if two icons are equal.
+         * @param icon2 pointer to the second #GIcon.
+         * @returns %TRUE if @icon1 is equal to @icon2. %FALSE otherwise.
+         */
+        equal(icon2?: Gio.Icon | null): boolean;
+        /**
+         * Gets a hash for an icon.
+         * @returns a #guint containing a hash for the @icon, suitable for use in a #GHashTable or similar data structure.
+         */
+        hash(): number;
+        /**
+         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
+         * back by calling g_icon_deserialize() on the returned value.
+         * As serialization will avoid using raw icon data when possible, it only
+         * makes sense to transfer the #GVariant between processes on the same machine,
+         * (as opposed to over the network), and within the same file system namespace.
+         * @returns a #GVariant, or %NULL when serialization fails. The #GVariant will not be floating.
+         */
+        serialize(): GLib.Variant | null;
+        /**
+         * Generates a textual representation of `icon` that can be used for
+         * serialization such as when passing `icon` to a different process or
+         * saving it to persistent storage. Use g_icon_new_for_string() to
+         * get `icon` back from the returned string.
+         *
+         * The encoding of the returned string is proprietary to #GIcon except
+         * in the following two cases
+         *
+         * - If `icon` is a #GFileIcon, the returned string is a native path
+         *   (such as `/path/to/my icon.png`) without escaping
+         *   if the #GFile for `icon` is a native file.  If the file is not
+         *   native, the returned string is the result of g_file_get_uri()
+         *   (such as `sftp://path/to/my%20icon.png`).
+         *
+         * - If `icon` is a #GThemedIcon with exactly one name and no fallbacks,
+         *   the encoding is simply the name (such as `network-server`).
+         * @returns An allocated NUL-terminated UTF8 string or %NULL if @icon can't be serialized. Use g_free() to free.
+         */
+        to_string(): string | null;
+        /**
+         * Checks if two icons are equal.
+         * @param icon2 pointer to the second #GIcon.
+         */
+        vfunc_equal(icon2?: Gio.Icon | null): boolean;
+        /**
+         * Gets a hash for an icon.
+         */
+        vfunc_hash(): number;
+        /**
+         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
+         * back by calling g_icon_deserialize() on the returned value.
+         * As serialization will avoid using raw icon data when possible, it only
+         * makes sense to transfer the #GVariant between processes on the same machine,
+         * (as opposed to over the network), and within the same file system namespace.
+         */
+        vfunc_serialize(): GLib.Variant | null;
+        /**
+         * Serializes the `icon` into string tokens.
+         * This is can be invoked when g_icon_new_for_string() is called.
+         */
+        vfunc_to_tokens(): [boolean, string[], number];
+        /**
+         * Loads a loadable icon. For the asynchronous version of this function,
+         * see g_loadable_icon_load_async().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @returns a #GInputStream to read the icon from.
+         */
+        load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         */
+        load_async(
+            size: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
+         * @param res a #GAsyncResult.
+         * @returns a #GInputStream to read the icon from.
+         */
+        load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
+        /**
+         * Loads a loadable icon. For the asynchronous version of this function,
+         * see g_loadable_icon_load_async().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+         */
+        vfunc_load_async(
+            size: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
+         * @param res a #GAsyncResult.
+         */
+        vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module DmabufTextureBuilder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            display: Display;
+            fourcc: number;
+            height: number;
+            modifier: number;
+            n_planes: number;
+            nPlanes: number;
+            premultiplied: boolean;
+            update_region: cairo.Region;
+            updateRegion: cairo.Region;
+            update_texture: Texture;
+            updateTexture: Texture;
+            width: number;
+        }
+    }
+
+    /**
+     * `GdkDmabufTextureBuilder` is a builder used to construct [class`Gdk`.Texture]
+     * objects from DMA buffers.
+     *
+     * DMA buffers are commonly called **_dma-bufs_**.
+     *
+     * DMA buffers are a feature of the Linux kernel to enable efficient buffer and
+     * memory sharing between hardware such as codecs, GPUs, displays, cameras and the
+     * kernel drivers controlling them. For example, a decoder may want its output to
+     * be directly shared with the display server for rendering without a copy.
+     *
+     * Any device driver which participates in DMA buffer sharing, can do so as either
+     * the exporter or importer of buffers (or both).
+     *
+     * The memory that is shared via DMA buffers is usually stored in non-system memory
+     * (maybe in device's local memory or something else not directly accessible by the
+     * CPU), and accessing this memory from the CPU may have higher-than-usual overhead.
+     *
+     * In particular for graphics data, it is not uncommon that data consists of multiple
+     * separate blocks of memory, for example one block for each of the red, green and
+     * blue channels. These blocks are called **_planes_**. DMA buffers can have up to
+     * four planes. Even if the memory is a single block, the data can be organized in
+     * multiple planes, by specifying offsets from the beginning of the data.
+     *
+     * DMA buffers are exposed to user-space as file descriptors allowing to pass them
+     * between processes. If a DMA buffer has multiple planes, there is one file
+     * descriptor per plane.
+     *
+     * The format of the data (for graphics data, essentially its colorspace) is described
+     * by a 32-bit integer. These format identifiers are defined in the header file `drm_fourcc.h`
+     * and commonly referred to as **_fourcc_** values, since they are identified by 4 ASCII
+     * characters. Additionally, each DMA buffer has a **_modifier_**, which is a 64-bit integer
+     * that describes driver-specific details of the memory layout, such as tiling or compression.
+     *
+     * For historical reasons, some producers of dma-bufs don't provide an explicit modifier, but
+     * instead return `DMA_FORMAT_MOD_INVALID` to indicate that their modifier is **_implicit_**.
+     * GTK tries to accommodate this situation by accepting `DMA_FORMAT_MOD_INVALID` as modifier.
+     *
+     * The operation of `GdkDmabufTextureBuilder` is quite simple: Create a texture builder,
+     * set all the necessary properties, and then call [method`Gdk`.DmabufTextureBuilder.build]
+     * to create the new texture.
+     *
+     * The required properties for a dma-buf texture are
+     *
+     *  * The width and height in pixels
+     *
+     *  * The `fourcc` code and `modifier` which identify the format and memory layout of the dma-buf
+     *
+     *  * The file descriptor, offset and stride for each of the planes
+     *
+     * `GdkDmabufTextureBuilder` can be used for quick one-shot construction of
+     * textures as well as kept around and reused to construct multiple textures.
+     *
+     * For further information, see
+     *
+     * * The Linux kernel [documentation](https://docs.kernel.org/driver-api/dma-buf.html)
+     *
+     * * The header file [drm_fourcc.h](https://gitlab.freedesktop.org/mesa/drm/-/blob/main/include/drm/drm_fourcc.h)
+     */
+    class DmabufTextureBuilder extends GObject.Object {
+        static $gtype: GObject.GType<DmabufTextureBuilder>;
+
+        // Own properties of Gdk.DmabufTextureBuilder
+
+        /**
+         * The display that this texture will be used on.
+         */
+        get display(): Display;
+        set display(val: Display);
+        /**
+         * The format of the texture, as a fourcc value.
+         */
+        get fourcc(): number;
+        set fourcc(val: number);
+        /**
+         * The height of the texture.
+         */
+        get height(): number;
+        set height(val: number);
+        /**
+         * The modifier.
+         */
+        get modifier(): number;
+        set modifier(val: number);
+        /**
+         * The number of planes of the texture.
+         *
+         * Note that you can set properties for other planes,
+         * but they will be ignored when constructing the texture.
+         */
+        get n_planes(): number;
+        set n_planes(val: number);
+        /**
+         * The number of planes of the texture.
+         *
+         * Note that you can set properties for other planes,
+         * but they will be ignored when constructing the texture.
+         */
+        get nPlanes(): number;
+        set nPlanes(val: number);
+        /**
+         * Whether the alpha channel is premultiplied into the others.
+         *
+         * Only relevant if the format has alpha.
+         */
+        get premultiplied(): boolean;
+        set premultiplied(val: boolean);
+        /**
+         * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
+         */
+        get update_region(): cairo.Region;
+        set update_region(val: cairo.Region);
+        /**
+         * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
+         */
+        get updateRegion(): cairo.Region;
+        set updateRegion(val: cairo.Region);
+        /**
+         * The texture [property`Gdk`.DmabufTextureBuilder:update-region] is an update for.
+         */
+        get update_texture(): Texture;
+        set update_texture(val: Texture);
+        /**
+         * The texture [property`Gdk`.DmabufTextureBuilder:update-region] is an update for.
+         */
+        get updateTexture(): Texture;
+        set updateTexture(val: Texture);
+        /**
+         * The width of the texture.
+         */
+        get width(): number;
+        set width(val: number);
+
+        // Constructors of Gdk.DmabufTextureBuilder
+
+        constructor(properties?: Partial<DmabufTextureBuilder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): DmabufTextureBuilder;
+
+        // Own methods of Gdk.DmabufTextureBuilder
+
+        /**
+         * Builds a new `GdkTexture` with the values set up in the builder.
+         *
+         * It is a programming error to call this function if any mandatory
+         * property has not been set.
+         *
+         * If the dmabuf is not supported by GTK, %NULL will be returned and `error` will be set.
+         *
+         * The `destroy` function gets called when the returned texture gets released.
+         *
+         * It is possible to call this function multiple times to create multiple textures,
+         * possibly with changing properties in between.
+         *
+         * It is the responsibility of the caller to keep the file descriptors for the planes
+         * open until the created texture is no longer used, and close them afterwards (possibly
+         * using the `destroy` notify).
+         *
+         * Not all formats defined in the `drm_fourcc.h` header are supported. You can use
+         * [method`Gdk`.Display.get_dmabuf_formats] to get a list of supported formats.
+         * @param destroy destroy function to be called when the texture is   released
+         * @param data user data to pass to the destroy function
+         * @returns a newly built `GdkTexture` or `NULL`   if the format is not supported
+         */
+        build(destroy?: GLib.DestroyNotify | null, data?: any | null): Texture | null;
+        /**
+         * Returns the display that this texture builder is
+         * associated with.
+         * @returns the display
+         */
+        get_display(): Display;
+        /**
+         * Gets the file descriptor for a plane.
+         * @param plane the plane to get the fd for
+         * @returns the file descriptor
+         */
+        get_fd(plane: number): number;
+        /**
+         * Gets the format previously set via gdk_dmabuf_texture_builder_set_fourcc()
+         * or 0 if the format wasn't set.
+         *
+         * The format is specified as a fourcc code.
+         * @returns The format
+         */
+        get_fourcc(): number;
+        /**
+         * Gets the height previously set via gdk_dmabuf_texture_builder_set_height() or
+         * 0 if the height wasn't set.
+         * @returns The height
+         */
+        get_height(): number;
+        /**
+         * Gets the modifier value.
+         * @returns the modifier
+         */
+        get_modifier(): number;
+        /**
+         * Gets the number of planes.
+         * @returns The number of planes
+         */
+        get_n_planes(): number;
+        /**
+         * Gets the offset value for a plane.
+         * @param plane the plane to get the offset for
+         * @returns the offset
+         */
+        get_offset(plane: number): number;
+        /**
+         * Whether the data is premultiplied.
+         * @returns whether the data is premultiplied
+         */
+        get_premultiplied(): boolean;
+        /**
+         * Gets the stride value for a plane.
+         * @param plane the plane to get the stride for
+         * @returns the stride
+         */
+        get_stride(plane: number): number;
+        /**
+         * Gets the region previously set via gdk_dmabuf_texture_builder_set_update_region() or
+         * %NULL if none was set.
+         * @returns The region
+         */
+        get_update_region(): cairo.Region | null;
+        /**
+         * Gets the texture previously set via gdk_dmabuf_texture_builder_set_update_texture() or
+         * %NULL if none was set.
+         * @returns The texture
+         */
+        get_update_texture(): Texture | null;
+        /**
+         * Gets the width previously set via gdk_dmabuf_texture_builder_set_width() or
+         * 0 if the width wasn't set.
+         * @returns The width
+         */
+        get_width(): number;
+        /**
+         * Sets the display that this texture builder is
+         * associated with.
+         *
+         * The display is used to determine the supported
+         * dma-buf formats.
+         * @param display the display
+         */
+        set_display(display: Display): void;
+        /**
+         * Sets the file descriptor for a plane.
+         * @param plane the plane to set the fd for
+         * @param fd the file descriptor
+         */
+        set_fd(plane: number, fd: number): void;
+        /**
+         * Sets the format of the texture.
+         *
+         * The format is specified as a fourcc code.
+         *
+         * The format must be set before calling [method`Gdk`.GLTextureBuilder.build].
+         * @param fourcc the texture's format or 0 to unset
+         */
+        set_fourcc(fourcc: number): void;
+        /**
+         * Sets the height of the texture.
+         *
+         * The height must be set before calling [method`Gdk`.GLTextureBuilder.build].
+         * @param height the texture's height or 0 to unset
+         */
+        set_height(height: number): void;
+        /**
+         * Sets the modifier.
+         * @param modifier the modifier value
+         */
+        set_modifier(modifier: number): void;
+        /**
+         * Sets the number of planes of the texture.
+         * @param n_planes the number of planes
+         */
+        set_n_planes(n_planes: number): void;
+        /**
+         * Sets the offset for a plane.
+         * @param plane the plane to set the offset for
+         * @param offset the offset value
+         */
+        set_offset(plane: number, offset: number): void;
+        /**
+         * Sets whether the data is premultiplied.
+         *
+         * Unless otherwise specified, all formats including alpha channels are assumed
+         * to be premultiplied.
+         * @param premultiplied whether the data is premultiplied
+         */
+        set_premultiplied(premultiplied: boolean): void;
+        /**
+         * Sets the stride for a plane.
+         *
+         * The stride must be set for all planes before calling [method`Gdk`.GLTextureBuilder.build].
+         * @param plane the plane to set the stride for
+         * @param stride the stride value
+         */
+        set_stride(plane: number, stride: number): void;
+        /**
+         * Sets the region to be updated by this texture. Together with
+         * [property`Gdk`.DmabufTextureBuilder:update-texture] this describes an
+         * update of a previous texture.
+         *
+         * When rendering animations of large textures, it is possible that
+         * consecutive textures are only updating contents in parts of the texture.
+         * It is then possible to describe this update via these two properties,
+         * so that GTK can avoid rerendering parts that did not change.
+         *
+         * An example would be a screen recording where only the mouse pointer moves.
+         * @param region the region to update
+         */
+        set_update_region(region?: cairo.Region | null): void;
+        /**
+         * Sets the texture to be updated by this texture. See
+         * [method`Gdk`.DmabufTextureBuilder.set_update_region] for an explanation.
+         * @param texture the texture to update
+         */
+        set_update_texture(texture?: Texture | null): void;
+        /**
+         * Sets the width of the texture.
+         *
+         * The width must be set before calling [method`Gdk`.GLTextureBuilder.build].
+         * @param width The texture's width or 0 to unset
+         */
+        set_width(width: number): void;
     }
 
     module Drag {
@@ -8401,7 +9548,7 @@ export namespace Gdk {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
          */
         load_async(
             size: number,
@@ -8427,7 +9574,7 @@ export namespace Gdk {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
          */
         vfunc_load_async(
             size: number,
@@ -8816,7 +9963,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkGLTextureBuilder` is a buider used to construct [class`Gdk`.Texture] objects from
+     * `GdkGLTextureBuilder` is a builder used to construct [class`Gdk`.Texture] objects from
      * GL textures.
      *
      * The operation is quite simple: Create a texture builder, set all the necessary
@@ -9467,7 +10614,7 @@ export namespace Gdk {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
          */
         load_async(
             size: number,
@@ -9493,7 +10640,7 @@ export namespace Gdk {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
          */
         vfunc_load_async(
             size: number,
@@ -9882,6 +11029,7 @@ export namespace Gdk {
             model: string;
             refresh_rate: number;
             refreshRate: number;
+            scale: number;
             scale_factor: number;
             scaleFactor: number;
             subpixel_layout: SubpixelLayout;
@@ -9947,11 +11095,21 @@ export namespace Gdk {
          */
         get refreshRate(): number;
         /**
+         * The scale of the monitor.
+         */
+        get scale(): number;
+        /**
          * The scale factor.
+         *
+         * The scale factor is the next larger integer,
+         * compared to [property`Gdk`.Surface:scale].
          */
         get scale_factor(): number;
         /**
          * The scale factor.
+         *
+         * The scale factor is the next larger integer,
+         * compared to [property`Gdk`.Surface:scale].
          */
         get scaleFactor(): number;
         /**
@@ -10018,7 +11176,7 @@ export namespace Gdk {
          * display coordinate space.
          *
          * The returned geometry is in  ”application pixels”, not in
-         * ”device pixels” (see [method`Gdk`.Monitor.get_scale_factor]).
+         * ”device pixels” (see [method`Gdk`.Monitor.get_scale]).
          */
         get_geometry(): Rectangle;
         /**
@@ -10050,6 +11208,16 @@ export namespace Gdk {
          * @returns the refresh rate in milli-Hertz, or 0
          */
         get_refresh_rate(): number;
+        /**
+         * Gets the internal scale factor that maps from monitor coordinates
+         * to device pixels.
+         *
+         * This can be used if you want to create pixel based data for a
+         * particular monitor, but most of the time you’re drawing to a surface
+         * where it is better to use [method`Gdk`.Surface.get_scale] instead.
+         * @returns the scale
+         */
+        get_scale(): number;
         /**
          * Gets the internal scale factor that maps from monitor coordinates
          * to device pixels.
@@ -10486,10 +11654,8 @@ export namespace Gdk {
          */
         create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
         /**
-         * Creates a new `GdkVulkanContext` for rendering on `surface`.
-         *
-         * If the creation of the `GdkVulkanContext` failed, `error` will be set.
-         * @returns the newly created `GdkVulkanContext`, or   %NULL on error
+         * Sets an error and returns %NULL.
+         * @returns %NULL
          */
         create_vulkan_context(): VulkanContext;
         /**
@@ -10788,7 +11954,7 @@ export namespace Gdk {
          * cairo_surface_mark_dirty (surface);
          * ```
          *
-         * For more flexible download capabilites, see
+         * For more flexible download capabilities, see
          * [struct`Gdk`.TextureDownloader].
          * @param data pointer to enough memory to be filled with the   downloaded data of @texture
          * @param stride rowstride in bytes
@@ -11150,7 +12316,7 @@ export namespace Gdk {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
          */
         load_async(
             size: number,
@@ -11176,7 +12342,7 @@ export namespace Gdk {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
          */
         vfunc_load_async(
             size: number,
@@ -12327,6 +13493,83 @@ export namespace Gdk {
 
     type ContentProviderClass = typeof ContentProvider;
     type DevicePadInterface = typeof DevicePad;
+    /**
+     * The `GdkDmabufFormats` struct provides information about
+     * supported DMA buffer formats.
+     *
+     * You can query whether a given format is supported with
+     * [method`Gdk`.DmabufFormats.contains] and you can iterate
+     * over the list of all supported formats with
+     * [method`Gdk`.DmabufFormats.get_n_formats] and
+     * [method`Gdk`.DmabufFormats.get_format].
+     *
+     * The list of supported formats is sorted by preference,
+     * with the best formats coming first.
+     *
+     * The list may contains (format, modifier) pairs where the modifier
+     * is `DMA_FORMAT_MOD_INVALID`, indicating that **_implicit modifiers_**
+     * may be used with this format.
+     *
+     * See [class`Gdk`.DmabufTextureBuilder] for more information
+     * about DMA buffers.
+     *
+     * Note that DMA buffers only exist on Linux.
+     */
+    abstract class DmabufFormats {
+        static $gtype: GObject.GType<DmabufFormats>;
+
+        // Constructors of Gdk.DmabufFormats
+
+        _init(...args: any[]): void;
+
+        // Own methods of Gdk.DmabufFormats
+
+        /**
+         * Returns whether a given format is contained in `formats`.
+         * @param fourcc a format code
+         * @param modifier a format modifier
+         * @returns `TRUE` if the format specified by the arguments   is part of @formats
+         */
+        contains(fourcc: number, modifier: number): boolean;
+        /**
+         * Returns whether `formats1` and `formats2` contain the
+         * same dmabuf formats, in the same order.
+         * @param formats2 another `GdkDmabufFormats`
+         * @returns `TRUE` if @formats1 and @formats2 are equal
+         */
+        equal(formats2?: DmabufFormats | null): boolean;
+        /**
+         * Gets the fourcc code and modifier for a format
+         * that is contained in `formats`.
+         * @param idx the index of the format to return
+         */
+        get_format(idx: number): [number, number];
+        /**
+         * Returns the number of formats that the `formats` object
+         * contains.
+         *
+         * Note that DMA buffers are a Linux concept, so on other
+         * platforms, [method`Gdk`.DmabufFormats.get_n_formats] will
+         * always return zero.
+         * @returns the number of formats
+         */
+        get_n_formats(): number;
+        /**
+         * Increases the reference count of `formats`.
+         * @returns the passed-in object
+         */
+        ref(): DmabufFormats;
+        /**
+         * Decreases the reference count of `formats`.
+         *
+         * When the reference count reaches zero,
+         * the object is freed.
+         */
+        unref(): void;
+    }
+
+    type DmabufTextureBuilderClass = typeof DmabufTextureBuilder;
+    type DmabufTextureClass = typeof DmabufTexture;
     type DragSurfaceInterface = typeof DragSurface;
     /**
      * The `GdkDragSurfaceSize` struct contains information that is useful
@@ -12867,7 +14110,7 @@ export namespace Gdk {
      * [class`Gdk`.Texture].
      *
      * It is intended to be created as a short-term object for a single download,
-     * but can be used for multipe downloads of different textures or with different
+     * but can be used for multiple downloads of different textures or with different
      * settings.
      *
      * `GdkTextureDownloader` can be used to convert data between different formats.
@@ -13094,6 +14337,9 @@ export namespace Gdk {
          * The shadow width corresponds to the part of the computed surface size
          * that would consist of the shadow margin surrounding the window, would
          * there be any.
+         *
+         * Shadow width should only be set if
+         * [method`Gtk`.Display.supports_shadow_width] is %TRUE.
          * @param left width of the left part of the shadow
          * @param right width of the right part of the shadow
          * @param top height of the top part of the shadow

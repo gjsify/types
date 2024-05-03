@@ -189,6 +189,11 @@ export namespace GstAllocators {
     interface PhysMemoryAllocator extends Gst.Allocator {
         // Own virtual methods of GstAllocators.PhysMemoryAllocator
 
+        /**
+         * Implementations shall return the physicall memory address
+         *    that is backing the provided memory, or 0 if none.
+         * @param mem
+         */
         vfunc_get_phys_addr(mem: Gst.Memory): never;
     }
 

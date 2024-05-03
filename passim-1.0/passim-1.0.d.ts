@@ -81,15 +81,35 @@ export namespace Passim {
         // Own methods of Passim.Client
 
         /**
+         * Gets the carbon saving from using this project.
+         * @returns kgs of CO₂e
+         */
+        get_carbon_saving(): number;
+        /**
+         * Gets the total number of bytes saved from using this project.
+         * @returns bytes
+         */
+        get_download_saving(): number;
+        /**
          * Get items currently published by the daemon.
          * @returns items, or %NULL for error
          */
         get_items(): Item[];
         /**
+         * Gets the daemon name.
+         * @returns the name string, or %NULL if unset
+         */
+        get_name(): string;
+        /**
          * Gets the daemon status.
          * @returns the #PassimStatus
          */
         get_status(): Status;
+        /**
+         * Gets the daemon URI.
+         * @returns the URI string, or %NULL if unset
+         */
+        get_uri(): string;
         /**
          * Gets the daemon version.
          * @returns the version string, or %NULL if unset
