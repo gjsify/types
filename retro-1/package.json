@@ -1,6 +1,6 @@
 {
     "name": "@girs/retro-1",
-    "version": "1.0.0-4.0.0-beta.3",
+    "version": "1.0.0-4.0.0-beta.4",
     "description": "GJS TypeScript type definitions for Retro-1, generated from library version 1.0.0",
     "type": "module",
     "module": "retro-1.js",

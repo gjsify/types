@@ -1,6 +1,6 @@
 {
     "name": "@girs/folks-0.7",
-    "version": "0.7.0-4.0.0-beta.3",
+    "version": "0.7.0-4.0.0-beta.4",
     "description": "GJS TypeScript type definitions for Folks-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "folks-0.7.js",
