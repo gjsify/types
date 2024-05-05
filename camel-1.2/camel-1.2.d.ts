@@ -826,6 +826,10 @@ export namespace Camel {
     const LOCK_DOT_RETRY: number;
     const LOCK_DOT_STALE: number;
     const LOCK_RETRY: number;
+    /**
+     * Maximum length, in characters, of a mime part preview.
+     */
+    const MAX_PREVIEW_LENGTH: number;
     const MESSAGE_DATE_CURRENT: number;
     const MESSAGE_SYSTEM_MASK: number;
     const MIME_YDECODE_STATE_BEGIN: number;
@@ -2140,6 +2144,9 @@ export namespace Camel {
     }
     interface ForeachPartFunc {
         (message: MimeMessage, part: MimePart, parent_part?: MimePart | null): boolean;
+    }
+    interface GeneratePreviewFunc {
+        (part?: any | null): string | null;
     }
     interface IndexNorm {
         (index: Index, word: string): string;
@@ -7395,9 +7402,21 @@ export namespace Camel {
          */
         filter(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
+         * Returns whether the `filter` requested stop further processing
+         * with camel_mime_filter_set_request_stop().
+         * @returns %TRUE, when the @filter request stop further processing,    %FALSE otherwise
+         */
+        get_request_stop(): boolean;
+        /**
          * Resets the state on `filter` so that it may be used again.
          */
         reset(): void;
+        /**
+         * Sets whether the `filter` requests, or not, stop further processing.
+         * This can be used to stop before all the data is filtered.
+         * @param request_stop value to set
+         */
+        set_request_stop(request_stop: boolean): void;
         /**
          * Ensure that `filter` has enough storage space to store `size` bytes
          * for filter output.
@@ -7692,6 +7711,47 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MimeFilterPgp;
+    }
+
+    module MimeFilterPreview {
+        // Constructor properties interface
+
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
+    }
+
+    class MimeFilterPreview extends MimeFilter {
+        static $gtype: GObject.GType<MimeFilterPreview>;
+
+        // Constructors of Camel.MimeFilterPreview
+
+        constructor(properties?: Partial<MimeFilterPreview.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](limit: number): MimeFilterPreview;
+        // Conflicted with Camel.MimeFilter.new
+
+        static ['new'](...args: never[]): any;
+
+        // Own methods of Camel.MimeFilterPreview
+
+        /**
+         * Returns set limit for the text length, in characters.
+         * Zero means unlimited length.
+         * @returns limit for the text length, in characters
+         */
+        get_limit(): number;
+        /**
+         * Returns read text until now.
+         * @returns read text until now or %NULL, when nothing was read
+         */
+        get_text(): string | null;
+        /**
+         * Sets limit for the text length, in characters. Zero
+         * means unlimited length.
+         * @param limit a limit to set
+         */
+        set_limit(limit: number): void;
     }
 
     module MimeFilterProgress {
@@ -8284,6 +8344,14 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, or %NULL
          */
         vfunc_construct_from_parser_sync(parser: MimeParser, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Generates preview of the `mime_part,` to be used in the interface,
+         * read by the users.
+         *
+         * The optional `func` can be used to override default preview generation
+         * function. If provided, it's always called as the first try on the parts.
+         */
+        vfunc_generate_preview(): string | null;
 
         // Own methods of Camel.MimePart
 
@@ -8324,6 +8392,15 @@ export namespace Camel {
          * @returns %TRUE on success, %FALSE on error
          */
         construct_from_parser_sync(parser: MimeParser, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Generates preview of the `mime_part,` to be used in the interface,
+         * read by the users.
+         *
+         * The optional `func` can be used to override default preview generation
+         * function. If provided, it's always called as the first try on the parts.
+         * @returns part's preview as a new string,    or %NULL, when cannot be generated. Free with g_free(), when no    longer needed.
+         */
+        generate_preview(): string | null;
         /**
          * Get the disposition of the MIME part as a structure.
          * Returned pointer is owned by `mime_part`.
@@ -8462,6 +8539,14 @@ export namespace Camel {
          * @param parser a #CamelMimeParser object
          */
         vfunc_construct_from_parser(parser: MimeParser): number;
+        /**
+         * Generates preview of the `multipart,` to be used in the interface,
+         * read by the users.
+         *
+         * The optional `func` can be used to override default preview generation
+         * function. If provided, it's always called as the first try on the parts.
+         */
+        vfunc_generate_preview(): string | null;
         vfunc_get_boundary(): string;
         vfunc_get_number(): number;
         vfunc_get_part(index: number): MimePart | null;
@@ -8487,6 +8572,15 @@ export namespace Camel {
          * @returns 0 on success or -1 on fail
          */
         construct_from_parser(parser: MimeParser): number;
+        /**
+         * Generates preview of the `multipart,` to be used in the interface,
+         * read by the users.
+         *
+         * The optional `func` can be used to override default preview generation
+         * function. If provided, it's always called as the first try on the parts.
+         * @returns part's preview as a new string,    or %NULL, when cannot be generated. Free with g_free(), when no    longer needed.
+         */
+        generate_preview(): string | null;
         get_boundary(): string;
         get_number(): number;
         get_part(index: number): MimePart | null;
@@ -9170,7 +9264,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9409,6 +9503,18 @@ export namespace Camel {
          */
         static cancel_all(): void;
         /**
+         * Duplicates current operation message, or returns %NULL, if no such is available.
+         * The message as the last text set by camel_operation_push_message().
+         *
+         * Free the returned text with g_free(), when no longer needed.
+         *
+         * This function only works if `cancellable` is a #CamelOperation cast as a
+         * #GCancellable.  If `cancellable` is a plain #GCancellable or %NULL, the
+         * function does nothing and returns silently.
+         * @param cancellable a #GCancellable or %NULL
+         */
+        static dup_message(cancellable?: Gio.Cancellable | null): string | null;
+        /**
          * Pops the most recently pushed message.
          *
          * This function only works if `cancellable` is a #CamelOperation cast as a
@@ -9567,6 +9673,18 @@ export namespace Camel {
         // Conflicted with Camel.CipherContext.new
 
         static ['new'](...args: never[]): any;
+
+        // Own static methods of Camel.SMIMEContext
+
+        /**
+         * Utility function to get a localized text description for an error code
+         * returned by PORT_GetError().
+         *
+         * Note: the function returns always NULL when the library was not compiled
+         *   with S/MIME support.
+         * @param nss_error_code an error code, as returned by PORT_GetError()
+         */
+        static util_nss_error_to_string(nss_error_code: number): string | null;
 
         // Own methods of Camel.SMIMEContext
 
@@ -10649,7 +10767,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12548,7 +12666,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -13323,7 +13441,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -13832,7 +13950,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -14328,7 +14446,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -14808,7 +14926,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -15312,7 +15430,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -15791,7 +15909,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -16270,7 +16388,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -16883,7 +17001,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -17639,7 +17757,7 @@ export namespace Camel {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -19243,6 +19361,15 @@ export namespace Camel {
         static $gtype: GObject.GType<MimeFilterPgpPrivate>;
 
         // Constructors of Camel.MimeFilterPgpPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type MimeFilterPreviewClass = typeof MimeFilterPreview;
+    abstract class MimeFilterPreviewPrivate {
+        static $gtype: GObject.GType<MimeFilterPreviewPrivate>;
+
+        // Constructors of Camel.MimeFilterPreviewPrivate
 
         _init(...args: any[]): void;
     }

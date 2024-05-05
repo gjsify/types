@@ -746,7 +746,7 @@ export namespace GtkClutter {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -950,12 +950,14 @@ export namespace GtkClutter {
         // Own properties of GtkClutter.Embed
 
         /**
-         * The #GtkWidget to be embedded into the #GtkClutterActor
+         * Whether to use the reported size of the LayoutManager on the stage as the widget size.
+         * See gtk_clutter_embed_set_use_layout_size() for details.
          */
         get use_layout_size(): boolean;
         set use_layout_size(val: boolean);
         /**
-         * The #GtkWidget to be embedded into the #GtkClutterActor
+         * Whether to use the reported size of the LayoutManager on the stage as the widget size.
+         * See gtk_clutter_embed_set_use_layout_size() for details.
          */
         get useLayoutSize(): boolean;
         set useLayoutSize(val: boolean);
@@ -1177,7 +1179,7 @@ export namespace GtkClutter {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1595,7 +1597,7 @@ export namespace GtkClutter {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1989,7 +1991,7 @@ export namespace GtkClutter {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

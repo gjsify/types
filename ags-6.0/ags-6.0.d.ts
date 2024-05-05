@@ -144,6 +144,7 @@ export namespace Ags {
     const CONFIG_SOUNDCARD_0: string;
     const CONFIG_THREAD: string;
     const CONTROLLER_BASE_PATH: string;
+    const DEFAULT_BUNDLE_ID: string;
     const DEFAULT_CONFIG: string;
     const DEFAULT_DIRECTORY: string;
     const FILE_CHARSET_CONVERTER_MAX_CONTENT_LENGTH: number;
@@ -1413,8 +1414,8 @@ export namespace Ags {
      * Allocate #AgsRegexUtil-struct
      * @param app_encoding the application encoding
      * @param encoding the input encoding
-     * @param is_unichar
-     * @param is_unichar2
+     * @param is_unichar is gunichar
+     * @param is_unichar2 is gunichar2
      * @returns a new #AgsRegexUtil-struct
      */
     function regex_util_alloc(
@@ -1424,6 +1425,14 @@ export namespace Ags {
         is_unichar2: boolean,
     ): RegexUtil;
     function regex_util_error_quark(): GLib.Quark;
+    /**
+     * Allocate #AgsSolverPath-struct
+     * @param nth_column the nth-column
+     * @param nth_row_a nth-row a
+     * @param nth_row_b nth-row b
+     * @returns a new #AgsSolverPath-struct
+     */
+    function solver_path_alloc(nth_column: number, nth_row_a: number, nth_row_b: number): SolverPath;
     /**
      * Get buffer size.
      * @param config the #AgsConfig
@@ -2471,7 +2480,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3396,7 +3405,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4463,7 +4472,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5309,7 +5318,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6434,7 +6443,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7298,7 +7307,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7797,7 +7806,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7984,6 +7993,8 @@ export namespace Ags {
             columnCount: number;
             row_count: number;
             rowCount: number;
+            solver_path: any;
+            solverPath: any;
             source_function: string;
             sourceFunction: string;
         }
@@ -8010,6 +8021,16 @@ export namespace Ags {
          * The row count of the term table.
          */
         get rowCount(): number;
+        /**
+         * The assigned solver path.
+         */
+        get solver_path(): any;
+        set solver_path(val: any);
+        /**
+         * The assigned solver path.
+         */
+        get solverPath(): any;
+        set solverPath(val: any);
         /**
          * The assigned source-function.
          */
@@ -8809,7 +8830,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9365,7 +9386,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -10167,7 +10188,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -10760,7 +10781,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -11064,7 +11085,7 @@ export namespace Ags {
          * Get unix time.
          * @returns the unix time as time_t value
          */
-        get_unix_time(): number;
+        get_unix_time(): never;
         /**
          * Set AGS offset as unsigned 64 bit integer.
          * @param ags_offset the AGS offset
@@ -11079,7 +11100,7 @@ export namespace Ags {
          * Set unix time.
          * @param unix_time the unix time value
          */
-        set_unix_time(unix_time: number): void;
+        set_unix_time(unix_time: never): void;
         /**
          * Test `flags` to be set.
          * @param flags the flags
@@ -11904,7 +11925,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12375,7 +12396,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12894,7 +12915,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -13527,7 +13548,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -14018,7 +14039,7 @@ export namespace Ags {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -14933,8 +14954,8 @@ export namespace Ags {
          * Allocate #AgsRegexUtil-struct
          * @param app_encoding the application encoding
          * @param encoding the input encoding
-         * @param is_unichar
-         * @param is_unichar2
+         * @param is_unichar is gunichar
+         * @param is_unichar2 is gunichar2
          */
         static alloc(app_encoding: string, encoding: string, is_unichar: boolean, is_unichar2: boolean): RegexUtil;
         static error_quark(): GLib.Quark;
@@ -15061,6 +15082,79 @@ export namespace Ags {
     type ServerStatusClass = typeof ServerStatus;
     type ServiceProviderInterface = typeof ServiceProvider;
     type SolverMatrixClass = typeof SolverMatrix;
+    class SolverPath {
+        static $gtype: GObject.GType<SolverPath>;
+
+        // Own fields of Ags.SolverPath
+
+        nth_column: number;
+        nth_row_a: number;
+        nth_row_b: number;
+
+        // Constructors of Ags.SolverPath
+
+        constructor(
+            properties?: Partial<{
+                nth_column: number;
+                nth_row_a: number;
+                nth_row_b: number;
+            }>,
+        );
+        _init(...args: any[]): void;
+
+        // Own static methods of Ags.SolverPath
+
+        /**
+         * Allocate #AgsSolverPath-struct
+         * @param nth_column the nth-column
+         * @param nth_row_a nth-row a
+         * @param nth_row_b nth-row b
+         */
+        static alloc(nth_column: number, nth_row_a: number, nth_row_b: number): SolverPath;
+
+        // Own methods of Ags.SolverPath
+
+        /**
+         * Create a copy of `ptr`.
+         * @returns a pointer of the new #AgsSolverPath-struct
+         */
+        copy(): any | null;
+        /**
+         * Free the memory of `ptr`.
+         */
+        free(): void;
+        /**
+         * Get nth-column of `solver_path`.
+         * @returns nth-column as unsigned integer
+         */
+        get_nth_column(): number;
+        /**
+         * Get nth-row a of `solver_path`.
+         * @returns nth-row a as unsigned integer
+         */
+        get_nth_row_a(): number;
+        /**
+         * Get nth-row b of solver path.
+         * @returns nth-row b as unsigned integer
+         */
+        get_nth_row_b(): number;
+        /**
+         * Set nth-column of `solver_path`.
+         * @param nth_column the nth-column to set
+         */
+        set_nth_column(nth_column: number): void;
+        /**
+         * Set nth-row a of `solver_path`.
+         * @param nth_row_a the nth-row a to set
+         */
+        set_nth_row_a(nth_row_a: number): void;
+        /**
+         * Set nth-row b of `solver_path`.
+         * @param nth_row_b the nth-row b to set
+         */
+        set_nth_row_b(nth_row_b: number): void;
+    }
+
     type SolverPolynomialClass = typeof SolverPolynomial;
     type SolverVectorClass = typeof SolverVector;
     type SoundServerInterface = typeof SoundServer;

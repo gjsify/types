@@ -789,7 +789,7 @@ export namespace Peas {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1258,7 +1258,7 @@ export namespace Peas {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

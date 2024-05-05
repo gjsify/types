@@ -492,22 +492,7 @@ export namespace GstRtspServer {
             peer_cert: Gio.TlsCertificate,
             errors: Gio.TlsCertificateFlags,
         ): boolean;
-        /**
-         * check the authentication of a client. The default implementation
-         *         checks if the authentication in the header matches one of the basic
-         *         authentication tokens. This function should set the authgroup field
-         *         in the context.
-         * @param ctx
-         */
         vfunc_authenticate(ctx: RTSPContext): boolean;
-        /**
-         * check if a resource can be accessed. this function should
-         *         call authenticate to authenticate the client when needed. The method
-         *         should also construct and send an appropriate response message on
-         *         error.
-         * @param ctx
-         * @param check
-         */
         vfunc_check(ctx: RTSPContext, check: string): boolean;
         vfunc_generate_authenticate_header(ctx: RTSPContext): void;
 
@@ -927,16 +912,6 @@ export namespace GstRtspServer {
          * @param code a #GstRTSPStatusCode
          */
         vfunc_adjust_error_code(ctx: RTSPContext, code: GstRtsp.RTSPStatusCode): GstRtsp.RTSPStatusCode;
-        /**
-         * called to give the application the possibility to adjust
-         *    the range, seek flags, rate and rate-control. Since 1.18
-         * @param context
-         * @param range
-         * @param flags
-         * @param rate
-         * @param trickmode_interval
-         * @param enable_rate_control
-         */
         vfunc_adjust_play_mode(
             context: RTSPContext,
             range: GstRtsp.RTSPTimeRange,
@@ -945,59 +920,21 @@ export namespace GstRtspServer {
             trickmode_interval: Gst.ClockTime,
             enable_rate_control: boolean,
         ): GstRtsp.RTSPStatusCode;
-        /**
-         * called to give the implementation the possibility to
-         *    adjust the response to a play request, for example if extra headers were
-         *    parsed when #GstRTSPClientClass.adjust_play_mode was called. Since 1.18
-         * @param context
-         */
         vfunc_adjust_play_response(context: RTSPContext): GstRtsp.RTSPStatusCode;
         vfunc_announce_request(ctx: RTSPContext): void;
         vfunc_check_requirements(ctx: RTSPContext, arr: string): string;
         vfunc_closed(): void;
-        /**
-         * called when the stream in media needs to be configured.
-         *    The default implementation will configure the blocksize on the payloader when
-         *    spcified in the request headers.
-         * @param media
-         * @param stream
-         * @param ctx
-         */
         vfunc_configure_client_media(media: RTSPMedia, stream: RTSPStream, ctx: RTSPContext): boolean;
-        /**
-         * called when the client transport needs to be
-         *    configured.
-         * @param ctx
-         * @param ct
-         */
         vfunc_configure_client_transport(ctx: RTSPContext, ct: GstRtsp.RTSPTransport): boolean;
-        /**
-         * called when the SDP needs to be created for media.
-         * @param media
-         */
         vfunc_create_sdp(media: RTSPMedia): GstSdp.SDPMessage;
         vfunc_describe_request(ctx: RTSPContext): void;
         vfunc_get_parameter_request(ctx: RTSPContext): void;
         vfunc_handle_response(ctx: RTSPContext): void;
         vfunc_handle_sdp(ctx: RTSPContext, media: RTSPMedia, sdp: GstSdp.SDPMessage): boolean;
-        /**
-         * called to create path from uri.
-         * @param uri
-         */
         vfunc_make_path_from_uri(uri: GstRtsp.RTSPUrl): string;
         vfunc_new_session(session: RTSPSession): void;
         vfunc_options_request(ctx: RTSPContext): void;
-        /**
-         * get parameters. This function should also initialize the
-         *    RTSP response(ctx->response) via a call to gst_rtsp_message_init_response()
-         * @param ctx
-         */
         vfunc_params_get(ctx: RTSPContext): GstRtsp.RTSPResult;
-        /**
-         * set parameters. This function should also initialize the
-         *    RTSP response(ctx->response) via a call to gst_rtsp_message_init_response()
-         * @param ctx
-         */
         vfunc_params_set(ctx: RTSPContext): GstRtsp.RTSPResult;
         vfunc_pause_request(ctx: RTSPContext): void;
         vfunc_play_request(ctx: RTSPContext): void;
@@ -1016,12 +953,6 @@ export namespace GstRtspServer {
         vfunc_set_parameter_request(ctx: RTSPContext): void;
         vfunc_setup_request(ctx: RTSPContext): void;
         vfunc_teardown_request(ctx: RTSPContext): void;
-        /**
-         * called when a response to the GET request is about to
-         *   be sent for a tunneled connection. The response can be modified. Since: 1.4
-         * @param request
-         * @param response
-         */
         vfunc_tunnel_http_response(request: GstRtsp.RTSPMessage, response: GstRtsp.RTSPMessage): void;
 
         // Own methods of GstRtspServer.RTSPClient
@@ -1342,16 +1273,7 @@ export namespace GstRtspServer {
 
         // Own virtual methods of GstRtspServer.RTSPMedia
 
-        /**
-         * convert a range to the given unit
-         * @param range
-         * @param unit
-         */
         vfunc_convert_range(range: GstRtsp.RTSPTimeRange, unit: GstRtsp.RTSPRangeUnit): boolean;
-        /**
-         * handle a message
-         * @param message
-         */
         vfunc_handle_message(message: Gst.Message): boolean;
         /**
          * Configure an SDP on `media` for receiving streams
@@ -1371,15 +1293,7 @@ export namespace GstRtspServer {
          */
         vfunc_prepare(thread?: RTSPThread | null): boolean;
         vfunc_prepared(): void;
-        /**
-         * query the current position in the pipeline
-         * @param position
-         */
         vfunc_query_position(position: number): boolean;
-        /**
-         * query when playback will stop
-         * @param stop
-         */
         vfunc_query_stop(stop: number): boolean;
         vfunc_removed_stream(stream: RTSPStream): void;
         vfunc_setup_rtpbin(rtpbin: Gst.Element): boolean;
@@ -1414,6 +1328,16 @@ export namespace GstRtspServer {
 
         // Own methods of GstRtspServer.RTSPMedia
 
+        /**
+         * Check if the pipeline for `media` can be shared between multiple clients.
+         *
+         * This checks if the media is shareable and whether it is either reusable or
+         * was never unprepared before.
+         *
+         * The function must be called with gst_rtsp_media_lock().
+         * @returns %TRUE if the media can be shared between clients.
+         */
+        can_be_shared(): boolean;
         /**
          * Find all payloader elements, they should be named pay\%d in the
          * element of `media,` and create #GstRTSPStreams for them.
@@ -1594,7 +1518,12 @@ export namespace GstRtspServer {
          */
         is_reusable(): boolean;
         /**
-         * Check if the pipeline for `media` can be shared between multiple clients.
+         * Check if the pipeline for `media` can be shared between multiple clients in
+         * theory. This simply returns the value set via gst_rtsp_media_set_shared().
+         *
+         * To know if a media can be shared in practice, i.e. if it's shareable and
+         * either reusable or was never unprepared before, use
+         * gst_rtsp_media_can_be_shared().
          * @returns %TRUE if the media can be shared between clients.
          */
         is_shared(): boolean;
@@ -1982,11 +1911,6 @@ export namespace GstRtspServer {
 
         // Own virtual methods of GstRtspServer.RTSPMediaFactory
 
-        /**
-         * configure the media created with `construct`. The default
-         *       implementation will configure the 'shared' property of the media.
-         * @param media
-         */
         vfunc_configure(media: RTSPMedia): void;
         /**
          * Construct the media object and create its streams. Implementations
@@ -1998,6 +1922,8 @@ export namespace GstRtspServer {
          *
          * After the media is constructed, it can be configured and then prepared
          * with gst_rtsp_media_prepare ().
+         *
+         * The returned media will be locked and must be unlocked afterwards.
          * @param url the url used
          */
         vfunc_construct(url: GstRtsp.RTSPUrl): RTSPMedia | null;
@@ -2011,22 +1937,8 @@ export namespace GstRtspServer {
          * @param url the url used
          */
         vfunc_create_element(url: GstRtsp.RTSPUrl): Gst.Element | null;
-        /**
-         * convert `url` to a key for caching shared #GstRTSPMedia objects.
-         *       The default implementation of this function will use the complete URL
-         *       including the query parameters to return a key.
-         * @param url
-         */
         vfunc_gen_key(url: GstRtsp.RTSPUrl): string;
-        /**
-         * signal emitted when a media should be configured
-         * @param media
-         */
         vfunc_media_configure(media: RTSPMedia): void;
-        /**
-         * signal emitted when a media was constructed
-         * @param media
-         */
         vfunc_media_constructed(media: RTSPMedia): void;
 
         // Own methods of GstRtspServer.RTSPMediaFactory
@@ -2048,6 +1960,8 @@ export namespace GstRtspServer {
          *
          * After the media is constructed, it can be configured and then prepared
          * with gst_rtsp_media_prepare ().
+         *
+         * The returned media will be locked and must be unlocked afterwards.
          * @param url the url used
          * @returns a new #GstRTSPMedia if the media could be prepared.
          */
@@ -2655,10 +2569,6 @@ export namespace GstRtspServer {
 
         // Own virtual methods of GstRtspServer.RTSPServer
 
-        /**
-         * emitted when a new client connected.
-         * @param client
-         */
         vfunc_client_connected(client: RTSPClient): void;
 
         // Own methods of GstRtspServer.RTSPServer
@@ -3122,15 +3032,7 @@ export namespace GstRtspServer {
 
         // Own virtual methods of GstRtspServer.RTSPSessionPool
 
-        /**
-         * create a new random session id. Subclasses can create
-         *    custom session ids and should not check if the session exists.
-         */
         vfunc_create_session_id(): string;
-        /**
-         * a session was removed from the pool
-         * @param session
-         */
         vfunc_session_removed(session: RTSPSession): void;
 
         // Own methods of GstRtspServer.RTSPSessionPool
@@ -3974,12 +3876,6 @@ export namespace GstRtspServer {
 
         // Own virtual methods of GstRtspServer.RTSPThreadPool
 
-        /**
-         * configure a thread object. this vmethod is called when
-         *       a new thread has been created and should be configured.
-         * @param thread
-         * @param ctx
-         */
         vfunc_configure_thread(thread: RTSPThread, ctx: RTSPContext): void;
         /**
          * Get a new #GstRTSPThread for `type` and `ctx`.
@@ -3987,15 +3883,7 @@ export namespace GstRtspServer {
          * @param ctx a #GstRTSPContext
          */
         vfunc_get_thread(type: RTSPThreadType, ctx: RTSPContext): RTSPThread | null;
-        /**
-         * called from the thread when it is entered
-         * @param thread
-         */
         vfunc_thread_enter(thread: RTSPThread): void;
-        /**
-         * called from the thread when it is left
-         * @param thread
-         */
         vfunc_thread_leave(thread: RTSPThread): void;
 
         // Own methods of GstRtspServer.RTSPThreadPool

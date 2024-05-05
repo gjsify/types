@@ -331,6 +331,13 @@ export namespace EBackend {
 
         // Own virtual methods of EBackend.Backend
 
+        /**
+         * Authenticate synchronously
+         * @param credentials
+         * @param out_certificate_pem
+         * @param out_certificate_errors
+         * @param cancellable
+         */
         vfunc_authenticate_sync(
             credentials: EDataServer.NamedParameters,
             out_certificate_pem: string,
@@ -1508,7 +1515,7 @@ export namespace EBackend {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2516,7 +2523,7 @@ export namespace EBackend {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3117,7 +3124,7 @@ export namespace EBackend {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3993,7 +4000,7 @@ export namespace EBackend {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4404,7 +4411,7 @@ export namespace EBackend {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5169,7 +5176,7 @@ export namespace EBackend {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5722,7 +5729,7 @@ export namespace EBackend {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6365,7 +6372,7 @@ export namespace EBackend {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

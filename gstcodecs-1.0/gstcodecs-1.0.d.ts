@@ -661,6 +661,12 @@ export namespace GstCodecs {
 
         // Own virtual methods of GstCodecs.Vp8Decoder
 
+        /**
+         * Optional.
+         *                     Called per one #GstVp8Picture to notify subclass to finish
+         *                     decoding process for the #GstVp8Picture
+         * @param picture
+         */
         vfunc_end_picture(picture: Vp8Picture): Gst.FlowReturn;
         /**
          * Optional. Called by baseclass to query whether delaying output is
@@ -668,8 +674,31 @@ export namespace GstCodecs {
          * @param is_live whether upstream is live or not
          */
         vfunc_get_preferred_output_delay(is_live: boolean): number;
+        /**
+         * Optional.
+         *                     Called whenever new #GstVp8Picture is created.
+         *                     Subclass can set implementation specific user data
+         *                     on the #GstVp8Picture via gst_vp8_picture_set_user_data()
+         * @param frame
+         * @param picture
+         */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: Vp8Picture): Gst.FlowReturn;
+        /**
+         * Called with a #GstVp8Picture which is required to be outputted.
+         *                     Subclass can retrieve parent #GstVideoCodecFrame by using
+         *                     gst_video_decoder_get_frame() with system_frame_number
+         *                     and the #GstVideoCodecFrame must be consumed by subclass via
+         *                     gst_video_decoder_{finish,drop,release}_frame().
+         * @param frame
+         * @param picture
+         */
         vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: Vp8Picture): Gst.FlowReturn;
+        /**
+         * Optional.
+         *                     Called per one #GstVp8Picture to notify subclass to prepare
+         *                     decoding process for the #GstVp8Picture
+         * @param picture
+         */
         vfunc_start_picture(picture: Vp8Picture): Gst.FlowReturn;
     }
 
@@ -959,6 +988,12 @@ export namespace GstCodecs {
          * @returns The previously set user_data
          */
         get_user_data(): any | null;
+        /**
+         * Update reference picture type of `picture` with `reference`
+         * @param reference a GstH264PictureReference
+         * @param other_field %TRUE if @reference needs to be applied to the other field if any
+         */
+        set_reference(reference: H264PictureReference, other_field: boolean): void;
         /**
          * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
          * the picture is freed.

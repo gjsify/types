@@ -63,6 +63,15 @@ export namespace Hex {
     }
     /**
      * Utility function to obtain the size of a #GFile.
+     *
+     * Since 4.6, this function will return an unspecified negative value if the
+     * file size was unable to be obtained, as opposed to 0 as it previously did.
+     * This is to distinguish between valid zero-length files and files for which
+     * the size was not able to be obtained (eg, if it was unreadable). In the
+     * future, these negative values may be defined as specific enums which have a
+     * more specific meaning. But presently and going forward, testing for a
+     * negative value is sufficient to determine that the file size was
+     * unobtainable.
      * @param file file to obtain size of
      * @returns the size of the file, in bytes
      */
@@ -228,7 +237,7 @@ export namespace Hex {
          * @param push_undo whether the undo stack should be pushed to
          */
         changed(change_data: any | null, push_undo: boolean): void;
-        compare_data(what: string[], pos: number): number;
+        compare_data(what: Uint8Array | string, pos: number): number;
         /**
          * Full version of [method`Hex`.Document.compare_data] to allow data
          * comparisons broader than byte-for-byte matches only. However, it is
@@ -274,16 +283,16 @@ export namespace Hex {
          * for GUI operations, as it, unlike this method, allows for easy passing-in
          * of found/not-found strings to be passed back to the interface.
          * @param start starting offset byte of the payload to commence the search
-         * @param what a pointer to the data to search within the   #HexDocument
+         * @param what a pointer to the data to   search within the #HexDocument
          * @returns %TRUE if @what was found by the requested operation; %FALSE   otherwise.
          */
-        find_backward(start: number, what: string[]): [boolean, number];
+        find_backward(start: number, what: Uint8Array | string): [boolean, number];
         /**
          * Non-blocking version of [method`Hex`.Document.find_backward]. This is the
          * function that should generally be used by a GUI client to find a string
          * backwards in a #HexDocument.
          * @param start starting offset byte of the payload to commence the search
-         * @param what a pointer to the data to search within the   #HexDocument
+         * @param what a pointer to the data to   search within the #HexDocument
          * @param found_msg message intended to be displayed by the client if the string   is found
          * @param not_found_msg message intended to be displayed by the client if the string   is not found
          * @param cancellable
@@ -291,7 +300,7 @@ export namespace Hex {
          */
         find_backward_async(
             start: number,
-            what: string[],
+            what: Uint8Array | string,
             found_msg: string,
             not_found_msg: string,
             cancellable?: Gio.Cancellable | null,
@@ -335,16 +344,16 @@ export namespace Hex {
          * for GUI operations, as it, unlike this method, allows for easy passing-in
          * of found/not-found strings to be passed back to the interface.
          * @param start starting offset byte of the payload to commence the search
-         * @param what a pointer to the data to search within the   #HexDocument
+         * @param what a pointer to the data to   search within the #HexDocument
          * @returns %TRUE if @what was found by the requested operation; %FALSE   otherwise.
          */
-        find_forward(start: number, what: string[]): [boolean, number];
+        find_forward(start: number, what: Uint8Array | string): [boolean, number];
         /**
          * Non-blocking version of [method`Hex`.Document.find_forward]. This is the
          * function that should generally be used by a GUI client to find a string
          * forwards in a #HexDocument.
          * @param start starting offset byte of the payload to commence the search
-         * @param what a pointer to the data to search within the   #HexDocument
+         * @param what a pointer to the data to   search within the #HexDocument
          * @param found_msg message intended to be displayed by the client if the string   is found
          * @param not_found_msg message intended to be displayed by the client if the string   is not found
          * @param cancellable
@@ -352,7 +361,7 @@ export namespace Hex {
          */
         find_forward_async(
             start: number,
-            what: string[],
+            what: Uint8Array | string,
             found_msg: string,
             not_found_msg: string,
             cancellable?: Gio.Cancellable | null,
@@ -455,7 +464,7 @@ export namespace Hex {
          * @param data a pointer to the data being   provided
          * @param undoable whether the operation should be undoable
          */
-        set_data(offset: number, rep_len: number, data: string[], undoable: boolean): void;
+        set_data(offset: number, rep_len: number, data: Uint8Array | string, undoable: boolean): void;
         // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         /**
@@ -578,6 +587,8 @@ export namespace Hex {
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
             document: Document;
+            fade_zeroes: boolean;
+            fadeZeroes: boolean;
         }
     }
 
@@ -591,7 +602,20 @@ export namespace Hex {
 
         // Own properties of Hex.Widget
 
+        /**
+         * `HexDocument` affiliated with and owned by the `HexWidget`.
+         */
         get document(): Document;
+        /**
+         * Whether zeroes (`00`) will be faded on the hex side of the `HexWidget`.
+         */
+        get fade_zeroes(): boolean;
+        set fade_zeroes(val: boolean);
+        /**
+         * Whether zeroes (`00`) will be faded on the hex side of the `HexWidget`.
+         */
+        get fadeZeroes(): boolean;
+        set fadeZeroes(val: boolean);
 
         // Constructors of Hex.Widget
 
@@ -628,6 +652,20 @@ export namespace Hex {
         // Own methods of Hex.Widget
 
         /**
+         * Add a mark for a `HexWidget` object at the specified absolute `start` and
+         * `end` offsets.
+         *
+         * Although the mark obtains an index within the widget internally, this index
+         * numeral is private and is not retrievable. As a result, it is recommended
+         * that applications wishing to manipulate marks retain the pointer returned by
+         * this function, and implement their own tracking mechanism for the marks.
+         * @param start The start offset of the mark
+         * @param end The start offset of the mark
+         * @param color A custom color to set for the mark, or `NULL` to use the   default
+         * @returns A pointer to a `HexWidgetMark` object, owned by the `HexWidget`.
+         */
+        add_mark(start: number, end: number, color?: Gdk.RGBA | null): WidgetMark;
+        /**
          * Clear the selection (if any). Any autohighlights will remain intact.
          */
         clear_selection(): void;
@@ -644,6 +682,11 @@ export namespace Hex {
          * @param ahl the autohighlight to be deleted
          */
         delete_autohighlight(ahl: WidgetAutoHighlight): void;
+        /**
+         * Delete a `HexWidgetMark` from a `HexWidget`.
+         * @param mark The `HexWidgetMark` to delete
+         */
+        delete_mark(mark: WidgetMark): void;
         /**
          * Delete the current selection. The resulting action will be undoable.
          */
@@ -671,6 +714,11 @@ export namespace Hex {
          */
         get_document(): Document;
         /**
+         * Retrieve whether zeroes (`00`) are faded in the hex display.
+         * @returns `TRUE` if zeroes are faded; `FALSE` otherwise
+         */
+        get_fade_zeroes(): boolean;
+        /**
          * Get the group type of the data of the #HexWidget.
          * @returns the group type of the data of the #HexWidget, by   [enum@Hex.WidgetGroupType]
          */
@@ -686,20 +734,25 @@ export namespace Hex {
          */
         get_selection(): [boolean, number, number];
         /**
-         * Insert an auto-highlight of a given search string.
-         * @param search search string to auto-highlight
-         * @returns a newly created [struct@Hex.WidgetAutoHighlight] structure
+         * Jump the cursor in the `HexWidget` specified to the mark in question.
+         * @param mark The mark to jump to
          */
-        insert_autohighlight(search: string[]): WidgetAutoHighlight;
+        goto_mark(mark: WidgetMark): void;
+        /**
+         * Insert an auto-highlight of a given search string.
+         * @param search search   string to auto-highlight
+         * @returns a newly created [struct@Hex.WidgetAutoHighlight]   structure, owned by the `HexWidget`
+         */
+        insert_autohighlight(search: Uint8Array | string): WidgetAutoHighlight;
         /**
          * Full version of [method`Hex`.Widget.insert_autohighlight] which allows
          * for specifying string match types for auto-highlights over and above
          * exact byte-for-byte string matches.
-         * @param search search string to auto-highlight
+         * @param search search   string to auto-highlight
          * @param flags #HexSearchFlags to specify match type
-         * @returns a newly created [struct@Hex.WidgetAutoHighlight] structure
+         * @returns a newly created [struct@Hex.WidgetAutoHighlight]   structure, owned by the `HexWidget`
          */
-        insert_autohighlight_full(search: string[], flags: SearchFlags): WidgetAutoHighlight;
+        insert_autohighlight_full(search: Uint8Array | string, flags: SearchFlags): WidgetAutoHighlight;
         /**
          * Paste clipboard data to widget at position of cursor.
          *
@@ -727,6 +780,11 @@ export namespace Hex {
          */
         set_cursor_by_row_and_col(col_x: number, line_y: number): void;
         /**
+         * Set whether zeroes (`00`) are faded in the hex display.
+         * @param fade Whether zeroes (`00` in the hex display) should be faded
+         */
+        set_fade_zeroes(fade: boolean): void;
+        /**
          * Set the geometry of the widget to specified dimensions.
          * @param cpl columns per line which should be displayed, or 0 for default
          * @param vis_lines number of lines which should be displayed, or 0 for default
@@ -742,6 +800,12 @@ export namespace Hex {
          * @param insert %TRUE if insert mode should be enabled, %FALSE if overwrite mode   should be enabled
          */
         set_insert_mode(insert: boolean): void;
+        /**
+         * Set a custom color for a `HexWidgetMark` object.
+         * @param mark The `HexWidgetMark` for which the custom color will be set
+         * @param color The custom color to be set for the mark
+         */
+        set_mark_custom_color(mark: WidgetMark, color: Gdk.RGBA): void;
         /**
          * Move the cursor to upper nibble or lower nibble of the current byte.
          * @param lower_nibble %TRUE if the lower nibble of the current byte should be   selected; %FALSE for the upper nibble
@@ -1229,7 +1293,7 @@ export namespace Hex {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1409,6 +1473,78 @@ export namespace Hex {
         stop_emission_by_name(detailedName: string): any;
     }
 
+    module WidgetMark {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            custom_color: Gdk.RGBA;
+            customColor: Gdk.RGBA;
+            have_custom_color: boolean;
+            haveCustomColor: boolean;
+        }
+    }
+
+    /**
+     * `HexWidgetMark` is a `GObject` which contains the metadata associated with a
+     * mark for a hex document.
+     *
+     * To instantiate a `HexWidgetMark` object, use the [method`HexWidget`.add_mark]
+     * method.
+     */
+    class WidgetMark extends GObject.Object {
+        static $gtype: GObject.GType<WidgetMark>;
+
+        // Own properties of Hex.WidgetMark
+
+        /**
+         * The custom color of the `HexWidgetMark`, if applicable.
+         */
+        get custom_color(): Gdk.RGBA;
+        set custom_color(val: Gdk.RGBA);
+        /**
+         * The custom color of the `HexWidgetMark`, if applicable.
+         */
+        get customColor(): Gdk.RGBA;
+        set customColor(val: Gdk.RGBA);
+        /**
+         * Whether the `HexWidgetMark` has a custom color.
+         */
+        get have_custom_color(): boolean;
+        /**
+         * Whether the `HexWidgetMark` has a custom color.
+         */
+        get haveCustomColor(): boolean;
+
+        // Constructors of Hex.WidgetMark
+
+        constructor(properties?: Partial<WidgetMark.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own methods of Hex.WidgetMark
+
+        /**
+         * Obtains the custom color associated with a `HexWidgetMark` object, if
+         * any.
+         */
+        get_custom_color(): Gdk.RGBA;
+        /**
+         * Obtains the end offset of a `HexWidgetMark`.
+         * @returns The end offset of the mark
+         */
+        get_end_offset(): number;
+        /**
+         * Returns whether the `HexWidgetMark` has a custom color associated with it.
+         * @returns `TRUE` if the `HexWidgetMark` has a custom color associated with   it; `FALSE` otherwise.
+         */
+        get_have_custom_color(): boolean;
+        /**
+         * Obtains the start offset of a `HexWidgetMark`.
+         * @returns The start offset of the mark
+         */
+        get_start_offset(): number;
+    }
+
     type BufferInterface = typeof Buffer;
     /**
      * A structure containing metadata about a change made to a
@@ -1445,7 +1581,7 @@ export namespace Hex {
 
         found: boolean;
         start: number;
-        what: string[];
+        what: Uint8Array;
         len: number;
         flags: SearchFlags;
         offset: number;
@@ -1459,7 +1595,7 @@ export namespace Hex {
             properties?: Partial<{
                 found: boolean;
                 start: number;
-                what: string[];
+                what: Uint8Array;
                 len: number;
                 flags: SearchFlags;
                 offset: number;
@@ -1495,6 +1631,7 @@ export namespace Hex {
     }
 
     type WidgetClass = typeof Widget;
+    type WidgetMarkClass = typeof WidgetMark;
     module Buffer {
         // Constructor properties interface
 
@@ -1509,6 +1646,15 @@ export namespace Hex {
 
         /**
          * Utility function to obtain the size of a #GFile.
+         *
+         * Since 4.6, this function will return an unspecified negative value if the
+         * file size was unable to be obtained, as opposed to 0 as it previously did.
+         * This is to distinguish between valid zero-length files and files for which
+         * the size was not able to be obtained (eg, if it was unreadable). In the
+         * future, these negative values may be defined as specific enums which have a
+         * more specific meaning. But presently and going forward, testing for a
+         * negative value is sufficient to determine that the file size was
+         * unobtainable.
          * @param file file to obtain size of
          */
         util_get_file_size(file: Gio.File): number;
@@ -1591,10 +1737,10 @@ export namespace Hex {
          * g_free() after being passed to this method, to avoid a memory leak.
          * @param offset offset position of the data being requested within the payload
          * @param rep_len amount of bytes to replace/overwrite (if any)
-         * @param data a pointer to the data being   provided
+         * @param data a pointer to   the data being provided
          * @returns %TRUE if the operation was successful; %FALSE otherwise.
          */
-        set_data(offset: number, rep_len: number, data: string[]): boolean;
+        set_data(offset: number, rep_len: number, data: Uint8Array | string): boolean;
         // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         /**
@@ -1682,9 +1828,9 @@ export namespace Hex {
          * g_free() after being passed to this method, to avoid a memory leak.
          * @param offset offset position of the data being requested within the payload
          * @param rep_len amount of bytes to replace/overwrite (if any)
-         * @param data a pointer to the data being   provided
+         * @param data a pointer to   the data being provided
          */
-        vfunc_set_data(offset: number, rep_len: number, data: string[]): boolean;
+        vfunc_set_data(offset: number, rep_len: number, data: Uint8Array | string): boolean;
         /**
          * Set the #GFile to be utilized by the buffer. Once it has been set,
          * you can read it into the buffer with [method`Hex`.Buffer.read] or

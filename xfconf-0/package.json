@@ -1,6 +1,6 @@
 {
     "name": "@girs/xfconf-0",
-    "version": "0.0.0-4.0.0-beta.4",
+    "version": "0.0.0-4.0.0-beta.5",
     "description": "GJS TypeScript type definitions for Xfconf-0, generated from library version 0.0.0",
     "type": "module",
     "module": "xfconf-0.js",

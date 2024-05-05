@@ -1,6 +1,6 @@
 {
     "name": "@girs/easyfc-0.14",
-    "version": "0.14.0-4.0.0-beta.4",
+    "version": "0.14.0-4.0.0-beta.5",
     "description": "GJS TypeScript type definitions for Easyfc-0.14, generated from library version 0.14.0",
     "type": "module",
     "module": "easyfc-0.14.js",

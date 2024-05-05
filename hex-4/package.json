@@ -1,6 +1,6 @@
 {
     "name": "@girs/hex-4",
-    "version": "4.0.0-4.0.0-beta.4",
+    "version": "4.0.0-4.0.0-beta.5",
     "description": "GJS TypeScript type definitions for Hex-4, generated from library version 4.0.0",
     "type": "module",
     "module": "hex-4.js",
