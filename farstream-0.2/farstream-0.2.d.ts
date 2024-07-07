@@ -773,7 +773,7 @@ export namespace Farstream {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -927,10 +927,45 @@ export namespace Farstream {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -946,6 +981,16 @@ export namespace Farstream {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -1081,6 +1126,16 @@ export namespace Farstream {
          * @param type_suffix Get list of plugins with this type suffix
          */
         static list_available(type_suffix: string): string[];
+        /**
+         * Register a staticly linked transmitter. This function should strictly be
+         * used by plugins own register function. To register a static plugin:
+         *   extern fs_plugin_<name>_<type>_register_pluing (void);
+         *   fs_plugin_<name>_<type>_register_pluing ();
+         * @param name The name of the plugin to register
+         * @param type_suffix The type of plugin to register (normally "transmitter")
+         * @param type
+         */
+        static register_static(name: string, type_suffix: string, type: GObject.GType): void;
 
         // Inherited methods
         /**
@@ -1296,7 +1351,7 @@ export namespace Farstream {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1449,10 +1504,45 @@ export namespace Farstream {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -1468,6 +1558,16 @@ export namespace Farstream {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -1986,6 +2086,8 @@ export namespace Farstream {
             participant: Participant;
             remote_codecs: Codec[];
             remoteCodecs: Codec[];
+            require_encryption: boolean;
+            requireEncryption: boolean;
             session: Session;
         }
     }
@@ -2068,6 +2170,18 @@ export namespace Farstream {
          * (generally through external signaling). It is a #GList of #FsCodec.
          */
         get remoteCodecs(): Codec[];
+        /**
+         * If set to TRUE, only encrypted content will be accepted on this
+         * stream.
+         */
+        get require_encryption(): boolean;
+        set require_encryption(val: boolean);
+        /**
+         * If set to TRUE, only encrypted content will be accepted on this
+         * stream.
+         */
+        get requireEncryption(): boolean;
+        set requireEncryption(val: boolean);
         /**
          * The #FsSession for this stream. This property is a construct param and
          * is read-only construction.
@@ -2308,7 +2422,7 @@ export namespace Farstream {
         }
 
         interface KnownSourcePacketReceived {
-            (component: number, buffer: any): void;
+            (component: number, buffer?: any | null): void;
         }
 
         interface LocalCandidatesPrepared {
@@ -2380,13 +2494,13 @@ export namespace Farstream {
         emit(signal: 'error', errorno: Error, error_msg: string): void;
         connect(
             signal: 'known-source-packet-received',
-            callback: (_source: this, component: number, buffer: any) => void,
+            callback: (_source: this, component: number, buffer: any | null) => void,
         ): number;
         connect_after(
             signal: 'known-source-packet-received',
-            callback: (_source: this, component: number, buffer: any) => void,
+            callback: (_source: this, component: number, buffer: any | null) => void,
         ): number;
-        emit(signal: 'known-source-packet-received', component: number, buffer: any): void;
+        emit(signal: 'known-source-packet-received', component: number, buffer?: any | null): void;
         connect(signal: 'local-candidates-prepared', callback: (_source: this) => void): number;
         connect_after(signal: 'local-candidates-prepared', callback: (_source: this) => void): number;
         emit(signal: 'local-candidates-prepared'): void;

@@ -111,6 +111,10 @@ export namespace GstApp {
             eos: boolean | any;
             max_buffers: number;
             maxBuffers: number;
+            max_bytes: number;
+            maxBytes: number;
+            max_time: number;
+            maxTime: number;
             wait_on_eos: boolean;
             waitOnEos: boolean;
         }
@@ -133,8 +137,8 @@ export namespace GstApp {
      *
      * Appsink will internally use a queue to collect buffers from the streaming
      * thread. If the application is not pulling samples fast enough, this queue
-     * will consume a lot of memory over time. The "max-buffers" property can be
-     * used to limit the queue size. The "drop" property controls whether the
+     * will consume a lot of memory over time. The "max-buffers", "max-time" and "max-bytes"
+     * properties can be used to limit the queue size. The "drop" property controls whether the
      * streaming thread blocks or if older buffers are dropped when the maximum
      * queue size is reached. Note that blocking the streaming thread can negatively
      * affect real-time performance and should be avoided.
@@ -173,12 +177,50 @@ export namespace GstApp {
         set emitSignals(val: boolean);
         // This accessor conflicts with a property or field in a parent class or interface.
         eos: boolean | any;
+        /**
+         * Maximum amount of buffers in the queue (0 = unlimited).
+         */
         get max_buffers(): number;
         set max_buffers(val: number);
+        /**
+         * Maximum amount of buffers in the queue (0 = unlimited).
+         */
         get maxBuffers(): number;
         set maxBuffers(val: number);
+        /**
+         * Maximum amount of bytes in the queue (0 = unlimited)
+         */
+        get max_bytes(): number;
+        set max_bytes(val: number);
+        /**
+         * Maximum amount of bytes in the queue (0 = unlimited)
+         */
+        get maxBytes(): number;
+        set maxBytes(val: number);
+        /**
+         * Maximum total duration of data in the queue (0 = unlimited)
+         */
+        get max_time(): number;
+        set max_time(val: number);
+        /**
+         * Maximum total duration of data in the queue (0 = unlimited)
+         */
+        get maxTime(): number;
+        set maxTime(val: number);
+        /**
+         * Wait for all buffers to be processed after receiving an EOS.
+         *
+         * In cases where it is uncertain if an `appsink` will have a consumer for its buffers
+         * when it receives an EOS, set to %FALSE to ensure that the `appsink` will not hang.
+         */
         get wait_on_eos(): boolean;
         set wait_on_eos(val: boolean);
+        /**
+         * Wait for all buffers to be processed after receiving an EOS.
+         *
+         * In cases where it is uncertain if an `appsink` will have a consumer for its buffers
+         * when it receives an EOS, set to %FALSE to ensure that the `appsink` will not hang.
+         */
         get waitOnEos(): boolean;
         set waitOnEos(val: boolean);
 
@@ -331,7 +373,7 @@ export namespace GstApp {
         get_caps(): Gst.Caps | null;
         /**
          * Check if `appsink` will drop old buffers when the maximum amount of queued
-         * buffers is reached.
+         * data is reached (meaning max buffers, time or bytes limit, whichever is hit first).
          * @returns %TRUE if @appsink is dropping old buffers when the queue is filled.
          */
         get_drop(): boolean;
@@ -345,6 +387,16 @@ export namespace GstApp {
          * @returns The maximum amount of buffers that can be queued.
          */
         get_max_buffers(): number;
+        /**
+         * Get the maximum total size, in bytes, that can be queued in `appsink`.
+         * @returns The maximum amount of bytes that can be queued
+         */
+        get_max_bytes(): number;
+        /**
+         * Get the maximum total duration that can be queued in `appsink`.
+         * @returns The maximum total duration that can be queued.
+         */
+        get_max_time(): Gst.ClockTime;
         /**
          * Check if `appsink` will wait for all buffers to be consumed when an EOS is
          * received.
@@ -415,7 +467,7 @@ export namespace GstApp {
         set_caps(caps?: Gst.Caps | null): void;
         /**
          * Instruct `appsink` to drop old buffers when the maximum amount of queued
-         * buffers is reached.
+         * data is reached, that is, when any configured limit is hit (max-buffers, max-time or max-bytes).
          * @param drop the new state
          */
         set_drop(drop: boolean): void;
@@ -429,10 +481,27 @@ export namespace GstApp {
         /**
          * Set the maximum amount of buffers that can be queued in `appsink`. After this
          * amount of buffers are queued in appsink, any more buffers will block upstream
-         * elements until a sample is pulled from `appsink`.
+         * elements until a sample is pulled from `appsink,` unless 'drop' is set, in which
+         * case new buffers will be discarded.
          * @param max the maximum number of buffers to queue
          */
         set_max_buffers(max: number): void;
+        /**
+         * Set the maximum total size that can be queued in `appsink`. After this
+         * amount of buffers are queued in appsink, any more buffers will block upstream
+         * elements until a sample is pulled from `appsink,` unless 'drop' is set, in which
+         * case new buffers will be discarded.
+         * @param max the maximum total size of buffers to queue, in bytes
+         */
+        set_max_bytes(max: number): void;
+        /**
+         * Set the maximum total duration that can be queued in `appsink`. After this
+         * amount of buffers are queued in appsink, any more buffers will block upstream
+         * elements until a sample is pulled from `appsink,` unless 'drop' is set, in which
+         * case new buffers will be discarded.
+         * @param max the maximum total duration to queue
+         */
+        set_max_time(max: Gst.ClockTime): void;
         /**
          * Instruct `appsink` to wait for all buffers to be consumed when an EOS is received.
          * @param wait the new state
@@ -689,7 +758,7 @@ export namespace GstApp {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -844,10 +913,45 @@ export namespace GstApp {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -863,6 +967,16 @@ export namespace GstApp {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -1699,7 +1813,7 @@ export namespace GstApp {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1854,10 +1968,45 @@ export namespace GstApp {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -1873,6 +2022,16 @@ export namespace GstApp {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;

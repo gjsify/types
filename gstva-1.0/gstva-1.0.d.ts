@@ -117,10 +117,22 @@ export namespace GstVa {
      */
     function va_context_query(element: Gst.Element, context_type: string): void;
     /**
+     * Get the underlying modifier for specified `format` and `usage_hint`.
+     * @param display a #GstVaDisplay
+     * @param format a #GstVideoFormat
+     * @param usage_hint VA usage hint
+     * @returns the underlying modifier.
+     */
+    function va_dmabuf_get_modifier_for_format(
+        display: VaDisplay,
+        format: GstVideo.VideoFormat,
+        usage_hint: number,
+    ): number;
+    /**
      * It imports the array of `mem,` representing a single frame, into a
      * VASurfaceID and it's attached into every `mem`.
      * @param display a #GstVaDisplay
-     * @param info a #GstVideoInfo
+     * @param drm_info a #GstVideoInfoDmaDrm
      * @param mem Memories. One     per plane.
      * @param fds array of     DMABuf file descriptors.
      * @param offset array of memory     offsets.
@@ -129,7 +141,7 @@ export namespace GstVa {
      */
     function va_dmabuf_memories_setup(
         display: VaDisplay,
-        info: GstVideo.VideoInfo,
+        drm_info: GstVideo.VideoInfoDmaDrm,
         mem: Gst.Memory[],
         fds: never[],
         offset: number[],
@@ -210,7 +222,7 @@ export namespace GstVa {
          * Gets current internal configuration of `allocator`.
          * @param allocator a #GstAllocator
          */
-        static get_format(allocator: Gst.Allocator): [boolean, GstVideo.VideoInfo | null, number, VaFeature | null];
+        static get_format(allocator: Gst.Allocator): [boolean, GstVideo.VideoInfo | null, number, boolean];
         static peek_display(allocator: Gst.Allocator): VaDisplay;
         /**
          * This method will populate `buffer` with pooled VASurfaceID
@@ -230,13 +242,13 @@ export namespace GstVa {
          * @param allocator a #GstAllocator
          * @param info a #GstVideoInfo
          * @param usage_hint VA usage hint
-         * @param use_derived a #GstVaFeature
+         * @param feat_use_derived a #GstVaFeature
          */
         static set_format(
             allocator: Gst.Allocator,
             info: GstVideo.VideoInfo,
             usage_hint: number,
-            use_derived: VaFeature,
+            feat_use_derived: VaFeature,
         ): [boolean, GstVideo.VideoInfo];
         /**
          * Populates an empty `buffer` with a VASuface backed #GstMemory.
@@ -292,6 +304,7 @@ export namespace GstVa {
 
         // Own methods of GstVa.VaDisplay
 
+        check_version(major: number, minor: number): boolean;
         /**
          * Get the the #GstVaImplementation type of `self`.
          * @returns #GstVaImplementation.
@@ -398,7 +411,7 @@ export namespace GstVa {
          * Gets current internal configuration of `allocator`.
          * @param allocator a #GstAllocator
          */
-        static get_format(allocator: Gst.Allocator): [boolean, GstVideo.VideoInfo | null, number];
+        static get_format(allocator: Gst.Allocator): [boolean, GstVideo.VideoInfoDmaDrm | null, number];
         /**
          * This method will populate `buffer` with pooled VASurfaceID/DMABuf
          * memories. It doesn't allocate new VASurfacesID.
@@ -411,16 +424,15 @@ export namespace GstVa {
          * `allocator,` and it tries the configuration, if `allocator` has not
          * allocated memories yet.
          *
-         * If `allocator` has memory allocated already, and frame size and
-         * format in `info` are the same as currently configured in `allocator,`
-         * the rest of `info` parameters are updated internally.
+         * If `allocator` has memory allocated already, and frame size, format
+         * and modifier in `info` are the same as currently configured in
+         * `allocator,` the rest of `info` parameters are updated internally.
          * @param allocator a #GstAllocator
-         * @param info a #GstVideoInfo
          * @param usage_hint VA usage hint
          */
-        static set_format(allocator: Gst.Allocator, info: GstVideo.VideoInfo, usage_hint: number): boolean;
+        static set_format(allocator: Gst.Allocator, usage_hint: number): [boolean, GstVideo.VideoInfoDmaDrm];
         /**
-         * This funciton creates a new VASurfaceID and exposes its DMABufs,
+         * This function creates a new VASurfaceID and exposes its DMABufs,
          * later it populates the `buffer` with those DMABufs.
          * @param allocator a #GstAllocator
          * @param buffer an empty #GstBuffer
@@ -450,7 +462,6 @@ export namespace GstVa {
 
         static new_with_config(
             caps: Gst.Caps,
-            size: number,
             min_buffers: number,
             max_buffers: number,
             usage_hint: number,
@@ -461,6 +472,11 @@ export namespace GstVa {
 
         // Own static methods of GstVa.VaPool
 
+        /**
+         * Helper function to retrieve the VA surface size provided by `pool`.
+         * @param pool a #GstBufferPool
+         */
+        static get_buffer_size(pool: Gst.BufferPool): [boolean, number];
         /**
          * Retuns: %TRUE if `pool` always add #GstVideoMeta to its
          *     buffers. Otherwise, %FALSE.

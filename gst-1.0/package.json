@@ -1,7 +1,7 @@
 {
     "name": "@girs/gst-1.0",
-    "version": "1.23.0-4.0.0-beta.5",
-    "description": "GJS TypeScript type definitions for Gst-1.0, generated from library version 1.23.0",
+    "version": "1.24.5-4.0.0-beta.5",
+    "description": "GJS TypeScript type definitions for Gst-1.0, generated from library version 1.24.5",
     "type": "module",
     "module": "gst-1.0.js",
     "main": "gst-1.0.js",
@@ -23,7 +23,7 @@
         }
     },
     "scripts": {
-        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gst-1.0.d.ts"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
         "@girs/gjs": "workspace:^",

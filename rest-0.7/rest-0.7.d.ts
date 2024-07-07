@@ -17,6 +17,7 @@ import type Soup from '@girs/soup-2.4';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Rest {
     enum MemoryUse {

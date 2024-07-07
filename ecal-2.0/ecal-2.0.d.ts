@@ -15,6 +15,7 @@ import type ICalGLib from '@girs/icalglib-3.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type EDataServer from '@girs/edataserver-1.2';
 import type libxml2 from '@girs/libxml2-2.0';
 import type Soup from '@girs/soup-3.0';
@@ -373,7 +374,7 @@ export namespace ECal {
      * @param t A time value.
      * @returns String with the ISO 8601 representation of the UTC time.
      */
-    function isodate_from_time_t(t: number): string;
+    function isodate_from_time_t(t: never): string;
     /**
      * Matches `tzid` against the system timezone definitions
      * and returns the matching TZID, or %NULL if none found
@@ -483,7 +484,7 @@ export namespace ECal {
         prop: ICalGLib.Property,
         zone: ICalGLib.Timezone,
         convert_end_date: boolean,
-    ): number;
+    ): never;
     /**
      * Fetches the system timezone location string.
      *
@@ -506,7 +507,7 @@ export namespace ECal {
      * @param days Number of days to add.
      * @returns a time_t value containing @time plus the days added.
      */
-    function time_add_day(time: number, days: number): number;
+    function time_add_day(time: never, days: number): never;
     /**
      * Adds or subtracts a number of days to/from the given time_t value, using
      * the given timezone.
@@ -518,7 +519,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing @time plus the days added.
      */
-    function time_add_day_with_zone(time: number, days: number, zone: ICalGLib.Timezone): number;
+    function time_add_day_with_zone(time: never, days: number, zone: ICalGLib.Timezone): never;
     /**
      * Adds or subtracts a number of months to/from the given time_t value, using
      * the given timezone.
@@ -535,14 +536,14 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing @time plus the months added.
      */
-    function time_add_month_with_zone(time: number, months: number, zone: ICalGLib.Timezone): number;
+    function time_add_month_with_zone(time: never, months: number, zone: ICalGLib.Timezone): never;
     /**
      * Adds the given number of weeks to a time value.
      * @param time A time_t value.
      * @param weeks Number of weeks to add.
      * @returns a time_t value containing @time plus the weeks added.
      */
-    function time_add_week(time: number, weeks: number): number;
+    function time_add_week(time: never, weeks: number): never;
     /**
      * Adds or subtracts a number of weeks to/from the given time_t value, using
      * the given timezone.
@@ -554,13 +555,13 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing @time plus the weeks added.
      */
-    function time_add_week_with_zone(time: number, weeks: number, zone: ICalGLib.Timezone): number;
+    function time_add_week_with_zone(time: never, weeks: number, zone: ICalGLib.Timezone): never;
     /**
      * Returns the start of the day, according to the local time.
      * @param t A time_t value.
      * @returns the time corresponding to the beginning of the day.
      */
-    function time_day_begin(t: number): number;
+    function time_day_begin(t: never): never;
     /**
      * Returns the start of the day containing the given time_t, using the given
      * timezone.
@@ -571,13 +572,13 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the day.
      */
-    function time_day_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
+    function time_day_begin_with_zone(time: never, zone: ICalGLib.Timezone): never;
     /**
      * Returns the end of the day, according to the local time.
      * @param t A time_t value.
      * @returns the time corresponding to the end of the day.
      */
-    function time_day_end(t: number): number;
+    function time_day_end(t: never): never;
     /**
      * Returns the end of the day containing the given time_t, using the given
      * timezone. (The end of the day is the start of the next day.)
@@ -588,7 +589,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the end of the day.
      */
-    function time_day_end_with_zone(time: number, zone: ICalGLib.Timezone): number;
+    function time_day_end_with_zone(time: never, zone: ICalGLib.Timezone): never;
     /**
      * Returns the day of the week for the specified date, 0 (Sun) to 6 (Sat).
      * For the days that were removed on the Gregorian reformation, it returns
@@ -621,7 +622,7 @@ export namespace ECal {
      * @param str Date/time value in ISO 8601 format.
      * @returns Time_t corresponding to the specified ISO string. Note that we only allow UTC times at present.
      */
-    function time_from_isodate(str: string): number;
+    function time_from_isodate(str: string): never;
     /**
      * Returns whether the specified year is a leap year. Year is the normal year,
      * e.g. 2001.
@@ -646,7 +647,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the month.
      */
-    function time_month_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
+    function time_month_begin_with_zone(time: never, zone: ICalGLib.Timezone): never;
     /**
      * Converts a time_t value to a #GDate structure using the specified timezone.
      * This is analogous to g_date_set_time() but takes the timezone into account.
@@ -654,7 +655,7 @@ export namespace ECal {
      * @param time A time value.
      * @param zone Desired timezone for destination @date, or %NULL if    the UTC timezone is desired.
      */
-    function time_to_gdate_with_zone(date: GLib.Date, time: number, zone?: ICalGLib.Timezone | null): void;
+    function time_to_gdate_with_zone(date: GLib.Date, time: never, zone?: ICalGLib.Timezone | null): void;
     /**
      * Returns the start of the week containing the given time_t, using the given
      * timezone. week_start_day should use the same values as mktime(),
@@ -667,7 +668,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the week.
      */
-    function time_week_begin_with_zone(time: number, week_start_day: number, zone: ICalGLib.Timezone): number;
+    function time_week_begin_with_zone(time: never, week_start_day: number, zone: ICalGLib.Timezone): never;
     /**
      * Returns the start of the year containing the given time_t, using the given
      * timezone.
@@ -678,7 +679,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the year.
      */
-    function time_year_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
+    function time_year_begin_with_zone(time: never, zone: ICalGLib.Timezone): never;
     /**
      * Adds VTIMEZONE components to a VCALENDAR for all tzid's
      * in the given `icalcomp`.
@@ -936,8 +937,8 @@ export namespace ECal {
      */
     function util_generate_alarms_for_comp(
         comp: Component,
-        start: number,
-        end: number,
+        start: never,
+        end: never,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -959,8 +960,8 @@ export namespace ECal {
      */
     function util_generate_alarms_for_list(
         comps: Component[],
-        start: number,
-        end: number,
+        start: never,
+        end: never,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -990,8 +991,8 @@ export namespace ECal {
     function util_generate_alarms_for_uid_sync(
         client: any | null,
         uid: string,
-        start: number,
-        end: number,
+        start: never,
+        end: never,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1019,7 +1020,7 @@ export namespace ECal {
         tz_cb: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
         kind: ICalGLib.ComponentKind,
-    ): [number, number];
+    ): [never, never];
     /**
      * Returns the real name and email address of the default mail identity,
      * if available.  If no default mail identity is available, `out_name` and
@@ -1071,8 +1072,8 @@ export namespace ECal {
      */
     function util_has_alarms_in_range(
         comp: Component,
-        start: number,
-        end: number,
+        start: never,
+        end: never,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1162,7 +1163,7 @@ export namespace ECal {
      */
     function util_mark_task_complete_sync(
         vtodo: ICalGLib.Component,
-        completed_time: number,
+        completed_time: never,
         cal_client: Client,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
@@ -1884,7 +1885,7 @@ export namespace ECal {
          * @param cancellable a #GCancellable; can be %NULL
          * @param cb Callback for each generated instance.
          */
-        generate_instances(start: number, end: number, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void;
+        generate_instances(start: never, end: never, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void;
         /**
          * Does a combination of e_cal_client_get_object_list() and
          * e_cal_recur_generate_instances_sync(), like
@@ -1903,8 +1904,8 @@ export namespace ECal {
          */
         generate_instances_for_object(
             icalcomp: ICalGLib.Component,
-            start: number,
-            end: number,
+            start: never,
+            end: never,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -1924,8 +1925,8 @@ export namespace ECal {
          */
         generate_instances_for_object_sync(
             icalcomp: ICalGLib.Component,
-            start: number,
-            end: number,
+            start: never,
+            end: never,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -1945,8 +1946,8 @@ export namespace ECal {
          */
         generate_instances_for_uid_sync(
             uid: string,
-            start: number,
-            end: number,
+            start: never,
+            end: never,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -1963,8 +1964,8 @@ export namespace ECal {
          * @param cb Callback for each generated instance
          */
         generate_instances_sync(
-            start: number,
-            end: number,
+            start: never,
+            end: never,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -2056,8 +2057,8 @@ export namespace ECal {
          * @param callback callback to call when a result is ready
          */
         get_free_busy(
-            start: number,
-            end: number,
+            start: never,
+            end: never,
             users: string[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2083,8 +2084,8 @@ export namespace ECal {
          * @returns %TRUE if successful, %FALSE otherwise.
          */
         get_free_busy_sync(
-            start: number,
-            end: number,
+            start: never,
+            end: never,
             users: string[],
             cancellable?: Gio.Cancellable | null,
         ): [boolean, Component[]];
@@ -2984,7 +2985,7 @@ export namespace ECal {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3137,10 +3138,45 @@ export namespace ECal {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -3156,6 +3192,16 @@ export namespace ECal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -3586,7 +3632,7 @@ export namespace ECal {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3739,10 +3785,45 @@ export namespace ECal {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -3758,6 +3839,16 @@ export namespace ECal {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -4916,15 +5007,10 @@ export namespace ECal {
 
         // Constructors of ECal.ComponentAlarmInstance
 
-        constructor(uid: string, instance_time: number, occur_start: number, occur_end: number);
+        constructor(uid: string, instance_time: never, occur_start: never, occur_end: never);
         _init(...args: any[]): void;
 
-        static ['new'](
-            uid: string,
-            instance_time: number,
-            occur_start: number,
-            occur_end: number,
-        ): ComponentAlarmInstance;
+        static ['new'](uid: string, instance_time: never, occur_start: never, occur_end: never): ComponentAlarmInstance;
 
         // Own methods of ECal.ComponentAlarmInstance
 
@@ -4935,10 +5021,10 @@ export namespace ECal {
          */
         copy(): ComponentAlarmInstance;
         get_component(): any | null;
-        get_occur_end(): number;
-        get_occur_start(): number;
+        get_occur_end(): never;
+        get_occur_start(): never;
         get_rid(): string | null;
-        get_time(): number;
+        get_time(): never;
         get_uid(): string;
         /**
          * Sets `component` as the component associated with the `instance`.
@@ -4950,12 +5036,12 @@ export namespace ECal {
          * Set the actual event occurrence end to which this `instance` corresponds.
          * @param occur_end event occurence end to set
          */
-        set_occur_end(occur_end: number): void;
+        set_occur_end(occur_end: never): void;
         /**
          * Set the actual event occurrence start to which this `instance` corresponds.
          * @param occur_start event occurence start to set
          */
-        set_occur_start(occur_start: number): void;
+        set_occur_start(occur_start: never): void;
         /**
          * Set the Recurrence ID of the component this `instance` was generated for.
          * @param rid recurrence UID to set, or %NULL
@@ -4965,7 +5051,7 @@ export namespace ECal {
          * Set the instance time, i.e. "5 minutes before the appointment".
          * @param instance_time instance time to set
          */
-        set_time(instance_time: number): void;
+        set_time(instance_time: never): void;
         /**
          * Set the alarm UID.
          * @param uid alarm UID to set

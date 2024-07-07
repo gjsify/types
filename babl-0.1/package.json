@@ -1,7 +1,7 @@
 {
     "name": "@girs/babl-0.1",
-    "version": "0.1.107-4.0.0-beta.5",
-    "description": "GJS TypeScript type definitions for Babl-0.1, generated from library version 0.1.107",
+    "version": "0.1.108-4.0.0-beta.5",
+    "description": "GJS TypeScript type definitions for Babl-0.1, generated from library version 0.1.108",
     "type": "module",
     "module": "babl-0.1.js",
     "main": "babl-0.1.js",
@@ -23,7 +23,7 @@
         }
     },
     "scripts": {
-        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit babl-0.1.d.ts"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
         "@girs/gjs": "workspace:^",

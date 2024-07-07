@@ -23,7 +23,7 @@
         }
     },
     "scripts": {
-        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit retro-0.14.d.ts"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
         "@girs/atk-1.0": "workspace:^",

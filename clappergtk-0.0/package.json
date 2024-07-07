@@ -1,0 +1,73 @@
+{
+    "name": "@girs/clappergtk-0.0",
+    "version": "0.6.0-4.0.0-beta.5",
+    "description": "GJS TypeScript type definitions for ClapperGtk-0.0, generated from library version 0.6.0",
+    "type": "module",
+    "module": "clappergtk-0.0.js",
+    "main": "clappergtk-0.0.js",
+    "exports": {
+        "./ambient": {
+            "types": "./clappergtk-0.0-ambient.d.ts",
+            "import": "./clappergtk-0.0-ambient.js",
+            "default": "./clappergtk-0.0-ambient.js"
+        },
+        "./import": {
+            "types": "./clappergtk-0.0-import.d.ts",
+            "import": "./clappergtk-0.0-import.js",
+            "default": "./clappergtk-0.0-import.js"
+        },
+        ".": {
+            "types": "./clappergtk-0.0.d.ts",
+            "import": "./clappergtk-0.0.js",
+            "default": "./clappergtk-0.0.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clapper-0.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-4.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/gsk-4.0": "workspace:^",
+        "@girs/gst-1.0": "workspace:^",
+        "@girs/gstaudio-1.0": "workspace:^",
+        "@girs/gstbase-1.0": "workspace:^",
+        "@girs/gstpbutils-1.0": "workspace:^",
+        "@girs/gsttag-1.0": "workspace:^",
+        "@girs/gstvideo-1.0": "workspace:^",
+        "@girs/gtk-4.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "ClapperGtk-0.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/clappergtk-0.0#readme"
+}

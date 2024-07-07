@@ -94,6 +94,26 @@ export namespace GstNet {
      */
     function ptp_init(clock_id: number, interfaces?: string[] | null): boolean;
     /**
+     * Initialize the GStreamer PTP subsystem and create a PTP ordinary clock in
+     * slave-only mode according to the `config`.
+     *
+     * `config` is a #GstStructure with the following optional fields:
+     * * #guint64 `clock-id`: The clock ID to use for the local clock. If the
+     *     clock-id is not provided or %GST_PTP_CLOCK_ID_NONE is provided, a clock
+     *     id is automatically generated from the MAC address of the first network
+     *     interface.
+     * * #GStrv `interfaces`: The interface names to listen on for PTP packets. If
+     *     none are provided then all compatible interfaces will be used.
+     * * #guint `ttl`: The TTL to use for multicast packets sent out by GStreamer.
+     *     This defaults to 1, i.e. packets will not leave the local network.
+     *
+     * This function is automatically called by gst_ptp_clock_new() with default
+     * parameters if it wasn't called before.
+     * @param config Configuration for initializing the GStreamer PTP subsystem
+     * @returns %TRUE if the GStreamer PTP clock subsystem could be initialized.
+     */
+    function ptp_init_full(config: Gst.Structure): boolean;
+    /**
      * Check if the GStreamer PTP clock subsystem is initialized.
      * @returns %TRUE if the GStreamer PTP clock subsystem is initialized.
      */
@@ -520,7 +540,7 @@ export namespace GstNet {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -675,10 +695,45 @@ export namespace GstNet {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -694,6 +749,16 @@ export namespace GstNet {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;

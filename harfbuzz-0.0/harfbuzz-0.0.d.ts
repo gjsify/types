@@ -3636,6 +3636,12 @@ export namespace HarfBuzz {
      */
     function buffer_get_not_found_glyph(buffer: buffer_t): codepoint_t;
     /**
+     * See hb_buffer_set_random_state().
+     * @param buffer An #hb_buffer_t
+     * @returns The @buffer random state
+     */
+    function buffer_get_random_state(buffer: buffer_t): number;
+    /**
      * Fetches the #hb_codepoint_t that replaces invalid entries for a given encoding
      * when adding text to `buffer`.
      * @param buffer An #hb_buffer_t
@@ -3991,6 +3997,20 @@ export namespace HarfBuzz {
      * @param not_found the not-found #hb_codepoint_t
      */
     function buffer_set_not_found_glyph(buffer: buffer_t, not_found: codepoint_t): void;
+    /**
+     * Sets the random state of the buffer. The state changes
+     * every time a glyph uses randomness (eg. the `rand`
+     * OpenType feature). This function together with
+     * hb_buffer_get_random_state() allow for transferring
+     * the current random state to a subsequent buffer, to
+     * get better randomness distribution.
+     *
+     * Defaults to 1 and when buffer contents are cleared.
+     * A value of 0 disables randomness during shaping.
+     * @param buffer An #hb_buffer_t
+     * @param state the new random state
+     */
+    function buffer_set_random_state(buffer: buffer_t, state: number): void;
     /**
      * Sets the #hb_codepoint_t that replaces invalid entries for a given encoding
      * when adding text to `buffer`.

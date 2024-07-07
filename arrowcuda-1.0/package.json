@@ -23,13 +23,14 @@
         }
     },
     "scripts": {
-        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit arrowcuda-1.0.d.ts"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
         "@girs/arrow-1.0": "workspace:^",
         "@girs/gio-2.0": "workspace:^",
         "@girs/gjs": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {

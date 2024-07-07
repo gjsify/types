@@ -378,6 +378,7 @@ export namespace Babl {
     function space_get_rgb_luminance(space: Object): [number, number, number];
     function space_is_cmyk(space: Object): number;
     function space_is_gray(space: Object): number;
+    function space_is_rgb(space: Object): number;
     /**
      * Creates a variant of an existing space with different trc.
      * @param space

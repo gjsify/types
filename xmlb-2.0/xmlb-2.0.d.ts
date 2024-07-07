@@ -14,6 +14,7 @@ import './xmlb-2.0-ambient.d.ts';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Xmlb {
     enum OpcodeKind {
@@ -53,6 +54,18 @@ export namespace Xmlb {
         BOUND_INDEXED_TEXT,
     }
     /**
+     * The compile-time major version
+     */
+    const MAJOR_VERSION: number;
+    /**
+     * The compile-time micro version
+     */
+    const MICRO_VERSION: number;
+    /**
+     * The compile-time minor version
+     */
+    const MINOR_VERSION: number;
+    /**
      * Converts a string to an opcode kind.
      * @param str a string, e.g. `FUNC`
      * @returns a #XbOpcodeKind, e.g. %XB_OPCODE_KIND_TEXT
@@ -70,6 +83,11 @@ export namespace Xmlb {
      * @returns new string that is safe to use for queries
      */
     function string_escape(str: string): string;
+    /**
+     * Gets the XMLb installed runtime version.
+     * @returns a version number, e.g. "0.3.19"
+     */
+    function version_string(): string;
     interface BuilderFixupFunc {
         (self: BuilderFixup, bn: BuilderNode): boolean;
     }

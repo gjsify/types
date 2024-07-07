@@ -1,7 +1,7 @@
 {
     "name": "@girs/gtk-3.0",
-    "version": "3.24.41-4.0.0-beta.5",
-    "description": "GJS TypeScript type definitions for Gtk-3.0, generated from library version 3.24.41",
+    "version": "3.24.42-4.0.0-beta.5",
+    "description": "GJS TypeScript type definitions for Gtk-3.0, generated from library version 3.24.42",
     "type": "module",
     "module": "gtk-3.0.js",
     "main": "gtk-3.0.js",
@@ -23,7 +23,7 @@
         }
     },
     "scripts": {
-        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gtk-3.0.d.ts"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
         "@girs/atk-1.0": "workspace:^",

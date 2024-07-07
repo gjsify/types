@@ -21,8 +21,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace EvinceDocument {
@@ -495,7 +495,7 @@ export namespace EvinceDocument {
          * @param utime a #time_t
          * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
          */
-        set_modified_from_time_t(utime: number): boolean;
+        set_modified_from_time_t(utime: never): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -693,7 +693,7 @@ export namespace EvinceDocument {
          * @param utime a #time_t
          * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
          */
-        set_modified_from_time_t(utime: number): boolean;
+        set_modified_from_time_t(utime: never): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -899,7 +899,7 @@ export namespace EvinceDocument {
          * @param utime a #time_t
          * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
          */
-        set_modified_from_time_t(utime: number): boolean;
+        set_modified_from_time_t(utime: never): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1103,7 +1103,7 @@ export namespace EvinceDocument {
          * @param utime a #time_t
          * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
          */
-        set_modified_from_time_t(utime: number): boolean;
+        set_modified_from_time_t(utime: never): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting

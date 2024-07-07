@@ -15,9 +15,9 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Gee {
-    function functions_get_equal_func_for(t: GObject.Type): GLib.EqualFunc;
-    function functions_get_hash_func_for(t: GObject.Type): GLib.HashFunc;
-    function functions_get_compare_func_for(t: GObject.Type): GLib.CompareFunc;
+    function functions_get_equal_func_for(t: GObject.Type): [GLib.EqualFunc, any];
+    function functions_get_hash_func_for(t: GObject.Type): [GLib.HashFunc, any];
+    function functions_get_compare_func_for(t: GObject.Type): [GLib.CompareFunc, any];
     function direct_compare(_val1: any, _val2: any): number;
     module AbstractCollection {
         // Constructor properties interface
@@ -259,7 +259,7 @@ export namespace Gee {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -412,10 +412,45 @@ export namespace Gee {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -431,6 +466,16 @@ export namespace Gee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -498,8 +543,8 @@ export namespace Gee {
         get elementType(): GObject.Type;
 
         // Inherited methods
-        sort(compare_func: GLib.CompareFunc): void;
-        vfunc_sort(compare_func: GLib.CompareFunc): void;
+        sort(compare_func: GLib.CompareFunc, compare_func_target: any): void;
+        vfunc_sort(compare_func: GLib.CompareFunc, compare_func_target: any): void;
         contains(item: any): boolean;
         add(item: any): boolean;
         remove(item: any): boolean;
@@ -784,7 +829,7 @@ export namespace Gee {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -937,10 +982,45 @@ export namespace Gee {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -956,6 +1036,16 @@ export namespace Gee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         block_signal_handler(id: number): any;
@@ -982,13 +1072,13 @@ export namespace Gee {
 
         vfunc_create_value_storage(): Collection;
         vfunc_create_multi_key_set(): MultiSet;
-        vfunc_get_value_equal_func(): GLib.EqualFunc;
+        vfunc_get_value_equal_func(): [GLib.EqualFunc, any];
 
         // Own methods of Gee.AbstractMultiMap
 
         create_value_storage(): Collection;
         create_multi_key_set(): MultiSet;
-        get_value_equal_func(): GLib.EqualFunc;
+        get_value_equal_func(): [GLib.EqualFunc, any];
 
         // Inherited properties
         get size(): number;
@@ -1191,7 +1281,7 @@ export namespace Gee {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1344,10 +1434,45 @@ export namespace Gee {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -1363,6 +1488,16 @@ export namespace Gee {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         block_signal_handler(id: number): any;
@@ -1572,7 +1707,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](equal_func: GLib.EqualFunc): ArrayList;
+        static ['new'](equal_func: GLib.EqualFunc, equal_func_target: any): ArrayList;
 
         // Own methods of Gee.ArrayList
 
@@ -1618,8 +1753,11 @@ export namespace Gee {
 
         static ['new'](
             key_hash_func: GLib.HashFunc,
+            key_hash_func_target: any,
             key_equal_func: GLib.EqualFunc,
+            key_equal_func_target: any,
             value_equal_func: GLib.EqualFunc,
+            value_equal_func_target: any,
         ): HashMap;
     }
 
@@ -1664,9 +1802,13 @@ export namespace Gee {
 
         static ['new'](
             key_hash_func: GLib.HashFunc,
+            key_hash_func_target: any,
             key_equal_func: GLib.EqualFunc,
+            key_equal_func_target: any,
             value_hash_func: GLib.HashFunc,
+            value_hash_func_target: any,
             value_equal_func: GLib.EqualFunc,
+            value_equal_func_target: any,
         ): HashMultiMap;
     }
 
@@ -1697,7 +1839,12 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashMultiSet;
+        static ['new'](
+            hash_func: GLib.HashFunc,
+            hash_func_target: any,
+            equal_func: GLib.EqualFunc,
+            equal_func_target: any,
+        ): HashMultiSet;
     }
 
     module HashSet {
@@ -1731,7 +1878,12 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashSet;
+        static ['new'](
+            hash_func: GLib.HashFunc,
+            hash_func_target: any,
+            equal_func: GLib.EqualFunc,
+            equal_func_target: any,
+        ): HashSet;
     }
 
     module LinkedList {
@@ -1766,7 +1918,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](equal_func: GLib.EqualFunc): LinkedList;
+        static ['new'](equal_func: GLib.EqualFunc, equal_func_target: any): LinkedList;
 
         // Inherited properties
         get capacity(): number;
@@ -1827,7 +1979,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](compare_func: GLib.CompareFunc): PriorityQueue;
+        static ['new'](compare_func: GLib.CompareFunc, compare_func_target: any): PriorityQueue;
     }
 
     module TreeMap {
@@ -1861,7 +2013,12 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](key_compare_func: GLib.CompareFunc, value_equal_func: GLib.EqualFunc): TreeMap;
+        static ['new'](
+            key_compare_func: GLib.CompareFunc,
+            key_compare_func_target: any,
+            value_equal_func: GLib.EqualFunc,
+            value_equal_func_target: any,
+        ): TreeMap;
     }
 
     module TreeMultiMap {
@@ -1893,7 +2050,12 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](key_compare_func: GLib.CompareFunc, value_compare_func: GLib.CompareFunc): TreeMultiMap;
+        static ['new'](
+            key_compare_func: GLib.CompareFunc,
+            key_compare_func_target: any,
+            value_compare_func: GLib.CompareFunc,
+            value_compare_func_target: any,
+        ): TreeMultiMap;
     }
 
     module TreeMultiSet {
@@ -1919,7 +2081,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](compare_func: GLib.CompareFunc): TreeMultiSet;
+        static ['new'](compare_func: GLib.CompareFunc, compare_func_target: any): TreeMultiSet;
     }
 
     module TreeSet {
@@ -1947,7 +2109,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](compare_func: GLib.CompareFunc): TreeSet;
+        static ['new'](compare_func: GLib.CompareFunc, compare_func_target: any): TreeSet;
 
         // Inherited properties
         get read_only_view(): Set;
@@ -2421,7 +2583,7 @@ export namespace Gee {
         first(): any;
         last(): any;
         insert_all(index: number, collection: Collection): void;
-        sort(compare_func: GLib.CompareFunc): void;
+        sort(compare_func: GLib.CompareFunc, compare_func_target: any): void;
 
         // Own virtual methods of Gee.List
 
@@ -2435,7 +2597,7 @@ export namespace Gee {
         vfunc_first(): any;
         vfunc_last(): any;
         vfunc_insert_all(index: number, collection: Collection): void;
-        vfunc_sort(compare_func: GLib.CompareFunc): void;
+        vfunc_sort(compare_func: GLib.CompareFunc, compare_func_target: any): void;
     }
 
     export const List: ListNamespace;

@@ -20,13 +20,13 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gtk from '@girs/gtk-4.0';
 import type Gsk from '@girs/gsk-4.0';
 import type Graphene from '@girs/graphene-1.0';
 import type Gdk from '@girs/gdk-4.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace Vte {
     /**
@@ -801,7 +801,7 @@ export namespace Vte {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -954,10 +954,45 @@ export namespace Vte {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -973,6 +1008,16 @@ export namespace Vte {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -1064,6 +1109,10 @@ export namespace Vte {
             (x: number, y: number): void;
         }
 
+        interface NotificationReceived {
+            (summary: string, body?: string | null): void;
+        }
+
         interface PasteClipboard {
             (): void;
         }
@@ -1090,6 +1139,14 @@ export namespace Vte {
 
         interface SetupContextMenu {
             (context?: EventContext | null): void;
+        }
+
+        interface ShellPrecmd {
+            (): void;
+        }
+
+        interface ShellPreexec {
+            (): void;
         }
 
         interface WindowTitleChanged {
@@ -1125,6 +1182,10 @@ export namespace Vte {
             contextMenu: Gtk.Popover;
             context_menu_model: Gio.MenuModel;
             contextMenuModel: Gio.MenuModel;
+            current_container_name: string;
+            currentContainerName: string;
+            current_container_runtime: string;
+            currentContainerRuntime: string;
             current_directory_uri: string;
             currentDirectoryUri: string;
             current_file_uri: string;
@@ -1324,6 +1385,24 @@ export namespace Vte {
          */
         get contextMenuModel(): Gio.MenuModel;
         set contextMenuModel(val: Gio.MenuModel);
+        /**
+         * The name of the current container, or %NULL if unset.
+         */
+        get current_container_name(): string;
+        /**
+         * The name of the current container, or %NULL if unset.
+         */
+        get currentContainerName(): string;
+        /**
+         * The name of the runtime toolset used to set up the current
+         * container, or %NULL if unset.
+         */
+        get current_container_runtime(): string;
+        /**
+         * The name of the runtime toolset used to set up the current
+         * container, or %NULL if unset.
+         */
+        get currentContainerRuntime(): string;
         /**
          * The current directory URI, or %NULL if unset.
          */
@@ -1745,6 +1824,15 @@ export namespace Vte {
         connect(signal: 'move-window', callback: (_source: this, x: number, y: number) => void): number;
         connect_after(signal: 'move-window', callback: (_source: this, x: number, y: number) => void): number;
         emit(signal: 'move-window', x: number, y: number): void;
+        connect(
+            signal: 'notification-received',
+            callback: (_source: this, summary: string, body: string | null) => void,
+        ): number;
+        connect_after(
+            signal: 'notification-received',
+            callback: (_source: this, summary: string, body: string | null) => void,
+        ): number;
+        emit(signal: 'notification-received', summary: string, body?: string | null): void;
         connect(signal: 'paste-clipboard', callback: (_source: this) => void): number;
         connect_after(signal: 'paste-clipboard', callback: (_source: this) => void): number;
         emit(signal: 'paste-clipboard'): void;
@@ -1772,6 +1860,12 @@ export namespace Vte {
             callback: (_source: this, context: EventContext | null) => void,
         ): number;
         emit(signal: 'setup-context-menu', context?: EventContext | null): void;
+        connect(signal: 'shell-precmd', callback: (_source: this) => void): number;
+        connect_after(signal: 'shell-precmd', callback: (_source: this) => void): number;
+        emit(signal: 'shell-precmd'): void;
+        connect(signal: 'shell-preexec', callback: (_source: this) => void): number;
+        connect_after(signal: 'shell-preexec', callback: (_source: this) => void): number;
+        emit(signal: 'shell-preexec'): void;
         connect(signal: 'window-title-changed', callback: (_source: this) => void): number;
         connect_after(signal: 'window-title-changed', callback: (_source: this) => void): number;
         emit(signal: 'window-title-changed'): void;
@@ -1946,6 +2040,8 @@ export namespace Vte {
         get_column_count(): number;
         get_context_menu(): Gtk.Widget | null;
         get_context_menu_model(): Gio.MenuModel | null;
+        get_current_container_name(): string | null;
+        get_current_container_runtime(): string | null;
         get_current_directory_uri(): string | null;
         get_current_file_uri(): string | null;
         /**
@@ -3452,7 +3548,7 @@ export namespace Vte {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3605,10 +3701,45 @@ export namespace Vte {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -3624,6 +3755,16 @@ export namespace Vte {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;

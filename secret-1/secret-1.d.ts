@@ -14,6 +14,7 @@ import './secret-1-ambient.d.ts';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Secret {
     /**
@@ -65,6 +66,26 @@ export namespace Secret {
          * the file format is not valid
          */
         INVALID_FILE_FORMAT,
+        /**
+         * the xdg:schema attribute of the table does
+         * not match the schema name
+         */
+        MISMATCHED_SCHEMA,
+        /**
+         * attribute contained in table not found
+         * in corresponding schema
+         */
+        NO_MATCHING_ATTRIBUTE,
+        /**
+         * attribute could not be parsed according to its type
+         * reported in the table's schema
+         */
+        WRONG_TYPE,
+        /**
+         * attribute list passed to secret_attributes_validate
+         * has no elements to validate
+         */
+        EMPTY_TABLE,
     }
     /**
      * The type of an attribute in a [struct`SecretSchema]`.
@@ -187,6 +208,19 @@ export namespace Secret {
      * The minor version of libsecret.
      */
     const MINOR_VERSION: number;
+    /**
+     * Check if attributes are valid according to the provided schema.
+     *
+     * Verifies schema name if available, attribute names and parsing
+     * of attribute values.
+     * @param schema the schema for the attributes
+     * @param attributes the attributes to be validated
+     * @returns whether or not the given attributes table is valid
+     */
+    function attributes_validate(
+        schema: Schema,
+        attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+    ): boolean;
     /**
      * Get a #SecretBackend instance.
      *
@@ -1598,7 +1632,7 @@ export namespace Secret {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1751,10 +1785,45 @@ export namespace Secret {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -1770,6 +1839,16 @@ export namespace Secret {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -2687,7 +2766,7 @@ export namespace Secret {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2840,10 +2919,45 @@ export namespace Secret {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -2859,6 +2973,16 @@ export namespace Secret {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -3397,7 +3521,7 @@ export namespace Secret {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3550,10 +3674,45 @@ export namespace Secret {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -3569,6 +3728,16 @@ export namespace Secret {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -3766,6 +3935,13 @@ export namespace Secret {
          * This will always be either [class`Item]` or derived from it.
          */
         vfunc_get_item_gtype(): GObject.GType;
+        /**
+         * called to perform asynchronous prompting when necessary
+         * @param prompt
+         * @param return_type
+         * @param cancellable
+         * @param callback
+         */
         vfunc_prompt_async(
             prompt: Prompt,
             return_type: GLib.VariantType,
@@ -4666,26 +4842,66 @@ export namespace Secret {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * implementation of [func`password_clear]`, required
+         * @param schema
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         vfunc_clear(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_clear_finish]`, required
+         * @param result
+         */
         vfunc_clear_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * implementation of reinitialization step in constructor, optional
+         * @param flags
+         * @param cancellable
+         * @param callback
+         */
         vfunc_ensure_for_flags(
             flags: BackendFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of reinitialization step in constructor, optional
+         * @param result
+         */
         vfunc_ensure_for_flags_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * implementation of [func`password_lookup]`, required
+         * @param schema
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         vfunc_lookup(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_lookup_finish]`, required
+         * @param result
+         */
         vfunc_lookup_finish(result: Gio.AsyncResult): Value;
+        /**
+         * implementation of [func`password_search]`, required
+         * @param schema
+         * @param attributes
+         * @param flags
+         * @param cancellable
+         * @param callback
+         */
         vfunc_search(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -4693,6 +4909,16 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_store]`, required
+         * @param schema
+         * @param attributes
+         * @param collection
+         * @param label
+         * @param value
+         * @param cancellable
+         * @param callback
+         */
         vfunc_store(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -4702,6 +4928,10 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_store_finish]`, required
+         * @param result
+         */
         vfunc_store_finish(result: Gio.AsyncResult): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -4880,7 +5110,7 @@ export namespace Secret {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5033,10 +5263,45 @@ export namespace Secret {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -5052,6 +5317,16 @@ export namespace Secret {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -5116,7 +5391,7 @@ export namespace Secret {
      * items that are not stored by the libsecret library. Other libraries such as
      * libgnome-keyring don't store the schema name.
      *
-     * Additional schemas can be defined via the %SecretSchema structure like this:
+     * Additional schemas can be defined via the [struct`Schema]` structure like this:
      *
      * ```c
      * // in a header:
@@ -5333,26 +5608,66 @@ export namespace Secret {
 
         // Own virtual methods of Secret.Backend
 
+        /**
+         * implementation of [func`password_clear]`, required
+         * @param schema
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         vfunc_clear(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_clear_finish]`, required
+         * @param result
+         */
         vfunc_clear_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * implementation of reinitialization step in constructor, optional
+         * @param flags
+         * @param cancellable
+         * @param callback
+         */
         vfunc_ensure_for_flags(
             flags: BackendFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of reinitialization step in constructor, optional
+         * @param result
+         */
         vfunc_ensure_for_flags_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * implementation of [func`password_lookup]`, required
+         * @param schema
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         vfunc_lookup(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_lookup_finish]`, required
+         * @param result
+         */
         vfunc_lookup_finish(result: Gio.AsyncResult): Value;
+        /**
+         * implementation of [func`password_search]`, required
+         * @param schema
+         * @param attributes
+         * @param flags
+         * @param cancellable
+         * @param callback
+         */
         vfunc_search(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -5360,6 +5675,16 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_store]`, required
+         * @param schema
+         * @param attributes
+         * @param collection
+         * @param label
+         * @param value
+         * @param cancellable
+         * @param callback
+         */
         vfunc_store(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -5369,6 +5694,10 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_store_finish]`, required
+         * @param result
+         */
         vfunc_store_finish(result: Gio.AsyncResult): boolean;
     }
 

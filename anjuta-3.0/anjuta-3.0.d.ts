@@ -21,8 +21,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Gdl from '@girs/gdl-3';
 
@@ -988,7 +988,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1141,10 +1141,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -1160,6 +1195,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -1877,6 +1922,13 @@ export namespace Anjuta {
          * @param action the related #GtkAction or %NULL
          */
         vfunc_sync_action_properties(action?: Gtk.Action | null): void;
+        /**
+         * Called to update the activatable when its related action’s properties change.
+         * You must check the #GtkActivatable:use-action-appearance property only apply action
+         * properties that are meant to effect the appearance accordingly.
+         * @param action
+         * @param property_name
+         */
         vfunc_update(action: Gtk.Action, property_name: string): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -2055,7 +2107,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -2208,10 +2260,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -2227,6 +2314,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -5032,6 +5129,28 @@ export namespace Anjuta {
         unset_state_flags(flags: Gtk.StateFlags): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
+        /**
+         * Convert an initial size allocation assigned
+         *   by a #GtkContainer using gtk_widget_size_allocate(), into an actual
+         *   size allocation to be used by the widget. adjust_size_allocation
+         *   adjusts to a child widget’s actual allocation
+         *   from what a parent container computed for the
+         *   child. The adjusted allocation must be entirely within the original
+         *   allocation. In any custom implementation, chain up to the default
+         *   #GtkWidget implementation of this method, which applies the margin
+         *   and alignment properties of #GtkWidget. Chain up
+         *   before performing your own adjustments so your
+         *   own adjustments remove more allocation after the #GtkWidget base
+         *   class has already removed margin and alignment. The natural size
+         *   passed in should be adjusted in the same way as the allocated size,
+         *   which allows adjustments to perform alignments or other changes
+         *   based on natural size.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         * @param allocated_pos
+         * @param allocated_size
+         */
         vfunc_adjust_size_allocation(
             orientation: Gtk.Orientation,
             minimum_size: number,
@@ -5039,8 +5158,38 @@ export namespace Anjuta {
             allocated_pos: number,
             allocated_size: number,
         ): void;
+        /**
+         * Convert an initial size request from a widget's
+         *   #GtkSizeRequestMode virtual method implementations into a size request to
+         *   be used by parent containers in laying out the widget.
+         *   adjust_size_request adjusts from a child widget's
+         *   original request to what a parent container should
+         *   use for layout. The `for_size` argument will be -1 if the request should
+         *   not be for a particular size in the opposing orientation, i.e. if the
+         *   request is not height-for-width or width-for-height. If `for_size` is
+         *   greater than -1, it is the proposed allocation in the opposing
+         *   orientation that we need the request for. Implementations of
+         *   adjust_size_request should chain up to the default implementation,
+         *   which applies #GtkWidget’s margin properties and imposes any values
+         *   from gtk_widget_set_size_request(). Chaining up should be last,
+         *   after your subclass adjusts the request, so
+         *   #GtkWidget can apply constraints and add the margin properly.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         */
         vfunc_adjust_size_request(orientation: Gtk.Orientation, minimum_size: number, natural_size: number): void;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is pressed.
+         * @param event
+         */
         vfunc_button_press_event(event: Gdk.EventButton): boolean;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is released.
+         * @param event
+         */
         vfunc_button_release_event(event: Gdk.EventButton): boolean;
         /**
          * Determines whether an accelerator that activates the signal
@@ -5064,10 +5213,35 @@ export namespace Anjuta {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         vfunc_child_notify(child_property: GObject.ParamSpec): void;
+        /**
+         * Signal emitted when the composited status of
+         *   widgets screen changes. See gdk_screen_is_composited().
+         */
         vfunc_composited_changed(): void;
+        /**
+         * Computes whether a container should give this
+         *   widget extra space when possible.
+         * @param hexpand_p
+         * @param vexpand_p
+         */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
+        /**
+         * Signal will be emitted when the size, position or
+         *   stacking of the widget’s window has changed.
+         * @param event
+         */
         vfunc_configure_event(event: Gdk.EventConfigure): boolean;
+        /**
+         * Signal emitted when a redirected window belonging to
+         *   widget gets drawn into.
+         * @param event
+         */
         vfunc_damage_event(event: Gdk.EventExpose): boolean;
+        /**
+         * Signal emitted if a user requests that a toplevel
+         *   window is closed.
+         * @param event
+         */
         vfunc_delete_event(event: Gdk.EventAny): boolean;
         /**
          * Destroys a widget.
@@ -5103,17 +5277,59 @@ export namespace Anjuta {
          * See also: gtk_container_remove()
          */
         vfunc_destroy(): void;
+        /**
+         * Signal is emitted when a #GdkWindow is destroyed.
+         * @param event
+         */
         vfunc_destroy_event(event: Gdk.EventAny): boolean;
+        /**
+         * Signal emitted when the text direction of a
+         *   widget changes.
+         * @param previous_direction
+         */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
+        /**
+         * Seldomly overidden.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_child_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   started.
+         * @param context
+         */
         vfunc_drag_begin(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag
+         *   with the action %GDK_ACTION_MOVE is successfully completed.
+         * @param context
+         */
         vfunc_drag_data_delete(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when the drop
+         *   site requests the data which is dragged.
+         * @param context
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_get(
             context: Gdk.DragContext,
             selection_data: Gtk.SelectionData,
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the
+         *   dragged data has been received.
+         * @param context
+         * @param x
+         * @param y
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_received(
             context: Gdk.DragContext,
             x: number,
@@ -5122,12 +5338,54 @@ export namespace Anjuta {
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the user drops the
+         *   data onto the widget.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_drop(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   finished.
+         * @param context
+         */
         vfunc_drag_end(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag has
+         *   failed.
+         * @param context
+         * @param result
+         */
         vfunc_drag_failed(context: Gdk.DragContext, result: Gtk.DragResult): boolean;
+        /**
+         * Signal emitted on the drop site when the cursor leaves
+         *   the widget.
+         * @param context
+         * @param time_
+         */
         vfunc_drag_leave(context: Gdk.DragContext, time_: number): void;
+        /**
+         * signal emitted on the drop site when the user moves
+         *   the cursor over the widget during a drag.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_motion(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted when a widget is supposed to render itself.
+         * @param cr
+         */
         vfunc_draw(cr: cairo.Context): boolean;
+        /**
+         * Signal event will be emitted when the pointer
+         *   enters the widget’s window.
+         * @param event
+         */
         vfunc_enter_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * Rarely-used function. This function is used to emit
@@ -5142,7 +5400,17 @@ export namespace Anjuta {
          */
         vfunc_event(event: Gdk.Event): boolean;
         vfunc_focus(direction: Gtk.DirectionType): boolean;
+        /**
+         * Signal emitted when the keyboard focus enters the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_in_event(event: Gdk.EventFocus): boolean;
+        /**
+         * Signal emitted when the keyboard focus leaves the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_out_event(event: Gdk.EventFocus): boolean;
         /**
          * Returns the accessible object that describes the widget to an
@@ -5230,6 +5498,11 @@ export namespace Anjuta {
          * capabilities.
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
+        /**
+         * Signal emitted when a pointer or keyboard grab
+         *   on a window belonging to widget gets broken.
+         * @param event
+         */
         vfunc_grab_broken_event(event: Gdk.EventGrabBroken): boolean;
         /**
          * Causes `widget` to have the keyboard focus for the #GtkWindow it's
@@ -5244,14 +5517,33 @@ export namespace Anjuta {
          * will likely fail and cause critical warnings.
          */
         vfunc_grab_focus(): void;
+        /**
+         * Signal emitted when a widget becomes shadowed by a
+         *   GTK+ grab (not a pointer or keyboard grab) on another widget, or
+         *   when it becomes unshadowed due to a grab being removed.
+         * @param was_grabbed
+         */
         vfunc_grab_notify(was_grabbed: boolean): void;
         /**
          * Reverses the effects of gtk_widget_show(), causing the widget to be
          * hidden (invisible to the user).
          */
         vfunc_hide(): void;
+        /**
+         * Signal emitted when the anchored state of a
+         *   widget changes.
+         * @param previous_toplevel
+         */
         vfunc_hierarchy_changed(previous_toplevel: Gtk.Widget): void;
+        /**
+         * Signal emitted when a key is pressed.
+         * @param event
+         */
         vfunc_key_press_event(event: Gdk.EventKey): boolean;
+        /**
+         * Signal is emitted when a key is released.
+         * @param event
+         */
         vfunc_key_release_event(event: Gdk.EventKey): boolean;
         /**
          * This function should be called whenever keyboard navigation within
@@ -5284,25 +5576,66 @@ export namespace Anjuta {
          * @param direction direction of focus movement
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
+        /**
+         * Will be emitted when the pointer leaves the
+         *   widget’s window.
+         * @param event
+         */
         vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be mapped if it isn’t already.
          */
         vfunc_map(): void;
+        /**
+         * Signal emitted when the widget’s window is mapped.
+         * @param event
+         */
         vfunc_map_event(event: Gdk.EventAny): boolean;
         /**
          * Emits the #GtkWidget::mnemonic-activate signal.
          * @param group_cycling %TRUE if there are other widgets with the same mnemonic
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
+        /**
+         * Signal emitted when the pointer moves over
+         *   the widget’s #GdkWindow.
+         * @param event
+         */
         vfunc_motion_notify_event(event: Gdk.EventMotion): boolean;
+        /**
+         * Signal emitted when a change of focus is requested
+         * @param direction
+         */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
+        /**
+         * Signal emitted when a new parent has been set on a
+         *   widget.
+         * @param previous_parent
+         */
         vfunc_parent_set(previous_parent: Gtk.Widget): void;
+        /**
+         * Signal emitted whenever a widget should pop up a
+         *   context menu.
+         */
         vfunc_popup_menu(): boolean;
+        /**
+         * Signal will be emitted when a property on
+         *   the widget’s window has been changed or deleted.
+         * @param event
+         */
         vfunc_property_notify_event(event: Gdk.EventProperty): boolean;
         vfunc_proximity_in_event(event: Gdk.EventProximity): boolean;
         vfunc_proximity_out_event(event: Gdk.EventProximity): boolean;
+        /**
+         * Signal emitted when “has-tooltip” is %TRUE and the
+         *   hover timeout has expired with the cursor hovering “above”
+         *   widget; or emitted when widget got focus in keyboard mode.
+         * @param x
+         * @param y
+         * @param keyboard_tooltip
+         * @param tooltip
+         */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
          * Invalidates the area of `widget` defined by `region` by calling
@@ -5339,12 +5672,33 @@ export namespace Anjuta {
          * #GtkWidget::realize signal.
          */
         vfunc_realize(): void;
+        /**
+         * Signal emitted when the screen of a widget has
+         *   changed.
+         * @param previous_screen
+         */
         vfunc_screen_changed(previous_screen: Gdk.Screen): void;
+        /**
+         * Signal emitted when a button in the 4 to 7 range is
+         *   pressed.
+         * @param event
+         */
         vfunc_scroll_event(event: Gdk.EventScroll): boolean;
+        /**
+         * Signal will be emitted when the the
+         *   widget’s window has lost ownership of a selection.
+         * @param event
+         */
         vfunc_selection_clear_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_get(selection_data: Gtk.SelectionData, info: number, time_: number): void;
         vfunc_selection_notify_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_received(selection_data: Gtk.SelectionData, time_: number): void;
+        /**
+         * Signal will be emitted when another
+         *   client requests ownership of the selection owned by the widget's
+         *   window.
+         * @param event
+         */
         vfunc_selection_request_event(event: Gdk.EventSelection): boolean;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
@@ -5381,16 +5735,44 @@ export namespace Anjuta {
          * @param allocation position and size to be allocated to @widget
          */
         vfunc_size_allocate(allocation: Gtk.Allocation): void;
+        /**
+         * Signal emitted when the widget state
+         *   changes. Deprecated: 3.0
+         * @param previous_state
+         */
         vfunc_state_changed(previous_state: Gtk.StateType): void;
+        /**
+         * Signal emitted when the widget state changes,
+         *   see gtk_widget_get_state_flags().
+         * @param previous_state_flags
+         */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
+        /**
+         * Signal emitted when a new style has been set on a
+         * widget. Deprecated: 3.0
+         * @param previous_style
+         */
         vfunc_style_set(previous_style: Gtk.Style): void;
+        /**
+         * Signal emitted when the GtkStyleContext of a widget
+         *   is changed.
+         */
         vfunc_style_updated(): void;
+        /**
+         * Signal emitted when a touch event happens
+         * @param event
+         */
         vfunc_touch_event(event: Gdk.EventTouch): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be unmapped if it’s currently mapped.
          */
         vfunc_unmap(): void;
+        /**
+         * Signal will be emitted when the widget’s window is
+         *   unmapped.
+         * @param event
+         */
         vfunc_unmap_event(event: Gdk.EventAny): boolean;
         /**
          * This function is only useful in widget implementations.
@@ -5398,7 +5780,17 @@ export namespace Anjuta {
          * associated with the widget, such as `widget->`window).
          */
         vfunc_unrealize(): void;
+        /**
+         * Signal emitted when the widget’s window is
+         *   obscured or unobscured.
+         * @param event
+         */
         vfunc_visibility_notify_event(event: Gdk.EventVisibility): boolean;
+        /**
+         * Signal emitted when the state of the toplevel
+         *   window associated to the widget changes.
+         * @param event
+         */
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
@@ -5622,7 +6014,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5775,10 +6167,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -5794,6 +6221,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -6201,7 +6638,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6354,10 +6791,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -6373,6 +6845,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -6764,7 +7246,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6917,10 +7399,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -6936,6 +7453,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -7575,7 +8102,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7728,10 +8255,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -7747,6 +8309,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -10550,6 +11122,28 @@ export namespace Anjuta {
         unset_state_flags(flags: Gtk.StateFlags): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
+        /**
+         * Convert an initial size allocation assigned
+         *   by a #GtkContainer using gtk_widget_size_allocate(), into an actual
+         *   size allocation to be used by the widget. adjust_size_allocation
+         *   adjusts to a child widget’s actual allocation
+         *   from what a parent container computed for the
+         *   child. The adjusted allocation must be entirely within the original
+         *   allocation. In any custom implementation, chain up to the default
+         *   #GtkWidget implementation of this method, which applies the margin
+         *   and alignment properties of #GtkWidget. Chain up
+         *   before performing your own adjustments so your
+         *   own adjustments remove more allocation after the #GtkWidget base
+         *   class has already removed margin and alignment. The natural size
+         *   passed in should be adjusted in the same way as the allocated size,
+         *   which allows adjustments to perform alignments or other changes
+         *   based on natural size.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         * @param allocated_pos
+         * @param allocated_size
+         */
         vfunc_adjust_size_allocation(
             orientation: Gtk.Orientation,
             minimum_size: number,
@@ -10557,8 +11151,38 @@ export namespace Anjuta {
             allocated_pos: number,
             allocated_size: number,
         ): void;
+        /**
+         * Convert an initial size request from a widget's
+         *   #GtkSizeRequestMode virtual method implementations into a size request to
+         *   be used by parent containers in laying out the widget.
+         *   adjust_size_request adjusts from a child widget's
+         *   original request to what a parent container should
+         *   use for layout. The `for_size` argument will be -1 if the request should
+         *   not be for a particular size in the opposing orientation, i.e. if the
+         *   request is not height-for-width or width-for-height. If `for_size` is
+         *   greater than -1, it is the proposed allocation in the opposing
+         *   orientation that we need the request for. Implementations of
+         *   adjust_size_request should chain up to the default implementation,
+         *   which applies #GtkWidget’s margin properties and imposes any values
+         *   from gtk_widget_set_size_request(). Chaining up should be last,
+         *   after your subclass adjusts the request, so
+         *   #GtkWidget can apply constraints and add the margin properly.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         */
         vfunc_adjust_size_request(orientation: Gtk.Orientation, minimum_size: number, natural_size: number): void;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is pressed.
+         * @param event
+         */
         vfunc_button_press_event(event: Gdk.EventButton): boolean;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is released.
+         * @param event
+         */
         vfunc_button_release_event(event: Gdk.EventButton): boolean;
         /**
          * Determines whether an accelerator that activates the signal
@@ -10582,10 +11206,35 @@ export namespace Anjuta {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         vfunc_child_notify(child_property: GObject.ParamSpec): void;
+        /**
+         * Signal emitted when the composited status of
+         *   widgets screen changes. See gdk_screen_is_composited().
+         */
         vfunc_composited_changed(): void;
+        /**
+         * Computes whether a container should give this
+         *   widget extra space when possible.
+         * @param hexpand_p
+         * @param vexpand_p
+         */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
+        /**
+         * Signal will be emitted when the size, position or
+         *   stacking of the widget’s window has changed.
+         * @param event
+         */
         vfunc_configure_event(event: Gdk.EventConfigure): boolean;
+        /**
+         * Signal emitted when a redirected window belonging to
+         *   widget gets drawn into.
+         * @param event
+         */
         vfunc_damage_event(event: Gdk.EventExpose): boolean;
+        /**
+         * Signal emitted if a user requests that a toplevel
+         *   window is closed.
+         * @param event
+         */
         vfunc_delete_event(event: Gdk.EventAny): boolean;
         /**
          * Destroys a widget.
@@ -10621,17 +11270,59 @@ export namespace Anjuta {
          * See also: gtk_container_remove()
          */
         vfunc_destroy(): void;
+        /**
+         * Signal is emitted when a #GdkWindow is destroyed.
+         * @param event
+         */
         vfunc_destroy_event(event: Gdk.EventAny): boolean;
+        /**
+         * Signal emitted when the text direction of a
+         *   widget changes.
+         * @param previous_direction
+         */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
+        /**
+         * Seldomly overidden.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_child_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   started.
+         * @param context
+         */
         vfunc_drag_begin(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag
+         *   with the action %GDK_ACTION_MOVE is successfully completed.
+         * @param context
+         */
         vfunc_drag_data_delete(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when the drop
+         *   site requests the data which is dragged.
+         * @param context
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_get(
             context: Gdk.DragContext,
             selection_data: Gtk.SelectionData,
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the
+         *   dragged data has been received.
+         * @param context
+         * @param x
+         * @param y
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_received(
             context: Gdk.DragContext,
             x: number,
@@ -10640,12 +11331,54 @@ export namespace Anjuta {
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the user drops the
+         *   data onto the widget.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_drop(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   finished.
+         * @param context
+         */
         vfunc_drag_end(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag has
+         *   failed.
+         * @param context
+         * @param result
+         */
         vfunc_drag_failed(context: Gdk.DragContext, result: Gtk.DragResult): boolean;
+        /**
+         * Signal emitted on the drop site when the cursor leaves
+         *   the widget.
+         * @param context
+         * @param time_
+         */
         vfunc_drag_leave(context: Gdk.DragContext, time_: number): void;
+        /**
+         * signal emitted on the drop site when the user moves
+         *   the cursor over the widget during a drag.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_motion(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted when a widget is supposed to render itself.
+         * @param cr
+         */
         vfunc_draw(cr: cairo.Context): boolean;
+        /**
+         * Signal event will be emitted when the pointer
+         *   enters the widget’s window.
+         * @param event
+         */
         vfunc_enter_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * Rarely-used function. This function is used to emit
@@ -10660,7 +11393,17 @@ export namespace Anjuta {
          */
         vfunc_event(event: Gdk.Event): boolean;
         vfunc_focus(direction: Gtk.DirectionType): boolean;
+        /**
+         * Signal emitted when the keyboard focus enters the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_in_event(event: Gdk.EventFocus): boolean;
+        /**
+         * Signal emitted when the keyboard focus leaves the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_out_event(event: Gdk.EventFocus): boolean;
         /**
          * Returns the accessible object that describes the widget to an
@@ -10748,6 +11491,11 @@ export namespace Anjuta {
          * capabilities.
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
+        /**
+         * Signal emitted when a pointer or keyboard grab
+         *   on a window belonging to widget gets broken.
+         * @param event
+         */
         vfunc_grab_broken_event(event: Gdk.EventGrabBroken): boolean;
         /**
          * Causes `widget` to have the keyboard focus for the #GtkWindow it's
@@ -10762,14 +11510,33 @@ export namespace Anjuta {
          * will likely fail and cause critical warnings.
          */
         vfunc_grab_focus(): void;
+        /**
+         * Signal emitted when a widget becomes shadowed by a
+         *   GTK+ grab (not a pointer or keyboard grab) on another widget, or
+         *   when it becomes unshadowed due to a grab being removed.
+         * @param was_grabbed
+         */
         vfunc_grab_notify(was_grabbed: boolean): void;
         /**
          * Reverses the effects of gtk_widget_show(), causing the widget to be
          * hidden (invisible to the user).
          */
         vfunc_hide(): void;
+        /**
+         * Signal emitted when the anchored state of a
+         *   widget changes.
+         * @param previous_toplevel
+         */
         vfunc_hierarchy_changed(previous_toplevel: Gtk.Widget): void;
+        /**
+         * Signal emitted when a key is pressed.
+         * @param event
+         */
         vfunc_key_press_event(event: Gdk.EventKey): boolean;
+        /**
+         * Signal is emitted when a key is released.
+         * @param event
+         */
         vfunc_key_release_event(event: Gdk.EventKey): boolean;
         /**
          * This function should be called whenever keyboard navigation within
@@ -10802,25 +11569,66 @@ export namespace Anjuta {
          * @param direction direction of focus movement
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
+        /**
+         * Will be emitted when the pointer leaves the
+         *   widget’s window.
+         * @param event
+         */
         vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be mapped if it isn’t already.
          */
         vfunc_map(): void;
+        /**
+         * Signal emitted when the widget’s window is mapped.
+         * @param event
+         */
         vfunc_map_event(event: Gdk.EventAny): boolean;
         /**
          * Emits the #GtkWidget::mnemonic-activate signal.
          * @param group_cycling %TRUE if there are other widgets with the same mnemonic
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
+        /**
+         * Signal emitted when the pointer moves over
+         *   the widget’s #GdkWindow.
+         * @param event
+         */
         vfunc_motion_notify_event(event: Gdk.EventMotion): boolean;
+        /**
+         * Signal emitted when a change of focus is requested
+         * @param direction
+         */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
+        /**
+         * Signal emitted when a new parent has been set on a
+         *   widget.
+         * @param previous_parent
+         */
         vfunc_parent_set(previous_parent: Gtk.Widget): void;
+        /**
+         * Signal emitted whenever a widget should pop up a
+         *   context menu.
+         */
         vfunc_popup_menu(): boolean;
+        /**
+         * Signal will be emitted when a property on
+         *   the widget’s window has been changed or deleted.
+         * @param event
+         */
         vfunc_property_notify_event(event: Gdk.EventProperty): boolean;
         vfunc_proximity_in_event(event: Gdk.EventProximity): boolean;
         vfunc_proximity_out_event(event: Gdk.EventProximity): boolean;
+        /**
+         * Signal emitted when “has-tooltip” is %TRUE and the
+         *   hover timeout has expired with the cursor hovering “above”
+         *   widget; or emitted when widget got focus in keyboard mode.
+         * @param x
+         * @param y
+         * @param keyboard_tooltip
+         * @param tooltip
+         */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
          * Invalidates the area of `widget` defined by `region` by calling
@@ -10857,12 +11665,33 @@ export namespace Anjuta {
          * #GtkWidget::realize signal.
          */
         vfunc_realize(): void;
+        /**
+         * Signal emitted when the screen of a widget has
+         *   changed.
+         * @param previous_screen
+         */
         vfunc_screen_changed(previous_screen: Gdk.Screen): void;
+        /**
+         * Signal emitted when a button in the 4 to 7 range is
+         *   pressed.
+         * @param event
+         */
         vfunc_scroll_event(event: Gdk.EventScroll): boolean;
+        /**
+         * Signal will be emitted when the the
+         *   widget’s window has lost ownership of a selection.
+         * @param event
+         */
         vfunc_selection_clear_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_get(selection_data: Gtk.SelectionData, info: number, time_: number): void;
         vfunc_selection_notify_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_received(selection_data: Gtk.SelectionData, time_: number): void;
+        /**
+         * Signal will be emitted when another
+         *   client requests ownership of the selection owned by the widget's
+         *   window.
+         * @param event
+         */
         vfunc_selection_request_event(event: Gdk.EventSelection): boolean;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
@@ -10899,16 +11728,44 @@ export namespace Anjuta {
          * @param allocation position and size to be allocated to @widget
          */
         vfunc_size_allocate(allocation: Gtk.Allocation): void;
+        /**
+         * Signal emitted when the widget state
+         *   changes. Deprecated: 3.0
+         * @param previous_state
+         */
         vfunc_state_changed(previous_state: Gtk.StateType): void;
+        /**
+         * Signal emitted when the widget state changes,
+         *   see gtk_widget_get_state_flags().
+         * @param previous_state_flags
+         */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
+        /**
+         * Signal emitted when a new style has been set on a
+         * widget. Deprecated: 3.0
+         * @param previous_style
+         */
         vfunc_style_set(previous_style: Gtk.Style): void;
+        /**
+         * Signal emitted when the GtkStyleContext of a widget
+         *   is changed.
+         */
         vfunc_style_updated(): void;
+        /**
+         * Signal emitted when a touch event happens
+         * @param event
+         */
         vfunc_touch_event(event: Gdk.EventTouch): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be unmapped if it’s currently mapped.
          */
         vfunc_unmap(): void;
+        /**
+         * Signal will be emitted when the widget’s window is
+         *   unmapped.
+         * @param event
+         */
         vfunc_unmap_event(event: Gdk.EventAny): boolean;
         /**
          * This function is only useful in widget implementations.
@@ -10916,7 +11773,17 @@ export namespace Anjuta {
          * associated with the widget, such as `widget->`window).
          */
         vfunc_unrealize(): void;
+        /**
+         * Signal emitted when the widget’s window is
+         *   obscured or unobscured.
+         * @param event
+         */
         vfunc_visibility_notify_event(event: Gdk.EventVisibility): boolean;
+        /**
+         * Signal emitted when the state of the toplevel
+         *   window associated to the widget changes.
+         * @param event
+         */
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
@@ -11755,7 +12622,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -11908,10 +12775,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -11927,6 +12829,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -14730,6 +15642,28 @@ export namespace Anjuta {
         unset_state_flags(flags: Gtk.StateFlags): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
+        /**
+         * Convert an initial size allocation assigned
+         *   by a #GtkContainer using gtk_widget_size_allocate(), into an actual
+         *   size allocation to be used by the widget. adjust_size_allocation
+         *   adjusts to a child widget’s actual allocation
+         *   from what a parent container computed for the
+         *   child. The adjusted allocation must be entirely within the original
+         *   allocation. In any custom implementation, chain up to the default
+         *   #GtkWidget implementation of this method, which applies the margin
+         *   and alignment properties of #GtkWidget. Chain up
+         *   before performing your own adjustments so your
+         *   own adjustments remove more allocation after the #GtkWidget base
+         *   class has already removed margin and alignment. The natural size
+         *   passed in should be adjusted in the same way as the allocated size,
+         *   which allows adjustments to perform alignments or other changes
+         *   based on natural size.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         * @param allocated_pos
+         * @param allocated_size
+         */
         vfunc_adjust_size_allocation(
             orientation: Gtk.Orientation,
             minimum_size: number,
@@ -14737,8 +15671,38 @@ export namespace Anjuta {
             allocated_pos: number,
             allocated_size: number,
         ): void;
+        /**
+         * Convert an initial size request from a widget's
+         *   #GtkSizeRequestMode virtual method implementations into a size request to
+         *   be used by parent containers in laying out the widget.
+         *   adjust_size_request adjusts from a child widget's
+         *   original request to what a parent container should
+         *   use for layout. The `for_size` argument will be -1 if the request should
+         *   not be for a particular size in the opposing orientation, i.e. if the
+         *   request is not height-for-width or width-for-height. If `for_size` is
+         *   greater than -1, it is the proposed allocation in the opposing
+         *   orientation that we need the request for. Implementations of
+         *   adjust_size_request should chain up to the default implementation,
+         *   which applies #GtkWidget’s margin properties and imposes any values
+         *   from gtk_widget_set_size_request(). Chaining up should be last,
+         *   after your subclass adjusts the request, so
+         *   #GtkWidget can apply constraints and add the margin properly.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         */
         vfunc_adjust_size_request(orientation: Gtk.Orientation, minimum_size: number, natural_size: number): void;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is pressed.
+         * @param event
+         */
         vfunc_button_press_event(event: Gdk.EventButton): boolean;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is released.
+         * @param event
+         */
         vfunc_button_release_event(event: Gdk.EventButton): boolean;
         /**
          * Determines whether an accelerator that activates the signal
@@ -14762,10 +15726,35 @@ export namespace Anjuta {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         vfunc_child_notify(child_property: GObject.ParamSpec): void;
+        /**
+         * Signal emitted when the composited status of
+         *   widgets screen changes. See gdk_screen_is_composited().
+         */
         vfunc_composited_changed(): void;
+        /**
+         * Computes whether a container should give this
+         *   widget extra space when possible.
+         * @param hexpand_p
+         * @param vexpand_p
+         */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
+        /**
+         * Signal will be emitted when the size, position or
+         *   stacking of the widget’s window has changed.
+         * @param event
+         */
         vfunc_configure_event(event: Gdk.EventConfigure): boolean;
+        /**
+         * Signal emitted when a redirected window belonging to
+         *   widget gets drawn into.
+         * @param event
+         */
         vfunc_damage_event(event: Gdk.EventExpose): boolean;
+        /**
+         * Signal emitted if a user requests that a toplevel
+         *   window is closed.
+         * @param event
+         */
         vfunc_delete_event(event: Gdk.EventAny): boolean;
         /**
          * Destroys a widget.
@@ -14801,17 +15790,59 @@ export namespace Anjuta {
          * See also: gtk_container_remove()
          */
         vfunc_destroy(): void;
+        /**
+         * Signal is emitted when a #GdkWindow is destroyed.
+         * @param event
+         */
         vfunc_destroy_event(event: Gdk.EventAny): boolean;
+        /**
+         * Signal emitted when the text direction of a
+         *   widget changes.
+         * @param previous_direction
+         */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
+        /**
+         * Seldomly overidden.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_child_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   started.
+         * @param context
+         */
         vfunc_drag_begin(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag
+         *   with the action %GDK_ACTION_MOVE is successfully completed.
+         * @param context
+         */
         vfunc_drag_data_delete(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when the drop
+         *   site requests the data which is dragged.
+         * @param context
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_get(
             context: Gdk.DragContext,
             selection_data: Gtk.SelectionData,
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the
+         *   dragged data has been received.
+         * @param context
+         * @param x
+         * @param y
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_received(
             context: Gdk.DragContext,
             x: number,
@@ -14820,12 +15851,54 @@ export namespace Anjuta {
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the user drops the
+         *   data onto the widget.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_drop(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   finished.
+         * @param context
+         */
         vfunc_drag_end(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag has
+         *   failed.
+         * @param context
+         * @param result
+         */
         vfunc_drag_failed(context: Gdk.DragContext, result: Gtk.DragResult): boolean;
+        /**
+         * Signal emitted on the drop site when the cursor leaves
+         *   the widget.
+         * @param context
+         * @param time_
+         */
         vfunc_drag_leave(context: Gdk.DragContext, time_: number): void;
+        /**
+         * signal emitted on the drop site when the user moves
+         *   the cursor over the widget during a drag.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_motion(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted when a widget is supposed to render itself.
+         * @param cr
+         */
         vfunc_draw(cr: cairo.Context): boolean;
+        /**
+         * Signal event will be emitted when the pointer
+         *   enters the widget’s window.
+         * @param event
+         */
         vfunc_enter_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * Rarely-used function. This function is used to emit
@@ -14840,7 +15913,17 @@ export namespace Anjuta {
          */
         vfunc_event(event: Gdk.Event): boolean;
         vfunc_focus(direction: Gtk.DirectionType): boolean;
+        /**
+         * Signal emitted when the keyboard focus enters the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_in_event(event: Gdk.EventFocus): boolean;
+        /**
+         * Signal emitted when the keyboard focus leaves the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_out_event(event: Gdk.EventFocus): boolean;
         /**
          * Returns the accessible object that describes the widget to an
@@ -14928,6 +16011,11 @@ export namespace Anjuta {
          * capabilities.
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
+        /**
+         * Signal emitted when a pointer or keyboard grab
+         *   on a window belonging to widget gets broken.
+         * @param event
+         */
         vfunc_grab_broken_event(event: Gdk.EventGrabBroken): boolean;
         /**
          * Causes `widget` to have the keyboard focus for the #GtkWindow it's
@@ -14942,14 +16030,33 @@ export namespace Anjuta {
          * will likely fail and cause critical warnings.
          */
         vfunc_grab_focus(): void;
+        /**
+         * Signal emitted when a widget becomes shadowed by a
+         *   GTK+ grab (not a pointer or keyboard grab) on another widget, or
+         *   when it becomes unshadowed due to a grab being removed.
+         * @param was_grabbed
+         */
         vfunc_grab_notify(was_grabbed: boolean): void;
         /**
          * Reverses the effects of gtk_widget_show(), causing the widget to be
          * hidden (invisible to the user).
          */
         vfunc_hide(): void;
+        /**
+         * Signal emitted when the anchored state of a
+         *   widget changes.
+         * @param previous_toplevel
+         */
         vfunc_hierarchy_changed(previous_toplevel: Gtk.Widget): void;
+        /**
+         * Signal emitted when a key is pressed.
+         * @param event
+         */
         vfunc_key_press_event(event: Gdk.EventKey): boolean;
+        /**
+         * Signal is emitted when a key is released.
+         * @param event
+         */
         vfunc_key_release_event(event: Gdk.EventKey): boolean;
         /**
          * This function should be called whenever keyboard navigation within
@@ -14982,25 +16089,66 @@ export namespace Anjuta {
          * @param direction direction of focus movement
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
+        /**
+         * Will be emitted when the pointer leaves the
+         *   widget’s window.
+         * @param event
+         */
         vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be mapped if it isn’t already.
          */
         vfunc_map(): void;
+        /**
+         * Signal emitted when the widget’s window is mapped.
+         * @param event
+         */
         vfunc_map_event(event: Gdk.EventAny): boolean;
         /**
          * Emits the #GtkWidget::mnemonic-activate signal.
          * @param group_cycling %TRUE if there are other widgets with the same mnemonic
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
+        /**
+         * Signal emitted when the pointer moves over
+         *   the widget’s #GdkWindow.
+         * @param event
+         */
         vfunc_motion_notify_event(event: Gdk.EventMotion): boolean;
+        /**
+         * Signal emitted when a change of focus is requested
+         * @param direction
+         */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
+        /**
+         * Signal emitted when a new parent has been set on a
+         *   widget.
+         * @param previous_parent
+         */
         vfunc_parent_set(previous_parent: Gtk.Widget): void;
+        /**
+         * Signal emitted whenever a widget should pop up a
+         *   context menu.
+         */
         vfunc_popup_menu(): boolean;
+        /**
+         * Signal will be emitted when a property on
+         *   the widget’s window has been changed or deleted.
+         * @param event
+         */
         vfunc_property_notify_event(event: Gdk.EventProperty): boolean;
         vfunc_proximity_in_event(event: Gdk.EventProximity): boolean;
         vfunc_proximity_out_event(event: Gdk.EventProximity): boolean;
+        /**
+         * Signal emitted when “has-tooltip” is %TRUE and the
+         *   hover timeout has expired with the cursor hovering “above”
+         *   widget; or emitted when widget got focus in keyboard mode.
+         * @param x
+         * @param y
+         * @param keyboard_tooltip
+         * @param tooltip
+         */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
          * Invalidates the area of `widget` defined by `region` by calling
@@ -15037,12 +16185,33 @@ export namespace Anjuta {
          * #GtkWidget::realize signal.
          */
         vfunc_realize(): void;
+        /**
+         * Signal emitted when the screen of a widget has
+         *   changed.
+         * @param previous_screen
+         */
         vfunc_screen_changed(previous_screen: Gdk.Screen): void;
+        /**
+         * Signal emitted when a button in the 4 to 7 range is
+         *   pressed.
+         * @param event
+         */
         vfunc_scroll_event(event: Gdk.EventScroll): boolean;
+        /**
+         * Signal will be emitted when the the
+         *   widget’s window has lost ownership of a selection.
+         * @param event
+         */
         vfunc_selection_clear_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_get(selection_data: Gtk.SelectionData, info: number, time_: number): void;
         vfunc_selection_notify_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_received(selection_data: Gtk.SelectionData, time_: number): void;
+        /**
+         * Signal will be emitted when another
+         *   client requests ownership of the selection owned by the widget's
+         *   window.
+         * @param event
+         */
         vfunc_selection_request_event(event: Gdk.EventSelection): boolean;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
@@ -15079,16 +16248,44 @@ export namespace Anjuta {
          * @param allocation position and size to be allocated to @widget
          */
         vfunc_size_allocate(allocation: Gtk.Allocation): void;
+        /**
+         * Signal emitted when the widget state
+         *   changes. Deprecated: 3.0
+         * @param previous_state
+         */
         vfunc_state_changed(previous_state: Gtk.StateType): void;
+        /**
+         * Signal emitted when the widget state changes,
+         *   see gtk_widget_get_state_flags().
+         * @param previous_state_flags
+         */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
+        /**
+         * Signal emitted when a new style has been set on a
+         * widget. Deprecated: 3.0
+         * @param previous_style
+         */
         vfunc_style_set(previous_style: Gtk.Style): void;
+        /**
+         * Signal emitted when the GtkStyleContext of a widget
+         *   is changed.
+         */
         vfunc_style_updated(): void;
+        /**
+         * Signal emitted when a touch event happens
+         * @param event
+         */
         vfunc_touch_event(event: Gdk.EventTouch): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be unmapped if it’s currently mapped.
          */
         vfunc_unmap(): void;
+        /**
+         * Signal will be emitted when the widget’s window is
+         *   unmapped.
+         * @param event
+         */
         vfunc_unmap_event(event: Gdk.EventAny): boolean;
         /**
          * This function is only useful in widget implementations.
@@ -15096,7 +16293,17 @@ export namespace Anjuta {
          * associated with the widget, such as `widget->`window).
          */
         vfunc_unrealize(): void;
+        /**
+         * Signal emitted when the widget’s window is
+         *   obscured or unobscured.
+         * @param event
+         */
         vfunc_visibility_notify_event(event: Gdk.EventVisibility): boolean;
+        /**
+         * Signal emitted when the state of the toplevel
+         *   window associated to the widget changes.
+         * @param event
+         */
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
@@ -15322,7 +16529,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -15475,10 +16682,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -15494,6 +16736,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -16079,7 +17331,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -16232,10 +17484,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -16251,6 +17538,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -19054,6 +20351,28 @@ export namespace Anjuta {
         unset_state_flags(flags: Gtk.StateFlags): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
+        /**
+         * Convert an initial size allocation assigned
+         *   by a #GtkContainer using gtk_widget_size_allocate(), into an actual
+         *   size allocation to be used by the widget. adjust_size_allocation
+         *   adjusts to a child widget’s actual allocation
+         *   from what a parent container computed for the
+         *   child. The adjusted allocation must be entirely within the original
+         *   allocation. In any custom implementation, chain up to the default
+         *   #GtkWidget implementation of this method, which applies the margin
+         *   and alignment properties of #GtkWidget. Chain up
+         *   before performing your own adjustments so your
+         *   own adjustments remove more allocation after the #GtkWidget base
+         *   class has already removed margin and alignment. The natural size
+         *   passed in should be adjusted in the same way as the allocated size,
+         *   which allows adjustments to perform alignments or other changes
+         *   based on natural size.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         * @param allocated_pos
+         * @param allocated_size
+         */
         vfunc_adjust_size_allocation(
             orientation: Gtk.Orientation,
             minimum_size: number,
@@ -19061,8 +20380,38 @@ export namespace Anjuta {
             allocated_pos: number,
             allocated_size: number,
         ): void;
+        /**
+         * Convert an initial size request from a widget's
+         *   #GtkSizeRequestMode virtual method implementations into a size request to
+         *   be used by parent containers in laying out the widget.
+         *   adjust_size_request adjusts from a child widget's
+         *   original request to what a parent container should
+         *   use for layout. The `for_size` argument will be -1 if the request should
+         *   not be for a particular size in the opposing orientation, i.e. if the
+         *   request is not height-for-width or width-for-height. If `for_size` is
+         *   greater than -1, it is the proposed allocation in the opposing
+         *   orientation that we need the request for. Implementations of
+         *   adjust_size_request should chain up to the default implementation,
+         *   which applies #GtkWidget’s margin properties and imposes any values
+         *   from gtk_widget_set_size_request(). Chaining up should be last,
+         *   after your subclass adjusts the request, so
+         *   #GtkWidget can apply constraints and add the margin properly.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         */
         vfunc_adjust_size_request(orientation: Gtk.Orientation, minimum_size: number, natural_size: number): void;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is pressed.
+         * @param event
+         */
         vfunc_button_press_event(event: Gdk.EventButton): boolean;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is released.
+         * @param event
+         */
         vfunc_button_release_event(event: Gdk.EventButton): boolean;
         /**
          * Determines whether an accelerator that activates the signal
@@ -19086,10 +20435,35 @@ export namespace Anjuta {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         vfunc_child_notify(child_property: GObject.ParamSpec): void;
+        /**
+         * Signal emitted when the composited status of
+         *   widgets screen changes. See gdk_screen_is_composited().
+         */
         vfunc_composited_changed(): void;
+        /**
+         * Computes whether a container should give this
+         *   widget extra space when possible.
+         * @param hexpand_p
+         * @param vexpand_p
+         */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
+        /**
+         * Signal will be emitted when the size, position or
+         *   stacking of the widget’s window has changed.
+         * @param event
+         */
         vfunc_configure_event(event: Gdk.EventConfigure): boolean;
+        /**
+         * Signal emitted when a redirected window belonging to
+         *   widget gets drawn into.
+         * @param event
+         */
         vfunc_damage_event(event: Gdk.EventExpose): boolean;
+        /**
+         * Signal emitted if a user requests that a toplevel
+         *   window is closed.
+         * @param event
+         */
         vfunc_delete_event(event: Gdk.EventAny): boolean;
         /**
          * Destroys a widget.
@@ -19125,17 +20499,59 @@ export namespace Anjuta {
          * See also: gtk_container_remove()
          */
         vfunc_destroy(): void;
+        /**
+         * Signal is emitted when a #GdkWindow is destroyed.
+         * @param event
+         */
         vfunc_destroy_event(event: Gdk.EventAny): boolean;
+        /**
+         * Signal emitted when the text direction of a
+         *   widget changes.
+         * @param previous_direction
+         */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
+        /**
+         * Seldomly overidden.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_child_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   started.
+         * @param context
+         */
         vfunc_drag_begin(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag
+         *   with the action %GDK_ACTION_MOVE is successfully completed.
+         * @param context
+         */
         vfunc_drag_data_delete(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when the drop
+         *   site requests the data which is dragged.
+         * @param context
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_get(
             context: Gdk.DragContext,
             selection_data: Gtk.SelectionData,
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the
+         *   dragged data has been received.
+         * @param context
+         * @param x
+         * @param y
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_received(
             context: Gdk.DragContext,
             x: number,
@@ -19144,12 +20560,54 @@ export namespace Anjuta {
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the user drops the
+         *   data onto the widget.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_drop(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   finished.
+         * @param context
+         */
         vfunc_drag_end(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag has
+         *   failed.
+         * @param context
+         * @param result
+         */
         vfunc_drag_failed(context: Gdk.DragContext, result: Gtk.DragResult): boolean;
+        /**
+         * Signal emitted on the drop site when the cursor leaves
+         *   the widget.
+         * @param context
+         * @param time_
+         */
         vfunc_drag_leave(context: Gdk.DragContext, time_: number): void;
+        /**
+         * signal emitted on the drop site when the user moves
+         *   the cursor over the widget during a drag.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_motion(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted when a widget is supposed to render itself.
+         * @param cr
+         */
         vfunc_draw(cr: cairo.Context): boolean;
+        /**
+         * Signal event will be emitted when the pointer
+         *   enters the widget’s window.
+         * @param event
+         */
         vfunc_enter_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * Rarely-used function. This function is used to emit
@@ -19164,7 +20622,17 @@ export namespace Anjuta {
          */
         vfunc_event(event: Gdk.Event): boolean;
         vfunc_focus(direction: Gtk.DirectionType): boolean;
+        /**
+         * Signal emitted when the keyboard focus enters the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_in_event(event: Gdk.EventFocus): boolean;
+        /**
+         * Signal emitted when the keyboard focus leaves the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_out_event(event: Gdk.EventFocus): boolean;
         /**
          * Returns the accessible object that describes the widget to an
@@ -19252,6 +20720,11 @@ export namespace Anjuta {
          * capabilities.
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
+        /**
+         * Signal emitted when a pointer or keyboard grab
+         *   on a window belonging to widget gets broken.
+         * @param event
+         */
         vfunc_grab_broken_event(event: Gdk.EventGrabBroken): boolean;
         /**
          * Causes `widget` to have the keyboard focus for the #GtkWindow it's
@@ -19266,14 +20739,33 @@ export namespace Anjuta {
          * will likely fail and cause critical warnings.
          */
         vfunc_grab_focus(): void;
+        /**
+         * Signal emitted when a widget becomes shadowed by a
+         *   GTK+ grab (not a pointer or keyboard grab) on another widget, or
+         *   when it becomes unshadowed due to a grab being removed.
+         * @param was_grabbed
+         */
         vfunc_grab_notify(was_grabbed: boolean): void;
         /**
          * Reverses the effects of gtk_widget_show(), causing the widget to be
          * hidden (invisible to the user).
          */
         vfunc_hide(): void;
+        /**
+         * Signal emitted when the anchored state of a
+         *   widget changes.
+         * @param previous_toplevel
+         */
         vfunc_hierarchy_changed(previous_toplevel: Gtk.Widget): void;
+        /**
+         * Signal emitted when a key is pressed.
+         * @param event
+         */
         vfunc_key_press_event(event: Gdk.EventKey): boolean;
+        /**
+         * Signal is emitted when a key is released.
+         * @param event
+         */
         vfunc_key_release_event(event: Gdk.EventKey): boolean;
         /**
          * This function should be called whenever keyboard navigation within
@@ -19306,25 +20798,66 @@ export namespace Anjuta {
          * @param direction direction of focus movement
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
+        /**
+         * Will be emitted when the pointer leaves the
+         *   widget’s window.
+         * @param event
+         */
         vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be mapped if it isn’t already.
          */
         vfunc_map(): void;
+        /**
+         * Signal emitted when the widget’s window is mapped.
+         * @param event
+         */
         vfunc_map_event(event: Gdk.EventAny): boolean;
         /**
          * Emits the #GtkWidget::mnemonic-activate signal.
          * @param group_cycling %TRUE if there are other widgets with the same mnemonic
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
+        /**
+         * Signal emitted when the pointer moves over
+         *   the widget’s #GdkWindow.
+         * @param event
+         */
         vfunc_motion_notify_event(event: Gdk.EventMotion): boolean;
+        /**
+         * Signal emitted when a change of focus is requested
+         * @param direction
+         */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
+        /**
+         * Signal emitted when a new parent has been set on a
+         *   widget.
+         * @param previous_parent
+         */
         vfunc_parent_set(previous_parent: Gtk.Widget): void;
+        /**
+         * Signal emitted whenever a widget should pop up a
+         *   context menu.
+         */
         vfunc_popup_menu(): boolean;
+        /**
+         * Signal will be emitted when a property on
+         *   the widget’s window has been changed or deleted.
+         * @param event
+         */
         vfunc_property_notify_event(event: Gdk.EventProperty): boolean;
         vfunc_proximity_in_event(event: Gdk.EventProximity): boolean;
         vfunc_proximity_out_event(event: Gdk.EventProximity): boolean;
+        /**
+         * Signal emitted when “has-tooltip” is %TRUE and the
+         *   hover timeout has expired with the cursor hovering “above”
+         *   widget; or emitted when widget got focus in keyboard mode.
+         * @param x
+         * @param y
+         * @param keyboard_tooltip
+         * @param tooltip
+         */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
          * Invalidates the area of `widget` defined by `region` by calling
@@ -19361,12 +20894,33 @@ export namespace Anjuta {
          * #GtkWidget::realize signal.
          */
         vfunc_realize(): void;
+        /**
+         * Signal emitted when the screen of a widget has
+         *   changed.
+         * @param previous_screen
+         */
         vfunc_screen_changed(previous_screen: Gdk.Screen): void;
+        /**
+         * Signal emitted when a button in the 4 to 7 range is
+         *   pressed.
+         * @param event
+         */
         vfunc_scroll_event(event: Gdk.EventScroll): boolean;
+        /**
+         * Signal will be emitted when the the
+         *   widget’s window has lost ownership of a selection.
+         * @param event
+         */
         vfunc_selection_clear_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_get(selection_data: Gtk.SelectionData, info: number, time_: number): void;
         vfunc_selection_notify_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_received(selection_data: Gtk.SelectionData, time_: number): void;
+        /**
+         * Signal will be emitted when another
+         *   client requests ownership of the selection owned by the widget's
+         *   window.
+         * @param event
+         */
         vfunc_selection_request_event(event: Gdk.EventSelection): boolean;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
@@ -19403,16 +20957,44 @@ export namespace Anjuta {
          * @param allocation position and size to be allocated to @widget
          */
         vfunc_size_allocate(allocation: Gtk.Allocation): void;
+        /**
+         * Signal emitted when the widget state
+         *   changes. Deprecated: 3.0
+         * @param previous_state
+         */
         vfunc_state_changed(previous_state: Gtk.StateType): void;
+        /**
+         * Signal emitted when the widget state changes,
+         *   see gtk_widget_get_state_flags().
+         * @param previous_state_flags
+         */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
+        /**
+         * Signal emitted when a new style has been set on a
+         * widget. Deprecated: 3.0
+         * @param previous_style
+         */
         vfunc_style_set(previous_style: Gtk.Style): void;
+        /**
+         * Signal emitted when the GtkStyleContext of a widget
+         *   is changed.
+         */
         vfunc_style_updated(): void;
+        /**
+         * Signal emitted when a touch event happens
+         * @param event
+         */
         vfunc_touch_event(event: Gdk.EventTouch): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be unmapped if it’s currently mapped.
          */
         vfunc_unmap(): void;
+        /**
+         * Signal will be emitted when the widget’s window is
+         *   unmapped.
+         * @param event
+         */
         vfunc_unmap_event(event: Gdk.EventAny): boolean;
         /**
          * This function is only useful in widget implementations.
@@ -19420,7 +21002,17 @@ export namespace Anjuta {
          * associated with the widget, such as `widget->`window).
          */
         vfunc_unrealize(): void;
+        /**
+         * Signal emitted when the widget’s window is
+         *   obscured or unobscured.
+         * @param event
+         */
         vfunc_visibility_notify_event(event: Gdk.EventVisibility): boolean;
+        /**
+         * Signal emitted when the state of the toplevel
+         *   window associated to the widget changes.
+         * @param event
+         */
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
@@ -19661,7 +21253,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -19814,10 +21406,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -19833,6 +21460,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -20357,7 +21994,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -20510,10 +22147,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -20529,6 +22201,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -21161,7 +22843,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -21314,10 +22996,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -21333,6 +23050,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -21894,7 +23621,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -22047,10 +23774,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -22066,6 +23828,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -22470,7 +24242,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -22623,10 +24395,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -22642,6 +24449,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -22883,7 +24700,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -23036,10 +24853,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -23055,6 +24907,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -23870,7 +25732,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -24023,10 +25885,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -24042,6 +25939,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -26847,6 +28754,28 @@ export namespace Anjuta {
         unset_state_flags(flags: Gtk.StateFlags): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
+        /**
+         * Convert an initial size allocation assigned
+         *   by a #GtkContainer using gtk_widget_size_allocate(), into an actual
+         *   size allocation to be used by the widget. adjust_size_allocation
+         *   adjusts to a child widget’s actual allocation
+         *   from what a parent container computed for the
+         *   child. The adjusted allocation must be entirely within the original
+         *   allocation. In any custom implementation, chain up to the default
+         *   #GtkWidget implementation of this method, which applies the margin
+         *   and alignment properties of #GtkWidget. Chain up
+         *   before performing your own adjustments so your
+         *   own adjustments remove more allocation after the #GtkWidget base
+         *   class has already removed margin and alignment. The natural size
+         *   passed in should be adjusted in the same way as the allocated size,
+         *   which allows adjustments to perform alignments or other changes
+         *   based on natural size.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         * @param allocated_pos
+         * @param allocated_size
+         */
         vfunc_adjust_size_allocation(
             orientation: Gtk.Orientation,
             minimum_size: number,
@@ -26854,8 +28783,38 @@ export namespace Anjuta {
             allocated_pos: number,
             allocated_size: number,
         ): void;
+        /**
+         * Convert an initial size request from a widget's
+         *   #GtkSizeRequestMode virtual method implementations into a size request to
+         *   be used by parent containers in laying out the widget.
+         *   adjust_size_request adjusts from a child widget's
+         *   original request to what a parent container should
+         *   use for layout. The `for_size` argument will be -1 if the request should
+         *   not be for a particular size in the opposing orientation, i.e. if the
+         *   request is not height-for-width or width-for-height. If `for_size` is
+         *   greater than -1, it is the proposed allocation in the opposing
+         *   orientation that we need the request for. Implementations of
+         *   adjust_size_request should chain up to the default implementation,
+         *   which applies #GtkWidget’s margin properties and imposes any values
+         *   from gtk_widget_set_size_request(). Chaining up should be last,
+         *   after your subclass adjusts the request, so
+         *   #GtkWidget can apply constraints and add the margin properly.
+         * @param orientation
+         * @param minimum_size
+         * @param natural_size
+         */
         vfunc_adjust_size_request(orientation: Gtk.Orientation, minimum_size: number, natural_size: number): void;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is pressed.
+         * @param event
+         */
         vfunc_button_press_event(event: Gdk.EventButton): boolean;
+        /**
+         * Signal will be emitted when a button
+         *   (typically from a mouse) is released.
+         * @param event
+         */
         vfunc_button_release_event(event: Gdk.EventButton): boolean;
         /**
          * Determines whether an accelerator that activates the signal
@@ -26879,10 +28838,35 @@ export namespace Anjuta {
          * @param child_property the name of a child property installed on the                  class of @widget’s parent
          */
         vfunc_child_notify(child_property: GObject.ParamSpec): void;
+        /**
+         * Signal emitted when the composited status of
+         *   widgets screen changes. See gdk_screen_is_composited().
+         */
         vfunc_composited_changed(): void;
+        /**
+         * Computes whether a container should give this
+         *   widget extra space when possible.
+         * @param hexpand_p
+         * @param vexpand_p
+         */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
+        /**
+         * Signal will be emitted when the size, position or
+         *   stacking of the widget’s window has changed.
+         * @param event
+         */
         vfunc_configure_event(event: Gdk.EventConfigure): boolean;
+        /**
+         * Signal emitted when a redirected window belonging to
+         *   widget gets drawn into.
+         * @param event
+         */
         vfunc_damage_event(event: Gdk.EventExpose): boolean;
+        /**
+         * Signal emitted if a user requests that a toplevel
+         *   window is closed.
+         * @param event
+         */
         vfunc_delete_event(event: Gdk.EventAny): boolean;
         /**
          * Destroys a widget.
@@ -26918,17 +28902,59 @@ export namespace Anjuta {
          * See also: gtk_container_remove()
          */
         vfunc_destroy(): void;
+        /**
+         * Signal is emitted when a #GdkWindow is destroyed.
+         * @param event
+         */
         vfunc_destroy_event(event: Gdk.EventAny): boolean;
+        /**
+         * Signal emitted when the text direction of a
+         *   widget changes.
+         * @param previous_direction
+         */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
+        /**
+         * Seldomly overidden.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_child_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   started.
+         * @param context
+         */
         vfunc_drag_begin(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag
+         *   with the action %GDK_ACTION_MOVE is successfully completed.
+         * @param context
+         */
         vfunc_drag_data_delete(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when the drop
+         *   site requests the data which is dragged.
+         * @param context
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_get(
             context: Gdk.DragContext,
             selection_data: Gtk.SelectionData,
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the
+         *   dragged data has been received.
+         * @param context
+         * @param x
+         * @param y
+         * @param selection_data
+         * @param info
+         * @param time_
+         */
         vfunc_drag_data_received(
             context: Gdk.DragContext,
             x: number,
@@ -26937,12 +28963,54 @@ export namespace Anjuta {
             info: number,
             time_: number,
         ): void;
+        /**
+         * Signal emitted on the drop site when the user drops the
+         *   data onto the widget.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_drop(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted on the drag source when a drag is
+         *   finished.
+         * @param context
+         */
         vfunc_drag_end(context: Gdk.DragContext): void;
+        /**
+         * Signal emitted on the drag source when a drag has
+         *   failed.
+         * @param context
+         * @param result
+         */
         vfunc_drag_failed(context: Gdk.DragContext, result: Gtk.DragResult): boolean;
+        /**
+         * Signal emitted on the drop site when the cursor leaves
+         *   the widget.
+         * @param context
+         * @param time_
+         */
         vfunc_drag_leave(context: Gdk.DragContext, time_: number): void;
+        /**
+         * signal emitted on the drop site when the user moves
+         *   the cursor over the widget during a drag.
+         * @param context
+         * @param x
+         * @param y
+         * @param time_
+         */
         vfunc_drag_motion(context: Gdk.DragContext, x: number, y: number, time_: number): boolean;
+        /**
+         * Signal emitted when a widget is supposed to render itself.
+         * @param cr
+         */
         vfunc_draw(cr: cairo.Context): boolean;
+        /**
+         * Signal event will be emitted when the pointer
+         *   enters the widget’s window.
+         * @param event
+         */
         vfunc_enter_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * Rarely-used function. This function is used to emit
@@ -26957,7 +29025,17 @@ export namespace Anjuta {
          */
         vfunc_event(event: Gdk.Event): boolean;
         vfunc_focus(direction: Gtk.DirectionType): boolean;
+        /**
+         * Signal emitted when the keyboard focus enters the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_in_event(event: Gdk.EventFocus): boolean;
+        /**
+         * Signal emitted when the keyboard focus leaves the
+         * widget’s window.
+         * @param event
+         */
         vfunc_focus_out_event(event: Gdk.EventFocus): boolean;
         /**
          * Returns the accessible object that describes the widget to an
@@ -27045,6 +29123,11 @@ export namespace Anjuta {
          * capabilities.
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
+        /**
+         * Signal emitted when a pointer or keyboard grab
+         *   on a window belonging to widget gets broken.
+         * @param event
+         */
         vfunc_grab_broken_event(event: Gdk.EventGrabBroken): boolean;
         /**
          * Causes `widget` to have the keyboard focus for the #GtkWindow it's
@@ -27059,14 +29142,33 @@ export namespace Anjuta {
          * will likely fail and cause critical warnings.
          */
         vfunc_grab_focus(): void;
+        /**
+         * Signal emitted when a widget becomes shadowed by a
+         *   GTK+ grab (not a pointer or keyboard grab) on another widget, or
+         *   when it becomes unshadowed due to a grab being removed.
+         * @param was_grabbed
+         */
         vfunc_grab_notify(was_grabbed: boolean): void;
         /**
          * Reverses the effects of gtk_widget_show(), causing the widget to be
          * hidden (invisible to the user).
          */
         vfunc_hide(): void;
+        /**
+         * Signal emitted when the anchored state of a
+         *   widget changes.
+         * @param previous_toplevel
+         */
         vfunc_hierarchy_changed(previous_toplevel: Gtk.Widget): void;
+        /**
+         * Signal emitted when a key is pressed.
+         * @param event
+         */
         vfunc_key_press_event(event: Gdk.EventKey): boolean;
+        /**
+         * Signal is emitted when a key is released.
+         * @param event
+         */
         vfunc_key_release_event(event: Gdk.EventKey): boolean;
         /**
          * This function should be called whenever keyboard navigation within
@@ -27099,25 +29201,66 @@ export namespace Anjuta {
          * @param direction direction of focus movement
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
+        /**
+         * Will be emitted when the pointer leaves the
+         *   widget’s window.
+         * @param event
+         */
         vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be mapped if it isn’t already.
          */
         vfunc_map(): void;
+        /**
+         * Signal emitted when the widget’s window is mapped.
+         * @param event
+         */
         vfunc_map_event(event: Gdk.EventAny): boolean;
         /**
          * Emits the #GtkWidget::mnemonic-activate signal.
          * @param group_cycling %TRUE if there are other widgets with the same mnemonic
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
+        /**
+         * Signal emitted when the pointer moves over
+         *   the widget’s #GdkWindow.
+         * @param event
+         */
         vfunc_motion_notify_event(event: Gdk.EventMotion): boolean;
+        /**
+         * Signal emitted when a change of focus is requested
+         * @param direction
+         */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
+        /**
+         * Signal emitted when a new parent has been set on a
+         *   widget.
+         * @param previous_parent
+         */
         vfunc_parent_set(previous_parent: Gtk.Widget): void;
+        /**
+         * Signal emitted whenever a widget should pop up a
+         *   context menu.
+         */
         vfunc_popup_menu(): boolean;
+        /**
+         * Signal will be emitted when a property on
+         *   the widget’s window has been changed or deleted.
+         * @param event
+         */
         vfunc_property_notify_event(event: Gdk.EventProperty): boolean;
         vfunc_proximity_in_event(event: Gdk.EventProximity): boolean;
         vfunc_proximity_out_event(event: Gdk.EventProximity): boolean;
+        /**
+         * Signal emitted when “has-tooltip” is %TRUE and the
+         *   hover timeout has expired with the cursor hovering “above”
+         *   widget; or emitted when widget got focus in keyboard mode.
+         * @param x
+         * @param y
+         * @param keyboard_tooltip
+         * @param tooltip
+         */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
          * Invalidates the area of `widget` defined by `region` by calling
@@ -27154,12 +29297,33 @@ export namespace Anjuta {
          * #GtkWidget::realize signal.
          */
         vfunc_realize(): void;
+        /**
+         * Signal emitted when the screen of a widget has
+         *   changed.
+         * @param previous_screen
+         */
         vfunc_screen_changed(previous_screen: Gdk.Screen): void;
+        /**
+         * Signal emitted when a button in the 4 to 7 range is
+         *   pressed.
+         * @param event
+         */
         vfunc_scroll_event(event: Gdk.EventScroll): boolean;
+        /**
+         * Signal will be emitted when the the
+         *   widget’s window has lost ownership of a selection.
+         * @param event
+         */
         vfunc_selection_clear_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_get(selection_data: Gtk.SelectionData, info: number, time_: number): void;
         vfunc_selection_notify_event(event: Gdk.EventSelection): boolean;
         vfunc_selection_received(selection_data: Gtk.SelectionData, time_: number): void;
+        /**
+         * Signal will be emitted when another
+         *   client requests ownership of the selection owned by the widget's
+         *   window.
+         * @param event
+         */
         vfunc_selection_request_event(event: Gdk.EventSelection): boolean;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
@@ -27196,16 +29360,44 @@ export namespace Anjuta {
          * @param allocation position and size to be allocated to @widget
          */
         vfunc_size_allocate(allocation: Gtk.Allocation): void;
+        /**
+         * Signal emitted when the widget state
+         *   changes. Deprecated: 3.0
+         * @param previous_state
+         */
         vfunc_state_changed(previous_state: Gtk.StateType): void;
+        /**
+         * Signal emitted when the widget state changes,
+         *   see gtk_widget_get_state_flags().
+         * @param previous_state_flags
+         */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
+        /**
+         * Signal emitted when a new style has been set on a
+         * widget. Deprecated: 3.0
+         * @param previous_style
+         */
         vfunc_style_set(previous_style: Gtk.Style): void;
+        /**
+         * Signal emitted when the GtkStyleContext of a widget
+         *   is changed.
+         */
         vfunc_style_updated(): void;
+        /**
+         * Signal emitted when a touch event happens
+         * @param event
+         */
         vfunc_touch_event(event: Gdk.EventTouch): boolean;
         /**
          * This function is only for use in widget implementations. Causes
          * a widget to be unmapped if it’s currently mapped.
          */
         vfunc_unmap(): void;
+        /**
+         * Signal will be emitted when the widget’s window is
+         *   unmapped.
+         * @param event
+         */
         vfunc_unmap_event(event: Gdk.EventAny): boolean;
         /**
          * This function is only useful in widget implementations.
@@ -27213,7 +29405,17 @@ export namespace Anjuta {
          * associated with the widget, such as `widget->`window).
          */
         vfunc_unrealize(): void;
+        /**
+         * Signal emitted when the widget’s window is
+         *   obscured or unobscured.
+         * @param event
+         */
         vfunc_visibility_notify_event(event: Gdk.EventVisibility): boolean;
+        /**
+         * Signal emitted when the state of the toplevel
+         *   window associated to the widget changes.
+         * @param event
+         */
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
@@ -27728,7 +29930,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -27881,10 +30083,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -27900,6 +30137,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -28233,7 +30480,7 @@ export namespace Anjuta {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -28386,10 +30633,45 @@ export namespace Anjuta {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -28405,6 +30687,16 @@ export namespace Anjuta {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -28538,7 +30830,7 @@ export namespace Anjuta {
     }
 
     type DropEntryClass = typeof DropEntry;
-    class Encoding {
+    abstract class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
         // Constructors of Anjuta.Encoding

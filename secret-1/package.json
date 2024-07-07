@@ -1,7 +1,7 @@
 {
     "name": "@girs/secret-1",
-    "version": "0.21.0-4.0.0-beta.5",
-    "description": "GJS TypeScript type definitions for Secret-1, generated from library version 0.21.0",
+    "version": "0.21.4-4.0.0-beta.5",
+    "description": "GJS TypeScript type definitions for Secret-1, generated from library version 0.21.4",
     "type": "module",
     "module": "secret-1.js",
     "main": "secret-1.js",
@@ -23,12 +23,13 @@
         }
     },
     "scripts": {
-        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit secret-1.d.ts"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
         "@girs/gio-2.0": "workspace:^",
         "@girs/gjs": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {

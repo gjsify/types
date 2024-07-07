@@ -1825,6 +1825,10 @@ export namespace GstTag {
          * @param query the #GstQuery.
          */
         vfunc_query(query: Gst.Query): boolean;
+        /**
+         * called when a request pad is to be released
+         * @param pad
+         */
         vfunc_release_pad(pad: Gst.Pad): void;
         /**
          * Retrieves a request pad from the element according to the provided template.
@@ -1888,6 +1892,12 @@ export namespace GstTag {
          * @param state the element's new #GstState.
          */
         vfunc_set_state(state: Gst.State): Gst.StateChangeReturn;
+        /**
+         * called immediately after a new state was set.
+         * @param oldstate
+         * @param newstate
+         * @param pending
+         */
         vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void;
     }
 

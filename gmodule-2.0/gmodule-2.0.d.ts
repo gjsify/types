@@ -38,6 +38,10 @@ export namespace GModule {
         _init(...args: any[]): void;
     }
 
+    const MODULE_IMPL_AR: number;
+    const MODULE_IMPL_DL: number;
+    const MODULE_IMPL_NONE: number;
+    const MODULE_IMPL_WIN32: number;
     /**
      * A portable way to build the filename of a module. The platform-specific
      * prefix and suffix are added to the filename, if needed, and the result

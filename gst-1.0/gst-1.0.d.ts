@@ -2174,6 +2174,13 @@ export namespace Gst {
      */
     const TAG_CONTAINER_FORMAT: string;
     /**
+     * Unique identifier for the audio, video or text track this tag is associated
+     * with. The mappings for several container formats are defined in the [Sourcing
+     * In-band Media Resource Tracks from Media Containers into HTML
+     * specification](https://dev.w3.org/html5/html-sourcing-inband-tracks/).
+     */
+    const TAG_CONTAINER_SPECIFIC_TRACK_ID: string;
+    /**
      * copyright notice of the data (string)
      */
     const TAG_COPYRIGHT: string;
@@ -2563,30 +2570,6 @@ export namespace Gst {
      */
     function buffer_get_max_memory(): number;
     /**
-     * Modifies a pointer to a #GstBufferList to point to a different
-     * #GstBufferList. The modification is done atomically (so this is useful for
-     * ensuring thread safety in some cases), and the reference counts are updated
-     * appropriately (the old buffer list is unreffed, the new is reffed).
-     *
-     * Either `new_list` or the #GstBufferList pointed to by `old_list` may be %NULL.
-     * @param old_list pointer to a pointer to a     #GstBufferList to be replaced.
-     * @param new_list pointer to a #GstBufferList that     will replace the buffer list pointed to by @old_list.
-     * @returns %TRUE if @new_list was different from @old_list
-     */
-    function buffer_list_replace(
-        old_list?: BufferList | null,
-        new_list?: BufferList | null,
-    ): [boolean, BufferList | null];
-    /**
-     * Modifies a pointer to a #GstBufferList to point to a different
-     * #GstBufferList. This function is similar to gst_buffer_list_replace() except
-     * that it takes ownership of `new_list`.
-     * @param old_list pointer to a pointer to a #GstBufferList     to be replaced.
-     * @param new_list pointer to a #GstBufferList     that will replace the bufferlist pointed to by @old_list.
-     * @returns %TRUE if @new_list was different from @old_list
-     */
-    function buffer_list_take(old_list: BufferList, new_list?: BufferList | null): [boolean, BufferList];
-    /**
      * Creates a #GstCapsFeatures from a string representation.
      * @param features a string representation of a #GstCapsFeatures.
      * @returns a new #GstCapsFeatures or     %NULL when the string could not be parsed.
@@ -2601,18 +2584,6 @@ export namespace Gst {
      * @returns a newly allocated #GstCaps
      */
     function caps_from_string(string: string): Caps | null;
-    /**
-     * Modifies a pointer to a #GstContext to point to a different #GstContext. The
-     * modification is done atomically (so this is useful for ensuring thread safety
-     * in some cases), and the reference counts are updated appropriately (the old
-     * context is unreffed, the new one is reffed).
-     *
-     * Either `new_context` or the #GstContext pointed to by `old_context` may be %NULL.
-     * @param old_context pointer to a pointer to a #GstContext     to be replaced.
-     * @param new_context pointer to a #GstContext that will     replace the context pointed to by @old_context.
-     * @returns %TRUE if @new_context was different from @old_context
-     */
-    function context_replace(old_context: Context, new_context?: Context | null): [boolean, Context];
     function core_error_quark(): GLib.Quark;
     /**
      * Adds the logging function to the list of logging functions.
@@ -3064,15 +3035,6 @@ export namespace Gst {
     function is_initialized(): boolean;
     function library_error_quark(): GLib.Quark;
     /**
-     * Modifies a pointer to a #GstMessage to point to a different #GstMessage. This
-     * function is similar to gst_message_replace() except that it takes ownership
-     * of `new_message`.
-     * @param old_message pointer to a pointer to a #GstMessage     to be replaced.
-     * @param new_message pointer to a #GstMessage that     will replace the message pointed to by @old_message.
-     * @returns %TRUE if @new_message was different from @old_message
-     */
-    function message_take(old_message: Message, new_message?: Message | null): [boolean, Message];
-    /**
      * Get a printable name for the given message type. Do not modify or free.
      * @param type the message type
      * @returns a reference to the static name of the message.
@@ -3101,33 +3063,28 @@ export namespace Gst {
      */
     function meta_api_type_register(api: string, tags: string[]): GObject.GType;
     /**
+     * Recreate a #GstMeta from serialized data returned by
+     * gst_meta_serialize() and add it to `buffer`.
+     *
+     * Note that the meta must have been previously registered by calling one of
+     * `gst_*_meta_get_info ()` functions.
+     *
+     * `consumed` is set to the number of bytes that can be skipped from `data` to
+     * find the next meta serialization, if any. In case of parsing error that does
+     * not allow to determine that size, `consumed` is set to 0.
+     * @param buffer a #GstBuffer
+     * @param data serialization data obtained from gst_meta_serialize()
+     * @param size size of @data
+     * @returns the metadata owned by @buffer, or %NULL.
+     */
+    function meta_deserialize(buffer: Buffer, data: number, size: number): [Meta | null, number];
+    /**
      * Lookup a previously registered meta info structure by its implementation name
      * `impl`.
      * @param impl the name
      * @returns a #GstMetaInfo with @impl, or %NULL when no such metainfo exists.
      */
     function meta_get_info(impl: string): MetaInfo | null;
-    /**
-     * Register a new #GstMeta implementation.
-     *
-     * The same `info` can be retrieved later with gst_meta_get_info() by using
-     * `impl` as the key.
-     * @param api the type of the #GstMeta API
-     * @param impl the name of the #GstMeta implementation
-     * @param size the size of the #GstMeta structure
-     * @param init_func a #GstMetaInitFunction
-     * @param free_func a #GstMetaFreeFunction
-     * @param transform_func a #GstMetaTransformFunction
-     * @returns a #GstMetaInfo that can be used to access metadata.
-     */
-    function meta_register(
-        api: GObject.GType,
-        impl: string,
-        size: number,
-        init_func: MetaInitFunction,
-        free_func: MetaFreeFunction,
-        transform_func: MetaTransformFunction,
-    ): MetaInfo;
     /**
      * Register a new custom #GstMeta implementation, backed by an opaque
      * structure holding a #GstStructure.
@@ -3152,6 +3109,13 @@ export namespace Gst {
         tags: string[],
         transform_func?: CustomMetaTransformFunction | null,
     ): MetaInfo;
+    /**
+     * Simplified version of gst_meta_register_custom(), with no tags and no
+     * transform function.
+     * @param name the name of the #GstMeta implementation
+     * @returns a #GstMetaInfo that can be used to access metadata.
+     */
+    function meta_register_custom_simple(name: string): MetaInfo;
     /**
      * Atomically modifies a pointer to point to a new mini-object.
      * The reference count of `olddata` is decreased and the reference count of
@@ -3361,17 +3325,6 @@ export namespace Gst {
      */
     function protection_select_system(system_identifiers: string[]): string | null;
     /**
-     * Modifies a pointer to a #GstQuery to point to a different #GstQuery. This
-     * function is similar to gst_query_replace() except that it takes ownership of
-     * `new_query`.
-     *
-     * Either `new_query` or the #GstQuery pointed to by `old_query` may be %NULL.
-     * @param old_query pointer to a     pointer to a #GstQuery to be stolen.
-     * @param new_query pointer to a #GstQuery that will     replace the query pointed to by @old_query.
-     * @returns %TRUE if @new_query was different from @old_query
-     */
-    function query_take(old_query?: Query | null, new_query?: Query | null): [boolean, Query | null];
-    /**
      * Gets the #GstQueryTypeFlags associated with `type`.
      * @param type a #GstQueryType
      * @returns a #GstQueryTypeFlags.
@@ -3491,28 +3444,6 @@ export namespace Gst {
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the          given list.
      */
     function tag_list_copy_value(list: TagList, tag: string): [boolean, unknown];
-    /**
-     * Modifies a pointer to a #GstTagList to point to a different #GstTagList. The
-     * modification is done atomically (so this is useful for ensuring thread
-     * safety in some cases), and the reference counts are updated appropriately
-     * (the old tag list is unreffed, the new is reffed).
-     *
-     * Either `new_taglist` or the #GstTagList pointed to by `old_taglist` may be
-     * %NULL.
-     * @param old_taglist pointer to a pointer to a     #GstTagList to be replaced.
-     * @param new_taglist pointer to a #GstTagList that     will replace the tag list pointed to by @old_taglist.
-     * @returns %TRUE if @new_taglist was different from @old_taglist
-     */
-    function tag_list_replace(old_taglist?: TagList | null, new_taglist?: TagList | null): [boolean, TagList | null];
-    /**
-     * Modifies a pointer to a #GstTagList to point to a different #GstTagList.
-     * This function is similar to gst_tag_list_replace() except that it takes
-     * ownership of `new_taglist`.
-     * @param old_taglist pointer to a pointer to a #GstTagList     to be replaced.
-     * @param new_taglist pointer to a #GstTagList that     will replace the taglist pointed to by @old_taglist.
-     * @returns %TRUE if @new_taglist was different from @old_taglist
-     */
-    function tag_list_take(old_taglist: TagList, new_taglist?: TagList | null): [boolean, TagList];
     /**
      * This is a convenience function for the func argument of gst_tag_register().
      * It concatenates all given strings using a comma. The tag must be registered
@@ -3726,6 +3657,12 @@ export namespace Gst {
         search_data?: any | null,
     ): any | null;
     /**
+     * Return a max num of log2.
+     * @param v a #guint32 value.
+     * @returns a computed #guint val.
+     */
+    function util_ceil_log2(v: number): number;
+    /**
      * Transforms a #gdouble to a fraction and simplifies
      * the result.
      * @param src #gdouble to transform
@@ -3741,6 +3678,12 @@ export namespace Gst {
      * @param mem a pointer to the memory to dump
      */
     function util_dump_mem(mem: Uint8Array | string): void;
+    /**
+     * Compares the given filenames using natural ordering.
+     * @param a a filename to compare with @b
+     * @param b a filename to compare with @a
+     */
+    function util_filename_compare(a: string, b: string): number;
     /**
      * Adds the fractions `a_n/``a_d` and `b_n/``b_d` and stores
      * the result in `res_n` and `res_d`.
@@ -4439,11 +4382,20 @@ export namespace Gst {
     interface MemoryUnmapFunction {
         (mem: Memory): void;
     }
+    interface MetaClearFunction {
+        (buffer: Buffer, meta: Meta): void;
+    }
+    interface MetaDeserializeFunction {
+        (info: MetaInfo, buffer: Buffer, data: number, size: number, version: number): Meta | null;
+    }
     interface MetaFreeFunction {
         (meta: Meta, buffer: Buffer): void;
     }
     interface MetaInitFunction {
         (meta: Meta, params: any | null, buffer: Buffer): boolean;
+    }
+    interface MetaSerializeFunction {
+        (meta: Meta, data: ByteArrayInterface): boolean;
     }
     interface MetaTransformFunction {
         (transbuf: Buffer, meta: Meta, buffer: Buffer, type: GLib.Quark, data?: any | null): boolean;
@@ -4562,8 +4514,18 @@ export namespace Gst {
     enum AllocatorFlags {
         /**
          * The allocator has a custom alloc function.
+         *    Only elements designed to work with this allocator should be using it,
+         *    other elements should ignore it from allocation propositions.
+         *    This implies %GST_ALLOCATOR_FLAG_NO_COPY.
          */
         CUSTOM_ALLOC,
+        /**
+         * When copying a #GstMemory allocated with this allocator, the copy will
+         * instead be allocated using the default allocator. Use this when allocating a
+         * new memory is an heavy opperation that should only be done with a
+         * #GstBufferPool for example.
+         */
+        NO_COPY,
         /**
          * first flag that can be used for custom purposes
          */
@@ -5358,6 +5320,15 @@ export namespace Gst {
          */
         MAY_BE_LEAKED,
         /**
+         * Flag that's set when the object has been constructed. This can be used by
+         * API such as base class setters to differentiate between the case where
+         * they're called from a subclass's instance init function (and where the
+         * object isn't fully constructed yet, and so one shouldn't do anything but
+         * set values in the instance structure), and the case where the object is
+         * constructed.
+         */
+        CONSTRUCTED,
+        /**
          * subclasses can add additional flags starting from this flag
          */
         LAST,
@@ -5911,6 +5882,11 @@ export namespace Gst {
          *                                      nested structures.
          */
         BACKWARD_COMPAT,
+        /**
+         * Serialization fails if a value cannot be serialized instead of using
+         * placeholder "NULL" value (e.g. pointers, objects).
+         */
+        STRICT,
     }
     enum StackTraceFlags {
         /**
@@ -6815,7 +6791,7 @@ export namespace Gst {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6969,10 +6945,45 @@ export namespace Gst {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -6988,6 +6999,16 @@ export namespace Gst {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -9277,6 +9298,10 @@ export namespace Gst {
          * @param query the #GstQuery.
          */
         vfunc_query(query: Query): boolean;
+        /**
+         * called when a request pad is to be released
+         * @param pad
+         */
         vfunc_release_pad(pad: Pad): void;
         /**
          * Retrieves a request pad from the element according to the provided template.
@@ -9340,6 +9365,12 @@ export namespace Gst {
          * @param state the element's new #GstState.
          */
         vfunc_set_state(state: State): StateChangeReturn;
+        /**
+         * called immediately after a new state was set.
+         * @param oldstate
+         * @param newstate
+         * @param pending
+         */
         vfunc_state_changed(oldstate: State, newstate: State, pending: State): void;
 
         // Own methods of Gst.Element
@@ -10621,6 +10652,11 @@ export namespace Gst {
 
         // Own virtual methods of Gst.Object
 
+        /**
+         * default signal handler
+         * @param orig
+         * @param pspec
+         */
         vfunc_deep_notify(orig: Object, pspec: GObject.ParamSpec): void;
 
         // Own methods of Gst.Object
@@ -12084,6 +12120,11 @@ export namespace Gst {
         // Conflicted with Gst.Element.get_bus
         get_bus(...args: never[]): any;
         /**
+         * Return the configured latency on `pipeline`.
+         * @returns @pipeline configured latency, or %GST_CLOCK_TIME_NONE if none has been configured because @pipeline did not reach the PLAYING state yet. MT safe.
+         */
+        get_configured_latency(): ClockTime;
+        /**
          * Get the configured delay (see gst_pipeline_set_delay()).
          * @returns The configured delay. MT safe.
          */
@@ -12102,6 +12143,11 @@ export namespace Gst {
          * @returns a #GstClock, unref after usage.
          */
         get_pipeline_clock(): Clock;
+        /**
+         * Check if `pipeline` is live.
+         * @returns %TRUE if @pipeline is live, %FALSE if not or if it did not reach the PAUSED state yet. MT safe.
+         */
+        is_live(): boolean;
         /**
          * Usually, when a pipeline goes from READY to NULL state, it automatically
          * flushes all pending messages on the bus, which is done for refcounting
@@ -12433,7 +12479,7 @@ export namespace Gst {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -12587,10 +12633,45 @@ export namespace Gst {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -12606,6 +12687,16 @@ export namespace Gst {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -12778,6 +12869,9 @@ export namespace Gst {
             names: string | null,
             flags: PluginDependencyFlags,
         ): void;
+        add_status_error(message: string): void;
+        add_status_info(message: string): void;
+        add_status_warning(message: string): void;
         /**
          * Gets the plugin specific data cache. If it is %NULL there is no cached data
          * stored. This is the case when the registry is getting rebuilt.
@@ -12833,6 +12927,9 @@ export namespace Gst {
          * @returns the source of the plugin
          */
         get_source(): string;
+        get_status_errors(): string[] | null;
+        get_status_infos(): string[] | null;
+        get_status_warnings(): string[] | null;
         /**
          * get the version of the plugin
          * @returns the version of the plugin
@@ -13448,7 +13545,7 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface StreamNotify {
-            (object: Stream, p0: GObject.ParamSpec): void;
+            (prop_stream: Stream, prop: GObject.ParamSpec): void;
         }
 
         // Constructor properties interface
@@ -13482,8 +13579,14 @@ export namespace Gst {
 
         // Own properties of Gst.StreamCollection
 
+        /**
+         * stream-id
+         */
         get upstream_id(): string;
         set upstream_id(val: string);
+        /**
+         * stream-id
+         */
         get upstreamId(): string;
         set upstreamId(val: string);
 
@@ -13502,16 +13605,21 @@ export namespace Gst {
         emit(id: string, ...args: any[]): void;
         connect(
             signal: 'stream-notify',
-            callback: (_source: this, object: Stream, p0: GObject.ParamSpec) => void,
+            callback: (_source: this, prop_stream: Stream, prop: GObject.ParamSpec) => void,
         ): number;
         connect_after(
             signal: 'stream-notify',
-            callback: (_source: this, object: Stream, p0: GObject.ParamSpec) => void,
+            callback: (_source: this, prop_stream: Stream, prop: GObject.ParamSpec) => void,
         ): number;
-        emit(signal: 'stream-notify', object: Stream, p0: GObject.ParamSpec): void;
+        emit(signal: 'stream-notify', prop_stream: Stream, prop: GObject.ParamSpec): void;
 
         // Own virtual methods of Gst.StreamCollection
 
+        /**
+         * default signal handler for the stream-notify signal
+         * @param stream
+         * @param pspec
+         */
         vfunc_stream_notify(stream: Stream, pspec: GObject.ParamSpec): void;
 
         // Own methods of Gst.StreamCollection
@@ -14940,28 +15048,6 @@ export namespace Gst {
 
         static new_sized(size: number): BufferList;
 
-        // Own static methods of Gst.BufferList
-
-        /**
-         * Modifies a pointer to a #GstBufferList to point to a different
-         * #GstBufferList. The modification is done atomically (so this is useful for
-         * ensuring thread safety in some cases), and the reference counts are updated
-         * appropriately (the old buffer list is unreffed, the new is reffed).
-         *
-         * Either `new_list` or the #GstBufferList pointed to by `old_list` may be %NULL.
-         * @param old_list pointer to a pointer to a     #GstBufferList to be replaced.
-         * @param new_list pointer to a #GstBufferList that     will replace the buffer list pointed to by @old_list.
-         */
-        static replace(old_list?: BufferList | null, new_list?: BufferList | null): [boolean, BufferList | null];
-        /**
-         * Modifies a pointer to a #GstBufferList to point to a different
-         * #GstBufferList. This function is similar to gst_buffer_list_replace() except
-         * that it takes ownership of `new_list`.
-         * @param old_list pointer to a pointer to a #GstBufferList     to be replaced.
-         * @param new_list pointer to a #GstBufferList     that will replace the bufferlist pointed to by @old_list.
-         */
-        static take(old_list: BufferList, new_list?: BufferList | null): [boolean, BufferList];
-
         // Own methods of Gst.BufferList
 
         /**
@@ -15065,6 +15151,34 @@ export namespace Gst {
 
         // Constructors of Gst.BusPrivate
 
+        _init(...args: any[]): void;
+    }
+
+    /**
+     * Interface for an array of bytes. It is expected to be subclassed to implement
+     * `resize` virtual method using language native array implementation, such as
+     * GLib's #GByteArray, C++'s `std::vector<uint8_t>` or Rust's `Vec<u8>`.
+     *
+     * `resize` implementation could allocate more than requested to avoid repeated
+     * reallocations. It can return %FALSE, or be set to %NULL, in the case the
+     * array cannot grow.
+     */
+    class ByteArrayInterface {
+        static $gtype: GObject.GType<ByteArrayInterface>;
+
+        // Own fields of Gst.ByteArrayInterface
+
+        data: number;
+        len: number;
+
+        // Constructors of Gst.ByteArrayInterface
+
+        constructor(
+            properties?: Partial<{
+                data: number;
+                len: number;
+            }>,
+        );
         _init(...args: any[]): void;
     }
 
@@ -15183,10 +15297,9 @@ export namespace Gst {
         /**
          * Calls the provided function once for each structure and caps feature in the
          * #GstCaps. In contrast to gst_caps_foreach(), the function may modify the
-         * structure and features. In contrast to gst_caps_filter_and_map_in_place(),
-         * the structure and features are removed from the caps if %FALSE is returned
-         * from the function.
-         * The caps must be mutable.
+         * structure and features. In contrast to gst_caps_map_in_place(), the structure
+         * and features are removed from the caps if %FALSE is returned from the
+         * function. The caps must be mutable.
          * @param func a function to call for each field
          */
         filter_and_map_in_place(func: CapsFilterMapFunc): void;
@@ -15680,27 +15793,8 @@ export namespace Gst {
 
         static ['new'](context_type: string, persistent: boolean): Context;
 
-        // Own static methods of Gst.Context
-
-        /**
-         * Modifies a pointer to a #GstContext to point to a different #GstContext. The
-         * modification is done atomically (so this is useful for ensuring thread safety
-         * in some cases), and the reference counts are updated appropriately (the old
-         * context is unreffed, the new one is reffed).
-         *
-         * Either `new_context` or the #GstContext pointed to by `old_context` may be %NULL.
-         * @param old_context pointer to a pointer to a #GstContext     to be replaced.
-         * @param new_context pointer to a #GstContext that will     replace the context pointed to by @old_context.
-         */
-        static replace(old_context: Context, new_context?: Context | null): [boolean, Context];
-
         // Own methods of Gst.Context
 
-        /**
-         * Creates a copy of the context. Returns a copy of the context.
-         * @returns a new copy of @context. MT safe
-         */
-        copy(): Context;
         /**
          * Gets the type of `context`.
          * @returns The type of the context.
@@ -15723,16 +15817,6 @@ export namespace Gst {
          */
         is_persistent(): boolean;
         /**
-         * Convenience macro to increase the reference count of the context.
-         * @returns @context (for convenience when doing assignments)
-         */
-        ref(): Context;
-        /**
-         * Convenience macro to decrease the reference count of the context, possibly
-         * freeing it.
-         */
-        unref(): void;
-        /**
          * Gets a writable version of the structure.
          * @returns The structure of the context. The structure is still owned by the context, which means that you should not free it and that the pointer becomes invalid when you free the context. This function checks if @context is writable.
          */
@@ -15750,7 +15834,12 @@ export namespace Gst {
 
     type ControlSourceClass = typeof ControlSource;
     /**
-     * Simple typing wrapper around #GstMeta
+     * Extra custom metadata. The `structure` field is the same as returned by
+     * gst_custom_meta_get_structure().
+     *
+     * Since 1.24 it can be serialized using gst_meta_serialize() and
+     * gst_meta_deserialize(), but only if the #GstStructure does not contain any
+     * fields that cannot be serialized, see %GST_SERIALIZE_FLAG_STRICT.
      */
     class CustomMeta {
         static $gtype: GObject.GType<CustomMeta>;
@@ -16945,17 +17034,6 @@ export namespace Gst {
             details?: Structure | null,
         ): Message;
 
-        // Own static methods of Gst.Message
-
-        /**
-         * Modifies a pointer to a #GstMessage to point to a different #GstMessage. This
-         * function is similar to gst_message_replace() except that it takes ownership
-         * of `new_message`.
-         * @param old_message pointer to a pointer to a #GstMessage     to be replaced.
-         * @param new_message pointer to a #GstMessage that     will replace the message pointed to by @old_message.
-         */
-        static take(old_message: Message, new_message?: Message | null): [boolean, Message];
-
         // Own methods of Gst.Message
 
         /**
@@ -17433,31 +17511,26 @@ export namespace Gst {
          */
         static api_type_register(api: string, tags: string[]): GObject.GType;
         /**
+         * Recreate a #GstMeta from serialized data returned by
+         * gst_meta_serialize() and add it to `buffer`.
+         *
+         * Note that the meta must have been previously registered by calling one of
+         * `gst_*_meta_get_info ()` functions.
+         *
+         * `consumed` is set to the number of bytes that can be skipped from `data` to
+         * find the next meta serialization, if any. In case of parsing error that does
+         * not allow to determine that size, `consumed` is set to 0.
+         * @param buffer a #GstBuffer
+         * @param data serialization data obtained from gst_meta_serialize()
+         * @param size size of @data
+         */
+        static deserialize(buffer: Buffer, data: number, size: number): [Meta | null, number];
+        /**
          * Lookup a previously registered meta info structure by its implementation name
          * `impl`.
          * @param impl the name
          */
         static get_info(impl: string): MetaInfo | null;
-        /**
-         * Register a new #GstMeta implementation.
-         *
-         * The same `info` can be retrieved later with gst_meta_get_info() by using
-         * `impl` as the key.
-         * @param api the type of the #GstMeta API
-         * @param impl the name of the #GstMeta implementation
-         * @param size the size of the #GstMeta structure
-         * @param init_func a #GstMetaInitFunction
-         * @param free_func a #GstMetaFreeFunction
-         * @param transform_func a #GstMetaTransformFunction
-         */
-        static register(
-            api: GObject.GType,
-            impl: string,
-            size: number,
-            init_func: MetaInitFunction,
-            free_func: MetaFreeFunction,
-            transform_func: MetaTransformFunction,
-        ): MetaInfo;
         /**
          * Register a new custom #GstMeta implementation, backed by an opaque
          * structure holding a #GstStructure.
@@ -17481,6 +17554,12 @@ export namespace Gst {
             tags: string[],
             transform_func?: CustomMetaTransformFunction | null,
         ): MetaInfo;
+        /**
+         * Simplified version of gst_meta_register_custom(), with no tags and no
+         * transform function.
+         * @param name the name of the #GstMeta implementation
+         */
+        static register_custom_simple(name: string): MetaInfo;
 
         // Own methods of Gst.Meta
 
@@ -17495,6 +17574,30 @@ export namespace Gst {
          * Gets seqnum for this meta.
          */
         get_seqnum(): number;
+        /**
+         * Serialize `meta` into a format that can be stored or transmitted and later
+         * deserialized by gst_meta_deserialize().
+         *
+         * This is only supported for meta that implements #GstMetaInfo.serialize_func,
+         * %FALSE is returned otherwise.
+         *
+         * Upon failure, `data->`data pointer could have been reallocated, but `data->`len
+         * won't be modified. This is intended to be able to append multiple metas
+         * into the same #GByteArray.
+         *
+         * Since serialization size is often the same for every buffer, caller may want
+         * to remember the size of previous data to preallocate the next.
+         * @param data #GstByteArrayInterface to append serialization data
+         * @returns %TRUE on success, %FALSE otherwise.
+         */
+        serialize(data: ByteArrayInterface): boolean;
+        /**
+         * Same as gst_meta_serialize() but with a #GByteArray instead of
+         * #GstByteArrayInterface.
+         * @param data #GByteArray to append serialization data
+         * @returns %TRUE on success, %FALSE otherwise.
+         */
+        serialize_simple(data: Uint8Array | string): boolean;
     }
 
     /**
@@ -17512,6 +17615,9 @@ export namespace Gst {
         init_func: MetaInitFunction;
         free_func: MetaFreeFunction;
         transform_func: MetaTransformFunction;
+        serialize_func: MetaSerializeFunction;
+        deserialize_func: MetaDeserializeFunction;
+        clear_func: MetaClearFunction;
 
         // Constructors of Gst.MetaInfo
 
@@ -17520,6 +17626,15 @@ export namespace Gst {
         // Own methods of Gst.MetaInfo
 
         is_custom(): boolean;
+        /**
+         * Registers a new meta.
+         *
+         * Use the structure returned by gst_meta_info_new(), it consumes it and the
+         * structure shouldnt be used after. The one returned by the function can be
+         * kept.
+         * @returns the registered meta
+         */
+        register(): MetaInfo;
     }
 
     /**
@@ -18185,11 +18300,6 @@ export namespace Gst {
          */
         interrupt(): void;
         /**
-         * Increases the refcount of the given `promise` by one.
-         * @returns @promise
-         */
-        ref(): Promise;
-        /**
          * Set a reply on `promise`.  This will wake up any waiters with
          * %GST_PROMISE_RESULT_REPLIED.  Called by the producer of the value to
          * indicate success (or failure).
@@ -18199,11 +18309,6 @@ export namespace Gst {
          * @param s a #GstStructure with the the reply contents
          */
         reply(s?: Structure | null): void;
-        /**
-         * Decreases the refcount of the promise. If the refcount reaches 0, the
-         * promise will be freed.
-         */
-        unref(): void;
         /**
          * Wait for `promise` to move out of the %GST_PROMISE_RESULT_PENDING state.
          * If `promise` is not in %GST_PROMISE_RESULT_PENDING then it will return
@@ -18317,19 +18422,6 @@ export namespace Gst {
         static new_selectable(): Query;
 
         static new_uri(): Query;
-
-        // Own static methods of Gst.Query
-
-        /**
-         * Modifies a pointer to a #GstQuery to point to a different #GstQuery. This
-         * function is similar to gst_query_replace() except that it takes ownership of
-         * `new_query`.
-         *
-         * Either `new_query` or the #GstQuery pointed to by `old_query` may be %NULL.
-         * @param old_query pointer to a     pointer to a #GstQuery to be stolen.
-         * @param new_query pointer to a #GstQuery that will     replace the query pointed to by @old_query.
-         */
-        static take(old_query?: Query | null, new_query?: Query | null): [boolean, Query | null];
 
         // Own methods of Gst.Query
 
@@ -18596,11 +18688,6 @@ export namespace Gst {
          */
         parse_uri_redirection_permanent(): boolean;
         /**
-         * Increases the refcount of the given query by one.
-         * @returns @q
-         */
-        ref(): Query;
-        /**
          * Remove the metadata API at `index` of the metadata API array.
          * @param index position in the metadata API array to remove
          */
@@ -18799,6 +18886,9 @@ export namespace Gst {
      *    on a given PTP clock.
      *  * `timestamp/x-unix`: for timestamps based on the UNIX epoch according to
      *    the local clock.
+     *
+     * Since 1.24 it can be serialized using gst_meta_serialize() and
+     * gst_meta_deserialize().
      */
     class ReferenceTimestampMeta {
         static $gtype: GObject.GType<ReferenceTimestampMeta>;
@@ -19436,7 +19526,7 @@ export namespace Gst {
      * ```
      *
      * > *note*: gst_structure_to_string() won't use that syntax for backward
-     * > compatibility reason, gst_structure_serialize() has been added for
+     * > compatibility reason, gst_structure_serialize_full() has been added for
      * > that purpose.
      */
     class Structure {
@@ -19849,11 +19939,22 @@ export namespace Gst {
          * GStreamer prior to 1.20 unless #GST_SERIALIZE_FLAG_BACKWARD_COMPAT is passed
          * as `flag`.
          *
+         * %GST_SERIALIZE_FLAG_STRICT flags is not allowed because it would make this
+         * function nullable which is an API break for bindings.
+         * Use gst_structure_serialize_full() instead.
+         *
          * Free-function: g_free
          * @param flags The flags to use to serialize structure
          * @returns a pointer to string allocated by g_malloc().     g_free() after usage.
          */
         serialize(flags: SerializeFlags): string;
+        /**
+         * Alias for gst_structure_serialize() but with nullable annotation because it
+         * can return %NULL when %GST_SERIALIZE_FLAG_STRICT flag is set.
+         * @param flags The flags to use to serialize structure
+         * @returns a pointer to string allocated by g_malloc().     g_free() after usage.
+         */
+        serialize_full(flags: SerializeFlags): string | null;
         /**
          * This is useful in language bindings where unknown GValue types are not
          * supported. This function will convert a `array` to %GST_TYPE_ARRAY and set
@@ -19916,7 +20017,7 @@ export namespace Gst {
          *
          * This function will lead to unexpected results when there are nested #GstCaps
          * / #GstStructure deeper than one level, you should user
-         * gst_structure_serialize() instead for those cases.
+         * gst_structure_serialize_full() instead for those cases.
          *
          * Free-function: g_free
          * @returns a pointer to string allocated by g_malloc().     g_free() after usage.
@@ -19966,26 +20067,6 @@ export namespace Gst {
          * @param tag tag to read out
          */
         static copy_value(list: TagList, tag: string): [boolean, unknown];
-        /**
-         * Modifies a pointer to a #GstTagList to point to a different #GstTagList. The
-         * modification is done atomically (so this is useful for ensuring thread
-         * safety in some cases), and the reference counts are updated appropriately
-         * (the old tag list is unreffed, the new is reffed).
-         *
-         * Either `new_taglist` or the #GstTagList pointed to by `old_taglist` may be
-         * %NULL.
-         * @param old_taglist pointer to a pointer to a     #GstTagList to be replaced.
-         * @param new_taglist pointer to a #GstTagList that     will replace the tag list pointed to by @old_taglist.
-         */
-        static replace(old_taglist?: TagList | null, new_taglist?: TagList | null): [boolean, TagList | null];
-        /**
-         * Modifies a pointer to a #GstTagList to point to a different #GstTagList.
-         * This function is similar to gst_tag_list_replace() except that it takes
-         * ownership of `new_taglist`.
-         * @param old_taglist pointer to a pointer to a #GstTagList     to be replaced.
-         * @param new_taglist pointer to a #GstTagList that     will replace the taglist pointed to by @old_taglist.
-         */
-        static take(old_taglist: TagList, new_taglist?: TagList | null): [boolean, TagList];
 
         // Own methods of Gst.TagList
 
@@ -20757,12 +20838,6 @@ export namespace Gst {
          */
         append_path_segment(path_segment?: string | null): boolean;
         /**
-         * Create a new #GstUri object with the same data as this #GstUri object.
-         * If `uri` is %NULL then returns %NULL.
-         * @returns A new #GstUri object which is a copy of this          #GstUri or %NULL.
-         */
-        copy(): Uri;
-        /**
          * Compares two #GstUri objects to see if they represent the same normalized
          * URI.
          * @param second Second #GstUri to compare.
@@ -20947,12 +21022,6 @@ export namespace Gst {
          */
         query_has_key(query_key: string): boolean;
         /**
-         * Add a reference to this #GstUri object. See gst_mini_object_ref() for further
-         * info.
-         * @returns This object with the reference count incremented.
-         */
-        ref(): Uri;
-        /**
          * Remove an entry from the query table by key.
          * @param query_key The key to remove.
          * @returns %TRUE if the key existed in the table and was removed.
@@ -21050,14 +21119,6 @@ export namespace Gst {
          * @returns The string version of the URI.
          */
         to_string_with_keys(keys?: string[] | null): string;
-        /**
-         * Decrement the reference count to this #GstUri object.
-         *
-         * If the reference count drops to 0 then finalize this object.
-         *
-         * See gst_mini_object_unref() for further info.
-         */
-        unref(): void;
     }
 
     /**

@@ -15,6 +15,7 @@ import type Soup from '@girs/soup-2.4';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace DMAP {
     enum ConnectionState {
@@ -272,12 +273,12 @@ export namespace DMAP {
     function hash_progressive_update(context: HashContext, buffer: number, length: number): void;
     function mdns_browser_error_quark(): GLib.Quark;
     function mdns_publisher_error_quark(): GLib.Quark;
-    function mime_to_format(transcode_mimetype: string): string;
     function structure_destroy(structure: GLib.Node): void;
     function structure_get_size(structure: GLib.Node): number;
     function structure_increase_by_predicted_size(structure: GLib.Node, size: number): void;
     function structure_print(structure: GLib.Node): void;
     function structure_serialize(structure: GLib.Node, length: number): string;
+    function utils_mime_to_format(transcode_mimetype: string): string;
     interface ConnectionCallback {
         (connection: Connection, result: boolean, reason: string): boolean;
     }
@@ -744,7 +745,7 @@ export namespace DMAP {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -897,10 +898,45 @@ export namespace DMAP {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -916,6 +952,16 @@ export namespace DMAP {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -928,7 +974,7 @@ export namespace DMAP {
         // Signal callback interfaces
 
         interface ServiceAdded {
-            (service: any): void;
+            (service?: any | null): void;
         }
 
         interface ServiceRemoved {
@@ -960,9 +1006,9 @@ export namespace DMAP {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
-        connect(signal: 'service-added', callback: (_source: this, service: any) => void): number;
-        connect_after(signal: 'service-added', callback: (_source: this, service: any) => void): number;
-        emit(signal: 'service-added', service: any): void;
+        connect(signal: 'service-added', callback: (_source: this, service: any | null) => void): number;
+        connect_after(signal: 'service-added', callback: (_source: this, service: any | null) => void): number;
+        emit(signal: 'service-added', service?: any | null): void;
         connect(signal: 'service-removed', callback: (_source: this, object: string) => void): number;
         connect_after(signal: 'service-removed', callback: (_source: this, object: string) => void): number;
         emit(signal: 'service-removed', object: string): void;
@@ -1061,10 +1107,7 @@ export namespace DMAP {
             password: string;
             revision_number: number;
             revisionNumber: number;
-            server_ipv4: Soup.Server;
-            serverIpv4: Soup.Server;
-            server_ipv6: Soup.Server;
-            serverIpv6: Soup.Server;
+            server: Soup.Server;
             transcode_mimetype: string;
             transcodeMimetype: string;
             txt_records: string[];
@@ -1092,10 +1135,7 @@ export namespace DMAP {
         set revision_number(val: number);
         get revisionNumber(): number;
         set revisionNumber(val: number);
-        get server_ipv4(): Soup.Server;
-        get serverIpv4(): Soup.Server;
-        get server_ipv6(): Soup.Server;
-        get serverIpv6(): Soup.Server;
+        get server(): Soup.Server;
         get transcode_mimetype(): string;
         get transcodeMimetype(): string;
         get txt_records(): string[];
@@ -1147,6 +1187,7 @@ export namespace DMAP {
             context: Soup.ClientContext,
         ): void;
         vfunc_get_desired_port(): number;
+        vfunc_get_meta_data_map(): any | null;
         vfunc_get_type_of_service(): string;
         vfunc_login(
             server: Soup.Server,
@@ -1246,7 +1287,7 @@ export namespace DMAP {
 
         buf: number[];
         bits: number[];
-        'in': number[];
+        'in': Uint8Array;
         version: number;
 
         // Constructors of DMAP.HashContext
@@ -1255,7 +1296,7 @@ export namespace DMAP {
             properties?: Partial<{
                 buf: number[];
                 bits: number[];
-                in: number[];
+                in: Uint8Array;
                 version: number;
             }>,
         );

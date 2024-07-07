@@ -14,6 +14,7 @@ import './manette-0.2-ambient.d.ts';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GUdev from '@girs/gudev-1.0';
 
 export namespace Manette {
@@ -124,6 +125,10 @@ export namespace Manette {
          * @returns whether the device has the given input
          */
         has_input(type: number, code: number): boolean;
+        /**
+         * Gets whether `self` supports rumble.
+         * @returns whether @self supports rumble
+         */
         has_rumble(): boolean;
         /**
          * Gets whether `self` has a user mapping.
@@ -134,6 +139,16 @@ export namespace Manette {
          * Removes the user mapping for `self`.
          */
         remove_user_mapping(): void;
+        /**
+         * Make `self` rumble during `milliseconds` milliseconds, with the heavy and light
+         * motors rumbling at their respectively defined magnitudes.
+         *
+         * The duration cannot exceed 32767 milliseconds.
+         * @param strong_magnitude the magnitude for the heavy motor
+         * @param weak_magnitude the magnitude for the light motor
+         * @param milliseconds the rumble effect play time in milliseconds
+         * @returns whether the rumble effect was played
+         */
         rumble(strong_magnitude: number, weak_magnitude: number, milliseconds: number): boolean;
         /**
          * Saves `mapping_string` as the user mapping for `self`.
@@ -183,6 +198,10 @@ export namespace Manette {
 
         // Own methods of Manette.Monitor
 
+        /**
+         * Creates a new #ManetteMonitorIter iterating on `self`.
+         * @returns a new #ManetteMonitorIter iterating on @self
+         */
         iterate(): MonitorIter;
     }
 
@@ -259,8 +278,10 @@ export namespace Manette {
          */
         get_hat(): [boolean, number, number];
         /**
-         * Gets the time stamp of `self`.
-         * @returns the time stamp of @self
+         * Gets the timestamp of when `self` was received by the input driver that takes
+         * care of its device. Use this timestamp to ensure external factors such as
+         * synchronous disk writes don't influence your timing computations.
+         * @returns the timestamp of when @self was received by the input driver
          */
         get_time(): number;
     }

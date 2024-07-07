@@ -1,7 +1,7 @@
 {
     "name": "@girs/javascriptcore-4.1",
-    "version": "2.44.0-4.0.0-beta.5",
-    "description": "GJS TypeScript type definitions for JavaScriptCore-4.1, generated from library version 2.44.0",
+    "version": "2.44.2-4.0.0-beta.5",
+    "description": "GJS TypeScript type definitions for JavaScriptCore-4.1, generated from library version 2.44.2",
     "type": "module",
     "module": "javascriptcore-4.1.js",
     "main": "javascriptcore-4.1.js",
@@ -23,7 +23,7 @@
         }
     },
     "scripts": {
-        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit javascriptcore-4.1.d.ts"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
         "@girs/gjs": "workspace:^",

@@ -16,6 +16,7 @@ import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 
@@ -527,6 +528,8 @@ export namespace EDataServer {
         RESOURCE,
         SUBSCRIBED_ICALENDAR,
         WEBDAV_NOTES,
+        SCHEDULE_INBOX,
+        SCHEDULE_OUTBOX,
     }
     enum XmlHashStatus {
         /**
@@ -1417,13 +1420,13 @@ export namespace EDataServer {
      * @param tm The #tm to store the result in.
      * @param offset The #int to store the offset in.
      */
-    function localtime_with_offset(tt: number, tm: any | null, offset: number): void;
+    function localtime_with_offset(tt: never, tm: any | null, offset: number): void;
     /**
      * Like mktime(3), but assumes UTC instead of local timezone.
      * @param tm The #tm to convert to a calendar time representation.
      * @returns The calendar time representation of @tm.
      */
-    function mktime_utc(tm?: any | null): number;
+    function mktime_utc(tm?: any | null): never;
     /**
      * Processes the `compile_value` and returns the result, which is stored
      * into the `out_glob_buff`. The `out_glob_buff` should be large enough to hold
@@ -1897,6 +1900,17 @@ export namespace EDataServer {
      * @returns A 64-bit integer.
      */
     function util_gthread_id(thread: GLib.Thread): number;
+    /**
+     * Guesses whether the `source` is read only. This is done on some heuristic
+     * like the source backend, where some are known to be read only. That this
+     * function returns %FALSE does not necessarily mean the source is writable,
+     * it only means the source is not well-known read-only source. To know
+     * for sure open the corresponding #EClient, if the `source` references such,
+     * and use e_client_is_readonly().
+     * @param source an #ESource
+     * @returns %TRUE, when the @source is well-known read-only source, or %FALSE otherwise
+     */
+    function util_guess_source_is_readonly(source?: any | null): boolean;
     /**
      * Checks whether the `identity_source` can be used for sending, which means
      * whether it has configures send mail source.
@@ -3583,7 +3597,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -3736,10 +3750,45 @@ export namespace EDataServer {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -3755,6 +3804,16 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -3882,14 +3941,18 @@ export namespace EDataServer {
          */
         get networkAvailable(): boolean;
         /**
-         * Whether the network is considered metered. That is, whether the
+         * Whether the network is considered metered.
+         *
+         * That is, whether the
          * system has traffic flowing through the default connection that is
          * subject to limitations set by service providers. For example, traffic
          * might be billed by the amount of data transmitted, or there might be a
          * quota on the amount of traffic per month. This is typical with tethered
          * connections (3G and 4G) and in such situations, bandwidth intensive
          * applications may wish to avoid network activity where possible if it will
-         * cost the user money or use up their limited quota.
+         * cost the user money or use up their limited quota. Anything more than a
+         * few hundreds of kilobytes of data usage per hour should be avoided without
+         * asking permission from the user.
          *
          * If more information is required about specific devices then the
          * system network management API should be used instead (for example,
@@ -3902,14 +3965,18 @@ export namespace EDataServer {
          */
         get network_metered(): boolean;
         /**
-         * Whether the network is considered metered. That is, whether the
+         * Whether the network is considered metered.
+         *
+         * That is, whether the
          * system has traffic flowing through the default connection that is
          * subject to limitations set by service providers. For example, traffic
          * might be billed by the amount of data transmitted, or there might be a
          * quota on the amount of traffic per month. This is typical with tethered
          * connections (3G and 4G) and in such situations, bandwidth intensive
          * applications may wish to avoid network activity where possible if it will
-         * cost the user money or use up their limited quota.
+         * cost the user money or use up their limited quota. Anything more than a
+         * few hundreds of kilobytes of data usage per hour should be avoided without
+         * asking permission from the user.
          *
          * If more information is required about specific devices then the
          * system network management API should be used instead (for example,
@@ -4043,7 +4110,7 @@ export namespace EDataServer {
          * to get the result of the operation.
          * @param connectable a #GSocketConnectable
          * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         can_reach_async(
             connectable: Gio.SocketConnectable,
@@ -4128,7 +4195,7 @@ export namespace EDataServer {
          * to get the result of the operation.
          * @param connectable a #GSocketConnectable
          * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         vfunc_can_reach_async(
             connectable: Gio.SocketConnectable,
@@ -4141,6 +4208,11 @@ export namespace EDataServer {
          * @param result a #GAsyncResult
          */
         vfunc_can_reach_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * the virtual function pointer for the
+         *  GNetworkMonitor::network-changed signal.
+         * @param network_available
+         */
         vfunc_network_changed(network_available: boolean): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -4319,7 +4391,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -4472,10 +4544,45 @@ export namespace EDataServer {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -4491,6 +4598,16 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -5146,7 +5263,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -5299,10 +5416,45 @@ export namespace EDataServer {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -5318,6 +5470,16 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -5957,7 +6119,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6110,10 +6272,45 @@ export namespace EDataServer {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -6129,6 +6326,16 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -6768,7 +6975,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -6921,10 +7128,45 @@ export namespace EDataServer {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -6940,6 +7182,16 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -7230,7 +7482,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -7383,10 +7635,45 @@ export namespace EDataServer {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -7402,6 +7689,16 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -9344,7 +9641,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -9497,10 +9794,45 @@ export namespace EDataServer {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -9516,6 +9848,16 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -9564,6 +9906,8 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
+            for_every_event: boolean;
+            forEveryEvent: boolean;
             include_me: boolean;
             includeMe: boolean;
             last_notified: string;
@@ -9580,6 +9924,10 @@ export namespace EDataServer {
 
         // Own properties of EDataServer.SourceAlarms
 
+        get for_every_event(): boolean;
+        set for_every_event(val: boolean);
+        get forEveryEvent(): boolean;
+        set forEveryEvent(val: boolean);
         get include_me(): boolean;
         set include_me(val: boolean);
         get includeMe(): boolean;
@@ -9606,6 +9954,15 @@ export namespace EDataServer {
          */
         dup_last_notified(): string | null;
         /**
+         * Returns whether the user should be alerted about all upcoming appointments
+         * in the calendar described by the #ESource to which `extension` belongs.
+         *
+         * This is used in addition to the GSettings key defall-reminder-enabled
+         * in org.gnome.evolution-data-server.calendar.
+         * @returns whether to show alarms for every event
+         */
+        get_for_every_event(): boolean;
+        /**
          * Returns whether the user should be alerted about upcoming appointments
          * in the calendar described by the #ESource to which `extension` belongs.
          *
@@ -9622,6 +9979,15 @@ export namespace EDataServer {
          * @returns an ISO 8601 timestamp, or %NULL
          */
         get_last_notified(): string | null;
+        /**
+         * Sets whether the user should be alerted about every event in
+         * the calendar described by the #ESource to which `extension` belongs.
+         *
+         * This is used in addition to the GSettings key defall-reminder-enabled
+         * in org.gnome.evolution-data-server.calendar.
+         * @param for_every_event whether to show alarms for every event
+         */
+        set_for_every_event(for_every_event: boolean): void;
         /**
          * Sets whether the user should be alerted about upcoming appointments in
          * the calendar described by the #ESource to which `extension` belongs.
@@ -10804,7 +11170,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -10957,10 +11323,45 @@ export namespace EDataServer {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -10976,6 +11377,16 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -12474,6 +12885,8 @@ export namespace EDataServer {
         interface ConstructorProps extends SourceExtension.ConstructorProps {
             always_trust: boolean;
             alwaysTrust: boolean;
+            ask_send_public_key: boolean;
+            askSendPublicKey: boolean;
             encrypt_by_default: boolean;
             encryptByDefault: boolean;
             encrypt_to_self: boolean;
@@ -12508,6 +12921,10 @@ export namespace EDataServer {
         set always_trust(val: boolean);
         get alwaysTrust(): boolean;
         set alwaysTrust(val: boolean);
+        get ask_send_public_key(): boolean;
+        set ask_send_public_key(val: boolean);
+        get askSendPublicKey(): boolean;
+        set askSendPublicKey(val: boolean);
         get encrypt_by_default(): boolean;
         set encrypt_by_default(val: boolean);
         get encryptByDefault(): boolean;
@@ -12576,6 +12993,11 @@ export namespace EDataServer {
          */
         get_always_trust(): boolean;
         /**
+         * Returns, whether should ask before sending PGP public key in messages. The default is %TRUE.
+         * @returns whether should ask before sending PGP public key in messages
+         */
+        get_ask_send_public_key(): boolean;
+        /**
          * Returns whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
          * @returns whether to encrypt outgoing messages by default
@@ -12609,8 +13031,8 @@ export namespace EDataServer {
          */
         get_send_prefer_encrypt(): boolean;
         /**
-         * Returns, whether should send GPG public key in messages. The default is %TRUE.
-         * @returns whether should send GPG public key in messages
+         * Returns, whether should send PGP public key in messages. The default is %TRUE.
+         * @returns whether should send PGP public key in messages
          */
         get_send_public_key(): boolean;
         /**
@@ -12631,6 +13053,12 @@ export namespace EDataServer {
          * @param always_trust whether used keys are always fully trusted
          */
         set_always_trust(always_trust: boolean): void;
+        /**
+         * Sets the `ask_send_public_key` on the `extension,` which tells the client to
+         * ask before user sends public key in the messages in an Autocrypt header.
+         * @param ask_send_public_key value to set
+         */
+        set_ask_send_public_key(ask_send_public_key: boolean): void;
         /**
          * Sets whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
@@ -14218,7 +14646,7 @@ export namespace EDataServer {
          *   static void
          *   my_object_class_init (MyObjectClass *klass)
          *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
          *                                              0, 100,
          *                                              50,
          *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -14371,10 +14799,45 @@ export namespace EDataServer {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
         vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
         vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
         vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
@@ -14390,6 +14853,16 @@ export namespace EDataServer {
          * @param pspec
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         disconnect(id: number): void;
         set(properties: { [key: string]: any }): void;
@@ -16288,7 +16761,7 @@ export namespace EDataServer {
          * @param name name of the attribute
          * @param value time_t value of the attribute
          */
-        add_attribute_time(ns_href: string | null, name: string, value: number): void;
+        add_attribute_time(ns_href: string | null, name: string, value: never): void;
         /**
          * Adds a new attribute with a time_t value in iCalendar format to the current element.
          * The format is "YYYYMMDDTHHMMSSZ".
@@ -16299,7 +16772,7 @@ export namespace EDataServer {
          * @param name name of the attribute
          * @param value time_t value of the attribute
          */
-        add_attribute_time_ical(ns_href: string | null, name: string, value: number): void;
+        add_attribute_time_ical(ns_href: string | null, name: string, value: never): void;
         /**
          * Adds an empty element, which is an element with no attribute and no value.
          *
@@ -16379,7 +16852,7 @@ export namespace EDataServer {
          * The format is "YYYY-MM-DDTHH:MM:SSZ".
          * @param value value to write as the content
          */
-        write_time(value: number): void;
+        write_time(value: never): void;
     }
 
     /**

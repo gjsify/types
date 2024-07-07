@@ -1,7 +1,7 @@
 {
     "name": "@girs/gucharmap-2.90",
-    "version": "15.1.4-4.0.0-beta.5",
-    "description": "GJS TypeScript type definitions for Gucharmap-2.90, generated from library version 15.1.4",
+    "version": "15.1.5-4.0.0-beta.5",
+    "description": "GJS TypeScript type definitions for Gucharmap-2.90, generated from library version 15.1.5",
     "type": "module",
     "module": "gucharmap-2.90.js",
     "main": "gucharmap-2.90.js",
@@ -23,7 +23,7 @@
         }
     },
     "scripts": {
-        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gucharmap-2.90.d.ts"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
         "@girs/atk-1.0": "workspace:^",

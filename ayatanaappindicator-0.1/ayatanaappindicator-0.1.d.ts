@@ -20,8 +20,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace AyatanaAppIndicator {
@@ -370,13 +370,46 @@ export namespace AyatanaAppIndicator {
 
         // Own virtual methods of AyatanaAppIndicator.Indicator
 
+        /**
+         * Slot for #AppIndicator::connection-changed.
+         * @param connected
+         */
         vfunc_connection_changed(connected: boolean): void;
+        /**
+         * Slot for #AppIndicator::new-attention-icon.
+         */
         vfunc_new_attention_icon(): void;
+        /**
+         * Slot for #AppIndicator::new-icon.
+         */
         vfunc_new_icon(): void;
+        /**
+         * Slot for #AppIndicator::new-icon-theme-path
+         * @param icon_theme_path
+         */
         vfunc_new_icon_theme_path(icon_theme_path: string): void;
+        /**
+         * Slot for #AppIndicator::new-label.
+         * @param label
+         * @param guide
+         */
         vfunc_new_label(label: string, guide: string): void;
+        /**
+         * Slot for #AppIndicator::new-status.
+         * @param status
+         */
         vfunc_new_status(status: string): void;
+        /**
+         * Slot for #AppIndicator::scroll-event
+         * @param delta
+         * @param direction
+         */
         vfunc_scroll_event(delta: number, direction: Gdk.ScrollDirection): void;
+        /**
+         * The function that gets called if an Application
+         *              Indicator area appears after the fallback has been created.
+         * @param status_icon
+         */
         vfunc_unfallback(status_icon: Gtk.StatusIcon): void;
 
         // Own methods of AyatanaAppIndicator.Indicator

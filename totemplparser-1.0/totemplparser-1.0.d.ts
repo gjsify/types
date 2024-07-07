@@ -14,6 +14,7 @@ import './totemplparser-1.0-ambient.d.ts';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace TotemPlParser {
     /**
@@ -176,15 +177,9 @@ export namespace TotemPlParser {
      */
     const PARSER_FIELD_FILESIZE: string;
     /**
-     * Metadata field for an entry's primary genre. This is a string of
-     * the form 'Genre1' or 'Genre1/SubGenre1".
+     * Metadata field for an entry's genre.
      */
     const PARSER_FIELD_GENRE: string;
-    /**
-     * Metadata field for an entry's full genre. This is a concatenated
-     * string of the form 'Genre1/SubGenre1,Genre2/SubGenre2" etc.
-     */
-    const PARSER_FIELD_GENRES: string;
     /**
      * Metadata field for an entry's identifier. Its use is dependent on the format
      * of the playlist parsed, and its origin.

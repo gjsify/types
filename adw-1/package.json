@@ -1,7 +1,7 @@
 {
     "name": "@girs/adw-1",
-    "version": "1.5.0-4.0.0-beta.5",
-    "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.5.0",
+    "version": "1.5.1-4.0.0-beta.5",
+    "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.5.1",
     "type": "module",
     "module": "adw-1.js",
     "main": "adw-1.js",
@@ -23,7 +23,7 @@
         }
     },
     "scripts": {
-        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit adw-1.d.ts"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
         "@girs/cairo-1.0": "workspace:^",
