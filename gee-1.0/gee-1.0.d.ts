@@ -15,9 +15,9 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Gee {
-    function functions_get_equal_func_for(t: GObject.Type): [GLib.EqualFunc, any];
-    function functions_get_hash_func_for(t: GObject.Type): [GLib.HashFunc, any];
-    function functions_get_compare_func_for(t: GObject.Type): [GLib.CompareFunc, any];
+    function functions_get_equal_func_for(t: GObject.Type): GLib.EqualFunc;
+    function functions_get_hash_func_for(t: GObject.Type): GLib.HashFunc;
+    function functions_get_compare_func_for(t: GObject.Type): GLib.CompareFunc;
     function direct_compare(_val1: any, _val2: any): number;
     module AbstractCollection {
         // Constructor properties interface
@@ -543,8 +543,8 @@ export namespace Gee {
         get elementType(): GObject.Type;
 
         // Inherited methods
-        sort(compare_func: GLib.CompareFunc, compare_func_target: any): void;
-        vfunc_sort(compare_func: GLib.CompareFunc, compare_func_target: any): void;
+        sort(compare_func: GLib.CompareFunc): void;
+        vfunc_sort(compare_func: GLib.CompareFunc): void;
         contains(item: any): boolean;
         add(item: any): boolean;
         remove(item: any): boolean;
@@ -1072,13 +1072,13 @@ export namespace Gee {
 
         vfunc_create_value_storage(): Collection;
         vfunc_create_multi_key_set(): MultiSet;
-        vfunc_get_value_equal_func(): [GLib.EqualFunc, any];
+        vfunc_get_value_equal_func(): GLib.EqualFunc;
 
         // Own methods of Gee.AbstractMultiMap
 
         create_value_storage(): Collection;
         create_multi_key_set(): MultiSet;
-        get_value_equal_func(): [GLib.EqualFunc, any];
+        get_value_equal_func(): GLib.EqualFunc;
 
         // Inherited properties
         get size(): number;
@@ -1707,7 +1707,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](equal_func: GLib.EqualFunc, equal_func_target: any): ArrayList;
+        static ['new'](equal_func: GLib.EqualFunc): ArrayList;
 
         // Own methods of Gee.ArrayList
 
@@ -1753,11 +1753,8 @@ export namespace Gee {
 
         static ['new'](
             key_hash_func: GLib.HashFunc,
-            key_hash_func_target: any,
             key_equal_func: GLib.EqualFunc,
-            key_equal_func_target: any,
             value_equal_func: GLib.EqualFunc,
-            value_equal_func_target: any,
         ): HashMap;
     }
 
@@ -1802,13 +1799,9 @@ export namespace Gee {
 
         static ['new'](
             key_hash_func: GLib.HashFunc,
-            key_hash_func_target: any,
             key_equal_func: GLib.EqualFunc,
-            key_equal_func_target: any,
             value_hash_func: GLib.HashFunc,
-            value_hash_func_target: any,
             value_equal_func: GLib.EqualFunc,
-            value_equal_func_target: any,
         ): HashMultiMap;
     }
 
@@ -1839,12 +1832,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            hash_func: GLib.HashFunc,
-            hash_func_target: any,
-            equal_func: GLib.EqualFunc,
-            equal_func_target: any,
-        ): HashMultiSet;
+        static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashMultiSet;
     }
 
     module HashSet {
@@ -1878,12 +1866,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            hash_func: GLib.HashFunc,
-            hash_func_target: any,
-            equal_func: GLib.EqualFunc,
-            equal_func_target: any,
-        ): HashSet;
+        static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashSet;
     }
 
     module LinkedList {
@@ -1918,7 +1901,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](equal_func: GLib.EqualFunc, equal_func_target: any): LinkedList;
+        static ['new'](equal_func: GLib.EqualFunc): LinkedList;
 
         // Inherited properties
         get capacity(): number;
@@ -1979,7 +1962,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](compare_func: GLib.CompareFunc, compare_func_target: any): PriorityQueue;
+        static ['new'](compare_func: GLib.CompareFunc): PriorityQueue;
     }
 
     module TreeMap {
@@ -2013,12 +1996,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            key_compare_func: GLib.CompareFunc,
-            key_compare_func_target: any,
-            value_equal_func: GLib.EqualFunc,
-            value_equal_func_target: any,
-        ): TreeMap;
+        static ['new'](key_compare_func: GLib.CompareFunc, value_equal_func: GLib.EqualFunc): TreeMap;
     }
 
     module TreeMultiMap {
@@ -2050,12 +2028,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            key_compare_func: GLib.CompareFunc,
-            key_compare_func_target: any,
-            value_compare_func: GLib.CompareFunc,
-            value_compare_func_target: any,
-        ): TreeMultiMap;
+        static ['new'](key_compare_func: GLib.CompareFunc, value_compare_func: GLib.CompareFunc): TreeMultiMap;
     }
 
     module TreeMultiSet {
@@ -2081,7 +2054,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](compare_func: GLib.CompareFunc, compare_func_target: any): TreeMultiSet;
+        static ['new'](compare_func: GLib.CompareFunc): TreeMultiSet;
     }
 
     module TreeSet {
@@ -2109,7 +2082,7 @@ export namespace Gee {
 
         _init(...args: any[]): void;
 
-        static ['new'](compare_func: GLib.CompareFunc, compare_func_target: any): TreeSet;
+        static ['new'](compare_func: GLib.CompareFunc): TreeSet;
 
         // Inherited properties
         get read_only_view(): Set;
@@ -2583,7 +2556,7 @@ export namespace Gee {
         first(): any;
         last(): any;
         insert_all(index: number, collection: Collection): void;
-        sort(compare_func: GLib.CompareFunc, compare_func_target: any): void;
+        sort(compare_func: GLib.CompareFunc): void;
 
         // Own virtual methods of Gee.List
 
@@ -2597,7 +2570,7 @@ export namespace Gee {
         vfunc_first(): any;
         vfunc_last(): any;
         vfunc_insert_all(index: number, collection: Collection): void;
-        vfunc_sort(compare_func: GLib.CompareFunc, compare_func_target: any): void;
+        vfunc_sort(compare_func: GLib.CompareFunc): void;
     }
 
     export const List: ListNamespace;

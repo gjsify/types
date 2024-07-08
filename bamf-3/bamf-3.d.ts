@@ -664,7 +664,7 @@ export namespace Bamf {
 
         vfunc_get_monitor(): number;
         vfunc_get_pid(): number;
-        vfunc_get_transient(): Window | null;
+        vfunc_get_transient(): Window;
         vfunc_get_utf8_prop(prop: string): string;
         vfunc_get_window_type(): WindowType;
         vfunc_get_xid(): number;
@@ -677,7 +677,7 @@ export namespace Bamf {
 
         get_monitor(): number;
         get_pid(): number;
-        get_transient(): Window | null;
+        get_transient(): Window;
         get_utf8_prop(prop: string): string;
         get_window_type(): WindowType;
         get_xid(): number;

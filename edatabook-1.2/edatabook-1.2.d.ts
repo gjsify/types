@@ -394,39 +394,14 @@ export namespace EDataBook {
 
         // Own virtual methods of EDataBook.BookBackend
 
-        /**
-         * A signal notifying that the backend was closed
-         * @param sender
-         */
         vfunc_closed(sender: string): void;
-        /**
-         * For addressbook backends which support Direct Read Access, configure a
-         *                    backend instantiated on the client side for Direct Read Access, using data
-         *                    reported from the server via the `get_direct_book` method.
-         * @param config
-         */
         vfunc_impl_configure_direct(config: string): void;
-        /**
-         * Checkes whether the backend contains an email address
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param email_address
-         */
         vfunc_impl_contains_email(
             book: DataBook,
             opid: number,
             cancellable: Gio.Cancellable | null,
             email_address: string,
         ): void;
-        /**
-         * Add and store the passed vcards
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param vcards
-         * @param opflags
-         */
         vfunc_impl_create_contacts(
             book: DataBook,
             opid: number,
@@ -434,74 +409,24 @@ export namespace EDataBook {
             vcards: string,
             opflags: number,
         ): void;
-        /**
-         * Delete an #EDataBookCursor previously created by this backend
-         * @param cursor
-         */
         vfunc_impl_delete_cursor(cursor: DataBookCursor): boolean;
-        /**
-         * Return the currently set locale setting (must be a string duplicate, for thread safety).
-         */
         vfunc_impl_dup_locale(): string;
-        /**
-         * retrieve indexes into an alphabet for contacts in the "manual query" view; default
-         *    implementation returns value set by e_book_backend_set_view_indices(). Since: 3.50
-         * @param view_id
-         */
         vfunc_impl_dup_view_indices(view_id: number): EBookContacts.BookIndices;
-        /**
-         * Fetch a property value by name from the backend
-         * @param prop_name
-         */
         vfunc_impl_get_backend_property(prop_name: string): string;
-        /**
-         * Fetch a contact by UID
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param id
-         */
         vfunc_impl_get_contact(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, id: string): void;
-        /**
-         * Fetch a list of contacts based on a search expression
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param query
-         */
         vfunc_impl_get_contact_list(
             book: DataBook,
             opid: number,
             cancellable: Gio.Cancellable | null,
             query: string,
         ): void;
-        /**
-         * Fetch a list of contact UIDs based on a search expression
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param query
-         */
         vfunc_impl_get_contact_list_uids(
             book: DataBook,
             opid: number,
             cancellable: Gio.Cancellable | null,
             query: string,
         ): void;
-        /**
-         * retrieve how many contacts a "manual query" view has; default implementation
-         *    returns value set by e_book_backend_set_view_n_total(). Since: 3.50
-         * @param view_id
-         */
         vfunc_impl_get_view_n_total(view_id: number): number;
-        /**
-         * Modify the existing contacts using the passed vcards
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param vcards
-         * @param opflags
-         */
         vfunc_impl_modify_contacts(
             book: DataBook,
             opid: number,
@@ -509,33 +434,9 @@ export namespace EDataBook {
             vcards: string,
             opflags: number,
         ): void;
-        /**
-         * Notify changes which might have occured for a given contact
-         * @param contact
-         */
         vfunc_impl_notify_update(contact: EBookContacts.Contact): void;
-        /**
-         * Open the backend
-         * @param book
-         * @param opid
-         * @param cancellable
-         */
         vfunc_impl_open(book: DataBook, opid: number, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * Refresh the backend
-         * @param book
-         * @param opid
-         * @param cancellable
-         */
         vfunc_impl_refresh(book: DataBook, opid: number, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * Remove the contacts specified by the passed UIDs
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param uids
-         * @param opflags
-         */
         vfunc_impl_remove_contacts(
             book: DataBook,
             opid: number,
@@ -543,32 +444,10 @@ export namespace EDataBook {
             uids: string,
             opflags: number,
         ): void;
-        /**
-         * Store & remember the passed locale setting
-         * @param locale
-         * @param cancellable
-         */
         vfunc_impl_set_locale(locale: string, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * sets sort fields for "manual query" views; default implementation saves
-         *    the values into internal structures, which can be read back with e_book_backend_dup_view_sort_fields(). Since 3.50
-         * @param view_id
-         * @param fields
-         */
         vfunc_impl_set_view_sort_fields(view_id: number, fields: EBookContacts.BookClientViewSortFields): void;
-        /**
-         * Start up the specified view
-         * @param view
-         */
         vfunc_impl_start_view(view: DataBookView): void;
-        /**
-         * Stop the specified view
-         * @param view
-         */
         vfunc_impl_stop_view(view: DataBookView): void;
-        /**
-         * A signal notifying that the backend is being shut down
-         */
         vfunc_shutdown(): void;
 
         // Own methods of EDataBook.BookBackend
@@ -1086,7 +965,8 @@ export namespace EDataBook {
          */
         open_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Obtains the #GTask for `opid`.
+         * Obtains the #GSimpleAsyncResult for `opid` and sets `result_queue` as a
+         * place to deposit results prior to completing the #GSimpleAsyncResult.
          *
          * <note>
          *   <para>
@@ -1096,9 +976,10 @@ export namespace EDataBook {
          *   </para>
          * </note>
          * @param opid an operation ID given to #EDataBook
-         * @returns a #GTask
+         * @param result_queue return location for a #GQueue, or %NULL
+         * @returns a #GSimpleAsyncResult
          */
-        prepare_for_completion(opid: number): Gio.Task;
+        prepare_for_completion(opid: number, result_queue: GLib.Queue): Gio.SimpleAsyncResult;
         /**
          * Returns the #EDataBook for `backend`.  The #EDataBook is essentially
          * the glue between incoming D-Bus requests and `backend'`s native API.
@@ -1432,15 +1313,7 @@ export namespace EDataBook {
         // Own virtual methods of EDataBook.BookBackendSync
 
         vfunc_contains_email_sync(email_address: string, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Open the backend
-         * @param cancellable
-         */
         vfunc_open_sync(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Refresh the backend
-         * @param cancellable
-         */
         vfunc_refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
 
         // Own methods of EDataBook.BookBackendSync
@@ -4705,30 +4578,10 @@ export namespace EDataBook {
 
         // Own virtual methods of EDataBook.DataBookCursor
 
-        /**
-         * The #EDataBookCursorCompareContactFunc delegate to compare an #EContact with the cursor position
-         * @param contact the #EContact to compare with @cursor
-         */
         vfunc_compare_contact(contact: EBookContacts.Contact): [number, boolean];
-        /**
-         * The #EDataBookCursorGetPositionFunc delegate to calculate the current total and position values
-         * @param cancellable A #GCancellable
-         */
         vfunc_get_position(cancellable?: Gio.Cancellable | null): [boolean, number, number];
-        /**
-         * The #EDataBookCursorLoadLocaleFunc delegate used to reload the locale setting
-         */
         vfunc_load_locale(): [boolean, string];
-        /**
-         * The #EDataBookCursorSetAlphabetIndexFunc delegate to set the alphabetic position
-         * @param index the alphabetic index
-         * @param locale the locale in which @index is expected to be a valid alphabetic index
-         */
         vfunc_set_alphabetic_index(index: number, locale: string): boolean;
-        /**
-         * The #EDataBookCursorSetSexpFunc delegate to set the search expression
-         * @param sexp the search expression to set, or %NULL for unfiltered results
-         */
         vfunc_set_sexp(sexp?: string | null): boolean;
         /**
          * Steps `cursor` through its sorted query by a maximum of `count` contacts

@@ -102,7 +102,7 @@ export namespace ArrowDataset {
 
         // Own methods of ArrowDataset.DatasetFactory
 
-        finish(options?: FinishOptions | null): Dataset | null;
+        finish(): Dataset | null;
     }
 
     module DirectoryPartitioning {
@@ -123,8 +123,11 @@ export namespace ArrowDataset {
         static ['new'](
             schema: Arrow.Schema,
             dictionaries?: Arrow.Array[] | null,
-            options?: KeyValuePartitioningOptions | null,
+            options?: PartitioningOptions | null,
         ): DirectoryPartitioning;
+        // Conflicted with ArrowDataset.Partitioning.new
+
+        static ['new'](...args: never[]): any;
     }
 
     module FileFormat {
@@ -263,7 +266,7 @@ export namespace ArrowDataset {
         // Own methods of ArrowDataset.FileSystemDatasetFactory
 
         add_path(path: string): boolean;
-        finish(options?: FinishOptions | null): FileSystemDataset | null;
+        finish(): FileSystemDataset | null;
         set_file_system(file_system: Arrow.FileSystem): boolean;
         set_file_system_uri(uri: string): boolean;
     }
@@ -390,62 +393,6 @@ export namespace ArrowDataset {
         write_record_batch_reader(reader: Arrow.RecordBatchReader): boolean;
     }
 
-    module FinishOptions {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            finish_options: any;
-            finishOptions: any;
-            inspect_n_fragments: number;
-            inspectNFragments: number;
-            schema: Arrow.Schema;
-            validate_fragments: boolean;
-            validateFragments: boolean;
-        }
-    }
-
-    class FinishOptions extends GObject.Object {
-        static $gtype: GObject.GType<FinishOptions>;
-
-        // Own properties of ArrowDataset.FinishOptions
-
-        set finish_options(val: any);
-        set finishOptions(val: any);
-        /**
-         * The number of fragments to be used to inspect schema.
-         */
-        get inspect_n_fragments(): number;
-        set inspect_n_fragments(val: number);
-        /**
-         * The number of fragments to be used to inspect schema.
-         */
-        get inspectNFragments(): number;
-        set inspectNFragments(val: number);
-        /**
-         * The schema to finalize the dataset's schema.
-         */
-        get schema(): Arrow.Schema;
-        set schema(val: Arrow.Schema);
-        /**
-         * Whether validate fragments against the given schema or not.
-         */
-        get validate_fragments(): boolean;
-        set validate_fragments(val: boolean);
-        /**
-         * Whether validate fragments against the given schema or not.
-         */
-        get validateFragments(): boolean;
-        set validateFragments(val: boolean);
-
-        // Constructors of ArrowDataset.FinishOptions
-
-        constructor(properties?: Partial<FinishOptions.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): FinishOptions;
-    }
-
     module Fragment {
         // Constructor properties interface
 
@@ -466,68 +413,6 @@ export namespace ArrowDataset {
         constructor(properties?: Partial<Fragment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
-    }
-
-    module HivePartitioning {
-        // Constructor properties interface
-
-        interface ConstructorProps extends KeyValuePartitioning.ConstructorProps {}
-    }
-
-    class HivePartitioning extends KeyValuePartitioning {
-        static $gtype: GObject.GType<HivePartitioning>;
-
-        // Constructors of ArrowDataset.HivePartitioning
-
-        constructor(properties?: Partial<HivePartitioning.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](
-            schema: Arrow.Schema,
-            dictionaries?: Arrow.Array[] | null,
-            options?: HivePartitioningOptions | null,
-        ): HivePartitioning;
-
-        // Own methods of ArrowDataset.HivePartitioning
-
-        get_null_fallback(): string;
-    }
-
-    module HivePartitioningOptions {
-        // Constructor properties interface
-
-        interface ConstructorProps extends KeyValuePartitioningOptions.ConstructorProps {
-            null_fallback: string;
-            nullFallback: string;
-        }
-    }
-
-    class HivePartitioningOptions extends KeyValuePartitioningOptions {
-        static $gtype: GObject.GType<HivePartitioningOptions>;
-
-        // Own properties of ArrowDataset.HivePartitioningOptions
-
-        /**
-         * The fallback string for null. This is used only by
-         * #GADatasetHivePartitioning.
-         */
-        get null_fallback(): string;
-        set null_fallback(val: string);
-        /**
-         * The fallback string for null. This is used only by
-         * #GADatasetHivePartitioning.
-         */
-        get nullFallback(): string;
-        set nullFallback(val: string);
-
-        // Constructors of ArrowDataset.HivePartitioningOptions
-
-        constructor(properties?: Partial<HivePartitioningOptions.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): HivePartitioningOptions;
     }
 
     module IPCFileFormat {
@@ -572,7 +457,7 @@ export namespace ArrowDataset {
         interface ConstructorProps extends Partitioning.ConstructorProps {}
     }
 
-    abstract class KeyValuePartitioning extends Partitioning {
+    class KeyValuePartitioning extends Partitioning {
         static $gtype: GObject.GType<KeyValuePartitioning>;
 
         // Constructors of ArrowDataset.KeyValuePartitioning
@@ -580,42 +465,6 @@ export namespace ArrowDataset {
         constructor(properties?: Partial<KeyValuePartitioning.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
-    }
-
-    module KeyValuePartitioningOptions {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            segment_encoding: SegmentEncoding;
-            segmentEncoding: SegmentEncoding;
-        }
-    }
-
-    class KeyValuePartitioningOptions extends GObject.Object {
-        static $gtype: GObject.GType<KeyValuePartitioningOptions>;
-
-        // Own properties of ArrowDataset.KeyValuePartitioningOptions
-
-        /**
-         * After splitting a path into components, decode the path
-         * components before parsing according to this scheme.
-         */
-        get segment_encoding(): SegmentEncoding;
-        set segment_encoding(val: SegmentEncoding);
-        /**
-         * After splitting a path into components, decode the path
-         * components before parsing according to this scheme.
-         */
-        get segmentEncoding(): SegmentEncoding;
-        set segmentEncoding(val: SegmentEncoding);
-
-        // Constructors of ArrowDataset.KeyValuePartitioningOptions
-
-        constructor(properties?: Partial<KeyValuePartitioningOptions.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): KeyValuePartitioningOptions;
     }
 
     module ParquetFileFormat {
@@ -644,7 +493,7 @@ export namespace ArrowDataset {
         }
     }
 
-    abstract class Partitioning extends GObject.Object {
+    class Partitioning extends GObject.Object {
         static $gtype: GObject.GType<Partitioning>;
 
         // Own properties of ArrowDataset.Partitioning
@@ -657,16 +506,14 @@ export namespace ArrowDataset {
 
         _init(...args: any[]): void;
 
-        // Own static methods of ArrowDataset.Partitioning
-
-        static create_default(): Partitioning;
+        static ['new'](): Partitioning;
 
         // Own methods of ArrowDataset.Partitioning
 
         get_type_name(): string;
     }
 
-    module PartitioningFactoryOptions {
+    module PartitioningOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -678,10 +525,10 @@ export namespace ArrowDataset {
         }
     }
 
-    class PartitioningFactoryOptions extends GObject.Object {
-        static $gtype: GObject.GType<PartitioningFactoryOptions>;
+    class PartitioningOptions extends GObject.Object {
+        static $gtype: GObject.GType<PartitioningOptions>;
 
-        // Own properties of ArrowDataset.PartitioningFactoryOptions
+        // Own properties of ArrowDataset.PartitioningOptions
 
         /**
          * When inferring a schema for partition fields, yield dictionary
@@ -721,13 +568,13 @@ export namespace ArrowDataset {
         get segmentEncoding(): SegmentEncoding;
         set segmentEncoding(val: SegmentEncoding);
 
-        // Constructors of ArrowDataset.PartitioningFactoryOptions
+        // Constructors of ArrowDataset.PartitioningOptions
 
-        constructor(properties?: Partial<PartitioningFactoryOptions.ConstructorProps>, ...args: any[]);
+        constructor(properties?: Partial<PartitioningOptions.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PartitioningFactoryOptions;
+        static ['new'](): PartitioningOptions;
     }
 
     module Scanner {
@@ -799,17 +646,13 @@ export namespace ArrowDataset {
     type FileSystemDatasetWriteOptionsClass = typeof FileSystemDatasetWriteOptions;
     type FileWriteOptionsClass = typeof FileWriteOptions;
     type FileWriterClass = typeof FileWriter;
-    type FinishOptionsClass = typeof FinishOptions;
     type FragmentClass = typeof Fragment;
-    type HivePartitioningClass = typeof HivePartitioning;
-    type HivePartitioningOptionsClass = typeof HivePartitioningOptions;
     type IPCFileFormatClass = typeof IPCFileFormat;
     type InMemoryFragmentClass = typeof InMemoryFragment;
     type KeyValuePartitioningClass = typeof KeyValuePartitioning;
-    type KeyValuePartitioningOptionsClass = typeof KeyValuePartitioningOptions;
     type ParquetFileFormatClass = typeof ParquetFileFormat;
     type PartitioningClass = typeof Partitioning;
-    type PartitioningFactoryOptionsClass = typeof PartitioningFactoryOptions;
+    type PartitioningOptionsClass = typeof PartitioningOptions;
     type ScannerBuilderClass = typeof ScannerBuilder;
     type ScannerClass = typeof Scanner;
     /**

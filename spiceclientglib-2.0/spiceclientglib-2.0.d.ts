@@ -165,18 +165,40 @@ export namespace SpiceClientGLib {
      * Spice-Gtk minor version component (e.g. 2 if version is 1.2.3)
      */
     const GTK_MINOR_VERSION: number;
-    const WEBDAV_CLIPBOARD_FOLDER_PATH: string;
     /**
      * Gets a #GQuark representing the string "spice-client-error-quark"
      * @returns the #GQuark representing the string.
      */
     function client_error_quark(): GLib.Quark;
     /**
+     * Tells the spice server to change the preferred image compression
+     * for the `channel`.
+     * @param channel a #SpiceDisplayChannel
+     * @param compression a #SpiceImageCompression
+     */
+    function display_change_preferred_compression(channel: Channel, compression: number): void;
+    /**
+     * Tells the spice server to change the preferred video codec type for
+     * streaming in `channel`. Application can set only one preferred video codec per
+     * display channel.
+     * @param channel a #SpiceDisplayChannel
+     * @param codec_type a #SpiceVideoCodecType
+     */
+    function display_change_preferred_video_codec_type(channel: Channel, codec_type: number): void;
+    /**
      * Retrieves the GL scanout if available
      * @param channel a #SpiceDisplayChannel
      * @returns the current GL scanout, or %NULL if none or not valid
      */
     function display_get_gl_scanout(channel: DisplayChannel): GlScanout;
+    /**
+     * Retrieve primary display surface `surface_id`.
+     * @param channel a #SpiceDisplayChannel
+     * @param surface_id a surface id
+     * @param primary a #SpiceDisplayPrimary
+     * @returns %TRUE if the primary surface was found and its details collected in @primary.
+     */
+    function display_get_primary(channel: Channel, surface_id: number, primary: DisplayPrimary): boolean;
     /**
      * After a SpiceDisplayChannel::gl-draw is emitted, the client should
      * draw the current display with the current GL scanout, and must
@@ -258,15 +280,17 @@ export namespace SpiceClientGLib {
      * Grab the guest clipboard, with #VD_AGENT_CLIPBOARD `types`.
      * @param channel a #SpiceMainChannel
      * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
+     * @param ntypes the number of @types
      */
-    function main_clipboard_grab(channel: MainChannel, types: number[]): void;
+    function main_clipboard_grab(channel: MainChannel, types: number, ntypes: number): void;
     /**
      * Send the clipboard data to the guest.
      * @param channel a #SpiceMainChannel
      * @param type a #VD_AGENT_CLIPBOARD type
      * @param data clipboard data
+     * @param size data length in bytes
      */
-    function main_clipboard_notify(channel: MainChannel, type: number, data: Uint8Array | string): void;
+    function main_clipboard_notify(channel: MainChannel, type: number, data: number, size: number): void;
     /**
      * Release the clipboard (for example, when the client loses the
      * clipboard grab): Inform the guest no clipboard data is available.
@@ -285,20 +309,28 @@ export namespace SpiceClientGLib {
      * @param channel a #SpiceMainChannel
      * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
      * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
+     * @param ntypes the number of @types
      */
-    function main_clipboard_selection_grab(channel: MainChannel, selection: number, types: number[]): void;
+    function main_clipboard_selection_grab(
+        channel: MainChannel,
+        selection: number,
+        types: number,
+        ntypes: number,
+    ): void;
     /**
      * Send the clipboard data to the guest.
      * @param channel a #SpiceMainChannel
      * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
      * @param type a #VD_AGENT_CLIPBOARD type
      * @param data clipboard data
+     * @param size data length in bytes
      */
     function main_clipboard_selection_notify(
         channel: MainChannel,
         selection: number,
         type: number,
-        data: Uint8Array | string,
+        data: number,
+        size: number,
     ): void;
     /**
      * Release the clipboard (for example, when the client loses the
@@ -548,7 +580,7 @@ export namespace SpiceClientGLib {
      * @param uuid UUID byte array
      * @returns A string that should be freed with g_free().
      */
-    function uuid_to_string(uuid: Uint8Array | string): string;
+    function uuid_to_string(uuid: number): string;
     interface msg_handler {
         (channel: Channel, _in: MsgIn): void;
     }
@@ -944,7 +976,7 @@ export namespace SpiceClientGLib {
             gl_scanout: GlScanout;
             glScanout: GlScanout;
             height: number;
-            monitors: DisplayMonitorConfig[];
+            monitors: any[];
             monitors_max: number;
             monitorsMax: number;
             width: number;
@@ -971,7 +1003,7 @@ export namespace SpiceClientGLib {
         /**
          * Current monitors configuration.
          */
-        get monitors(): DisplayMonitorConfig[];
+        get monitors(): any[];
         /**
          * The maximum number of monitors the server or guest supports.
          * May change during client lifetime, for instance guest may
@@ -1042,55 +1074,33 @@ export namespace SpiceClientGLib {
         ): number;
         emit(signal: 'streaming-mode', streaming_mode: boolean): void;
 
-        // Own methods of SpiceClientGLib.DisplayChannel
+        // Own static methods of SpiceClientGLib.DisplayChannel
 
         /**
          * Tells the spice server to change the preferred image compression
          * for the `channel`.
+         * @param channel a #SpiceDisplayChannel
          * @param compression a #SpiceImageCompression
          */
-        display_change_preferred_compression(compression: number): void;
+        static change_preferred_compression(channel: Channel, compression: number): void;
         /**
          * Tells the spice server to change the preferred video codec type for
          * streaming in `channel`. Application can set only one preferred video codec per
          * display channel.
+         * @param channel a #SpiceDisplayChannel
          * @param codec_type a #SpiceVideoCodecType
          */
-        display_change_preferred_video_codec_type(codec_type: number): void;
-        /**
-         * Tells the spice server to change the preferred image compression
-         * for the `channel`.
-         * @param compression a #SpiceImageCompression
-         */
-        display_channel_change_preferred_compression(compression: number): void;
-        /**
-         * Tells the spice server to change the preferred video codec type for
-         * streaming in `channel`. Application can set only one preferred video codec per
-         * display channel.
-         * @param codec_type a #SpiceVideoCodecType
-         */
-        display_channel_change_preferred_video_codec_type(codec_type: number): void;
-        /**
-         * Tells the spice server the ordered preferred video codec types to
-         * use for streaming in `channel`.
-         * @param codecs an array of @ncodecs #SpiceVideoCodecType types
-         * @returns %TRUE if the preferred codec list was successfully changed, and %FALSE otherwise.
-         */
-        display_channel_change_preferred_video_codec_types(codecs: number[]): boolean;
+        static change_preferred_video_codec_type(channel: Channel, codec_type: number): void;
         /**
          * Retrieve primary display surface `surface_id`.
+         * @param channel a #SpiceDisplayChannel
          * @param surface_id a surface id
          * @param primary a #SpiceDisplayPrimary
-         * @returns %TRUE if the primary surface was found and its details collected in @primary.
          */
-        display_channel_get_primary(surface_id: number, primary: DisplayPrimary): boolean;
-        /**
-         * Retrieve primary display surface `surface_id`.
-         * @param surface_id a surface id
-         * @param primary a #SpiceDisplayPrimary
-         * @returns %TRUE if the primary surface was found and its details collected in @primary.
-         */
-        display_get_primary(surface_id: number, primary: DisplayPrimary): boolean;
+        static get_primary(channel: Channel, surface_id: number, primary: DisplayPrimary): boolean;
+
+        // Own methods of SpiceClientGLib.DisplayChannel
+
         /**
          * Retrieves the GL scanout if available
          * @returns the current GL scanout, or %NULL if none or not valid
@@ -1264,11 +1274,11 @@ export namespace SpiceClientGLib {
         }
 
         interface MainClipboard {
-            (type: number, data: Uint8Array | string): void;
+            (type: number, data: any | null, size: number): void;
         }
 
         interface MainClipboardGrab {
-            (types: number[]): boolean;
+            (types: any | null, ntypes: number): boolean;
         }
 
         interface MainClipboardRelease {
@@ -1280,11 +1290,11 @@ export namespace SpiceClientGLib {
         }
 
         interface MainClipboardSelection {
-            (selection: number, type: number, data: Uint8Array | string): void;
+            (selection: number, type: number, data: any | null, size: number): void;
         }
 
         interface MainClipboardSelectionGrab {
-            (selection: number, types: number[]): boolean;
+            (selection: number, types: any | null, ntypes: number): boolean;
         }
 
         interface MainClipboardSelectionRelease {
@@ -1422,25 +1432,28 @@ export namespace SpiceClientGLib {
         emit(signal: 'main-agent-update'): void;
         connect_after(
             signal: 'main-clipboard',
-            callback: (_source: this, type: number, data: Uint8Array) => void,
+            callback: (_source: this, type: number, data: any | null, size: number) => void,
         ): number;
-        emit(signal: 'main-clipboard', type: number, data: Uint8Array | string): void;
-        connect_after(signal: 'main-clipboard-grab', callback: (_source: this, types: number[]) => boolean): number;
-        emit(signal: 'main-clipboard-grab', types: number[]): void;
+        emit(signal: 'main-clipboard', type: number, data: any | null, size: number): void;
+        connect_after(
+            signal: 'main-clipboard-grab',
+            callback: (_source: this, types: any | null, ntypes: number) => boolean,
+        ): number;
+        emit(signal: 'main-clipboard-grab', types: any | null, ntypes: number): void;
         connect_after(signal: 'main-clipboard-release', callback: (_source: this) => void): number;
         emit(signal: 'main-clipboard-release'): void;
         connect_after(signal: 'main-clipboard-request', callback: (_source: this, types: number) => boolean): number;
         emit(signal: 'main-clipboard-request', types: number): void;
         connect_after(
             signal: 'main-clipboard-selection',
-            callback: (_source: this, selection: number, type: number, data: Uint8Array) => void,
+            callback: (_source: this, selection: number, type: number, data: any | null, size: number) => void,
         ): number;
-        emit(signal: 'main-clipboard-selection', selection: number, type: number, data: Uint8Array | string): void;
+        emit(signal: 'main-clipboard-selection', selection: number, type: number, data: any | null, size: number): void;
         connect_after(
             signal: 'main-clipboard-selection-grab',
-            callback: (_source: this, selection: number, types: number[]) => boolean,
+            callback: (_source: this, selection: number, types: any | null, ntypes: number) => boolean,
         ): number;
-        emit(signal: 'main-clipboard-selection-grab', selection: number, types: number[]): void;
+        emit(signal: 'main-clipboard-selection-grab', selection: number, types: any | null, ntypes: number): void;
         connect_after(
             signal: 'main-clipboard-selection-release',
             callback: (_source: this, selection: number) => void,
@@ -1470,15 +1483,17 @@ export namespace SpiceClientGLib {
          * Grab the guest clipboard, with #VD_AGENT_CLIPBOARD `types`.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
+         * @param ntypes the number of @types
          */
-        clipboard_selection_grab(selection: number, types: number[]): void;
+        clipboard_selection_grab(selection: number, types: number, ntypes: number): void;
         /**
          * Send the clipboard data to the guest.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param type a #VD_AGENT_CLIPBOARD type
          * @param data clipboard data
+         * @param size data length in bytes
          */
-        clipboard_selection_notify(selection: number, type: number, data: Uint8Array | string): void;
+        clipboard_selection_notify(selection: number, type: number, data: number, size: number): void;
         /**
          * Release the clipboard (for example, when the client loses the
          * clipboard grab): Inform the guest no clipboard data is available.
@@ -1578,19 +1593,6 @@ export namespace SpiceClientGLib {
          * @param update if %TRUE, update guest display state after 1sec.
          */
         update_display_enabled(id: number, enabled: boolean, update: boolean): void;
-        /**
-         * Update the display `id` physical size.
-         *
-         * If `update` is %TRUE, the remote configuration will be updated too
-         * after 1 second without further changes. You can send when you want
-         * without delay the new configuration to the remote with
-         * spice_main_send_monitor_config()
-         * @param id display ID
-         * @param width_mm physical display width in millimeters
-         * @param height_mm physical display height in millimeters
-         * @param update if %TRUE, update guest resolution after 1sec.
-         */
-        update_display_mm(id: number, width_mm: number, height_mm: number, update: boolean): void;
     }
 
     module PlaybackChannel {
@@ -2741,12 +2743,6 @@ export namespace SpiceClientGLib {
         // Own methods of SpiceClientGLib.UsbDeviceManager
 
         /**
-         * Allocates a SpiceUsbDevice instance for the specified file descriptor.
-         * @param file_descriptor an open file descriptor for the USB device.
-         * @returns an allocated SpiceUsbDevice instance or %NULL in case of failure.
-         */
-        allocate_device_for_file_descriptor(file_descriptor: number): UsbDevice | null;
-        /**
          * Checks whether it is possible to redirect the `device`.
          * @param device a #SpiceUsbDevice to disconnect
          * @returns %TRUE if @device can be redirected
@@ -2771,13 +2767,6 @@ export namespace SpiceClientGLib {
          * @returns %TRUE if connection is successful
          */
         connect_device_finish(res: Gio.AsyncResult): boolean;
-        /**
-         * Creates a new shared CD device based on a disk image file
-         * or a physical CD device.
-         * @param filename image or device path
-         * @returns %TRUE if device created successfully
-         */
-        create_shared_cd_device(filename: string): boolean;
         /**
          * Disconnects the `device`.
          * @param device a #SpiceUsbDevice to disconnect
@@ -2819,12 +2808,6 @@ export namespace SpiceClientGLib {
          * @returns %TRUE if @device has an associated USB redirection channel
          */
         is_device_connected(device: UsbDevice): boolean;
-        /**
-         * Checks whether a device is shared CD.
-         * @param device a #SpiceUsbDevice to query
-         * @returns %TRUE if the device is shared CD
-         */
-        is_device_shared_cd(device: UsbDevice): boolean;
         /**
          * Checks whether a device is being redirected
          * @returns %TRUE if device redirection negotiation flow is in progress
@@ -3702,7 +3685,7 @@ export namespace SpiceClientGLib {
     /**
      * The #SpiceUsbDevice struct is opaque and cannot be accessed directly.
      */
-    abstract class UsbDevice {
+    class UsbDevice {
         static $gtype: GObject.GType<UsbDevice>;
 
         // Constructors of SpiceClientGLib.UsbDevice

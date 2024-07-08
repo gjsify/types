@@ -55,7 +55,6 @@ export namespace EDataCal {
      * @param ptr an #ECalMetaBackendInfo
      */
     function cal_meta_backend_info_free(ptr?: any | null): void;
-    function cal_queue_free_strings(queue: GLib.Queue): void;
     interface CalBackendCustomOpFunc {
         (cal_backend: CalBackend, cancellable?: Gio.Cancellable | null): void;
     }
@@ -156,34 +155,13 @@ export namespace EDataCal {
 
         // Own virtual methods of EDataCal.CalBackend
 
-        /**
-         * A signal notifying that the backend was closed
-         * @param sender
-         */
         vfunc_closed(sender: string): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param tzobject
-         */
         vfunc_impl_add_timezone(
             cal: DataCal,
             opid: number,
             cancellable: Gio.Cancellable | null,
             tzobject: string,
         ): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param uid
-         * @param rid
-         * @param auid
-         * @param opflags
-         */
         vfunc_impl_discard_alarm(
             cal: DataCal,
             opid: number,
@@ -193,14 +171,6 @@ export namespace EDataCal {
             auid: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param uid
-         * @param rid
-         */
         vfunc_impl_get_attachment_uris(
             cal: DataCal,
             opid: number,
@@ -208,19 +178,7 @@ export namespace EDataCal {
             uid: string,
             rid: string,
         ): void;
-        /**
-         * Fetch a property value by name from the backend
-         * @param prop_name
-         */
         vfunc_impl_get_backend_property(prop_name: string): string;
-        /**
-         * Fetch a calendar object
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param uid
-         * @param rid
-         */
         vfunc_impl_get_object(
             cal: DataCal,
             opid: number,
@@ -228,37 +186,9 @@ export namespace EDataCal {
             uid: string,
             rid: string,
         ): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param sexp
-         */
         vfunc_impl_get_object_list(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, sexp: string): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param tzid
-         */
         vfunc_impl_get_timezone(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, tzid: string): void;
-        /**
-         * Open the backend
-         * @param cal
-         * @param opid
-         * @param cancellable
-         */
         vfunc_impl_open(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param calobj
-         * @param opflags
-         */
         vfunc_impl_receive_objects(
             cal: DataCal,
             opid: number,
@@ -266,21 +196,7 @@ export namespace EDataCal {
             calobj: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * Refresh the backend
-         * @param cal
-         * @param opid
-         * @param cancellable
-         */
         vfunc_impl_refresh(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param calobj
-         * @param opflags
-         */
         vfunc_impl_send_objects(
             cal: DataCal,
             opid: number,
@@ -288,19 +204,8 @@ export namespace EDataCal {
             calobj: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * Start up the specified view
-         * @param view
-         */
         vfunc_impl_start_view(view: DataCalView): void;
-        /**
-         * Stop the specified view
-         * @param view
-         */
         vfunc_impl_stop_view(view: DataCalView): void;
-        /**
-         * A signal notifying that the backend is being shut down
-         */
         vfunc_shutdown(): void;
 
         // Own methods of EDataCal.CalBackend
@@ -543,8 +448,8 @@ export namespace EDataCal {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_free_busy(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -581,8 +486,8 @@ export namespace EDataCal {
          * @returns %TRUE on success, %FALSE on failure.
          */
         get_free_busy_sync(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             users: string[],
             out_freebusy: string[],
             cancellable?: Gio.Cancellable | null,
@@ -868,7 +773,8 @@ export namespace EDataCal {
          */
         open_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Obtains the #GTask for `opid`.
+         * Obtains the #GSimpleAsyncResult for `opid` and sets `result_queue` as a
+         * place to deposit results prior to completing the #GSimpleAsyncResult.
          *
          * <note>
          *   <para>
@@ -878,9 +784,10 @@ export namespace EDataCal {
          *   </para>
          * </note>
          * @param opid an operation ID given to #EDataCal
-         * @returns a #GTask
+         * @param result_queue return location for a #GQueue, or %NULL
+         * @returns a #GSimpleAsyncResult
          */
-        prepare_for_completion(opid: number): Gio.Task;
+        prepare_for_completion(opid: number, result_queue: GLib.Queue): Gio.SimpleAsyncResult;
         /**
          * Asynchronously receives the set of iCalendar objects specified by
          * `calobj`.  This is used for iTIP confirmation and cancellation messages
@@ -1597,7 +1504,7 @@ export namespace EDataCal {
          * @param end End of the time window will be stored here.
          * @returns %TRUE on success, %FALSE otherwise
          */
-        evaluate_occur_times(start: never, end: never): boolean;
+        evaluate_occur_times(start: number, end: number): boolean;
         /**
          * Locks the `sexp`. Other threads cannot use it until
          * it's unlocked with e_cal_backend_sexp_unlock().
@@ -1649,22 +1556,7 @@ export namespace EDataCal {
 
         // Own virtual methods of EDataCal.CalBackendSync
 
-        /**
-         * Add specified timezone
-         * @param cal
-         * @param cancellable
-         * @param tzobject
-         */
         vfunc_add_timezone_sync(cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string): void;
-        /**
-         * Discard alarm
-         * @param cal
-         * @param cancellable
-         * @param uid
-         * @param rid
-         * @param auid
-         * @param opflags
-         */
         vfunc_discard_alarm_sync(
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
@@ -1673,14 +1565,6 @@ export namespace EDataCal {
             auid: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * Get single object
-         * @param cal
-         * @param cancellable
-         * @param uid
-         * @param rid
-         * @param calobj
-         */
         vfunc_get_object_sync(
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
@@ -1688,43 +1572,19 @@ export namespace EDataCal {
             rid: string,
             calobj: string,
         ): void;
-        /**
-         * Get specified timezone
-         * @param cal
-         * @param cancellable
-         * @param tzid
-         * @param tzobject
-         */
         vfunc_get_timezone_sync(
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             tzid: string,
             tzobject: string,
         ): void;
-        /**
-         * Open the calendar
-         * @param cal
-         * @param cancellable
-         */
         vfunc_open_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * Receive objects
-         * @param cal
-         * @param cancellable
-         * @param calobj
-         * @param opflags
-         */
         vfunc_receive_objects_sync(
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             calobj: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * Refresh the calendar
-         * @param cal
-         * @param cancellable
-         */
         vfunc_refresh_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
 
         // Own methods of EDataCal.CalBackendSync
@@ -1801,8 +1661,8 @@ export namespace EDataCal {
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             users: string[],
-            start: never,
-            end: never,
+            start: number,
+            end: number,
         ): string[];
         // Conflicted with EDataCal.CalBackend.get_free_busy
         get_free_busy(...args: never[]): any;
@@ -2535,8 +2395,8 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         get_components_in_range(
-            range_start: never,
-            range_end: never,
+            range_start: number,
+            range_end: number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, ECal.Component[]];
         /**
@@ -2547,8 +2407,8 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         get_components_in_range_as_strings(
-            range_start: never,
-            range_end: never,
+            range_start: number,
+            range_end: number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string[]];
         /**
@@ -4424,7 +4284,7 @@ export namespace EDataCal {
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_add_timezone(opid: number, error?: GLib.Error | null): void;
+        respond_add_timezone(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the create_objects method call.
          * @param opid associated operation id
@@ -4432,25 +4292,20 @@ export namespace EDataCal {
          * @param uids UIDs of the objects created.
          * @param new_components The newly created #ECalComponent objects.
          */
-        respond_create_objects(
-            opid: number,
-            error: GLib.Error | null,
-            uids: string[],
-            new_components: ECal.Component[],
-        ): void;
+        respond_create_objects(opid: number, error: GLib.Error, uids: string[], new_components: ECal.Component[]): void;
         /**
          * Notifies listeners of the completion of the discard_alarm method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_discard_alarm(opid: number, error?: GLib.Error | null): void;
+        respond_discard_alarm(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the get_attachment_uris method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param attachment_uris List of retrieved attachment uri's.
          */
-        respond_get_attachment_uris(opid: number, error: GLib.Error | null, attachment_uris: string[]): void;
+        respond_get_attachment_uris(opid: number, error: GLib.Error, attachment_uris: string[]): void;
         /**
          * Notifies listeners of the completion of the get_free_busy method call.
          * To pass actual free/busy objects to the client asynchronously
@@ -4460,28 +4315,28 @@ export namespace EDataCal {
          * @param error Operation error, if any, automatically freed if passed it.
          * @param freebusy a #GSList of iCalendar strings with all gathered free/busy components.
          */
-        respond_get_free_busy(opid: number, error: GLib.Error | null, freebusy: string[]): void;
+        respond_get_free_busy(opid: number, error: GLib.Error, freebusy: string[]): void;
         /**
          * Notifies listeners of the completion of the get_object method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param object The object retrieved as an iCalendar string.
          */
-        respond_get_object(opid: number, error: GLib.Error | null, object: string): void;
+        respond_get_object(opid: number, error: GLib.Error, object: string): void;
         /**
          * Notifies listeners of the completion of the get_object_list method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param objects List of retrieved objects.
          */
-        respond_get_object_list(opid: number, error: GLib.Error | null, objects: string[]): void;
+        respond_get_object_list(opid: number, error: GLib.Error, objects: string[]): void;
         /**
          * Notifies listeners of the completion of the get_timezone method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param tzobject The requested timezone as an iCalendar string.
          */
-        respond_get_timezone(opid: number, error: GLib.Error | null, tzobject: string): void;
+        respond_get_timezone(opid: number, error: GLib.Error, tzobject: string): void;
         /**
          * Notifies listeners of the completion of the modify_objects method call.
          * @param opid associated operation id
@@ -4491,7 +4346,7 @@ export namespace EDataCal {
          */
         respond_modify_objects(
             opid: number,
-            error: GLib.Error | null,
+            error: GLib.Error,
             old_components: ECal.Component[],
             new_components: ECal.Component[],
         ): void;
@@ -4500,19 +4355,19 @@ export namespace EDataCal {
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_open(opid: number, error?: GLib.Error | null): void;
+        respond_open(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the receive_objects method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_receive_objects(opid: number, error?: GLib.Error | null): void;
+        respond_receive_objects(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the refresh method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_refresh(opid: number, error?: GLib.Error | null): void;
+        respond_refresh(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the remove_objects method call.
          * @param opid associated operation id
@@ -4523,7 +4378,7 @@ export namespace EDataCal {
          */
         respond_remove_objects(
             opid: number,
-            error: GLib.Error | null,
+            error: GLib.Error,
             ids: ECal.ComponentId[],
             old_components: ECal.Component[],
             new_components: ECal.Component[],
@@ -4535,7 +4390,7 @@ export namespace EDataCal {
          * @param users List of users.
          * @param calobj An iCalendar string representing the object sent.
          */
-        respond_send_objects(opid: number, error: GLib.Error | null, users: string[], calobj: string): void;
+        respond_send_objects(opid: number, error: GLib.Error, users: string[], calobj: string): void;
 
         // Inherited methods
         /**
@@ -6208,9 +6063,9 @@ export namespace EDataCal {
 
         destroy(): void;
         dump(): void;
-        insert(start: never, end: never, comp: ECal.Component): boolean;
+        insert(start: number, end: number, comp: ECal.Component): boolean;
         remove(uid: string, rid: string): boolean;
-        search(start: never, end: never): ECal.Component[] | null;
+        search(start: number, end: number): ECal.Component[] | null;
     }
 
     module SubprocessCalFactory {
@@ -6909,27 +6764,6 @@ export namespace EDataCal {
         // Constructors of EDataCal.CalMetaBackendPrivate
 
         _init(...args: any[]): void;
-    }
-
-    class CalQueueTuple {
-        static $gtype: GObject.GType<CalQueueTuple>;
-
-        // Own fields of EDataCal.CalQueueTuple
-
-        first: GLib.Queue;
-        second: GLib.Queue;
-        third: GLib.Queue;
-        first_free_func: GLib.DestroyNotify;
-        second_free_func: GLib.DestroyNotify;
-        third_free_func: GLib.DestroyNotify;
-
-        // Constructors of EDataCal.CalQueueTuple
-
-        _init(...args: any[]): void;
-
-        // Own methods of EDataCal.CalQueueTuple
-
-        free(): void;
     }
 
     type DataCalClass = typeof DataCal;

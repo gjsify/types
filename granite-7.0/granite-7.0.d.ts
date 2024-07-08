@@ -834,8 +834,6 @@ export namespace Granite {
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
             label: string;
-            mnemonic_widget: Gtk.Widget;
-            mnemonicWidget: Gtk.Widget;
             secondary_text: string;
             secondaryText: string;
         }
@@ -848,10 +846,6 @@ export namespace Granite {
 
         get label(): string;
         set label(val: string);
-        get mnemonic_widget(): Gtk.Widget;
-        set mnemonic_widget(val: Gtk.Widget);
-        get mnemonicWidget(): Gtk.Widget;
-        set mnemonicWidget(val: Gtk.Widget);
         get secondary_text(): string;
         set secondary_text(val: string);
         get secondaryText(): string;
@@ -869,8 +863,6 @@ export namespace Granite {
 
         get_label(): string;
         set_label(value: string): void;
-        get_mnemonic_widget(): Gtk.Widget | null;
-        set_mnemonic_widget(value?: Gtk.Widget | null): void;
         get_secondary_text(): string | null;
         set_secondary_text(value?: string | null): void;
     }
@@ -1362,7 +1354,6 @@ export namespace Granite {
         set_title(value: string): void;
         set_default_action(label?: string | null): void;
         send_notification(): void;
-        withdraw(): void;
     }
 
     module ValidatedEntry {

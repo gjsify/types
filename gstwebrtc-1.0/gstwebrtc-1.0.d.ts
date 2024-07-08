@@ -763,7 +763,7 @@ export namespace GstWebRTC {
         vfunc_set_force_relay(force_relay: boolean): void;
         /**
          * Set HTTP Proxy to be used when connecting to TURN server.
-         * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port][?alpn=<alpn>]
+         * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port]
          */
         vfunc_set_http_proxy(uri: string): void;
         vfunc_set_is_controller(controller: boolean): void;
@@ -791,7 +791,7 @@ export namespace GstWebRTC {
         set_force_relay(force_relay: boolean): void;
         /**
          * Set HTTP Proxy to be used when connecting to TURN server.
-         * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port][?alpn=<alpn>]
+         * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port]
          */
         set_http_proxy(uri: string): void;
         set_is_controller(controller: boolean): void;

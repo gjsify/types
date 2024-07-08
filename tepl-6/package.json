@@ -38,7 +38,7 @@
         "@girs/gmodule-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^",
         "@girs/gtk-3.0": "workspace:^",
-        "@girs/gtksource-300": "workspace:^",
+        "@girs/gtksource-4": "workspace:^",
         "@girs/harfbuzz-0.0": "workspace:^",
         "@girs/pango-1.0": "workspace:^",
         "@girs/xlib-2.0": "workspace:^"

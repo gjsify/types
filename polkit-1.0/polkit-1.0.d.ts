@@ -93,7 +93,10 @@ export namespace Polkit {
      * @returns A #PolkitIdentity or %NULL if @error is set. Free with g_object_unref().
      */
     function identity_from_string(str: string): Identity | null;
-    function implicit_authorization_from_string(string: string): [boolean, ImplicitAuthorization];
+    function implicit_authorization_from_string(
+        string: string,
+        out_implicit_authorization: ImplicitAuthorization,
+    ): boolean;
     function implicit_authorization_to_string(implicit_authorization: ImplicitAuthorization): string;
     /**
      * Creates an object from `str` that implements the #PolkitSubject
@@ -2838,7 +2841,7 @@ export namespace Polkit {
          * `name`.
          * @param name A UNIX group name.
          */
-        static new_for_name(name: string): Identity | null;
+        static new_for_name(name: string): Identity;
 
         // Own methods of Polkit.UnixGroup
 
@@ -3782,11 +3785,7 @@ export namespace Polkit {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Subject.ConstructorProps {
-            gids: any[];
             pid: number;
-            pidfd: number;
-            pidfd_is_safe: boolean;
-            pidfdIsSafe: boolean;
             start_time: number;
             startTime: number;
             uid: number;
@@ -3794,15 +3793,9 @@ export namespace Polkit {
     }
 
     /**
-     * An object for representing a UNIX process. In order to be reliable and
-     * race-free, this requires support for PID File Descriptors in the kernel,
-     * dbus-daemon/broker and systemd. With this functionality, we can reliably
-     * track processes without risking PID reuse and race conditions, and compare
-     * them.
-     *
-     * NOTE: If PID FDs are not available, this object will fall back to using
-     * PIDs, and this designed is now known broken; a mechanism to exploit a delay
-     * in start time in the Linux kernel was identified.  Avoid
+     * An object for representing a UNIX process.  NOTE: This object as
+     * designed is now known broken; a mechanism to exploit a delay in
+     * start time in the Linux kernel was identified.  Avoid
      * calling polkit_subject_equal() to compare two processes.
      *
      * To uniquely identify processes, both the process id and the start
@@ -3823,22 +3816,10 @@ export namespace Polkit {
         // Own properties of Polkit.UnixProcess
 
         /**
-         * The UNIX group ids of the process.
-         */
-        get gids(): any[];
-        set gids(val: any[]);
-        /**
          * The UNIX process id.
          */
         get pid(): number;
         set pid(val: number);
-        /**
-         * The UNIX process id file descriptor.
-         */
-        get pidfd(): number;
-        set pidfd(val: number);
-        get pidfd_is_safe(): boolean;
-        get pidfdIsSafe(): boolean;
         /**
          * The start time of the process.
          */
@@ -3891,22 +3872,9 @@ export namespace Polkit {
          * @param start_time The start time for @pid.
          */
         static new_full(pid: number, start_time: number): Subject;
-        /**
-         * Creates a new #PolkitUnixProcess object for `pidfd` and `uid`.
-         * @param pidfd The process id file descriptor.
-         * @param uid The (real, not effective) uid of the owner of @pid or -1 to look it up in e.g. <filename>/proc</filename>.
-         * @param gids The (real, not effective) gids of the owner of @pid or %NULL.
-         */
-        static new_pidfd(pidfd: number, uid: number, gids?: number[] | null): Subject;
 
         // Own methods of Polkit.UnixProcess
 
-        /**
-         * Gets the group ids for `process`. Note that this is the real group-ids,
-         * not the effective group-ids.
-         * @returns a #GArray          of #gid_t containing the group ids for @process or NULL if unknown,          as a new reference to the array, caller must deref it when done.
-         */
-        get_gids(): any[][] | null;
         /**
          * (deprecated)
          */
@@ -3916,17 +3884,6 @@ export namespace Polkit {
          * @returns The process id for @process.
          */
         get_pid(): number;
-        /**
-         * Gets the process id file descriptor for `process`.
-         * @returns The process id file descriptor for @process.
-         */
-        get_pidfd(): number;
-        /**
-         * Checks if the process id file descriptor for `process` is safe
-         * or if it was opened locally and thus vulnerable to reuse.
-         * @returns TRUE or FALSE.
-         */
-        get_pidfd_is_safe(): boolean;
         /**
          * Gets the start time of `process`.
          * @returns The start time of @process.
@@ -3945,20 +3902,10 @@ export namespace Polkit {
          */
         get_uid(): number;
         /**
-         * Sets the (real, not effective) group ids for `process`.
-         * @param gids A #GList of #gid_t containing the group        ids to set for @process or NULL to unset them.        A reference to @gids is taken.
-         */
-        set_gids(gids: any[][]): void;
-        /**
          * Sets `pid` for `process`.
          * @param pid A process id.
          */
         set_pid(pid: number): void;
-        /**
-         * Sets `pidfd` for `process`.
-         * @param pidfd A process id file descriptor.
-         */
-        set_pidfd(pidfd: number): void;
         /**
          * Set the start time of `process`.
          * @param start_time The start time for @pid.

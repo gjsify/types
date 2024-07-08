@@ -48,6 +48,10 @@ export namespace Rsvg {
     /**
      * Units for the `RsvgLength` struct.  These have the same meaning as [CSS length
      * units](https://www.w3.org/TR/CSS21/syndata.html#length-units).
+     *
+     * If you test for the values of this enum, please note that librsvg may add other units in the future
+     * as its support for CSS improves.  Please make your code handle unknown units gracefully (e.g. with
+     * a `default` case in a `switch()` statement).
      */
     enum Unit {
         /**
@@ -86,6 +90,10 @@ export namespace Rsvg {
          * picas, or 1/6 inch (12 points)
          */
         PC,
+        /**
+         * advance measure of a '0' character (depends on the text orientation)
+         */
+        CH,
     }
     /**
      * This is a C macro that expands to a number with the major version

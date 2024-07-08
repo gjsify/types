@@ -310,9 +310,6 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application owning the X window ID @xid.
      */
     function xid_read_resource_usage(gdk_display: Gdk.Display, xid: number, usage: ResourceUsage): void;
-    interface LoadSurfaceFunction {
-        (icon_name: string, size: number, flags: number, data?: any | null): cairo.Surface;
-    }
     /**
      * Type used as a bitmask to describe the actions that can be done for a
      * #WnckWindow.
@@ -1002,26 +999,12 @@ export namespace Wnck {
          */
         get_icon_name(): string;
         /**
-         * Gets the icon-surface to be used for `app`. If no icon-surfaceis set for `app,`
-         * a suboptimal heuristic is used to find an appropriate icon. If no icon-surface
-         * was found, a fallback icon-surface is used.
-         * @returns a reference to the icon-surface for @app. The caller should unreference the <classname>cairo_surface_t</classname> once done with it.
-         */
-        get_icon_surface(): cairo.Surface;
-        /**
          * Gets the mini-icon to be used for `app`. If no mini-icon is set for `app,`
          * a suboptimal heuristic is used to find an appropriate icon. If no mini-icon
          * was found, a fallback mini-icon is used.
          * @returns the mini-icon for @app. The caller should reference the returned <classname>GdkPixbuf</classname> if it needs to keep the mini-icon around.
          */
         get_mini_icon(): GdkPixbuf.Pixbuf;
-        /**
-         * Gets the mini-icon-surface to be used for `app`. If no mini-icon-surfaceis set
-         * for `app,` a suboptimal heuristic is used to find an appropriate icon. If no
-         * mini-icon-surface was found, a fallback mini-icon-surface is used.
-         * @returns a reference to the mini-icon-surface for @app. The caller should unreference the <classname>cairo_surface_t</classname> once done with it.
-         */
-        get_mini_icon_surface(): cairo.Surface;
         /**
          * Gets the number of #WnckWindow belonging to `app`.
          * @returns the number of #WnckWindow belonging to @app.
@@ -1125,13 +1108,6 @@ export namespace Wnck {
          */
         get_icon(): GdkPixbuf.Pixbuf;
         /**
-         * Gets the icon-surface to be used for `class_group`. Since there is no way to
-         * properly find the icon-surface, the same suboptimal heuristic as the one for
-         * wnck_class_group_get_icon() is used to find it.
-         * @returns the icon-surface for @class_group. The caller should unreference the returned <classname>cairo_surface_t</classname> once done with it.
-         */
-        get_icon_surface(): cairo.Surface;
-        /**
          * Gets the identifier name for `class_group`. This is the resource class for
          * `class_group`.
          * @returns the identifier name of @class_group, or an empty string if the group has no identifier name.
@@ -1144,13 +1120,6 @@ export namespace Wnck {
          * @returns the mini-icon for @class_group. The caller should reference the returned <classname>GdkPixbuf</classname> if it needs to keep the mini-icon around.
          */
         get_mini_icon(): GdkPixbuf.Pixbuf;
-        /**
-         * Gets the mini-icon-surface to be used for `class_group`. Since there is no way to
-         * properly find the mini-icon-surface, the same suboptimal heuristic as the one for
-         * wnck_class_group_get_icon() is used to find it.
-         * @returns the mini-icon-surface for @class_group. The caller should unreference the returned <classname>cairo_surface_t</classname> once done with it.
-         */
-        get_mini_icon_surface(): cairo.Surface;
         /**
          * Gets an human-readable name for `class_group`. Since there is no way to
          * properly find this name, a suboptimal heuristic is used to find it. The name
@@ -1291,7 +1260,6 @@ export namespace Wnck {
         make_label_bold(): void;
         make_label_normal(): void;
         set_image_from_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
-        set_image_from_icon_surface(surface: cairo.Surface): void;
         set_image_from_window(window: Window): void;
 
         // Inherited properties
@@ -7269,6 +7237,8 @@ export namespace Wnck {
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             handle: Handle;
+            tooltips_enabled: boolean;
+            tooltipsEnabled: boolean;
         }
     }
 
@@ -7282,6 +7252,10 @@ export namespace Wnck {
         // Own properties of Wnck.Tasklist
 
         get handle(): Handle;
+        get tooltips_enabled(): boolean;
+        set tooltips_enabled(val: boolean);
+        get tooltipsEnabled(): boolean;
+        set tooltipsEnabled(val: boolean);
 
         // Constructors of Wnck.Tasklist
 
@@ -7321,6 +7295,10 @@ export namespace Wnck {
          * @returns a list of size hints that can be used to allocate an appropriate size for @tasklist.
          */
         get_size_hint_list(n_elements: number): number;
+        /**
+         * Returns whether tooltips are enabled on the `tasklist`.
+         */
+        get_tooltips_enabled(): boolean;
         /**
          * Sets the relief type of the buttons in `tasklist` to `relief`. The main use of
          * this function is proper integration of #WnckTasklist in panels with
@@ -7375,11 +7353,6 @@ export namespace Wnck {
          */
         set_scroll_enabled(scroll_enabled: boolean): void;
         /**
-         * Sets a function to be used for loading cairo surface icons.
-         * @param load_surface_func icon loader function
-         */
-        set_surface_loader(load_surface_func: LoadSurfaceFunction): void;
-        /**
          * Sets `tasklist` to activate or not the #WnckWorkspace a #WnckWindow is on
          * when unminimizing it, according to `switch_workspace_on_unminimize`.
          *
@@ -7387,6 +7360,11 @@ export namespace Wnck {
          * @param switch_workspace_on_unminimize whether to activate the #WnckWorkspace a #WnckWindow is on when unminimizing it.
          */
         set_switch_workspace_on_unminimize(switch_workspace_on_unminimize: boolean): void;
+        /**
+         * Sets whether tooltips are enabled on the `tasklist`.
+         * @param tooltips_enabled a boolean.
+         */
+        set_tooltips_enabled(tooltips_enabled: boolean): void;
 
         // Inherited methods
         /**
@@ -8037,26 +8015,12 @@ export namespace Wnck {
          */
         get_icon_name(): string;
         /**
-         * Gets the icon-surface to be used for `window`. If no icon-surface was found, a
-         * fallback icon-surface is used. wnck_window_get_icon_is_fallback() can be used
-         * to tell if the icon-surface is the fallback icon-surface.
-         * @returns a reference to the icon-surface for @window. The caller should unreference the returned <classname>cairo_surface_t</classname> once done with it.
-         */
-        get_icon_surface(): cairo.Surface;
-        /**
          * Gets the mini-icon to be used for `window`. If no mini-icon was found, a
          * fallback mini-icon is used. wnck_window_get_icon_is_fallback() can be used
          * to tell if the mini-icon is the fallback mini-icon.
          * @returns the mini-icon for @window. The caller should reference the returned <classname>GdkPixbuf</classname> if it needs to keep the icon around.
          */
         get_mini_icon(): GdkPixbuf.Pixbuf;
-        /**
-         * Gets the mini-icon-surface to be used for `window`. If no mini-icon-surface
-         * was found, a fallback mini-icon-surface is used. wnck_window_get_icon_is_fallback()
-         * can be used to tell if the mini-icon-surface is the fallback mini-icon-surface.
-         * @returns a reference to the mini-icon-surface for @window. The caller should unreference the returned <classname>cairo_surface_t</classname> once done with it.
-         */
-        get_mini_icon_surface(): cairo.Surface;
         /**
          * Gets the name of `window,` as it should be displayed in a pager
          * or tasklist. Always returns some value, even if `window` has no name

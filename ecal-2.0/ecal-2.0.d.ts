@@ -209,27 +209,6 @@ export namespace ECal {
         TIMEZONE,
     }
     /**
-     * Declares interval units.
-     */
-    enum IntervalUnits {
-        /**
-         * No unit is set
-         */
-        NONE,
-        /**
-         * interval is in minutes
-         */
-        MINUTES,
-        /**
-         * interval is in hours
-         */
-        HOURS,
-        /**
-         * interval is in days
-         */
-        DAYS,
-    }
-    /**
      * An email address preferred for e-mail reminders by the calendar.
      */
     const BACKEND_PROPERTY_ALARM_EMAIL_ADDRESS: string;
@@ -374,7 +353,7 @@ export namespace ECal {
      * @param t A time value.
      * @returns String with the ISO 8601 representation of the UTC time.
      */
-    function isodate_from_time_t(t: never): string;
+    function isodate_from_time_t(t: number): string;
     /**
      * Matches `tzid` against the system timezone definitions
      * and returns the matching TZID, or %NULL if none found
@@ -484,7 +463,7 @@ export namespace ECal {
         prop: ICalGLib.Property,
         zone: ICalGLib.Timezone,
         convert_end_date: boolean,
-    ): never;
+    ): number;
     /**
      * Fetches the system timezone location string.
      *
@@ -507,7 +486,7 @@ export namespace ECal {
      * @param days Number of days to add.
      * @returns a time_t value containing @time plus the days added.
      */
-    function time_add_day(time: never, days: number): never;
+    function time_add_day(time: number, days: number): number;
     /**
      * Adds or subtracts a number of days to/from the given time_t value, using
      * the given timezone.
@@ -519,7 +498,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing @time plus the days added.
      */
-    function time_add_day_with_zone(time: never, days: number, zone: ICalGLib.Timezone): never;
+    function time_add_day_with_zone(time: number, days: number, zone: ICalGLib.Timezone): number;
     /**
      * Adds or subtracts a number of months to/from the given time_t value, using
      * the given timezone.
@@ -536,14 +515,14 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing @time plus the months added.
      */
-    function time_add_month_with_zone(time: never, months: number, zone: ICalGLib.Timezone): never;
+    function time_add_month_with_zone(time: number, months: number, zone: ICalGLib.Timezone): number;
     /**
      * Adds the given number of weeks to a time value.
      * @param time A time_t value.
      * @param weeks Number of weeks to add.
      * @returns a time_t value containing @time plus the weeks added.
      */
-    function time_add_week(time: never, weeks: number): never;
+    function time_add_week(time: number, weeks: number): number;
     /**
      * Adds or subtracts a number of weeks to/from the given time_t value, using
      * the given timezone.
@@ -555,13 +534,13 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing @time plus the weeks added.
      */
-    function time_add_week_with_zone(time: never, weeks: number, zone: ICalGLib.Timezone): never;
+    function time_add_week_with_zone(time: number, weeks: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the start of the day, according to the local time.
      * @param t A time_t value.
      * @returns the time corresponding to the beginning of the day.
      */
-    function time_day_begin(t: never): never;
+    function time_day_begin(t: number): number;
     /**
      * Returns the start of the day containing the given time_t, using the given
      * timezone.
@@ -572,13 +551,13 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the day.
      */
-    function time_day_begin_with_zone(time: never, zone: ICalGLib.Timezone): never;
+    function time_day_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the end of the day, according to the local time.
      * @param t A time_t value.
      * @returns the time corresponding to the end of the day.
      */
-    function time_day_end(t: never): never;
+    function time_day_end(t: number): number;
     /**
      * Returns the end of the day containing the given time_t, using the given
      * timezone. (The end of the day is the start of the next day.)
@@ -589,7 +568,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the end of the day.
      */
-    function time_day_end_with_zone(time: never, zone: ICalGLib.Timezone): never;
+    function time_day_end_with_zone(time: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the day of the week for the specified date, 0 (Sun) to 6 (Sat).
      * For the days that were removed on the Gregorian reformation, it returns
@@ -622,7 +601,7 @@ export namespace ECal {
      * @param str Date/time value in ISO 8601 format.
      * @returns Time_t corresponding to the specified ISO string. Note that we only allow UTC times at present.
      */
-    function time_from_isodate(str: string): never;
+    function time_from_isodate(str: string): number;
     /**
      * Returns whether the specified year is a leap year. Year is the normal year,
      * e.g. 2001.
@@ -647,7 +626,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the month.
      */
-    function time_month_begin_with_zone(time: never, zone: ICalGLib.Timezone): never;
+    function time_month_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
     /**
      * Converts a time_t value to a #GDate structure using the specified timezone.
      * This is analogous to g_date_set_time() but takes the timezone into account.
@@ -655,7 +634,7 @@ export namespace ECal {
      * @param time A time value.
      * @param zone Desired timezone for destination @date, or %NULL if    the UTC timezone is desired.
      */
-    function time_to_gdate_with_zone(date: GLib.Date, time: never, zone?: ICalGLib.Timezone | null): void;
+    function time_to_gdate_with_zone(date: GLib.Date, time: number, zone?: ICalGLib.Timezone | null): void;
     /**
      * Returns the start of the week containing the given time_t, using the given
      * timezone. week_start_day should use the same values as mktime(),
@@ -668,7 +647,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the week.
      */
-    function time_week_begin_with_zone(time: never, week_start_day: number, zone: ICalGLib.Timezone): never;
+    function time_week_begin_with_zone(time: number, week_start_day: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the start of the year containing the given time_t, using the given
      * timezone.
@@ -679,7 +658,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the year.
      */
-    function time_year_begin_with_zone(time: never, zone: ICalGLib.Timezone): never;
+    function time_year_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
     /**
      * Adds VTIMEZONE components to a VCALENDAR for all tzid's
      * in the given `icalcomp`.
@@ -736,30 +715,6 @@ export namespace ECal {
         icalcomp: ICalGLib.Component,
         prop_kind: ICalGLib.PropertyKind,
         locale?: string | null,
-    ): ICalGLib.Property | null;
-    /**
-     * Searches properties of kind `prop_kind` in the `icalcomp,` which can
-     * be filtered by the `func,` and returns one, which is usable for the `locale`.
-     * When `locale` is %NULL, the current locale is assumed. If no such property
-     * for the locale exists either the one with no language parameter or the first
-     * found is returned.
-     *
-     * The `func` is called before checking of the applicability for the `locale`.
-     * When the `func` is %NULL, all the properties of the `prop_kind` are considered.
-     *
-     * Free the returned non-NULL #ICalProperty with g_object_unref(),
-     * when no longer needed.
-     * @param icalcomp an #ICalComponent
-     * @param prop_kind an #ICalPropertyKind to traverse
-     * @param locale a locale identifier, or %NULL
-     * @param func an #ECalUtilFilterPropertyFunc, to determine whether a property can be considered
-     * @returns a property of kind @prop_kind for the @locale,    %NULL if no such property is set on the @comp.
-     */
-    function util_component_find_property_for_locale_filtered(
-        icalcomp: ICalGLib.Component,
-        prop_kind: ICalGLib.PropertyKind,
-        locale?: string | null,
-        func?: UtilFilterPropertyFunc | null,
     ): ICalGLib.Property | null;
     /**
      * Searches for an X property named `x_name` within X properties
@@ -937,8 +892,8 @@ export namespace ECal {
      */
     function util_generate_alarms_for_comp(
         comp: Component,
-        start: never,
-        end: never,
+        start: number,
+        end: number,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -960,8 +915,8 @@ export namespace ECal {
      */
     function util_generate_alarms_for_list(
         comps: Component[],
-        start: never,
-        end: never,
+        start: number,
+        end: number,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -970,9 +925,6 @@ export namespace ECal {
      * Generates alarm instances for a calendar component with UID `uid,`
      * which is stored within the `client`. In contrast to e_cal_util_generate_alarms_for_comp(),
      * this function handles detached instances of recurring events properly.
-     *
-     * The `def_reminder_before_start_seconds,` if not negative, causes addition of an alarm,
-     * which will trigger a "display" alarm these seconds before start of the event.
      *
      * Returns the instances structure, or %NULL if no alarm instances occurred in the specified
      * time range. Free the returned structure with e_cal_component_alarms_free(),
@@ -984,19 +936,17 @@ export namespace ECal {
      * @param omit alarm types to omit
      * @param resolve_tzid Callback for resolving timezones
      * @param default_timezone The timezone used to resolve DATE and floating DATE-TIME values
-     * @param def_reminder_before_start_seconds add default reminder before start in seconds, when not negative value
-     * @param cancellable optional #GCancellable object, or %NULL
+     * @param cancellable
      * @returns a list of all the alarms found    for the given component in the given time range.
      */
     function util_generate_alarms_for_uid_sync(
         client: any | null,
         uid: string,
-        start: never,
-        end: never,
+        start: number,
+        end: number,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
-        def_reminder_before_start_seconds: number,
         cancellable?: Gio.Cancellable | null,
     ): ComponentAlarms | null;
     /**
@@ -1020,7 +970,7 @@ export namespace ECal {
         tz_cb: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
         kind: ICalGLib.ComponentKind,
-    ): [never, never];
+    ): [number, number];
     /**
      * Returns the real name and email address of the default mail identity,
      * if available.  If no default mail identity is available, `out_name` and
@@ -1072,8 +1022,8 @@ export namespace ECal {
      */
     function util_has_alarms_in_range(
         comp: Component,
-        start: never,
-        end: never,
+        start: number,
+        end: number,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1163,7 +1113,7 @@ export namespace ECal {
      */
     function util_mark_task_complete_sync(
         vtodo: ICalGLib.Component,
-        completed_time: never,
+        completed_time: number,
         cal_client: Client,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
@@ -1359,9 +1309,6 @@ export namespace ECal {
     }
     interface RecurResolveTimezoneCb {
         (tzid: string, cancellable?: Gio.Cancellable | null): ICalGLib.Timezone | null;
-    }
-    interface UtilFilterPropertyFunc {
-        (prop: ICalGLib.Property): boolean;
     }
     interface UtilForeachCategoryFunc {
         (comp: ICalGLib.Component, inout_category: string): boolean;
@@ -1885,7 +1832,7 @@ export namespace ECal {
          * @param cancellable a #GCancellable; can be %NULL
          * @param cb Callback for each generated instance.
          */
-        generate_instances(start: never, end: never, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void;
+        generate_instances(start: number, end: number, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void;
         /**
          * Does a combination of e_cal_client_get_object_list() and
          * e_cal_recur_generate_instances_sync(), like
@@ -1904,8 +1851,8 @@ export namespace ECal {
          */
         generate_instances_for_object(
             icalcomp: ICalGLib.Component,
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -1925,8 +1872,8 @@ export namespace ECal {
          */
         generate_instances_for_object_sync(
             icalcomp: ICalGLib.Component,
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -1946,8 +1893,8 @@ export namespace ECal {
          */
         generate_instances_for_uid_sync(
             uid: string,
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -1964,8 +1911,8 @@ export namespace ECal {
          * @param cb Callback for each generated instance
          */
         generate_instances_sync(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -2057,8 +2004,8 @@ export namespace ECal {
          * @param callback callback to call when a result is ready
          */
         get_free_busy(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2084,8 +2031,8 @@ export namespace ECal {
          * @returns %TRUE if successful, %FALSE otherwise.
          */
         get_free_busy_sync(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
         ): [boolean, Component[]];
@@ -3304,16 +3251,7 @@ export namespace ECal {
 
         // Own virtual methods of ECal.ClientView
 
-        /**
-         * A signal emitted when the backend finished initial view population
-         * @param error
-         */
         vfunc_complete(error: GLib.Error): void;
-        /**
-         * A signal emitted when the backend notifies about the progress
-         * @param percent
-         * @param message
-         */
         vfunc_progress(percent: number, message: string): void;
 
         // Own methods of ECal.ClientView
@@ -5007,10 +4945,15 @@ export namespace ECal {
 
         // Constructors of ECal.ComponentAlarmInstance
 
-        constructor(uid: string, instance_time: never, occur_start: never, occur_end: never);
+        constructor(uid: string, instance_time: number, occur_start: number, occur_end: number);
         _init(...args: any[]): void;
 
-        static ['new'](uid: string, instance_time: never, occur_start: never, occur_end: never): ComponentAlarmInstance;
+        static ['new'](
+            uid: string,
+            instance_time: number,
+            occur_start: number,
+            occur_end: number,
+        ): ComponentAlarmInstance;
 
         // Own methods of ECal.ComponentAlarmInstance
 
@@ -5021,10 +4964,10 @@ export namespace ECal {
          */
         copy(): ComponentAlarmInstance;
         get_component(): any | null;
-        get_occur_end(): never;
-        get_occur_start(): never;
+        get_occur_end(): number;
+        get_occur_start(): number;
         get_rid(): string | null;
-        get_time(): never;
+        get_time(): number;
         get_uid(): string;
         /**
          * Sets `component` as the component associated with the `instance`.
@@ -5036,12 +4979,12 @@ export namespace ECal {
          * Set the actual event occurrence end to which this `instance` corresponds.
          * @param occur_end event occurence end to set
          */
-        set_occur_end(occur_end: never): void;
+        set_occur_end(occur_end: number): void;
         /**
          * Set the actual event occurrence start to which this `instance` corresponds.
          * @param occur_start event occurence start to set
          */
-        set_occur_start(occur_start: never): void;
+        set_occur_start(occur_start: number): void;
         /**
          * Set the Recurrence ID of the component this `instance` was generated for.
          * @param rid recurrence UID to set, or %NULL
@@ -5051,7 +4994,7 @@ export namespace ECal {
          * Set the instance time, i.e. "5 minutes before the appointment".
          * @param instance_time instance time to set
          */
-        set_time(instance_time: never): void;
+        set_time(instance_time: number): void;
         /**
          * Set the alarm UID.
          * @param uid alarm UID to set

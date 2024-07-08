@@ -176,24 +176,9 @@ export namespace Cheese {
 
         // Own virtual methods of Cheese.Camera
 
-        /**
-         * invoked when a photo was saved to disk
-         */
         vfunc_photo_saved(): void;
-        /**
-         * invoked when a photo was taken
-         * @param pixbuf
-         */
         vfunc_photo_taken(pixbuf: GdkPixbuf.Pixbuf): void;
-        /**
-         * invoked when the state of the camera #GstElement
-         * changed
-         * @param new_state
-         */
         vfunc_state_flags_changed(new_state: Gst.State): void;
-        /**
-         * invoked when a video was saved to disk
-         */
         vfunc_video_saved(): void;
 
         // Own methods of Cheese.Camera
@@ -947,15 +932,7 @@ export namespace Cheese {
 
         // Own virtual methods of Cheese.CameraDeviceMonitor
 
-        /**
-         * invoked when a new video capture device is connected
-         * @param device
-         */
         vfunc_added(device: CameraDevice): void;
-        /**
-         * invoked when a video capture device is removed
-         * @param device
-         */
         vfunc_removed(device: CameraDevice): void;
 
         // Own methods of Cheese.CameraDeviceMonitor

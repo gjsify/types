@@ -3464,46 +3464,6 @@ export namespace GUPnP {
         set_subscribed(subscribed: boolean): void;
     }
 
-    module ServiceProxyActionIter {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * An opaque object representing an iterator over the out parameters of an action
-     */
-    class ServiceProxyActionIter extends GObject.Object {
-        static $gtype: GObject.GType<ServiceProxyActionIter>;
-
-        // Constructors of GUPnP.ServiceProxyActionIter
-
-        constructor(properties?: Partial<ServiceProxyActionIter.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Own methods of GUPnP.ServiceProxyActionIter
-
-        /**
-         * Get the name of the current out argument
-         * @returns Name of the current argument
-         */
-        get_name(): string;
-        /**
-         * Get the value of the current parameter.
-         *
-         * If the service proxy had a successful introspection, the type according
-         * to the introspection data will be used, otherwise it will be string.
-         * @returns %TRUE if the value could be read successfully
-         */
-        get_value(): [boolean, unknown];
-        /**
-         * Move `self` to the next out value of the iterated action
-         * @returns %TRUE if the next value was available
-         */
-        next(): boolean;
-    }
-
     module XMLDoc {
         // Constructor properties interface
 
@@ -4163,17 +4123,8 @@ export namespace GUPnP {
             in_values: (GObject.Value | any)[],
         ): ServiceProxyAction;
 
-        static new_plain(action: string): ServiceProxyAction;
-
         // Own methods of GUPnP.ServiceProxyAction
 
-        /**
-         * Append `name` to the list of arguments used by `action`
-         * @param name The name of the argument
-         * @param value The value of the argument
-         * @returns @action for convenience.
-         */
-        add_argument(name: string, value: GObject.Value | any): ServiceProxyAction;
         /**
          * See gupnp_service_proxy_action_get_result(); this version takes a #GHashTable for
          * runtime generated parameter lists.
@@ -4283,11 +4234,6 @@ export namespace GUPnP {
          */
         get_result_list(out_names: string[], out_types: GObject.GType[]): [boolean, unknown[]];
         /**
-         * Iterate over the out arguments of a finished action
-         * @returns A newly created GUPnPServiceProxyActionIterator, or %NULL on error
-         */
-        iterate(): ServiceProxyActionIter | null;
-        /**
          * Increases reference count of `action`
          * @returns @action with an increased reference count
          */
@@ -4308,7 +4254,6 @@ export namespace GUPnP {
         unref(): void;
     }
 
-    type ServiceProxyActionIterClass = typeof ServiceProxyActionIter;
     type ServiceProxyClass = typeof ServiceProxy;
     /**
      * This structure contains information about service state variable.
@@ -4356,8 +4301,8 @@ export namespace GUPnP {
          * @param agent The User-Agent header of the peer or %NULL if unknown. @returns %TRUE if the peer is allowed, %FALSE otherwise
          */
         is_allowed(
-            device: Device | null,
-            service: Service | null,
+            device: any | null,
+            service: any | null,
             path: string,
             address: string,
             agent?: string | null,
@@ -4383,8 +4328,8 @@ export namespace GUPnP {
          * @param callback Callback to call after the function is done.
          */
         is_allowed_async(
-            device: Device | null,
-            service: Service | null,
+            device: any | null,
+            service: any | null,
             path: string,
             address: string,
             agent?: string | null,
@@ -4412,8 +4357,8 @@ export namespace GUPnP {
          * @param agent The User-Agent header of the peer or %NULL if unknown. @returns %TRUE if the peer is allowed, %FALSE otherwise
          */
         vfunc_is_allowed(
-            device: Device | null,
-            service: Service | null,
+            device: any | null,
+            service: any | null,
             path: string,
             address: string,
             agent?: string | null,
@@ -4439,8 +4384,8 @@ export namespace GUPnP {
          * @param callback Callback to call after the function is done.
          */
         vfunc_is_allowed_async(
-            device: Device | null,
-            service: Service | null,
+            device: any | null,
+            service: any | null,
             path: string,
             address: string,
             agent?: string | null,

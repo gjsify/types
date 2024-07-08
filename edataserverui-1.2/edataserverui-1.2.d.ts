@@ -771,6 +771,26 @@ export namespace EDataServerUI {
         // Own methods of EDataServerUI.CredentialsPrompter
 
         /**
+         * Completes an ongoing credentials prompt on idle, by finishing the `async_result`.
+         * This function is meant to be used by an #ECredentialsPrompterImpl implementation.
+         * To actually finish the credentials prompt previously started with
+         * e_credentials_prompter_prompt(), the e_credentials_prompter_prompt_finish() should
+         * be called from the provided callback.
+         *
+         * Using %NULL `credentials` will result in a G_IO_ERROR_CANCELLED error, if
+         * no other `error` is provided.
+         * @param async_result a #GSimpleAsyncResult
+         * @param source an #ESource, on which the prompt was started
+         * @param credentials credentials, as provided by a user, on %NULL, when the prompt was cancelled
+         * @param error a resulting #GError, or %NULL
+         */
+        complete_prompt_call(
+            async_result: Gio.SimpleAsyncResult,
+            source: EDataServer.Source,
+            credentials: EDataServer.NamedParameters | null,
+            error: GLib.Error,
+        ): void;
+        /**
          * Returns, whether can respond to credential prompts automatically.
          * Default value is %TRUE.
          *

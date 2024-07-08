@@ -918,7 +918,7 @@ export namespace ColordGtk {
         // Signal callback interfaces
 
         interface Changed {
-            (profile: Colord.Profile): void;
+            (object: Colord.Profile): void;
         }
 
         // Constructor properties interface
@@ -948,9 +948,9 @@ export namespace ColordGtk {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, profile: Colord.Profile) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, profile: Colord.Profile) => void): number;
-        emit(signal: 'changed', profile: Colord.Profile): void;
+        connect(signal: 'changed', callback: (_source: this, object: Colord.Profile) => void): number;
+        connect_after(signal: 'changed', callback: (_source: this, object: Colord.Profile) => void): number;
+        emit(signal: 'changed', object: Colord.Profile): void;
 
         // Own static methods of ColordGtk.Window
 

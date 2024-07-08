@@ -346,7 +346,7 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new #GstAV1Picture is created.
          * Subclass can set implementation specific user data
-         * on the #GstAV1Picture via gst_av1_picture_set_user_data
+         * on the #GstAV1Picture via gst_av1_picture_set_user_data()
          * @param frame a #GstVideoCodecFrame
          * @param picture a #GstAV1Picture
          */
@@ -436,7 +436,7 @@ export namespace GstCodecs {
         /**
          * Called when a new field picture is created for interlaced field picture.
          * Subclass can attach implementation specific user data on `second_field` via
-         * gst_h264_picture_set_user_data
+         * gst_h264_picture_set_user_data()
          * @param first_field the first field #GstH264Picture already decoded
          * @param second_field a #GstH264Picture for the second field
          */
@@ -444,7 +444,7 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new #GstH264Picture is created.
          * Subclass can set implementation specific user data
-         * on the #GstH264Picture via gst_h264_picture_set_user_data
+         * on the #GstH264Picture via gst_h264_picture_set_user_data()
          * @param frame a #GstVideoCodecFrame
          * @param picture a #GstH264Picture
          */
@@ -532,7 +532,7 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new #GstH265Picture is created.
          * Subclass can set implementation specific user data
-         * on the #GstH265Picture via gst_h265_picture_set_user_data
+         * on the #GstH265Picture via gst_h265_picture_set_user_data()
          * @param frame a #GstVideoCodecFrame
          * @param picture a #GstH265Picture
          */
@@ -605,7 +605,7 @@ export namespace GstCodecs {
         /**
          * Called when a new field picture is created for interlaced field picture.
          * Subclass can attach implementation specific user data on `second_field` via
-         * gst_mpeg2_picture_set_user_data
+         * gst_mpeg2_picture_set_user_data()
          * @param first_field the first field #GstMpeg2Picture already decoded
          * @param second_field a #GstMpeg2Picture for the second field
          */
@@ -613,7 +613,7 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new #GstMpeg2Picture is created.
          * Subclass can set implementation specific user data
-         * on the #GstMpeg2Picture via gst_mpeg2_picture_set_user_data
+         * on the #GstMpeg2Picture via gst_mpeg2_picture_set_user_data()
          * @param frame a #GstVideoCodecFrame
          * @param picture a #GstMpeg2Picture
          */
@@ -661,12 +661,6 @@ export namespace GstCodecs {
 
         // Own virtual methods of GstCodecs.Vp8Decoder
 
-        /**
-         * Optional.
-         *                     Called per one #GstVp8Picture to notify subclass to finish
-         *                     decoding process for the #GstVp8Picture
-         * @param picture
-         */
         vfunc_end_picture(picture: Vp8Picture): Gst.FlowReturn;
         /**
          * Optional. Called by baseclass to query whether delaying output is
@@ -674,31 +668,8 @@ export namespace GstCodecs {
          * @param is_live whether upstream is live or not
          */
         vfunc_get_preferred_output_delay(is_live: boolean): number;
-        /**
-         * Optional.
-         *                     Called whenever new #GstVp8Picture is created.
-         *                     Subclass can set implementation specific user data
-         *                     on the #GstVp8Picture via gst_vp8_picture_set_user_data
-         * @param frame
-         * @param picture
-         */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: Vp8Picture): Gst.FlowReturn;
-        /**
-         * Called with a #GstVp8Picture which is required to be outputted.
-         *                     Subclass can retrieve parent #GstVideoCodecFrame by using
-         *                     gst_video_decoder_get_frame() with system_frame_number
-         *                     and the #GstVideoCodecFrame must be consumed by subclass via
-         *                     gst_video_decoder_{finish,drop,release}_frame().
-         * @param frame
-         * @param picture
-         */
         vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: Vp8Picture): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                     Called per one #GstVp8Picture to notify subclass to prepare
-         *                     decoding process for the #GstVp8Picture
-         * @param picture
-         */
         vfunc_start_picture(picture: Vp8Picture): Gst.FlowReturn;
     }
 
@@ -759,7 +730,7 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new #GstVp9Picture is created.
          * Subclass can set implementation specific user data on the #GstVp9Picture
-         * via gst_vp9_picture_set_user_data
+         * via gst_vp9_picture_set_user_data()
          * @param frame a #GstVideoCodecFrame
          * @param picture a #GstVp9Picture
          */
@@ -835,6 +806,24 @@ export namespace GstCodecs {
         _init(...args: any[]): void;
 
         static ['new'](): AV1Picture;
+
+        // Own methods of GstCodecs.AV1Picture
+
+        /**
+         * Gets private data set on the picture via
+         * gst_av1_picture_set_user_data() previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param notify a #GDestroyNotify
+         */
+        set_user_data(notify: GLib.DestroyNotify): void;
     }
 
     class AV1Tile {
@@ -849,40 +838,6 @@ export namespace GstCodecs {
             }>,
         );
         _init(...args: any[]): void;
-    }
-
-    /**
-     * Base struct for coded picture representation
-     */
-    class CodecPicture {
-        static $gtype: GObject.GType<CodecPicture>;
-
-        // Constructors of GstCodecs.CodecPicture
-
-        _init(...args: any[]): void;
-
-        // Own methods of GstCodecs.CodecPicture
-
-        /**
-         * Gets private data set on the picture via
-         * gst_codec_picture_set_user_data() previously.
-         * @returns The previously set user_data
-         */
-        get_user_data(): any | null;
-        /**
-         * Sets `discont_state` to `picture`
-         * @param discont_state a #GstVideoCodecState
-         */
-        set_discont_state(discont_state?: GstVideo.VideoCodecState | null): void;
-        /**
-         * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
-         * the picture is freed.
-         *
-         * If a `user_data` was previously set, then the previous set `notify` will be called
-         * before the `user_data` is replaced.
-         * @param notify a #GDestroyNotify
-         */
-        set_user_data(notify: GLib.DestroyNotify): void;
     }
 
     type H264DecoderClass = typeof H264Decoder;
@@ -995,6 +950,24 @@ export namespace GstCodecs {
         _init(...args: any[]): void;
 
         static ['new'](): H264Picture;
+
+        // Own methods of GstCodecs.H264Picture
+
+        /**
+         * Gets private data set on the picture via
+         * gst_h264_picture_set_user_data() previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param notify a #GDestroyNotify
+         */
+        set_user_data(notify: GLib.DestroyNotify): void;
     }
 
     class H264Slice {
@@ -1105,6 +1078,24 @@ export namespace GstCodecs {
         _init(...args: any[]): void;
 
         static ['new'](): H265Picture;
+
+        // Own methods of GstCodecs.H265Picture
+
+        /**
+         * Gets private data set on the picture via
+         * gst_h265_picture_set_user_data() previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param notify a #GDestroyNotify
+         */
+        set_user_data(notify: GLib.DestroyNotify): void;
     }
 
     class H265Slice {
@@ -1174,6 +1165,24 @@ export namespace GstCodecs {
         _init(...args: any[]): void;
 
         static ['new'](): Mpeg2Picture;
+
+        // Own methods of GstCodecs.Mpeg2Picture
+
+        /**
+         * Gets private data set on the picture via
+         * gst_mpeg2_picture_set_user_data() previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param notify a #GDestroyNotify
+         */
+        set_user_data(notify: GLib.DestroyNotify): void;
     }
 
     class Mpeg2Slice {
@@ -1203,6 +1212,24 @@ export namespace GstCodecs {
         _init(...args: any[]): void;
 
         static ['new'](): Vp8Picture;
+
+        // Own methods of GstCodecs.Vp8Picture
+
+        /**
+         * Gets private data set on the picture via
+         * gst_vp8_picture_set_user_data() previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param notify a #GDestroyNotify
+         */
+        set_user_data(notify: GLib.DestroyNotify): void;
     }
 
     type Vp9DecoderClass = typeof Vp9Decoder;
@@ -1360,6 +1387,24 @@ export namespace GstCodecs {
         _init(...args: any[]): void;
 
         static ['new'](): Vp9Picture;
+
+        // Own methods of GstCodecs.Vp9Picture
+
+        /**
+         * Gets private data set on the picture via
+         * gst_vp9_picture_set_user_data() previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param notify a #GDestroyNotify
+         */
+        set_user_data(notify: GLib.DestroyNotify): void;
     }
 
     class Vp9QuantizationParams {

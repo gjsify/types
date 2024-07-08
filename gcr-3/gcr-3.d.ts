@@ -5994,7 +5994,7 @@ export namespace Gcr {
     /**
      * A parsed item parsed by a #GcrParser.
      */
-    abstract class Parsed {
+    class Parsed {
         static $gtype: GObject.GType<Parsed>;
 
         // Constructors of Gcr.Parsed

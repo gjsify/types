@@ -239,99 +239,15 @@ export namespace GstBadAudio {
 
         // Own virtual methods of GstBadAudio.NonstreamAudioDecoder
 
-        /**
-         * Optional.
-         *                              Sets up the allocation parameters for allocating output
-         *                              buffers. The passed in query contains the result of the
-         *                              downstream allocation query.
-         *                              Subclasses should chain up to the parent implementation to
-         *                              invoke the default handler.
-         * @param query
-         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
-        /**
-         * Always required.
-         *                              Allocates an output buffer, fills it with decoded audio samples, and must be passed on to
-         *                              *buffer . The number of decoded samples must be passed on to *num_samples.
-         *                              If decoding finishes or the decoding is no longer possible (for example, due to an
-         *                              unrecoverable error), this function returns FALSE, otherwise TRUE.
-         * @param buffer
-         * @param num_samples
-         */
         vfunc_decode(buffer: Gst.Buffer, num_samples: number): boolean;
-        /**
-         * Optional.
-         *                              Returns the current subsong.
-         *                              If the current subsong mode is not GST_NONSTREAM_AUDIO_SUBSONG_MODE_SINGLE, this
-         *                              function's return value is undefined.
-         *                              If this function is implemented by the subclass,
-         *                              `get_num_subsongs` should be implemented as well.
-         */
         vfunc_get_current_subsong(): number;
-        /**
-         * Optional.
-         *                              Returns a tag list containing the main song tags, or NULL if there are
-         *                              no such tags. Returned tags will be unref'd. Use this vfunc instead of
-         *                              manually pushing a tag event downstream to avoid edge cases where not yet
-         *                              pushed sticky tag events get overwritten before they are pushed (can for
-         *                              example happen with decodebin if tags are pushed downstream before the
-         *                              decodebin pads are linked).
-         */
         vfunc_get_main_tags(): Gst.TagList;
-        /**
-         * Optional.
-         *                              Returns the number of loops for playback.
-         */
         vfunc_get_num_loops(): number;
-        /**
-         * Optional.
-         *                              Returns the number of subsongs available.
-         *                              The return values 0 and 1 have a similar, but distinct, meaning.
-         *                              If this function returns 0, then this decoder does not support subsongs at all.
-         *                              `get_current_subsong` must then also always return 0. In other words, this function
-         *                              either never returns 0, or never returns anything else than 0.
-         *                              A return value of 1 means that the media contains either only one or no subsongs
-         *                              (the entire song is then considered to be one single subsong). 1 also means that only
-         *                              this very media has no or just one subsong, and the decoder itself can
-         *                              support multiple subsongs.
-         */
         vfunc_get_num_subsongs(): number;
-        /**
-         * Optional.
-         *                              Returns the duration of a subsong. Returns GST_CLOCK_TIME_NONE if duration is unknown.
-         * @param subsong
-         */
         vfunc_get_subsong_duration(subsong: number): Gst.ClockTime;
-        /**
-         * Optional.
-         *                              Returns tags for a subsong, or NULL if there are no tags.
-         *                              Returned tags will be unref'd.
-         * @param subsong
-         */
         vfunc_get_subsong_tags(subsong: number): Gst.TagList;
-        /**
-         * Always required.
-         *                              Returns a bitmask containing the output modes the subclass supports.
-         *                              The mask is formed by a bitwise OR combination of integers, which can be calculated
-         *                              this way:  1 << GST_NONSTREAM_AUDIO_OUTPUT_MODE_<mode> , where mode is either STEADY or LOOPING
-         */
         vfunc_get_supported_output_modes(): number;
-        /**
-         * Required if loads_from_sinkpad is set to TRUE (the default value).
-         *                              Loads the media from the given buffer. The entire media is supplied at once,
-         *                              so after this call, loading should be finished. This function
-         *                              can also make use of a suggested initial subsong & subsong mode and initial
-         *                              playback position (but isn't required to). In case it chooses a different starting
-         *                              position, the function must pass this position to *initial_position.
-         *                              The subclass does not have to unref the input buffer; the base class does that
-         *                              already.
-         * @param source_data
-         * @param initial_subsong
-         * @param initial_subsong_mode
-         * @param initial_position
-         * @param initial_output_mode
-         * @param initial_num_loops
-         */
         vfunc_load_from_buffer(
             source_data: Gst.Buffer,
             initial_subsong: number,
@@ -340,17 +256,6 @@ export namespace GstBadAudio {
             initial_output_mode: NonstreamAudioOutputMode,
             initial_num_loops: number,
         ): boolean;
-        /**
-         * Required if loads_from_sinkpad is set to FALSE.
-         *                              Loads the media in a way defined by the custom sink. Data is not supplied;
-         *                              the derived class has to handle this on its own. Otherwise, this function is
-         *                              identical to `load_from_buffer`.
-         * @param initial_subsong
-         * @param initial_subsong_mode
-         * @param initial_position
-         * @param initial_output_mode
-         * @param initial_num_loops
-         */
         vfunc_load_from_custom(
             initial_subsong: number,
             initial_subsong_mode: NonstreamAudioSubsongMode,
@@ -359,86 +264,12 @@ export namespace GstBadAudio {
             initial_num_loops: number,
         ): boolean;
         vfunc_negotiate(): boolean;
-        /**
-         * Optional.
-         *                              Proposes buffer allocation parameters for upstream elements.
-         *                              Subclasses should chain up to the parent implementation to
-         *                              invoke the default handler.
-         * @param query
-         */
         vfunc_propose_allocation(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                              Called when a seek event is received by the parent class.
-         *                              new_position is a pointer to a GstClockTime integer which
-         *                              contains a position relative to the current subsong.
-         *                              Minimum is 0, maximum is the subsong length.
-         *                              After this function finishes, new_position is set to the
-         *                              actual new position (which may differ from the request
-         *                              position, depending on the decoder).
-         * @param new_position
-         */
         vfunc_seek(new_position: Gst.ClockTime): boolean;
-        /**
-         * Optional.
-         *                              Sets the current subsong. This function is allowed to switch to a different
-         *                              subsong than the required one, and can optionally make use of the suggested initial
-         *                              position. In case it chooses a different starting position, the function must pass
-         *                              this position to *initial_position.
-         *                              This function switches the subsong mode to GST_NONSTREAM_AUDIO_SUBSONG_MODE_SINGLE
-         *                              automatically.
-         *                              If this function is implemented by the subclass, `get_current_subsong` and
-         *                              `get_num_subsongs` should be implemented as well.
-         * @param subsong
-         * @param initial_position
-         */
         vfunc_set_current_subsong(subsong: number, initial_position: Gst.ClockTime): boolean;
-        /**
-         * Optional.
-         *                              Sets the number of loops for playback. If this is called during playback,
-         *                              the subclass must set any internal loop counters to zero. A loop value of -1
-         *                              means infinite looping; 0 means no looping; and when the num_loops is greater than 0,
-         *                              playback should loop exactly num_loops times. If this function is implemented,
-         *                              `get_num_loops` should be implemented as well. The function can ignore the given values
-         *                              and choose another; however, `get_num_loops` should return this other value afterwards.
-         *                              It is up to the subclass to define where the loop starts and ends. It can mean that only
-         *                              a subset at the end or in the middle of a song is repeated, for example.
-         *                              If the current subsong mode is GST_NONSTREAM_AUDIO_SUBSONG_MODE_SINGLE, then the subsong
-         *                              is repeated this many times. If it is GST_NONSTREAM_AUDIO_SUBSONG_MODE_ALL, then all
-         *                              subsongs are repeated this many times. With GST_NONSTREAM_AUDIO_SUBSONG_MODE_DECODER_DEFAULT,
-         *                              the behavior is decoder specific.
-         * @param num_loops
-         */
         vfunc_set_num_loops(num_loops: number): boolean;
-        /**
-         * Optional.
-         *                              Sets the output mode the subclass has to use. Unlike with most other functions, the subclass
-         *                              cannot choose a different mode; it must use the requested one.
-         *                              If the output mode is set to LOOPING, `gst_nonstream_audio_decoder_handle_loop`
-         *                              must be called after playback moved back to the start of a loop.
-         * @param mode
-         * @param current_position
-         */
         vfunc_set_output_mode(mode: NonstreamAudioOutputMode, current_position: Gst.ClockTime): boolean;
-        /**
-         * Optional.
-         *                              Sets the current subsong mode. Since this might influence the current playback position,
-         *                              this function must set the initial_position integer argument to a defined value.
-         *                              If the playback position is not affected at all, it must be set to GST_CLOCK_TIME_NONE.
-         *                              If the subsong is restarted after the mode switch, it is recommended to set the value
-         *                              to the position in the playback right after the switch (or 0 if the subsongs are always
-         *                              reset back to the beginning).
-         * @param mode
-         * @param initial_position
-         */
         vfunc_set_subsong_mode(mode: NonstreamAudioSubsongMode, initial_position: Gst.ClockTime): boolean;
-        /**
-         * Optional.
-         *                              Called when a position query is received by the parent class.
-         *                              The position that this function returns must be relative to
-         *                              the current subsong. Thus, the minimum is 0, and the maximum
-         *                              is the subsong length.
-         */
         vfunc_tell(): Gst.ClockTime;
 
         // Own methods of GstBadAudio.NonstreamAudioDecoder

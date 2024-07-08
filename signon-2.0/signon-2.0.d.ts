@@ -536,23 +536,7 @@ export namespace Signon {
     }
 
     type AuthServiceClass = typeof AuthService;
-    abstract class AuthServicePrivate {
-        static $gtype: GObject.GType<AuthServicePrivate>;
-
-        // Constructors of Signon.AuthServicePrivate
-
-        _init(...args: any[]): void;
-    }
-
     type AuthSessionClass = typeof AuthSession;
-    abstract class AuthSessionPrivate {
-        static $gtype: GObject.GType<AuthSessionPrivate>;
-
-        // Constructors of Signon.AuthSessionPrivate
-
-        _init(...args: any[]): void;
-    }
-
     type IdentityClass = typeof Identity;
     /**
      * Opaque struct. Use the accessor functions below.
@@ -671,14 +655,6 @@ export namespace Signon {
          * @param username the username.
          */
         set_username(username: string): void;
-    }
-
-    abstract class IdentityPrivate {
-        static $gtype: GObject.GType<IdentityPrivate>;
-
-        // Constructors of Signon.IdentityPrivate
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -62,7 +62,7 @@ export namespace GnomeBluetooth {
          */
         PROXY,
         /**
-         * Used to be #GDBusProxy object for DBus.Properties, now always %NULL
+         * a #GDBusProxy object for DBus.Properties
          */
         PROPERTIES,
         /**
@@ -189,13 +189,6 @@ export namespace GnomeBluetooth {
     const UUID_SPP: number;
     const UUID_VDP_SOURCE: number;
     /**
-     * Returns the type of device corresponding to the given `appearance` value,
-     * as usually found in the GAP service.
-     * @param appearance a Bluetooth device appearance
-     * @returns a #BluetoothType.
-     */
-    function appearance_to_type(appearance: number): Type;
-    /**
      * Returns the type of device corresponding to the given `class` value.
      * @param _class a Bluetooth device class
      * @returns a #BluetoothType.
@@ -207,14 +200,6 @@ export namespace GnomeBluetooth {
      * @param alias Remote device's name
      */
     function send_to_address(address: string, alias: string): void;
-    /**
-     * Returns a human-readable string representation of `type` usable for display to users,
-     * when type filters are displayed. Do not free the return value.
-     * The returned string is already translated with gettext().
-     * @param type a #BluetoothType
-     * @returns a string.
-     */
-    function type_to_filter_string(type: number): string;
     /**
      * Returns a human-readable string representation of `type` usable for display to users. Do not free the return value.
      * The returned string is already translated with gettext().
@@ -318,10 +303,6 @@ export namespace GnomeBluetooth {
          * a toy or game
          */
         TOY,
-        /**
-         * audio speaker or speakers
-         */
-        SPEAKERS,
     }
     module Chooser {
         // Signal callback interfaces
@@ -5484,6 +5465,10 @@ export namespace GnomeBluetooth {
         }
     }
 
+    /**
+     * The <structname>BluetoothChooserCombo</structname> struct contains
+     * only private fields and should not be directly accessed.
+     */
     class ChooserCombo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ChooserCombo>;
 
@@ -5515,6 +5500,10 @@ export namespace GnomeBluetooth {
         connect(signal: 'chooser-created', callback: (_source: this, chooser: GObject.Object) => void): number;
         connect_after(signal: 'chooser-created', callback: (_source: this, chooser: GObject.Object) => void): number;
         emit(signal: 'chooser-created', chooser: GObject.Object): void;
+
+        // Own virtual methods of GnomeBluetooth.ChooserCombo
+
+        vfunc_chooser_created(chooser: Gtk.Widget): void;
 
         // Inherited properties
         /**
@@ -5977,12 +5966,12 @@ export namespace GnomeBluetooth {
          */
         get defaultAdapter(): string;
         /**
-         * %TRUE if the default Bluetooth adapter is discoverable during discovery.
+         * %TRUE if the default Bluetooth adapter is discoverable.
          */
         get default_adapter_discoverable(): boolean;
         set default_adapter_discoverable(val: boolean);
         /**
-         * %TRUE if the default Bluetooth adapter is discoverable during discovery.
+         * %TRUE if the default Bluetooth adapter is discoverable.
          */
         get defaultAdapterDiscoverable(): boolean;
         set defaultAdapterDiscoverable(val: boolean);
@@ -7036,6 +7025,14 @@ export namespace GnomeBluetooth {
     type ChooserButtonClass = typeof ChooserButton;
     type ChooserClass = typeof Chooser;
     type ChooserComboClass = typeof ChooserCombo;
+    abstract class ChooserComboPrivate {
+        static $gtype: GObject.GType<ChooserComboPrivate>;
+
+        // Constructors of GnomeBluetooth.ChooserComboPrivate
+
+        _init(...args: any[]): void;
+    }
+
     type ClientClass = typeof Client;
     type FilterWidgetClass = typeof FilterWidget;
     type SettingsWidgetClass = typeof SettingsWidget;

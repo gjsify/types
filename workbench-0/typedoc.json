@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./workbench-0.d.ts"],
+    "readme": "./README.md",
+    "name": "Workbench-0",
+    "tsconfig": "./tsconfig.json"
+}
+

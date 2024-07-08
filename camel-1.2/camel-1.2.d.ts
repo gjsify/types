@@ -827,10 +827,6 @@ export namespace Camel {
     const LOCK_DOT_RETRY: number;
     const LOCK_DOT_STALE: number;
     const LOCK_RETRY: number;
-    /**
-     * Maximum length, in characters, of a mime part preview.
-     */
-    const MAX_PREVIEW_LENGTH: number;
     const MESSAGE_DATE_CURRENT: number;
     const MESSAGE_SYSTEM_MASK: number;
     const MIME_YDECODE_STATE_BEGIN: number;
@@ -1124,7 +1120,7 @@ export namespace Camel {
      * @param dest pointer to a variable to put the value in
      * @returns 0 on success, -1 on failure.
      */
-    function file_util_decode_off_t(_in: any | null, dest: never): number;
+    function file_util_decode_off_t(_in: any | null, dest: number): number;
     /**
      * Decode a normal string from the input file.
      * @param _in file to read from
@@ -1138,7 +1134,7 @@ export namespace Camel {
      * @param dest pointer to a variable to store the value in
      * @returns 0 on success, -1 on error.
      */
-    function file_util_decode_time_t(_in: any | null, dest: never): number;
+    function file_util_decode_time_t(_in: any | null, dest: number): number;
     /**
      * Retrieve an encoded uint32 from a file.
      * @param _in file to read from
@@ -1184,7 +1180,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_off_t(out: any | null, value: never): number;
+    function file_util_encode_off_t(out: any | null, value: number): number;
     /**
      * Encode a normal string and save it in the output file.
      * @param out file to output to
@@ -1198,7 +1194,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_time_t(out: any | null, value: never): number;
+    function file_util_encode_time_t(out: any | null, value: number): number;
     /**
      * Utility function to save an uint32 to a file.
      * @param out file to output to
@@ -1304,7 +1300,7 @@ export namespace Camel {
      * @param tz_offset timezone offset
      * @returns the time_t representation of the date string specified by @str or (time_t) 0 on error. If @tz_offset is non-NULL, the value of the timezone offset will be stored.
      */
-    function header_decode_date(str: string, tz_offset: number): never;
+    function header_decode_date(str: string, tz_offset: number): number;
     /**
      * Extracts an integer token from `in` and updates the pointer to point
      * to after the end of the integer token (sort of like strtol).
@@ -1347,7 +1343,7 @@ export namespace Camel {
      * @param tz_offset Timezone offset
      * @returns a valid string representation of the date.
      */
-    function header_format_date(date: never, tz_offset: number): string;
+    function header_format_date(date: number, tz_offset: number): string;
     function header_location_decode(_in: string): string;
     function header_mailbox_decode(_in: string, charset: string): HeaderAddress;
     function header_mime_decode(_in: string, maj: number, min: number): void;
@@ -1439,7 +1435,7 @@ export namespace Camel {
      * @param tm the #tm to store the result in
      * @param offset the #gint to store the offset in
      */
-    function localtime_with_offset(tt: never, tm: any | null, offset: number): void;
+    function localtime_with_offset(tt: number, tm: any | null, offset: number): void;
     /**
      * Create an exclusive lock using .lock semantics.
      * All locks are equivalent to write locks (exclusive).
@@ -1492,7 +1488,7 @@ export namespace Camel {
      * @param tm the #tm to convert to a calendar time representation
      * @returns the calendar time representation of @tm
      */
-    function mktime_utc(tm?: any | null): never;
+    function mktime_utc(tm?: any | null): number;
     /**
      * This copies an mbox file from a shared directory with multiple
      * readers and writers into a private (presumably Camel-controlled)
@@ -1766,7 +1762,7 @@ export namespace Camel {
      * @param value a value to apply
      * @returns @src_time modified by the given parameters as date, with    the time part being beginning of the day.
      */
-    function time_value_apply(src_time: never, unit: TimeUnit, value: number): never;
+    function time_value_apply(src_time: number, unit: TimeUnit, value: number): number;
     function transfer_encoding_from_string(string: string): TransferEncoding;
     function transfer_encoding_to_string(encoding: TransferEncoding): string;
     /**
@@ -2145,9 +2141,6 @@ export namespace Camel {
     }
     interface ForeachPartFunc {
         (message: MimeMessage, part: MimePart, parent_part?: MimePart | null): boolean;
-    }
-    interface GeneratePreviewFunc {
-        (part?: any | null): string | null;
     }
     interface IndexNorm {
         (index: Index, word: string): string;
@@ -3529,7 +3522,7 @@ export namespace Camel {
          * age acts as a hard limit on cache entries.
          * @param when Timeout for access, or -1 to disable access expiry.
          */
-        set_expire_access(when: never): void;
+        set_expire_access(when: number): void;
         /**
          * Set the cache expiration policy for aged entries.
          *
@@ -3542,7 +3535,7 @@ export namespace Camel {
          * age acts as a hard limit on cache entries.
          * @param when Timeout for age expiry, or -1 to disable.
          */
-        set_expire_age(when: never): void;
+        set_expire_age(when: number): void;
         /**
          * Sets whether expire of cache data is enabled.
          *
@@ -5143,7 +5136,7 @@ export namespace Camel {
          * @param t Initial time
          * @param months number of months to add or subtract
          */
-        static util_add_months(t: never, months: number): never;
+        static util_add_months(t: number, months: number): number;
         /**
          * Compares date portion of the two date-time values, first converted
          * into the local time zone. The returned value is like with strcmp().
@@ -5163,7 +5156,7 @@ export namespace Camel {
          * @param argc number of arguments in @argv
          * @param argv array or arguments
          */
-        static util_make_time(argc: number, argv: SExpResult): never;
+        static util_make_time(argc: number, argv: SExpResult): number;
 
         // Own methods of Camel.FolderSearch
 
@@ -7403,21 +7396,9 @@ export namespace Camel {
          */
         filter(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
-         * Returns whether the `filter` requested stop further processing
-         * with camel_mime_filter_set_request_stop().
-         * @returns %TRUE, when the @filter request stop further processing,    %FALSE otherwise
-         */
-        get_request_stop(): boolean;
-        /**
          * Resets the state on `filter` so that it may be used again.
          */
         reset(): void;
-        /**
-         * Sets whether the `filter` requests, or not, stop further processing.
-         * This can be used to stop before all the data is filtered.
-         * @param request_stop value to set
-         */
-        set_request_stop(request_stop: boolean): void;
         /**
          * Ensure that `filter` has enough storage space to store `size` bytes
          * for filter output.
@@ -7714,47 +7695,6 @@ export namespace Camel {
         static ['new'](): MimeFilterPgp;
     }
 
-    module MimeFilterPreview {
-        // Constructor properties interface
-
-        interface ConstructorProps extends MimeFilter.ConstructorProps {}
-    }
-
-    class MimeFilterPreview extends MimeFilter {
-        static $gtype: GObject.GType<MimeFilterPreview>;
-
-        // Constructors of Camel.MimeFilterPreview
-
-        constructor(properties?: Partial<MimeFilterPreview.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](limit: number): MimeFilterPreview;
-        // Conflicted with Camel.MimeFilter.new
-
-        static ['new'](...args: never[]): any;
-
-        // Own methods of Camel.MimeFilterPreview
-
-        /**
-         * Returns set limit for the text length, in characters.
-         * Zero means unlimited length.
-         * @returns limit for the text length, in characters
-         */
-        get_limit(): number;
-        /**
-         * Returns read text until now.
-         * @returns read text until now or %NULL, when nothing was read
-         */
-        get_text(): string | null;
-        /**
-         * Sets limit for the text length, in characters. Zero
-         * means unlimited length.
-         * @param limit a limit to set
-         */
-        set_limit(limit: number): void;
-    }
-
     module MimeFilterProgress {
         // Constructor properties interface
 
@@ -7926,13 +7866,13 @@ export namespace Camel {
          * See camel_mime_message_set_date() for information about the `offset` format.
          * @returns the date of the message
          */
-        get_date(): [never, number];
+        get_date(): [number, number];
         /**
          * Get the received date and UTC offset of a message.
          * See camel_mime_message_set_date() for information about the `offset` format.
          * @returns the received date of the message
          */
-        get_date_received(): [never, number];
+        get_date_received(): [number, number];
         /**
          * Get the from address of a message.
          * @returns the from address of the message
@@ -8003,7 +7943,7 @@ export namespace Camel {
          * @param date a time_t date or %CAMEL_MESSAGE_DATE_CURRENT to use the current local date and time
          * @param offset an offset from UTC in decimal number using the +HHMM format (for instance an offset   of -10:45 is -1045). If @date set to %CAMEL_MESSAGE_DATE_CURRENT, this parameter is ignored
          */
-        set_date(date: never, offset: number): void;
+        set_date(date: number, offset: number): void;
         /**
          * Set the from address of a message.
          * @param from a #CamelInternetAddress object
@@ -8345,14 +8285,6 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, or %NULL
          */
         vfunc_construct_from_parser_sync(parser: MimeParser, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Generates preview of the `mime_part,` to be used in the interface,
-         * read by the users.
-         *
-         * The optional `func` can be used to override default preview generation
-         * function. If provided, it's always called as the first try on the parts.
-         */
-        vfunc_generate_preview(): string | null;
 
         // Own methods of Camel.MimePart
 
@@ -8393,15 +8325,6 @@ export namespace Camel {
          * @returns %TRUE on success, %FALSE on error
          */
         construct_from_parser_sync(parser: MimeParser, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Generates preview of the `mime_part,` to be used in the interface,
-         * read by the users.
-         *
-         * The optional `func` can be used to override default preview generation
-         * function. If provided, it's always called as the first try on the parts.
-         * @returns part's preview as a new string,    or %NULL, when cannot be generated. Free with g_free(), when no    longer needed.
-         */
-        generate_preview(): string | null;
         /**
          * Get the disposition of the MIME part as a structure.
          * Returned pointer is owned by `mime_part`.
@@ -8540,14 +8463,6 @@ export namespace Camel {
          * @param parser a #CamelMimeParser object
          */
         vfunc_construct_from_parser(parser: MimeParser): number;
-        /**
-         * Generates preview of the `multipart,` to be used in the interface,
-         * read by the users.
-         *
-         * The optional `func` can be used to override default preview generation
-         * function. If provided, it's always called as the first try on the parts.
-         */
-        vfunc_generate_preview(): string | null;
         vfunc_get_boundary(): string;
         vfunc_get_number(): number;
         vfunc_get_part(index: number): MimePart | null;
@@ -8573,15 +8488,6 @@ export namespace Camel {
          * @returns 0 on success or -1 on fail
          */
         construct_from_parser(parser: MimeParser): number;
-        /**
-         * Generates preview of the `multipart,` to be used in the interface,
-         * read by the users.
-         *
-         * The optional `func` can be used to override default preview generation
-         * function. If provided, it's always called as the first try on the parts.
-         * @returns part's preview as a new string,    or %NULL, when cannot be generated. Free with g_free(), when no    longer needed.
-         */
-        generate_preview(): string | null;
         get_boundary(): string;
         get_number(): number;
         get_part(index: number): MimePart | null;
@@ -9549,18 +9455,6 @@ export namespace Camel {
          */
         static cancel_all(): void;
         /**
-         * Duplicates current operation message, or returns %NULL, if no such is available.
-         * The message as the last text set by camel_operation_push_message().
-         *
-         * Free the returned text with g_free(), when no longer needed.
-         *
-         * This function only works if `cancellable` is a #CamelOperation cast as a
-         * #GCancellable.  If `cancellable` is a plain #GCancellable or %NULL, the
-         * function does nothing and returns silently.
-         * @param cancellable a #GCancellable or %NULL
-         */
-        static dup_message(cancellable?: Gio.Cancellable | null): string | null;
-        /**
          * Pops the most recently pushed message.
          *
          * This function only works if `cancellable` is a #CamelOperation cast as a
@@ -9662,7 +9556,7 @@ export namespace Camel {
          */
         add_variable(scope: number, name: string, value: SExpTerm): void;
         error(): string | null;
-        evaluate_occur_times(start: never, end: never): boolean;
+        evaluate_occur_times(start: number, end: number): boolean;
         /**
          * Prepares to scan a file.
          * @param fd a file descriptor
@@ -9719,18 +9613,6 @@ export namespace Camel {
         // Conflicted with Camel.CipherContext.new
 
         static ['new'](...args: never[]): any;
-
-        // Own static methods of Camel.SMIMEContext
-
-        /**
-         * Utility function to get a localized text description for an error code
-         * returned by PORT_GetError().
-         *
-         * Note: the function returns always NULL when the library was not compiled
-         *   with S/MIME support.
-         * @param nss_error_code an error code, as returned by PORT_GetError()
-         */
-        static util_nss_error_to_string(nss_error_code: number): string | null;
 
         // Own methods of Camel.SMIMEContext
 
@@ -19906,15 +19788,6 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    type MimeFilterPreviewClass = typeof MimeFilterPreview;
-    abstract class MimeFilterPreviewPrivate {
-        static $gtype: GObject.GType<MimeFilterPreviewPrivate>;
-
-        // Constructors of Camel.MimeFilterPreviewPrivate
-
-        _init(...args: any[]): void;
-    }
-
     abstract class MimeFilterPrivate {
         static $gtype: GObject.GType<MimeFilterPrivate>;
 
@@ -20617,8 +20490,8 @@ export namespace Camel {
 
         type: SExpResultType;
         time_generator: boolean;
-        occuring_start: never;
-        occuring_end: never;
+        occuring_start: number;
+        occuring_end: number;
 
         // Constructors of Camel.SExpResult
 

@@ -269,41 +269,6 @@ export namespace GstPlay {
         }
     }
 
-    /**
-     * The goal of the GstPlay library is to ease the integration of multimedia
-     * playback features in applications. Thus, if you need to build a media player
-     * from the ground-up, GstPlay provides the features you will most likely need.
-     *
-     * An example player is available in gst-examples/playback/player/gst-play/.
-     *
-     * Internally the GstPlay makes use of the `playbin3` element. The legacy
-     * `playbin2` can be selected if the `GST_PLAY_USE_PLAYBIN3=0` environment
-     * variable has been set.
-     *
-     * **Important note**: If your application relies on the GstBus to get
-     * notifications from GstPlay, you need to add some explicit clean-up code in
-     * order to prevent the GstPlay object from leaking. See below for the details.
-     * If you use the GstPlaySignalAdapter, no special clean-up is required.
-     *
-     * When the GstPlaySignalAdapter is not used, the GstBus owned by GstPlay should
-     * be set to flushing state before any attempt to drop the last reference of the
-     * GstPlay object. An example in C:
-     *
-     * ```c
-     * ...
-     * GstBus *bus = gst_play_get_message_bus (player);
-     * gst_bus_set_flushing (bus, TRUE);
-     * gst_object_unref (bus);
-     * gst_object_unref (player);
-     * ```
-     *
-     * The messages managed by the player contain a reference to itself, and if the
-     * bus watch is just removed together with dropping the player then the bus will
-     * simply keep them around forever (and the bus never goes away because the
-     * player has a strong reference to it, so there's a reference cycle as long as
-     * there are messages). Setting the bus to flushing state forces it to get rid
-     * of its queued messages, thus breaking any possible reference cycle.
-     */
     class Play extends Gst.Object {
         static $gtype: GObject.GType<Play>;
 
@@ -361,7 +326,6 @@ export namespace GstPlay {
 
         // Own static methods of GstPlay.Play
 
-        static config_get_pipeline_dump_in_error_details(config: Gst.Structure): boolean;
         static config_get_position_update_interval(config: Gst.Structure): number;
         static config_get_seek_accurate(config: Gst.Structure): boolean;
         /**
@@ -371,18 +335,8 @@ export namespace GstPlay {
          */
         static config_get_user_agent(config: Gst.Structure): string | null;
         /**
-         * When enabled, the error message emitted by #GstPlay will include a pipeline
-         * dump (in Graphviz DOT format) in the error details #GstStructure. The field
-         * name is `pipeline-dump`.
-         *
-         * This option is disabled by default.
-         * @param config a #GstPlay configuration
-         * @param value Include pipeline dumps in error details, or not.
-         */
-        static config_set_pipeline_dump_in_error_details(config: Gst.Structure, value: boolean): void;
-        /**
-         * Set desired interval in milliseconds between two position-updated messages.
-         * Pass 0 to stop updating the position.
+         * set desired interval in milliseconds between two position-updated messages.
+         * pass 0 to stop updating the position.
          * @param config a #GstPlay configuration
          * @param interval interval in ms
          */
@@ -497,7 +451,7 @@ export namespace GstPlay {
         get_position(): Gst.ClockTime;
         get_rate(): number;
         /**
-         * Current subtitle URI
+         * current subtitle URI
          * @returns URI of the current external subtitle.   g_free() after usage.
          */
         get_subtitle_uri(): string | null;
@@ -513,7 +467,7 @@ export namespace GstPlay {
         get_uri(): string | null;
         /**
          * Get a snapshot of the currently selected video stream, if any. The format can be
-         * selected with `format` and optional configuration is possible with `config`.
+         * selected with `format` and optional configuration is possible with `config`
          * Currently supported settings are:
          * - width, height of type G_TYPE_INT
          * - pixel-aspect-ratio of type GST_TYPE_FRACTION
@@ -567,7 +521,7 @@ export namespace GstPlay {
         set_color_balance(type: PlayColorBalanceType, value: number): void;
         /**
          * Set the configuration of the play. If the play is already configured, and
-         * the configuration hasn't changed, this function will return %TRUE. If the
+         * the configuration haven't change, this function will return %TRUE. If the
          * play is not in the GST_PLAY_STATE_STOPPED, this method will return %FALSE
          * and active configuration will remain.
          *

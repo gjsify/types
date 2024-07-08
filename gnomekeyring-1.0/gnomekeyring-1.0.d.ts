@@ -181,7 +181,7 @@ export namespace GnomeKeyring {
      * function will be called with a result of %GNOME_KEYRING_RESULT_CANCELLED
      * @param request The request returned from the asynchronous call function.
      */
-    function cancel_request(request?: any | null): void;
+    function cancel_request(request: any): void;
     /**
      * Change the password for `keyring`. In most cases you would specify %NULL for
      * both the `original` and `password` arguments and allow the user to type the
@@ -809,7 +809,7 @@ export namespace GnomeKeyring {
         free(): void;
     }
 
-    abstract class Info {
+    class Info {
         static $gtype: GObject.GType<Info>;
 
         // Constructors of GnomeKeyring.Info
