@@ -1,6 +1,6 @@
 {
     "name": "@girs/edataserver-1.2",
-    "version": "1.2.0-4.0.0-beta.5",
+    "version": "1.2.0-4.0.0-beta.6",
     "description": "GJS TypeScript type definitions for EDataServer-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "edataserver-1.2.js",

@@ -1,6 +1,6 @@
 {
     "name": "@girs/mypaintgegl-1.6",
-    "version": "1.6.0-4.0.0-beta.5",
+    "version": "1.6.0-4.0.0-beta.6",
     "description": "GJS TypeScript type definitions for MyPaintGegl-1.6, generated from library version 1.6.0",
     "type": "module",
     "module": "mypaintgegl-1.6.js",

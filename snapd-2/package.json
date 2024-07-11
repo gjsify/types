@@ -1,6 +1,6 @@
 {
     "name": "@girs/snapd-2",
-    "version": "2.0.0-4.0.0-beta.5",
+    "version": "2.0.0-4.0.0-beta.6",
     "description": "GJS TypeScript type definitions for Snapd-2, generated from library version 2.0.0",
     "type": "module",
     "module": "snapd-2.js",

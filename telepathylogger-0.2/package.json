@@ -1,6 +1,6 @@
 {
     "name": "@girs/telepathylogger-0.2",
-    "version": "0.2.0-4.0.0-beta.5",
+    "version": "0.2.0-4.0.0-beta.6",
     "description": "GJS TypeScript type definitions for TelepathyLogger-0.2, generated from library version 0.2.0",
     "type": "module",
     "module": "telepathylogger-0.2.js",

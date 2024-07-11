@@ -1,6 +1,6 @@
 {
     "name": "@girs/st-13",
-    "version": "13.0.0-4.0.0-beta.5",
+    "version": "13.0.0-4.0.0-beta.6",
     "description": "GJS TypeScript type definitions for St-13, generated from library version 13.0.0",
     "type": "module",
     "module": "st-13.js",

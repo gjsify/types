@@ -1,6 +1,6 @@
 {
     "name": "@girs/gepub-0.7",
-    "version": "0.7.0-4.0.0-beta.5",
+    "version": "0.7.0-4.0.0-beta.6",
     "description": "GJS TypeScript type definitions for Gepub-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "gepub-0.7.js",

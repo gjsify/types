@@ -1,6 +1,6 @@
 {
     "name": "@girs/braseromedia-3.1",
-    "version": "3.1.0-4.0.0-beta.5",
+    "version": "3.1.0-4.0.0-beta.6",
     "description": "GJS TypeScript type definitions for BraseroMedia-3.1, generated from library version 3.1.0",
     "type": "module",
     "module": "braseromedia-3.1.js",
