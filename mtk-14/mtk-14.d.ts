@@ -7,6 +7,8 @@
 
 import './mtk-14-ambient.d.ts';
 
+import './mtk-14-import.d.ts';
+
 /**
  * Mtk-14
  */

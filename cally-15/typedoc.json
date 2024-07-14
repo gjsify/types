@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./cally-15.d.ts"],
+    "readme": "./README.md",
+    "name": "Cally-15",
+    "tsconfig": "./tsconfig.json"
+}
+

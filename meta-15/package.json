@@ -1,0 +1,71 @@
+{
+    "name": "@girs/meta-15",
+    "version": "15.0.0-4.0.0-beta.6",
+    "description": "GJS TypeScript type definitions for Meta-15, generated from library version 15.0.0",
+    "type": "module",
+    "module": "meta-15.js",
+    "main": "meta-15.js",
+    "exports": {
+        "./ambient": {
+            "types": "./meta-15-ambient.d.ts",
+            "import": "./meta-15-ambient.js",
+            "default": "./meta-15-ambient.js"
+        },
+        "./import": {
+            "types": "./meta-15-import.d.ts",
+            "import": "./meta-15-import.js",
+            "default": "./meta-15-import.js"
+        },
+        ".": {
+            "types": "./meta-15.d.ts",
+            "import": "./meta-15.js",
+            "default": "./meta-15.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-15": "workspace:^",
+        "@girs/cogl-15": "workspace:^",
+        "@girs/coglpango-15": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdesktopenums-3.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/mtk-15": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/xfixes-4.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Meta-15"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/meta-15#readme"
+}

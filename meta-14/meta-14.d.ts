@@ -7,6 +7,8 @@
 
 import './meta-14-ambient.d.ts';
 
+import './meta-14-import.d.ts';
+
 /**
  * Meta-14
  */

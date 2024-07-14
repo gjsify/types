@@ -1,0 +1,58 @@
+{
+    "name": "@girs/cogl-15",
+    "version": "15.0.0-4.0.0-beta.6",
+    "description": "GJS TypeScript type definitions for Cogl-15, generated from library version 15.0.0",
+    "type": "module",
+    "module": "cogl-15.js",
+    "main": "cogl-15.js",
+    "exports": {
+        "./ambient": {
+            "types": "./cogl-15-ambient.d.ts",
+            "import": "./cogl-15-ambient.js",
+            "default": "./cogl-15-ambient.js"
+        },
+        "./import": {
+            "types": "./cogl-15-import.d.ts",
+            "import": "./cogl-15-import.js",
+            "default": "./cogl-15-import.js"
+        },
+        ".": {
+            "types": "./cogl-15.d.ts",
+            "import": "./cogl-15.js",
+            "default": "./cogl-15.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/mtk-15": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Cogl-15"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/cogl-15#readme"
+}

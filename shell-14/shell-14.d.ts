@@ -7,6 +7,8 @@
 
 import './shell-14-ambient.d.ts';
 
+import './shell-14-import.d.ts';
+
 /**
  * Shell-14
  */

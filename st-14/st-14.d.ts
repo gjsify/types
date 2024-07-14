@@ -7,6 +7,8 @@
 
 import './st-14-ambient.d.ts';
 
+import './st-14-import.d.ts';
+
 /**
  * St-14
  */

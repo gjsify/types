@@ -4,9 +4,5 @@ declare module 'gi://Clutter?version=14' {
     export default Clutter;
 }
 
-declare module 'gi://Clutter' {
-    import Clutter14 from 'gi://Clutter?version=14';
-    export default Clutter14;
-}
 
 
