@@ -4,5 +4,9 @@ declare module 'gi://Cally?version=10' {
     export default Cally;
 }
 
+declare module 'gi://Cally' {
+    import Cally10 from 'gi://Cally?version=10';
+    export default Cally10;
+}
 
 

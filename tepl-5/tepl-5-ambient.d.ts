@@ -4,5 +4,9 @@ declare module 'gi://Tepl?version=5' {
     export default Tepl;
 }
 
+declare module 'gi://Tepl' {
+    import Tepl5 from 'gi://Tepl?version=5';
+    export default Tepl5;
+}
 
 
