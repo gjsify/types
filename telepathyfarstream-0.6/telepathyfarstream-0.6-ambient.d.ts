@@ -1,6 +1,6 @@
 
 declare module 'gi://TelepathyFarstream?version=0.6' {
-    import TelepathyFarstream from '@girs/telepathyfarstream-0.6';
+    import TelepathyFarstream from './telepathyfarstream-0.6.d.ts';
     export default TelepathyFarstream;
 }
 

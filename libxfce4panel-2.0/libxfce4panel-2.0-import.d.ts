@@ -1,9 +1,9 @@
 
-import Libxfce4panel20 from '@girs/libxfce4panel-2.0';
+import Libxfce4panel from './libxfce4panel-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Libxfce4panel: typeof Libxfce4panel20;
+        Libxfce4panel: typeof Libxfce4panel;
     }
 }
 

@@ -16,10 +16,15 @@
             "import": "./poppler-0.18-import.js",
             "default": "./poppler-0.18-import.js"
         },
-        ".": {
+        "./poppler-0.18": {
             "types": "./poppler-0.18.d.ts",
             "import": "./poppler-0.18.js",
             "default": "./poppler-0.18.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

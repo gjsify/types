@@ -1,6 +1,6 @@
 
 declare module 'gi://PeasGtk?version=1.0' {
-    import PeasGtk from '@girs/peasgtk-1.0';
+    import PeasGtk from './peasgtk-1.0.d.ts';
     export default PeasGtk;
 }
 

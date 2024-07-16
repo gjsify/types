@@ -1,6 +1,6 @@
 
 declare module 'gi://Epc?version=1.0' {
-    import Epc from '@girs/epc-1.0';
+    import Epc from './epc-1.0.d.ts';
     export default Epc;
 }
 

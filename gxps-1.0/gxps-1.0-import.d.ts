@@ -1,9 +1,9 @@
 
-import Gxps10 from '@girs/gxps-1.0';
+import Gxps from './gxps-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gxps: typeof Gxps10;
+        Gxps: typeof Gxps;
     }
 }
 

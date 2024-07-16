@@ -16,10 +16,15 @@
             "import": "./jscore-3.0-import.js",
             "default": "./jscore-3.0-import.js"
         },
-        ".": {
+        "./jscore-3.0": {
             "types": "./jscore-3.0.d.ts",
             "import": "./jscore-3.0.js",
             "default": "./jscore-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

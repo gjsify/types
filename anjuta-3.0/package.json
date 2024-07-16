@@ -16,10 +16,15 @@
             "import": "./anjuta-3.0-import.js",
             "default": "./anjuta-3.0-import.js"
         },
-        ".": {
+        "./anjuta-3.0": {
             "types": "./anjuta-3.0.d.ts",
             "import": "./anjuta-3.0.js",
             "default": "./anjuta-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

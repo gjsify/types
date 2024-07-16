@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import RestExtras from 'gi://RestExtras?version=1.0';
-  export { RestExtras };
-  export default RestExtras;
+// @ts-expect-error
+import RestExtras from 'gi://RestExtras?version=1.0';
+export default RestExtras;
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://AyatanaAppIndicator?version=0.1' {
-    import AyatanaAppIndicator from '@girs/ayatanaappindicator-0.1';
+    import AyatanaAppIndicator from './ayatanaappindicator-0.1.d.ts';
     export default AyatanaAppIndicator;
 }
 

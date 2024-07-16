@@ -16,10 +16,15 @@
             "import": "./libmsi-1.0-import.js",
             "default": "./libmsi-1.0-import.js"
         },
-        ".": {
+        "./libmsi-1.0": {
             "types": "./libmsi-1.0.d.ts",
             "import": "./libmsi-1.0.js",
             "default": "./libmsi-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

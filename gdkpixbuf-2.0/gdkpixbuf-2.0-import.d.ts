@@ -1,9 +1,9 @@
 
-import GdkPixbuf20 from '@girs/gdkpixbuf-2.0';
+import GdkPixbuf from './gdkpixbuf-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GdkPixbuf: typeof GdkPixbuf20;
+        GdkPixbuf: typeof GdkPixbuf;
     }
 }
 

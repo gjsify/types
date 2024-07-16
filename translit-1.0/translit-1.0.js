@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import Translit from 'gi://Translit?version=1.0';
-  export { Translit };
-  export default Translit;
+// @ts-expect-error
+import Translit from 'gi://Translit?version=1.0';
+export default Translit;
 

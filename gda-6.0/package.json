@@ -16,10 +16,15 @@
             "import": "./gda-6.0-import.js",
             "default": "./gda-6.0-import.js"
         },
-        ".": {
+        "./gda-6.0": {
             "types": "./gda-6.0.d.ts",
             "import": "./gda-6.0.js",
             "default": "./gda-6.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

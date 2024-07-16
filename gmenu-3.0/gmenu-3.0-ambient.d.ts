@@ -1,6 +1,6 @@
 
 declare module 'gi://GMenu?version=3.0' {
-    import GMenu from '@girs/gmenu-3.0';
+    import GMenu from './gmenu-3.0.d.ts';
     export default GMenu;
 }
 

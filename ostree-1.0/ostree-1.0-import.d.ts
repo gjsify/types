@@ -1,9 +1,9 @@
 
-import OSTree10 from '@girs/ostree-1.0';
+import OSTree from './ostree-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        OSTree: typeof OSTree10;
+        OSTree: typeof OSTree;
     }
 }
 

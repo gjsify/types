@@ -16,10 +16,15 @@
             "import": "./dbusmenugtk3-0.4-import.js",
             "default": "./dbusmenugtk3-0.4-import.js"
         },
-        ".": {
+        "./dbusmenugtk3-0.4": {
             "types": "./dbusmenugtk3-0.4.d.ts",
             "import": "./dbusmenugtk3-0.4.js",
             "default": "./dbusmenugtk3-0.4.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

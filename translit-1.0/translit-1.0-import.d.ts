@@ -1,9 +1,9 @@
 
-import Translit10 from '@girs/translit-1.0';
+import Translit from './translit-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Translit: typeof Translit10;
+        Translit: typeof Translit;
     }
 }
 

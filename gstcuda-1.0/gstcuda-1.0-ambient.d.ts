@@ -1,6 +1,6 @@
 
 declare module 'gi://GstCuda?version=1.0' {
-    import GstCuda from '@girs/gstcuda-1.0';
+    import GstCuda from './gstcuda-1.0.d.ts';
     export default GstCuda;
 }
 

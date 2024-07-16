@@ -1,6 +1,6 @@
 
 declare module 'gi://Avahi?version=0.6' {
-    import Avahi from '@girs/avahi-0.6';
+    import Avahi from './avahi-0.6.d.ts';
     export default Avahi;
 }
 

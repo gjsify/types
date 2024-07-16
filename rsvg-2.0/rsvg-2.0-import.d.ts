@@ -1,9 +1,9 @@
 
-import Rsvg20 from '@girs/rsvg-2.0';
+import Rsvg from './rsvg-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Rsvg: typeof Rsvg20;
+        Rsvg: typeof Rsvg;
     }
 }
 

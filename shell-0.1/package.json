@@ -16,10 +16,15 @@
             "import": "./shell-0.1-import.js",
             "default": "./shell-0.1-import.js"
         },
-        ".": {
+        "./shell-0.1": {
             "types": "./shell-0.1.d.ts",
             "import": "./shell-0.1.js",
             "default": "./shell-0.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://GstInterfaces?version=0.10' {
-    import GstInterfaces from '@girs/gstinterfaces-0.10';
+    import GstInterfaces from './gstinterfaces-0.10.d.ts';
     export default GstInterfaces;
 }
 

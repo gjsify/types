@@ -1,6 +1,6 @@
 
 declare module 'gi://AppStreamCompose?version=1.0' {
-    import AppStreamCompose from '@girs/appstreamcompose-1.0';
+    import AppStreamCompose from './appstreamcompose-1.0.d.ts';
     export default AppStreamCompose;
 }
 

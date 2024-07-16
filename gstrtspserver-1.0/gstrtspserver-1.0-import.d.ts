@@ -1,9 +1,9 @@
 
-import GstRtspServer10 from '@girs/gstrtspserver-1.0';
+import GstRtspServer from './gstrtspserver-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstRtspServer: typeof GstRtspServer10;
+        GstRtspServer: typeof GstRtspServer;
     }
 }
 

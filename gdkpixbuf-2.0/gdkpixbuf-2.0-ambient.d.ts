@@ -1,6 +1,6 @@
 
 declare module 'gi://GdkPixbuf?version=2.0' {
-    import GdkPixbuf from '@girs/gdkpixbuf-2.0';
+    import GdkPixbuf from './gdkpixbuf-2.0.d.ts';
     export default GdkPixbuf;
 }
 

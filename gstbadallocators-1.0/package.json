@@ -16,10 +16,15 @@
             "import": "./gstbadallocators-1.0-import.js",
             "default": "./gstbadallocators-1.0-import.js"
         },
-        ".": {
+        "./gstbadallocators-1.0": {
             "types": "./gstbadallocators-1.0.d.ts",
             "import": "./gstbadallocators-1.0.js",
             "default": "./gstbadallocators-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

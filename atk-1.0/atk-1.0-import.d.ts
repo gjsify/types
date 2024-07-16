@@ -1,9 +1,9 @@
 
-import Atk10 from '@girs/atk-1.0';
+import Atk from './atk-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Atk: typeof Atk10;
+        Atk: typeof Atk;
     }
 }
 

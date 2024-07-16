@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import GoVirt from 'gi://GoVirt?version=1.0';
-  export { GoVirt };
-  export default GoVirt;
+// @ts-expect-error
+import GoVirt from 'gi://GoVirt?version=1.0';
+export default GoVirt;
 

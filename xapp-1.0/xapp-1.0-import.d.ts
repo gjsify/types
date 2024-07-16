@@ -1,9 +1,9 @@
 
-import XApp10 from '@girs/xapp-1.0';
+import XApp from './xapp-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        XApp: typeof XApp10;
+        XApp: typeof XApp;
     }
 }
 

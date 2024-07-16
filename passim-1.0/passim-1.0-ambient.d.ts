@@ -1,6 +1,6 @@
 
 declare module 'gi://Passim?version=1.0' {
-    import Passim from '@girs/passim-1.0';
+    import Passim from './passim-1.0.d.ts';
     export default Passim;
 }
 

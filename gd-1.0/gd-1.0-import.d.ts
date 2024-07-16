@@ -1,9 +1,9 @@
 
-import Gd10 from '@girs/gd-1.0';
+import Gd from './gd-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gd: typeof Gd10;
+        Gd: typeof Gd;
     }
 }
 

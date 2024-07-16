@@ -1,9 +1,9 @@
 
-import Handy1 from '@girs/handy-1';
+import Handy from './handy-1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Handy: typeof Handy1;
+        Handy: typeof Handy;
     }
 }
 

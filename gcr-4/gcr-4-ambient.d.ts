@@ -1,6 +1,6 @@
 
 declare module 'gi://Gcr?version=4' {
-    import Gcr from '@girs/gcr-4';
+    import Gcr from './gcr-4.d.ts';
     export default Gcr;
 }
 

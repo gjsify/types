@@ -1,6 +1,6 @@
 
 declare module 'gi://Keybinder?version=3.0' {
-    import Keybinder from '@girs/keybinder-3.0';
+    import Keybinder from './keybinder-3.0.d.ts';
     export default Keybinder;
 }
 

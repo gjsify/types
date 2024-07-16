@@ -16,10 +16,15 @@
             "import": "./totemplparser-1.0-import.js",
             "default": "./totemplparser-1.0-import.js"
         },
-        ".": {
+        "./totemplparser-1.0": {
             "types": "./totemplparser-1.0.d.ts",
             "import": "./totemplparser-1.0.js",
             "default": "./totemplparser-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://GUPnPDLNAGst?version=2.0' {
-    import GUPnPDLNAGst from '@girs/gupnpdlnagst-2.0';
+    import GUPnPDLNAGst from './gupnpdlnagst-2.0.d.ts';
     export default GUPnPDLNAGst;
 }
 

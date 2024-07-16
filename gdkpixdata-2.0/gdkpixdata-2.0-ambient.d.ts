@@ -1,6 +1,6 @@
 
 declare module 'gi://GdkPixdata?version=2.0' {
-    import GdkPixdata from '@girs/gdkpixdata-2.0';
+    import GdkPixdata from './gdkpixdata-2.0.d.ts';
     export default GdkPixdata;
 }
 

@@ -16,10 +16,15 @@
             "import": "./xed-1.0-import.js",
             "default": "./xed-1.0-import.js"
         },
-        ".": {
+        "./xed-1.0": {
             "types": "./xed-1.0.d.ts",
             "import": "./xed-1.0.js",
             "default": "./xed-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

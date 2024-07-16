@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './webkitwebprocessextension-6.0-ambient.d.ts';
-
 /**
  * WebKitWebProcessExtension-6.0
  */

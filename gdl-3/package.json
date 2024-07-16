@@ -16,10 +16,15 @@
             "import": "./gdl-3-import.js",
             "default": "./gdl-3-import.js"
         },
-        ".": {
+        "./gdl-3": {
             "types": "./gdl-3.d.ts",
             "import": "./gdl-3.js",
             "default": "./gdl-3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

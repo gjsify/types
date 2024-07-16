@@ -1,9 +1,9 @@
 
-import GcrUi3 from '@girs/gcrui-3';
+import GcrUi from './gcrui-3.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GcrUi: typeof GcrUi3;
+        GcrUi: typeof GcrUi;
     }
 }
 

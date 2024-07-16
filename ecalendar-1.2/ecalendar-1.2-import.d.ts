@@ -1,9 +1,9 @@
 
-import ECalendar12 from '@girs/ecalendar-1.2';
+import ECalendar from './ecalendar-1.2.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        ECalendar: typeof ECalendar12;
+        ECalendar: typeof ECalendar;
     }
 }
 

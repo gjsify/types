@@ -16,10 +16,15 @@
             "import": "./geoclue-2.0-import.js",
             "default": "./geoclue-2.0-import.js"
         },
-        ".": {
+        "./geoclue-2.0": {
             "types": "./geoclue-2.0.d.ts",
             "import": "./geoclue-2.0.js",
             "default": "./geoclue-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

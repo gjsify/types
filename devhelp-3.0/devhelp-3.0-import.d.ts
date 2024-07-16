@@ -1,9 +1,9 @@
 
-import Devhelp30 from '@girs/devhelp-3.0';
+import Devhelp from './devhelp-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Devhelp: typeof Devhelp30;
+        Devhelp: typeof Devhelp;
     }
 }
 

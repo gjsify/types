@@ -1,6 +1,6 @@
 
 declare module 'gi://Gandiva?version=1.0' {
-    import Gandiva from '@girs/gandiva-1.0';
+    import Gandiva from './gandiva-1.0.d.ts';
     export default Gandiva;
 }
 

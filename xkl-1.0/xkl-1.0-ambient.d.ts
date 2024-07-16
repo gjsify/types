@@ -1,6 +1,6 @@
 
 declare module 'gi://Xkl?version=1.0' {
-    import Xkl from '@girs/xkl-1.0';
+    import Xkl from './xkl-1.0.d.ts';
     export default Xkl;
 }
 

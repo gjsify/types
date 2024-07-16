@@ -1,9 +1,9 @@
 
-import CDesktopEnums30 from '@girs/cdesktopenums-3.0';
+import CDesktopEnums from './cdesktopenums-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        CDesktopEnums: typeof CDesktopEnums30;
+        CDesktopEnums: typeof CDesktopEnums;
     }
 }
 

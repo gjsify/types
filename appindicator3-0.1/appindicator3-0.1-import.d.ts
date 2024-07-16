@@ -1,9 +1,9 @@
 
-import AppIndicator301 from '@girs/appindicator3-0.1';
+import AppIndicator3 from './appindicator3-0.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        AppIndicator3: typeof AppIndicator301;
+        AppIndicator3: typeof AppIndicator3;
     }
 }
 

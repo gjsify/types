@@ -1,9 +1,9 @@
 
-import Gck2 from '@girs/gck-2';
+import Gck from './gck-2.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gck: typeof Gck2;
+        Gck: typeof Gck;
     }
 }
 

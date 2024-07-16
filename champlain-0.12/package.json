@@ -16,10 +16,15 @@
             "import": "./champlain-0.12-import.js",
             "default": "./champlain-0.12-import.js"
         },
-        ".": {
+        "./champlain-0.12": {
             "types": "./champlain-0.12.d.ts",
             "import": "./champlain-0.12.js",
             "default": "./champlain-0.12.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

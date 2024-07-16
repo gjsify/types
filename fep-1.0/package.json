@@ -16,10 +16,15 @@
             "import": "./fep-1.0-import.js",
             "default": "./fep-1.0-import.js"
         },
-        ".": {
+        "./fep-1.0": {
             "types": "./fep-1.0.d.ts",
             "import": "./fep-1.0.js",
             "default": "./fep-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

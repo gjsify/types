@@ -1,9 +1,9 @@
 
-import WebKit60 from '@girs/webkit-6.0';
+import WebKit from './webkit-6.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        WebKit: typeof WebKit60;
+        WebKit: typeof WebKit;
     }
 }
 

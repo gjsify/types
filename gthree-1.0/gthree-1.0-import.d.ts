@@ -1,9 +1,9 @@
 
-import Gthree10 from '@girs/gthree-1.0';
+import Gthree from './gthree-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gthree: typeof Gthree10;
+        Gthree: typeof Gthree;
     }
 }
 

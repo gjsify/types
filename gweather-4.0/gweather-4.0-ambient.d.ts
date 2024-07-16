@@ -1,6 +1,6 @@
 
 declare module 'gi://GWeather?version=4.0' {
-    import GWeather from '@girs/gweather-4.0';
+    import GWeather from './gweather-4.0.d.ts';
     export default GWeather;
 }
 

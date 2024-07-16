@@ -16,10 +16,15 @@
             "import": "./retro-0.14-import.js",
             "default": "./retro-0.14-import.js"
         },
-        ".": {
+        "./retro-0.14": {
             "types": "./retro-0.14.d.ts",
             "import": "./retro-0.14.js",
             "default": "./retro-0.14.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

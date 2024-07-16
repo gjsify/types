@@ -1,6 +1,6 @@
 
 declare module 'gi://Wnck?version=3.0' {
-    import Wnck from '@girs/wnck-3.0';
+    import Wnck from './wnck-3.0.d.ts';
     export default Wnck;
 }
 

@@ -1,9 +1,9 @@
 
-import GnomeKeyring10 from '@girs/gnomekeyring-1.0';
+import GnomeKeyring from './gnomekeyring-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GnomeKeyring: typeof GnomeKeyring10;
+        GnomeKeyring: typeof GnomeKeyring;
     }
 }
 

@@ -16,10 +16,15 @@
             "import": "./farstream-0.1-import.js",
             "default": "./farstream-0.1-import.js"
         },
-        ".": {
+        "./farstream-0.1": {
             "types": "./farstream-0.1.d.ts",
             "import": "./farstream-0.1.js",
             "default": "./farstream-0.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://LibvirtSandbox?version=1.0' {
-    import LibvirtSandbox from '@girs/libvirtsandbox-1.0';
+    import LibvirtSandbox from './libvirtsandbox-1.0.d.ts';
     export default LibvirtSandbox;
 }
 

@@ -1,9 +1,9 @@
 
-import Epc10 from '@girs/epc-1.0';
+import Epc from './epc-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Epc: typeof Epc10;
+        Epc: typeof Epc;
     }
 }
 

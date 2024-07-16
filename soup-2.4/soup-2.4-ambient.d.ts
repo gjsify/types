@@ -1,6 +1,6 @@
 
 declare module 'gi://Soup?version=2.4' {
-    import Soup from '@girs/soup-2.4';
+    import Soup from './soup-2.4.d.ts';
     export default Soup;
 }
 

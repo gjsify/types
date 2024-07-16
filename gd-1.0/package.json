@@ -16,10 +16,15 @@
             "import": "./gd-1.0-import.js",
             "default": "./gd-1.0-import.js"
         },
-        ".": {
+        "./gd-1.0": {
             "types": "./gd-1.0.d.ts",
             "import": "./gd-1.0.js",
             "default": "./gd-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

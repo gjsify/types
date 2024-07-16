@@ -1,6 +1,6 @@
 
 declare module 'gi://Libxfce4panel?version=2.0' {
-    import Libxfce4panel from '@girs/libxfce4panel-2.0';
+    import Libxfce4panel from './libxfce4panel-2.0.d.ts';
     export default Libxfce4panel;
 }
 

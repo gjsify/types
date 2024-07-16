@@ -16,10 +16,15 @@
             "import": "./javascriptcore-5.0-import.js",
             "default": "./javascriptcore-5.0-import.js"
         },
-        ".": {
+        "./javascriptcore-5.0": {
             "types": "./javascriptcore-5.0.d.ts",
             "import": "./javascriptcore-5.0.js",
             "default": "./javascriptcore-5.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

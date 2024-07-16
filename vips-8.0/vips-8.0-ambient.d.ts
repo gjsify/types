@@ -1,6 +1,6 @@
 
 declare module 'gi://Vips?version=8.0' {
-    import Vips from '@girs/vips-8.0';
+    import Vips from './vips-8.0.d.ts';
     export default Vips;
 }
 

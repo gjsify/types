@@ -1,6 +1,6 @@
 
 declare module 'gi://GcrGtk3?version=4' {
-    import GcrGtk3 from '@girs/gcrgtk3-4';
+    import GcrGtk3 from './gcrgtk3-4.d.ts';
     export default GcrGtk3;
 }
 

@@ -1,9 +1,9 @@
 
-import TotemPlParser10 from '@girs/totemplparser-1.0';
+import TotemPlParser from './totemplparser-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        TotemPlParser: typeof TotemPlParser10;
+        TotemPlParser: typeof TotemPlParser;
     }
 }
 

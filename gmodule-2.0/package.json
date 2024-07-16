@@ -16,10 +16,15 @@
             "import": "./gmodule-2.0-import.js",
             "default": "./gmodule-2.0-import.js"
         },
-        ".": {
+        "./gmodule-2.0": {
             "types": "./gmodule-2.0.d.ts",
             "import": "./gmodule-2.0.js",
             "default": "./gmodule-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

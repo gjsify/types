@@ -1,6 +1,6 @@
 
 declare module 'gi://Poppler?version=0.18' {
-    import Poppler from '@girs/poppler-0.18';
+    import Poppler from './poppler-0.18.d.ts';
     export default Poppler;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://GstVulkan?version=1.0' {
-    import GstVulkan from '@girs/gstvulkan-1.0';
+    import GstVulkan from './gstvulkan-1.0.d.ts';
     export default GstVulkan;
 }
 

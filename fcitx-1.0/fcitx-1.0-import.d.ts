@@ -1,9 +1,9 @@
 
-import Fcitx10 from '@girs/fcitx-1.0';
+import Fcitx from './fcitx-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Fcitx: typeof Fcitx10;
+        Fcitx: typeof Fcitx;
     }
 }
 

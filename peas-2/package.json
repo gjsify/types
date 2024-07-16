@@ -16,10 +16,15 @@
             "import": "./peas-2-import.js",
             "default": "./peas-2-import.js"
         },
-        ".": {
+        "./peas-2": {
             "types": "./peas-2.d.ts",
             "import": "./peas-2.js",
             "default": "./peas-2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

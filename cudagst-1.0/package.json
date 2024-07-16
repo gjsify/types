@@ -16,10 +16,15 @@
             "import": "./cudagst-1.0-import.js",
             "default": "./cudagst-1.0-import.js"
         },
-        ".": {
+        "./cudagst-1.0": {
             "types": "./cudagst-1.0.d.ts",
             "import": "./cudagst-1.0.js",
             "default": "./cudagst-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

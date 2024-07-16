@@ -1,6 +1,6 @@
 
 declare module 'gi://LangTag?version=0.6' {
-    import LangTag from '@girs/langtag-0.6';
+    import LangTag from './langtag-0.6.d.ts';
     export default LangTag;
 }
 

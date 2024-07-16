@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './folkseds-0.6-ambient.d.ts';
-
-import './folkseds-0.6-import.d.ts';
-
 /**
  * FolksEds-0.6
  */

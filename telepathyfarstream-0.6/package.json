@@ -16,10 +16,15 @@
             "import": "./telepathyfarstream-0.6-import.js",
             "default": "./telepathyfarstream-0.6-import.js"
         },
-        ".": {
+        "./telepathyfarstream-0.6": {
             "types": "./telepathyfarstream-0.6.d.ts",
             "import": "./telepathyfarstream-0.6.js",
             "default": "./telepathyfarstream-0.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

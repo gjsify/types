@@ -1,9 +1,9 @@
 
-import Gdl3 from '@girs/gdl-3';
+import Gdl from './gdl-3.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gdl: typeof Gdl3;
+        Gdl: typeof Gdl;
     }
 }
 

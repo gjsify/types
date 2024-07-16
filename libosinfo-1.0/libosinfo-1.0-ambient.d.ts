@@ -1,6 +1,6 @@
 
 declare module 'gi://Libosinfo?version=1.0' {
-    import Libosinfo from '@girs/libosinfo-1.0';
+    import Libosinfo from './libosinfo-1.0.d.ts';
     export default Libosinfo;
 }
 

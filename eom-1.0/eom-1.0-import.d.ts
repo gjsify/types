@@ -1,9 +1,9 @@
 
-import Eom10 from '@girs/eom-1.0';
+import Eom from './eom-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Eom: typeof Eom10;
+        Eom: typeof Eom;
     }
 }
 

@@ -16,10 +16,15 @@
             "import": "./gdaui-6.0-import.js",
             "default": "./gdaui-6.0-import.js"
         },
-        ".": {
+        "./gdaui-6.0": {
             "types": "./gdaui-6.0.d.ts",
             "import": "./gdaui-6.0.js",
             "default": "./gdaui-6.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

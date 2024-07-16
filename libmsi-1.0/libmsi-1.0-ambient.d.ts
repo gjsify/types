@@ -1,6 +1,6 @@
 
 declare module 'gi://Libmsi?version=1.0' {
-    import Libmsi from '@girs/libmsi-1.0';
+    import Libmsi from './libmsi-1.0.d.ts';
     export default Libmsi;
 }
 

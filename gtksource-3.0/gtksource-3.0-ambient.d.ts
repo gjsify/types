@@ -1,6 +1,6 @@
 
 declare module 'gi://GtkSource?version=3.0' {
-    import GtkSource from '@girs/gtksource-3.0';
+    import GtkSource from './gtksource-3.0.d.ts';
     export default GtkSource;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Lasem?version=0.4' {
-    import Lasem from '@girs/lasem-0.4';
+    import Lasem from './lasem-0.4.d.ts';
     export default Lasem;
 }
 

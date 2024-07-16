@@ -1,6 +1,6 @@
 
 declare module 'gi://Fcitx?version=1.0' {
-    import Fcitx from '@girs/fcitx-1.0';
+    import Fcitx from './fcitx-1.0.d.ts';
     export default Fcitx;
 }
 

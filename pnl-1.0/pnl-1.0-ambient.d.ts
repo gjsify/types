@@ -1,6 +1,6 @@
 
 declare module 'gi://Pnl?version=1.0' {
-    import Pnl from '@girs/pnl-1.0';
+    import Pnl from './pnl-1.0.d.ts';
     export default Pnl;
 }
 

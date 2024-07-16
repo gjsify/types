@@ -1,6 +1,6 @@
 
 declare module 'gi://GarconGtk?version=1.0' {
-    import GarconGtk from '@girs/garcongtk-1.0';
+    import GarconGtk from './garcongtk-1.0.d.ts';
     export default GarconGtk;
 }
 

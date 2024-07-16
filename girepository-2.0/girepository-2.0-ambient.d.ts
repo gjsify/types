@@ -1,6 +1,6 @@
 
 declare module 'gi://GIRepository?version=2.0' {
-    import GIRepository from '@girs/girepository-2.0';
+    import GIRepository from './girepository-2.0.d.ts';
     export default GIRepository;
 }
 

@@ -16,10 +16,15 @@
             "import": "./pango-1.0-import.js",
             "default": "./pango-1.0-import.js"
         },
-        ".": {
+        "./pango-1.0": {
             "types": "./pango-1.0.d.ts",
             "import": "./pango-1.0.js",
             "default": "./pango-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

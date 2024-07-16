@@ -1,6 +1,6 @@
 
 declare module 'gi://ECal?version=2.0' {
-    import ECal from '@girs/ecal-2.0';
+    import ECal from './ecal-2.0.d.ts';
     export default ECal;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Snapd?version=2' {
-    import Snapd from '@girs/snapd-2';
+    import Snapd from './snapd-2.d.ts';
     export default Snapd;
 }
 

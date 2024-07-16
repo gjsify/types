@@ -1,9 +1,9 @@
 
-import MyPaint16 from '@girs/mypaint-1.6';
+import MyPaint from './mypaint-1.6.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        MyPaint: typeof MyPaint16;
+        MyPaint: typeof MyPaint;
     }
 }
 

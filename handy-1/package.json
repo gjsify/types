@@ -16,10 +16,15 @@
             "import": "./handy-1-import.js",
             "default": "./handy-1-import.js"
         },
-        ".": {
+        "./handy-1": {
             "types": "./handy-1.d.ts",
             "import": "./handy-1.js",
             "default": "./handy-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

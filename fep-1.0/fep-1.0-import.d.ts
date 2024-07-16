@@ -1,9 +1,9 @@
 
-import Fep10 from '@girs/fep-1.0';
+import Fep from './fep-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Fep: typeof Fep10;
+        Fep: typeof Fep;
     }
 }
 

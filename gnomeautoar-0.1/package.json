@@ -16,10 +16,15 @@
             "import": "./gnomeautoar-0.1-import.js",
             "default": "./gnomeautoar-0.1-import.js"
         },
-        ".": {
+        "./gnomeautoar-0.1": {
             "types": "./gnomeautoar-0.1.d.ts",
             "import": "./gnomeautoar-0.1.js",
             "default": "./gnomeautoar-0.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

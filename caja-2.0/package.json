@@ -16,10 +16,15 @@
             "import": "./caja-2.0-import.js",
             "default": "./caja-2.0-import.js"
         },
-        ".": {
+        "./caja-2.0": {
             "types": "./caja-2.0.d.ts",
             "import": "./caja-2.0.js",
             "default": "./caja-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

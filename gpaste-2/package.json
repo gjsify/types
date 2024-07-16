@@ -16,10 +16,15 @@
             "import": "./gpaste-2-import.js",
             "default": "./gpaste-2-import.js"
         },
-        ".": {
+        "./gpaste-2": {
             "types": "./gpaste-2.d.ts",
             "import": "./gpaste-2.js",
             "default": "./gpaste-2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://GooCanvas?version=3.0' {
-    import GooCanvas from '@girs/goocanvas-3.0';
+    import GooCanvas from './goocanvas-3.0.d.ts';
     export default GooCanvas;
 }
 

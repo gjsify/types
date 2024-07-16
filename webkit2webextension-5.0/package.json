@@ -16,10 +16,15 @@
             "import": "./webkit2webextension-5.0-import.js",
             "default": "./webkit2webextension-5.0-import.js"
         },
-        ".": {
+        "./webkit2webextension-5.0": {
             "types": "./webkit2webextension-5.0.d.ts",
             "import": "./webkit2webextension-5.0.js",
             "default": "./webkit2webextension-5.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,9 +1,9 @@
 
-import Kkc10 from '@girs/kkc-1.0';
+import Kkc from './kkc-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Kkc: typeof Kkc10;
+        Kkc: typeof Kkc;
     }
 }
 

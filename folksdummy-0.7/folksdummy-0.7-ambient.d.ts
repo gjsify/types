@@ -1,6 +1,6 @@
 
 declare module 'gi://FolksDummy?version=0.7' {
-    import FolksDummy from '@girs/folksdummy-0.7';
+    import FolksDummy from './folksdummy-0.7.d.ts';
     export default FolksDummy;
 }
 

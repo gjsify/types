@@ -1,6 +1,6 @@
 
 declare module 'gi://Wp?version=0.5' {
-    import Wp from '@girs/wp-0.5';
+    import Wp from './wp-0.5.d.ts';
     export default Wp;
 }
 

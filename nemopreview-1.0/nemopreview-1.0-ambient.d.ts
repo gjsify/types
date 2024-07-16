@@ -1,6 +1,6 @@
 
 declare module 'gi://NemoPreview?version=1.0' {
-    import NemoPreview from '@girs/nemopreview-1.0';
+    import NemoPreview from './nemopreview-1.0.d.ts';
     export default NemoPreview;
 }
 

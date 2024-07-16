@@ -16,10 +16,15 @@
             "import": "./gtef-2-import.js",
             "default": "./gtef-2-import.js"
         },
-        ".": {
+        "./gtef-2": {
             "types": "./gtef-2.d.ts",
             "import": "./gtef-2.js",
             "default": "./gtef-2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

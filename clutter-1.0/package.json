@@ -16,10 +16,15 @@
             "import": "./clutter-1.0-import.js",
             "default": "./clutter-1.0-import.js"
         },
-        ".": {
+        "./clutter-1.0": {
             "types": "./clutter-1.0.d.ts",
             "import": "./clutter-1.0.js",
             "default": "./clutter-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

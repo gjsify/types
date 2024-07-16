@@ -16,10 +16,15 @@
             "import": "./edataserverui-1.2-import.js",
             "default": "./edataserverui-1.2-import.js"
         },
-        ".": {
+        "./edataserverui-1.2": {
             "types": "./edataserverui-1.2.d.ts",
             "import": "./edataserverui-1.2.js",
             "default": "./edataserverui-1.2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

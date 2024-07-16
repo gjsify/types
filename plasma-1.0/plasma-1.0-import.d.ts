@@ -1,9 +1,9 @@
 
-import Plasma10 from '@girs/plasma-1.0';
+import Plasma from './plasma-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Plasma: typeof Plasma10;
+        Plasma: typeof Plasma;
     }
 }
 

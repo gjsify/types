@@ -16,10 +16,15 @@
             "import": "./mx-2.0-import.js",
             "default": "./mx-2.0-import.js"
         },
-        ".": {
+        "./mx-2.0": {
             "types": "./mx-2.0.d.ts",
             "import": "./mx-2.0.js",
             "default": "./mx-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

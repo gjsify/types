@@ -16,10 +16,15 @@
             "import": "./folksdummy-0.6-import.js",
             "default": "./folksdummy-0.6-import.js"
         },
-        ".": {
+        "./folksdummy-0.6": {
             "types": "./folksdummy-0.6.d.ts",
             "import": "./folksdummy-0.6.js",
             "default": "./folksdummy-0.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

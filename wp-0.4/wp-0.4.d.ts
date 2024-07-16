@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './wp-0.4-ambient.d.ts';
-
-import './wp-0.4-import.d.ts';
-
 /**
  * Wp-0.4
  */

@@ -16,10 +16,15 @@
             "import": "./cvc-1.0-import.js",
             "default": "./cvc-1.0-import.js"
         },
-        ".": {
+        "./cvc-1.0": {
             "types": "./cvc-1.0.d.ts",
             "import": "./cvc-1.0.js",
             "default": "./cvc-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

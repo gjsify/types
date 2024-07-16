@@ -1,9 +1,9 @@
 
-import Grl03 from '@girs/grl-0.3';
+import Grl from './grl-0.3.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Grl: typeof Grl03;
+        Grl: typeof Grl;
     }
 }
 

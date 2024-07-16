@@ -1,9 +1,9 @@
 
-import GstGL10 from '@girs/gstgl-1.0';
+import GstGL from './gstgl-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstGL: typeof GstGL10;
+        GstGL: typeof GstGL;
     }
 }
 

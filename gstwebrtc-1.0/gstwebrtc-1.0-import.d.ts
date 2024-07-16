@@ -1,9 +1,9 @@
 
-import GstWebRTC10 from '@girs/gstwebrtc-1.0';
+import GstWebRTC from './gstwebrtc-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstWebRTC: typeof GstWebRTC10;
+        GstWebRTC: typeof GstWebRTC;
     }
 }
 

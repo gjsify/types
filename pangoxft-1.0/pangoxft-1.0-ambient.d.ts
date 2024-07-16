@@ -1,6 +1,6 @@
 
 declare module 'gi://PangoXft?version=1.0' {
-    import PangoXft from '@girs/pangoxft-1.0';
+    import PangoXft from './pangoxft-1.0.d.ts';
     export default PangoXft;
 }
 

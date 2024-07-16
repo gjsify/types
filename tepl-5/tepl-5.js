@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import Tepl from 'gi://Tepl?version=5';
-  export { Tepl };
-  export default Tepl;
+// @ts-expect-error
+import Tepl from 'gi://Tepl?version=5';
+export default Tepl;
 

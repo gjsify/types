@@ -1,9 +1,9 @@
 
-import GIRepository30 from '@girs/girepository-3.0';
+import GIRepository from './girepository-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GIRepository: typeof GIRepository30;
+        GIRepository: typeof GIRepository;
     }
 }
 

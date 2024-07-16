@@ -1,9 +1,9 @@
 
-import RestExtras10 from '@girs/restextras-1.0';
+import RestExtras from './restextras-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        RestExtras: typeof RestExtras10;
+        RestExtras: typeof RestExtras;
     }
 }
 

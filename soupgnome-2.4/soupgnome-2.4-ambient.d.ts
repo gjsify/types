@@ -1,6 +1,6 @@
 
 declare module 'gi://SoupGNOME?version=2.4' {
-    import SoupGNOME from '@girs/soupgnome-2.4';
+    import SoupGNOME from './soupgnome-2.4.d.ts';
     export default SoupGNOME;
 }
 

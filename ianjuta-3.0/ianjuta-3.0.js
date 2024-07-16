@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import IAnjuta from 'gi://IAnjuta?version=3.0';
-  export { IAnjuta };
-  export default IAnjuta;
+// @ts-expect-error
+import IAnjuta from 'gi://IAnjuta?version=3.0';
+export default IAnjuta;
 

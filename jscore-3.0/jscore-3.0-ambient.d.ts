@@ -1,6 +1,6 @@
 
 declare module 'gi://JSCore?version=3.0' {
-    import JSCore from '@girs/jscore-3.0';
+    import JSCore from './jscore-3.0.d.ts';
     export default JSCore;
 }
 

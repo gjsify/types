@@ -1,9 +1,9 @@
 
-import Bump01 from '@girs/bump-0.1';
+import Bump from './bump-0.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Bump: typeof Bump01;
+        Bump: typeof Bump;
     }
 }
 

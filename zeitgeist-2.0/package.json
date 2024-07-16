@@ -16,10 +16,15 @@
             "import": "./zeitgeist-2.0-import.js",
             "default": "./zeitgeist-2.0-import.js"
         },
-        ".": {
+        "./zeitgeist-2.0": {
             "types": "./zeitgeist-2.0.d.ts",
             "import": "./zeitgeist-2.0.js",
             "default": "./zeitgeist-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

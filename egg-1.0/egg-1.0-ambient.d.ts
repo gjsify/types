@@ -1,6 +1,6 @@
 
 declare module 'gi://Egg?version=1.0' {
-    import Egg from '@girs/egg-1.0';
+    import Egg from './egg-1.0.d.ts';
     export default Egg;
 }
 

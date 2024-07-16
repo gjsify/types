@@ -1,9 +1,9 @@
 
-import Avahi06 from '@girs/avahi-0.6';
+import Avahi from './avahi-0.6.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Avahi: typeof Avahi06;
+        Avahi: typeof Avahi;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import GstMse10 from '@girs/gstmse-1.0';
+import GstMse from './gstmse-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstMse: typeof GstMse10;
+        GstMse: typeof GstMse;
     }
 }
 

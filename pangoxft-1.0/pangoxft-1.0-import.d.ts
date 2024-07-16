@@ -1,9 +1,9 @@
 
-import PangoXft10 from '@girs/pangoxft-1.0';
+import PangoXft from './pangoxft-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        PangoXft: typeof PangoXft10;
+        PangoXft: typeof PangoXft;
     }
 }
 

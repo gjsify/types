@@ -1,6 +1,6 @@
 
 declare module 'gi://XreaderDocument?version=1.5' {
-    import XreaderDocument from '@girs/xreaderdocument-1.5';
+    import XreaderDocument from './xreaderdocument-1.5.d.ts';
     export default XreaderDocument;
 }
 

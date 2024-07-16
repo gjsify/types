@@ -1,9 +1,9 @@
 
-import Gucharmap290 from '@girs/gucharmap-2.90';
+import Gucharmap from './gucharmap-2.90.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gucharmap: typeof Gucharmap290;
+        Gucharmap: typeof Gucharmap;
     }
 }
 

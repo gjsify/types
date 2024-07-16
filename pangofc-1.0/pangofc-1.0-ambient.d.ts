@@ -1,6 +1,6 @@
 
 declare module 'gi://PangoFc?version=1.0' {
-    import PangoFc from '@girs/pangofc-1.0';
+    import PangoFc from './pangofc-1.0.d.ts';
     export default PangoFc;
 }
 

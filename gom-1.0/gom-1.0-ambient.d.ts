@@ -1,6 +1,6 @@
 
 declare module 'gi://Gom?version=1.0' {
-    import Gom from '@girs/gom-1.0';
+    import Gom from './gom-1.0.d.ts';
     export default Gom;
 }
 

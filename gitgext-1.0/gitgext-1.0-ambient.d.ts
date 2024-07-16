@@ -1,6 +1,6 @@
 
 declare module 'gi://GitgExt?version=1.0' {
-    import GitgExt from '@girs/gitgext-1.0';
+    import GitgExt from './gitgext-1.0.d.ts';
     export default GitgExt;
 }
 

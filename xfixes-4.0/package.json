@@ -16,10 +16,15 @@
             "import": "./xfixes-4.0-import.js",
             "default": "./xfixes-4.0-import.js"
         },
-        ".": {
+        "./xfixes-4.0": {
             "types": "./xfixes-4.0.d.ts",
             "import": "./xfixes-4.0.js",
             "default": "./xfixes-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

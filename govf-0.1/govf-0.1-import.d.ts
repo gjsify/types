@@ -1,9 +1,9 @@
 
-import Govf01 from '@girs/govf-0.1';
+import Govf from './govf-0.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Govf: typeof Govf01;
+        Govf: typeof Govf;
     }
 }
 

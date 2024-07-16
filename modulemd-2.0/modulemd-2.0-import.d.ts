@@ -1,9 +1,9 @@
 
-import Modulemd20 from '@girs/modulemd-2.0';
+import Modulemd from './modulemd-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Modulemd: typeof Modulemd20;
+        Modulemd: typeof Modulemd;
     }
 }
 

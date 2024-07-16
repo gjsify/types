@@ -1,9 +1,9 @@
 
-import LightDM1 from '@girs/lightdm-1';
+import LightDM from './lightdm-1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        LightDM: typeof LightDM1;
+        LightDM: typeof LightDM;
     }
 }
 

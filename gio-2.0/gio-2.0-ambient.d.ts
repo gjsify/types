@@ -1,6 +1,6 @@
 
 declare module 'gi://Gio?version=2.0' {
-    import Gio from '@girs/gio-2.0';
+    import Gio from './gio-2.0.d.ts';
     export default Gio;
 }
 

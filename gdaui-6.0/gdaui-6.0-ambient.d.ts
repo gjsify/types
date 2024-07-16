@@ -1,6 +1,6 @@
 
 declare module 'gi://Gdaui?version=6.0' {
-    import Gdaui from '@girs/gdaui-6.0';
+    import Gdaui from './gdaui-6.0.d.ts';
     export default Gdaui;
 }
 

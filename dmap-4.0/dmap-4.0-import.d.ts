@@ -1,9 +1,9 @@
 
-import Dmap40 from '@girs/dmap-4.0';
+import Dmap from './dmap-4.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Dmap: typeof Dmap40;
+        Dmap: typeof Dmap;
     }
 }
 

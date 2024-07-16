@@ -16,10 +16,15 @@
             "import": "./keybinder-3.0-import.js",
             "default": "./keybinder-3.0-import.js"
         },
-        ".": {
+        "./keybinder-3.0": {
             "types": "./keybinder-3.0.d.ts",
             "import": "./keybinder-3.0.js",
             "default": "./keybinder-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

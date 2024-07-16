@@ -1,6 +1,6 @@
 
 declare module 'gi://GCalc?version=1' {
-    import GCalc from '@girs/gcalc-1';
+    import GCalc from './gcalc-1.d.ts';
     export default GCalc;
 }
 

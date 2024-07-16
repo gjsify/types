@@ -1,6 +1,6 @@
 
 declare module 'gi://GtkChamplain?version=0.12' {
-    import GtkChamplain from '@girs/gtkchamplain-0.12';
+    import GtkChamplain from './gtkchamplain-0.12.d.ts';
     export default GtkChamplain;
 }
 

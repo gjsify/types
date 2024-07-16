@@ -1,6 +1,6 @@
 
 declare module 'gi://GstMse?version=1.0' {
-    import GstMse from '@girs/gstmse-1.0';
+    import GstMse from './gstmse-1.0.d.ts';
     export default GstMse;
 }
 

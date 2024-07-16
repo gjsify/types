@@ -16,10 +16,15 @@
             "import": "./libvirtsandbox-1.0-import.js",
             "default": "./libvirtsandbox-1.0-import.js"
         },
-        ".": {
+        "./libvirtsandbox-1.0": {
             "types": "./libvirtsandbox-1.0.d.ts",
             "import": "./libvirtsandbox-1.0.js",
             "default": "./libvirtsandbox-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

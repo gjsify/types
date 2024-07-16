@@ -16,10 +16,15 @@
             "import": "./cryptui-0.0-import.js",
             "default": "./cryptui-0.0-import.js"
         },
-        ".": {
+        "./cryptui-0.0": {
             "types": "./cryptui-0.0.d.ts",
             "import": "./cryptui-0.0.js",
             "default": "./cryptui-0.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

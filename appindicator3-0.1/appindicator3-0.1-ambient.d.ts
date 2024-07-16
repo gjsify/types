@@ -1,6 +1,6 @@
 
 declare module 'gi://AppIndicator3?version=0.1' {
-    import AppIndicator3 from '@girs/appindicator3-0.1';
+    import AppIndicator3 from './appindicator3-0.1.d.ts';
     export default AppIndicator3;
 }
 

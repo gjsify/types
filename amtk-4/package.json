@@ -16,10 +16,15 @@
             "import": "./amtk-4-import.js",
             "default": "./amtk-4-import.js"
         },
-        ".": {
+        "./amtk-4": {
             "types": "./amtk-4.d.ts",
             "import": "./amtk-4.js",
             "default": "./amtk-4.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

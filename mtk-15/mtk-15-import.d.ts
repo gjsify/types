@@ -1,9 +1,9 @@
 
-import Mtk15 from '@girs/mtk-15';
+import Mtk from './mtk-15.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Mtk: typeof Mtk15;
+        Mtk: typeof Mtk;
     }
 }
 

@@ -16,10 +16,15 @@
             "import": "./gxml-0.16-import.js",
             "default": "./gxml-0.16-import.js"
         },
-        ".": {
+        "./gxml-0.16": {
             "types": "./gxml-0.16.d.ts",
             "import": "./gxml-0.16.js",
             "default": "./gxml-0.16.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

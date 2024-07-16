@@ -1,6 +1,6 @@
 
 declare module 'gi://Goa?version=1.0' {
-    import Goa from '@girs/goa-1.0';
+    import Goa from './goa-1.0.d.ts';
     export default Goa;
 }
 

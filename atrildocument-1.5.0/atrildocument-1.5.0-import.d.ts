@@ -1,9 +1,9 @@
 
-import AtrilDocument150 from '@girs/atrildocument-1.5.0';
+import AtrilDocument from './atrildocument-1.5.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        AtrilDocument: typeof AtrilDocument150;
+        AtrilDocument: typeof AtrilDocument;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Gitg?version=1.0' {
-    import Gitg from '@girs/gitg-1.0';
+    import Gitg from './gitg-1.0.d.ts';
     export default Gitg;
 }
 

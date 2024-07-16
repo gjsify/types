@@ -1,6 +1,6 @@
 
 declare module 'gi://InputPad?version=1.1' {
-    import InputPad from '@girs/inputpad-1.1';
+    import InputPad from './inputpad-1.1.d.ts';
     export default InputPad;
 }
 

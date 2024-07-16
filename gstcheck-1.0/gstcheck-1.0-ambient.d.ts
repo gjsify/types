@@ -1,6 +1,6 @@
 
 declare module 'gi://GstCheck?version=1.0' {
-    import GstCheck from '@girs/gstcheck-1.0';
+    import GstCheck from './gstcheck-1.0.d.ts';
     export default GstCheck;
 }
 

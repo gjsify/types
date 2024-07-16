@@ -1,6 +1,6 @@
 
 declare module 'gi://GtkSource?version=5' {
-    import GtkSource from '@girs/gtksource-5';
+    import GtkSource from './gtksource-5.d.ts';
     export default GtkSource;
 }
 

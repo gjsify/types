@@ -1,6 +1,6 @@
 
 declare module 'gi://GstMpegts?version=1.0' {
-    import GstMpegts from '@girs/gstmpegts-1.0';
+    import GstMpegts from './gstmpegts-1.0.d.ts';
     export default GstMpegts;
 }
 

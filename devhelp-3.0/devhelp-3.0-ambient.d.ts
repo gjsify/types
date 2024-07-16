@@ -1,6 +1,6 @@
 
 declare module 'gi://Devhelp?version=3.0' {
-    import Devhelp from '@girs/devhelp-3.0';
+    import Devhelp from './devhelp-3.0.d.ts';
     export default Devhelp;
 }
 

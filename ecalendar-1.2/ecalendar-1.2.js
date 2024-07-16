@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import ECalendar from 'gi://ECalendar?version=1.2';
-  export { ECalendar };
-  export default ECalendar;
+// @ts-expect-error
+import ECalendar from 'gi://ECalendar?version=1.2';
+export default ECalendar;
 

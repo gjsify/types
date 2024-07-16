@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './mypaintgegl-1.6-ambient.d.ts';
-
 /**
  * MyPaintGegl-1.6
  */

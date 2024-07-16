@@ -1,9 +1,9 @@
 
-import GConf20 from '@girs/gconf-2.0';
+import GConf from './gconf-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GConf: typeof GConf20;
+        GConf: typeof GConf;
     }
 }
 

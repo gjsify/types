@@ -1,9 +1,9 @@
 
-import Caribou10 from '@girs/caribou-1.0';
+import Caribou from './caribou-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Caribou: typeof Caribou10;
+        Caribou: typeof Caribou;
     }
 }
 

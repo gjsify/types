@@ -1,9 +1,9 @@
 
-import ICal30 from '@girs/ical-3.0';
+import ICal from './ical-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        ICal: typeof ICal30;
+        ICal: typeof ICal;
     }
 }
 

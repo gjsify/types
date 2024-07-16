@@ -1,6 +1,6 @@
 
 declare module 'gi://FolksEds?version=0.6' {
-    import FolksEds from '@girs/folkseds-0.6';
+    import FolksEds from './folkseds-0.6.d.ts';
     export default FolksEds;
 }
 

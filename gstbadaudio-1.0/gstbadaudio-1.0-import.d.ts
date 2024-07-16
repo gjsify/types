@@ -1,9 +1,9 @@
 
-import GstBadAudio10 from '@girs/gstbadaudio-1.0';
+import GstBadAudio from './gstbadaudio-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstBadAudio: typeof GstBadAudio10;
+        GstBadAudio: typeof GstBadAudio;
     }
 }
 

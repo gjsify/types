@@ -1,9 +1,9 @@
 
-import CloudProviders03 from '@girs/cloudproviders-0.3';
+import CloudProviders from './cloudproviders-0.3.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        CloudProviders: typeof CloudProviders03;
+        CloudProviders: typeof CloudProviders;
     }
 }
 

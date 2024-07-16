@@ -1,6 +1,6 @@
 
 declare module 'gi://GUPnPDLNA?version=2.0' {
-    import GUPnPDLNA from '@girs/gupnpdlna-2.0';
+    import GUPnPDLNA from './gupnpdlna-2.0.d.ts';
     export default GUPnPDLNA;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Cally?version=10' {
-    import Cally from '@girs/cally-10';
+    import Cally from './cally-10.d.ts';
     export default Cally;
 }
 

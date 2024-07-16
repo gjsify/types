@@ -1,6 +1,6 @@
 
 declare module 'gi://GObject?version=2.0' {
-    import GObject from '@girs/gobject-2.0';
+    import GObject from './gobject-2.0.d.ts';
     export default GObject;
 }
 

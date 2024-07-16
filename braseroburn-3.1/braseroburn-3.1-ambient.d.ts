@@ -1,6 +1,6 @@
 
 declare module 'gi://BraseroBurn?version=3.1' {
-    import BraseroBurn from '@girs/braseroburn-3.1';
+    import BraseroBurn from './braseroburn-3.1.d.ts';
     export default BraseroBurn;
 }
 

@@ -16,10 +16,15 @@
             "import": "./anthy-9000-import.js",
             "default": "./anthy-9000-import.js"
         },
-        ".": {
+        "./anthy-9000": {
             "types": "./anthy-9000.d.ts",
             "import": "./anthy-9000.js",
             "default": "./anthy-9000.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./cheese-3.0-import.js",
             "default": "./cheese-3.0-import.js"
         },
-        ".": {
+        "./cheese-3.0": {
             "types": "./cheese-3.0.d.ts",
             "import": "./cheese-3.0.js",
             "default": "./cheese-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

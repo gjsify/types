@@ -1,9 +1,9 @@
 
-import GFBGraph03 from '@girs/gfbgraph-0.3';
+import GFBGraph from './gfbgraph-0.3.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GFBGraph: typeof GFBGraph03;
+        GFBGraph: typeof GFBGraph;
     }
 }
 

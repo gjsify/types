@@ -16,10 +16,15 @@
             "import": "./evinceview-3.0-import.js",
             "default": "./evinceview-3.0-import.js"
         },
-        ".": {
+        "./evinceview-3.0": {
             "types": "./evinceview-3.0.d.ts",
             "import": "./evinceview-3.0.js",
             "default": "./evinceview-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,9 +1,9 @@
 
-import Json10 from '@girs/json-1.0';
+import Json from './json-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Json: typeof Json10;
+        Json: typeof Json;
     }
 }
 

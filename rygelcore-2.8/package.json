@@ -16,10 +16,15 @@
             "import": "./rygelcore-2.8-import.js",
             "default": "./rygelcore-2.8-import.js"
         },
-        ".": {
+        "./rygelcore-2.8": {
             "types": "./rygelcore-2.8.d.ts",
             "import": "./rygelcore-2.8.js",
             "default": "./rygelcore-2.8.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

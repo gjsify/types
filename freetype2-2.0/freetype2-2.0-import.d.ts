@@ -1,9 +1,9 @@
 
-import Freetype220 from '@girs/freetype2-2.0';
+import freetype2 from './freetype2-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        freetype2: typeof Freetype220;
+        freetype2: typeof freetype2;
     }
 }
 

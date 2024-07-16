@@ -1,6 +1,6 @@
 
 declare module 'gi://Garcon?version=1.0' {
-    import Garcon from '@girs/garcon-1.0';
+    import Garcon from './garcon-1.0.d.ts';
     export default Garcon;
 }
 

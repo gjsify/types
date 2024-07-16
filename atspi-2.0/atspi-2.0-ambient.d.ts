@@ -1,6 +1,6 @@
 
 declare module 'gi://Atspi?version=2.0' {
-    import Atspi from '@girs/atspi-2.0';
+    import Atspi from './atspi-2.0.d.ts';
     export default Atspi;
 }
 

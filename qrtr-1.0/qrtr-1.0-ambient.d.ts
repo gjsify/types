@@ -1,6 +1,6 @@
 
 declare module 'gi://Qrtr?version=1.0' {
-    import Qrtr from '@girs/qrtr-1.0';
+    import Qrtr from './qrtr-1.0.d.ts';
     export default Qrtr;
 }
 

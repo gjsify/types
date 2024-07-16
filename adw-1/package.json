@@ -16,10 +16,15 @@
             "import": "./adw-1-import.js",
             "default": "./adw-1-import.js"
         },
-        ".": {
+        "./adw-1": {
             "types": "./adw-1.d.ts",
             "import": "./adw-1.js",
             "default": "./adw-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

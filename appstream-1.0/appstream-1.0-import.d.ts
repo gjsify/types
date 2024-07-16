@@ -1,9 +1,9 @@
 
-import AppStream10 from '@girs/appstream-1.0';
+import AppStream from './appstream-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        AppStream: typeof AppStream10;
+        AppStream: typeof AppStream;
     }
 }
 

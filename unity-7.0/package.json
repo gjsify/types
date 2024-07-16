@@ -16,10 +16,15 @@
             "import": "./unity-7.0-import.js",
             "default": "./unity-7.0-import.js"
         },
-        ".": {
+        "./unity-7.0": {
             "types": "./unity-7.0.d.ts",
             "import": "./unity-7.0.js",
             "default": "./unity-7.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

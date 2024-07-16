@@ -1,9 +1,9 @@
 
-import MetaTest15 from '@girs/metatest-15';
+import MetaTest from './metatest-15.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        MetaTest: typeof MetaTest15;
+        MetaTest: typeof MetaTest;
     }
 }
 

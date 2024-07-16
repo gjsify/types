@@ -1,6 +1,6 @@
 
 declare module 'gi://Thunarx?version=3.0' {
-    import Thunarx from '@girs/thunarx-3.0';
+    import Thunarx from './thunarx-3.0.d.ts';
     export default Thunarx;
 }
 

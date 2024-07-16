@@ -1,6 +1,6 @@
 
 declare module 'gi://CryptUI?version=0.0' {
-    import CryptUI from '@girs/cryptui-0.0';
+    import CryptUI from './cryptui-0.0.d.ts';
     export default CryptUI;
 }
 

@@ -1,9 +1,9 @@
 
-import Gtef2 from '@girs/gtef-2';
+import Gtef from './gtef-2.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gtef: typeof Gtef2;
+        Gtef: typeof Gtef;
     }
 }
 

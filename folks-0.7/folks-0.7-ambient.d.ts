@@ -1,6 +1,6 @@
 
 declare module 'gi://Folks?version=0.7' {
-    import Folks from '@girs/folks-0.7';
+    import Folks from './folks-0.7.d.ts';
     export default Folks;
 }
 

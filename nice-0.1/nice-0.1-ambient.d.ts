@@ -1,6 +1,6 @@
 
 declare module 'gi://Nice?version=0.1' {
-    import Nice from '@girs/nice-0.1';
+    import Nice from './nice-0.1.d.ts';
     export default Nice;
 }
 

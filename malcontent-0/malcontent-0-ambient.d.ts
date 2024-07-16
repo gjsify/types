@@ -1,6 +1,6 @@
 
 declare module 'gi://Malcontent?version=0' {
-    import Malcontent from '@girs/malcontent-0';
+    import Malcontent from './malcontent-0.d.ts';
     export default Malcontent;
 }
 

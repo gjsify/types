@@ -1,9 +1,9 @@
 
-import GstGLX1110 from '@girs/gstglx11-1.0';
+import GstGLX11 from './gstglx11-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstGLX11: typeof GstGLX1110;
+        GstGLX11: typeof GstGLX11;
     }
 }
 

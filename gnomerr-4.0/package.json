@@ -16,10 +16,15 @@
             "import": "./gnomerr-4.0-import.js",
             "default": "./gnomerr-4.0-import.js"
         },
-        ".": {
+        "./gnomerr-4.0": {
             "types": "./gnomerr-4.0.d.ts",
             "import": "./gnomerr-4.0.js",
             "default": "./gnomerr-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

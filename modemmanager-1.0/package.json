@@ -16,10 +16,15 @@
             "import": "./modemmanager-1.0-import.js",
             "default": "./modemmanager-1.0-import.js"
         },
-        ".": {
+        "./modemmanager-1.0": {
             "types": "./modemmanager-1.0.d.ts",
             "import": "./modemmanager-1.0.js",
             "default": "./modemmanager-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

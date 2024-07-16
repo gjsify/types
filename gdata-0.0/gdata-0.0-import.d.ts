@@ -1,9 +1,9 @@
 
-import GData00 from '@girs/gdata-0.0';
+import GData from './gdata-0.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GData: typeof GData00;
+        GData: typeof GData;
     }
 }
 

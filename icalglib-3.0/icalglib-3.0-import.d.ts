@@ -1,9 +1,9 @@
 
-import ICalGLib30 from '@girs/icalglib-3.0';
+import ICalGLib from './icalglib-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        ICalGLib: typeof ICalGLib30;
+        ICalGLib: typeof ICalGLib;
     }
 }
 

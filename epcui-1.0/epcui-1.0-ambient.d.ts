@@ -1,6 +1,6 @@
 
 declare module 'gi://EpcUi?version=1.0' {
-    import EpcUi from '@girs/epcui-1.0';
+    import EpcUi from './epcui-1.0.d.ts';
     export default EpcUi;
 }
 

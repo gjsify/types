@@ -1,6 +1,6 @@
 
 declare module 'gi://ICalGLib?version=3.0' {
-    import ICalGLib from '@girs/icalglib-3.0';
+    import ICalGLib from './icalglib-3.0.d.ts';
     export default ICalGLib;
 }
 

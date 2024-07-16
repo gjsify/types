@@ -1,6 +1,6 @@
 
 declare module 'gi://AyatanaIdo3?version=0.4' {
-    import AyatanaIdo3 from '@girs/ayatanaido3-0.4';
+    import AyatanaIdo3 from './ayatanaido3-0.4.d.ts';
     export default AyatanaIdo3;
 }
 

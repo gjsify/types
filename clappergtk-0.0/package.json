@@ -16,10 +16,15 @@
             "import": "./clappergtk-0.0-import.js",
             "default": "./clappergtk-0.0-import.js"
         },
-        ".": {
+        "./clappergtk-0.0": {
             "types": "./clappergtk-0.0.d.ts",
             "import": "./clappergtk-0.0.js",
             "default": "./clappergtk-0.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,9 +1,9 @@
 
-import Vda1 from '@girs/vda-1';
+import Vda from './vda-1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Vda: typeof Vda1;
+        Vda: typeof Vda;
     }
 }
 

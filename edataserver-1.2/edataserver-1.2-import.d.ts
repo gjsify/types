@@ -1,9 +1,9 @@
 
-import EDataServer12 from '@girs/edataserver-1.2';
+import EDataServer from './edataserver-1.2.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        EDataServer: typeof EDataServer12;
+        EDataServer: typeof EDataServer;
     }
 }
 

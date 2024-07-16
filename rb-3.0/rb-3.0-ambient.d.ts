@@ -1,6 +1,6 @@
 
 declare module 'gi://RB?version=3.0' {
-    import RB from '@girs/rb-3.0';
+    import RB from './rb-3.0.d.ts';
     export default RB;
 }
 

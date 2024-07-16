@@ -1,9 +1,9 @@
 
-import LibvirtSandbox10 from '@girs/libvirtsandbox-1.0';
+import LibvirtSandbox from './libvirtsandbox-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        LibvirtSandbox: typeof LibvirtSandbox10;
+        LibvirtSandbox: typeof LibvirtSandbox;
     }
 }
 

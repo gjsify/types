@@ -1,6 +1,6 @@
 
 declare module 'gi://Handy?version=0.0' {
-    import Handy from '@girs/handy-0.0';
+    import Handy from './handy-0.0.d.ts';
     export default Handy;
 }
 

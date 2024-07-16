@@ -1,6 +1,6 @@
 
 declare module 'gi://GnomeMaps?version=1.0' {
-    import GnomeMaps from '@girs/gnomemaps-1.0';
+    import GnomeMaps from './gnomemaps-1.0.d.ts';
     export default GnomeMaps;
 }
 

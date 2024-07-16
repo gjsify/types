@@ -1,9 +1,9 @@
 
-import TrackerMiner20 from '@girs/trackerminer-2.0';
+import TrackerMiner from './trackerminer-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        TrackerMiner: typeof TrackerMiner20;
+        TrackerMiner: typeof TrackerMiner;
     }
 }
 

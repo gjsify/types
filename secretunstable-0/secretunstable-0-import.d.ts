@@ -1,9 +1,9 @@
 
-import SecretUnstable0 from '@girs/secretunstable-0';
+import SecretUnstable from './secretunstable-0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        SecretUnstable: typeof SecretUnstable0;
+        SecretUnstable: typeof SecretUnstable;
     }
 }
 

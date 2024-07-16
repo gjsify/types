@@ -1,6 +1,6 @@
 
 declare module 'gi://Panel?version=1' {
-    import Panel from '@girs/panel-1';
+    import Panel from './panel-1.d.ts';
     export default Panel;
 }
 

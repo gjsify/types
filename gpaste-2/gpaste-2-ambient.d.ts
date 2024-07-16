@@ -1,6 +1,6 @@
 
 declare module 'gi://GPaste?version=2' {
-    import GPaste from '@girs/gpaste-2';
+    import GPaste from './gpaste-2.d.ts';
     export default GPaste;
 }
 

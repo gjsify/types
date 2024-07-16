@@ -1,9 +1,9 @@
 
-import GUPnPDLNAGst20 from '@girs/gupnpdlnagst-2.0';
+import GUPnPDLNAGst from './gupnpdlnagst-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GUPnPDLNAGst: typeof GUPnPDLNAGst20;
+        GUPnPDLNAGst: typeof GUPnPDLNAGst;
     }
 }
 

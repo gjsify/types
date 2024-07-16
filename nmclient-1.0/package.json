@@ -16,10 +16,15 @@
             "import": "./nmclient-1.0-import.js",
             "default": "./nmclient-1.0-import.js"
         },
-        ".": {
+        "./nmclient-1.0": {
             "types": "./nmclient-1.0.d.ts",
             "import": "./nmclient-1.0.js",
             "default": "./nmclient-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

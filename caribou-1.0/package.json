@@ -16,10 +16,15 @@
             "import": "./caribou-1.0-import.js",
             "default": "./caribou-1.0-import.js"
         },
-        ".": {
+        "./caribou-1.0": {
             "types": "./caribou-1.0.d.ts",
             "import": "./caribou-1.0.js",
             "default": "./caribou-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

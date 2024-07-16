@@ -1,6 +1,6 @@
 
 declare module 'gi://Signon?version=2.0' {
-    import Signon from '@girs/signon-2.0';
+    import Signon from './signon-2.0.d.ts';
     export default Signon;
 }
 

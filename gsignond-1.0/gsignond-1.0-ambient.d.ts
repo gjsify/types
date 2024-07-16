@@ -1,6 +1,6 @@
 
 declare module 'gi://GSignond?version=1.0' {
-    import GSignond from '@girs/gsignond-1.0';
+    import GSignond from './gsignond-1.0.d.ts';
     export default GSignond;
 }
 

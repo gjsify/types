@@ -1,9 +1,9 @@
 
-import Qrtr10 from '@girs/qrtr-1.0';
+import Qrtr from './qrtr-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Qrtr: typeof Qrtr10;
+        Qrtr: typeof Qrtr;
     }
 }
 

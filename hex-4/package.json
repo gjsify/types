@@ -16,10 +16,15 @@
             "import": "./hex-4-import.js",
             "default": "./hex-4-import.js"
         },
-        ".": {
+        "./hex-4": {
             "types": "./hex-4.d.ts",
             "import": "./hex-4.js",
             "default": "./hex-4.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

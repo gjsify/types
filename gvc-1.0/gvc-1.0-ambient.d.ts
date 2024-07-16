@@ -1,6 +1,6 @@
 
 declare module 'gi://Gvc?version=1.0' {
-    import Gvc from '@girs/gvc-1.0';
+    import Gvc from './gvc-1.0.d.ts';
     export default Gvc;
 }
 

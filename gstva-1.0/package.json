@@ -16,10 +16,15 @@
             "import": "./gstva-1.0-import.js",
             "default": "./gstva-1.0-import.js"
         },
-        ".": {
+        "./gstva-1.0": {
             "types": "./gstva-1.0.d.ts",
             "import": "./gstva-1.0.js",
             "default": "./gstva-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

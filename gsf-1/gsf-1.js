@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import Gsf from 'gi://Gsf?version=1';
-  export { Gsf };
-  export default Gsf;
+// @ts-expect-error
+import Gsf from 'gi://Gsf?version=1';
+export default Gsf;
 

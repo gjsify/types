@@ -16,10 +16,15 @@
             "import": "./gtksource-3.0-import.js",
             "default": "./gtksource-3.0-import.js"
         },
-        ".": {
+        "./gtksource-3.0": {
             "types": "./gtksource-3.0.d.ts",
             "import": "./gtksource-3.0.js",
             "default": "./gtksource-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

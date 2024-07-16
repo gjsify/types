@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import ArrowDataset from 'gi://ArrowDataset?version=1.0';
-  export { ArrowDataset };
-  export default ArrowDataset;
+// @ts-expect-error
+import ArrowDataset from 'gi://ArrowDataset?version=1.0';
+export default ArrowDataset;
 

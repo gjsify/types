@@ -1,6 +1,6 @@
 
 declare module 'gi://UnityExtras?version=7.0' {
-    import UnityExtras from '@girs/unityextras-7.0';
+    import UnityExtras from './unityextras-7.0.d.ts';
     export default UnityExtras;
 }
 

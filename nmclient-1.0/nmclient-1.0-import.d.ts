@@ -1,9 +1,9 @@
 
-import NMClient10 from '@girs/nmclient-1.0';
+import NMClient from './nmclient-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        NMClient: typeof NMClient10;
+        NMClient: typeof NMClient;
     }
 }
 

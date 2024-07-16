@@ -1,9 +1,9 @@
 
-import FolksTelepathy07 from '@girs/folkstelepathy-0.7';
+import FolksTelepathy from './folkstelepathy-0.7.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        FolksTelepathy: typeof FolksTelepathy07;
+        FolksTelepathy: typeof FolksTelepathy;
     }
 }
 

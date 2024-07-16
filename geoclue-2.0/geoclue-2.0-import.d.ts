@@ -1,9 +1,9 @@
 
-import Geoclue20 from '@girs/geoclue-2.0';
+import Geoclue from './geoclue-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Geoclue: typeof Geoclue20;
+        Geoclue: typeof Geoclue;
     }
 }
 

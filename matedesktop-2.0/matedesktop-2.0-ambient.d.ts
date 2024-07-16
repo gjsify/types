@@ -1,6 +1,6 @@
 
 declare module 'gi://MateDesktop?version=2.0' {
-    import MateDesktop from '@girs/matedesktop-2.0';
+    import MateDesktop from './matedesktop-2.0.d.ts';
     export default MateDesktop;
 }
 

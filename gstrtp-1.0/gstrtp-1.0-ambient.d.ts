@@ -1,6 +1,6 @@
 
 declare module 'gi://GstRtp?version=1.0' {
-    import GstRtp from '@girs/gstrtp-1.0';
+    import GstRtp from './gstrtp-1.0.d.ts';
     export default GstRtp;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Qmi?version=1.0' {
-    import Qmi from '@girs/qmi-1.0';
+    import Qmi from './qmi-1.0.d.ts';
     export default Qmi;
 }
 

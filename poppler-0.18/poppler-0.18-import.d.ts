@@ -1,9 +1,9 @@
 
-import Poppler018 from '@girs/poppler-0.18';
+import Poppler from './poppler-0.18.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Poppler: typeof Poppler018;
+        Poppler: typeof Poppler;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import GoVirt10 from '@girs/govirt-1.0';
+import GoVirt from './govirt-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GoVirt: typeof GoVirt10;
+        GoVirt: typeof GoVirt;
     }
 }
 

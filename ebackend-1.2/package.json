@@ -16,10 +16,15 @@
             "import": "./ebackend-1.2-import.js",
             "default": "./ebackend-1.2-import.js"
         },
-        ".": {
+        "./ebackend-1.2": {
             "types": "./ebackend-1.2.d.ts",
             "import": "./ebackend-1.2.js",
             "default": "./ebackend-1.2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

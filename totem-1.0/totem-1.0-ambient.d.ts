@@ -1,6 +1,6 @@
 
 declare module 'gi://Totem?version=1.0' {
-    import Totem from '@girs/totem-1.0';
+    import Totem from './totem-1.0.d.ts';
     export default Totem;
 }
 

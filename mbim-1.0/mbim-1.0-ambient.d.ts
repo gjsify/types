@@ -1,6 +1,6 @@
 
 declare module 'gi://Mbim?version=1.0' {
-    import Mbim from '@girs/mbim-1.0';
+    import Mbim from './mbim-1.0.d.ts';
     export default Mbim;
 }
 

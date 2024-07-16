@@ -1,6 +1,6 @@
 
 declare module 'gi://GstInsertBin?version=1.0' {
-    import GstInsertBin from '@girs/gstinsertbin-1.0';
+    import GstInsertBin from './gstinsertbin-1.0.d.ts';
     export default GstInsertBin;
 }
 

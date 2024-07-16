@@ -1,6 +1,6 @@
 
 declare module 'gi://GUdev?version=1.0' {
-    import GUdev from '@girs/gudev-1.0';
+    import GUdev from './gudev-1.0.d.ts';
     export default GUdev;
 }
 

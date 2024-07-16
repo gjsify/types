@@ -16,10 +16,15 @@
             "import": "./javascriptcore-4.1-import.js",
             "default": "./javascriptcore-4.1-import.js"
         },
-        ".": {
+        "./javascriptcore-4.1": {
             "types": "./javascriptcore-4.1.d.ts",
             "import": "./javascriptcore-4.1.js",
             "default": "./javascriptcore-4.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://Secret?version=1' {
-    import Secret from '@girs/secret-1';
+    import Secret from './secret-1.d.ts';
     export default Secret;
 }
 

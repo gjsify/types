@@ -16,10 +16,15 @@
             "import": "./gpastegtk-3-import.js",
             "default": "./gpastegtk-3-import.js"
         },
-        ".": {
+        "./gpastegtk-3": {
             "types": "./gpastegtk-3.d.ts",
             "import": "./gpastegtk-3.js",
             "default": "./gpastegtk-3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

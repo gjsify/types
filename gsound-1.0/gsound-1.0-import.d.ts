@@ -1,9 +1,9 @@
 
-import GSound10 from '@girs/gsound-1.0';
+import GSound from './gsound-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GSound: typeof GSound10;
+        GSound: typeof GSound;
     }
 }
 

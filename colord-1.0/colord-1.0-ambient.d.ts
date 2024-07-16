@@ -1,6 +1,6 @@
 
 declare module 'gi://Colord?version=1.0' {
-    import Colord from '@girs/colord-1.0';
+    import Colord from './colord-1.0.d.ts';
     export default Colord;
 }
 

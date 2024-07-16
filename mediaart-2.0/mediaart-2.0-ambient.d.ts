@@ -1,6 +1,6 @@
 
 declare module 'gi://MediaArt?version=2.0' {
-    import MediaArt from '@girs/mediaart-2.0';
+    import MediaArt from './mediaart-2.0.d.ts';
     export default MediaArt;
 }
 

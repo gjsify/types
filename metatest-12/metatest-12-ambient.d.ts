@@ -1,6 +1,6 @@
 
 declare module 'gi://MetaTest?version=12' {
-    import MetaTest from '@girs/metatest-12';
+    import MetaTest from './metatest-12.d.ts';
     export default MetaTest;
 }
 

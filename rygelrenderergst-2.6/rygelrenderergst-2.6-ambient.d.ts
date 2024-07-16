@@ -1,6 +1,6 @@
 
 declare module 'gi://RygelRendererGst?version=2.6' {
-    import RygelRendererGst from '@girs/rygelrenderergst-2.6';
+    import RygelRendererGst from './rygelrenderergst-2.6.d.ts';
     export default RygelRendererGst;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Translit?version=1.0' {
-    import Translit from '@girs/translit-1.0';
+    import Translit from './translit-1.0.d.ts';
     export default Translit;
 }
 

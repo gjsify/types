@@ -1,6 +1,6 @@
 
 declare module 'gi://GL?version=1.0' {
-    import GL from '@girs/gl-1.0';
+    import GL from './gl-1.0.d.ts';
     export default GL;
 }
 

@@ -16,10 +16,15 @@
             "import": "./modulemd-2.0-import.js",
             "default": "./modulemd-2.0-import.js"
         },
-        ".": {
+        "./modulemd-2.0": {
             "types": "./modulemd-2.0.d.ts",
             "import": "./modulemd-2.0.js",
             "default": "./modulemd-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

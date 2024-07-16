@@ -16,10 +16,15 @@
             "import": "./panelapplet-4.0-import.js",
             "default": "./panelapplet-4.0-import.js"
         },
-        ".": {
+        "./panelapplet-4.0": {
             "types": "./panelapplet-4.0.d.ts",
             "import": "./panelapplet-4.0.js",
             "default": "./panelapplet-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

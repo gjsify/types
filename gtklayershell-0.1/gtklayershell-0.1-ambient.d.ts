@@ -1,6 +1,6 @@
 
 declare module 'gi://GtkLayerShell?version=0.1' {
-    import GtkLayerShell from '@girs/gtklayershell-0.1';
+    import GtkLayerShell from './gtklayershell-0.1.d.ts';
     export default GtkLayerShell;
 }
 

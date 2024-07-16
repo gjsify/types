@@ -1,9 +1,9 @@
 
-import CoglPango20 from '@girs/coglpango-2.0';
+import CoglPango from './coglpango-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        CoglPango: typeof CoglPango20;
+        CoglPango: typeof CoglPango;
     }
 }
 

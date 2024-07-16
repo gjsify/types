@@ -1,6 +1,6 @@
 
 declare module 'gi://SecretUnstable?version=0' {
-    import SecretUnstable from '@girs/secretunstable-0';
+    import SecretUnstable from './secretunstable-0.d.ts';
     export default SecretUnstable;
 }
 

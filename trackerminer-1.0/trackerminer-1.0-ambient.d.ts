@@ -1,6 +1,6 @@
 
 declare module 'gi://TrackerMiner?version=1.0' {
-    import TrackerMiner from '@girs/trackerminer-1.0';
+    import TrackerMiner from './trackerminer-1.0.d.ts';
     export default TrackerMiner;
 }
 

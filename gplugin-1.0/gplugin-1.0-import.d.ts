@@ -1,9 +1,9 @@
 
-import GPlugin10 from '@girs/gplugin-1.0';
+import GPlugin from './gplugin-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GPlugin: typeof GPlugin10;
+        GPlugin: typeof GPlugin;
     }
 }
 

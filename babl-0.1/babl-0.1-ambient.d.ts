@@ -1,6 +1,6 @@
 
 declare module 'gi://Babl?version=0.1' {
-    import Babl from '@girs/babl-0.1';
+    import Babl from './babl-0.1.d.ts';
     export default Babl;
 }
 

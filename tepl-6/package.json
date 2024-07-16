@@ -16,10 +16,15 @@
             "import": "./tepl-6-import.js",
             "default": "./tepl-6-import.js"
         },
-        ".": {
+        "./tepl-6": {
             "types": "./tepl-6.d.ts",
             "import": "./tepl-6.js",
             "default": "./tepl-6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://Sushi?version=1.0' {
-    import Sushi from '@girs/sushi-1.0';
+    import Sushi from './sushi-1.0.d.ts';
     export default Sushi;
 }
 

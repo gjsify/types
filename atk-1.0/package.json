@@ -16,10 +16,15 @@
             "import": "./atk-1.0-import.js",
             "default": "./atk-1.0-import.js"
         },
-        ".": {
+        "./atk-1.0": {
             "types": "./atk-1.0.d.ts",
             "import": "./atk-1.0.js",
             "default": "./atk-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

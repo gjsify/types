@@ -1,9 +1,9 @@
 
-import GVncPulse10 from '@girs/gvncpulse-1.0';
+import GVncPulse from './gvncpulse-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GVncPulse: typeof GVncPulse10;
+        GVncPulse: typeof GVncPulse;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Nemo?version=3.0' {
-    import Nemo from '@girs/nemo-3.0';
+    import Nemo from './nemo-3.0.d.ts';
     export default Nemo;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://CoglPango?version=10' {
-    import CoglPango from '@girs/coglpango-10';
+    import CoglPango from './coglpango-10.d.ts';
     export default CoglPango;
 }
 

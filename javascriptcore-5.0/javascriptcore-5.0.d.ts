@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './javascriptcore-5.0-ambient.d.ts';
-
-import './javascriptcore-5.0-import.d.ts';
-
 /**
  * JavaScriptCore-5.0
  */

@@ -16,10 +16,15 @@
             "import": "./udisks-2.0-import.js",
             "default": "./udisks-2.0-import.js"
         },
-        ".": {
+        "./udisks-2.0": {
             "types": "./udisks-2.0.d.ts",
             "import": "./udisks-2.0.js",
             "default": "./udisks-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

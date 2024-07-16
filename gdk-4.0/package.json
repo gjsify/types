@@ -16,10 +16,15 @@
             "import": "./gdk-4.0-import.js",
             "default": "./gdk-4.0-import.js"
         },
-        ".": {
+        "./gdk-4.0": {
             "types": "./gdk-4.0.d.ts",
             "import": "./gdk-4.0.js",
             "default": "./gdk-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

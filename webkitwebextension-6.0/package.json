@@ -16,10 +16,15 @@
             "import": "./webkitwebextension-6.0-import.js",
             "default": "./webkitwebextension-6.0-import.js"
         },
-        ".": {
+        "./webkitwebextension-6.0": {
             "types": "./webkitwebextension-6.0.d.ts",
             "import": "./webkitwebextension-6.0.js",
             "default": "./webkitwebextension-6.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./webkit2-4.0-import.js",
             "default": "./webkit2-4.0-import.js"
         },
-        ".": {
+        "./webkit2-4.0": {
             "types": "./webkit2-4.0.d.ts",
             "import": "./webkit2-4.0.js",
             "default": "./webkit2-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./gandiva-1.0-import.js",
             "default": "./gandiva-1.0-import.js"
         },
-        ".": {
+        "./gandiva-1.0": {
             "types": "./gandiva-1.0.d.ts",
             "import": "./gandiva-1.0.js",
             "default": "./gandiva-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

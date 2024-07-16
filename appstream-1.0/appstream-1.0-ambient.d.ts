@@ -1,6 +1,6 @@
 
 declare module 'gi://AppStream?version=1.0' {
-    import AppStream from '@girs/appstream-1.0';
+    import AppStream from './appstream-1.0.d.ts';
     export default AppStream;
 }
 

@@ -1,9 +1,9 @@
 
-import Shew0 from '@girs/shew-0';
+import Shew from './shew-0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Shew: typeof Shew0;
+        Shew: typeof Shew;
     }
 }
 

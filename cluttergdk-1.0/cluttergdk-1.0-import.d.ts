@@ -1,9 +1,9 @@
 
-import ClutterGdk10 from '@girs/cluttergdk-1.0';
+import ClutterGdk from './cluttergdk-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        ClutterGdk: typeof ClutterGdk10;
+        ClutterGdk: typeof ClutterGdk;
     }
 }
 

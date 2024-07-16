@@ -1,9 +1,9 @@
 
-import Xfconf0 from '@girs/xfconf-0';
+import Xfconf from './xfconf-0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Xfconf: typeof Xfconf0;
+        Xfconf: typeof Xfconf;
     }
 }
 

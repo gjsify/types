@@ -1,6 +1,6 @@
 
 declare module 'gi://NetworkManager?version=1.0' {
-    import NetworkManager from '@girs/networkmanager-1.0';
+    import NetworkManager from './networkmanager-1.0.d.ts';
     export default NetworkManager;
 }
 

@@ -16,10 +16,15 @@
             "import": "./wp-0.4-import.js",
             "default": "./wp-0.4-import.js"
         },
-        ".": {
+        "./wp-0.4": {
             "types": "./wp-0.4.d.ts",
             "import": "./wp-0.4.js",
             "default": "./wp-0.4.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

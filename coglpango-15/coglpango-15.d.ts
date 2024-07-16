@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './coglpango-15-ambient.d.ts';
-
-import './coglpango-15-import.d.ts';
-
 /**
  * CoglPango-15
  */

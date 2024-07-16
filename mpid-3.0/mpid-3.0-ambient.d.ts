@@ -1,6 +1,6 @@
 
 declare module 'gi://MPID?version=3.0' {
-    import MPID from '@girs/mpid-3.0';
+    import MPID from './mpid-3.0.d.ts';
     export default MPID;
 }
 

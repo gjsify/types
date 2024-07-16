@@ -1,6 +1,6 @@
 
 declare module 'gi://Budgie?version=1.0' {
-    import Budgie from '@girs/budgie-1.0';
+    import Budgie from './budgie-1.0.d.ts';
     export default Budgie;
 }
 

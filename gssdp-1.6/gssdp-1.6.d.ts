@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gssdp-1.6-ambient.d.ts';
-
 /**
  * GSSDP-1.6
  */

@@ -1,6 +1,6 @@
 
 declare module 'gi://CloudProviders?version=0.3' {
-    import CloudProviders from '@girs/cloudproviders-0.3';
+    import CloudProviders from './cloudproviders-0.3.d.ts';
     export default CloudProviders;
 }
 

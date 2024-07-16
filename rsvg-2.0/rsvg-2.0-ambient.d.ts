@@ -1,6 +1,6 @@
 
 declare module 'gi://Rsvg?version=2.0' {
-    import Rsvg from '@girs/rsvg-2.0';
+    import Rsvg from './rsvg-2.0.d.ts';
     export default Rsvg;
 }
 

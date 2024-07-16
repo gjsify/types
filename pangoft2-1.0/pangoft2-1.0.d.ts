@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './pangoft2-1.0-ambient.d.ts';
-
 /**
  * PangoFT2-1.0
  */

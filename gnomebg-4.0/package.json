@@ -16,10 +16,15 @@
             "import": "./gnomebg-4.0-import.js",
             "default": "./gnomebg-4.0-import.js"
         },
-        ".": {
+        "./gnomebg-4.0": {
             "types": "./gnomebg-4.0.d.ts",
             "import": "./gnomebg-4.0.js",
             "default": "./gnomebg-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

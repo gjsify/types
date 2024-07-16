@@ -1,6 +1,6 @@
 
 declare module 'gi://Dazzle?version=1.0' {
-    import Dazzle from '@girs/dazzle-1.0';
+    import Dazzle from './dazzle-1.0.d.ts';
     export default Dazzle;
 }
 

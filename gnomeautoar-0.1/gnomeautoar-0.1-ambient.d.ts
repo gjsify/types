@@ -1,6 +1,6 @@
 
 declare module 'gi://GnomeAutoar?version=0.1' {
-    import GnomeAutoar from '@girs/gnomeautoar-0.1';
+    import GnomeAutoar from './gnomeautoar-0.1.d.ts';
     export default GnomeAutoar;
 }
 

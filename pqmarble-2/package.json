@@ -16,10 +16,15 @@
             "import": "./pqmarble-2-import.js",
             "default": "./pqmarble-2-import.js"
         },
-        ".": {
+        "./pqmarble-2": {
             "types": "./pqmarble-2.d.ts",
             "import": "./pqmarble-2.js",
             "default": "./pqmarble-2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

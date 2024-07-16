@@ -1,6 +1,6 @@
 
 declare module 'gi://UDisks?version=2.0' {
-    import UDisks from '@girs/udisks-2.0';
+    import UDisks from './udisks-2.0.d.ts';
     export default UDisks;
 }
 

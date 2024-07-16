@@ -1,6 +1,6 @@
 
 declare module 'gi://WebKit2WebExtension?version=5.0' {
-    import WebKit2WebExtension from '@girs/webkit2webextension-5.0';
+    import WebKit2WebExtension from './webkit2webextension-5.0.d.ts';
     export default WebKit2WebExtension;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Amtk?version=4' {
-    import Amtk from '@girs/amtk-4';
+    import Amtk from './amtk-4.d.ts';
     export default Amtk;
 }
 

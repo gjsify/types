@@ -1,6 +1,6 @@
 
 declare module 'gi://Libproxy?version=1.0' {
-    import Libproxy from '@girs/libproxy-1.0';
+    import Libproxy from './libproxy-1.0.d.ts';
     export default Libproxy;
 }
 

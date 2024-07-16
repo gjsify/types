@@ -16,10 +16,15 @@
             "import": "./signon-2.0-import.js",
             "default": "./signon-2.0-import.js"
         },
-        ".": {
+        "./signon-2.0": {
             "types": "./signon-2.0.d.ts",
             "import": "./signon-2.0.js",
             "default": "./signon-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

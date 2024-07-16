@@ -1,6 +1,6 @@
 
 declare module 'gi://Unique?version=3.0' {
-    import Unique from '@girs/unique-3.0';
+    import Unique from './unique-3.0.d.ts';
     export default Unique;
 }
 

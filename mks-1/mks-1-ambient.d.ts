@@ -1,6 +1,6 @@
 
 declare module 'gi://Mks?version=1' {
-    import Mks from '@girs/mks-1';
+    import Mks from './mks-1.d.ts';
     export default Mks;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Ide?version=45' {
-    import Ide from '@girs/ide-45';
+    import Ide from './ide-45.d.ts';
     export default Ide;
 }
 

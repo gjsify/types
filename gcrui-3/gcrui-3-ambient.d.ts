@@ -1,6 +1,6 @@
 
 declare module 'gi://GcrUi?version=3' {
-    import GcrUi from '@girs/gcrui-3';
+    import GcrUi from './gcrui-3.d.ts';
     export default GcrUi;
 }
 

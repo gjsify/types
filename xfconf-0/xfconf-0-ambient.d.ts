@@ -1,6 +1,6 @@
 
 declare module 'gi://Xfconf?version=0' {
-    import Xfconf from '@girs/xfconf-0';
+    import Xfconf from './xfconf-0.d.ts';
     export default Xfconf;
 }
 

@@ -16,10 +16,15 @@
             "import": "./grss-0.7-import.js",
             "default": "./grss-0.7-import.js"
         },
-        ".": {
+        "./grss-0.7": {
             "types": "./grss-0.7.d.ts",
             "import": "./grss-0.7.js",
             "default": "./grss-0.7.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

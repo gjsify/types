@@ -1,9 +1,9 @@
 
-import AppStreamCompose10 from '@girs/appstreamcompose-1.0';
+import AppStreamCompose from './appstreamcompose-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        AppStreamCompose: typeof AppStreamCompose10;
+        AppStreamCompose: typeof AppStreamCompose;
     }
 }
 

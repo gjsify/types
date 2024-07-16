@@ -16,10 +16,15 @@
             "import": "./gitgext-1.0-import.js",
             "default": "./gitgext-1.0-import.js"
         },
-        ".": {
+        "./gitgext-1.0": {
             "types": "./gitgext-1.0.d.ts",
             "import": "./gitgext-1.0.js",
             "default": "./gitgext-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

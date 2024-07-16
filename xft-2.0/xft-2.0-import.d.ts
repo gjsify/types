@@ -1,9 +1,9 @@
 
-import Xft20 from '@girs/xft-2.0';
+import xft from './xft-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        xft: typeof Xft20;
+        xft: typeof xft;
     }
 }
 

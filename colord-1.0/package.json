@@ -16,10 +16,15 @@
             "import": "./colord-1.0-import.js",
             "default": "./colord-1.0-import.js"
         },
-        ".": {
+        "./colord-1.0": {
             "types": "./colord-1.0.d.ts",
             "import": "./colord-1.0.js",
             "default": "./colord-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

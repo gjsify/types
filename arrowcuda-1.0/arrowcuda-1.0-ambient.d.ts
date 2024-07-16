@@ -1,6 +1,6 @@
 
 declare module 'gi://ArrowCUDA?version=1.0' {
-    import ArrowCUDA from '@girs/arrowcuda-1.0';
+    import ArrowCUDA from './arrowcuda-1.0.d.ts';
     export default ArrowCUDA;
 }
 

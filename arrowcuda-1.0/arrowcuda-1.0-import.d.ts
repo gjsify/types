@@ -1,9 +1,9 @@
 
-import ArrowCUDA10 from '@girs/arrowcuda-1.0';
+import ArrowCUDA from './arrowcuda-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        ArrowCUDA: typeof ArrowCUDA10;
+        ArrowCUDA: typeof ArrowCUDA;
     }
 }
 

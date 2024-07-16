@@ -16,10 +16,15 @@
             "import": "./thunarx-3.0-import.js",
             "default": "./thunarx-3.0-import.js"
         },
-        ".": {
+        "./thunarx-3.0": {
             "types": "./thunarx-3.0.d.ts",
             "import": "./thunarx-3.0.js",
             "default": "./thunarx-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

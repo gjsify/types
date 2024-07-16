@@ -16,10 +16,15 @@
             "import": "./grlnet-0.3-import.js",
             "default": "./grlnet-0.3-import.js"
         },
-        ".": {
+        "./grlnet-0.3": {
             "types": "./grlnet-0.3.d.ts",
             "import": "./grlnet-0.3.js",
             "default": "./grlnet-0.3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

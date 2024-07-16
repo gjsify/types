@@ -16,10 +16,15 @@
             "import": "./ebookcontacts-1.2-import.js",
             "default": "./ebookcontacts-1.2-import.js"
         },
-        ".": {
+        "./ebookcontacts-1.2": {
             "types": "./ebookcontacts-1.2.d.ts",
             "import": "./ebookcontacts-1.2.js",
             "default": "./ebookcontacts-1.2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

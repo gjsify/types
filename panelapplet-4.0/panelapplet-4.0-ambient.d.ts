@@ -1,6 +1,6 @@
 
 declare module 'gi://PanelApplet?version=4.0' {
-    import PanelApplet from '@girs/panelapplet-4.0';
+    import PanelApplet from './panelapplet-4.0.d.ts';
     export default PanelApplet;
 }
 

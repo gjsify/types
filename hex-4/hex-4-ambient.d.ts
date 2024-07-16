@@ -1,6 +1,6 @@
 
 declare module 'gi://Hex?version=4' {
-    import Hex from '@girs/hex-4';
+    import Hex from './hex-4.d.ts';
     export default Hex;
 }
 

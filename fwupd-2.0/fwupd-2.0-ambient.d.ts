@@ -1,6 +1,6 @@
 
 declare module 'gi://Fwupd?version=2.0' {
-    import Fwupd from '@girs/fwupd-2.0';
+    import Fwupd from './fwupd-2.0.d.ts';
     export default Fwupd;
 }
 

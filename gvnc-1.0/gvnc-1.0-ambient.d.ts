@@ -1,6 +1,6 @@
 
 declare module 'gi://GVnc?version=1.0' {
-    import GVnc from '@girs/gvnc-1.0';
+    import GVnc from './gvnc-1.0.d.ts';
     export default GVnc;
 }
 

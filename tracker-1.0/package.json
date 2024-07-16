@@ -16,10 +16,15 @@
             "import": "./tracker-1.0-import.js",
             "default": "./tracker-1.0-import.js"
         },
-        ".": {
+        "./tracker-1.0": {
             "types": "./tracker-1.0.d.ts",
             "import": "./tracker-1.0.js",
             "default": "./tracker-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

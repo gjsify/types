@@ -1,9 +1,9 @@
 
-import Template10 from '@girs/template-1.0';
+import Template from './template-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Template: typeof Template10;
+        Template: typeof Template;
     }
 }
 

@@ -16,10 +16,15 @@
             "import": "./budgieraven-1.0-import.js",
             "default": "./budgieraven-1.0-import.js"
         },
-        ".": {
+        "./budgieraven-1.0": {
             "types": "./budgieraven-1.0.d.ts",
             "import": "./budgieraven-1.0.js",
             "default": "./budgieraven-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

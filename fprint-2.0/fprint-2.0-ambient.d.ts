@@ -1,6 +1,6 @@
 
 declare module 'gi://FPrint?version=2.0' {
-    import FPrint from '@girs/fprint-2.0';
+    import FPrint from './fprint-2.0.d.ts';
     export default FPrint;
 }
 

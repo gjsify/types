@@ -16,10 +16,15 @@
             "import": "./folks-0.6-import.js",
             "default": "./folks-0.6-import.js"
         },
-        ".": {
+        "./folks-0.6": {
             "types": "./folks-0.6.d.ts",
             "import": "./folks-0.6.js",
             "default": "./folks-0.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

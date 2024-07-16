@@ -1,9 +1,9 @@
 
-import ZBar10 from '@girs/zbar-1.0';
+import ZBar from './zbar-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        ZBar: typeof ZBar10;
+        ZBar: typeof ZBar;
     }
 }
 

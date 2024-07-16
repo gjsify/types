@@ -1,6 +1,6 @@
 
 declare module 'gi://GstGLEGL?version=1.0' {
-    import GstGLEGL from '@girs/gstglegl-1.0';
+    import GstGLEGL from './gstglegl-1.0.d.ts';
     export default GstGLEGL;
 }
 

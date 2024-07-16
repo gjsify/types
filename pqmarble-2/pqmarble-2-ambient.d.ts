@@ -1,6 +1,6 @@
 
 declare module 'gi://PQMarble?version=2' {
-    import PQMarble from '@girs/pqmarble-2';
+    import PQMarble from './pqmarble-2.d.ts';
     export default PQMarble;
 }
 

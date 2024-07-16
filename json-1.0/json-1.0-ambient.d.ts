@@ -1,6 +1,6 @@
 
 declare module 'gi://Json?version=1.0' {
-    import Json from '@girs/json-1.0';
+    import Json from './json-1.0.d.ts';
     export default Json;
 }
 

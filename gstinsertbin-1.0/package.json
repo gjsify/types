@@ -16,10 +16,15 @@
             "import": "./gstinsertbin-1.0-import.js",
             "default": "./gstinsertbin-1.0-import.js"
         },
-        ".": {
+        "./gstinsertbin-1.0": {
             "types": "./gstinsertbin-1.0.d.ts",
             "import": "./gstinsertbin-1.0.js",
             "default": "./gstinsertbin-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

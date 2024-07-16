@@ -1,9 +1,9 @@
 
-import TelepathyFarstream06 from '@girs/telepathyfarstream-0.6';
+import TelepathyFarstream from './telepathyfarstream-0.6.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        TelepathyFarstream: typeof TelepathyFarstream06;
+        TelepathyFarstream: typeof TelepathyFarstream;
     }
 }
 

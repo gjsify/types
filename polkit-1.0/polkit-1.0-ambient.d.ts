@@ -1,6 +1,6 @@
 
 declare module 'gi://Polkit?version=1.0' {
-    import Polkit from '@girs/polkit-1.0';
+    import Polkit from './polkit-1.0.d.ts';
     export default Polkit;
 }
 

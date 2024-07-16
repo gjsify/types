@@ -1,9 +1,9 @@
 
-import Mbim10 from '@girs/mbim-1.0';
+import Mbim from './mbim-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Mbim: typeof Mbim10;
+        Mbim: typeof Mbim;
     }
 }
 

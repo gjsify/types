@@ -1,6 +1,6 @@
 
 declare module 'gi://GExiv2?version=0.10' {
-    import GExiv2 from '@girs/gexiv2-0.10';
+    import GExiv2 from './gexiv2-0.10.d.ts';
     export default GExiv2;
 }
 

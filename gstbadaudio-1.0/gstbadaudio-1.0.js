@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import GstBadAudio from 'gi://GstBadAudio?version=1.0';
-  export { GstBadAudio };
-  export default GstBadAudio;
+// @ts-expect-error
+import GstBadAudio from 'gi://GstBadAudio?version=1.0';
+export default GstBadAudio;
 

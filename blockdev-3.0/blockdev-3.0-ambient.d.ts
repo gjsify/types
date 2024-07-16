@@ -1,6 +1,6 @@
 
 declare module 'gi://BlockDev?version=3.0' {
-    import BlockDev from '@girs/blockdev-3.0';
+    import BlockDev from './blockdev-3.0.d.ts';
     export default BlockDev;
 }
 

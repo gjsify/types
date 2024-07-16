@@ -1,6 +1,6 @@
 
 declare module 'gi://GstRiff?version=1.0' {
-    import GstRiff from '@girs/gstriff-1.0';
+    import GstRiff from './gstriff-1.0.d.ts';
     export default GstRiff;
 }
 

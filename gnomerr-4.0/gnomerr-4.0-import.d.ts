@@ -1,9 +1,9 @@
 
-import GnomeRR40 from '@girs/gnomerr-4.0';
+import GnomeRR from './gnomerr-4.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GnomeRR: typeof GnomeRR40;
+        GnomeRR: typeof GnomeRR;
     }
 }
 

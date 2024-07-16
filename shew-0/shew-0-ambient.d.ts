@@ -1,6 +1,6 @@
 
 declare module 'gi://Shew?version=0' {
-    import Shew from '@girs/shew-0';
+    import Shew from './shew-0.d.ts';
     export default Shew;
 }
 

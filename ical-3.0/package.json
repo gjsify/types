@@ -16,10 +16,15 @@
             "import": "./ical-3.0-import.js",
             "default": "./ical-3.0-import.js"
         },
-        ".": {
+        "./ical-3.0": {
             "types": "./ical-3.0.d.ts",
             "import": "./ical-3.0.js",
             "default": "./ical-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

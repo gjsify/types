@@ -1,6 +1,6 @@
 
 declare module 'gi://GstAllocators?version=1.0' {
-    import GstAllocators from '@girs/gstallocators-1.0';
+    import GstAllocators from './gstallocators-1.0.d.ts';
     export default GstAllocators;
 }
 

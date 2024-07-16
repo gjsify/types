@@ -16,10 +16,15 @@
             "import": "./gfbgraph-0.3-import.js",
             "default": "./gfbgraph-0.3-import.js"
         },
-        ".": {
+        "./gfbgraph-0.3": {
             "types": "./gfbgraph-0.3.d.ts",
             "import": "./gfbgraph-0.3.js",
             "default": "./gfbgraph-0.3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

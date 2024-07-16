@@ -1,6 +1,6 @@
 
 declare module 'gi://GstBadAudio?version=1.0' {
-    import GstBadAudio from '@girs/gstbadaudio-1.0';
+    import GstBadAudio from './gstbadaudio-1.0.d.ts';
     export default GstBadAudio;
 }
 

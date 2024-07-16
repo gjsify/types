@@ -1,6 +1,6 @@
 
 declare module 'gi://DMAP?version=3.0' {
-    import DMAP from '@girs/dmap-3.0';
+    import DMAP from './dmap-3.0.d.ts';
     export default DMAP;
 }
 

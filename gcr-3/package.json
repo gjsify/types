@@ -16,10 +16,15 @@
             "import": "./gcr-3-import.js",
             "default": "./gcr-3-import.js"
         },
-        ".": {
+        "./gcr-3": {
             "types": "./gcr-3.d.ts",
             "import": "./gcr-3.js",
             "default": "./gcr-3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

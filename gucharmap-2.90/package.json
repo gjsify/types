@@ -16,10 +16,15 @@
             "import": "./gucharmap-2.90-import.js",
             "default": "./gucharmap-2.90-import.js"
         },
-        ".": {
+        "./gucharmap-2.90": {
             "types": "./gucharmap-2.90.d.ts",
             "import": "./gucharmap-2.90.js",
             "default": "./gucharmap-2.90.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

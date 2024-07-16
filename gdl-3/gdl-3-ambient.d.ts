@@ -1,6 +1,6 @@
 
 declare module 'gi://Gdl?version=3' {
-    import Gdl from '@girs/gdl-3';
+    import Gdl from './gdl-3.d.ts';
     export default Gdl;
 }
 

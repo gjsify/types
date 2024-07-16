@@ -16,10 +16,15 @@
             "import": "./gjsdbus-1.0-import.js",
             "default": "./gjsdbus-1.0-import.js"
         },
-        ".": {
+        "./gjsdbus-1.0": {
             "types": "./gjsdbus-1.0.d.ts",
             "import": "./gjsdbus-1.0.js",
             "default": "./gjsdbus-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

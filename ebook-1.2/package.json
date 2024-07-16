@@ -16,10 +16,15 @@
             "import": "./ebook-1.2-import.js",
             "default": "./ebook-1.2-import.js"
         },
-        ".": {
+        "./ebook-1.2": {
             "types": "./ebook-1.2.d.ts",
             "import": "./ebook-1.2.js",
             "default": "./ebook-1.2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

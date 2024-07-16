@@ -1,6 +1,6 @@
 
 declare module 'gi://Eog?version=3.0' {
-    import Eog from '@girs/eog-3.0';
+    import Eog from './eog-3.0.d.ts';
     export default Eog;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://AppStreamGlib?version=1.0' {
-    import AppStreamGlib from '@girs/appstreamglib-1.0';
+    import AppStreamGlib from './appstreamglib-1.0.d.ts';
     export default AppStreamGlib;
 }
 

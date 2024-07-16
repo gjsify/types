@@ -16,10 +16,15 @@
             "import": "./gstcuda-1.0-import.js",
             "default": "./gstcuda-1.0-import.js"
         },
-        ".": {
+        "./gstcuda-1.0": {
             "types": "./gstcuda-1.0.d.ts",
             "import": "./gstcuda-1.0.js",
             "default": "./gstcuda-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

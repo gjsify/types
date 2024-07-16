@@ -1,6 +1,6 @@
 
 declare module 'gi://Gpseq?version=1.0' {
-    import Gpseq from '@girs/gpseq-1.0';
+    import Gpseq from './gpseq-1.0.d.ts';
     export default Gpseq;
 }
 

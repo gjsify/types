@@ -16,10 +16,15 @@
             "import": "./pangoft2-1.0-import.js",
             "default": "./pangoft2-1.0-import.js"
         },
-        ".": {
+        "./pangoft2-1.0": {
             "types": "./pangoft2-1.0.d.ts",
             "import": "./pangoft2-1.0.js",
             "default": "./pangoft2-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

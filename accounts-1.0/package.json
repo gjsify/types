@@ -16,10 +16,15 @@
             "import": "./accounts-1.0-import.js",
             "default": "./accounts-1.0-import.js"
         },
-        ".": {
+        "./accounts-1.0": {
             "types": "./accounts-1.0.d.ts",
             "import": "./accounts-1.0.js",
             "default": "./accounts-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

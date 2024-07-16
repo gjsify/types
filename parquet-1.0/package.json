@@ -16,10 +16,15 @@
             "import": "./parquet-1.0-import.js",
             "default": "./parquet-1.0-import.js"
         },
-        ".": {
+        "./parquet-1.0": {
             "types": "./parquet-1.0.d.ts",
             "import": "./parquet-1.0.js",
             "default": "./parquet-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

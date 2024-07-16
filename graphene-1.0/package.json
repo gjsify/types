@@ -16,10 +16,15 @@
             "import": "./graphene-1.0-import.js",
             "default": "./graphene-1.0-import.js"
         },
-        ".": {
+        "./graphene-1.0": {
             "types": "./graphene-1.0.d.ts",
             "import": "./graphene-1.0.js",
             "default": "./graphene-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

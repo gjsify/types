@@ -1,9 +1,9 @@
 
-import Xed10 from '@girs/xed-1.0';
+import Xed from './xed-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Xed: typeof Xed10;
+        Xed: typeof Xed;
     }
 }
 

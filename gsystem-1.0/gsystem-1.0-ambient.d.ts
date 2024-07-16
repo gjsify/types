@@ -1,6 +1,6 @@
 
 declare module 'gi://GSystem?version=1.0' {
-    import GSystem from '@girs/gsystem-1.0';
+    import GSystem from './gsystem-1.0.d.ts';
     export default GSystem;
 }
 

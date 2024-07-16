@@ -1,6 +1,6 @@
 
 declare module 'gi://Mtk?version=15' {
-    import Mtk from '@girs/mtk-15';
+    import Mtk from './mtk-15.d.ts';
     export default Mtk;
 }
 

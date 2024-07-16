@@ -16,10 +16,15 @@
             "import": "./gdata-0.0-import.js",
             "default": "./gdata-0.0-import.js"
         },
-        ".": {
+        "./gdata-0.0": {
             "types": "./gdata-0.0.d.ts",
             "import": "./gdata-0.0.js",
             "default": "./gdata-0.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

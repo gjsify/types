@@ -1,6 +1,6 @@
 
 declare module 'gi://NMA4?version=1.0' {
-    import NMA4 from '@girs/nma4-1.0';
+    import NMA4 from './nma4-1.0.d.ts';
     export default NMA4;
 }
 

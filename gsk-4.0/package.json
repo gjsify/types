@@ -16,10 +16,15 @@
             "import": "./gsk-4.0-import.js",
             "default": "./gsk-4.0-import.js"
         },
-        ".": {
+        "./gsk-4.0": {
             "types": "./gsk-4.0.d.ts",
             "import": "./gsk-4.0.js",
             "default": "./gsk-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

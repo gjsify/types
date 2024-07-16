@@ -1,6 +1,6 @@
 
 declare module 'gi://GstFft?version=1.0' {
-    import GstFft from '@girs/gstfft-1.0';
+    import GstFft from './gstfft-1.0.d.ts';
     export default GstFft;
 }
 

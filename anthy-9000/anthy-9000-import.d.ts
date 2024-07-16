@@ -1,9 +1,9 @@
 
-import Anthy9000 from '@girs/anthy-9000';
+import Anthy from './anthy-9000.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Anthy: typeof Anthy9000;
+        Anthy: typeof Anthy;
     }
 }
 

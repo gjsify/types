@@ -1,6 +1,6 @@
 
 declare module 'gi://TimezoneMap?version=1.0' {
-    import TimezoneMap from '@girs/timezonemap-1.0';
+    import TimezoneMap from './timezonemap-1.0.d.ts';
     export default TimezoneMap;
 }
 

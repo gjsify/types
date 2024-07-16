@@ -1,9 +1,9 @@
 
-import Ide46 from '@girs/ide-46';
+import Ide from './ide-46.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Ide: typeof Ide46;
+        Ide: typeof Ide;
     }
 }
 

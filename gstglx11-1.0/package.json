@@ -16,10 +16,15 @@
             "import": "./gstglx11-1.0-import.js",
             "default": "./gstglx11-1.0-import.js"
         },
-        ".": {
+        "./gstglx11-1.0": {
             "types": "./gstglx11-1.0.d.ts",
             "import": "./gstglx11-1.0.js",
             "default": "./gstglx11-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

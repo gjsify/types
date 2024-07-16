@@ -1,6 +1,6 @@
 
 declare module 'gi://GstGLX11?version=1.0' {
-    import GstGLX11 from '@girs/gstglx11-1.0';
+    import GstGLX11 from './gstglx11-1.0.d.ts';
     export default GstGLX11;
 }
 

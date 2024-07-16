@@ -1,6 +1,6 @@
 
 declare module 'gi://Libxfce4util?version=1.0' {
-    import Libxfce4util from '@girs/libxfce4util-1.0';
+    import Libxfce4util from './libxfce4util-1.0.d.ts';
     export default Libxfce4util;
 }
 

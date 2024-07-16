@@ -1,9 +1,9 @@
 
-import RpmOstree10 from '@girs/rpmostree-1.0';
+import RpmOstree from './rpmostree-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        RpmOstree: typeof RpmOstree10;
+        RpmOstree: typeof RpmOstree;
     }
 }
 

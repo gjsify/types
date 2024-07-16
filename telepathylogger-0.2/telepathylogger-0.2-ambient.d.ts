@@ -1,6 +1,6 @@
 
 declare module 'gi://TelepathyLogger?version=0.2' {
-    import TelepathyLogger from '@girs/telepathylogger-0.2';
+    import TelepathyLogger from './telepathylogger-0.2.d.ts';
     export default TelepathyLogger;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://BraseroMedia?version=3.1' {
-    import BraseroMedia from '@girs/braseromedia-3.1';
+    import BraseroMedia from './braseromedia-3.1.d.ts';
     export default BraseroMedia;
 }
 

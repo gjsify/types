@@ -1,9 +1,9 @@
 
-import Gamerzilla01 from '@girs/gamerzilla-0.1';
+import Gamerzilla from './gamerzilla-0.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gamerzilla: typeof Gamerzilla01;
+        Gamerzilla: typeof Gamerzilla;
     }
 }
 

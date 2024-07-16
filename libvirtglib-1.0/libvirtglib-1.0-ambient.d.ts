@@ -1,6 +1,6 @@
 
 declare module 'gi://LibvirtGLib?version=1.0' {
-    import LibvirtGLib from '@girs/libvirtglib-1.0';
+    import LibvirtGLib from './libvirtglib-1.0.d.ts';
     export default LibvirtGLib;
 }
 

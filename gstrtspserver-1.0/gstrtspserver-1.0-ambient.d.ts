@@ -1,6 +1,6 @@
 
 declare module 'gi://GstRtspServer?version=1.0' {
-    import GstRtspServer from '@girs/gstrtspserver-1.0';
+    import GstRtspServer from './gstrtspserver-1.0.d.ts';
     export default GstRtspServer;
 }
 

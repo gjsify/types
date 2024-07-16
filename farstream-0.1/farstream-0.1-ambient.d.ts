@@ -1,6 +1,6 @@
 
 declare module 'gi://Farstream?version=0.1' {
-    import Farstream from '@girs/farstream-0.1';
+    import Farstream from './farstream-0.1.d.ts';
     export default Farstream;
 }
 

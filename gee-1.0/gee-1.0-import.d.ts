@@ -1,9 +1,9 @@
 
-import Gee10 from '@girs/gee-1.0';
+import Gee from './gee-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gee: typeof Gee10;
+        Gee: typeof Gee;
     }
 }
 

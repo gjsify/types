@@ -1,6 +1,6 @@
 
 declare module 'gi://EDataServerUI4?version=1.0' {
-    import EDataServerUI4 from '@girs/edataserverui4-1.0';
+    import EDataServerUI4 from './edataserverui4-1.0.d.ts';
     export default EDataServerUI4;
 }
 

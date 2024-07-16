@@ -1,9 +1,9 @@
 
-import BraseroBurn31 from '@girs/braseroburn-3.1';
+import BraseroBurn from './braseroburn-3.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        BraseroBurn: typeof BraseroBurn31;
+        BraseroBurn: typeof BraseroBurn;
     }
 }
 

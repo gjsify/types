@@ -1,6 +1,6 @@
 
 declare module 'gi://Libxfce4ui?version=2.0' {
-    import Libxfce4ui from '@girs/libxfce4ui-2.0';
+    import Libxfce4ui from './libxfce4ui-2.0.d.ts';
     export default Libxfce4ui;
 }
 

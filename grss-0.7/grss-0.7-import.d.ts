@@ -1,9 +1,9 @@
 
-import Grss07 from '@girs/grss-0.7';
+import Grss from './grss-0.7.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Grss: typeof Grss07;
+        Grss: typeof Grss;
     }
 }
 

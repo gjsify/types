@@ -1,6 +1,6 @@
 
 declare module 'gi://Tracker?version=1.0' {
-    import Tracker from '@girs/tracker-1.0';
+    import Tracker from './tracker-1.0.d.ts';
     export default Tracker;
 }
 

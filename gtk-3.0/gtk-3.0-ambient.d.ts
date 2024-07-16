@@ -1,6 +1,6 @@
 
 declare module 'gi://Gtk?version=3.0' {
-    import Gtk from '@girs/gtk-3.0';
+    import Gtk from './gtk-3.0.d.ts';
     export default Gtk;
 }
 

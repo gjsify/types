@@ -1,6 +1,6 @@
 
 declare module 'gi://Adw?version=1' {
-    import Adw from '@girs/adw-1';
+    import Adw from './adw-1.d.ts';
     export default Adw;
 }
 

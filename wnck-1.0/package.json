@@ -16,10 +16,15 @@
             "import": "./wnck-1.0-import.js",
             "default": "./wnck-1.0-import.js"
         },
-        ".": {
+        "./wnck-1.0": {
             "types": "./wnck-1.0.d.ts",
             "import": "./wnck-1.0.js",
             "default": "./wnck-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

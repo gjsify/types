@@ -1,6 +1,6 @@
 
 declare module 'gi://Cvc?version=1.0' {
-    import Cvc from '@girs/cvc-1.0';
+    import Cvc from './cvc-1.0.d.ts';
     export default Cvc;
 }
 

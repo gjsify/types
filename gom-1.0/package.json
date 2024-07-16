@@ -16,10 +16,15 @@
             "import": "./gom-1.0-import.js",
             "default": "./gom-1.0-import.js"
         },
-        ".": {
+        "./gom-1.0": {
             "types": "./gom-1.0.d.ts",
             "import": "./gom-1.0.js",
             "default": "./gom-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

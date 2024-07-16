@@ -16,10 +16,15 @@
             "import": "./folkstelepathy-0.6-import.js",
             "default": "./folkstelepathy-0.6-import.js"
         },
-        ".": {
+        "./folkstelepathy-0.6": {
             "types": "./folkstelepathy-0.6.d.ts",
             "import": "./folkstelepathy-0.6.js",
             "default": "./folkstelepathy-0.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

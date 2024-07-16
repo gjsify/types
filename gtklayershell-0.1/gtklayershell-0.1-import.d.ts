@@ -1,9 +1,9 @@
 
-import GtkLayerShell01 from '@girs/gtklayershell-0.1';
+import GtkLayerShell from './gtklayershell-0.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GtkLayerShell: typeof GtkLayerShell01;
+        GtkLayerShell: typeof GtkLayerShell;
     }
 }
 

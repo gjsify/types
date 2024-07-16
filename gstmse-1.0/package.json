@@ -16,10 +16,15 @@
             "import": "./gstmse-1.0-import.js",
             "default": "./gstmse-1.0-import.js"
         },
-        ".": {
+        "./gstmse-1.0": {
             "types": "./gstmse-1.0.d.ts",
             "import": "./gstmse-1.0.js",
             "default": "./gstmse-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

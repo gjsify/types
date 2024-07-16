@@ -1,9 +1,9 @@
 
-import GnomeAutoar01 from '@girs/gnomeautoar-0.1';
+import GnomeAutoar from './gnomeautoar-0.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GnomeAutoar: typeof GnomeAutoar01;
+        GnomeAutoar: typeof GnomeAutoar;
     }
 }
 

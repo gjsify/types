@@ -1,9 +1,9 @@
 
-import Easyfc014 from '@girs/easyfc-0.14';
+import Easyfc from './easyfc-0.14.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Easyfc: typeof Easyfc014;
+        Easyfc: typeof Easyfc;
     }
 }
 

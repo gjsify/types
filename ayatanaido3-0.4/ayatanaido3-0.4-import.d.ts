@@ -1,9 +1,9 @@
 
-import AyatanaIdo304 from '@girs/ayatanaido3-0.4';
+import AyatanaIdo3 from './ayatanaido3-0.4.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        AyatanaIdo3: typeof AyatanaIdo304;
+        AyatanaIdo3: typeof AyatanaIdo3;
     }
 }
 

@@ -16,10 +16,15 @@
             "import": "./gitg-1.0-import.js",
             "default": "./gitg-1.0-import.js"
         },
-        ".": {
+        "./gitg-1.0": {
             "types": "./gitg-1.0.d.ts",
             "import": "./gitg-1.0.js",
             "default": "./gitg-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

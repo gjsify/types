@@ -1,6 +1,6 @@
 
 declare module 'gi://LightDM?version=1' {
-    import LightDM from '@girs/lightdm-1';
+    import LightDM from './lightdm-1.d.ts';
     export default LightDM;
 }
 

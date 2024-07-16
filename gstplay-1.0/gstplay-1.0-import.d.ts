@@ -1,9 +1,9 @@
 
-import GstPlay10 from '@girs/gstplay-1.0';
+import GstPlay from './gstplay-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstPlay: typeof GstPlay10;
+        GstPlay: typeof GstPlay;
     }
 }
 

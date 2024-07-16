@@ -1,9 +1,9 @@
 
-import GstDxva10 from '@girs/gstdxva-1.0';
+import GstDxva from './gstdxva-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstDxva: typeof GstDxva10;
+        GstDxva: typeof GstDxva;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import Fontconfig20 from '@girs/fontconfig-2.0';
+import fontconfig from './fontconfig-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        fontconfig: typeof Fontconfig20;
+        fontconfig: typeof fontconfig;
     }
 }
 

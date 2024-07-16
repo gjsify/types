@@ -16,10 +16,15 @@
             "import": "./lfb-0.0-import.js",
             "default": "./lfb-0.0-import.js"
         },
-        ".": {
+        "./lfb-0.0": {
             "types": "./lfb-0.0.d.ts",
             "import": "./lfb-0.0.js",
             "default": "./lfb-0.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

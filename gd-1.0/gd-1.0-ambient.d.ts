@@ -1,6 +1,6 @@
 
 declare module 'gi://Gd?version=1.0' {
-    import Gd from '@girs/gd-1.0';
+    import Gd from './gd-1.0.d.ts';
     export default Gd;
 }
 

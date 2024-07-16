@@ -16,10 +16,15 @@
             "import": "./cinnamondesktop-3.0-import.js",
             "default": "./cinnamondesktop-3.0-import.js"
         },
-        ".": {
+        "./cinnamondesktop-3.0": {
             "types": "./cinnamondesktop-3.0.d.ts",
             "import": "./cinnamondesktop-3.0.js",
             "default": "./cinnamondesktop-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

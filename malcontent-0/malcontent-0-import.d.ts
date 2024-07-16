@@ -1,9 +1,9 @@
 
-import Malcontent0 from '@girs/malcontent-0';
+import Malcontent from './malcontent-0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Malcontent: typeof Malcontent0;
+        Malcontent: typeof Malcontent;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import GstVulkanWayland10 from '@girs/gstvulkanwayland-1.0';
+import GstVulkanWayland from './gstvulkanwayland-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstVulkanWayland: typeof GstVulkanWayland10;
+        GstVulkanWayland: typeof GstVulkanWayland;
     }
 }
 

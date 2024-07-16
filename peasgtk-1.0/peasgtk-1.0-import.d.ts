@@ -1,9 +1,9 @@
 
-import PeasGtk10 from '@girs/peasgtk-1.0';
+import PeasGtk from './peasgtk-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        PeasGtk: typeof PeasGtk10;
+        PeasGtk: typeof PeasGtk;
     }
 }
 

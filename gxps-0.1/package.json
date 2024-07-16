@@ -16,10 +16,15 @@
             "import": "./gxps-0.1-import.js",
             "default": "./gxps-0.1-import.js"
         },
-        ".": {
+        "./gxps-0.1": {
             "types": "./gxps-0.1.d.ts",
             "import": "./gxps-0.1.js",
             "default": "./gxps-0.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

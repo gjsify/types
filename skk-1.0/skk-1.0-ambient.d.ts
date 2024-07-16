@@ -1,6 +1,6 @@
 
 declare module 'gi://Skk?version=1.0' {
-    import Skk from '@girs/skk-1.0';
+    import Skk from './skk-1.0.d.ts';
     export default Skk;
 }
 

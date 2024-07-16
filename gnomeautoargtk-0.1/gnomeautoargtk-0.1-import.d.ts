@@ -1,9 +1,9 @@
 
-import GnomeAutoarGtk01 from '@girs/gnomeautoargtk-0.1';
+import GnomeAutoarGtk from './gnomeautoargtk-0.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GnomeAutoarGtk: typeof GnomeAutoarGtk01;
+        GnomeAutoarGtk: typeof GnomeAutoarGtk;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://GstController?version=1.0' {
-    import GstController from '@girs/gstcontroller-1.0';
+    import GstController from './gstcontroller-1.0.d.ts';
     export default GstController;
 }
 

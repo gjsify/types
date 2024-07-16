@@ -16,10 +16,15 @@
             "import": "./qrtr-1.0-import.js",
             "default": "./qrtr-1.0-import.js"
         },
-        ".": {
+        "./qrtr-1.0": {
             "types": "./qrtr-1.0.d.ts",
             "import": "./qrtr-1.0.js",
             "default": "./qrtr-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,9 +1,9 @@
 
-import DBusGLib10 from '@girs/dbusglib-1.0';
+import DBusGLib from './dbusglib-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        DBusGLib: typeof DBusGLib10;
+        DBusGLib: typeof DBusGLib;
     }
 }
 

@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './snapd-1-ambient.d.ts';
-
-import './snapd-1-import.d.ts';
-
 /**
  * Snapd-1
  */

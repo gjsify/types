@@ -16,10 +16,15 @@
             "import": "./mediaart-2.0-import.js",
             "default": "./mediaart-2.0-import.js"
         },
-        ".": {
+        "./mediaart-2.0": {
             "types": "./mediaart-2.0.d.ts",
             "import": "./mediaart-2.0.js",
             "default": "./mediaart-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

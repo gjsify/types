@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './telepathyfarstream-0.6-ambient.d.ts';
-
 /**
  * TelepathyFarstream-0.6
  */

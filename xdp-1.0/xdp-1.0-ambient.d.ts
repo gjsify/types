@@ -1,6 +1,6 @@
 
 declare module 'gi://Xdp?version=1.0' {
-    import Xdp from '@girs/xdp-1.0';
+    import Xdp from './xdp-1.0.d.ts';
     export default Xdp;
 }
 

@@ -1,9 +1,9 @@
 
-import AgsAudio60 from '@girs/agsaudio-6.0';
+import AgsAudio from './agsaudio-6.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        AgsAudio: typeof AgsAudio60;
+        AgsAudio: typeof AgsAudio;
     }
 }
 

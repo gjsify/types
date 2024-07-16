@@ -1,6 +1,6 @@
 
 declare module 'gi://GModule?version=2.0' {
-    import GModule from '@girs/gmodule-2.0';
+    import GModule from './gmodule-2.0.d.ts';
     export default GModule;
 }
 

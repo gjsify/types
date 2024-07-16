@@ -16,10 +16,15 @@
             "import": "./libproxy-1.0-import.js",
             "default": "./libproxy-1.0-import.js"
         },
-        ".": {
+        "./libproxy-1.0": {
             "types": "./libproxy-1.0.d.ts",
             "import": "./libproxy-1.0.js",
             "default": "./libproxy-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

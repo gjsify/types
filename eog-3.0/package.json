@@ -16,10 +16,15 @@
             "import": "./eog-3.0-import.js",
             "default": "./eog-3.0-import.js"
         },
-        ".": {
+        "./eog-3.0": {
             "types": "./eog-3.0.d.ts",
             "import": "./eog-3.0.js",
             "default": "./eog-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

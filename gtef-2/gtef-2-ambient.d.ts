@@ -1,6 +1,6 @@
 
 declare module 'gi://Gtef?version=2' {
-    import Gtef from '@girs/gtef-2';
+    import Gtef from './gtef-2.d.ts';
     export default Gtef;
 }
 

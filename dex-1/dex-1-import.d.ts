@@ -1,9 +1,9 @@
 
-import Dex1 from '@girs/dex-1';
+import Dex from './dex-1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Dex: typeof Dex1;
+        Dex: typeof Dex;
     }
 }
 

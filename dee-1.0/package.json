@@ -16,10 +16,15 @@
             "import": "./dee-1.0-import.js",
             "default": "./dee-1.0-import.js"
         },
-        ".": {
+        "./dee-1.0": {
             "types": "./dee-1.0.d.ts",
             "import": "./dee-1.0.js",
             "default": "./dee-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

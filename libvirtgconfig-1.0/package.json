@@ -16,10 +16,15 @@
             "import": "./libvirtgconfig-1.0-import.js",
             "default": "./libvirtgconfig-1.0-import.js"
         },
-        ".": {
+        "./libvirtgconfig-1.0": {
             "types": "./libvirtgconfig-1.0.d.ts",
             "import": "./libvirtgconfig-1.0.js",
             "default": "./libvirtgconfig-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

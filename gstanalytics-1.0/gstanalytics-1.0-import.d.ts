@@ -1,9 +1,9 @@
 
-import GstAnalytics10 from '@girs/gstanalytics-1.0';
+import GstAnalytics from './gstanalytics-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstAnalytics: typeof GstAnalytics10;
+        GstAnalytics: typeof GstAnalytics;
     }
 }
 

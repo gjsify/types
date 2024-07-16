@@ -1,6 +1,6 @@
 
 declare module 'gi://GtkClutter?version=1.0' {
-    import GtkClutter from '@girs/gtkclutter-1.0';
+    import GtkClutter from './gtkclutter-1.0.d.ts';
     export default GtkClutter;
 }
 

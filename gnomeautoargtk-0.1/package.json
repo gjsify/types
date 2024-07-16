@@ -16,10 +16,15 @@
             "import": "./gnomeautoargtk-0.1-import.js",
             "default": "./gnomeautoargtk-0.1-import.js"
         },
-        ".": {
+        "./gnomeautoargtk-0.1": {
             "types": "./gnomeautoargtk-0.1.d.ts",
             "import": "./gnomeautoargtk-0.1.js",
             "default": "./gnomeautoargtk-0.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

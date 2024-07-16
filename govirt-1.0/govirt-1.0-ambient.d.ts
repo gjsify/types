@@ -1,6 +1,6 @@
 
 declare module 'gi://GoVirt?version=1.0' {
-    import GoVirt from '@girs/govirt-1.0';
+    import GoVirt from './govirt-1.0.d.ts';
     export default GoVirt;
 }
 

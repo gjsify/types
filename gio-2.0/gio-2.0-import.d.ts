@@ -1,9 +1,9 @@
 
-import Gio20 from '@girs/gio-2.0';
+import Gio from './gio-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gio: typeof Gio20;
+        Gio: typeof Gio;
     }
 }
 

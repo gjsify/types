@@ -1,9 +1,9 @@
 
-import Workbench0 from '@girs/workbench-0';
+import Workbench from './workbench-0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Workbench: typeof Workbench0;
+        Workbench: typeof Workbench;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://GCab?version=1.0' {
-    import GCab from '@girs/gcab-1.0';
+    import GCab from './gcab-1.0.d.ts';
     export default GCab;
 }
 

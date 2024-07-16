@@ -1,6 +1,6 @@
 
 declare module 'gi://AtrilDocument?version=1.5.0' {
-    import AtrilDocument from '@girs/atrildocument-1.5.0';
+    import AtrilDocument from './atrildocument-1.5.0.d.ts';
     export default AtrilDocument;
 }
 

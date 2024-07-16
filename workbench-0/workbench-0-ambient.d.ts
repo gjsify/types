@@ -1,6 +1,6 @@
 
 declare module 'gi://Workbench?version=0' {
-    import Workbench from '@girs/workbench-0';
+    import Workbench from './workbench-0.d.ts';
     export default Workbench;
 }
 

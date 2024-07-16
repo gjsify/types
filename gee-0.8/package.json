@@ -16,10 +16,15 @@
             "import": "./gee-0.8-import.js",
             "default": "./gee-0.8-import.js"
         },
-        ".": {
+        "./gee-0.8": {
             "types": "./gee-0.8.d.ts",
             "import": "./gee-0.8.js",
             "default": "./gee-0.8.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

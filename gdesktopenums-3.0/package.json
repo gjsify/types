@@ -16,10 +16,15 @@
             "import": "./gdesktopenums-3.0-import.js",
             "default": "./gdesktopenums-3.0-import.js"
         },
-        ".": {
+        "./gdesktopenums-3.0": {
             "types": "./gdesktopenums-3.0.d.ts",
             "import": "./gdesktopenums-3.0.js",
             "default": "./gdesktopenums-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

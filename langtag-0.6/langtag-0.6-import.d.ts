@@ -1,9 +1,9 @@
 
-import LangTag06 from '@girs/langtag-0.6';
+import LangTag from './langtag-0.6.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        LangTag: typeof LangTag06;
+        LangTag: typeof LangTag;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import Gdk40 from '@girs/gdk-4.0';
+import Gdk from './gdk-4.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gdk: typeof Gdk40;
+        Gdk: typeof Gdk;
     }
 }
 

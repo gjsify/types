@@ -1,6 +1,6 @@
 
 declare module 'gi://GioUnix?version=2.0' {
-    import GioUnix from '@girs/giounix-2.0';
+    import GioUnix from './giounix-2.0.d.ts';
     export default GioUnix;
 }
 

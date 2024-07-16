@@ -1,6 +1,6 @@
 
 declare module 'gi://GnomeBluetooth?version=3.0' {
-    import GnomeBluetooth from '@girs/gnomebluetooth-3.0';
+    import GnomeBluetooth from './gnomebluetooth-3.0.d.ts';
     export default GnomeBluetooth;
 }
 

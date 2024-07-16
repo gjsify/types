@@ -16,10 +16,15 @@
             "import": "./gtkvnc-2.0-import.js",
             "default": "./gtkvnc-2.0-import.js"
         },
-        ".": {
+        "./gtkvnc-2.0": {
             "types": "./gtkvnc-2.0.d.ts",
             "import": "./gtkvnc-2.0.js",
             "default": "./gtkvnc-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

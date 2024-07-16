@@ -1,9 +1,9 @@
 
-import GstTranscoder10 from '@girs/gsttranscoder-1.0';
+import GstTranscoder from './gsttranscoder-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstTranscoder: typeof GstTranscoder10;
+        GstTranscoder: typeof GstTranscoder;
     }
 }
 

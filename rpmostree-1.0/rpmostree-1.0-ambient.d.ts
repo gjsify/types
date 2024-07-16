@@ -1,6 +1,6 @@
 
 declare module 'gi://RpmOstree?version=1.0' {
-    import RpmOstree from '@girs/rpmostree-1.0';
+    import RpmOstree from './rpmostree-1.0.d.ts';
     export default RpmOstree;
 }
 

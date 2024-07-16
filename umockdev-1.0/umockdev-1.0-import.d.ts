@@ -1,9 +1,9 @@
 
-import UMockdev10 from '@girs/umockdev-1.0';
+import UMockdev from './umockdev-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        UMockdev: typeof UMockdev10;
+        UMockdev: typeof UMockdev;
     }
 }
 

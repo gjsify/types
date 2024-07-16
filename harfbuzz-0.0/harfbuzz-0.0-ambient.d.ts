@@ -1,6 +1,6 @@
 
 declare module 'gi://HarfBuzz?version=0.0' {
-    import HarfBuzz from '@girs/harfbuzz-0.0';
+    import HarfBuzz from './harfbuzz-0.0.d.ts';
     export default HarfBuzz;
 }
 

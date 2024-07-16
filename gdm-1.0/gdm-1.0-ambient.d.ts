@@ -1,6 +1,6 @@
 
 declare module 'gi://Gdm?version=1.0' {
-    import Gdm from '@girs/gdm-1.0';
+    import Gdm from './gdm-1.0.d.ts';
     export default Gdm;
 }
 

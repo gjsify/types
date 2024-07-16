@@ -16,10 +16,15 @@
             "import": "./mxgtk-1.0-import.js",
             "default": "./mxgtk-1.0-import.js"
         },
-        ".": {
+        "./mxgtk-1.0": {
             "types": "./mxgtk-1.0.d.ts",
             "import": "./mxgtk-1.0.js",
             "default": "./mxgtk-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

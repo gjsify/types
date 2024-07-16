@@ -16,10 +16,15 @@
             "import": "./vgsl-1-import.js",
             "default": "./vgsl-1-import.js"
         },
-        ".": {
+        "./vgsl-1": {
             "types": "./vgsl-1.d.ts",
             "import": "./vgsl-1.js",
             "default": "./vgsl-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

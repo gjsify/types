@@ -1,6 +1,6 @@
 
 declare module 'gi://GcrGtk4?version=4' {
-    import GcrGtk4 from '@girs/gcrgtk4-4';
+    import GcrGtk4 from './gcrgtk4-4.d.ts';
     export default GcrGtk4;
 }
 

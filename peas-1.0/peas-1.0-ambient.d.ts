@@ -1,6 +1,6 @@
 
 declare module 'gi://Peas?version=1.0' {
-    import Peas from '@girs/peas-1.0';
+    import Peas from './peas-1.0.d.ts';
     export default Peas;
 }
 

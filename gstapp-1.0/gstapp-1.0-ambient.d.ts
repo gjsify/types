@@ -1,6 +1,6 @@
 
 declare module 'gi://GstApp?version=1.0' {
-    import GstApp from '@girs/gstapp-1.0';
+    import GstApp from './gstapp-1.0.d.ts';
     export default GstApp;
 }
 

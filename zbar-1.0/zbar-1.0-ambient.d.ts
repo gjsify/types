@@ -1,6 +1,6 @@
 
 declare module 'gi://ZBar?version=1.0' {
-    import ZBar from '@girs/zbar-1.0';
+    import ZBar from './zbar-1.0.d.ts';
     export default ZBar;
 }
 

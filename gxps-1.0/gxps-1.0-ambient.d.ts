@@ -1,6 +1,6 @@
 
 declare module 'gi://Gxps?version=1.0' {
-    import Gxps from '@girs/gxps-1.0';
+    import Gxps from './gxps-1.0.d.ts';
     export default Gxps;
 }
 

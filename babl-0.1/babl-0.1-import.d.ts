@@ -1,9 +1,9 @@
 
-import Babl01 from '@girs/babl-0.1';
+import Babl from './babl-0.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Babl: typeof Babl01;
+        Babl: typeof Babl;
     }
 }
 

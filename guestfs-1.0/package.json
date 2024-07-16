@@ -16,10 +16,15 @@
             "import": "./guestfs-1.0-import.js",
             "default": "./guestfs-1.0-import.js"
         },
-        ".": {
+        "./guestfs-1.0": {
             "types": "./guestfs-1.0.d.ts",
             "import": "./guestfs-1.0.js",
             "default": "./guestfs-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

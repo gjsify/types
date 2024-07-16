@@ -1,6 +1,6 @@
 
 declare module 'gi://AtrilView?version=1.5.0' {
-    import AtrilView from '@girs/atrilview-1.5.0';
+    import AtrilView from './atrilview-1.5.0.d.ts';
     export default AtrilView;
 }
 

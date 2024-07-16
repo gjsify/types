@@ -1,6 +1,6 @@
 
 declare module 'gi://Anthy?version=9000' {
-    import Anthy from '@girs/anthy-9000';
+    import Anthy from './anthy-9000.d.ts';
     export default Anthy;
 }
 

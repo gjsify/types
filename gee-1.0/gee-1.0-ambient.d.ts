@@ -1,6 +1,6 @@
 
 declare module 'gi://Gee?version=1.0' {
-    import Gee from '@girs/gee-1.0';
+    import Gee from './gee-1.0.d.ts';
     export default Gee;
 }
 

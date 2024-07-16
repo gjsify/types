@@ -16,10 +16,15 @@
             "import": "./appstreamglib-1.0-import.js",
             "default": "./appstreamglib-1.0-import.js"
         },
-        ".": {
+        "./appstreamglib-1.0": {
             "types": "./appstreamglib-1.0.d.ts",
             "import": "./appstreamglib-1.0.js",
             "default": "./appstreamglib-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

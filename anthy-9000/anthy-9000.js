@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import Anthy from 'gi://Anthy?version=9000';
-  export { Anthy };
-  export default Anthy;
+// @ts-expect-error
+import Anthy from 'gi://Anthy?version=9000';
+export default Anthy;
 

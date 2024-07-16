@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import AgsAudio from 'gi://AgsAudio?version=6.0';
-  export { AgsAudio };
-  export default AgsAudio;
+// @ts-expect-error
+import AgsAudio from 'gi://AgsAudio?version=6.0';
+export default AgsAudio;
 

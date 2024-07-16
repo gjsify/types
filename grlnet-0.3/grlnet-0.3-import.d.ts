@@ -1,9 +1,9 @@
 
-import GrlNet03 from '@girs/grlnet-0.3';
+import GrlNet from './grlnet-0.3.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GrlNet: typeof GrlNet03;
+        GrlNet: typeof GrlNet;
     }
 }
 

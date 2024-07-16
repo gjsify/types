@@ -1,9 +1,9 @@
 
-import GUPnP16 from '@girs/gupnp-1.6';
+import GUPnP from './gupnp-1.6.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GUPnP: typeof GUPnP16;
+        GUPnP: typeof GUPnP;
     }
 }
 

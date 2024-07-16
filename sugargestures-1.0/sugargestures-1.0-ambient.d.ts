@@ -1,6 +1,6 @@
 
 declare module 'gi://SugarGestures?version=1.0' {
-    import SugarGestures from '@girs/sugargestures-1.0';
+    import SugarGestures from './sugargestures-1.0.d.ts';
     export default SugarGestures;
 }
 

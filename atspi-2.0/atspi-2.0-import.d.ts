@@ -1,9 +1,9 @@
 
-import Atspi20 from '@girs/atspi-2.0';
+import Atspi from './atspi-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Atspi: typeof Atspi20;
+        Atspi: typeof Atspi;
     }
 }
 

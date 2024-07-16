@@ -1,9 +1,9 @@
 
-import GeglGtk301 from '@girs/geglgtk3-0.1';
+import GeglGtk3 from './geglgtk3-0.1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GeglGtk3: typeof GeglGtk301;
+        GeglGtk3: typeof GeglGtk3;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://fontconfig?version=2.0' {
-    import fontconfig from '@girs/fontconfig-2.0';
+    import fontconfig from './fontconfig-2.0.d.ts';
     export default fontconfig;
 }
 

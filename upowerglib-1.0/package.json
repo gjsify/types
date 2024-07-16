@@ -16,10 +16,15 @@
             "import": "./upowerglib-1.0-import.js",
             "default": "./upowerglib-1.0-import.js"
         },
-        ".": {
+        "./upowerglib-1.0": {
             "types": "./upowerglib-1.0.d.ts",
             "import": "./upowerglib-1.0.js",
             "default": "./upowerglib-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,9 +1,9 @@
 
-import GPasteGtk4 from '@girs/gpastegtk-4';
+import GPasteGtk from './gpastegtk-4.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GPasteGtk: typeof GPasteGtk4;
+        GPasteGtk: typeof GPasteGtk;
     }
 }
 

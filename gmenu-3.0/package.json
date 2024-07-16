@@ -16,10 +16,15 @@
             "import": "./gmenu-3.0-import.js",
             "default": "./gmenu-3.0-import.js"
         },
-        ".": {
+        "./gmenu-3.0": {
             "types": "./gmenu-3.0.d.ts",
             "import": "./gmenu-3.0.js",
             "default": "./gmenu-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

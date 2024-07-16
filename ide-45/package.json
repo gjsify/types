@@ -16,10 +16,15 @@
             "import": "./ide-45-import.js",
             "default": "./ide-45-import.js"
         },
-        ".": {
+        "./ide-45": {
             "types": "./ide-45.d.ts",
             "import": "./ide-45.js",
             "default": "./ide-45.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

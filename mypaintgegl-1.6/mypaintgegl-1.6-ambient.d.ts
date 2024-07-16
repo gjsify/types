@@ -1,6 +1,6 @@
 
 declare module 'gi://MyPaintGegl?version=1.6' {
-    import MyPaintGegl from '@girs/mypaintgegl-1.6';
+    import MyPaintGegl from './mypaintgegl-1.6.d.ts';
     export default MyPaintGegl;
 }
 

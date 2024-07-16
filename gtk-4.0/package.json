@@ -16,10 +16,15 @@
             "import": "./gtk-4.0-import.js",
             "default": "./gtk-4.0-import.js"
         },
-        ".": {
+        "./gtk-4.0": {
             "types": "./gtk-4.0.d.ts",
             "import": "./gtk-4.0.js",
             "default": "./gtk-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./granite-1.0-import.js",
             "default": "./granite-1.0-import.js"
         },
-        ".": {
+        "./granite-1.0": {
             "types": "./granite-1.0.d.ts",
             "import": "./granite-1.0.js",
             "default": "./granite-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

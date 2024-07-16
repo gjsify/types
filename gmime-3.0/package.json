@@ -16,10 +16,15 @@
             "import": "./gmime-3.0-import.js",
             "default": "./gmime-3.0-import.js"
         },
-        ".": {
+        "./gmime-3.0": {
             "types": "./gmime-3.0.d.ts",
             "import": "./gmime-3.0.js",
             "default": "./gmime-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

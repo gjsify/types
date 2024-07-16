@@ -16,10 +16,15 @@
             "import": "./polkitagent-1.0-import.js",
             "default": "./polkitagent-1.0-import.js"
         },
-        ".": {
+        "./polkitagent-1.0": {
             "types": "./polkitagent-1.0.d.ts",
             "import": "./polkitagent-1.0.js",
             "default": "./polkitagent-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

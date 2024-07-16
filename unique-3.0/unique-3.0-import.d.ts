@@ -1,9 +1,9 @@
 
-import Unique30 from '@girs/unique-3.0';
+import Unique from './unique-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Unique: typeof Unique30;
+        Unique: typeof Unique;
     }
 }
 

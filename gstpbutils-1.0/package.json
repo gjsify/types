@@ -16,10 +16,15 @@
             "import": "./gstpbutils-1.0-import.js",
             "default": "./gstpbutils-1.0-import.js"
         },
-        ".": {
+        "./gstpbutils-1.0": {
             "types": "./gstpbutils-1.0.d.ts",
             "import": "./gstpbutils-1.0.js",
             "default": "./gstpbutils-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

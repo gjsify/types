@@ -1,9 +1,9 @@
 
-import EvinceView30 from '@girs/evinceview-3.0';
+import EvinceView from './evinceview-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        EvinceView: typeof EvinceView30;
+        EvinceView: typeof EvinceView;
     }
 }
 

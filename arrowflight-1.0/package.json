@@ -16,10 +16,15 @@
             "import": "./arrowflight-1.0-import.js",
             "default": "./arrowflight-1.0-import.js"
         },
-        ".": {
+        "./arrowflight-1.0": {
             "types": "./arrowflight-1.0.d.ts",
             "import": "./arrowflight-1.0.js",
             "default": "./arrowflight-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

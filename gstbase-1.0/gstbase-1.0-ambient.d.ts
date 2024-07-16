@@ -1,6 +1,6 @@
 
 declare module 'gi://GstBase?version=1.0' {
-    import GstBase from '@girs/gstbase-1.0';
+    import GstBase from './gstbase-1.0.d.ts';
     export default GstBase;
 }
 

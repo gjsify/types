@@ -1,6 +1,6 @@
 
 declare module 'gi://Kkc?version=1.0' {
-    import Kkc from '@girs/kkc-1.0';
+    import Kkc from './kkc-1.0.d.ts';
     export default Kkc;
 }
 

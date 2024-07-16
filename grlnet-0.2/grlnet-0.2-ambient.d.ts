@@ -1,6 +1,6 @@
 
 declare module 'gi://GrlNet?version=0.2' {
-    import GrlNet from '@girs/grlnet-0.2';
+    import GrlNet from './grlnet-0.2.d.ts';
     export default GrlNet;
 }
 

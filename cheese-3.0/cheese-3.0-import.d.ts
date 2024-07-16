@@ -1,9 +1,9 @@
 
-import Cheese30 from '@girs/cheese-3.0';
+import Cheese from './cheese-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Cheese: typeof Cheese30;
+        Cheese: typeof Cheese;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import AppStreamBuilder10 from '@girs/appstreambuilder-1.0';
+import AppStreamBuilder from './appstreambuilder-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        AppStreamBuilder: typeof AppStreamBuilder10;
+        AppStreamBuilder: typeof AppStreamBuilder;
     }
 }
 

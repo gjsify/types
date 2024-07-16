@@ -1,6 +1,6 @@
 
 declare module 'gi://ColorHug?version=1.0' {
-    import ColorHug from '@girs/colorhug-1.0';
+    import ColorHug from './colorhug-1.0.d.ts';
     export default ColorHug;
 }
 

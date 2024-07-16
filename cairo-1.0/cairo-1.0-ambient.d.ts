@@ -1,6 +1,6 @@
 
 declare module 'gi://cairo?version=1.0' {
-    import cairo from '@girs/cairo-1.0';
+    import cairo from './cairo-1.0.d.ts';
     export default cairo;
 }
 

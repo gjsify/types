@@ -16,10 +16,15 @@
             "import": "./ecal-2.0-import.js",
             "default": "./ecal-2.0-import.js"
         },
-        ".": {
+        "./ecal-2.0": {
             "types": "./ecal-2.0.d.ts",
             "import": "./ecal-2.0.js",
             "default": "./ecal-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

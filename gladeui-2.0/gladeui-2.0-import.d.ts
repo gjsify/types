@@ -1,9 +1,9 @@
 
-import Gladeui20 from '@girs/gladeui-2.0';
+import Gladeui from './gladeui-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gladeui: typeof Gladeui20;
+        Gladeui: typeof Gladeui;
     }
 }
 

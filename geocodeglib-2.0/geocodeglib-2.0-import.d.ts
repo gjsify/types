@@ -1,9 +1,9 @@
 
-import GeocodeGlib20 from '@girs/geocodeglib-2.0';
+import GeocodeGlib from './geocodeglib-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GeocodeGlib: typeof GeocodeGlib20;
+        GeocodeGlib: typeof GeocodeGlib;
     }
 }
 

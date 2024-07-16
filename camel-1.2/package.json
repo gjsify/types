@@ -16,10 +16,15 @@
             "import": "./camel-1.2-import.js",
             "default": "./camel-1.2-import.js"
         },
-        ".": {
+        "./camel-1.2": {
             "types": "./camel-1.2.d.ts",
             "import": "./camel-1.2.js",
             "default": "./camel-1.2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

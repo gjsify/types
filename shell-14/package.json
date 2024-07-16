@@ -16,10 +16,15 @@
             "import": "./shell-14-import.js",
             "default": "./shell-14-import.js"
         },
-        ".": {
+        "./shell-14": {
             "types": "./shell-14.d.ts",
             "import": "./shell-14.js",
             "default": "./shell-14.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

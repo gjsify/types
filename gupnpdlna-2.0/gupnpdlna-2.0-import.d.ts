@@ -1,9 +1,9 @@
 
-import GUPnPDLNA20 from '@girs/gupnpdlna-2.0';
+import GUPnPDLNA from './gupnpdlna-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GUPnPDLNA: typeof GUPnPDLNA20;
+        GUPnPDLNA: typeof GUPnPDLNA;
     }
 }
 

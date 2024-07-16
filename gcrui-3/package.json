@@ -16,10 +16,15 @@
             "import": "./gcrui-3-import.js",
             "default": "./gcrui-3-import.js"
         },
-        ".": {
+        "./gcrui-3": {
             "types": "./gcrui-3.d.ts",
             "import": "./gcrui-3.js",
             "default": "./gcrui-3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

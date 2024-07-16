@@ -1,9 +1,9 @@
 
-import Clapper00 from '@girs/clapper-0.0';
+import Clapper from './clapper-0.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Clapper: typeof Clapper00;
+        Clapper: typeof Clapper;
     }
 }
 

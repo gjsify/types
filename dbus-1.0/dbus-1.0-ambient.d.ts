@@ -1,6 +1,6 @@
 
 declare module 'gi://DBus?version=1.0' {
-    import DBus from '@girs/dbus-1.0';
+    import DBus from './dbus-1.0.d.ts';
     export default DBus;
 }
 

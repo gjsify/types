@@ -1,9 +1,9 @@
 
-import Lfb00 from '@girs/lfb-0.0';
+import Lfb from './lfb-0.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Lfb: typeof Lfb00;
+        Lfb: typeof Lfb;
     }
 }
 

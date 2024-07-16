@@ -1,9 +1,9 @@
 
-import IMSettings18 from '@girs/imsettings-1.8';
+import IMSettings from './imsettings-1.8.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        IMSettings: typeof IMSettings18;
+        IMSettings: typeof IMSettings;
     }
 }
 

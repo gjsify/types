@@ -16,10 +16,15 @@
             "import": "./gci-1-import.js",
             "default": "./gci-1-import.js"
         },
-        ".": {
+        "./gci-1": {
             "types": "./gci-1.d.ts",
             "import": "./gci-1.js",
             "default": "./gci-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

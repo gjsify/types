@@ -1,6 +1,6 @@
 
 declare module 'gi://GstWebRTC?version=1.0' {
-    import GstWebRTC from '@girs/gstwebrtc-1.0';
+    import GstWebRTC from './gstwebrtc-1.0.d.ts';
     export default GstWebRTC;
 }
 

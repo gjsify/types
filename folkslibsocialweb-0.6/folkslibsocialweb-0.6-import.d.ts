@@ -1,9 +1,9 @@
 
-import FolksLibsocialweb06 from '@girs/folkslibsocialweb-0.6';
+import FolksLibsocialweb from './folkslibsocialweb-0.6.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        FolksLibsocialweb: typeof FolksLibsocialweb06;
+        FolksLibsocialweb: typeof FolksLibsocialweb;
     }
 }
 

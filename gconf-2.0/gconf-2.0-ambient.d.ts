@@ -1,6 +1,6 @@
 
 declare module 'gi://GConf?version=2.0' {
-    import GConf from '@girs/gconf-2.0';
+    import GConf from './gconf-2.0.d.ts';
     export default GConf;
 }
 

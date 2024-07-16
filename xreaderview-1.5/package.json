@@ -16,10 +16,15 @@
             "import": "./xreaderview-1.5-import.js",
             "default": "./xreaderview-1.5-import.js"
         },
-        ".": {
+        "./xreaderview-1.5": {
             "types": "./xreaderview-1.5.d.ts",
             "import": "./xreaderview-1.5.js",
             "default": "./xreaderview-1.5.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

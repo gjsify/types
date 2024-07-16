@@ -1,6 +1,6 @@
 
 declare module 'gi://ClutterGdk?version=1.0' {
-    import ClutterGdk from '@girs/cluttergdk-1.0';
+    import ClutterGdk from './cluttergdk-1.0.d.ts';
     export default ClutterGdk;
 }
 

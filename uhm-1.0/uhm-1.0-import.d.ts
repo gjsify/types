@@ -1,9 +1,9 @@
 
-import Uhm10 from '@girs/uhm-1.0';
+import Uhm from './uhm-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Uhm: typeof Uhm10;
+        Uhm: typeof Uhm;
     }
 }
 

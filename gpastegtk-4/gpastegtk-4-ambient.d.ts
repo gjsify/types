@@ -1,6 +1,6 @@
 
 declare module 'gi://GPasteGtk?version=4' {
-    import GPasteGtk from '@girs/gpastegtk-4';
+    import GPasteGtk from './gpastegtk-4.d.ts';
     export default GPasteGtk;
 }
 

@@ -1,9 +1,9 @@
 
-import Peas2 from '@girs/peas-2';
+import Peas from './peas-2.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Peas: typeof Peas2;
+        Peas: typeof Peas;
     }
 }
 

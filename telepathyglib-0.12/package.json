@@ -16,10 +16,15 @@
             "import": "./telepathyglib-0.12-import.js",
             "default": "./telepathyglib-0.12-import.js"
         },
-        ".": {
+        "./telepathyglib-0.12": {
             "types": "./telepathyglib-0.12.d.ts",
             "import": "./telepathyglib-0.12.js",
             "default": "./telepathyglib-0.12.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

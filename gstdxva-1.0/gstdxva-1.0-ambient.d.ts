@@ -1,6 +1,6 @@
 
 declare module 'gi://GstDxva?version=1.0' {
-    import GstDxva from '@girs/gstdxva-1.0';
+    import GstDxva from './gstdxva-1.0.d.ts';
     export default GstDxva;
 }
 

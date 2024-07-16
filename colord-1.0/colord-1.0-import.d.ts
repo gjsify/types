@@ -1,9 +1,9 @@
 
-import Colord10 from '@girs/colord-1.0';
+import Colord from './colord-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Colord: typeof Colord10;
+        Colord: typeof Colord;
     }
 }
 

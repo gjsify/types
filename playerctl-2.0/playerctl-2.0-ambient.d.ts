@@ -1,6 +1,6 @@
 
 declare module 'gi://Playerctl?version=2.0' {
-    import Playerctl from '@girs/playerctl-2.0';
+    import Playerctl from './playerctl-2.0.d.ts';
     export default Playerctl;
 }
 

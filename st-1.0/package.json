@@ -16,10 +16,15 @@
             "import": "./st-1.0-import.js",
             "default": "./st-1.0-import.js"
         },
-        ".": {
+        "./st-1.0": {
             "types": "./st-1.0.d.ts",
             "import": "./st-1.0.js",
             "default": "./st-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

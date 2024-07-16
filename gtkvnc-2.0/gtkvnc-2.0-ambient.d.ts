@@ -1,6 +1,6 @@
 
 declare module 'gi://GtkVnc?version=2.0' {
-    import GtkVnc from '@girs/gtkvnc-2.0';
+    import GtkVnc from './gtkvnc-2.0.d.ts';
     export default GtkVnc;
 }
 

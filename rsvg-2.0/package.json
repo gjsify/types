@@ -16,10 +16,15 @@
             "import": "./rsvg-2.0-import.js",
             "default": "./rsvg-2.0-import.js"
         },
-        ".": {
+        "./rsvg-2.0": {
             "types": "./rsvg-2.0.d.ts",
             "import": "./rsvg-2.0.js",
             "default": "./rsvg-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

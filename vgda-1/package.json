@@ -16,10 +16,15 @@
             "import": "./vgda-1-import.js",
             "default": "./vgda-1-import.js"
         },
-        ".": {
+        "./vgda-1": {
             "types": "./vgda-1.d.ts",
             "import": "./vgda-1.js",
             "default": "./vgda-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

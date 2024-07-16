@@ -1,6 +1,6 @@
 
 declare module 'gi://Parquet?version=1.0' {
-    import Parquet from '@girs/parquet-1.0';
+    import Parquet from './parquet-1.0.d.ts';
     export default Parquet;
 }
 

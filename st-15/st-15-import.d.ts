@@ -1,9 +1,9 @@
 
-import St15 from '@girs/st-15';
+import St from './st-15.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        St: typeof St15;
+        St: typeof St;
     }
 }
 

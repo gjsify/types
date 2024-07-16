@@ -16,10 +16,15 @@
             "import": "./gtk-2.0-import.js",
             "default": "./gtk-2.0-import.js"
         },
-        ".": {
+        "./gtk-2.0": {
             "types": "./gtk-2.0.d.ts",
             "import": "./gtk-2.0.js",
             "default": "./gtk-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

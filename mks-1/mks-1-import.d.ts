@@ -1,9 +1,9 @@
 
-import Mks1 from '@girs/mks-1';
+import Mks from './mks-1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Mks: typeof Mks1;
+        Mks: typeof Mks;
     }
 }
 

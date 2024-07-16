@@ -16,10 +16,15 @@
             "import": "./gusb-1.0-import.js",
             "default": "./gusb-1.0-import.js"
         },
-        ".": {
+        "./gusb-1.0": {
             "types": "./gusb-1.0.d.ts",
             "import": "./gusb-1.0.js",
             "default": "./gusb-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

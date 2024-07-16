@@ -1,9 +1,9 @@
 
-import GLibUnix20 from '@girs/glibunix-2.0';
+import GLibUnix from './glibunix-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GLibUnix: typeof GLibUnix20;
+        GLibUnix: typeof GLibUnix;
     }
 }
 

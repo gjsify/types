@@ -1,9 +1,9 @@
 
-import Builder10 from '@girs/builder-1.0';
+import Builder from './builder-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Builder: typeof Builder10;
+        Builder: typeof Builder;
     }
 }
 

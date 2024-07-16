@@ -1,6 +1,6 @@
 
 declare module 'gi://RygelCore?version=2.8' {
-    import RygelCore from '@girs/rygelcore-2.8';
+    import RygelCore from './rygelcore-2.8.d.ts';
     export default RygelCore;
 }
 

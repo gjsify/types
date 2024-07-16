@@ -1,6 +1,6 @@
 
 declare module 'gi://Guestfs?version=1.0' {
-    import Guestfs from '@girs/guestfs-1.0';
+    import Guestfs from './guestfs-1.0.d.ts';
     export default Guestfs;
 }
 

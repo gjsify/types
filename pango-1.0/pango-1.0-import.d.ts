@@ -1,9 +1,9 @@
 
-import Pango10 from '@girs/pango-1.0';
+import Pango from './pango-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Pango: typeof Pango10;
+        Pango: typeof Pango;
     }
 }
 

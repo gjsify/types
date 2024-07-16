@@ -16,10 +16,15 @@
             "import": "./gtkspell-3.0-import.js",
             "default": "./gtkspell-3.0-import.js"
         },
-        ".": {
+        "./gtkspell-3.0": {
             "types": "./gtkspell-3.0.d.ts",
             "import": "./gtkspell-3.0.js",
             "default": "./gtkspell-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

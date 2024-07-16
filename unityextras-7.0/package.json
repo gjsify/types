@@ -16,10 +16,15 @@
             "import": "./unityextras-7.0-import.js",
             "default": "./unityextras-7.0-import.js"
         },
-        ".": {
+        "./unityextras-7.0": {
             "types": "./unityextras-7.0.d.ts",
             "import": "./unityextras-7.0.js",
             "default": "./unityextras-7.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

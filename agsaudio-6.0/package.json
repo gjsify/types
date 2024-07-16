@@ -16,10 +16,15 @@
             "import": "./agsaudio-6.0-import.js",
             "default": "./agsaudio-6.0-import.js"
         },
-        ".": {
+        "./agsaudio-6.0": {
             "types": "./agsaudio-6.0.d.ts",
             "import": "./agsaudio-6.0.js",
             "default": "./agsaudio-6.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

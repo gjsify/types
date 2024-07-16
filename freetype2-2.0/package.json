@@ -16,10 +16,15 @@
             "import": "./freetype2-2.0-import.js",
             "default": "./freetype2-2.0-import.js"
         },
-        ".": {
+        "./freetype2-2.0": {
             "types": "./freetype2-2.0.d.ts",
             "import": "./freetype2-2.0.js",
             "default": "./freetype2-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

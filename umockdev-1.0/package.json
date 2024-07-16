@@ -16,10 +16,15 @@
             "import": "./umockdev-1.0-import.js",
             "default": "./umockdev-1.0-import.js"
         },
-        ".": {
+        "./umockdev-1.0": {
             "types": "./umockdev-1.0.d.ts",
             "import": "./umockdev-1.0.js",
             "default": "./umockdev-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

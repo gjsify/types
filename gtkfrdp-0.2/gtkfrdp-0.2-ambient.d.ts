@@ -1,6 +1,6 @@
 
 declare module 'gi://GtkFrdp?version=0.2' {
-    import GtkFrdp from '@girs/gtkfrdp-0.2';
+    import GtkFrdp from './gtkfrdp-0.2.d.ts';
     export default GtkFrdp;
 }
 

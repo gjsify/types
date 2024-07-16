@@ -16,10 +16,15 @@
             "import": "./gspell-1-import.js",
             "default": "./gspell-1-import.js"
         },
-        ".": {
+        "./gspell-1": {
             "types": "./gspell-1.d.ts",
             "import": "./gspell-1.js",
             "default": "./gspell-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

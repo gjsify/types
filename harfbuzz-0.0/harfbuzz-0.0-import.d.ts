@@ -1,9 +1,9 @@
 
-import HarfBuzz00 from '@girs/harfbuzz-0.0';
+import HarfBuzz from './harfbuzz-0.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        HarfBuzz: typeof HarfBuzz00;
+        HarfBuzz: typeof HarfBuzz;
     }
 }
 

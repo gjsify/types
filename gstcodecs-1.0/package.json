@@ -16,10 +16,15 @@
             "import": "./gstcodecs-1.0-import.js",
             "default": "./gstcodecs-1.0-import.js"
         },
-        ".": {
+        "./gstcodecs-1.0": {
             "types": "./gstcodecs-1.0.d.ts",
             "import": "./gstcodecs-1.0.js",
             "default": "./gstcodecs-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://Xmlb?version=2.0' {
-    import Xmlb from '@girs/xmlb-2.0';
+    import Xmlb from './xmlb-2.0.d.ts';
     export default Xmlb;
 }
 

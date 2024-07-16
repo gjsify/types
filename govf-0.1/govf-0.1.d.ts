@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './govf-0.1-ambient.d.ts';
-
 /**
  * Govf-0.1
  */

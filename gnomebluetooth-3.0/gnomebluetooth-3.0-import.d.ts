@@ -1,9 +1,9 @@
 
-import GnomeBluetooth30 from '@girs/gnomebluetooth-3.0';
+import GnomeBluetooth from './gnomebluetooth-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GnomeBluetooth: typeof GnomeBluetooth30;
+        GnomeBluetooth: typeof GnomeBluetooth;
     }
 }
 

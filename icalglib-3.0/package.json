@@ -16,10 +16,15 @@
             "import": "./icalglib-3.0-import.js",
             "default": "./icalglib-3.0-import.js"
         },
-        ".": {
+        "./icalglib-3.0": {
             "types": "./icalglib-3.0.d.ts",
             "import": "./icalglib-3.0.js",
             "default": "./icalglib-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

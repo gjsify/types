@@ -1,9 +1,9 @@
 
-import MateDesktop20 from '@girs/matedesktop-2.0';
+import MateDesktop from './matedesktop-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        MateDesktop: typeof MateDesktop20;
+        MateDesktop: typeof MateDesktop;
     }
 }
 

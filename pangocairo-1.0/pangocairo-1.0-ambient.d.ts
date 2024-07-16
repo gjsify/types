@@ -1,6 +1,6 @@
 
 declare module 'gi://PangoCairo?version=1.0' {
-    import PangoCairo from '@girs/pangocairo-1.0';
+    import PangoCairo from './pangocairo-1.0.d.ts';
     export default PangoCairo;
 }
 

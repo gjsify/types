@@ -1,9 +1,9 @@
 
-import Gsf1 from '@girs/gsf-1';
+import Gsf from './gsf-1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gsf: typeof Gsf1;
+        Gsf: typeof Gsf;
     }
 }
 

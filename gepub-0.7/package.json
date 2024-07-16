@@ -16,10 +16,15 @@
             "import": "./gepub-0.7-import.js",
             "default": "./gepub-0.7-import.js"
         },
-        ".": {
+        "./gepub-0.7": {
             "types": "./gepub-0.7.d.ts",
             "import": "./gepub-0.7.js",
             "default": "./gepub-0.7.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

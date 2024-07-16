@@ -1,6 +1,6 @@
 
 declare module 'gi://GstVulkanXCB?version=1.0' {
-    import GstVulkanXCB from '@girs/gstvulkanxcb-1.0';
+    import GstVulkanXCB from './gstvulkanxcb-1.0.d.ts';
     export default GstVulkanXCB;
 }
 

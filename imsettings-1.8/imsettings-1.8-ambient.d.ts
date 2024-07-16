@@ -1,6 +1,6 @@
 
 declare module 'gi://IMSettings?version=1.8' {
-    import IMSettings from '@girs/imsettings-1.8';
+    import IMSettings from './imsettings-1.8.d.ts';
     export default IMSettings;
 }
 

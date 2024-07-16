@@ -1,6 +1,6 @@
 
 declare module 'gi://JavaScriptCore?version=6.0' {
-    import JavaScriptCore from '@girs/javascriptcore-6.0';
+    import JavaScriptCore from './javascriptcore-6.0.d.ts';
     export default JavaScriptCore;
 }
 

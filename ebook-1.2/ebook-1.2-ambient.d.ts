@@ -1,6 +1,6 @@
 
 declare module 'gi://EBook?version=1.2' {
-    import EBook from '@girs/ebook-1.2';
+    import EBook from './ebook-1.2.d.ts';
     export default EBook;
 }
 

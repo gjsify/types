@@ -1,6 +1,6 @@
 
 declare module 'gi://Gst?version=1.0' {
-    import Gst from '@girs/gst-1.0';
+    import Gst from './gst-1.0.d.ts';
     export default Gst;
 }
 

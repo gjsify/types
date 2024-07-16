@@ -1,6 +1,6 @@
 
 declare module 'gi://SpiceClientGtk?version=3.0' {
-    import SpiceClientGtk from '@girs/spiceclientgtk-3.0';
+    import SpiceClientGtk from './spiceclientgtk-3.0.d.ts';
     export default SpiceClientGtk;
 }
 

@@ -16,10 +16,15 @@
             "import": "./gupnpigd-1.6-import.js",
             "default": "./gupnpigd-1.6-import.js"
         },
-        ".": {
+        "./gupnpigd-1.6": {
             "types": "./gupnpigd-1.6.d.ts",
             "import": "./gupnpigd-1.6.js",
             "default": "./gupnpigd-1.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

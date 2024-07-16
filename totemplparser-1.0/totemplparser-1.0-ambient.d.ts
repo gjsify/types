@@ -1,6 +1,6 @@
 
 declare module 'gi://TotemPlParser?version=1.0' {
-    import TotemPlParser from '@girs/totemplparser-1.0';
+    import TotemPlParser from './totemplparser-1.0.d.ts';
     export default TotemPlParser;
 }
 

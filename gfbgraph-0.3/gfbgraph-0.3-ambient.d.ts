@@ -1,6 +1,6 @@
 
 declare module 'gi://GFBGraph?version=0.3' {
-    import GFBGraph from '@girs/gfbgraph-0.3';
+    import GFBGraph from './gfbgraph-0.3.d.ts';
     export default GFBGraph;
 }
 

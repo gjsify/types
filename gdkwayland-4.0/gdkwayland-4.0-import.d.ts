@@ -1,9 +1,9 @@
 
-import GdkWayland40 from '@girs/gdkwayland-4.0';
+import GdkWayland from './gdkwayland-4.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GdkWayland: typeof GdkWayland40;
+        GdkWayland: typeof GdkWayland;
     }
 }
 

@@ -16,10 +16,15 @@
             "import": "./gweather-3.0-import.js",
             "default": "./gweather-3.0-import.js"
         },
-        ".": {
+        "./gweather-3.0": {
             "types": "./gweather-3.0.d.ts",
             "import": "./gweather-3.0.js",
             "default": "./gweather-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

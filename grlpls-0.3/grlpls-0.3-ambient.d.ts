@@ -1,6 +1,6 @@
 
 declare module 'gi://GrlPls?version=0.3' {
-    import GrlPls from '@girs/grlpls-0.3';
+    import GrlPls from './grlpls-0.3.d.ts';
     export default GrlPls;
 }
 

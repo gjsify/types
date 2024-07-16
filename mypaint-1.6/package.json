@@ -16,10 +16,15 @@
             "import": "./mypaint-1.6-import.js",
             "default": "./mypaint-1.6-import.js"
         },
-        ".": {
+        "./mypaint-1.6": {
             "types": "./mypaint-1.6.d.ts",
             "import": "./mypaint-1.6.js",
             "default": "./mypaint-1.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

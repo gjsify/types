@@ -16,10 +16,15 @@
             "import": "./gtksource-5-import.js",
             "default": "./gtksource-5-import.js"
         },
-        ".": {
+        "./gtksource-5": {
             "types": "./gtksource-5.d.ts",
             "import": "./gtksource-5.js",
             "default": "./gtksource-5.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

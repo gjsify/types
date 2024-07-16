@@ -16,10 +16,15 @@
             "import": "./liferea-3.0-import.js",
             "default": "./liferea-3.0-import.js"
         },
-        ".": {
+        "./liferea-3.0": {
             "types": "./liferea-3.0.d.ts",
             "import": "./liferea-3.0.js",
             "default": "./liferea-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

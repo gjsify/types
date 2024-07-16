@@ -1,6 +1,6 @@
 
 declare module 'gi://Nautilus?version=4.0' {
-    import Nautilus from '@girs/nautilus-4.0';
+    import Nautilus from './nautilus-4.0.d.ts';
     export default Nautilus;
 }
 

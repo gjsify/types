@@ -16,10 +16,15 @@
             "import": "./sushi-1.0-import.js",
             "default": "./sushi-1.0-import.js"
         },
-        ".": {
+        "./sushi-1.0": {
             "types": "./sushi-1.0.d.ts",
             "import": "./sushi-1.0.js",
             "default": "./sushi-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

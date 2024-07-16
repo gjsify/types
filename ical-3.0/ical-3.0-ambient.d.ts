@@ -1,6 +1,6 @@
 
 declare module 'gi://ICal?version=3.0' {
-    import ICal from '@girs/ical-3.0';
+    import ICal from './ical-3.0.d.ts';
     export default ICal;
 }
 

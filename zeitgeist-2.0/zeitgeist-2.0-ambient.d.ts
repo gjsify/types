@@ -1,6 +1,6 @@
 
 declare module 'gi://Zeitgeist?version=2.0' {
-    import Zeitgeist from '@girs/zeitgeist-2.0';
+    import Zeitgeist from './zeitgeist-2.0.d.ts';
     export default Zeitgeist;
 }
 

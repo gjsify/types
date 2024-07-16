@@ -16,10 +16,15 @@
             "import": "./jcat-1.0-import.js",
             "default": "./jcat-1.0-import.js"
         },
-        ".": {
+        "./jcat-1.0": {
             "types": "./jcat-1.0.d.ts",
             "import": "./jcat-1.0.js",
             "default": "./jcat-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

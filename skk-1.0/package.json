@@ -16,10 +16,15 @@
             "import": "./skk-1.0-import.js",
             "default": "./skk-1.0-import.js"
         },
-        ".": {
+        "./skk-1.0": {
             "types": "./skk-1.0.d.ts",
             "import": "./skk-1.0.js",
             "default": "./skk-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

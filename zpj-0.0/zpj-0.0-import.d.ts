@@ -1,9 +1,9 @@
 
-import Zpj00 from '@girs/zpj-0.0';
+import Zpj from './zpj-0.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Zpj: typeof Zpj00;
+        Zpj: typeof Zpj;
     }
 }
 

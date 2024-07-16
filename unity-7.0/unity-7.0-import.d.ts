@@ -1,9 +1,9 @@
 
-import Unity70 from '@girs/unity-7.0';
+import Unity from './unity-7.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Unity: typeof Unity70;
+        Unity: typeof Unity;
     }
 }
 

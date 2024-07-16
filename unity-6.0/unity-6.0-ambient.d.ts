@@ -1,6 +1,6 @@
 
 declare module 'gi://Unity?version=6.0' {
-    import Unity from '@girs/unity-6.0';
+    import Unity from './unity-6.0.d.ts';
     export default Unity;
 }
 

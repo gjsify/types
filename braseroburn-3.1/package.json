@@ -16,10 +16,15 @@
             "import": "./braseroburn-3.1-import.js",
             "default": "./braseroburn-3.1-import.js"
         },
-        ".": {
+        "./braseroburn-3.1": {
             "types": "./braseroburn-3.1.d.ts",
             "import": "./braseroburn-3.1.js",
             "default": "./braseroburn-3.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

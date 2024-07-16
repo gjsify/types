@@ -16,10 +16,15 @@
             "import": "./secret-1-import.js",
             "default": "./secret-1-import.js"
         },
-        ".": {
+        "./secret-1": {
             "types": "./secret-1.d.ts",
             "import": "./secret-1.js",
             "default": "./secret-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

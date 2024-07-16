@@ -1,6 +1,6 @@
 
 declare module 'gi://gSignon?version=1.0' {
-    import gSignon from '@girs/gsignon-1.0';
+    import gSignon from './gsignon-1.0.d.ts';
     export default gSignon;
 }
 

@@ -1,9 +1,9 @@
 
-import MediaArt20 from '@girs/mediaart-2.0';
+import MediaArt from './mediaart-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        MediaArt: typeof MediaArt20;
+        MediaArt: typeof MediaArt;
     }
 }
 

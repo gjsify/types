@@ -16,10 +16,15 @@
             "import": "./gsttag-1.0-import.js",
             "default": "./gsttag-1.0-import.js"
         },
-        ".": {
+        "./gsttag-1.0": {
             "types": "./gsttag-1.0.d.ts",
             "import": "./gsttag-1.0.js",
             "default": "./gsttag-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

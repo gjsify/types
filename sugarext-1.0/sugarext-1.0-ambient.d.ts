@@ -1,6 +1,6 @@
 
 declare module 'gi://SugarExt?version=1.0' {
-    import SugarExt from '@girs/sugarext-1.0';
+    import SugarExt from './sugarext-1.0.d.ts';
     export default SugarExt;
 }
 

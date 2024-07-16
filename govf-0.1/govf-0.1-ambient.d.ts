@@ -1,6 +1,6 @@
 
 declare module 'gi://Govf?version=0.1' {
-    import Govf from '@girs/govf-0.1';
+    import Govf from './govf-0.1.d.ts';
     export default Govf;
 }
 

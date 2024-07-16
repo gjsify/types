@@ -1,6 +1,6 @@
 
 declare module 'gi://Gspell?version=1' {
-    import Gspell from '@girs/gspell-1';
+    import Gspell from './gspell-1.d.ts';
     export default Gspell;
 }
 

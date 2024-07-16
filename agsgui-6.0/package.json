@@ -16,10 +16,15 @@
             "import": "./agsgui-6.0-import.js",
             "default": "./agsgui-6.0-import.js"
         },
-        ".": {
+        "./agsgui-6.0": {
             "types": "./agsgui-6.0.d.ts",
             "import": "./agsgui-6.0.js",
             "default": "./agsgui-6.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

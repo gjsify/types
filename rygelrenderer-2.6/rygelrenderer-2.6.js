@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import RygelRenderer from 'gi://RygelRenderer?version=2.6';
-  export { RygelRenderer };
-  export default RygelRenderer;
+// @ts-expect-error
+import RygelRenderer from 'gi://RygelRenderer?version=2.6';
+export default RygelRenderer;
 

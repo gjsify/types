@@ -1,6 +1,6 @@
 
 declare module 'gi://Mx?version=1.0' {
-    import Mx from '@girs/mx-1.0';
+    import Mx from './mx-1.0.d.ts';
     export default Mx;
 }
 

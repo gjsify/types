@@ -1,6 +1,6 @@
 
 declare module 'gi://GstVideo?version=1.0' {
-    import GstVideo from '@girs/gstvideo-1.0';
+    import GstVideo from './gstvideo-1.0.d.ts';
     export default GstVideo;
 }
 

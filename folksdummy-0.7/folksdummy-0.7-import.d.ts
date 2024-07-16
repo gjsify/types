@@ -1,9 +1,9 @@
 
-import FolksDummy07 from '@girs/folksdummy-0.7';
+import FolksDummy from './folksdummy-0.7.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        FolksDummy: typeof FolksDummy07;
+        FolksDummy: typeof FolksDummy;
     }
 }
 

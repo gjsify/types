@@ -1,9 +1,9 @@
 
-import GcrGtk34 from '@girs/gcrgtk3-4';
+import GcrGtk3 from './gcrgtk3-4.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GcrGtk3: typeof GcrGtk34;
+        GcrGtk3: typeof GcrGtk3;
     }
 }
 

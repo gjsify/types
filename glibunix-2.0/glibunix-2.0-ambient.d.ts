@@ -1,6 +1,6 @@
 
 declare module 'gi://GLibUnix?version=2.0' {
-    import GLibUnix from '@girs/glibunix-2.0';
+    import GLibUnix from './glibunix-2.0.d.ts';
     export default GLibUnix;
 }
 

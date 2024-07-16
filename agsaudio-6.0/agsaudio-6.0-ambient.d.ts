@@ -1,6 +1,6 @@
 
 declare module 'gi://AgsAudio?version=6.0' {
-    import AgsAudio from '@girs/agsaudio-6.0';
+    import AgsAudio from './agsaudio-6.0.d.ts';
     export default AgsAudio;
 }
 

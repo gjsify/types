@@ -16,10 +16,15 @@
             "import": "./matedesktop-2.0-import.js",
             "default": "./matedesktop-2.0-import.js"
         },
-        ".": {
+        "./matedesktop-2.0": {
             "types": "./matedesktop-2.0.d.ts",
             "import": "./matedesktop-2.0.js",
             "default": "./matedesktop-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./gstbase-1.0-import.js",
             "default": "./gstbase-1.0-import.js"
         },
-        ".": {
+        "./gstbase-1.0": {
             "types": "./gstbase-1.0.d.ts",
             "import": "./gstbase-1.0.js",
             "default": "./gstbase-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

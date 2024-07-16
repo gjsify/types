@@ -1,6 +1,6 @@
 
 declare module 'gi://Gda?version=6.0' {
-    import Gda from '@girs/gda-6.0';
+    import Gda from './gda-6.0.d.ts';
     export default Gda;
 }
 

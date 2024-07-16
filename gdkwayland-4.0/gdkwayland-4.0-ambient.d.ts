@@ -1,6 +1,6 @@
 
 declare module 'gi://GdkWayland?version=4.0' {
-    import GdkWayland from '@girs/gdkwayland-4.0';
+    import GdkWayland from './gdkwayland-4.0.d.ts';
     export default GdkWayland;
 }
 

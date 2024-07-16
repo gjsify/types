@@ -16,10 +16,15 @@
             "import": "./gegl-0.3-import.js",
             "default": "./gegl-0.3-import.js"
         },
-        ".": {
+        "./gegl-0.3": {
             "types": "./gegl-0.3.d.ts",
             "import": "./gegl-0.3.js",
             "default": "./gegl-0.3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

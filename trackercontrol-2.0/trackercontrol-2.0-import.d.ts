@@ -1,9 +1,9 @@
 
-import TrackerControl20 from '@girs/trackercontrol-2.0';
+import TrackerControl from './trackercontrol-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        TrackerControl: typeof TrackerControl20;
+        TrackerControl: typeof TrackerControl;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Lfb?version=0.0' {
-    import Lfb from '@girs/lfb-0.0';
+    import Lfb from './lfb-0.0.d.ts';
     export default Lfb;
 }
 

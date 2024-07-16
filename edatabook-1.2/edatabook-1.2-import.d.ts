@@ -1,9 +1,9 @@
 
-import EDataBook12 from '@girs/edatabook-1.2';
+import EDataBook from './edatabook-1.2.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        EDataBook: typeof EDataBook12;
+        EDataBook: typeof EDataBook;
     }
 }
 

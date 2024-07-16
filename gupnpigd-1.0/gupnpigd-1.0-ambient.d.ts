@@ -1,6 +1,6 @@
 
 declare module 'gi://GUPnPIgd?version=1.0' {
-    import GUPnPIgd from '@girs/gupnpigd-1.0';
+    import GUPnPIgd from './gupnpigd-1.0.d.ts';
     export default GUPnPIgd;
 }
 

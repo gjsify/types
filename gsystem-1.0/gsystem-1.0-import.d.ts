@@ -1,9 +1,9 @@
 
-import GSystem10 from '@girs/gsystem-1.0';
+import GSystem from './gsystem-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GSystem: typeof GSystem10;
+        GSystem: typeof GSystem;
     }
 }
 

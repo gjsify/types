@@ -16,10 +16,15 @@
             "import": "./unique-3.0-import.js",
             "default": "./unique-3.0-import.js"
         },
-        ".": {
+        "./unique-3.0": {
             "types": "./unique-3.0.d.ts",
             "import": "./unique-3.0.js",
             "default": "./unique-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

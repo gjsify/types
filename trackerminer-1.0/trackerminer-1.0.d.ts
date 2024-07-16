@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './trackerminer-1.0-ambient.d.ts';
-
-import './trackerminer-1.0-import.d.ts';
-
 /**
  * TrackerMiner-1.0
  */

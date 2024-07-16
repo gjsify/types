@@ -1,6 +1,6 @@
 
 declare module 'gi://Template?version=1.0' {
-    import Template from '@girs/template-1.0';
+    import Template from './template-1.0.d.ts';
     export default Template;
 }
 

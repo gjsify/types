@@ -16,10 +16,15 @@
             "import": "./langtag-0.6-import.js",
             "default": "./langtag-0.6-import.js"
         },
-        ".": {
+        "./langtag-0.6": {
             "types": "./langtag-0.6.d.ts",
             "import": "./langtag-0.6.js",
             "default": "./langtag-0.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

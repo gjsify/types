@@ -1,6 +1,6 @@
 
 declare module 'gi://CDesktopEnums?version=3.0' {
-    import CDesktopEnums from '@girs/cdesktopenums-3.0';
+    import CDesktopEnums from './cdesktopenums-3.0.d.ts';
     export default CDesktopEnums;
 }
 

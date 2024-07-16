@@ -16,10 +16,15 @@
             "import": "./rygelserver-2.8-import.js",
             "default": "./rygelserver-2.8-import.js"
         },
-        ".": {
+        "./rygelserver-2.8": {
             "types": "./rygelserver-2.8.d.ts",
             "import": "./rygelserver-2.8.js",
             "default": "./rygelserver-2.8.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://Tepl?version=6' {
-    import Tepl from '@girs/tepl-6';
+    import Tepl from './tepl-6.d.ts';
     export default Tepl;
 }
 

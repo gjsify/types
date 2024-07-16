@@ -1,6 +1,6 @@
 
 declare module 'gi://UPowerGlib?version=1.0' {
-    import UPowerGlib from '@girs/upowerglib-1.0';
+    import UPowerGlib from './upowerglib-1.0.d.ts';
     export default UPowerGlib;
 }
 

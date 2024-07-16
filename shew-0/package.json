@@ -16,10 +16,15 @@
             "import": "./shew-0-import.js",
             "default": "./shew-0-import.js"
         },
-        ".": {
+        "./shew-0": {
             "types": "./shew-0.d.ts",
             "import": "./shew-0.js",
             "default": "./shew-0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

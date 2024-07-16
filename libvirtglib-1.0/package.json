@@ -16,10 +16,15 @@
             "import": "./libvirtglib-1.0-import.js",
             "default": "./libvirtglib-1.0-import.js"
         },
-        ".": {
+        "./libvirtglib-1.0": {
             "types": "./libvirtglib-1.0.d.ts",
             "import": "./libvirtglib-1.0.js",
             "default": "./libvirtglib-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

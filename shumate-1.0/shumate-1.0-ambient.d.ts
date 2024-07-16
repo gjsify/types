@@ -1,6 +1,6 @@
 
 declare module 'gi://Shumate?version=1.0' {
-    import Shumate from '@girs/shumate-1.0';
+    import Shumate from './shumate-1.0.d.ts';
     export default Shumate;
 }
 

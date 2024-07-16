@@ -1,9 +1,9 @@
 
-import PangoFc10 from '@girs/pangofc-1.0';
+import PangoFc from './pangofc-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        PangoFc: typeof PangoFc10;
+        PangoFc: typeof PangoFc;
     }
 }
 

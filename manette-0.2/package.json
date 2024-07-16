@@ -16,10 +16,15 @@
             "import": "./manette-0.2-import.js",
             "default": "./manette-0.2-import.js"
         },
-        ".": {
+        "./manette-0.2": {
             "types": "./manette-0.2.d.ts",
             "import": "./manette-0.2.js",
             "default": "./manette-0.2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

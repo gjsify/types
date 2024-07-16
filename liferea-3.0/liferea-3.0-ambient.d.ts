@@ -1,6 +1,6 @@
 
 declare module 'gi://Liferea?version=3.0' {
-    import Liferea from '@girs/liferea-3.0';
+    import Liferea from './liferea-3.0.d.ts';
     export default Liferea;
 }
 

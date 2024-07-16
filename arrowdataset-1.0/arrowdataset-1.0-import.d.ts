@@ -1,9 +1,9 @@
 
-import ArrowDataset10 from '@girs/arrowdataset-1.0';
+import ArrowDataset from './arrowdataset-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        ArrowDataset: typeof ArrowDataset10;
+        ArrowDataset: typeof ArrowDataset;
     }
 }
 

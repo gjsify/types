@@ -1,6 +1,6 @@
 
 declare module 'gi://Dmap?version=4.0' {
-    import Dmap from '@girs/dmap-4.0';
+    import Dmap from './dmap-4.0.d.ts';
     export default Dmap;
 }
 

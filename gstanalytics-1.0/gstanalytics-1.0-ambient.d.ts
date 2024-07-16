@@ -1,6 +1,6 @@
 
 declare module 'gi://GstAnalytics?version=1.0' {
-    import GstAnalytics from '@girs/gstanalytics-1.0';
+    import GstAnalytics from './gstanalytics-1.0.d.ts';
     export default GstAnalytics;
 }
 

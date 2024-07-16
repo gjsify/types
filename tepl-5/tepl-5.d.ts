@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './tepl-5-ambient.d.ts';
-
-import './tepl-5-import.d.ts';
-
 /**
  * Tepl-5
  */

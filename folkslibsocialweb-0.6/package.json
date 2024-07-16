@@ -16,10 +16,15 @@
             "import": "./folkslibsocialweb-0.6-import.js",
             "default": "./folkslibsocialweb-0.6-import.js"
         },
-        ".": {
+        "./folkslibsocialweb-0.6": {
             "types": "./folkslibsocialweb-0.6.d.ts",
             "import": "./folkslibsocialweb-0.6.js",
             "default": "./folkslibsocialweb-0.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

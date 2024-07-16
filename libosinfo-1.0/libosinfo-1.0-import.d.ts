@@ -1,9 +1,9 @@
 
-import Libosinfo10 from '@girs/libosinfo-1.0';
+import Libosinfo from './libosinfo-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Libosinfo: typeof Libosinfo10;
+        Libosinfo: typeof Libosinfo;
     }
 }
 

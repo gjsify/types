@@ -16,10 +16,15 @@
             "import": "./flatpak-1.0-import.js",
             "default": "./flatpak-1.0-import.js"
         },
-        ".": {
+        "./flatpak-1.0": {
             "types": "./flatpak-1.0.d.ts",
             "import": "./flatpak-1.0.js",
             "default": "./flatpak-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

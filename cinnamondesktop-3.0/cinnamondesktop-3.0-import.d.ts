@@ -1,9 +1,9 @@
 
-import CinnamonDesktop30 from '@girs/cinnamondesktop-3.0';
+import CinnamonDesktop from './cinnamondesktop-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        CinnamonDesktop: typeof CinnamonDesktop30;
+        CinnamonDesktop: typeof CinnamonDesktop;
     }
 }
 

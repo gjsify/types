@@ -16,10 +16,15 @@
             "import": "./totem-1.0-import.js",
             "default": "./totem-1.0-import.js"
         },
-        ".": {
+        "./totem-1.0": {
             "types": "./totem-1.0.d.ts",
             "import": "./totem-1.0.js",
             "default": "./totem-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

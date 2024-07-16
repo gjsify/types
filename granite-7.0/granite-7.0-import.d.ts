@@ -1,9 +1,9 @@
 
-import Granite70 from '@girs/granite-7.0';
+import Granite from './granite-7.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Granite: typeof Granite70;
+        Granite: typeof Granite;
     }
 }
 

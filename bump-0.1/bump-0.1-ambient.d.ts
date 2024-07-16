@@ -1,6 +1,6 @@
 
 declare module 'gi://Bump?version=0.1' {
-    import Bump from '@girs/bump-0.1';
+    import Bump from './bump-0.1.d.ts';
     export default Bump;
 }
 

@@ -16,10 +16,15 @@
             "import": "./restextras-1.0-import.js",
             "default": "./restextras-1.0-import.js"
         },
-        ".": {
+        "./restextras-1.0": {
             "types": "./restextras-1.0.d.ts",
             "import": "./restextras-1.0.js",
             "default": "./restextras-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

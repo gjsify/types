@@ -16,10 +16,15 @@
             "import": "./vips-8.0-import.js",
             "default": "./vips-8.0-import.js"
         },
-        ".": {
+        "./vips-8.0": {
             "types": "./vips-8.0.d.ts",
             "import": "./vips-8.0.js",
             "default": "./vips-8.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

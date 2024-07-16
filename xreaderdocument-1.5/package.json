@@ -16,10 +16,15 @@
             "import": "./xreaderdocument-1.5-import.js",
             "default": "./xreaderdocument-1.5-import.js"
         },
-        ".": {
+        "./xreaderdocument-1.5": {
             "types": "./xreaderdocument-1.5.d.ts",
             "import": "./xreaderdocument-1.5.js",
             "default": "./xreaderdocument-1.5.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

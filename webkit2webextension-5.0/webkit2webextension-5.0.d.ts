@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './webkit2webextension-5.0-ambient.d.ts';
-
 /**
  * WebKit2WebExtension-5.0
  */

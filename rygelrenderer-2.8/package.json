@@ -16,10 +16,15 @@
             "import": "./rygelrenderer-2.8-import.js",
             "default": "./rygelrenderer-2.8-import.js"
         },
-        ".": {
+        "./rygelrenderer-2.8": {
             "types": "./rygelrenderer-2.8.d.ts",
             "import": "./rygelrenderer-2.8.js",
             "default": "./rygelrenderer-2.8.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

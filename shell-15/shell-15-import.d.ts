@@ -1,9 +1,9 @@
 
-import Shell15 from '@girs/shell-15';
+import Shell from './shell-15.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Shell: typeof Shell15;
+        Shell: typeof Shell;
     }
 }
 

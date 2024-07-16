@@ -16,10 +16,15 @@
             "import": "./dmap-4.0-import.js",
             "default": "./dmap-4.0-import.js"
         },
-        ".": {
+        "./dmap-4.0": {
             "types": "./dmap-4.0.d.ts",
             "import": "./dmap-4.0.js",
             "default": "./dmap-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

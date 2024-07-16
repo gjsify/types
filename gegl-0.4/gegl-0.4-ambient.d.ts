@@ -1,6 +1,6 @@
 
 declare module 'gi://Gegl?version=0.4' {
-    import Gegl from '@girs/gegl-0.4';
+    import Gegl from './gegl-0.4.d.ts';
     export default Gegl;
 }
 

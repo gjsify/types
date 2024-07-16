@@ -16,10 +16,15 @@
             "import": "./lasem-0.4-import.js",
             "default": "./lasem-0.4-import.js"
         },
-        ".": {
+        "./lasem-0.4": {
             "types": "./lasem-0.4.d.ts",
             "import": "./lasem-0.4.js",
             "default": "./lasem-0.4.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

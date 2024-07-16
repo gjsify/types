@@ -1,6 +1,6 @@
 
 declare module 'gi://EBackend?version=1.2' {
-    import EBackend from '@girs/ebackend-1.2';
+    import EBackend from './ebackend-1.2.d.ts';
     export default EBackend;
 }
 

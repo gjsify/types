@@ -1,6 +1,6 @@
 
 declare module 'gi://GUPnP?version=1.6' {
-    import GUPnP from '@girs/gupnp-1.6';
+    import GUPnP from './gupnp-1.6.d.ts';
     export default GUPnP;
 }
 

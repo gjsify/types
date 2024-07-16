@@ -1,9 +1,9 @@
 
-import JSCore30 from '@girs/jscore-3.0';
+import JSCore from './jscore-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        JSCore: typeof JSCore30;
+        JSCore: typeof JSCore;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://AppStreamBuilder?version=1.0' {
-    import AppStreamBuilder from '@girs/appstreambuilder-1.0';
+    import AppStreamBuilder from './appstreambuilder-1.0.d.ts';
     export default AppStreamBuilder;
 }
 

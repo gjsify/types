@@ -1,9 +1,9 @@
 
-import Bamf3 from '@girs/bamf-3';
+import Bamf from './bamf-3.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Bamf: typeof Bamf3;
+        Bamf: typeof Bamf;
     }
 }
 

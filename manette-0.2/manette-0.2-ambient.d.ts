@@ -1,6 +1,6 @@
 
 declare module 'gi://Manette?version=0.2' {
-    import Manette from '@girs/manette-0.2';
+    import Manette from './manette-0.2.d.ts';
     export default Manette;
 }
 

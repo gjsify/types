@@ -1,9 +1,9 @@
 
-import Xdp10 from '@girs/xdp-1.0';
+import Xdp from './xdp-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Xdp: typeof Xdp10;
+        Xdp: typeof Xdp;
     }
 }
 

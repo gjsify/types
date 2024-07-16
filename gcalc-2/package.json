@@ -16,10 +16,15 @@
             "import": "./gcalc-2-import.js",
             "default": "./gcalc-2-import.js"
         },
-        ".": {
+        "./gcalc-2": {
             "types": "./gcalc-2.d.ts",
             "import": "./gcalc-2.js",
             "default": "./gcalc-2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

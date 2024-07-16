@@ -16,10 +16,15 @@
             "import": "./gplugin-1.0-import.js",
             "default": "./gplugin-1.0-import.js"
         },
-        ".": {
+        "./gplugin-1.0": {
             "types": "./gplugin-1.0.d.ts",
             "import": "./gplugin-1.0.js",
             "default": "./gplugin-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

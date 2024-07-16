@@ -16,10 +16,15 @@
             "import": "./gstvulkanxcb-1.0-import.js",
             "default": "./gstvulkanxcb-1.0-import.js"
         },
-        ".": {
+        "./gstvulkanxcb-1.0": {
             "types": "./gstvulkanxcb-1.0.d.ts",
             "import": "./gstvulkanxcb-1.0.js",
             "default": "./gstvulkanxcb-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./mks-1-import.js",
             "default": "./mks-1-import.js"
         },
-        ".": {
+        "./mks-1": {
             "types": "./mks-1.d.ts",
             "import": "./mks-1.js",
             "default": "./mks-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

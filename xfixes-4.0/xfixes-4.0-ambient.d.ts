@@ -1,6 +1,6 @@
 
 declare module 'gi://xfixes?version=4.0' {
-    import xfixes from '@girs/xfixes-4.0';
+    import xfixes from './xfixes-4.0.d.ts';
     export default xfixes;
 }
 

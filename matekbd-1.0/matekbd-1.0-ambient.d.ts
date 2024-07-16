@@ -1,6 +1,6 @@
 
 declare module 'gi://Matekbd?version=1.0' {
-    import Matekbd from '@girs/matekbd-1.0';
+    import Matekbd from './matekbd-1.0.d.ts';
     export default Matekbd;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Vgpg?version=1' {
-    import Vgpg from '@girs/vgpg-1';
+    import Vgpg from './vgpg-1.d.ts';
     export default Vgpg;
 }
 

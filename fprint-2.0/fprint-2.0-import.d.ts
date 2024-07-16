@@ -1,9 +1,9 @@
 
-import FPrint20 from '@girs/fprint-2.0';
+import FPrint from './fprint-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        FPrint: typeof FPrint20;
+        FPrint: typeof FPrint;
     }
 }
 

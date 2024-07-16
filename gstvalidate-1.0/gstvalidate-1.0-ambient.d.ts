@@ -1,6 +1,6 @@
 
 declare module 'gi://GstValidate?version=1.0' {
-    import GstValidate from '@girs/gstvalidate-1.0';
+    import GstValidate from './gstvalidate-1.0.d.ts';
     export default GstValidate;
 }
 

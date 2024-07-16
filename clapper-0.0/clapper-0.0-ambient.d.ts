@@ -1,6 +1,6 @@
 
 declare module 'gi://Clapper?version=0.0' {
-    import Clapper from '@girs/clapper-0.0';
+    import Clapper from './clapper-0.0.d.ts';
     export default Clapper;
 }
 

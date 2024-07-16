@@ -1,9 +1,9 @@
 
-import Clutter15 from '@girs/clutter-15';
+import Clutter from './clutter-15.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Clutter: typeof Clutter15;
+        Clutter: typeof Clutter;
     }
 }
 

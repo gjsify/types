@@ -1,9 +1,9 @@
 
-import Jcat10 from '@girs/jcat-1.0';
+import Jcat from './jcat-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Jcat: typeof Jcat10;
+        Jcat: typeof Jcat;
     }
 }
 

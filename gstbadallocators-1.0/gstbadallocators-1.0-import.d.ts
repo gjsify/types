@@ -1,9 +1,9 @@
 
-import GstBadAllocators10 from '@girs/gstbadallocators-1.0';
+import GstBadAllocators from './gstbadallocators-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstBadAllocators: typeof GstBadAllocators10;
+        GstBadAllocators: typeof GstBadAllocators;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://PolkitAgent?version=1.0' {
-    import PolkitAgent from '@girs/polkitagent-1.0';
+    import PolkitAgent from './polkitagent-1.0.d.ts';
     export default PolkitAgent;
 }
 

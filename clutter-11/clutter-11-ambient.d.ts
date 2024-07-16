@@ -1,6 +1,6 @@
 
 declare module 'gi://Clutter?version=11' {
-    import Clutter from '@girs/clutter-11';
+    import Clutter from './clutter-11.d.ts';
     export default Clutter;
 }
 

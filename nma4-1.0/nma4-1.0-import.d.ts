@@ -1,9 +1,9 @@
 
-import NMA410 from '@girs/nma4-1.0';
+import NMA4 from './nma4-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        NMA4: typeof NMA410;
+        NMA4: typeof NMA4;
     }
 }
 

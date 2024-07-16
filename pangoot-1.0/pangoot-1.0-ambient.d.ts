@@ -1,6 +1,6 @@
 
 declare module 'gi://PangoOT?version=1.0' {
-    import PangoOT from '@girs/pangoot-1.0';
+    import PangoOT from './pangoot-1.0.d.ts';
     export default PangoOT;
 }
 

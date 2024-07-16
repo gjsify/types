@@ -1,6 +1,6 @@
 
 declare module 'gi://Accounts?version=1.0' {
-    import Accounts from '@girs/accounts-1.0';
+    import Accounts from './accounts-1.0.d.ts';
     export default Accounts;
 }
 

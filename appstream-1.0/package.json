@@ -16,10 +16,15 @@
             "import": "./appstream-1.0-import.js",
             "default": "./appstream-1.0-import.js"
         },
-        ".": {
+        "./appstream-1.0": {
             "types": "./appstream-1.0.d.ts",
             "import": "./appstream-1.0.js",
             "default": "./appstream-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://GUPnPAV?version=1.0' {
-    import GUPnPAV from '@girs/gupnpav-1.0';
+    import GUPnPAV from './gupnpav-1.0.d.ts';
     export default GUPnPAV;
 }
 

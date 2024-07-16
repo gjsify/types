@@ -1,9 +1,9 @@
 
-import Xlib20 from '@girs/xlib-2.0';
+import xlib from './xlib-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        xlib: typeof Xlib20;
+        xlib: typeof xlib;
     }
 }
 

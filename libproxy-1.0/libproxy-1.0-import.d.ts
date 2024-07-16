@@ -1,9 +1,9 @@
 
-import Libproxy10 from '@girs/libproxy-1.0';
+import Libproxy from './libproxy-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Libproxy: typeof Libproxy10;
+        Libproxy: typeof Libproxy;
     }
 }
 

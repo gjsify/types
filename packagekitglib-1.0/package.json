@@ -16,10 +16,15 @@
             "import": "./packagekitglib-1.0-import.js",
             "default": "./packagekitglib-1.0-import.js"
         },
-        ".": {
+        "./packagekitglib-1.0": {
             "types": "./packagekitglib-1.0.d.ts",
             "import": "./packagekitglib-1.0.js",
             "default": "./packagekitglib-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

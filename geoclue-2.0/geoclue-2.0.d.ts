@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './geoclue-2.0-ambient.d.ts';
-
 /**
  * Geoclue-2.0
  */

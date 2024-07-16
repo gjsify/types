@@ -1,6 +1,6 @@
 
 declare module 'gi://OsmGpsMap?version=1.0' {
-    import OsmGpsMap from '@girs/osmgpsmap-1.0';
+    import OsmGpsMap from './osmgpsmap-1.0.d.ts';
     export default OsmGpsMap;
 }
 

@@ -1,9 +1,9 @@
 
-import Vgsl1 from '@girs/vgsl-1';
+import Vgsl from './vgsl-1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Vgsl: typeof Vgsl1;
+        Vgsl: typeof Vgsl;
     }
 }
 

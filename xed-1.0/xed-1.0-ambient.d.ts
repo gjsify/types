@@ -1,6 +1,6 @@
 
 declare module 'gi://Xed?version=1.0' {
-    import Xed from '@girs/xed-1.0';
+    import Xed from './xed-1.0.d.ts';
     export default Xed;
 }
 

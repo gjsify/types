@@ -1,6 +1,6 @@
 
 declare module 'gi://TrackerControl?version=2.0' {
-    import TrackerControl from '@girs/trackercontrol-2.0';
+    import TrackerControl from './trackercontrol-2.0.d.ts';
     export default TrackerControl;
 }
 

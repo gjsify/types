@@ -1,6 +1,6 @@
 
 declare module 'gi://GLib?version=2.0' {
-    import GLib from '@girs/glib-2.0';
+    import GLib from './glib-2.0.d.ts';
     export default GLib;
 }
 

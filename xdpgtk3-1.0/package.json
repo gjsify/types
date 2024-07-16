@@ -16,10 +16,15 @@
             "import": "./xdpgtk3-1.0-import.js",
             "default": "./xdpgtk3-1.0-import.js"
         },
-        ".": {
+        "./xdpgtk3-1.0": {
             "types": "./xdpgtk3-1.0.d.ts",
             "import": "./xdpgtk3-1.0.js",
             "default": "./xdpgtk3-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

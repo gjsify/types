@@ -1,9 +1,9 @@
 
-import Mx20 from '@girs/mx-2.0';
+import Mx from './mx-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Mx: typeof Mx20;
+        Mx: typeof Mx;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Notify?version=0.7' {
-    import Notify from '@girs/notify-0.7';
+    import Notify from './notify-0.7.d.ts';
     export default Notify;
 }
 

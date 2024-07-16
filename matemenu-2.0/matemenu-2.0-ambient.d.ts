@@ -1,6 +1,6 @@
 
 declare module 'gi://MateMenu?version=2.0' {
-    import MateMenu from '@girs/matemenu-2.0';
+    import MateMenu from './matemenu-2.0.d.ts';
     export default MateMenu;
 }
 

@@ -16,10 +16,15 @@
             "import": "./imsettings-1.8-import.js",
             "default": "./imsettings-1.8-import.js"
         },
-        ".": {
+        "./imsettings-1.8": {
             "types": "./imsettings-1.8.d.ts",
             "import": "./imsettings-1.8.js",
             "default": "./imsettings-1.8.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

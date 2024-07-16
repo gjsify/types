@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './meta-14-ambient.d.ts';
-
-import './meta-14-import.d.ts';
-
 /**
  * Meta-14
  */

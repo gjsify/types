@@ -16,10 +16,15 @@
             "import": "./govirt-1.0-import.js",
             "default": "./govirt-1.0-import.js"
         },
-        ".": {
+        "./govirt-1.0": {
             "types": "./govirt-1.0.d.ts",
             "import": "./govirt-1.0.js",
             "default": "./govirt-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

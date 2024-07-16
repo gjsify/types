@@ -1,9 +1,9 @@
 
-import GUdev10 from '@girs/gudev-1.0';
+import GUdev from './gudev-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GUdev: typeof GUdev10;
+        GUdev: typeof GUdev;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://MalcontentUi?version=1' {
-    import MalcontentUi from '@girs/malcontentui-1';
+    import MalcontentUi from './malcontentui-1.d.ts';
     export default MalcontentUi;
 }
 

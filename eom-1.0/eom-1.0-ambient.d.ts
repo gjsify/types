@@ -1,6 +1,6 @@
 
 declare module 'gi://Eom?version=1.0' {
-    import Eom from '@girs/eom-1.0';
+    import Eom from './eom-1.0.d.ts';
     export default Eom;
 }
 

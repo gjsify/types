@@ -1,9 +1,9 @@
 
-import Pnl10 from '@girs/pnl-1.0';
+import Pnl from './pnl-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Pnl: typeof Pnl10;
+        Pnl: typeof Pnl;
     }
 }
 

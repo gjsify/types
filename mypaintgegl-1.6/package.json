@@ -16,10 +16,15 @@
             "import": "./mypaintgegl-1.6-import.js",
             "default": "./mypaintgegl-1.6-import.js"
         },
-        ".": {
+        "./mypaintgegl-1.6": {
             "types": "./mypaintgegl-1.6.d.ts",
             "import": "./mypaintgegl-1.6.js",
             "default": "./mypaintgegl-1.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

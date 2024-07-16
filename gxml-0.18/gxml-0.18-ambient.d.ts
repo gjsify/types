@@ -1,6 +1,6 @@
 
 declare module 'gi://GXml?version=0.18' {
-    import GXml from '@girs/gxml-0.18';
+    import GXml from './gxml-0.18.d.ts';
     export default GXml;
 }
 

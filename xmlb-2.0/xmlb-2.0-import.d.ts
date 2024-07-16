@@ -1,9 +1,9 @@
 
-import Xmlb20 from '@girs/xmlb-2.0';
+import Xmlb from './xmlb-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Xmlb: typeof Xmlb20;
+        Xmlb: typeof Xmlb;
     }
 }
 

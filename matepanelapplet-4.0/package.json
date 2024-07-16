@@ -16,10 +16,15 @@
             "import": "./matepanelapplet-4.0-import.js",
             "default": "./matepanelapplet-4.0-import.js"
         },
-        ".": {
+        "./matepanelapplet-4.0": {
             "types": "./matepanelapplet-4.0.d.ts",
             "import": "./matepanelapplet-4.0.js",
             "default": "./matepanelapplet-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

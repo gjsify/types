@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './mtk-14-ambient.d.ts';
-
-import './mtk-14-import.d.ts';
-
 /**
  * Mtk-14
  */

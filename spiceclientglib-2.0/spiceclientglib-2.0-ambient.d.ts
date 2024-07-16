@@ -1,6 +1,6 @@
 
 declare module 'gi://SpiceClientGLib?version=2.0' {
-    import SpiceClientGLib from '@girs/spiceclientglib-2.0';
+    import SpiceClientGLib from './spiceclientglib-2.0.d.ts';
     export default SpiceClientGLib;
 }
 

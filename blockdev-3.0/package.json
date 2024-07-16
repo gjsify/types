@@ -16,10 +16,15 @@
             "import": "./blockdev-3.0-import.js",
             "default": "./blockdev-3.0-import.js"
         },
-        ".": {
+        "./blockdev-3.0": {
             "types": "./blockdev-3.0.d.ts",
             "import": "./blockdev-3.0.js",
             "default": "./blockdev-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

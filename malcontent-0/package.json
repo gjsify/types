@@ -16,10 +16,15 @@
             "import": "./malcontent-0-import.js",
             "default": "./malcontent-0-import.js"
         },
-        ".": {
+        "./malcontent-0": {
             "types": "./malcontent-0.d.ts",
             "import": "./malcontent-0.js",
             "default": "./malcontent-0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./fcitxg-1.0-import.js",
             "default": "./fcitxg-1.0-import.js"
         },
-        ".": {
+        "./fcitxg-1.0": {
             "types": "./fcitxg-1.0.d.ts",
             "import": "./fcitxg-1.0.js",
             "default": "./fcitxg-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

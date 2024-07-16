@@ -1,9 +1,9 @@
 
-import AccountsService10 from '@girs/accountsservice-1.0';
+import AccountsService from './accountsservice-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        AccountsService: typeof AccountsService10;
+        AccountsService: typeof AccountsService;
     }
 }
 

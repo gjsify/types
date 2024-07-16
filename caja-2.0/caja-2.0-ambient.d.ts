@@ -1,6 +1,6 @@
 
 declare module 'gi://Caja?version=2.0' {
-    import Caja from '@girs/caja-2.0';
+    import Caja from './caja-2.0.d.ts';
     export default Caja;
 }
 

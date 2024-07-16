@@ -1,6 +1,6 @@
 
 declare module 'gi://GstPbutils?version=0.10' {
-    import GstPbutils from '@girs/gstpbutils-0.10';
+    import GstPbutils from './gstpbutils-0.10.d.ts';
     export default GstPbutils;
 }
 

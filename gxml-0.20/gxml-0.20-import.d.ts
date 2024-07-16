@@ -1,9 +1,9 @@
 
-import GXml020 from '@girs/gxml-0.20';
+import GXml from './gxml-0.20.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GXml: typeof GXml020;
+        GXml: typeof GXml;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import GdkPixdata20 from '@girs/gdkpixdata-2.0';
+import GdkPixdata from './gdkpixdata-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GdkPixdata: typeof GdkPixdata20;
+        GdkPixdata: typeof GdkPixdata;
     }
 }
 

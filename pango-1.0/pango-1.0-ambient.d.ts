@@ -1,6 +1,6 @@
 
 declare module 'gi://Pango?version=1.0' {
-    import Pango from '@girs/pango-1.0';
+    import Pango from './pango-1.0.d.ts';
     export default Pango;
 }
 

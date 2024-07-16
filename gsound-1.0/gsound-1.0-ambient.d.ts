@@ -1,6 +1,6 @@
 
 declare module 'gi://GSound?version=1.0' {
-    import GSound from '@girs/gsound-1.0';
+    import GSound from './gsound-1.0.d.ts';
     export default GSound;
 }
 

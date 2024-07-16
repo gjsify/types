@@ -1,6 +1,6 @@
 
 declare module 'gi://GPluginGtk4?version=1.0' {
-    import GPluginGtk4 from '@girs/gplugingtk4-1.0';
+    import GPluginGtk4 from './gplugingtk4-1.0.d.ts';
     export default GPluginGtk4;
 }
 

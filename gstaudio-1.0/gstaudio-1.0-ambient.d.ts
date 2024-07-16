@@ -1,6 +1,6 @@
 
 declare module 'gi://GstAudio?version=1.0' {
-    import GstAudio from '@girs/gstaudio-1.0';
+    import GstAudio from './gstaudio-1.0.d.ts';
     export default GstAudio;
 }
 

@@ -1,9 +1,9 @@
 
-import Farstream02 from '@girs/farstream-0.2';
+import Farstream from './farstream-0.2.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Farstream: typeof Farstream02;
+        Farstream: typeof Farstream;
     }
 }
 

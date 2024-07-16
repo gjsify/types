@@ -1,6 +1,6 @@
 
 declare module 'gi://GeglGtk3?version=0.1' {
-    import GeglGtk3 from '@girs/geglgtk3-0.1';
+    import GeglGtk3 from './geglgtk3-0.1.d.ts';
     export default GeglGtk3;
 }
 

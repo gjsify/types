@@ -16,10 +16,15 @@
             "import": "./gstbadaudio-1.0-import.js",
             "default": "./gstbadaudio-1.0-import.js"
         },
-        ".": {
+        "./gstbadaudio-1.0": {
             "types": "./gstbadaudio-1.0.d.ts",
             "import": "./gstbadaudio-1.0.js",
             "default": "./gstbadaudio-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

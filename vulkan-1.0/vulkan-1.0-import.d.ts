@@ -1,9 +1,9 @@
 
-import Vulkan10 from '@girs/vulkan-1.0';
+import Vulkan from './vulkan-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Vulkan: typeof Vulkan10;
+        Vulkan: typeof Vulkan;
     }
 }
 

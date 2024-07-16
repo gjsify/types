@@ -16,10 +16,15 @@
             "import": "./snapd-2-import.js",
             "default": "./snapd-2-import.js"
         },
-        ".": {
+        "./snapd-2": {
             "types": "./snapd-2.d.ts",
             "import": "./snapd-2.js",
             "default": "./snapd-2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

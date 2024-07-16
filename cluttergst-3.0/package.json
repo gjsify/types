@@ -16,10 +16,15 @@
             "import": "./cluttergst-3.0-import.js",
             "default": "./cluttergst-3.0-import.js"
         },
-        ".": {
+        "./cluttergst-3.0": {
             "types": "./cluttergst-3.0.d.ts",
             "import": "./cluttergst-3.0.js",
             "default": "./cluttergst-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./nemopreview-1.0-import.js",
             "default": "./nemopreview-1.0-import.js"
         },
-        ".": {
+        "./nemopreview-1.0": {
             "types": "./nemopreview-1.0.d.ts",
             "import": "./nemopreview-1.0.js",
             "default": "./nemopreview-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

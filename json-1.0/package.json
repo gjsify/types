@@ -16,10 +16,15 @@
             "import": "./json-1.0-import.js",
             "default": "./json-1.0-import.js"
         },
-        ".": {
+        "./json-1.0": {
             "types": "./json-1.0.d.ts",
             "import": "./json-1.0.js",
             "default": "./json-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

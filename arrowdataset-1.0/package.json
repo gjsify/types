@@ -16,10 +16,15 @@
             "import": "./arrowdataset-1.0-import.js",
             "default": "./arrowdataset-1.0-import.js"
         },
-        ".": {
+        "./arrowdataset-1.0": {
             "types": "./arrowdataset-1.0.d.ts",
             "import": "./arrowdataset-1.0.js",
             "default": "./arrowdataset-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

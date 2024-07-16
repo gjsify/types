@@ -1,6 +1,6 @@
 
 declare module 'gi://Builder?version=1.0' {
-    import Builder from '@girs/builder-1.0';
+    import Builder from './builder-1.0.d.ts';
     export default Builder;
 }
 

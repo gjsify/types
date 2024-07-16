@@ -16,10 +16,15 @@
             "import": "./fwupd-2.0-import.js",
             "default": "./fwupd-2.0-import.js"
         },
-        ".": {
+        "./fwupd-2.0": {
             "types": "./fwupd-2.0.d.ts",
             "import": "./fwupd-2.0.js",
             "default": "./fwupd-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

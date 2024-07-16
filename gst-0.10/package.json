@@ -16,10 +16,15 @@
             "import": "./gst-0.10-import.js",
             "default": "./gst-0.10-import.js"
         },
-        ".": {
+        "./gst-0.10": {
             "types": "./gst-0.10.d.ts",
             "import": "./gst-0.10.js",
             "default": "./gst-0.10.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

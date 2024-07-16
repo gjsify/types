@@ -1,6 +1,6 @@
 
 declare module 'gi://EvinceDocument?version=3.0' {
-    import EvinceDocument from '@girs/evincedocument-3.0';
+    import EvinceDocument from './evincedocument-3.0.d.ts';
     export default EvinceDocument;
 }
 

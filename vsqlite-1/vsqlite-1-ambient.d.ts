@@ -1,6 +1,6 @@
 
 declare module 'gi://Vsqlite?version=1' {
-    import Vsqlite from '@girs/vsqlite-1';
+    import Vsqlite from './vsqlite-1.d.ts';
     export default Vsqlite;
 }
 

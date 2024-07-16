@@ -1,6 +1,6 @@
 
 declare module 'gi://GstGLWayland?version=1.0' {
-    import GstGLWayland from '@girs/gstglwayland-1.0';
+    import GstGLWayland from './gstglwayland-1.0.d.ts';
     export default GstGLWayland;
 }
 

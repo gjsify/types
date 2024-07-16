@@ -16,10 +16,15 @@
             "import": "./gstanalytics-1.0-import.js",
             "default": "./gstanalytics-1.0-import.js"
         },
-        ".": {
+        "./gstanalytics-1.0": {
             "types": "./gstanalytics-1.0.d.ts",
             "import": "./gstanalytics-1.0.js",
             "default": "./gstanalytics-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

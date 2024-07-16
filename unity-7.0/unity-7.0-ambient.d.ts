@@ -1,6 +1,6 @@
 
 declare module 'gi://Unity?version=7.0' {
-    import Unity from '@girs/unity-7.0';
+    import Unity from './unity-7.0.d.ts';
     export default Unity;
 }
 

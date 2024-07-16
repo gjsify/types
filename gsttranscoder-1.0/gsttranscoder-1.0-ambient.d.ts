@@ -1,6 +1,6 @@
 
 declare module 'gi://GstTranscoder?version=1.0' {
-    import GstTranscoder from '@girs/gsttranscoder-1.0';
+    import GstTranscoder from './gsttranscoder-1.0.d.ts';
     export default GstTranscoder;
 }
 

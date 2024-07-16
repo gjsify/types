@@ -1,6 +1,6 @@
 
 declare module 'gi://GstTag?version=1.0' {
-    import GstTag from '@girs/gsttag-1.0';
+    import GstTag from './gsttag-1.0.d.ts';
     export default GstTag;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://GnomeDesktop?version=3.0' {
-    import GnomeDesktop from '@girs/gnomedesktop-3.0';
+    import GnomeDesktop from './gnomedesktop-3.0.d.ts';
     export default GnomeDesktop;
 }
 

@@ -1,9 +1,9 @@
 
-import Goa10 from '@girs/goa-1.0';
+import Goa from './goa-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Goa: typeof Goa10;
+        Goa: typeof Goa;
     }
 }
 

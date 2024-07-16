@@ -16,10 +16,15 @@
             "import": "./ayatanaappindicator3-0.1-import.js",
             "default": "./ayatanaappindicator3-0.1-import.js"
         },
-        ".": {
+        "./ayatanaappindicator3-0.1": {
             "types": "./ayatanaappindicator3-0.1.d.ts",
             "import": "./ayatanaappindicator3-0.1.js",
             "default": "./ayatanaappindicator3-0.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

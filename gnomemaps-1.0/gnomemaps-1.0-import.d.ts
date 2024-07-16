@@ -1,9 +1,9 @@
 
-import GnomeMaps10 from '@girs/gnomemaps-1.0';
+import GnomeMaps from './gnomemaps-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GnomeMaps: typeof GnomeMaps10;
+        GnomeMaps: typeof GnomeMaps;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import Gepub07 from '@girs/gepub-0.7';
+import Gepub from './gepub-0.7.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gepub: typeof Gepub07;
+        Gepub: typeof Gepub;
     }
 }
 

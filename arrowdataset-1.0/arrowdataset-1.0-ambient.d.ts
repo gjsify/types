@@ -1,6 +1,6 @@
 
 declare module 'gi://ArrowDataset?version=1.0' {
-    import ArrowDataset from '@girs/arrowdataset-1.0';
+    import ArrowDataset from './arrowdataset-1.0.d.ts';
     export default ArrowDataset;
 }
 

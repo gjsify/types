@@ -1,9 +1,9 @@
 
-import GES10 from '@girs/ges-1.0';
+import GES from './ges-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GES: typeof GES10;
+        GES: typeof GES;
     }
 }
 

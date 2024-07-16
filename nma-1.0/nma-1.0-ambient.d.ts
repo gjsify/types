@@ -1,6 +1,6 @@
 
 declare module 'gi://NMA?version=1.0' {
-    import NMA from '@girs/nma-1.0';
+    import NMA from './nma-1.0.d.ts';
     export default NMA;
 }
 

@@ -16,10 +16,15 @@
             "import": "./workbench-0-import.js",
             "default": "./workbench-0-import.js"
         },
-        ".": {
+        "./workbench-0": {
             "types": "./workbench-0.d.ts",
             "import": "./workbench-0.js",
             "default": "./workbench-0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

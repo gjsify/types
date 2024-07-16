@@ -16,10 +16,15 @@
             "import": "./gstinterfaces-0.10-import.js",
             "default": "./gstinterfaces-0.10-import.js"
         },
-        ".": {
+        "./gstinterfaces-0.10": {
             "types": "./gstinterfaces-0.10.d.ts",
             "import": "./gstinterfaces-0.10.js",
             "default": "./gstinterfaces-0.10.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

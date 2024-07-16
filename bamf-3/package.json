@@ -16,10 +16,15 @@
             "import": "./bamf-3-import.js",
             "default": "./bamf-3-import.js"
         },
-        ".": {
+        "./bamf-3": {
             "types": "./bamf-3.d.ts",
             "import": "./bamf-3.js",
             "default": "./bamf-3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

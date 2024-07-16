@@ -1,6 +1,6 @@
 
 declare module 'gi://Flatpak?version=1.0' {
-    import Flatpak from '@girs/flatpak-1.0';
+    import Flatpak from './flatpak-1.0.d.ts';
     export default Flatpak;
 }
 

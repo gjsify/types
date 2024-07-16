@@ -1,6 +1,6 @@
 
 declare module 'gi://EBookContacts?version=1.2' {
-    import EBookContacts from '@girs/ebookcontacts-1.2';
+    import EBookContacts from './ebookcontacts-1.2.d.ts';
     export default EBookContacts;
 }
 

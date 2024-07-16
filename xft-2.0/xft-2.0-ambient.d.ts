@@ -1,6 +1,6 @@
 
 declare module 'gi://xft?version=2.0' {
-    import xft from '@girs/xft-2.0';
+    import xft from './xft-2.0.d.ts';
     export default xft;
 }
 

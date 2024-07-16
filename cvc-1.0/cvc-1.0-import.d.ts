@@ -1,9 +1,9 @@
 
-import Cvc10 from '@girs/cvc-1.0';
+import Cvc from './cvc-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Cvc: typeof Cvc10;
+        Cvc: typeof Cvc;
     }
 }
 

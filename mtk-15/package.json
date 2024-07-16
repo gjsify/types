@@ -16,10 +16,15 @@
             "import": "./mtk-15-import.js",
             "default": "./mtk-15-import.js"
         },
-        ".": {
+        "./mtk-15": {
             "types": "./mtk-15.d.ts",
             "import": "./mtk-15.js",
             "default": "./mtk-15.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://Rest?version=1.0' {
-    import Rest from '@girs/rest-1.0';
+    import Rest from './rest-1.0.d.ts';
     export default Rest;
 }
 

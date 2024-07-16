@@ -1,6 +1,6 @@
 
 declare module 'gi://DBusGLib?version=1.0' {
-    import DBusGLib from '@girs/dbusglib-1.0';
+    import DBusGLib from './dbusglib-1.0.d.ts';
     export default DBusGLib;
 }
 

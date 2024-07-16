@@ -1,6 +1,6 @@
 
 declare module 'gi://P11Kit?version=1.0' {
-    import P11Kit from '@girs/p11kit-1.0';
+    import P11Kit from './p11kit-1.0.d.ts';
     export default P11Kit;
 }
 

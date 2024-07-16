@@ -1,6 +1,6 @@
 
 declare module 'gi://Jcat?version=1.0' {
-    import Jcat from '@girs/jcat-1.0';
+    import Jcat from './jcat-1.0.d.ts';
     export default Jcat;
 }
 

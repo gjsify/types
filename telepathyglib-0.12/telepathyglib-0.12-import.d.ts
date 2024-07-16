@@ -1,9 +1,9 @@
 
-import TelepathyGLib012 from '@girs/telepathyglib-0.12';
+import TelepathyGLib from './telepathyglib-0.12.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        TelepathyGLib: typeof TelepathyGLib012;
+        TelepathyGLib: typeof TelepathyGLib;
     }
 }
 

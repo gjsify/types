@@ -1,6 +1,6 @@
 
 declare module 'gi://Bamf?version=3' {
-    import Bamf from '@girs/bamf-3';
+    import Bamf from './bamf-3.d.ts';
     export default Bamf;
 }
 

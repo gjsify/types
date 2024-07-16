@@ -16,10 +16,15 @@
             "import": "./cally-10-import.js",
             "default": "./cally-10-import.js"
         },
-        ".": {
+        "./cally-10": {
             "types": "./cally-10.d.ts",
             "import": "./cally-10.js",
             "default": "./cally-10.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./gupnp-1.0-import.js",
             "default": "./gupnp-1.0-import.js"
         },
-        ".": {
+        "./gupnp-1.0": {
             "types": "./gupnp-1.0.d.ts",
             "import": "./gupnp-1.0.js",
             "default": "./gupnp-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

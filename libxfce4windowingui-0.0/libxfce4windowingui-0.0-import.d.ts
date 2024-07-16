@@ -1,9 +1,9 @@
 
-import Libxfce4windowingui00 from '@girs/libxfce4windowingui-0.0';
+import Libxfce4windowingui from './libxfce4windowingui-0.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Libxfce4windowingui: typeof Libxfce4windowingui00;
+        Libxfce4windowingui: typeof Libxfce4windowingui;
     }
 }
 

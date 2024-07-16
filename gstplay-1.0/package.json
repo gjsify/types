@@ -16,10 +16,15 @@
             "import": "./gstplay-1.0-import.js",
             "default": "./gstplay-1.0-import.js"
         },
-        ".": {
+        "./gstplay-1.0": {
             "types": "./gstplay-1.0.d.ts",
             "import": "./gstplay-1.0.js",
             "default": "./gstplay-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

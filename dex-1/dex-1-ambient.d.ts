@@ -1,6 +1,6 @@
 
 declare module 'gi://Dex?version=1' {
-    import Dex from '@girs/dex-1';
+    import Dex from './dex-1.d.ts';
     export default Dex;
 }
 

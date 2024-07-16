@@ -1,9 +1,9 @@
 
-import GstVulkanXCB10 from '@girs/gstvulkanxcb-1.0';
+import GstVulkanXCB from './gstvulkanxcb-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstVulkanXCB: typeof GstVulkanXCB10;
+        GstVulkanXCB: typeof GstVulkanXCB;
     }
 }
 

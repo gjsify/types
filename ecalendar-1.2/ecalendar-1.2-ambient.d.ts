@@ -1,6 +1,6 @@
 
 declare module 'gi://ECalendar?version=1.2' {
-    import ECalendar from '@girs/ecalendar-1.2';
+    import ECalendar from './ecalendar-1.2.d.ts';
     export default ECalendar;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://AgsGui?version=6.0' {
-    import AgsGui from '@girs/agsgui-6.0';
+    import AgsGui from './agsgui-6.0.d.ts';
     export default AgsGui;
 }
 

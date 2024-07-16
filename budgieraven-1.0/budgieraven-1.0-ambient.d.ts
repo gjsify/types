@@ -1,6 +1,6 @@
 
 declare module 'gi://BudgieRaven?version=1.0' {
-    import BudgieRaven from '@girs/budgieraven-1.0';
+    import BudgieRaven from './budgieraven-1.0.d.ts';
     export default BudgieRaven;
 }
 

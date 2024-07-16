@@ -1,6 +1,6 @@
 
 declare module 'gi://Atk?version=1.0' {
-    import Atk from '@girs/atk-1.0';
+    import Atk from './atk-1.0.d.ts';
     export default Atk;
 }
 

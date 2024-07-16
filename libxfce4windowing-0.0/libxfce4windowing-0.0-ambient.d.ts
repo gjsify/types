@@ -1,6 +1,6 @@
 
 declare module 'gi://Libxfce4windowing?version=0.0' {
-    import Libxfce4windowing from '@girs/libxfce4windowing-0.0';
+    import Libxfce4windowing from './libxfce4windowing-0.0.d.ts';
     export default Libxfce4windowing;
 }
 

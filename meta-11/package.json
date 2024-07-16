@@ -16,10 +16,15 @@
             "import": "./meta-11-import.js",
             "default": "./meta-11-import.js"
         },
-        ".": {
+        "./meta-11": {
             "types": "./meta-11.d.ts",
             "import": "./meta-11.js",
             "default": "./meta-11.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

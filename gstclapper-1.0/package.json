@@ -16,10 +16,15 @@
             "import": "./gstclapper-1.0-import.js",
             "default": "./gstclapper-1.0-import.js"
         },
-        ".": {
+        "./gstclapper-1.0": {
             "types": "./gstclapper-1.0.d.ts",
             "import": "./gstclapper-1.0.js",
             "default": "./gstclapper-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

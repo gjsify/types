@@ -16,10 +16,15 @@
             "import": "./cloudproviders-0.3-import.js",
             "default": "./cloudproviders-0.3-import.js"
         },
-        ".": {
+        "./cloudproviders-0.3": {
             "types": "./cloudproviders-0.3.d.ts",
             "import": "./cloudproviders-0.3.js",
             "default": "./cloudproviders-0.3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

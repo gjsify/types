@@ -1,6 +1,6 @@
 
 declare module 'gi://ClutterGst?version=3.0' {
-    import ClutterGst from '@girs/cluttergst-3.0';
+    import ClutterGst from './cluttergst-3.0.d.ts';
     export default ClutterGst;
 }
 

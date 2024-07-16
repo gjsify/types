@@ -1,6 +1,6 @@
 
 declare module 'gi://Dee?version=1.0' {
-    import Dee from '@girs/dee-1.0';
+    import Dee from './dee-1.0.d.ts';
     export default Dee;
 }
 

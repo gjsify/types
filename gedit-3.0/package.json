@@ -16,10 +16,15 @@
             "import": "./gedit-3.0-import.js",
             "default": "./gedit-3.0-import.js"
         },
-        ".": {
+        "./gedit-3.0": {
             "types": "./gedit-3.0.d.ts",
             "import": "./gedit-3.0.js",
             "default": "./gedit-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

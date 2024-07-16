@@ -16,10 +16,15 @@
             "import": "./govf-0.1-import.js",
             "default": "./govf-0.1-import.js"
         },
-        ".": {
+        "./govf-0.1": {
             "types": "./govf-0.1.d.ts",
             "import": "./govf-0.1.js",
             "default": "./govf-0.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

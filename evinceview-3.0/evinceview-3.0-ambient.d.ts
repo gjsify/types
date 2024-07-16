@@ -1,6 +1,6 @@
 
 declare module 'gi://EvinceView?version=3.0' {
-    import EvinceView from '@girs/evinceview-3.0';
+    import EvinceView from './evinceview-3.0.d.ts';
     export default EvinceView;
 }
 

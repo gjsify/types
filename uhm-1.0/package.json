@@ -16,10 +16,15 @@
             "import": "./uhm-1.0-import.js",
             "default": "./uhm-1.0-import.js"
         },
-        ".": {
+        "./uhm-1.0": {
             "types": "./uhm-1.0.d.ts",
             "import": "./uhm-1.0.js",
             "default": "./uhm-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

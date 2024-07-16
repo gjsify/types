@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import GstVideo from 'gi://GstVideo?version=1.0';
-  export { GstVideo };
-  export default GstVideo;
+// @ts-expect-error
+import GstVideo from 'gi://GstVideo?version=1.0';
+export default GstVideo;
 

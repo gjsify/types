@@ -16,10 +16,15 @@
             "import": "./cairo-1.0-import.js",
             "default": "./cairo-1.0-import.js"
         },
-        ".": {
+        "./cairo-1.0": {
             "types": "./cairo-1.0.d.ts",
             "import": "./cairo-1.0.js",
             "default": "./cairo-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

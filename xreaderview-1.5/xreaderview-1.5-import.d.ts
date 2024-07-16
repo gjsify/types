@@ -1,9 +1,9 @@
 
-import XreaderView15 from '@girs/xreaderview-1.5';
+import XreaderView from './xreaderview-1.5.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        XreaderView: typeof XreaderView15;
+        XreaderView: typeof XreaderView;
     }
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Ggit?version=1.0' {
-    import Ggit from '@girs/ggit-1.0';
+    import Ggit from './ggit-1.0.d.ts';
     export default Ggit;
 }
 

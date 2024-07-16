@@ -1,9 +1,9 @@
 
-import Vpg1 from '@girs/vpg-1';
+import Vpg from './vpg-1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Vpg: typeof Vpg1;
+        Vpg: typeof Vpg;
     }
 }
 

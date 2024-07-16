@@ -1,6 +1,6 @@
 
 declare module 'gi://GCi?version=1' {
-    import GCi from '@girs/gci-1';
+    import GCi from './gci-1.d.ts';
     export default GCi;
 }
 

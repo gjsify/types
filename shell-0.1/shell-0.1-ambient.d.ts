@@ -1,6 +1,6 @@
 
 declare module 'gi://Shell?version=0.1' {
-    import Shell from '@girs/shell-0.1';
+    import Shell from './shell-0.1.d.ts';
     export default Shell;
 }
 

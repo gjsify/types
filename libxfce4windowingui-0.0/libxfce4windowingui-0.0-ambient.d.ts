@@ -1,6 +1,6 @@
 
 declare module 'gi://Libxfce4windowingui?version=0.0' {
-    import Libxfce4windowingui from '@girs/libxfce4windowingui-0.0';
+    import Libxfce4windowingui from './libxfce4windowingui-0.0.d.ts';
     export default Libxfce4windowingui;
 }
 

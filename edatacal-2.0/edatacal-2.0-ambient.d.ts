@@ -1,6 +1,6 @@
 
 declare module 'gi://EDataCal?version=2.0' {
-    import EDataCal from '@girs/edatacal-2.0';
+    import EDataCal from './edatacal-2.0.d.ts';
     export default EDataCal;
 }
 

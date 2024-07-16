@@ -16,10 +16,15 @@
             "import": "./easyfc-0.14-import.js",
             "default": "./easyfc-0.14-import.js"
         },
-        ".": {
+        "./easyfc-0.14": {
             "types": "./easyfc-0.14.d.ts",
             "import": "./easyfc-0.14.js",
             "default": "./easyfc-0.14.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

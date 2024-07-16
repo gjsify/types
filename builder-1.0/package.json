@@ -16,10 +16,15 @@
             "import": "./builder-1.0-import.js",
             "default": "./builder-1.0-import.js"
         },
-        ".": {
+        "./builder-1.0": {
             "types": "./builder-1.0.d.ts",
             "import": "./builder-1.0.js",
             "default": "./builder-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./libxfce4util-1.0-import.js",
             "default": "./libxfce4util-1.0-import.js"
         },
-        ".": {
+        "./libxfce4util-1.0": {
             "types": "./libxfce4util-1.0.d.ts",
             "import": "./libxfce4util-1.0.js",
             "default": "./libxfce4util-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

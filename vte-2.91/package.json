@@ -16,10 +16,15 @@
             "import": "./vte-2.91-import.js",
             "default": "./vte-2.91-import.js"
         },
-        ".": {
+        "./vte-2.91": {
             "types": "./vte-2.91.d.ts",
             "import": "./vte-2.91.js",
             "default": "./vte-2.91.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

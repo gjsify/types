@@ -1,6 +1,6 @@
 
 declare module 'gi://Gladeui?version=2.0' {
-    import Gladeui from '@girs/gladeui-2.0';
+    import Gladeui from './gladeui-2.0.d.ts';
     export default Gladeui;
 }
 

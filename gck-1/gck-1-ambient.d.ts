@@ -1,6 +1,6 @@
 
 declare module 'gi://Gck?version=1' {
-    import Gck from '@girs/gck-1';
+    import Gck from './gck-1.d.ts';
     export default Gck;
 }
 

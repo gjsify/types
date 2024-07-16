@@ -7,9 +7,9 @@
     "main": "gjs.js",
     "exports": {
         "./ambient": {
-            "types": "./ambient.d.ts",
-            "import": "./ambient.js",
-            "default": "./ambient.js"
+            "types": "./gjs-ambient.d.ts",
+            "import": "./gjs-ambient.js",
+            "default": "./gjs-ambient.js"
         },
         "./dom": {
             "types": "./dom.d.ts",
@@ -31,10 +31,15 @@
             "import": "./cairo.js",
             "default": "./cairo.js"
         },
-        ".": {
+        "./gjs": {
             "types": "./gjs.d.ts",
             "import": "./gjs.js",
             "default": "./gjs.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

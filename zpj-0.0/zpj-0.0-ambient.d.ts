@@ -1,6 +1,6 @@
 
 declare module 'gi://Zpj?version=0.0' {
-    import Zpj from '@girs/zpj-0.0';
+    import Zpj from './zpj-0.0.d.ts';
     export default Zpj;
 }
 

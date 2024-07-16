@@ -1,9 +1,9 @@
 
-import GstValidate10 from '@girs/gstvalidate-1.0';
+import GstValidate from './gstvalidate-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstValidate: typeof GstValidate10;
+        GstValidate: typeof GstValidate;
     }
 }
 

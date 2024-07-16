@@ -16,10 +16,15 @@
             "import": "./packagekitplugin-1.0-import.js",
             "default": "./packagekitplugin-1.0-import.js"
         },
-        ".": {
+        "./packagekitplugin-1.0": {
             "types": "./packagekitplugin-1.0.d.ts",
             "import": "./packagekitplugin-1.0.js",
             "default": "./packagekitplugin-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

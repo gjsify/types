@@ -1,6 +1,6 @@
 
 declare module 'gi://Abi?version=3.0' {
-    import Abi from '@girs/abi-3.0';
+    import Abi from './abi-3.0.d.ts';
     export default Abi;
 }
 

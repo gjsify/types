@@ -1,6 +1,6 @@
 
 declare module 'gi://XApp?version=1.0' {
-    import XApp from '@girs/xapp-1.0';
+    import XApp from './xapp-1.0.d.ts';
     export default XApp;
 }
 

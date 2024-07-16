@@ -16,10 +16,15 @@
             "import": "./epcui-1.0-import.js",
             "default": "./epcui-1.0-import.js"
         },
-        ".": {
+        "./epcui-1.0": {
             "types": "./epcui-1.0.d.ts",
             "import": "./epcui-1.0.js",
             "default": "./epcui-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

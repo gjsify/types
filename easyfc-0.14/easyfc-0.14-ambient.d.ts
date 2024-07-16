@@ -1,6 +1,6 @@
 
 declare module 'gi://Easyfc?version=0.14' {
-    import Easyfc from '@girs/easyfc-0.14';
+    import Easyfc from './easyfc-0.14.d.ts';
     export default Easyfc;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://PackageKitGlib?version=1.0' {
-    import PackageKitGlib from '@girs/packagekitglib-1.0';
+    import PackageKitGlib from './packagekitglib-1.0.d.ts';
     export default PackageKitGlib;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Cogl?version=10' {
-    import Cogl from '@girs/cogl-10';
+    import Cogl from './cogl-10.d.ts';
     export default Cogl;
 }
 

@@ -16,10 +16,15 @@
             "import": "./coglpango-11-import.js",
             "default": "./coglpango-11-import.js"
         },
-        ".": {
+        "./coglpango-11": {
             "types": "./coglpango-11.d.ts",
             "import": "./coglpango-11.js",
             "default": "./coglpango-11.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

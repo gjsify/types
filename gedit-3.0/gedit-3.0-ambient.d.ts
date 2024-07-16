@@ -1,6 +1,6 @@
 
 declare module 'gi://Gedit?version=3.0' {
-    import Gedit from '@girs/gedit-3.0';
+    import Gedit from './gedit-3.0.d.ts';
     export default Gedit;
 }
 

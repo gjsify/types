@@ -16,10 +16,15 @@
             "import": "./eom-1.0-import.js",
             "default": "./eom-1.0-import.js"
         },
-        ".": {
+        "./eom-1.0": {
             "types": "./eom-1.0.d.ts",
             "import": "./eom-1.0.js",
             "default": "./eom-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

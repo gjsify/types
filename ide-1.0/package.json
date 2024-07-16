@@ -16,10 +16,15 @@
             "import": "./ide-1.0-import.js",
             "default": "./ide-1.0-import.js"
         },
-        ".": {
+        "./ide-1.0": {
             "types": "./ide-1.0.d.ts",
             "import": "./ide-1.0.js",
             "default": "./ide-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

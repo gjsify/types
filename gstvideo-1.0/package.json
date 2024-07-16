@@ -16,10 +16,15 @@
             "import": "./gstvideo-1.0-import.js",
             "default": "./gstvideo-1.0-import.js"
         },
-        ".": {
+        "./gstvideo-1.0": {
             "types": "./gstvideo-1.0.d.ts",
             "import": "./gstvideo-1.0.js",
             "default": "./gstvideo-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

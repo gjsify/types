@@ -1,9 +1,9 @@
 
-import UnityExtras70 from '@girs/unityextras-7.0';
+import UnityExtras from './unityextras-7.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        UnityExtras: typeof UnityExtras70;
+        UnityExtras: typeof UnityExtras;
     }
 }
 

@@ -16,10 +16,15 @@
             "import": "./metatest-14-import.js",
             "default": "./metatest-14-import.js"
         },
-        ".": {
+        "./metatest-14": {
             "types": "./metatest-14.d.ts",
             "import": "./metatest-14.js",
             "default": "./metatest-14.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

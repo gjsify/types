@@ -16,10 +16,15 @@
             "import": "./telepathylogger-0.2-import.js",
             "default": "./telepathylogger-0.2-import.js"
         },
-        ".": {
+        "./telepathylogger-0.2": {
             "types": "./telepathylogger-0.2.d.ts",
             "import": "./telepathylogger-0.2.js",
             "default": "./telepathylogger-0.2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

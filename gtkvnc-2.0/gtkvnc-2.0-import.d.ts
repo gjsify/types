@@ -1,9 +1,9 @@
 
-import GtkVnc20 from '@girs/gtkvnc-2.0';
+import GtkVnc from './gtkvnc-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GtkVnc: typeof GtkVnc20;
+        GtkVnc: typeof GtkVnc;
     }
 }
 

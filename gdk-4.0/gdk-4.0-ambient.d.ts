@@ -1,6 +1,6 @@
 
 declare module 'gi://Gdk?version=4.0' {
-    import Gdk from '@girs/gdk-4.0';
+    import Gdk from './gdk-4.0.d.ts';
     export default Gdk;
 }
 

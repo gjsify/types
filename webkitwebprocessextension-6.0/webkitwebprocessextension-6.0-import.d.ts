@@ -1,9 +1,9 @@
 
-import WebKitWebProcessExtension60 from '@girs/webkitwebprocessextension-6.0';
+import WebKitWebProcessExtension from './webkitwebprocessextension-6.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        WebKitWebProcessExtension: typeof WebKitWebProcessExtension60;
+        WebKitWebProcessExtension: typeof WebKitWebProcessExtension;
     }
 }
 

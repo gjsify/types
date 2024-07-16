@@ -16,10 +16,15 @@
             "import": "./midori-0.6-import.js",
             "default": "./midori-0.6-import.js"
         },
-        ".": {
+        "./midori-0.6": {
             "types": "./midori-0.6.d.ts",
             "import": "./midori-0.6.js",
             "default": "./midori-0.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

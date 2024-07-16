@@ -16,10 +16,15 @@
             "import": "./gtksource-300-import.js",
             "default": "./gtksource-300-import.js"
         },
-        ".": {
+        "./gtksource-300": {
             "types": "./gtksource-300.d.ts",
             "import": "./gtksource-300.js",
             "default": "./gtksource-300.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

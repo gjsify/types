@@ -1,6 +1,6 @@
 
 declare module 'gi://ColordGtk?version=1.0' {
-    import ColordGtk from '@girs/colordgtk-1.0';
+    import ColordGtk from './colordgtk-1.0.d.ts';
     export default ColordGtk;
 }
 

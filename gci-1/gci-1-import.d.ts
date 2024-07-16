@@ -1,9 +1,9 @@
 
-import GCi1 from '@girs/gci-1';
+import GCi from './gci-1.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GCi: typeof GCi1;
+        GCi: typeof GCi;
     }
 }
 

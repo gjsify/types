@@ -1,9 +1,9 @@
 
-import GjsDBus10 from '@girs/gjsdbus-1.0';
+import GjsDBus from './gjsdbus-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GjsDBus: typeof GjsDBus10;
+        GjsDBus: typeof GjsDBus;
     }
 }
 

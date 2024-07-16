@@ -1,6 +1,6 @@
 
 declare module 'gi://GdkX11?version=4.0' {
-    import GdkX11 from '@girs/gdkx11-4.0';
+    import GdkX11 from './gdkx11-4.0.d.ts';
     export default GdkX11;
 }
 

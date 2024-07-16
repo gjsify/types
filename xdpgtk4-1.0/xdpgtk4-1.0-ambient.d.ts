@@ -1,6 +1,6 @@
 
 declare module 'gi://XdpGtk4?version=1.0' {
-    import XdpGtk4 from '@girs/xdpgtk4-1.0';
+    import XdpGtk4 from './xdpgtk4-1.0.d.ts';
     export default XdpGtk4;
 }
 

@@ -1,6 +1,6 @@
 
 declare module 'gi://Spelling?version=1' {
-    import Spelling from '@girs/spelling-1';
+    import Spelling from './spelling-1.d.ts';
     export default Spelling;
 }
 

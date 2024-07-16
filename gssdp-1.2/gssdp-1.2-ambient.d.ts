@@ -1,6 +1,6 @@
 
 declare module 'gi://GSSDP?version=1.2' {
-    import GSSDP from '@girs/gssdp-1.2';
+    import GSSDP from './gssdp-1.2.d.ts';
     export default GSSDP;
 }
 

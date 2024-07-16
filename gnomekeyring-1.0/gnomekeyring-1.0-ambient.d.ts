@@ -1,6 +1,6 @@
 
 declare module 'gi://GnomeKeyring?version=1.0' {
-    import GnomeKeyring from '@girs/gnomekeyring-1.0';
+    import GnomeKeyring from './gnomekeyring-1.0.d.ts';
     export default GnomeKeyring;
 }
 

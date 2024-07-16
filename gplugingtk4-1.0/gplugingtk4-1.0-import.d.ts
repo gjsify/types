@@ -1,9 +1,9 @@
 
-import GPluginGtk410 from '@girs/gplugingtk4-1.0';
+import GPluginGtk4 from './gplugingtk4-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GPluginGtk4: typeof GPluginGtk410;
+        GPluginGtk4: typeof GPluginGtk4;
     }
 }
 

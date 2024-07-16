@@ -1,6 +1,6 @@
 
 declare module 'gi://Dbusmenu?version=0.4' {
-    import Dbusmenu from '@girs/dbusmenu-0.4';
+    import Dbusmenu from './dbusmenu-0.4.d.ts';
     export default Dbusmenu;
 }
 

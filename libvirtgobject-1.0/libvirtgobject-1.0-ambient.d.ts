@@ -1,6 +1,6 @@
 
 declare module 'gi://LibvirtGObject?version=1.0' {
-    import LibvirtGObject from '@girs/libvirtgobject-1.0';
+    import LibvirtGObject from './libvirtgobject-1.0.d.ts';
     export default LibvirtGObject;
 }
 

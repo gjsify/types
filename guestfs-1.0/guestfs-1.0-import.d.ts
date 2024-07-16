@@ -1,9 +1,9 @@
 
-import Guestfs10 from '@girs/guestfs-1.0';
+import Guestfs from './guestfs-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Guestfs: typeof Guestfs10;
+        Guestfs: typeof Guestfs;
     }
 }
 

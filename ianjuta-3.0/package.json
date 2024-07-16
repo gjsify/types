@@ -16,10 +16,15 @@
             "import": "./ianjuta-3.0-import.js",
             "default": "./ianjuta-3.0-import.js"
         },
-        ".": {
+        "./ianjuta-3.0": {
             "types": "./ianjuta-3.0.d.ts",
             "import": "./ianjuta-3.0.js",
             "default": "./ianjuta-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

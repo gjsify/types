@@ -16,10 +16,15 @@
             "import": "./gnomebluetooth-1.0-import.js",
             "default": "./gnomebluetooth-1.0-import.js"
         },
-        ".": {
+        "./gnomebluetooth-1.0": {
             "types": "./gnomebluetooth-1.0.d.ts",
             "import": "./gnomebluetooth-1.0.js",
             "default": "./gnomebluetooth-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 
 declare module 'gi://Meta?version=15' {
-    import Meta from '@girs/meta-15';
+    import Meta from './meta-15.d.ts';
     export default Meta;
 }
 

@@ -16,10 +16,15 @@
             "import": "./epc-1.0-import.js",
             "default": "./epc-1.0-import.js"
         },
-        ".": {
+        "./epc-1.0": {
             "types": "./epc-1.0.d.ts",
             "import": "./epc-1.0.js",
             "default": "./epc-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

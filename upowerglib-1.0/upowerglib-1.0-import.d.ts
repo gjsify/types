@@ -1,9 +1,9 @@
 
-import UPowerGlib10 from '@girs/upowerglib-1.0';
+import UPowerGlib from './upowerglib-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        UPowerGlib: typeof UPowerGlib10;
+        UPowerGlib: typeof UPowerGlib;
     }
 }
 

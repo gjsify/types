@@ -1,9 +1,9 @@
 
-import GVnc10 from '@girs/gvnc-1.0';
+import GVnc from './gvnc-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GVnc: typeof GVnc10;
+        GVnc: typeof GVnc;
     }
 }
 

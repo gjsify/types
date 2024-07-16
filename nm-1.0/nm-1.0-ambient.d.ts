@@ -1,6 +1,6 @@
 
 declare module 'gi://NM?version=1.0' {
-    import NM from '@girs/nm-1.0';
+    import NM from './nm-1.0.d.ts';
     export default NM;
 }
 

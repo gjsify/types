@@ -1,6 +1,6 @@
 
 declare module 'gi://Vte?version=3.91' {
-    import Vte from '@girs/vte-3.91';
+    import Vte from './vte-3.91.d.ts';
     export default Vte;
 }
 

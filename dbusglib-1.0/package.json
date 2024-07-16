@@ -16,10 +16,15 @@
             "import": "./dbusglib-1.0-import.js",
             "default": "./dbusglib-1.0-import.js"
         },
-        ".": {
+        "./dbusglib-1.0": {
             "types": "./dbusglib-1.0.d.ts",
             "import": "./dbusglib-1.0.js",
             "default": "./dbusglib-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

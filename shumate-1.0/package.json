@@ -16,10 +16,15 @@
             "import": "./shumate-1.0-import.js",
             "default": "./shumate-1.0-import.js"
         },
-        ".": {
+        "./shumate-1.0": {
             "types": "./shumate-1.0.d.ts",
             "import": "./shumate-1.0.js",
             "default": "./shumate-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

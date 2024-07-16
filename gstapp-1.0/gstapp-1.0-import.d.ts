@@ -1,9 +1,9 @@
 
-import GstApp10 from '@girs/gstapp-1.0';
+import GstApp from './gstapp-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GstApp: typeof GstApp10;
+        GstApp: typeof GstApp;
     }
 }
 

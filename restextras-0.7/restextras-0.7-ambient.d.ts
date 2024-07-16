@@ -1,6 +1,6 @@
 
 declare module 'gi://RestExtras?version=0.7' {
-    import RestExtras from '@girs/restextras-0.7';
+    import RestExtras from './restextras-0.7.d.ts';
     export default RestExtras;
 }
 

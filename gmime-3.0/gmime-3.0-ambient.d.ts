@@ -1,6 +1,6 @@
 
 declare module 'gi://GMime?version=3.0' {
-    import GMime from '@girs/gmime-3.0';
+    import GMime from './gmime-3.0.d.ts';
     export default GMime;
 }
 

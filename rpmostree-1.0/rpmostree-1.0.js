@@ -1,6 +1,5 @@
 
-  // @ts-expect-error
-  import RpmOstree from 'gi://RpmOstree?version=1.0';
-  export { RpmOstree };
-  export default RpmOstree;
+// @ts-expect-error
+import RpmOstree from 'gi://RpmOstree?version=1.0';
+export default RpmOstree;
 

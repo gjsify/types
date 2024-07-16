@@ -1,6 +1,6 @@
 
 declare module 'gi://NMClient?version=1.0' {
-    import NMClient from '@girs/nmclient-1.0';
+    import NMClient from './nmclient-1.0.d.ts';
     export default NMClient;
 }
 

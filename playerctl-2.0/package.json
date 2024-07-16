@@ -16,10 +16,15 @@
             "import": "./playerctl-2.0-import.js",
             "default": "./playerctl-2.0-import.js"
         },
-        ".": {
+        "./playerctl-2.0": {
             "types": "./playerctl-2.0.d.ts",
             "import": "./playerctl-2.0.js",
             "default": "./playerctl-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

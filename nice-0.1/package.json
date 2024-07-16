@@ -16,10 +16,15 @@
             "import": "./nice-0.1-import.js",
             "default": "./nice-0.1-import.js"
         },
-        ".": {
+        "./nice-0.1": {
             "types": "./nice-0.1.d.ts",
             "import": "./nice-0.1.js",
             "default": "./nice-0.1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

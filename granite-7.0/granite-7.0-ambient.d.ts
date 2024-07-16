@@ -1,6 +1,6 @@
 
 declare module 'gi://Granite?version=7.0' {
-    import Granite from '@girs/granite-7.0';
+    import Granite from './granite-7.0.d.ts';
     export default Granite;
 }
 

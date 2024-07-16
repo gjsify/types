@@ -1,6 +1,6 @@
 
 declare module 'gi://CudaGst?version=1.0' {
-    import CudaGst from '@girs/cudagst-1.0';
+    import CudaGst from './cudagst-1.0.d.ts';
     export default CudaGst;
 }
 

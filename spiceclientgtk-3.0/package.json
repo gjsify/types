@@ -16,10 +16,15 @@
             "import": "./spiceclientgtk-3.0-import.js",
             "default": "./spiceclientgtk-3.0-import.js"
         },
-        ".": {
+        "./spiceclientgtk-3.0": {
             "types": "./spiceclientgtk-3.0.d.ts",
             "import": "./spiceclientgtk-3.0.js",
             "default": "./spiceclientgtk-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

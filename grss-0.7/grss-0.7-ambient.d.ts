@@ -1,6 +1,6 @@
 
 declare module 'gi://Grss?version=0.7' {
-    import Grss from '@girs/grss-0.7';
+    import Grss from './grss-0.7.d.ts';
     export default Grss;
 }
 

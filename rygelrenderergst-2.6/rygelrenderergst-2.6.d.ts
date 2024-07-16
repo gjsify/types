@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './rygelrenderergst-2.6-ambient.d.ts';
-
-import './rygelrenderergst-2.6-import.d.ts';
-
 /**
  * RygelRendererGst-2.6
  */

@@ -1,6 +1,6 @@
 
 declare module 'gi://GstPlayer?version=1.0' {
-    import GstPlayer from '@girs/gstplayer-1.0';
+    import GstPlayer from './gstplayer-1.0.d.ts';
     export default GstPlayer;
 }
 

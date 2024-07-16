@@ -1,6 +1,6 @@
 
 declare module 'gi://NMGtk?version=1.0' {
-    import NMGtk from '@girs/nmgtk-1.0';
+    import NMGtk from './nmgtk-1.0.d.ts';
     export default NMGtk;
 }
 

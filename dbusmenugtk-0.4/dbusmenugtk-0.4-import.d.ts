@@ -1,9 +1,9 @@
 
-import DbusmenuGtk04 from '@girs/dbusmenugtk-0.4';
+import DbusmenuGtk from './dbusmenugtk-0.4.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        DbusmenuGtk: typeof DbusmenuGtk04;
+        DbusmenuGtk: typeof DbusmenuGtk;
     }
 }
 

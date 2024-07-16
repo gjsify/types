@@ -1,9 +1,9 @@
 
-import Gom10 from '@girs/gom-1.0';
+import Gom from './gom-1.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gom: typeof Gom10;
+        Gom: typeof Gom;
     }
 }
 

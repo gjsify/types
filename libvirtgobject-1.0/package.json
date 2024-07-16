@@ -16,10 +16,15 @@
             "import": "./libvirtgobject-1.0-import.js",
             "default": "./libvirtgobject-1.0-import.js"
         },
-        ".": {
+        "./libvirtgobject-1.0": {
             "types": "./libvirtgobject-1.0.d.ts",
             "import": "./libvirtgobject-1.0.js",
             "default": "./libvirtgobject-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

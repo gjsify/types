@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './soup-3.0-ambient.d.ts';
-
 /**
  * Soup-3.0
  */

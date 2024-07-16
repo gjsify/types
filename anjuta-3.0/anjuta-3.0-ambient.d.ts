@@ -1,6 +1,6 @@
 
 declare module 'gi://Anjuta?version=3.0' {
-    import Anjuta from '@girs/anjuta-3.0';
+    import Anjuta from './anjuta-3.0.d.ts';
     export default Anjuta;
 }
 

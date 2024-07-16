@@ -1,9 +1,9 @@
 
-import Liferea30 from '@girs/liferea-3.0';
+import Liferea from './liferea-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Liferea: typeof Liferea30;
+        Liferea: typeof Liferea;
     }
 }
 

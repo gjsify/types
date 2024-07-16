@@ -1,9 +1,9 @@
 
-import Nemo30 from '@girs/nemo-3.0';
+import Nemo from './nemo-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Nemo: typeof Nemo30;
+        Nemo: typeof Nemo;
     }
 }
 

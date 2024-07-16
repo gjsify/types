@@ -16,10 +16,15 @@
             "import": "./gdkpixdata-2.0-import.js",
             "default": "./gdkpixdata-2.0-import.js"
         },
-        ".": {
+        "./gdkpixdata-2.0": {
             "types": "./gdkpixdata-2.0.d.ts",
             "import": "./gdkpixdata-2.0.js",
             "default": "./gdkpixdata-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

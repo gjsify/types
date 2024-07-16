@@ -16,10 +16,15 @@
             "import": "./libxfce4windowing-0.0-import.js",
             "default": "./libxfce4windowing-0.0-import.js"
         },
-        ".": {
+        "./libxfce4windowing-0.0": {
             "types": "./libxfce4windowing-0.0.d.ts",
             "import": "./libxfce4windowing-0.0.js",
             "default": "./libxfce4windowing-0.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

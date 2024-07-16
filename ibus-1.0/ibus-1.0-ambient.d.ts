@@ -1,6 +1,6 @@
 
 declare module 'gi://IBus?version=1.0' {
-    import IBus from '@girs/ibus-1.0';
+    import IBus from './ibus-1.0.d.ts';
     export default IBus;
 }
 

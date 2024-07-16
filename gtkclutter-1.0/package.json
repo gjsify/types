@@ -16,10 +16,15 @@
             "import": "./gtkclutter-1.0-import.js",
             "default": "./gtkclutter-1.0-import.js"
         },
-        ".": {
+        "./gtkclutter-1.0": {
             "types": "./gtkclutter-1.0.d.ts",
             "import": "./gtkclutter-1.0.js",
             "default": "./gtkclutter-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./gtkfrdp-0.2-import.js",
             "default": "./gtkfrdp-0.2-import.js"
         },
-        ".": {
+        "./gtkfrdp-0.2": {
             "types": "./gtkfrdp-0.2.d.ts",
             "import": "./gtkfrdp-0.2.js",
             "default": "./gtkfrdp-0.2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -16,10 +16,15 @@
             "import": "./grl-0.3-import.js",
             "default": "./grl-0.3-import.js"
         },
-        ".": {
+        "./grl-0.3": {
             "types": "./grl-0.3.d.ts",
             "import": "./grl-0.3.js",
             "default": "./grl-0.3.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

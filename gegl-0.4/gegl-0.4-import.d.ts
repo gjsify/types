@@ -1,9 +1,9 @@
 
-import Gegl04 from '@girs/gegl-0.4';
+import Gegl from './gegl-0.4.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Gegl: typeof Gegl04;
+        Gegl: typeof Gegl;
     }
 }
 

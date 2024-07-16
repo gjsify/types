@@ -1,9 +1,9 @@
 
-import GMenu30 from '@girs/gmenu-3.0';
+import GMenu from './gmenu-3.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GMenu: typeof GMenu30;
+        GMenu: typeof GMenu;
     }
 }
 

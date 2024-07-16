@@ -1,6 +1,6 @@
 
 declare module 'gi://Vgda?version=1' {
-    import Vgda from '@girs/vgda-1';
+    import Vgda from './vgda-1.d.ts';
     export default Vgda;
 }
 

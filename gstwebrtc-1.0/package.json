@@ -16,10 +16,15 @@
             "import": "./gstwebrtc-1.0-import.js",
             "default": "./gstwebrtc-1.0-import.js"
         },
-        ".": {
+        "./gstwebrtc-1.0": {
             "types": "./gstwebrtc-1.0.d.ts",
             "import": "./gstwebrtc-1.0.js",
             "default": "./gstwebrtc-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

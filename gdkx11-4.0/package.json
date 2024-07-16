@@ -16,10 +16,15 @@
             "import": "./gdkx11-4.0-import.js",
             "default": "./gdkx11-4.0-import.js"
         },
-        ".": {
+        "./gdkx11-4.0": {
             "types": "./gdkx11-4.0.d.ts",
             "import": "./gdkx11-4.0.js",
             "default": "./gdkx11-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

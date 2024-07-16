@@ -16,10 +16,15 @@
             "import": "./nmgtk-1.0-import.js",
             "default": "./nmgtk-1.0-import.js"
         },
-        ".": {
+        "./nmgtk-1.0": {
             "types": "./nmgtk-1.0.d.ts",
             "import": "./nmgtk-1.0.js",
             "default": "./nmgtk-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

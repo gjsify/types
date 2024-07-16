@@ -1,9 +1,9 @@
 
-import EBackend12 from '@girs/ebackend-1.2';
+import EBackend from './ebackend-1.2.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        EBackend: typeof EBackend12;
+        EBackend: typeof EBackend;
     }
 }
 

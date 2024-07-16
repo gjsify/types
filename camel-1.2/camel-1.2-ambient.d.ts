@@ -1,6 +1,6 @@
 
 declare module 'gi://Camel?version=1.2' {
-    import Camel from '@girs/camel-1.2';
+    import Camel from './camel-1.2.d.ts';
     export default Camel;
 }
 

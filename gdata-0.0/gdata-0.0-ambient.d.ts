@@ -1,6 +1,6 @@
 
 declare module 'gi://GData?version=0.0' {
-    import GData from '@girs/gdata-0.0';
+    import GData from './gdata-0.0.d.ts';
     export default GData;
 }
 

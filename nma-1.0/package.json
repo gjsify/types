@@ -16,10 +16,15 @@
             "import": "./nma-1.0-import.js",
             "default": "./nma-1.0-import.js"
         },
-        ".": {
+        "./nma-1.0": {
             "types": "./nma-1.0.d.ts",
             "import": "./nma-1.0.js",
             "default": "./nma-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -5,8 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './rygelcore-2.8-ambient.d.ts';
-
 /**
  * RygelCore-2.8
  */

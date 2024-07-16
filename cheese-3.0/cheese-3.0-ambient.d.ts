@@ -1,6 +1,6 @@
 
 declare module 'gi://Cheese?version=3.0' {
-    import Cheese from '@girs/cheese-3.0';
+    import Cheese from './cheese-3.0.d.ts';
     export default Cheese;
 }
 

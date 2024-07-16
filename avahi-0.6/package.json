@@ -16,10 +16,15 @@
             "import": "./avahi-0.6-import.js",
             "default": "./avahi-0.6-import.js"
         },
-        ".": {
+        "./avahi-0.6": {
             "types": "./avahi-0.6.d.ts",
             "import": "./avahi-0.6.js",
             "default": "./avahi-0.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

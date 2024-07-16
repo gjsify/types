@@ -16,10 +16,15 @@
             "import": "./girepository-2.0-import.js",
             "default": "./girepository-2.0-import.js"
         },
-        ".": {
+        "./girepository-2.0": {
             "types": "./girepository-2.0.d.ts",
             "import": "./girepository-2.0.js",
             "default": "./girepository-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

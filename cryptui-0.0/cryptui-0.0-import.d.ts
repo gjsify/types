@@ -1,9 +1,9 @@
 
-import CryptUI00 from '@girs/cryptui-0.0';
+import CryptUI from './cryptui-0.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        CryptUI: typeof CryptUI00;
+        CryptUI: typeof CryptUI;
     }
 }
 

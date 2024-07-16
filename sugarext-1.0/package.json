@@ -16,10 +16,15 @@
             "import": "./sugarext-1.0-import.js",
             "default": "./sugarext-1.0-import.js"
         },
-        ".": {
+        "./sugarext-1.0": {
             "types": "./sugarext-1.0.d.ts",
             "import": "./sugarext-1.0.js",
             "default": "./sugarext-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

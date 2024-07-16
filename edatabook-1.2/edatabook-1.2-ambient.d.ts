@@ -1,6 +1,6 @@
 
 declare module 'gi://EDataBook?version=1.2' {
-    import EDataBook from '@girs/edatabook-1.2';
+    import EDataBook from './edatabook-1.2.d.ts';
     export default EDataBook;
 }
 

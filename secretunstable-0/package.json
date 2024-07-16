@@ -16,10 +16,15 @@
             "import": "./secretunstable-0-import.js",
             "default": "./secretunstable-0-import.js"
         },
-        ".": {
+        "./secretunstable-0": {
             "types": "./secretunstable-0.d.ts",
             "import": "./secretunstable-0.js",
             "default": "./secretunstable-0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

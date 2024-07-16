@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gstbase-0.10-ambient.d.ts';
-
-import './gstbase-0.10-import.d.ts';
-
 /**
  * GstBase-0.10
  */

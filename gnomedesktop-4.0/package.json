@@ -16,10 +16,15 @@
             "import": "./gnomedesktop-4.0-import.js",
             "default": "./gnomedesktop-4.0-import.js"
         },
-        ".": {
+        "./gnomedesktop-4.0": {
             "types": "./gnomedesktop-4.0.d.ts",
             "import": "./gnomedesktop-4.0.js",
             "default": "./gnomedesktop-4.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

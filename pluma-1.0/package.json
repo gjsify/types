@@ -16,10 +16,15 @@
             "import": "./pluma-1.0-import.js",
             "default": "./pluma-1.0-import.js"
         },
-        ".": {
+        "./pluma-1.0": {
             "types": "./pluma-1.0.d.ts",
             "import": "./pluma-1.0.js",
             "default": "./pluma-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

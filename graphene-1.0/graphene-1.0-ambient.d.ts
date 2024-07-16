@@ -1,6 +1,6 @@
 
 declare module 'gi://Graphene?version=1.0' {
-    import Graphene from '@girs/graphene-1.0';
+    import Graphene from './graphene-1.0.d.ts';
     export default Graphene;
 }
 

@@ -16,10 +16,15 @@
             "import": "./cogl-1.0-import.js",
             "default": "./cogl-1.0-import.js"
         },
-        ".": {
+        "./cogl-1.0": {
             "types": "./cogl-1.0.d.ts",
             "import": "./cogl-1.0.js",
             "default": "./cogl-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

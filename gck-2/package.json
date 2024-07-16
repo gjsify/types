@@ -16,10 +16,15 @@
             "import": "./gck-2-import.js",
             "default": "./gck-2-import.js"
         },
-        ".": {
+        "./gck-2": {
             "types": "./gck-2.d.ts",
             "import": "./gck-2.js",
             "default": "./gck-2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

@@ -1,9 +1,9 @@
 
-import Lasem04 from '@girs/lasem-0.4';
+import Lasem from './lasem-0.4.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Lasem: typeof Lasem04;
+        Lasem: typeof Lasem;
     }
 }
 

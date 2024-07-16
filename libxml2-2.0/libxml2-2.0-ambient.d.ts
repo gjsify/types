@@ -1,6 +1,6 @@
 
 declare module 'gi://libxml2?version=2.0' {
-    import libxml2 from '@girs/libxml2-2.0';
+    import libxml2 from './libxml2-2.0.d.ts';
     export default libxml2;
 }
 

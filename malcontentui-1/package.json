@@ -16,10 +16,15 @@
             "import": "./malcontentui-1-import.js",
             "default": "./malcontentui-1-import.js"
         },
-        ".": {
+        "./malcontentui-1": {
             "types": "./malcontentui-1.d.ts",
             "import": "./malcontentui-1.js",
             "default": "./malcontentui-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

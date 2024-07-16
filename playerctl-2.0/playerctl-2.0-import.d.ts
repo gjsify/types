@@ -1,9 +1,9 @@
 
-import Playerctl20 from '@girs/playerctl-2.0';
+import Playerctl from './playerctl-2.0.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        Playerctl: typeof Playerctl20;
+        Playerctl: typeof Playerctl;
     }
 }
 

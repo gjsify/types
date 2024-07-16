@@ -1,6 +1,6 @@
 
 declare module 'gi://Grl?version=0.3' {
-    import Grl from '@girs/grl-0.3';
+    import Grl from './grl-0.3.d.ts';
     export default Grl;
 }
 

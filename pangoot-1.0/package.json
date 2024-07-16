@@ -16,10 +16,15 @@
             "import": "./pangoot-1.0-import.js",
             "default": "./pangoot-1.0-import.js"
         },
-        ".": {
+        "./pangoot-1.0": {
             "types": "./pangoot-1.0.d.ts",
             "import": "./pangoot-1.0.js",
             "default": "./pangoot-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
         }
     },
     "scripts": {

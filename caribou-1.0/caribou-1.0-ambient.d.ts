@@ -1,6 +1,6 @@
 
 declare module 'gi://Caribou?version=1.0' {
-    import Caribou from '@girs/caribou-1.0';
+    import Caribou from './caribou-1.0.d.ts';
     export default Caribou;
 }
 

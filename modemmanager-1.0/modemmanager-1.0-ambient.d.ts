@@ -1,6 +1,6 @@
 
 declare module 'gi://ModemManager?version=1.0' {
-    import ModemManager from '@girs/modemmanager-1.0';
+    import ModemManager from './modemmanager-1.0.d.ts';
     export default ModemManager;
 }
 

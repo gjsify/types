@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gxml-0.14-ambient.d.ts';
-
-import './gxml-0.14-import.d.ts';
-
 /**
  * GXml-0.14
  */

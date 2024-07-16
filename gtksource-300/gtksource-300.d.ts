@@ -5,10 +5,6 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gtksource-300-ambient.d.ts';
-
-import './gtksource-300-import.d.ts';
-
 /**
  * GtkSource-300
  */

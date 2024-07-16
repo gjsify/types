@@ -1,9 +1,9 @@
 
-import GtkSource5 from '@girs/gtksource-5';
+import GtkSource from './gtksource-5.d.ts';
 
 declare global {
     export interface GjsGiImports {
-        GtkSource: typeof GtkSource5;
+        GtkSource: typeof GtkSource;
     }
 }
 
