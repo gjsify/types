@@ -1,11 +1,11 @@
 
 declare module 'gi://ModemManager?version=1.0' {
-    import ModemManager from './modemmanager-1.0.d.ts';
-    export default ModemManager;
+    const ModemManager10: typeof import('./modemmanager-1.0.js').default
+    export default ModemManager10;
 }
 
 declare module 'gi://ModemManager' {
-    import ModemManager10 from 'gi://ModemManager?version=1.0';
+    const ModemManager10: typeof import('./modemmanager-1.0.js').default
     export default ModemManager10;
 }
 

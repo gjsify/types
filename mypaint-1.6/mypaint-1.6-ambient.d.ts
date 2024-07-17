@@ -1,11 +1,11 @@
 
 declare module 'gi://MyPaint?version=1.6' {
-    import MyPaint from './mypaint-1.6.d.ts';
-    export default MyPaint;
+    const MyPaint16: typeof import('./mypaint-1.6.js').default
+    export default MyPaint16;
 }
 
 declare module 'gi://MyPaint' {
-    import MyPaint16 from 'gi://MyPaint?version=1.6';
+    const MyPaint16: typeof import('./mypaint-1.6.js').default
     export default MyPaint16;
 }
 

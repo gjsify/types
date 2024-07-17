@@ -1,5 +1,5 @@
 
-import GstWebRTC from './gstwebrtc-1.0.d.ts';
+import GstWebRTC from './gstwebrtc-1.0.js';
 
 declare global {
     export interface GjsGiImports {

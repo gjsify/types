@@ -1,5 +1,5 @@
 
-import SpiceClientGtk from './spiceclientgtk-3.0.d.ts';
+import SpiceClientGtk from './spiceclientgtk-3.0.js';
 
 declare global {
     export interface GjsGiImports {

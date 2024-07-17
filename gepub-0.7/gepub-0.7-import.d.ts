@@ -1,5 +1,5 @@
 
-import Gepub from './gepub-0.7.d.ts';
+import Gepub from './gepub-0.7.js';
 
 declare global {
     export interface GjsGiImports {

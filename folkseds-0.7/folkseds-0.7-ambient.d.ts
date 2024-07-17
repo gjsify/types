@@ -1,11 +1,11 @@
 
 declare module 'gi://FolksEds?version=0.7' {
-    import FolksEds from './folkseds-0.7.d.ts';
-    export default FolksEds;
+    const FolksEds07: typeof import('./folkseds-0.7.js').default
+    export default FolksEds07;
 }
 
 declare module 'gi://FolksEds' {
-    import FolksEds07 from 'gi://FolksEds?version=0.7';
+    const FolksEds07: typeof import('./folkseds-0.7.js').default
     export default FolksEds07;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Shell?version=0.1' {
-    import Shell from './shell-0.1.d.ts';
-    export default Shell;
+    const Shell01: typeof import('./shell-0.1.js').default
+    export default Shell01;
 }
 
 declare module 'gi://Shell' {
-    import Shell01 from 'gi://Shell?version=0.1';
+    const Shell01: typeof import('./shell-0.1.js').default
     export default Shell01;
 }
 

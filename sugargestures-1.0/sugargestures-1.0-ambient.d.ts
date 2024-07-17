@@ -1,11 +1,11 @@
 
 declare module 'gi://SugarGestures?version=1.0' {
-    import SugarGestures from './sugargestures-1.0.d.ts';
-    export default SugarGestures;
+    const SugarGestures10: typeof import('./sugargestures-1.0.js').default
+    export default SugarGestures10;
 }
 
 declare module 'gi://SugarGestures' {
-    import SugarGestures10 from 'gi://SugarGestures?version=1.0';
+    const SugarGestures10: typeof import('./sugargestures-1.0.js').default
     export default SugarGestures10;
 }
 

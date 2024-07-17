@@ -1,5 +1,5 @@
 
-import Gkbd from './gkbd-3.0.d.ts';
+import Gkbd from './gkbd-3.0.js';
 
 declare global {
     export interface GjsGiImports {

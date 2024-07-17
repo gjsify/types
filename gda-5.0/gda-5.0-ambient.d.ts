@@ -1,11 +1,11 @@
 
 declare module 'gi://Gda?version=5.0' {
-    import Gda from './gda-5.0.d.ts';
-    export default Gda;
+    const Gda50: typeof import('./gda-5.0.js').default
+    export default Gda50;
 }
 
 declare module 'gi://Gda' {
-    import Gda50 from 'gi://Gda?version=5.0';
+    const Gda50: typeof import('./gda-5.0.js').default
     export default Gda50;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://GstInsertBin?version=1.0' {
-    import GstInsertBin from './gstinsertbin-1.0.d.ts';
-    export default GstInsertBin;
+    const GstInsertBin10: typeof import('./gstinsertbin-1.0.js').default
+    export default GstInsertBin10;
 }
 
 declare module 'gi://GstInsertBin' {
-    import GstInsertBin10 from 'gi://GstInsertBin?version=1.0';
+    const GstInsertBin10: typeof import('./gstinsertbin-1.0.js').default
     export default GstInsertBin10;
 }
 

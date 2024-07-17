@@ -1,5 +1,5 @@
 
-import Bamf from './bamf-3.d.ts';
+import Bamf from './bamf-3.js';
 
 declare global {
     export interface GjsGiImports {

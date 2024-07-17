@@ -1,5 +1,5 @@
 
-import GstBadAllocators from './gstbadallocators-1.0.d.ts';
+import GstBadAllocators from './gstbadallocators-1.0.js';
 
 declare global {
     export interface GjsGiImports {

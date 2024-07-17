@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './dmap-4.0-ambient.d.ts';
+import './dmap-4.0-ambient.js';
 
-import './dmap-4.0-import.d.ts';
+import './dmap-4.0-import.js';
 
-import Dmap from './dmap-4.0.d.ts';
+import Dmap from './dmap-4.0.js';
 export default Dmap;
 

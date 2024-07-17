@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './folkstelepathy-0.7-ambient.d.ts';
+import './folkstelepathy-0.7-ambient.js';
 
-import './folkstelepathy-0.7-import.d.ts';
+import './folkstelepathy-0.7-import.js';
 
-import FolksTelepathy from './folkstelepathy-0.7.d.ts';
+import FolksTelepathy from './folkstelepathy-0.7.js';
 export default FolksTelepathy;
 

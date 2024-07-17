@@ -1,5 +1,5 @@
 
-import GstGLEGL from './gstglegl-1.0.d.ts';
+import GstGLEGL from './gstglegl-1.0.js';
 
 declare global {
     export interface GjsGiImports {

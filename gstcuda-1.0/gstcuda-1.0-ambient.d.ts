@@ -1,11 +1,11 @@
 
 declare module 'gi://GstCuda?version=1.0' {
-    import GstCuda from './gstcuda-1.0.d.ts';
-    export default GstCuda;
+    const GstCuda10: typeof import('./gstcuda-1.0.js').default
+    export default GstCuda10;
 }
 
 declare module 'gi://GstCuda' {
-    import GstCuda10 from 'gi://GstCuda?version=1.0';
+    const GstCuda10: typeof import('./gstcuda-1.0.js').default
     export default GstCuda10;
 }
 

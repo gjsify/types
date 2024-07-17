@@ -1,11 +1,11 @@
 
 declare module 'gi://GIRepository?version=3.0' {
-    import GIRepository from './girepository-3.0.d.ts';
-    export default GIRepository;
+    const GIRepository30: typeof import('./girepository-3.0.js').default
+    export default GIRepository30;
 }
 
 declare module 'gi://GIRepository' {
-    import GIRepository30 from 'gi://GIRepository?version=3.0';
+    const GIRepository30: typeof import('./girepository-3.0.js').default
     export default GIRepository30;
 }
 

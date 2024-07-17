@@ -1,11 +1,11 @@
 
 declare module 'gi://DbusmenuGtk?version=0.4' {
-    import DbusmenuGtk from './dbusmenugtk-0.4.d.ts';
-    export default DbusmenuGtk;
+    const DbusmenuGtk04: typeof import('./dbusmenugtk-0.4.js').default
+    export default DbusmenuGtk04;
 }
 
 declare module 'gi://DbusmenuGtk' {
-    import DbusmenuGtk04 from 'gi://DbusmenuGtk?version=0.4';
+    const DbusmenuGtk04: typeof import('./dbusmenugtk-0.4.js').default
     export default DbusmenuGtk04;
 }
 

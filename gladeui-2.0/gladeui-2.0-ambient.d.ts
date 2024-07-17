@@ -1,11 +1,11 @@
 
 declare module 'gi://Gladeui?version=2.0' {
-    import Gladeui from './gladeui-2.0.d.ts';
-    export default Gladeui;
+    const Gladeui20: typeof import('./gladeui-2.0.js').default
+    export default Gladeui20;
 }
 
 declare module 'gi://Gladeui' {
-    import Gladeui20 from 'gi://Gladeui?version=2.0';
+    const Gladeui20: typeof import('./gladeui-2.0.js').default
     export default Gladeui20;
 }
 

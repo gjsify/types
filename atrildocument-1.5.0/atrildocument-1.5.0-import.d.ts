@@ -1,5 +1,5 @@
 
-import AtrilDocument from './atrildocument-1.5.0.d.ts';
+import AtrilDocument from './atrildocument-1.5.0.js';
 
 declare global {
     export interface GjsGiImports {

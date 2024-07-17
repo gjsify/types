@@ -1,11 +1,11 @@
 
 declare module 'gi://Cvc?version=1.0' {
-    import Cvc from './cvc-1.0.d.ts';
-    export default Cvc;
+    const Cvc10: typeof import('./cvc-1.0.js').default
+    export default Cvc10;
 }
 
 declare module 'gi://Cvc' {
-    import Cvc10 from 'gi://Cvc?version=1.0';
+    const Cvc10: typeof import('./cvc-1.0.js').default
     export default Cvc10;
 }
 

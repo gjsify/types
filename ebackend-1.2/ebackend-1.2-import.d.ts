@@ -1,5 +1,5 @@
 
-import EBackend from './ebackend-1.2.d.ts';
+import EBackend from './ebackend-1.2.js';
 
 declare global {
     export interface GjsGiImports {

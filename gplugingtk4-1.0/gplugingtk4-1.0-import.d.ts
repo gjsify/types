@@ -1,5 +1,5 @@
 
-import GPluginGtk4 from './gplugingtk4-1.0.d.ts';
+import GPluginGtk4 from './gplugingtk4-1.0.js';
 
 declare global {
     export interface GjsGiImports {

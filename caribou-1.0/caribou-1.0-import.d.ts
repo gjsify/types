@@ -1,5 +1,5 @@
 
-import Caribou from './caribou-1.0.d.ts';
+import Caribou from './caribou-1.0.js';
 
 declare global {
     export interface GjsGiImports {

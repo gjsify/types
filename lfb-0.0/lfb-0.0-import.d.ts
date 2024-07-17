@@ -1,5 +1,5 @@
 
-import Lfb from './lfb-0.0.d.ts';
+import Lfb from './lfb-0.0.js';
 
 declare global {
     export interface GjsGiImports {

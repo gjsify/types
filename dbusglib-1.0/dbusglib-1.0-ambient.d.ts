@@ -1,11 +1,11 @@
 
 declare module 'gi://DBusGLib?version=1.0' {
-    import DBusGLib from './dbusglib-1.0.d.ts';
-    export default DBusGLib;
+    const DBusGLib10: typeof import('./dbusglib-1.0.js').default
+    export default DBusGLib10;
 }
 
 declare module 'gi://DBusGLib' {
-    import DBusGLib10 from 'gi://DBusGLib?version=1.0';
+    const DBusGLib10: typeof import('./dbusglib-1.0.js').default
     export default DBusGLib10;
 }
 

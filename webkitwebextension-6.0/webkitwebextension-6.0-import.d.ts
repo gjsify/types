@@ -1,5 +1,5 @@
 
-import WebKitWebExtension from './webkitwebextension-6.0.d.ts';
+import WebKitWebExtension from './webkitwebextension-6.0.js';
 
 declare global {
     export interface GjsGiImports {

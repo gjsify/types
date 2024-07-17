@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './garcongtk-1.0-ambient.d.ts';
+import './garcongtk-1.0-ambient.js';
 
-import './garcongtk-1.0-import.d.ts';
+import './garcongtk-1.0-import.js';
 
-import GarconGtk from './garcongtk-1.0.d.ts';
+import GarconGtk from './garcongtk-1.0.js';
 export default GarconGtk;
 

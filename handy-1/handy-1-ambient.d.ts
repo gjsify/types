@@ -1,11 +1,11 @@
 
 declare module 'gi://Handy?version=1' {
-    import Handy from './handy-1.d.ts';
-    export default Handy;
+    const Handy1: typeof import('./handy-1.js').default
+    export default Handy1;
 }
 
 declare module 'gi://Handy' {
-    import Handy1 from 'gi://Handy?version=1';
+    const Handy1: typeof import('./handy-1.js').default
     export default Handy1;
 }
 

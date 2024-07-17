@@ -1,5 +1,5 @@
 
-import IMSettings from './imsettings-1.8.d.ts';
+import IMSettings from './imsettings-1.8.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,11 +1,11 @@
 
 declare module 'gi://DBus?version=1.0' {
-    import DBus from './dbus-1.0.d.ts';
-    export default DBus;
+    const DBus10: typeof import('./dbus-1.0.js').default
+    export default DBus10;
 }
 
 declare module 'gi://DBus' {
-    import DBus10 from 'gi://DBus?version=1.0';
+    const DBus10: typeof import('./dbus-1.0.js').default
     export default DBus10;
 }
 

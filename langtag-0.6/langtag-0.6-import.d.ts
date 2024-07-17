@@ -1,5 +1,5 @@
 
-import LangTag from './langtag-0.6.d.ts';
+import LangTag from './langtag-0.6.js';
 
 declare global {
     export interface GjsGiImports {

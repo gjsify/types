@@ -1,11 +1,11 @@
 
 declare module 'gi://Clapper?version=0.0' {
-    import Clapper from './clapper-0.0.d.ts';
-    export default Clapper;
+    const Clapper00: typeof import('./clapper-0.0.js').default
+    export default Clapper00;
 }
 
 declare module 'gi://Clapper' {
-    import Clapper00 from 'gi://Clapper?version=0.0';
+    const Clapper00: typeof import('./clapper-0.0.js').default
     export default Clapper00;
 }
 

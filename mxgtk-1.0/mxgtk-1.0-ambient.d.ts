@@ -1,11 +1,11 @@
 
 declare module 'gi://MxGtk?version=1.0' {
-    import MxGtk from './mxgtk-1.0.d.ts';
-    export default MxGtk;
+    const MxGtk10: typeof import('./mxgtk-1.0.js').default
+    export default MxGtk10;
 }
 
 declare module 'gi://MxGtk' {
-    import MxGtk10 from 'gi://MxGtk?version=1.0';
+    const MxGtk10: typeof import('./mxgtk-1.0.js').default
     export default MxGtk10;
 }
 

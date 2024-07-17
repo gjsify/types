@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './ayatanaido3-0.4-ambient.d.ts';
+import './ayatanaido3-0.4-ambient.js';
 
-import './ayatanaido3-0.4-import.d.ts';
+import './ayatanaido3-0.4-import.js';
 
-import AyatanaIdo3 from './ayatanaido3-0.4.d.ts';
+import AyatanaIdo3 from './ayatanaido3-0.4.js';
 export default AyatanaIdo3;
 

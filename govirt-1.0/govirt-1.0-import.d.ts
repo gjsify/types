@@ -1,5 +1,5 @@
 
-import GoVirt from './govirt-1.0.d.ts';
+import GoVirt from './govirt-1.0.js';
 
 declare global {
     export interface GjsGiImports {

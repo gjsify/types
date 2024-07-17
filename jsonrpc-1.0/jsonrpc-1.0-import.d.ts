@@ -1,5 +1,5 @@
 
-import Jsonrpc from './jsonrpc-1.0.d.ts';
+import Jsonrpc from './jsonrpc-1.0.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import Spelling from './spelling-1.d.ts';
+import Spelling from './spelling-1.js';
 
 declare global {
     export interface GjsGiImports {

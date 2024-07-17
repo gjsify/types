@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './amtk-4-ambient.d.ts';
+import './amtk-4-ambient.js';
 
 
-import Amtk from './amtk-4.d.ts';
+import Amtk from './amtk-4.js';
 export default Amtk;
 

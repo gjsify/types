@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gcrui-3-ambient.d.ts';
+import './gcrui-3-ambient.js';
 
-import './gcrui-3-import.d.ts';
+import './gcrui-3-import.js';
 
-import GcrUi from './gcrui-3.d.ts';
+import GcrUi from './gcrui-3.js';
 export default GcrUi;
 

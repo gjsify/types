@@ -1,11 +1,11 @@
 
 declare module 'gi://UnityExtras?version=7.0' {
-    import UnityExtras from './unityextras-7.0.d.ts';
-    export default UnityExtras;
+    const UnityExtras70: typeof import('./unityextras-7.0.js').default
+    export default UnityExtras70;
 }
 
 declare module 'gi://UnityExtras' {
-    import UnityExtras70 from 'gi://UnityExtras?version=7.0';
+    const UnityExtras70: typeof import('./unityextras-7.0.js').default
     export default UnityExtras70;
 }
 

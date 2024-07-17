@@ -1,5 +1,5 @@
 
-import GWeather from './gweather-4.0.d.ts';
+import GWeather from './gweather-4.0.js';
 
 declare global {
     export interface GjsGiImports {

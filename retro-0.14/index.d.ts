@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './retro-0.14-ambient.d.ts';
+import './retro-0.14-ambient.js';
 
 
-import Retro from './retro-0.14.d.ts';
+import Retro from './retro-0.14.js';
 export default Retro;
 

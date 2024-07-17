@@ -1,11 +1,11 @@
 
 declare module 'gi://Libproxy?version=1.0' {
-    import Libproxy from './libproxy-1.0.d.ts';
-    export default Libproxy;
+    const Libproxy10: typeof import('./libproxy-1.0.js').default
+    export default Libproxy10;
 }
 
 declare module 'gi://Libproxy' {
-    import Libproxy10 from 'gi://Libproxy?version=1.0';
+    const Libproxy10: typeof import('./libproxy-1.0.js').default
     export default Libproxy10;
 }
 

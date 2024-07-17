@@ -1,11 +1,11 @@
 
 declare module 'gi://GstAudio?version=1.0' {
-    import GstAudio from './gstaudio-1.0.d.ts';
-    export default GstAudio;
+    const GstAudio10: typeof import('./gstaudio-1.0.js').default
+    export default GstAudio10;
 }
 
 declare module 'gi://GstAudio' {
-    import GstAudio10 from 'gi://GstAudio?version=1.0';
+    const GstAudio10: typeof import('./gstaudio-1.0.js').default
     export default GstAudio10;
 }
 

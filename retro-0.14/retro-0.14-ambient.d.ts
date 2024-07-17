@@ -1,11 +1,11 @@
 
 declare module 'gi://Retro?version=0.14' {
-    import Retro from './retro-0.14.d.ts';
-    export default Retro;
+    const Retro014: typeof import('./retro-0.14.js').default
+    export default Retro014;
 }
 
 declare module 'gi://Retro' {
-    import Retro014 from 'gi://Retro?version=0.14';
+    const Retro014: typeof import('./retro-0.14.js').default
     export default Retro014;
 }
 

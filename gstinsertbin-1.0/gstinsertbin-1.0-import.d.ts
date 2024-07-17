@@ -1,5 +1,5 @@
 
-import GstInsertBin from './gstinsertbin-1.0.d.ts';
+import GstInsertBin from './gstinsertbin-1.0.js';
 
 declare global {
     export interface GjsGiImports {

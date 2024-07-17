@@ -1,5 +1,5 @@
 
-import Grss from './grss-0.7.d.ts';
+import Grss from './grss-0.7.js';
 
 declare global {
     export interface GjsGiImports {

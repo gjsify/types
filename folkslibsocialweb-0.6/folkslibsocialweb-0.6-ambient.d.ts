@@ -1,11 +1,11 @@
 
 declare module 'gi://FolksLibsocialweb?version=0.6' {
-    import FolksLibsocialweb from './folkslibsocialweb-0.6.d.ts';
-    export default FolksLibsocialweb;
+    const FolksLibsocialweb06: typeof import('./folkslibsocialweb-0.6.js').default
+    export default FolksLibsocialweb06;
 }
 
 declare module 'gi://FolksLibsocialweb' {
-    import FolksLibsocialweb06 from 'gi://FolksLibsocialweb?version=0.6';
+    const FolksLibsocialweb06: typeof import('./folkslibsocialweb-0.6.js').default
     export default FolksLibsocialweb06;
 }
 

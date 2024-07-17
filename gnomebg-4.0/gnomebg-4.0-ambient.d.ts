@@ -1,11 +1,11 @@
 
 declare module 'gi://GnomeBG?version=4.0' {
-    import GnomeBG from './gnomebg-4.0.d.ts';
-    export default GnomeBG;
+    const GnomeBG40: typeof import('./gnomebg-4.0.js').default
+    export default GnomeBG40;
 }
 
 declare module 'gi://GnomeBG' {
-    import GnomeBG40 from 'gi://GnomeBG?version=4.0';
+    const GnomeBG40: typeof import('./gnomebg-4.0.js').default
     export default GnomeBG40;
 }
 

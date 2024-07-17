@@ -1,11 +1,11 @@
 
 declare module 'gi://GtkVnc?version=2.0' {
-    import GtkVnc from './gtkvnc-2.0.d.ts';
-    export default GtkVnc;
+    const GtkVnc20: typeof import('./gtkvnc-2.0.js').default
+    export default GtkVnc20;
 }
 
 declare module 'gi://GtkVnc' {
-    import GtkVnc20 from 'gi://GtkVnc?version=2.0';
+    const GtkVnc20: typeof import('./gtkvnc-2.0.js').default
     export default GtkVnc20;
 }
 

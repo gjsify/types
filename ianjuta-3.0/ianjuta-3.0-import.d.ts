@@ -1,5 +1,5 @@
 
-import IAnjuta from './ianjuta-3.0.d.ts';
+import IAnjuta from './ianjuta-3.0.js';
 
 declare global {
     export interface GjsGiImports {

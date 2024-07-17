@@ -1,5 +1,5 @@
 
-import XApp from './xapp-1.0.d.ts';
+import XApp from './xapp-1.0.js';
 
 declare global {
     export interface GjsGiImports {

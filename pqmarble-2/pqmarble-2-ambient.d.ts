@@ -1,11 +1,11 @@
 
 declare module 'gi://PQMarble?version=2' {
-    import PQMarble from './pqmarble-2.d.ts';
-    export default PQMarble;
+    const PQMarble2: typeof import('./pqmarble-2.js').default
+    export default PQMarble2;
 }
 
 declare module 'gi://PQMarble' {
-    import PQMarble2 from 'gi://PQMarble?version=2';
+    const PQMarble2: typeof import('./pqmarble-2.js').default
     export default PQMarble2;
 }
 

@@ -1,5 +1,5 @@
 
-import GPasteGtk from './gpastegtk-4.d.ts';
+import GPasteGtk from './gpastegtk-4.js';
 
 declare global {
     export interface GjsGiImports {

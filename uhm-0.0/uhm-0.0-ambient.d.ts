@@ -1,11 +1,11 @@
 
 declare module 'gi://Uhm?version=0.0' {
-    import Uhm from './uhm-0.0.d.ts';
-    export default Uhm;
+    const Uhm00: typeof import('./uhm-0.0.js').default
+    export default Uhm00;
 }
 
 declare module 'gi://Uhm' {
-    import Uhm00 from 'gi://Uhm?version=0.0';
+    const Uhm00: typeof import('./uhm-0.0.js').default
     export default Uhm00;
 }
 

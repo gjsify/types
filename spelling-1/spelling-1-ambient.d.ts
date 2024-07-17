@@ -1,11 +1,11 @@
 
 declare module 'gi://Spelling?version=1' {
-    import Spelling from './spelling-1.d.ts';
-    export default Spelling;
+    const Spelling1: typeof import('./spelling-1.js').default
+    export default Spelling1;
 }
 
 declare module 'gi://Spelling' {
-    import Spelling1 from 'gi://Spelling?version=1';
+    const Spelling1: typeof import('./spelling-1.js').default
     export default Spelling1;
 }
 

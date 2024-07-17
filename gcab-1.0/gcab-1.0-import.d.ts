@@ -1,5 +1,5 @@
 
-import GCab from './gcab-1.0.d.ts';
+import GCab from './gcab-1.0.js';
 
 declare global {
     export interface GjsGiImports {

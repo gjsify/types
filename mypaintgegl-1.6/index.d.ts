@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './mypaintgegl-1.6-ambient.d.ts';
+import './mypaintgegl-1.6-ambient.js';
 
-import './mypaintgegl-1.6-import.d.ts';
+import './mypaintgegl-1.6-import.js';
 
-import MyPaintGegl from './mypaintgegl-1.6.d.ts';
+import MyPaintGegl from './mypaintgegl-1.6.js';
 export default MyPaintGegl;
 

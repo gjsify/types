@@ -1,5 +1,5 @@
 
-import DbusmenuGtk3 from './dbusmenugtk3-0.4.d.ts';
+import DbusmenuGtk3 from './dbusmenugtk3-0.4.js';
 
 declare global {
     export interface GjsGiImports {

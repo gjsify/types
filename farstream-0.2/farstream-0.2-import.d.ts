@@ -1,5 +1,5 @@
 
-import Farstream from './farstream-0.2.d.ts';
+import Farstream from './farstream-0.2.js';
 
 declare global {
     export interface GjsGiImports {

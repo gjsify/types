@@ -1,11 +1,11 @@
 
 declare module 'gi://Pango?version=1.0' {
-    import Pango from './pango-1.0.d.ts';
-    export default Pango;
+    const Pango10: typeof import('./pango-1.0.js').default
+    export default Pango10;
 }
 
 declare module 'gi://Pango' {
-    import Pango10 from 'gi://Pango?version=1.0';
+    const Pango10: typeof import('./pango-1.0.js').default
     export default Pango10;
 }
 

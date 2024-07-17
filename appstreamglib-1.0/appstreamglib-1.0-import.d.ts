@@ -1,5 +1,5 @@
 
-import AppStreamGlib from './appstreamglib-1.0.d.ts';
+import AppStreamGlib from './appstreamglib-1.0.js';
 
 declare global {
     export interface GjsGiImports {

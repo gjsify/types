@@ -1,5 +1,5 @@
 
-import GstInterfaces from './gstinterfaces-0.10.d.ts';
+import GstInterfaces from './gstinterfaces-0.10.js';
 
 declare global {
     export interface GjsGiImports {

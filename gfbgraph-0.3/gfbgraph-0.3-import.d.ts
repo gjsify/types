@@ -1,5 +1,5 @@
 
-import GFBGraph from './gfbgraph-0.3.d.ts';
+import GFBGraph from './gfbgraph-0.3.js';
 
 declare global {
     export interface GjsGiImports {

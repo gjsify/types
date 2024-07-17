@@ -1,5 +1,5 @@
 
-import GrlNet from './grlnet-0.3.d.ts';
+import GrlNet from './grlnet-0.3.js';
 
 declare global {
     export interface GjsGiImports {

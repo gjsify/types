@@ -1,5 +1,5 @@
 
-import GcrUi from './gcrui-3.d.ts';
+import GcrUi from './gcrui-3.js';
 
 declare global {
     export interface GjsGiImports {

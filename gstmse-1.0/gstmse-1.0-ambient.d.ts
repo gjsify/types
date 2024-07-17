@@ -1,11 +1,11 @@
 
 declare module 'gi://GstMse?version=1.0' {
-    import GstMse from './gstmse-1.0.d.ts';
-    export default GstMse;
+    const GstMse10: typeof import('./gstmse-1.0.js').default
+    export default GstMse10;
 }
 
 declare module 'gi://GstMse' {
-    import GstMse10 from 'gi://GstMse?version=1.0';
+    const GstMse10: typeof import('./gstmse-1.0.js').default
     export default GstMse10;
 }
 

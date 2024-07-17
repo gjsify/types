@@ -1,5 +1,5 @@
 
-import GstVulkan from './gstvulkan-1.0.d.ts';
+import GstVulkan from './gstvulkan-1.0.js';
 
 declare global {
     export interface GjsGiImports {

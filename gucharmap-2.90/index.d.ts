@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gucharmap-2.90-ambient.d.ts';
+import './gucharmap-2.90-ambient.js';
 
-import './gucharmap-2.90-import.d.ts';
+import './gucharmap-2.90-import.js';
 
-import Gucharmap from './gucharmap-2.90.d.ts';
+import Gucharmap from './gucharmap-2.90.js';
 export default Gucharmap;
 

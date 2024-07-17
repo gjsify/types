@@ -1,11 +1,11 @@
 
 declare module 'gi://GstRiff?version=1.0' {
-    import GstRiff from './gstriff-1.0.d.ts';
-    export default GstRiff;
+    const GstRiff10: typeof import('./gstriff-1.0.js').default
+    export default GstRiff10;
 }
 
 declare module 'gi://GstRiff' {
-    import GstRiff10 from 'gi://GstRiff?version=1.0';
+    const GstRiff10: typeof import('./gstriff-1.0.js').default
     export default GstRiff10;
 }
 

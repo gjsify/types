@@ -1,11 +1,11 @@
 
 declare module 'gi://GCi?version=1' {
-    import GCi from './gci-1.d.ts';
-    export default GCi;
+    const GCi1: typeof import('./gci-1.js').default
+    export default GCi1;
 }
 
 declare module 'gi://GCi' {
-    import GCi1 from 'gi://GCi?version=1';
+    const GCi1: typeof import('./gci-1.js').default
     export default GCi1;
 }
 

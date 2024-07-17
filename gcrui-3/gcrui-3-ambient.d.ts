@@ -1,11 +1,11 @@
 
 declare module 'gi://GcrUi?version=3' {
-    import GcrUi from './gcrui-3.d.ts';
-    export default GcrUi;
+    const GcrUi3: typeof import('./gcrui-3.js').default
+    export default GcrUi3;
 }
 
 declare module 'gi://GcrUi' {
-    import GcrUi3 from 'gi://GcrUi?version=3';
+    const GcrUi3: typeof import('./gcrui-3.js').default
     export default GcrUi3;
 }
 

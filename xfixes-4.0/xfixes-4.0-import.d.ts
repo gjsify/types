@@ -1,5 +1,5 @@
 
-import xfixes from './xfixes-4.0.d.ts';
+import xfixes from './xfixes-4.0.js';
 
 declare global {
     export interface GjsGiImports {

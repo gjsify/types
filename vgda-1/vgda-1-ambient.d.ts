@@ -1,11 +1,11 @@
 
 declare module 'gi://Vgda?version=1' {
-    import Vgda from './vgda-1.d.ts';
-    export default Vgda;
+    const Vgda1: typeof import('./vgda-1.js').default
+    export default Vgda1;
 }
 
 declare module 'gi://Vgda' {
-    import Vgda1 from 'gi://Vgda?version=1';
+    const Vgda1: typeof import('./vgda-1.js').default
     export default Vgda1;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Wp?version=0.5' {
-    import Wp from './wp-0.5.d.ts';
-    export default Wp;
+    const Wp05: typeof import('./wp-0.5.js').default
+    export default Wp05;
 }
 
 declare module 'gi://Wp' {
-    import Wp05 from 'gi://Wp?version=0.5';
+    const Wp05: typeof import('./wp-0.5.js').default
     export default Wp05;
 }
 

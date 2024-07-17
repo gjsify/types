@@ -1,11 +1,11 @@
 
 declare module 'gi://Caja?version=2.0' {
-    import Caja from './caja-2.0.d.ts';
-    export default Caja;
+    const Caja20: typeof import('./caja-2.0.js').default
+    export default Caja20;
 }
 
 declare module 'gi://Caja' {
-    import Caja20 from 'gi://Caja?version=2.0';
+    const Caja20: typeof import('./caja-2.0.js').default
     export default Caja20;
 }
 

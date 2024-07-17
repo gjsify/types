@@ -1,5 +1,5 @@
 
-import Gthree from './gthree-1.0.d.ts';
+import Gthree from './gthree-1.0.js';
 
 declare global {
     export interface GjsGiImports {

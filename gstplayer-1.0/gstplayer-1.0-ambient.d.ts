@@ -1,11 +1,11 @@
 
 declare module 'gi://GstPlayer?version=1.0' {
-    import GstPlayer from './gstplayer-1.0.d.ts';
-    export default GstPlayer;
+    const GstPlayer10: typeof import('./gstplayer-1.0.js').default
+    export default GstPlayer10;
 }
 
 declare module 'gi://GstPlayer' {
-    import GstPlayer10 from 'gi://GstPlayer?version=1.0';
+    const GstPlayer10: typeof import('./gstplayer-1.0.js').default
     export default GstPlayer10;
 }
 

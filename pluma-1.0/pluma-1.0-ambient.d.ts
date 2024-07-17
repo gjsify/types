@@ -1,11 +1,11 @@
 
 declare module 'gi://Pluma?version=1.0' {
-    import Pluma from './pluma-1.0.d.ts';
-    export default Pluma;
+    const Pluma10: typeof import('./pluma-1.0.js').default
+    export default Pluma10;
 }
 
 declare module 'gi://Pluma' {
-    import Pluma10 from 'gi://Pluma?version=1.0';
+    const Pluma10: typeof import('./pluma-1.0.js').default
     export default Pluma10;
 }
 

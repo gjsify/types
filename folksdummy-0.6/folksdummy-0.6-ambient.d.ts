@@ -1,11 +1,11 @@
 
 declare module 'gi://FolksDummy?version=0.6' {
-    import FolksDummy from './folksdummy-0.6.d.ts';
-    export default FolksDummy;
+    const FolksDummy06: typeof import('./folksdummy-0.6.js').default
+    export default FolksDummy06;
 }
 
 declare module 'gi://FolksDummy' {
-    import FolksDummy06 from 'gi://FolksDummy?version=0.6';
+    const FolksDummy06: typeof import('./folksdummy-0.6.js').default
     export default FolksDummy06;
 }
 

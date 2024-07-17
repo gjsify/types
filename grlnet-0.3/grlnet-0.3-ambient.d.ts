@@ -1,11 +1,11 @@
 
 declare module 'gi://GrlNet?version=0.3' {
-    import GrlNet from './grlnet-0.3.d.ts';
-    export default GrlNet;
+    const GrlNet03: typeof import('./grlnet-0.3.js').default
+    export default GrlNet03;
 }
 
 declare module 'gi://GrlNet' {
-    import GrlNet03 from 'gi://GrlNet?version=0.3';
+    const GrlNet03: typeof import('./grlnet-0.3.js').default
     export default GrlNet03;
 }
 

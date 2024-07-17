@@ -1,11 +1,11 @@
 
 declare module 'gi://BraseroMedia?version=3.1' {
-    import BraseroMedia from './braseromedia-3.1.d.ts';
-    export default BraseroMedia;
+    const BraseroMedia31: typeof import('./braseromedia-3.1.js').default
+    export default BraseroMedia31;
 }
 
 declare module 'gi://BraseroMedia' {
-    import BraseroMedia31 from 'gi://BraseroMedia?version=3.1';
+    const BraseroMedia31: typeof import('./braseromedia-3.1.js').default
     export default BraseroMedia31;
 }
 

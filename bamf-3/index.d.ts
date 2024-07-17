@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './bamf-3-ambient.d.ts';
+import './bamf-3-ambient.js';
 
-import './bamf-3-import.d.ts';
+import './bamf-3-import.js';
 
-import Bamf from './bamf-3.d.ts';
+import Bamf from './bamf-3.js';
 export default Bamf;
 

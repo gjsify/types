@@ -1,11 +1,11 @@
 
 declare module 'gi://GarconGtk?version=1.0' {
-    import GarconGtk from './garcongtk-1.0.d.ts';
-    export default GarconGtk;
+    const GarconGtk10: typeof import('./garcongtk-1.0.js').default
+    export default GarconGtk10;
 }
 
 declare module 'gi://GarconGtk' {
-    import GarconGtk10 from 'gi://GarconGtk?version=1.0';
+    const GarconGtk10: typeof import('./garcongtk-1.0.js').default
     export default GarconGtk10;
 }
 

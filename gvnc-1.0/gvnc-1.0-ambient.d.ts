@@ -1,11 +1,11 @@
 
 declare module 'gi://GVnc?version=1.0' {
-    import GVnc from './gvnc-1.0.d.ts';
-    export default GVnc;
+    const GVnc10: typeof import('./gvnc-1.0.js').default
+    export default GVnc10;
 }
 
 declare module 'gi://GVnc' {
-    import GVnc10 from 'gi://GVnc?version=1.0';
+    const GVnc10: typeof import('./gvnc-1.0.js').default
     export default GVnc10;
 }
 

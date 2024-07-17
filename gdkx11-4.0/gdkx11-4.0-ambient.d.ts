@@ -1,11 +1,11 @@
 
 declare module 'gi://GdkX11?version=4.0' {
-    import GdkX11 from './gdkx11-4.0.d.ts';
-    export default GdkX11;
+    const GdkX1140: typeof import('./gdkx11-4.0.js').default
+    export default GdkX1140;
 }
 
 declare module 'gi://GdkX11' {
-    import GdkX1140 from 'gi://GdkX11?version=4.0';
+    const GdkX1140: typeof import('./gdkx11-4.0.js').default
     export default GdkX1140;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://ClutterX11?version=1.0' {
-    import ClutterX11 from './clutterx11-1.0.d.ts';
-    export default ClutterX11;
+    const ClutterX1110: typeof import('./clutterx11-1.0.js').default
+    export default ClutterX1110;
 }
 
 declare module 'gi://ClutterX11' {
-    import ClutterX1110 from 'gi://ClutterX11?version=1.0';
+    const ClutterX1110: typeof import('./clutterx11-1.0.js').default
     export default ClutterX1110;
 }
 

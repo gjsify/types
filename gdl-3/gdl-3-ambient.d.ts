@@ -1,11 +1,11 @@
 
 declare module 'gi://Gdl?version=3' {
-    import Gdl from './gdl-3.d.ts';
-    export default Gdl;
+    const Gdl3: typeof import('./gdl-3.js').default
+    export default Gdl3;
 }
 
 declare module 'gi://Gdl' {
-    import Gdl3 from 'gi://Gdl?version=3';
+    const Gdl3: typeof import('./gdl-3.js').default
     export default Gdl3;
 }
 

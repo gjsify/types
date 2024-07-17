@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './rest-0.7-ambient.d.ts';
+import './rest-0.7-ambient.js';
 
 
-import Rest from './rest-0.7.d.ts';
+import Rest from './rest-0.7.js';
 export default Rest;
 

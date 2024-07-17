@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gcr-3-ambient.d.ts';
+import './gcr-3-ambient.js';
 
 
-import Gcr from './gcr-3.d.ts';
+import Gcr from './gcr-3.js';
 export default Gcr;
 

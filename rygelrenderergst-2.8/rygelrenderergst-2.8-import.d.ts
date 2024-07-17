@@ -1,5 +1,5 @@
 
-import RygelRendererGst from './rygelrenderergst-2.8.d.ts';
+import RygelRendererGst from './rygelrenderergst-2.8.js';
 
 declare global {
     export interface GjsGiImports {

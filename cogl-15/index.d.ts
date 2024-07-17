@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './cogl-15-ambient.d.ts';
+import './cogl-15-ambient.js';
 
 
-import Cogl from './cogl-15.d.ts';
+import Cogl from './cogl-15.js';
 export default Cogl;
 

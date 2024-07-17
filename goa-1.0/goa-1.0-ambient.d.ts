@@ -1,11 +1,11 @@
 
 declare module 'gi://Goa?version=1.0' {
-    import Goa from './goa-1.0.d.ts';
-    export default Goa;
+    const Goa10: typeof import('./goa-1.0.js').default
+    export default Goa10;
 }
 
 declare module 'gi://Goa' {
-    import Goa10 from 'gi://Goa?version=1.0';
+    const Goa10: typeof import('./goa-1.0.js').default
     export default Goa10;
 }
 

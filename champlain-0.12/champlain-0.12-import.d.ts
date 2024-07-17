@@ -1,5 +1,5 @@
 
-import Champlain from './champlain-0.12.d.ts';
+import Champlain from './champlain-0.12.js';
 
 declare global {
     export interface GjsGiImports {

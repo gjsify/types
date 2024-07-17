@@ -1,5 +1,5 @@
 
-import GUPnPDLNAGst from './gupnpdlnagst-2.0.d.ts';
+import GUPnPDLNAGst from './gupnpdlnagst-2.0.js';
 
 declare global {
     export interface GjsGiImports {

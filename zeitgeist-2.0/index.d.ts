@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './zeitgeist-2.0-ambient.d.ts';
+import './zeitgeist-2.0-ambient.js';
 
-import './zeitgeist-2.0-import.d.ts';
+import './zeitgeist-2.0-import.js';
 
-import Zeitgeist from './zeitgeist-2.0.d.ts';
+import Zeitgeist from './zeitgeist-2.0.js';
 export default Zeitgeist;
 

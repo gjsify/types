@@ -1,11 +1,11 @@
 
 declare module 'gi://Tracker?version=1.0' {
-    import Tracker from './tracker-1.0.d.ts';
-    export default Tracker;
+    const Tracker10: typeof import('./tracker-1.0.js').default
+    export default Tracker10;
 }
 
 declare module 'gi://Tracker' {
-    import Tracker10 from 'gi://Tracker?version=1.0';
+    const Tracker10: typeof import('./tracker-1.0.js').default
     export default Tracker10;
 }
 

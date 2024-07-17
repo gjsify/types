@@ -1,5 +1,5 @@
 
-import GPaste from './gpaste-2.d.ts';
+import GPaste from './gpaste-2.js';
 
 declare global {
     export interface GjsGiImports {

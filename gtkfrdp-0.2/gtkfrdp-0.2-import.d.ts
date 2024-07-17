@@ -1,5 +1,5 @@
 
-import GtkFrdp from './gtkfrdp-0.2.d.ts';
+import GtkFrdp from './gtkfrdp-0.2.js';
 
 declare global {
     export interface GjsGiImports {

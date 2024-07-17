@@ -1,5 +1,5 @@
 
-import GUdev from './gudev-1.0.d.ts';
+import GUdev from './gudev-1.0.js';
 
 declare global {
     export interface GjsGiImports {

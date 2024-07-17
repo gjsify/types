@@ -1,5 +1,5 @@
 
-import GMenu from './gmenu-3.0.d.ts';
+import GMenu from './gmenu-3.0.js';
 
 declare global {
     export interface GjsGiImports {

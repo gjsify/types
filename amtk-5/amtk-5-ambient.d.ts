@@ -1,11 +1,11 @@
 
 declare module 'gi://Amtk?version=5' {
-    import Amtk from './amtk-5.d.ts';
-    export default Amtk;
+    const Amtk5: typeof import('./amtk-5.js').default
+    export default Amtk5;
 }
 
 declare module 'gi://Amtk' {
-    import Amtk5 from 'gi://Amtk?version=5';
+    const Amtk5: typeof import('./amtk-5.js').default
     export default Amtk5;
 }
 

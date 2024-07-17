@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './webkit2-4.1-ambient.d.ts';
+import './webkit2-4.1-ambient.js';
 
 
-import WebKit2 from './webkit2-4.1.d.ts';
+import WebKit2 from './webkit2-4.1.js';
 export default WebKit2;
 

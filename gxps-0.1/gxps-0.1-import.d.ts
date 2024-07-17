@@ -1,5 +1,5 @@
 
-import GXPS from './gxps-0.1.d.ts';
+import GXPS from './gxps-0.1.js';
 
 declare global {
     export interface GjsGiImports {

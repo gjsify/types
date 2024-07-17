@@ -1,5 +1,5 @@
 
-import ICal from './ical-3.0.d.ts';
+import ICal from './ical-3.0.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import Libxfce4panel from './libxfce4panel-2.0.d.ts';
+import Libxfce4panel from './libxfce4panel-2.0.js';
 
 declare global {
     export interface GjsGiImports {

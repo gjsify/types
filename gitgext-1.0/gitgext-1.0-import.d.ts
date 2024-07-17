@@ -1,5 +1,5 @@
 
-import GitgExt from './gitgext-1.0.d.ts';
+import GitgExt from './gitgext-1.0.js';
 
 declare global {
     export interface GjsGiImports {

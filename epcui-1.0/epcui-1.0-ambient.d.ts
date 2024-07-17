@@ -1,11 +1,11 @@
 
 declare module 'gi://EpcUi?version=1.0' {
-    import EpcUi from './epcui-1.0.d.ts';
-    export default EpcUi;
+    const EpcUi10: typeof import('./epcui-1.0.js').default
+    export default EpcUi10;
 }
 
 declare module 'gi://EpcUi' {
-    import EpcUi10 from 'gi://EpcUi?version=1.0';
+    const EpcUi10: typeof import('./epcui-1.0.js').default
     export default EpcUi10;
 }
 

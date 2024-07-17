@@ -1,11 +1,11 @@
 
 declare module 'gi://Json?version=1.0' {
-    import Json from './json-1.0.d.ts';
-    export default Json;
+    const Json10: typeof import('./json-1.0.js').default
+    export default Json10;
 }
 
 declare module 'gi://Json' {
-    import Json10 from 'gi://Json?version=1.0';
+    const Json10: typeof import('./json-1.0.js').default
     export default Json10;
 }
 

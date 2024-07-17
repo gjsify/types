@@ -1,5 +1,5 @@
 
-import Devhelp from './devhelp-3.0.d.ts';
+import Devhelp from './devhelp-3.0.js';
 
 declare global {
     export interface GjsGiImports {

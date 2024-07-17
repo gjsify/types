@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './clutter-10-ambient.d.ts';
+import './clutter-10-ambient.js';
 
 
-import Clutter from './clutter-10.d.ts';
+import Clutter from './clutter-10.js';
 export default Clutter;
 

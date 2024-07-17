@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './spiceclientgtk-3.0-ambient.d.ts';
+import './spiceclientgtk-3.0-ambient.js';
 
-import './spiceclientgtk-3.0-import.d.ts';
+import './spiceclientgtk-3.0-import.js';
 
-import SpiceClientGtk from './spiceclientgtk-3.0.d.ts';
+import SpiceClientGtk from './spiceclientgtk-3.0.js';
 export default SpiceClientGtk;
 

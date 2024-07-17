@@ -1,5 +1,5 @@
 
-import Secret from './secret-1.d.ts';
+import Secret from './secret-1.js';
 
 declare global {
     export interface GjsGiImports {

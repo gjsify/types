@@ -1,11 +1,11 @@
 
 declare module 'gi://Tepl?version=6' {
-    import Tepl from './tepl-6.d.ts';
-    export default Tepl;
+    const Tepl6: typeof import('./tepl-6.js').default
+    export default Tepl6;
 }
 
 declare module 'gi://Tepl' {
-    import Tepl6 from 'gi://Tepl?version=6';
+    const Tepl6: typeof import('./tepl-6.js').default
     export default Tepl6;
 }
 

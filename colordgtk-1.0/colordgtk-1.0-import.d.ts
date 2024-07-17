@@ -1,5 +1,5 @@
 
-import ColordGtk from './colordgtk-1.0.d.ts';
+import ColordGtk from './colordgtk-1.0.js';
 
 declare global {
     export interface GjsGiImports {

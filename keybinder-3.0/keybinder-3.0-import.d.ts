@@ -1,5 +1,5 @@
 
-import Keybinder from './keybinder-3.0.d.ts';
+import Keybinder from './keybinder-3.0.js';
 
 declare global {
     export interface GjsGiImports {

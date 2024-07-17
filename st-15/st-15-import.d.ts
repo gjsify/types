@@ -1,5 +1,5 @@
 
-import St from './st-15.d.ts';
+import St from './st-15.js';
 
 declare global {
     export interface GjsGiImports {

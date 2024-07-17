@@ -1,11 +1,11 @@
 
 declare module 'gi://GnomeBluetooth?version=3.0' {
-    import GnomeBluetooth from './gnomebluetooth-3.0.d.ts';
-    export default GnomeBluetooth;
+    const GnomeBluetooth30: typeof import('./gnomebluetooth-3.0.js').default
+    export default GnomeBluetooth30;
 }
 
 declare module 'gi://GnomeBluetooth' {
-    import GnomeBluetooth30 from 'gi://GnomeBluetooth?version=3.0';
+    const GnomeBluetooth30: typeof import('./gnomebluetooth-3.0.js').default
     export default GnomeBluetooth30;
 }
 

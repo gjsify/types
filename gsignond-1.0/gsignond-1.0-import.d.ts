@@ -1,5 +1,5 @@
 
-import GSignond from './gsignond-1.0.d.ts';
+import GSignond from './gsignond-1.0.js';
 
 declare global {
     export interface GjsGiImports {

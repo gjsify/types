@@ -1,5 +1,5 @@
 
-import GtkLayerShell from './gtklayershell-0.1.d.ts';
+import GtkLayerShell from './gtklayershell-0.1.js';
 
 declare global {
     export interface GjsGiImports {

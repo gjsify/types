@@ -1,5 +1,5 @@
 
-import Gamerzilla from './gamerzilla-0.1.d.ts';
+import Gamerzilla from './gamerzilla-0.1.js';
 
 declare global {
     export interface GjsGiImports {

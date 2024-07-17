@@ -1,5 +1,5 @@
 
-import Shumate from './shumate-1.0.d.ts';
+import Shumate from './shumate-1.0.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import Bump from './bump-0.1.d.ts';
+import Bump from './bump-0.1.js';
 
 declare global {
     export interface GjsGiImports {

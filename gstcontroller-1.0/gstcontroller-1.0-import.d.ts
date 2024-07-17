@@ -1,5 +1,5 @@
 
-import GstController from './gstcontroller-1.0.d.ts';
+import GstController from './gstcontroller-1.0.js';
 
 declare global {
     export interface GjsGiImports {

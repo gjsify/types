@@ -1,11 +1,11 @@
 
 declare module 'gi://Wnck?version=1.0' {
-    import Wnck from './wnck-1.0.d.ts';
-    export default Wnck;
+    const Wnck10: typeof import('./wnck-1.0.js').default
+    export default Wnck10;
 }
 
 declare module 'gi://Wnck' {
-    import Wnck10 from 'gi://Wnck?version=1.0';
+    const Wnck10: typeof import('./wnck-1.0.js').default
     export default Wnck10;
 }
 

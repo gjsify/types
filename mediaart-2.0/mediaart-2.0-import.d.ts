@@ -1,5 +1,5 @@
 
-import MediaArt from './mediaart-2.0.d.ts';
+import MediaArt from './mediaart-2.0.js';
 
 declare global {
     export interface GjsGiImports {

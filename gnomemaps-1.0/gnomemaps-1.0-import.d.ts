@@ -1,5 +1,5 @@
 
-import GnomeMaps from './gnomemaps-1.0.d.ts';
+import GnomeMaps from './gnomemaps-1.0.js';
 
 declare global {
     export interface GjsGiImports {

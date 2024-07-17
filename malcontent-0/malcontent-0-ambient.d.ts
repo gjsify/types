@@ -1,11 +1,11 @@
 
 declare module 'gi://Malcontent?version=0' {
-    import Malcontent from './malcontent-0.d.ts';
-    export default Malcontent;
+    const Malcontent0: typeof import('./malcontent-0.js').default
+    export default Malcontent0;
 }
 
 declare module 'gi://Malcontent' {
-    import Malcontent0 from 'gi://Malcontent?version=0';
+    const Malcontent0: typeof import('./malcontent-0.js').default
     export default Malcontent0;
 }
 

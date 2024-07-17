@@ -1,11 +1,11 @@
 
 declare module 'gi://Kkc?version=1.0' {
-    import Kkc from './kkc-1.0.d.ts';
-    export default Kkc;
+    const Kkc10: typeof import('./kkc-1.0.js').default
+    export default Kkc10;
 }
 
 declare module 'gi://Kkc' {
-    import Kkc10 from 'gi://Kkc?version=1.0';
+    const Kkc10: typeof import('./kkc-1.0.js').default
     export default Kkc10;
 }
 

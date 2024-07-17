@@ -1,11 +1,11 @@
 
 declare module 'gi://Signon?version=2.0' {
-    import Signon from './signon-2.0.d.ts';
-    export default Signon;
+    const Signon20: typeof import('./signon-2.0.js').default
+    export default Signon20;
 }
 
 declare module 'gi://Signon' {
-    import Signon20 from 'gi://Signon?version=2.0';
+    const Signon20: typeof import('./signon-2.0.js').default
     export default Signon20;
 }
 

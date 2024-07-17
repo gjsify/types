@@ -1,11 +1,11 @@
 
 declare module 'gi://MateDesktop?version=2.0' {
-    import MateDesktop from './matedesktop-2.0.d.ts';
-    export default MateDesktop;
+    const MateDesktop20: typeof import('./matedesktop-2.0.js').default
+    export default MateDesktop20;
 }
 
 declare module 'gi://MateDesktop' {
-    import MateDesktop20 from 'gi://MateDesktop?version=2.0';
+    const MateDesktop20: typeof import('./matedesktop-2.0.js').default
     export default MateDesktop20;
 }
 

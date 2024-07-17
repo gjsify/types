@@ -1,11 +1,11 @@
 
 declare module 'gi://GUdev?version=1.0' {
-    import GUdev from './gudev-1.0.d.ts';
-    export default GUdev;
+    const GUdev10: typeof import('./gudev-1.0.js').default
+    export default GUdev10;
 }
 
 declare module 'gi://GUdev' {
-    import GUdev10 from 'gi://GUdev?version=1.0';
+    const GUdev10: typeof import('./gudev-1.0.js').default
     export default GUdev10;
 }
 

@@ -1,5 +1,5 @@
 
-import Ide from './ide-46.d.ts';
+import Ide from './ide-46.js';
 
 declare global {
     export interface GjsGiImports {

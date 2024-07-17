@@ -1,5 +1,5 @@
 
-import TimezoneMap from './timezonemap-1.0.d.ts';
+import TimezoneMap from './timezonemap-1.0.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import MyPaintGegl from './mypaintgegl-1.6.d.ts';
+import MyPaintGegl from './mypaintgegl-1.6.js';
 
 declare global {
     export interface GjsGiImports {

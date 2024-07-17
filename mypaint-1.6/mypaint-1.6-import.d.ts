@@ -1,5 +1,5 @@
 
-import MyPaint from './mypaint-1.6.d.ts';
+import MyPaint from './mypaint-1.6.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,11 +1,11 @@
 
 declare module 'gi://Mbim?version=1.0' {
-    import Mbim from './mbim-1.0.d.ts';
-    export default Mbim;
+    const Mbim10: typeof import('./mbim-1.0.js').default
+    export default Mbim10;
 }
 
 declare module 'gi://Mbim' {
-    import Mbim10 from 'gi://Mbim?version=1.0';
+    const Mbim10: typeof import('./mbim-1.0.js').default
     export default Mbim10;
 }
 

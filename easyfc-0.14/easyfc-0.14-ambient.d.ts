@@ -1,11 +1,11 @@
 
 declare module 'gi://Easyfc?version=0.14' {
-    import Easyfc from './easyfc-0.14.d.ts';
-    export default Easyfc;
+    const Easyfc014: typeof import('./easyfc-0.14.js').default
+    export default Easyfc014;
 }
 
 declare module 'gi://Easyfc' {
-    import Easyfc014 from 'gi://Easyfc?version=0.14';
+    const Easyfc014: typeof import('./easyfc-0.14.js').default
     export default Easyfc014;
 }
 

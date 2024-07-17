@@ -1,5 +1,5 @@
 
-import xrandr from './xrandr-1.3.d.ts';
+import xrandr from './xrandr-1.3.js';
 
 declare global {
     export interface GjsGiImports {

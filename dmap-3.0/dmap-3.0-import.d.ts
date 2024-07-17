@@ -1,5 +1,5 @@
 
-import DMAP from './dmap-3.0.d.ts';
+import DMAP from './dmap-3.0.js';
 
 declare global {
     export interface GjsGiImports {

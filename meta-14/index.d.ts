@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './meta-14-ambient.d.ts';
+import './meta-14-ambient.js';
 
 
-import Meta from './meta-14.d.ts';
+import Meta from './meta-14.js';
 export default Meta;
 

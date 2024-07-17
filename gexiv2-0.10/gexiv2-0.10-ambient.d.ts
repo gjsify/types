@@ -1,11 +1,11 @@
 
 declare module 'gi://GExiv2?version=0.10' {
-    import GExiv2 from './gexiv2-0.10.d.ts';
-    export default GExiv2;
+    const GExiv2010: typeof import('./gexiv2-0.10.js').default
+    export default GExiv2010;
 }
 
 declare module 'gi://GExiv2' {
-    import GExiv2010 from 'gi://GExiv2?version=0.10';
+    const GExiv2010: typeof import('./gexiv2-0.10.js').default
     export default GExiv2010;
 }
 

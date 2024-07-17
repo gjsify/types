@@ -1,5 +1,5 @@
 
-import Vda from './vda-1.d.ts';
+import Vda from './vda-1.js';
 
 declare global {
     export interface GjsGiImports {

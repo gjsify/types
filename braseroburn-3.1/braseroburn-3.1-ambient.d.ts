@@ -1,11 +1,11 @@
 
 declare module 'gi://BraseroBurn?version=3.1' {
-    import BraseroBurn from './braseroburn-3.1.d.ts';
-    export default BraseroBurn;
+    const BraseroBurn31: typeof import('./braseroburn-3.1.js').default
+    export default BraseroBurn31;
 }
 
 declare module 'gi://BraseroBurn' {
-    import BraseroBurn31 from 'gi://BraseroBurn?version=3.1';
+    const BraseroBurn31: typeof import('./braseroburn-3.1.js').default
     export default BraseroBurn31;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://GstVulkanWayland?version=1.0' {
-    import GstVulkanWayland from './gstvulkanwayland-1.0.d.ts';
-    export default GstVulkanWayland;
+    const GstVulkanWayland10: typeof import('./gstvulkanwayland-1.0.js').default
+    export default GstVulkanWayland10;
 }
 
 declare module 'gi://GstVulkanWayland' {
-    import GstVulkanWayland10 from 'gi://GstVulkanWayland?version=1.0';
+    const GstVulkanWayland10: typeof import('./gstvulkanwayland-1.0.js').default
     export default GstVulkanWayland10;
 }
 

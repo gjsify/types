@@ -1,11 +1,11 @@
 
 declare module 'gi://GnomeRR?version=4.0' {
-    import GnomeRR from './gnomerr-4.0.d.ts';
-    export default GnomeRR;
+    const GnomeRR40: typeof import('./gnomerr-4.0.js').default
+    export default GnomeRR40;
 }
 
 declare module 'gi://GnomeRR' {
-    import GnomeRR40 from 'gi://GnomeRR?version=4.0';
+    const GnomeRR40: typeof import('./gnomerr-4.0.js').default
     export default GnomeRR40;
 }
 

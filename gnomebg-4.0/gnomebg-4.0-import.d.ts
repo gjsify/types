@@ -1,5 +1,5 @@
 
-import GnomeBG from './gnomebg-4.0.d.ts';
+import GnomeBG from './gnomebg-4.0.js';
 
 declare global {
     export interface GjsGiImports {

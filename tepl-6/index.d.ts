@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './tepl-6-ambient.d.ts';
+import './tepl-6-ambient.js';
 
-import './tepl-6-import.d.ts';
+import './tepl-6-import.js';
 
-import Tepl from './tepl-6.d.ts';
+import Tepl from './tepl-6.js';
 export default Tepl;
 

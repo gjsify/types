@@ -1,5 +1,5 @@
 
-import UDisks from './udisks-2.0.d.ts';
+import UDisks from './udisks-2.0.js';
 
 declare global {
     export interface GjsGiImports {

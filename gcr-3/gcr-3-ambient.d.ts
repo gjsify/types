@@ -1,11 +1,11 @@
 
 declare module 'gi://Gcr?version=3' {
-    import Gcr from './gcr-3.d.ts';
-    export default Gcr;
+    const Gcr3: typeof import('./gcr-3.js').default
+    export default Gcr3;
 }
 
 declare module 'gi://Gcr' {
-    import Gcr3 from 'gi://Gcr?version=3';
+    const Gcr3: typeof import('./gcr-3.js').default
     export default Gcr3;
 }
 

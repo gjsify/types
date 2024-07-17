@@ -1,11 +1,11 @@
 
 declare module 'gi://GnomeAutoar?version=0.1' {
-    import GnomeAutoar from './gnomeautoar-0.1.d.ts';
-    export default GnomeAutoar;
+    const GnomeAutoar01: typeof import('./gnomeautoar-0.1.js').default
+    export default GnomeAutoar01;
 }
 
 declare module 'gi://GnomeAutoar' {
-    import GnomeAutoar01 from 'gi://GnomeAutoar?version=0.1';
+    const GnomeAutoar01: typeof import('./gnomeautoar-0.1.js').default
     export default GnomeAutoar01;
 }
 

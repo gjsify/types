@@ -1,5 +1,5 @@
 
-import Panel from './panel-1.d.ts';
+import Panel from './panel-1.js';
 
 declare global {
     export interface GjsGiImports {

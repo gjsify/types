@@ -1,5 +1,5 @@
 
-import P11Kit from './p11kit-1.0.d.ts';
+import P11Kit from './p11kit-1.0.js';
 
 declare global {
     export interface GjsGiImports {

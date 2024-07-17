@@ -1,11 +1,11 @@
 
 declare module 'gi://GL?version=1.0' {
-    import GL from './gl-1.0.d.ts';
-    export default GL;
+    const GL10: typeof import('./gl-1.0.js').default
+    export default GL10;
 }
 
 declare module 'gi://GL' {
-    import GL10 from 'gi://GL?version=1.0';
+    const GL10: typeof import('./gl-1.0.js').default
     export default GL10;
 }
 

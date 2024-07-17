@@ -1,11 +1,11 @@
 
 declare module 'gi://GstRtspServer?version=1.0' {
-    import GstRtspServer from './gstrtspserver-1.0.d.ts';
-    export default GstRtspServer;
+    const GstRtspServer10: typeof import('./gstrtspserver-1.0.js').default
+    export default GstRtspServer10;
 }
 
 declare module 'gi://GstRtspServer' {
-    import GstRtspServer10 from 'gi://GstRtspServer?version=1.0';
+    const GstRtspServer10: typeof import('./gstrtspserver-1.0.js').default
     export default GstRtspServer10;
 }
 

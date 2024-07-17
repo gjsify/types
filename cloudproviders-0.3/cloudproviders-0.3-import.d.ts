@@ -1,5 +1,5 @@
 
-import CloudProviders from './cloudproviders-0.3.d.ts';
+import CloudProviders from './cloudproviders-0.3.js';
 
 declare global {
     export interface GjsGiImports {

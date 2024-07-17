@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './restextras-0.7-ambient.d.ts';
+import './restextras-0.7-ambient.js';
 
 
-import RestExtras from './restextras-0.7.d.ts';
+import RestExtras from './restextras-0.7.js';
 export default RestExtras;
 

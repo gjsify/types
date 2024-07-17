@@ -1,5 +1,5 @@
 
-import PQMarble from './pqmarble-2.d.ts';
+import PQMarble from './pqmarble-2.js';
 
 declare global {
     export interface GjsGiImports {

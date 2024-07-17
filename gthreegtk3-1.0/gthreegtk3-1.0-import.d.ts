@@ -1,5 +1,5 @@
 
-import GthreeGtk3 from './gthreegtk3-1.0.d.ts';
+import GthreeGtk3 from './gthreegtk3-1.0.js';
 
 declare global {
     export interface GjsGiImports {

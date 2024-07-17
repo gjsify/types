@@ -1,5 +1,5 @@
 
-import Tepl from './tepl-6.d.ts';
+import Tepl from './tepl-6.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import Lasem from './lasem-0.4.d.ts';
+import Lasem from './lasem-0.4.js';
 
 declare global {
     export interface GjsGiImports {

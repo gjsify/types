@@ -1,11 +1,11 @@
 
 declare module 'gi://GstTranscoder?version=1.0' {
-    import GstTranscoder from './gsttranscoder-1.0.d.ts';
-    export default GstTranscoder;
+    const GstTranscoder10: typeof import('./gsttranscoder-1.0.js').default
+    export default GstTranscoder10;
 }
 
 declare module 'gi://GstTranscoder' {
-    import GstTranscoder10 from 'gi://GstTranscoder?version=1.0';
+    const GstTranscoder10: typeof import('./gsttranscoder-1.0.js').default
     export default GstTranscoder10;
 }
 

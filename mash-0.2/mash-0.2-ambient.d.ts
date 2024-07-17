@@ -1,11 +1,11 @@
 
 declare module 'gi://Mash?version=0.2' {
-    import Mash from './mash-0.2.d.ts';
-    export default Mash;
+    const Mash02: typeof import('./mash-0.2.js').default
+    export default Mash02;
 }
 
 declare module 'gi://Mash' {
-    import Mash02 from 'gi://Mash?version=0.2';
+    const Mash02: typeof import('./mash-0.2.js').default
     export default Mash02;
 }
 

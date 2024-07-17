@@ -1,5 +1,5 @@
 
-import Libxfce4util from './libxfce4util-1.0.d.ts';
+import Libxfce4util from './libxfce4util-1.0.js';
 
 declare global {
     export interface GjsGiImports {

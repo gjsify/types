@@ -1,5 +1,5 @@
 
-import Tracker from './tracker-3.0.d.ts';
+import Tracker from './tracker-3.0.js';
 
 declare global {
     export interface GjsGiImports {

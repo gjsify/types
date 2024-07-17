@@ -1,11 +1,11 @@
 
 declare module 'gi://cairo?version=1.0' {
-    import cairo from './cairo-1.0.d.ts';
-    export default cairo;
+    const Cairo10: typeof import('./cairo-1.0.js').default
+    export default Cairo10;
 }
 
 declare module 'gi://cairo' {
-    import Cairo10 from 'gi://cairo?version=1.0';
+    const Cairo10: typeof import('./cairo-1.0.js').default
     export default Cairo10;
 }
 

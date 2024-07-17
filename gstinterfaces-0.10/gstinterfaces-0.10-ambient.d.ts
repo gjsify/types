@@ -1,11 +1,11 @@
 
 declare module 'gi://GstInterfaces?version=0.10' {
-    import GstInterfaces from './gstinterfaces-0.10.d.ts';
-    export default GstInterfaces;
+    const GstInterfaces010: typeof import('./gstinterfaces-0.10.js').default
+    export default GstInterfaces010;
 }
 
 declare module 'gi://GstInterfaces' {
-    import GstInterfaces010 from 'gi://GstInterfaces?version=0.10';
+    const GstInterfaces010: typeof import('./gstinterfaces-0.10.js').default
     export default GstInterfaces010;
 }
 

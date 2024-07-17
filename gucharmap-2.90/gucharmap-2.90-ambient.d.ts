@@ -1,11 +1,11 @@
 
 declare module 'gi://Gucharmap?version=2.90' {
-    import Gucharmap from './gucharmap-2.90.d.ts';
-    export default Gucharmap;
+    const Gucharmap290: typeof import('./gucharmap-2.90.js').default
+    export default Gucharmap290;
 }
 
 declare module 'gi://Gucharmap' {
-    import Gucharmap290 from 'gi://Gucharmap?version=2.90';
+    const Gucharmap290: typeof import('./gucharmap-2.90.js').default
     export default Gucharmap290;
 }
 

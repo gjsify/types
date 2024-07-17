@@ -1,5 +1,5 @@
 
-import Gegl from './gegl-0.4.d.ts';
+import Gegl from './gegl-0.4.js';
 
 declare global {
     export interface GjsGiImports {

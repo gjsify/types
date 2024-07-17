@@ -1,11 +1,11 @@
 
 declare module 'gi://NMGtk?version=1.0' {
-    import NMGtk from './nmgtk-1.0.d.ts';
-    export default NMGtk;
+    const NMGtk10: typeof import('./nmgtk-1.0.js').default
+    export default NMGtk10;
 }
 
 declare module 'gi://NMGtk' {
-    import NMGtk10 from 'gi://NMGtk?version=1.0';
+    const NMGtk10: typeof import('./nmgtk-1.0.js').default
     export default NMGtk10;
 }
 

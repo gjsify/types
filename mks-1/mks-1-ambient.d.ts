@@ -1,11 +1,11 @@
 
 declare module 'gi://Mks?version=1' {
-    import Mks from './mks-1.d.ts';
-    export default Mks;
+    const Mks1: typeof import('./mks-1.js').default
+    export default Mks1;
 }
 
 declare module 'gi://Mks' {
-    import Mks1 from 'gi://Mks?version=1';
+    const Mks1: typeof import('./mks-1.js').default
     export default Mks1;
 }
 

@@ -1,5 +1,5 @@
 
-import libxml2 from './libxml2-2.0.d.ts';
+import libxml2 from './libxml2-2.0.js';
 
 declare global {
     export interface GjsGiImports {

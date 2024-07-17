@@ -1,5 +1,5 @@
 
-import Clutter from './clutter-15.d.ts';
+import Clutter from './clutter-15.js';
 
 declare global {
     export interface GjsGiImports {

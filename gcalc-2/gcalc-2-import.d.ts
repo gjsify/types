@@ -1,5 +1,5 @@
 
-import GCalc from './gcalc-2.d.ts';
+import GCalc from './gcalc-2.js';
 
 declare global {
     export interface GjsGiImports {

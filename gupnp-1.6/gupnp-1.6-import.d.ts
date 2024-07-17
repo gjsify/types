@@ -1,5 +1,5 @@
 
-import GUPnP from './gupnp-1.6.d.ts';
+import GUPnP from './gupnp-1.6.js';
 
 declare global {
     export interface GjsGiImports {

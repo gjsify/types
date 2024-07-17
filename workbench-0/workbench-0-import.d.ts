@@ -1,5 +1,5 @@
 
-import Workbench from './workbench-0.d.ts';
+import Workbench from './workbench-0.js';
 
 declare global {
     export interface GjsGiImports {

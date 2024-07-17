@@ -1,5 +1,5 @@
 
-import ArrowCUDA from './arrowcuda-1.0.d.ts';
+import ArrowCUDA from './arrowcuda-1.0.js';
 
 declare global {
     export interface GjsGiImports {

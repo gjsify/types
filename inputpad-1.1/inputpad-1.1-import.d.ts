@@ -1,5 +1,5 @@
 
-import InputPad from './inputpad-1.1.d.ts';
+import InputPad from './inputpad-1.1.js';
 
 declare global {
     export interface GjsGiImports {

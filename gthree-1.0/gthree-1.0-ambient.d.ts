@@ -1,11 +1,11 @@
 
 declare module 'gi://Gthree?version=1.0' {
-    import Gthree from './gthree-1.0.d.ts';
-    export default Gthree;
+    const Gthree10: typeof import('./gthree-1.0.js').default
+    export default Gthree10;
 }
 
 declare module 'gi://Gthree' {
-    import Gthree10 from 'gi://Gthree?version=1.0';
+    const Gthree10: typeof import('./gthree-1.0.js').default
     export default Gthree10;
 }
 

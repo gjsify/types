@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './rygelcore-2.6-ambient.d.ts';
+import './rygelcore-2.6-ambient.js';
 
 
-import RygelCore from './rygelcore-2.6.d.ts';
+import RygelCore from './rygelcore-2.6.js';
 export default RygelCore;
 

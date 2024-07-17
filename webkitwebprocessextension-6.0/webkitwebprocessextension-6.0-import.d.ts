@@ -1,5 +1,5 @@
 
-import WebKitWebProcessExtension from './webkitwebprocessextension-6.0.d.ts';
+import WebKitWebProcessExtension from './webkitwebprocessextension-6.0.js';
 
 declare global {
     export interface GjsGiImports {

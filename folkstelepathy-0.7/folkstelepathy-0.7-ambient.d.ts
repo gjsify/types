@@ -1,11 +1,11 @@
 
 declare module 'gi://FolksTelepathy?version=0.7' {
-    import FolksTelepathy from './folkstelepathy-0.7.d.ts';
-    export default FolksTelepathy;
+    const FolksTelepathy07: typeof import('./folkstelepathy-0.7.js').default
+    export default FolksTelepathy07;
 }
 
 declare module 'gi://FolksTelepathy' {
-    import FolksTelepathy07 from 'gi://FolksTelepathy?version=0.7';
+    const FolksTelepathy07: typeof import('./folkstelepathy-0.7.js').default
     export default FolksTelepathy07;
 }
 

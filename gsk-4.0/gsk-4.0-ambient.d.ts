@@ -1,11 +1,11 @@
 
 declare module 'gi://Gsk?version=4.0' {
-    import Gsk from './gsk-4.0.d.ts';
-    export default Gsk;
+    const Gsk40: typeof import('./gsk-4.0.js').default
+    export default Gsk40;
 }
 
 declare module 'gi://Gsk' {
-    import Gsk40 from 'gi://Gsk?version=4.0';
+    const Gsk40: typeof import('./gsk-4.0.js').default
     export default Gsk40;
 }
 

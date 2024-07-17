@@ -1,5 +1,5 @@
 
-import GModule from './gmodule-2.0.d.ts';
+import GModule from './gmodule-2.0.js';
 
 declare global {
     export interface GjsGiImports {

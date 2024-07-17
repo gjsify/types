@@ -1,11 +1,11 @@
 
 declare module 'gi://GstVideo?version=1.0' {
-    import GstVideo from './gstvideo-1.0.d.ts';
-    export default GstVideo;
+    const GstVideo10: typeof import('./gstvideo-1.0.js').default
+    export default GstVideo10;
 }
 
 declare module 'gi://GstVideo' {
-    import GstVideo10 from 'gi://GstVideo?version=1.0';
+    const GstVideo10: typeof import('./gstvideo-1.0.js').default
     export default GstVideo10;
 }
 

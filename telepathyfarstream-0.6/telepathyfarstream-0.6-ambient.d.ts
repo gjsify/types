@@ -1,11 +1,11 @@
 
 declare module 'gi://TelepathyFarstream?version=0.6' {
-    import TelepathyFarstream from './telepathyfarstream-0.6.d.ts';
-    export default TelepathyFarstream;
+    const TelepathyFarstream06: typeof import('./telepathyfarstream-0.6.js').default
+    export default TelepathyFarstream06;
 }
 
 declare module 'gi://TelepathyFarstream' {
-    import TelepathyFarstream06 from 'gi://TelepathyFarstream?version=0.6';
+    const TelepathyFarstream06: typeof import('./telepathyfarstream-0.6.js').default
     export default TelepathyFarstream06;
 }
 

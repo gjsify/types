@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gxml-0.18-ambient.d.ts';
+import './gxml-0.18-ambient.js';
 
 
-import GXml from './gxml-0.18.d.ts';
+import GXml from './gxml-0.18.js';
 export default GXml;
 

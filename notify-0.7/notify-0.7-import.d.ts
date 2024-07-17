@@ -1,5 +1,5 @@
 
-import Notify from './notify-0.7.d.ts';
+import Notify from './notify-0.7.js';
 
 declare global {
     export interface GjsGiImports {

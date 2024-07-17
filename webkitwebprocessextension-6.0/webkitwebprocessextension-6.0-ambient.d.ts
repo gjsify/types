@@ -1,11 +1,11 @@
 
 declare module 'gi://WebKitWebProcessExtension?version=6.0' {
-    import WebKitWebProcessExtension from './webkitwebprocessextension-6.0.d.ts';
-    export default WebKitWebProcessExtension;
+    const WebKitWebProcessExtension60: typeof import('./webkitwebprocessextension-6.0.js').default
+    export default WebKitWebProcessExtension60;
 }
 
 declare module 'gi://WebKitWebProcessExtension' {
-    import WebKitWebProcessExtension60 from 'gi://WebKitWebProcessExtension?version=6.0';
+    const WebKitWebProcessExtension60: typeof import('./webkitwebprocessextension-6.0.js').default
     export default WebKitWebProcessExtension60;
 }
 

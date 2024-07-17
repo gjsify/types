@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './spiceclientglib-2.0-ambient.d.ts';
+import './spiceclientglib-2.0-ambient.js';
 
-import './spiceclientglib-2.0-import.d.ts';
+import './spiceclientglib-2.0-import.js';
 
-import SpiceClientGLib from './spiceclientglib-2.0.d.ts';
+import SpiceClientGLib from './spiceclientglib-2.0.js';
 export default SpiceClientGLib;
 

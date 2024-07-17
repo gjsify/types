@@ -1,5 +1,5 @@
 
-import UnityExtras from './unityextras-7.0.d.ts';
+import UnityExtras from './unityextras-7.0.js';
 
 declare global {
     export interface GjsGiImports {

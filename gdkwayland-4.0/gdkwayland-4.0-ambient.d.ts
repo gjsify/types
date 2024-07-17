@@ -1,11 +1,11 @@
 
 declare module 'gi://GdkWayland?version=4.0' {
-    import GdkWayland from './gdkwayland-4.0.d.ts';
-    export default GdkWayland;
+    const GdkWayland40: typeof import('./gdkwayland-4.0.js').default
+    export default GdkWayland40;
 }
 
 declare module 'gi://GdkWayland' {
-    import GdkWayland40 from 'gi://GdkWayland?version=4.0';
+    const GdkWayland40: typeof import('./gdkwayland-4.0.js').default
     export default GdkWayland40;
 }
 

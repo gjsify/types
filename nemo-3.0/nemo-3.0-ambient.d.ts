@@ -1,11 +1,11 @@
 
 declare module 'gi://Nemo?version=3.0' {
-    import Nemo from './nemo-3.0.d.ts';
-    export default Nemo;
+    const Nemo30: typeof import('./nemo-3.0.js').default
+    export default Nemo30;
 }
 
 declare module 'gi://Nemo' {
-    import Nemo30 from 'gi://Nemo?version=3.0';
+    const Nemo30: typeof import('./nemo-3.0.js').default
     export default Nemo30;
 }
 

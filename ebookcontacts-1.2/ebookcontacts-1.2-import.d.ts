@@ -1,5 +1,5 @@
 
-import EBookContacts from './ebookcontacts-1.2.d.ts';
+import EBookContacts from './ebookcontacts-1.2.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import RygelServer from './rygelserver-2.8.d.ts';
+import RygelServer from './rygelserver-2.8.js';
 
 declare global {
     export interface GjsGiImports {

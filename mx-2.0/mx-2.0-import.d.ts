@@ -1,5 +1,5 @@
 
-import Mx from './mx-2.0.d.ts';
+import Mx from './mx-2.0.js';
 
 declare global {
     export interface GjsGiImports {

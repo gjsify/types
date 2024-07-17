@@ -1,5 +1,5 @@
 
-import Egg from './egg-1.0.d.ts';
+import Egg from './egg-1.0.js';
 
 declare global {
     export interface GjsGiImports {

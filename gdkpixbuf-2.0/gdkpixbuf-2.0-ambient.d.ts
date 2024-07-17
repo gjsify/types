@@ -1,11 +1,11 @@
 
 declare module 'gi://GdkPixbuf?version=2.0' {
-    import GdkPixbuf from './gdkpixbuf-2.0.d.ts';
-    export default GdkPixbuf;
+    const GdkPixbuf20: typeof import('./gdkpixbuf-2.0.js').default
+    export default GdkPixbuf20;
 }
 
 declare module 'gi://GdkPixbuf' {
-    import GdkPixbuf20 from 'gi://GdkPixbuf?version=2.0';
+    const GdkPixbuf20: typeof import('./gdkpixbuf-2.0.js').default
     export default GdkPixbuf20;
 }
 

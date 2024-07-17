@@ -1,5 +1,5 @@
 
-import AyatanaAppIndicator3 from './ayatanaappindicator3-0.1.d.ts';
+import AyatanaAppIndicator3 from './ayatanaappindicator3-0.1.js';
 
 declare global {
     export interface GjsGiImports {

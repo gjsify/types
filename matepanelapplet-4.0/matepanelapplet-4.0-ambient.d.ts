@@ -1,11 +1,11 @@
 
 declare module 'gi://MatePanelApplet?version=4.0' {
-    import MatePanelApplet from './matepanelapplet-4.0.d.ts';
-    export default MatePanelApplet;
+    const MatePanelApplet40: typeof import('./matepanelapplet-4.0.js').default
+    export default MatePanelApplet40;
 }
 
 declare module 'gi://MatePanelApplet' {
-    import MatePanelApplet40 from 'gi://MatePanelApplet?version=4.0';
+    const MatePanelApplet40: typeof import('./matepanelapplet-4.0.js').default
     export default MatePanelApplet40;
 }
 

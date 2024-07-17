@@ -1,5 +1,5 @@
 
-import GcrGtk3 from './gcrgtk3-4.d.ts';
+import GcrGtk3 from './gcrgtk3-4.js';
 
 declare global {
     export interface GjsGiImports {

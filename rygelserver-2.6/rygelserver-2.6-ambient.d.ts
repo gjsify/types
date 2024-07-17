@@ -1,11 +1,11 @@
 
 declare module 'gi://RygelServer?version=2.6' {
-    import RygelServer from './rygelserver-2.6.d.ts';
-    export default RygelServer;
+    const RygelServer26: typeof import('./rygelserver-2.6.js').default
+    export default RygelServer26;
 }
 
 declare module 'gi://RygelServer' {
-    import RygelServer26 from 'gi://RygelServer?version=2.6';
+    const RygelServer26: typeof import('./rygelserver-2.6.js').default
     export default RygelServer26;
 }
 

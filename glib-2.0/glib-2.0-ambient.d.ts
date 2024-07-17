@@ -1,11 +1,11 @@
 
 declare module 'gi://GLib?version=2.0' {
-    import GLib from './glib-2.0.d.ts';
-    export default GLib;
+    const GLib20: typeof import('./glib-2.0.js').default
+    export default GLib20;
 }
 
 declare module 'gi://GLib' {
-    import GLib20 from 'gi://GLib?version=2.0';
+    const GLib20: typeof import('./glib-2.0.js').default
     export default GLib20;
 }
 

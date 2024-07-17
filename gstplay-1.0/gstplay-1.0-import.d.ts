@@ -1,5 +1,5 @@
 
-import GstPlay from './gstplay-1.0.d.ts';
+import GstPlay from './gstplay-1.0.js';
 
 declare global {
     export interface GjsGiImports {

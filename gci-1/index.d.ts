@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gci-1-ambient.d.ts';
+import './gci-1-ambient.js';
 
-import './gci-1-import.d.ts';
+import './gci-1-import.js';
 
-import GCi from './gci-1.d.ts';
+import GCi from './gci-1.js';
 export default GCi;
 

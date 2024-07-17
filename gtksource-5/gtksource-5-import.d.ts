@@ -1,5 +1,5 @@
 
-import GtkSource from './gtksource-5.d.ts';
+import GtkSource from './gtksource-5.js';
 
 declare global {
     export interface GjsGiImports {

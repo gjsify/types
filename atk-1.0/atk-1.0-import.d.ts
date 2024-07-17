@@ -1,5 +1,5 @@
 
-import Atk from './atk-1.0.d.ts';
+import Atk from './atk-1.0.js';
 
 declare global {
     export interface GjsGiImports {

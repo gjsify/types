@@ -1,5 +1,5 @@
 
-import AyatanaIdo3 from './ayatanaido3-0.4.d.ts';
+import AyatanaIdo3 from './ayatanaido3-0.4.js';
 
 declare global {
     export interface GjsGiImports {

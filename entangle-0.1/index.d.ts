@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './entangle-0.1-ambient.d.ts';
+import './entangle-0.1-ambient.js';
 
-import './entangle-0.1-import.d.ts';
+import './entangle-0.1-import.js';
 
-import Entangle from './entangle-0.1.d.ts';
+import Entangle from './entangle-0.1.js';
 export default Entangle;
 

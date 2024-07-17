@@ -1,11 +1,11 @@
 
 declare module 'gi://GstController?version=1.0' {
-    import GstController from './gstcontroller-1.0.d.ts';
-    export default GstController;
+    const GstController10: typeof import('./gstcontroller-1.0.js').default
+    export default GstController10;
 }
 
 declare module 'gi://GstController' {
-    import GstController10 from 'gi://GstController?version=1.0';
+    const GstController10: typeof import('./gstcontroller-1.0.js').default
     export default GstController10;
 }
 

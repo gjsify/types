@@ -1,5 +1,5 @@
 
-import GstAnalytics from './gstanalytics-1.0.d.ts';
+import GstAnalytics from './gstanalytics-1.0.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import SugarExt from './sugarext-1.0.d.ts';
+import SugarExt from './sugarext-1.0.js';
 
 declare global {
     export interface GjsGiImports {

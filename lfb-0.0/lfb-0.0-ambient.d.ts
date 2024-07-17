@@ -1,11 +1,11 @@
 
 declare module 'gi://Lfb?version=0.0' {
-    import Lfb from './lfb-0.0.d.ts';
-    export default Lfb;
+    const Lfb00: typeof import('./lfb-0.0.js').default
+    export default Lfb00;
 }
 
 declare module 'gi://Lfb' {
-    import Lfb00 from 'gi://Lfb?version=0.0';
+    const Lfb00: typeof import('./lfb-0.0.js').default
     export default Lfb00;
 }
 

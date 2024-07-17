@@ -1,5 +1,5 @@
 
-import UMockdev from './umockdev-1.0.d.ts';
+import UMockdev from './umockdev-1.0.js';
 
 declare global {
     export interface GjsGiImports {

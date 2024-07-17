@@ -1,5 +1,5 @@
 
-import Nemo from './nemo-3.0.d.ts';
+import Nemo from './nemo-3.0.js';
 
 declare global {
     export interface GjsGiImports {

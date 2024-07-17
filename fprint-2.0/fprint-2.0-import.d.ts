@@ -1,5 +1,5 @@
 
-import FPrint from './fprint-2.0.d.ts';
+import FPrint from './fprint-2.0.js';
 
 declare global {
     export interface GjsGiImports {

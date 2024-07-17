@@ -1,5 +1,5 @@
 
-import Dazzle from './dazzle-1.0.d.ts';
+import Dazzle from './dazzle-1.0.js';
 
 declare global {
     export interface GjsGiImports {

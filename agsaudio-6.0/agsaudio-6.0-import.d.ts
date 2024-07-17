@@ -1,5 +1,5 @@
 
-import AgsAudio from './agsaudio-6.0.d.ts';
+import AgsAudio from './agsaudio-6.0.js';
 
 declare global {
     export interface GjsGiImports {

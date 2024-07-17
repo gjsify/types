@@ -1,5 +1,5 @@
 
-import GUPnPAV from './gupnpav-1.0.d.ts';
+import GUPnPAV from './gupnpav-1.0.js';
 
 declare global {
     export interface GjsGiImports {

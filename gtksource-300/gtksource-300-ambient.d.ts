@@ -1,11 +1,11 @@
 
 declare module 'gi://GtkSource?version=300' {
-    import GtkSource from './gtksource-300.d.ts';
-    export default GtkSource;
+    const GtkSource300: typeof import('./gtksource-300.js').default
+    export default GtkSource300;
 }
 
 declare module 'gi://GtkSource' {
-    import GtkSource300 from 'gi://GtkSource?version=300';
+    const GtkSource300: typeof import('./gtksource-300.js').default
     export default GtkSource300;
 }
 

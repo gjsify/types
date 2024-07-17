@@ -1,5 +1,5 @@
 
-import LightDM from './lightdm-1.d.ts';
+import LightDM from './lightdm-1.js';
 
 declare global {
     export interface GjsGiImports {

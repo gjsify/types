@@ -1,11 +1,11 @@
 
 declare module 'gi://CoglPango?version=13' {
-    import CoglPango from './coglpango-13.d.ts';
-    export default CoglPango;
+    const CoglPango13: typeof import('./coglpango-13.js').default
+    export default CoglPango13;
 }
 
 declare module 'gi://CoglPango' {
-    import CoglPango13 from 'gi://CoglPango?version=13';
+    const CoglPango13: typeof import('./coglpango-13.js').default
     export default CoglPango13;
 }
 

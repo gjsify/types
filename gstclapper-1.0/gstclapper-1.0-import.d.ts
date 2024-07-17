@@ -1,5 +1,5 @@
 
-import GstClapper from './gstclapper-1.0.d.ts';
+import GstClapper from './gstclapper-1.0.js';
 
 declare global {
     export interface GjsGiImports {

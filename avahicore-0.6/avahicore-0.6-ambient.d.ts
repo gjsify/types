@@ -1,11 +1,11 @@
 
 declare module 'gi://AvahiCore?version=0.6' {
-    import AvahiCore from './avahicore-0.6.d.ts';
-    export default AvahiCore;
+    const AvahiCore06: typeof import('./avahicore-0.6.js').default
+    export default AvahiCore06;
 }
 
 declare module 'gi://AvahiCore' {
-    import AvahiCore06 from 'gi://AvahiCore?version=0.6';
+    const AvahiCore06: typeof import('./avahicore-0.6.js').default
     export default AvahiCore06;
 }
 

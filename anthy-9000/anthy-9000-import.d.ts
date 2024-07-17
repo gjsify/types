@@ -1,5 +1,5 @@
 
-import Anthy from './anthy-9000.d.ts';
+import Anthy from './anthy-9000.js';
 
 declare global {
     export interface GjsGiImports {

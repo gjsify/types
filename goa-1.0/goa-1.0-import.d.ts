@@ -1,5 +1,5 @@
 
-import Goa from './goa-1.0.d.ts';
+import Goa from './goa-1.0.js';
 
 declare global {
     export interface GjsGiImports {

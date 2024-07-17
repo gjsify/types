@@ -1,5 +1,5 @@
 
-import Rest from './rest-1.0.d.ts';
+import Rest from './rest-1.0.js';
 
 declare global {
     export interface GjsGiImports {

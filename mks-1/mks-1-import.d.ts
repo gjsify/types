@@ -1,5 +1,5 @@
 
-import Mks from './mks-1.d.ts';
+import Mks from './mks-1.js';
 
 declare global {
     export interface GjsGiImports {

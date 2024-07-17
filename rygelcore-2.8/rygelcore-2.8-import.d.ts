@@ -1,5 +1,5 @@
 
-import RygelCore from './rygelcore-2.8.d.ts';
+import RygelCore from './rygelcore-2.8.js';
 
 declare global {
     export interface GjsGiImports {

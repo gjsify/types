@@ -1,5 +1,5 @@
 
-import Nice from './nice-0.1.d.ts';
+import Nice from './nice-0.1.js';
 
 declare global {
     export interface GjsGiImports {

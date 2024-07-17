@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gcalc-1-ambient.d.ts';
+import './gcalc-1-ambient.js';
 
 
-import GCalc from './gcalc-1.d.ts';
+import GCalc from './gcalc-1.js';
 export default GCalc;
 

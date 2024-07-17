@@ -1,5 +1,5 @@
 
-import Handy from './handy-1.d.ts';
+import Handy from './handy-1.js';
 
 declare global {
     export interface GjsGiImports {

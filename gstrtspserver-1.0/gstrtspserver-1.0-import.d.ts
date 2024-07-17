@@ -1,5 +1,5 @@
 
-import GstRtspServer from './gstrtspserver-1.0.d.ts';
+import GstRtspServer from './gstrtspserver-1.0.js';
 
 declare global {
     export interface GjsGiImports {

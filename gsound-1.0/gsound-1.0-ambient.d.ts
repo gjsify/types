@@ -1,11 +1,11 @@
 
 declare module 'gi://GSound?version=1.0' {
-    import GSound from './gsound-1.0.d.ts';
-    export default GSound;
+    const GSound10: typeof import('./gsound-1.0.js').default
+    export default GSound10;
 }
 
 declare module 'gi://GSound' {
-    import GSound10 from 'gi://GSound?version=1.0';
+    const GSound10: typeof import('./gsound-1.0.js').default
     export default GSound10;
 }
 

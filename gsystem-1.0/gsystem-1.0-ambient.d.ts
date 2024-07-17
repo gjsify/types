@@ -1,11 +1,11 @@
 
 declare module 'gi://GSystem?version=1.0' {
-    import GSystem from './gsystem-1.0.d.ts';
-    export default GSystem;
+    const GSystem10: typeof import('./gsystem-1.0.js').default
+    export default GSystem10;
 }
 
 declare module 'gi://GSystem' {
-    import GSystem10 from 'gi://GSystem?version=1.0';
+    const GSystem10: typeof import('./gsystem-1.0.js').default
     export default GSystem10;
 }
 

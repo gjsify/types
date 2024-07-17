@@ -1,11 +1,11 @@
 
 declare module 'gi://Shumate?version=1.0' {
-    import Shumate from './shumate-1.0.d.ts';
-    export default Shumate;
+    const Shumate10: typeof import('./shumate-1.0.js').default
+    export default Shumate10;
 }
 
 declare module 'gi://Shumate' {
-    import Shumate10 from 'gi://Shumate?version=1.0';
+    const Shumate10: typeof import('./shumate-1.0.js').default
     export default Shumate10;
 }
 

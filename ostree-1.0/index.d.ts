@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './ostree-1.0-ambient.d.ts';
+import './ostree-1.0-ambient.js';
 
-import './ostree-1.0-import.d.ts';
+import './ostree-1.0-import.js';
 
-import OSTree from './ostree-1.0.d.ts';
+import OSTree from './ostree-1.0.js';
 export default OSTree;
 

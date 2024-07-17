@@ -1,5 +1,5 @@
 
-import Easyfc from './easyfc-0.14.d.ts';
+import Easyfc from './easyfc-0.14.js';
 
 declare global {
     export interface GjsGiImports {

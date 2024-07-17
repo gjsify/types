@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gstglx11-1.0-ambient.d.ts';
+import './gstglx11-1.0-ambient.js';
 
-import './gstglx11-1.0-import.d.ts';
+import './gstglx11-1.0-import.js';
 
-import GstGLX11 from './gstglx11-1.0.d.ts';
+import GstGLX11 from './gstglx11-1.0.js';
 export default GstGLX11;
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://UDisks?version=2.0' {
-    import UDisks from './udisks-2.0.d.ts';
-    export default UDisks;
+    const UDisks20: typeof import('./udisks-2.0.js').default
+    export default UDisks20;
 }
 
 declare module 'gi://UDisks' {
-    import UDisks20 from 'gi://UDisks?version=2.0';
+    const UDisks20: typeof import('./udisks-2.0.js').default
     export default UDisks20;
 }
 

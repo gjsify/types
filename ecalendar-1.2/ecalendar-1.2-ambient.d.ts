@@ -1,11 +1,11 @@
 
 declare module 'gi://ECalendar?version=1.2' {
-    import ECalendar from './ecalendar-1.2.d.ts';
-    export default ECalendar;
+    const ECalendar12: typeof import('./ecalendar-1.2.js').default
+    export default ECalendar12;
 }
 
 declare module 'gi://ECalendar' {
-    import ECalendar12 from 'gi://ECalendar?version=1.2';
+    const ECalendar12: typeof import('./ecalendar-1.2.js').default
     export default ECalendar12;
 }
 

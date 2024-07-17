@@ -1,11 +1,11 @@
 
 declare module 'gi://AppStreamBuilder?version=1.0' {
-    import AppStreamBuilder from './appstreambuilder-1.0.d.ts';
-    export default AppStreamBuilder;
+    const AppStreamBuilder10: typeof import('./appstreambuilder-1.0.js').default
+    export default AppStreamBuilder10;
 }
 
 declare module 'gi://AppStreamBuilder' {
-    import AppStreamBuilder10 from 'gi://AppStreamBuilder?version=1.0';
+    const AppStreamBuilder10: typeof import('./appstreambuilder-1.0.js').default
     export default AppStreamBuilder10;
 }
 

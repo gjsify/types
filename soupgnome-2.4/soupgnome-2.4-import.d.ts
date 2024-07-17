@@ -1,5 +1,5 @@
 
-import SoupGNOME from './soupgnome-2.4.d.ts';
+import SoupGNOME from './soupgnome-2.4.js';
 
 declare global {
     export interface GjsGiImports {

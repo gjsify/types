@@ -1,11 +1,11 @@
 
 declare module 'gi://Sushi?version=1.0' {
-    import Sushi from './sushi-1.0.d.ts';
-    export default Sushi;
+    const Sushi10: typeof import('./sushi-1.0.js').default
+    export default Sushi10;
 }
 
 declare module 'gi://Sushi' {
-    import Sushi10 from 'gi://Sushi?version=1.0';
+    const Sushi10: typeof import('./sushi-1.0.js').default
     export default Sushi10;
 }
 

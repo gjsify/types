@@ -1,5 +1,5 @@
 
-import Dee from './dee-1.0.d.ts';
+import Dee from './dee-1.0.js';
 
 declare global {
     export interface GjsGiImports {

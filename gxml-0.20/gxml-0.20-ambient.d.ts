@@ -1,11 +1,11 @@
 
 declare module 'gi://GXml?version=0.20' {
-    import GXml from './gxml-0.20.d.ts';
-    export default GXml;
+    const GXml020: typeof import('./gxml-0.20.js').default
+    export default GXml020;
 }
 
 declare module 'gi://GXml' {
-    import GXml020 from 'gi://GXml?version=0.20';
+    const GXml020: typeof import('./gxml-0.20.js').default
     export default GXml020;
 }
 

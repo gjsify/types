@@ -1,5 +1,5 @@
 
-import GrlPls from './grlpls-0.3.d.ts';
+import GrlPls from './grlpls-0.3.js';
 
 declare global {
     export interface GjsGiImports {

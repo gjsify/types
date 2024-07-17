@@ -1,5 +1,5 @@
 
-import Wp from './wp-0.5.d.ts';
+import Wp from './wp-0.5.js';
 
 declare global {
     export interface GjsGiImports {

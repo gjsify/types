@@ -1,11 +1,11 @@
 
 declare module 'gi://Libinsane?version=1.0' {
-    import Libinsane from './libinsane-1.0.d.ts';
-    export default Libinsane;
+    const Libinsane10: typeof import('./libinsane-1.0.js').default
+    export default Libinsane10;
 }
 
 declare module 'gi://Libinsane' {
-    import Libinsane10 from 'gi://Libinsane?version=1.0';
+    const Libinsane10: typeof import('./libinsane-1.0.js').default
     export default Libinsane10;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Cally?version=13' {
-    import Cally from './cally-13.d.ts';
-    export default Cally;
+    const Cally13: typeof import('./cally-13.js').default
+    export default Cally13;
 }
 
 declare module 'gi://Cally' {
-    import Cally13 from 'gi://Cally?version=13';
+    const Cally13: typeof import('./cally-13.js').default
     export default Cally13;
 }
 

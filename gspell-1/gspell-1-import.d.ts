@@ -1,5 +1,5 @@
 
-import Gspell from './gspell-1.d.ts';
+import Gspell from './gspell-1.js';
 
 declare global {
     export interface GjsGiImports {

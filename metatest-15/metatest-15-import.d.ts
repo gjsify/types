@@ -1,5 +1,5 @@
 
-import MetaTest from './metatest-15.d.ts';
+import MetaTest from './metatest-15.js';
 
 declare global {
     export interface GjsGiImports {

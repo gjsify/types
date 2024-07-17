@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './vpg-1-ambient.d.ts';
+import './vpg-1-ambient.js';
 
-import './vpg-1-import.d.ts';
+import './vpg-1-import.js';
 
-import Vpg from './vpg-1.d.ts';
+import Vpg from './vpg-1.js';
 export default Vpg;
 

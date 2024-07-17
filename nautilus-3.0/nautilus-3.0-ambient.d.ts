@@ -1,11 +1,11 @@
 
 declare module 'gi://Nautilus?version=3.0' {
-    import Nautilus from './nautilus-3.0.d.ts';
-    export default Nautilus;
+    const Nautilus30: typeof import('./nautilus-3.0.js').default
+    export default Nautilus30;
 }
 
 declare module 'gi://Nautilus' {
-    import Nautilus30 from 'gi://Nautilus?version=3.0';
+    const Nautilus30: typeof import('./nautilus-3.0.js').default
     export default Nautilus30;
 }
 

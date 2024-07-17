@@ -1,11 +1,11 @@
 
 declare module 'gi://Passim?version=1.0' {
-    import Passim from './passim-1.0.d.ts';
-    export default Passim;
+    const Passim10: typeof import('./passim-1.0.js').default
+    export default Passim10;
 }
 
 declare module 'gi://Passim' {
-    import Passim10 from 'gi://Passim?version=1.0';
+    const Passim10: typeof import('./passim-1.0.js').default
     export default Passim10;
 }
 

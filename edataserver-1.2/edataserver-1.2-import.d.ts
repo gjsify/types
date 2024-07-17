@@ -1,5 +1,5 @@
 
-import EDataServer from './edataserver-1.2.d.ts';
+import EDataServer from './edataserver-1.2.js';
 
 declare global {
     export interface GjsGiImports {

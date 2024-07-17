@@ -1,5 +1,5 @@
 
-import SugarGestures from './sugargestures-1.0.d.ts';
+import SugarGestures from './sugargestures-1.0.js';
 
 declare global {
     export interface GjsGiImports {

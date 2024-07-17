@@ -1,5 +1,5 @@
 
-import cairo from './cairo-1.0.d.ts';
+import cairo from './cairo-1.0.js';
 
 declare global {
     export interface GjsGiImports {

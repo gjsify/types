@@ -1,5 +1,5 @@
 
-import TelepathyLogger from './telepathylogger-0.2.d.ts';
+import TelepathyLogger from './telepathylogger-0.2.js';
 
 declare global {
     export interface GjsGiImports {

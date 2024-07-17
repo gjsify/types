@@ -1,5 +1,5 @@
 
-import xft from './xft-2.0.d.ts';
+import xft from './xft-2.0.js';
 
 declare global {
     export interface GjsGiImports {

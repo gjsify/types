@@ -1,11 +1,11 @@
 
 declare module 'gi://GeocodeGlib?version=1.0' {
-    import GeocodeGlib from './geocodeglib-1.0.d.ts';
-    export default GeocodeGlib;
+    const GeocodeGlib10: typeof import('./geocodeglib-1.0.js').default
+    export default GeocodeGlib10;
 }
 
 declare module 'gi://GeocodeGlib' {
-    import GeocodeGlib10 from 'gi://GeocodeGlib?version=1.0';
+    const GeocodeGlib10: typeof import('./geocodeglib-1.0.js').default
     export default GeocodeGlib10;
 }
 

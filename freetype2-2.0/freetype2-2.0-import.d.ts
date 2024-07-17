@@ -1,5 +1,5 @@
 
-import freetype2 from './freetype2-2.0.d.ts';
+import freetype2 from './freetype2-2.0.js';
 
 declare global {
     export interface GjsGiImports {

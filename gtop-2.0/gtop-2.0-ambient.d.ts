@@ -1,11 +1,11 @@
 
 declare module 'gi://GTop?version=2.0' {
-    import GTop from './gtop-2.0.d.ts';
-    export default GTop;
+    const GTop20: typeof import('./gtop-2.0.js').default
+    export default GTop20;
 }
 
 declare module 'gi://GTop' {
-    import GTop20 from 'gi://GTop?version=2.0';
+    const GTop20: typeof import('./gtop-2.0.js').default
     export default GTop20;
 }
 

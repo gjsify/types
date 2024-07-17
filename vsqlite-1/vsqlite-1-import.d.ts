@@ -1,5 +1,5 @@
 
-import Vsqlite from './vsqlite-1.d.ts';
+import Vsqlite from './vsqlite-1.js';
 
 declare global {
     export interface GjsGiImports {

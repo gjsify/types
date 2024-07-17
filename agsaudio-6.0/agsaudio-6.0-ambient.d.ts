@@ -1,11 +1,11 @@
 
 declare module 'gi://AgsAudio?version=6.0' {
-    import AgsAudio from './agsaudio-6.0.d.ts';
-    export default AgsAudio;
+    const AgsAudio60: typeof import('./agsaudio-6.0.js').default
+    export default AgsAudio60;
 }
 
 declare module 'gi://AgsAudio' {
-    import AgsAudio60 from 'gi://AgsAudio?version=6.0';
+    const AgsAudio60: typeof import('./agsaudio-6.0.js').default
     export default AgsAudio60;
 }
 

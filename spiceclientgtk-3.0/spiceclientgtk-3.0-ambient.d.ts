@@ -1,11 +1,11 @@
 
 declare module 'gi://SpiceClientGtk?version=3.0' {
-    import SpiceClientGtk from './spiceclientgtk-3.0.d.ts';
-    export default SpiceClientGtk;
+    const SpiceClientGtk30: typeof import('./spiceclientgtk-3.0.js').default
+    export default SpiceClientGtk30;
 }
 
 declare module 'gi://SpiceClientGtk' {
-    import SpiceClientGtk30 from 'gi://SpiceClientGtk?version=3.0';
+    const SpiceClientGtk30: typeof import('./spiceclientgtk-3.0.js').default
     export default SpiceClientGtk30;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://ColorHug?version=1.0' {
-    import ColorHug from './colorhug-1.0.d.ts';
-    export default ColorHug;
+    const ColorHug10: typeof import('./colorhug-1.0.js').default
+    export default ColorHug10;
 }
 
 declare module 'gi://ColorHug' {
-    import ColorHug10 from 'gi://ColorHug?version=1.0';
+    const ColorHug10: typeof import('./colorhug-1.0.js').default
     export default ColorHug10;
 }
 

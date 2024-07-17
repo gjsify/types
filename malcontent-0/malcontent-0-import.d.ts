@@ -1,5 +1,5 @@
 
-import Malcontent from './malcontent-0.d.ts';
+import Malcontent from './malcontent-0.js';
 
 declare global {
     export interface GjsGiImports {

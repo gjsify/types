@@ -1,5 +1,5 @@
 
-import MatePanelApplet from './matepanelapplet-4.0.d.ts';
+import MatePanelApplet from './matepanelapplet-4.0.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,11 +1,11 @@
 
 declare module 'gi://FcitxG?version=1.0' {
-    import FcitxG from './fcitxg-1.0.d.ts';
-    export default FcitxG;
+    const FcitxG10: typeof import('./fcitxg-1.0.js').default
+    export default FcitxG10;
 }
 
 declare module 'gi://FcitxG' {
-    import FcitxG10 from 'gi://FcitxG?version=1.0';
+    const FcitxG10: typeof import('./fcitxg-1.0.js').default
     export default FcitxG10;
 }
 

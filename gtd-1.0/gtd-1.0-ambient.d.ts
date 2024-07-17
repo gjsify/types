@@ -1,11 +1,11 @@
 
 declare module 'gi://Gtd?version=1.0' {
-    import Gtd from './gtd-1.0.d.ts';
-    export default Gtd;
+    const Gtd10: typeof import('./gtd-1.0.js').default
+    export default Gtd10;
 }
 
 declare module 'gi://Gtd' {
-    import Gtd10 from 'gi://Gtd?version=1.0';
+    const Gtd10: typeof import('./gtd-1.0.js').default
     export default Gtd10;
 }
 

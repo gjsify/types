@@ -1,5 +1,5 @@
 
-import Libosinfo from './libosinfo-1.0.d.ts';
+import Libosinfo from './libosinfo-1.0.js';
 
 declare global {
     export interface GjsGiImports {

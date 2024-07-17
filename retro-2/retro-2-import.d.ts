@@ -1,5 +1,5 @@
 
-import Retro from './retro-2.d.ts';
+import Retro from './retro-2.js';
 
 declare global {
     export interface GjsGiImports {

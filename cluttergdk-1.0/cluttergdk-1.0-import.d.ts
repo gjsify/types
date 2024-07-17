@@ -1,5 +1,5 @@
 
-import ClutterGdk from './cluttergdk-1.0.d.ts';
+import ClutterGdk from './cluttergdk-1.0.js';
 
 declare global {
     export interface GjsGiImports {

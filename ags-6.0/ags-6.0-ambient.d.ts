@@ -1,11 +1,11 @@
 
 declare module 'gi://Ags?version=6.0' {
-    import Ags from './ags-6.0.d.ts';
-    export default Ags;
+    const Ags60: typeof import('./ags-6.0.js').default
+    export default Ags60;
 }
 
 declare module 'gi://Ags' {
-    import Ags60 from 'gi://Ags?version=6.0';
+    const Ags60: typeof import('./ags-6.0.js').default
     export default Ags60;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://GstAllocators?version=1.0' {
-    import GstAllocators from './gstallocators-1.0.d.ts';
-    export default GstAllocators;
+    const GstAllocators10: typeof import('./gstallocators-1.0.js').default
+    export default GstAllocators10;
 }
 
 declare module 'gi://GstAllocators' {
-    import GstAllocators10 from 'gi://GstAllocators?version=1.0';
+    const GstAllocators10: typeof import('./gstallocators-1.0.js').default
     export default GstAllocators10;
 }
 

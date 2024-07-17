@@ -1,11 +1,11 @@
 
 declare module 'gi://Accounts?version=1.0' {
-    import Accounts from './accounts-1.0.d.ts';
-    export default Accounts;
+    const Accounts10: typeof import('./accounts-1.0.js').default
+    export default Accounts10;
 }
 
 declare module 'gi://Accounts' {
-    import Accounts10 from 'gi://Accounts?version=1.0';
+    const Accounts10: typeof import('./accounts-1.0.js').default
     export default Accounts10;
 }
 

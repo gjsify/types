@@ -1,11 +1,11 @@
 
 declare module 'gi://GjsDBus?version=1.0' {
-    import GjsDBus from './gjsdbus-1.0.d.ts';
-    export default GjsDBus;
+    const GjsDBus10: typeof import('./gjsdbus-1.0.js').default
+    export default GjsDBus10;
 }
 
 declare module 'gi://GjsDBus' {
-    import GjsDBus10 from 'gi://GjsDBus?version=1.0';
+    const GjsDBus10: typeof import('./gjsdbus-1.0.js').default
     export default GjsDBus10;
 }
 

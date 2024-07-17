@@ -1,5 +1,5 @@
 
-import Govf from './govf-0.1.d.ts';
+import Govf from './govf-0.1.js';
 
 declare global {
     export interface GjsGiImports {

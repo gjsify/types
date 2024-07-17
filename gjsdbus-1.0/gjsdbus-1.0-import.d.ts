@@ -1,5 +1,5 @@
 
-import GjsDBus from './gjsdbus-1.0.d.ts';
+import GjsDBus from './gjsdbus-1.0.js';
 
 declare global {
     export interface GjsGiImports {

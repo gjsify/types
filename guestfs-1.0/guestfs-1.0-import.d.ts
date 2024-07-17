@@ -1,5 +1,5 @@
 
-import Guestfs from './guestfs-1.0.d.ts';
+import Guestfs from './guestfs-1.0.js';
 
 declare global {
     export interface GjsGiImports {

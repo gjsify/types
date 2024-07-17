@@ -1,11 +1,11 @@
 
 declare module 'gi://BudgieRaven?version=1.0' {
-    import BudgieRaven from './budgieraven-1.0.d.ts';
-    export default BudgieRaven;
+    const BudgieRaven10: typeof import('./budgieraven-1.0.js').default
+    export default BudgieRaven10;
 }
 
 declare module 'gi://BudgieRaven' {
-    import BudgieRaven10 from 'gi://BudgieRaven?version=1.0';
+    const BudgieRaven10: typeof import('./budgieraven-1.0.js').default
     export default BudgieRaven10;
 }
 

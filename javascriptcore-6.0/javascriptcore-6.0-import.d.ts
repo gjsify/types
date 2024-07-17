@@ -1,5 +1,5 @@
 
-import JavaScriptCore from './javascriptcore-6.0.d.ts';
+import JavaScriptCore from './javascriptcore-6.0.js';
 
 declare global {
     export interface GjsGiImports {

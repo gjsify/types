@@ -1,5 +1,5 @@
 
-import OsmGpsMap from './osmgpsmap-1.0.d.ts';
+import OsmGpsMap from './osmgpsmap-1.0.js';
 
 declare global {
     export interface GjsGiImports {

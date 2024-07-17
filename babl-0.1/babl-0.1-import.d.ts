@@ -1,5 +1,5 @@
 
-import Babl from './babl-0.1.d.ts';
+import Babl from './babl-0.1.js';
 
 declare global {
     export interface GjsGiImports {

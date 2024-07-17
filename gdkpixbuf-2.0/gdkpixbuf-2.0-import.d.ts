@@ -1,5 +1,5 @@
 
-import GdkPixbuf from './gdkpixbuf-2.0.d.ts';
+import GdkPixbuf from './gdkpixbuf-2.0.js';
 
 declare global {
     export interface GjsGiImports {

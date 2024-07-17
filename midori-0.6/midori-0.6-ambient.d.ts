@@ -1,11 +1,11 @@
 
 declare module 'gi://Midori?version=0.6' {
-    import Midori from './midori-0.6.d.ts';
-    export default Midori;
+    const Midori06: typeof import('./midori-0.6.js').default
+    export default Midori06;
 }
 
 declare module 'gi://Midori' {
-    import Midori06 from 'gi://Midori?version=0.6';
+    const Midori06: typeof import('./midori-0.6.js').default
     export default Midori06;
 }
 

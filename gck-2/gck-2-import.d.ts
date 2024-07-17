@@ -1,5 +1,5 @@
 
-import Gck from './gck-2.d.ts';
+import Gck from './gck-2.js';
 
 declare global {
     export interface GjsGiImports {

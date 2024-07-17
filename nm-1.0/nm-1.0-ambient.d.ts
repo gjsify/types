@@ -1,11 +1,11 @@
 
 declare module 'gi://NM?version=1.0' {
-    import NM from './nm-1.0.d.ts';
-    export default NM;
+    const NM10: typeof import('./nm-1.0.js').default
+    export default NM10;
 }
 
 declare module 'gi://NM' {
-    import NM10 from 'gi://NM?version=1.0';
+    const NM10: typeof import('./nm-1.0.js').default
     export default NM10;
 }
 

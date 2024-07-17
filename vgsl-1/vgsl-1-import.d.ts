@@ -1,5 +1,5 @@
 
-import Vgsl from './vgsl-1.d.ts';
+import Vgsl from './vgsl-1.js';
 
 declare global {
     export interface GjsGiImports {

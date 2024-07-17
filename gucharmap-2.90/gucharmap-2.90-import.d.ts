@@ -1,5 +1,5 @@
 
-import Gucharmap from './gucharmap-2.90.d.ts';
+import Gucharmap from './gucharmap-2.90.js';
 
 declare global {
     export interface GjsGiImports {

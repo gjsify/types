@@ -1,11 +1,11 @@
 
 declare module 'gi://PackageKitGlib?version=1.0' {
-    import PackageKitGlib from './packagekitglib-1.0.d.ts';
-    export default PackageKitGlib;
+    const PackageKitGlib10: typeof import('./packagekitglib-1.0.js').default
+    export default PackageKitGlib10;
 }
 
 declare module 'gi://PackageKitGlib' {
-    import PackageKitGlib10 from 'gi://PackageKitGlib?version=1.0';
+    const PackageKitGlib10: typeof import('./packagekitglib-1.0.js').default
     export default PackageKitGlib10;
 }
 

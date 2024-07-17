@@ -1,5 +1,5 @@
 
-import Translit from './translit-1.0.d.ts';
+import Translit from './translit-1.0.js';
 
 declare global {
     export interface GjsGiImports {

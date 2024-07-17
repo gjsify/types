@@ -1,11 +1,11 @@
 
 declare module 'gi://Qmi?version=1.0' {
-    import Qmi from './qmi-1.0.d.ts';
-    export default Qmi;
+    const Qmi10: typeof import('./qmi-1.0.js').default
+    export default Qmi10;
 }
 
 declare module 'gi://Qmi' {
-    import Qmi10 from 'gi://Qmi?version=1.0';
+    const Qmi10: typeof import('./qmi-1.0.js').default
     export default Qmi10;
 }
 

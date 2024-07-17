@@ -1,5 +1,5 @@
 
-import BraseroMedia from './braseromedia-3.1.d.ts';
+import BraseroMedia from './braseromedia-3.1.js';
 
 declare global {
     export interface GjsGiImports {

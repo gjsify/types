@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gupnpdlna-1.0-ambient.d.ts';
+import './gupnpdlna-1.0-ambient.js';
 
 
-import GUPnPDLNA from './gupnpdlna-1.0.d.ts';
+import GUPnPDLNA from './gupnpdlna-1.0.js';
 export default GUPnPDLNA;
 

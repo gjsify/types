@@ -1,11 +1,11 @@
 
 declare module 'gi://Gtk?version=4.0' {
-    import Gtk from './gtk-4.0.d.ts';
-    export default Gtk;
+    const Gtk40: typeof import('./gtk-4.0.js').default
+    export default Gtk40;
 }
 
 declare module 'gi://Gtk' {
-    import Gtk40 from 'gi://Gtk?version=4.0';
+    const Gtk40: typeof import('./gtk-4.0.js').default
     export default Gtk40;
 }
 

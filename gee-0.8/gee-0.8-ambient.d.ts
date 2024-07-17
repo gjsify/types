@@ -1,11 +1,11 @@
 
 declare module 'gi://Gee?version=0.8' {
-    import Gee from './gee-0.8.d.ts';
-    export default Gee;
+    const Gee08: typeof import('./gee-0.8.js').default
+    export default Gee08;
 }
 
 declare module 'gi://Gee' {
-    import Gee08 from 'gi://Gee?version=0.8';
+    const Gee08: typeof import('./gee-0.8.js').default
     export default Gee08;
 }
 

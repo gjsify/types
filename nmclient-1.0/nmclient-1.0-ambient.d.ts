@@ -1,11 +1,11 @@
 
 declare module 'gi://NMClient?version=1.0' {
-    import NMClient from './nmclient-1.0.d.ts';
-    export default NMClient;
+    const NMClient10: typeof import('./nmclient-1.0.js').default
+    export default NMClient10;
 }
 
 declare module 'gi://NMClient' {
-    import NMClient10 from 'gi://NMClient?version=1.0';
+    const NMClient10: typeof import('./nmclient-1.0.js').default
     export default NMClient10;
 }
 

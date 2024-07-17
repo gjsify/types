@@ -1,5 +1,5 @@
 
-import EDataServerUI4 from './edataserverui4-1.0.d.ts';
+import EDataServerUI4 from './edataserverui4-1.0.js';
 
 declare global {
     export interface GjsGiImports {

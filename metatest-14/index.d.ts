@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './metatest-14-ambient.d.ts';
+import './metatest-14-ambient.js';
 
 
-import MetaTest from './metatest-14.d.ts';
+import MetaTest from './metatest-14.js';
 export default MetaTest;
 

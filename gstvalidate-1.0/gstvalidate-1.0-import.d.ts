@@ -1,5 +1,5 @@
 
-import GstValidate from './gstvalidate-1.0.d.ts';
+import GstValidate from './gstvalidate-1.0.js';
 
 declare global {
     export interface GjsGiImports {

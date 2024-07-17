@@ -1,11 +1,11 @@
 
 declare module 'gi://Pnl?version=1.0' {
-    import Pnl from './pnl-1.0.d.ts';
-    export default Pnl;
+    const Pnl10: typeof import('./pnl-1.0.js').default
+    export default Pnl10;
 }
 
 declare module 'gi://Pnl' {
-    import Pnl10 from 'gi://Pnl?version=1.0';
+    const Pnl10: typeof import('./pnl-1.0.js').default
     export default Pnl10;
 }
 

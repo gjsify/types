@@ -1,11 +1,11 @@
 
 declare module 'gi://PangoCairo?version=1.0' {
-    import PangoCairo from './pangocairo-1.0.d.ts';
-    export default PangoCairo;
+    const PangoCairo10: typeof import('./pangocairo-1.0.js').default
+    export default PangoCairo10;
 }
 
 declare module 'gi://PangoCairo' {
-    import PangoCairo10 from 'gi://PangoCairo?version=1.0';
+    const PangoCairo10: typeof import('./pangocairo-1.0.js').default
     export default PangoCairo10;
 }
 

@@ -1,5 +1,5 @@
 
-import Snapd from './snapd-2.d.ts';
+import Snapd from './snapd-2.js';
 
 declare global {
     export interface GjsGiImports {

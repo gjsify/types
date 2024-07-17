@@ -1,5 +1,5 @@
 
-import Entangle from './entangle-0.1.d.ts';
+import Entangle from './entangle-0.1.js';
 
 declare global {
     export interface GjsGiImports {

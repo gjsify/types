@@ -1,11 +1,11 @@
 
 declare module 'gi://GUsb?version=1.0' {
-    import GUsb from './gusb-1.0.d.ts';
-    export default GUsb;
+    const GUsb10: typeof import('./gusb-1.0.js').default
+    export default GUsb10;
 }
 
 declare module 'gi://GUsb' {
-    import GUsb10 from 'gi://GUsb?version=1.0';
+    const GUsb10: typeof import('./gusb-1.0.js').default
     export default GUsb10;
 }
 

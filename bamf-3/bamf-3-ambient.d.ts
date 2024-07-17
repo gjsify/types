@@ -1,11 +1,11 @@
 
 declare module 'gi://Bamf?version=3' {
-    import Bamf from './bamf-3.d.ts';
-    export default Bamf;
+    const Bamf3: typeof import('./bamf-3.js').default
+    export default Bamf3;
 }
 
 declare module 'gi://Bamf' {
-    import Bamf3 from 'gi://Bamf?version=3';
+    const Bamf3: typeof import('./bamf-3.js').default
     export default Bamf3;
 }
 

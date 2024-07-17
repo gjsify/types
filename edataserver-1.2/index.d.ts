@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './edataserver-1.2-ambient.d.ts';
+import './edataserver-1.2-ambient.js';
 
-import './edataserver-1.2-import.d.ts';
+import './edataserver-1.2-import.js';
 
-import EDataServer from './edataserver-1.2.d.ts';
+import EDataServer from './edataserver-1.2.js';
 export default EDataServer;
 

@@ -1,5 +1,5 @@
 
-import Qrtr from './qrtr-1.0.d.ts';
+import Qrtr from './qrtr-1.0.js';
 
 declare global {
     export interface GjsGiImports {

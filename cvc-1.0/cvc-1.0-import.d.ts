@@ -1,5 +1,5 @@
 
-import Cvc from './cvc-1.0.d.ts';
+import Cvc from './cvc-1.0.js';
 
 declare global {
     export interface GjsGiImports {

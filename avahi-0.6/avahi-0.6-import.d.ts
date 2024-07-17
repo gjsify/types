@@ -1,5 +1,5 @@
 
-import Avahi from './avahi-0.6.d.ts';
+import Avahi from './avahi-0.6.js';
 
 declare global {
     export interface GjsGiImports {

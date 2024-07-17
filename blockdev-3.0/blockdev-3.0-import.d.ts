@@ -1,5 +1,5 @@
 
-import BlockDev from './blockdev-3.0.d.ts';
+import BlockDev from './blockdev-3.0.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,11 +1,11 @@
 
 declare module 'gi://Xfconf?version=0' {
-    import Xfconf from './xfconf-0.d.ts';
-    export default Xfconf;
+    const Xfconf0: typeof import('./xfconf-0.js').default
+    export default Xfconf0;
 }
 
 declare module 'gi://Xfconf' {
-    import Xfconf0 from 'gi://Xfconf?version=0';
+    const Xfconf0: typeof import('./xfconf-0.js').default
     export default Xfconf0;
 }
 

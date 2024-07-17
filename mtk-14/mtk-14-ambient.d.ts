@@ -1,11 +1,11 @@
 
 declare module 'gi://Mtk?version=14' {
-    import Mtk from './mtk-14.d.ts';
-    export default Mtk;
+    const Mtk14: typeof import('./mtk-14.js').default
+    export default Mtk14;
 }
 
 declare module 'gi://Mtk' {
-    import Mtk14 from 'gi://Mtk?version=14';
+    const Mtk14: typeof import('./mtk-14.js').default
     export default Mtk14;
 }
 

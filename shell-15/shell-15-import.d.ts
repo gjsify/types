@@ -1,5 +1,5 @@
 
-import Shell from './shell-15.d.ts';
+import Shell from './shell-15.js';
 
 declare global {
     export interface GjsGiImports {

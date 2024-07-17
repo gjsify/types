@@ -1,11 +1,11 @@
 
 declare module 'gi://xfixes?version=4.0' {
-    import xfixes from './xfixes-4.0.d.ts';
-    export default xfixes;
+    const Xfixes40: typeof import('./xfixes-4.0.js').default
+    export default Xfixes40;
 }
 
 declare module 'gi://xfixes' {
-    import Xfixes40 from 'gi://xfixes?version=4.0';
+    const Xfixes40: typeof import('./xfixes-4.0.js').default
     export default Xfixes40;
 }
 

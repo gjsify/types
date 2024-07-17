@@ -1,5 +1,5 @@
 
-import Amtk from './amtk-5.d.ts';
+import Amtk from './amtk-5.js';
 
 declare global {
     export interface GjsGiImports {

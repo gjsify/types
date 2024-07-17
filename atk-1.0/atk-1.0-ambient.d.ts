@@ -1,11 +1,11 @@
 
 declare module 'gi://Atk?version=1.0' {
-    import Atk from './atk-1.0.d.ts';
-    export default Atk;
+    const Atk10: typeof import('./atk-1.0.js').default
+    export default Atk10;
 }
 
 declare module 'gi://Atk' {
-    import Atk10 from 'gi://Atk?version=1.0';
+    const Atk10: typeof import('./atk-1.0.js').default
     export default Atk10;
 }
 

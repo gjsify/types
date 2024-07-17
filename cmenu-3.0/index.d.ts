@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './cmenu-3.0-ambient.d.ts';
+import './cmenu-3.0-ambient.js';
 
-import './cmenu-3.0-import.d.ts';
+import './cmenu-3.0-import.js';
 
-import CMenu from './cmenu-3.0.d.ts';
+import CMenu from './cmenu-3.0.js';
 export default CMenu;
 

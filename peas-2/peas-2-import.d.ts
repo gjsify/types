@@ -1,5 +1,5 @@
 
-import Peas from './peas-2.d.ts';
+import Peas from './peas-2.js';
 
 declare global {
     export interface GjsGiImports {

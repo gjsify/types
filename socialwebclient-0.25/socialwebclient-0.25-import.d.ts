@@ -1,5 +1,5 @@
 
-import SocialWebClient from './socialwebclient-0.25.d.ts';
+import SocialWebClient from './socialwebclient-0.25.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import EDataBook from './edatabook-1.2.d.ts';
+import EDataBook from './edatabook-1.2.js';
 
 declare global {
     export interface GjsGiImports {

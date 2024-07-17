@@ -1,5 +1,5 @@
 
-import NetworkManager from './networkmanager-1.0.d.ts';
+import NetworkManager from './networkmanager-1.0.js';
 
 declare global {
     export interface GjsGiImports {

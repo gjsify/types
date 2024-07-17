@@ -1,5 +1,5 @@
 
-import XreaderView from './xreaderview-1.5.d.ts';
+import XreaderView from './xreaderview-1.5.js';
 
 declare global {
     export interface GjsGiImports {

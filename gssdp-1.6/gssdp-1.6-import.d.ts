@@ -1,5 +1,5 @@
 
-import GSSDP from './gssdp-1.6.d.ts';
+import GSSDP from './gssdp-1.6.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import Gda from './gda-6.0.d.ts';
+import Gda from './gda-6.0.js';
 
 declare global {
     export interface GjsGiImports {

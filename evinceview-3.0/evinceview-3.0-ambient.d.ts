@@ -1,11 +1,11 @@
 
 declare module 'gi://EvinceView?version=3.0' {
-    import EvinceView from './evinceview-3.0.d.ts';
-    export default EvinceView;
+    const EvinceView30: typeof import('./evinceview-3.0.js').default
+    export default EvinceView30;
 }
 
 declare module 'gi://EvinceView' {
-    import EvinceView30 from 'gi://EvinceView?version=3.0';
+    const EvinceView30: typeof import('./evinceview-3.0.js').default
     export default EvinceView30;
 }
 

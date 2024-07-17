@@ -1,11 +1,11 @@
 
 declare module 'gi://Gdk?version=3.0' {
-    import Gdk from './gdk-3.0.d.ts';
-    export default Gdk;
+    const Gdk30: typeof import('./gdk-3.0.js').default
+    export default Gdk30;
 }
 
 declare module 'gi://Gdk' {
-    import Gdk30 from 'gi://Gdk?version=3.0';
+    const Gdk30: typeof import('./gdk-3.0.js').default
     export default Gdk30;
 }
 

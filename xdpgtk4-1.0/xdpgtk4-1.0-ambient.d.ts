@@ -1,11 +1,11 @@
 
 declare module 'gi://XdpGtk4?version=1.0' {
-    import XdpGtk4 from './xdpgtk4-1.0.d.ts';
-    export default XdpGtk4;
+    const XdpGtk410: typeof import('./xdpgtk4-1.0.js').default
+    export default XdpGtk410;
 }
 
 declare module 'gi://XdpGtk4' {
-    import XdpGtk410 from 'gi://XdpGtk4?version=1.0';
+    const XdpGtk410: typeof import('./xdpgtk4-1.0.js').default
     export default XdpGtk410;
 }
 

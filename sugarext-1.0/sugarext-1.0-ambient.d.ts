@@ -1,11 +1,11 @@
 
 declare module 'gi://SugarExt?version=1.0' {
-    import SugarExt from './sugarext-1.0.d.ts';
-    export default SugarExt;
+    const SugarExt10: typeof import('./sugarext-1.0.js').default
+    export default SugarExt10;
 }
 
 declare module 'gi://SugarExt' {
-    import SugarExt10 from 'gi://SugarExt?version=1.0';
+    const SugarExt10: typeof import('./sugarext-1.0.js').default
     export default SugarExt10;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Gvc?version=1.0' {
-    import Gvc from './gvc-1.0.d.ts';
-    export default Gvc;
+    const Gvc10: typeof import('./gvc-1.0.js').default
+    export default Gvc10;
 }
 
 declare module 'gi://Gvc' {
-    import Gvc10 from 'gi://Gvc?version=1.0';
+    const Gvc10: typeof import('./gvc-1.0.js').default
     export default Gvc10;
 }
 

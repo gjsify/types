@@ -1,5 +1,5 @@
 
-import Gcr from './gcr-4.d.ts';
+import Gcr from './gcr-4.js';
 
 declare global {
     export interface GjsGiImports {

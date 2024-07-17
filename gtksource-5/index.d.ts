@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gtksource-5-ambient.d.ts';
+import './gtksource-5-ambient.js';
 
-import './gtksource-5-import.d.ts';
+import './gtksource-5-import.js';
 
-import GtkSource from './gtksource-5.d.ts';
+import GtkSource from './gtksource-5.js';
 export default GtkSource;
 

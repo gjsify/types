@@ -1,5 +1,5 @@
 
-import GMime from './gmime-3.0.d.ts';
+import GMime from './gmime-3.0.js';
 
 declare global {
     export interface GjsGiImports {

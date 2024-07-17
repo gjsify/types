@@ -1,11 +1,11 @@
 
 declare module 'gi://Rest?version=0.7' {
-    import Rest from './rest-0.7.d.ts';
-    export default Rest;
+    const Rest07: typeof import('./rest-0.7.js').default
+    export default Rest07;
 }
 
 declare module 'gi://Rest' {
-    import Rest07 from 'gi://Rest?version=0.7';
+    const Rest07: typeof import('./rest-0.7.js').default
     export default Rest07;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Meta?version=10' {
-    import Meta from './meta-10.d.ts';
-    export default Meta;
+    const Meta10: typeof import('./meta-10.js').default
+    export default Meta10;
 }
 
 declare module 'gi://Meta' {
-    import Meta10 from 'gi://Meta?version=10';
+    const Meta10: typeof import('./meta-10.js').default
     export default Meta10;
 }
 

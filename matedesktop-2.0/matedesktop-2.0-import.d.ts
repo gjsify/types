@@ -1,5 +1,5 @@
 
-import MateDesktop from './matedesktop-2.0.d.ts';
+import MateDesktop from './matedesktop-2.0.js';
 
 declare global {
     export interface GjsGiImports {

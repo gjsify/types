@@ -1,11 +1,11 @@
 
 declare module 'gi://Xkl?version=1.0' {
-    import Xkl from './xkl-1.0.d.ts';
-    export default Xkl;
+    const Xkl10: typeof import('./xkl-1.0.js').default
+    export default Xkl10;
 }
 
 declare module 'gi://Xkl' {
-    import Xkl10 from 'gi://Xkl?version=1.0';
+    const Xkl10: typeof import('./xkl-1.0.js').default
     export default Xkl10;
 }
 

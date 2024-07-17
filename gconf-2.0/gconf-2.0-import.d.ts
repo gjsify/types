@@ -1,5 +1,5 @@
 
-import GConf from './gconf-2.0.d.ts';
+import GConf from './gconf-2.0.js';
 
 declare global {
     export interface GjsGiImports {

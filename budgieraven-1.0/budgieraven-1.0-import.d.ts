@@ -1,5 +1,5 @@
 
-import BudgieRaven from './budgieraven-1.0.d.ts';
+import BudgieRaven from './budgieraven-1.0.js';
 
 declare global {
     export interface GjsGiImports {

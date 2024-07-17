@@ -1,11 +1,11 @@
 
 declare module 'gi://EDataServer?version=1.2' {
-    import EDataServer from './edataserver-1.2.d.ts';
-    export default EDataServer;
+    const EDataServer12: typeof import('./edataserver-1.2.js').default
+    export default EDataServer12;
 }
 
 declare module 'gi://EDataServer' {
-    import EDataServer12 from 'gi://EDataServer?version=1.2';
+    const EDataServer12: typeof import('./edataserver-1.2.js').default
     export default EDataServer12;
 }
 

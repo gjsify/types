@@ -1,5 +1,5 @@
 
-import GstGLX11 from './gstglx11-1.0.d.ts';
+import GstGLX11 from './gstglx11-1.0.js';
 
 declare global {
     export interface GjsGiImports {

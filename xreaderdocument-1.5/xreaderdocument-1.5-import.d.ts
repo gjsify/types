@@ -1,5 +1,5 @@
 
-import XreaderDocument from './xreaderdocument-1.5.d.ts';
+import XreaderDocument from './xreaderdocument-1.5.js';
 
 declare global {
     export interface GjsGiImports {

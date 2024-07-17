@@ -1,11 +1,11 @@
 
 declare module 'gi://GstValidate?version=1.0' {
-    import GstValidate from './gstvalidate-1.0.d.ts';
-    export default GstValidate;
+    const GstValidate10: typeof import('./gstvalidate-1.0.js').default
+    export default GstValidate10;
 }
 
 declare module 'gi://GstValidate' {
-    import GstValidate10 from 'gi://GstValidate?version=1.0';
+    const GstValidate10: typeof import('./gstvalidate-1.0.js').default
     export default GstValidate10;
 }
 

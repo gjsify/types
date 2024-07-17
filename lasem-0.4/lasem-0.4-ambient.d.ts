@@ -1,11 +1,11 @@
 
 declare module 'gi://Lasem?version=0.4' {
-    import Lasem from './lasem-0.4.d.ts';
-    export default Lasem;
+    const Lasem04: typeof import('./lasem-0.4.js').default
+    export default Lasem04;
 }
 
 declare module 'gi://Lasem' {
-    import Lasem04 from 'gi://Lasem?version=0.4';
+    const Lasem04: typeof import('./lasem-0.4.js').default
     export default Lasem04;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://NemoPreview?version=1.0' {
-    import NemoPreview from './nemopreview-1.0.d.ts';
-    export default NemoPreview;
+    const NemoPreview10: typeof import('./nemopreview-1.0.js').default
+    export default NemoPreview10;
 }
 
 declare module 'gi://NemoPreview' {
-    import NemoPreview10 from 'gi://NemoPreview?version=1.0';
+    const NemoPreview10: typeof import('./nemopreview-1.0.js').default
     export default NemoPreview10;
 }
 

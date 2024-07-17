@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gck-2-ambient.d.ts';
+import './gck-2-ambient.js';
 
-import './gck-2-import.d.ts';
+import './gck-2-import.js';
 
-import Gck from './gck-2.d.ts';
+import Gck from './gck-2.js';
 export default Gck;
 

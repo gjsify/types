@@ -1,11 +1,11 @@
 
 declare module 'gi://GstCodecs?version=1.0' {
-    import GstCodecs from './gstcodecs-1.0.d.ts';
-    export default GstCodecs;
+    const GstCodecs10: typeof import('./gstcodecs-1.0.js').default
+    export default GstCodecs10;
 }
 
 declare module 'gi://GstCodecs' {
-    import GstCodecs10 from 'gi://GstCodecs?version=1.0';
+    const GstCodecs10: typeof import('./gstcodecs-1.0.js').default
     export default GstCodecs10;
 }
 

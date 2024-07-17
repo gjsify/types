@@ -1,5 +1,5 @@
 
-import GstCodecs from './gstcodecs-1.0.d.ts';
+import GstCodecs from './gstcodecs-1.0.js';
 
 declare global {
     export interface GjsGiImports {

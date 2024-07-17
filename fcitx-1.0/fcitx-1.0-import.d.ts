@@ -1,5 +1,5 @@
 
-import Fcitx from './fcitx-1.0.d.ts';
+import Fcitx from './fcitx-1.0.js';
 
 declare global {
     export interface GjsGiImports {

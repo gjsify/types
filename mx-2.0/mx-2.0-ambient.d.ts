@@ -1,11 +1,11 @@
 
 declare module 'gi://Mx?version=2.0' {
-    import Mx from './mx-2.0.d.ts';
-    export default Mx;
+    const Mx20: typeof import('./mx-2.0.js').default
+    export default Mx20;
 }
 
 declare module 'gi://Mx' {
-    import Mx20 from 'gi://Mx?version=2.0';
+    const Mx20: typeof import('./mx-2.0.js').default
     export default Mx20;
 }
 

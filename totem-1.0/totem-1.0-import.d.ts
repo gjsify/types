@@ -1,5 +1,5 @@
 
-import Totem from './totem-1.0.d.ts';
+import Totem from './totem-1.0.js';
 
 declare global {
     export interface GjsGiImports {

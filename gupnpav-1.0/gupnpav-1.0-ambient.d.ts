@@ -1,11 +1,11 @@
 
 declare module 'gi://GUPnPAV?version=1.0' {
-    import GUPnPAV from './gupnpav-1.0.d.ts';
-    export default GUPnPAV;
+    const GUPnPAV10: typeof import('./gupnpav-1.0.js').default
+    export default GUPnPAV10;
 }
 
 declare module 'gi://GUPnPAV' {
-    import GUPnPAV10 from 'gi://GUPnPAV?version=1.0';
+    const GUPnPAV10: typeof import('./gupnpav-1.0.js').default
     export default GUPnPAV10;
 }
 

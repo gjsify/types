@@ -1,5 +1,5 @@
 
-import Cheese from './cheese-3.0.d.ts';
+import Cheese from './cheese-3.0.js';
 
 declare global {
     export interface GjsGiImports {

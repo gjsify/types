@@ -1,5 +1,5 @@
 
-import PangoFc from './pangofc-1.0.d.ts';
+import PangoFc from './pangofc-1.0.js';
 
 declare global {
     export interface GjsGiImports {

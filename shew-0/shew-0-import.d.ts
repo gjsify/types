@@ -1,5 +1,5 @@
 
-import Shew from './shew-0.d.ts';
+import Shew from './shew-0.js';
 
 declare global {
     export interface GjsGiImports {

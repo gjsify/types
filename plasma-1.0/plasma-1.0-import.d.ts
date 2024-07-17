@@ -1,5 +1,5 @@
 
-import Plasma from './plasma-1.0.d.ts';
+import Plasma from './plasma-1.0.js';
 
 declare global {
     export interface GjsGiImports {

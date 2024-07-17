@@ -1,5 +1,5 @@
 
-import PanelApplet from './panelapplet-4.0.d.ts';
+import PanelApplet from './panelapplet-4.0.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,11 +1,11 @@
 
 declare module 'gi://Zpj?version=0.0' {
-    import Zpj from './zpj-0.0.d.ts';
-    export default Zpj;
+    const Zpj00: typeof import('./zpj-0.0.js').default
+    export default Zpj00;
 }
 
 declare module 'gi://Zpj' {
-    import Zpj00 from 'gi://Zpj?version=0.0';
+    const Zpj00: typeof import('./zpj-0.0.js').default
     export default Zpj00;
 }
 

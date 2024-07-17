@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gst-0.10-ambient.d.ts';
+import './gst-0.10-ambient.js';
 
 
-import Gst from './gst-0.10.d.ts';
+import Gst from './gst-0.10.js';
 export default Gst;
 

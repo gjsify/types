@@ -1,11 +1,11 @@
 
 declare module 'gi://Tepl?version=4' {
-    import Tepl from './tepl-4.d.ts';
-    export default Tepl;
+    const Tepl4: typeof import('./tepl-4.js').default
+    export default Tepl4;
 }
 
 declare module 'gi://Tepl' {
-    import Tepl4 from 'gi://Tepl?version=4';
+    const Tepl4: typeof import('./tepl-4.js').default
     export default Tepl4;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://GSignond?version=1.0' {
-    import GSignond from './gsignond-1.0.d.ts';
-    export default GSignond;
+    const GSignond10: typeof import('./gsignond-1.0.js').default
+    export default GSignond10;
 }
 
 declare module 'gi://GSignond' {
-    import GSignond10 from 'gi://GSignond?version=1.0';
+    const GSignond10: typeof import('./gsignond-1.0.js').default
     export default GSignond10;
 }
 

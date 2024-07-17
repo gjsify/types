@@ -1,11 +1,11 @@
 
 declare module 'gi://Fwupd?version=2.0' {
-    import Fwupd from './fwupd-2.0.d.ts';
-    export default Fwupd;
+    const Fwupd20: typeof import('./fwupd-2.0.js').default
+    export default Fwupd20;
 }
 
 declare module 'gi://Fwupd' {
-    import Fwupd20 from 'gi://Fwupd?version=2.0';
+    const Fwupd20: typeof import('./fwupd-2.0.js').default
     export default Fwupd20;
 }
 

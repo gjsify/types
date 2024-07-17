@@ -1,11 +1,11 @@
 
 declare module 'gi://Ggit?version=1.0' {
-    import Ggit from './ggit-1.0.d.ts';
-    export default Ggit;
+    const Ggit10: typeof import('./ggit-1.0.js').default
+    export default Ggit10;
 }
 
 declare module 'gi://Ggit' {
-    import Ggit10 from 'gi://Ggit?version=1.0';
+    const Ggit10: typeof import('./ggit-1.0.js').default
     export default Ggit10;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Cogl?version=15' {
-    import Cogl from './cogl-15.d.ts';
-    export default Cogl;
+    const Cogl15: typeof import('./cogl-15.js').default
+    export default Cogl15;
 }
 
 declare module 'gi://Cogl' {
-    import Cogl15 from 'gi://Cogl?version=15';
+    const Cogl15: typeof import('./cogl-15.js').default
     export default Cogl15;
 }
 

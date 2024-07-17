@@ -1,5 +1,5 @@
 
-import Caja from './caja-2.0.d.ts';
+import Caja from './caja-2.0.js';
 
 declare global {
     export interface GjsGiImports {

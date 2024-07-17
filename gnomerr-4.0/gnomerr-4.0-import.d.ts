@@ -1,5 +1,5 @@
 
-import GnomeRR from './gnomerr-4.0.d.ts';
+import GnomeRR from './gnomerr-4.0.js';
 
 declare global {
     export interface GjsGiImports {

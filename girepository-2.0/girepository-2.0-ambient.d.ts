@@ -1,11 +1,11 @@
 
 declare module 'gi://GIRepository?version=2.0' {
-    import GIRepository from './girepository-2.0.d.ts';
-    export default GIRepository;
+    const GIRepository20: typeof import('./girepository-2.0.js').default
+    export default GIRepository20;
 }
 
 declare module 'gi://GIRepository' {
-    import GIRepository20 from 'gi://GIRepository?version=2.0';
+    const GIRepository20: typeof import('./girepository-2.0.js').default
     export default GIRepository20;
 }
 

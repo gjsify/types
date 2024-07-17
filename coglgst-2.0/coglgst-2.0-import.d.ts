@@ -1,5 +1,5 @@
 
-import CoglGst from './coglgst-2.0.d.ts';
+import CoglGst from './coglgst-2.0.js';
 
 declare global {
     export interface GjsGiImports {

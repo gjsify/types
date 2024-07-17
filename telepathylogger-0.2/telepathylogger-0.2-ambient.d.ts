@@ -1,11 +1,11 @@
 
 declare module 'gi://TelepathyLogger?version=0.2' {
-    import TelepathyLogger from './telepathylogger-0.2.d.ts';
-    export default TelepathyLogger;
+    const TelepathyLogger02: typeof import('./telepathylogger-0.2.js').default
+    export default TelepathyLogger02;
 }
 
 declare module 'gi://TelepathyLogger' {
-    import TelepathyLogger02 from 'gi://TelepathyLogger?version=0.2';
+    const TelepathyLogger02: typeof import('./telepathylogger-0.2.js').default
     export default TelepathyLogger02;
 }
 

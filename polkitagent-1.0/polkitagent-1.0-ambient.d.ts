@@ -1,11 +1,11 @@
 
 declare module 'gi://PolkitAgent?version=1.0' {
-    import PolkitAgent from './polkitagent-1.0.d.ts';
-    export default PolkitAgent;
+    const PolkitAgent10: typeof import('./polkitagent-1.0.js').default
+    export default PolkitAgent10;
 }
 
 declare module 'gi://PolkitAgent' {
-    import PolkitAgent10 from 'gi://PolkitAgent?version=1.0';
+    const PolkitAgent10: typeof import('./polkitagent-1.0.js').default
     export default PolkitAgent10;
 }
 

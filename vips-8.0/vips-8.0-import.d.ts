@@ -1,5 +1,5 @@
 
-import Vips from './vips-8.0.d.ts';
+import Vips from './vips-8.0.js';
 
 declare global {
     export interface GjsGiImports {

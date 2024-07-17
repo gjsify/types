@@ -1,5 +1,5 @@
 
-import Libinsane from './libinsane-1.0.d.ts';
+import Libinsane from './libinsane-1.0.js';
 
 declare global {
     export interface GjsGiImports {

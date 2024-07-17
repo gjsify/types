@@ -1,11 +1,11 @@
 
 declare module 'gi://LibvirtSandbox?version=1.0' {
-    import LibvirtSandbox from './libvirtsandbox-1.0.d.ts';
-    export default LibvirtSandbox;
+    const LibvirtSandbox10: typeof import('./libvirtsandbox-1.0.js').default
+    export default LibvirtSandbox10;
 }
 
 declare module 'gi://LibvirtSandbox' {
-    import LibvirtSandbox10 from 'gi://LibvirtSandbox?version=1.0';
+    const LibvirtSandbox10: typeof import('./libvirtsandbox-1.0.js').default
     export default LibvirtSandbox10;
 }
 

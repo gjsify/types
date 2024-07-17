@@ -1,11 +1,11 @@
 
 declare module 'gi://Skk?version=1.0' {
-    import Skk from './skk-1.0.d.ts';
-    export default Skk;
+    const Skk10: typeof import('./skk-1.0.js').default
+    export default Skk10;
 }
 
 declare module 'gi://Skk' {
-    import Skk10 from 'gi://Skk?version=1.0';
+    const Skk10: typeof import('./skk-1.0.js').default
     export default Skk10;
 }
 

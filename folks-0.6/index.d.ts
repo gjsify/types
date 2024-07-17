@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './folks-0.6-ambient.d.ts';
+import './folks-0.6-ambient.js';
 
 
-import Folks from './folks-0.6.d.ts';
+import Folks from './folks-0.6.js';
 export default Folks;
 

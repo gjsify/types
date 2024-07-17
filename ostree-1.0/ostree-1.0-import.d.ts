@@ -1,5 +1,5 @@
 
-import OSTree from './ostree-1.0.d.ts';
+import OSTree from './ostree-1.0.js';
 
 declare global {
     export interface GjsGiImports {

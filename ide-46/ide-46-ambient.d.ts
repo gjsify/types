@@ -1,11 +1,11 @@
 
 declare module 'gi://Ide?version=46' {
-    import Ide from './ide-46.d.ts';
-    export default Ide;
+    const Ide46: typeof import('./ide-46.js').default
+    export default Ide46;
 }
 
 declare module 'gi://Ide' {
-    import Ide46 from 'gi://Ide?version=46';
+    const Ide46: typeof import('./ide-46.js').default
     export default Ide46;
 }
 

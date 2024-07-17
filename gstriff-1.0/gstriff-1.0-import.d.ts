@@ -1,5 +1,5 @@
 
-import GstRiff from './gstriff-1.0.d.ts';
+import GstRiff from './gstriff-1.0.js';
 
 declare global {
     export interface GjsGiImports {

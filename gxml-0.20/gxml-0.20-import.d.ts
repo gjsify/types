@@ -1,5 +1,5 @@
 
-import GXml from './gxml-0.20.d.ts';
+import GXml from './gxml-0.20.js';
 
 declare global {
     export interface GjsGiImports {

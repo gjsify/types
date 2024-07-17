@@ -1,11 +1,11 @@
 
 declare module 'gi://NetworkManager?version=1.0' {
-    import NetworkManager from './networkmanager-1.0.d.ts';
-    export default NetworkManager;
+    const NetworkManager10: typeof import('./networkmanager-1.0.js').default
+    export default NetworkManager10;
 }
 
 declare module 'gi://NetworkManager' {
-    import NetworkManager10 from 'gi://NetworkManager?version=1.0';
+    const NetworkManager10: typeof import('./networkmanager-1.0.js').default
     export default NetworkManager10;
 }
 

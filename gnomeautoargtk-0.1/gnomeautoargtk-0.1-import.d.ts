@@ -1,5 +1,5 @@
 
-import GnomeAutoarGtk from './gnomeautoargtk-0.1.d.ts';
+import GnomeAutoarGtk from './gnomeautoargtk-0.1.js';
 
 declare global {
     export interface GjsGiImports {

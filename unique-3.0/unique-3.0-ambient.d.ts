@@ -1,11 +1,11 @@
 
 declare module 'gi://Unique?version=3.0' {
-    import Unique from './unique-3.0.d.ts';
-    export default Unique;
+    const Unique30: typeof import('./unique-3.0.js').default
+    export default Unique30;
 }
 
 declare module 'gi://Unique' {
-    import Unique30 from 'gi://Unique?version=3.0';
+    const Unique30: typeof import('./unique-3.0.js').default
     export default Unique30;
 }
 

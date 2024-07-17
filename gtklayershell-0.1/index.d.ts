@@ -6,10 +6,10 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gtklayershell-0.1-ambient.d.ts';
+import './gtklayershell-0.1-ambient.js';
 
-import './gtklayershell-0.1-import.d.ts';
+import './gtklayershell-0.1-import.js';
 
-import GtkLayerShell from './gtklayershell-0.1.d.ts';
+import GtkLayerShell from './gtklayershell-0.1.js';
 export default GtkLayerShell;
 

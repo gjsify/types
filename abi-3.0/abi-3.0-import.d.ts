@@ -1,5 +1,5 @@
 
-import Abi from './abi-3.0.d.ts';
+import Abi from './abi-3.0.js';
 
 declare global {
     export interface GjsGiImports {

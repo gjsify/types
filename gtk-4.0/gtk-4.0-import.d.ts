@@ -1,5 +1,5 @@
 
-import Gtk from './gtk-4.0.d.ts';
+import Gtk from './gtk-4.0.js';
 
 declare global {
     export interface GjsGiImports {

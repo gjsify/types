@@ -1,5 +1,5 @@
 
-import Gdaui from './gdaui-6.0.d.ts';
+import Gdaui from './gdaui-6.0.js';
 
 declare global {
     export interface GjsGiImports {

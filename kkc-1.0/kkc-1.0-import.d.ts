@@ -1,5 +1,5 @@
 
-import Kkc from './kkc-1.0.d.ts';
+import Kkc from './kkc-1.0.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import Libxfce4windowing from './libxfce4windowing-0.0.d.ts';
+import Libxfce4windowing from './libxfce4windowing-0.0.js';
 
 declare global {
     export interface GjsGiImports {

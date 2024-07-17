@@ -1,11 +1,11 @@
 
 declare module 'gi://GooCanvas?version=3.0' {
-    import GooCanvas from './goocanvas-3.0.d.ts';
-    export default GooCanvas;
+    const GooCanvas30: typeof import('./goocanvas-3.0.js').default
+    export default GooCanvas30;
 }
 
 declare module 'gi://GooCanvas' {
-    import GooCanvas30 from 'gi://GooCanvas?version=3.0';
+    const GooCanvas30: typeof import('./goocanvas-3.0.js').default
     export default GooCanvas30;
 }
 

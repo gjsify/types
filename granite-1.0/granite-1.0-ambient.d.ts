@@ -1,11 +1,11 @@
 
 declare module 'gi://Granite?version=1.0' {
-    import Granite from './granite-1.0.d.ts';
-    export default Granite;
+    const Granite10: typeof import('./granite-1.0.js').default
+    export default Granite10;
 }
 
 declare module 'gi://Granite' {
-    import Granite10 from 'gi://Granite?version=1.0';
+    const Granite10: typeof import('./granite-1.0.js').default
     export default Granite10;
 }
 

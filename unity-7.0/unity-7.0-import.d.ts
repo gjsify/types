@@ -1,5 +1,5 @@
 
-import Unity from './unity-7.0.d.ts';
+import Unity from './unity-7.0.js';
 
 declare global {
     export interface GjsGiImports {

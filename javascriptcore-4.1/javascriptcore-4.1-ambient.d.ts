@@ -1,11 +1,11 @@
 
 declare module 'gi://JavaScriptCore?version=4.1' {
-    import JavaScriptCore from './javascriptcore-4.1.d.ts';
-    export default JavaScriptCore;
+    const JavaScriptCore41: typeof import('./javascriptcore-4.1.js').default
+    export default JavaScriptCore41;
 }
 
 declare module 'gi://JavaScriptCore' {
-    import JavaScriptCore41 from 'gi://JavaScriptCore?version=4.1';
+    const JavaScriptCore41: typeof import('./javascriptcore-4.1.js').default
     export default JavaScriptCore41;
 }
 

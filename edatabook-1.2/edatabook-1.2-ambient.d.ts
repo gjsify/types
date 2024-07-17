@@ -1,11 +1,11 @@
 
 declare module 'gi://EDataBook?version=1.2' {
-    import EDataBook from './edatabook-1.2.d.ts';
-    export default EDataBook;
+    const EDataBook12: typeof import('./edatabook-1.2.js').default
+    export default EDataBook12;
 }
 
 declare module 'gi://EDataBook' {
-    import EDataBook12 from 'gi://EDataBook?version=1.2';
+    const EDataBook12: typeof import('./edatabook-1.2.js').default
     export default EDataBook12;
 }
 

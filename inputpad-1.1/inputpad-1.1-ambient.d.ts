@@ -1,11 +1,11 @@
 
 declare module 'gi://InputPad?version=1.1' {
-    import InputPad from './inputpad-1.1.d.ts';
-    export default InputPad;
+    const InputPad11: typeof import('./inputpad-1.1.js').default
+    export default InputPad11;
 }
 
 declare module 'gi://InputPad' {
-    import InputPad11 from 'gi://InputPad?version=1.1';
+    const InputPad11: typeof import('./inputpad-1.1.js').default
     export default InputPad11;
 }
 

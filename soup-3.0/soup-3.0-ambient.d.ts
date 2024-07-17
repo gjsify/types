@@ -1,11 +1,11 @@
 
 declare module 'gi://Soup?version=3.0' {
-    import Soup from './soup-3.0.d.ts';
-    export default Soup;
+    const Soup30: typeof import('./soup-3.0.js').default
+    export default Soup30;
 }
 
 declare module 'gi://Soup' {
-    import Soup30 from 'gi://Soup?version=3.0';
+    const Soup30: typeof import('./soup-3.0.js').default
     export default Soup30;
 }
 

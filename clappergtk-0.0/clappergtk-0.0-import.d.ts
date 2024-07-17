@@ -1,5 +1,5 @@
 
-import ClapperGtk from './clappergtk-0.0.d.ts';
+import ClapperGtk from './clappergtk-0.0.js';
 
 declare global {
     export interface GjsGiImports {

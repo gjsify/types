@@ -1,5 +1,5 @@
 
-import XdpGtk4 from './xdpgtk4-1.0.d.ts';
+import XdpGtk4 from './xdpgtk4-1.0.js';
 
 declare global {
     export interface GjsGiImports {

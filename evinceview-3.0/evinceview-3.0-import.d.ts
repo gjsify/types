@@ -1,5 +1,5 @@
 
-import EvinceView from './evinceview-3.0.d.ts';
+import EvinceView from './evinceview-3.0.js';
 
 declare global {
     export interface GjsGiImports {

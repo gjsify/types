@@ -1,11 +1,11 @@
 
 declare module 'gi://ClapperGtk?version=0.0' {
-    import ClapperGtk from './clappergtk-0.0.d.ts';
-    export default ClapperGtk;
+    const ClapperGtk00: typeof import('./clappergtk-0.0.js').default
+    export default ClapperGtk00;
 }
 
 declare module 'gi://ClapperGtk' {
-    import ClapperGtk00 from 'gi://ClapperGtk?version=0.0';
+    const ClapperGtk00: typeof import('./clappergtk-0.0.js').default
     export default ClapperGtk00;
 }
 

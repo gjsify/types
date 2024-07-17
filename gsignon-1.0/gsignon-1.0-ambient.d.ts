@@ -1,11 +1,11 @@
 
 declare module 'gi://gSignon?version=1.0' {
-    import gSignon from './gsignon-1.0.d.ts';
-    export default gSignon;
+    const GSignon10: typeof import('./gsignon-1.0.js').default
+    export default GSignon10;
 }
 
 declare module 'gi://gSignon' {
-    import GSignon10 from 'gi://gSignon?version=1.0';
+    const GSignon10: typeof import('./gsignon-1.0.js').default
     export default GSignon10;
 }
 

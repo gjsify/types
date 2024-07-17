@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gjs-ambient.d.ts';
+import './gjs-ambient.js';
 
 
-import gjs from './gjs.d.ts';
+import gjs from './gjs.js';
 export default gjs;
 

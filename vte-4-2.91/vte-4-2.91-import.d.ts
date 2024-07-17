@@ -1,5 +1,5 @@
 
-import Vte from './vte-4-2.91.d.ts';
+import Vte from './vte-4-2.91.js';
 
 declare global {
     export interface GjsGiImports {

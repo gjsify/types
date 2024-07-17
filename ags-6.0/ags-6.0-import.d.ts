@@ -1,5 +1,5 @@
 
-import Ags from './ags-6.0.d.ts';
+import Ags from './ags-6.0.js';
 
 declare global {
     export interface GjsGiImports {

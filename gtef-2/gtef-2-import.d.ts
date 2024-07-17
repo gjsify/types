@@ -1,5 +1,5 @@
 
-import Gtef from './gtef-2.d.ts';
+import Gtef from './gtef-2.js';
 
 declare global {
     export interface GjsGiImports {

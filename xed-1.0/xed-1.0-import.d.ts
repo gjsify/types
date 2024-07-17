@@ -1,5 +1,5 @@
 
-import Xed from './xed-1.0.d.ts';
+import Xed from './xed-1.0.js';
 
 declare global {
     export interface GjsGiImports {

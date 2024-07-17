@@ -1,5 +1,5 @@
 
-import EBook from './ebook-1.2.d.ts';
+import EBook from './ebook-1.2.js';
 
 declare global {
     export interface GjsGiImports {

@@ -1,5 +1,5 @@
 
-import GstTranscoder from './gsttranscoder-1.0.d.ts';
+import GstTranscoder from './gsttranscoder-1.0.js';
 
 declare global {
     export interface GjsGiImports {

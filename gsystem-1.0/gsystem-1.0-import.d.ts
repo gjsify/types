@@ -1,5 +1,5 @@
 
-import GSystem from './gsystem-1.0.d.ts';
+import GSystem from './gsystem-1.0.js';
 
 declare global {
     export interface GjsGiImports {

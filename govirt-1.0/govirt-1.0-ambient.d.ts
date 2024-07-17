@@ -1,11 +1,11 @@
 
 declare module 'gi://GoVirt?version=1.0' {
-    import GoVirt from './govirt-1.0.d.ts';
-    export default GoVirt;
+    const GoVirt10: typeof import('./govirt-1.0.js').default
+    export default GoVirt10;
 }
 
 declare module 'gi://GoVirt' {
-    import GoVirt10 from 'gi://GoVirt?version=1.0';
+    const GoVirt10: typeof import('./govirt-1.0.js').default
     export default GoVirt10;
 }
 

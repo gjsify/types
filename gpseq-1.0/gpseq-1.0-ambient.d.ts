@@ -1,11 +1,11 @@
 
 declare module 'gi://Gpseq?version=1.0' {
-    import Gpseq from './gpseq-1.0.d.ts';
-    export default Gpseq;
+    const Gpseq10: typeof import('./gpseq-1.0.js').default
+    export default Gpseq10;
 }
 
 declare module 'gi://Gpseq' {
-    import Gpseq10 from 'gi://Gpseq?version=1.0';
+    const Gpseq10: typeof import('./gpseq-1.0.js').default
     export default Gpseq10;
 }
 

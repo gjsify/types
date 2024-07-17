@@ -1,11 +1,11 @@
 
 declare module 'gi://SecretUnstable?version=0' {
-    import SecretUnstable from './secretunstable-0.d.ts';
-    export default SecretUnstable;
+    const SecretUnstable0: typeof import('./secretunstable-0.js').default
+    export default SecretUnstable0;
 }
 
 declare module 'gi://SecretUnstable' {
-    import SecretUnstable0 from 'gi://SecretUnstable?version=0';
+    const SecretUnstable0: typeof import('./secretunstable-0.js').default
     export default SecretUnstable0;
 }
 

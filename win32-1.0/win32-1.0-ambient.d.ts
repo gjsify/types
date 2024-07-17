@@ -1,11 +1,11 @@
 
 declare module 'gi://win32?version=1.0' {
-    import win32 from './win32-1.0.d.ts';
-    export default win32;
+    const Win3210: typeof import('./win32-1.0.js').default
+    export default Win3210;
 }
 
 declare module 'gi://win32' {
-    import Win3210 from 'gi://win32?version=1.0';
+    const Win3210: typeof import('./win32-1.0.js').default
     export default Win3210;
 }
 

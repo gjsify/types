@@ -1,11 +1,11 @@
 
 declare module 'gi://CinnamonDesktop?version=3.0' {
-    import CinnamonDesktop from './cinnamondesktop-3.0.d.ts';
-    export default CinnamonDesktop;
+    const CinnamonDesktop30: typeof import('./cinnamondesktop-3.0.js').default
+    export default CinnamonDesktop30;
 }
 
 declare module 'gi://CinnamonDesktop' {
-    import CinnamonDesktop30 from 'gi://CinnamonDesktop?version=3.0';
+    const CinnamonDesktop30: typeof import('./cinnamondesktop-3.0.js').default
     export default CinnamonDesktop30;
 }
 

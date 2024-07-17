@@ -1,11 +1,11 @@
 
 declare module 'gi://GstNet?version=1.0' {
-    import GstNet from './gstnet-1.0.d.ts';
-    export default GstNet;
+    const GstNet10: typeof import('./gstnet-1.0.js').default
+    export default GstNet10;
 }
 
 declare module 'gi://GstNet' {
-    import GstNet10 from 'gi://GstNet?version=1.0';
+    const GstNet10: typeof import('./gstnet-1.0.js').default
     export default GstNet10;
 }
 

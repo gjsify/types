@@ -1,5 +1,5 @@
 
-import Playerctl from './playerctl-2.0.d.ts';
+import Playerctl from './playerctl-2.0.js';
 
 declare global {
     export interface GjsGiImports {

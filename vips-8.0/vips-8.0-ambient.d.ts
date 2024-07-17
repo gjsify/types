@@ -1,11 +1,11 @@
 
 declare module 'gi://Vips?version=8.0' {
-    import Vips from './vips-8.0.d.ts';
-    export default Vips;
+    const Vips80: typeof import('./vips-8.0.js').default
+    export default Vips80;
 }
 
 declare module 'gi://Vips' {
-    import Vips80 from 'gi://Vips?version=8.0';
+    const Vips80: typeof import('./vips-8.0.js').default
     export default Vips80;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Vgpg?version=1' {
-    import Vgpg from './vgpg-1.d.ts';
-    export default Vgpg;
+    const Vgpg1: typeof import('./vgpg-1.js').default
+    export default Vgpg1;
 }
 
 declare module 'gi://Vgpg' {
-    import Vgpg1 from 'gi://Vgpg?version=1';
+    const Vgpg1: typeof import('./vgpg-1.js').default
     export default Vgpg1;
 }
 
