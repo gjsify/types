@@ -1,11 +1,11 @@
 
 declare module 'gi://Champlain?version=0.12' {
-    const Champlain012: typeof import('./champlain-0.12.js').default
+    import Champlain012 from '@girs/champlain-0.12';
     export default Champlain012;
 }
 
 declare module 'gi://Champlain' {
-    const Champlain012: typeof import('./champlain-0.12.js').default
+    import Champlain012 from 'gi://Champlain?version=0.12';
     export default Champlain012;
 }
 

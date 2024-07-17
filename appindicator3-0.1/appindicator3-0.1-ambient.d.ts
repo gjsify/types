@@ -1,11 +1,11 @@
 
 declare module 'gi://AppIndicator3?version=0.1' {
-    const AppIndicator301: typeof import('./appindicator3-0.1.js').default
+    import AppIndicator301 from '@girs/appindicator3-0.1';
     export default AppIndicator301;
 }
 
 declare module 'gi://AppIndicator3' {
-    const AppIndicator301: typeof import('./appindicator3-0.1.js').default
+    import AppIndicator301 from 'gi://AppIndicator3?version=0.1';
     export default AppIndicator301;
 }
 

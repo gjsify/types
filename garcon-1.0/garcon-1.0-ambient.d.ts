@@ -1,11 +1,11 @@
 
 declare module 'gi://Garcon?version=1.0' {
-    const Garcon10: typeof import('./garcon-1.0.js').default
+    import Garcon10 from '@girs/garcon-1.0';
     export default Garcon10;
 }
 
 declare module 'gi://Garcon' {
-    const Garcon10: typeof import('./garcon-1.0.js').default
+    import Garcon10 from 'gi://Garcon?version=1.0';
     export default Garcon10;
 }
 

@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gpastegtk-4-ambient.js';
+import './gpastegtk-4-ambient.d.ts';
 
-import './gpastegtk-4-import.js';
+import './gpastegtk-4-import.d.ts';
 
 import GPasteGtk from './gpastegtk-4.js';
 export default GPasteGtk;

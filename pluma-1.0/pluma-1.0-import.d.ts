@@ -1,9 +1,9 @@
 
-import Pluma from './pluma-1.0.js';
+import Pluma10 from '@girs/pluma-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Pluma: typeof Pluma;
+        Pluma: typeof Pluma10;
     }
 }
 

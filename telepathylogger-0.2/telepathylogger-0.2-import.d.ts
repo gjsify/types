@@ -1,9 +1,9 @@
 
-import TelepathyLogger from './telepathylogger-0.2.js';
+import TelepathyLogger02 from '@girs/telepathylogger-0.2';
 
 declare global {
     export interface GjsGiImports {
-        TelepathyLogger: typeof TelepathyLogger;
+        TelepathyLogger: typeof TelepathyLogger02;
     }
 }
 

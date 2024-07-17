@@ -1,9 +1,9 @@
 
-import AgsGui from './agsgui-6.0.js';
+import AgsGui60 from '@girs/agsgui-6.0';
 
 declare global {
     export interface GjsGiImports {
-        AgsGui: typeof AgsGui;
+        AgsGui: typeof AgsGui60;
     }
 }
 

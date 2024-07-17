@@ -1,9 +1,9 @@
 
-import Notify from './notify-0.7.js';
+import Notify07 from '@girs/notify-0.7';
 
 declare global {
     export interface GjsGiImports {
-        Notify: typeof Notify;
+        Notify: typeof Notify07;
     }
 }
 

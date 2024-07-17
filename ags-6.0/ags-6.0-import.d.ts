@@ -1,9 +1,9 @@
 
-import Ags from './ags-6.0.js';
+import Ags60 from '@girs/ags-6.0';
 
 declare global {
     export interface GjsGiImports {
-        Ags: typeof Ags;
+        Ags: typeof Ags60;
     }
 }
 

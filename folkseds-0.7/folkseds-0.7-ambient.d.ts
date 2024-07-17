@@ -1,11 +1,11 @@
 
 declare module 'gi://FolksEds?version=0.7' {
-    const FolksEds07: typeof import('./folkseds-0.7.js').default
+    import FolksEds07 from '@girs/folkseds-0.7';
     export default FolksEds07;
 }
 
 declare module 'gi://FolksEds' {
-    const FolksEds07: typeof import('./folkseds-0.7.js').default
+    import FolksEds07 from 'gi://FolksEds?version=0.7';
     export default FolksEds07;
 }
 

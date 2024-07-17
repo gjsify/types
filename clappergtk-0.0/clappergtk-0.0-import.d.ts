@@ -1,9 +1,9 @@
 
-import ClapperGtk from './clappergtk-0.0.js';
+import ClapperGtk00 from '@girs/clappergtk-0.0';
 
 declare global {
     export interface GjsGiImports {
-        ClapperGtk: typeof ClapperGtk;
+        ClapperGtk: typeof ClapperGtk00;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import Gst from './gst-1.0.js';
+import Gst10 from '@girs/gst-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Gst: typeof Gst;
+        Gst: typeof Gst10;
     }
 }
 

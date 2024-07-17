@@ -1,11 +1,11 @@
 
 declare module 'gi://Gxps?version=1.0' {
-    const Gxps10: typeof import('./gxps-1.0.js').default
+    import Gxps10 from '@girs/gxps-1.0';
     export default Gxps10;
 }
 
 declare module 'gi://Gxps' {
-    const Gxps10: typeof import('./gxps-1.0.js').default
+    import Gxps10 from 'gi://Gxps?version=1.0';
     export default Gxps10;
 }
 

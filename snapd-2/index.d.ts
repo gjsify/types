@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './snapd-2-ambient.js';
+import './snapd-2-ambient.d.ts';
 
-import './snapd-2-import.js';
+import './snapd-2-import.d.ts';
 
 import Snapd from './snapd-2.js';
 export default Snapd;

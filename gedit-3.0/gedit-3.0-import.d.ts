@@ -1,9 +1,9 @@
 
-import Gedit from './gedit-3.0.js';
+import Gedit30 from '@girs/gedit-3.0';
 
 declare global {
     export interface GjsGiImports {
-        Gedit: typeof Gedit;
+        Gedit: typeof Gedit30;
     }
 }
 

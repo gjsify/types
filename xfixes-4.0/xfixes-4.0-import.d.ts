@@ -1,9 +1,9 @@
 
-import xfixes from './xfixes-4.0.js';
+import Xfixes40 from '@girs/xfixes-4.0';
 
 declare global {
     export interface GjsGiImports {
-        xfixes: typeof xfixes;
+        xfixes: typeof Xfixes40;
     }
 }
 

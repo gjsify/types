@@ -1,9 +1,9 @@
 
-import Anjuta from './anjuta-3.0.js';
+import Anjuta30 from '@girs/anjuta-3.0';
 
 declare global {
     export interface GjsGiImports {
-        Anjuta: typeof Anjuta;
+        Anjuta: typeof Anjuta30;
     }
 }
 

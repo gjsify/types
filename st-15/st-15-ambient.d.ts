@@ -1,11 +1,11 @@
 
 declare module 'gi://St?version=15' {
-    const St15: typeof import('./st-15.js').default
+    import St15 from '@girs/st-15';
     export default St15;
 }
 
 declare module 'gi://St' {
-    const St15: typeof import('./st-15.js').default
+    import St15 from 'gi://St?version=15';
     export default St15;
 }
 

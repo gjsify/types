@@ -1,11 +1,11 @@
 
 declare module 'gi://Shell?version=15' {
-    const Shell15: typeof import('./shell-15.js').default
+    import Shell15 from '@girs/shell-15';
     export default Shell15;
 }
 
 declare module 'gi://Shell' {
-    const Shell15: typeof import('./shell-15.js').default
+    import Shell15 from 'gi://Shell?version=15';
     export default Shell15;
 }
 

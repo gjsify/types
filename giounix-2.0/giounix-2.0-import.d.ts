@@ -1,9 +1,9 @@
 
-import GioUnix from './giounix-2.0.js';
+import GioUnix20 from '@girs/giounix-2.0';
 
 declare global {
     export interface GjsGiImports {
-        GioUnix: typeof GioUnix;
+        GioUnix: typeof GioUnix20;
     }
 }
 

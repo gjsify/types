@@ -1,9 +1,9 @@
 
-import Adw from './adw-1.js';
+import Adw1 from '@girs/adw-1';
 
 declare global {
     export interface GjsGiImports {
-        Adw: typeof Adw;
+        Adw: typeof Adw1;
     }
 }
 

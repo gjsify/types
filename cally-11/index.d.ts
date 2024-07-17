@@ -6,7 +6,7 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './cally-11-ambient.js';
+import './cally-11-ambient.d.ts';
 
 
 import Cally from './cally-11.js';

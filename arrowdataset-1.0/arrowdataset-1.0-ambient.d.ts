@@ -1,11 +1,11 @@
 
 declare module 'gi://ArrowDataset?version=1.0' {
-    const ArrowDataset10: typeof import('./arrowdataset-1.0.js').default
+    import ArrowDataset10 from '@girs/arrowdataset-1.0';
     export default ArrowDataset10;
 }
 
 declare module 'gi://ArrowDataset' {
-    const ArrowDataset10: typeof import('./arrowdataset-1.0.js').default
+    import ArrowDataset10 from 'gi://ArrowDataset?version=1.0';
     export default ArrowDataset10;
 }
 

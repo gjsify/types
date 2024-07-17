@@ -1,11 +1,11 @@
 
 declare module 'gi://GioUnix?version=2.0' {
-    const GioUnix20: typeof import('./giounix-2.0.js').default
+    import GioUnix20 from '@girs/giounix-2.0';
     export default GioUnix20;
 }
 
 declare module 'gi://GioUnix' {
-    const GioUnix20: typeof import('./giounix-2.0.js').default
+    import GioUnix20 from 'gi://GioUnix?version=2.0';
     export default GioUnix20;
 }
 

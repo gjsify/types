@@ -1,9 +1,9 @@
 
-import Shumate from './shumate-1.0.js';
+import Shumate10 from '@girs/shumate-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Shumate: typeof Shumate;
+        Shumate: typeof Shumate10;
     }
 }
 

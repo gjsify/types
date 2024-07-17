@@ -1,9 +1,9 @@
 
-import GWeather from './gweather-4.0.js';
+import GWeather40 from '@girs/gweather-4.0';
 
 declare global {
     export interface GjsGiImports {
-        GWeather: typeof GWeather;
+        GWeather: typeof GWeather40;
     }
 }
 

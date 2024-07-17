@@ -1,9 +1,9 @@
 
-import Secret from './secret-1.js';
+import Secret1 from '@girs/secret-1';
 
 declare global {
     export interface GjsGiImports {
-        Secret: typeof Secret;
+        Secret: typeof Secret1;
     }
 }
 

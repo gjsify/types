@@ -1,11 +1,11 @@
 
 declare module 'gi://MalcontentUi?version=1' {
-    const MalcontentUi1: typeof import('./malcontentui-1.js').default
+    import MalcontentUi1 from '@girs/malcontentui-1';
     export default MalcontentUi1;
 }
 
 declare module 'gi://MalcontentUi' {
-    const MalcontentUi1: typeof import('./malcontentui-1.js').default
+    import MalcontentUi1 from 'gi://MalcontentUi?version=1';
     export default MalcontentUi1;
 }
 

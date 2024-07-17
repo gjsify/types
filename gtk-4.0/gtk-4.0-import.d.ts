@@ -1,9 +1,9 @@
 
-import Gtk from './gtk-4.0.js';
+import Gtk40 from '@girs/gtk-4.0';
 
 declare global {
     export interface GjsGiImports {
-        Gtk: typeof Gtk;
+        Gtk: typeof Gtk40;
     }
 }
 

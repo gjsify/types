@@ -1,11 +1,11 @@
 
 declare module 'gi://PangoFT2?version=1.0' {
-    const PangoFT210: typeof import('./pangoft2-1.0.js').default
+    import PangoFT210 from '@girs/pangoft2-1.0';
     export default PangoFT210;
 }
 
 declare module 'gi://PangoFT2' {
-    const PangoFT210: typeof import('./pangoft2-1.0.js').default
+    import PangoFT210 from 'gi://PangoFT2?version=1.0';
     export default PangoFT210;
 }
 

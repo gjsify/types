@@ -1,9 +1,9 @@
 
-import GstVa from './gstva-1.0.js';
+import GstVa10 from '@girs/gstva-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstVa: typeof GstVa;
+        GstVa: typeof GstVa10;
     }
 }
 

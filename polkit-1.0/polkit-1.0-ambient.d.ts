@@ -1,11 +1,11 @@
 
 declare module 'gi://Polkit?version=1.0' {
-    const Polkit10: typeof import('./polkit-1.0.js').default
+    import Polkit10 from '@girs/polkit-1.0';
     export default Polkit10;
 }
 
 declare module 'gi://Polkit' {
-    const Polkit10: typeof import('./polkit-1.0.js').default
+    import Polkit10 from 'gi://Polkit?version=1.0';
     export default Polkit10;
 }
 

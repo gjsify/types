@@ -1,11 +1,11 @@
 
 declare module 'gi://Dex?version=1' {
-    const Dex1: typeof import('./dex-1.js').default
+    import Dex1 from '@girs/dex-1';
     export default Dex1;
 }
 
 declare module 'gi://Dex' {
-    const Dex1: typeof import('./dex-1.js').default
+    import Dex1 from 'gi://Dex?version=1';
     export default Dex1;
 }
 

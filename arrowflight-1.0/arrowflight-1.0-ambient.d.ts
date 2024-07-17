@@ -1,11 +1,11 @@
 
 declare module 'gi://ArrowFlight?version=1.0' {
-    const ArrowFlight10: typeof import('./arrowflight-1.0.js').default
+    import ArrowFlight10 from '@girs/arrowflight-1.0';
     export default ArrowFlight10;
 }
 
 declare module 'gi://ArrowFlight' {
-    const ArrowFlight10: typeof import('./arrowflight-1.0.js').default
+    import ArrowFlight10 from 'gi://ArrowFlight?version=1.0';
     export default ArrowFlight10;
 }
 

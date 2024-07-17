@@ -1,9 +1,9 @@
 
-import LibvirtGObject from './libvirtgobject-1.0.js';
+import LibvirtGObject10 from '@girs/libvirtgobject-1.0';
 
 declare global {
     export interface GjsGiImports {
-        LibvirtGObject: typeof LibvirtGObject;
+        LibvirtGObject: typeof LibvirtGObject10;
     }
 }
 

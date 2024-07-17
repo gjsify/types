@@ -1,11 +1,11 @@
 
 declare module 'gi://GtkFrdp?version=0.2' {
-    const GtkFrdp02: typeof import('./gtkfrdp-0.2.js').default
+    import GtkFrdp02 from '@girs/gtkfrdp-0.2';
     export default GtkFrdp02;
 }
 
 declare module 'gi://GtkFrdp' {
-    const GtkFrdp02: typeof import('./gtkfrdp-0.2.js').default
+    import GtkFrdp02 from 'gi://GtkFrdp?version=0.2';
     export default GtkFrdp02;
 }
 

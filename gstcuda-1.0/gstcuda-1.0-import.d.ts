@@ -1,9 +1,9 @@
 
-import GstCuda from './gstcuda-1.0.js';
+import GstCuda10 from '@girs/gstcuda-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstCuda: typeof GstCuda;
+        GstCuda: typeof GstCuda10;
     }
 }
 

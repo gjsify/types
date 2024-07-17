@@ -1,11 +1,11 @@
 
 declare module 'gi://GstWebRTC?version=1.0' {
-    const GstWebRTC10: typeof import('./gstwebrtc-1.0.js').default
+    import GstWebRTC10 from '@girs/gstwebrtc-1.0';
     export default GstWebRTC10;
 }
 
 declare module 'gi://GstWebRTC' {
-    const GstWebRTC10: typeof import('./gstwebrtc-1.0.js').default
+    import GstWebRTC10 from 'gi://GstWebRTC?version=1.0';
     export default GstWebRTC10;
 }
 

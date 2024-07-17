@@ -1,9 +1,9 @@
 
-import Hex from './hex-4.js';
+import Hex4 from '@girs/hex-4';
 
 declare global {
     export interface GjsGiImports {
-        Hex: typeof Hex;
+        Hex: typeof Hex4;
     }
 }
 

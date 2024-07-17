@@ -1,9 +1,9 @@
 
-import Soup from './soup-3.0.js';
+import Soup30 from '@girs/soup-3.0';
 
 declare global {
     export interface GjsGiImports {
-        Soup: typeof Soup;
+        Soup: typeof Soup30;
     }
 }
 

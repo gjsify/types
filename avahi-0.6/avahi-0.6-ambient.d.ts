@@ -1,11 +1,11 @@
 
 declare module 'gi://Avahi?version=0.6' {
-    const Avahi06: typeof import('./avahi-0.6.js').default
+    import Avahi06 from '@girs/avahi-0.6';
     export default Avahi06;
 }
 
 declare module 'gi://Avahi' {
-    const Avahi06: typeof import('./avahi-0.6.js').default
+    import Avahi06 from 'gi://Avahi?version=0.6';
     export default Avahi06;
 }
 

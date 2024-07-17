@@ -1,9 +1,9 @@
 
-import Mash from './mash-0.2.js';
+import Mash02 from '@girs/mash-0.2';
 
 declare global {
     export interface GjsGiImports {
-        Mash: typeof Mash;
+        Mash: typeof Mash02;
     }
 }
 

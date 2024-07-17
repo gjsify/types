@@ -1,9 +1,9 @@
 
-import Arrow from './arrow-1.0.js';
+import Arrow10 from '@girs/arrow-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Arrow: typeof Arrow;
+        Arrow: typeof Arrow10;
     }
 }
 

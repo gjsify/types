@@ -1,11 +1,11 @@
 
 declare module 'gi://Gsf?version=1' {
-    const Gsf1: typeof import('./gsf-1.js').default
+    import Gsf1 from '@girs/gsf-1';
     export default Gsf1;
 }
 
 declare module 'gi://Gsf' {
-    const Gsf1: typeof import('./gsf-1.js').default
+    import Gsf1 from 'gi://Gsf?version=1';
     export default Gsf1;
 }
 

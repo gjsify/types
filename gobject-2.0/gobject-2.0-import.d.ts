@@ -1,9 +1,9 @@
 
-import GObject from './gobject-2.0.js';
+import GObject20 from '@girs/gobject-2.0';
 
 declare global {
     export interface GjsGiImports {
-        GObject: typeof GObject;
+        GObject: typeof GObject20;
     }
 }
 

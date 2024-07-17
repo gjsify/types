@@ -1,9 +1,9 @@
 
-import Abi from './abi-3.0.js';
+import Abi30 from '@girs/abi-3.0';
 
 declare global {
     export interface GjsGiImports {
-        Abi: typeof Abi;
+        Abi: typeof Abi30;
     }
 }
 

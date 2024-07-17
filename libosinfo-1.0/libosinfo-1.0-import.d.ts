@@ -1,9 +1,9 @@
 
-import Libosinfo from './libosinfo-1.0.js';
+import Libosinfo10 from '@girs/libosinfo-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Libosinfo: typeof Libosinfo;
+        Libosinfo: typeof Libosinfo10;
     }
 }
 

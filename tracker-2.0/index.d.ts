@@ -6,7 +6,7 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './tracker-2.0-ambient.js';
+import './tracker-2.0-ambient.d.ts';
 
 
 import Tracker from './tracker-2.0.js';

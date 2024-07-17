@@ -1,9 +1,9 @@
 
-import Gsk from './gsk-4.0.js';
+import Gsk40 from '@girs/gsk-4.0';
 
 declare global {
     export interface GjsGiImports {
-        Gsk: typeof Gsk;
+        Gsk: typeof Gsk40;
     }
 }
 

@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './xreaderview-1.5-ambient.js';
+import './xreaderview-1.5-ambient.d.ts';
 
-import './xreaderview-1.5-import.js';
+import './xreaderview-1.5-import.d.ts';
 
 import XreaderView from './xreaderview-1.5.js';
 export default XreaderView;

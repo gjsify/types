@@ -1,9 +1,9 @@
 
-import IBus from './ibus-1.0.js';
+import IBus10 from '@girs/ibus-1.0';
 
 declare global {
     export interface GjsGiImports {
-        IBus: typeof IBus;
+        IBus: typeof IBus10;
     }
 }
 

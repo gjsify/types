@@ -1,11 +1,11 @@
 
 declare module 'gi://Ide?version=1.0' {
-    const Ide10: typeof import('./ide-1.0.js').default
+    import Ide10 from '@girs/ide-1.0';
     export default Ide10;
 }
 
 declare module 'gi://Ide' {
-    const Ide10: typeof import('./ide-1.0.js').default
+    import Ide10 from 'gi://Ide?version=1.0';
     export default Ide10;
 }
 

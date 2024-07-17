@@ -1,11 +1,11 @@
 
 declare module 'gi://PangoOT?version=1.0' {
-    const PangoOT10: typeof import('./pangoot-1.0.js').default
+    import PangoOT10 from '@girs/pangoot-1.0';
     export default PangoOT10;
 }
 
 declare module 'gi://PangoOT' {
-    const PangoOT10: typeof import('./pangoot-1.0.js').default
+    import PangoOT10 from 'gi://PangoOT?version=1.0';
     export default PangoOT10;
 }
 

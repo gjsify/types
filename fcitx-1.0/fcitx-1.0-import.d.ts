@@ -1,9 +1,9 @@
 
-import Fcitx from './fcitx-1.0.js';
+import Fcitx10 from '@girs/fcitx-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Fcitx: typeof Fcitx;
+        Fcitx: typeof Fcitx10;
     }
 }
 

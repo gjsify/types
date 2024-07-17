@@ -1,11 +1,11 @@
 
 declare module 'gi://GUPnP?version=1.2' {
-    const GUPnP12: typeof import('./gupnp-1.2.js').default
+    import GUPnP12 from '@girs/gupnp-1.2';
     export default GUPnP12;
 }
 
 declare module 'gi://GUPnP' {
-    const GUPnP12: typeof import('./gupnp-1.2.js').default
+    import GUPnP12 from 'gi://GUPnP?version=1.2';
     export default GUPnP12;
 }
 

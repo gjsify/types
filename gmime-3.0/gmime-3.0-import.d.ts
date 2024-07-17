@@ -1,9 +1,9 @@
 
-import GMime from './gmime-3.0.js';
+import GMime30 from '@girs/gmime-3.0';
 
 declare global {
     export interface GjsGiImports {
-        GMime: typeof GMime;
+        GMime: typeof GMime30;
     }
 }
 

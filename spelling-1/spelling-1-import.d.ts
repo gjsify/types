@@ -1,9 +1,9 @@
 
-import Spelling from './spelling-1.js';
+import Spelling1 from '@girs/spelling-1';
 
 declare global {
     export interface GjsGiImports {
-        Spelling: typeof Spelling;
+        Spelling: typeof Spelling1;
     }
 }
 

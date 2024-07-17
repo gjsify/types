@@ -1,11 +1,11 @@
 
 declare module 'gi://GPasteGtk?version=4' {
-    const GPasteGtk4: typeof import('./gpastegtk-4.js').default
+    import GPasteGtk4 from '@girs/gpastegtk-4';
     export default GPasteGtk4;
 }
 
 declare module 'gi://GPasteGtk' {
-    const GPasteGtk4: typeof import('./gpastegtk-4.js').default
+    import GPasteGtk4 from 'gi://GPasteGtk?version=4';
     export default GPasteGtk4;
 }
 

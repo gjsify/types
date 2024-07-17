@@ -1,11 +1,11 @@
 
 declare module 'gi://Farstream?version=0.1' {
-    const Farstream01: typeof import('./farstream-0.1.js').default
+    import Farstream01 from '@girs/farstream-0.1';
     export default Farstream01;
 }
 
 declare module 'gi://Farstream' {
-    const Farstream01: typeof import('./farstream-0.1.js').default
+    import Farstream01 from 'gi://Farstream?version=0.1';
     export default Farstream01;
 }
 

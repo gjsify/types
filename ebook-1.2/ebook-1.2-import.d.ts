@@ -1,9 +1,9 @@
 
-import EBook from './ebook-1.2.js';
+import EBook12 from '@girs/ebook-1.2';
 
 declare global {
     export interface GjsGiImports {
-        EBook: typeof EBook;
+        EBook: typeof EBook12;
     }
 }
 

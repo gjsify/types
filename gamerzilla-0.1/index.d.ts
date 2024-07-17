@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gamerzilla-0.1-ambient.js';
+import './gamerzilla-0.1-ambient.d.ts';
 
-import './gamerzilla-0.1-import.js';
+import './gamerzilla-0.1-import.d.ts';
 
 import Gamerzilla from './gamerzilla-0.1.js';
 export default Gamerzilla;

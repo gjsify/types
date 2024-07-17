@@ -1,9 +1,9 @@
 
-import AtrilView from './atrilview-1.5.0.js';
+import AtrilView150 from '@girs/atrilview-1.5.0';
 
 declare global {
     export interface GjsGiImports {
-        AtrilView: typeof AtrilView;
+        AtrilView: typeof AtrilView150;
     }
 }
 

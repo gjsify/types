@@ -1,11 +1,11 @@
 
 declare module 'gi://DMAP?version=3.0' {
-    const DMAP30: typeof import('./dmap-3.0.js').default
+    import DMAP30 from '@girs/dmap-3.0';
     export default DMAP30;
 }
 
 declare module 'gi://DMAP' {
-    const DMAP30: typeof import('./dmap-3.0.js').default
+    import DMAP30 from 'gi://DMAP?version=3.0';
     export default DMAP30;
 }
 

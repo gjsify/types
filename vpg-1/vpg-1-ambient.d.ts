@@ -1,11 +1,11 @@
 
 declare module 'gi://Vpg?version=1' {
-    const Vpg1: typeof import('./vpg-1.js').default
+    import Vpg1 from '@girs/vpg-1';
     export default Vpg1;
 }
 
 declare module 'gi://Vpg' {
-    const Vpg1: typeof import('./vpg-1.js').default
+    import Vpg1 from 'gi://Vpg?version=1';
     export default Vpg1;
 }
 

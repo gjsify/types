@@ -1,11 +1,11 @@
 
 declare module 'gi://Egg?version=1.0' {
-    const Egg10: typeof import('./egg-1.0.js').default
+    import Egg10 from '@girs/egg-1.0';
     export default Egg10;
 }
 
 declare module 'gi://Egg' {
-    const Egg10: typeof import('./egg-1.0.js').default
+    import Egg10 from 'gi://Egg?version=1.0';
     export default Egg10;
 }
 

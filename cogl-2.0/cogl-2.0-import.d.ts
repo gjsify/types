@@ -1,9 +1,9 @@
 
-import Cogl from './cogl-2.0.js';
+import Cogl20 from '@girs/cogl-2.0';
 
 declare global {
     export interface GjsGiImports {
-        Cogl: typeof Cogl;
+        Cogl: typeof Cogl20;
     }
 }
 

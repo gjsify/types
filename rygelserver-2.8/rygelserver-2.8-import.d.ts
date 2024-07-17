@@ -1,9 +1,9 @@
 
-import RygelServer from './rygelserver-2.8.js';
+import RygelServer28 from '@girs/rygelserver-2.8';
 
 declare global {
     export interface GjsGiImports {
-        RygelServer: typeof RygelServer;
+        RygelServer: typeof RygelServer28;
     }
 }
 

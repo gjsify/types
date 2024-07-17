@@ -1,9 +1,9 @@
 
-import GstInsertBin from './gstinsertbin-1.0.js';
+import GstInsertBin10 from '@girs/gstinsertbin-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstInsertBin: typeof GstInsertBin;
+        GstInsertBin: typeof GstInsertBin10;
     }
 }
 

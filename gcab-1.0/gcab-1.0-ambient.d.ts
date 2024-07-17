@@ -1,11 +1,11 @@
 
 declare module 'gi://GCab?version=1.0' {
-    const GCab10: typeof import('./gcab-1.0.js').default
+    import GCab10 from '@girs/gcab-1.0';
     export default GCab10;
 }
 
 declare module 'gi://GCab' {
-    const GCab10: typeof import('./gcab-1.0.js').default
+    import GCab10 from 'gi://GCab?version=1.0';
     export default GCab10;
 }
 

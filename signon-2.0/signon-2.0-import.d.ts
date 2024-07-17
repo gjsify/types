@@ -1,9 +1,9 @@
 
-import Signon from './signon-2.0.js';
+import Signon20 from '@girs/signon-2.0';
 
 declare global {
     export interface GjsGiImports {
-        Signon: typeof Signon;
+        Signon: typeof Signon20;
     }
 }
 

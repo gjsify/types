@@ -1,11 +1,11 @@
 
 declare module 'gi://Fep?version=1.0' {
-    const Fep10: typeof import('./fep-1.0.js').default
+    import Fep10 from '@girs/fep-1.0';
     export default Fep10;
 }
 
 declare module 'gi://Fep' {
-    const Fep10: typeof import('./fep-1.0.js').default
+    import Fep10 from 'gi://Fep?version=1.0';
     export default Fep10;
 }
 

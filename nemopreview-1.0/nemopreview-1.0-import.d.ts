@@ -1,9 +1,9 @@
 
-import NemoPreview from './nemopreview-1.0.js';
+import NemoPreview10 from '@girs/nemopreview-1.0';
 
 declare global {
     export interface GjsGiImports {
-        NemoPreview: typeof NemoPreview;
+        NemoPreview: typeof NemoPreview10;
     }
 }
 

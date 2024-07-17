@@ -1,9 +1,9 @@
 
-import GstCheck from './gstcheck-1.0.js';
+import GstCheck10 from '@girs/gstcheck-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstCheck: typeof GstCheck;
+        GstCheck: typeof GstCheck10;
     }
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://GstGLWayland?version=1.0' {
-    const GstGLWayland10: typeof import('./gstglwayland-1.0.js').default
+    import GstGLWayland10 from '@girs/gstglwayland-1.0';
     export default GstGLWayland10;
 }
 
 declare module 'gi://GstGLWayland' {
-    const GstGLWayland10: typeof import('./gstglwayland-1.0.js').default
+    import GstGLWayland10 from 'gi://GstGLWayland?version=1.0';
     export default GstGLWayland10;
 }
 

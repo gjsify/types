@@ -1,11 +1,11 @@
 
 declare module 'gi://GrlPls?version=0.3' {
-    const GrlPls03: typeof import('./grlpls-0.3.js').default
+    import GrlPls03 from '@girs/grlpls-0.3';
     export default GrlPls03;
 }
 
 declare module 'gi://GrlPls' {
-    const GrlPls03: typeof import('./grlpls-0.3.js').default
+    import GrlPls03 from 'gi://GrlPls?version=0.3';
     export default GrlPls03;
 }
 

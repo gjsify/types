@@ -1,11 +1,11 @@
 
 declare module 'gi://GstBadAudio?version=1.0' {
-    const GstBadAudio10: typeof import('./gstbadaudio-1.0.js').default
+    import GstBadAudio10 from '@girs/gstbadaudio-1.0';
     export default GstBadAudio10;
 }
 
 declare module 'gi://GstBadAudio' {
-    const GstBadAudio10: typeof import('./gstbadaudio-1.0.js').default
+    import GstBadAudio10 from 'gi://GstBadAudio?version=1.0';
     export default GstBadAudio10;
 }
 

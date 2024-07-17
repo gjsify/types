@@ -1,9 +1,9 @@
 
-import JavaScriptCore from './javascriptcore-6.0.js';
+import JavaScriptCore60 from '@girs/javascriptcore-6.0';
 
 declare global {
     export interface GjsGiImports {
-        JavaScriptCore: typeof JavaScriptCore;
+        JavaScriptCore: typeof JavaScriptCore60;
     }
 }
 

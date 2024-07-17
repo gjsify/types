@@ -1,11 +1,11 @@
 
 declare module 'gi://AppStreamGlib?version=1.0' {
-    const AppStreamGlib10: typeof import('./appstreamglib-1.0.js').default
+    import AppStreamGlib10 from '@girs/appstreamglib-1.0';
     export default AppStreamGlib10;
 }
 
 declare module 'gi://AppStreamGlib' {
-    const AppStreamGlib10: typeof import('./appstreamglib-1.0.js').default
+    import AppStreamGlib10 from 'gi://AppStreamGlib?version=1.0';
     export default AppStreamGlib10;
 }
 

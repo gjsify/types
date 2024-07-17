@@ -1,9 +1,9 @@
 
-import OsmGpsMap from './osmgpsmap-1.0.js';
+import OsmGpsMap10 from '@girs/osmgpsmap-1.0';
 
 declare global {
     export interface GjsGiImports {
-        OsmGpsMap: typeof OsmGpsMap;
+        OsmGpsMap: typeof OsmGpsMap10;
     }
 }
 

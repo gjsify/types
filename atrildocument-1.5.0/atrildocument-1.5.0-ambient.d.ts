@@ -1,11 +1,11 @@
 
 declare module 'gi://AtrilDocument?version=1.5.0' {
-    const AtrilDocument150: typeof import('./atrildocument-1.5.0.js').default
+    import AtrilDocument150 from '@girs/atrildocument-1.5.0';
     export default AtrilDocument150;
 }
 
 declare module 'gi://AtrilDocument' {
-    const AtrilDocument150: typeof import('./atrildocument-1.5.0.js').default
+    import AtrilDocument150 from 'gi://AtrilDocument?version=1.5.0';
     export default AtrilDocument150;
 }
 

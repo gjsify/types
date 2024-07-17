@@ -1,9 +1,9 @@
 
-import Thunarx from './thunarx-3.0.js';
+import Thunarx30 from '@girs/thunarx-3.0';
 
 declare global {
     export interface GjsGiImports {
-        Thunarx: typeof Thunarx;
+        Thunarx: typeof Thunarx30;
     }
 }
 

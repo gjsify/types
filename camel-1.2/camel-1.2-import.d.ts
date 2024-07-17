@@ -1,9 +1,9 @@
 
-import Camel from './camel-1.2.js';
+import Camel12 from '@girs/camel-1.2';
 
 declare global {
     export interface GjsGiImports {
-        Camel: typeof Camel;
+        Camel: typeof Camel12;
     }
 }
 

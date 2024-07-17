@@ -1,11 +1,11 @@
 
 declare module 'gi://EBookContacts?version=1.2' {
-    const EBookContacts12: typeof import('./ebookcontacts-1.2.js').default
+    import EBookContacts12 from '@girs/ebookcontacts-1.2';
     export default EBookContacts12;
 }
 
 declare module 'gi://EBookContacts' {
-    const EBookContacts12: typeof import('./ebookcontacts-1.2.js').default
+    import EBookContacts12 from 'gi://EBookContacts?version=1.2';
     export default EBookContacts12;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://SoupGNOME?version=2.4' {
-    const SoupGNOME24: typeof import('./soupgnome-2.4.js').default
+    import SoupGNOME24 from '@girs/soupgnome-2.4';
     export default SoupGNOME24;
 }
 
 declare module 'gi://SoupGNOME' {
-    const SoupGNOME24: typeof import('./soupgnome-2.4.js').default
+    import SoupGNOME24 from 'gi://SoupGNOME?version=2.4';
     export default SoupGNOME24;
 }
 

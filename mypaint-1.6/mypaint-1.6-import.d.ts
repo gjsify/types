@@ -1,9 +1,9 @@
 
-import MyPaint from './mypaint-1.6.js';
+import MyPaint16 from '@girs/mypaint-1.6';
 
 declare global {
     export interface GjsGiImports {
-        MyPaint: typeof MyPaint;
+        MyPaint: typeof MyPaint16;
     }
 }
 

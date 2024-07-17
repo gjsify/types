@@ -1,11 +1,11 @@
 
 declare module 'gi://TimezoneMap?version=1.0' {
-    const TimezoneMap10: typeof import('./timezonemap-1.0.js').default
+    import TimezoneMap10 from '@girs/timezonemap-1.0';
     export default TimezoneMap10;
 }
 
 declare module 'gi://TimezoneMap' {
-    const TimezoneMap10: typeof import('./timezonemap-1.0.js').default
+    import TimezoneMap10 from 'gi://TimezoneMap?version=1.0';
     export default TimezoneMap10;
 }
 

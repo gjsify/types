@@ -1,11 +1,11 @@
 
 declare module 'gi://xlib?version=2.0' {
-    const Xlib20: typeof import('./xlib-2.0.js').default
+    import Xlib20 from '@girs/xlib-2.0';
     export default Xlib20;
 }
 
 declare module 'gi://xlib' {
-    const Xlib20: typeof import('./xlib-2.0.js').default
+    import Xlib20 from 'gi://xlib?version=2.0';
     export default Xlib20;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://GstRtp?version=1.0' {
-    const GstRtp10: typeof import('./gstrtp-1.0.js').default
+    import GstRtp10 from '@girs/gstrtp-1.0';
     export default GstRtp10;
 }
 
 declare module 'gi://GstRtp' {
-    const GstRtp10: typeof import('./gstrtp-1.0.js').default
+    import GstRtp10 from 'gi://GstRtp?version=1.0';
     export default GstRtp10;
 }
 

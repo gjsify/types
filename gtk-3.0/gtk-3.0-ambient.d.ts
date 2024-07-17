@@ -1,11 +1,11 @@
 
 declare module 'gi://Gtk?version=3.0' {
-    const Gtk30: typeof import('./gtk-3.0.js').default
+    import Gtk30 from '@girs/gtk-3.0';
     export default Gtk30;
 }
 
 declare module 'gi://Gtk' {
-    const Gtk30: typeof import('./gtk-3.0.js').default
+    import Gtk30 from 'gi://Gtk?version=3.0';
     export default Gtk30;
 }
 

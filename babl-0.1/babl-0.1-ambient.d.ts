@@ -1,11 +1,11 @@
 
 declare module 'gi://Babl?version=0.1' {
-    const Babl01: typeof import('./babl-0.1.js').default
+    import Babl01 from '@girs/babl-0.1';
     export default Babl01;
 }
 
 declare module 'gi://Babl' {
-    const Babl01: typeof import('./babl-0.1.js').default
+    import Babl01 from 'gi://Babl?version=0.1';
     export default Babl01;
 }
 

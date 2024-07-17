@@ -1,9 +1,9 @@
 
-import GstGLWayland from './gstglwayland-1.0.js';
+import GstGLWayland10 from '@girs/gstglwayland-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstGLWayland: typeof GstGLWayland;
+        GstGLWayland: typeof GstGLWayland10;
     }
 }
 

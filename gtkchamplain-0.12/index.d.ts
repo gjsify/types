@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gtkchamplain-0.12-ambient.js';
+import './gtkchamplain-0.12-ambient.d.ts';
 
-import './gtkchamplain-0.12-import.js';
+import './gtkchamplain-0.12-import.d.ts';
 
 import GtkChamplain from './gtkchamplain-0.12.js';
 export default GtkChamplain;

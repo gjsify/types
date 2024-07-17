@@ -1,11 +1,11 @@
 
 declare module 'gi://Xkl?version=1.0' {
-    const Xkl10: typeof import('./xkl-1.0.js').default
+    import Xkl10 from '@girs/xkl-1.0';
     export default Xkl10;
 }
 
 declare module 'gi://Xkl' {
-    const Xkl10: typeof import('./xkl-1.0.js').default
+    import Xkl10 from 'gi://Xkl?version=1.0';
     export default Xkl10;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Wp?version=0.4' {
-    const Wp04: typeof import('./wp-0.4.js').default
+    import Wp04 from '@girs/wp-0.4';
     export default Wp04;
 }
 
 declare module 'gi://Wp' {
-    const Wp04: typeof import('./wp-0.4.js').default
+    import Wp04 from 'gi://Wp?version=0.4';
     export default Wp04;
 }
 

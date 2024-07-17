@@ -1,11 +1,11 @@
 
 declare module 'gi://GitgExt?version=1.0' {
-    const GitgExt10: typeof import('./gitgext-1.0.js').default
+    import GitgExt10 from '@girs/gitgext-1.0';
     export default GitgExt10;
 }
 
 declare module 'gi://GitgExt' {
-    const GitgExt10: typeof import('./gitgext-1.0.js').default
+    import GitgExt10 from 'gi://GitgExt?version=1.0';
     export default GitgExt10;
 }
 

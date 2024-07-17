@@ -1,11 +1,11 @@
 
 declare module 'gi://Gamerzilla?version=0.1' {
-    const Gamerzilla01: typeof import('./gamerzilla-0.1.js').default
+    import Gamerzilla01 from '@girs/gamerzilla-0.1';
     export default Gamerzilla01;
 }
 
 declare module 'gi://Gamerzilla' {
-    const Gamerzilla01: typeof import('./gamerzilla-0.1.js').default
+    import Gamerzilla01 from 'gi://Gamerzilla?version=0.1';
     export default Gamerzilla01;
 }
 

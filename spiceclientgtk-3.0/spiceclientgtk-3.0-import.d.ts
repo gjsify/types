@@ -1,9 +1,9 @@
 
-import SpiceClientGtk from './spiceclientgtk-3.0.js';
+import SpiceClientGtk30 from '@girs/spiceclientgtk-3.0';
 
 declare global {
     export interface GjsGiImports {
-        SpiceClientGtk: typeof SpiceClientGtk;
+        SpiceClientGtk: typeof SpiceClientGtk30;
     }
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Meta?version=15' {
-    const Meta15: typeof import('./meta-15.js').default
+    import Meta15 from '@girs/meta-15';
     export default Meta15;
 }
 
 declare module 'gi://Meta' {
-    const Meta15: typeof import('./meta-15.js').default
+    import Meta15 from 'gi://Meta?version=15';
     export default Meta15;
 }
 

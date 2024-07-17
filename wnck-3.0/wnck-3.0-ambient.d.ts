@@ -1,11 +1,11 @@
 
 declare module 'gi://Wnck?version=3.0' {
-    const Wnck30: typeof import('./wnck-3.0.js').default
+    import Wnck30 from '@girs/wnck-3.0';
     export default Wnck30;
 }
 
 declare module 'gi://Wnck' {
-    const Wnck30: typeof import('./wnck-3.0.js').default
+    import Wnck30 from 'gi://Wnck?version=3.0';
     export default Wnck30;
 }
 

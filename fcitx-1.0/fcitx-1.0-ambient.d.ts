@@ -1,11 +1,11 @@
 
 declare module 'gi://Fcitx?version=1.0' {
-    const Fcitx10: typeof import('./fcitx-1.0.js').default
+    import Fcitx10 from '@girs/fcitx-1.0';
     export default Fcitx10;
 }
 
 declare module 'gi://Fcitx' {
-    const Fcitx10: typeof import('./fcitx-1.0.js').default
+    import Fcitx10 from 'gi://Fcitx?version=1.0';
     export default Fcitx10;
 }
 

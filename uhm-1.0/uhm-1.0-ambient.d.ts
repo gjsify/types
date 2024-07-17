@@ -1,11 +1,11 @@
 
 declare module 'gi://Uhm?version=1.0' {
-    const Uhm10: typeof import('./uhm-1.0.js').default
+    import Uhm10 from '@girs/uhm-1.0';
     export default Uhm10;
 }
 
 declare module 'gi://Uhm' {
-    const Uhm10: typeof import('./uhm-1.0.js').default
+    import Uhm10 from 'gi://Uhm?version=1.0';
     export default Uhm10;
 }
 

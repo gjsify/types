@@ -1,11 +1,11 @@
 
 declare module 'gi://MetaTest?version=12' {
-    const MetaTest12: typeof import('./metatest-12.js').default
+    import MetaTest12 from '@girs/metatest-12';
     export default MetaTest12;
 }
 
 declare module 'gi://MetaTest' {
-    const MetaTest12: typeof import('./metatest-12.js').default
+    import MetaTest12 from 'gi://MetaTest?version=12';
     export default MetaTest12;
 }
 

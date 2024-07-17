@@ -1,9 +1,9 @@
 
-import GstMpegts from './gstmpegts-1.0.js';
+import GstMpegts10 from '@girs/gstmpegts-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstMpegts: typeof GstMpegts;
+        GstMpegts: typeof GstMpegts10;
     }
 }
 

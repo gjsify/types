@@ -1,9 +1,9 @@
 
-import GSSDP from './gssdp-1.6.js';
+import GSSDP16 from '@girs/gssdp-1.6';
 
 declare global {
     export interface GjsGiImports {
-        GSSDP: typeof GSSDP;
+        GSSDP: typeof GSSDP16;
     }
 }
 

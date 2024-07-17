@@ -1,9 +1,9 @@
 
-import Flatpak from './flatpak-1.0.js';
+import Flatpak10 from '@girs/flatpak-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Flatpak: typeof Flatpak;
+        Flatpak: typeof Flatpak10;
     }
 }
 

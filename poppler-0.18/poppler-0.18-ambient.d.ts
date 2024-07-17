@@ -1,11 +1,11 @@
 
 declare module 'gi://Poppler?version=0.18' {
-    const Poppler018: typeof import('./poppler-0.18.js').default
+    import Poppler018 from '@girs/poppler-0.18';
     export default Poppler018;
 }
 
 declare module 'gi://Poppler' {
-    const Poppler018: typeof import('./poppler-0.18.js').default
+    import Poppler018 from 'gi://Poppler?version=0.18';
     export default Poppler018;
 }
 

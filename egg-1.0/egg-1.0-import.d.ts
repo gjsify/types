@@ -1,9 +1,9 @@
 
-import Egg from './egg-1.0.js';
+import Egg10 from '@girs/egg-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Egg: typeof Egg;
+        Egg: typeof Egg10;
     }
 }
 

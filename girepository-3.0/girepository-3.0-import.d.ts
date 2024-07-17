@@ -1,9 +1,9 @@
 
-import GIRepository from './girepository-3.0.js';
+import GIRepository30 from '@girs/girepository-3.0';
 
 declare global {
     export interface GjsGiImports {
-        GIRepository: typeof GIRepository;
+        GIRepository: typeof GIRepository30;
     }
 }
 

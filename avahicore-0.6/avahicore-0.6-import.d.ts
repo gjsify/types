@@ -1,9 +1,9 @@
 
-import AvahiCore from './avahicore-0.6.js';
+import AvahiCore06 from '@girs/avahicore-0.6';
 
 declare global {
     export interface GjsGiImports {
-        AvahiCore: typeof AvahiCore;
+        AvahiCore: typeof AvahiCore06;
     }
 }
 

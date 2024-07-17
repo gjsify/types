@@ -1,9 +1,9 @@
 
-import GTop from './gtop-2.0.js';
+import GTop20 from '@girs/gtop-2.0';
 
 declare global {
     export interface GjsGiImports {
-        GTop: typeof GTop;
+        GTop: typeof GTop20;
     }
 }
 

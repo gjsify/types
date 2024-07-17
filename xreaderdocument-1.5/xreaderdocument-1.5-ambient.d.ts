@@ -1,11 +1,11 @@
 
 declare module 'gi://XreaderDocument?version=1.5' {
-    const XreaderDocument15: typeof import('./xreaderdocument-1.5.js').default
+    import XreaderDocument15 from '@girs/xreaderdocument-1.5';
     export default XreaderDocument15;
 }
 
 declare module 'gi://XreaderDocument' {
-    const XreaderDocument15: typeof import('./xreaderdocument-1.5.js').default
+    import XreaderDocument15 from 'gi://XreaderDocument?version=1.5';
     export default XreaderDocument15;
 }
 

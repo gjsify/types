@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './mx-2.0-ambient.js';
+import './mx-2.0-ambient.d.ts';
 
-import './mx-2.0-import.js';
+import './mx-2.0-import.d.ts';
 
 import Mx from './mx-2.0.js';
 export default Mx;

@@ -1,9 +1,9 @@
 
-import DBus from './dbus-1.0.js';
+import DBus10 from '@girs/dbus-1.0';
 
 declare global {
     export interface GjsGiImports {
-        DBus: typeof DBus;
+        DBus: typeof DBus10;
     }
 }
 

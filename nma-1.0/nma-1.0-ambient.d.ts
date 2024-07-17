@@ -1,11 +1,11 @@
 
 declare module 'gi://NMA?version=1.0' {
-    const NMA10: typeof import('./nma-1.0.js').default
+    import NMA10 from '@girs/nma-1.0';
     export default NMA10;
 }
 
 declare module 'gi://NMA' {
-    const NMA10: typeof import('./nma-1.0.js').default
+    import NMA10 from 'gi://NMA?version=1.0';
     export default NMA10;
 }
 

@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gfbgraph-0.3-ambient.js';
+import './gfbgraph-0.3-ambient.d.ts';
 
-import './gfbgraph-0.3-import.js';
+import './gfbgraph-0.3-import.d.ts';
 
 import GFBGraph from './gfbgraph-0.3.js';
 export default GFBGraph;

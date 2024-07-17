@@ -1,11 +1,11 @@
 
 declare module 'gi://GWeather?version=3.0' {
-    const GWeather30: typeof import('./gweather-3.0.js').default
+    import GWeather30 from '@girs/gweather-3.0';
     export default GWeather30;
 }
 
 declare module 'gi://GWeather' {
-    const GWeather30: typeof import('./gweather-3.0.js').default
+    import GWeather30 from 'gi://GWeather?version=3.0';
     export default GWeather30;
 }
 

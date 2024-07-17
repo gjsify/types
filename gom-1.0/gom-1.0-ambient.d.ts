@@ -1,11 +1,11 @@
 
 declare module 'gi://Gom?version=1.0' {
-    const Gom10: typeof import('./gom-1.0.js').default
+    import Gom10 from '@girs/gom-1.0';
     export default Gom10;
 }
 
 declare module 'gi://Gom' {
-    const Gom10: typeof import('./gom-1.0.js').default
+    import Gom10 from 'gi://Gom?version=1.0';
     export default Gom10;
 }
 

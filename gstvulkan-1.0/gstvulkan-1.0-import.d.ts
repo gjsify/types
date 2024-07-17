@@ -1,9 +1,9 @@
 
-import GstVulkan from './gstvulkan-1.0.js';
+import GstVulkan10 from '@girs/gstvulkan-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstVulkan: typeof GstVulkan;
+        GstVulkan: typeof GstVulkan10;
     }
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://GstAnalytics?version=1.0' {
-    const GstAnalytics10: typeof import('./gstanalytics-1.0.js').default
+    import GstAnalytics10 from '@girs/gstanalytics-1.0';
     export default GstAnalytics10;
 }
 
 declare module 'gi://GstAnalytics' {
-    const GstAnalytics10: typeof import('./gstanalytics-1.0.js').default
+    import GstAnalytics10 from 'gi://GstAnalytics?version=1.0';
     export default GstAnalytics10;
 }
 

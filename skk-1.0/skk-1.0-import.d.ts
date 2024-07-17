@@ -1,9 +1,9 @@
 
-import Skk from './skk-1.0.js';
+import Skk10 from '@girs/skk-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Skk: typeof Skk;
+        Skk: typeof Skk10;
     }
 }
 

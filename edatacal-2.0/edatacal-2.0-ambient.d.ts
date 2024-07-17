@@ -1,11 +1,11 @@
 
 declare module 'gi://EDataCal?version=2.0' {
-    const EDataCal20: typeof import('./edatacal-2.0.js').default
+    import EDataCal20 from '@girs/edatacal-2.0';
     export default EDataCal20;
 }
 
 declare module 'gi://EDataCal' {
-    const EDataCal20: typeof import('./edatacal-2.0.js').default
+    import EDataCal20 from 'gi://EDataCal?version=2.0';
     export default EDataCal20;
 }
 

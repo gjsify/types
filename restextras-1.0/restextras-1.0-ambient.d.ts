@@ -1,11 +1,11 @@
 
 declare module 'gi://RestExtras?version=1.0' {
-    const RestExtras10: typeof import('./restextras-1.0.js').default
+    import RestExtras10 from '@girs/restextras-1.0';
     export default RestExtras10;
 }
 
 declare module 'gi://RestExtras' {
-    const RestExtras10: typeof import('./restextras-1.0.js').default
+    import RestExtras10 from 'gi://RestExtras?version=1.0';
     export default RestExtras10;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Gedit?version=3.0' {
-    const Gedit30: typeof import('./gedit-3.0.js').default
+    import Gedit30 from '@girs/gedit-3.0';
     export default Gedit30;
 }
 
 declare module 'gi://Gedit' {
-    const Gedit30: typeof import('./gedit-3.0.js').default
+    import Gedit30 from 'gi://Gedit?version=3.0';
     export default Gedit30;
 }
 

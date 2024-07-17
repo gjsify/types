@@ -1,9 +1,9 @@
 
-import Graphene from './graphene-1.0.js';
+import Graphene10 from '@girs/graphene-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Graphene: typeof Graphene;
+        Graphene: typeof Graphene10;
     }
 }
 

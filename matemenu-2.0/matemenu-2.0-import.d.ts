@@ -1,9 +1,9 @@
 
-import MateMenu from './matemenu-2.0.js';
+import MateMenu20 from '@girs/matemenu-2.0';
 
 declare global {
     export interface GjsGiImports {
-        MateMenu: typeof MateMenu;
+        MateMenu: typeof MateMenu20;
     }
 }
 

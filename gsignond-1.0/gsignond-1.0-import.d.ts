@@ -1,9 +1,9 @@
 
-import GSignond from './gsignond-1.0.js';
+import GSignond10 from '@girs/gsignond-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GSignond: typeof GSignond;
+        GSignond: typeof GSignond10;
     }
 }
 

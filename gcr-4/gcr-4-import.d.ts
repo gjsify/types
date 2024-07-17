@@ -1,9 +1,9 @@
 
-import Gcr from './gcr-4.js';
+import Gcr4 from '@girs/gcr-4';
 
 declare global {
     export interface GjsGiImports {
-        Gcr: typeof Gcr;
+        Gcr: typeof Gcr4;
     }
 }
 

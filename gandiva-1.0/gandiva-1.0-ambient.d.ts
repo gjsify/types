@@ -1,11 +1,11 @@
 
 declare module 'gi://Gandiva?version=1.0' {
-    const Gandiva10: typeof import('./gandiva-1.0.js').default
+    import Gandiva10 from '@girs/gandiva-1.0';
     export default Gandiva10;
 }
 
 declare module 'gi://Gandiva' {
-    const Gandiva10: typeof import('./gandiva-1.0.js').default
+    import Gandiva10 from 'gi://Gandiva?version=1.0';
     export default Gandiva10;
 }
 

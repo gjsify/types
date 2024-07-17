@@ -1,9 +1,9 @@
 
-import Rest from './rest-1.0.js';
+import Rest10 from '@girs/rest-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Rest: typeof Rest;
+        Rest: typeof Rest10;
     }
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://LibvirtGObject?version=1.0' {
-    const LibvirtGObject10: typeof import('./libvirtgobject-1.0.js').default
+    import LibvirtGObject10 from '@girs/libvirtgobject-1.0';
     export default LibvirtGObject10;
 }
 
 declare module 'gi://LibvirtGObject' {
-    const LibvirtGObject10: typeof import('./libvirtgobject-1.0.js').default
+    import LibvirtGObject10 from 'gi://LibvirtGObject?version=1.0';
     export default LibvirtGObject10;
 }
 

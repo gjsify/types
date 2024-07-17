@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './clappergtk-0.0-ambient.js';
+import './clappergtk-0.0-ambient.d.ts';
 
-import './clappergtk-0.0-import.js';
+import './clappergtk-0.0-import.d.ts';
 
 import ClapperGtk from './clappergtk-0.0.js';
 export default ClapperGtk;

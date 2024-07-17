@@ -1,11 +1,11 @@
 
 declare module 'gi://Keybinder?version=0.0' {
-    const Keybinder00: typeof import('./keybinder-0.0.js').default
+    import Keybinder00 from '@girs/keybinder-0.0';
     export default Keybinder00;
 }
 
 declare module 'gi://Keybinder' {
-    const Keybinder00: typeof import('./keybinder-0.0.js').default
+    import Keybinder00 from 'gi://Keybinder?version=0.0';
     export default Keybinder00;
 }
 

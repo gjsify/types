@@ -1,11 +1,11 @@
 
 declare module 'gi://Adw?version=1' {
-    const Adw1: typeof import('./adw-1.js').default
+    import Adw1 from '@girs/adw-1';
     export default Adw1;
 }
 
 declare module 'gi://Adw' {
-    const Adw1: typeof import('./adw-1.js').default
+    import Adw1 from 'gi://Adw?version=1';
     export default Adw1;
 }
 

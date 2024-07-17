@@ -1,9 +1,9 @@
 
-import Clapper from './clapper-0.0.js';
+import Clapper00 from '@girs/clapper-0.0';
 
 declare global {
     export interface GjsGiImports {
-        Clapper: typeof Clapper;
+        Clapper: typeof Clapper00;
     }
 }
 

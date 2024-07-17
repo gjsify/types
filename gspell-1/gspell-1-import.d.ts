@@ -1,9 +1,9 @@
 
-import Gspell from './gspell-1.js';
+import Gspell1 from '@girs/gspell-1';
 
 declare global {
     export interface GjsGiImports {
-        Gspell: typeof Gspell;
+        Gspell: typeof Gspell1;
     }
 }
 

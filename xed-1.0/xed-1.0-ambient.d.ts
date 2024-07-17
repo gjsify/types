@@ -1,11 +1,11 @@
 
 declare module 'gi://Xed?version=1.0' {
-    const Xed10: typeof import('./xed-1.0.js').default
+    import Xed10 from '@girs/xed-1.0';
     export default Xed10;
 }
 
 declare module 'gi://Xed' {
-    const Xed10: typeof import('./xed-1.0.js').default
+    import Xed10 from 'gi://Xed?version=1.0';
     export default Xed10;
 }
 

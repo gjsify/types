@@ -1,9 +1,9 @@
 
-import SoupGNOME from './soupgnome-2.4.js';
+import SoupGNOME24 from '@girs/soupgnome-2.4';
 
 declare global {
     export interface GjsGiImports {
-        SoupGNOME: typeof SoupGNOME;
+        SoupGNOME: typeof SoupGNOME24;
     }
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://SpiceClientGLib?version=2.0' {
-    const SpiceClientGLib20: typeof import('./spiceclientglib-2.0.js').default
+    import SpiceClientGLib20 from '@girs/spiceclientglib-2.0';
     export default SpiceClientGLib20;
 }
 
 declare module 'gi://SpiceClientGLib' {
-    const SpiceClientGLib20: typeof import('./spiceclientglib-2.0.js').default
+    import SpiceClientGLib20 from 'gi://SpiceClientGLib?version=2.0';
     export default SpiceClientGLib20;
 }
 

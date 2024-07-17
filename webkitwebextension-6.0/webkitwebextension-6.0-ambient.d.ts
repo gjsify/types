@@ -1,11 +1,11 @@
 
 declare module 'gi://WebKitWebExtension?version=6.0' {
-    const WebKitWebExtension60: typeof import('./webkitwebextension-6.0.js').default
+    import WebKitWebExtension60 from '@girs/webkitwebextension-6.0';
     export default WebKitWebExtension60;
 }
 
 declare module 'gi://WebKitWebExtension' {
-    const WebKitWebExtension60: typeof import('./webkitwebextension-6.0.js').default
+    import WebKitWebExtension60 from 'gi://WebKitWebExtension?version=6.0';
     export default WebKitWebExtension60;
 }
 

@@ -1,9 +1,9 @@
 
-import Gkbd from './gkbd-3.0.js';
+import Gkbd30 from '@girs/gkbd-3.0';
 
 declare global {
     export interface GjsGiImports {
-        Gkbd: typeof Gkbd;
+        Gkbd: typeof Gkbd30;
     }
 }
 

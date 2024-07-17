@@ -1,9 +1,9 @@
 
-import PangoFT2 from './pangoft2-1.0.js';
+import PangoFT210 from '@girs/pangoft2-1.0';
 
 declare global {
     export interface GjsGiImports {
-        PangoFT2: typeof PangoFT2;
+        PangoFT2: typeof PangoFT210;
     }
 }
 

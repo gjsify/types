@@ -1,9 +1,9 @@
 
-import Tepl from './tepl-6.js';
+import Tepl6 from '@girs/tepl-6';
 
 declare global {
     export interface GjsGiImports {
-        Tepl: typeof Tepl;
+        Tepl: typeof Tepl6;
     }
 }
 

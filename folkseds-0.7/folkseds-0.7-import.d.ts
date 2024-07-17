@@ -1,9 +1,9 @@
 
-import FolksEds from './folkseds-0.7.js';
+import FolksEds07 from '@girs/folkseds-0.7';
 
 declare global {
     export interface GjsGiImports {
-        FolksEds: typeof FolksEds;
+        FolksEds: typeof FolksEds07;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import Parquet from './parquet-1.0.js';
+import Parquet10 from '@girs/parquet-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Parquet: typeof Parquet;
+        Parquet: typeof Parquet10;
     }
 }
 

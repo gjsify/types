@@ -1,11 +1,11 @@
 
 declare module 'gi://GstGL?version=1.0' {
-    const GstGL10: typeof import('./gstgl-1.0.js').default
+    import GstGL10 from '@girs/gstgl-1.0';
     export default GstGL10;
 }
 
 declare module 'gi://GstGL' {
-    const GstGL10: typeof import('./gstgl-1.0.js').default
+    import GstGL10 from 'gi://GstGL?version=1.0';
     export default GstGL10;
 }
 

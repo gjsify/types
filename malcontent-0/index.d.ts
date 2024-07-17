@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './malcontent-0-ambient.js';
+import './malcontent-0-ambient.d.ts';
 
-import './malcontent-0-import.js';
+import './malcontent-0-import.d.ts';
 
 import Malcontent from './malcontent-0.js';
 export default Malcontent;

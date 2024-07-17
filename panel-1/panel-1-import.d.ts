@@ -1,9 +1,9 @@
 
-import Panel from './panel-1.js';
+import Panel1 from '@girs/panel-1';
 
 declare global {
     export interface GjsGiImports {
-        Panel: typeof Panel;
+        Panel: typeof Panel1;
     }
 }
 

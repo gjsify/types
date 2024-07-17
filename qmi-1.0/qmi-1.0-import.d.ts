@@ -1,9 +1,9 @@
 
-import Qmi from './qmi-1.0.js';
+import Qmi10 from '@girs/qmi-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Qmi: typeof Qmi;
+        Qmi: typeof Qmi10;
     }
 }
 

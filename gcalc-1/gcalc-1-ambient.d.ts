@@ -1,11 +1,11 @@
 
 declare module 'gi://GCalc?version=1' {
-    const GCalc1: typeof import('./gcalc-1.js').default
+    import GCalc1 from '@girs/gcalc-1';
     export default GCalc1;
 }
 
 declare module 'gi://GCalc' {
-    const GCalc1: typeof import('./gcalc-1.js').default
+    import GCalc1 from 'gi://GCalc?version=1';
     export default GCalc1;
 }
 

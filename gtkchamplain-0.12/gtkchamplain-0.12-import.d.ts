@@ -1,9 +1,9 @@
 
-import GtkChamplain from './gtkchamplain-0.12.js';
+import GtkChamplain012 from '@girs/gtkchamplain-0.12';
 
 declare global {
     export interface GjsGiImports {
-        GtkChamplain: typeof GtkChamplain;
+        GtkChamplain: typeof GtkChamplain012;
     }
 }
 

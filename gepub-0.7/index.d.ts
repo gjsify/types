@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gepub-0.7-ambient.js';
+import './gepub-0.7-ambient.d.ts';
 
-import './gepub-0.7-import.js';
+import './gepub-0.7-import.d.ts';
 
 import Gepub from './gepub-0.7.js';
 export default Gepub;

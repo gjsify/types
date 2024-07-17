@@ -1,9 +1,9 @@
 
-import RygelCore from './rygelcore-2.8.js';
+import RygelCore28 from '@girs/rygelcore-2.8';
 
 declare global {
     export interface GjsGiImports {
-        RygelCore: typeof RygelCore;
+        RygelCore: typeof RygelCore28;
     }
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Mks?version=1' {
-    const Mks1: typeof import('./mks-1.js').default
+    import Mks1 from '@girs/mks-1';
     export default Mks1;
 }
 
 declare module 'gi://Mks' {
-    const Mks1: typeof import('./mks-1.js').default
+    import Mks1 from 'gi://Mks?version=1';
     export default Mks1;
 }
 

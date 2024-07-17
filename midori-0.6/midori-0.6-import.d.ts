@@ -1,9 +1,9 @@
 
-import Midori from './midori-0.6.js';
+import Midori06 from '@girs/midori-0.6';
 
 declare global {
     export interface GjsGiImports {
-        Midori: typeof Midori;
+        Midori: typeof Midori06;
     }
 }
 

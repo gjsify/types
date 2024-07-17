@@ -1,9 +1,9 @@
 
-import GDesktopEnums from './gdesktopenums-3.0.js';
+import GDesktopEnums30 from '@girs/gdesktopenums-3.0';
 
 declare global {
     export interface GjsGiImports {
-        GDesktopEnums: typeof GDesktopEnums;
+        GDesktopEnums: typeof GDesktopEnums30;
     }
 }
 

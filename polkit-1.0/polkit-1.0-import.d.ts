@@ -1,9 +1,9 @@
 
-import Polkit from './polkit-1.0.js';
+import Polkit10 from '@girs/polkit-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Polkit: typeof Polkit;
+        Polkit: typeof Polkit10;
     }
 }
 

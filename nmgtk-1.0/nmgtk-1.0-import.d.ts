@@ -1,9 +1,9 @@
 
-import NMGtk from './nmgtk-1.0.js';
+import NMGtk10 from '@girs/nmgtk-1.0';
 
 declare global {
     export interface GjsGiImports {
-        NMGtk: typeof NMGtk;
+        NMGtk: typeof NMGtk10;
     }
 }
 

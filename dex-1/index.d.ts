@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './dex-1-ambient.js';
+import './dex-1-ambient.d.ts';
 
-import './dex-1-import.js';
+import './dex-1-import.d.ts';
 
 import Dex from './dex-1.js';
 export default Dex;

@@ -1,11 +1,11 @@
 
 declare module 'gi://Gee?version=1.0' {
-    const Gee10: typeof import('./gee-1.0.js').default
+    import Gee10 from '@girs/gee-1.0';
     export default Gee10;
 }
 
 declare module 'gi://Gee' {
-    const Gee10: typeof import('./gee-1.0.js').default
+    import Gee10 from 'gi://Gee?version=1.0';
     export default Gee10;
 }
 

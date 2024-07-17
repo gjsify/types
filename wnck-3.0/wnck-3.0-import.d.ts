@@ -1,9 +1,9 @@
 
-import Wnck from './wnck-3.0.js';
+import Wnck30 from '@girs/wnck-3.0';
 
 declare global {
     export interface GjsGiImports {
-        Wnck: typeof Wnck;
+        Wnck: typeof Wnck30;
     }
 }
 

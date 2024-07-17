@@ -1,11 +1,11 @@
 
 declare module 'gi://Vgsl?version=1' {
-    const Vgsl1: typeof import('./vgsl-1.js').default
+    import Vgsl1 from '@girs/vgsl-1';
     export default Vgsl1;
 }
 
 declare module 'gi://Vgsl' {
-    const Vgsl1: typeof import('./vgsl-1.js').default
+    import Vgsl1 from 'gi://Vgsl?version=1';
     export default Vgsl1;
 }
 

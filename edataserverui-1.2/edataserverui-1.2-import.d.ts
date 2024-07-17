@@ -1,9 +1,9 @@
 
-import EDataServerUI from './edataserverui-1.2.js';
+import EDataServerUI12 from '@girs/edataserverui-1.2';
 
 declare global {
     export interface GjsGiImports {
-        EDataServerUI: typeof EDataServerUI;
+        EDataServerUI: typeof EDataServerUI12;
     }
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://RygelRendererGst?version=2.8' {
-    const RygelRendererGst28: typeof import('./rygelrenderergst-2.8.js').default
+    import RygelRendererGst28 from '@girs/rygelrenderergst-2.8';
     export default RygelRendererGst28;
 }
 
 declare module 'gi://RygelRendererGst' {
-    const RygelRendererGst28: typeof import('./rygelrenderergst-2.8.js').default
+    import RygelRendererGst28 from 'gi://RygelRendererGst?version=2.8';
     export default RygelRendererGst28;
 }
 

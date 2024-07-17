@@ -1,9 +1,9 @@
 
-import GtkClutter from './gtkclutter-1.0.js';
+import GtkClutter10 from '@girs/gtkclutter-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GtkClutter: typeof GtkClutter;
+        GtkClutter: typeof GtkClutter10;
     }
 }
 

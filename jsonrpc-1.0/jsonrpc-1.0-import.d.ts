@@ -1,9 +1,9 @@
 
-import Jsonrpc from './jsonrpc-1.0.js';
+import Jsonrpc10 from '@girs/jsonrpc-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Jsonrpc: typeof Jsonrpc;
+        Jsonrpc: typeof Jsonrpc10;
     }
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://GnomeDesktop?version=4.0' {
-    const GnomeDesktop40: typeof import('./gnomedesktop-4.0.js').default
+    import GnomeDesktop40 from '@girs/gnomedesktop-4.0';
     export default GnomeDesktop40;
 }
 
 declare module 'gi://GnomeDesktop' {
-    const GnomeDesktop40: typeof import('./gnomedesktop-4.0.js').default
+    import GnomeDesktop40 from 'gi://GnomeDesktop?version=4.0';
     export default GnomeDesktop40;
 }
 

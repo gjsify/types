@@ -6,7 +6,7 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './goocanvas-2.0-ambient.js';
+import './goocanvas-2.0-ambient.d.ts';
 
 
 import GooCanvas from './goocanvas-2.0.js';

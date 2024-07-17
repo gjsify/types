@@ -1,11 +1,11 @@
 
 declare module 'gi://Dee?version=1.0' {
-    const Dee10: typeof import('./dee-1.0.js').default
+    import Dee10 from '@girs/dee-1.0';
     export default Dee10;
 }
 
 declare module 'gi://Dee' {
-    const Dee10: typeof import('./dee-1.0.js').default
+    import Dee10 from 'gi://Dee?version=1.0';
     export default Dee10;
 }
 

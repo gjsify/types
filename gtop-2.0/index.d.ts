@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gtop-2.0-ambient.js';
+import './gtop-2.0-ambient.d.ts';
 
-import './gtop-2.0-import.js';
+import './gtop-2.0-import.d.ts';
 
 import GTop from './gtop-2.0.js';
 export default GTop;

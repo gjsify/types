@@ -1,11 +1,11 @@
 
 declare module 'gi://Vte?version=2.91' {
-    const Vte291: typeof import('./vte-2.91.js').default
+    import Vte291 from '@girs/vte-2.91';
     export default Vte291;
 }
 
 declare module 'gi://Vte' {
-    const Vte291: typeof import('./vte-2.91.js').default
+    import Vte291 from 'gi://Vte?version=2.91';
     export default Vte291;
 }
 

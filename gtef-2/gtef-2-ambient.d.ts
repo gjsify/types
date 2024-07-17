@@ -1,11 +1,11 @@
 
 declare module 'gi://Gtef?version=2' {
-    const Gtef2: typeof import('./gtef-2.js').default
+    import Gtef2 from '@girs/gtef-2';
     export default Gtef2;
 }
 
 declare module 'gi://Gtef' {
-    const Gtef2: typeof import('./gtef-2.js').default
+    import Gtef2 from 'gi://Gtef?version=2';
     export default Gtef2;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Gepub?version=0.7' {
-    const Gepub07: typeof import('./gepub-0.7.js').default
+    import Gepub07 from '@girs/gepub-0.7';
     export default Gepub07;
 }
 
 declare module 'gi://Gepub' {
-    const Gepub07: typeof import('./gepub-0.7.js').default
+    import Gepub07 from 'gi://Gepub?version=0.7';
     export default Gepub07;
 }
 

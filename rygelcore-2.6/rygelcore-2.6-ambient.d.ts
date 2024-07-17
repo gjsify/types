@@ -1,11 +1,11 @@
 
 declare module 'gi://RygelCore?version=2.6' {
-    const RygelCore26: typeof import('./rygelcore-2.6.js').default
+    import RygelCore26 from '@girs/rygelcore-2.6';
     export default RygelCore26;
 }
 
 declare module 'gi://RygelCore' {
-    const RygelCore26: typeof import('./rygelcore-2.6.js').default
+    import RygelCore26 from 'gi://RygelCore?version=2.6';
     export default RygelCore26;
 }
 

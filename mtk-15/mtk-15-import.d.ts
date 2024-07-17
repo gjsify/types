@@ -1,9 +1,9 @@
 
-import Mtk from './mtk-15.js';
+import Mtk15 from '@girs/mtk-15';
 
 declare global {
     export interface GjsGiImports {
-        Mtk: typeof Mtk;
+        Mtk: typeof Mtk15;
     }
 }
 

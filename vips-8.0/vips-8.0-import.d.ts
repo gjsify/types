@@ -1,9 +1,9 @@
 
-import Vips from './vips-8.0.js';
+import Vips80 from '@girs/vips-8.0';
 
 declare global {
     export interface GjsGiImports {
-        Vips: typeof Vips;
+        Vips: typeof Vips80;
     }
 }
 

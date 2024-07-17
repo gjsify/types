@@ -1,9 +1,9 @@
 
-import PQMarble from './pqmarble-2.js';
+import PQMarble2 from '@girs/pqmarble-2';
 
 declare global {
     export interface GjsGiImports {
-        PQMarble: typeof PQMarble;
+        PQMarble: typeof PQMarble2;
     }
 }
 

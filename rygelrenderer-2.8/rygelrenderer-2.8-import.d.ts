@@ -1,9 +1,9 @@
 
-import RygelRenderer from './rygelrenderer-2.8.js';
+import RygelRenderer28 from '@girs/rygelrenderer-2.8';
 
 declare global {
     export interface GjsGiImports {
-        RygelRenderer: typeof RygelRenderer;
+        RygelRenderer: typeof RygelRenderer28;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import Matekbd from './matekbd-1.0.js';
+import Matekbd10 from '@girs/matekbd-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Matekbd: typeof Matekbd;
+        Matekbd: typeof Matekbd10;
     }
 }
 

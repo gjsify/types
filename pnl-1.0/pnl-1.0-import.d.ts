@@ -1,9 +1,9 @@
 
-import Pnl from './pnl-1.0.js';
+import Pnl10 from '@girs/pnl-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Pnl: typeof Pnl;
+        Pnl: typeof Pnl10;
     }
 }
 

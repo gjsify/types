@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './evincedocument-3.0-ambient.js';
+import './evincedocument-3.0-ambient.d.ts';
 
-import './evincedocument-3.0-import.js';
+import './evincedocument-3.0-import.d.ts';
 
 import EvinceDocument from './evincedocument-3.0.js';
 export default EvinceDocument;

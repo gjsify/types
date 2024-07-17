@@ -1,11 +1,11 @@
 
 declare module 'gi://DbusmenuGtk3?version=0.4' {
-    const DbusmenuGtk304: typeof import('./dbusmenugtk3-0.4.js').default
+    import DbusmenuGtk304 from '@girs/dbusmenugtk3-0.4';
     export default DbusmenuGtk304;
 }
 
 declare module 'gi://DbusmenuGtk3' {
-    const DbusmenuGtk304: typeof import('./dbusmenugtk3-0.4.js').default
+    import DbusmenuGtk304 from 'gi://DbusmenuGtk3?version=0.4';
     export default DbusmenuGtk304;
 }
 

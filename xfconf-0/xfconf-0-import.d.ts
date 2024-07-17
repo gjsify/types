@@ -1,9 +1,9 @@
 
-import Xfconf from './xfconf-0.js';
+import Xfconf0 from '@girs/xfconf-0';
 
 declare global {
     export interface GjsGiImports {
-        Xfconf: typeof Xfconf;
+        Xfconf: typeof Xfconf0;
     }
 }
 

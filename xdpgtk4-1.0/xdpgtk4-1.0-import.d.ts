@@ -1,9 +1,9 @@
 
-import XdpGtk4 from './xdpgtk4-1.0.js';
+import XdpGtk410 from '@girs/xdpgtk4-1.0';
 
 declare global {
     export interface GjsGiImports {
-        XdpGtk4: typeof XdpGtk4;
+        XdpGtk4: typeof XdpGtk410;
     }
 }
 

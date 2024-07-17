@@ -1,11 +1,11 @@
 
 declare module 'gi://Bump?version=0.1' {
-    const Bump01: typeof import('./bump-0.1.js').default
+    import Bump01 from '@girs/bump-0.1';
     export default Bump01;
 }
 
 declare module 'gi://Bump' {
-    const Bump01: typeof import('./bump-0.1.js').default
+    import Bump01 from 'gi://Bump?version=0.1';
     export default Bump01;
 }
 

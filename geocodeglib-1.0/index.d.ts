@@ -6,7 +6,7 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './geocodeglib-1.0-ambient.js';
+import './geocodeglib-1.0-ambient.d.ts';
 
 
 import GeocodeGlib from './geocodeglib-1.0.js';

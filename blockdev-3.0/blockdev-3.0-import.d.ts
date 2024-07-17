@@ -1,9 +1,9 @@
 
-import BlockDev from './blockdev-3.0.js';
+import BlockDev30 from '@girs/blockdev-3.0';
 
 declare global {
     export interface GjsGiImports {
-        BlockDev: typeof BlockDev;
+        BlockDev: typeof BlockDev30;
     }
 }
 

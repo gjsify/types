@@ -1,9 +1,9 @@
 
-import LangTag from './langtag-0.6.js';
+import LangTag06 from '@girs/langtag-0.6';
 
 declare global {
     export interface GjsGiImports {
-        LangTag: typeof LangTag;
+        LangTag: typeof LangTag06;
     }
 }
 

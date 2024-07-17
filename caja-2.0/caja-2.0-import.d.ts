@@ -1,9 +1,9 @@
 
-import Caja from './caja-2.0.js';
+import Caja20 from '@girs/caja-2.0';
 
 declare global {
     export interface GjsGiImports {
-        Caja: typeof Caja;
+        Caja: typeof Caja20;
     }
 }
 

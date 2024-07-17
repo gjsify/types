@@ -1,9 +1,9 @@
 
-import ClutterGst from './cluttergst-3.0.js';
+import ClutterGst30 from '@girs/cluttergst-3.0';
 
 declare global {
     export interface GjsGiImports {
-        ClutterGst: typeof ClutterGst;
+        ClutterGst: typeof ClutterGst30;
     }
 }
 

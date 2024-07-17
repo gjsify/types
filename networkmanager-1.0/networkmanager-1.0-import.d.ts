@@ -1,9 +1,9 @@
 
-import NetworkManager from './networkmanager-1.0.js';
+import NetworkManager10 from '@girs/networkmanager-1.0';
 
 declare global {
     export interface GjsGiImports {
-        NetworkManager: typeof NetworkManager;
+        NetworkManager: typeof NetworkManager10;
     }
 }
 

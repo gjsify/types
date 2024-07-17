@@ -1,11 +1,11 @@
 
 declare module 'gi://Caribou?version=1.0' {
-    const Caribou10: typeof import('./caribou-1.0.js').default
+    import Caribou10 from '@girs/caribou-1.0';
     export default Caribou10;
 }
 
 declare module 'gi://Caribou' {
-    const Caribou10: typeof import('./caribou-1.0.js').default
+    import Caribou10 from 'gi://Caribou?version=1.0';
     export default Caribou10;
 }
 

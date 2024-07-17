@@ -1,9 +1,9 @@
 
-import SugarExt from './sugarext-1.0.js';
+import SugarExt10 from '@girs/sugarext-1.0';
 
 declare global {
     export interface GjsGiImports {
-        SugarExt: typeof SugarExt;
+        SugarExt: typeof SugarExt10;
     }
 }
 

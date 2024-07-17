@@ -1,11 +1,11 @@
 
 declare module 'gi://Gspell?version=1' {
-    const Gspell1: typeof import('./gspell-1.js').default
+    import Gspell1 from '@girs/gspell-1';
     export default Gspell1;
 }
 
 declare module 'gi://Gspell' {
-    const Gspell1: typeof import('./gspell-1.js').default
+    import Gspell1 from 'gi://Gspell?version=1';
     export default Gspell1;
 }
 

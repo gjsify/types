@@ -1,11 +1,11 @@
 
 declare module 'gi://Shew?version=0' {
-    const Shew0: typeof import('./shew-0.js').default
+    import Shew0 from '@girs/shew-0';
     export default Shew0;
 }
 
 declare module 'gi://Shew' {
-    const Shew0: typeof import('./shew-0.js').default
+    import Shew0 from 'gi://Shew?version=0';
     export default Shew0;
 }
 

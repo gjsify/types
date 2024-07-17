@@ -1,9 +1,9 @@
 
-import PanelApplet from './panelapplet-4.0.js';
+import PanelApplet40 from '@girs/panelapplet-4.0';
 
 declare global {
     export interface GjsGiImports {
-        PanelApplet: typeof PanelApplet;
+        PanelApplet: typeof PanelApplet40;
     }
 }
 

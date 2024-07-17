@@ -1,11 +1,11 @@
 
 declare module 'gi://XApp?version=1.0' {
-    const XApp10: typeof import('./xapp-1.0.js').default
+    import XApp10 from '@girs/xapp-1.0';
     export default XApp10;
 }
 
 declare module 'gi://XApp' {
-    const XApp10: typeof import('./xapp-1.0.js').default
+    import XApp10 from 'gi://XApp?version=1.0';
     export default XApp10;
 }
 

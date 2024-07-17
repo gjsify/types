@@ -1,9 +1,9 @@
 
-import GCalc from './gcalc-2.js';
+import GCalc2 from '@girs/gcalc-2';
 
 declare global {
     export interface GjsGiImports {
-        GCalc: typeof GCalc;
+        GCalc: typeof GCalc2;
     }
 }
 

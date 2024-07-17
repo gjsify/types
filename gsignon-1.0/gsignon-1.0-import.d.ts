@@ -1,9 +1,9 @@
 
-import gSignon from './gsignon-1.0.js';
+import GSignon10 from '@girs/gsignon-1.0';
 
 declare global {
     export interface GjsGiImports {
-        gSignon: typeof gSignon;
+        gSignon: typeof GSignon10;
     }
 }
 

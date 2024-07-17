@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gstaudio-1.0-ambient.js';
+import './gstaudio-1.0-ambient.d.ts';
 
-import './gstaudio-1.0-import.js';
+import './gstaudio-1.0-import.d.ts';
 
 import GstAudio from './gstaudio-1.0.js';
 export default GstAudio;

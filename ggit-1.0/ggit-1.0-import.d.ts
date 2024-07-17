@@ -1,9 +1,9 @@
 
-import Ggit from './ggit-1.0.js';
+import Ggit10 from '@girs/ggit-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Ggit: typeof Ggit;
+        Ggit: typeof Ggit10;
     }
 }
 

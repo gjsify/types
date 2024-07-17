@@ -1,9 +1,9 @@
 
-import NM from './nm-1.0.js';
+import NM10 from '@girs/nm-1.0';
 
 declare global {
     export interface GjsGiImports {
-        NM: typeof NM;
+        NM: typeof NM10;
     }
 }
 

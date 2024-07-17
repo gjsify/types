@@ -6,7 +6,7 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './uhm-0.0-ambient.js';
+import './uhm-0.0-ambient.d.ts';
 
 
 import Uhm from './uhm-0.0.js';

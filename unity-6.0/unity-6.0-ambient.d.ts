@@ -1,11 +1,11 @@
 
 declare module 'gi://Unity?version=6.0' {
-    const Unity60: typeof import('./unity-6.0.js').default
+    import Unity60 from '@girs/unity-6.0';
     export default Unity60;
 }
 
 declare module 'gi://Unity' {
-    const Unity60: typeof import('./unity-6.0.js').default
+    import Unity60 from 'gi://Unity?version=6.0';
     export default Unity60;
 }
 

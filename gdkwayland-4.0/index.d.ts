@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gdkwayland-4.0-ambient.js';
+import './gdkwayland-4.0-ambient.d.ts';
 
-import './gdkwayland-4.0-import.js';
+import './gdkwayland-4.0-import.d.ts';
 
 import GdkWayland from './gdkwayland-4.0.js';
 export default GdkWayland;

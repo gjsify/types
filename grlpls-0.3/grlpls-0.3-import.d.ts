@@ -1,9 +1,9 @@
 
-import GrlPls from './grlpls-0.3.js';
+import GrlPls03 from '@girs/grlpls-0.3';
 
 declare global {
     export interface GjsGiImports {
-        GrlPls: typeof GrlPls;
+        GrlPls: typeof GrlPls03;
     }
 }
 

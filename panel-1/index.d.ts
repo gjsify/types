@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './panel-1-ambient.js';
+import './panel-1-ambient.d.ts';
 
-import './panel-1-import.js';
+import './panel-1-import.d.ts';
 
 import Panel from './panel-1.js';
 export default Panel;

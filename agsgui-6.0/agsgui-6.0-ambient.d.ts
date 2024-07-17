@@ -1,11 +1,11 @@
 
 declare module 'gi://AgsGui?version=6.0' {
-    const AgsGui60: typeof import('./agsgui-6.0.js').default
+    import AgsGui60 from '@girs/agsgui-6.0';
     export default AgsGui60;
 }
 
 declare module 'gi://AgsGui' {
-    const AgsGui60: typeof import('./agsgui-6.0.js').default
+    import AgsGui60 from 'gi://AgsGui?version=6.0';
     export default AgsGui60;
 }
 

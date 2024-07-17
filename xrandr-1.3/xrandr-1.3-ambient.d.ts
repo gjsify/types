@@ -1,11 +1,11 @@
 
 declare module 'gi://xrandr?version=1.3' {
-    const Xrandr13: typeof import('./xrandr-1.3.js').default
+    import Xrandr13 from '@girs/xrandr-1.3';
     export default Xrandr13;
 }
 
 declare module 'gi://xrandr' {
-    const Xrandr13: typeof import('./xrandr-1.3.js').default
+    import Xrandr13 from 'gi://xrandr?version=1.3';
     export default Xrandr13;
 }
 

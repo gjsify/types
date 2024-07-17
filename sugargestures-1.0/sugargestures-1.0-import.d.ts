@@ -1,9 +1,9 @@
 
-import SugarGestures from './sugargestures-1.0.js';
+import SugarGestures10 from '@girs/sugargestures-1.0';
 
 declare global {
     export interface GjsGiImports {
-        SugarGestures: typeof SugarGestures;
+        SugarGestures: typeof SugarGestures10;
     }
 }
 

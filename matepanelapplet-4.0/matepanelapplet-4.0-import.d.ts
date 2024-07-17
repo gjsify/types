@@ -1,9 +1,9 @@
 
-import MatePanelApplet from './matepanelapplet-4.0.js';
+import MatePanelApplet40 from '@girs/matepanelapplet-4.0';
 
 declare global {
     export interface GjsGiImports {
-        MatePanelApplet: typeof MatePanelApplet;
+        MatePanelApplet: typeof MatePanelApplet40;
     }
 }
 

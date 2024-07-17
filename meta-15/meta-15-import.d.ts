@@ -1,9 +1,9 @@
 
-import Meta from './meta-15.js';
+import Meta15 from '@girs/meta-15';
 
 declare global {
     export interface GjsGiImports {
-        Meta: typeof Meta;
+        Meta: typeof Meta15;
     }
 }
 

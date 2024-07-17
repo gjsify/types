@@ -1,11 +1,11 @@
 
 declare module 'gi://OSTree?version=1.0' {
-    const OSTree10: typeof import('./ostree-1.0.js').default
+    import OSTree10 from '@girs/ostree-1.0';
     export default OSTree10;
 }
 
 declare module 'gi://OSTree' {
-    const OSTree10: typeof import('./ostree-1.0.js').default
+    import OSTree10 from 'gi://OSTree?version=1.0';
     export default OSTree10;
 }
 

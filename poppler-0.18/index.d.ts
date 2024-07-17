@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './poppler-0.18-ambient.js';
+import './poppler-0.18-ambient.d.ts';
 
-import './poppler-0.18-import.js';
+import './poppler-0.18-import.d.ts';
 
 import Poppler from './poppler-0.18.js';
 export default Poppler;

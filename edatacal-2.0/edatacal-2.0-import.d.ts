@@ -1,9 +1,9 @@
 
-import EDataCal from './edatacal-2.0.js';
+import EDataCal20 from '@girs/edatacal-2.0';
 
 declare global {
     export interface GjsGiImports {
-        EDataCal: typeof EDataCal;
+        EDataCal: typeof EDataCal20;
     }
 }
 

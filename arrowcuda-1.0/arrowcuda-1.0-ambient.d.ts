@@ -1,11 +1,11 @@
 
 declare module 'gi://ArrowCUDA?version=1.0' {
-    const ArrowCUDA10: typeof import('./arrowcuda-1.0.js').default
+    import ArrowCUDA10 from '@girs/arrowcuda-1.0';
     export default ArrowCUDA10;
 }
 
 declare module 'gi://ArrowCUDA' {
-    const ArrowCUDA10: typeof import('./arrowcuda-1.0.js').default
+    import ArrowCUDA10 from 'gi://ArrowCUDA?version=1.0';
     export default ArrowCUDA10;
 }
 

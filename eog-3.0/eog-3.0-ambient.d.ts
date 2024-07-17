@@ -1,11 +1,11 @@
 
 declare module 'gi://Eog?version=3.0' {
-    const Eog30: typeof import('./eog-3.0.js').default
+    import Eog30 from '@girs/eog-3.0';
     export default Eog30;
 }
 
 declare module 'gi://Eog' {
-    const Eog30: typeof import('./eog-3.0.js').default
+    import Eog30 from 'gi://Eog?version=3.0';
     export default Eog30;
 }
 

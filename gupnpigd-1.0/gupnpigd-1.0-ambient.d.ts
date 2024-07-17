@@ -1,11 +1,11 @@
 
 declare module 'gi://GUPnPIgd?version=1.0' {
-    const GUPnPIgd10: typeof import('./gupnpigd-1.0.js').default
+    import GUPnPIgd10 from '@girs/gupnpigd-1.0';
     export default GUPnPIgd10;
 }
 
 declare module 'gi://GUPnPIgd' {
-    const GUPnPIgd10: typeof import('./gupnpigd-1.0.js').default
+    import GUPnPIgd10 from 'gi://GUPnPIgd?version=1.0';
     export default GUPnPIgd10;
 }
 

@@ -1,9 +1,9 @@
 
-import Gpseq from './gpseq-1.0.js';
+import Gpseq10 from '@girs/gpseq-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Gpseq: typeof Gpseq;
+        Gpseq: typeof Gpseq10;
     }
 }
 

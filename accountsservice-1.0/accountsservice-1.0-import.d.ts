@@ -1,9 +1,9 @@
 
-import AccountsService from './accountsservice-1.0.js';
+import AccountsService10 from '@girs/accountsservice-1.0';
 
 declare global {
     export interface GjsGiImports {
-        AccountsService: typeof AccountsService;
+        AccountsService: typeof AccountsService10;
     }
 }
 

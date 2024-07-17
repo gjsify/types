@@ -1,11 +1,11 @@
 
 declare module 'gi://IAnjuta?version=3.0' {
-    const IAnjuta30: typeof import('./ianjuta-3.0.js').default
+    import IAnjuta30 from '@girs/ianjuta-3.0';
     export default IAnjuta30;
 }
 
 declare module 'gi://IAnjuta' {
-    const IAnjuta30: typeof import('./ianjuta-3.0.js').default
+    import IAnjuta30 from 'gi://IAnjuta?version=3.0';
     export default IAnjuta30;
 }
 

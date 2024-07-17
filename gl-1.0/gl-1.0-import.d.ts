@@ -1,9 +1,9 @@
 
-import GL from './gl-1.0.js';
+import GL10 from '@girs/gl-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GL: typeof GL;
+        GL: typeof GL10;
     }
 }
 

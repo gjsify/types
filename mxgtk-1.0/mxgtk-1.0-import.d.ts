@@ -1,9 +1,9 @@
 
-import MxGtk from './mxgtk-1.0.js';
+import MxGtk10 from '@girs/mxgtk-1.0';
 
 declare global {
     export interface GjsGiImports {
-        MxGtk: typeof MxGtk;
+        MxGtk: typeof MxGtk10;
     }
 }
 

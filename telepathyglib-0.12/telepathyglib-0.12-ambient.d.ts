@@ -1,11 +1,11 @@
 
 declare module 'gi://TelepathyGLib?version=0.12' {
-    const TelepathyGLib012: typeof import('./telepathyglib-0.12.js').default
+    import TelepathyGLib012 from '@girs/telepathyglib-0.12';
     export default TelepathyGLib012;
 }
 
 declare module 'gi://TelepathyGLib' {
-    const TelepathyGLib012: typeof import('./telepathyglib-0.12.js').default
+    import TelepathyGLib012 from 'gi://TelepathyGLib?version=0.12';
     export default TelepathyGLib012;
 }
 

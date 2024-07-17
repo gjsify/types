@@ -1,11 +1,11 @@
 
 declare module 'gi://Rest?version=1.0' {
-    const Rest10: typeof import('./rest-1.0.js').default
+    import Rest10 from '@girs/rest-1.0';
     export default Rest10;
 }
 
 declare module 'gi://Rest' {
-    const Rest10: typeof import('./rest-1.0.js').default
+    import Rest10 from 'gi://Rest?version=1.0';
     export default Rest10;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Gck?version=2' {
-    const Gck2: typeof import('./gck-2.js').default
+    import Gck2 from '@girs/gck-2';
     export default Gck2;
 }
 
 declare module 'gi://Gck' {
-    const Gck2: typeof import('./gck-2.js').default
+    import Gck2 from 'gi://Gck?version=2';
     export default Gck2;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://OsmGpsMap?version=1.0' {
-    const OsmGpsMap10: typeof import('./osmgpsmap-1.0.js').default
+    import OsmGpsMap10 from '@girs/osmgpsmap-1.0';
     export default OsmGpsMap10;
 }
 
 declare module 'gi://OsmGpsMap' {
-    const OsmGpsMap10: typeof import('./osmgpsmap-1.0.js').default
+    import OsmGpsMap10 from 'gi://OsmGpsMap?version=1.0';
     export default OsmGpsMap10;
 }
 

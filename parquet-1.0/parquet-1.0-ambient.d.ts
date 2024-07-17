@@ -1,11 +1,11 @@
 
 declare module 'gi://Parquet?version=1.0' {
-    const Parquet10: typeof import('./parquet-1.0.js').default
+    import Parquet10 from '@girs/parquet-1.0';
     export default Parquet10;
 }
 
 declare module 'gi://Parquet' {
-    const Parquet10: typeof import('./parquet-1.0.js').default
+    import Parquet10 from 'gi://Parquet?version=1.0';
     export default Parquet10;
 }
 

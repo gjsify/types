@@ -1,11 +1,11 @@
 
 declare module 'gi://GUPnPDLNA?version=2.0' {
-    const GUPnPDLNA20: typeof import('./gupnpdlna-2.0.js').default
+    import GUPnPDLNA20 from '@girs/gupnpdlna-2.0';
     export default GUPnPDLNA20;
 }
 
 declare module 'gi://GUPnPDLNA' {
-    const GUPnPDLNA20: typeof import('./gupnpdlna-2.0.js').default
+    import GUPnPDLNA20 from 'gi://GUPnPDLNA?version=2.0';
     export default GUPnPDLNA20;
 }
 

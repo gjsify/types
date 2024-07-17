@@ -1,11 +1,11 @@
 
 declare module 'gi://GMime?version=2.6' {
-    const GMime26: typeof import('./gmime-2.6.js').default
+    import GMime26 from '@girs/gmime-2.6';
     export default GMime26;
 }
 
 declare module 'gi://GMime' {
-    const GMime26: typeof import('./gmime-2.6.js').default
+    import GMime26 from 'gi://GMime?version=2.6';
     export default GMime26;
 }
 

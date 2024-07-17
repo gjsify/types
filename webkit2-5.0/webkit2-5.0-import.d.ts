@@ -1,9 +1,9 @@
 
-import WebKit2 from './webkit2-5.0.js';
+import WebKit250 from '@girs/webkit2-5.0';
 
 declare global {
     export interface GjsGiImports {
-        WebKit2: typeof WebKit2;
+        WebKit2: typeof WebKit250;
     }
 }
 

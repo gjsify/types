@@ -1,9 +1,9 @@
 
-import GstClapper from './gstclapper-1.0.js';
+import GstClapper10 from '@girs/gstclapper-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstClapper: typeof GstClapper;
+        GstClapper: typeof GstClapper10;
     }
 }
 

@@ -1,9 +1,9 @@
 
-import BraseroMedia from './braseromedia-3.1.js';
+import BraseroMedia31 from '@girs/braseromedia-3.1';
 
 declare global {
     export interface GjsGiImports {
-        BraseroMedia: typeof BraseroMedia;
+        BraseroMedia: typeof BraseroMedia31;
     }
 }
 

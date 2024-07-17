@@ -1,9 +1,9 @@
 
-import GstRtspServer from './gstrtspserver-1.0.js';
+import GstRtspServer10 from '@girs/gstrtspserver-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstRtspServer: typeof GstRtspServer;
+        GstRtspServer: typeof GstRtspServer10;
     }
 }
 

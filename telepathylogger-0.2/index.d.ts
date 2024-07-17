@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './telepathylogger-0.2-ambient.js';
+import './telepathylogger-0.2-ambient.d.ts';
 
-import './telepathylogger-0.2-import.js';
+import './telepathylogger-0.2-import.d.ts';
 
 import TelepathyLogger from './telepathylogger-0.2.js';
 export default TelepathyLogger;

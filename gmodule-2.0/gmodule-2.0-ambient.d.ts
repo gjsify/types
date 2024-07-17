@@ -1,11 +1,11 @@
 
 declare module 'gi://GModule?version=2.0' {
-    const GModule20: typeof import('./gmodule-2.0.js').default
+    import GModule20 from '@girs/gmodule-2.0';
     export default GModule20;
 }
 
 declare module 'gi://GModule' {
-    const GModule20: typeof import('./gmodule-2.0.js').default
+    import GModule20 from 'gi://GModule?version=2.0';
     export default GModule20;
 }
 

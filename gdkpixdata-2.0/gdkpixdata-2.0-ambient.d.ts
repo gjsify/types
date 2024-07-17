@@ -1,11 +1,11 @@
 
 declare module 'gi://GdkPixdata?version=2.0' {
-    const GdkPixdata20: typeof import('./gdkpixdata-2.0.js').default
+    import GdkPixdata20 from '@girs/gdkpixdata-2.0';
     export default GdkPixdata20;
 }
 
 declare module 'gi://GdkPixdata' {
-    const GdkPixdata20: typeof import('./gdkpixdata-2.0.js').default
+    import GdkPixdata20 from 'gi://GdkPixdata?version=2.0';
     export default GdkPixdata20;
 }
 

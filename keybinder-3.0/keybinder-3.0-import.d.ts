@@ -1,9 +1,9 @@
 
-import Keybinder from './keybinder-3.0.js';
+import Keybinder30 from '@girs/keybinder-3.0';
 
 declare global {
     export interface GjsGiImports {
-        Keybinder: typeof Keybinder;
+        Keybinder: typeof Keybinder30;
     }
 }
 

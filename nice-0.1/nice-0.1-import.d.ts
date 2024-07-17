@@ -1,9 +1,9 @@
 
-import Nice from './nice-0.1.js';
+import Nice01 from '@girs/nice-0.1';
 
 declare global {
     export interface GjsGiImports {
-        Nice: typeof Nice;
+        Nice: typeof Nice01;
     }
 }
 

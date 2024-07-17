@@ -1,11 +1,11 @@
 
 declare module 'gi://Grss?version=0.7' {
-    const Grss07: typeof import('./grss-0.7.js').default
+    import Grss07 from '@girs/grss-0.7';
     export default Grss07;
 }
 
 declare module 'gi://Grss' {
-    const Grss07: typeof import('./grss-0.7.js').default
+    import Grss07 from 'gi://Grss?version=0.7';
     export default Grss07;
 }
 

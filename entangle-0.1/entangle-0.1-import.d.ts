@@ -1,9 +1,9 @@
 
-import Entangle from './entangle-0.1.js';
+import Entangle01 from '@girs/entangle-0.1';
 
 declare global {
     export interface GjsGiImports {
-        Entangle: typeof Entangle;
+        Entangle: typeof Entangle01;
     }
 }
 

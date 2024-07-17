@@ -1,11 +1,11 @@
 
 declare module 'gi://GUPnPDLNAGst?version=2.0' {
-    const GUPnPDLNAGst20: typeof import('./gupnpdlnagst-2.0.js').default
+    import GUPnPDLNAGst20 from '@girs/gupnpdlnagst-2.0';
     export default GUPnPDLNAGst20;
 }
 
 declare module 'gi://GUPnPDLNAGst' {
-    const GUPnPDLNAGst20: typeof import('./gupnpdlnagst-2.0.js').default
+    import GUPnPDLNAGst20 from 'gi://GUPnPDLNAGst?version=2.0';
     export default GUPnPDLNAGst20;
 }
 

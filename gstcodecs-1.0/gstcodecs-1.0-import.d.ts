@@ -1,9 +1,9 @@
 
-import GstCodecs from './gstcodecs-1.0.js';
+import GstCodecs10 from '@girs/gstcodecs-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstCodecs: typeof GstCodecs;
+        GstCodecs: typeof GstCodecs10;
     }
 }
 

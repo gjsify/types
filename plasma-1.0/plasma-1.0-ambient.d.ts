@@ -1,11 +1,11 @@
 
 declare module 'gi://Plasma?version=1.0' {
-    const Plasma10: typeof import('./plasma-1.0.js').default
+    import Plasma10 from '@girs/plasma-1.0';
     export default Plasma10;
 }
 
 declare module 'gi://Plasma' {
-    const Plasma10: typeof import('./plasma-1.0.js').default
+    import Plasma10 from 'gi://Plasma?version=1.0';
     export default Plasma10;
 }
 

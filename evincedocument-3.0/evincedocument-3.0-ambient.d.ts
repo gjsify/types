@@ -1,11 +1,11 @@
 
 declare module 'gi://EvinceDocument?version=3.0' {
-    const EvinceDocument30: typeof import('./evincedocument-3.0.js').default
+    import EvinceDocument30 from '@girs/evincedocument-3.0';
     export default EvinceDocument30;
 }
 
 declare module 'gi://EvinceDocument' {
-    const EvinceDocument30: typeof import('./evincedocument-3.0.js').default
+    import EvinceDocument30 from 'gi://EvinceDocument?version=3.0';
     export default EvinceDocument30;
 }
 

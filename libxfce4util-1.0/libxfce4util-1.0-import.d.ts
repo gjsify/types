@@ -1,9 +1,9 @@
 
-import Libxfce4util from './libxfce4util-1.0.js';
+import Libxfce4util10 from '@girs/libxfce4util-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Libxfce4util: typeof Libxfce4util;
+        Libxfce4util: typeof Libxfce4util10;
     }
 }
 

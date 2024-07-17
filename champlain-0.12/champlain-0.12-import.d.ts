@@ -1,9 +1,9 @@
 
-import Champlain from './champlain-0.12.js';
+import Champlain012 from '@girs/champlain-0.12';
 
 declare global {
     export interface GjsGiImports {
-        Champlain: typeof Champlain;
+        Champlain: typeof Champlain012;
     }
 }
 

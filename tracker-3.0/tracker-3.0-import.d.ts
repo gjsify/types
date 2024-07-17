@@ -1,9 +1,9 @@
 
-import Tracker from './tracker-3.0.js';
+import Tracker30 from '@girs/tracker-3.0';
 
 declare global {
     export interface GjsGiImports {
-        Tracker: typeof Tracker;
+        Tracker: typeof Tracker30;
     }
 }
 

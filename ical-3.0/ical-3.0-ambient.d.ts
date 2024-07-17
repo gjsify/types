@@ -1,11 +1,11 @@
 
 declare module 'gi://ICal?version=3.0' {
-    const ICal30: typeof import('./ical-3.0.js').default
+    import ICal30 from '@girs/ical-3.0';
     export default ICal30;
 }
 
 declare module 'gi://ICal' {
-    const ICal30: typeof import('./ical-3.0.js').default
+    import ICal30 from 'gi://ICal?version=3.0';
     export default ICal30;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://Anthy?version=9000' {
-    const Anthy9000: typeof import('./anthy-9000.js').default
+    import Anthy9000 from '@girs/anthy-9000';
     export default Anthy9000;
 }
 
 declare module 'gi://Anthy' {
-    const Anthy9000: typeof import('./anthy-9000.js').default
+    import Anthy9000 from 'gi://Anthy?version=9000';
     export default Anthy9000;
 }
 

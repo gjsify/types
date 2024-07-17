@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './libproxy-1.0-ambient.js';
+import './libproxy-1.0-ambient.d.ts';
 
-import './libproxy-1.0-import.js';
+import './libproxy-1.0-import.d.ts';
 
 import Libproxy from './libproxy-1.0.js';
 export default Libproxy;

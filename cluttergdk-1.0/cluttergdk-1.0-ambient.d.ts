@@ -1,11 +1,11 @@
 
 declare module 'gi://ClutterGdk?version=1.0' {
-    const ClutterGdk10: typeof import('./cluttergdk-1.0.js').default
+    import ClutterGdk10 from '@girs/cluttergdk-1.0';
     export default ClutterGdk10;
 }
 
 declare module 'gi://ClutterGdk' {
-    const ClutterGdk10: typeof import('./cluttergdk-1.0.js').default
+    import ClutterGdk10 from 'gi://ClutterGdk?version=1.0';
     export default ClutterGdk10;
 }
 

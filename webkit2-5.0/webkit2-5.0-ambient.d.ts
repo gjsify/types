@@ -1,11 +1,11 @@
 
 declare module 'gi://WebKit2?version=5.0' {
-    const WebKit250: typeof import('./webkit2-5.0.js').default
+    import WebKit250 from '@girs/webkit2-5.0';
     export default WebKit250;
 }
 
 declare module 'gi://WebKit2' {
-    const WebKit250: typeof import('./webkit2-5.0.js').default
+    import WebKit250 from 'gi://WebKit2?version=5.0';
     export default WebKit250;
 }
 

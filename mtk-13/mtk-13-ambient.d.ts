@@ -1,11 +1,11 @@
 
 declare module 'gi://Mtk?version=13' {
-    const Mtk13: typeof import('./mtk-13.js').default
+    import Mtk13 from '@girs/mtk-13';
     export default Mtk13;
 }
 
 declare module 'gi://Mtk' {
-    const Mtk13: typeof import('./mtk-13.js').default
+    import Mtk13 from 'gi://Mtk?version=13';
     export default Mtk13;
 }
 

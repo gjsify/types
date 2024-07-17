@@ -1,9 +1,9 @@
 
-import GdkX11 from './gdkx11-4.0.js';
+import GdkX1140 from '@girs/gdkx11-4.0';
 
 declare global {
     export interface GjsGiImports {
-        GdkX11: typeof GdkX11;
+        GdkX11: typeof GdkX1140;
     }
 }
 

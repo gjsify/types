@@ -1,9 +1,9 @@
 
-import SocialWebClient from './socialwebclient-0.25.js';
+import SocialWebClient025 from '@girs/socialwebclient-0.25';
 
 declare global {
     export interface GjsGiImports {
-        SocialWebClient: typeof SocialWebClient;
+        SocialWebClient: typeof SocialWebClient025;
     }
 }
 

@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './vsqlite-1-ambient.js';
+import './vsqlite-1-ambient.d.ts';
 
-import './vsqlite-1-import.js';
+import './vsqlite-1-import.d.ts';
 
 import Vsqlite from './vsqlite-1.js';
 export default Vsqlite;

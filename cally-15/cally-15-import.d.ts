@@ -1,9 +1,9 @@
 
-import Cally from './cally-15.js';
+import Cally15 from '@girs/cally-15';
 
 declare global {
     export interface GjsGiImports {
-        Cally: typeof Cally;
+        Cally: typeof Cally15;
     }
 }
 

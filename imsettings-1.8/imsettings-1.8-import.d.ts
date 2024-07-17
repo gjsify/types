@@ -1,9 +1,9 @@
 
-import IMSettings from './imsettings-1.8.js';
+import IMSettings18 from '@girs/imsettings-1.8';
 
 declare global {
     export interface GjsGiImports {
-        IMSettings: typeof IMSettings;
+        IMSettings: typeof IMSettings18;
     }
 }
 

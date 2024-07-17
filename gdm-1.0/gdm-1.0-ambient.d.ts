@@ -1,11 +1,11 @@
 
 declare module 'gi://Gdm?version=1.0' {
-    const Gdm10: typeof import('./gdm-1.0.js').default
+    import Gdm10 from '@girs/gdm-1.0';
     export default Gdm10;
 }
 
 declare module 'gi://Gdm' {
-    const Gdm10: typeof import('./gdm-1.0.js').default
+    import Gdm10 from 'gi://Gdm?version=1.0';
     export default Gdm10;
 }
 

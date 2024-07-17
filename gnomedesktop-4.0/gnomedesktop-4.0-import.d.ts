@@ -1,9 +1,9 @@
 
-import GnomeDesktop from './gnomedesktop-4.0.js';
+import GnomeDesktop40 from '@girs/gnomedesktop-4.0';
 
 declare global {
     export interface GjsGiImports {
-        GnomeDesktop: typeof GnomeDesktop;
+        GnomeDesktop: typeof GnomeDesktop40;
     }
 }
 

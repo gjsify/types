@@ -1,11 +1,11 @@
 
 declare module 'gi://Snapd?version=1' {
-    const Snapd1: typeof import('./snapd-1.js').default
+    import Snapd1 from '@girs/snapd-1';
     export default Snapd1;
 }
 
 declare module 'gi://Snapd' {
-    const Snapd1: typeof import('./snapd-1.js').default
+    import Snapd1 from 'gi://Snapd?version=1';
     export default Snapd1;
 }
 

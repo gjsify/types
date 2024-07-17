@@ -1,11 +1,11 @@
 
 declare module 'gi://GstPbutils?version=1.0' {
-    const GstPbutils10: typeof import('./gstpbutils-1.0.js').default
+    import GstPbutils10 from '@girs/gstpbutils-1.0';
     export default GstPbutils10;
 }
 
 declare module 'gi://GstPbutils' {
-    const GstPbutils10: typeof import('./gstpbutils-1.0.js').default
+    import GstPbutils10 from 'gi://GstPbutils?version=1.0';
     export default GstPbutils10;
 }
 

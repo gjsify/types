@@ -1,9 +1,9 @@
 
-import Vsqlite from './vsqlite-1.js';
+import Vsqlite1 from '@girs/vsqlite-1';
 
 declare global {
     export interface GjsGiImports {
-        Vsqlite: typeof Vsqlite;
+        Vsqlite: typeof Vsqlite1;
     }
 }
 

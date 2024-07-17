@@ -1,9 +1,9 @@
 
-import Gdaui from './gdaui-6.0.js';
+import Gdaui60 from '@girs/gdaui-6.0';
 
 declare global {
     export interface GjsGiImports {
-        Gdaui: typeof Gdaui;
+        Gdaui: typeof Gdaui60;
     }
 }
 

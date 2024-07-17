@@ -6,7 +6,7 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gdkx11-3.0-ambient.js';
+import './gdkx11-3.0-ambient.d.ts';
 
 
 import GdkX11 from './gdkx11-3.0.js';

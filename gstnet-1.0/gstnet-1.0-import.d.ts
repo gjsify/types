@@ -1,9 +1,9 @@
 
-import GstNet from './gstnet-1.0.js';
+import GstNet10 from '@girs/gstnet-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstNet: typeof GstNet;
+        GstNet: typeof GstNet10;
     }
 }
 

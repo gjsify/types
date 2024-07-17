@@ -1,9 +1,9 @@
 
-import Dex from './dex-1.js';
+import Dex1 from '@girs/dex-1';
 
 declare global {
     export interface GjsGiImports {
-        Dex: typeof Dex;
+        Dex: typeof Dex1;
     }
 }
 

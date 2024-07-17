@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './cally-15-ambient.js';
+import './cally-15-ambient.d.ts';
 
-import './cally-15-import.js';
+import './cally-15-import.d.ts';
 
 import Cally from './cally-15.js';
 export default Cally;

@@ -1,11 +1,11 @@
 
 declare module 'gi://CMenu?version=3.0' {
-    const CMenu30: typeof import('./cmenu-3.0.js').default
+    import CMenu30 from '@girs/cmenu-3.0';
     export default CMenu30;
 }
 
 declare module 'gi://CMenu' {
-    const CMenu30: typeof import('./cmenu-3.0.js').default
+    import CMenu30 from 'gi://CMenu?version=3.0';
     export default CMenu30;
 }
 

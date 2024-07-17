@@ -1,9 +1,9 @@
 
-import GPaste from './gpaste-2.js';
+import GPaste2 from '@girs/gpaste-2';
 
 declare global {
     export interface GjsGiImports {
-        GPaste: typeof GPaste;
+        GPaste: typeof GPaste2;
     }
 }
 

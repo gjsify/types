@@ -1,11 +1,11 @@
 
 declare module 'gi://ClutterGst?version=2.0' {
-    const ClutterGst20: typeof import('./cluttergst-2.0.js').default
+    import ClutterGst20 from '@girs/cluttergst-2.0';
     export default ClutterGst20;
 }
 
 declare module 'gi://ClutterGst' {
-    const ClutterGst20: typeof import('./cluttergst-2.0.js').default
+    import ClutterGst20 from 'gi://ClutterGst?version=2.0';
     export default ClutterGst20;
 }
 

@@ -1,11 +1,11 @@
 
 declare module 'gi://ECal?version=2.0' {
-    const ECal20: typeof import('./ecal-2.0.js').default
+    import ECal20 from '@girs/ecal-2.0';
     export default ECal20;
 }
 
 declare module 'gi://ECal' {
-    const ECal20: typeof import('./ecal-2.0.js').default
+    import ECal20 from 'gi://ECal?version=2.0';
     export default ECal20;
 }
 

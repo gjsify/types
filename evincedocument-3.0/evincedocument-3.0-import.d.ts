@@ -1,9 +1,9 @@
 
-import EvinceDocument from './evincedocument-3.0.js';
+import EvinceDocument30 from '@girs/evincedocument-3.0';
 
 declare global {
     export interface GjsGiImports {
-        EvinceDocument: typeof EvinceDocument;
+        EvinceDocument: typeof EvinceDocument30;
     }
 }
 

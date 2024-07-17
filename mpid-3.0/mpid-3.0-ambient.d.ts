@@ -1,11 +1,11 @@
 
 declare module 'gi://MPID?version=3.0' {
-    const MPID30: typeof import('./mpid-3.0.js').default
+    import MPID30 from '@girs/mpid-3.0';
     export default MPID30;
 }
 
 declare module 'gi://MPID' {
-    const MPID30: typeof import('./mpid-3.0.js').default
+    import MPID30 from 'gi://MPID?version=3.0';
     export default MPID30;
 }
 

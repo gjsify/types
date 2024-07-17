@@ -1,9 +1,9 @@
 
-import CudaGst from './cudagst-1.0.js';
+import CudaGst10 from '@girs/cudagst-1.0';
 
 declare global {
     export interface GjsGiImports {
-        CudaGst: typeof CudaGst;
+        CudaGst: typeof CudaGst10;
     }
 }
 

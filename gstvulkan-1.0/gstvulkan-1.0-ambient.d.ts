@@ -1,11 +1,11 @@
 
 declare module 'gi://GstVulkan?version=1.0' {
-    const GstVulkan10: typeof import('./gstvulkan-1.0.js').default
+    import GstVulkan10 from '@girs/gstvulkan-1.0';
     export default GstVulkan10;
 }
 
 declare module 'gi://GstVulkan' {
-    const GstVulkan10: typeof import('./gstvulkan-1.0.js').default
+    import GstVulkan10 from 'gi://GstVulkan?version=1.0';
     export default GstVulkan10;
 }
 

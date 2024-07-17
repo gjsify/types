@@ -1,9 +1,9 @@
 
-import AyatanaAppIndicator from './ayatanaappindicator-0.1.js';
+import AyatanaAppIndicator01 from '@girs/ayatanaappindicator-0.1';
 
 declare global {
     export interface GjsGiImports {
-        AyatanaAppIndicator: typeof AyatanaAppIndicator;
+        AyatanaAppIndicator: typeof AyatanaAppIndicator01;
     }
 }
 

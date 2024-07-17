@@ -1,11 +1,11 @@
 
 declare module 'gi://PangoFc?version=1.0' {
-    const PangoFc10: typeof import('./pangofc-1.0.js').default
+    import PangoFc10 from '@girs/pangofc-1.0';
     export default PangoFc10;
 }
 
 declare module 'gi://PangoFc' {
-    const PangoFc10: typeof import('./pangofc-1.0.js').default
+    import PangoFc10 from 'gi://PangoFc?version=1.0';
     export default PangoFc10;
 }
 

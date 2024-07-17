@@ -1,9 +1,9 @@
 
-import GUPnPIgd from './gupnpigd-1.6.js';
+import GUPnPIgd16 from '@girs/gupnpigd-1.6';
 
 declare global {
     export interface GjsGiImports {
-        GUPnPIgd: typeof GUPnPIgd;
+        GUPnPIgd: typeof GUPnPIgd16;
     }
 }
 

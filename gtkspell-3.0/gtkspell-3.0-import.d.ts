@@ -1,9 +1,9 @@
 
-import GtkSpell from './gtkspell-3.0.js';
+import GtkSpell30 from '@girs/gtkspell-3.0';
 
 declare global {
     export interface GjsGiImports {
-        GtkSpell: typeof GtkSpell;
+        GtkSpell: typeof GtkSpell30;
     }
 }
 

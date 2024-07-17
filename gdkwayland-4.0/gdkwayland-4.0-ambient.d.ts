@@ -1,11 +1,11 @@
 
 declare module 'gi://GdkWayland?version=4.0' {
-    const GdkWayland40: typeof import('./gdkwayland-4.0.js').default
+    import GdkWayland40 from '@girs/gdkwayland-4.0';
     export default GdkWayland40;
 }
 
 declare module 'gi://GdkWayland' {
-    const GdkWayland40: typeof import('./gdkwayland-4.0.js').default
+    import GdkWayland40 from 'gi://GdkWayland?version=4.0';
     export default GdkWayland40;
 }
 

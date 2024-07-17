@@ -1,11 +1,11 @@
 
 declare module 'gi://GtkSource?version=5' {
-    const GtkSource5: typeof import('./gtksource-5.js').default
+    import GtkSource5 from '@girs/gtksource-5';
     export default GtkSource5;
 }
 
 declare module 'gi://GtkSource' {
-    const GtkSource5: typeof import('./gtksource-5.js').default
+    import GtkSource5 from 'gi://GtkSource?version=5';
     export default GtkSource5;
 }
 

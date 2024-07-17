@@ -1,11 +1,11 @@
 
 declare module 'gi://GstTag?version=1.0' {
-    const GstTag10: typeof import('./gsttag-1.0.js').default
+    import GstTag10 from '@girs/gsttag-1.0';
     export default GstTag10;
 }
 
 declare module 'gi://GstTag' {
-    const GstTag10: typeof import('./gsttag-1.0.js').default
+    import GstTag10 from 'gi://GstTag?version=1.0';
     export default GstTag10;
 }
 

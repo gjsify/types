@@ -1,9 +1,9 @@
 
-import Retro from './retro-2.js';
+import Retro2 from '@girs/retro-2';
 
 declare global {
     export interface GjsGiImports {
-        Retro: typeof Retro;
+        Retro: typeof Retro2;
     }
 }
 

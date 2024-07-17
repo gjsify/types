@@ -1,11 +1,11 @@
 
 declare module 'gi://CDesktopEnums?version=3.0' {
-    const CDesktopEnums30: typeof import('./cdesktopenums-3.0.js').default
+    import CDesktopEnums30 from '@girs/cdesktopenums-3.0';
     export default CDesktopEnums30;
 }
 
 declare module 'gi://CDesktopEnums' {
-    const CDesktopEnums30: typeof import('./cdesktopenums-3.0.js').default
+    import CDesktopEnums30 from 'gi://CDesktopEnums?version=3.0';
     export default CDesktopEnums30;
 }
 

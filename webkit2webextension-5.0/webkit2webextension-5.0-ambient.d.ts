@@ -1,11 +1,11 @@
 
 declare module 'gi://WebKit2WebExtension?version=5.0' {
-    const WebKit2WebExtension50: typeof import('./webkit2webextension-5.0.js').default
+    import WebKit2WebExtension50 from '@girs/webkit2webextension-5.0';
     export default WebKit2WebExtension50;
 }
 
 declare module 'gi://WebKit2WebExtension' {
-    const WebKit2WebExtension50: typeof import('./webkit2webextension-5.0.js').default
+    import WebKit2WebExtension50 from 'gi://WebKit2WebExtension?version=5.0';
     export default WebKit2WebExtension50;
 }
 

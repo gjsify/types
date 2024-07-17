@@ -1,9 +1,9 @@
 
-import AppStreamGlib from './appstreamglib-1.0.js';
+import AppStreamGlib10 from '@girs/appstreamglib-1.0';
 
 declare global {
     export interface GjsGiImports {
-        AppStreamGlib: typeof AppStreamGlib;
+        AppStreamGlib: typeof AppStreamGlib10;
     }
 }
 

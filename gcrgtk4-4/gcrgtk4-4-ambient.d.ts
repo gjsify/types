@@ -1,11 +1,11 @@
 
 declare module 'gi://GcrGtk4?version=4' {
-    const GcrGtk44: typeof import('./gcrgtk4-4.js').default
+    import GcrGtk44 from '@girs/gcrgtk4-4';
     export default GcrGtk44;
 }
 
 declare module 'gi://GcrGtk4' {
-    const GcrGtk44: typeof import('./gcrgtk4-4.js').default
+    import GcrGtk44 from 'gi://GcrGtk4?version=4';
     export default GcrGtk44;
 }
 

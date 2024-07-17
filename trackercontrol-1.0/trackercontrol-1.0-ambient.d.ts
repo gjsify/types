@@ -1,11 +1,11 @@
 
 declare module 'gi://TrackerControl?version=1.0' {
-    const TrackerControl10: typeof import('./trackercontrol-1.0.js').default
+    import TrackerControl10 from '@girs/trackercontrol-1.0';
     export default TrackerControl10;
 }
 
 declare module 'gi://TrackerControl' {
-    const TrackerControl10: typeof import('./trackercontrol-1.0.js').default
+    import TrackerControl10 from 'gi://TrackerControl?version=1.0';
     export default TrackerControl10;
 }
 

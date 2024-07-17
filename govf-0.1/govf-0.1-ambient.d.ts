@@ -1,11 +1,11 @@
 
 declare module 'gi://Govf?version=0.1' {
-    const Govf01: typeof import('./govf-0.1.js').default
+    import Govf01 from '@girs/govf-0.1';
     export default Govf01;
 }
 
 declare module 'gi://Govf' {
-    const Govf01: typeof import('./govf-0.1.js').default
+    import Govf01 from 'gi://Govf?version=0.1';
     export default Govf01;
 }
 

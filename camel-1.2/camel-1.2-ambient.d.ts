@@ -1,11 +1,11 @@
 
 declare module 'gi://Camel?version=1.2' {
-    const Camel12: typeof import('./camel-1.2.js').default
+    import Camel12 from '@girs/camel-1.2';
     export default Camel12;
 }
 
 declare module 'gi://Camel' {
-    const Camel12: typeof import('./camel-1.2.js').default
+    import Camel12 from 'gi://Camel?version=1.2';
     export default Camel12;
 }
 

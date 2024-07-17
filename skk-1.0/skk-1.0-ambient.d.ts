@@ -1,11 +1,11 @@
 
 declare module 'gi://Skk?version=1.0' {
-    const Skk10: typeof import('./skk-1.0.js').default
+    import Skk10 from '@girs/skk-1.0';
     export default Skk10;
 }
 
 declare module 'gi://Skk' {
-    const Skk10: typeof import('./skk-1.0.js').default
+    import Skk10 from 'gi://Skk?version=1.0';
     export default Skk10;
 }
 

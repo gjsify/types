@@ -1,9 +1,9 @@
 
-import Totem from './totem-1.0.js';
+import Totem10 from '@girs/totem-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Totem: typeof Totem;
+        Totem: typeof Totem10;
     }
 }
 

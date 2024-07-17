@@ -1,11 +1,11 @@
 
 declare module 'gi://Hex?version=4' {
-    const Hex4: typeof import('./hex-4.js').default
+    import Hex4 from '@girs/hex-4';
     export default Hex4;
 }
 
 declare module 'gi://Hex' {
-    const Hex4: typeof import('./hex-4.js').default
+    import Hex4 from 'gi://Hex?version=4';
     export default Hex4;
 }
 

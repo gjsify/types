@@ -1,9 +1,9 @@
 
-import EpcUi from './epcui-1.0.js';
+import EpcUi10 from '@girs/epcui-1.0';
 
 declare global {
     export interface GjsGiImports {
-        EpcUi: typeof EpcUi;
+        EpcUi: typeof EpcUi10;
     }
 }
 

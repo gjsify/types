@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './mtk-15-ambient.js';
+import './mtk-15-ambient.d.ts';
 
-import './mtk-15-import.js';
+import './mtk-15-import.d.ts';
 
 import Mtk from './mtk-15.js';
 export default Mtk;

@@ -1,11 +1,11 @@
 
 declare module 'gi://GtkSpell?version=3.0' {
-    const GtkSpell30: typeof import('./gtkspell-3.0.js').default
+    import GtkSpell30 from '@girs/gtkspell-3.0';
     export default GtkSpell30;
 }
 
 declare module 'gi://GtkSpell' {
-    const GtkSpell30: typeof import('./gtkspell-3.0.js').default
+    import GtkSpell30 from 'gi://GtkSpell?version=3.0';
     export default GtkSpell30;
 }
 

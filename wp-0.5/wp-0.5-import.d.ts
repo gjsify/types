@@ -1,9 +1,9 @@
 
-import Wp from './wp-0.5.js';
+import Wp05 from '@girs/wp-0.5';
 
 declare global {
     export interface GjsGiImports {
-        Wp: typeof Wp;
+        Wp: typeof Wp05;
     }
 }
 

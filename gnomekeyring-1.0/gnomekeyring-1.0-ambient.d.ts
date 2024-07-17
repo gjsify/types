@@ -1,11 +1,11 @@
 
 declare module 'gi://GnomeKeyring?version=1.0' {
-    const GnomeKeyring10: typeof import('./gnomekeyring-1.0.js').default
+    import GnomeKeyring10 from '@girs/gnomekeyring-1.0';
     export default GnomeKeyring10;
 }
 
 declare module 'gi://GnomeKeyring' {
-    const GnomeKeyring10: typeof import('./gnomekeyring-1.0.js').default
+    import GnomeKeyring10 from 'gi://GnomeKeyring?version=1.0';
     export default GnomeKeyring10;
 }
 

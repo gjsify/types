@@ -6,7 +6,7 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './girepository-2.0-ambient.js';
+import './girepository-2.0-ambient.d.ts';
 
 
 import GIRepository from './girepository-2.0.js';

@@ -1,11 +1,11 @@
 
 declare module 'gi://Cvc?version=1.0' {
-    const Cvc10: typeof import('./cvc-1.0.js').default
+    import Cvc10 from '@girs/cvc-1.0';
     export default Cvc10;
 }
 
 declare module 'gi://Cvc' {
-    const Cvc10: typeof import('./cvc-1.0.js').default
+    import Cvc10 from 'gi://Cvc?version=1.0';
     export default Cvc10;
 }
 

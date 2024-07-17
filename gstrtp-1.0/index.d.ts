@@ -6,9 +6,9 @@
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
-import './gstrtp-1.0-ambient.js';
+import './gstrtp-1.0-ambient.d.ts';
 
-import './gstrtp-1.0-import.js';
+import './gstrtp-1.0-import.d.ts';
 
 import GstRtp from './gstrtp-1.0.js';
 export default GstRtp;

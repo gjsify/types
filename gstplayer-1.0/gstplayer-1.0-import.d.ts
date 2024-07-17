@@ -1,9 +1,9 @@
 
-import GstPlayer from './gstplayer-1.0.js';
+import GstPlayer10 from '@girs/gstplayer-1.0';
 
 declare global {
     export interface GjsGiImports {
-        GstPlayer: typeof GstPlayer;
+        GstPlayer: typeof GstPlayer10;
     }
 }
 

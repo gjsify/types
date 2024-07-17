@@ -1,11 +1,11 @@
 
 declare module 'gi://GData?version=0.0' {
-    const GData00: typeof import('./gdata-0.0.js').default
+    import GData00 from '@girs/gdata-0.0';
     export default GData00;
 }
 
 declare module 'gi://GData' {
-    const GData00: typeof import('./gdata-0.0.js').default
+    import GData00 from 'gi://GData?version=0.0';
     export default GData00;
 }
 

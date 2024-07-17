@@ -1,11 +1,11 @@
 
 declare module 'gi://Guestfs?version=1.0' {
-    const Guestfs10: typeof import('./guestfs-1.0.js').default
+    import Guestfs10 from '@girs/guestfs-1.0';
     export default Guestfs10;
 }
 
 declare module 'gi://Guestfs' {
-    const Guestfs10: typeof import('./guestfs-1.0.js').default
+    import Guestfs10 from 'gi://Guestfs?version=1.0';
     export default Guestfs10;
 }
 

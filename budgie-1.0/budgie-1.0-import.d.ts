@@ -1,9 +1,9 @@
 
-import Budgie from './budgie-1.0.js';
+import Budgie10 from '@girs/budgie-1.0';
 
 declare global {
     export interface GjsGiImports {
-        Budgie: typeof Budgie;
+        Budgie: typeof Budgie10;
     }
 }
 

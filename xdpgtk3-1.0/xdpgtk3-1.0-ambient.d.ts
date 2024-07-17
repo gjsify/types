@@ -1,11 +1,11 @@
 
 declare module 'gi://XdpGtk3?version=1.0' {
-    const XdpGtk310: typeof import('./xdpgtk3-1.0.js').default
+    import XdpGtk310 from '@girs/xdpgtk3-1.0';
     export default XdpGtk310;
 }
 
 declare module 'gi://XdpGtk3' {
-    const XdpGtk310: typeof import('./xdpgtk3-1.0.js').default
+    import XdpGtk310 from 'gi://XdpGtk3?version=1.0';
     export default XdpGtk310;
 }
 

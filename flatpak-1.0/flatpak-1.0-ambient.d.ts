@@ -1,11 +1,11 @@
 
 declare module 'gi://Flatpak?version=1.0' {
-    const Flatpak10: typeof import('./flatpak-1.0.js').default
+    import Flatpak10 from '@girs/flatpak-1.0';
     export default Flatpak10;
 }
 
 declare module 'gi://Flatpak' {
-    const Flatpak10: typeof import('./flatpak-1.0.js').default
+    import Flatpak10 from 'gi://Flatpak?version=1.0';
     export default Flatpak10;
 }
 

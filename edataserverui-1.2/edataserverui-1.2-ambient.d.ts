@@ -1,11 +1,11 @@
 
 declare module 'gi://EDataServerUI?version=1.2' {
-    const EDataServerUI12: typeof import('./edataserverui-1.2.js').default
+    import EDataServerUI12 from '@girs/edataserverui-1.2';
     export default EDataServerUI12;
 }
 
 declare module 'gi://EDataServerUI' {
-    const EDataServerUI12: typeof import('./edataserverui-1.2.js').default
+    import EDataServerUI12 from 'gi://EDataServerUI?version=1.2';
     export default EDataServerUI12;
 }
 

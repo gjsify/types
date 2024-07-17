@@ -1,11 +1,11 @@
 
 declare module 'gi://GstDxva?version=1.0' {
-    const GstDxva10: typeof import('./gstdxva-1.0.js').default
+    import GstDxva10 from '@girs/gstdxva-1.0';
     export default GstDxva10;
 }
 
 declare module 'gi://GstDxva' {
-    const GstDxva10: typeof import('./gstdxva-1.0.js').default
+    import GstDxva10 from 'gi://GstDxva?version=1.0';
     export default GstDxva10;
 }
 

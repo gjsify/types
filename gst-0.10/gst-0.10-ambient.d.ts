@@ -1,11 +1,11 @@
 
 declare module 'gi://Gst?version=0.10' {
-    const Gst010: typeof import('./gst-0.10.js').default
+    import Gst010 from '@girs/gst-0.10';
     export default Gst010;
 }
 
 declare module 'gi://Gst' {
-    const Gst010: typeof import('./gst-0.10.js').default
+    import Gst010 from 'gi://Gst?version=0.10';
     export default Gst010;
 }
 

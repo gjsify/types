@@ -1,9 +1,9 @@
 
-import ECal from './ecal-2.0.js';
+import ECal20 from '@girs/ecal-2.0';
 
 declare global {
     export interface GjsGiImports {
-        ECal: typeof ECal;
+        ECal: typeof ECal20;
     }
 }
 
