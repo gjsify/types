@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * Babl-0.1
- */
-
 export namespace Babl {
+    /**
+     * Babl-0.1
+     */
+
     enum IccIntent {
         PERCEPTUAL,
         RELATIVE_COLORIMETRIC,
@@ -489,4 +489,5 @@ export namespace Babl {
 }
 
 export default Babl;
+
 // END

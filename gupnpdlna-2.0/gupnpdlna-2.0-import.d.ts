@@ -1,4 +1,3 @@
-
 import GUPnPDLNA20 from '@girs/gupnpdlna-2.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

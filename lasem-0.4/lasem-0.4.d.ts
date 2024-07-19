@@ -18,11 +18,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Lasem-0.4
- */
-
 export namespace Lasem {
+    /**
+     * Lasem-0.4
+     */
+
     enum DebugLevel {
         NONE,
         WARNING,
@@ -773,4 +773,5 @@ export namespace Lasem {
 }
 
 export default Lasem;
+
 // END

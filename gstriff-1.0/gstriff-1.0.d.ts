@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstRiff-1.0
- */
-
 export namespace GstRiff {
+    /**
+     * GstRiff-1.0
+     */
+
     const RIFF_IBM_FORMAT_ADPCM: number;
     const RIFF_IBM_FORMAT_ALAW: number;
     const RIFF_IBM_FORMAT_MULAW: number;
@@ -252,4 +252,5 @@ export namespace GstRiff {
 }
 
 export default GstRiff;
+
 // END

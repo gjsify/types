@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * GConf-2.0
- */
-
 export namespace GConf {
+    /**
+     * GConf-2.0
+     */
+
     enum ClientErrorHandlingMode {
         HANDLE_NONE,
         HANDLE_UNRETURNED,
@@ -430,4 +430,5 @@ export namespace GConf {
 }
 
 export default GConf;
+
 // END

@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstPbutils-0.10
- */
-
 export namespace GstPbutils {
+    /**
+     * GstPbutils-0.10
+     */
+
     /**
      * Result codes returned by gst_install_plugins_async() and
      * gst_install_plugins_sync(), and also the result code passed to the
@@ -109,4 +109,5 @@ export namespace GstPbutils {
 }
 
 export default GstPbutils;
+
 // END

@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Uhm-0.0
- */
-
 export namespace Uhm {
+    /**
+     * Uhm-0.0
+     */
+
     /**
      * Error codes for #UhmServer operations.
      */
@@ -587,4 +587,5 @@ export namespace Uhm {
 }
 
 export default Uhm;
+
 // END

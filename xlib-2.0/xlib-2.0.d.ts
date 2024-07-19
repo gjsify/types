@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * xlib-2.0
- */
-
 export namespace xlib {
+    /**
+     * xlib-2.0
+     */
+
     function open_display(): void;
     class Display {
         static $gtype: GObject.GType<Display>;
@@ -122,4 +122,5 @@ export namespace xlib {
 }
 
 export default xlib;
+
 // END

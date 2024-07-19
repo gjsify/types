@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gck-1
- */
-
 export namespace Gck {
+    /**
+     * Gck-1
+     */
+
     /**
      * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
      */
@@ -3703,4 +3703,5 @@ export namespace Gck {
 }
 
 export default Gck;
+
 // END

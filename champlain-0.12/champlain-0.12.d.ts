@@ -24,11 +24,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Champlain-0.12
- */
-
 export namespace Champlain {
+    /**
+     * Champlain-0.12
+     */
+
     /**
      * Projections supported by the library.
      */
@@ -13523,4 +13523,5 @@ export namespace Champlain {
 }
 
 export default Champlain;
+
 // END

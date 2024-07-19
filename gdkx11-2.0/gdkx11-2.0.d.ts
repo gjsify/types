@@ -20,11 +20,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Gdk from '@girs/gdk-2.0';
 
-/**
- * GdkX11-2.0
- */
-
 export namespace GdkX11 {
+    /**
+     * GdkX11-2.0
+     */
+
     function net_wm_supports(property: Gdk.Atom): boolean;
     /**
      * Converts from a #GdkAtom to the X atom for the default GDK display
@@ -289,4 +289,5 @@ export namespace GdkX11 {
 }
 
 export default GdkX11;
+
 // END

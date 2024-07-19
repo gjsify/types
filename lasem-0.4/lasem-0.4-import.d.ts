@@ -1,4 +1,3 @@
-
 import Lasem04 from '@girs/lasem-0.4';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

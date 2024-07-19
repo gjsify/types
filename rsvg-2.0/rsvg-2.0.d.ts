@@ -15,11 +15,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Rsvg-2.0
- */
-
 export namespace Rsvg {
+    /**
+     * Rsvg-2.0
+     */
+
     /**
      * An enumeration representing possible errors
      */
@@ -1224,4 +1224,5 @@ export namespace Rsvg {
 }
 
 export default Rsvg;
+
 // END

@@ -1,4 +1,3 @@
-
 import Xfconf0 from '@girs/xfconf-0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

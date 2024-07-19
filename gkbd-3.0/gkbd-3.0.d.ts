@@ -23,11 +23,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Gkbd-3.0
- */
-
 export namespace Gkbd {
+    /**
+     * Gkbd-3.0
+     */
+
     enum KeyboardDrawingGroupLevelPosition {
         TOPLEFT,
         TOPRIGHT,
@@ -1329,4 +1329,5 @@ export namespace Gkbd {
 }
 
 export default Gkbd;
+
 // END

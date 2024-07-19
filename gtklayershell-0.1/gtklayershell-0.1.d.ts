@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * GtkLayerShell-0.1
- */
-
 export namespace GtkLayerShell {
+    /**
+     * GtkLayerShell-0.1
+     */
+
     enum Edge {
         /**
          * The left edge of the screen.
@@ -239,4 +239,5 @@ export namespace GtkLayerShell {
 }
 
 export default GtkLayerShell;
+
 // END

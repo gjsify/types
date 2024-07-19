@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * OsmGpsMap-1.0
- */
-
 export namespace OsmGpsMap {
+    /**
+     * OsmGpsMap-1.0
+     */
+
     enum MapKey_t {
         FULLSCREEN,
         ZOOMIN,
@@ -1830,4 +1830,5 @@ export namespace OsmGpsMap {
 }
 
 export default OsmGpsMap;
+
 // END

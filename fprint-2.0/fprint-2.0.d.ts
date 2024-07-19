@@ -15,11 +15,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GUsb from '@girs/gusb-1.0';
 import type Json from '@girs/json-1.0';
 
-/**
- * FPrint-2.0
- */
-
 export namespace FPrint {
+    /**
+     * FPrint-2.0
+     */
+
     /**
      * Error codes for device operations. More specific errors from other domains
      * such as #G_IO_ERROR or #G_USB_DEVICE_ERROR may also be reported.
@@ -2123,4 +2123,5 @@ export namespace FPrint {
 }
 
 export default FPrint;
+
 // END

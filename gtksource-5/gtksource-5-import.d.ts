@@ -1,4 +1,3 @@
-
 import GtkSource5 from '@girs/gtksource-5';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

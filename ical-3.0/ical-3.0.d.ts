@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * ICal-3.0
- */
-
 export namespace ICal {
+    /**
+     * ICal-3.0
+     */
+
     enum _unknown_token_handling {
         ASSUME_IANA_TOKEN,
         DISCARD_TOKEN,
@@ -2078,4 +2078,5 @@ export namespace ICal {
 }
 
 export default ICal;
+
 // END

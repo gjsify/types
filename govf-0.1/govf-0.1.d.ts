@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Govf-0.1
- */
-
 export namespace Govf {
+    /**
+     * Govf-0.1
+     */
+
     enum PackageError {
         FAILED,
         NOT_FOUND,
@@ -178,4 +178,5 @@ export namespace Govf {
 }
 
 export default Govf;
+
 // END

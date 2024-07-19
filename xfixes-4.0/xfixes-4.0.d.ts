@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * xfixes-4.0
- */
-
 export namespace xfixes {
+    /**
+     * xfixes-4.0
+     */
+
     class XserverRegion {
         static $gtype: GObject.GType<XserverRegion>;
 
@@ -36,4 +36,5 @@ export namespace xfixes {
 }
 
 export default xfixes;
+
 // END

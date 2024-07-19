@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Grl-0.2
- */
-
 export namespace Grl {
+    /**
+     * Grl-0.2
+     */
+
     /**
      * These constants identify all the available core errors
      */
@@ -3405,4 +3405,5 @@ export namespace Grl {
 }
 
 export default Grl;
+
 // END

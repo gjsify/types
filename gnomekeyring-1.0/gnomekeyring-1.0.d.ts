@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * GnomeKeyring-1.0
- */
-
 export namespace GnomeKeyring {
+    /**
+     * GnomeKeyring-1.0
+     */
+
     /**
      * Type of access restriction.
      */
@@ -1038,4 +1038,5 @@ export namespace GnomeKeyring {
 }
 
 export default GnomeKeyring;
+
 // END

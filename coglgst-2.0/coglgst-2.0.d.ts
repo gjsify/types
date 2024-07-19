@@ -16,11 +16,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Cogl from '@girs/cogl-2.0';
 import type GL from '@girs/gl-1.0';
 
-/**
- * CoglGst-2.0
- */
-
 export namespace CoglGst {
+    /**
+     * CoglGst-2.0
+     */
+
     module VideoSink {
         // Signal callback interfaces
 
@@ -307,4 +307,5 @@ export namespace CoglGst {
 }
 
 export default CoglGst;
+
 // END

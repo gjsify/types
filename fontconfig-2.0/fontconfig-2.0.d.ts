@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * fontconfig-2.0
- */
-
 export namespace fontconfig {
+    /**
+     * fontconfig-2.0
+     */
+
     function init(): void;
     class Pattern {
         static $gtype: GObject.GType<Pattern>;
@@ -53,4 +53,5 @@ export namespace fontconfig {
 }
 
 export default fontconfig;
+
 // END

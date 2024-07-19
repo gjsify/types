@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * CryptUI-0.0
- */
-
 export namespace CryptUI {
+    /**
+     * CryptUI-0.0
+     */
+
     /**
      * Used in key properties to indicate what kind of key it is
      *
@@ -259,4 +259,5 @@ export namespace CryptUI {
 }
 
 export default CryptUI;
+
 // END

@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type GConf from '@girs/gconf-2.0';
 
-/**
- * PanelApplet-4.0
- */
-
 export namespace PanelApplet {
+    /**
+     * PanelApplet-4.0
+     */
+
     /**
      * Type defining the orientation of the applet. The values may seem backward
      * (e.g. %PANEL_APPLET_ORIENT_RIGHT means the panel is on the left side), but
@@ -854,4 +854,5 @@ export namespace PanelApplet {
 }
 
 export default PanelApplet;
+
 // END

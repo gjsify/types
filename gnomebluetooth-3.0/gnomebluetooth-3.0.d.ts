@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GnomeBluetooth-3.0
- */
-
 export namespace GnomeBluetooth {
+    /**
+     * GnomeBluetooth-3.0
+     */
+
     /**
      * A more precise power state for a Bluetooth adapter.
      */
@@ -458,4 +458,5 @@ export namespace GnomeBluetooth {
 }
 
 export default GnomeBluetooth;
+
 // END

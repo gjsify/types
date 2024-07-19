@@ -15,11 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Ags-6.0
- */
-
 export namespace Ags {
+    /**
+     * Ags-6.0
+     */
+
     /**
      * Endianess.
      */
@@ -18639,4 +18639,5 @@ export namespace Ags {
 }
 
 export default Ags;
+
 // END

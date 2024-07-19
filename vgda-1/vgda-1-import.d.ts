@@ -1,4 +1,3 @@
-
 import Vgda1 from '@girs/vgda-1';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

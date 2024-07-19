@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GjsDBus-1.0
- */
-
 export namespace GjsDBus {
+    /**
+     * GjsDBus-1.0
+     */
+
     module Implementation {
         // Signal callback interfaces
 
@@ -560,4 +560,5 @@ export namespace GjsDBus {
 }
 
 export default GjsDBus;
+
 // END

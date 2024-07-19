@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Vips-8.0
- */
-
 export namespace Vips {
+    /**
+     * Vips-8.0
+     */
+
     /**
      * The type of access an operation has to supply. See vips_tilecache()
      * and #VipsForeign.
@@ -5235,4 +5235,5 @@ export namespace Vips {
 }
 
 export default Vips;
+
 // END

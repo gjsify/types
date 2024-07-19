@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GVnc-1.0
- */
-
 export namespace GVnc {
+    /**
+     * GVnc-1.0
+     */
+
     enum AudioFormatType {
         U8,
         S8,
@@ -2336,4 +2336,5 @@ export namespace GVnc {
 }
 
 export default GVnc;
+
 // END

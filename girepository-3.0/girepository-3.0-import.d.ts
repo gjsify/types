@@ -1,4 +1,3 @@
-
 import GIRepository30 from '@girs/girepository-3.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

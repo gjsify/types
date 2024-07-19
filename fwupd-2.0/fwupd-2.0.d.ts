@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Fwupd-2.0
- */
-
 export namespace Fwupd {
+    /**
+     * Fwupd-2.0
+     */
+
     /**
      * The error code.
      */
@@ -3789,4 +3789,5 @@ export namespace Fwupd {
 }
 
 export default Fwupd;
+
 // END

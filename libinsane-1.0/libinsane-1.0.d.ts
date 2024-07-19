@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Libinsane-1.0
- */
-
 export namespace Libinsane {
+    /**
+     * Libinsane-1.0
+     */
+
     enum ConstraintType {
         NONE,
         RANGE,
@@ -382,4 +382,5 @@ export namespace Libinsane {
 }
 
 export default Libinsane;
+
 // END

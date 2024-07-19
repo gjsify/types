@@ -24,11 +24,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Cally-1.0
- */
-
 export namespace Cally {
+    /**
+     * Cally-1.0
+     */
+
     /**
      * Initializes the accessibility support.
      * @returns %TRUE if accessibility support has been correctly initialized.
@@ -6555,4 +6555,5 @@ export namespace Cally {
 }
 
 export default Cally;
+
 // END

@@ -15,11 +15,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type AppStreamGlib from '@girs/appstreamglib-1.0';
 
-/**
- * AppStreamBuilder-1.0
- */
-
 export namespace AppStreamBuilder {
+    /**
+     * AppStreamBuilder-1.0
+     */
+
     /**
      * The flags to use when saving resources.
      */
@@ -675,4 +675,5 @@ export namespace AppStreamBuilder {
 }
 
 export default AppStreamBuilder;
+
 // END

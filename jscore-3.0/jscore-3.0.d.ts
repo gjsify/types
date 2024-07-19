@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * JSCore-3.0
- */
-
 export namespace JSCore {
+    /**
+     * JSCore-3.0
+     */
+
     function EvaluateScript(): void;
     type GlobalContextRef = unknown;
     type ObjectRef = unknown;
@@ -31,4 +31,5 @@ export namespace JSCore {
 }
 
 export default JSCore;
+
 // END

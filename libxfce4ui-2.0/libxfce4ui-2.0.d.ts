@@ -23,11 +23,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Libxfce4ui-2.0
- */
-
 export namespace Libxfce4ui {
+    /**
+     * Libxfce4ui-2.0
+     */
+
     /**
      * List of item types which are supported by the #XfceGtkActionEntry.
      * To be extended if required.
@@ -2178,4 +2178,5 @@ export namespace Libxfce4ui {
 }
 
 export default Libxfce4ui;
+
 // END

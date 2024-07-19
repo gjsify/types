@@ -25,11 +25,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * SpiceClientGtk-3.0
- */
-
 export namespace SpiceClientGtk {
+    /**
+     * SpiceClientGtk-3.0
+     */
+
     /**
      * Constants for key events.
      */
@@ -1313,4 +1313,5 @@ export namespace SpiceClientGtk {
 }
 
 export default SpiceClientGtk;
+
 // END

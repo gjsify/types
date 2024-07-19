@@ -20,11 +20,14 @@ import type Soup from '@girs/soup-2.4';
 import type GSSDP from '@girs/gssdp-1.2';
 import type GUPnPAV from '@girs/gupnpav-1.0';
 
-/**
- * RygelServer-2.6
- */
-
 export namespace RygelServer {
+    // Workaround
+    /** @ignore */
+    interface IconInfo extends RygelCore.IconInfo {}
+    /**
+     * RygelServer-2.6
+     */
+
     enum LogicalOperator {
         AND,
         OR,
@@ -4384,9 +4387,6 @@ export namespace RygelServer {
 
     export const UpdatableObject: UpdatableObjectNamespace;
 
-    // Workaround
-    /** @ignore */
-    interface IconInfo extends RygelCore.IconInfo {}
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
@@ -4400,4 +4400,5 @@ export namespace RygelServer {
 }
 
 export default RygelServer;
+
 // END

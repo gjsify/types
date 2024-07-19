@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Poppler-0.18
- */
-
 export namespace Poppler {
+    /**
+     * Poppler-0.18
+     */
+
     /**
      * Layer actions
      */
@@ -5099,4 +5099,5 @@ export namespace Poppler {
 }
 
 export default Poppler;
+
 // END

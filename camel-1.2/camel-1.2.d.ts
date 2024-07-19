@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Camel-1.2
- */
-
 export namespace Camel {
+    /**
+     * Camel-1.2
+     */
+
     /**
      * Authentication result codes used by #CamelService.
      */
@@ -21904,4 +21904,5 @@ export namespace Camel {
 }
 
 export default Camel;
+
 // END

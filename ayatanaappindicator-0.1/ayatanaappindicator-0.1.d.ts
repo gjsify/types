@@ -21,11 +21,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * AyatanaAppIndicator-0.1
- */
-
 export namespace AyatanaAppIndicator {
+    /**
+     * AyatanaAppIndicator-0.1
+     */
+
     /**
      * The category provides grouping for the indicators so that
      * users can find indicators that are similar together.
@@ -600,4 +600,5 @@ export namespace AyatanaAppIndicator {
 }
 
 export default AyatanaAppIndicator;
+
 // END

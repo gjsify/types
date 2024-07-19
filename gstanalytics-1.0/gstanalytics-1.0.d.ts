@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstAnalytics-1.0
- */
-
 export namespace GstAnalytics {
+    /**
+     * GstAnalytics-1.0
+     */
+
     /**
      * Passes to functions asking for a relation span when the span is
      * infinite.
@@ -418,4 +418,5 @@ export namespace GstAnalytics {
 }
 
 export default GstAnalytics;
+
 // END

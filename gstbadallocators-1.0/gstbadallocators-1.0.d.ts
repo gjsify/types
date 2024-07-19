@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstBadAllocators-1.0
- */
-
 export namespace GstBadAllocators {
+    /**
+     * GstBadAllocators-1.0
+     */
+
     function is_phys_memory(mem: Gst.Memory): boolean;
     function phys_memory_get_phys_addr(mem: Gst.Memory): never;
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
@@ -52,4 +52,5 @@ export namespace GstBadAllocators {
 }
 
 export default GstBadAllocators;
+
 // END

@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 
-/**
- * GCalc-2
- */
-
 export namespace GCalc {
+    /**
+     * GCalc-2
+     */
+
     enum AngleUnit {
         RADIANS,
         DEGREES,
@@ -9967,4 +9967,5 @@ export namespace GCalc {
 }
 
 export default GCalc;
+
 // END

@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * TotemPlParser-1.0
- */
-
 export namespace TotemPlParser {
+    /**
+     * TotemPlParser-1.0
+     */
+
     /**
      * Allows you to differentiate between different
      * errors occurring during file operations in a #TotemPlParser.
@@ -682,4 +682,5 @@ export namespace TotemPlParser {
 }
 
 export default TotemPlParser;
+
 // END

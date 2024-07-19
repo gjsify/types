@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * gSignon-1.0
- */
-
 export namespace gSignon {
+    /**
+     * gSignon-1.0
+     */
+
     /**
      * Possible Signon errors.
      */
@@ -967,4 +967,5 @@ export namespace gSignon {
 }
 
 export default gSignon;
+
 // END

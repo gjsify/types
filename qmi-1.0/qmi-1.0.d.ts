@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Qmi-1.0
- */
-
 export namespace Qmi {
+    /**
+     * Qmi-1.0
+     */
+
     /**
      * Common errors that may be reported by libqmi-glib.
      */
@@ -51294,4 +51294,5 @@ export namespace Qmi {
 }
 
 export default Qmi;
+
 // END

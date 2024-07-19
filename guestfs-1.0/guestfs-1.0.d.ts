@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Guestfs-1.0
- */
-
 export namespace Guestfs {
+    /**
+     * Guestfs-1.0
+     */
+
     /**
      * For more detail on libguestfs events, see "SETTING CALLBACKS TO HANDLE
      * EVENTS" in guestfs(3).
@@ -15477,4 +15477,5 @@ export namespace Guestfs {
 }
 
 export default Guestfs;
+
 // END

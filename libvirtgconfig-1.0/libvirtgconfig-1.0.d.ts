@@ -12,11 +12,11 @@ import type libxml2 from '@girs/libxml2-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * LibvirtGConfig-1.0
- */
-
 export namespace LibvirtGConfig {
+    /**
+     * LibvirtGConfig-1.0
+     */
+
     enum DomainChannelTargetType {
         GUESTFWD,
         VIRTIO,
@@ -3654,4 +3654,5 @@ export namespace LibvirtGConfig {
 }
 
 export default LibvirtGConfig;
+
 // END

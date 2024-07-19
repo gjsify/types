@@ -12,11 +12,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type AvahiCore from '@girs/avahicore-0.6';
 
-/**
- * Avahi-0.6
- */
-
 export namespace Avahi {
+    /**
+     * Avahi-0.6
+     */
+
     enum BrowserEvent {
         GA_BROWSER_NEW,
         GA_BROWSER_REMOVE,
@@ -693,4 +693,5 @@ export namespace Avahi {
 }
 
 export default Avahi;
+
 // END

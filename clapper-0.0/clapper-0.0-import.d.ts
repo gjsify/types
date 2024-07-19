@@ -1,4 +1,3 @@
-
 import Clapper00 from '@girs/clapper-0.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

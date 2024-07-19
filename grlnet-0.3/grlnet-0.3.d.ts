@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GrlNet-0.3
- */
-
 export namespace GrlNet {
+    /**
+     * GrlNet-0.3
+     */
+
     /**
      * These constants identify all the available errors managed by
      * the web client.
@@ -207,4 +207,5 @@ export namespace GrlNet {
 }
 
 export default GrlNet;
+
 // END

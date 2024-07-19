@@ -1,4 +1,3 @@
-
 import XreaderDocument15 from '@girs/xreaderdocument-1.5';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

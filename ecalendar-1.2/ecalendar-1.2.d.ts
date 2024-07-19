@@ -18,11 +18,11 @@ import type Soup from '@girs/soup-3.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 
-/**
- * ECalendar-1.2
- */
-
 export namespace ECalendar {
+    /**
+     * ECalendar-1.2
+     */
+
     /**
      * FIXME: Document me.
      */
@@ -2114,4 +2114,5 @@ export namespace ECalendar {
 }
 
 export default ECalendar;
+
 // END

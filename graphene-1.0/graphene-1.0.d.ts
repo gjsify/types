@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Graphene-1.0
- */
-
 export namespace Graphene {
+    /**
+     * Graphene-1.0
+     */
+
     /**
      * Specify the order of the rotations on each axis.
      *
@@ -3343,4 +3343,5 @@ export namespace Graphene {
 }
 
 export default Graphene;
+
 // END

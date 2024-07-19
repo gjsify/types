@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Atk-1.0
- */
-
 export namespace Atk {
+    /**
+     * Atk-1.0
+     */
+
     /**
      * Specifies how xy coordinates are to be interpreted. Used by functions such
      * as atk_component_get_position() and atk_text_get_character_extents()
@@ -10026,4 +10026,5 @@ export namespace Atk {
 }
 
 export default Atk;
+
 // END

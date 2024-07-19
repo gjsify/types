@@ -27,11 +27,11 @@ import type Cogl from '@girs/cogl-1.0';
 import type Clutter from '@girs/clutter-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Mash-0.2
- */
-
 export namespace Mash {
+    /**
+     * Mash-0.2
+     */
+
     /**
      * Error enumeration for #MashData
      */
@@ -3869,4 +3869,5 @@ export namespace Mash {
 }
 
 export default Mash;
+
 // END

@@ -23,11 +23,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * SugarExt-1.0
- */
-
 export namespace SugarExt {
+    /**
+     * SugarExt-1.0
+     */
+
     enum ClientEndStyle {
         END_SESSION_DEFAULT,
         LOGOUT,
@@ -614,4 +614,5 @@ export namespace SugarExt {
 }
 
 export default SugarExt;
+
 // END

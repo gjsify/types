@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * win32-1.0
- */
-
 export namespace win32 {
+    /**
+     * win32-1.0
+     */
+
     class MSG {
         static $gtype: GObject.GType<MSG>;
 
@@ -40,4 +40,5 @@ export namespace win32 {
 }
 
 export default win32;
+
 // END

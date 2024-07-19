@@ -23,11 +23,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * GtkSource-5
- */
-
 export namespace GtkSource {
+    /**
+     * GtkSource-5
+     */
+
     enum BackgroundPatternType {
         /**
          * no pattern
@@ -20577,4 +20577,5 @@ export namespace GtkSource {
 }
 
 export default GtkSource;
+
 // END

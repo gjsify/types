@@ -24,11 +24,11 @@ import type Atk from '@girs/atk-1.0';
 import type Gegl from '@girs/gegl-0.4';
 import type Babl from '@girs/babl-0.1';
 
-/**
- * GeglGtk3-0.1
- */
-
 export namespace GeglGtk3 {
+    /**
+     * GeglGtk3-0.1
+     */
+
     /**
      * Specifies the autoscaling behavior of #GeglGtkView.
      */
@@ -613,4 +613,5 @@ export namespace GeglGtk3 {
 }
 
 export default GeglGtk3;
+
 // END

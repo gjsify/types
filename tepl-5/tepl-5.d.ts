@@ -24,11 +24,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Amtk from '@girs/amtk-5';
 
-/**
- * Tepl-5
- */
-
 export namespace Tepl {
+    /**
+     * Tepl-5
+     */
+
     enum NewlineType {
         /**
          * line feed, used on UNIX.
@@ -7975,4 +7975,5 @@ export namespace Tepl {
 }
 
 export default Tepl;
+
 // END

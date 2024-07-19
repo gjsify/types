@@ -27,11 +27,11 @@ import type Gst from '@girs/gst-1.0';
 import type EvinceView from '@girs/evinceview-3.0';
 import type EvinceDocument from '@girs/evincedocument-3.0';
 
-/**
- * Sushi-1.0
- */
-
 export namespace Sushi {
+    /**
+     * Sushi-1.0
+     */
+
     function convert_libreoffice(file: Gio.File): Promise<Gio.File>;
     function convert_libreoffice(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     function convert_libreoffice(
@@ -1150,4 +1150,5 @@ export namespace Sushi {
 }
 
 export default Sushi;
+
 // END

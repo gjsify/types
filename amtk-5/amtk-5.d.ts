@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Amtk-5
- */
-
 export namespace Amtk {
+    /**
+     * Amtk-5
+     */
+
     /**
      * A wrapper function for g_action_map_add_action_entries() that checks
      * duplicates.
@@ -908,4 +908,5 @@ export namespace Amtk {
 }
 
 export default Amtk;
+
 // END

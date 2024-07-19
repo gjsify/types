@@ -19,11 +19,11 @@ import type Json from '@girs/json-1.0';
 import type GXml from '@girs/gxml-0.20';
 import type libxml2 from '@girs/libxml2-2.0';
 
-/**
- * Vpg-1
- */
-
 export namespace Vpg {
+    /**
+     * Vpg-1
+     */
+
     module Connection {
         // Constructor properties interface
 
@@ -509,4 +509,5 @@ export namespace Vpg {
 }
 
 export default Vpg;
+
 // END

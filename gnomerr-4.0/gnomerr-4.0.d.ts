@@ -22,11 +22,11 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 
-/**
- * GnomeRR-4.0
- */
-
 export namespace GnomeRR {
+    /**
+     * GnomeRR-4.0
+     */
+
     enum DpmsMode {
         ON,
         STANDBY,
@@ -1095,4 +1095,5 @@ export namespace GnomeRR {
 }
 
 export default GnomeRR;
+
 // END

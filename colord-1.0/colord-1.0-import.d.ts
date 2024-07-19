@@ -1,4 +1,3 @@
-
 import Colord10 from '@girs/colord-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

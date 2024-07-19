@@ -21,11 +21,11 @@ import type Gdk from '@girs/gdk-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Vte-0.0
- */
-
 export namespace Vte {
+    /**
+     * Vte-0.0
+     */
+
     class PtyError extends GLib.Error {
         static $gtype: GObject.GType<PtyError>;
 
@@ -2726,4 +2726,5 @@ export namespace Vte {
 }
 
 export default Vte;
+
 // END

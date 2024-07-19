@@ -1,4 +1,3 @@
-
 import GFBGraph03 from '@girs/gfbgraph-0.3';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

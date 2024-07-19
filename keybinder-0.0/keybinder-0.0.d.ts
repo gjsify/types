@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Keybinder-0.0
- */
-
 export namespace Keybinder {
+    /**
+     * Keybinder-0.0
+     */
+
     /**
      * Grab a key combination globally and register a callback to be called each
      * time the key combination is pressed.
@@ -54,4 +54,5 @@ export namespace Keybinder {
 }
 
 export default Keybinder;
+
 // END

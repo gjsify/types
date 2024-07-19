@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * MediaArt-2.0
- */
-
 export namespace MediaArt {
+    /**
+     * MediaArt-2.0
+     */
+
     /**
      * Enumeration values used in errors returned by the
      * #MediaArtError API.
@@ -1078,4 +1078,5 @@ export namespace MediaArt {
 }
 
 export default MediaArt;
+
 // END

@@ -1,4 +1,3 @@
-
 import AppStreamBuilder10 from '@girs/appstreambuilder-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

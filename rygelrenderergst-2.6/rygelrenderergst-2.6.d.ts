@@ -22,11 +22,11 @@ import type GSSDP from '@girs/gssdp-1.2';
 import type GUPnPAV from '@girs/gupnpav-1.0';
 import type Gst from '@girs/gst-1.0';
 
-/**
- * RygelRendererGst-2.6
- */
-
 export namespace RygelRendererGst {
+    /**
+     * RygelRendererGst-2.6
+     */
+
     class PlaybinPlayerError extends GLib.Error {
         static $gtype: GObject.GType<PlaybinPlayerError>;
 
@@ -628,4 +628,5 @@ export namespace RygelRendererGst {
 }
 
 export default RygelRendererGst;
+
 // END

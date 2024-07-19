@@ -23,11 +23,11 @@ import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * TimezoneMap-1.0
- */
-
 export namespace TimezoneMap {
+    /**
+     * TimezoneMap-1.0
+     */
+
     const TIMEZONE_COMPLETION_ADMIN1: number;
     const TIMEZONE_COMPLETION_COUNTRY: number;
     const TIMEZONE_COMPLETION_LAST: number;
@@ -1489,4 +1489,5 @@ export namespace TimezoneMap {
 }
 
 export default TimezoneMap;
+
 // END

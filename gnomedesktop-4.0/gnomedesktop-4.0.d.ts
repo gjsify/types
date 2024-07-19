@@ -15,11 +15,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
 
-/**
- * GnomeDesktop-4.0
- */
-
 export namespace GnomeDesktop {
+    /**
+     * GnomeDesktop-4.0
+     */
+
     enum DesktopThumbnailSize {
         NORMAL,
         LARGE,
@@ -1168,4 +1168,5 @@ export namespace GnomeDesktop {
 }
 
 export default GnomeDesktop;
+
 // END

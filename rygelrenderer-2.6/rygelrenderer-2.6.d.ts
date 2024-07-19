@@ -20,11 +20,11 @@ import type Soup from '@girs/soup-2.4';
 import type GSSDP from '@girs/gssdp-1.2';
 import type GUPnPAV from '@girs/gupnpav-1.0';
 
-/**
- * RygelRenderer-2.6
- */
-
 export namespace RygelRenderer {
+    /**
+     * RygelRenderer-2.6
+     */
+
     module MediaRendererPlugin {
         // Constructor properties interface
 
@@ -421,4 +421,5 @@ export namespace RygelRenderer {
 }
 
 export default RygelRenderer;
+
 // END

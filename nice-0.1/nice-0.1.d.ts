@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Nice-0.1
- */
-
 export namespace Nice {
+    /**
+     * Nice-0.1
+     */
+
     /**
      * An enum representing the type of transport to use
      */
@@ -2467,4 +2467,5 @@ export namespace Nice {
 }
 
 export default Nice;
+
 // END

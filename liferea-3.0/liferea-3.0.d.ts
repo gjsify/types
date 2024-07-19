@@ -23,11 +23,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Liferea-3.0
- */
-
 export namespace Liferea {
+    /**
+     * Liferea-3.0
+     */
+
     enum feedListFindType {
         ODE_BY_URL,
         ODE_BY_ID,
@@ -1739,4 +1739,5 @@ export namespace Liferea {
 }
 
 export default Liferea;
+
 // END

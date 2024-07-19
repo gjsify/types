@@ -16,11 +16,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Pango-1.0
- */
-
 export namespace Pango {
+    /**
+     * Pango-1.0
+     */
+
     /**
      * `PangoAlignment` describes how to align the lines of a `PangoLayout`
      * within the available space.
@@ -8712,4 +8712,5 @@ export namespace Pango {
 }
 
 export default Pango;
+
 // END

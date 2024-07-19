@@ -13,11 +13,11 @@ import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Zeitgeist-2.0
- */
-
 export namespace Zeitgeist {
+    /**
+     * Zeitgeist-2.0
+     */
+
     enum ResultType {
         MOST_RECENT_EVENTS,
         LEAST_RECENT_EVENTS,
@@ -2328,4 +2328,5 @@ export namespace Zeitgeist {
 }
 
 export default Zeitgeist;
+
 // END

@@ -1,4 +1,3 @@
-
 import Amtk5 from '@girs/amtk-5';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

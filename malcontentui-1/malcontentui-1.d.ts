@@ -26,11 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Adw from '@girs/adw-1';
 import type AccountsService from '@girs/accountsservice-1.0';
 
-/**
- * MalcontentUi-1
- */
-
 export namespace MalcontentUi {
+    /**
+     * MalcontentUi-1
+     */
+
     module RestrictApplicationsDialog {
         // Constructor properties interface
 
@@ -4138,4 +4138,5 @@ export namespace MalcontentUi {
 }
 
 export default MalcontentUi;
+
 // END

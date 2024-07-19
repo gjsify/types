@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * freetype2-2.0
- */
-
 export namespace freetype2 {
+    /**
+     * freetype2-2.0
+     */
+
     class Bitmap {
         static $gtype: GObject.GType<Bitmap>;
 
@@ -53,4 +53,5 @@ export namespace freetype2 {
 }
 
 export default freetype2;
+
 // END

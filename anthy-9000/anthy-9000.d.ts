@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Anthy-9000
- */
-
 export namespace Anthy {
+    /**
+     * Anthy-9000
+     */
+
     const COMPILED_ENCODING: number;
     const EUC_JP_ENCODING: number;
     const NTH_HALFKANA_CANDIDATE: number;
@@ -226,4 +226,5 @@ export namespace Anthy {
 }
 
 export default Anthy;
+
 // END

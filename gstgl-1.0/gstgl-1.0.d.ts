@@ -15,11 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstGL-1.0
- */
-
 export namespace GstGL {
+    /**
+     * GstGL-1.0
+     */
+
     class GLBaseMemoryError extends GLib.Error {
         static $gtype: GObject.GType<GLBaseMemoryError>;
 
@@ -3617,4 +3617,5 @@ export namespace GstGL {
 }
 
 export default GstGL;
+
 // END

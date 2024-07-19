@@ -1,4 +1,3 @@
-
 import Dmap40 from '@girs/dmap-4.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

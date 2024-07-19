@@ -14,11 +14,17 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstBase-0.10
- */
-
 export namespace GstBase {
+    // Workaround
+    /** @ignore */
+    export module BaseSink {
+        export type ConstructorProps = Gst.BaseSink.ConstructorProps;
+    }
+
+    /**
+     * GstBase-0.10
+     */
+
     const TRANSFORM_SINK_NAME: string;
     const TRANSFORM_SRC_NAME: string;
     function gst_type_find_helper(src: Gst.Pad, size: number): Gst.Caps;
@@ -846,12 +852,6 @@ export namespace GstBase {
         _init(...args: any[]): void;
     }
 
-    // Workaround
-    /** @ignore */
-    export module BaseSink {
-        export type ConstructorProps = Gst.BaseSink.ConstructorProps;
-    }
-
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
@@ -865,4 +865,5 @@ export namespace GstBase {
 }
 
 export default GstBase;
+
 // END

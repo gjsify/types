@@ -24,11 +24,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Adw from '@girs/adw-1';
 
-/**
- * Panel-1
- */
-
 export namespace Panel {
+    /**
+     * Panel-1
+     */
+
     /**
      * The area of the panel.
      */
@@ -33140,4 +33140,5 @@ export namespace Panel {
 }
 
 export default Panel;
+
 // END

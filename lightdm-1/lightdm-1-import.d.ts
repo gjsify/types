@@ -1,4 +1,3 @@
-
 import LightDM1 from '@girs/lightdm-1';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

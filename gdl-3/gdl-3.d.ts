@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Gdl-3
- */
-
 export namespace Gdl {
+    /**
+     * Gdl-3
+     */
+
     /**
      * Used to customize the appearance of a #GdlDockBar.
      */
@@ -6986,4 +6986,5 @@ export namespace Gdl {
 }
 
 export default Gdl;
+
 // END

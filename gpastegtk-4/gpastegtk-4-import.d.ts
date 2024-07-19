@@ -1,4 +1,3 @@
-
 import GPasteGtk4 from '@girs/gpastegtk-4';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

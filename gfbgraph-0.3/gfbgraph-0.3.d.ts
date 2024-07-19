@@ -16,11 +16,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Rest from '@girs/rest-0.7';
 import type Json from '@girs/json-1.0';
 
-/**
- * GFBGraph-0.3
- */
-
 export namespace GFBGraph {
+    /**
+     * GFBGraph-0.3
+     */
+
     enum NodeError {
         CONNECTIONABLE,
         CONNECTABLE,
@@ -2411,4 +2411,5 @@ export namespace GFBGraph {
 }
 
 export default GFBGraph;
+
 // END

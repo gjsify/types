@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * CloudProviders-0.3
- */
-
 export namespace CloudProviders {
+    /**
+     * CloudProviders-0.3
+     */
+
     enum AccountStatus {
         INVALID,
         IDLE,
@@ -4944,4 +4944,5 @@ export namespace CloudProviders {
 }
 
 export default CloudProviders;
+
 // END

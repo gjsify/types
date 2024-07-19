@@ -24,11 +24,11 @@ import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Gitg-1.0
- */
-
 export namespace Gitg {
+    /**
+     * Gitg-1.0
+     */
+
     enum AuthenticationLifeTime {
         FORGET,
         SESSION,
@@ -6001,4 +6001,5 @@ export namespace Gitg {
 }
 
 export default Gitg;
+
 // END

@@ -19,11 +19,11 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * PangoOT-1.0
- */
-
 export namespace PangoOT {
+    /**
+     * PangoOT-1.0
+     */
+
     /**
      * The PangoOTTableType enumeration values are used to
      * identify the various OpenType tables in the
@@ -524,4 +524,5 @@ export namespace PangoOT {
 }
 
 export default PangoOT;
+
 // END

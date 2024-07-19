@@ -1,4 +1,3 @@
-
 import Gda60 from '@girs/gda-6.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

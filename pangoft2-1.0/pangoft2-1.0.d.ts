@@ -19,11 +19,11 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * PangoFT2-1.0
- */
-
 export namespace PangoFT2 {
+    /**
+     * PangoFT2-1.0
+     */
+
     /**
      * Gets the `PangoCoverage` for a `PangoFT2Font`.
      *
@@ -702,4 +702,5 @@ export namespace PangoFT2 {
 }
 
 export default PangoFT2;
+
 // END

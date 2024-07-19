@@ -18,11 +18,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 import type GUPnPDLNA from '@girs/gupnpdlna-2.0';
 
-/**
- * GUPnPDLNAGst-2.0
- */
-
 export namespace GUPnPDLNAGst {
+    /**
+     * GUPnPDLNAGst-2.0
+     */
+
     /**
      * This utility function creates a #GUPnPDLNAInformation from
      * #GstDiscovererInfo. Its purpose is mainly to pass its result to
@@ -46,4 +46,5 @@ export namespace GUPnPDLNAGst {
 }
 
 export default GUPnPDLNAGst;
+
 // END

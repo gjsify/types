@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gio from '@girs/gio-2.0';
 
-/**
- * GstNet-1.0
- */
-
 export namespace GstNet {
+    /**
+     * GstNet-1.0
+     */
+
     /**
      * The size of the packets sent between network clocks.
      */
@@ -988,4 +988,5 @@ export namespace GstNet {
 }
 
 export default GstNet;
+
 // END

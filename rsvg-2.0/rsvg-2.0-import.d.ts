@@ -1,4 +1,3 @@
-
 import Rsvg20 from '@girs/rsvg-2.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

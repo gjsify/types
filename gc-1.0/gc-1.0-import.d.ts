@@ -1,4 +1,3 @@
-
 import Gc10 from '@girs/gc-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

@@ -16,11 +16,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gthree-1.0
- */
-
 export namespace Gthree {
+    /**
+     * Gthree-1.0
+     */
+
     enum AttributeType {
         DOUBLE,
         FLOAT,
@@ -3775,4 +3775,5 @@ export namespace Gthree {
 }
 
 export default Gthree;
+
 // END

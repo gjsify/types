@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstApp-1.0
- */
-
 export namespace GstApp {
+    /**
+     * GstApp-1.0
+     */
+
     /**
      * Buffer dropping scheme to avoid the element's internal queue to block when
      * full.
@@ -1996,4 +1996,5 @@ export namespace GstApp {
 }
 
 export default GstApp;
+
 // END

@@ -1,4 +1,3 @@
-
 import GtkChamplain012 from '@girs/gtkchamplain-0.12';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

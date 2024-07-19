@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * UMockdev-1.0
- */
-
 export namespace UMockdev {
+    /**
+     * UMockdev-1.0
+     */
+
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
@@ -262,4 +262,5 @@ export namespace UMockdev {
 }
 
 export default UMockdev;
+
 // END

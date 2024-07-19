@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * GnomeBluetooth-1.0
- */
-
 export namespace GnomeBluetooth {
+    /**
+     * GnomeBluetooth-1.0
+     */
+
     /**
      * The category of a Bluetooth devices.
      */
@@ -7048,4 +7048,5 @@ export namespace GnomeBluetooth {
 }
 
 export default GnomeBluetooth;
+
 // END

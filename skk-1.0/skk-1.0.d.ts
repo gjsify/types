@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Skk-1.0
- */
-
 export namespace Skk {
+    /**
+     * Skk-1.0
+     */
+
     enum KanaMode {
         HIRAGANA,
         KATAKANA,
@@ -2972,4 +2972,5 @@ export namespace Skk {
 }
 
 export default Skk;
+
 // END

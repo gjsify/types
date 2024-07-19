@@ -16,11 +16,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstGL from '@girs/gstgl-1.0';
 
-/**
- * GstGLEGL-1.0
- */
-
 export namespace GstGLEGL {
+    /**
+     * GstGLEGL-1.0
+     */
+
     const GL_DISPLAY_EGL_NAME: string;
     /**
      * The name of the GL Memory EGL allocator
@@ -209,4 +209,5 @@ export namespace GstGLEGL {
 }
 
 export default GstGLEGL;
+
 // END

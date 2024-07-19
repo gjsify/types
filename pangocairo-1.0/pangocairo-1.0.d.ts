@@ -17,11 +17,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * PangoCairo-1.0
- */
-
 export namespace PangoCairo {
+    /**
+     * PangoCairo-1.0
+     */
+
     /**
      * Retrieves any font rendering options previously set with
      * [func`PangoCairo`.context_set_font_options].
@@ -426,4 +426,5 @@ export namespace PangoCairo {
 }
 
 export default PangoCairo;
+
 // END

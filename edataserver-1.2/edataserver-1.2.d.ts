@@ -17,11 +17,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 
-/**
- * EDataServer-1.2
- */
-
 export namespace EDataServer {
+    /**
+     * EDataServer-1.2
+     */
+
     /**
      * Error codes for #EClient operations.
      */
@@ -18541,4 +18541,5 @@ export namespace EDataServer {
 }
 
 export default EDataServer;
+
 // END

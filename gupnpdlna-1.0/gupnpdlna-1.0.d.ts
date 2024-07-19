@@ -18,11 +18,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
-/**
- * GUPnPDLNA-1.0
- */
-
 export namespace GUPnPDLNA {
+    /**
+     * GUPnPDLNA-1.0
+     */
+
     module Discoverer {
         // Signal callback interfaces
 
@@ -201,4 +201,5 @@ export namespace GUPnPDLNA {
 }
 
 export default GUPnPDLNA;
+
 // END

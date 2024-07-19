@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * AvahiCore-0.6
- */
-
 export namespace AvahiCore {
+    /**
+     * AvahiCore-0.6
+     */
+
     enum Protocol {
         INET,
         INET6,
@@ -70,4 +70,5 @@ export namespace AvahiCore {
 }
 
 export default AvahiCore;
+
 // END

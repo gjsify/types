@@ -29,11 +29,11 @@ import type Clutter from '@girs/clutter-13';
 import type Json from '@girs/json-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Meta-13
- */
-
 export namespace Meta {
+    /**
+     * Meta-13
+     */
+
     /**
      * Function a window button can have.
      *
@@ -11393,4 +11393,5 @@ export namespace Meta {
 }
 
 export default Meta;
+
 // END

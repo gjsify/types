@@ -24,11 +24,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Amtk from '@girs/amtk-5';
 
-/**
- * Tepl-4
- */
-
 export namespace Tepl {
+    /**
+     * Tepl-4
+     */
+
     enum CompressionType {
         /**
          * plain text.
@@ -4899,4 +4899,5 @@ export namespace Tepl {
 }
 
 export default Tepl;
+
 // END

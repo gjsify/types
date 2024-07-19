@@ -27,11 +27,11 @@ import type Cogl from '@girs/cogl-1.0';
 import type Clutter from '@girs/clutter-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Mx-2.0
- */
-
 export namespace Mx {
+    /**
+     * Mx-2.0
+     */
+
     enum ActorManagerError {
         CONTAINER_DESTROYED,
         ACTOR_DESTROYED,
@@ -27040,4 +27040,5 @@ export namespace Mx {
 }
 
 export default Mx;
+
 // END

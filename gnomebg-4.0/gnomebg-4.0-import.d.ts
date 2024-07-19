@@ -1,4 +1,3 @@
-
 import GnomeBG40 from '@girs/gnomebg-4.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

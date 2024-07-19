@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 
-/**
- * Folks-0.6
- */
-
 export namespace Folks {
+    /**
+     * Folks-0.6
+     */
+
     enum Gender {
         UNSPECIFIED,
         MALE,
@@ -3579,4 +3579,5 @@ export namespace Folks {
 }
 
 export default Folks;
+
 // END

@@ -24,11 +24,11 @@ import type Atk from '@girs/atk-1.0';
 import type Gsf from '@girs/gsf-1';
 import type libxml2 from '@girs/libxml2-2.0';
 
-/**
- * Abi-3.0
- */
-
 export namespace Abi {
+    /**
+     * Abi-3.0
+     */
+
     /**
      * Initializes libabiword
      * @param argv Commandline arguments
@@ -5684,4 +5684,5 @@ export namespace Abi {
 }
 
 export default Abi;
+
 // END

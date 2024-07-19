@@ -20,11 +20,11 @@ import type Json from '@girs/json-1.0';
 import type GXml from '@girs/gxml-0.20';
 import type libxml2 from '@girs/libxml2-2.0';
 
-/**
- * Vgsl-1
- */
-
 export namespace Vgsl {
+    /**
+     * Vgsl-1
+     */
+
     module Connection {
         // Constructor properties interface
 
@@ -65,4 +65,5 @@ export namespace Vgsl {
 }
 
 export default Vgsl;
+
 // END

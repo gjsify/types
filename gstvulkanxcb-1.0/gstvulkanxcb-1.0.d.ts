@@ -17,11 +17,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstVulkanXCB-1.0
- */
-
 export namespace GstVulkanXCB {
+    /**
+     * GstVulkanXCB-1.0
+     */
+
     module VulkanDisplayXCB {
         // Constructor properties interface
 
@@ -61,4 +61,5 @@ export namespace GstVulkanXCB {
 }
 
 export default GstVulkanXCB;
+
 // END

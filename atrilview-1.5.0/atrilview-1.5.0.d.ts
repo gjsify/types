@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type AtrilDocument from '@girs/atrildocument-1.5.0';
 
-/**
- * AtrilView-1.5.0
- */
-
 export namespace AtrilView {
+    /**
+     * AtrilView-1.5.0
+     */
+
     enum JobPriority {
         PRIORITY_URGENT,
         PRIORITY_HIGH,
@@ -2589,4 +2589,5 @@ export namespace AtrilView {
 }
 
 export default AtrilView;
+
 // END

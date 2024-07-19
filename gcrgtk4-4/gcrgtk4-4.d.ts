@@ -25,11 +25,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Gcr from '@girs/gcr-4';
 import type Gck from '@girs/gck-2';
 
-/**
- * GcrGtk4-4
- */
-
 export namespace GcrGtk4 {
+    /**
+     * GcrGtk4-4
+     */
+
     module CertificateWidget {
         // Constructor properties interface
 
@@ -766,4 +766,5 @@ export namespace GcrGtk4 {
 }
 
 export default GcrGtk4;
+
 // END

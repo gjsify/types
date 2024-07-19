@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * BlockDev-3.0
- */
-
 export namespace BlockDev {
+    /**
+     * BlockDev-3.0
+     */
+
     class BtrfsError extends GLib.Error {
         static $gtype: GObject.GType<BtrfsError>;
 
@@ -3588,4 +3588,5 @@ export namespace BlockDev {
 }
 
 export default BlockDev;
+
 // END

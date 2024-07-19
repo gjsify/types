@@ -23,11 +23,11 @@ import type Cogl from '@girs/cogl-14';
 import type xlib from '@girs/xlib-2.0';
 import type GL from '@girs/gl-1.0';
 
-/**
- * CoglPango-14
- */
-
 export namespace CoglPango {
+    /**
+     * CoglPango-14
+     */
+
     /**
      * This updates any internal glyph cache textures as necessary to be
      * able to render the given `layout`.
@@ -121,4 +121,5 @@ export namespace CoglPango {
 }
 
 export default CoglPango;
+
 // END

@@ -1,4 +1,3 @@
-
 import MatePanelApplet40 from '@girs/matepanelapplet-4.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

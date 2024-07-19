@@ -15,11 +15,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
-/**
- * GstBadAudio-1.0
- */
-
 export namespace GstBadAudio {
+    /**
+     * GstBadAudio-1.0
+     */
+
     /**
      * The output mode defines how the output behaves with regards to looping. Either the playback position is
      * moved back to the beginning of the loop, acting like a backwards seek, or it increases steadily, as if
@@ -698,4 +698,5 @@ export namespace GstBadAudio {
 }
 
 export default GstBadAudio;
+
 // END

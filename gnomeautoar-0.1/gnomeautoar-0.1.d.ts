@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GnomeAutoar-0.1
- */
-
 export namespace GnomeAutoar {
+    /**
+     * GnomeAutoar-0.1
+     */
+
     enum ConflictAction {
         UNHANDLED,
         SKIP,
@@ -780,4 +780,5 @@ export namespace GnomeAutoar {
 }
 
 export default GnomeAutoar;
+
 // END

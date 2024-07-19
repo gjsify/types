@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * XApp-1.0
- */
-
 export namespace XApp {
+    /**
+     * XApp-1.0
+     */
+
     class IconSize {
         static $gtype: GObject.GType<IconSize>;
 
@@ -13082,4 +13082,5 @@ export namespace XApp {
 }
 
 export default XApp;
+
 // END

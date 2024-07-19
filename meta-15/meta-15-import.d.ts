@@ -1,4 +1,3 @@
-
 import Meta15 from '@girs/meta-15';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

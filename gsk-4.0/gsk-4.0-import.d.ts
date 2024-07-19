@@ -1,4 +1,3 @@
-
 import Gsk40 from '@girs/gsk-4.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

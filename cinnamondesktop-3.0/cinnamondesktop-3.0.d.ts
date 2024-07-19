@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type CDesktopEnums from '@girs/cdesktopenums-3.0';
 
-/**
- * CinnamonDesktop-3.0
- */
-
 export namespace CinnamonDesktop {
+    /**
+     * CinnamonDesktop-3.0
+     */
+
     enum DesktopThumbnailSize {
         NORMAL,
         LARGE,
@@ -2213,4 +2213,5 @@ export namespace CinnamonDesktop {
 }
 
 export default CinnamonDesktop;
+
 // END

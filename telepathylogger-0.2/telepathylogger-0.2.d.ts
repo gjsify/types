@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * TelepathyLogger-0.2
- */
-
 export namespace TelepathyLogger {
+    /**
+     * TelepathyLogger-0.2
+     */
+
     enum EntityType {
         /**
          * the current contact's type is unknown
@@ -563,4 +563,5 @@ export namespace TelepathyLogger {
 }
 
 export default TelepathyLogger;
+
 // END

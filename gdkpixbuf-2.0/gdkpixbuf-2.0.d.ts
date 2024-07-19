@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GdkPixbuf-2.0
- */
-
 export namespace GdkPixbuf {
+    /**
+     * GdkPixbuf-2.0
+     */
+
     /**
      * This enumeration defines the color spaces that are supported by
      * the gdk-pixbuf library.
@@ -2650,4 +2650,5 @@ export namespace GdkPixbuf {
 }
 
 export default GdkPixbuf;
+
 // END

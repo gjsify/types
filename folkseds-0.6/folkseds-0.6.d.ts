@@ -21,11 +21,11 @@ import type Camel from '@girs/camel-1.2';
 import type Gee from '@girs/gee-0.8';
 import type Folks from '@girs/folks-0.6';
 
-/**
- * FolksEds-0.6
- */
-
 export namespace FolksEds {
+    /**
+     * FolksEds-0.6
+     */
+
     module PersonaStore {
         // Constructor properties interface
 
@@ -876,4 +876,5 @@ export namespace FolksEds {
 }
 
 export default FolksEds;
+
 // END

@@ -21,11 +21,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * GdkX11-4.0
- */
-
 export namespace GdkX11 {
+    /**
+     * GdkX11-4.0
+     */
+
     enum X11DeviceType {
         LOGICAL,
         PHYSICAL,
@@ -718,4 +718,5 @@ export namespace GdkX11 {
 }
 
 export default GdkX11;
+
 // END

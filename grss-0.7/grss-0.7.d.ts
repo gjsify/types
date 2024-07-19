@@ -15,11 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Grss-0.7
- */
-
 export namespace Grss {
+    /**
+     * Grss-0.7
+     */
+
     module FeedAtomFormatter {
         // Constructor properties interface
 
@@ -1281,4 +1281,5 @@ export namespace Grss {
 }
 
 export default Grss;
+
 // END

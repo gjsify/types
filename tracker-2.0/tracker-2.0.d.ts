@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Tracker-2.0
- */
-
 export namespace Tracker {
+    /**
+     * Tracker-2.0
+     */
+
     /**
      * Notifier event types.
      */
@@ -1421,4 +1421,5 @@ export namespace Tracker {
 }
 
 export default Tracker;
+
 // END

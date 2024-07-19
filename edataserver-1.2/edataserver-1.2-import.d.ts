@@ -1,4 +1,3 @@
-
 import EDataServer12 from '@girs/edataserver-1.2';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

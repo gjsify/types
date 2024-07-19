@@ -25,11 +25,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Garcon from '@girs/garcon-1.0';
 
-/**
- * GarconGtk-1.0
- */
-
 export namespace GarconGtk {
+    /**
+     * GarconGtk-1.0
+     */
+
     module Menu {
         // Constructor properties interface
 
@@ -545,4 +545,5 @@ export namespace GarconGtk {
 }
 
 export default GarconGtk;
+
 // END

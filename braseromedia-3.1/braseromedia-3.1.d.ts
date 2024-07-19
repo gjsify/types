@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * BraseroMedia-3.1
- */
-
 export namespace BraseroMedia {
+    /**
+     * BraseroMedia-3.1
+     */
+
     /**
      * Error codes returned by libbrasero-media
      */
@@ -9672,4 +9672,5 @@ export namespace BraseroMedia {
 }
 
 export default BraseroMedia;
+
 // END

@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * GTop-2.0
- */
-
 export namespace GTop {
+    /**
+     * GTop-2.0
+     */
+
     const AUTH_NAMESZ: number;
     const AUTH_TIMEOUT: number;
     const CONN_INTERNET: number;
@@ -1869,4 +1869,5 @@ export namespace GTop {
 }
 
 export default GTop;
+
 // END

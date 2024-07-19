@@ -16,11 +16,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstGL from '@girs/gstgl-1.0';
 
-/**
- * GstGLWayland-1.0
- */
-
 export namespace GstGLWayland {
+    /**
+     * GstGLWayland-1.0
+     */
+
     module GLDisplayWayland {
         // Constructor properties interface
 
@@ -70,4 +70,5 @@ export namespace GstGLWayland {
 }
 
 export default GstGLWayland;
+
 // END

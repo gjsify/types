@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Handy-0.0
- */
-
 export namespace Handy {
+    /**
+     * Handy-0.0
+     */
+
     enum ArrowsDirection {
         /**
          * Arrows point upwards
@@ -44099,4 +44099,5 @@ export namespace Handy {
 }
 
 export default Handy;
+
 // END

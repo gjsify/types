@@ -23,11 +23,11 @@ import type Gdk from '@girs/gdk-4.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Vte-3.91
- */
-
 export namespace Vte {
+    /**
+     * Vte-3.91
+     */
+
     /**
      * An enumeration type that can be used to specify how the terminal
      * uses extra allocated space.
@@ -3864,4 +3864,5 @@ export namespace Vte {
 }
 
 export default Vte;
+
 // END

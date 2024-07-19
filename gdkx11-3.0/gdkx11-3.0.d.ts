@@ -20,11 +20,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Gdk from '@girs/gdk-3.0';
 
-/**
- * GdkX11-3.0
- */
-
 export namespace GdkX11 {
+    /**
+     * GdkX11-3.0
+     */
+
     /**
      * Converts from a #GdkAtom to the X atom for the default GDK display
      * with the same string value.
@@ -866,4 +866,5 @@ export namespace GdkX11 {
 }
 
 export default GdkX11;
+
 // END

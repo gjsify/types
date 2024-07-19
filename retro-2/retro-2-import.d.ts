@@ -1,4 +1,3 @@
-
 import Retro2 from '@girs/retro-2';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

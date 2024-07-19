@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gee-0.8
- */
-
 export namespace Gee {
+    /**
+     * Gee-0.8
+     */
+
     class FutureError extends GLib.Error {
         static $gtype: GObject.GType<FutureError>;
 
@@ -5215,4 +5215,5 @@ export namespace Gee {
 }
 
 export default Gee;
+
 // END

@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GIRepository from '@girs/girepository-2.0';
 
-/**
- * Peas-1.0
- */
-
 export namespace Peas {
+    /**
+     * Peas-1.0
+     */
+
     /**
      * These identify the various errors that can occur while
      * loading a plugin.
@@ -1853,4 +1853,5 @@ export namespace Peas {
 }
 
 export default Peas;
+
 // END

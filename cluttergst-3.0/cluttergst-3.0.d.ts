@@ -30,11 +30,11 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * ClutterGst-3.0
- */
-
 export namespace ClutterGst {
+    /**
+     * ClutterGst-3.0
+     */
+
     /**
      * Different buffering policies clutter-gst supports
      */
@@ -4456,4 +4456,5 @@ export namespace ClutterGst {
 }
 
 export default ClutterGst;
+
 // END

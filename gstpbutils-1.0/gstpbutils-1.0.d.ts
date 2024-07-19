@@ -16,11 +16,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
-/**
- * GstPbutils-1.0
- */
-
 export namespace GstPbutils {
+    /**
+     * GstPbutils-1.0
+     */
+
     /**
      * Different types of supported background shading functions.
      */
@@ -1884,4 +1884,5 @@ export namespace GstPbutils {
 }
 
 export default GstPbutils;
+
 // END

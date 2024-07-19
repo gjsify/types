@@ -1,4 +1,3 @@
-
 import ArrowFlight10 from '@girs/arrowflight-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

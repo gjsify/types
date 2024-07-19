@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Dee-1.0
- */
-
 export namespace Dee {
+    /**
+     * Dee-1.0
+     */
+
     /**
      * Error codes for the ICU extension to Dee. These codes will be set when the
      * error domain is #DEE_ICU_ERROR.
@@ -8748,4 +8748,5 @@ export namespace Dee {
 }
 
 export default Dee;
+
 // END

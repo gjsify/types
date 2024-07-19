@@ -23,11 +23,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Shew-0
- */
-
 export namespace Shew {
+    /**
+     * Shew-0
+     */
+
     module ExternalWindow {
         // Constructor properties interface
 
@@ -106,4 +106,5 @@ export namespace Shew {
 }
 
 export default Shew;
+
 // END

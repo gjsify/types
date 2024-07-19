@@ -23,11 +23,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Xed-1.0
- */
-
 export namespace Xed {
+    /**
+     * Xed-1.0
+     */
+
     enum SearchMode {
         SEARCH,
         REPLACE,
@@ -11672,4 +11672,5 @@ export namespace Xed {
 }
 
 export default Xed;
+
 // END

@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gpseq-1.0
- */
-
 export namespace Gpseq {
+    /**
+     * Gpseq-1.0
+     */
+
     class ChannelError extends GLib.Error {
         static $gtype: GObject.GType<ChannelError>;
 
@@ -6655,4 +6655,5 @@ export namespace Gpseq {
 }
 
 export default Gpseq;
+
 // END

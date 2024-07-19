@@ -1,4 +1,3 @@
-
 import Granite70 from '@girs/granite-7.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

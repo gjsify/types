@@ -24,11 +24,11 @@ import type Atk from '@girs/atk-1.0';
 import type Gthree from '@girs/gthree-1.0';
 import type Graphene from '@girs/graphene-1.0';
 
-/**
- * GthreeGtk3-1.0
- */
-
 export namespace GthreeGtk3 {
+    /**
+     * GthreeGtk3-1.0
+     */
+
     module Area {
         // Constructor properties interface
 
@@ -487,4 +487,5 @@ export namespace GthreeGtk3 {
 }
 
 export default GthreeGtk3;
+
 // END

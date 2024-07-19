@@ -20,11 +20,11 @@ import type Soup from '@girs/soup-3.0';
 import type GSSDP from '@girs/gssdp-1.6';
 import type GUPnPAV from '@girs/gupnpav-1.0';
 
-/**
- * RygelServer-2.8
- */
-
 export namespace RygelServer {
+    /**
+     * RygelServer-2.8
+     */
+
     enum LogicalOperator {
         AND,
         OR,
@@ -4405,4 +4405,5 @@ export namespace RygelServer {
 }
 
 export default RygelServer;
+
 // END

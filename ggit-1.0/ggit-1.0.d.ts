@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Ggit-1.0
- */
-
 export namespace Ggit {
+    /**
+     * Ggit-1.0
+     */
+
     /**
      * The type of a branch.
      */
@@ -9430,4 +9430,5 @@ export namespace Ggit {
 }
 
 export default Ggit;
+
 // END

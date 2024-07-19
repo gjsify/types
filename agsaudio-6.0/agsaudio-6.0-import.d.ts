@@ -1,4 +1,3 @@
-
 import AgsAudio60 from '@girs/agsaudio-6.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

@@ -1,4 +1,3 @@
-
 import Shew0 from '@girs/shew-0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GSystem-1.0
- */
-
 export namespace GSystem {
+    /**
+     * GSystem-1.0
+     */
+
     /**
      * Flags to define the behaviour of the standard input/output/error of
      * a #GSSubprocess.
@@ -1286,4 +1286,5 @@ export namespace GSystem {
 }
 
 export default GSystem;
+
 // END

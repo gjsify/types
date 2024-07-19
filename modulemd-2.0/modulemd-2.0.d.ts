@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Modulemd-2.0
- */
-
 export namespace Modulemd {
+    /**
+     * Modulemd-2.0
+     */
+
     enum CompressionTypeEnum {
         /**
          * Zstandard compression; since 2.15
@@ -2457,4 +2457,5 @@ export namespace Modulemd {
 }
 
 export default Modulemd;
+
 // END

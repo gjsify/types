@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GUsb-1.0
- */
-
 export namespace GUsb {
+    /**
+     * GUsb-1.0
+     */
+
     enum ContextError {
         CONTEXT_ERROR_INTERNAL,
     }
@@ -2138,4 +2138,5 @@ export namespace GUsb {
 }
 
 export default GUsb;
+
 // END

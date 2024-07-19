@@ -19,11 +19,11 @@ import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 import type EBookContacts from '@girs/ebookcontacts-1.2';
 
-/**
- * EBook-1.2
- */
-
 export namespace EBook {
+    /**
+     * EBook-1.2
+     */
+
     /**
      * Error codes for the #E_BOOK_ERROR error
      */
@@ -3232,4 +3232,5 @@ export namespace EBook {
 }
 
 export default EBook;
+
 // END

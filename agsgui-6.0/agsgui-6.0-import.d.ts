@@ -1,4 +1,3 @@
-
 import AgsGui60 from '@girs/agsgui-6.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

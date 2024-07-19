@@ -14,11 +14,11 @@ import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * TrackerMiner-1.0
- */
-
 export namespace TrackerMiner {
+    /**
+     * TrackerMiner-1.0
+     */
+
     /**
      * Possible errors returned when calling tracker_decorator_next_finish().
      */
@@ -4145,4 +4145,5 @@ export namespace TrackerMiner {
 }
 
 export default TrackerMiner;
+
 // END

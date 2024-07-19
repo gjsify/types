@@ -1,4 +1,3 @@
-
 import EBookContacts12 from '@girs/ebookcontacts-1.2';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

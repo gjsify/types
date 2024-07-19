@@ -36,11 +36,11 @@ import type CoglPango from '@girs/coglpango-1.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Cogl from '@girs/cogl-1.0';
 
-/**
- * NemoPreview-1.0
- */
-
 export namespace NemoPreview {
+    /**
+     * NemoPreview-1.0
+     */
+
     enum SoundPlayerState {
         UNKNOWN,
         IDLE,
@@ -758,4 +758,5 @@ export namespace NemoPreview {
 }
 
 export default NemoPreview;
+
 // END

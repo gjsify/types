@@ -30,11 +30,11 @@ import type GstPbutils from '@girs/gstpbutils-1.0';
 import type GstVideo from '@girs/gstvideo-1.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
-/**
- * ClapperGtk-0.0
- */
-
 export namespace ClapperGtk {
+    /**
+     * ClapperGtk-0.0
+     */
+
     /**
      * ClapperGtk major version component
      */
@@ -17994,4 +17994,5 @@ export namespace ClapperGtk {
 }
 
 export default ClapperGtk;
+
 // END

@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Mbim-1.0
- */
-
 export namespace Mbim {
+    /**
+     * Mbim-1.0
+     */
+
     /**
      * Access type preference.
      */
@@ -9128,4 +9128,5 @@ export namespace Mbim {
 }
 
 export default Mbim;
+
 // END

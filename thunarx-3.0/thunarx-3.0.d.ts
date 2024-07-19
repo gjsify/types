@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Thunarx-3.0
- */
-
 export namespace Thunarx {
+    /**
+     * Thunarx-3.0
+     */
+
     const FILESYSTEM_INFO_NAMESPACE: string;
     const FILE_INFO_NAMESPACE: string;
     const MAJOR_VERSION: number;
@@ -2682,4 +2682,5 @@ export namespace Thunarx {
 }
 
 export default Thunarx;
+
 // END

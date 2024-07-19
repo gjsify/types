@@ -16,11 +16,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Rest from '@girs/rest-0.7';
 import type Json from '@girs/json-1.0';
 
-/**
- * Zpj-0.0
- */
-
 export namespace Zpj {
+    /**
+     * Zpj-0.0
+     */
+
     /**
      * This enumeration can be expanded at a later date.
      */
@@ -1404,4 +1404,5 @@ export namespace Zpj {
 }
 
 export default Zpj;
+
 // END

@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * P11Kit-1.0
- */
-
 export namespace P11Kit {
+    /**
+     * P11Kit-1.0
+     */
+
     /**
      * Error codes returned by various functions. The functions each clearly state
      * which error codes they are capable of returning.
@@ -269,4 +269,5 @@ export namespace P11Kit {
 }
 
 export default P11Kit;
+
 // END

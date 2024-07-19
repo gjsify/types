@@ -22,11 +22,11 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 
-/**
- * GnomeBG-4.0
- */
-
 export namespace GnomeBG {
+    /**
+     * GnomeBG-4.0
+     */
+
     module BG {
         // Signal callback interfaces
 
@@ -235,4 +235,5 @@ export namespace GnomeBG {
 }
 
 export default GnomeBG;
+
 // END

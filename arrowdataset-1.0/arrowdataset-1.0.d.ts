@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * ArrowDataset-1.0
- */
-
 export namespace ArrowDataset {
+    /**
+     * ArrowDataset-1.0
+     */
+
     /**
      * They are corresponding to `arrow::dataset::SegmentEncoding` values.
      */
@@ -669,4 +669,5 @@ export namespace ArrowDataset {
 }
 
 export default ArrowDataset;
+
 // END

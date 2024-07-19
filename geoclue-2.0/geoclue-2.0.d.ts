@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Geoclue-2.0
- */
-
 export namespace Geoclue {
+    /**
+     * Geoclue-2.0
+     */
+
     enum AccuracyLevel {
         NONE,
         COUNTRY,
@@ -5850,4 +5850,5 @@ export namespace Geoclue {
 }
 
 export default Geoclue;
+
 // END

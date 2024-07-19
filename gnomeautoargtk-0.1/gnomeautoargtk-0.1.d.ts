@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type GnomeAutoar from '@girs/gnomeautoar-0.1';
 
-/**
- * GnomeAutoarGtk-0.1
- */
-
 export namespace GnomeAutoarGtk {
+    /**
+     * GnomeAutoarGtk-0.1
+     */
+
     /**
      * Gets the selected archive format of the widget created by
      * autoar_gtk_chooser_advanced_new().
@@ -82,4 +82,5 @@ export namespace GnomeAutoarGtk {
 }
 
 export default GnomeAutoarGtk;
+
 // END

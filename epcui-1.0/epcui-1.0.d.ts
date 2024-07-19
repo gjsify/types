@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Epc from '@girs/epc-1.0';
 
-/**
- * EpcUi-1.0
- */
-
 export namespace EpcUi {
+    /**
+     * EpcUi-1.0
+     */
+
     module PasswordDialog {
         // Constructor properties interface
 
@@ -969,4 +969,5 @@ export namespace EpcUi {
 }
 
 export default EpcUi;
+
 // END

@@ -1,4 +1,3 @@
-
 import CDesktopEnums30 from '@girs/cdesktopenums-3.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

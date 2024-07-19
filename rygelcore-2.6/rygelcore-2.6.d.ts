@@ -18,11 +18,11 @@ import type libxml2 from '@girs/libxml2-2.0';
 import type Soup from '@girs/soup-2.4';
 import type GSSDP from '@girs/gssdp-1.2';
 
-/**
- * RygelCore-2.6
- */
-
 export namespace RygelCore {
+    /**
+     * RygelCore-2.6
+     */
+
     enum LogLevel {
         INVALID,
         ERROR,
@@ -4400,4 +4400,5 @@ export namespace RygelCore {
 }
 
 export default RygelCore;
+
 // END

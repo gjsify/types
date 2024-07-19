@@ -1,4 +1,3 @@
-
 import St15 from '@girs/st-15';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

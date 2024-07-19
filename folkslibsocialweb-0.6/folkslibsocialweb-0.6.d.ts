@@ -16,11 +16,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Folks from '@girs/folks-0.6';
 import type Gee from '@girs/gee-0.8';
 
-/**
- * FolksLibsocialweb-0.6
- */
-
 export namespace FolksLibsocialweb {
+    /**
+     * FolksLibsocialweb-0.6
+     */
+
     module Persona {
         // Constructor properties interface
 
@@ -629,4 +629,5 @@ export namespace FolksLibsocialweb {
 }
 
 export default FolksLibsocialweb;
+
 // END

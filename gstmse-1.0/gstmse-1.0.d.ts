@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstMse-1.0
- */
-
 export namespace GstMse {
+    /**
+     * GstMse-1.0
+     */
+
     /**
      * Reasons for ending a #GstMediaSource using gst_media_source_end_of_stream().
      *
@@ -1423,4 +1423,5 @@ export namespace GstMse {
 }
 
 export default GstMse;
+
 // END

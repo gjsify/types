@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * MPID-3.0
- */
-
 export namespace MPID {
+    /**
+     * MPID-3.0
+     */
+
     enum Error {
         /**
          * Indicates no error has occurred
@@ -257,4 +257,5 @@ export namespace MPID {
 }
 
 export default MPID;
+
 // END

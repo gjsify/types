@@ -1,4 +1,3 @@
-
 import Pluma10 from '@girs/pluma-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

@@ -14,11 +14,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 
-/**
- * GCalc-1
- */
-
 export namespace GCalc {
+    /**
+     * GCalc-1
+     */
+
     class AssigError extends GLib.Error {
         static $gtype: GObject.GType<AssigError>;
 
@@ -10181,4 +10181,5 @@ export namespace GCalc {
 }
 
 export default GCalc;
+
 // END

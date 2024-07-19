@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Epc-1.0
- */
-
 export namespace Epc {
+    /**
+     * Epc-1.0
+     */
+
     /**
      * The address family to use for contacting network services.
      */
@@ -545,4 +545,5 @@ export namespace Epc {
 }
 
 export default Epc;
+
 // END

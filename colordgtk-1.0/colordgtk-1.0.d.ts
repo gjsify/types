@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Colord from '@girs/colord-1.0';
 
-/**
- * ColordGtk-1.0
- */
-
 export namespace ColordGtk {
+    /**
+     * ColordGtk-1.0
+     */
+
     /**
      * Errors that can be thrown
      */
@@ -1051,4 +1051,5 @@ export namespace ColordGtk {
 }
 
 export default ColordGtk;
+
 // END

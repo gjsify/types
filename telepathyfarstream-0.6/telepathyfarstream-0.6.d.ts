@@ -16,11 +16,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Gst from '@girs/gst-1.0';
 import type Farstream from '@girs/farstream-0.2';
 
-/**
- * TelepathyFarstream-0.6
- */
-
 export namespace TelepathyFarstream {
+    /**
+     * TelepathyFarstream-0.6
+     */
+
     module Channel {
         // Signal callback interfaces
 
@@ -844,4 +844,5 @@ export namespace TelepathyFarstream {
 }
 
 export default TelepathyFarstream;
+
 // END

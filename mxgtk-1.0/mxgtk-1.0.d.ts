@@ -21,11 +21,11 @@ import type Gdk from '@girs/gdk-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * MxGtk-1.0
- */
-
 export namespace MxGtk {
+    /**
+     * MxGtk-1.0
+     */
+
     module Frame {
         // Constructor properties interface
 
@@ -934,4 +934,5 @@ export namespace MxGtk {
 }
 
 export default MxGtk;
+
 // END

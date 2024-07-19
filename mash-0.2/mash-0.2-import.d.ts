@@ -1,4 +1,3 @@
-
 import Mash02 from '@girs/mash-0.2';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

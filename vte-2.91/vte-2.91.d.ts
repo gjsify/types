@@ -22,11 +22,11 @@ import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Vte-2.91
- */
-
 export namespace Vte {
+    /**
+     * Vte-2.91
+     */
+
     /**
      * An enumeration type that can be used to specify how the terminal
      * uses extra allocated space.
@@ -3738,4 +3738,5 @@ export namespace Vte {
 }
 
 export default Vte;
+
 // END

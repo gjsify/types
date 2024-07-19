@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Nautilus-4.0
- */
-
 export namespace Nautilus {
+    /**
+     * Nautilus-4.0
+     */
+
     /**
      * Return values for asynchronous operations performed by the extension.
      * See nautilus_info_provider_update_file_info().
@@ -641,4 +641,5 @@ export namespace Nautilus {
 }
 
 export default Nautilus;
+
 // END

@@ -1,4 +1,3 @@
-
 import EBook12 from '@girs/ebook-1.2';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

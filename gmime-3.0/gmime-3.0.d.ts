@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GMime-3.0
- */
-
 export namespace GMime {
+    /**
+     * GMime-3.0
+     */
+
     /**
      * An address type.
      */
@@ -6927,4 +6927,5 @@ export namespace GMime {
 }
 
 export default GMime;
+
 // END

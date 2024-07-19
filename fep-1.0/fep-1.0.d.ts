@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Fep-1.0
- */
-
 export namespace Fep {
+    /**
+     * Fep-1.0
+     */
+
     enum GAttrType {
         /**
          * Decorate with underline
@@ -779,4 +779,5 @@ export namespace Fep {
 }
 
 export default Fep;
+
 // END

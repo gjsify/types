@@ -1,4 +1,3 @@
-
 import Mtk15 from '@girs/mtk-15';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

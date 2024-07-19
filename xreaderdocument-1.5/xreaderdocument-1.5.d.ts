@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * XreaderDocument-1.5
- */
-
 export namespace XreaderDocument {
+    /**
+     * XreaderDocument-1.5
+     */
+
     enum AnnotationTextIcon {
         NOTE,
         COMMENT,
@@ -2539,4 +2539,5 @@ export namespace XreaderDocument {
 }
 
 export default XreaderDocument;
+
 // END

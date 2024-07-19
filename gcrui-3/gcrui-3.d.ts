@@ -24,11 +24,11 @@ import type Atk from '@girs/atk-1.0';
 import type Gcr from '@girs/gcr-3';
 import type Gck from '@girs/gck-1';
 
-/**
- * GcrUi-3
- */
-
 export namespace GcrUi {
+    /**
+     * GcrUi-3
+     */
+
     /**
      * If a [class`CollectionModel]` is created with a mode of
      * %GCR_COLLECTION_MODEL_TREE, then any included objects that are themselves a
@@ -16287,4 +16287,5 @@ export namespace GcrUi {
 }
 
 export default GcrUi;
+
 // END

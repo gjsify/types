@@ -1,4 +1,3 @@
-
 import Parquet10 from '@girs/parquet-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

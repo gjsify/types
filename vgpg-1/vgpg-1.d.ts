@@ -20,11 +20,11 @@ import type GXml from '@girs/gxml-0.20';
 import type libxml2 from '@girs/libxml2-2.0';
 import type Vgda from '@girs/vgda-1';
 
-/**
- * Vgpg-1
- */
-
 export namespace Vgpg {
+    /**
+     * Vgpg-1
+     */
+
     module Connection {
         // Constructor properties interface
 
@@ -69,4 +69,5 @@ export namespace Vgpg {
 }
 
 export default Vgpg;
+
 // END

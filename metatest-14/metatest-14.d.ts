@@ -29,11 +29,11 @@ import type GL from '@girs/gl-1.0';
 import type Clutter from '@girs/clutter-14';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * MetaTest-14
- */
-
 export namespace MetaTest {
+    /**
+     * MetaTest-14
+     */
+
     enum ContextTestType {
         HEADLESS,
         VKMS,
@@ -135,4 +135,5 @@ export namespace MetaTest {
 }
 
 export default MetaTest;
+
 // END

@@ -18,11 +18,11 @@ import type GstTag from '@girs/gsttag-1.0';
 import type GstPbutils from '@girs/gstpbutils-1.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
-/**
- * GstPlay-1.0
- */
-
 export namespace GstPlay {
+    /**
+     * GstPlay-1.0
+     */
+
     enum PlayColorBalanceType {
         /**
          * hue or color balance.
@@ -1466,4 +1466,5 @@ export namespace GstPlay {
 }
 
 export default GstPlay;
+
 // END

@@ -1,4 +1,3 @@
-
 import EDataCal20 from '@girs/edatacal-2.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

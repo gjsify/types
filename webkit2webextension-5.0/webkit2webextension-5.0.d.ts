@@ -25,11 +25,11 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * WebKit2WebExtension-5.0
- */
-
 export namespace WebKit2WebExtension {
+    /**
+     * WebKit2WebExtension-5.0
+     */
+
     /**
      * Enum values used to denote the various levels of console messages.
      */
@@ -35617,4 +35617,5 @@ export namespace WebKit2WebExtension {
 }
 
 export default WebKit2WebExtension;
+
 // END

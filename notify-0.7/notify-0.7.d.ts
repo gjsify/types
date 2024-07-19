@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Notify-0.7
- */
-
 export namespace Notify {
+    /**
+     * Notify-0.7
+     */
+
     /**
      * The reason for which the notification has been closed.
      */
@@ -416,4 +416,5 @@ export namespace Notify {
 }
 
 export default Notify;
+
 // END

@@ -24,11 +24,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * WebKit2-4.0
- */
-
 export namespace WebKit2 {
+    /**
+     * WebKit2-4.0
+     */
+
     /**
      * Enum values representing the authentication scheme.
      */
@@ -17503,4 +17503,5 @@ export namespace WebKit2 {
 }
 
 export default WebKit2;
+
 // END

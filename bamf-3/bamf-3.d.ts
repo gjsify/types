@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Bamf-3
- */
-
 export namespace Bamf {
+    /**
+     * Bamf-3
+     */
+
     enum ClickBehavior {
         NONE,
         OPEN,
@@ -753,4 +753,5 @@ export namespace Bamf {
 }
 
 export default Bamf;
+
 // END

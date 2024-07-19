@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Pnl-1.0
- */
-
 export namespace Pnl {
+    /**
+     * Pnl-1.0
+     */
+
     enum AnimationMode {
         LINEAR,
         EASE_IN_QUAD,
@@ -41739,4 +41739,5 @@ export namespace Pnl {
 }
 
 export default Pnl;
+
 // END

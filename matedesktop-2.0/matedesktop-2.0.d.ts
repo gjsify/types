@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * MateDesktop-2.0
- */
-
 export namespace MateDesktop {
+    /**
+     * MateDesktop-2.0
+     */
+
     enum BGColorType {
         SOLID,
         H_GRADIENT,
@@ -7833,4 +7833,5 @@ export namespace MateDesktop {
 }
 
 export default MateDesktop;
+
 // END

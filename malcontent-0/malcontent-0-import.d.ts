@@ -1,4 +1,3 @@
-
 import Malcontent0 from '@girs/malcontent-0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

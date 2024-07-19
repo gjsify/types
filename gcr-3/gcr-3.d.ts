@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gck from '@girs/gck-1';
 
-/**
- * Gcr-3
- */
-
 export namespace Gcr {
+    /**
+     * Gcr-3
+     */
+
     /**
      * The status of a built certificate chain. Will be set to
      * %GCR_CERTIFICATE_CHAIN_UNKNOWN for certificate chains that have not been
@@ -7298,4 +7298,5 @@ export namespace Gcr {
 }
 
 export default Gcr;
+
 // END

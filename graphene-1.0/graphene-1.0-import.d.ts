@@ -1,4 +1,3 @@
-
 import Graphene10 from '@girs/graphene-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

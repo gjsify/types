@@ -24,11 +24,11 @@ import type Cogl from '@girs/cogl-10';
 import type Graphene from '@girs/graphene-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Clutter-10
- */
-
 export namespace Clutter {
+    /**
+     * Clutter-10
+     */
+
     /**
      * Controls how a #ClutterActor should align itself inside the extra space
      * assigned to it during the allocation.
@@ -26640,4 +26640,5 @@ export namespace Clutter {
 }
 
 export default Clutter;
+
 // END

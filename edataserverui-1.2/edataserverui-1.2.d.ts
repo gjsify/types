@@ -29,11 +29,11 @@ import type Camel from '@girs/camel-1.2';
 import type ECal from '@girs/ecal-2.0';
 import type ICalGLib from '@girs/icalglib-3.0';
 
-/**
- * EDataServerUI-1.2
- */
-
 export namespace EDataServerUI {
+    /**
+     * EDataServerUI-1.2
+     */
+
     function buffer_tagger_connect(textview: Gtk.TextView): void;
     function buffer_tagger_disconnect(textview: Gtk.TextView): void;
     function buffer_tagger_update_tags(textview: Gtk.TextView): void;
@@ -3114,4 +3114,5 @@ export namespace EDataServerUI {
 }
 
 export default EDataServerUI;
+
 // END

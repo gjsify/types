@@ -1,4 +1,3 @@
-
 import Gkbd30 from '@girs/gkbd-3.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

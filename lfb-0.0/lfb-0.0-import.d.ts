@@ -1,4 +1,3 @@
-
 import Lfb00 from '@girs/lfb-0.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

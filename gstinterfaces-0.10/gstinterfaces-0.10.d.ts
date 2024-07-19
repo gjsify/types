@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstInterfaces-0.10
- */
-
 export namespace GstInterfaces {
+    /**
+     * GstInterfaces-0.10
+     */
+
     /**
      * An enumeration indicating whether an element implements color balancing
      * operations in software or in dedicated hardware. In general, dedicated
@@ -1252,4 +1252,5 @@ export namespace GstInterfaces {
 }
 
 export default GstInterfaces;
+
 // END

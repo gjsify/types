@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GUdev from '@girs/gudev-1.0';
 
-/**
- * Manette-0.2
- */
-
 export namespace Manette {
+    /**
+     * Manette-0.2
+     */
+
     /**
      * Specifies the type of the event.
      */
@@ -300,4 +300,5 @@ export namespace Manette {
 }
 
 export default Manette;
+
 // END

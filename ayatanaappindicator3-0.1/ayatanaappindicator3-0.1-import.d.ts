@@ -1,4 +1,3 @@
-
 import AyatanaAppIndicator301 from '@girs/ayatanaappindicator3-0.1';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

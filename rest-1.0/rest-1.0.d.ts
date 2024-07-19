@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Rest-1.0
- */
-
 export namespace Rest {
+    /**
+     * Rest-1.0
+     */
+
     enum MemoryUse {
         /**
          * the memory block can be assumed to always exist for the
@@ -1067,4 +1067,5 @@ export namespace Rest {
 }
 
 export default Rest;
+
 // END

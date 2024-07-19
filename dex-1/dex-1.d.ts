@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Dex-1
- */
-
 export namespace Dex {
+    /**
+     * Dex-1
+     */
+
     enum BlockKind {
         THEN,
         CATCH,
@@ -1559,4 +1559,5 @@ export namespace Dex {
 }
 
 export default Dex;
+
 // END

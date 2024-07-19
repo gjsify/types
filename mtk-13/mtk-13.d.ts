@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Graphene from '@girs/graphene-1.0';
 
-/**
- * Mtk-13
- */
-
 export namespace Mtk {
+    /**
+     * Mtk-13
+     */
+
     enum RoundingStrategy {
         SHRINK,
         GROW,
@@ -112,4 +112,5 @@ export namespace Mtk {
 }
 
 export default Mtk;
+
 // END

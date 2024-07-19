@@ -23,11 +23,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Shumate-1.0
- */
-
 export namespace Shumate {
+    /**
+     * Shumate-1.0
+     */
+
     /**
      * Error codes in the #SHUMATE_FILE_CACHE_ERROR domain.
      */
@@ -12959,4 +12959,5 @@ export namespace Shumate {
 }
 
 export default Shumate;
+
 // END

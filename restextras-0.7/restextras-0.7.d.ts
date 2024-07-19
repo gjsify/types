@@ -16,11 +16,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * RestExtras-0.7
- */
-
 export namespace RestExtras {
+    /**
+     * RestExtras-0.7
+     */
+
     interface YoutubeProxyUploadCallback<A = GObject.Object> {
         (
             proxy: YoutubeProxy,
@@ -351,4 +351,5 @@ export namespace RestExtras {
 }
 
 export default RestExtras;
+
 // END

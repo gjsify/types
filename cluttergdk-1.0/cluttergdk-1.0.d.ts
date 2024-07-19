@@ -26,11 +26,11 @@ import type PangoCairo from '@girs/pangocairo-1.0';
 import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * ClutterGdk-1.0
- */
-
 export namespace ClutterGdk {
+    /**
+     * ClutterGdk-1.0
+     */
+
     /**
      * Disable the event retrieval in Clutter.
      *
@@ -106,4 +106,5 @@ export namespace ClutterGdk {
 }
 
 export default ClutterGdk;
+
 // END

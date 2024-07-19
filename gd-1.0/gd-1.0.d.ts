@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Gd-1.0
- */
-
 export namespace Gd {
+    /**
+     * Gd-1.0
+     */
+
     enum MainColumns {
         ID,
         URI,
@@ -38543,4 +38543,5 @@ export namespace Gd {
 }
 
 export default Gd;
+
 // END

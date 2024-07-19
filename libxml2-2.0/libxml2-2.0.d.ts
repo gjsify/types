@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * libxml2-2.0
- */
-
 export namespace libxml2 {
+    /**
+     * libxml2-2.0
+     */
+
     function dummy(): void;
     class Node {
         static $gtype: GObject.GType<Node>;
@@ -93,4 +93,5 @@ export namespace libxml2 {
 }
 
 export default libxml2;
+
 // END

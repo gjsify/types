@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * AppStream-1.0
- */
-
 export namespace AppStream {
+    /**
+     * AppStream-1.0
+     */
+
     /**
      * The kind of the agreement.
      */
@@ -6034,4 +6034,5 @@ export namespace AppStream {
 }
 
 export default AppStream;
+
 // END

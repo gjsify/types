@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * MateMenu-2.0
- */
-
 export namespace MateMenu {
+    /**
+     * MateMenu-2.0
+     */
+
     enum TreeItemType {
         INVALID,
         DIRECTORY,
@@ -309,4 +309,5 @@ export namespace MateMenu {
 }
 
 export default MateMenu;
+
 // END

@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Goa-1.0
- */
-
 export namespace Goa {
+    /**
+     * Goa-1.0
+     */
+
     /**
      * Error codes for the #GOA_ERROR error domain and the
      * corresponding D-Bus error names.
@@ -32197,4 +32197,5 @@ export namespace Goa {
 }
 
 export default Goa;
+
 // END

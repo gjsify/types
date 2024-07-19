@@ -1,4 +1,3 @@
-
 import Gck2 from '@girs/gck-2';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

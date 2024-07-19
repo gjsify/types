@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Gee-1.0
- */
-
 export namespace Gee {
+    /**
+     * Gee-1.0
+     */
+
     function functions_get_equal_func_for(t: GObject.Type): GLib.EqualFunc;
     function functions_get_hash_func_for(t: GObject.Type): GLib.HashFunc;
     function functions_get_compare_func_for(t: GObject.Type): GLib.CompareFunc;
@@ -2909,4 +2909,5 @@ export namespace Gee {
 }
 
 export default Gee;
+
 // END

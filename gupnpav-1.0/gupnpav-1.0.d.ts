@@ -12,11 +12,11 @@ import type libxml2 from '@girs/libxml2-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * GUPnPAV-1.0
- */
-
 export namespace GUPnPAV {
+    /**
+     * GUPnPAV-1.0
+     */
+
     enum CDSLastChangeEvent {
         /**
          * Invalid #GUPnPCDSLastChangeEntry.
@@ -2615,4 +2615,5 @@ export namespace GUPnPAV {
 }
 
 export default GUPnPAV;
+
 // END

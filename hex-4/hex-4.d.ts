@@ -23,11 +23,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Hex-4
- */
-
 export namespace Hex {
+    /**
+     * Hex-4
+     */
+
     /**
      * Type of change operation.
      */
@@ -1928,4 +1928,5 @@ export namespace Hex {
 }
 
 export default Hex;
+
 // END

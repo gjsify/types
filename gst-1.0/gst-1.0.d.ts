@@ -12,11 +12,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gst-1.0
- */
-
 export namespace Gst {
+    /**
+     * Gst-1.0
+     */
+
     /**
      * The different types of buffering methods.
      */
@@ -21334,4 +21334,5 @@ export namespace Gst {
 }
 
 export default Gst;
+
 // END

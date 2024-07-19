@@ -23,11 +23,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * GCi-1
- */
-
 export namespace GCi {
+    /**
+     * GCi-1
+     */
+
     module EntryController {
         // Constructor properties interface
 
@@ -82,4 +82,5 @@ export namespace GCi {
 }
 
 export default GCi;
+
 // END

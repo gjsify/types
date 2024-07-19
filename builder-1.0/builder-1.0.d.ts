@@ -29,11 +29,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Dazzle from '@girs/dazzle-1.0';
 
-/**
- * Builder-1.0
- */
-
 export namespace Builder {
+    /**
+     * Builder-1.0
+     */
+
     /**
      * %GB_VIEW_GRID_SPLIT_LEFT:
      * %GB_VIEW_GRID_SPLIT_RIGHT:
@@ -4540,4 +4540,5 @@ export namespace Builder {
 }
 
 export default Builder;
+
 // END

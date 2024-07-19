@@ -15,11 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GoVirt-1.0
- */
-
 export namespace GoVirt {
+    /**
+     * GoVirt-1.0
+     */
+
     class ProxyError extends GLib.Error {
         static $gtype: GObject.GType<ProxyError>;
 
@@ -262,4 +262,5 @@ export namespace GoVirt {
 }
 
 export default GoVirt;
+
 // END

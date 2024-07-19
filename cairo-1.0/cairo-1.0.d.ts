@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * cairo-1.0
- */
-
 export namespace cairo {
+    /**
+     * cairo-1.0
+     */
+
     enum Status {
         SUCCESS,
         NO_MEMORY,
@@ -374,4 +374,5 @@ export namespace cairo {
 }
 
 export default cairo;
+
 // END

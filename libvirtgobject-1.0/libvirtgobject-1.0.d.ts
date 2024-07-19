@@ -16,11 +16,11 @@ import type GObject from '@girs/gobject-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * LibvirtGObject-1.0
- */
-
 export namespace LibvirtGObject {
+    /**
+     * LibvirtGObject-1.0
+     */
+
     enum DomainDeleteFlags {
         /**
          * No flags
@@ -1733,4 +1733,5 @@ export namespace LibvirtGObject {
 }
 
 export default LibvirtGObject;
+
 // END

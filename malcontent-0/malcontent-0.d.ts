@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Malcontent-0
- */
-
 export namespace Malcontent {
+    /**
+     * Malcontent-0
+     */
+
     /**
      * Different semantics for interpreting an application list.
      */
@@ -824,4 +824,5 @@ export namespace Malcontent {
 }
 
 export default Malcontent;
+
 // END

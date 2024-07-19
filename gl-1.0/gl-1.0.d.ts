@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * GL-1.0
- */
-
 export namespace GL {
+    /**
+     * GL-1.0
+     */
+
     function InitNames(): void;
     class bitfield {
         static $gtype: GObject.GType<bitfield>;
@@ -133,4 +133,5 @@ export namespace GL {
 }
 
 export default GL;
+
 // END

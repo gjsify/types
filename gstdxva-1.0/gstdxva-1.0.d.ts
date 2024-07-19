@@ -16,11 +16,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstCodecs from '@girs/gstcodecs-1.0';
 
-/**
- * GstDxva-1.0
- */
-
 export namespace GstDxva {
+    /**
+     * GstDxva-1.0
+     */
+
     enum DxvaCodec {
         NONE,
         MPEG2,
@@ -425,4 +425,5 @@ export namespace GstDxva {
 }
 
 export default GstDxva;
+
 // END

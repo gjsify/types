@@ -15,11 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstCodecs-1.0
- */
-
 export namespace GstCodecs {
+    /**
+     * GstCodecs-1.0
+     */
+
     enum H264DecoderCompliance {
         /**
          * The decoder behavior is
@@ -1545,4 +1545,5 @@ export namespace GstCodecs {
 }
 
 export default GstCodecs;
+
 // END

@@ -24,11 +24,11 @@ import type Atk from '@girs/atk-1.0';
 import type Gcr from '@girs/gcr-4';
 import type Gck from '@girs/gck-2';
 
-/**
- * GcrGtk3-4
- */
-
 export namespace GcrGtk3 {
+    /**
+     * GcrGtk3-4
+     */
+
     module CertificateWidget {
         // Constructor properties interface
 
@@ -549,4 +549,5 @@ export namespace GcrGtk3 {
 }
 
 export default GcrGtk3;
+
 // END

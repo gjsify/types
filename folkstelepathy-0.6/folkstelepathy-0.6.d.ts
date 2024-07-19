@@ -16,11 +16,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type TelepathyGLib from '@girs/telepathyglib-0.12';
 import type Folks from '@girs/folks-0.6';
 
-/**
- * FolksTelepathy-0.6
- */
-
 export namespace FolksTelepathy {
+    /**
+     * FolksTelepathy-0.6
+     */
+
     module PersonaStore {
         // Constructor properties interface
 
@@ -754,4 +754,5 @@ export namespace FolksTelepathy {
 }
 
 export default FolksTelepathy;
+
 // END

@@ -17,11 +17,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstVulkanWayland-1.0
- */
-
 export namespace GstVulkanWayland {
+    /**
+     * GstVulkanWayland-1.0
+     */
+
     module VulkanDisplayWayland {
         // Constructor properties interface
 
@@ -71,4 +71,5 @@ export namespace GstVulkanWayland {
 }
 
 export default GstVulkanWayland;
+
 // END

@@ -1,4 +1,3 @@
-
 import GnomeAutoar01 from '@girs/gnomeautoar-0.1';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

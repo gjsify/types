@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * UPowerGlib-1.0
- */
-
 export namespace UPowerGlib {
+    /**
+     * UPowerGlib-1.0
+     */
+
     /**
      * The device type.
      */
@@ -6916,4 +6916,5 @@ export namespace UPowerGlib {
 }
 
 export default UPowerGlib;
+
 // END

@@ -1,4 +1,3 @@
-
 import ColordGtk10 from '@girs/colordgtk-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

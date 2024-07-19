@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Gamerzilla-0.1
- */
-
 export namespace Gamerzilla {
+    /**
+     * Gamerzilla-0.1
+     */
+
     module GamerzillaGobj {
         // Constructor properties interface
 
@@ -82,4 +82,5 @@ export namespace Gamerzilla {
 }
 
 export default Gamerzilla;
+
 // END

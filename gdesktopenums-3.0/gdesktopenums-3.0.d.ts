@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * GDesktopEnums-3.0
- */
-
 export namespace GDesktopEnums {
+    /**
+     * GDesktopEnums-3.0
+     */
+
     enum BackgroundShading {
         SOLID,
         VERTICAL,
@@ -207,4 +207,5 @@ export namespace GDesktopEnums {
 }
 
 export default GDesktopEnums;
+
 // END

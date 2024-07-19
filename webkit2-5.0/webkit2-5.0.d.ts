@@ -25,11 +25,11 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * WebKit2-5.0
- */
-
 export namespace WebKit2 {
+    /**
+     * WebKit2-5.0
+     */
+
     /**
      * Enum values representing the authentication scheme.
      */
@@ -16554,4 +16554,5 @@ export namespace WebKit2 {
 }
 
 export default WebKit2;
+
 // END

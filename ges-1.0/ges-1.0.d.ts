@@ -18,11 +18,11 @@ import type GstPbutils from '@girs/gstpbutils-1.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 import type Gio from '@girs/gio-2.0';
 
-/**
- * GES-1.0
- */
-
 export namespace GES {
+    /**
+     * GES-1.0
+     */
+
     enum AssetLoadingReturn {
         /**
          * Indicates that an error occurred
@@ -34876,4 +34876,5 @@ export namespace GES {
 }
 
 export default GES;
+
 // END

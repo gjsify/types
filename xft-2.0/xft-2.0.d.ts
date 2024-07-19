@@ -11,11 +11,11 @@
 import type xlib from '@girs/xlib-2.0';
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * xft-2.0
- */
-
 export namespace xft {
+    /**
+     * xft-2.0
+     */
+
     function init(): void;
     class Color {
         static $gtype: GObject.GType<Color>;
@@ -62,4 +62,5 @@ export namespace xft {
 }
 
 export default xft;
+
 // END

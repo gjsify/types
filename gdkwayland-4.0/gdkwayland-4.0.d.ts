@@ -20,11 +20,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * GdkWayland-4.0
- */
-
 export namespace GdkWayland {
+    /**
+     * GdkWayland-4.0
+     */
+
     interface WaylandToplevelExported {
         (toplevel: WaylandToplevel, handle: string): void;
     }
@@ -1324,4 +1324,5 @@ export namespace GdkWayland {
 }
 
 export default GdkWayland;
+
 // END

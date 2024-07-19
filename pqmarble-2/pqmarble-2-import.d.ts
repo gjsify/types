@@ -1,4 +1,3 @@
-
 import PQMarble2 from '@girs/pqmarble-2';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

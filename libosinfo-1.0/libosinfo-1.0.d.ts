@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Libosinfo-1.0
- */
-
 export namespace Libosinfo {
+    /**
+     * Libosinfo-1.0
+     */
+
     enum DeviceDriverSigningReq {
         /**
          * Script do not require device drivers
@@ -4417,4 +4417,5 @@ export namespace Libosinfo {
 }
 
 export default Libosinfo;
+
 // END

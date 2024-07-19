@@ -23,11 +23,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * NMA-1.0
- */
-
 export namespace NMA {
+    /**
+     * NMA-1.0
+     */
+
     /**
      * Flags that controls what is the certificate chooser button able to pick.
      * Currently only local files are supported, but might be extended to use URIs,
@@ -3102,4 +3102,5 @@ export namespace NMA {
 }
 
 export default NMA;
+
 // END

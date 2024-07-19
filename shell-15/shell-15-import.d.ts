@@ -1,4 +1,3 @@
-
 import Shell15 from '@girs/shell-15';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

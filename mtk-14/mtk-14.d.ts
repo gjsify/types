@@ -12,11 +12,11 @@ import type Graphene from '@girs/graphene-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Mtk-14
- */
-
 export namespace Mtk {
+    /**
+     * Mtk-14
+     */
+
     enum RegionOverlap {
         OUT,
         IN,
@@ -221,4 +221,5 @@ export namespace Mtk {
 }
 
 export default Mtk;
+
 // END

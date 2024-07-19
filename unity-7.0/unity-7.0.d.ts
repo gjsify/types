@@ -15,11 +15,11 @@ import type Dee from '@girs/dee-1.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Unity-7.0
- */
-
 export namespace Unity {
+    /**
+     * Unity-7.0
+     */
+
     enum CategoryType {
         NONE,
         APPLICATION,
@@ -5021,4 +5021,5 @@ export namespace Unity {
 }
 
 export default Unity;
+
 // END

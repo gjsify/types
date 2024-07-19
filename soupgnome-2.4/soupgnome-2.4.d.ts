@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * SoupGNOME-2.4
- */
-
 export namespace SoupGNOME {
+    /**
+     * SoupGNOME-2.4
+     */
+
     const COOKIE_JAR_SQLITE_FILENAME: string;
     function gnome_features_2_26_get_type(): GObject.GType;
     module CookieJarSqlite {
@@ -1442,4 +1442,5 @@ export namespace SoupGNOME {
 }
 
 export default SoupGNOME;
+
 // END

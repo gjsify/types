@@ -15,11 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstVa-1.0
- */
-
 export namespace GstVa {
+    /**
+     * GstVa-1.0
+     */
+
     enum VaFeature {
         /**
          * The feature is disabled.
@@ -486,4 +486,5 @@ export namespace GstVa {
 }
 
 export default GstVa;
+
 // END

@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Dbusmenu-0.4
- */
-
 export namespace Dbusmenu {
+    /**
+     * Dbusmenu-0.4
+     */
+
     /**
      * Tracks how the menus should be presented to the user.
      */
@@ -1225,4 +1225,5 @@ export namespace Dbusmenu {
 }
 
 export default Dbusmenu;
+
 // END

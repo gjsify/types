@@ -38,11 +38,11 @@ import type Gvc from '@girs/gvc-1.0';
 import type Gcr from '@girs/gcr-4';
 import type Gck from '@girs/gck-2';
 
-/**
- * Shell-15
- */
-
 export namespace Shell {
+    /**
+     * Shell-15
+     */
+
     enum AppLaunchGpu {
         APP_PREF,
         DISCRETE,
@@ -5838,4 +5838,5 @@ export namespace Shell {
 }
 
 export default Shell;
+
 // END

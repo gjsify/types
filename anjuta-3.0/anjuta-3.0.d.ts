@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Gdl from '@girs/gdl-3';
 
-/**
- * Anjuta-3.0
- */
-
 export namespace Anjuta {
+    /**
+     * Anjuta-3.0
+     */
+
     /**
      * Specifies if the entry corresponds to a frame or a button.
      * Buttons are added to the last frame that appears before the button entry
@@ -31781,4 +31781,5 @@ export namespace Anjuta {
 }
 
 export default Anjuta;
+
 // END

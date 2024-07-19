@@ -20,11 +20,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Cogl from '@girs/cogl-1.0';
 import type GL from '@girs/gl-1.0';
 
-/**
- * CoglPango-1.0
- */
-
 export namespace CoglPango {
+    /**
+     * CoglPango-1.0
+     */
+
     /**
      * This updates any internal glyph cache textures as necessary to be
      * able to render the given `layout`.
@@ -146,4 +146,5 @@ export namespace CoglPango {
 }
 
 export default CoglPango;
+
 // END

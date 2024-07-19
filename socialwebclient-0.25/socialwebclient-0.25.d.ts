@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * SocialWebClient-0.25
- */
-
 export namespace SocialWebClient {
+    /**
+     * SocialWebClient-0.25
+     */
+
     interface ClientGetServicesCallback {
         (client: Client, services: string[]): void;
     }
@@ -413,4 +413,5 @@ export namespace SocialWebClient {
 }
 
 export default SocialWebClient;
+
 // END

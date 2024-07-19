@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Json-1.0
- */
-
 export namespace Json {
+    /**
+     * Json-1.0
+     */
+
     /**
      * Indicates the content of a node.
      */
@@ -2935,4 +2935,5 @@ export namespace Json {
 }
 
 export default Json;
+
 // END

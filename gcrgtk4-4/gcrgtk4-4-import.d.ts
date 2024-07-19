@@ -1,4 +1,3 @@
-
 import GcrGtk44 from '@girs/gcrgtk4-4';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

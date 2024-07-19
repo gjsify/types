@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GExiv2-0.10
- */
-
 export namespace GExiv2 {
+    /**
+     * GExiv2-0.10
+     */
+
     /**
      * Options to control the byte order of binary EXIF data exports
      */
@@ -1039,4 +1039,5 @@ export namespace GExiv2 {
 }
 
 export default GExiv2;
+
 // END

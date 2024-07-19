@@ -15,11 +15,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gio from '@girs/gio-2.0';
 
-/**
- * SpiceClientGLib-2.0
- */
-
 export namespace SpiceClientGLib {
+    /**
+     * SpiceClientGLib-2.0
+     */
+
     /**
      * An event, emitted by #SpiceChannel::channel-event signal.
      */
@@ -3759,4 +3759,5 @@ export namespace SpiceClientGLib {
 }
 
 export default SpiceClientGLib;
+
 // END

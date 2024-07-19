@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gvc-1.0
- */
-
 export namespace Gvc {
+    /**
+     * Gvc-1.0
+     */
+
     enum MixerControlState {
         CLOSED,
         READY,
@@ -868,4 +868,5 @@ export namespace Gvc {
 }
 
 export default Gvc;
+
 // END

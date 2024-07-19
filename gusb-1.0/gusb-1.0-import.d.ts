@@ -1,4 +1,3 @@
-
 import GUsb10 from '@girs/gusb-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

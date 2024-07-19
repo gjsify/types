@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * DBusGLib-1.0
- */
-
 export namespace DBusGLib {
+    /**
+     * DBusGLib-1.0
+     */
+
     module Proxy {
         // Constructor properties interface
 
@@ -69,4 +69,5 @@ export namespace DBusGLib {
 }
 
 export default DBusGLib;
+
 // END

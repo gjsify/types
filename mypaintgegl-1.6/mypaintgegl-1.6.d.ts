@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type Gegl from '@girs/gegl-0.4';
 import type Babl from '@girs/babl-0.1';
 
-/**
- * MyPaintGegl-1.6
- */
-
 export namespace MyPaintGegl {
+    /**
+     * MyPaintGegl-1.6
+     */
+
     class TiledSurface {
         static $gtype: GObject.GType<TiledSurface>;
 
@@ -49,4 +49,5 @@ export namespace MyPaintGegl {
 }
 
 export default MyPaintGegl;
+
 // END

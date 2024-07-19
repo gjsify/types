@@ -25,11 +25,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GPaste from '@girs/gpaste-2';
 import type Adw from '@girs/adw-1';
 
-/**
- * GPasteGtk-4
- */
-
 export namespace GPasteGtk {
+    /**
+     * GPasteGtk-4
+     */
+
     /**
      * Compute the checksum of an image
      * @param texture the #GdkTexture to checksum
@@ -5614,4 +5614,5 @@ export namespace GPasteGtk {
 }
 
 export default GPasteGtk;
+
 // END

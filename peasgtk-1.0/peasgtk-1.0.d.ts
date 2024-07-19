@@ -24,11 +24,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * PeasGtk-1.0
- */
-
 export namespace PeasGtk {
+    /**
+     * PeasGtk-1.0
+     */
+
     module PluginManager {
         // Constructor properties interface
 
@@ -1174,4 +1174,5 @@ export namespace PeasGtk {
 }
 
 export default PeasGtk;
+
 // END

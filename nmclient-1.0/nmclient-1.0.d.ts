@@ -15,11 +15,11 @@ import type DBusGLib from '@girs/dbusglib-1.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * NMClient-1.0
- */
-
 export namespace NMClient {
+    /**
+     * NMClient-1.0
+     */
+
     /**
      * Describes errors that may result from operations involving a #NMClient.
      */
@@ -19103,4 +19103,5 @@ export namespace NMClient {
 }
 
 export default NMClient;
+
 // END

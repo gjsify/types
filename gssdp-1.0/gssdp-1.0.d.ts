@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GSSDP-1.0
- */
-
 export namespace GSSDP {
+    /**
+     * GSSDP-1.0
+     */
+
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
@@ -975,4 +975,5 @@ export namespace GSSDP {
 }
 
 export default GSSDP;
+
 // END

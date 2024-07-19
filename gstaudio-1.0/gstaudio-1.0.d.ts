@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstAudio-1.0
- */
-
 export namespace GstAudio {
+    /**
+     * GstAudio-1.0
+     */
+
     /**
      * Different possible reasons for discontinuities. This enum is useful for the custom
      * slave method.
@@ -5661,4 +5661,5 @@ export namespace GstAudio {
 }
 
 export default GstAudio;
+
 // END

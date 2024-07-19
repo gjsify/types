@@ -28,11 +28,11 @@ import type CoglPango from '@girs/coglpango-1.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Cogl from '@girs/cogl-1.0';
 
-/**
- * GtkClutter-1.0
- */
-
 export namespace GtkClutter {
+    /**
+     * GtkClutter-1.0
+     */
+
     /**
      * Error enumeration for #GtkClutterTexture
      */
@@ -2393,4 +2393,5 @@ export namespace GtkClutter {
 }
 
 export default GtkClutter;
+
 // END

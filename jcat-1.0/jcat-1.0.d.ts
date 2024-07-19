@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Jcat-1.0
- */
-
 export namespace Jcat {
+    /**
+     * Jcat-1.0
+     */
+
     /**
      * The kind of blob stored as a signature on the item.
      */
@@ -864,4 +864,5 @@ export namespace Jcat {
 }
 
 export default Jcat;
+
 // END

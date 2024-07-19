@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * GUdev-1.0
- */
-
 export namespace GUdev {
+    /**
+     * GUdev-1.0
+     */
+
     /**
      * Enumeration used to specify a the type of a device.
      */
@@ -658,4 +658,5 @@ export namespace GUdev {
 }
 
 export default GUdev;
+
 // END

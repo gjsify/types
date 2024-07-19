@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Jsonrpc-1.0
- */
-
 export namespace Jsonrpc {
+    /**
+     * Jsonrpc-1.0
+     */
+
     enum ClientError {
         PARSE_ERROR,
         INVALID_REQUEST,
@@ -1818,4 +1818,5 @@ export namespace Jsonrpc {
 }
 
 export default Jsonrpc;
+
 // END

@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Soup-3.0
- */
-
 export namespace Soup {
+    /**
+     * Soup-3.0
+     */
+
     /**
      * The type of cache; this affects what kinds of responses will be
      * saved.
@@ -12324,4 +12324,5 @@ export namespace Soup {
 }
 
 export default Soup;
+
 // END

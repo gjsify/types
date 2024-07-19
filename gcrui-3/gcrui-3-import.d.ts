@@ -1,4 +1,3 @@
-
 import GcrUi3 from '@girs/gcrui-3';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

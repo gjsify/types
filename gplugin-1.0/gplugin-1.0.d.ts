@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * GPlugin-1.0
- */
-
 export namespace GPlugin {
+    /**
+     * GPlugin-1.0
+     */
+
     /**
      * The known states of a plugin.
      */
@@ -1585,4 +1585,5 @@ export namespace GPlugin {
 }
 
 export default GPlugin;
+
 // END

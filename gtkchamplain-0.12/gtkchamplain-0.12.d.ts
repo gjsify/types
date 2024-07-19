@@ -29,11 +29,11 @@ import type PangoCairo from '@girs/pangocairo-1.0';
 import type Cogl from '@girs/cogl-1.0';
 import type Champlain from '@girs/champlain-0.12';
 
-/**
- * GtkChamplain-0.12
- */
-
 export namespace GtkChamplain {
+    /**
+     * GtkChamplain-0.12
+     */
+
     module Embed {
         // Constructor properties interface
 
@@ -511,4 +511,5 @@ export namespace GtkChamplain {
 }
 
 export default GtkChamplain;
+
 // END

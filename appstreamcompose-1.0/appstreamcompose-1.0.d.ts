@@ -15,11 +15,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type AppStream from '@girs/appstream-1.0';
 
-/**
- * AppStreamCompose-1.0
- */
-
 export namespace AppStreamCompose {
+    /**
+     * AppStreamCompose-1.0
+     */
+
     /**
      * A drawing error.
      */
@@ -1237,4 +1237,5 @@ export namespace AppStreamCompose {
 }
 
 export default AppStreamCompose;
+
 // END

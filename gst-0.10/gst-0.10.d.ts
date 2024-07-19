@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gst-0.10
- */
-
 export namespace Gst {
+    /**
+     * Gst-0.10
+     */
+
     /**
      * The status of a GstPad. After activating a pad, which usually happens when the
      * parent element goes from READY to PAUSED, the GstActivateMode defines if the
@@ -5363,4 +5363,5 @@ export namespace Gst {
 }
 
 export default Gst;
+
 // END

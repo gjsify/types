@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * FcitxG-1.0
- */
-
 export namespace FcitxG {
+    /**
+     * FcitxG-1.0
+     */
+
     module Client {
         // Signal callback interfaces
 
@@ -410,4 +410,5 @@ export namespace FcitxG {
 }
 
 export default FcitxG;
+
 // END

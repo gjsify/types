@@ -1,4 +1,3 @@
-
 import Dbusmenu04 from '@girs/dbusmenu-0.4';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

@@ -23,11 +23,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Gtd-1.0
- */
-
 export namespace Gtd {
+    /**
+     * Gtd-1.0
+     */
+
     interface ErrorActionFunc {
         (notification: Notification): void;
     }
@@ -13062,4 +13062,5 @@ export namespace Gtd {
 }
 
 export default Gtd;
+
 // END

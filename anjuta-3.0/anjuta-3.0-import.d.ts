@@ -1,4 +1,3 @@
-
 import Anjuta30 from '@girs/anjuta-3.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

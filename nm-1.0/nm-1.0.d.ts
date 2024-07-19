@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * NM-1.0
- */
-
 export namespace NM {
+    /**
+     * NM-1.0
+     */
+
     /**
      * Indicates the 802.11 mode an access point or device is currently in.
      */
@@ -29651,4 +29651,5 @@ export namespace NM {
 }
 
 export default NM;
+
 // END

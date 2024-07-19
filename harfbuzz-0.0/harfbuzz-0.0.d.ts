@@ -12,11 +12,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * HarfBuzz-0.0
- */
-
 export namespace HarfBuzz {
+    /**
+     * HarfBuzz-0.0
+     */
+
     /**
      * The selectors defined for specifying AAT feature settings.
      */
@@ -9240,4 +9240,5 @@ export namespace HarfBuzz {
 }
 
 export default HarfBuzz;
+
 // END

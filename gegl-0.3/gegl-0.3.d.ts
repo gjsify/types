@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Gegl-0.3
- */
-
 export namespace Gegl {
+    /**
+     * Gegl-0.3
+     */
+
     enum AbyssPolicy {
         NONE,
         CLAMP,
@@ -2381,4 +2381,5 @@ export namespace Gegl {
 }
 
 export default Gegl;
+
 // END

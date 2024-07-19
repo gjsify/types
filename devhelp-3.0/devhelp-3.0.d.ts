@@ -25,11 +25,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Devhelp-3.0
- */
-
 export namespace Devhelp {
+    /**
+     * Devhelp-3.0
+     */
+
     /**
      * The type of the content the link points to.
      */
@@ -5686,4 +5686,5 @@ export namespace Devhelp {
 }
 
 export default Devhelp;
+
 // END

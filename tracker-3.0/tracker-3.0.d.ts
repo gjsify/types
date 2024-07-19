@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Tracker-3.0
- */
-
 export namespace Tracker {
+    /**
+     * Tracker-3.0
+     */
+
     /**
      * Flags affecting deserialization from a RDF data format.
      */
@@ -3543,4 +3543,5 @@ export namespace Tracker {
 }
 
 export default Tracker;
+
 // END

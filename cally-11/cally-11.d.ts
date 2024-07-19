@@ -25,11 +25,11 @@ import type Clutter from '@girs/clutter-11';
 import type Json from '@girs/json-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Cally-11
- */
-
 export namespace Cally {
+    /**
+     * Cally-11
+     */
+
     /**
      * Initializes the accessibility support.
      * @returns %TRUE if accessibility support has been correctly initialized.
@@ -4423,4 +4423,5 @@ export namespace Cally {
 }
 
 export default Cally;
+
 // END

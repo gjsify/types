@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Accounts-1.0
- */
-
 export namespace Accounts {
+    /**
+     * Accounts-1.0
+     */
+
     /**
      * These identify the various errors that can occur with methods in
      * libaccounts-glib that return a #GError.
@@ -2273,4 +2273,5 @@ export namespace Accounts {
 }
 
 export default Accounts;
+
 // END

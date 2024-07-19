@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gdm-1.0
- */
-
 export namespace Gdm {
+    /**
+     * Gdm-1.0
+     */
+
     enum ClientError {
         CLIENT_ERROR_GENERIC,
     }
@@ -9480,4 +9480,5 @@ export namespace Gdm {
 }
 
 export default Gdm;
+
 // END

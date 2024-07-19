@@ -15,11 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Plasma-1.0
- */
-
 export namespace Plasma {
+    /**
+     * Plasma-1.0
+     */
+
     module Client {
         // Constructor properties interface
 
@@ -256,4 +256,5 @@ export namespace Plasma {
 }
 
 export default Plasma;
+
 // END

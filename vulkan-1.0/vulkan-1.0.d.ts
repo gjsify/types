@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * Vulkan-1.0
- */
-
 export namespace Vulkan {
+    /**
+     * Vulkan-1.0
+     */
+
     class Flags {
         static $gtype: GObject.GType<Flags>;
 
@@ -6340,4 +6340,5 @@ export namespace Vulkan {
 }
 
 export default Vulkan;
+
 // END

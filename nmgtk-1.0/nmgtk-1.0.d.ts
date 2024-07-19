@@ -25,11 +25,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * NMGtk-1.0
- */
-
 export namespace NMGtk {
+    /**
+     * NMGtk-1.0
+     */
+
     enum MobileFamily {
         UNKNOWN,
         '3GPP',
@@ -1796,4 +1796,5 @@ export namespace NMGtk {
 }
 
 export default NMGtk;
+
 // END

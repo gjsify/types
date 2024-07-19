@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GWeather-4.0
- */
-
 export namespace GWeather {
+    /**
+     * GWeather-4.0
+     */
+
     /**
      * The current or forecasted significant phenomenon.
      */
@@ -1091,4 +1091,5 @@ export namespace GWeather {
 }
 
 export default GWeather;
+
 // END

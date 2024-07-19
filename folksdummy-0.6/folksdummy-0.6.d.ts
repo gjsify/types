@@ -15,11 +15,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 import type Folks from '@girs/folks-0.6';
 
-/**
- * FolksDummy-0.6
- */
-
 export namespace FolksDummy {
+    /**
+     * FolksDummy-0.6
+     */
+
     module Backend {
         // Constructor properties interface
 
@@ -942,4 +942,5 @@ export namespace FolksDummy {
 }
 
 export default FolksDummy;
+
 // END

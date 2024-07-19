@@ -23,11 +23,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Gtef-2
- */
-
 export namespace Gtef {
+    /**
+     * Gtef-2
+     */
+
     enum CompressionType {
         /**
          * plain text.
@@ -2954,4 +2954,5 @@ export namespace Gtef {
 }
 
 export default Gtef;
+
 // END

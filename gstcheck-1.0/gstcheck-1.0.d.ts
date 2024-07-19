@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstCheck-1.0
- */
-
 export namespace GstCheck {
+    /**
+     * GstCheck-1.0
+     */
+
     /**
      * Get one buffer from `pad`. Implemented via buffer probes. This function will
      * block until the pipeline passes a buffer over `pad,` so for robust behavior
@@ -1389,4 +1389,5 @@ export namespace GstCheck {
 }
 
 export default GstCheck;
+
 // END

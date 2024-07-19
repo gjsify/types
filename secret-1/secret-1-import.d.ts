@@ -1,4 +1,3 @@
-
 import Secret1 from '@girs/secret-1';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

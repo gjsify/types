@@ -16,11 +16,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstVulkan-1.0
- */
-
 export namespace GstVulkan {
+    /**
+     * GstVulkan-1.0
+     */
+
     enum VulkanBarrierFlags {
         NONE,
     }
@@ -2096,4 +2096,5 @@ export namespace GstVulkan {
 }
 
 export default GstVulkan;
+
 // END

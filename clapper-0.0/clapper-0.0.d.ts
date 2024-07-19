@@ -19,11 +19,11 @@ import type GstVideo from '@girs/gstvideo-1.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 import type Gio from '@girs/gio-2.0';
 
-/**
- * Clapper-0.0
- */
-
 export namespace Clapper {
+    /**
+     * Clapper-0.0
+     */
+
     enum DiscovererDiscoveryMode {
         /**
          * Run discovery for every single media item added to [class`Clapper`.Queue].
@@ -3744,4 +3744,5 @@ export namespace Clapper {
 }
 
 export default Clapper;
+
 // END

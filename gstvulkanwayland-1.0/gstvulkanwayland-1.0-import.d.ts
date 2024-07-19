@@ -1,4 +1,3 @@
-
 import GstVulkanWayland10 from '@girs/gstvulkanwayland-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

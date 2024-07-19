@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * GIRepository-2.0
- */
-
 export namespace GIRepository {
+    /**
+     * GIRepository-2.0
+     */
+
     /**
      * The type of array in a #GITypeInfo.
      */
@@ -2132,4 +2132,5 @@ export namespace GIRepository {
 }
 
 export default GIRepository;
+
 // END

@@ -1,4 +1,3 @@
-
 import RB30 from '@girs/rb-3.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

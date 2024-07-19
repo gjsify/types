@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Xdp-1.0
- */
-
 export namespace Xdp {
+    /**
+     * Xdp-1.0
+     */
+
     /**
      * The XdpButtonState enumeration is used to describe
      * the state of buttons.
@@ -2855,4 +2855,5 @@ export namespace Xdp {
 }
 
 export default Xdp;
+
 // END

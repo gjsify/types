@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * TelepathyGLib-0.12
- */
-
 export namespace TelepathyGLib {
+    /**
+     * TelepathyGLib-0.12
+     */
+
     /**
      * <![CDATA[         A type for communication access control. These control           policies are used in           CommunicationPolicy.DRAFT           as well as most rich presence interfaces.          New interfaces should use this type, and NOT           Rich_Presence_Access_Control_Type.       ]]>
      *
@@ -20233,4 +20233,5 @@ export namespace TelepathyGLib {
 }
 
 export default TelepathyGLib;
+
 // END

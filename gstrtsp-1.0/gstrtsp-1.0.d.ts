@@ -16,11 +16,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstBase from '@girs/gstbase-1.0';
 import type Gio from '@girs/gio-2.0';
 
-/**
- * GstRtsp-1.0
- */
-
 export namespace GstRtsp {
+    /**
+     * GstRtsp-1.0
+     */
+
     /**
      * Authentication methods, ordered by strength
      */
@@ -2069,4 +2069,5 @@ export namespace GstRtsp {
 }
 
 export default GstRtsp;
+
 // END

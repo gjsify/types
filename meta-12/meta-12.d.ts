@@ -28,11 +28,11 @@ import type Clutter from '@girs/clutter-12';
 import type Json from '@girs/json-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Meta-12
- */
-
 export namespace Meta {
+    /**
+     * Meta-12
+     */
+
     /**
      * Function a window button can have.  Note, you can't add stuff here
      * without extending the theme format to draw a new function and
@@ -11066,4 +11066,5 @@ export namespace Meta {
 }
 
 export default Meta;
+
 // END

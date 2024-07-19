@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * DBus-1.0
- */
-
 export namespace DBus {
+    /**
+     * DBus-1.0
+     */
+
     enum BusType {
         SESSION,
         SYSTEM,
@@ -73,4 +73,5 @@ export namespace DBus {
 }
 
 export default DBus;
+
 // END

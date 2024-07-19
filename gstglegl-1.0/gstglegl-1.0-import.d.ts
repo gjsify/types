@@ -1,4 +1,3 @@
-
 import GstGLEGL10 from '@girs/gstglegl-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

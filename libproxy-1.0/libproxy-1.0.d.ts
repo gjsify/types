@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Libproxy-1.0
- */
-
 export namespace Libproxy {
+    /**
+     * Libproxy-1.0
+     */
+
     /**
      * Frees the proxy array returned by `px_proxy_factory_get_proxies` when no
      * longer used.
@@ -129,4 +129,5 @@ export namespace Libproxy {
 }
 
 export default Libproxy;
+
 // END

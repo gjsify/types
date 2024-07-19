@@ -1,4 +1,3 @@
-
 import AtrilView150 from '@girs/atrilview-1.5.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstWebRTC-1.0
- */
-
 export namespace GstWebRTC {
+    /**
+     * GstWebRTC-1.0
+     */
+
     /**
      * See https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-24#section-4.1.1
      * for more information.
@@ -1180,4 +1180,5 @@ export namespace GstWebRTC {
 }
 
 export default GstWebRTC;
+
 // END

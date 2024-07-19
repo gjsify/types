@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GMenu-3.0
- */
-
 export namespace GMenu {
+    /**
+     * GMenu-3.0
+     */
+
     enum TreeItemType {
         INVALID,
         DIRECTORY,
@@ -309,4 +309,5 @@ export namespace GMenu {
 }
 
 export default GMenu;
+
 // END

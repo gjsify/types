@@ -24,11 +24,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GPlugin from '@girs/gplugin-1.0';
 
-/**
- * GPluginGtk4-1.0
- */
-
 export namespace GPluginGtk4 {
+    /**
+     * GPluginGtk4-1.0
+     */
+
     /**
      * This is the extra version string of GPluginGtk that was compiled against.
      */
@@ -4632,4 +4632,5 @@ export namespace GPluginGtk4 {
 }
 
 export default GPluginGtk4;
+
 // END

@@ -1,4 +1,3 @@
-
 import GthreeGtk310 from '@girs/gthreegtk3-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

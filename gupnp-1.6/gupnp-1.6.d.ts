@@ -16,11 +16,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GSSDP from '@girs/gssdp-1.6';
 
-/**
- * GUPnP-1.6
- */
-
 export namespace GUPnP {
+    /**
+     * GUPnP-1.6
+     */
+
     /**
      * Error codes used during invocation of service actions.
      */
@@ -4415,4 +4415,5 @@ export namespace GUPnP {
 }
 
 export default GUPnP;
+
 // END

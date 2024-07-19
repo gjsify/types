@@ -17,11 +17,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstGL from '@girs/gstgl-1.0';
 import type CudaGst from '@girs/cudagst-1.0';
 
-/**
- * GstCuda-1.0
- */
-
 export namespace GstCuda {
+    /**
+     * GstCuda-1.0
+     */
+
     enum CudaGraphicsResourceType {
         NONE,
         GL_BUFFER,
@@ -312,4 +312,5 @@ export namespace GstCuda {
 }
 
 export default GstCuda;
+
 // END

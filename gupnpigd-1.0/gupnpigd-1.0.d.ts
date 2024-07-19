@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * GUPnPIgd-1.0
- */
-
 export namespace GUPnPIgd {
+    /**
+     * GUPnPIgd-1.0
+     */
+
     /**
      * Errors coming out of the GUPnPSimpleIGD object.
      */
@@ -274,4 +274,5 @@ export namespace GUPnPIgd {
 }
 
 export default GUPnPIgd;
+
 // END

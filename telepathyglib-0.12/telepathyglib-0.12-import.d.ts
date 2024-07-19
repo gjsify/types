@@ -1,4 +1,3 @@
-
 import TelepathyGLib012 from '@girs/telepathyglib-0.12';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

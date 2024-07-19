@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Polkit-1.0
- */
-
 export namespace Polkit {
+    /**
+     * Polkit-1.0
+     */
+
     /**
      * Possible error when using PolicyKit.
      */
@@ -5969,4 +5969,5 @@ export namespace Polkit {
 }
 
 export default Polkit;
+
 // END

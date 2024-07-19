@@ -1,4 +1,3 @@
-
 import LangTag06 from '@girs/langtag-0.6';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

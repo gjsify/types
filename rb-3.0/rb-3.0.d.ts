@@ -29,11 +29,11 @@ import type GstBase from '@girs/gstbase-1.0';
 import type Gst from '@girs/gst-1.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
-/**
- * RB-3.0
- */
-
 export namespace RB {
+    /**
+     * RB-3.0
+     */
+
     enum DisplayPageGroupCategory {
         FIXED,
         REMOVABLE,
@@ -24441,4 +24441,5 @@ export namespace RB {
 }
 
 export default RB;
+
 // END

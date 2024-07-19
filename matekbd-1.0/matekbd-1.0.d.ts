@@ -23,11 +23,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Matekbd-1.0
- */
-
 export namespace Matekbd {
+    /**
+     * Matekbd-1.0
+     */
+
     enum KeyboardDrawingGroupLevelPosition {
         TOPLEFT,
         TOPRIGHT,
@@ -1245,4 +1245,5 @@ export namespace Matekbd {
 }
 
 export default Matekbd;
+
 // END

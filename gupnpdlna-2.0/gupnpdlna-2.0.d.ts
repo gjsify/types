@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * GUPnPDLNA-2.0
- */
-
 export namespace GUPnPDLNA {
+    /**
+     * GUPnPDLNA-2.0
+     */
+
     /**
      * Flags describing a state of GUPnP DLNA Value.
      */
@@ -691,4 +691,5 @@ export namespace GUPnPDLNA {
 }
 
 export default GUPnPDLNA;
+
 // END

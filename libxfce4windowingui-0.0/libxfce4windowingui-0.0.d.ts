@@ -23,11 +23,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Libxfce4windowingui-0.0
- */
-
 export namespace Libxfce4windowingui {
+    /**
+     * Libxfce4windowingui-0.0
+     */
+
     /**
      * A macro that evaluates to the major version of libxfce4windowingui, in a format
      * that can be used by the C pre-processor.
@@ -526,4 +526,5 @@ export namespace Libxfce4windowingui {
 }
 
 export default Libxfce4windowingui;
+
 // END

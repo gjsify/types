@@ -28,11 +28,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Dazzle from '@girs/dazzle-1.0';
 
-/**
- * Ide-1.0
- */
-
 export namespace Ide {
+    /**
+     * Ide-1.0
+     */
+
     enum ApplicationMode {
         PRIMARY,
         WORKER,
@@ -58727,4 +58727,5 @@ export namespace Ide {
 }
 
 export default Ide;
+
 // END

@@ -1,4 +1,3 @@
-
 import Snapd2 from '@girs/snapd-2';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

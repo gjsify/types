@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * CudaGst-1.0
- */
-
 export namespace CudaGst {
+    /**
+     * CudaGst-1.0
+     */
+
     enum GLDeviceList {
         GL_DEVICE_LIST_ALL,
     }
@@ -177,4 +177,5 @@ export namespace CudaGst {
 }
 
 export default CudaGst;
+
 // END

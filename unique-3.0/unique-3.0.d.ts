@@ -22,11 +22,11 @@ import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Unique-3.0
- */
-
 export namespace Unique {
+    /**
+     * Unique-3.0
+     */
+
     /**
      * Command to send to a currently active instance. User defined commands
      * should be positive integers, and should be added using the
@@ -413,4 +413,5 @@ export namespace Unique {
 }
 
 export default Unique;
+
 // END

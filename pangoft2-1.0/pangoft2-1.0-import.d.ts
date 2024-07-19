@@ -1,4 +1,3 @@
-
 import PangoFT210 from '@girs/pangoft2-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

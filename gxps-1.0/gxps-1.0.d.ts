@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gxps-1.0
- */
-
 export namespace Gxps {
+    /**
+     * Gxps-1.0
+     */
+
     /**
      * Error codes returned by GXPS functions.
      */
@@ -2577,4 +2577,5 @@ export namespace Gxps {
 }
 
 export default Gxps;
+
 // END

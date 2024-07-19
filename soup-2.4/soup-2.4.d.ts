@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Soup-2.4
- */
-
 export namespace Soup {
+    /**
+     * Soup-2.4
+     */
+
     /**
      * The supported address families.
      */
@@ -18853,4 +18853,5 @@ export namespace Soup {
 }
 
 export default Soup;
+
 // END

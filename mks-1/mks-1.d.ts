@@ -23,11 +23,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Mks-1
- */
-
 export namespace Mks {
+    /**
+     * Mks-1
+     */
+
     /**
      * A mouse button.
      */
@@ -2193,4 +2193,5 @@ export namespace Mks {
 }
 
 export default Mks;
+
 // END

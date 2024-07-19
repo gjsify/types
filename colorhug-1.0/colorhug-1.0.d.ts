@@ -16,11 +16,11 @@ import type GUsb from '@girs/gusb-1.0';
 import type Json from '@girs/json-1.0';
 import type Colord from '@girs/colord-1.0';
 
-/**
- * ColorHug-1.0
- */
-
 export namespace ColorHug {
+    /**
+     * ColorHug-1.0
+     */
+
     enum ColorSelect {
         RED,
         WHITE,
@@ -2385,4 +2385,5 @@ export namespace ColorHug {
 }
 
 export default ColorHug;
+
 // END

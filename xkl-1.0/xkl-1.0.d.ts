@@ -12,11 +12,11 @@ import type xlib from '@girs/xlib-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Xkl-1.0
- */
-
 export namespace Xkl {
+    /**
+     * Xkl-1.0
+     */
+
     /**
      * The listener action modes:
      */
@@ -744,4 +744,5 @@ export namespace Xkl {
 }
 
 export default Xkl;
+
 // END

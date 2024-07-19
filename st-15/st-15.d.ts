@@ -31,11 +31,11 @@ import type Atk from '@girs/atk-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Cally from '@girs/cally-15';
 
-/**
- * St-15
- */
-
 export namespace St {
+    /**
+     * St-15
+     */
+
     enum BackgroundSize {
         AUTO,
         CONTAIN,
@@ -11569,4 +11569,5 @@ export namespace St {
 }
 
 export default St;
+
 // END

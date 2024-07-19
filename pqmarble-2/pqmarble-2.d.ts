@@ -23,11 +23,11 @@ import type Gtk from '@girs/gtk-4.0';
 import type Gsk from '@girs/gsk-4.0';
 import type Graphene from '@girs/graphene-1.0';
 
-/**
- * PQMarble-2
- */
-
 export namespace PQMarble {
+    /**
+     * PQMarble-2
+     */
+
     function get_css_provider_for_data(data: string): Gtk.CssProvider | null;
     function set_theming_for_data(widget: Gtk.Widget, data: string, class_name: string | null, priority: number): void;
     function add_css_provider_from_resource(resource: string, priority: number, display: Gdk.Display): void;
@@ -81,4 +81,5 @@ export namespace PQMarble {
 }
 
 export default PQMarble;
+
 // END

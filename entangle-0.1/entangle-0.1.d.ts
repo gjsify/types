@@ -27,11 +27,11 @@ import type GstBase from '@girs/gstbase-1.0';
 import type Gst from '@girs/gst-1.0';
 import type GExiv2 from '@girs/gexiv2-0.10';
 
-/**
- * Entangle-0.1
- */
-
 export namespace Entangle {
+    /**
+     * Entangle-0.1
+     */
+
     enum CameraCaptureTarget {
         RAM,
         CARD,
@@ -9229,4 +9229,5 @@ export namespace Entangle {
 }
 
 export default Entangle;
+
 // END

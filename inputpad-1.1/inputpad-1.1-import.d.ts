@@ -1,4 +1,3 @@
-
 import InputPad11 from '@girs/inputpad-1.1';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

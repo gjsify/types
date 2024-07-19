@@ -1,4 +1,3 @@
-
 import Cally15 from '@girs/cally-15';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

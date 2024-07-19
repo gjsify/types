@@ -24,11 +24,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Spelling-1
- */
-
 export namespace Spelling {
+    /**
+     * Spelling-1
+     */
+
     function init(): void;
     module Checker {
         // Constructor properties interface
@@ -1154,4 +1154,5 @@ export namespace Spelling {
 }
 
 export default Spelling;
+
 // END

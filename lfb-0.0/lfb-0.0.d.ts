@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Lfb-0.0
- */
-
 export namespace Lfb {
+    /**
+     * Lfb-0.0
+     */
+
     /**
      * Enum values used to indicate why the feedbacks for an event ended.
      */
@@ -1996,4 +1996,5 @@ export namespace Lfb {
 }
 
 export default Lfb;
+
 // END

@@ -19,11 +19,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Gdk-4.0
- */
-
 export namespace Gdk {
+    /**
+     * Gdk-4.0
+     */
+
     /**
      * Defines how device axes are interpreted by GTK.
      *
@@ -15393,4 +15393,5 @@ export namespace Gdk {
 }
 
 export default Gdk;
+
 // END

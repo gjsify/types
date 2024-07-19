@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GPaste-2
- */
-
 export namespace GPaste {
+    /**
+     * GPaste-2
+     */
+
     enum ItemKind {
         TEXT,
         URIS,
@@ -3494,4 +3494,5 @@ export namespace GPaste {
 }
 
 export default GPaste;
+
 // END

@@ -18,11 +18,11 @@ import type Soup from '@girs/soup-3.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 
-/**
- * EBackend-1.2
- */
-
 export namespace EBackend {
+    /**
+     * EBackend-1.2
+     */
+
     /**
      * Completion codes used by #EAuthenticationSession.
      */
@@ -7463,4 +7463,5 @@ export namespace EBackend {
 }
 
 export default EBackend;
+
 // END

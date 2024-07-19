@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type Graphene from '@girs/graphene-1.0';
 import type GL from '@girs/gl-1.0';
 
-/**
- * Cogl-11
- */
-
 export namespace Cogl {
+    /**
+     * Cogl-11
+     */
+
     /**
      * Data types for the components of a vertex attribute.
      */
@@ -4740,4 +4740,5 @@ export namespace Cogl {
 }
 
 export default Cogl;
+
 // END

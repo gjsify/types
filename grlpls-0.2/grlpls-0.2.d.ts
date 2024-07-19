@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GrlPls-0.2
- */
-
 export namespace GrlPls {
+    /**
+     * GrlPls-0.2
+     */
+
     /**
      * Browse into a playlist. The playlist entries are
      * returned via the `callback` function as GrlMedia objects.
@@ -151,4 +151,5 @@ export namespace GrlPls {
 }
 
 export default GrlPls;
+
 // END

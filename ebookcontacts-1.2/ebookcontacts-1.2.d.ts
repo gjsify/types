@@ -18,11 +18,11 @@ import type Soup from '@girs/soup-3.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 
-/**
- * EBookContacts-1.2
- */
-
 export namespace EBookContacts {
+    /**
+     * EBookContacts-1.2
+     */
+
     /**
      * The type of change in an #EBookChange
      */
@@ -3107,4 +3107,5 @@ export namespace EBookContacts {
 }
 
 export default EBookContacts;
+
 // END

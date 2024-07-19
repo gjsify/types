@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GSound-1.0
- */
-
 export namespace GSound {
+    /**
+     * GSound-1.0
+     */
+
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
@@ -948,4 +948,5 @@ export namespace GSound {
 }
 
 export default GSound;
+
 // END

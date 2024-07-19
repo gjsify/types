@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Playerctl-2.0
- */
-
 export namespace Playerctl {
+    /**
+     * Playerctl-2.0
+     */
+
     /**
      * Loop status enumeration for a #PlayerctlPlayer
      */
@@ -494,4 +494,5 @@ export namespace Playerctl {
 }
 
 export default Playerctl;
+
 // END

@@ -24,11 +24,18 @@ import type Gsk from '@girs/gsk-4.0';
 import type Graphene from '@girs/graphene-1.0';
 import type Gee from '@girs/gee-0.8';
 
-/**
- * Granite-7.0
- */
-
 export namespace Granite {
+    // Workaround
+    /** @ignore */
+    export module GraniteServicesSettingsSerializable {
+        export interface ConstructorProps extends ServicesSettingsSerializable.ConstructorProps {}
+    }
+    /** @ignore */
+    export interface GraniteServicesSettingsSerializable extends ServicesSettingsSerializable {}
+    /**
+     * Granite-7.0
+     */
+
     class ServicesContractorError extends GLib.Error {
         static $gtype: GObject.GType<ServicesContractorError>;
 
@@ -1632,13 +1639,6 @@ export namespace Granite {
 
     export const ServicesSettingsSerializable: ServicesSettingsSerializableNamespace;
 
-    // Workaround
-    /** @ignore */
-    export module GraniteServicesSettingsSerializable {
-        export interface ConstructorProps extends ServicesSettingsSerializable.ConstructorProps {}
-    }
-    /** @ignore */
-    export interface GraniteServicesSettingsSerializable extends ServicesSettingsSerializable {}
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
@@ -1652,4 +1652,5 @@ export namespace Granite {
 }
 
 export default Granite;
+
 // END

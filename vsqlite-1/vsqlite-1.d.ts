@@ -19,11 +19,11 @@ import type Json from '@girs/json-1.0';
 import type GXml from '@girs/gxml-0.20';
 import type libxml2 from '@girs/libxml2-2.0';
 
-/**
- * Vsqlite-1
- */
-
 export namespace Vsqlite {
+    /**
+     * Vsqlite-1
+     */
+
     class ConnectionError extends GLib.Error {
         static $gtype: GObject.GType<ConnectionError>;
 
@@ -526,4 +526,5 @@ export namespace Vsqlite {
 }
 
 export default Vsqlite;
+
 // END

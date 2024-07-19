@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Secret-1
- */
-
 export namespace Secret {
+    /**
+     * Secret-1
+     */
+
     /**
      * Flags which determine which parts of the #SecretBackend are initialized.
      */
@@ -5850,4 +5850,5 @@ export namespace Secret {
 }
 
 export default Secret;
+
 // END

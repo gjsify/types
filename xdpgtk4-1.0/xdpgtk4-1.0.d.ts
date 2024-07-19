@@ -24,11 +24,11 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * XdpGtk4-1.0
- */
-
 export namespace XdpGtk4 {
+    /**
+     * XdpGtk4-1.0
+     */
+
     /**
      * Creates a new [struct`Parent]` from `window`.
      * @param window a [class@Gtk.Window]
@@ -48,4 +48,5 @@ export namespace XdpGtk4 {
 }
 
 export default XdpGtk4;
+
 // END

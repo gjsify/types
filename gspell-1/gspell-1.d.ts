@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Gspell-1
- */
-
 export namespace Gspell {
+    /**
+     * Gspell-1
+     */
+
     /**
      * An error code used with %GSPELL_CHECKER_ERROR in a #GError returned
      * from a spell-checker-related function.
@@ -6252,4 +6252,5 @@ export namespace Gspell {
 }
 
 export default Gspell;
+
 // END

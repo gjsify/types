@@ -13,11 +13,11 @@ import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Tracker-1.0
- */
-
 export namespace Tracker {
+    /**
+     * Tracker-1.0
+     */
+
     enum SparqlValueType {
         UNBOUND,
         URI,
@@ -338,4 +338,5 @@ export namespace Tracker {
 }
 
 export default Tracker;
+
 // END

@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type GVnc from '@girs/gvnc-1.0';
 
-/**
- * GtkVnc-2.0
- */
-
 export namespace GtkVnc {
+    /**
+     * GtkVnc-2.0
+     */
+
     enum DisplayCredential {
         PASSWORD,
         USERNAME,
@@ -1760,4 +1760,5 @@ export namespace GtkVnc {
 }
 
 export default GtkVnc;
+
 // END

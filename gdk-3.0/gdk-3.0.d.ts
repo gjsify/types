@@ -18,11 +18,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Gdk-3.0
- */
-
 export namespace Gdk {
+    /**
+     * Gdk-3.0
+     */
+
     /**
      * An enumeration describing the way in which a device
      * axis (valuator) maps onto the predefined valuator
@@ -12613,4 +12613,5 @@ export namespace Gdk {
 }
 
 export default Gdk;
+
 // END

@@ -1,4 +1,3 @@
-
 import Libxfce4panel20 from '@girs/libxfce4panel-2.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gsf-1
- */
-
 export namespace Gsf {
+    /**
+     * Gsf-1
+     */
+
     enum ClipFormat {
         /**
          * Windows clipboard format
@@ -2592,4 +2592,5 @@ export namespace Gsf {
 }
 
 export default Gsf;
+
 // END

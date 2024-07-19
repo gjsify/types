@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstTag-1.0
- */
-
 export namespace GstTag {
+    /**
+     * GstTag-1.0
+     */
+
     /**
      * Result values from the parse_tag virtual function.
      */
@@ -1961,4 +1961,5 @@ export namespace GstTag {
 }
 
 export default GstTag;
+
 // END

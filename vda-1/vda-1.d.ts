@@ -18,11 +18,11 @@ import type Json from '@girs/json-1.0';
 import type GXml from '@girs/gxml-0.20';
 import type libxml2 from '@girs/libxml2-2.0';
 
-/**
- * Vda-1
- */
-
 export namespace Vda {
+    /**
+     * Vda-1
+     */
+
     enum MoveDirection {
         FORWARD,
         BACKWARD,
@@ -48068,4 +48068,5 @@ export namespace Vda {
 }
 
 export default Vda;
+
 // END

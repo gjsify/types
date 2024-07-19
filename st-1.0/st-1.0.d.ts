@@ -33,11 +33,11 @@ import type Clutter from '@girs/clutter-11';
 import type Json from '@girs/json-1.0';
 import type Cally from '@girs/cally-11';
 
-/**
- * St-1.0
- */
-
 export namespace St {
+    /**
+     * St-1.0
+     */
+
     enum Align {
         START,
         MIDDLE,
@@ -13289,4 +13289,5 @@ export namespace St {
 }
 
 export default St;
+
 // END

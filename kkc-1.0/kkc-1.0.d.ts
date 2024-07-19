@@ -15,11 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Json from '@girs/json-1.0';
 
-/**
- * Kkc-1.0
- */
-
 export namespace Kkc {
+    /**
+     * Kkc-1.0
+     */
+
     enum KanaMode {
         HIRAGANA,
         KATAKANA,
@@ -7941,4 +7941,5 @@ export namespace Kkc {
 }
 
 export default Kkc;
+
 // END

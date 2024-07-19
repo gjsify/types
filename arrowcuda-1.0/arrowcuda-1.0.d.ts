@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * ArrowCUDA-1.0
- */
-
 export namespace ArrowCUDA {
+    /**
+     * ArrowCUDA-1.0
+     */
+
     module Buffer {
         // Constructor properties interface
 
@@ -1034,4 +1034,5 @@ export namespace ArrowCUDA {
 }
 
 export default ArrowCUDA;
+
 // END

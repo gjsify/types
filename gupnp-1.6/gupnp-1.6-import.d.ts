@@ -1,4 +1,3 @@
-
 import GUPnP16 from '@girs/gupnp-1.6';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

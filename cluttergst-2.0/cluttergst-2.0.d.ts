@@ -28,11 +28,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * ClutterGst-2.0
- */
-
 export namespace ClutterGst {
+    /**
+     * ClutterGst-2.0
+     */
+
     /**
      * Different buffering policies clutter-gst supports
      */
@@ -1816,4 +1816,5 @@ export namespace ClutterGst {
 }
 
 export default ClutterGst;
+
 // END

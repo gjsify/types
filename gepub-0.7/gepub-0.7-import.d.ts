@@ -1,4 +1,3 @@
-
 import Gepub07 from '@girs/gepub-0.7';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

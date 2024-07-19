@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * JavaScriptCore-6.0
- */
-
 export namespace JavaScriptCore {
+    /**
+     * JavaScriptCore-6.0
+     */
+
     /**
      * Enum values to specify a mode to check for syntax errors in jsc_context_check_syntax().
      */
@@ -1329,4 +1329,5 @@ export namespace JavaScriptCore {
 }
 
 export default JavaScriptCore;
+
 // END

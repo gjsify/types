@@ -20,11 +20,11 @@ import type Camel from '@girs/camel-1.2';
 import type EBookContacts from '@girs/ebookcontacts-1.2';
 import type EBackend from '@girs/ebackend-1.2';
 
-/**
- * EDataBook-1.2
- */
-
 export namespace EDataBook {
+    /**
+     * EDataBook-1.2
+     */
+
     /**
      * What compare function should be used when comparing two values.
      */
@@ -7133,4 +7133,5 @@ export namespace EDataBook {
 }
 
 export default EDataBook;
+
 // END

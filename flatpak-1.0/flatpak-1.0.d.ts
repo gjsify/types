@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Flatpak-1.0
- */
-
 export namespace Flatpak {
+    /**
+     * Flatpak-1.0
+     */
+
     /**
      * Error codes for library functions.
      */
@@ -3483,4 +3483,5 @@ export namespace Flatpak {
 }
 
 export default Flatpak;
+
 // END

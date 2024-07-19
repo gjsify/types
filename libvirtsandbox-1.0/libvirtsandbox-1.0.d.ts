@@ -17,11 +17,11 @@ import type GObject from '@girs/gobject-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * LibvirtSandbox-1.0
- */
-
 export namespace LibvirtSandbox {
+    /**
+     * LibvirtSandbox-1.0
+     */
+
     function init(argv?: string[] | null): string[] | null;
     function init_check(argv?: string[] | null): [boolean, string[] | null];
     function util_disk_format_from_str(value: string): number;
@@ -1793,4 +1793,5 @@ export namespace LibvirtSandbox {
 }
 
 export default LibvirtSandbox;
+
 // END

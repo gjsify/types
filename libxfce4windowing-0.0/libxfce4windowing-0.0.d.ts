@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Libxfce4windowing-0.0
- */
-
 export namespace Libxfce4windowing {
+    /**
+     * Libxfce4windowing-0.0
+     */
+
     /**
      * The type of the application.
      *
@@ -7216,4 +7216,5 @@ export namespace Libxfce4windowing {
 }
 
 export default Libxfce4windowing;
+
 // END

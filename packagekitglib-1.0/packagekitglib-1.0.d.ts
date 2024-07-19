@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * PackageKitGlib-1.0
- */
-
 export namespace PackageKitGlib {
+    /**
+     * PackageKitGlib-1.0
+     */
+
     /**
      * The authorization result
      */
@@ -6871,4 +6871,5 @@ export namespace PackageKitGlib {
 }
 
 export default PackageKitGlib;
+
 // END

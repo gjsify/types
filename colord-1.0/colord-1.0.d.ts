@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Colord-1.0
- */
-
 export namespace Colord {
+    /**
+     * Colord-1.0
+     */
+
     /**
      * Errors that can be thrown
      */
@@ -4367,4 +4367,5 @@ export namespace Colord {
 }
 
 export default Colord;
+
 // END

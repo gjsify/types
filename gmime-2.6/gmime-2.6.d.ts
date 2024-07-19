@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GMime-2.6
- */
-
 export namespace GMime {
+    /**
+     * GMime-2.6
+     */
+
     /**
      * The trust value of a certificate.
      */
@@ -5495,4 +5495,5 @@ export namespace GMime {
 }
 
 export default GMime;
+
 // END

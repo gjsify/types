@@ -31,11 +31,11 @@ import type Atk from '@girs/atk-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Cally from '@girs/cally-12';
 
-/**
- * St-12
- */
-
 export namespace St {
+    /**
+     * St-12
+     */
+
     enum Align {
         START,
         MIDDLE,
@@ -13747,4 +13747,5 @@ export namespace St {
 }
 
 export default St;
+
 // END

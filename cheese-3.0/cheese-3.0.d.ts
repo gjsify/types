@@ -26,11 +26,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Cheese-3.0
- */
-
 export namespace Cheese {
+    /**
+     * Cheese-3.0
+     */
+
     /**
      * Errors that can occur during camera setup, when calling
      * cheese_camera_setup().
@@ -1743,4 +1743,5 @@ export namespace Cheese {
 }
 
 export default Cheese;
+
 // END

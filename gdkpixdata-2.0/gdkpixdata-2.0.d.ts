@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GdkPixdata-2.0
- */
-
 export namespace GdkPixdata {
+    /**
+     * GdkPixdata-2.0
+     */
+
     /**
      * Magic number for #GdkPixdata structures.
      */
@@ -225,4 +225,5 @@ export namespace GdkPixdata {
 }
 
 export default GdkPixdata;
+
 // END

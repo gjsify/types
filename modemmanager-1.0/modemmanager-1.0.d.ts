@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * ModemManager-1.0
- */
-
 export namespace ModemManager {
+    /**
+     * ModemManager-1.0
+     */
+
     enum BearerAccessTypePreference {
         NONE,
         '3GPP_ONLY',
@@ -66246,4 +66246,5 @@ export namespace ModemManager {
 }
 
 export default ModemManager;
+
 // END

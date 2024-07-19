@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * DMAP-3.0
- */
-
 export namespace DMAP {
+    /**
+     * DMAP-3.0
+     */
+
     enum ConnectionState {
         GET_INFO,
         LOGIN,
@@ -1593,4 +1593,5 @@ export namespace DMAP {
 }
 
 export default DMAP;
+
 // END

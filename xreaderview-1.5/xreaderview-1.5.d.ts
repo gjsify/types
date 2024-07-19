@@ -23,11 +23,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * XreaderView-1.5
- */
-
 export namespace XreaderView {
+    /**
+     * XreaderView-1.5
+     */
+
     enum JobPriority {
         PRIORITY_URGENT,
         PRIORITY_HIGH,
@@ -2549,4 +2549,5 @@ export namespace XreaderView {
 }
 
 export default XreaderView;
+
 // END

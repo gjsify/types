@@ -1,4 +1,3 @@
-
 import Notify07 from '@girs/notify-0.7';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type GPaste from '@girs/gpaste-2';
 
-/**
- * GPasteGtk-3
- */
-
 export namespace GPasteGtk {
+    /**
+     * GPasteGtk-3
+     */
+
     /**
      * Compute the checksum of an image
      * @param image the #GdkPixbuf to checksum
@@ -1469,4 +1469,5 @@ export namespace GPasteGtk {
 }
 
 export default GPasteGtk;
+
 // END

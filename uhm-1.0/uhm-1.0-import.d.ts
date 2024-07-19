@@ -1,4 +1,3 @@
-
 import Uhm10 from '@girs/uhm-1.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

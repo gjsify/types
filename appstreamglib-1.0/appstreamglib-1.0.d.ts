@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * AppStreamGlib-1.0
- */
-
 export namespace AppStreamGlib {
+    /**
+     * AppStreamGlib-1.0
+     */
+
     /**
      * The kind of the agreement.
      */
@@ -5618,4 +5618,5 @@ export namespace AppStreamGlib {
 }
 
 export default AppStreamGlib;
+
 // END

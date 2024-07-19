@@ -23,11 +23,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Retro-2
- */
-
 export namespace Retro {
+    /**
+     * Retro-2
+     */
+
     /**
      * Represents the axes of the analog sticks for the Libretro gamepad.
      */
@@ -2133,4 +2133,5 @@ export namespace Retro {
 }
 
 export default Retro;
+
 // END

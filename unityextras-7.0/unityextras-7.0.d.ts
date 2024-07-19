@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Unity from '@girs/unity-7.0';
 
-/**
- * UnityExtras-7.0
- */
-
 export namespace UnityExtras {
+    /**
+     * UnityExtras-7.0
+     */
+
     function show_in_folder(uri: string): Promise<void>;
     function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): void;
     function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): Promise<void> | void;
@@ -106,4 +106,5 @@ export namespace UnityExtras {
 }
 
 export default UnityExtras;
+
 // END

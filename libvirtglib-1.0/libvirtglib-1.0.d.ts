@@ -11,11 +11,11 @@
 import type GLib from '@girs/glib-2.0';
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * LibvirtGLib-1.0
- */
-
 export namespace LibvirtGLib {
+    /**
+     * LibvirtGLib-1.0
+     */
+
     /**
      * Creates a new #GError; unlike gvir_error_new(), `message` is
      * not a printf()-style format string. Use this function if
@@ -101,4 +101,5 @@ export namespace LibvirtGLib {
 }
 
 export default LibvirtGLib;
+
 // END

@@ -18,11 +18,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * PangoFc-1.0
- */
-
 export namespace PangoFc {
+    /**
+     * PangoFc-1.0
+     */
+
     /**
      * Fontconfig property that Pango reads from font
      * patterns to populate list of OpenType features
@@ -902,4 +902,5 @@ export namespace PangoFc {
 }
 
 export default PangoFc;
+
 // END

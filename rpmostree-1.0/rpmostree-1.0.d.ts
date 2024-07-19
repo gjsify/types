@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * RpmOstree-1.0
- */
-
 export namespace RpmOstree {
+    /**
+     * RpmOstree-1.0
+     */
+
     /**
      * Release version component (e.g. 9 if %RPM_OSTREE_VERSION is 2017.9)
      */
@@ -136,4 +136,5 @@ export namespace RpmOstree {
 }
 
 export default RpmOstree;
+
 // END

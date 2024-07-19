@@ -18,11 +18,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 import type Gio from '@girs/gio-2.0';
 
-/**
- * GstValidate-1.0
- */
-
 export namespace GstValidate {
+    /**
+     * GstValidate-1.0
+     */
+
     /**
      * GST_VALIDATE_EXECUTE_ACTION_ERROR:
      * GST_VALIDATE_EXECUTE_ACTION_OK:
@@ -5791,4 +5791,5 @@ export namespace GstValidate {
 }
 
 export default GstValidate;
+
 // END

@@ -1,4 +1,3 @@
-
 import Xrandr13 from '@girs/xrandr-1.3';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

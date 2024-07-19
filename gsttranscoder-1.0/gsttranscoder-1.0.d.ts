@@ -17,11 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
-/**
- * GstTranscoder-1.0
- */
-
 export namespace GstTranscoder {
+    /**
+     * GstTranscoder-1.0
+     */
+
     class TranscoderError extends GLib.Error {
         static $gtype: GObject.GType<TranscoderError>;
 
@@ -385,4 +385,5 @@ export namespace GstTranscoder {
 }
 
 export default GstTranscoder;
+
 // END

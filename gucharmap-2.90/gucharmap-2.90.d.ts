@@ -22,11 +22,11 @@ import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Gucharmap-2.90
- */
-
 export namespace Gucharmap {
+    /**
+     * Gucharmap-2.90
+     */
+
     enum CharmapPageType {
         CHARTABLE,
         DETAILS,
@@ -4070,4 +4070,5 @@ export namespace Gucharmap {
 }
 
 export default Gucharmap;
+
 // END

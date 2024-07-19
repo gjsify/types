@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * MyPaint-1.6
- */
-
 export namespace MyPaint {
+    /**
+     * MyPaint-1.6
+     */
+
     enum BrushInput {
         INPUT_PRESSURE,
         INPUT_SPEED1,
@@ -617,4 +617,5 @@ export namespace MyPaint {
 }
 
 export default MyPaint;
+
 // END

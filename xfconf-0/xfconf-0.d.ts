@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Xfconf-0
- */
-
 export namespace Xfconf {
+    /**
+     * Xfconf-0
+     */
+
     /**
      * An enumeration listing the different kinds of errors under the XFCONF_ERROR domain.
      */
@@ -613,4 +613,5 @@ export namespace Xfconf {
 }
 
 export default Xfconf;
+
 // END

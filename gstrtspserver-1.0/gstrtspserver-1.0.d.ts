@@ -18,11 +18,11 @@ import type GstBase from '@girs/gstbase-1.0';
 import type Gio from '@girs/gio-2.0';
 import type GstNet from '@girs/gstnet-1.0';
 
-/**
- * GstRtspServer-1.0
- */
-
 export namespace GstRtspServer {
+    /**
+     * GstRtspServer-1.0
+     */
+
     /**
      * Result codes from RTSP address pool functions.
      */
@@ -4314,4 +4314,5 @@ export namespace GstRtspServer {
 }
 
 export default GstRtspServer;
+
 // END

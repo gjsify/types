@@ -17,11 +17,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Json from '@girs/json-1.0';
 import type Goa from '@girs/goa-1.0';
 
-/**
- * GData-0.0
- */
-
 export namespace GData {
+    /**
+     * GData-0.0
+     */
+
     /**
      * Indicates which type of batch operation caused the current #GDataBatchOperationCallback to be called.
      */
@@ -28049,4 +28049,5 @@ export namespace GData {
 }
 
 export default GData;
+
 // END

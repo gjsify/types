@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Caja-2.0
- */
-
 export namespace Caja {
+    /**
+     * Caja-2.0
+     */
+
     enum OperationResult {
         /**
          * the operation succeeded, and the extension
@@ -633,4 +633,5 @@ export namespace Caja {
 }
 
 export default Caja;
+
 // END

@@ -24,11 +24,11 @@ import type Atk from '@girs/atk-1.0';
 import type Anjuta from '@girs/anjuta-3.0';
 import type Gdl from '@girs/gdl-3';
 
-/**
- * IAnjuta-3.0
- */
-
 export namespace IAnjuta {
+    /**
+     * IAnjuta-3.0
+     */
+
     /**
      * The enumeration is used to speficy the disered build operation
      */
@@ -5912,4 +5912,5 @@ export namespace IAnjuta {
 }
 
 export default IAnjuta;
+
 // END

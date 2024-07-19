@@ -1,4 +1,3 @@
-
 import GData00 from '@girs/gdata-0.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

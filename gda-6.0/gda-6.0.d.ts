@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gda-6.0
- */
-
 export namespace Gda {
+    /**
+     * Gda-6.0
+     */
+
     enum BatchError {
         BATCH_CONFLICTING_PARAMETER_ERROR,
     }
@@ -28079,4 +28079,5 @@ export namespace Gda {
 }
 
 export default Gda;
+
 // END

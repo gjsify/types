@@ -24,11 +24,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * AgsGui-6.0
- */
-
 export namespace AgsGui {
+    /**
+     * AgsGui-6.0
+     */
+
     enum DialAction {
         INCREMENT,
         DECREMENT,
@@ -21208,4 +21208,5 @@ export namespace AgsGui {
 }
 
 export default AgsGui;
+
 // END

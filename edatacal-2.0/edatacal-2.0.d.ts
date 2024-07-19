@@ -21,11 +21,11 @@ import type Camel from '@girs/camel-1.2';
 import type ECal from '@girs/ecal-2.0';
 import type EBackend from '@girs/ebackend-1.2';
 
-/**
- * EDataCal-2.0
- */
-
 export namespace EDataCal {
+    /**
+     * EDataCal-2.0
+     */
+
     /**
      * This environment variable configures where the calendar
      * factory loads its backend modules from.
@@ -6825,4 +6825,5 @@ export namespace EDataCal {
 }
 
 export default EDataCal;
+
 // END

@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GSSDP-1.2
- */
-
 export namespace GSSDP {
+    /**
+     * GSSDP-1.2
+     */
+
     /**
      * Error used in client creation.
      */
@@ -1185,4 +1185,5 @@ export namespace GSSDP {
 }
 
 export default GSSDP;
+
 // END

@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstController-1.0
- */
-
 export namespace GstController {
+    /**
+     * GstController-1.0
+     */
+
     /**
      * The various interpolation modes available.
      */
@@ -536,4 +536,5 @@ export namespace GstController {
 }
 
 export default GstController;
+
 // END

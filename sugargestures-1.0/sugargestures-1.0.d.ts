@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * SugarGestures-1.0
- */
-
 export namespace SugarGestures {
+    /**
+     * SugarGestures-1.0
+     */
+
     enum EventControllerState {
         NONE,
         COLLECTING,
@@ -493,4 +493,5 @@ export namespace SugarGestures {
 }
 
 export default SugarGestures;
+
 // END

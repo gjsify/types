@@ -12,11 +12,11 @@ import type fontconfig from '@girs/fontconfig-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * Easyfc-0.14
- */
-
 export namespace Easyfc {
+    /**
+     * Easyfc-0.14
+     */
+
     /**
      * Error code used in libeasyfc.
      */
@@ -777,4 +777,5 @@ export namespace Easyfc {
 }
 
 export default Easyfc;
+
 // END

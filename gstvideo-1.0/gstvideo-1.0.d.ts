@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstVideo-1.0
- */
-
 export namespace GstVideo {
+    /**
+     * GstVideo-1.0
+     */
+
     /**
      * An enumeration indicating whether an element implements color balancing
      * operations in software or in dedicated hardware. In general, dedicated
@@ -8793,4 +8793,5 @@ export namespace GstVideo {
 }
 
 export default GstVideo;
+
 // END

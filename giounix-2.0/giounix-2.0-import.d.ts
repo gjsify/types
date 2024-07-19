@@ -1,4 +1,3 @@
-
 import GioUnix20 from '@girs/giounix-2.0';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

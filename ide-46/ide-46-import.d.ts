@@ -1,4 +1,3 @@
-
 import Ide46 from '@girs/ide-46';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

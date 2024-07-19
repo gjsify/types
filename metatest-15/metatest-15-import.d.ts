@@ -1,4 +1,3 @@
-
 import MetaTest15 from '@girs/metatest-15';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

@@ -23,11 +23,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type PangoFT2 from '@girs/pangoft2-1.0';
 
-/**
- * PangoXft-1.0
- */
-
 export namespace PangoXft {
+    /**
+     * PangoXft-1.0
+     */
+
     /**
      * Returns the `PangoXftFontMap` for the given display and screen.
      * The fontmap is owned by Pango and will be valid until
@@ -808,4 +808,5 @@ export namespace PangoXft {
 }
 
 export default PangoXft;
+
 // END

@@ -17,11 +17,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gc-1.0
- */
-
 export namespace Gc {
+    /**
+     * Gc-1.0
+     */
+
     enum Category {
         NONE,
         LETTER,
@@ -129,4 +129,5 @@ export namespace Gc {
 }
 
 export default Gc;
+
 // END

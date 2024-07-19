@@ -25,11 +25,11 @@ import type Cogl from '@girs/cogl-14';
 import type xlib from '@girs/xlib-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Clutter-14
- */
-
 export namespace Clutter {
+    /**
+     * Clutter-14
+     */
+
     /**
      * Controls how a #ClutterActor should align itself inside the extra space
      * assigned to it during the allocation.
@@ -21989,4 +21989,5 @@ export namespace Clutter {
 }
 
 export default Clutter;
+
 // END

@@ -12,11 +12,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GL from '@girs/gl-1.0';
 
-/**
- * Cogl-2.0
- */
-
 export namespace Cogl {
+    /**
+     * Cogl-2.0
+     */
+
     /**
      * Data types for the components of a vertex attribute.
      */
@@ -9948,4 +9948,5 @@ export namespace Cogl {
 }
 
 export default Cogl;
+
 // END

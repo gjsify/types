@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GstInsertBin-1.0
- */
-
 export namespace GstInsertBin {
+    /**
+     * GstInsertBin-1.0
+     */
+
     interface InsertBinCallback {
         (insertbin: InsertBin, element: Gst.Element, success: boolean): void;
     }
@@ -734,4 +734,5 @@ export namespace GstInsertBin {
 }
 
 export default GstInsertBin;
+
 // END

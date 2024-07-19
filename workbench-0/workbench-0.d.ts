@@ -24,11 +24,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Workbench-0
- */
-
 export namespace Workbench {
+    /**
+     * Workbench-0
+     */
+
     /**
      * Enumeration of request states.
      */
@@ -4268,4 +4268,5 @@ export namespace Workbench {
 }
 
 export default Workbench;
+
 // END

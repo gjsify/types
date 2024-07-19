@@ -15,11 +15,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gst from '@girs/gst-1.0';
 
-/**
- * Dmap-4.0
- */
-
 export namespace Dmap {
+    /**
+     * Dmap-4.0
+     */
+
     /**
      * Enumeration of connection states.
      */
@@ -2338,4 +2338,5 @@ export namespace Dmap {
 }
 
 export default Dmap;
+
 // END

@@ -1,4 +1,3 @@
-
 import AvahiCore06 from '@girs/avahicore-0.6';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

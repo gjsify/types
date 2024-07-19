@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Peas-2
- */
-
 export namespace Peas {
+    /**
+     * Peas-2
+     */
+
     /**
      * These identify the various errors that can occur while
      * loading a plugin.
@@ -2324,4 +2324,5 @@ export namespace Peas {
 }
 
 export default Peas;
+
 // END

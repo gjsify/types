@@ -29,11 +29,11 @@ import type Clutter from '@girs/clutter-12';
 import type Json from '@girs/json-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * MetaTest-12
- */
-
 export namespace MetaTest {
+    /**
+     * MetaTest-12
+     */
+
     enum ContextTestType {
         HEADLESS,
         VKMS,
@@ -135,4 +135,5 @@ export namespace MetaTest {
 }
 
 export default MetaTest;
+
 // END

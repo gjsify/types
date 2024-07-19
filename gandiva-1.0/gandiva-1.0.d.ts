@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Gandiva-1.0
- */
-
 export namespace Gandiva {
+    /**
+     * Gandiva-1.0
+     */
+
     /**
      * They are corresponding to `gandiva::ResultNullableType` values.
      */
@@ -748,4 +748,5 @@ export namespace Gandiva {
 }
 
 export default Gandiva;
+
 // END

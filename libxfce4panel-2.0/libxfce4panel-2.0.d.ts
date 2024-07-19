@@ -23,11 +23,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Libxfce4panel-2.0
- */
-
 export namespace Libxfce4panel {
+    /**
+     * Libxfce4panel-2.0
+     */
+
     /**
      * Orientation of the plugin in the panel.
      */
@@ -6354,4 +6354,5 @@ export namespace Libxfce4panel {
 }
 
 export default Libxfce4panel;
+
 // END

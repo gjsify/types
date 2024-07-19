@@ -14,11 +14,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 
-/**
- * Bump-0.1
- */
-
 export namespace Bump {
+    /**
+     * Bump-0.1
+     */
+
     interface Callback {
         (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any;
     }
@@ -1722,4 +1722,5 @@ export namespace Bump {
 }
 
 export default Bump;
+
 // END

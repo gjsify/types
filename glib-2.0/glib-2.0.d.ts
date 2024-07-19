@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * GLib-2.0
- */
-
 export namespace GLib {
+    /**
+     * GLib-2.0
+     */
+
     /**
      * Error codes returned by bookmark file parsing.
      */
@@ -26481,4 +26481,5 @@ export namespace GLib {
 }
 
 export default GLib;
+
 // END

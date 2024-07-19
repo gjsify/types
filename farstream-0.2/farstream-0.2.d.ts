@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Farstream-0.2
- */
-
 export namespace Farstream {
+    /**
+     * Farstream-0.2
+     */
+
     /**
      * An enum for the type of candidate used/reported
      */
@@ -3067,4 +3067,5 @@ export namespace Farstream {
 }
 
 export default Farstream;
+
 // END

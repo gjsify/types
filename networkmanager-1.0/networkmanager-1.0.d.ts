@@ -12,11 +12,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type DBusGLib from '@girs/dbusglib-1.0';
 
-/**
- * NetworkManager-1.0
- */
-
 export namespace NetworkManager {
+    /**
+     * NetworkManager-1.0
+     */
+
     /**
      * Indicates the 802.11 mode an access point or device is currently in.
      */
@@ -8650,4 +8650,5 @@ export namespace NetworkManager {
 }
 
 export default NetworkManager;
+
 // END

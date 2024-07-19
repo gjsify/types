@@ -12,11 +12,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type DBus from '@girs/dbus-1.0';
 
-/**
- * Atspi-2.0
- */
-
 export namespace Atspi {
+    /**
+     * Atspi-2.0
+     */
+
     /**
      * Enumeration used by #AtspiMatchRule to specify
      * how to interpret #AtspiAccessible objects.
@@ -6007,4 +6007,5 @@ export namespace Atspi {
 }
 
 export default Atspi;
+
 // END

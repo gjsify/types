@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Translit-1.0
- */
-
 export namespace Translit {
+    /**
+     * Translit-1.0
+     */
+
     enum ErrorEnum {
         NO_SUCH_BACKEND,
         LOAD_FAILED,
@@ -90,4 +90,5 @@ export namespace Translit {
 }
 
 export default Translit;
+
 // END

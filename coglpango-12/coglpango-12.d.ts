@@ -21,11 +21,11 @@ import type Cogl from '@girs/cogl-12';
 import type Graphene from '@girs/graphene-1.0';
 import type GL from '@girs/gl-1.0';
 
-/**
- * CoglPango-12
- */
-
 export namespace CoglPango {
+    /**
+     * CoglPango-12
+     */
+
     /**
      * This updates any internal glyph cache textures as necessary to be
      * able to render the given `layout`.
@@ -119,4 +119,5 @@ export namespace CoglPango {
 }
 
 export default CoglPango;
+
 // END

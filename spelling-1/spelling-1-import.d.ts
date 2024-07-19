@@ -1,4 +1,3 @@
-
 import Spelling1 from '@girs/spelling-1';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

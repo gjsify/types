@@ -18,11 +18,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * Gdk-2.0
- */
-
 export namespace Gdk {
+    /**
+     * Gdk-2.0
+     */
+
     enum AxisUse {
         IGNORE,
         X,
@@ -9615,4 +9615,5 @@ export namespace Gdk {
 }
 
 export default Gdk;
+
 // END

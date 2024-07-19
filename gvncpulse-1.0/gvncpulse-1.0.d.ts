@@ -14,11 +14,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GVncPulse-1.0
- */
-
 export namespace GVncPulse {
+    /**
+     * GVncPulse-1.0
+     */
+
     module AudioPulse {
         // Constructor properties interface
 
@@ -480,4 +480,5 @@ export namespace GVncPulse {
 }
 
 export default GVncPulse;
+
 // END

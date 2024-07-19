@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * AccountsService-1.0
- */
-
 export namespace AccountsService {
+    /**
+     * AccountsService-1.0
+     */
+
     /**
      * Type of user account
      */
@@ -818,4 +818,5 @@ export namespace AccountsService {
 }
 
 export default AccountsService;
+
 // END

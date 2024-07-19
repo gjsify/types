@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Snapd-1
- */
-
 export namespace Snapd {
+    /**
+     * Snapd-1
+     */
+
     /**
      * Status of an alias.
      */
@@ -4395,4 +4395,5 @@ export namespace Snapd {
 }
 
 export default Snapd;
+
 // END

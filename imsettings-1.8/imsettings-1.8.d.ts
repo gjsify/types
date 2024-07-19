@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * IMSettings-1.8
- */
-
 export namespace IMSettings {
+    /**
+     * IMSettings-1.8
+     */
+
     /**
      * Error codes used in imsettings.
      */
@@ -891,4 +891,5 @@ export namespace IMSettings {
 }
 
 export default IMSettings;
+
 // END

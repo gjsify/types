@@ -10,11 +10,11 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 
-/**
- * xrandr-1.3
- */
-
 export namespace xrandr {
+    /**
+     * xrandr-1.3
+     */
+
     class ScreenSize {
         static $gtype: GObject.GType<ScreenSize>;
 
@@ -84,4 +84,5 @@ export namespace xrandr {
 }
 
 export default xrandr;
+
 // END

@@ -15,11 +15,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 
-/**
- * GXml-0.14
- */
-
 export namespace GXml {
+    /**
+     * GXml-0.14
+     */
+
     enum NodeType {
         INVALID,
         ELEMENT,
@@ -36646,4 +36646,5 @@ export namespace GXml {
 }
 
 export default GXml;
+
 // END

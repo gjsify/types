@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Dbusmenu from '@girs/dbusmenu-0.4';
 
-/**
- * DbusmenuGtk3-0.4
- */
-
 export namespace DbusmenuGtk3 {
+    /**
+     * DbusmenuGtk3-0.4
+     */
+
     const GTK_MENUITEM_H__: number;
     /**
      * The Dbusmenu GTK parser adds cached items on the various
@@ -653,4 +653,5 @@ export namespace DbusmenuGtk3 {
 }
 
 export default DbusmenuGtk3;
+
 // END

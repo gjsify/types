@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * InputPad-1.1
- */
-
 export namespace InputPad {
+    /**
+     * InputPad-1.1
+     */
+
     enum TableType {
         NONE,
         CHARS,
@@ -11602,4 +11602,5 @@ export namespace InputPad {
 }
 
 export default InputPad;
+
 // END

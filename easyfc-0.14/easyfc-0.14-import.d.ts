@@ -1,4 +1,3 @@
-
 import Easyfc014 from '@girs/easyfc-0.14';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

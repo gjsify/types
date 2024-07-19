@@ -1,4 +1,3 @@
-
 import SocialWebClient025 from '@girs/socialwebclient-0.25';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

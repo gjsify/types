@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * MatePanelApplet-4.0
- */
-
 export namespace MatePanelApplet {
+    /**
+     * MatePanelApplet-4.0
+     */
+
     enum AppletBackgroundType {
         NO_BACKGROUND,
         COLOR_BACKGROUND,
@@ -636,4 +636,5 @@ export namespace MatePanelApplet {
 }
 
 export default MatePanelApplet;
+
 // END

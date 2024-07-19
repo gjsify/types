@@ -23,11 +23,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Totem-1.0
- */
-
 export namespace Totem {
+    /**
+     * Totem-1.0
+     */
+
     /**
      * Represents a command which can be sent to a running Totem instance remotely.
      */
@@ -1085,4 +1085,5 @@ export namespace Totem {
 }
 
 export default Totem;
+
 // END

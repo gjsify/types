@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Qrtr-1.0
- */
-
 export namespace Qrtr {
+    /**
+     * Qrtr-1.0
+     */
+
     /**
      * Symbol defining the #QrtrBus:lookup-timeout property.
      */
@@ -1497,4 +1497,5 @@ export namespace Qrtr {
 }
 
 export default Qrtr;
+
 // END

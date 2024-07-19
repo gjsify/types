@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * AyatanaIdo3-0.4
- */
-
 export namespace AyatanaIdo3 {
+    /**
+     * AyatanaIdo3-0.4
+     */
+
     enum RangeStyle {
         DEFAULT,
         SMALL,
@@ -18677,4 +18677,5 @@ export namespace AyatanaIdo3 {
 }
 
 export default AyatanaIdo3;
+
 // END

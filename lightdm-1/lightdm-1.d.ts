@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * LightDM-1
- */
-
 export namespace LightDM {
+    /**
+     * LightDM-1
+     */
+
     /**
      * Error codes returned by greeter operations.
      */
@@ -1009,4 +1009,5 @@ export namespace LightDM {
 }
 
 export default LightDM;
+
 // END

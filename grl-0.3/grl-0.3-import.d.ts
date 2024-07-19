@@ -1,4 +1,3 @@
-
 import Grl03 from '@girs/grl-0.3';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

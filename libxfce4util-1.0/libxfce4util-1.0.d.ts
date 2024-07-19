@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * Libxfce4util-1.0
- */
-
 export namespace Libxfce4util {
+    /**
+     * Libxfce4util-1.0
+     */
+
     /**
      * The license text to return from xfce_get_license_text().
      */
@@ -777,4 +777,5 @@ export namespace Libxfce4util {
 }
 
 export default Libxfce4util;
+
 // END

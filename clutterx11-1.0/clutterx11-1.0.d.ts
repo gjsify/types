@@ -25,11 +25,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * ClutterX11-1.0
- */
-
 export namespace ClutterX11 {
+    /**
+     * ClutterX11-1.0
+     */
+
     /**
      * Return values for the #ClutterX11FilterFunc function.
      */
@@ -824,4 +824,5 @@ export namespace ClutterX11 {
 }
 
 export default ClutterX11;
+
 // END

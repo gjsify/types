@@ -22,11 +22,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
-/**
- * Nautilus-3.0
- */
-
 export namespace Nautilus {
+    /**
+     * Nautilus-3.0
+     */
+
     /**
      * Return values for asynchronous operations performed by the extension.
      * See nautilus_info_provider_update_file_info().
@@ -511,4 +511,5 @@ export namespace Nautilus {
 }
 
 export default Nautilus;
+
 // END

@@ -23,11 +23,18 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Gee from '@girs/gee-0.8';
 
-/**
- * Granite-1.0
- */
-
 export namespace Granite {
+    // Workaround
+    /** @ignore */
+    export module GraniteServicesSettingsSerializable {
+        export interface ConstructorProps extends ServicesSettingsSerializable.ConstructorProps {}
+    }
+    /** @ignore */
+    export interface GraniteServicesSettingsSerializable extends ServicesSettingsSerializable {}
+    /**
+     * Granite-1.0
+     */
+
     enum ServicesLogLevel {
         DEBUG,
         INFO,
@@ -4502,13 +4509,6 @@ export namespace Granite {
 
     export const WidgetsSourceListDragDest: WidgetsSourceListDragDestNamespace;
 
-    // Workaround
-    /** @ignore */
-    export module GraniteServicesSettingsSerializable {
-        export interface ConstructorProps extends ServicesSettingsSerializable.ConstructorProps {}
-    }
-    /** @ignore */
-    export interface GraniteServicesSettingsSerializable extends ServicesSettingsSerializable {}
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
@@ -4522,4 +4522,5 @@ export namespace Granite {
 }
 
 export default Granite;
+
 // END

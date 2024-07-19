@@ -31,11 +31,11 @@ import type GL from '@girs/gl-1.0';
 import type Clutter from '@girs/clutter-10';
 import type Json from '@girs/json-1.0';
 
-/**
- * Meta-10
- */
-
 export namespace Meta {
+    /**
+     * Meta-10
+     */
+
     /**
      * Function a window button can have.  Note, you can't add stuff here
      * without extending the theme format to draw a new function and
@@ -9864,4 +9864,5 @@ export namespace Meta {
 }
 
 export default Meta;
+
 // END

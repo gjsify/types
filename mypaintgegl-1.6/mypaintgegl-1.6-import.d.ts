@@ -1,4 +1,3 @@
-
 import MyPaintGegl16 from '@girs/mypaintgegl-1.6';
 
 declare global {
@@ -8,5 +7,3 @@ declare global {
 }
 
 export default GjsGiImports;
-
-

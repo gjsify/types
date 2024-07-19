@@ -16,11 +16,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstGL from '@girs/gstgl-1.0';
 
-/**
- * GstGLX11-1.0
- */
-
 export namespace GstGLX11 {
+    /**
+     * GstGLX11-1.0
+     */
+
     module GLDisplayX11 {
         // Constructor properties interface
 
@@ -60,4 +60,5 @@ export namespace GstGLX11 {
 }
 
 export default GstGLX11;
+
 // END

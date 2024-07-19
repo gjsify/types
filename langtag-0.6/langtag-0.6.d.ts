@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * LangTag-0.6
- */
-
 export namespace LangTag {
+    /**
+     * LangTag-0.6
+     */
+
     /**
      * Error code used in this library.
      */
@@ -1491,4 +1491,5 @@ export namespace LangTag {
 }
 
 export default LangTag;
+
 // END

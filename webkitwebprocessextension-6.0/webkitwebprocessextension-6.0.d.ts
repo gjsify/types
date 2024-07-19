@@ -25,11 +25,11 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
-/**
- * WebKitWebProcessExtension-6.0
- */
-
 export namespace WebKitWebProcessExtension {
+    /**
+     * WebKitWebProcessExtension-6.0
+     */
+
     /**
      * Enum values used to denote the stock actions for
      * #WebKitContextMenuItem<!-- -->s
@@ -1600,4 +1600,5 @@ export namespace WebKitWebProcessExtension {
 }
 
 export default WebKitWebProcessExtension;
+
 // END

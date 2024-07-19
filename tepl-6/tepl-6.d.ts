@@ -24,11 +24,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Amtk from '@girs/amtk-5';
 
-/**
- * Tepl-6
- */
-
 export namespace Tepl {
+    /**
+     * Tepl-6
+     */
+
     /**
      * Location inside the content area.
      *
@@ -8622,4 +8622,5 @@ export namespace Tepl {
 }
 
 export default Tepl;
+
 // END

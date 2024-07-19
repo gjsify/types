@@ -23,11 +23,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type EvinceDocument from '@girs/evincedocument-3.0';
 
-/**
- * EvinceView-3.0
- */
-
 export namespace EvinceView {
+    /**
+     * EvinceView-3.0
+     */
+
     enum JobPriority {
         PRIORITY_URGENT,
         PRIORITY_HIGH,
@@ -2408,4 +2408,5 @@ export namespace EvinceView {
 }
 
 export default EvinceView;
+
 // END

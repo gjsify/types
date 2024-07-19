@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GioUnix-2.0
- */
-
 export namespace GioUnix {
+    /**
+     * GioUnix-2.0
+     */
+
     /**
      * Extension point for default handler to URI association. See
      * [Extending GIO][extending-gio].
@@ -4245,4 +4245,5 @@ export namespace GioUnix {
 }
 
 export default GioUnix;
+
 // END

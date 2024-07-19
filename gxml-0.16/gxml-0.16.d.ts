@@ -15,11 +15,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 
-/**
- * GXml-0.16
- */
-
 export namespace GXml {
+    /**
+     * GXml-0.16
+     */
+
     enum CssSelectorType {
         CLASS,
         ID,
@@ -37329,4 +37329,5 @@ export namespace GXml {
 }
 
 export default GXml;
+
 // END

@@ -13,11 +13,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
-/**
- * GCab-1.0
- */
-
 export namespace GCab {
+    /**
+     * GCab-1.0
+     */
+
     /**
      * Compression used by the #GCabFolder.
      */
@@ -428,4 +428,5 @@ export namespace GCab {
 }
 
 export default GCab;
+
 // END

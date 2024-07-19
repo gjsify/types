@@ -24,11 +24,11 @@ import type Atk from '@girs/atk-1.0';
 import type Gda from '@girs/gda-5.0';
 import type libxml2 from '@girs/libxml2-2.0';
 
-/**
- * Gdaui-5.0
- */
-
 export namespace Gdaui {
+    /**
+     * Gdaui-5.0
+     */
+
     enum Action {
         NEW_DATA,
         WRITE_MODIFIED_DATA,
@@ -81190,4 +81190,5 @@ export namespace Gdaui {
 }
 
 export default Gdaui;
+
 // END

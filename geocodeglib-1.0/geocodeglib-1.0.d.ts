@@ -15,11 +15,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Json from '@girs/json-1.0';
 
-/**
- * GeocodeGlib-1.0
- */
-
 export namespace GeocodeGlib {
+    /**
+     * GeocodeGlib-1.0
+     */
+
     /**
      * Error codes returned by geocode-glib functions.
      */
@@ -2754,4 +2754,5 @@ export namespace GeocodeGlib {
 }
 
 export default GeocodeGlib;
+
 // END

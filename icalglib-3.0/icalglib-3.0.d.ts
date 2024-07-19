@@ -11,11 +11,11 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
-/**
- * ICalGLib-3.0
- */
-
 export namespace ICalGLib {
+    /**
+     * ICalGLib-3.0
+     */
+
     enum ComponentKind {
         NO_COMPONENT,
         ANY_COMPONENT,
@@ -5618,4 +5618,5 @@ export namespace ICalGLib {
 }
 
 export default ICalGLib;
+
 // END
