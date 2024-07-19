@@ -1,16 +1,19 @@
-/*
+/**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ *
+ * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
+
+// Module dependencies
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 
 /**
  * cairo-1.0
  */
-
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
 
 export namespace cairo {
     enum Status {
@@ -357,16 +360,6 @@ export namespace cairo {
         );
         _init(...args: any[]): void;
     }
-
-    // TODO
-    // See
-    // - https://gitlab.gnome.org/GNOME/gjs/-/blob/master/installed-tests/js/testCairoModule.js
-    // - https://gitlab.gnome.org/GNOME/gjs/-/blob/master/installed-tests/js/testCairo.js
-    // - https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/cairo.md
-
-    // image_surface_create -> ImageSurface
-    // Context.constructor(surface: cairo.ImageSurface)
-    // ...
 
     /**
      * Name of the imported GIR library

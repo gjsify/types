@@ -1,14 +1,13 @@
-/*
+/**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ *
+ * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
-/**
- * St-13
- */
-
+// Module dependencies
 import type Meta from '@girs/meta-13';
 import type xlib from '@girs/xlib-2.0';
 import type xfixes from '@girs/xfixes-4.0';
@@ -32,6 +31,10 @@ import type Json from '@girs/json-1.0';
 import type Atk from '@girs/atk-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Cally from '@girs/cally-13';
+
+/**
+ * St-13
+ */
 
 export namespace St {
     enum BackgroundSize {

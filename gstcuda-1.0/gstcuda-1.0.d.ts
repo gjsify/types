@@ -1,14 +1,13 @@
-/*
+/**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ *
+ * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
-/**
- * GstCuda-1.0
- */
-
+// Module dependencies
 import type GstVideo from '@girs/gstvideo-1.0';
 import type GstBase from '@girs/gstbase-1.0';
 import type Gst from '@girs/gst-1.0';
@@ -17,6 +16,10 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstGL from '@girs/gstgl-1.0';
 import type CudaGst from '@girs/cudagst-1.0';
+
+/**
+ * GstCuda-1.0
+ */
 
 export namespace GstCuda {
     enum CudaGraphicsResourceType {

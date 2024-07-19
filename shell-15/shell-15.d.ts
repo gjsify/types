@@ -1,14 +1,13 @@
-/*
+/**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ *
+ * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
-/**
- * Shell-15
- */
-
+// Module dependencies
 import type St from '@girs/st-15';
 import type Meta from '@girs/meta-15';
 import type xlib from '@girs/xlib-2.0';
@@ -38,6 +37,10 @@ import type NM from '@girs/nm-1.0';
 import type Gvc from '@girs/gvc-1.0';
 import type Gcr from '@girs/gcr-4';
 import type Gck from '@girs/gck-2';
+
+/**
+ * Shell-15
+ */
 
 export namespace Shell {
     enum AppLaunchGpu {

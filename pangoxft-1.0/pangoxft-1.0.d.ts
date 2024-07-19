@@ -1,14 +1,13 @@
-/*
+/**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ *
+ * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
-/**
- * PangoXft-1.0
- */
-
+// Module dependencies
 import type xlib from '@girs/xlib-2.0';
 import type xft from '@girs/xft-2.0';
 import type PangoOT from '@girs/pangoot-1.0';
@@ -23,6 +22,10 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type PangoFT2 from '@girs/pangoft2-1.0';
+
+/**
+ * PangoXft-1.0
+ */
 
 export namespace PangoXft {
     /**

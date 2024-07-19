@@ -1,14 +1,13 @@
-/*
+/**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ *
+ * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
-/**
- * WebKit2-4.1
- */
-
+// Module dependencies
 import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
@@ -24,6 +23,10 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
+
+/**
+ * WebKit2-4.1
+ */
 
 export namespace WebKit2 {
     /**

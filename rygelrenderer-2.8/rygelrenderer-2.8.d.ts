@@ -1,14 +1,13 @@
-/*
+/**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ *
+ * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
-/**
- * RygelRenderer-2.8
- */
-
+// Module dependencies
 import type RygelCore from '@girs/rygelcore-2.8';
 import type GLib from '@girs/glib-2.0';
 import type Gee from '@girs/gee-0.8';
@@ -20,6 +19,10 @@ import type libxml2 from '@girs/libxml2-2.0';
 import type Soup from '@girs/soup-3.0';
 import type GSSDP from '@girs/gssdp-1.6';
 import type GUPnPAV from '@girs/gupnpav-1.0';
+
+/**
+ * RygelRenderer-2.8
+ */
 
 export namespace RygelRenderer {
     module MediaRendererPlugin {

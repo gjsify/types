@@ -1,14 +1,13 @@
-/*
+/**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ *
+ * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
-/**
- * DbusmenuGtk-0.4
- */
-
+// Module dependencies
 import type Gtk from '@girs/gtk-2.0';
 import type Gdk from '@girs/gdk-2.0';
 import type cairo from '@girs/cairo-1.0';
@@ -22,6 +21,10 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Dbusmenu from '@girs/dbusmenu-0.4';
+
+/**
+ * DbusmenuGtk-0.4
+ */
 
 export namespace DbusmenuGtk {
     const GTK_MENUITEM_H__: number;
