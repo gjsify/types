@@ -1,6 +1,6 @@
 {
     "name": "@girs/gpastegtk-4",
-    "version": "4.0.0-4.0.0-beta.6",
+    "version": "4.0.0-4.0.0-beta.7",
     "description": "GJS TypeScript type definitions for GPasteGtk-4, generated from library version 4.0.0",
     "type": "module",
     "module": "gpastegtk-4.js",

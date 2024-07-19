@@ -1,6 +1,6 @@
 {
     "name": "@girs/ebookcontacts-1.2",
-    "version": "1.2.0-4.0.0-beta.6",
+    "version": "1.2.0-4.0.0-beta.7",
     "description": "GJS TypeScript type definitions for EBookContacts-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "ebookcontacts-1.2.js",

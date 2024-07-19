@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gcr-4)
 
 
-GJS TypeScript type definitions for Gcr-4, generated from library version 4.2.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.6.
+GJS TypeScript type definitions for Gcr-4, generated from library version 4.2.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.7.
 
 
 ## Install
