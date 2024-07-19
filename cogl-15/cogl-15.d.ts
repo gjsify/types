@@ -1263,7 +1263,6 @@ export namespace Cogl {
         width: number,
         height: number,
     ): boolean;
-    function clutter_winsys_has_feature(feature: WinsysFeature): boolean;
     /**
      * Compares two `CoglColor`s and checks if they are the same.
      *
@@ -1333,29 +1332,6 @@ export namespace Cogl {
      * @returns a new shader handle.
      */
     function create_shader(shader_type: ShaderType): Shader;
-    /**
-     * This function should only need to be called in exceptional circumstances.
-     *
-     * As an optimization Cogl drawing functions may batch up primitives
-     * internally, so if you are trying to use raw GL outside of Cogl you stand a
-     * better chance of being successful if you ask Cogl to flush any batched
-     * geometry before making your state changes.
-     *
-     * It only ensure that the underlying driver is issued all the commands
-     * necessary to draw the batched primitives. It provides no guarantees about
-     * when the driver will complete the rendering.
-     *
-     * This provides no guarantees about the GL state upon returning and to avoid
-     * confusing Cogl you should aim to restore any changes you make before
-     * resuming use of Cogl.
-     *
-     * If you are making state changes with the intention of affecting Cogl drawing
-     * primitives you are 100% on your own since you stand a good chance of
-     * conflicting with Cogl internals. For example clutter-gst which currently
-     * uses direct GL calls to bind ARBfp programs will very likely break when Cogl
-     * starts to use ARBfb programs itself for the material API.
-     */
-    function flush(): void;
     /**
      * Returns the graphics reset status as reported by
      * GetGraphicsResetStatusARB defined in the ARB_robustness extension.
@@ -2117,6 +2093,29 @@ export namespace Cogl {
 
         // Own methods of Cogl.Context
 
+        /**
+         * This function should only need to be called in exceptional circumstances.
+         *
+         * As an optimization Cogl drawing functions may batch up primitives
+         * internally, so if you are trying to use raw GL outside of Cogl you stand a
+         * better chance of being successful if you ask Cogl to flush any batched
+         * geometry before making your state changes.
+         *
+         * It only ensure that the underlying driver is issued all the commands
+         * necessary to draw the batched primitives. It provides no guarantees about
+         * when the driver will complete the rendering.
+         *
+         * This provides no guarantees about the GL state upon returning and to avoid
+         * confusing Cogl you should aim to restore any changes you make before
+         * resuming use of Cogl.
+         *
+         * If you are making state changes with the intention of affecting Cogl drawing
+         * primitives you are 100% on your own since you stand a good chance of
+         * conflicting with Cogl internals. For example clutter-gst which currently
+         * uses direct GL calls to bind ARBfp programs will very likely break when Cogl
+         * starts to use ARBfb programs itself for the material API.
+         */
+        flush(): void;
         free_timestamp_query(query: TimestampQuery): void;
         /**
          * Retrieves the #CoglDisplay that is internally associated with the
@@ -2151,6 +2150,7 @@ export namespace Cogl {
          * @returns The #CoglRenderer associated with the               given @context.
          */
         get_renderer(): Renderer;
+        has_winsys_feature(feature: WinsysFeature): boolean;
         is_hardware_accelerated(): boolean;
         /**
          * Associate a #CoglPipeline with a `context` and `key`. This will not take a new
@@ -4228,20 +4228,6 @@ export namespace Cogl {
 
         static new_with_attributes(mode: VerticesMode, n_vertices: number, attributes: Attribute[]): Primitive;
 
-        // Own static methods of Cogl.Primitive
-
-        /**
-         * Sets whether the texture will automatically update the smaller
-         * mipmap levels after any part of level 0 is updated. The update will
-         * only occur whenever the texture is used for drawing with a texture
-         * filter that requires the lower mipmap levels. An application should
-         * disable this if it wants to upload its own data for the other
-         * levels. By default auto mipmapping is enabled.
-         * @param primitive_texture A #CoglPrimitiveTexture
-         * @param value The new value for whether to auto mipmap
-         */
-        static texture_set_auto_mipmap(primitive_texture: Texture, value: boolean): void;
-
         // Own methods of Cogl.Primitive
 
         /**
@@ -4476,6 +4462,18 @@ export namespace Cogl {
          * This may only be called on a connected #CoglRenderer.
          */
         get_driver(): Driver;
+        /**
+         * Gets a pointer to a given GL or GL ES extension function. This acts
+         * as a wrapper around glXGetProcAddress() or whatever is the
+         * appropriate function for the current backend.
+         *
+         * This function should not be used to query core opengl API
+         * symbols since eglGetProcAddress for example doesn't allow this and
+         * and may return a junk pointer if you do.
+         * @param name the name of the function.
+         * @returns a pointer to the requested function or %NULL if the   function is not available.
+         */
+        get_proc_address(name: string): any | null;
         /**
          * Queries which window system backend Cogl has chosen to use.
          *
@@ -5061,6 +5059,16 @@ export namespace Cogl {
          * @returns %TRUE if the texture is sliced, %FALSE if the texture   is stored as a single GPU texture
          */
         is_sliced(): boolean;
+        /**
+         * Sets whether the texture will automatically update the smaller
+         * mipmap levels after any part of level 0 is updated. The update will
+         * only occur whenever the texture is used for drawing with a texture
+         * filter that requires the lower mipmap levels. An application should
+         * disable this if it wants to upload its own data for the other
+         * levels. By default auto mipmapping is enabled.
+         * @param value The new value for whether to auto mipmap
+         */
+        set_auto_mipmap(value: boolean): void;
         /**
          * Affects the internal storage format for this texture by specifying
          * what components will be required for sampling later.

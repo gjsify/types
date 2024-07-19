@@ -5729,6 +5729,11 @@ export namespace Soup {
 
         // Own virtual methods of Soup.HSTSEnforcer
 
+        /**
+         * The class closure for the #SoupHSTSEnforcer::changed signal.
+         * @param old_policy
+         * @param new_policy
+         */
         vfunc_changed(old_policy: HSTSPolicy, new_policy: HSTSPolicy): void;
         /**
          * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.

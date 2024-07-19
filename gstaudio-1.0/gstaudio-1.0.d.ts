@@ -1588,6 +1588,18 @@ export namespace GstAudio {
 
         // Own virtual methods of GstAudio.AudioAggregator
 
+        /**
+         * Aggregates one input buffer to the output
+         *  buffer.  The in_offset and out_offset are in "frames", which is
+         *  the size of a sample times the number of channels. Returns TRUE if
+         *  any non-silence was added to the buffer
+         * @param pad
+         * @param inbuf
+         * @param in_offset
+         * @param outbuf
+         * @param out_offset
+         * @param num_frames
+         */
         vfunc_aggregate_one_buffer(
             pad: AudioAggregatorPad,
             inbuf: Gst.Buffer,
@@ -1596,6 +1608,10 @@ export namespace GstAudio {
             out_offset: number,
             num_frames: number,
         ): boolean;
+        /**
+         * Create a new output buffer contains num_frames frames.
+         * @param num_frames
+         */
         vfunc_create_output_buffer(num_frames: number): Gst.Buffer;
 
         // Own methods of GstAudio.AudioAggregator
@@ -1670,7 +1686,17 @@ export namespace GstAudio {
 
         // Own virtual methods of GstAudio.AudioAggregatorPad
 
+        /**
+         * Convert a buffer from one format to another.
+         * @param in_info
+         * @param out_info
+         * @param buffer
+         */
         vfunc_convert_buffer(in_info: AudioInfo, out_info: AudioInfo, buffer: Gst.Buffer): Gst.Buffer;
+        /**
+         * Called when either the input or output
+         *  formats have changed.
+         */
         vfunc_update_conversion_info(): void;
     }
 
@@ -1778,6 +1804,13 @@ export namespace GstAudio {
          * the returned buffer (see gst_object_set_parent()).
          */
         vfunc_create_ringbuffer(): AudioRingBuffer | null;
+        /**
+         * payload data in a format suitable to write to the sink. If no
+         *           payloading is required, returns a reffed copy of the original
+         *           buffer, else returns the payloaded buffer with all other metadata
+         *           copied.
+         * @param buffer
+         */
         vfunc_payload(buffer: Gst.Buffer): Gst.Buffer;
 
         // Own methods of GstAudio.AudioBaseSink
@@ -2062,8 +2095,19 @@ export namespace GstAudio {
 
         // Own virtual methods of GstAudio.AudioCdSrc
 
+        /**
+         * closing the device
+         */
         vfunc_close(): void;
+        /**
+         * opening the device
+         * @param device
+         */
         vfunc_open(device: string): boolean;
+        /**
+         * reading a sector
+         * @param sector
+         */
         vfunc_read_sector(sector: number): Gst.Buffer;
 
         // Own methods of GstAudio.AudioCdSrc
@@ -2721,10 +2765,48 @@ export namespace GstAudio {
 
         // Own virtual methods of GstAudio.AudioDecoder
 
+        /**
+         * Optional.
+         *                  Called when the element changes to GST_STATE_NULL.
+         *                  Allows closing external resources.
+         */
         vfunc_close(): boolean;
+        /**
+         * Optional.
+         *                     Setup the allocation parameters for allocating output
+         *                     buffers. The passed in query contains the result of the
+         *                     downstream allocation query.
+         *                     Subclasses should chain up to the parent implementation to
+         *                     invoke the default handler.
+         * @param query
+         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
+        /**
+         * Optional.
+         *                  Instructs subclass to clear any codec caches and discard
+         *                  any pending samples and not yet returned decoded data.
+         *                  `hard` indicates whether a FLUSH is being processed,
+         *                  or otherwise a DISCONT (or conceptually similar).
+         * @param hard
+         */
         vfunc_flush(hard: boolean): void;
+        /**
+         * Optional.
+         *                  Allows for a custom sink getcaps implementation.
+         *                  If not implemented,
+         *                  default returns gst_audio_decoder_proxy_getcaps
+         *                  applied to sink template caps.
+         * @param filter
+         */
         vfunc_getcaps(filter: Gst.Caps): Gst.Caps;
+        /**
+         * Provides input data (or NULL to clear any remaining data)
+         *                  to subclass.  Input data ref management is performed by
+         *                  base class, subclass should not care or intervene,
+         *                  and input data is only valid until next call to base class,
+         *                  most notably a call to gst_audio_decoder_finish_frame().
+         * @param buffer
+         */
         vfunc_handle_frame(buffer: Gst.Buffer): Gst.FlowReturn;
         /**
          * Negotiate with downstream elements to currently configured #GstAudioInfo.
@@ -2732,17 +2814,88 @@ export namespace GstAudio {
          * negotiate fails.
          */
         vfunc_negotiate(): boolean;
+        /**
+         * Optional.
+         *                  Called when the element changes to GST_STATE_READY.
+         *                  Allows opening external resources.
+         */
         vfunc_open(): boolean;
         vfunc_parse(adapter: GstBase.Adapter): [Gst.FlowReturn, number, number];
+        /**
+         * Optional.
+         *                  Called just prior to pushing (encoded data) buffer downstream.
+         *                  Subclass has full discretionary access to buffer,
+         *                  and a not OK flow return will abort downstream pushing.
+         * @param buffer
+         */
         vfunc_pre_push(buffer: Gst.Buffer): Gst.FlowReturn;
+        /**
+         * Optional.
+         *                      Propose buffer allocation parameters for upstream elements.
+         *                      Subclasses should chain up to the parent implementation to
+         *                      invoke the default handler.
+         * @param query
+         */
         vfunc_propose_allocation(query: Gst.Query): boolean;
+        /**
+         * Notifies subclass of incoming data format (caps).
+         * @param caps
+         */
         vfunc_set_format(caps: Gst.Caps): boolean;
+        /**
+         * Optional.
+         *                  Event handler on the sink pad. Subclasses should chain up to
+         *                  the parent implementation to invoke the default handler.
+         * @param event
+         */
         vfunc_sink_event(event: Gst.Event): boolean;
+        /**
+         * Optional.
+         *                  Query handler on the sink pad. This function should
+         *                  return TRUE if the query could be performed. Subclasses
+         *                  should chain up to the parent implementation to invoke the
+         *                  default handler. Since: 1.6
+         * @param query
+         */
         vfunc_sink_query(query: Gst.Query): boolean;
+        /**
+         * Optional.
+         *                  Event handler on the src pad. Subclasses should chain up to
+         *                  the parent implementation to invoke the default handler.
+         * @param event
+         */
         vfunc_src_event(event: Gst.Event): boolean;
+        /**
+         * Optional.
+         *                  Query handler on the source pad. This function should
+         *                  return TRUE if the query could be performed. Subclasses
+         *                  should chain up to the parent implementation to invoke the
+         *                  default handler. Since: 1.6
+         * @param query
+         */
         vfunc_src_query(query: Gst.Query): boolean;
+        /**
+         * Optional.
+         *                  Called when the element starts processing.
+         *                  Allows opening external resources.
+         */
         vfunc_start(): boolean;
+        /**
+         * Optional.
+         *                  Called when the element stops processing.
+         *                  Allows closing external resources.
+         */
         vfunc_stop(): boolean;
+        /**
+         * Optional. Transform the metadata on the input buffer to the
+         *                  output buffer. By default this method copies all meta without
+         *                  tags and meta with only the "audio" tag. subclasses can
+         *                  implement this method and return %TRUE if the metadata is to be
+         *                  copied. Since: 1.6
+         * @param outbuf
+         * @param meta
+         * @param inbuf
+         */
         vfunc_transform_meta(outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer): boolean;
 
         // Own methods of GstAudio.AudioDecoder
@@ -3106,10 +3259,46 @@ export namespace GstAudio {
 
         // Own virtual methods of GstAudio.AudioEncoder
 
+        /**
+         * Optional.
+         *                  Called when the element changes to GST_STATE_NULL.
+         *                  Allows closing external resources.
+         */
         vfunc_close(): boolean;
+        /**
+         * Optional.
+         *                     Setup the allocation parameters for allocating output
+         *                     buffers. The passed in query contains the result of the
+         *                     downstream allocation query.
+         *                     Subclasses should chain up to the parent implementation to
+         *                     invoke the default handler.
+         * @param query
+         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
+        /**
+         * Optional.
+         *                  Instructs subclass to clear any codec caches and discard
+         *                  any pending samples and not yet returned encoded data.
+         */
         vfunc_flush(): void;
+        /**
+         * Optional.
+         *                  Allows for a custom sink getcaps implementation (e.g.
+         *                  for multichannel input specification).  If not implemented,
+         *                  default returns gst_audio_encoder_proxy_getcaps
+         *                  applied to sink template caps.
+         * @param filter
+         */
         vfunc_getcaps(filter: Gst.Caps): Gst.Caps;
+        /**
+         * Provides input samples (or NULL to clear any remaining data)
+         *                  according to directions as configured by the subclass
+         *                  using the API.  Input data ref management is performed
+         *                  by base class, subclass should not care or intervene,
+         *                  and input data is only valid until next call to base class,
+         *                  most notably a call to gst_audio_encoder_finish_frame().
+         * @param buffer
+         */
         vfunc_handle_frame(buffer: Gst.Buffer): Gst.FlowReturn;
         /**
          * Negotiate with downstream elements to currently configured #GstCaps.
@@ -3117,16 +3306,88 @@ export namespace GstAudio {
          * negotiate fails.
          */
         vfunc_negotiate(): boolean;
+        /**
+         * Optional.
+         *                  Called when the element changes to GST_STATE_READY.
+         *                  Allows opening external resources.
+         */
         vfunc_open(): boolean;
+        /**
+         * Optional.
+         *                  Called just prior to pushing (encoded data) buffer downstream.
+         *                  Subclass has full discretionary access to buffer,
+         *                  and a not OK flow return will abort downstream pushing.
+         * @param buffer
+         */
         vfunc_pre_push(buffer: Gst.Buffer): Gst.FlowReturn;
+        /**
+         * Optional.
+         *                      Propose buffer allocation parameters for upstream elements.
+         *                      Subclasses should chain up to the parent implementation to
+         *                      invoke the default handler.
+         * @param query
+         */
         vfunc_propose_allocation(query: Gst.Query): boolean;
+        /**
+         * Notifies subclass of incoming data format.
+         *                  GstAudioInfo contains the format according to provided caps.
+         * @param info
+         */
         vfunc_set_format(info: AudioInfo): boolean;
+        /**
+         * Optional.
+         *                  Event handler on the sink pad. Subclasses should chain up to
+         *                  the parent implementation to invoke the default handler.
+         * @param event
+         */
         vfunc_sink_event(event: Gst.Event): boolean;
+        /**
+         * Optional.
+         *                  Query handler on the sink pad. This function should
+         *                  return TRUE if the query could be performed. Subclasses
+         *                  should chain up to the parent implementation to invoke the
+         *                  default handler. Since: 1.6
+         * @param query
+         */
         vfunc_sink_query(query: Gst.Query): boolean;
+        /**
+         * Optional.
+         *                  Event handler on the src pad. Subclasses should chain up to
+         *                  the parent implementation to invoke the default handler.
+         * @param event
+         */
         vfunc_src_event(event: Gst.Event): boolean;
+        /**
+         * Optional.
+         *                  Query handler on the source pad. This function should
+         *                  return TRUE if the query could be performed. Subclasses
+         *                  should chain up to the parent implementation to invoke the
+         *                  default handler. Since: 1.6
+         * @param query
+         */
         vfunc_src_query(query: Gst.Query): boolean;
+        /**
+         * Optional.
+         *                  Called when the element starts processing.
+         *                  Allows opening external resources.
+         */
         vfunc_start(): boolean;
+        /**
+         * Optional.
+         *                  Called when the element stops processing.
+         *                  Allows closing external resources.
+         */
         vfunc_stop(): boolean;
+        /**
+         * Optional. Transform the metadata on the input buffer to the
+         *                  output buffer. By default this method copies all meta without
+         *                  tags and meta with only the "audio" tag. subclasses can
+         *                  implement this method and return %TRUE if the metadata is to be
+         *                  copied. Since: 1.6
+         * @param outbuf
+         * @param meta
+         * @param inbuf
+         */
         vfunc_transform_meta(outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer): boolean;
 
         // Own methods of GstAudio.AudioEncoder
@@ -3889,6 +4150,10 @@ export namespace GstAudio {
 
         // Own virtual methods of GstAudio.AudioFilter
 
+        /**
+         * virtual function called whenever the format changes
+         * @param info
+         */
         vfunc_setup(info: AudioInfo): boolean;
     }
 
@@ -4035,6 +4300,9 @@ export namespace GstAudio {
          * Free the resources of the ringbuffer.
          */
         vfunc_release(): boolean;
+        /**
+         * resume processing of samples after pause
+         */
         vfunc_resume(): boolean;
         /**
          * Start processing samples from the ringbuffer.
@@ -4308,18 +4576,55 @@ export namespace GstAudio {
 
         // Own virtual methods of GstAudio.AudioSink
 
+        /**
+         * Close the device.
+         */
         vfunc_close(): boolean;
+        /**
+         * Return how many frames are still in the device. Participates in
+         *         computing the time for audio clocks and drives the synchronisation.
+         */
         vfunc_delay(): number;
+        /**
+         * Open the device. No configuration needs to be done at this point.
+         *        This function is also used to check if the device is available.
+         */
         vfunc_open(): boolean;
+        /**
+         * Pause the device and unblock write as fast as possible.
+         *         For retro compatibility, the audio sink will fallback
+         *         to calling reset if this vmethod is not provided. Since: 1.18
+         */
         vfunc_pause(): void;
+        /**
+         * Prepare the device to operate with the specified parameters.
+         * @param spec
+         */
         vfunc_prepare(spec: AudioRingBufferSpec): boolean;
         // Conflicted with GstBase.BaseSink.vfunc_prepare
         vfunc_prepare(...args: never[]): any;
+        /**
+         * Returns as quickly as possible from a write and flush any pending
+         *         samples from the device.
+         *         This vmethod is deprecated. Please provide pause and stop instead.
+         */
         vfunc_reset(): void;
+        /**
+         * Resume the device. Since: 1.18
+         */
         vfunc_resume(): void;
+        /**
+         * Stop the device and unblock write as fast as possible.
+         *        Pending samples are flushed from the device.
+         *        For retro compatibility, the audio sink will fallback
+         *        to calling reset if this vmethod is not provided. Since: 1.18
+         */
         vfunc_stop(): void;
         // Conflicted with GstBase.BaseSink.vfunc_stop
         vfunc_stop(...args: never[]): any;
+        /**
+         * Undo operations done in prepare.
+         */
         vfunc_unprepare(): boolean;
         /**
          * Write samples to the device.
@@ -4365,16 +4670,35 @@ export namespace GstAudio {
 
         // Own virtual methods of GstAudio.AudioSrc
 
+        /**
+         * close the device
+         */
         vfunc_close(): boolean;
+        /**
+         * the number of frames queued in the device
+         */
         vfunc_delay(): number;
+        /**
+         * open the device with the specified caps
+         */
         vfunc_open(): boolean;
+        /**
+         * configure device with format
+         * @param spec
+         */
         vfunc_prepare(spec: AudioRingBufferSpec): boolean;
         /**
          * Read samples from the device.
          * @param data the sample data
          */
         vfunc_read(data: Uint8Array | string): [number, Gst.ClockTime];
+        /**
+         * unblock a read to the device and reset.
+         */
         vfunc_reset(): void;
+        /**
+         * undo the configuration
+         */
         vfunc_unprepare(): boolean;
     }
 

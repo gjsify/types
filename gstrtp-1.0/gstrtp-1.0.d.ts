@@ -1131,10 +1131,41 @@ export namespace GstRtp {
 
         // Own virtual methods of GstRtp.RTPBaseDepayload
 
+        /**
+         * custom event handling
+         * @param event
+         */
         vfunc_handle_event(event: Gst.Event): boolean;
+        /**
+         * signal the depayloader about packet loss
+         * @param event
+         */
         vfunc_packet_lost(event: Gst.Event): boolean;
+        /**
+         * process incoming rtp packets. Subclass must implement either
+         *   this method or `process_rtp_packet` to process incoming rtp packets.
+         *   If the child returns a buffer without a valid timestamp, the timestamp
+         *   of the provided buffer will be applied to the result buffer and the
+         *   buffer will be pushed. If this function returns %NULL, nothing is pushed.
+         * @param _in
+         */
         vfunc_process(_in: Gst.Buffer): Gst.Buffer;
+        /**
+         * Same as the process virtual function, but slightly more
+         * efficient, since it is passed the rtp buffer structure that has already
+         * been mapped (with GST_MAP_READ) by the base class and thus does not have
+         * to be mapped again by the subclass. Can be used by the subclass to process
+         * incoming rtp packets. If the subclass returns a buffer without a valid
+         * timestamp, the timestamp of the input buffer will be applied to the result
+         * buffer and the output buffer will be pushed out. If this function returns
+         * %NULL, nothing is pushed out. Since: 1.6.
+         * @param rtp_buffer
+         */
         vfunc_process_rtp_packet(rtp_buffer: RTPBuffer): Gst.Buffer;
+        /**
+         * configure the depayloader
+         * @param caps
+         */
         vfunc_set_caps(caps: Gst.Caps): boolean;
 
         // Own methods of GstRtp.RTPBaseDepayload
@@ -1416,13 +1447,39 @@ export namespace GstRtp {
 
         // Own virtual methods of GstRtp.RTPBasePayload
 
+        /**
+         * get desired caps
+         * @param pad
+         * @param filter
+         */
         vfunc_get_caps(pad: Gst.Pad, filter: Gst.Caps): Gst.Caps;
+        /**
+         * process data
+         * @param buffer
+         */
         vfunc_handle_buffer(buffer: Gst.Buffer): Gst.FlowReturn;
+        /**
+         * custom query handling
+         * @param pad
+         * @param query
+         */
         vfunc_query(pad: Gst.Pad, query: Gst.Query): boolean;
         // Conflicted with Gst.Element.vfunc_query
         vfunc_query(...args: never[]): any;
+        /**
+         * configure the payloader
+         * @param caps
+         */
         vfunc_set_caps(caps: Gst.Caps): boolean;
+        /**
+         * custom event handling on the sinkpad
+         * @param event
+         */
         vfunc_sink_event(event: Gst.Event): boolean;
+        /**
+         * custom event handling on the srcpad
+         * @param event
+         */
         vfunc_src_event(event: Gst.Event): boolean;
 
         // Own methods of GstRtp.RTPBasePayload
@@ -1537,6 +1594,9 @@ export namespace GstRtp {
          * @param input_meta a #GstBuffer
          */
         vfunc_get_max_size(input_meta: Gst.Buffer): number;
+        /**
+         * retrieve the supported flags
+         */
         vfunc_get_supported_flags(): RTPHeaderExtensionFlags;
         /**
          * Read the RTP header extension from `data`.
@@ -1545,6 +1605,12 @@ export namespace GstRtp {
          * @param buffer a #GstBuffer to modify if necessary
          */
         vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array | string, buffer: Gst.Buffer): boolean;
+        /**
+         * set the necessary attributes that may be signaled e.g. with
+         *     an SDP.
+         * @param direction
+         * @param attributes
+         */
         vfunc_set_attributes(direction: RTPHeaderExtensionDirection, attributes: string): boolean;
         /**
          * gst_rtp_header_extension_set_id() must have been called with a valid

@@ -54,19 +54,6 @@ export namespace GstAllocators {
      */
     function dmabuf_memory_get_fd(mem: Gst.Memory): number;
     /**
-     * Exports a DMABuf from the DRM Bumb buffer object. One can check if this
-     * feature is supported using gst_drm_dumb_allocator_has_prime_export();
-     * @param mem the memory to export from
-     * @returns a #GstMemory from #GstDmaBufAllocator wrapping the exported dma-buf    file descriptor.
-     */
-    function drm_dumb_memory_export_dmabuf(mem: Gst.Memory): Gst.Memory;
-    /**
-     * Return the DRM buffer object handle associated with `mem`.
-     * @param mem the memory to get the handle from
-     * @returns the DRM buffer object handle associated with the memory, or 0.     The handle is still owned by the GstMemory and cannot be used     beyond the lifetime of this GstMemory unless it is being passed     to DRM driver, which does handle a refcount internally.
-     */
-    function drm_dumb_memory_get_handle(mem: Gst.Memory): number;
-    /**
      * Get the fd from `mem`. Call gst_is_fd_memory() to check if `mem` has
      * an fd.
      * @param mem #GstMemory
@@ -79,7 +66,6 @@ export namespace GstAllocators {
      * @returns %TRUE if @mem is dmabuf memory, otherwise %FALSE
      */
     function is_dmabuf_memory(mem: Gst.Memory): boolean;
-    function is_drm_dumb_memory(mem: Gst.Memory): boolean;
     /**
      * Check if `mem` is memory backed by an fd
      * @param mem #GstMemory
@@ -112,62 +98,6 @@ export namespace GstAllocators {
          */
         DONT_CLOSE,
     }
-    module DRMDumbAllocator {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-            drm_device_path: string;
-            drmDevicePath: string;
-            drm_fd: number;
-            drmFd: number;
-        }
-    }
-
-    /**
-     * Private intance object for #GstDRMDumbAllocator.
-     */
-    class DRMDumbAllocator extends Gst.Allocator {
-        static $gtype: GObject.GType<DRMDumbAllocator>;
-
-        // Own properties of GstAllocators.DRMDumbAllocator
-
-        get drm_device_path(): string;
-        get drmDevicePath(): string;
-        get drm_fd(): number;
-        get drmFd(): number;
-
-        // Constructors of GstAllocators.DRMDumbAllocator
-
-        constructor(properties?: Partial<DRMDumbAllocator.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static new_with_device_path(drm_device_path: string): DRMDumbAllocator;
-
-        static new_with_fd(drm_fd: number): DRMDumbAllocator;
-
-        // Own methods of GstAllocators.DRMDumbAllocator
-
-        /**
-         * Allocated a DRM buffer object for the specific `drm_fourcc,` `width` and
-         * `height`. Note that the DRM Dumb allocation interface is agnostic to the
-         * pixel format. This `drm_fourcc` is converted into a bpp (bit-per-pixel)
-         * number and the height is scaled according to the sub-sampling.
-         * @param drm_fourcc the DRM format to allocate for
-         * @param width padded width for this allocation
-         * @param height padded height for this allocation
-         * @returns a new DRM Dumb #GstMemory. Use gst_memory_unref()   to release the memory after usage.
-         */
-        alloc(drm_fourcc: number, width: number, height: number): [Gst.Memory, number];
-        // Conflicted with Gst.Allocator.alloc
-        alloc(...args: never[]): any;
-        /**
-         * This function allow verifying if the driver support dma-buf exportation.
-         * @returns %TRUE if the allocator support exporting dma-buf.
-         */
-        has_prime_export(): boolean;
-    }
-
     module DmaBufAllocator {
         // Constructor properties interface
 
@@ -244,7 +174,6 @@ export namespace GstAllocators {
         static alloc(allocator: Gst.Allocator, fd: number, size: number, flags: FdMemoryFlags): Gst.Memory | null;
     }
 
-    type DRMDumbAllocatorClass = typeof DRMDumbAllocator;
     type DmaBufAllocatorClass = typeof DmaBufAllocator;
     type FdAllocatorClass = typeof FdAllocator;
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
@@ -261,6 +190,11 @@ export namespace GstAllocators {
     interface PhysMemoryAllocator extends Gst.Allocator {
         // Own virtual methods of GstAllocators.PhysMemoryAllocator
 
+        /**
+         * Implementations shall return the physicall memory address
+         *    that is backing the provided memory, or 0 if none.
+         * @param mem
+         */
         vfunc_get_phys_addr(mem: Gst.Memory): never;
     }
 

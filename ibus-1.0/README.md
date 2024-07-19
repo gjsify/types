@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/ibus-1.0)
 
 
-GJS TypeScript type definitions for IBus-1.0, generated from library version 1.5.30 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.6.
+GJS TypeScript type definitions for IBus-1.0, generated from library version 1.5.28 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.6.
 
 
 ## Install

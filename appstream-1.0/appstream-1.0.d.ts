@@ -92,39 +92,6 @@ export namespace AppStream {
          * Cabinet firmware deployment
          */
         CABINET,
-        /**
-         * A Linglong bundle
-         */
-        LINGLONG,
-    }
-    /**
-     * The type of chassis a computing device is built into.
-     */
-    enum ChassisKind {
-        /**
-         * Unknown chassis.
-         */
-        UNKNOWN,
-        /**
-         * A desktop/workstation
-         */
-        DESKTOP,
-        /**
-         * A mobile computer with a bigger screen / laptop
-         */
-        LAPTOP,
-        /**
-         * A server, often without GUI
-         */
-        SERVER,
-        /**
-         * A tablet with touch as primary input method
-         */
-        TABLET,
-        /**
-         * A smaller touch-input device, like a smartphone
-         */
-        HANDSET,
     }
     /**
      * Result of a check operation.
@@ -164,17 +131,13 @@ export namespace AppStream {
          */
         SHA256,
         /**
-         * SHA512 checksum
-         */
-        SHA512,
-        /**
-         * BLAKE2 checksum
+         * BLAKE2b checksum
          */
         BLAKE2B,
         /**
-         * BLAKE3 checksum
+         * BLAKE2s checksum
          */
-        BLAKE3,
+        BLAKE2S,
     }
     /**
      * A branding color type.
@@ -231,17 +194,9 @@ export namespace AppStream {
          */
         WEB_APP,
         /**
-         * A system service launched by the init system
-         */
-        SERVICE,
-        /**
          * An extension of existing software, which does not run standalone
          */
         ADDON,
-        /**
-         * An application runtime platform
-         */
-        RUNTIME,
         /**
          * A font
          */
@@ -255,10 +210,6 @@ export namespace AppStream {
          */
         INPUT_METHOD,
         /**
-         * A computer operating system
-         */
-        OPERATING_SYSTEM,
-        /**
          * Firmware
          */
         FIRMWARE,
@@ -271,13 +222,25 @@ export namespace AppStream {
          */
         LOCALIZATION,
         /**
+         * A system service launched by the init system
+         */
+        SERVICE,
+        /**
          * A remote software or data source
          */
         REPOSITORY,
         /**
+         * A computer operating system
+         */
+        OPERATING_SYSTEM,
+        /**
          * An icon theme following the XDG specification
          */
         ICON_THEME,
+        /**
+         * An application runtime platform
+         */
+        RUNTIME,
     }
     /**
      * Scope of the #AsComponent (system-wide or user-scope)
@@ -399,7 +362,7 @@ export namespace AppStream {
          */
         UNKNOWN,
         /**
-         * Mouse/cursors/other precision pointing device
+         * Mouse/cursors/other pointing device
          */
         POINTING,
         /**
@@ -434,6 +397,35 @@ export namespace AppStream {
          * Graphics tablet input
          */
         TABLET,
+    }
+    /**
+     * A rough estimate of how large a given display length is.
+     */
+    enum DisplayLengthKind {
+        /**
+         * Unknown
+         */
+        UNKNOWN,
+        /**
+         * Very small display
+         */
+        XSMALL,
+        /**
+         * Small display
+         */
+        SMALL,
+        /**
+         * Medium display
+         */
+        MEDIUM,
+        /**
+         * Large display
+         */
+        LARGE,
+        /**
+         * Very large display
+         */
+        XLARGE,
     }
     /**
      * Side a display_length requirement is for.
@@ -492,19 +484,60 @@ export namespace AppStream {
          * Parse AppStream metadata catalog (shipped by software distributors)
          */
         CATALOG,
+        COLLECTION,
     }
     /**
      * Format version / API level of the AppStream metadata.
      */
     enum FormatVersion {
         /**
-         * Unknown format version
+         * 0.6
+         */
+        V0_6,
+        /**
+         * 0.7
+         */
+        V0_7,
+        /**
+         * 0.8
+         */
+        V0_8,
+        /**
+         * 0.9
+         */
+        V0_9,
+        /**
+         * 0.1
+         */
+        V0_10,
+        /**
+         * 0.11
+         */
+        V0_11,
+        /**
+         * 0.12
+         */
+        V0_12,
+        /**
+         * 0.13
+         */
+        V0_13,
+        /**
+         * 0.14
+         */
+        V0_14,
+        /**
+         * 0.15
+         */
+        V0_15,
+        /**
+         * 0.16
+         */
+        V0_16,
+        /**
+         * Unknown
          */
         UNKNOWN,
-        /**
-         * 1
-         */
-        V1_0,
     }
     /**
      * The icon type.
@@ -515,13 +548,13 @@ export namespace AppStream {
          */
         UNKNOWN,
         /**
-         * Stock icon name
-         */
-        STOCK,
-        /**
          * Icon in the internal caches
          */
         CACHED,
+        /**
+         * Stock icon name
+         */
+        STOCK,
         /**
          * Local icon name
          */
@@ -591,26 +624,23 @@ export namespace AppStream {
      * The severity of an issue found by #AsValidator
      */
     enum IssueSeverity {
-        /**
-         * The severity is unknown.
-         */
         UNKNOWN,
         /**
-         * Pedantic information about ways to improve the data, but could also be ignored.
+         * There is a serious, fatal error in your metadata
          */
-        PEDANTIC,
-        /**
-         * Non-essential information on how to improve metadata, no immediate action needed.
-         */
-        INFO,
+        ERROR,
         /**
          * Something metadata issue which should be fixed as soon as possible.
          */
         WARNING,
         /**
-         * There is a serious, fatal error in your metadata
+         * Non-essential information on how to improve metadata, no immediate action needed.
          */
-        ERROR,
+        INFO,
+        /**
+         * Pedantic information about ways to improve the data, but could also be ignored.
+         */
+        PEDANTIC,
     }
     /**
      * Type of launch system the entries belong to.
@@ -636,27 +666,6 @@ export namespace AppStream {
          * A web HTTPS URL to launch a web application from
          */
         URL,
-    }
-    /**
-     * Text markup types.
-     */
-    enum MarkupKind {
-        /**
-         * Unknown markup.
-         */
-        UNKNOWN,
-        /**
-         * XML markup.
-         */
-        XML,
-        /**
-         * Simple text with unicode symbols.
-         */
-        TEXT,
-        /**
-         * Markdown
-         */
-        MARKDOWN,
     }
     /**
      * Defines how #AsComponent data should be merged if the component is
@@ -724,10 +733,6 @@ export namespace AppStream {
      */
     enum MetadataLocation {
         /**
-         * An unknown/invalid location.
-         */
-        UNKNOWN,
-        /**
          * Installed by the vendor, shared
          */
         SHARED,
@@ -757,6 +762,10 @@ export namespace AppStream {
          */
         static FAILED: number;
         /**
+         * We do not have write-access to the cache target location.
+         */
+        static TARGET_NOT_WRITABLE: number;
+        /**
          * The pool was loaded, but we had to ignore some metadata.
          */
         static INCOMPLETE: number;
@@ -765,13 +774,9 @@ export namespace AppStream {
          */
         static COLLISION: number;
         /**
-         * Unable to write to *any* cache file (not even tmpfs writes worked)
+         * Some issue with an old on-disk cache occured.
          */
-        static CACHE_WRITE_FAILED: number;
-        /**
-         * The disk cache was broken and we could not automatically recover.
-         */
-        static CACHE_DAMAGED: number;
+        static OLD_CACHE: number;
 
         // Constructors of AppStream.PoolError
 
@@ -812,7 +817,11 @@ export namespace AppStream {
          */
         MODALIAS,
         /**
-         * A Python 3 module
+         * A Python2 module
+         */
+        PYTHON_2,
+        /**
+         * A Python3 module
          */
         PYTHON,
         /**
@@ -835,27 +844,6 @@ export namespace AppStream {
          * An AppStream component
          */
         ID,
-    }
-    /**
-     * A reference type.
-     */
-    enum ReferenceKind {
-        /**
-         * Unknown reference kind.
-         */
-        UNKNOWN,
-        /**
-         * Digital Object Identifier
-         */
-        DOI,
-        /**
-         * Web URL to a Citation File Format file
-         */
-        CITATION_CFF,
-        /**
-         * A generic registry.
-         */
-        REGISTRY,
     }
     /**
      * The relational comparison type.
@@ -988,27 +976,6 @@ export namespace AppStream {
         SUPPORTS,
     }
     /**
-     * Status of a relation check result.
-     */
-    enum RelationStatus {
-        /**
-         * Unknown status.
-         */
-        UNKNOWN,
-        /**
-         * An error occured and the status could not be checked.
-         */
-        ERROR,
-        /**
-         * The relation is not satisfied.
-         */
-        NOT_SATISFIED,
-        /**
-         * The relation is satisfied.
-         */
-        SATISFIED,
-    }
-    /**
      * The release kind.
      */
     enum ReleaseKind {
@@ -1024,15 +991,22 @@ export namespace AppStream {
          * A development release or pre-release for testing
          */
         DEVELOPMENT,
+    }
+    /**
+     * `AS_RELEASE_URL_KIND_UNKNOWN`		Unknown release web URL type
+     * The release URL kinds.
+     */
+    enum ReleaseUrlKind {
+        UNKNOWN,
         /**
-         * A snapshot of a software being worked on
+         * Weblink to detailed release notes.
          */
-        SNAPSHOT,
+        DETAILS,
     }
     /**
      * The kind of a releases block.
      */
-    enum ReleaseListKind {
+    enum ReleasesKind {
         /**
          * Unknown releases type
          */
@@ -1045,17 +1019,6 @@ export namespace AppStream {
          * Release info is split to a separate file
          */
         EXTERNAL,
-    }
-    /**
-     * `AS_RELEASE_URL_KIND_UNKNOWN`		Unknown release web URL type
-     * The release URL kinds.
-     */
-    enum ReleaseUrlKind {
-        UNKNOWN,
-        /**
-         * Weblink to detailed release notes.
-         */
-        DETAILS,
     }
     /**
      * The screenshot type.
@@ -1277,7 +1240,7 @@ export namespace AppStream {
         /**
          * The issue override was not accepted.
          */
-        static INVALID_OVERRIDE: number;
+        static OVERRIDE_INVALID: number;
         /**
          * The filename was invalid.
          */
@@ -1327,6 +1290,12 @@ export namespace AppStream {
          */
         WEBM,
     }
+    const IMAGE_LARGE_HEIGHT: number;
+    const IMAGE_LARGE_WIDTH: number;
+    const IMAGE_NORMAL_HEIGHT: number;
+    const IMAGE_NORMAL_WIDTH: number;
+    const IMAGE_THUMBNAIL_HEIGHT: number;
+    const IMAGE_THUMBNAIL_WIDTH: number;
     const MAJOR_VERSION: number;
     const MICRO_VERSION: number;
     const MINOR_VERSION: number;
@@ -1366,18 +1335,6 @@ export namespace AppStream {
      * @returns string version of @kind
      */
     function bundle_kind_to_string(kind: BundleKind): string;
-    /**
-     * Converts the text representation to an enumerated value.
-     * @param kind_str the string.
-     * @returns a #AsChassisKind or %AS_CHASSIS_KIND_UNKNOWN for unknown
-     */
-    function chassis_kind_from_string(kind_str: string): ChassisKind;
-    /**
-     * Converts the enumerated value to a text representation.
-     * @param kind the #AsChassisKind.
-     * @returns string version of @kind
-     */
-    function chassis_kind_to_string(kind: ChassisKind): string;
     /**
      * Converts the text representation to an enumerated value.
      * @param kind_str the string.
@@ -1503,6 +1460,18 @@ export namespace AppStream {
     /**
      * Converts the text representation to an enumerated value.
      * @param kind_str the string.
+     * @returns a #AsDisplayLengthKind or %AS_DISPLAY_LENGTH_KIND_UNKNOWN for unknown
+     */
+    function display_length_kind_from_string(kind_str: string): DisplayLengthKind;
+    /**
+     * Converts the enumerated value to a text representation.
+     * @param kind the #AsDisplayLengthKind.
+     * @returns string version of @kind
+     */
+    function display_length_kind_to_string(kind: DisplayLengthKind): string;
+    /**
+     * Converts the text representation to an enumerated value.
+     * @param kind_str the string.
      * @returns a #AsDisplaySideKind or %AS_DISPLAY_SIDE_KIND_UNKNOWN for unknown
      */
     function display_side_kind_from_string(kind_str: string): DisplaySideKind;
@@ -1537,6 +1506,12 @@ export namespace AppStream {
      */
     function format_version_to_string(version: FormatVersion): string;
     /**
+     * Get the version of the AppStream library that is currently used
+     * as a string.
+     * @returns The AppStream version.
+     */
+    function get_appstream_version(): string;
+    /**
      * Returns the component-ID of the current distribution based on contents
      * of the `/etc/os-release` file.
      * This function is a shorthand for %as_distro_details_get_cid
@@ -1554,18 +1529,20 @@ export namespace AppStream {
      */
     function get_default_categories(with_special: boolean): Category[];
     /**
-     * Get a translated license name for the given SPDX ID.
-     * @param license The SPDX license ID.
-     * @returns The license name, or %NULL if none found.
-     */
-    function get_license_name(license: string): string | null;
-    /**
      * Get a web URL to the license text and more license information for an SPDX
      * license identifier.
      * @param license The SPDX license ID.
-     * @returns The license URL, or %NULL if none available.
+     * @returns The license URL.
      */
-    function get_license_url(license: string): string | null;
+    function get_license_url(license: string): string;
+    /**
+     * Replaces all occurences of `find` with the string `replace` in a #GString.
+     * @param string a #GString
+     * @param find the string to find in @string
+     * @param replace the string to insert in place of @find
+     * @returns the number of find and replace operations performed.
+     */
+    function gstring_replace(string: GLib.String, find: string, replace: string): number;
     /**
      * Replaces the string `find` with the string `replace` in a #GString up to
      * `limit` times. If the number of instances of `find` in the #GString is
@@ -1577,7 +1554,7 @@ export namespace AppStream {
      * @param limit the maximum instances of @find to replace with @replace, or `0` for no limit
      * @returns the number of find and replace operations performed.
      */
-    function gstring_replace(string: GLib.String, find: string, replace: string, limit: number): number;
+    function gstring_replace2(string: GLib.String, find: string, replace: string, limit: number): number;
     /**
      * Converts the text representation to an enumerated value.
      * @param kind_str the string.
@@ -1714,13 +1691,7 @@ export namespace AppStream {
      * @returns the best-effort SPDX license string
      */
     function license_to_spdx_id(license: string): string;
-    /**
-     * Converts XML description markup into other forms of text.
-     * @param markup the XML markup to transform.
-     * @param to_kind The markup style to convert into.
-     * @returns a newly allocated string, or %NULL on error.
-     */
-    function markup_convert(markup: string, to_kind: MarkupKind): string;
+    function markup_convert_simple(markup: string): string;
     /**
      * Splits up a long line into an array of smaller strings, each being no longer
      * than `line_len`. Words are not split.
@@ -1764,18 +1735,6 @@ export namespace AppStream {
      * @returns string version of @kind
      */
     function provided_kind_to_string(kind: ProvidedKind): string;
-    /**
-     * Converts the text representation to an enumerated value.
-     * @param str the string.
-     * @returns a AsReferenceKind or %AS_REFERENCE_KIND_UNKNOWN for unknown
-     */
-    function reference_kind_from_string(str: string): ReferenceKind;
-    /**
-     * Converts the enumerated value to an text representation.
-     * @param kind the %AsReferenceKind.
-     * @returns string version of @kind
-     */
-    function reference_kind_to_string(kind: ReferenceKind): string;
     /**
      * Converts the text representation to an enumerated value.
      * @param compare_str the string.
@@ -1839,18 +1798,6 @@ export namespace AppStream {
     /**
      * Converts the text representation to an enumerated value.
      * @param kind_str the string.
-     * @returns an #AsReleaseKind or %AS_RELEASE_KIND_UNKNOWN for unknown
-     */
-    function release_list_kind_from_string(kind_str: string): ReleaseListKind;
-    /**
-     * Converts the enumerated value to an text representation.
-     * @param kind the #AsReleaseKind.
-     * @returns string version of @kind
-     */
-    function release_list_kind_to_string(kind: ReleaseListKind): string;
-    /**
-     * Converts the text representation to an enumerated value.
-     * @param kind_str the string.
      * @returns an #AsReleaseUrlKind or %AS_RELEASE_URL_KIND_UNKNOWN for unknown
      */
     function release_url_kind_from_string(kind_str: string): ReleaseUrlKind;
@@ -1860,6 +1807,18 @@ export namespace AppStream {
      * @returns string version of @kind
      */
     function release_url_kind_to_string(kind: ReleaseUrlKind): string;
+    /**
+     * Converts the text representation to an enumerated value.
+     * @param kind_str the string.
+     * @returns an #AsReleaseKind or %AS_RELEASE_KIND_UNKNOWN for unknown
+     */
+    function releases_kind_from_string(kind_str: string): ReleasesKind;
+    /**
+     * Converts the enumerated value to an text representation.
+     * @param kind the #AsReleaseKind.
+     * @returns string version of @kind
+     */
+    function releases_kind_to_string(kind: ReleasesKind): string;
     /**
      * Converts the text representation to an enumerated value.
      * @param kind the string.
@@ -1966,6 +1925,14 @@ export namespace AppStream {
         branch: string,
     ): string;
     /**
+     * Compare alpha and numeric segments of two versions.
+     * The version compare algorithm is also used by RPM.
+     * @param a
+     * @param b
+     * @returns 1: a is newer than b     0: a and b are the same version    -1: b is newer than a
+     */
+    function utils_compare_versions(a: string, b: string): number;
+    /**
      * Checks two component data IDs for equality allowing globs to match.
      * @param data_id1 a data ID
      * @param data_id2 another data ID
@@ -2007,28 +1974,6 @@ export namespace AppStream {
     function utils_data_id_valid(data_id: string): boolean;
     function utils_error_quark(): GLib.Quark;
     /**
-     * Get a human-readable, translated name of the desktop environment
-     * represented by the given ID.
-     * @param de_id a desktop environment id.
-     * @returns A localized name of the DE, or %NULL if none available.
-     */
-    function utils_get_desktop_environment_name(de_id: string): string;
-    /**
-     * Get a human-readable, translated name of the combination
-     * of GUI environment and style. E.g. "plasma:dark" becomes "Plasma (Dark)".
-     * @param env_style a GUI environment style ID, e.g. "pantheon:dark"
-     * @returns A localized name of the environment style, or %NULL if none available.
-     */
-    function utils_get_gui_environment_style_name(env_style: string): string;
-    /**
-     * Retrieve the raw search token weight for the given tag name that AppStream uses
-     * internally for searching.
-     * This can be used to implement separate, but compatible search logic.
-     * @param tag_name A tag name in a component element, e.g. "name" or "summary" or "keyword"
-     * @returns The tag weight used in (fulltext) searches. 0 for lowest weight/unused.
-     */
-    function utils_get_tag_search_weight(tag_name: string): number;
-    /**
      * Guess the #AsComponentScope that applies to a given path.
      * @param path The filename to test.
      * @returns the #AsComponentScope
@@ -2052,27 +1997,14 @@ export namespace AppStream {
         origin: string,
         destdir: string,
     ): boolean;
-    /**
-     * Searches the known list of registered XDG category names.
-     * See https://specifications.freedesktop.org/menu-spec/menu-spec-1.0.html#category-registry
-     * for a reference.
-     * @param category_name a XDG category name, e.g. "ProjectManagement"
-     * @returns %TRUE if the category name is valid
-     */
     function utils_is_category_name(category_name: string): boolean;
     /**
-     * Checks if the submitted desktop environment ID is
-     * known and valid.
-     * @param de_id a desktop environment id.
+     * Searches the known list of desktop environments AppStream
+     * knows about.
+     * @param desktop a desktop environment id.
      * @returns %TRUE if the desktop-id is valid
      */
-    function utils_is_desktop_environment(de_id: string): boolean;
-    /**
-     * Checks if the given identifier is a valid, known GUI environment style.
-     * @param env_style a GUI environment style ID, e.g. "pantheon:dark"
-     * @returns %TRUE if the environment-style ID is is valid
-     */
-    function utils_is_gui_environment_style(env_style: string): boolean;
+    function utils_is_desktop_environment(desktop: string): boolean;
     /**
      * Test if the given string is a valid platform triplet recognized by
      * AppStream.
@@ -2196,19 +2128,6 @@ export namespace AppStream {
         REFRESH_SYSTEM,
     }
     /**
-     * Flags controlling the component box behavior.
-     */
-    enum ComponentBoxFlags {
-        /**
-         * No flags.
-         */
-        NONE,
-        /**
-         * Only perform the most basic verification.
-         */
-        NO_CHECKS,
-    }
-    /**
      * The flags used when matching unique IDs.
      */
     enum DataIdMatchFlags {
@@ -2283,7 +2202,7 @@ export namespace AppStream {
          */
         RESOLVE_ADDONS,
         /**
-         * Prefer local metainfo data over the system-provided catalog data. Useful for previewing local data.
+         * Prefer local metainfo data over the system-provided catalog data. Useful for debugging.
          */
         PREFER_OS_METAINFO,
         /**
@@ -2307,6 +2226,45 @@ export namespace AppStream {
          * The user voted on the review
          */
         VOTED,
+    }
+    /**
+     * The token match kind, which we want to be exactly 16 bits for storage
+     * reasons.
+     */
+    enum SearchTokenMatch {
+        /**
+         * No token matching
+         */
+        NONE,
+        /**
+         * Use the component mediatypes
+         */
+        MEDIATYPE,
+        /**
+         * Use the component package name
+         */
+        PKGNAME,
+        /**
+         * Use the app origin
+         */
+        ORIGIN,
+        /**
+         * Use the component description
+         */
+        DESCRIPTION,
+        SUMMARY,
+        /**
+         * Use the component keyword
+         */
+        KEYWORD,
+        /**
+         * Use the component name
+         */
+        NAME,
+        /**
+         * Use the component ID
+         */
+        ID,
     }
     /**
      * Set how values assigned to an #AsComponent should be treated when
@@ -2411,11 +2369,10 @@ export namespace AppStream {
         // Own methods of AppStream.AgreementSection
 
         /**
-         * Returns the #AsContext associated with this section.
-         * This function may return %NULL if no context is set.
-         * @returns the #AsContext used by this agreement section.
+         * Get the current active locale, which
+         * is used to get localized messages.
          */
-        get_context(): Context | null;
+        get_active_locale(): string;
         /**
          * Gets the agreement section desc.
          * @returns a string, e.g. "GDPR", or NULL
@@ -2432,11 +2389,11 @@ export namespace AppStream {
          */
         get_name(): string;
         /**
-         * Sets the document context this release is associated
-         * with.
-         * @param context the #AsContext.
+         * Set the current active locale, which
+         * is used to get localized messages.
+         * @param locale a POSIX or BCP47 locale, or %NULL. e.g. "de_DE"
          */
-        set_context(context: Context): void;
+        set_active_locale(locale?: string | null): void;
         /**
          * Sets the agreement section desc.
          * @param desc the agreement description, e.g. "GDPR"
@@ -2771,7 +2728,7 @@ export namespace AppStream {
 
         static ['new'](): Checksum;
 
-        static new_with_value(kind: ChecksumKind, value: string): Checksum;
+        static new_for_kind_value(kind: ChecksumKind, value: string): Checksum;
 
         // Own methods of AppStream.Checksum
 
@@ -2803,6 +2760,8 @@ export namespace AppStream {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             categories: any[];
             description: string;
+            developer_name: string;
+            developerName: string;
             icons: Icon[];
             id: string;
             keywords: string[];
@@ -2833,6 +2792,16 @@ export namespace AppStream {
          */
         get description(): string;
         set description(val: string);
+        /**
+         * the developer name
+         */
+        get developer_name(): string;
+        set developer_name(val: string);
+        /**
+         * the developer name
+         */
+        get developerName(): string;
+        set developerName(val: string);
         /**
          * hash map of icon urls and sizes
          */
@@ -2942,13 +2911,6 @@ export namespace AppStream {
          */
         add_icon(icon: Icon): void;
         /**
-         * Add a new keyword to the keywords list for the given locale. This function does not
-         * check for duplicate keywords.
-         * @param keyword The new keyword to add.
-         * @param locale BCP47 locale of the values, or %NULL to use current locale.
-         */
-        add_keyword(keyword: string, locale?: string | null): void;
-        /**
          * Adds a language to the component.
          * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
          * @param percentage the percentage completion of the translation, 0 for locales with unknown amount of translation
@@ -2971,11 +2933,6 @@ export namespace AppStream {
          * @param item the item to add.
          */
         add_provided_item(kind: ProvidedKind, item: string): void;
-        /**
-         * Adds an external reference to the software component.
-         * @param reference an #AsReference instance.
-         */
-        add_reference(reference: Reference): void;
         /**
          * Adds a #AsRelation to set a recommends or requires relation of
          * component `cpt` on the item mentioned in the #AsRelation.
@@ -3027,20 +2984,6 @@ export namespace AppStream {
          */
         add_url(url_kind: UrlKind, url: string): void;
         /**
-         * Verifies the respective relations and presents whether the system specified
-         * in #AsSystemInfo `sysinfo` and data from `pool` supply the requested facilities.
-         * @param sysinfo an #AsSystemInfo to use for system information.
-         * @param pool an #AsPool to find component dependencies in.
-         * @param rel_kind the kind of relations to check
-         * @returns An array of #AsRelationCheckResult
-         */
-        check_relations(sysinfo: SystemInfo | null, pool: Pool | null, rel_kind: RelationKind): RelationCheckResult[];
-        /**
-         * Remove all keywords for the given locale.
-         * @param locale BCP47 locale of the values, or %NULL to use current locale.
-         */
-        clear_keywords(locale?: string | null): void;
-        /**
          * Remove all registered language translation information.
          */
         clear_languages(): void;
@@ -3048,6 +2991,12 @@ export namespace AppStream {
          * Remove all tags associated with this component.
          */
         clear_tags(): void;
+        /**
+         * Get the current active locale for this component, which
+         * is used to get localized messages.
+         * @returns the current active locale.
+         */
+        get_active_locale(): string;
         /**
          * Returns a list of #AsComponent objects which
          * are addons extending this component in functionality.
@@ -3141,12 +3090,28 @@ export namespace AppStream {
          */
         get_description(): string;
         /**
+         * Get the Desktop Entry ID for this component, if it is
+         * of type "desktop-application".
+         * For most desktop-application components, this is the name
+         * of the .desktop file.
+         *
+         * Refer to https://specifications.freedesktop.org/desktop-entry-spec/latest/ape.html for more
+         * information.
+         * @returns The desktop file id.
+         */
+        get_desktop_id(): string;
+        /**
          * Get information about the component's developer or development team.
          * The returned object may be empty if no developer information was
          * available.
          * @returns the developer as #AsDeveloper.
          */
         get_developer(): Developer;
+        /**
+         * Get the component's developer or development team name.
+         * @returns the developer name.
+         */
+        get_developer_name(): string;
         /**
          * Returns a string list of IDs of components which
          * are extended by this addon.
@@ -3288,7 +3253,7 @@ export namespace AppStream {
          * Get an #AsProvided object for the given interface type,
          * containing information about the public interfaces (mimetypes, firmware, DBus services, ...)
          * this component provides.
-         * @param kind kind of the provided item, e.g. %AS_PROVIDED_KIND_MEDIATYPE
+         * @param kind kind of the provided item, e.g. %AS_PROVIDED_KIND_MIMETYPE
          * @returns #AsProvided containing the items this component provides, or %NULL.
          */
         get_provided_for_kind(kind: ProvidedKind): Provided | null;
@@ -3298,16 +3263,22 @@ export namespace AppStream {
          */
         get_recommends(): Relation[];
         /**
-         * Get a list of external references and citation information for this component.
-         * @returns An array of #AsReference.
+         * Get an array of the #AsRelease items this component
+         * provides.
+         * @returns A list of releases
          */
-        get_references(): Reference[];
+        get_releases(): Release[];
         /**
-         * Get release information for this component,
-         * without downloading or loading any data from external sources.
-         * @returns Release information as #AsReleaseList
+         * Returns the #AsReleasesKind of the release metadata
+         * associated with this component.
+         * @returns The kind.
          */
-        get_releases_plain(): ReleaseList;
+        get_releases_kind(): ReleasesKind;
+        /**
+         * Get a remote URL to obtain release information for the component.
+         * @returns The URL of external release data.
+         */
+        get_releases_url(): string;
         /**
          * Get a list of component IDs of components that this software replaces entirely.
          * @returns an array of component-IDs
@@ -3325,10 +3296,10 @@ export namespace AppStream {
         get_reviews(): Review[];
         get_scope(): ComponentScope;
         /**
-         * Get a list of all associated screenshots, for all environments.
+         * Get a list of associated screenshots.
          * @returns an array of #AsScreenshot instances
          */
-        get_screenshots_all(): Screenshot[];
+        get_screenshots(): Screenshot[];
         /**
          * Returns all search tokens for this component.
          * @returns The string search tokens
@@ -3373,19 +3344,6 @@ export namespace AppStream {
          */
         get_supports(): Relation[];
         /**
-         * Return a score between 0 and 100 determining how compatible the component
-         * is with the system configuration provided as parameter.
-         *
-         * 0 means the componsnt will not work at all, while 100 is best compatibility.
-         * @param sysinfo an #AsSystemInfo to use for system information.
-         * @param is_template if %TRUE, treat system info as neutral template, ignoring any peripheral devices or kernel relations.
-         * @returns a compatibility score between 0 and 100
-         */
-        get_system_compatibility_score(
-            sysinfo: SystemInfo,
-            is_template: boolean,
-        ): [number, RelationCheckResult[] | null];
-        /**
          * Gets the UNIX timestamp for the date when this component
          * is out of support (end-of-life) and will receive no more
          * updates, not even security fixes.
@@ -3407,6 +3365,7 @@ export namespace AppStream {
          * @returns string, or %NULL if unset
          */
         get_url(url_kind: UrlKind): string | null;
+        get_value_flags(): ValueFlags;
         has_bundle(): boolean;
         /**
          * Check if component is in the specified category.
@@ -3442,7 +3401,7 @@ export namespace AppStream {
          * are only free software licenses.
          * @returns %TRUE if this component is free software.
          */
-        is_floss(): boolean;
+        is_free(): boolean;
         is_ignored(): boolean;
         /**
          * Test if the component `cpt` is a member of category `category`.
@@ -3470,12 +3429,28 @@ export namespace AppStream {
          */
         load_from_bytes(context: Context, format: FormatKind, bytes: GLib.Bytes | Uint8Array): boolean;
         /**
-         * Get release information for this component, download it
-         * if necessary.
-         * @param allow_net
-         * @returns Release information as #AsReleaseList, or %NULL if loading failed.
+         * Load metadata for this component from an XML string.
+         * You normally do not want to use this method directly and instead use the more
+         * convenient API of #AsMetadata to create and update components.
+         * @param context an #AsContext instance.
+         * @param data The XML data to load.
+         * @returns %TRUE on success.
          */
-        load_releases(allow_net: boolean): ReleaseList | null;
+        load_from_xml_data(context: Context, data: string): boolean;
+        /**
+         * Load data from an external source, possibly a local file
+         * or a network resource.
+         * @param reload set to %TRUE to discard existing data and reload.
+         * @param allow_net allow fetching release data from the internet.
+         * @returns %TRUE on success.
+         */
+        load_releases(reload: boolean, allow_net: boolean): boolean;
+        /**
+         * Load release information from XML bytes.
+         * @param bytes the release XML data as #GBytes
+         * @returns %TRUE on success.
+         */
+        load_releases_from_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
         /**
          * Remove a tag from this component
          * @param ns The namespace the tag belongs to
@@ -3496,6 +3471,14 @@ export namespace AppStream {
          */
         search_matches_all(terms: string): number;
         /**
+         * Set the current active locale for this component, which
+         * is used to get localized messages.
+         * If the #AsComponent was fetched from a localized database, usually only
+         * one locale is available.
+         * @param locale a POSIX or BCP47 locale, or %NULL. e.g. "en_GB"
+         */
+        set_active_locale(locale?: string | null): void;
+        /**
          * Set the branch that the component instance was sourced from.
          * @param branch the branch, e.g. "master" or "3-16".
          */
@@ -3510,23 +3493,6 @@ export namespace AppStream {
          * @param desktop The name of the desktop.
          */
         set_compulsory_for_desktop(desktop: string): void;
-        /**
-         * Sets the document context this component is associated
-         * with.
-         * @param context the #AsContext.
-         */
-        set_context(context: Context): void;
-        /**
-         * Set the active locale on the context assoaiacted with this component,
-         * creating a new context for the component if none exists yet.
-         *
-         * Please not that this will flip the locale of all other components and
-         * entities that use the same context as well!
-         * This function is just a convenience method, and does not replace
-         * proper #AsContext management.
-         * @param locale the new locale.
-         */
-        set_context_locale(locale: string): void;
         /**
          * Set the session-specific unique metadata identifier for this
          * component.
@@ -3553,17 +3519,22 @@ export namespace AppStream {
          */
         set_developer(developer: Developer): void;
         /**
+         * Set the the component's developer or development team name.
+         * @param value the developer or developer team name
+         * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
+         */
+        set_developer_name(value: string, locale?: string | null): void;
+        /**
          * Set the AppStream identifier for this component.
          * @param value the unique identifier.
          */
         set_id(value: string): void;
         /**
-         * Set keywords for this component, replacing all existing ones for the selected locale.
-         * @param new_keywords Array of keywords
+         * Set keywords for this component.
+         * @param value String-array of keywords
          * @param locale BCP47 locale of the values, or %NULL to use current locale.
-         * @param deep_copy Set to %TRUE if the keywords array should be copied, %FALSE to set by reference.
          */
-        set_keywords(new_keywords: string[], locale: string | null, deep_copy: boolean): void;
+        set_keywords(value: string[], locale?: string | null): void;
         /**
          * Sets the #AsComponentKind of this component.
          * @param value the #AsComponentKind.
@@ -3621,10 +3592,16 @@ export namespace AppStream {
          */
         set_project_license(value: string): void;
         /**
-         * Set a new set of releases for this component.
-         * @param releases the #AsReleaseList to use.
+         * Sets the #AsReleasesKind of the release metadata
+         * associated with this component.
+         * @param kind the #AsComponentKind.
          */
-        set_releases(releases: ReleaseList): void;
+        set_releases_kind(kind: ReleasesKind): void;
+        /**
+         * Set a remote URL pointing to an AppStream release info file.
+         * @param url the web URL where release data is found.
+         */
+        set_releases_url(url: string): void;
         /**
          * Sets the #AsComponentScope of this component.
          * @param scope the #AsComponentKind.
@@ -3642,16 +3619,7 @@ export namespace AppStream {
          * @param locale The BCP47 locale for this value, or %NULL to use the current active one.
          */
         set_summary(value: string, locale?: string | null): void;
-        /**
-         * Reorder the screenshots to prioritize a certain environment or style, instead of using the default
-         * screenshot order.
-         *
-         * If both "environment" and "style" are %NULL, the previous default order is restored.
-         * @param environment a GUI environment string, e.g. "plasma" or "gnome"
-         * @param style and environment style string, e.g. "light" or "dark"
-         * @param prioritize_style if %TRUE, order screenshots of the given style earlier than ones of the given environment.
-         */
-        sort_screenshots(environment: string | null, style: string | null, prioritize_style: boolean): void;
+        set_value_flags(flags: ValueFlags): void;
         /**
          * Returns a string identifying this component.
          * (useful for debugging)
@@ -3666,88 +3634,6 @@ export namespace AppStream {
          * @returns %TRUE on success.
          */
         to_xml_data(context: Context): string;
-    }
-
-    module ComponentBox {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            flags: number;
-        }
-    }
-
-    class ComponentBox extends GObject.Object {
-        static $gtype: GObject.GType<ComponentBox>;
-
-        // Own properties of AppStream.ComponentBox
-
-        get flags(): number;
-
-        // Constructors of AppStream.ComponentBox
-
-        constructor(properties?: Partial<ComponentBox.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](flags: ComponentBoxFlags): ComponentBox;
-
-        static new_simple(): ComponentBox;
-
-        // Own methods of AppStream.ComponentBox
-
-        /**
-         * Add a component to the box. Returns an error if we could not add it
-         * (most likely due to component box constraints).
-         * @param cpt
-         * @returns %TRUE on success.
-         */
-        add(cpt: Component): boolean;
-        /**
-         * Get the contents of this component box as #GPtrArray.
-         * @returns an array of #AsComponent instances.
-         */
-        as_array(): Component[];
-        /**
-         * Remove all contents of this component box.
-         */
-        clear(): void;
-        /**
-         * Get the flags this component box was constructed with.
-         * @returns The #AsComponentBoxFlags that are in effect.
-         */
-        get_flags(): ComponentBoxFlags;
-        /**
-         * Get the amount of components in this box.
-         * @returns Amount of components.
-         */
-        get_size(): number;
-        /**
-         * Retrieve a component at the respective index from the internal
-         * component array.
-         * @param index The component index.
-         * @returns An #AsComponent or %NULL
-         */
-        index_safe(index: number): Component;
-        /**
-         * Check if there are any components present.
-         * @returns %TRUE if this component box is empty.
-         */
-        is_empty(): boolean;
-        /**
-         * Remove a component at the specified index.
-         * Please ensure that the index is not larger than
-         * %as_component_box_get_size() - 1
-         * @param index the index of the component to remove.
-         */
-        remove_at(index: number): void;
-        /**
-         * Sort components to bring them into a deterministic order.
-         */
-        sort(): void;
-        /**
-         * Sort components by their (search) match score.
-         */
-        sort_by_score(): void;
     }
 
     module ContentRating {
@@ -3880,12 +3766,11 @@ export namespace AppStream {
         get_filename(): string;
         get_format_version(): FormatVersion;
         get_locale(): string;
-        get_locale_use_all(): boolean;
+        get_locale_all_enabled(): boolean;
         get_media_baseurl(): string;
         get_origin(): string;
         get_priority(): number;
         get_style(): FormatStyle;
-        get_value_flags(): ValueFlags;
         has_media_baseurl(): boolean;
         /**
          * Sets the file name we are loading data from.
@@ -3899,11 +3784,9 @@ export namespace AppStream {
         set_format_version(ver: FormatVersion): void;
         /**
          * Sets the active locale.
-         * If the magic value "ALL" is used, the current system locale will be used
-         * for data reading, but when writing data all locale will be written.
-         * @param locale a POSIX or BCP47 locale, or %NULL. e.g. "en_GB"
+         * @param value the new value.
          */
-        set_locale(locale?: string | null): void;
+        set_locale(value: string): void;
         /**
          * Sets the media base URL.
          * @param value the new value.
@@ -3924,7 +3807,6 @@ export namespace AppStream {
          * @param style the new document style.
          */
         set_style(style: FormatStyle): void;
-        set_value_flags(flags: ValueFlags): void;
     }
 
     module Developer {
@@ -3967,6 +3849,46 @@ export namespace AppStream {
          * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
          */
         set_name(value: string, locale?: string | null): void;
+    }
+
+    module DistroDetails {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            homepage: string;
+            id: string;
+            name: string;
+            version: string;
+        }
+    }
+
+    class DistroDetails extends GObject.Object {
+        static $gtype: GObject.GType<DistroDetails>;
+
+        // Own properties of AppStream.DistroDetails
+
+        get homepage(): string;
+        get id(): string;
+        get name(): string;
+        get version(): string;
+
+        // Constructors of AppStream.DistroDetails
+
+        constructor(properties?: Partial<DistroDetails.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): DistroDetails;
+
+        // Own methods of AppStream.DistroDetails
+
+        get_bool(key: string, default_val: boolean): boolean;
+        get_cid(): string;
+        get_homepage(): string;
+        get_id(): string;
+        get_name(): string;
+        get_str(key: string): string;
+        get_version(): string;
     }
 
     module Icon {
@@ -4076,11 +3998,6 @@ export namespace AppStream {
          */
         get_locale(): string;
         /**
-         * Gets the image integer scale factor.
-         * @returns the scale factor.
-         */
-        get_scale(): number;
-        /**
          * Gets the full qualified URL for the image, usually pointing at some mirror.
          * @returns URL
          */
@@ -4105,11 +4022,6 @@ export namespace AppStream {
          * @param locale the BCP47 locale string.
          */
         set_locale(locale: string): void;
-        /**
-         * Sets the image scale factor.
-         * @param scale the integer scale factor, e.g. 2
-         */
-        set_scale(scale: number): void;
         /**
          * Sets the fully-qualified mirror URL to use for the image.
          * @param url the URL.
@@ -4252,14 +4164,7 @@ export namespace AppStream {
          * @param cpt
          */
         add_component(cpt: Component): void;
-        /**
-         * Remove all previously parsed or manually added components.
-         */
         clear_components(): void;
-        /**
-         * Remove all previously parsed releases entries.
-         */
-        clear_releases(): void;
         /**
          * Convert an #AsComponent to metainfo data.
          * This will always be XML, YAML is no valid format for metainfo files.
@@ -4281,15 +4186,21 @@ export namespace AppStream {
          * @returns A string containing the YAML or XML data. Free with g_free()
          */
         components_to_catalog(format: FormatKind): string;
+        /**
+         * Deprecated, use %as_metadata_components_to_catalog instead.
+         * @param format The format to serialize the data to (XML or YAML).
+         * @returns A string containing the YAML or XML data. Free with g_free()
+         */
+        components_to_collection(format: FormatKind): string;
         get_architecture(): string;
         /**
          * Gets the #AsComponent which has been parsed from the XML.
-         * If the AppStream XML contained multiple components, return the last
+         * If the AppStream XML contained multiple components, return the first
          * component that has been parsed.
          * @returns An #AsComponent or %NULL
          */
         get_component(): Component | null;
-        get_components(): ComponentBox;
+        get_components(): Component[];
         /**
          * Get the metadata parsing mode.
          */
@@ -4307,14 +4218,15 @@ export namespace AppStream {
          * Get the metadata parse flags.
          */
         get_parse_flags(): ParseFlags;
-        /**
-         * Gets the recently parsed #AsReleaseList entry.
-         * @returns An #AsReleaseList or %NULL
-         */
-        get_release_list(): ReleaseList | null;
-        get_release_lists(): ReleaseList[];
         get_update_existing(): boolean;
         get_write_header(): boolean;
+        /**
+         * Parses any AppStream metadata into one or more #AsComponent instances.
+         * @param data Metadata describing one or more software components as null-terminated string.
+         * @param format The format of the data (XML or YAML).
+         * @returns %TRUE on success.
+         */
+        parse(data: string, format: FormatKind): boolean;
         /**
          * Parses any AppStream metadata into one or more #AsComponent instances.
          * @param bytes Metadata describing one or more software components.
@@ -4323,25 +4235,16 @@ export namespace AppStream {
          */
         parse_bytes(bytes: GLib.Bytes | Uint8Array, format: FormatKind): boolean;
         /**
-         * Parses any AppStream metadata into one or more #AsComponent instances.
-         * @param data Metadata describing one or more software components as string.
-         * @param data_len Length of @data, or -1 if length is unknown and @data is NULL-terminated.
-         * @param format The format of the data (XML or YAML).
-         * @returns %TRUE on success.
-         */
-        parse_data(data: string, data_len: number, format: FormatKind): boolean;
-        /**
          * Parses XDG Desktop Entry metadata and adds it to the list of parsed entities.
          *
          * Please note that not every desktop-entry file will result in a valid component
          * being generated, even if parsing succeeds without error (The desktiop-entry file
          * may be valid but not generate a component on purpose).
-         * @param cid The component-id the new #AsComponent should have.
          * @param data Metadata describing one or more software components.
-         * @param data_len The data length, or -1 if unknown and null-terminated.
+         * @param cid The component-id the new #AsComponent should have.
          * @returns %TRUE if the file was parsed without error.
          */
-        parse_desktop_data(cid: string, data: string, data_len: number): boolean;
+        parse_desktop_data(data: string, cid: string): boolean;
         /**
          * Parses an AppStream upstream metadata file.
          *
@@ -4354,25 +4257,23 @@ export namespace AppStream {
         parse_file(file: Gio.File, format: FormatKind): boolean;
         /**
          * Parses any AppStream release metadata into #AsRelease objects.
-         * You can retrieve the last parsed #AsReleaseList using %as_metadata_get_release_list.
          * @param bytes Metadata describing release notes.
-         * @returns %TRUE on success.
+         * @returns A list of releases or %NULL on error.
          */
-        parse_releases_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
+        parse_releases_bytes(bytes: GLib.Bytes | Uint8Array): Release[] | null;
         /**
          * Parses any AppStream release metadata into #AsRelease objects
          * using the provided file.
-         * You can retrieve the last parsed #AsReleaseList using %as_metadata_get_release_list.
          * @param file #GFile for the release metadata
-         * @returns %TRUE on success.
+         * @returns A list of releases or %NULL on error.
          */
-        parse_releases_file(file: Gio.File): boolean;
+        parse_releases_file(file: Gio.File): Release[] | null;
         /**
-         * Convert a releases of an #AsReleaseList entity into a release metadata XML representation.
-         * @param releases the #AsReleaseList to convert.
+         * Convert a list of #Asrelease entities into a release metadata XML representation.
+         * @param releases the list of #Asrelease to convert.
          * @returns The XML representation or %NULL on error.
          */
-        releases_to_data(releases: ReleaseList): string;
+        releases_to_data(releases: Release[]): string;
         /**
          * Serialize all #AsComponent instances to XML or YAML metadata and save
          * the data to a file.
@@ -4382,6 +4283,13 @@ export namespace AppStream {
          * @returns %TRUE if the file was written without error.
          */
         save_catalog(fname: string, format: FormatKind): boolean;
+        /**
+         * Deprecated, use %as_metadata_save_catalog instead.
+         * @param fname The filename for the new metadata file.
+         * @param format
+         * @returns %TRUE if the file was written without error.
+         */
+        save_collection(fname: string, format: FormatKind): boolean;
         /**
          * Serialize #AsComponent instance to XML and save it to file.
          * An existing file at the same location will be overridden.
@@ -4491,12 +4399,18 @@ export namespace AppStream {
         // Own methods of AppStream.Pool
 
         /**
+         * Register a new component in the AppStream metadata pool.
+         * @param cpt The #AsComponent to add to the pool.
+         * @returns %TRUE if the new component was successfully added to the pool.
+         */
+        add_component(cpt: Component): boolean;
+        /**
          * Register a set of components with the pool temporarily.
          * Data from components added like this will not be cached.
-         * @param cbox Components to add to the pool.
+         * @param cpts Array of components to add to the pool.
          * @returns %TRUE if the new components were successfully added to the pool.
          */
-        add_components(cbox: ComponentBox): boolean;
+        add_components(cpts: Component[]): boolean;
         /**
          * Add an additional non-standard location to the metadata pool where metadata will be read from.
          * If `directory` contains a "xml", "xmls", "yaml" or "icons" subdirectory (or all of them),
@@ -4511,6 +4425,13 @@ export namespace AppStream {
          * @param flags The #AsPoolFlags to add.
          */
         add_flags(flags: PoolFlags): void;
+        /**
+         * Add a location for the data pool to read data from.
+         * If `directory` contains a "xml", "xmls", "yaml" or "icons" subdirectory (or all of them),
+         * those paths will be added to the search paths instead.
+         * @param directory An existing filesystem location.
+         */
+        add_metadata_location(directory: string): void;
         /**
          * Splits up a string into an array of tokens that are suitable for searching.
          * This includes stripping whitespaces, casefolding the terms and removing greylist words.
@@ -4528,66 +4449,107 @@ export namespace AppStream {
          */
         clear(): void;
         /**
-         * Get a list of found components.
-         * @returns an #AsComponentBox.
+         * Remove all metadata from the pool.
          */
-        get_components(): ComponentBox;
+        clear2(): boolean;
+        /**
+         * Remove all metadata locations from the list of watched locations.
+         */
+        clear_metadata_locations(): void;
+        /**
+         * Get the #AsCacheFlags for this data pool.
+         */
+        get_cache_flags(): CacheFlags;
+        /**
+         * Gets the location of the session cache.
+         * @returns Location of the cache, or %NULL if unknown.
+         */
+        get_cache_location(): string;
         /**
          * Find components that are provided by a bundle with a specific ID by its prefix.
          * For example, given a AS_BUNDLE_KIND_FLATPAK and a bundle_id "org.kde.dolphin/",
          * it will list all the components that bundle dolphin. If the bundle_id is
          * "org.kde.dolphin/x86_64" it will give those with also the architecture.
+         *
+         * This function fully transfers ownership of the returned container,
+         * to be used in GIR bindings.
          * @param kind The kind of the bundle we are looking for
          * @param bundle_id The bundle ID to match, as specified in #AsBundle
          * @param match_prefix %TRUE to match the ID by prefix, %FALSE to perform an absolute match.
-         * @returns an #AsComponentBox.
+         * @returns an array of #AsComponent objects.
          */
-        get_components_by_bundle_id(kind: BundleKind, bundle_id: string, match_prefix: boolean): ComponentBox;
+        get_components_by_bundle_id(kind: BundleKind, bundle_id: string, match_prefix: boolean): Component[];
         /**
-         * Return a list of components which are in all of the categories.
+         * Return a list of components which are in one of the categories.
+         *
+         * This function fully transfers ownership of the returned container,
+         * to be used in GIR bindings.
          * @param categories An array of XDG categories to include.
-         * @returns an #AsComponentBox of found components.
+         * @returns an array of #AsComponent objects which have been found.
          */
-        get_components_by_categories(categories: string[]): ComponentBox;
+        get_components_by_categories(categories: string[]): Component[];
         /**
          * Find components extending the component with the given ID. They can then be registered to the
          * #AsComponent they extend via %as_component_add_addon.
          * If the %AS_POOL_FLAG_RESOLVE_ADDONS pool flag is set, addons are automatically resolved and
          * this explicit function is not needed, but overall query time will be increased (so only use
          * this flag if you will be resolving addon information later anyway).
+         *
+         * This function fully transfers ownership of the returned container,
+         * to be used in GIR bindings.
          * @param extended_id The ID of the component to search extensions for.
-         * @returns an #AsComponentBox.
+         * @returns an array of #AsComponent objects.
          */
-        get_components_by_extends(extended_id: string): ComponentBox;
+        get_components_by_extends(extended_id: string): Component[];
         /**
          * Get a specific component by its ID.
          * This function may contain multiple results if we have
          * data describing this component from multiple scopes/origin types.
+         *
+         * This function fully transfers ownership of the returned container,
+         * to be used in GIR bindings.
          * @param cid The AppStream-ID to look for.
-         * @returns an #AsComponentBox.
+         * @returns An #AsComponent
          */
-        get_components_by_id(cid: string): ComponentBox;
+        get_components_by_id(cid: string): Component[];
         /**
          * Return a list of all components in the pool which are of a certain kind.
+         *
+         * This function fully transfers ownership of the returned container,
+         * to be used in GIR bindings.
          * @param kind An #AsComponentKind.
-         * @returns an #AsComponentBox of found components.
+         * @returns an array of #AsComponent objects which have been found.
          */
-        get_components_by_kind(kind: ComponentKind): ComponentBox;
+        get_components_by_kind(kind: ComponentKind): Component[];
         /**
          * Find components in the AppStream data pool which provide a specific launchable.
          * See #AsLaunchable for details on launchables, or refer to the AppStream specification.
+         *
+         * This function fully transfers ownership of the returned container,
+         * to be used in GIR bindings.
          * @param kind An #AsLaunchableKind
          * @param id The ID of the launchable.
-         * @returns an #AsComponentBox of found components.
+         * @returns an array of #AsComponent objects which have been found.
          */
-        get_components_by_launchable(kind: LaunchableKind, id: string): ComponentBox;
+        get_components_by_launchable(kind: LaunchableKind, id: string): Component[];
         /**
          * Find components in the AppStream data pool which provide a certain item.
+         *
+         * This function fully transfers ownership of the returned container,
+         * to be used in GIR bindings.
          * @param kind An #AsProvidesKind
          * @param item The value of the provided item.
-         * @returns an #AsComponentBox of found components.
+         * @returns an array of #AsComponent objects which have been found.
          */
-        get_components_by_provided_item(kind: ProvidedKind, item: string): ComponentBox;
+        get_components_by_provided_item(kind: ProvidedKind, item: string): Component[];
+        /**
+         * Get a list of found components.
+         *
+         * This function fully transfers ownership of the returned container,
+         * to be used in GIR bindings.
+         * @returns an array of #AsComponent instances.
+         */
+        get_components(): Component[];
         /**
          * Get the #AsPoolFlags for this data pool.
          */
@@ -4621,11 +4583,23 @@ export namespace AppStream {
          */
         load_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         /**
+         * Load AppStream metadata from a cache file.
+         * @param fname Filename of the cache file to load into the pool.
+         */
+        load_cache_file(fname: string): boolean;
+        /**
          * Retrieve the result of as_pool_load_async().
          * @param result A #GAsyncResult
          * @returns %TRUE for success
          */
         load_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Update the AppStream cache. There is normally no need to call this function manually, because cache updates are handled
+         * transparently in the background.
+         * @param force Enforce refresh, even if source data has not changed.
+         * @returns %TRUE on success, %FALSE on error.
+         */
+        refresh_cache(force: boolean): boolean;
         /**
          * Convenience function to remove one or multiple #AsPoolFlags from
          * the flag set of this data pool.
@@ -4637,12 +4611,32 @@ export namespace AppStream {
          */
         reset_extra_data_locations(): void;
         /**
+         * Serialize AppStream metadata to a cache file.
+         * @param fname Filename of the cache file the pool contents should be dumped to.
+         */
+        save_cache_file(fname: string): boolean;
+        /**
          * Search for a list of components matching the search term.
          * The list will be ordered by match score.
+         *
+         * This function fully transfers ownership of the returned container,
+         * to be used in GIR bindings.
          * @param search A search string
-         * @returns an #AsComponentBox of the found components.
+         * @returns an array of the found #AsComponent objects.
          */
-        search(search: string): ComponentBox;
+        search(search: string): Component[];
+        /**
+         * Set the #AsCacheFlags for this data pool.
+         * @param flags The new #AsCacheFlags.
+         */
+        set_cache_flags(flags: CacheFlags): void;
+        /**
+         * Sets the name of the cache file. If `fname` is ":memory", the cache will be
+         * kept in memory, if it is set to ":temporary", the cache will be stored in
+         * a temporary directory. In any other case, the given filename is used.
+         * @param fname Filename of the cache file, or special identifier.
+         */
+        set_cache_location(fname: string): void;
         /**
          * Set the #AsPoolFlags for this data pool.
          * @param flags The new #AsPoolFlags.
@@ -4713,62 +4707,6 @@ export namespace AppStream {
         set_kind(kind: ProvidedKind): void;
     }
 
-    module Reference {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    class Reference extends GObject.Object {
-        static $gtype: GObject.GType<Reference>;
-
-        // Constructors of AppStream.Reference
-
-        constructor(properties?: Partial<Reference.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): Reference;
-
-        // Own methods of AppStream.Reference
-
-        /**
-         * Gets the reference kind.
-         * @returns the #AsReferenceKind
-         */
-        get_kind(): ReferenceKind;
-        /**
-         * Gets the name of the registry this reference is for,
-         * if the reference is of type %AS_REFERENCE_KIND_REGISTRY.
-         * Otherwise return %NULL.
-         * @returns the registry name.
-         */
-        get_registry_name(): string | null;
-        /**
-         * Gets the value of this reference, e.g. a DOI if the
-         * reference kind is %AS_REFERENCE_KIND_DOI or an URL
-         * for %AS_REFERENCE_KIND_CITATION_CFF.
-         * @returns the value of this reference.
-         */
-        get_value(): string;
-        /**
-         * Sets the reference kind.
-         * @param kind the #AsReferenceKind, e.g. %AS_REFERENCE_KIND_DOI.
-         */
-        set_kind(kind: ReferenceKind): void;
-        /**
-         * Sets a name of a registry if this reference is of
-         * type %AS_REFERENCE_KIND_REGISTRY.
-         * @param name name of an external registry.
-         */
-        set_registry_name(name: string): void;
-        /**
-         * Sets a value for this reference.
-         * @param value a value for this reference, e.g. "10.1000/182"
-         */
-        set_value(value: string): void;
-    }
-
     module Relation {
         // Constructor properties interface
 
@@ -4785,18 +4723,6 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Relation;
-
-        // Own static methods of AppStream.Relation
-
-        /**
-         * Calculate a compatibility sore between 0 and 100 based on the given set of
-         * AsRelationCheckResults.
-         *
-         * A compatibility of 100 means all requirements are satisfied and the component will
-         * run perfectly on the confoguration it was tested agains, while 0 means it will not run at all.
-         * @param rc_results an array of #AsRelationCheckResult
-         */
-        static check_results_get_compatibility_score(rc_results: RelationCheckResult[]): number;
 
         // Own methods of AppStream.Relation
 
@@ -4822,12 +4748,22 @@ export namespace AppStream {
          */
         get_kind(): RelationKind;
         /**
+         * Deprecated method. Use %as_relation_get_value_str instead.
+         */
+        get_value(): string;
+        /**
          * Get the value of this #AsRelation item as #AsControlKind if the
          * type of this relation is %AS_RELATION_ITEM_KIND_CONTROL.
          * Otherwise return %AS_CONTROL_KIND_UNKNOWN
          * @returns a #AsControlKind or %AS_CONTROL_KIND_UNKNOWN in case the item is not of the right kind.
          */
         get_value_control_kind(): ControlKind;
+        /**
+         * In case this #AsRelation is of kind %AS_RELATION_ITEM_KIND_DISPLAY_LENGTH,
+         * return the #AsDisplayLengthKind.
+         * @returns The #AsDisplayLengthKind classification of the current pixel value, or %AS_DISPLAY_LENGTH_KIND_UNKNOWN on error.
+         */
+        get_value_display_length_kind(): DisplayLengthKind;
         get_value_int(): number;
         /**
          * If this #AsRelation is of kind %AS_RELATION_ITEM_KIND_INTERNET, return the
@@ -4860,9 +4796,9 @@ export namespace AppStream {
          * be validated and an error will be thrown.
          * @param system_info an #AsSystemInfo to use for system information.
          * @param pool an #AsPool to find component dependencies in.
-         * @returns an #AsRelationCheckResult with details about the result, or %NULL on error.
+         * @returns %AS_CHECK_RESULT_TRUE if the system satisfies the relation, %AS_CHECK_RESULT_ERROR on error
          */
-        is_satisfied(system_info?: SystemInfo | null, pool?: Pool | null): RelationCheckResult | null;
+        is_satisfied(system_info: SystemInfo | null, pool: Pool | null): [CheckResult, string];
         /**
          * Set the version comparison type of this #AsRelation.
          * @param compare the new #AsRelationCompare
@@ -4885,10 +4821,21 @@ export namespace AppStream {
          */
         set_kind(kind: RelationKind): void;
         /**
+         * Deprecated method. Use %as_relation_set_value_str instead.
+         * @param value the new value.
+         */
+        set_value(value: string): void;
+        /**
          * Set relation item value from an #AsControlKind.
          * @param kind an #AsControlKind
          */
         set_value_control_kind(kind: ControlKind): void;
+        /**
+         * Sets the item value as display length placeholder value. This requires the relation
+         * to be of item kind %AS_RELATION_ITEM_KIND_DISPLAY_LENGTH.
+         * @param kind the #AsDisplayLengthKind
+         */
+        set_value_display_length_kind(kind: DisplayLengthKind): void;
         /**
          * Sets the item value as an integer, if the given item type
          * of this #AsRelation permits integer values.
@@ -4928,65 +4875,6 @@ export namespace AppStream {
         version_compare(version: string): boolean;
     }
 
-    module RelationCheckResult {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    class RelationCheckResult extends GObject.Object {
-        static $gtype: GObject.GType<RelationCheckResult>;
-
-        // Constructors of AppStream.RelationCheckResult
-
-        constructor(properties?: Partial<RelationCheckResult.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): RelationCheckResult;
-
-        // Own methods of AppStream.RelationCheckResult
-
-        /**
-         * Retrieve the error code, in case this result represents an error.
-         * @returns an #AsRelationError
-         */
-        get_error_code(): RelationError;
-        /**
-         * Get a human-readable message about the state of this relation.
-         * May be %NULL in case the relation is satisfied and there is no further information about it.
-         * @returns a human-readable message about this relation's state.
-         */
-        get_message(): string | null;
-        /**
-         * Get the relation that this check result was generated for.
-         * @returns an #AsRelation or %NULL
-         */
-        get_relation(): Relation | null;
-        /**
-         * Returns the status of this relation check result.
-         * If the status is %AS_RELATION_STATUS_ERROR, an error message will
-         * have been set as message.
-         * @returns an #AsRelationStatus
-         */
-        get_status(): RelationStatus;
-        /**
-         * Set the error code in case this result represents an error.
-         * @param ecode the #AsRelationError
-         */
-        set_error_code(ecode: RelationError): void;
-        /**
-         * Set an #AsRelation to associate with this check result.
-         * @param relation the #AsRelation
-         */
-        set_relation(relation: Relation): void;
-        /**
-         * Set the outcome of this relation check result.
-         * @param status the new #AsRelationStatus
-         */
-        set_status(status: RelationStatus): void;
-    }
-
     module Release {
         // Constructor properties interface
 
@@ -5012,28 +4900,43 @@ export namespace AppStream {
          */
         add_artifact(artifact: Artifact): void;
         /**
+         * Add a checksum for the file associated with this release.
+         * @param cs The #AsChecksum.
+         */
+        add_checksum(cs: Checksum): void;
+        /**
          * Add information about a (resolved) issue to this release.
          * @param issue The #AsIssue.
          */
         add_issue(issue: Issue): void;
         /**
-         * Add a tag to this release.
-         * @param ns The namespace the tag belongs to
-         * @param tag The tag name
-         * @returns %TRUE if the tag was added.
+         * Adds a release location.
+         * @param location An URL of the download location
          */
-        add_tag(ns: string, tag: string): boolean;
+        add_location(location: string): void;
         /**
-         * Remove all tags associated with this release.
+         * Get the current active locale, which
+         * is used to get localized messages.
+         * @returns the current active locale
          */
-        clear_tags(): void;
+        get_active_locale(): string;
         /**
          * Get a list of all downloadable artifacts that are associated with
          * this release.
          * @returns an array of #AsArtifact objects.
          */
         get_artifacts(): Artifact[];
-        get_context(): Context | null;
+        /**
+         * Gets the release checksum
+         * @param kind
+         * @returns an #AsChecksum, or %NULL for not set or invalid
+         */
+        get_checksum(kind: ChecksumKind): Checksum | null;
+        /**
+         * Get a list of all checksums we have for this release.
+         * @returns an array of #AsChecksum objects.
+         */
+        get_checksums(): Checksum[];
         /**
          * Gets the release date.
          * @returns The date in ISO8601 format.
@@ -5059,6 +4962,17 @@ export namespace AppStream {
          * (development or stable release)
          */
         get_kind(): ReleaseKind;
+        /**
+         * Gets the release locations, typically URLs.
+         * @returns list of locations
+         */
+        get_locations(): string[];
+        /**
+         * Gets the release size.
+         * @param kind a #AsSizeKind
+         * @returns The size of the given kind of this release.
+         */
+        get_size(kind: SizeKind): number;
         /**
          * Gets the release timestamp.
          * @returns timestamp, or 0 for unset
@@ -5088,25 +5002,14 @@ export namespace AppStream {
          */
         get_version(): string | null;
         /**
-         * Test if the release is tagged with the selected tag.
-         * @param ns The namespace the tag belongs to
-         * @param tag The tag name
-         * @returns %TRUE if tag exists.
+         * Set the current active locale, which
+         * is used to get localized messages.
+         * If the #AsComponent linking this #AsRelease was fetched
+         * from a localized database, usually only
+         * one locale is available.
+         * @param locale a POSIX or BCP47 locale, or %NULL. e.g. "de_DE"
          */
-        has_tag(ns: string, tag: string): boolean;
-        /**
-         * Remove a tag from this release
-         * @param ns The namespace the tag belongs to
-         * @param tag The tag name
-         * @returns %TRUE if the tag was removed.
-         */
-        remove_tag(ns: string, tag: string): boolean;
-        /**
-         * Sets the document context this release is associated
-         * with.
-         * @param context the #AsContext.
-         */
-        set_context(context: Context): void;
+        set_active_locale(locale?: string | null): void;
         /**
          * Sets the release date.
          * @param date the date in ISO8601 format.
@@ -5129,6 +5032,12 @@ export namespace AppStream {
          * @param kind the #AsReleaseKind
          */
         set_kind(kind: ReleaseKind): void;
+        /**
+         * Sets the release size for the given kind.
+         * @param size a size in bytes, or 0 for unknown
+         * @param kind a #AsSizeKind
+         */
+        set_size(size: number, kind: SizeKind): void;
         /**
          * Sets the release timestamp.
          * @param timestamp the timestamp value.
@@ -5162,108 +5071,6 @@ export namespace AppStream {
          * @returns 1 if @rel1 version is higher than @rel2, 0 if versions are equal, -1 if @rel2 version is higher than @rel1.
          */
         vercmp(rel2: Release): number;
-    }
-
-    module ReleaseList {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    class ReleaseList extends GObject.Object {
-        static $gtype: GObject.GType<ReleaseList>;
-
-        // Constructors of AppStream.ReleaseList
-
-        constructor(properties?: Partial<ReleaseList.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): ReleaseList;
-
-        // Own methods of AppStream.ReleaseList
-
-        /**
-         * Append a release entry to this #AsReleaseList container.
-         * @param release
-         */
-        add(release: Release): void;
-        /**
-         * Remove all release entries from this releases object.
-         */
-        clear(): void;
-        /**
-         * Get the #AsContext associated with these releases.
-         * This function may return %NULL if no context is set
-         * @returns the associated #AsContext or %NULL
-         */
-        get_context(): Context | null;
-        /**
-         * Get the release entries as #GPtrArray.
-         * @returns an array of #AsRelease instances.
-         */
-        get_entries(): Release[];
-        /**
-         * Returns the #AsReleaseListKind of the release metadata
-         * associated with this component.
-         * @returns The kind.
-         */
-        get_kind(): ReleaseListKind;
-        /**
-         * Get the amount of components in this box.
-         * @returns Amount of components.
-         */
-        get_size(): number;
-        /**
-         * Get the remote URL to obtain release information from.
-         * @returns The URL of external release data, or %NULL
-         */
-        get_url(): string | null;
-        /**
-         * Retrieve a release entry at the respective index from the
-         * release entry list.
-         * @param index The release entry index.
-         * @returns An #AsRelease or %NULL
-         */
-        index_safe(index: number): Release;
-        /**
-         * Check if there are any components present.
-         * @returns %TRUE if this component box is empty.
-         */
-        is_empty(): boolean;
-        /**
-         * Load release information from XML bytes.
-         * @param context the attached #AsContext or %NULL to use the current context
-         * @param bytes the release XML data as #GBytes
-         * @returns %TRUE on success.
-         */
-        load_from_bytes(context: Context | null, bytes: GLib.Bytes | Uint8Array): boolean;
-        /**
-         * Sets the document context these releases are associated with.
-         * @param context the #AsContext.
-         */
-        set_context(context: Context): void;
-        /**
-         * Sets the #AsReleaseListKind of the release metadata
-         * associated with this component.
-         * @param kind the #AsComponentKind.
-         */
-        set_kind(kind: ReleaseListKind): void;
-        /**
-         * Set the amount of release entries stored.
-         * @param size
-         */
-        set_size(size: number): void;
-        /**
-         * Set a remote URL pointing to an AppStream release info file.
-         * @param url the web URL where release data is found.
-         */
-        set_url(url: string): void;
-        /**
-         * Sort releases by their release version,
-         * starting with the most recent release.
-         */
-        sort(): void;
     }
 
     module Review {
@@ -5509,22 +5316,15 @@ export namespace AppStream {
          */
         clear_images(): void;
         /**
+         * Get the current active locale, which
+         * is used to get localized messages.
+         */
+        get_active_locale(): string;
+        /**
          * Gets the image caption
          * @returns the caption
          */
         get_caption(): string;
-        /**
-         * Returns the #AsContext associated with this screenshot.
-         * This function may return %NULL if no context is set.
-         * @returns the #AsContext used by this screenshot.
-         */
-        get_context(): Context | null;
-        /**
-         * Get the GUI environment ID of this screenshot, if any
-         * is associated with it. E.g. "plasma-mobile" or "gnome:dark".
-         * @returns The GUI environment ID the screenshot was recorded in, or %NULL if none set.
-         */
-        get_environment(): string | null;
         /**
          * Gets the AsImage closest to the target size. The #AsImage may not actually
          * be the requested size, and the application may have to pad / rescale the
@@ -5533,10 +5333,9 @@ export namespace AppStream {
          * are considered.
          * @param width target width
          * @param height target height
-         * @param scale the target scaling factor.
          * @returns an #AsImage, or %NULL
          */
-        get_image(width: number, height: number, scale: number): Image | null;
+        get_image(width: number, height: number): Image;
         /**
          * Gets the images for this screenshots. Only images valid for the current
          * language are returned. We return all sizes.
@@ -5577,22 +5376,20 @@ export namespace AppStream {
          */
         is_valid(): boolean;
         /**
+         * Set the current active locale, which
+         * is used to get localized messages.
+         * If the #AsComponent linking this #AsScreenshot was fetched
+         * from a localized database, usually only
+         * one locale is available.
+         * @param locale a POSIX or BCP47 locale, or %NULL. e.g. "de_DE"
+         */
+        set_active_locale(locale?: string | null): void;
+        /**
          * Sets a caption on the screenshot
          * @param caption the caption text.
          * @param locale
          */
         set_caption(caption: string, locale: string): void;
-        /**
-         * Sets the document context this screenshot is associated
-         * with.
-         * @param context the #AsContext.
-         */
-        set_context(context: Context): void;
-        /**
-         * Sets the GUI environment ID of this screenshot.
-         * @param env_id the GUI environment ID, e.g. "plasma-mobile" or "gnome:dark"
-         */
-        set_environment(env_id?: string | null): void;
         /**
          * Sets the screenshot kind.
          * @param kind the #AsScreenshotKind.
@@ -5664,8 +5461,6 @@ export namespace AppStream {
 
         static ['new'](): SystemInfo;
 
-        static new_template_for_chassis(chassis: ChassisKind): SystemInfo;
-
         // Own methods of AppStream.SystemInfo
 
         /**
@@ -5686,11 +5481,6 @@ export namespace AppStream {
          * @returns the display size in logical pixels.
          */
         get_display_length(side: DisplaySideKind): number;
-        /**
-         * Check whether graphical applications can be displayed via X11 or Wayland.
-         * @returns %TRUE if graphical applications can be displayed.
-         */
-        get_gui_available(): boolean;
         /**
          * Get the name of the current kernel, e.g. "Linux"
          * @returns the current OS kernel name
@@ -5765,11 +5555,6 @@ export namespace AppStream {
          * @param value_dip the length value in device-independt pixels.
          */
         set_display_length(side: DisplaySideKind, value_dip: number): void;
-        /**
-         * Set whether this system has a GUI / desktop environment available.
-         * @param available %TRUE if GUI is available.
-         */
-        set_gui_available(available: boolean): void;
         /**
          * Explicitly mark a user input control as present or not present on this system.
          * @param kind the #AsControlKind to set.
@@ -5873,22 +5658,15 @@ export namespace AppStream {
          */
         add_release_file(release_file: Gio.File): boolean;
         /**
-         * Check the current registered values again and return %TRUE
-         * if no issues were found that would make the previously validated
-         * files fail validation.
-         *
-         * Usually you do not need to call this function explicitly, as
-         * the as_validator_validate_* functions will already return whether
-         * data was valid as return value.
-         * @returns %TRUE if previously validated files were valid.
+         * Clears the list of issues
          */
-        check_success(): boolean;
+        clear_issues(): void;
         /**
          * Clear all release information that was explicitly added to the
          * validation process.
          */
         clear_release_data(): void;
-        get_allow_net(): boolean;
+        get_check_urls(): boolean;
         /**
          * Get the number of files for which issues have been found.
          * @returns The number of files that have issues.
@@ -5906,7 +5684,7 @@ export namespace AppStream {
          * @returns a file to issue list mapping
          */
         get_issues_per_file(): GLib.HashTable;
-        get_report_yaml(): string;
+        get_report_yaml(yaml_report: string): boolean;
         get_strict(): boolean;
         /**
          * Get the explanatory text for a given issue tag.
@@ -5926,11 +5704,11 @@ export namespace AppStream {
          */
         get_tags(): string[];
         /**
-         * If set to %TRUE, the validator will be allowed to connect
-         * to the internet to e.g. check URLs for validity.
+         * Set this value to make the #AsValidator check whether remote URLs
+         * actually exist.
          * @param value %TRUE if remote URLs should be checked for availability.
          */
-        set_allow_net(value: boolean): void;
+        set_check_urls(value: boolean): void;
         /**
          * Enable or disable strict mode. In strict mode, any found issue will result
          * in a failed validation (except for issues of "pedantic" severity).
@@ -5948,12 +5726,16 @@ export namespace AppStream {
         validate_bytes(metadata: GLib.Bytes | Uint8Array): boolean;
         /**
          * Validate AppStream XML data.
+         * Remember to run %as_validator_clear_issues if you do not want previous
+         * validation runs to affect the outcome of this validation.
          * @param metadata XML metadata.
          * @returns %TRUE if data validated successfully.
          */
         validate_data(metadata: string): boolean;
         /**
          * Validate an AppStream XML file.
+         * Remember to run %as_validator_clear_issues if you do not want previous
+         * validation runs to affect the outcome of this validation.
          * @param metadata_file An AppStream XML file.
          * @returns %TRUE if file validated successfully.
          */
@@ -6007,6 +5789,11 @@ export namespace AppStream {
          */
         get_hint(): string;
         /**
+         * This function is deprecated and should not be used in new code.
+         * @returns a #AsIssueSeverity
+         */
+        get_importance(): IssueSeverity;
+        /**
          * Gets the line number where this issue was found.
          * @returns the line number where this issue occured, or -1 if unknown.
          */
@@ -6017,6 +5804,11 @@ export namespace AppStream {
          * @returns the location hint as string.
          */
         get_location(): string;
+        /**
+         * This function is deprecated.
+         * @returns the message
+         */
+        get_message(): string;
         /**
          * Gets the severity of this issue.
          * @returns a #AsIssueSeverity
@@ -6048,10 +5840,20 @@ export namespace AppStream {
          */
         set_hint(hint: string): void;
         /**
+         * This function is deprecated and should not be used in new code.
+         * @param importance the #AsIssueSeverity.
+         */
+        set_importance(importance: IssueSeverity): void;
+        /**
          * Sets the line number where this issue was found.
          * @param line the line number.
          */
         set_line(line: number): void;
+        /**
+         * This function is deprecated.
+         * @param message the message text.
+         */
+        set_message(message: string): void;
         /**
          * Sets the severity for this issue.
          * @param severity the #AsIssueSeverity.
@@ -6197,11 +5999,11 @@ export namespace AppStream {
     type BundleClass = typeof Bundle;
     type CategoryClass = typeof Category;
     type ChecksumClass = typeof Checksum;
-    type ComponentBoxClass = typeof ComponentBox;
     type ComponentClass = typeof Component;
     type ContentRatingClass = typeof ContentRating;
     type ContextClass = typeof Context;
     type DeveloperClass = typeof Developer;
+    type DistroDetailsClass = typeof DistroDetails;
     type IconClass = typeof Icon;
     type ImageClass = typeof Image;
     type IssueClass = typeof Issue;
@@ -6209,11 +6011,8 @@ export namespace AppStream {
     type MetadataClass = typeof Metadata;
     type PoolClass = typeof Pool;
     type ProvidedClass = typeof Provided;
-    type ReferenceClass = typeof Reference;
-    type RelationCheckResultClass = typeof RelationCheckResult;
     type RelationClass = typeof Relation;
     type ReleaseClass = typeof Release;
-    type ReleaseListClass = typeof ReleaseList;
     type ReviewClass = typeof Review;
     type ScreenshotClass = typeof Screenshot;
     type SuggestedClass = typeof Suggested;

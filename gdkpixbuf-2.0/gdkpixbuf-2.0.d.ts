@@ -702,7 +702,7 @@ export namespace GdkPixbuf {
          * @param b Blue value to substitute.
          * @returns A newly-created pixbuf
          */
-        add_alpha(substitute_color: boolean, r: number, g: number, b: number): Pixbuf;
+        add_alpha(substitute_color: boolean, r: number, g: number, b: number): Pixbuf | null;
         /**
          * Takes an existing pixbuf and checks for the presence of an
          * associated "orientation" option.
@@ -1834,6 +1834,11 @@ export namespace GdkPixbuf {
          * @param start_time time when the animation starts playing
          */
         vfunc_get_iter(start_time?: GLib.TimeVal | null): PixbufAnimationIter;
+        /**
+         * fills `width` and `height` with the frame size of the animation.
+         * @param width
+         * @param height
+         */
         vfunc_get_size(width: number, height: number): void;
         /**
          * Retrieves a static image for the animation.
@@ -2431,7 +2436,7 @@ export namespace GdkPixbuf {
          * Creates a copy of `format`.
          * @returns the newly allocated copy of a `GdkPixbufFormat`. Use   gdk_pixbuf_format_free() to free the resources when done
          */
-        copy(): PixbufFormat;
+        copy(): PixbufFormat | null;
         /**
          * Frees the resources allocated when copying a `GdkPixbufFormat`
          * using gdk_pixbuf_format_copy()
@@ -2441,13 +2446,13 @@ export namespace GdkPixbuf {
          * Returns a description of the format.
          * @returns a description of the format.
          */
-        get_description(): string;
+        get_description(): string | null;
         /**
          * Returns the filename extensions typically used for files in the
          * given format.
          * @returns an array of   filename extensions
          */
-        get_extensions(): string[];
+        get_extensions(): string[] | null;
         /**
          * Returns information about the license of the image loader for the format.
          *
@@ -2455,17 +2460,17 @@ export namespace GdkPixbuf {
          * "LGPL", "GPL", "QPL", "GPL/QPL", or "other" to indicate some other license.
          * @returns a string describing the license of the pixbuf format
          */
-        get_license(): string;
+        get_license(): string | null;
         /**
          * Returns the mime types supported by the format.
          * @returns an array of mime types
          */
-        get_mime_types(): string[];
+        get_mime_types(): string[] | null;
         /**
          * Returns the name of the format.
          * @returns the name of the format.
          */
-        get_name(): string;
+        get_name(): string | null;
         /**
          * Returns whether this image format is disabled.
          *

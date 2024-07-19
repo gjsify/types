@@ -267,18 +267,6 @@ export namespace AppStreamCompose {
      * @param enabled
      */
     function globals_set_use_optipng(enabled: boolean): void;
-    /**
-     * Converts the text representation to an enumerated value.
-     * @param state_str the string.
-     * @returns a #AscIconState
-     */
-    function icon_state_from_string(state_str: string): IconState;
-    /**
-     * Converts the enumerated value to an text representation.
-     * @param istate the #AscIconState.
-     * @returns string version of @istate
-     */
-    function icon_state_to_string(istate: IconState): string;
     function image_error_quark(): GLib.Quark;
     /**
      * Returns the image format type based on the given file's filename.
@@ -773,22 +761,12 @@ export namespace AppStreamCompose {
         // Own methods of AppStreamCompose.IconPolicy
 
         /**
-         * Loads the icon policy from a textual representation.
-         * @param serialized_policy A policy string as returned by %asc_icon_policy_to_string
-         */
-        from_string(serialized_policy: string): boolean;
-        /**
          * Sets a designated state for an icon of the given size.
          * @param icon_size the size of the icon to set policy for (e.g. 64 for 64x64px icons)
          * @param icon_scale the icon scale factor, e.g. 1
          * @param state the designated #AscIconState
          */
         set_policy(icon_size: number, icon_scale: number, state: IconState): void;
-        /**
-         * Converts the current icon policy into a textual representation.
-         * @returns The icon policy serialized into a string. Free with g_free()
-         */
-        to_string(): string;
     }
 
     module Image {

@@ -51,9 +51,10 @@ export namespace CoglPango {
     function font_map_get_renderer(font_map: FontMap): Pango.Renderer;
     /**
      * Creates a new font map.
+     * @param context
      * @returns the newly created #PangoFontMap
      */
-    function font_map_new(): Pango.FontMap;
+    function font_map_new(context: Cogl.Context): Pango.FontMap;
     /**
      * Sets the resolution for the `font_map`.
      *

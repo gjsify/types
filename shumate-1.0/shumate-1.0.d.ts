@@ -269,10 +269,6 @@ export namespace Shumate {
      */
     const MAX_LONGITUDE: number;
     /**
-     * The micro version of libshumate (3, if %SHUMATE_VERSION is 1.2.3)
-     */
-    const MICRO_VERSION: number;
-    /**
      * The minor version of libshumate (2, if %SHUMATE_VERSION is 1.2.3)
      */
     const MINOR_VERSION: number;

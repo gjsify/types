@@ -67,6 +67,26 @@ export namespace Secret {
          * the file format is not valid
          */
         INVALID_FILE_FORMAT,
+        /**
+         * the xdg:schema attribute of the table does
+         * not match the schema name
+         */
+        MISMATCHED_SCHEMA,
+        /**
+         * attribute contained in table not found
+         * in corresponding schema
+         */
+        NO_MATCHING_ATTRIBUTE,
+        /**
+         * attribute could not be parsed according to its type
+         * reported in the table's schema
+         */
+        WRONG_TYPE,
+        /**
+         * attribute list passed to secret_attributes_validate
+         * has no elements to validate
+         */
+        EMPTY_TABLE,
     }
     /**
      * The type of an attribute in a [struct`SecretSchema]`.
@@ -189,6 +209,19 @@ export namespace Secret {
      * The minor version of libsecret.
      */
     const MINOR_VERSION: number;
+    /**
+     * Check if attributes are valid according to the provided schema.
+     *
+     * Verifies schema name if available, attribute names and parsing
+     * of attribute values.
+     * @param schema the schema for the attributes
+     * @param attributes the attributes to be validated
+     * @returns whether or not the given attributes table is valid
+     */
+    function attributes_validate(
+        schema: Schema,
+        attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+    ): boolean;
     /**
      * Get a #SecretBackend instance.
      *
@@ -3903,6 +3936,13 @@ export namespace Secret {
          * This will always be either [class`Item]` or derived from it.
          */
         vfunc_get_item_gtype(): GObject.GType;
+        /**
+         * called to perform asynchronous prompting when necessary
+         * @param prompt
+         * @param return_type
+         * @param cancellable
+         * @param callback
+         */
         vfunc_prompt_async(
             prompt: Prompt,
             return_type: GLib.VariantType,
@@ -4803,26 +4843,66 @@ export namespace Secret {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * implementation of [func`password_clear]`, required
+         * @param schema
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         vfunc_clear(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_clear_finish]`, required
+         * @param result
+         */
         vfunc_clear_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * implementation of reinitialization step in constructor, optional
+         * @param flags
+         * @param cancellable
+         * @param callback
+         */
         vfunc_ensure_for_flags(
             flags: BackendFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of reinitialization step in constructor, optional
+         * @param result
+         */
         vfunc_ensure_for_flags_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * implementation of [func`password_lookup]`, required
+         * @param schema
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         vfunc_lookup(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_lookup_finish]`, required
+         * @param result
+         */
         vfunc_lookup_finish(result: Gio.AsyncResult): Value;
+        /**
+         * implementation of [func`password_search]`, required
+         * @param schema
+         * @param attributes
+         * @param flags
+         * @param cancellable
+         * @param callback
+         */
         vfunc_search(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -4830,6 +4910,16 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_store]`, required
+         * @param schema
+         * @param attributes
+         * @param collection
+         * @param label
+         * @param value
+         * @param cancellable
+         * @param callback
+         */
         vfunc_store(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -4839,6 +4929,10 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_store_finish]`, required
+         * @param result
+         */
         vfunc_store_finish(result: Gio.AsyncResult): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -5298,7 +5392,7 @@ export namespace Secret {
      * items that are not stored by the libsecret library. Other libraries such as
      * libgnome-keyring don't store the schema name.
      *
-     * Additional schemas can be defined via the %SecretSchema structure like this:
+     * Additional schemas can be defined via the [struct`Schema]` structure like this:
      *
      * ```c
      * // in a header:
@@ -5515,26 +5609,66 @@ export namespace Secret {
 
         // Own virtual methods of Secret.Backend
 
+        /**
+         * implementation of [func`password_clear]`, required
+         * @param schema
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         vfunc_clear(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_clear_finish]`, required
+         * @param result
+         */
         vfunc_clear_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * implementation of reinitialization step in constructor, optional
+         * @param flags
+         * @param cancellable
+         * @param callback
+         */
         vfunc_ensure_for_flags(
             flags: BackendFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of reinitialization step in constructor, optional
+         * @param result
+         */
         vfunc_ensure_for_flags_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * implementation of [func`password_lookup]`, required
+         * @param schema
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         vfunc_lookup(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_lookup_finish]`, required
+         * @param result
+         */
         vfunc_lookup_finish(result: Gio.AsyncResult): Value;
+        /**
+         * implementation of [func`password_search]`, required
+         * @param schema
+         * @param attributes
+         * @param flags
+         * @param cancellable
+         * @param callback
+         */
         vfunc_search(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -5542,6 +5676,16 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_store]`, required
+         * @param schema
+         * @param attributes
+         * @param collection
+         * @param label
+         * @param value
+         * @param cancellable
+         * @param callback
+         */
         vfunc_store(
             schema: Schema,
             attributes: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -5551,6 +5695,10 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * implementation of [func`password_store_finish]`, required
+         * @param result
+         */
         vfunc_store_finish(result: Gio.AsyncResult): boolean;
     }
 

@@ -970,10 +970,6 @@ export namespace GstPbutils {
             (): void;
         }
 
-        interface LoadSerializedInfo {
-            (uri: string): DiscovererInfo | null;
-        }
-
         interface SourceSetup {
             (source: Gst.Element): void;
         }
@@ -1053,15 +1049,6 @@ export namespace GstPbutils {
         connect(signal: 'finished', callback: (_source: this) => void): number;
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
-        connect(
-            signal: 'load-serialized-info',
-            callback: (_source: this, uri: string) => DiscovererInfo | null,
-        ): number;
-        connect_after(
-            signal: 'load-serialized-info',
-            callback: (_source: this, uri: string) => DiscovererInfo | null,
-        ): number;
-        emit(signal: 'load-serialized-info', uri: string): void;
         connect(signal: 'source-setup', callback: (_source: this, source: Gst.Element) => void): number;
         connect_after(signal: 'source-setup', callback: (_source: this, source: Gst.Element) => void): number;
         emit(signal: 'source-setup', source: Gst.Element): void;
@@ -1073,11 +1060,6 @@ export namespace GstPbutils {
 
         vfunc_discovered(info: DiscovererInfo, err: GLib.Error): void;
         vfunc_finished(): void;
-        /**
-         * Loads the serialized info from the given uri.
-         * @param uri the uri to load the info from
-         */
-        vfunc_load_serialize_info(uri: string): DiscovererInfo;
         vfunc_source_setup(source: Gst.Element): void;
         vfunc_starting(): void;
 
@@ -1300,7 +1282,7 @@ export namespace GstPbutils {
         get_misc(): Gst.Structure | null;
         get_next(): DiscovererStreamInfo | null;
         get_previous(): DiscovererStreamInfo | null;
-        get_stream_id(): string | null;
+        get_stream_id(): string;
         get_stream_number(): number;
         get_stream_type_nick(): string;
         get_tags(): Gst.TagList | null;

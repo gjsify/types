@@ -1428,12 +1428,27 @@ export namespace GeocodeGlib {
 
         // Own virtual methods of GeocodeGlib.Nominatim
 
+        /**
+         * synchronous query function to override network `GET` requests.
+         * @param uri
+         * @param cancellable
+         */
         vfunc_query(uri: string, cancellable?: Gio.Cancellable | null): string;
+        /**
+         * asynchronous version of `query`.
+         * @param uri
+         * @param cancellable
+         * @param callback
+         */
         vfunc_query_async(
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * asynchronous finish function for `query_async`.
+         * @param res
+         */
         vfunc_query_finish(res: Gio.AsyncResult): string;
 
         // Inherited methods
