@@ -1,4 +1,5 @@
-/*
+
+/**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
@@ -7,6 +8,7 @@
 
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+
 import gettext from './gettext.js';
 import system from './system.js';
 import cairo from './cairo.js';

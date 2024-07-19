@@ -1,3 +1,5 @@
+
+
 import type GObject from '@girs/gobject-2.0';
 
 /**
@@ -172,4 +174,6 @@ declare const System: {
 }
 
 export default System
+
+
 

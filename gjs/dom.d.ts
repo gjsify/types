@@ -1,12 +1,15 @@
+
 /**
  * Gjs has implemented some functionality from the DOM API,
  * this leads to a conflict when all DOM (`lib.dom.d.ts`) should be used.
  * This should normally not be the case, since the other - not yet reimplemented - API's cannot be used in GJS anyway.
- * In particular, Gjsify tries to rebuild the DOM API and therefore does not need these types.
- * For this reason they are stored in this separate file to make them optional.
- * 
+ *
+ * If for some reason the entire DOM types should still be used,
+ * this file can be ignored and `lib.dom.d.ts` used instead, otherwise this file should be imported in your project.
+ *
  * See also https://github.com/microsoft/TypeScript/blob/main/lib/lib.dom.d.ts
  */
+
 
 import type GLib from '@girs/glib-2.0';
 
