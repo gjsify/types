@@ -1,6 +1,6 @@
 {
     "name": "@girs/notify-0.7",
-    "version": "0.8.3-4.0.0-beta.7",
+    "version": "0.8.3-4.0.0-beta.8",
     "description": "GJS TypeScript type definitions for Notify-0.7, generated from library version 0.8.3",
     "type": "module",
     "module": "notify-0.7.js",
