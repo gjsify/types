@@ -19,6 +19,10 @@ export namespace GCalc {
      * GCalc-2
      */
 
+    export namespace AngleUnit {
+        export const $gtype: GObject.GType<AngleUnit>;
+    }
+
     enum AngleUnit {
         RADIANS,
         DEGREES,
@@ -121,6 +125,10 @@ export namespace GCalc {
         _init(...args: any[]): void;
     }
 
+    export namespace ParserTokenType {
+        export const $gtype: GObject.GType<ParserTokenType>;
+    }
+
     enum ParserTokenType {
         NONE,
         EOF,
@@ -165,6 +173,10 @@ export namespace GCalc {
         HASH,
         CURRENCY_SYMBOL,
     }
+    export namespace MathGroupLevel {
+        export const $gtype: GObject.GType<MathGroupLevel>;
+    }
+
     enum MathGroupLevel {
         ONE,
         TWO,

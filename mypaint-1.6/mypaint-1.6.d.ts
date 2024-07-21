@@ -16,6 +16,10 @@ export namespace MyPaint {
      * MyPaint-1.6
      */
 
+    export namespace BrushInput {
+        export const $gtype: GObject.GType<BrushInput>;
+    }
+
     enum BrushInput {
         INPUT_PRESSURE,
         INPUT_SPEED1,
@@ -37,6 +41,10 @@ export namespace MyPaint {
         INPUT_BRUSH_RADIUS,
         INPUTS_COUNT,
     }
+    export namespace BrushSetting {
+        export const $gtype: GObject.GType<BrushSetting>;
+    }
+
     enum BrushSetting {
         SETTING_OPAQUE,
         SETTING_OPAQUE_MULTIPLY,
@@ -104,6 +112,10 @@ export namespace MyPaint {
         SETTING_PAINT_MODE,
         SETTINGS_COUNT,
     }
+    export namespace BrushState {
+        export const $gtype: GObject.GType<BrushState>;
+    }
+
     enum BrushState {
         STATE_X,
         STATE_Y,

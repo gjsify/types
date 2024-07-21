@@ -19,6 +19,10 @@ export namespace AppStreamGlib {
      * AppStreamGlib-1.0
      */
 
+    export namespace AgreementKind {
+        export const $gtype: GObject.GType<AgreementKind>;
+    }
+
     /**
      * The kind of the agreement.
      */
@@ -40,6 +44,10 @@ export namespace AppStreamGlib {
          */
         PRIVACY,
     }
+    export namespace AppError {
+        export const $gtype: GObject.GType<AppError>;
+    }
+
     /**
      * The error type.
      */
@@ -53,6 +61,10 @@ export namespace AppStreamGlib {
          */
         INVALID_TYPE,
     }
+    export namespace AppKind {
+        export const $gtype: GObject.GType<AppKind>;
+    }
+
     /**
      * The component type.
      */
@@ -130,6 +142,10 @@ export namespace AppStreamGlib {
          */
         ICON_THEME,
     }
+    export namespace AppMergeKind {
+        export const $gtype: GObject.GType<AppMergeKind>;
+    }
+
     /**
      * The component merge kind.
      */
@@ -151,6 +167,10 @@ export namespace AppStreamGlib {
          */
         APPEND,
     }
+    export namespace AppScope {
+        export const $gtype: GObject.GType<AppScope>;
+    }
+
     /**
      * The application scope.
      */
@@ -168,6 +188,10 @@ export namespace AppStreamGlib {
          */
         SYSTEM,
     }
+    export namespace AppState {
+        export const $gtype: GObject.GType<AppState>;
+    }
+
     /**
      * The application state.
      */
@@ -221,6 +245,10 @@ export namespace AppStreamGlib {
          */
         PURCHASING,
     }
+    export namespace AppTrustFlags {
+        export const $gtype: GObject.GType<AppTrustFlags>;
+    }
+
     /**
      * The flags to use when checking input.
      */
@@ -238,6 +266,10 @@ export namespace AppStreamGlib {
          */
         CHECK_VALID_UTF8,
     }
+    export namespace AppValidateFlags {
+        export const $gtype: GObject.GType<AppValidateFlags>;
+    }
+
     /**
      * The flags to use when validating.
      */
@@ -263,6 +295,10 @@ export namespace AppStreamGlib {
          */
         ALL_APPS,
     }
+    export namespace BundleKind {
+        export const $gtype: GObject.GType<BundleKind>;
+    }
+
     /**
      * The bundle type.
      */
@@ -296,6 +332,10 @@ export namespace AppStreamGlib {
          */
         APPIMAGE,
     }
+    export namespace ChecksumTarget {
+        export const $gtype: GObject.GType<ChecksumTarget>;
+    }
+
     /**
      * The checksum target type.
      */
@@ -321,6 +361,10 @@ export namespace AppStreamGlib {
          */
         DEVICE,
     }
+    export namespace ContentRatingSystem {
+        export const $gtype: GObject.GType<ContentRatingSystem>;
+    }
+
     /**
      * A content rating system for a particular territory.
      */
@@ -390,6 +434,10 @@ export namespace AppStreamGlib {
          */
         IARC,
     }
+    export namespace ContentRatingValue {
+        export const $gtype: GObject.GType<ContentRatingValue>;
+    }
+
     /**
      * The specified level of an content_rating rating ID.
      */
@@ -415,6 +463,10 @@ export namespace AppStreamGlib {
          */
         INTENSE,
     }
+    export namespace FormatKind {
+        export const $gtype: GObject.GType<FormatKind>;
+    }
+
     /**
      * The format kind.
      */
@@ -440,6 +492,10 @@ export namespace AppStreamGlib {
          */
         METAINFO,
     }
+    export namespace IconError {
+        export const $gtype: GObject.GType<IconError>;
+    }
+
     /**
      * The error type.
      */
@@ -449,6 +505,10 @@ export namespace AppStreamGlib {
          */
         FAILED,
     }
+    export namespace IconKind {
+        export const $gtype: GObject.GType<IconKind>;
+    }
+
     /**
      * The icon type.
      */
@@ -478,6 +538,10 @@ export namespace AppStreamGlib {
          */
         LOCAL,
     }
+    export namespace IconLoadFlags {
+        export const $gtype: GObject.GType<IconLoadFlags>;
+    }
+
     /**
      * The flags to use when loading icons.
      */
@@ -491,6 +555,10 @@ export namespace AppStreamGlib {
          */
         SEARCH_SIZE,
     }
+    export namespace IdKind {
+        export const $gtype: GObject.GType<IdKind>;
+    }
+
     /**
      * The component type.
      */
@@ -540,6 +608,10 @@ export namespace AppStreamGlib {
          */
         GENERIC,
     }
+    export namespace ImageKind {
+        export const $gtype: GObject.GType<ImageKind>;
+    }
+
     /**
      * The image type.
      */
@@ -557,6 +629,10 @@ export namespace AppStreamGlib {
          */
         THUMBNAIL,
     }
+    export namespace ImageLoadFlags {
+        export const $gtype: GObject.GType<ImageLoadFlags>;
+    }
+
     /**
      * The flags used for loading images.
      */
@@ -586,6 +662,10 @@ export namespace AppStreamGlib {
          */
         ALWAYS_RESIZE,
     }
+    export namespace ImageSaveFlags {
+        export const $gtype: GObject.GType<ImageSaveFlags>;
+    }
+
     /**
      * The flags used for saving images.
      */
@@ -634,6 +714,10 @@ export namespace AppStreamGlib {
         _init(...args: any[]): void;
     }
 
+    export namespace KudoKind {
+        export const $gtype: GObject.GType<KudoKind>;
+    }
+
     /**
      * The kudo type.
      */
@@ -671,6 +755,10 @@ export namespace AppStreamGlib {
          */
         HI_DPI_ICON,
     }
+    export namespace LaunchableKind {
+        export const $gtype: GObject.GType<LaunchableKind>;
+    }
+
     /**
      * The launchable type.
      */
@@ -696,6 +784,10 @@ export namespace AppStreamGlib {
          */
         URL,
     }
+    export namespace MarkupConvertFormat {
+        export const $gtype: GObject.GType<MarkupConvertFormat>;
+    }
+
     /**
      * The format used when converting to or from AppStream descriptions.
      */
@@ -748,6 +840,10 @@ export namespace AppStreamGlib {
         _init(...args: any[]): void;
     }
 
+    export namespace NodeInsertFlags {
+        export const $gtype: GObject.GType<NodeInsertFlags>;
+    }
+
     /**
      * The flags to use when inserting a node.
      */
@@ -781,6 +877,10 @@ export namespace AppStreamGlib {
          */
         BASE64_ENCODED,
     }
+    export namespace NodeToXmlFlags {
+        export const $gtype: GObject.GType<NodeToXmlFlags>;
+    }
+
     /**
      * The flags for converting to XML.
      */
@@ -810,6 +910,10 @@ export namespace AppStreamGlib {
          */
         SORT_CHILDREN,
     }
+    export namespace ProblemKind {
+        export const $gtype: GObject.GType<ProblemKind>;
+    }
+
     /**
      * The problem type.
      */
@@ -875,6 +979,10 @@ export namespace AppStreamGlib {
          */
         RESOLUTION_INCORRECT,
     }
+    export namespace ProvideKind {
+        export const $gtype: GObject.GType<ProvideKind>;
+    }
+
     /**
      * The provide type.
      */
@@ -928,6 +1036,10 @@ export namespace AppStreamGlib {
          */
         ID,
     }
+    export namespace ReleaseKind {
+        export const $gtype: GObject.GType<ReleaseKind>;
+    }
+
     /**
      * The release size kind.
      */
@@ -945,6 +1057,10 @@ export namespace AppStreamGlib {
          */
         DEVELOPMENT,
     }
+    export namespace ReleaseState {
+        export const $gtype: GObject.GType<ReleaseState>;
+    }
+
     /**
      * The release state.
      */
@@ -962,6 +1078,10 @@ export namespace AppStreamGlib {
          */
         AVAILABLE,
     }
+    export namespace RequireCompare {
+        export const $gtype: GObject.GType<RequireCompare>;
+    }
+
     /**
      * The relational comparison type.
      */
@@ -1003,6 +1123,10 @@ export namespace AppStreamGlib {
          */
         REGEX,
     }
+    export namespace RequireKind {
+        export const $gtype: GObject.GType<RequireKind>;
+    }
+
     /**
      * The require type.
      */
@@ -1036,6 +1160,10 @@ export namespace AppStreamGlib {
          */
         MEMORY,
     }
+    export namespace ScreenshotKind {
+        export const $gtype: GObject.GType<ScreenshotKind>;
+    }
+
     /**
      * The screenshot type.
      */
@@ -1053,6 +1181,10 @@ export namespace AppStreamGlib {
          */
         DEFAULT,
     }
+    export namespace SizeKind {
+        export const $gtype: GObject.GType<SizeKind>;
+    }
+
     /**
      * The release size kind.
      */
@@ -1070,6 +1202,10 @@ export namespace AppStreamGlib {
          */
         DOWNLOAD,
     }
+    export namespace StoreError {
+        export const $gtype: GObject.GType<StoreError>;
+    }
+
     /**
      * The error type.
      */
@@ -1079,6 +1215,10 @@ export namespace AppStreamGlib {
          */
         FAILED,
     }
+    export namespace StoreSearchFlags {
+        export const $gtype: GObject.GType<StoreSearchFlags>;
+    }
+
     /**
      * The flags to use when searching in the store.
      */
@@ -1092,6 +1232,10 @@ export namespace AppStreamGlib {
          */
         USE_WILDCARDS,
     }
+    export namespace StoreWatchFlags {
+        export const $gtype: GObject.GType<StoreWatchFlags>;
+    }
+
     /**
      * The flags to use when local files are added or removed from the store.
      */
@@ -1109,6 +1253,10 @@ export namespace AppStreamGlib {
          */
         REMOVED,
     }
+    export namespace SuggestKind {
+        export const $gtype: GObject.GType<SuggestKind>;
+    }
+
     /**
      * The suggest type.
      */
@@ -1126,6 +1274,10 @@ export namespace AppStreamGlib {
          */
         HEURISTIC,
     }
+    export namespace Tag {
+        export const $gtype: GObject.GType<Tag>;
+    }
+
     /**
      * The tag type.
      */
@@ -1388,6 +1540,10 @@ export namespace AppStreamGlib {
         MODALIAS,
         LIBRARY,
     }
+    export namespace TagFlags {
+        export const $gtype: GObject.GType<TagFlags>;
+    }
+
     /**
      * The flags to use when matching %AsTag's.
      */
@@ -1405,6 +1561,10 @@ export namespace AppStreamGlib {
          */
         USE_TRANSLATED,
     }
+    export namespace TranslationKind {
+        export const $gtype: GObject.GType<TranslationKind>;
+    }
+
     /**
      * The translation type.
      */
@@ -1422,6 +1582,10 @@ export namespace AppStreamGlib {
          */
         QT,
     }
+    export namespace UrgencyKind {
+        export const $gtype: GObject.GType<UrgencyKind>;
+    }
+
     /**
      * The urgency of a release.
      */
@@ -1447,6 +1611,10 @@ export namespace AppStreamGlib {
          */
         CRITICAL,
     }
+    export namespace UrlKind {
+        export const $gtype: GObject.GType<UrlKind>;
+    }
+
     /**
      * The URL type.
      */
@@ -1525,6 +1693,10 @@ export namespace AppStreamGlib {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace UtilsLocation {
+        export const $gtype: GObject.GType<UtilsLocation>;
     }
 
     /**
@@ -2093,6 +2265,10 @@ export namespace AppStreamGlib {
      * @returns A version number, e.g. "1.0.3"
      */
     function utils_version_parse(version: string): string;
+    export namespace AppParseFlags {
+        export const $gtype: GObject.GType<AppParseFlags>;
+    }
+
     /**
      * The flags to use when parsing resources.
      */
@@ -2134,6 +2310,10 @@ export namespace AppStreamGlib {
          */
         ONLY_NATIVE_LANGS,
     }
+    export namespace AppQuirk {
+        export const $gtype: GObject.GType<AppQuirk>;
+    }
+
     /**
      * The component attributes.
      */
@@ -2191,6 +2371,10 @@ export namespace AppStreamGlib {
          */
         DEVELOPER_VERIFIED,
     }
+    export namespace AppSearchMatch {
+        export const $gtype: GObject.GType<AppSearchMatch>;
+    }
+
     /**
      * The token match kind, which we want to be exactly 16 bits for storage
      * reasons.
@@ -2233,6 +2417,10 @@ export namespace AppStreamGlib {
          */
         ORIGIN,
     }
+    export namespace AppSubsumeFlags {
+        export const $gtype: GObject.GType<AppSubsumeFlags>;
+    }
+
     /**
      * The flags to use when subsuming applications.
      */
@@ -2388,6 +2576,10 @@ export namespace AppStreamGlib {
          */
         AGREEMENTS,
     }
+    export namespace InfLoadFlags {
+        export const $gtype: GObject.GType<InfLoadFlags>;
+    }
+
     /**
      * The flags used when loading INF files.
      */
@@ -2405,6 +2597,10 @@ export namespace AppStreamGlib {
          */
         CASE_INSENSITIVE,
     }
+    export namespace MarkupConvertFlag {
+        export const $gtype: GObject.GType<MarkupConvertFlag>;
+    }
+
     /**
      * The flags used when converting descriptions from AppStream-style.
      */
@@ -2418,6 +2614,10 @@ export namespace AppStreamGlib {
          */
         IGNORE_ERRORS,
     }
+    export namespace NodeFromXmlFlags {
+        export const $gtype: GObject.GType<NodeFromXmlFlags>;
+    }
+
     /**
      * The flags for converting from XML.
      */
@@ -2439,6 +2639,10 @@ export namespace AppStreamGlib {
          */
         ONLY_NATIVE_LANGS,
     }
+    export namespace ReviewFlags {
+        export const $gtype: GObject.GType<ReviewFlags>;
+    }
+
     /**
      * The flags for the review.
      */
@@ -2456,6 +2660,10 @@ export namespace AppStreamGlib {
          */
         VOTED,
     }
+    export namespace StoreAddFlags {
+        export const $gtype: GObject.GType<StoreAddFlags>;
+    }
+
     /**
      * The flags to use when adding applications to the store.
      */
@@ -2481,6 +2689,10 @@ export namespace AppStreamGlib {
          */
         ONLY_NATIVE_LANGS,
     }
+    export namespace StoreLoadFlags {
+        export const $gtype: GObject.GType<StoreLoadFlags>;
+    }
+
     /**
      * The flags to use when loading the store.
      */
@@ -2534,6 +2746,10 @@ export namespace AppStreamGlib {
          */
         ONLY_MERGE_APPS,
     }
+    export namespace UniqueIdMatchFlags {
+        export const $gtype: GObject.GType<UniqueIdMatchFlags>;
+    }
+
     /**
      * The flags used when matching unique IDs.
      */
@@ -2567,6 +2783,10 @@ export namespace AppStreamGlib {
          */
         BRANCH,
     }
+    export namespace UtilsFindIconFlag {
+        export const $gtype: GObject.GType<UtilsFindIconFlag>;
+    }
+
     /**
      * The flags used when finding icons.
      */
@@ -2580,6 +2800,10 @@ export namespace AppStreamGlib {
          */
         HI_DPI,
     }
+    export namespace VersionCompareFlag {
+        export const $gtype: GObject.GType<VersionCompareFlag>;
+    }
+
     /**
      * The flags used when comparing version numbers.
      */
@@ -2593,6 +2817,10 @@ export namespace AppStreamGlib {
          */
         USE_HEURISTICS,
     }
+    export namespace VersionParseFlag {
+        export const $gtype: GObject.GType<VersionParseFlag>;
+    }
+
     /**
      * The flags used when parsing version numbers.
      */

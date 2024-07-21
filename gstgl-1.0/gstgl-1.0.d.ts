@@ -49,6 +49,10 @@ export namespace GstGL {
         static quark(): GLib.Quark;
     }
 
+    export namespace GLConfigCaveat {
+        export const $gtype: GObject.GType<GLConfigCaveat>;
+    }
+
     enum GLConfigCaveat {
         /**
          * none
@@ -104,6 +108,10 @@ export namespace GstGL {
         // Own static methods of GstGL.GLContextError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace GLFormat {
+        export const $gtype: GObject.GType<GLFormat>;
     }
 
     enum GLFormat {
@@ -189,6 +197,10 @@ export namespace GstGL {
          */
         RG16,
     }
+    export namespace GLQueryType {
+        export const $gtype: GObject.GType<GLQueryType>;
+    }
+
     enum GLQueryType {
         /**
          * no query
@@ -232,6 +244,10 @@ export namespace GstGL {
         // Own static methods of GstGL.GLSLError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace GLSLVersion {
+        export const $gtype: GObject.GType<GLSLVersion>;
     }
 
     /**
@@ -319,6 +335,10 @@ export namespace GstGL {
         _init(...args: any[]): void;
     }
 
+    export namespace GLStereoDownmix {
+        export const $gtype: GObject.GType<GLStereoDownmix>;
+    }
+
     /**
      * Output anaglyph type to generate when downmixing to mono
      */
@@ -336,6 +356,10 @@ export namespace GstGL {
          */
         AMBER_BLUE_DUBOIS,
     }
+    export namespace GLTextureTarget {
+        export const $gtype: GObject.GType<GLTextureTarget>;
+    }
+
     /**
      * The OpenGL texture target that an OpenGL texture can be bound to.  The
      * gst_gl_value_set_texture_target_from_mask(),
@@ -363,6 +387,10 @@ export namespace GstGL {
          */
         EXTERNAL_OES,
     }
+    export namespace GLUploadReturn {
+        export const $gtype: GObject.GType<GLUploadReturn>;
+    }
+
     enum GLUploadReturn {
         /**
          * No further processing required
@@ -794,6 +822,10 @@ export namespace GstGL {
     interface GLWindowResizeCB {
         (data: any | null, width: number, height: number): void;
     }
+    export namespace GLAPI {
+        export const $gtype: GObject.GType<GLAPI>;
+    }
+
     enum GLAPI {
         /**
          * no API
@@ -821,6 +853,10 @@ export namespace GstGL {
          */
         ANY,
     }
+    export namespace GLBaseMemoryTransfer {
+        export const $gtype: GObject.GType<GLBaseMemoryTransfer>;
+    }
+
     enum GLBaseMemoryTransfer {
         /**
          * the texture needs downloading
@@ -833,6 +869,10 @@ export namespace GstGL {
          */
         UPLOAD,
     }
+    export namespace GLConfigSurfaceType {
+        export const $gtype: GObject.GType<GLConfigSurfaceType>;
+    }
+
     enum GLConfigSurfaceType {
         /**
          * none
@@ -851,6 +891,10 @@ export namespace GstGL {
          */
         PIXMAP,
     }
+    export namespace GLDisplayType {
+        export const $gtype: GObject.GType<GLDisplayType>;
+    }
+
     enum GLDisplayType {
         /**
          * no display type
@@ -909,6 +953,10 @@ export namespace GstGL {
          */
         ANY,
     }
+    export namespace GLPlatform {
+        export const $gtype: GObject.GType<GLPlatform>;
+    }
+
     enum GLPlatform {
         /**
          * no platform
@@ -940,6 +988,10 @@ export namespace GstGL {
          */
         ANY,
     }
+    export namespace GLSLProfile {
+        export const $gtype: GObject.GType<GLSLProfile>;
+    }
+
     /**
      * GLSL profiles
      */

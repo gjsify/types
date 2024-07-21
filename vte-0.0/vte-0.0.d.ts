@@ -55,11 +55,19 @@ export namespace Vte {
         static quark(): GLib.Quark;
     }
 
+    export namespace TerminalAntiAlias {
+        export const $gtype: GObject.GType<TerminalAntiAlias>;
+    }
+
     enum TerminalAntiAlias {
         USE_DEFAULT,
         FORCE_ENABLE,
         FORCE_DISABLE,
     }
+    export namespace TerminalCursorBlinkMode {
+        export const $gtype: GObject.GType<TerminalCursorBlinkMode>;
+    }
+
     /**
      * An enumerated type which can be used to indicate the cursor blink mode
      * for the terminal.
@@ -78,6 +86,10 @@ export namespace Vte {
          */
         OFF,
     }
+    export namespace TerminalCursorShape {
+        export const $gtype: GObject.GType<TerminalCursorShape>;
+    }
+
     /**
      * An enumerated type which can be used to indicate what should the terminal
      * draw at the cursor position.
@@ -97,6 +109,10 @@ export namespace Vte {
          */
         UNDERLINE,
     }
+    export namespace TerminalEraseBinding {
+        export const $gtype: GObject.GType<TerminalEraseBinding>;
+    }
+
     /**
      * An enumerated type which can be used to indicate which string the terminal
      * should send to an application when the user presses the Delete or Backspace
@@ -124,6 +140,10 @@ export namespace Vte {
          */
         TTY,
     }
+    export namespace TerminalWriteFlags {
+        export const $gtype: GObject.GType<TerminalWriteFlags>;
+    }
+
     /**
      * A flag type to determine how terminal contents should be written
      * to an output stream.
@@ -149,6 +169,10 @@ export namespace Vte {
     interface SelectionFunc {
         (terminal: Terminal, column: number, row: number, data?: any | null): boolean;
     }
+    export namespace PtyFlags {
+        export const $gtype: GObject.GType<PtyFlags>;
+    }
+
     enum PtyFlags {
         /**
          * don't record the session in lastlog

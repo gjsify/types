@@ -19,20 +19,36 @@ export namespace Folks {
      * Folks-0.6
      */
 
+    export namespace Gender {
+        export const $gtype: GObject.GType<Gender>;
+    }
+
     enum Gender {
         UNSPECIFIED,
         MALE,
         FEMALE,
     }
+    export namespace TrustLevel {
+        export const $gtype: GObject.GType<TrustLevel>;
+    }
+
     enum TrustLevel {
         NONE,
         PERSONAS,
     }
+    export namespace PersonaStoreTrust {
+        export const $gtype: GObject.GType<PersonaStoreTrust>;
+    }
+
     enum PersonaStoreTrust {
         NONE,
         PARTIAL,
         FULL,
     }
+    export namespace PersonaDetail {
+        export const $gtype: GObject.GType<PersonaDetail>;
+    }
+
     enum PersonaDetail {
         INVALID,
         ALIAS,
@@ -61,6 +77,10 @@ export namespace Folks {
         ANTI_LINKS,
         EXTENDED_INFO,
     }
+    export namespace MatchResult {
+        export const $gtype: GObject.GType<MatchResult>;
+    }
+
     enum MatchResult {
         NONE,
         VERY_LOW,
@@ -71,6 +91,10 @@ export namespace Folks {
         MIN,
         MAX,
     }
+    export namespace PresenceType {
+        export const $gtype: GObject.GType<PresenceType>;
+    }
+
     enum PresenceType {
         UNSET,
         OFFLINE,
@@ -82,6 +106,10 @@ export namespace Folks {
         UNKNOWN,
         ERROR,
     }
+    export namespace MaybeBool {
+        export const $gtype: GObject.GType<MaybeBool>;
+    }
+
     enum MaybeBool {
         UNSET,
         FALSE,
@@ -151,6 +179,10 @@ export namespace Folks {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace GroupDetailsChangeReason {
+        export const $gtype: GObject.GType<GroupDetailsChangeReason>;
     }
 
     enum GroupDetailsChangeReason {

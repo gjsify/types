@@ -27,6 +27,10 @@ export namespace Gd {
      * Gd-1.0
      */
 
+    export namespace MainColumns {
+        export const $gtype: GObject.GType<MainColumns>;
+    }
+
     enum MainColumns {
         ID,
         URI,
@@ -38,10 +42,18 @@ export namespace Gd {
         PULSE,
         LAST,
     }
+    export namespace MainViewType {
+        export const $gtype: GObject.GType<MainViewType>;
+    }
+
     enum MainViewType {
         ICON,
         LIST,
     }
+    export namespace StackTransitionType {
+        export const $gtype: GObject.GType<StackTransitionType>;
+    }
+
     enum StackTransitionType {
         NONE,
         CROSSFADE,

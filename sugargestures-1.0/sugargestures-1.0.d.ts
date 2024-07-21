@@ -27,22 +27,38 @@ export namespace SugarGestures {
      * SugarGestures-1.0
      */
 
+    export namespace EventControllerState {
+        export const $gtype: GObject.GType<EventControllerState>;
+    }
+
     enum EventControllerState {
         NONE,
         COLLECTING,
         RECOGNIZED,
         NOT_RECOGNIZED,
     }
+    export namespace SwipeDirection {
+        export const $gtype: GObject.GType<SwipeDirection>;
+    }
+
     enum SwipeDirection {
         LEFT,
         RIGHT,
         UP,
         DOWN,
     }
+    export namespace EventControllerFlags {
+        export const $gtype: GObject.GType<EventControllerFlags>;
+    }
+
     enum EventControllerFlags {
         NONE,
         EXCLUSIVE,
     }
+    export namespace SwipeDirectionFlags {
+        export const $gtype: GObject.GType<SwipeDirectionFlags>;
+    }
+
     enum SwipeDirectionFlags {
         LEFT,
         RIGHT,

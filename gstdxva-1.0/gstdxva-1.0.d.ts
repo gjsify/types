@@ -21,6 +21,10 @@ export namespace GstDxva {
      * GstDxva-1.0
      */
 
+    export namespace DxvaCodec {
+        export const $gtype: GObject.GType<DxvaCodec>;
+    }
+
     enum DxvaCodec {
         NONE,
         MPEG2,

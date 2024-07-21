@@ -23,6 +23,10 @@ export namespace Gdk {
      * Gdk-3.0
      */
 
+    export namespace AxisUse {
+        export const $gtype: GObject.GType<AxisUse>;
+    }
+
     /**
      * An enumeration describing the way in which a device
      * axis (valuator) maps onto the predefined valuator
@@ -78,6 +82,10 @@ export namespace Gdk {
          */
         LAST,
     }
+    export namespace ByteOrder {
+        export const $gtype: GObject.GType<ByteOrder>;
+    }
+
     /**
      * A set of values describing the possible byte-orders
      * for storing pixel values in memory.
@@ -96,6 +104,10 @@ export namespace Gdk {
          */
         MSB_FIRST,
     }
+    export namespace CrossingMode {
+        export const $gtype: GObject.GType<CrossingMode>;
+    }
+
     /**
      * Specifies the crossing mode for #GdkEventCrossing.
      */
@@ -142,6 +154,10 @@ export namespace Gdk {
          */
         DEVICE_SWITCH,
     }
+    export namespace CursorType {
+        export const $gtype: GObject.GType<CursorType>;
+    }
+
     /**
      * Predefined cursors.
      *
@@ -473,6 +489,10 @@ export namespace Gdk {
          */
         CURSOR_IS_PIXMAP,
     }
+    export namespace DevicePadFeature {
+        export const $gtype: GObject.GType<DevicePadFeature>;
+    }
+
     /**
      * A pad feature.
      */
@@ -490,6 +510,10 @@ export namespace Gdk {
          */
         STRIP,
     }
+    export namespace DeviceToolType {
+        export const $gtype: GObject.GType<DeviceToolType>;
+    }
+
     /**
      * Indicates the specific type of tool being used being a tablet. Such as an
      * airbrush, pencil, etc.
@@ -528,6 +552,10 @@ export namespace Gdk {
          */
         LENS,
     }
+    export namespace DeviceType {
+        export const $gtype: GObject.GType<DeviceType>;
+    }
+
     /**
      * Indicates the device type. See [above][GdkDeviceManager.description]
      * for more information about the meaning of these device types.
@@ -548,6 +576,10 @@ export namespace Gdk {
          */
         FLOATING,
     }
+    export namespace DragCancelReason {
+        export const $gtype: GObject.GType<DragCancelReason>;
+    }
+
     /**
      * Used in #GdkDragContext to the reason of a cancelled DND operation.
      */
@@ -565,6 +597,10 @@ export namespace Gdk {
          */
         ERROR,
     }
+    export namespace DragProtocol {
+        export const $gtype: GObject.GType<DragProtocol>;
+    }
+
     /**
      * Used in #GdkDragContext to indicate the protocol according to
      * which DND is done.
@@ -604,6 +640,10 @@ export namespace Gdk {
          */
         WAYLAND,
     }
+    export namespace EventType {
+        export const $gtype: GObject.GType<EventType>;
+    }
+
     /**
      * Specifies the type of the event.
      *
@@ -850,6 +890,10 @@ export namespace Gdk {
          */
         EVENT_LAST,
     }
+    export namespace FilterReturn {
+        export const $gtype: GObject.GType<FilterReturn>;
+    }
+
     /**
      * Specifies the result of applying a #GdkFilterFunc to a native event.
      */
@@ -868,6 +912,10 @@ export namespace Gdk {
          */
         REMOVE,
     }
+    export namespace FullscreenMode {
+        export const $gtype: GObject.GType<FullscreenMode>;
+    }
+
     /**
      * Indicates which monitor (in a multi-head setup) a window should span over
      * when in fullscreen mode.
@@ -913,6 +961,10 @@ export namespace Gdk {
         static quark(): GLib.Quark;
     }
 
+    export namespace GrabOwnership {
+        export const $gtype: GObject.GType<GrabOwnership>;
+    }
+
     /**
      * Defines how device grabs interact with other devices.
      */
@@ -930,6 +982,10 @@ export namespace Gdk {
          */
         APPLICATION,
     }
+    export namespace GrabStatus {
+        export const $gtype: GObject.GType<GrabStatus>;
+    }
+
     /**
      * Returned by gdk_device_grab(), gdk_pointer_grab() and gdk_keyboard_grab() to
      * indicate success or the reason for the failure of the grab attempt.
@@ -962,6 +1018,10 @@ export namespace Gdk {
          */
         FAILED,
     }
+    export namespace Gravity {
+        export const $gtype: GObject.GType<Gravity>;
+    }
+
     /**
      * Defines the reference point of a window and the meaning of coordinates
      * passed to gtk_window_move(). See gtk_window_move() and the "implementation
@@ -1012,6 +1072,10 @@ export namespace Gdk {
          */
         STATIC,
     }
+    export namespace InputMode {
+        export const $gtype: GObject.GType<InputMode>;
+    }
+
     /**
      * An enumeration that describes the mode of an input device.
      */
@@ -1033,6 +1097,10 @@ export namespace Gdk {
          */
         WINDOW,
     }
+    export namespace InputSource {
+        export const $gtype: GObject.GType<InputSource>;
+    }
+
     /**
      * An enumeration describing the type of an input device in general terms.
      */
@@ -1081,6 +1149,10 @@ export namespace Gdk {
          */
         TABLET_PAD,
     }
+    export namespace ModifierIntent {
+        export const $gtype: GObject.GType<ModifierIntent>;
+    }
+
     /**
      * This enum is used with gdk_keymap_get_modifier_mask()
      * in order to determine what modifiers the
@@ -1132,6 +1204,10 @@ export namespace Gdk {
          */
         DEFAULT_MOD_MASK,
     }
+    export namespace NotifyType {
+        export const $gtype: GObject.GType<NotifyType>;
+    }
+
     /**
      * Specifies the kind of crossing for #GdkEventCrossing.
      *
@@ -1171,6 +1247,10 @@ export namespace Gdk {
          */
         UNKNOWN,
     }
+    export namespace OwnerChange {
+        export const $gtype: GObject.GType<OwnerChange>;
+    }
+
     /**
      * Specifies why a selection ownership was changed.
      */
@@ -1188,6 +1268,10 @@ export namespace Gdk {
          */
         CLOSE,
     }
+    export namespace PropMode {
+        export const $gtype: GObject.GType<PropMode>;
+    }
+
     /**
      * Describes how existing data is combined with new data when
      * using gdk_property_change().
@@ -1206,6 +1290,10 @@ export namespace Gdk {
          */
         APPEND,
     }
+    export namespace PropertyState {
+        export const $gtype: GObject.GType<PropertyState>;
+    }
+
     /**
      * Specifies the type of a property change for a #GdkEventProperty.
      */
@@ -1219,6 +1307,10 @@ export namespace Gdk {
          */
         DELETE,
     }
+    export namespace ScrollDirection {
+        export const $gtype: GObject.GType<ScrollDirection>;
+    }
+
     /**
      * Specifies the direction for #GdkEventScroll.
      */
@@ -1245,6 +1337,10 @@ export namespace Gdk {
          */
         SMOOTH,
     }
+    export namespace SettingAction {
+        export const $gtype: GObject.GType<SettingAction>;
+    }
+
     /**
      * Specifies the kind of modification applied to a setting in a
      * #GdkEventSetting.
@@ -1263,6 +1359,10 @@ export namespace Gdk {
          */
         DELETED,
     }
+    export namespace Status {
+        export const $gtype: GObject.GType<Status>;
+    }
+
     enum Status {
         OK,
         ERROR,
@@ -1270,6 +1370,10 @@ export namespace Gdk {
         ERROR_FILE,
         ERROR_MEM,
     }
+    export namespace SubpixelLayout {
+        export const $gtype: GObject.GType<SubpixelLayout>;
+    }
+
     /**
      * This enumeration describes how the red, green and blue components
      * of physical pixels on an output device are laid out.
@@ -1300,6 +1404,10 @@ export namespace Gdk {
          */
         VERTICAL_BGR,
     }
+    export namespace TouchpadGesturePhase {
+        export const $gtype: GObject.GType<TouchpadGesturePhase>;
+    }
+
     /**
      * Specifies the current state of a touchpad gesture. All gestures are
      * guaranteed to begin with an event with phase %GDK_TOUCHPAD_GESTURE_PHASE_BEGIN,
@@ -1340,6 +1448,10 @@ export namespace Gdk {
          */
         CANCEL,
     }
+    export namespace VisibilityState {
+        export const $gtype: GObject.GType<VisibilityState>;
+    }
+
     /**
      * Specifies the visiblity status of a window for a #GdkEventVisibility.
      */
@@ -1357,6 +1469,10 @@ export namespace Gdk {
          */
         FULLY_OBSCURED,
     }
+    export namespace VisualType {
+        export const $gtype: GObject.GType<VisualType>;
+    }
+
     /**
      * A set of values that describe the manner in which the pixel values
      * for a visual are converted into RGB values for display.
@@ -1399,6 +1515,10 @@ export namespace Gdk {
          */
         DIRECT_COLOR,
     }
+    export namespace WindowEdge {
+        export const $gtype: GObject.GType<WindowEdge>;
+    }
+
     /**
      * Determines a window edge or corner.
      */
@@ -1436,6 +1556,10 @@ export namespace Gdk {
          */
         SOUTH_EAST,
     }
+    export namespace WindowType {
+        export const $gtype: GObject.GType<WindowType>;
+    }
+
     /**
      * Describes the kind of window.
      */
@@ -1474,6 +1598,10 @@ export namespace Gdk {
          */
         SUBSURFACE,
     }
+    export namespace WindowTypeHint {
+        export const $gtype: GObject.GType<WindowTypeHint>;
+    }
+
     /**
      * These are hints for the window manager that indicate what type of function
      * the window has. The window manager can use this when determining decoration
@@ -1546,6 +1674,10 @@ export namespace Gdk {
          */
         DND,
     }
+    export namespace WindowWindowClass {
+        export const $gtype: GObject.GType<WindowWindowClass>;
+    }
+
     /**
      * `GDK_INPUT_OUTPUT` windows are the standard kind of window you might expect.
      * Such windows receive events and are also displayed on screen.
@@ -5243,6 +5375,10 @@ export namespace Gdk {
     interface WindowInvalidateHandlerFunc {
         (window: Window, region: cairo.Region): void;
     }
+    export namespace AnchorHints {
+        export const $gtype: GObject.GType<AnchorHints>;
+    }
+
     /**
      * Positioning hints for aligning a window relative to a rectangle.
      *
@@ -5298,6 +5434,10 @@ export namespace Gdk {
          */
         RESIZE,
     }
+    export namespace AxisFlags {
+        export const $gtype: GObject.GType<AxisFlags>;
+    }
+
     /**
      * Flags describing the current capabilities of a device/tool.
      */
@@ -5339,6 +5479,10 @@ export namespace Gdk {
          */
         SLIDER,
     }
+    export namespace DragAction {
+        export const $gtype: GObject.GType<DragAction>;
+    }
+
     /**
      * Used in #GdkDragContext to indicate what the destination
      * should do with the dropped data.
@@ -5372,6 +5516,10 @@ export namespace Gdk {
          */
         ASK,
     }
+    export namespace EventMask {
+        export const $gtype: GObject.GType<EventMask>;
+    }
+
     /**
      * A set of bit-flags to indicate which events a window is to receive.
      * Most of these masks map onto one or more of the #GdkEventType event types
@@ -5507,6 +5655,10 @@ export namespace Gdk {
          */
         ALL_EVENTS_MASK,
     }
+    export namespace FrameClockPhase {
+        export const $gtype: GObject.GType<FrameClockPhase>;
+    }
+
     /**
      * #GdkFrameClockPhase is used to represent the different paint clock
      * phases that can be requested. The elements of the enumeration
@@ -5546,6 +5698,10 @@ export namespace Gdk {
          */
         AFTER_PAINT,
     }
+    export namespace ModifierType {
+        export const $gtype: GObject.GType<ModifierType>;
+    }
+
     /**
      * A set of bit-flags to indicate the state of modifier keys and mouse buttons
      * in various event types. Typical modifier keys are Shift, Control, Meta,
@@ -5704,6 +5860,10 @@ export namespace Gdk {
          */
         MODIFIER_MASK,
     }
+    export namespace SeatCapabilities {
+        export const $gtype: GObject.GType<SeatCapabilities>;
+    }
+
     /**
      * Flags describing the seat capabilities.
      */
@@ -5737,6 +5897,10 @@ export namespace Gdk {
          */
         ALL,
     }
+    export namespace WMDecoration {
+        export const $gtype: GObject.GType<WMDecoration>;
+    }
+
     /**
      * These are hints originally defined by the Motif toolkit.
      * The window manager can use them when determining how to decorate
@@ -5772,6 +5936,10 @@ export namespace Gdk {
          */
         MAXIMIZE,
     }
+    export namespace WMFunction {
+        export const $gtype: GObject.GType<WMFunction>;
+    }
+
     /**
      * These are hints originally defined by the Motif toolkit. The window manager
      * can use them when determining the functions to offer for the window. The
@@ -5803,6 +5971,10 @@ export namespace Gdk {
          */
         CLOSE,
     }
+    export namespace WindowAttributesType {
+        export const $gtype: GObject.GType<WindowAttributesType>;
+    }
+
     /**
      * Used to indicate which fields in the #GdkWindowAttr struct should be honored.
      * For example, if you filled in the “cursor” and “x” fields of #GdkWindowAttr,
@@ -5845,6 +6017,10 @@ export namespace Gdk {
          */
         TYPE_HINT,
     }
+    export namespace WindowHints {
+        export const $gtype: GObject.GType<WindowHints>;
+    }
+
     /**
      * Used to indicate which fields of a #GdkGeometry struct should be paid
      * attention to. Also, the presence/absence of `GDK_HINT_POS,`
@@ -5895,6 +6071,10 @@ export namespace Gdk {
          */
         USER_SIZE,
     }
+    export namespace WindowState {
+        export const $gtype: GObject.GType<WindowState>;
+    }
+
     /**
      * Specifies the state of a toplevel window.
      */

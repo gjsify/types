@@ -16,6 +16,10 @@ export namespace Vips {
      * Vips-8.0
      */
 
+    export namespace Access {
+        export const $gtype: GObject.GType<Access>;
+    }
+
     /**
      * The type of access an operation has to supply. See vips_tilecache()
      * and #VipsForeign.
@@ -37,6 +41,10 @@ export namespace Vips {
         SEQUENTIAL_UNBUFFERED,
         LAST,
     }
+    export namespace Align {
+        export const $gtype: GObject.GType<Align>;
+    }
+
     /**
      * See vips_join() and so on.
      *
@@ -60,6 +68,10 @@ export namespace Vips {
         HIGH,
         LAST,
     }
+    export namespace Angle {
+        export const $gtype: GObject.GType<Angle>;
+    }
+
     /**
      * See vips_rot() and so on.
      *
@@ -86,6 +98,10 @@ export namespace Vips {
         D270,
         LAST,
     }
+    export namespace Angle45 {
+        export const $gtype: GObject.GType<Angle45>;
+    }
+
     /**
      * See vips_rot45() and so on.
      *
@@ -128,6 +144,10 @@ export namespace Vips {
         D315,
         LAST,
     }
+    export namespace BandFormat {
+        export const $gtype: GObject.GType<BandFormat>;
+    }
+
     /**
      * The format used for each band element.
      *
@@ -181,6 +201,10 @@ export namespace Vips {
         DPCOMPLEX,
         LAST,
     }
+    export namespace BlendMode {
+        export const $gtype: GObject.GType<BlendMode>;
+    }
+
     /**
      * The various Porter-Duff and PDF blend modes. See vips_composite(),
      * for example.
@@ -294,6 +318,10 @@ export namespace Vips {
         EXCLUSION,
         LAST,
     }
+    export namespace Coding {
+        export const $gtype: GObject.GType<Coding>;
+    }
+
     /**
      * How pixels are coded.
      *
@@ -320,6 +348,10 @@ export namespace Vips {
         RAD,
         LAST,
     }
+    export namespace Combine {
+        export const $gtype: GObject.GType<Combine>;
+    }
+
     /**
      * How to combine values. See vips_compass(), for example.
      */
@@ -338,6 +370,10 @@ export namespace Vips {
         MIN,
         LAST,
     }
+    export namespace CombineMode {
+        export const $gtype: GObject.GType<CombineMode>;
+    }
+
     /**
      * See vips_draw_image() and so on.
      *
@@ -357,6 +393,10 @@ export namespace Vips {
         ADD,
         LAST,
     }
+    export namespace CompassDirection {
+        export const $gtype: GObject.GType<CompassDirection>;
+    }
+
     /**
      * A direction on a compass. Used for vips_gravity(), for example.
      */
@@ -399,6 +439,10 @@ export namespace Vips {
         NORTH_WEST,
         LAST,
     }
+    export namespace DemandStyle {
+        export const $gtype: GObject.GType<DemandStyle>;
+    }
+
     /**
      * See vips_image_pipelinev(). Operations can hint
      * the kind of demand geometry they prefer
@@ -448,6 +492,10 @@ export namespace Vips {
          */
         ANY,
     }
+    export namespace Direction {
+        export const $gtype: GObject.GType<Direction>;
+    }
+
     /**
      * See vips_flip(), vips_join() and so on.
      *
@@ -467,6 +515,10 @@ export namespace Vips {
         VERTICAL,
         LAST,
     }
+    export namespace Extend {
+        export const $gtype: GObject.GType<Extend>;
+    }
+
     /**
      * See vips_embed(), vips_conv(), vips_affine() and so on.
      *
@@ -519,6 +571,10 @@ export namespace Vips {
         BACKGROUND,
         LAST,
     }
+    export namespace FailOn {
+        export const $gtype: GObject.GType<FailOn>;
+    }
+
     /**
      * How sensitive loaders are to errors, from never stop (very insensitive), to
      * stop on the smallest warning (very sensitive).
@@ -545,6 +601,10 @@ export namespace Vips {
         WARNING,
         LAST,
     }
+    export namespace ForeignDzContainer {
+        export const $gtype: GObject.GType<ForeignDzContainer>;
+    }
+
     /**
      * How many pyramid layers to create.
      */
@@ -563,6 +623,10 @@ export namespace Vips {
         SZI,
         LAST,
     }
+    export namespace ForeignDzDepth {
+        export const $gtype: GObject.GType<ForeignDzDepth>;
+    }
+
     /**
      * How many pyramid layers to create.
      */
@@ -581,6 +645,10 @@ export namespace Vips {
         ONE,
         LAST,
     }
+    export namespace ForeignDzLayout {
+        export const $gtype: GObject.GType<ForeignDzLayout>;
+    }
+
     /**
      * What directory layout and metadata standard to use.
      */
@@ -607,6 +675,10 @@ export namespace Vips {
         IIIF3,
         LAST,
     }
+    export namespace ForeignHeifCompression {
+        export const $gtype: GObject.GType<ForeignHeifCompression>;
+    }
+
     /**
      * The compression format to use inside a HEIF container.
      *
@@ -631,6 +703,10 @@ export namespace Vips {
         AV1,
         LAST,
     }
+    export namespace ForeignHeifEncoder {
+        export const $gtype: GObject.GType<ForeignHeifEncoder>;
+    }
+
     /**
      * The selected encoder to use.
      * If libheif hasn't been compiled with the selected encoder,
@@ -659,6 +735,10 @@ export namespace Vips {
         X265,
         LAST,
     }
+    export namespace ForeignJpegSubsample {
+        export const $gtype: GObject.GType<ForeignJpegSubsample>;
+    }
+
     /**
      * Set jpeg subsampling mode.
      */
@@ -677,6 +757,10 @@ export namespace Vips {
         OFF,
         LAST,
     }
+    export namespace ForeignPpmFormat {
+        export const $gtype: GObject.GType<ForeignPpmFormat>;
+    }
+
     /**
      * The netpbm file format to save as.
      *
@@ -714,6 +798,10 @@ export namespace Vips {
         PNM,
         LAST,
     }
+    export namespace ForeignSubsample {
+        export const $gtype: GObject.GType<ForeignSubsample>;
+    }
+
     /**
      * Set subsampling mode.
      */
@@ -732,6 +820,10 @@ export namespace Vips {
         OFF,
         LAST,
     }
+    export namespace ForeignTiffCompression {
+        export const $gtype: GObject.GType<ForeignTiffCompression>;
+    }
+
     /**
      * The compression types supported by the tiff writer.
      *
@@ -782,6 +874,10 @@ export namespace Vips {
         JP2K,
         LAST,
     }
+    export namespace ForeignTiffPredictor {
+        export const $gtype: GObject.GType<ForeignTiffPredictor>;
+    }
+
     /**
      * The predictor can help deflate and lzw compression. The values are fixed by
      * the tiff library.
@@ -801,6 +897,10 @@ export namespace Vips {
         FLOAT,
         LAST,
     }
+    export namespace ForeignTiffResunit {
+        export const $gtype: GObject.GType<ForeignTiffResunit>;
+    }
+
     /**
      * Use inches or centimeters as the resolution unit for a tiff file.
      */
@@ -815,6 +915,10 @@ export namespace Vips {
         INCH,
         LAST,
     }
+    export namespace ForeignWebpPreset {
+        export const $gtype: GObject.GType<ForeignWebpPreset>;
+    }
+
     /**
      * Tune lossy encoder settings for different image types.
      */
@@ -845,6 +949,10 @@ export namespace Vips {
         TEXT,
         LAST,
     }
+    export namespace ImageType {
+        export const $gtype: GObject.GType<ImageType>;
+    }
+
     enum ImageType {
         ERROR,
         NONE,
@@ -856,6 +964,10 @@ export namespace Vips {
         OPENOUT,
         PARTIAL,
     }
+    export namespace Intent {
+        export const $gtype: GObject.GType<Intent>;
+    }
+
     /**
      * The rendering intent. #VIPS_INTENT_ABSOLUTE is best for
      * scientific work, #VIPS_INTENT_RELATIVE is usually best for
@@ -880,6 +992,10 @@ export namespace Vips {
         ABSOLUTE,
         LAST,
     }
+    export namespace Interesting {
+        export const $gtype: GObject.GType<Interesting>;
+    }
+
     /**
      * Pick the algorithm vips uses to decide image "interestingness". This is used
      * by vips_smartcrop(), for example, to decide what parts of the image to
@@ -922,6 +1038,10 @@ export namespace Vips {
         ALL,
         LAST,
     }
+    export namespace Interpretation {
+        export const $gtype: GObject.GType<Interpretation>;
+    }
+
     /**
      * How the values in an image should be interpreted. For example, a
      * three-band float image of type #VIPS_INTERPRETATION_LAB should have its
@@ -1013,6 +1133,10 @@ export namespace Vips {
         HSV,
         LAST,
     }
+    export namespace Kernel {
+        export const $gtype: GObject.GType<Kernel>;
+    }
+
     /**
      * The resampling kernels vips supports. See vips_reduce(), for example.
      */
@@ -1043,6 +1167,10 @@ export namespace Vips {
         LANCZOS3,
         LAST,
     }
+    export namespace OperationBoolean {
+        export const $gtype: GObject.GType<OperationBoolean>;
+    }
+
     /**
      * See also: vips_boolean().
      */
@@ -1069,6 +1197,10 @@ export namespace Vips {
         RSHIFT,
         LAST,
     }
+    export namespace OperationComplex {
+        export const $gtype: GObject.GType<OperationComplex>;
+    }
+
     /**
      * See also: vips_complex().
      */
@@ -1087,6 +1219,10 @@ export namespace Vips {
         CONJ,
         LAST,
     }
+    export namespace OperationComplex2 {
+        export const $gtype: GObject.GType<OperationComplex2>;
+    }
+
     /**
      * See also: vips_complex2().
      */
@@ -1097,6 +1233,10 @@ export namespace Vips {
         CROSS_PHASE,
         LAST,
     }
+    export namespace OperationComplexget {
+        export const $gtype: GObject.GType<OperationComplexget>;
+    }
+
     /**
      * See also: vips_complexget().
      */
@@ -1111,6 +1251,10 @@ export namespace Vips {
         IMAG,
         LAST,
     }
+    export namespace OperationMath {
+        export const $gtype: GObject.GType<OperationMath>;
+    }
+
     /**
      * See also: vips_math().
      */
@@ -1181,6 +1325,10 @@ export namespace Vips {
         ATANH,
         LAST,
     }
+    export namespace OperationMath2 {
+        export const $gtype: GObject.GType<OperationMath2>;
+    }
+
     /**
      * See also: vips_math().
      */
@@ -1199,6 +1347,10 @@ export namespace Vips {
         ATAN2,
         LAST,
     }
+    export namespace OperationMorphology {
+        export const $gtype: GObject.GType<OperationMorphology>;
+    }
+
     /**
      * More like hit-miss, really.
      *
@@ -1215,6 +1367,10 @@ export namespace Vips {
         DILATE,
         LAST,
     }
+    export namespace OperationRelational {
+        export const $gtype: GObject.GType<OperationRelational>;
+    }
+
     /**
      * See also: vips_relational().
      */
@@ -1245,6 +1401,10 @@ export namespace Vips {
         MOREEQ,
         LAST,
     }
+    export namespace OperationRound {
+        export const $gtype: GObject.GType<OperationRound>;
+    }
+
     /**
      * See also: vips_round().
      */
@@ -1263,6 +1423,10 @@ export namespace Vips {
         FLOOR,
         LAST,
     }
+    export namespace PCS {
+        export const $gtype: GObject.GType<PCS>;
+    }
+
     /**
      * Pick a Profile Connection Space for vips_icc_import() and
      * vips_icc_export(). LAB is usually best, XYZ can be more convenient in some
@@ -1279,6 +1443,10 @@ export namespace Vips {
         XYZ,
         LAST,
     }
+    export namespace Precision {
+        export const $gtype: GObject.GType<Precision>;
+    }
+
     /**
      * How accurate an operation should be.
      */
@@ -1297,6 +1465,10 @@ export namespace Vips {
         APPROXIMATE,
         LAST,
     }
+    export namespace RegionShrink {
+        export const $gtype: GObject.GType<RegionShrink>;
+    }
+
     /**
      * How to calculate the output pixels when shrinking a 2x2 region.
      */
@@ -1327,6 +1499,10 @@ export namespace Vips {
         NEAREST,
         LAST,
     }
+    export namespace Saveable {
+        export const $gtype: GObject.GType<Saveable>;
+    }
+
     /**
      * See also: #VipsForeignSave.
      */
@@ -1357,6 +1533,10 @@ export namespace Vips {
         ANY,
         LAST,
     }
+    export namespace Size {
+        export const $gtype: GObject.GType<Size>;
+    }
+
     /**
      * Controls whether an operation should upsize, downsize, both up and
      * downsize, or force a size.
@@ -1382,6 +1562,10 @@ export namespace Vips {
         FORCE,
         LAST,
     }
+    export namespace TextWrap {
+        export const $gtype: GObject.GType<TextWrap>;
+    }
+
     /**
      * Sets the word wrapping style for vips_text() when used with a maximum
      * width.
@@ -1407,6 +1591,10 @@ export namespace Vips {
         NONE,
         LAST,
     }
+    export namespace Token {
+        export const $gtype: GObject.GType<Token>;
+    }
+
     enum Token {
         LEFT,
         RIGHT,
@@ -2893,6 +3081,10 @@ export namespace Vips {
     interface TypeMapFn {
         (type: GObject.GType, a?: any | null): any | null;
     }
+    export namespace ArgumentFlags {
+        export const $gtype: GObject.GType<ArgumentFlags>;
+    }
+
     /**
      * Flags we associate with each object argument.
      *
@@ -2960,6 +3152,10 @@ export namespace Vips {
          */
         NON_HASHABLE,
     }
+    export namespace ForeignFlags {
+        export const $gtype: GObject.GType<ForeignFlags>;
+    }
+
     /**
      * Some hints about the image loader.
      *
@@ -2996,6 +3192,10 @@ export namespace Vips {
         SEQUENTIAL,
         ALL,
     }
+    export namespace ForeignKeep {
+        export const $gtype: GObject.GType<ForeignKeep>;
+    }
+
     /**
      * Which metadata to retain.
      */
@@ -3029,6 +3229,10 @@ export namespace Vips {
          */
         ALL,
     }
+    export namespace ForeignPngFilter {
+        export const $gtype: GObject.GType<ForeignPngFilter>;
+    }
+
     /**
      * http://www.w3.org/TR/PNG-Filters.html
      * The values mirror those of png.h in libpng.
@@ -3059,6 +3263,10 @@ export namespace Vips {
          */
         ALL,
     }
+    export namespace OperationFlags {
+        export const $gtype: GObject.GType<OperationFlags>;
+    }
+
     /**
      * Flags we associate with an operation.
      *

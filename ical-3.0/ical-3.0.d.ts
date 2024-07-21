@@ -16,11 +16,19 @@ export namespace ICal {
      * ICal-3.0
      */
 
+    export namespace _unknown_token_handling {
+        export const $gtype: GObject.GType<_unknown_token_handling>;
+    }
+
     enum _unknown_token_handling {
         ASSUME_IANA_TOKEN,
         DISCARD_TOKEN,
         TREAT_AS_ERROR,
     }
+    export namespace component_kind {
+        export const $gtype: GObject.GType<component_kind>;
+    }
+
     enum component_kind {
         NO_COMPONENT,
         ANY_COMPONENT,
@@ -56,6 +64,10 @@ export namespace ICal {
         VPATCH_COMPONENT,
         XPATCH_COMPONENT,
     }
+    export namespace errorenum {
+        export const $gtype: GObject.GType<errorenum>;
+    }
+
     enum errorenum {
         NO_ERROR,
         BADARG_ERROR,
@@ -69,18 +81,30 @@ export namespace ICal {
         UNIMPLEMENTED_ERROR,
         UNKNOWN_ERROR,
     }
+    export namespace errorstate {
+        export const $gtype: GObject.GType<errorstate>;
+    }
+
     enum errorstate {
         FATAL,
         NONFATAL,
         DEFAULT,
         UNKNOWN,
     }
+    export namespace parameter_action {
+        export const $gtype: GObject.GType<parameter_action>;
+    }
+
     enum parameter_action {
         X,
         ASK,
         ABORT,
         NONE,
     }
+    export namespace parameter_cutype {
+        export const $gtype: GObject.GType<parameter_cutype>;
+    }
+
     enum parameter_cutype {
         X,
         INDIVIDUAL,
@@ -90,6 +114,10 @@ export namespace ICal {
         UNKNOWN,
         NONE,
     }
+    export namespace parameter_display {
+        export const $gtype: GObject.GType<parameter_display>;
+    }
+
     enum parameter_display {
         X,
         BADGE,
@@ -98,18 +126,30 @@ export namespace ICal {
         THUMBNAIL,
         NONE,
     }
+    export namespace parameter_enable {
+        export const $gtype: GObject.GType<parameter_enable>;
+    }
+
     enum parameter_enable {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace parameter_encoding {
+        export const $gtype: GObject.GType<parameter_encoding>;
+    }
+
     enum parameter_encoding {
         X,
         '8BIT',
         BASE64,
         NONE,
     }
+    export namespace parameter_fbtype {
+        export const $gtype: GObject.GType<parameter_fbtype>;
+    }
+
     enum parameter_fbtype {
         X,
         FREE,
@@ -118,6 +158,10 @@ export namespace ICal {
         BUSYTENTATIVE,
         NONE,
     }
+    export namespace parameter_feature {
+        export const $gtype: GObject.GType<parameter_feature>;
+    }
+
     enum parameter_feature {
         X,
         AUDIO,
@@ -129,6 +173,10 @@ export namespace ICal {
         VIDEO,
         NONE,
     }
+    export namespace parameter_kind {
+        export const $gtype: GObject.GType<parameter_kind>;
+    }
+
     enum parameter_kind {
         ANY_PARAMETER,
         ACTIONPARAM_PARAMETER,
@@ -183,12 +231,20 @@ export namespace ICal {
         XLICERRORTYPE_PARAMETER,
         NO_PARAMETER,
     }
+    export namespace parameter_local {
+        export const $gtype: GObject.GType<parameter_local>;
+    }
+
     enum parameter_local {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace parameter_partstat {
+        export const $gtype: GObject.GType<parameter_partstat>;
+    }
+
     enum parameter_partstat {
         X,
         NEEDSACTION,
@@ -201,6 +257,10 @@ export namespace ICal {
         FAILED,
         NONE,
     }
+    export namespace parameter_patchaction {
+        export const $gtype: GObject.GType<parameter_patchaction>;
+    }
+
     enum parameter_patchaction {
         X,
         CREATE,
@@ -209,18 +269,30 @@ export namespace ICal {
         BYPARAM,
         NONE,
     }
+    export namespace parameter_range {
+        export const $gtype: GObject.GType<parameter_range>;
+    }
+
     enum parameter_range {
         X,
         THISANDPRIOR,
         THISANDFUTURE,
         NONE,
     }
+    export namespace parameter_related {
+        export const $gtype: GObject.GType<parameter_related>;
+    }
+
     enum parameter_related {
         X,
         START,
         END,
         NONE,
     }
+    export namespace parameter_reltype {
+        export const $gtype: GObject.GType<parameter_reltype>;
+    }
+
     enum parameter_reltype {
         X,
         PARENT,
@@ -229,12 +301,20 @@ export namespace ICal {
         POLL,
         NONE,
     }
+    export namespace parameter_required {
+        export const $gtype: GObject.GType<parameter_required>;
+    }
+
     enum parameter_required {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace parameter_role {
+        export const $gtype: GObject.GType<parameter_role>;
+    }
+
     enum parameter_role {
         X,
         CHAIR,
@@ -243,30 +323,50 @@ export namespace ICal {
         NONPARTICIPANT,
         NONE,
     }
+    export namespace parameter_rsvp {
+        export const $gtype: GObject.GType<parameter_rsvp>;
+    }
+
     enum parameter_rsvp {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace parameter_scheduleagent {
+        export const $gtype: GObject.GType<parameter_scheduleagent>;
+    }
+
     enum parameter_scheduleagent {
         X,
         SERVER,
         CLIENT,
         NONE,
     }
+    export namespace parameter_scheduleforcesend {
+        export const $gtype: GObject.GType<parameter_scheduleforcesend>;
+    }
+
     enum parameter_scheduleforcesend {
         X,
         REQUEST,
         REPLY,
         NONE,
     }
+    export namespace parameter_stayinformed {
+        export const $gtype: GObject.GType<parameter_stayinformed>;
+    }
+
     enum parameter_stayinformed {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace parameter_substate {
+        export const $gtype: GObject.GType<parameter_substate>;
+    }
+
     enum parameter_substate {
         X,
         OK,
@@ -274,6 +374,10 @@ export namespace ICal {
         SUSPENDED,
         NONE,
     }
+    export namespace parameter_value {
+        export const $gtype: GObject.GType<parameter_value>;
+    }
+
     enum parameter_value {
         X,
         BINARY,
@@ -292,6 +396,10 @@ export namespace ICal {
         CALADDRESS,
         NONE,
     }
+    export namespace parameter_xliccomparetype {
+        export const $gtype: GObject.GType<parameter_xliccomparetype>;
+    }
+
     enum parameter_xliccomparetype {
         X,
         EQUAL,
@@ -305,6 +413,10 @@ export namespace ICal {
         ISNOTNULL,
         NONE,
     }
+    export namespace parameter_xlicerrortype {
+        export const $gtype: GObject.GType<parameter_xlicerrortype>;
+    }
+
     enum parameter_xlicerrortype {
         X,
         COMPONENTPARSEERROR,
@@ -318,6 +430,10 @@ export namespace ICal {
         VCALPROPPARSEERROR,
         NONE,
     }
+    export namespace parser_state {
+        export const $gtype: GObject.GType<parser_state>;
+    }
+
     enum parser_state {
         ERROR,
         SUCCESS,
@@ -325,6 +441,10 @@ export namespace ICal {
         END_COMP,
         IN_PROGRESS,
     }
+    export namespace property_action {
+        export const $gtype: GObject.GType<property_action>;
+    }
+
     enum property_action {
         X,
         AUDIO,
@@ -333,6 +453,10 @@ export namespace ICal {
         PROCEDURE,
         NONE,
     }
+    export namespace property_busytype {
+        export const $gtype: GObject.GType<property_busytype>;
+    }
+
     enum property_busytype {
         X,
         BUSY,
@@ -340,6 +464,10 @@ export namespace ICal {
         BUSYTENTATIVE,
         NONE,
     }
+    export namespace property_carlevel {
+        export const $gtype: GObject.GType<property_carlevel>;
+    }
+
     enum property_carlevel {
         X,
         CARNONE,
@@ -347,6 +475,10 @@ export namespace ICal {
         CARFULL1,
         NONE,
     }
+    export namespace property_class {
+        export const $gtype: GObject.GType<property_class>;
+    }
+
     enum property_class {
         X,
         PUBLIC,
@@ -354,6 +486,10 @@ export namespace ICal {
         CONFIDENTIAL,
         NONE,
     }
+    export namespace property_cmd {
+        export const $gtype: GObject.GType<property_cmd>;
+    }
+
     enum property_cmd {
         X,
         ABORT,
@@ -370,6 +506,10 @@ export namespace ICal {
         SETLOCALE,
         NONE,
     }
+    export namespace property_kind {
+        export const $gtype: GObject.GType<property_kind>;
+    }
+
     enum property_kind {
         ANY_PROPERTY,
         ACCEPTRESPONSE_PROPERTY,
@@ -497,6 +637,10 @@ export namespace ICal {
         XLICMIMEOPTINFO_PROPERTY,
         NO_PROPERTY,
     }
+    export namespace property_method {
+        export const $gtype: GObject.GType<property_method>;
+    }
+
     enum property_method {
         X,
         PUBLISH,
@@ -517,6 +661,10 @@ export namespace ICal {
         POLLSTATUS,
         NONE,
     }
+    export namespace property_pollcompletion {
+        export const $gtype: GObject.GType<property_pollcompletion>;
+    }
+
     enum property_pollcompletion {
         X,
         SERVER,
@@ -525,17 +673,29 @@ export namespace ICal {
         CLIENT,
         NONE,
     }
+    export namespace property_pollmode {
+        export const $gtype: GObject.GType<property_pollmode>;
+    }
+
     enum property_pollmode {
         X,
         BASIC,
         NONE,
     }
+    export namespace property_querylevel {
+        export const $gtype: GObject.GType<property_querylevel>;
+    }
+
     enum property_querylevel {
         X,
         CALQL1,
         CALQLNONE,
         NONE,
     }
+    export namespace property_status {
+        export const $gtype: GObject.GType<property_status>;
+    }
+
     enum property_status {
         X,
         TENTATIVE,
@@ -552,6 +712,10 @@ export namespace ICal {
         DELETED,
         NONE,
     }
+    export namespace property_taskmode {
+        export const $gtype: GObject.GType<property_taskmode>;
+    }
+
     enum property_taskmode {
         X,
         AUTOMATICCOMPLETION,
@@ -559,6 +723,10 @@ export namespace ICal {
         AUTOMATICSTATUS,
         NONE,
     }
+    export namespace property_transp {
+        export const $gtype: GObject.GType<property_transp>;
+    }
+
     enum property_transp {
         X,
         OPAQUE,
@@ -567,6 +735,10 @@ export namespace ICal {
         TRANSPARENTNOCONFLICT,
         NONE,
     }
+    export namespace property_xlicclass {
+        export const $gtype: GObject.GType<property_xlicclass>;
+    }
+
     enum property_xlicclass {
         X,
         PUBLISHNEW,
@@ -598,6 +770,10 @@ export namespace ICal {
         UNKNOWN,
         NONE,
     }
+    export namespace recurrencetype_frequency {
+        export const $gtype: GObject.GType<recurrencetype_frequency>;
+    }
+
     enum recurrencetype_frequency {
         SECONDLY_RECURRENCE,
         MINUTELY_RECURRENCE,
@@ -608,12 +784,20 @@ export namespace ICal {
         YEARLY_RECURRENCE,
         NO_RECURRENCE,
     }
+    export namespace recurrencetype_skip {
+        export const $gtype: GObject.GType<recurrencetype_skip>;
+    }
+
     enum recurrencetype_skip {
         BACKWARD,
         FORWARD,
         OMIT,
         UNDEFINED,
     }
+    export namespace recurrencetype_weekday {
+        export const $gtype: GObject.GType<recurrencetype_weekday>;
+    }
+
     enum recurrencetype_weekday {
         NO_WEEKDAY,
         SUNDAY_WEEKDAY,
@@ -624,6 +808,10 @@ export namespace ICal {
         FRIDAY_WEEKDAY,
         SATURDAY_WEEKDAY,
     }
+    export namespace requeststatus {
+        export const $gtype: GObject.GType<requeststatus>;
+    }
+
     enum requeststatus {
         UNKNOWN_STATUS,
         '2_0_SUCCESS_STATUS',
@@ -665,6 +853,10 @@ export namespace ICal {
         '6_1_CONTAINER_NOT_FOUND',
         '9_0_UNRECOGNIZED_COMMAND',
     }
+    export namespace restriction_kind {
+        export const $gtype: GObject.GType<restriction_kind>;
+    }
+
     enum restriction_kind {
         NONE,
         ZERO,
@@ -676,6 +868,10 @@ export namespace ICal {
         ONEMUTUAL,
         UNKNOWN,
     }
+    export namespace value_kind {
+        export const $gtype: GObject.GType<value_kind>;
+    }
+
     enum value_kind {
         ANY_VALUE,
         ACTION_VALUE,

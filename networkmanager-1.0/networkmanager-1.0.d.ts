@@ -17,6 +17,10 @@ export namespace NetworkManager {
      * NetworkManager-1.0
      */
 
+    export namespace __80211Mode {
+        export const $gtype: GObject.GType<__80211Mode>;
+    }
+
     /**
      * Indicates the 802.11 mode an access point or device is currently in.
      */
@@ -44,6 +48,10 @@ export namespace NetworkManager {
          */
         AP,
     }
+    export namespace ActiveConnectionState {
+        export const $gtype: GObject.GType<ActiveConnectionState>;
+    }
+
     /**
      * #NMActiveConnectionState values indicate the state of a connection to a
      * specific network while it is starting, connected, or disconnecting from that
@@ -122,6 +130,10 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    export namespace ConnectivityState {
+        export const $gtype: GObject.GType<ConnectivityState>;
+    }
+
     enum ConnectivityState {
         /**
          * Network connectivity is unknown.
@@ -147,6 +159,10 @@ export namespace NetworkManager {
          */
         FULL,
     }
+    export namespace DeviceState {
+        export const $gtype: GObject.GType<DeviceState>;
+    }
+
     enum DeviceState {
         /**
          * the device's state is unknown
@@ -223,6 +239,10 @@ export namespace NetworkManager {
          */
         FAILED,
     }
+    export namespace DeviceStateReason {
+        export const $gtype: GObject.GType<DeviceStateReason>;
+    }
+
     /**
      * Device state change reason codes
      */
@@ -481,6 +501,10 @@ export namespace NetworkManager {
         PARENT_MANAGED_CHANGED,
         LAST,
     }
+    export namespace DeviceType {
+        export const $gtype: GObject.GType<DeviceType>;
+    }
+
     /**
      * #NMDeviceType values indicate the type of hardware represented by
      * an #NMDevice.
@@ -572,6 +596,10 @@ export namespace NetworkManager {
          */
         VETH,
     }
+    export namespace Setting8021xCKFormat {
+        export const $gtype: GObject.GType<Setting8021xCKFormat>;
+    }
+
     /**
      * #NMSetting8021xCKFormat values indicate the general type of a certificate
      * or private key
@@ -596,6 +624,10 @@ export namespace NetworkManager {
          */
         PKCS12,
     }
+    export namespace Setting8021xCKScheme {
+        export const $gtype: GObject.GType<Setting8021xCKScheme>;
+    }
+
     /**
      * #NMSetting8021xCKScheme values indicate how a certificate or private key is
      * stored in the setting properties, either as a blob of the item's data, or as
@@ -861,6 +893,10 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    export namespace SettingCompareFlags {
+        export const $gtype: GObject.GType<SettingCompareFlags>;
+    }
+
     /**
      * These flags modify the comparison behavior when comparing two settings or
      * two connections.
@@ -997,6 +1033,10 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    export namespace SettingDcbFlags {
+        export const $gtype: GObject.GType<SettingDcbFlags>;
+    }
+
     /**
      * DCB feature flags.
      */
@@ -1019,6 +1059,10 @@ export namespace NetworkManager {
          */
         WILLING,
     }
+    export namespace SettingDiffResult {
+        export const $gtype: GObject.GType<SettingDiffResult>;
+    }
+
     /**
      * These values indicate the result of a setting difference operation.
      */
@@ -1157,6 +1201,10 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    export namespace SettingGsmNetworkBand {
+        export const $gtype: GObject.GType<SettingGsmNetworkBand>;
+    }
+
     /**
      * #NMSettingGsmNetworkBand values indicate the allowed frequency bands
      * the device may use when connecting to this network.
@@ -1223,6 +1271,10 @@ export namespace NetworkManager {
          */
         U2600,
     }
+    export namespace SettingGsmNetworkType {
+        export const $gtype: GObject.GType<SettingGsmNetworkType>;
+    }
+
     /**
      * #NMSettingGsmNetworkType values indicate the allowed access technologies
      * the device may use when connecting to this network.
@@ -1263,6 +1315,10 @@ export namespace NetworkManager {
          */
         '4G',
     }
+    export namespace SettingHashFlags {
+        export const $gtype: GObject.GType<SettingHashFlags>;
+    }
+
     /**
      * These flags determine which properties are added to the resulting hash
      * when calling nm_setting_to_hash().
@@ -1353,6 +1409,10 @@ export namespace NetworkManager {
          * Registers an error quark for #NMSettingIP6Config if necessary.
          */
         static quark(): GLib.Quark;
+    }
+
+    export namespace SettingIP6ConfigPrivacy {
+        export const $gtype: GObject.GType<SettingIP6ConfigPrivacy>;
     }
 
     /**
@@ -1512,6 +1572,10 @@ export namespace NetworkManager {
          * Registers an error quark for #NMSettingPPPOE if necessary.
          */
         static quark(): GLib.Quark;
+    }
+
+    export namespace SettingSecretFlags {
+        export const $gtype: GObject.GType<SettingSecretFlags>;
     }
 
     /**
@@ -1873,6 +1937,10 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    export namespace State {
+        export const $gtype: GObject.GType<State>;
+    }
+
     /**
      * #NMState values indicate the current overall networking state.
      */
@@ -1910,6 +1978,10 @@ export namespace NetworkManager {
          */
         CONNECTED_GLOBAL,
     }
+    export namespace UtilsSecurityType {
+        export const $gtype: GObject.GType<UtilsSecurityType>;
+    }
+
     /**
      * Describes generic security mechanisms that 802.11 access points may offer.
      * Used with nm_utils_security_valid() for checking whether a given access
@@ -1955,6 +2027,10 @@ export namespace NetworkManager {
          */
         WPA2_ENTERPRISE,
     }
+    export namespace VPNConnectionState {
+        export const $gtype: GObject.GType<VPNConnectionState>;
+    }
+
     /**
      * VPN connection states
      */
@@ -1996,6 +2072,10 @@ export namespace NetworkManager {
          */
         DISCONNECTED,
     }
+    export namespace VPNConnectionStateReason {
+        export const $gtype: GObject.GType<VPNConnectionStateReason>;
+    }
+
     /**
      * VPN connection state reasons
      */
@@ -2061,6 +2141,10 @@ export namespace NetworkManager {
          */
         CONNECTION_REMOVED,
     }
+    export namespace VPNPluginFailure {
+        export const $gtype: GObject.GType<VPNPluginFailure>;
+    }
+
     /**
      * VPN plugin failure reasons
      */
@@ -2079,6 +2163,10 @@ export namespace NetworkManager {
          */
         BAD_IP_CONFIG,
     }
+    export namespace VPNServiceState {
+        export const $gtype: GObject.GType<VPNServiceState>;
+    }
+
     /**
      * VPN daemon states
      */
@@ -2112,6 +2200,10 @@ export namespace NetworkManager {
          */
         STOPPED,
     }
+    export namespace VlanFlags {
+        export const $gtype: GObject.GType<VlanFlags>;
+    }
+
     /**
      * #NMVlanFlags values control the behavior of the VLAN interface.
      */
@@ -2138,6 +2230,10 @@ export namespace NetworkManager {
          */
         MVRP,
     }
+    export namespace VlanPriorityMap {
+        export const $gtype: GObject.GType<VlanPriorityMap>;
+    }
+
     /**
      * A selector for traffic priority maps; these map Linux SKB priorities
      * to 802.1p priorities used in VLANs.
@@ -2152,6 +2248,10 @@ export namespace NetworkManager {
          */
         EGRESS_MAP,
     }
+    export namespace WepKeyType {
+        export const $gtype: GObject.GType<WepKeyType>;
+    }
+
     /**
      * The #NMWepKeyType values specify how any WEP keys present in the setting
      * are interpreted.  There are no standards governing how to hash the various WEP
@@ -3213,6 +3313,10 @@ export namespace NetworkManager {
     interface VPNIterFunc {
         (key: string, value: string): void;
     }
+    export namespace __80211ApFlags {
+        export const $gtype: GObject.GType<__80211ApFlags>;
+    }
+
     /**
      * 802.11 access point flags.
      */
@@ -3227,6 +3331,10 @@ export namespace NetworkManager {
          */
         PRIVACY,
     }
+    export namespace __80211ApSecurityFlags {
+        export const $gtype: GObject.GType<__80211ApSecurityFlags>;
+    }
+
     /**
      * 802.11 access point security and authentication flags.  These flags describe
      * the current security requirements of an access point as determined from the
@@ -3285,6 +3393,10 @@ export namespace NetworkManager {
          */
         KEY_MGMT_802_1X,
     }
+    export namespace BluetoothCapabilities {
+        export const $gtype: GObject.GType<BluetoothCapabilities>;
+    }
+
     /**
      * #NMBluetoothCapabilities values indicate the usable capabilities of a
      * Bluetooth device.
@@ -3303,6 +3415,10 @@ export namespace NetworkManager {
          */
         NAP,
     }
+    export namespace DeviceCapabilities {
+        export const $gtype: GObject.GType<DeviceCapabilities>;
+    }
+
     /**
      * General device capability flags.
      */
@@ -3324,6 +3440,10 @@ export namespace NetworkManager {
          */
         IS_SOFTWARE,
     }
+    export namespace DeviceModemCapabilities {
+        export const $gtype: GObject.GType<DeviceModemCapabilities>;
+    }
+
     /**
      * #NMDeviceModemCapabilities values indicate the generic radio access
      * technology families a modem device supports.  For more information on the
@@ -3355,6 +3475,10 @@ export namespace NetworkManager {
          */
         LTE,
     }
+    export namespace DeviceWifiCapabilities {
+        export const $gtype: GObject.GType<DeviceWifiCapabilities>;
+    }
+
     /**
      * 802.11 specific device encryption and authentication capabilities.
      */

@@ -17,6 +17,10 @@ export namespace HarfBuzz {
      * HarfBuzz-0.0
      */
 
+    export namespace aat_layout_feature_selector_t {
+        export const $gtype: GObject.GType<aat_layout_feature_selector_t>;
+    }
+
     /**
      * The selectors defined for specifying AAT feature settings.
      */
@@ -1026,6 +1030,10 @@ export namespace HarfBuzz {
          */
         FULL_WIDTH_CJK_ROMAN,
     }
+    export namespace aat_layout_feature_type_t {
+        export const $gtype: GObject.GType<aat_layout_feature_type_t>;
+    }
+
     /**
      * The possible feature types defined for AAT shaping, from Apple [Font Feature Registry](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html).
      */
@@ -1191,6 +1199,10 @@ export namespace HarfBuzz {
          */
         CJK_ROMAN_SPACING_TYPE,
     }
+    export namespace buffer_cluster_level_t {
+        export const $gtype: GObject.GType<buffer_cluster_level_t>;
+    }
+
     /**
      * Data type for holding HarfBuzz's clustering behavior options. The cluster level
      * dictates one aspect of how HarfBuzz will treat non-base characters
@@ -1229,6 +1241,10 @@ export namespace HarfBuzz {
          */
         DEFAULT,
     }
+    export namespace buffer_content_type_t {
+        export const $gtype: GObject.GType<buffer_content_type_t>;
+    }
+
     /**
      * The type of #hb_buffer_t contents.
      */
@@ -1246,6 +1262,10 @@ export namespace HarfBuzz {
          */
         GLYPHS,
     }
+    export namespace buffer_serialize_format_t {
+        export const $gtype: GObject.GType<buffer_serialize_format_t>;
+    }
+
     /**
      * The buffer serialization and de-serialization format used in
      * hb_buffer_serialize_glyphs() and hb_buffer_deserialize_glyphs().
@@ -1264,6 +1284,10 @@ export namespace HarfBuzz {
          */
         INVALID,
     }
+    export namespace direction_t {
+        export const $gtype: GObject.GType<direction_t>;
+    }
+
     /**
      * The direction of a text segment or buffer.
      *
@@ -1293,6 +1317,10 @@ export namespace HarfBuzz {
          */
         BTT,
     }
+    export namespace memory_mode_t {
+        export const $gtype: GObject.GType<memory_mode_t>;
+    }
+
     /**
      * Data type holding the memory modes available to
      * client programs.
@@ -1335,6 +1363,10 @@ export namespace HarfBuzz {
          */
         READONLY_MAY_MAKE_WRITABLE,
     }
+    export namespace ot_layout_baseline_tag_t {
+        export const $gtype: GObject.GType<ot_layout_baseline_tag_t>;
+    }
+
     /**
      * Baseline tags from [Baseline Tags](https://docs.microsoft.com/en-us/typography/opentype/spec/baselinetags) registry.
      */
@@ -1386,6 +1418,10 @@ export namespace HarfBuzz {
          */
         MATH,
     }
+    export namespace ot_layout_glyph_class_t {
+        export const $gtype: GObject.GType<ot_layout_glyph_class_t>;
+    }
+
     /**
      * The GDEF classes defined for glyphs.
      */
@@ -1411,6 +1447,10 @@ export namespace HarfBuzz {
          */
         COMPONENT,
     }
+    export namespace ot_math_constant_t {
+        export const $gtype: GObject.GType<ot_math_constant_t>;
+    }
+
     /**
      * The 'MATH' table constants, refer to
      * [OpenType documentation](https://docs.microsoft.com/en-us/typography/opentype/spec/math#mathconstants-table)
@@ -1642,6 +1682,10 @@ export namespace HarfBuzz {
          */
         RADICAL_DEGREE_BOTTOM_RAISE_PERCENT,
     }
+    export namespace ot_math_kern_t {
+        export const $gtype: GObject.GType<ot_math_kern_t>;
+    }
+
     /**
      * The math kerning-table types defined for the four corners
      * of a glyph.
@@ -1664,6 +1708,10 @@ export namespace HarfBuzz {
          */
         BOTTOM_LEFT,
     }
+    export namespace ot_meta_tag_t {
+        export const $gtype: GObject.GType<ot_meta_tag_t>;
+    }
+
     /**
      * Known metadata tags from https://docs.microsoft.com/en-us/typography/opentype/spec/meta
      */
@@ -1681,6 +1729,10 @@ export namespace HarfBuzz {
          */
         SUPPORTED_LANGUAGES,
     }
+    export namespace ot_metrics_tag_t {
+        export const $gtype: GObject.GType<ot_metrics_tag_t>;
+    }
+
     /**
      * Metric tags corresponding to [MVAR Value
      * Tags](https://docs.microsoft.com/en-us/typography/opentype/spec/mvar#value-tags)
@@ -1799,6 +1851,10 @@ export namespace HarfBuzz {
          */
         UNDERLINE_OFFSET,
     }
+    export namespace ot_name_id_predefined_t {
+        export const $gtype: GObject.GType<ot_name_id_predefined_t>;
+    }
+
     /**
      * An enum type representing the pre-defined name IDs.
      *
@@ -1913,6 +1969,10 @@ export namespace HarfBuzz {
          */
         INVALID,
     }
+    export namespace paint_composite_mode_t {
+        export const $gtype: GObject.GType<paint_composite_mode_t>;
+    }
+
     /**
      * The values of this enumeration describe the compositing modes
      * that can be used when combining temporary redirected drawing
@@ -2063,6 +2123,10 @@ export namespace HarfBuzz {
          */
         HSL_LUMINOSITY,
     }
+    export namespace paint_extend_t {
+        export const $gtype: GObject.GType<paint_extend_t>;
+    }
+
     /**
      * The values of this enumeration determine how color values
      * outside the minimum and maximum defined offset on a #hb_color_line_t
@@ -2090,6 +2154,10 @@ export namespace HarfBuzz {
          */
         REFLECT,
     }
+    export namespace script_t {
+        export const $gtype: GObject.GType<script_t>;
+    }
+
     /**
      * Data type for scripts. Each #hb_script_t's value is an #hb_tag_t corresponding
      * to the four-letter values defined by [ISO 15924](https://unicode.org/iso15924/).
@@ -2762,6 +2830,10 @@ export namespace HarfBuzz {
          */
         INVALID,
     }
+    export namespace style_tag_t {
+        export const $gtype: GObject.GType<style_tag_t>;
+    }
+
     /**
      * Defined by [OpenType Design-Variation Axis Tag Registry](https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg).
      */
@@ -2804,6 +2876,10 @@ export namespace HarfBuzz {
          */
         WEIGHT,
     }
+    export namespace unicode_combining_class_t {
+        export const $gtype: GObject.GType<unicode_combining_class_t>;
+    }
+
     /**
      * Data type for the Canonical_Combining_Class (ccc) property
      * from the Unicode Character Database.
@@ -3042,6 +3118,10 @@ export namespace HarfBuzz {
          */
         INVALID,
     }
+    export namespace unicode_general_category_t {
+        export const $gtype: GObject.GType<unicode_general_category_t>;
+    }
+
     /**
      * Data type for the "General_Category" (gc) property from
      * the Unicode Character Database.
@@ -8190,6 +8270,10 @@ export namespace HarfBuzz {
     interface unicode_script_func_t {
         (ufuncs: unicode_funcs_t, unicode: codepoint_t): script_t;
     }
+    export namespace buffer_diff_flags_t {
+        export const $gtype: GObject.GType<buffer_diff_flags_t>;
+    }
+
     /**
      * Flags from comparing two #hb_buffer_t's.
      *
@@ -8244,6 +8328,10 @@ export namespace HarfBuzz {
          */
         POSITION_MISMATCH,
     }
+    export namespace buffer_flags_t {
+        export const $gtype: GObject.GType<buffer_flags_t>;
+    }
+
     /**
      * Flags for #hb_buffer_t.
      */
@@ -8316,6 +8404,10 @@ export namespace HarfBuzz {
          */
         DEFINED,
     }
+    export namespace buffer_serialize_flags_t {
+        export const $gtype: GObject.GType<buffer_serialize_flags_t>;
+    }
+
     /**
      * Flags that control what glyph information are serialized in hb_buffer_serialize_glyphs().
      */
@@ -8354,6 +8446,10 @@ export namespace HarfBuzz {
          */
         DEFINED,
     }
+    export namespace glyph_flags_t {
+        export const $gtype: GObject.GType<glyph_flags_t>;
+    }
+
     /**
      * Flags for #hb_glyph_info_t.
      */
@@ -8450,6 +8546,10 @@ export namespace HarfBuzz {
          */
         DEFINED,
     }
+    export namespace ot_color_palette_flags_t {
+        export const $gtype: GObject.GType<ot_color_palette_flags_t>;
+    }
+
     /**
      * Flags that describe the properties of color palette.
      */
@@ -8470,6 +8570,10 @@ export namespace HarfBuzz {
          */
         USABLE_WITH_DARK_BACKGROUND,
     }
+    export namespace ot_math_glyph_part_flags_t {
+        export const $gtype: GObject.GType<ot_math_glyph_part_flags_t>;
+    }
+
     /**
      * Flags for math glyph parts.
      */
@@ -8480,6 +8584,10 @@ export namespace HarfBuzz {
          */
         EXTENDER,
     }
+    export namespace ot_var_axis_flags_t {
+        export const $gtype: GObject.GType<ot_var_axis_flags_t>;
+    }
+
     /**
      * Flags for #hb_ot_var_axis_info_t.
      */

@@ -20,6 +20,10 @@ export namespace GstCodecs {
      * GstCodecs-1.0
      */
 
+    export namespace H264DecoderCompliance {
+        export const $gtype: GObject.GType<H264DecoderCompliance>;
+    }
+
     enum H264DecoderCompliance {
         /**
          * The decoder behavior is
@@ -59,6 +63,10 @@ export namespace GstCodecs {
          */
         FLEXIBLE,
     }
+    export namespace H264DpbBumpMode {
+        export const $gtype: GObject.GType<H264DpbBumpMode>;
+    }
+
     enum H264DpbBumpMode {
         /**
          * No latency requirement for DBP bumping.
@@ -73,11 +81,19 @@ export namespace GstCodecs {
          */
         VERY_LOW_LATENCY,
     }
+    export namespace H264PictureField {
+        export const $gtype: GObject.GType<H264PictureField>;
+    }
+
     enum H264PictureField {
         FRAME,
         TOP_FIELD,
         BOTTOM_FIELD,
     }
+    export namespace H264PictureReference {
+        export const $gtype: GObject.GType<H264PictureReference>;
+    }
+
     enum H264PictureReference {
         /**
          * Not used for reference picture
@@ -92,6 +108,10 @@ export namespace GstCodecs {
          */
         LONG_TERM,
     }
+    export namespace Vp9ReferenceMode {
+        export const $gtype: GObject.GType<Vp9ReferenceMode>;
+    }
+
     /**
      * Reference modes: Specify the type of inter prediction to be used
      */
@@ -109,6 +129,10 @@ export namespace GstCodecs {
          */
         SELECT,
     }
+    export namespace Vp9TxMode {
+        export const $gtype: GObject.GType<Vp9TxMode>;
+    }
+
     /**
      * TxMode: Specifies how the transform size is determined
      */
@@ -134,6 +158,10 @@ export namespace GstCodecs {
          */
         SELECT,
     }
+    export namespace Vp9TxSize {
+        export const $gtype: GObject.GType<Vp9TxSize>;
+    }
+
     /**
      * TxSize: Specifies the transform size
      */

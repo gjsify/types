@@ -23,6 +23,10 @@ export namespace Vda {
      * Vda-1
      */
 
+    export namespace MoveDirection {
+        export const $gtype: GObject.GType<MoveDirection>;
+    }
+
     enum MoveDirection {
         FORWARD,
         BACKWARD,
@@ -185,6 +189,10 @@ export namespace Vda {
         _init(...args: any[]): void;
     }
 
+    export namespace ConnectionStatus {
+        export const $gtype: GObject.GType<ConnectionStatus>;
+    }
+
     enum ConnectionStatus {
         INVALID,
         IN_PROGRESS,
@@ -194,6 +202,10 @@ export namespace Vda {
         TIMEOUT,
         CONNECTED,
     }
+    export namespace SqlExpressionOperatorType {
+        export const $gtype: GObject.GType<SqlExpressionOperatorType>;
+    }
+
     enum SqlExpressionOperatorType {
         NONE,
         AND,
@@ -239,6 +251,10 @@ export namespace Vda {
         BITNOT,
         ILIKE,
     }
+    export namespace RoleGrant {
+        export const $gtype: GObject.GType<RoleGrant>;
+    }
+
     enum RoleGrant {
         NONE,
         SELECT,

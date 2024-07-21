@@ -19,6 +19,10 @@ export namespace GstPbutils {
      * GstPbutils-0.10
      */
 
+    export namespace GstInstallPluginsReturn {
+        export const $gtype: GObject.GType<GstInstallPluginsReturn>;
+    }
+
     /**
      * Result codes returned by gst_install_plugins_async() and
      * gst_install_plugins_sync(), and also the result code passed to the

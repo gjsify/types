@@ -27,6 +27,10 @@ export namespace Nemo {
      * Nemo-3.0
      */
 
+    export namespace OperationResult {
+        export const $gtype: GObject.GType<OperationResult>;
+    }
+
     enum OperationResult {
         /**
          * Returned if the call succeeded, and the extension is done

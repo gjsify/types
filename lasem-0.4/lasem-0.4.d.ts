@@ -23,6 +23,10 @@ export namespace Lasem {
      * Lasem-0.4
      */
 
+    export namespace DebugLevel {
+        export const $gtype: GObject.GType<DebugLevel>;
+    }
+
     enum DebugLevel {
         NONE,
         WARNING,
@@ -30,6 +34,10 @@ export namespace Lasem {
         LOG,
         COUNT,
     }
+    export namespace DomNodeType {
+        export const $gtype: GObject.GType<DomNodeType>;
+    }
+
     enum DomNodeType {
         ELEMENT_NODE,
         ATTRIBUTE_NODE,

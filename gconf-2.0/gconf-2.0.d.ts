@@ -16,11 +16,19 @@ export namespace GConf {
      * GConf-2.0
      */
 
+    export namespace ClientErrorHandlingMode {
+        export const $gtype: GObject.GType<ClientErrorHandlingMode>;
+    }
+
     enum ClientErrorHandlingMode {
         HANDLE_NONE,
         HANDLE_UNRETURNED,
         HANDLE_ALL,
     }
+    export namespace ClientPreloadType {
+        export const $gtype: GObject.GType<ClientPreloadType>;
+    }
+
     enum ClientPreloadType {
         PRELOAD_NONE,
         PRELOAD_ONELEVEL,
@@ -57,6 +65,10 @@ export namespace GConf {
         // Own static methods of GConf.Error
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace ValueType {
+        export const $gtype: GObject.GType<ValueType>;
     }
 
     enum ValueType {
@@ -120,6 +132,10 @@ export namespace GConf {
     interface ListenersPredicate {
         (location: string, cnxn_id: number, listener_data?: any | null): boolean;
     }
+    export namespace UnsetFlags {
+        export const $gtype: GObject.GType<UnsetFlags>;
+    }
+
     enum UnsetFlags {
         NAMES,
     }

@@ -28,12 +28,20 @@ export namespace GnomeDesktop {
      * GnomeDesktop-3.0
      */
 
+    export namespace DesktopThumbnailSize {
+        export const $gtype: GObject.GType<DesktopThumbnailSize>;
+    }
+
     enum DesktopThumbnailSize {
         NORMAL,
         LARGE,
         XLARGE,
         XXLARGE,
     }
+    export namespace RRDpmsMode {
+        export const $gtype: GObject.GType<RRDpmsMode>;
+    }
+
     enum RRDpmsMode {
         ON,
         STANDBY,
@@ -41,6 +49,10 @@ export namespace GnomeDesktop {
         OFF,
         UNKNOWN,
     }
+    export namespace RRDpmsModeType {
+        export const $gtype: GObject.GType<RRDpmsModeType>;
+    }
+
     enum RRDpmsModeType {
         ON,
         STANDBY,
@@ -290,6 +302,10 @@ export namespace GnomeDesktop {
     interface IdleMonitorWatchFunc {
         (monitor: IdleMonitor, id: number): void;
     }
+    export namespace RRRotation {
+        export const $gtype: GObject.GType<RRRotation>;
+    }
+
     enum RRRotation {
         ROTATION_NEXT,
         ROTATION_0,

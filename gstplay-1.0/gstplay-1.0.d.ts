@@ -23,6 +23,10 @@ export namespace GstPlay {
      * GstPlay-1.0
      */
 
+    export namespace PlayColorBalanceType {
+        export const $gtype: GObject.GType<PlayColorBalanceType>;
+    }
+
     enum PlayColorBalanceType {
         /**
          * hue or color balance.
@@ -65,6 +69,10 @@ export namespace GstPlay {
          */
         static get_name(error: PlayError): string;
         static quark(): GLib.Quark;
+    }
+
+    export namespace PlayMessage {
+        export const $gtype: GObject.GType<PlayMessage>;
     }
 
     enum PlayMessage {
@@ -121,6 +129,10 @@ export namespace GstPlay {
          */
         SEEK_DONE,
     }
+    export namespace PlaySnapshotFormat {
+        export const $gtype: GObject.GType<PlaySnapshotFormat>;
+    }
+
     enum PlaySnapshotFormat {
         /**
          * raw native format.
@@ -143,6 +155,10 @@ export namespace GstPlay {
          */
         PNG,
     }
+    export namespace PlayState {
+        export const $gtype: GObject.GType<PlayState>;
+    }
+
     enum PlayState {
         /**
          * the play is stopped.

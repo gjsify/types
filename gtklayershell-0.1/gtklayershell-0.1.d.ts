@@ -27,6 +27,10 @@ export namespace GtkLayerShell {
      * GtkLayerShell-0.1
      */
 
+    export namespace Edge {
+        export const $gtype: GObject.GType<Edge>;
+    }
+
     enum Edge {
         /**
          * The left edge of the screen.
@@ -50,6 +54,10 @@ export namespace GtkLayerShell {
          */
         ENTRY_NUMBER,
     }
+    export namespace KeyboardMode {
+        export const $gtype: GObject.GType<KeyboardMode>;
+    }
+
     enum KeyboardMode {
         /**
          * This window should not receive keyboard events.
@@ -70,6 +78,10 @@ export namespace GtkLayerShell {
          */
         ENTRY_NUMBER,
     }
+    export namespace Layer {
+        export const $gtype: GObject.GType<Layer>;
+    }
+
     enum Layer {
         /**
          * The background layer.

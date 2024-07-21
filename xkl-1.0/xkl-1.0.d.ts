@@ -17,6 +17,10 @@ export namespace Xkl {
      * Xkl-1.0
      */
 
+    export namespace EngineListenModes {
+        export const $gtype: GObject.GType<EngineListenModes>;
+    }
+
     /**
      * The listener action modes:
      */
@@ -36,6 +40,10 @@ export namespace Xkl {
          */
         MANAGE_LAYOUTS,
     }
+    export namespace EngineStateChange {
+        export const $gtype: GObject.GType<EngineStateChange>;
+    }
+
     /**
      * The type of the keyboard state change
      */
@@ -83,6 +91,10 @@ export namespace Xkl {
     interface TwoConfigItemsProcessFunc {
         (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data: any): void;
     }
+    export namespace EngineFeatures {
+        export const $gtype: GObject.GType<EngineFeatures>;
+    }
+
     /**
      * A set of flags used to indicate the capabilities of the active backend
      */

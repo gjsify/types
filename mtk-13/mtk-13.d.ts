@@ -18,6 +18,10 @@ export namespace Mtk {
      * Mtk-13
      */
 
+    export namespace RoundingStrategy {
+        export const $gtype: GObject.GType<RoundingStrategy>;
+    }
+
     enum RoundingStrategy {
         SHRINK,
         GROW,

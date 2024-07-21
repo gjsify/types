@@ -19,6 +19,10 @@ export namespace ArrowDataset {
      * ArrowDataset-1.0
      */
 
+    export namespace SegmentEncoding {
+        export const $gtype: GObject.GType<SegmentEncoding>;
+    }
+
     /**
      * They are corresponding to `arrow::dataset::SegmentEncoding` values.
      */

@@ -24,6 +24,10 @@ export namespace Clapper {
      * Clapper-0.0
      */
 
+    export namespace DiscovererDiscoveryMode {
+        export const $gtype: GObject.GType<DiscovererDiscoveryMode>;
+    }
+
     enum DiscovererDiscoveryMode {
         /**
          * Run discovery for every single media item added to [class`Clapper`.Queue].
@@ -38,6 +42,10 @@ export namespace Clapper {
          */
         NONCURRENT,
     }
+    export namespace MarkerType {
+        export const $gtype: GObject.GType<MarkerType>;
+    }
+
     enum MarkerType {
         /**
          * Unknown marker type.
@@ -59,6 +67,10 @@ export namespace Clapper {
         CUSTOM_2,
         CUSTOM_3,
     }
+    export namespace PlayerSeekMethod {
+        export const $gtype: GObject.GType<PlayerSeekMethod>;
+    }
+
     enum PlayerSeekMethod {
         /**
          * Seek to exact position (slow).
@@ -73,6 +85,10 @@ export namespace Clapper {
          */
         FAST,
     }
+    export namespace PlayerState {
+        export const $gtype: GObject.GType<PlayerState>;
+    }
+
     enum PlayerState {
         /**
          * Player is stopped.
@@ -91,6 +107,10 @@ export namespace Clapper {
          */
         PLAYING,
     }
+    export namespace QueueProgressionMode {
+        export const $gtype: GObject.GType<QueueProgressionMode>;
+    }
+
     enum QueueProgressionMode {
         /**
          * Queue will not change current item after playback finishes.
@@ -117,6 +137,10 @@ export namespace Clapper {
          */
         SHUFFLE,
     }
+    export namespace StreamType {
+        export const $gtype: GObject.GType<StreamType>;
+    }
+
     enum StreamType {
         /**
          * Unknown stream type.

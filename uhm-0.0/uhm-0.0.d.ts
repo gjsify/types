@@ -19,6 +19,10 @@ export namespace Uhm {
      * Uhm-0.0
      */
 
+    export namespace ServerError {
+        export const $gtype: GObject.GType<ServerError>;
+    }
+
     /**
      * Error codes for #UhmServer operations.
      */

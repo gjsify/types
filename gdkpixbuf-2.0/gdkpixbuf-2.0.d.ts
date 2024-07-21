@@ -18,6 +18,10 @@ export namespace GdkPixbuf {
      * GdkPixbuf-2.0
      */
 
+    export namespace Colorspace {
+        export const $gtype: GObject.GType<Colorspace>;
+    }
+
     /**
      * This enumeration defines the color spaces that are supported by
      * the gdk-pixbuf library.
@@ -30,6 +34,10 @@ export namespace GdkPixbuf {
          */
         RGB,
     }
+    export namespace InterpType {
+        export const $gtype: GObject.GType<InterpType>;
+    }
+
     /**
      * Interpolation modes for scaling functions.
      *
@@ -76,6 +84,10 @@ export namespace GdkPixbuf {
          */
         HYPER,
     }
+    export namespace PixbufAlphaMode {
+        export const $gtype: GObject.GType<PixbufAlphaMode>;
+    }
+
     /**
      * Control the alpha channel for drawables.
      *
@@ -153,6 +165,10 @@ export namespace GdkPixbuf {
         // Own static methods of GdkPixbuf.PixbufError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace PixbufRotation {
+        export const $gtype: GObject.GType<PixbufRotation>;
     }
 
     /**
@@ -243,6 +259,10 @@ export namespace GdkPixbuf {
     interface PixbufSaveFunc {
         (buf: Uint8Array | string): boolean;
     }
+    export namespace PixbufFormatFlags {
+        export const $gtype: GObject.GType<PixbufFormatFlags>;
+    }
+
     /**
      * Flags which allow a module to specify further details about the supported
      * operations.

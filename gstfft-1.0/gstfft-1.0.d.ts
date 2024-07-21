@@ -18,6 +18,10 @@ export namespace GstFft {
      * GstFft-1.0
      */
 
+    export namespace FFTWindow {
+        export const $gtype: GObject.GType<FFTWindow>;
+    }
+
     /**
      * The various window functions available.
      */

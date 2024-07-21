@@ -192,6 +192,10 @@ export namespace Flatpak {
         static quark(): GLib.Quark;
     }
 
+    export namespace RefKind {
+        export const $gtype: GObject.GType<RefKind>;
+    }
+
     /**
      * The kind of artifact that a FlatpakRef refers to.
      */
@@ -205,6 +209,10 @@ export namespace Flatpak {
          */
         RUNTIME,
     }
+    export namespace RemoteType {
+        export const $gtype: GObject.GType<RemoteType>;
+    }
+
     /**
      * Different types of `FlatpakRemote`.
      */
@@ -222,6 +230,10 @@ export namespace Flatpak {
          */
         LAN,
     }
+    export namespace StorageType {
+        export const $gtype: GObject.GType<StorageType>;
+    }
+
     /**
      * Information about the storage of an installation.
      */
@@ -247,6 +259,10 @@ export namespace Flatpak {
          */
         NETWORK,
     }
+    export namespace TransactionOperationType {
+        export const $gtype: GObject.GType<TransactionOperationType>;
+    }
+
     /**
      * The type of a #FlatpakTransactionOperation.
      */
@@ -272,6 +288,10 @@ export namespace Flatpak {
          */
         LAST_TYPE,
     }
+    export namespace TransactionRemoteReason {
+        export const $gtype: GObject.GType<TransactionRemoteReason>;
+    }
+
     /**
      * The reason for #FlatpakTransaction::add-new-remote.
      */
@@ -326,6 +346,10 @@ export namespace Flatpak {
     interface ProgressCallback {
         (status: string, progress: number, estimating: boolean): void;
     }
+    export namespace InstallFlags {
+        export const $gtype: GObject.GType<InstallFlags>;
+    }
+
     /**
      * Flags to alter the behavior of flatpak_installation_install_full().
      */
@@ -353,6 +377,10 @@ export namespace Flatpak {
          */
         NO_TRIGGERS,
     }
+    export namespace LaunchFlags {
+        export const $gtype: GObject.GType<LaunchFlags>;
+    }
+
     /**
      * Flags to alter the behavior of flatpak_installation_launch_full().
      */
@@ -367,6 +395,10 @@ export namespace Flatpak {
          */
         DO_NOT_REAP,
     }
+    export namespace QueryFlags {
+        export const $gtype: GObject.GType<QueryFlags>;
+    }
+
     /**
      * Flags to alter the behavior of e.g flatpak_installation_list_remote_refs_sync_full().
      */
@@ -391,6 +423,10 @@ export namespace Flatpak {
          */
         ALL_ARCHES,
     }
+    export namespace TransactionErrorDetails {
+        export const $gtype: GObject.GType<TransactionErrorDetails>;
+    }
+
     /**
      * The details for #FlatpakTransaction::operation-error.
      */
@@ -400,6 +436,10 @@ export namespace Flatpak {
          */
         FATAL,
     }
+    export namespace TransactionResult {
+        export const $gtype: GObject.GType<TransactionResult>;
+    }
+
     /**
      * The details for #FlatpakTransaction::operation-done.
      */
@@ -409,6 +449,10 @@ export namespace Flatpak {
          */
         CHANGE,
     }
+    export namespace UninstallFlags {
+        export const $gtype: GObject.GType<UninstallFlags>;
+    }
+
     /**
      * Flags to alter the behavior of flatpak_installation_uninstall_full().
      */
@@ -428,6 +472,10 @@ export namespace Flatpak {
          */
         NO_TRIGGERS,
     }
+    export namespace UpdateFlags {
+        export const $gtype: GObject.GType<UpdateFlags>;
+    }
+
     /**
      * Flags to alter the behavior of flatpak_installation_update().
      */

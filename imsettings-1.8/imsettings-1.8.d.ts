@@ -18,6 +18,10 @@ export namespace IMSettings {
      * IMSettings-1.8
      */
 
+    export namespace Error {
+        export const $gtype: GObject.GType<Error>;
+    }
+
     /**
      * Error codes used in imsettings.
      */

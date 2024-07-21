@@ -16,6 +16,10 @@ export namespace cairo {
      * cairo-1.0
      */
 
+    export namespace Status {
+        export const $gtype: GObject.GType<Status>;
+    }
+
     enum Status {
         SUCCESS,
         NO_MEMORY,
@@ -57,11 +61,19 @@ export namespace cairo {
         DEVICE_FINISHED,
         JBIG2_GLOBAL_MISSING,
     }
+    export namespace Content {
+        export const $gtype: GObject.GType<Content>;
+    }
+
     enum Content {
         COLOR,
         ALPHA,
         COLOR_ALPHA,
     }
+    export namespace Operator {
+        export const $gtype: GObject.GType<Operator>;
+    }
+
     enum Operator {
         CLEAR,
         SOURCE,
@@ -93,6 +105,10 @@ export namespace cairo {
         HSL_COLOR,
         HSL_LUMINOSITY,
     }
+    export namespace Antialias {
+        export const $gtype: GObject.GType<Antialias>;
+    }
+
     enum Antialias {
         DEFAULT,
         NONE,
@@ -102,32 +118,60 @@ export namespace cairo {
         GOOD,
         BEST,
     }
+    export namespace FillRule {
+        export const $gtype: GObject.GType<FillRule>;
+    }
+
     enum FillRule {
         WINDING,
         EVEN_ODD,
     }
+    export namespace LineCap {
+        export const $gtype: GObject.GType<LineCap>;
+    }
+
     enum LineCap {
         BUTT,
         ROUND,
         SQUARE,
     }
+    export namespace LineJoin {
+        export const $gtype: GObject.GType<LineJoin>;
+    }
+
     enum LineJoin {
         MITER,
         ROUND,
         BEVEL,
     }
+    export namespace TextClusterFlags {
+        export const $gtype: GObject.GType<TextClusterFlags>;
+    }
+
     enum TextClusterFlags {
         BACKWARD,
     }
+    export namespace FontSlant {
+        export const $gtype: GObject.GType<FontSlant>;
+    }
+
     enum FontSlant {
         NORMAL,
         ITALIC,
         OBLIQUE,
     }
+    export namespace FontWeight {
+        export const $gtype: GObject.GType<FontWeight>;
+    }
+
     enum FontWeight {
         NORMAL,
         BOLD,
     }
+    export namespace SubpixelOrder {
+        export const $gtype: GObject.GType<SubpixelOrder>;
+    }
+
     enum SubpixelOrder {
         DEFAULT,
         RGB,
@@ -135,6 +179,10 @@ export namespace cairo {
         VRGB,
         VBGR,
     }
+    export namespace HintStyle {
+        export const $gtype: GObject.GType<HintStyle>;
+    }
+
     enum HintStyle {
         DEFAULT,
         NONE,
@@ -142,11 +190,19 @@ export namespace cairo {
         MEDIUM,
         FULL,
     }
+    export namespace HintMetrics {
+        export const $gtype: GObject.GType<HintMetrics>;
+    }
+
     enum HintMetrics {
         DEFAULT,
         OFF,
         ON,
     }
+    export namespace FontType {
+        export const $gtype: GObject.GType<FontType>;
+    }
+
     enum FontType {
         TOY,
         FT,
@@ -154,12 +210,20 @@ export namespace cairo {
         QUARTZ,
         USER,
     }
+    export namespace PathDataType {
+        export const $gtype: GObject.GType<PathDataType>;
+    }
+
     enum PathDataType {
         MOVE_TO,
         LINE_TO,
         CURVE_TO,
         CLOSE_PATH,
     }
+    export namespace DeviceType {
+        export const $gtype: GObject.GType<DeviceType>;
+    }
+
     enum DeviceType {
         DRM,
         GL,
@@ -171,6 +235,10 @@ export namespace cairo {
         WIN32,
         INVALID,
     }
+    export namespace SurfaceType {
+        export const $gtype: GObject.GType<SurfaceType>;
+    }
+
     enum SurfaceType {
         IMAGE,
         PDF,
@@ -198,6 +266,10 @@ export namespace cairo {
         SUBSURFACE,
         COGL,
     }
+    export namespace Format {
+        export const $gtype: GObject.GType<Format>;
+    }
+
     enum Format {
         INVALID,
         ARGB32,
@@ -207,6 +279,10 @@ export namespace cairo {
         RGB16_565,
         RGB30,
     }
+    export namespace PatternType {
+        export const $gtype: GObject.GType<PatternType>;
+    }
+
     enum PatternType {
         SOLID,
         SURFACE,
@@ -215,12 +291,20 @@ export namespace cairo {
         MESH,
         RASTER_SOURCE,
     }
+    export namespace Extend {
+        export const $gtype: GObject.GType<Extend>;
+    }
+
     enum Extend {
         NONE,
         REPEAT,
         REFLECT,
         PAD,
     }
+    export namespace Filter {
+        export const $gtype: GObject.GType<Filter>;
+    }
+
     enum Filter {
         FAST,
         GOOD,
@@ -229,6 +313,10 @@ export namespace cairo {
         BILINEAR,
         GAUSSIAN,
     }
+    export namespace RegionOverlap {
+        export const $gtype: GObject.GType<RegionOverlap>;
+    }
+
     enum RegionOverlap {
         IN,
         OUT,

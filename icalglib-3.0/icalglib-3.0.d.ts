@@ -16,6 +16,10 @@ export namespace ICalGLib {
      * ICalGLib-3.0
      */
 
+    export namespace ComponentKind {
+        export const $gtype: GObject.GType<ComponentKind>;
+    }
+
     enum ComponentKind {
         NO_COMPONENT,
         ANY_COMPONENT,
@@ -49,6 +53,10 @@ export namespace ICalGLib {
         VVOTER_COMPONENT,
         XVOTE_COMPONENT,
     }
+    export namespace ErrorEnum {
+        export const $gtype: GObject.GType<ErrorEnum>;
+    }
+
     enum ErrorEnum {
         NO_ERROR,
         BADARG_ERROR,
@@ -62,18 +70,30 @@ export namespace ICalGLib {
         UNIMPLEMENTED_ERROR,
         UNKNOWN_ERROR,
     }
+    export namespace ErrorState {
+        export const $gtype: GObject.GType<ErrorState>;
+    }
+
     enum ErrorState {
         FATAL,
         NONFATAL,
         DEFAULT,
         UNKNOWN,
     }
+    export namespace ParameterAction {
+        export const $gtype: GObject.GType<ParameterAction>;
+    }
+
     enum ParameterAction {
         X,
         ASK,
         ABORT,
         NONE,
     }
+    export namespace ParameterCutype {
+        export const $gtype: GObject.GType<ParameterCutype>;
+    }
+
     enum ParameterCutype {
         X,
         INDIVIDUAL,
@@ -83,6 +103,10 @@ export namespace ICalGLib {
         UNKNOWN,
         NONE,
     }
+    export namespace ParameterDisplay {
+        export const $gtype: GObject.GType<ParameterDisplay>;
+    }
+
     enum ParameterDisplay {
         X,
         BADGE,
@@ -91,18 +115,30 @@ export namespace ICalGLib {
         THUMBNAIL,
         NONE,
     }
+    export namespace ParameterEnable {
+        export const $gtype: GObject.GType<ParameterEnable>;
+    }
+
     enum ParameterEnable {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace ParameterEncoding {
+        export const $gtype: GObject.GType<ParameterEncoding>;
+    }
+
     enum ParameterEncoding {
         X,
         '8BIT',
         BASE64,
         NONE,
     }
+    export namespace ParameterFbtype {
+        export const $gtype: GObject.GType<ParameterFbtype>;
+    }
+
     enum ParameterFbtype {
         X,
         FREE,
@@ -111,6 +147,10 @@ export namespace ICalGLib {
         BUSYTENTATIVE,
         NONE,
     }
+    export namespace ParameterFeature {
+        export const $gtype: GObject.GType<ParameterFeature>;
+    }
+
     enum ParameterFeature {
         X,
         AUDIO,
@@ -122,6 +162,10 @@ export namespace ICalGLib {
         VIDEO,
         NONE,
     }
+    export namespace ParameterKind {
+        export const $gtype: GObject.GType<ParameterKind>;
+    }
+
     enum ParameterKind {
         ANY_PARAMETER,
         ACTIONPARAM_PARAMETER,
@@ -176,12 +220,20 @@ export namespace ICalGLib {
         XLICERRORTYPE_PARAMETER,
         NO_PARAMETER,
     }
+    export namespace ParameterLocal {
+        export const $gtype: GObject.GType<ParameterLocal>;
+    }
+
     enum ParameterLocal {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace ParameterPartstat {
+        export const $gtype: GObject.GType<ParameterPartstat>;
+    }
+
     enum ParameterPartstat {
         X,
         NEEDSACTION,
@@ -194,6 +246,10 @@ export namespace ICalGLib {
         FAILED,
         NONE,
     }
+    export namespace ParameterPatchaction {
+        export const $gtype: GObject.GType<ParameterPatchaction>;
+    }
+
     enum ParameterPatchaction {
         X,
         CREATE,
@@ -202,18 +258,30 @@ export namespace ICalGLib {
         BYPARAM,
         NONE,
     }
+    export namespace ParameterRange {
+        export const $gtype: GObject.GType<ParameterRange>;
+    }
+
     enum ParameterRange {
         X,
         THISANDPRIOR,
         THISANDFUTURE,
         NONE,
     }
+    export namespace ParameterRelated {
+        export const $gtype: GObject.GType<ParameterRelated>;
+    }
+
     enum ParameterRelated {
         X,
         START,
         END,
         NONE,
     }
+    export namespace ParameterReltype {
+        export const $gtype: GObject.GType<ParameterReltype>;
+    }
+
     enum ParameterReltype {
         X,
         PARENT,
@@ -222,12 +290,20 @@ export namespace ICalGLib {
         POLL,
         NONE,
     }
+    export namespace ParameterRequired {
+        export const $gtype: GObject.GType<ParameterRequired>;
+    }
+
     enum ParameterRequired {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace ParameterRole {
+        export const $gtype: GObject.GType<ParameterRole>;
+    }
+
     enum ParameterRole {
         X,
         CHAIR,
@@ -236,30 +312,50 @@ export namespace ICalGLib {
         NONPARTICIPANT,
         NONE,
     }
+    export namespace ParameterRsvp {
+        export const $gtype: GObject.GType<ParameterRsvp>;
+    }
+
     enum ParameterRsvp {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace ParameterScheduleagent {
+        export const $gtype: GObject.GType<ParameterScheduleagent>;
+    }
+
     enum ParameterScheduleagent {
         X,
         SERVER,
         CLIENT,
         NONE,
     }
+    export namespace ParameterScheduleforcesend {
+        export const $gtype: GObject.GType<ParameterScheduleforcesend>;
+    }
+
     enum ParameterScheduleforcesend {
         X,
         REQUEST,
         REPLY,
         NONE,
     }
+    export namespace ParameterStayinformed {
+        export const $gtype: GObject.GType<ParameterStayinformed>;
+    }
+
     enum ParameterStayinformed {
         X,
         TRUE,
         FALSE,
         NONE,
     }
+    export namespace ParameterSubstate {
+        export const $gtype: GObject.GType<ParameterSubstate>;
+    }
+
     enum ParameterSubstate {
         X,
         OK,
@@ -267,6 +363,10 @@ export namespace ICalGLib {
         SUSPENDED,
         NONE,
     }
+    export namespace ParameterValue {
+        export const $gtype: GObject.GType<ParameterValue>;
+    }
+
     enum ParameterValue {
         X,
         BINARY,
@@ -285,6 +385,10 @@ export namespace ICalGLib {
         CALADDRESS,
         NONE,
     }
+    export namespace ParameterXliccomparetype {
+        export const $gtype: GObject.GType<ParameterXliccomparetype>;
+    }
+
     enum ParameterXliccomparetype {
         X,
         EQUAL,
@@ -298,6 +402,10 @@ export namespace ICalGLib {
         ISNOTNULL,
         NONE,
     }
+    export namespace ParameterXlicerrortype {
+        export const $gtype: GObject.GType<ParameterXlicerrortype>;
+    }
+
     enum ParameterXlicerrortype {
         X,
         COMPONENTPARSEERROR,
@@ -311,6 +419,10 @@ export namespace ICalGLib {
         VCALPROPPARSEERROR,
         NONE,
     }
+    export namespace ParserState {
+        export const $gtype: GObject.GType<ParserState>;
+    }
+
     enum ParserState {
         ERROR,
         SUCCESS,
@@ -318,6 +430,10 @@ export namespace ICalGLib {
         END_COMP,
         IN_PROGRESS,
     }
+    export namespace PropertyAction {
+        export const $gtype: GObject.GType<PropertyAction>;
+    }
+
     enum PropertyAction {
         X,
         AUDIO,
@@ -326,6 +442,10 @@ export namespace ICalGLib {
         PROCEDURE,
         NONE,
     }
+    export namespace PropertyBusytype {
+        export const $gtype: GObject.GType<PropertyBusytype>;
+    }
+
     enum PropertyBusytype {
         X,
         BUSY,
@@ -333,6 +453,10 @@ export namespace ICalGLib {
         BUSYTENTATIVE,
         NONE,
     }
+    export namespace PropertyCarlevel {
+        export const $gtype: GObject.GType<PropertyCarlevel>;
+    }
+
     enum PropertyCarlevel {
         X,
         CARNONE,
@@ -340,6 +464,10 @@ export namespace ICalGLib {
         CARFULL1,
         NONE,
     }
+    export namespace PropertyCmd {
+        export const $gtype: GObject.GType<PropertyCmd>;
+    }
+
     enum PropertyCmd {
         X,
         ABORT,
@@ -356,6 +484,10 @@ export namespace ICalGLib {
         SETLOCALE,
         NONE,
     }
+    export namespace PropertyKind {
+        export const $gtype: GObject.GType<PropertyKind>;
+    }
+
     enum PropertyKind {
         ANY_PROPERTY,
         ACCEPTRESPONSE_PROPERTY,
@@ -474,6 +606,10 @@ export namespace ICalGLib {
         XLICMIMEOPTINFO_PROPERTY,
         NO_PROPERTY,
     }
+    export namespace PropertyMethod {
+        export const $gtype: GObject.GType<PropertyMethod>;
+    }
+
     enum PropertyMethod {
         X,
         PUBLISH,
@@ -493,6 +629,10 @@ export namespace ICalGLib {
         DELETE,
         NONE,
     }
+    export namespace PropertyPollcompletion {
+        export const $gtype: GObject.GType<PropertyPollcompletion>;
+    }
+
     enum PropertyPollcompletion {
         X,
         SERVER,
@@ -501,17 +641,29 @@ export namespace ICalGLib {
         CLIENT,
         NONE,
     }
+    export namespace PropertyPollmode {
+        export const $gtype: GObject.GType<PropertyPollmode>;
+    }
+
     enum PropertyPollmode {
         X,
         BASIC,
         NONE,
     }
+    export namespace PropertyQuerylevel {
+        export const $gtype: GObject.GType<PropertyQuerylevel>;
+    }
+
     enum PropertyQuerylevel {
         X,
         CALQL1,
         CALQLNONE,
         NONE,
     }
+    export namespace PropertyStatus {
+        export const $gtype: GObject.GType<PropertyStatus>;
+    }
+
     enum PropertyStatus {
         X,
         TENTATIVE,
@@ -528,6 +680,10 @@ export namespace ICalGLib {
         DELETED,
         NONE,
     }
+    export namespace PropertyTaskmode {
+        export const $gtype: GObject.GType<PropertyTaskmode>;
+    }
+
     enum PropertyTaskmode {
         X,
         AUTOMATICCOMPLETION,
@@ -535,6 +691,10 @@ export namespace ICalGLib {
         AUTOMATICSTATUS,
         NONE,
     }
+    export namespace PropertyTransp {
+        export const $gtype: GObject.GType<PropertyTransp>;
+    }
+
     enum PropertyTransp {
         X,
         OPAQUE,
@@ -543,6 +703,10 @@ export namespace ICalGLib {
         TRANSPARENTNOCONFLICT,
         NONE,
     }
+    export namespace PropertyXlicclass {
+        export const $gtype: GObject.GType<PropertyXlicclass>;
+    }
+
     enum PropertyXlicclass {
         X,
         PUBLISHNEW,
@@ -574,6 +738,10 @@ export namespace ICalGLib {
         UNKNOWN,
         NONE,
     }
+    export namespace Property_Class {
+        export const $gtype: GObject.GType<Property_Class>;
+    }
+
     enum Property_Class {
         X,
         PUBLIC,
@@ -581,9 +749,17 @@ export namespace ICalGLib {
         CONFIDENTIAL,
         NONE,
     }
+    export namespace RecurrenceArrayMaxValues {
+        export const $gtype: GObject.GType<RecurrenceArrayMaxValues>;
+    }
+
     enum RecurrenceArrayMaxValues {
         RECURRENCE_ARRAY_MAX,
     }
+    export namespace RecurrenceArraySizes {
+        export const $gtype: GObject.GType<RecurrenceArraySizes>;
+    }
+
     enum RecurrenceArraySizes {
         SECOND_SIZE,
         MINUTE_SIZE,
@@ -595,6 +771,10 @@ export namespace ICalGLib {
         SETPOS_SIZE,
         DAY_SIZE,
     }
+    export namespace RecurrenceFrequency {
+        export const $gtype: GObject.GType<RecurrenceFrequency>;
+    }
+
     enum RecurrenceFrequency {
         SECONDLY_RECURRENCE,
         MINUTELY_RECURRENCE,
@@ -605,12 +785,20 @@ export namespace ICalGLib {
         YEARLY_RECURRENCE,
         NO_RECURRENCE,
     }
+    export namespace RecurrenceSkip {
+        export const $gtype: GObject.GType<RecurrenceSkip>;
+    }
+
     enum RecurrenceSkip {
         BACKWARD,
         FORWARD,
         OMIT,
         UNDEFINED,
     }
+    export namespace RecurrenceWeekday {
+        export const $gtype: GObject.GType<RecurrenceWeekday>;
+    }
+
     enum RecurrenceWeekday {
         NO_WEEKDAY,
         SUNDAY_WEEKDAY,
@@ -621,6 +809,10 @@ export namespace ICalGLib {
         FRIDAY_WEEKDAY,
         SATURDAY_WEEKDAY,
     }
+    export namespace RequestStatus {
+        export const $gtype: GObject.GType<RequestStatus>;
+    }
+
     enum RequestStatus {
         UNKNOWN_STATUS,
         '2_0_SUCCESS_STATUS',
@@ -662,6 +854,10 @@ export namespace ICalGLib {
         '6_1_CONTAINER_NOT_FOUND',
         '9_0_UNRECOGNIZED_COMMAND',
     }
+    export namespace RestrictionKind {
+        export const $gtype: GObject.GType<RestrictionKind>;
+    }
+
     enum RestrictionKind {
         NONE,
         ZERO,
@@ -673,11 +869,19 @@ export namespace ICalGLib {
         ONEMUTUAL,
         UNKNOWN,
     }
+    export namespace Unknowntokenhandling {
+        export const $gtype: GObject.GType<Unknowntokenhandling>;
+    }
+
     enum Unknowntokenhandling {
         ASSUME_IANA_TOKEN,
         DISCARD_TOKEN,
         TREAT_AS_ERROR,
     }
+    export namespace ValueKind {
+        export const $gtype: GObject.GType<ValueKind>;
+    }
+
     enum ValueKind {
         ANY_VALUE,
         ACTION_VALUE,

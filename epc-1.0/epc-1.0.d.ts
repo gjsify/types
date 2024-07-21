@@ -16,6 +16,10 @@ export namespace Epc {
      * Epc-1.0
      */
 
+    export namespace AddressFamily {
+        export const $gtype: GObject.GType<AddressFamily>;
+    }
+
     /**
      * The address family to use for contacting network services.
      */
@@ -24,6 +28,10 @@ export namespace Epc {
         IPV4,
         IPV6,
     }
+    export namespace CollisionHandling {
+        export const $gtype: GObject.GType<CollisionHandling>;
+    }
+
     /**
      * Various strategies for handling service name collisions.
      */
@@ -32,6 +40,10 @@ export namespace Epc {
         CHANGE_NAME,
         UNIQUE_SERVICE,
     }
+    export namespace Protocol {
+        export const $gtype: GObject.GType<Protocol>;
+    }
+
     /**
      * The transport protocols supported by libepc.
      */
@@ -79,6 +91,10 @@ export namespace Epc {
     interface ContentsReadFunc {
         (contents: Contents, buffer: any, length: number): boolean;
     }
+    export namespace AuthFlags {
+        export const $gtype: GObject.GType<AuthFlags>;
+    }
+
     /**
      * These flags specify the authentication behaviour of an #EpcPublisher.
      */

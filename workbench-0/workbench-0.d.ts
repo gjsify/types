@@ -29,6 +29,10 @@ export namespace Workbench {
      * Workbench-0
      */
 
+    export namespace RequestState {
+        export const $gtype: GObject.GType<RequestState>;
+    }
+
     /**
      * Enumeration of request states.
      */

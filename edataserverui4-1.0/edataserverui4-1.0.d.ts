@@ -192,6 +192,10 @@ export namespace EDataServerUI4 {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
     }
+    export namespace CredentialsPrompterPromptFlags {
+        export const $gtype: GObject.GType<CredentialsPrompterPromptFlags>;
+    }
+
     /**
      * An #ECredentialsPrompter prompt flags, influencing behaviour
      * of the e_credentials_prompter_prompt().

@@ -27,6 +27,10 @@ export namespace Egg {
      * Egg-1.0
      */
 
+    export namespace AnimationMode {
+        export const $gtype: GObject.GType<AnimationMode>;
+    }
+
     enum AnimationMode {
         LINEAR,
         EASE_IN_QUAD,
@@ -36,6 +40,10 @@ export namespace Egg {
         EASE_OUT_CUBIC,
         EASE_IN_OUT_CUBIC,
     }
+    export namespace SliderPosition {
+        export const $gtype: GObject.GType<SliderPosition>;
+    }
+
     enum SliderPosition {
         NONE,
         TOP,
@@ -43,6 +51,10 @@ export namespace Egg {
         BOTTOM,
         LEFT,
     }
+    export namespace ThreeGridColumn {
+        export const $gtype: GObject.GType<ThreeGridColumn>;
+    }
+
     enum ThreeGridColumn {
         LEFT,
         CENTER,

@@ -45,6 +45,10 @@ export namespace Zpj {
         _init(...args: any[]): void;
     }
 
+    export namespace SkydriveEntryType {
+        export const $gtype: GObject.GType<SkydriveEntryType>;
+    }
+
     /**
      * The types of Skydrive
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh243648">
@@ -74,6 +78,10 @@ export namespace Zpj {
          */
         INVALID,
     }
+    export namespace ThumbnailSize {
+        export const $gtype: GObject.GType<ThumbnailSize>;
+    }
+
     /**
      * Different
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826522.aspx#reading_photos_videos_props">

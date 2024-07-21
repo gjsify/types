@@ -18,6 +18,10 @@ export namespace Arrow {
      * Arrow-1.0
      */
 
+    export namespace CompressionType {
+        export const $gtype: GObject.GType<CompressionType>;
+    }
+
     /**
      * They are corresponding to `arrow::Compression::type` values.
      */
@@ -55,6 +59,10 @@ export namespace Arrow {
          */
         BZ2,
     }
+    export namespace CountMode {
+        export const $gtype: GObject.GType<CountMode>;
+    }
+
     /**
      * They correspond to the values of `arrow::compute::CountOptions::CountMode`.
      */
@@ -150,6 +158,10 @@ export namespace Arrow {
         static quark(): GLib.Quark;
     }
 
+    export namespace FileMode {
+        export const $gtype: GObject.GType<FileMode>;
+    }
+
     /**
      * They are corresponding to `arrow::io::FileMode::type` values.
      */
@@ -167,6 +179,10 @@ export namespace Arrow {
          */
         READWRITE,
     }
+    export namespace FileType {
+        export const $gtype: GObject.GType<FileType>;
+    }
+
     /**
      * They are corresponding to `arrow::fs::FileType` values.
      */
@@ -188,6 +204,10 @@ export namespace Arrow {
          */
         DIR,
     }
+    export namespace FilterNullSelectionBehavior {
+        export const $gtype: GObject.GType<FilterNullSelectionBehavior>;
+    }
+
     /**
      * They are corresponding to
      * `arrow::compute::FilterOptions::NullSelectionBehavior` values.
@@ -202,6 +222,10 @@ export namespace Arrow {
          */
         EMIT_NULL,
     }
+    export namespace IntervalType {
+        export const $gtype: GObject.GType<IntervalType>;
+    }
+
     /**
      * They are corresponding to `arrow::IntervalType::type` values.
      *
@@ -223,6 +247,10 @@ export namespace Arrow {
          */
         MONTH_DAY_NANO,
     }
+    export namespace JSONReadUnexpectedFieldBehavior {
+        export const $gtype: GObject.GType<JSONReadUnexpectedFieldBehavior>;
+    }
+
     /**
      * They are corresponding to `arrow::json::UnexpectedFieldBehavior` values.
      */
@@ -240,6 +268,10 @@ export namespace Arrow {
          */
         INFER_TYPE,
     }
+    export namespace JoinType {
+        export const $gtype: GObject.GType<JoinType>;
+    }
+
     /**
      * They correspond to the values of `arrow::compute::JoinType`.
      */
@@ -253,6 +285,10 @@ export namespace Arrow {
         RIGHT_OUTER,
         FULL_OUTER,
     }
+    export namespace MetadataVersion {
+        export const $gtype: GObject.GType<MetadataVersion>;
+    }
+
     /**
      * They are corresponding to `arrow::ipc::MetadataVersion::type`
      * values.
@@ -271,6 +307,10 @@ export namespace Arrow {
          */
         V3,
     }
+    export namespace NullPlacement {
+        export const $gtype: GObject.GType<NullPlacement>;
+    }
+
     /**
      * They are corresponding to `arrow::compute::NullPlacement` values.
      */
@@ -286,6 +326,10 @@ export namespace Arrow {
          */
         AT_END,
     }
+    export namespace QuantileInterpolation {
+        export const $gtype: GObject.GType<QuantileInterpolation>;
+    }
+
     /**
      * They correspond to the values of
      * `arrow::compute::QuantileOptions::Interpolation`.
@@ -312,12 +356,20 @@ export namespace Arrow {
          */
         MIDPOINT,
     }
+    export namespace RankTiebreaker {
+        export const $gtype: GObject.GType<RankTiebreaker>;
+    }
+
     enum RankTiebreaker {
         MIN,
         MAX,
         FIRST,
         DENSE,
     }
+    export namespace RoundMode {
+        export const $gtype: GObject.GType<RoundMode>;
+    }
+
     /**
      * They correspond to the values of `arrow::compute::RoundMode`.
      */
@@ -355,6 +407,10 @@ export namespace Arrow {
         HALF_TO_EVEN,
         HALF_TO_ODD,
     }
+    export namespace S3LogLevel {
+        export const $gtype: GObject.GType<S3LogLevel>;
+    }
+
     /**
      * They are corresponding to `arrow::fs::S3LogLevel` values.
      */
@@ -388,6 +444,10 @@ export namespace Arrow {
          */
         TRACE,
     }
+    export namespace SortOrder {
+        export const $gtype: GObject.GType<SortOrder>;
+    }
+
     /**
      * They are corresponding to `arrow::compute::SortOrder` values.
      */
@@ -401,6 +461,10 @@ export namespace Arrow {
          */
         DESCENDING,
     }
+    export namespace TimeUnit {
+        export const $gtype: GObject.GType<TimeUnit>;
+    }
+
     /**
      * They are corresponding to `arrow::TimeUnit::type` values.
      */
@@ -422,6 +486,10 @@ export namespace Arrow {
          */
         NANO,
     }
+    export namespace Type {
+        export const $gtype: GObject.GType<Type>;
+    }
+
     /**
      * They are corresponding to `arrow::Type::type` values.
      */
@@ -588,6 +656,10 @@ export namespace Arrow {
          */
         RUN_END_ENCODED,
     }
+    export namespace UTF8NormalizeForm {
+        export const $gtype: GObject.GType<UTF8NormalizeForm>;
+    }
+
     /**
      * They correspond to the values of `arrow::compute::Utf8NormalizeOptions::Form`.
      */

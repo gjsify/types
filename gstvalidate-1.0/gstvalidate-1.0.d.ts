@@ -23,6 +23,10 @@ export namespace GstValidate {
      * GstValidate-1.0
      */
 
+    export namespace ActionReturn {
+        export const $gtype: GObject.GType<ActionReturn>;
+    }
+
     /**
      * GST_VALIDATE_EXECUTE_ACTION_ERROR:
      * GST_VALIDATE_EXECUTE_ACTION_OK:
@@ -47,6 +51,10 @@ export namespace GstValidate {
         NONE,
         DONE,
     }
+    export namespace InterceptionReturn {
+        export const $gtype: GObject.GType<InterceptionReturn>;
+    }
+
     enum InterceptionReturn {
         /**
          * The report will be completely ignored.
@@ -63,6 +71,10 @@ export namespace GstValidate {
          */
         REPORT,
     }
+    export namespace ReportLevel {
+        export const $gtype: GObject.GType<ReportLevel>;
+    }
+
     enum ReportLevel {
         CRITICAL,
         WARNING,
@@ -72,6 +84,10 @@ export namespace GstValidate {
         EXPECTED,
         NUM_ENTRIES,
     }
+    export namespace ReportingDetails {
+        export const $gtype: GObject.GType<ReportingDetails>;
+    }
+
     /**
      * Setting the reporting level allows to control the way issues are reported
      * when calling #gst_validate_runner_printf.
@@ -299,6 +315,10 @@ export namespace GstValidate {
     interface PrepareAction {
         (action: Action): number;
     }
+    export namespace ActionTypeFlags {
+        export const $gtype: GObject.GType<ActionTypeFlags>;
+    }
+
     enum ActionTypeFlags {
         /**
          * No special flag
@@ -354,6 +374,10 @@ export namespace GstValidate {
          */
         CHECK,
     }
+    export namespace DebugFlags {
+        export const $gtype: GObject.GType<DebugFlags>;
+    }
+
     /**
      * GST_VALIDATE_FATAL_DEFAULT:
      * GST_VALIDATE_FATAL_ISSUES:
@@ -372,6 +396,10 @@ export namespace GstValidate {
         PRINT_WARNINGS,
         PRINT_CRITICALS,
     }
+    export namespace IssueFlags {
+        export const $gtype: GObject.GType<IssueFlags>;
+    }
+
     /**
      * GST_VALIDATE_ISSUE_FLAGS_NONE: No special flags for the issue type
      * GST_VALIDATE_ISSUE_FLAGS_FULL_DETAILS: Always show all occurrences of the issue in full details
@@ -386,12 +414,20 @@ export namespace GstValidate {
          */
         FORCE_BACKTRACE,
     }
+    export namespace MediaDescriptorWriterFlags {
+        export const $gtype: GObject.GType<MediaDescriptorWriterFlags>;
+    }
+
     enum MediaDescriptorWriterFlags {
         NONE,
         NO_PARSER,
         FULL,
         HANDLE_GLOGS,
     }
+    export namespace ObjectSetPropertyFlags {
+        export const $gtype: GObject.GType<ObjectSetPropertyFlags>;
+    }
+
     enum ObjectSetPropertyFlags {
         /**
          * The property is optional, if it
@@ -404,12 +440,20 @@ export namespace GstValidate {
          */
         NO_VALUE_CHECK,
     }
+    export namespace StructureResolveVariablesFlags {
+        export const $gtype: GObject.GType<StructureResolveVariablesFlags>;
+    }
+
     enum StructureResolveVariablesFlags {
         ALL,
         LOCAL_ONLY,
         NO_FAILURE,
         NO_EXPRESSION,
     }
+    export namespace VerbosityFlags {
+        export const $gtype: GObject.GType<VerbosityFlags>;
+    }
+
     /**
      * Defines the level of verbosity of -validate (ie, printing on stdout).
      */

@@ -18,6 +18,10 @@ export namespace Malcontent {
      * Malcontent-0
      */
 
+    export namespace AppFilterListType {
+        export const $gtype: GObject.GType<AppFilterListType>;
+    }
+
     /**
      * Different semantics for interpreting an application list.
      */
@@ -33,6 +37,10 @@ export namespace Malcontent {
          */
         ALLOWLIST,
     }
+    export namespace AppFilterOarsValue {
+        export const $gtype: GObject.GType<AppFilterOarsValue>;
+    }
+
     /**
      * Rating values of the intensity of a given section in an app or game.
      * These are directly equivalent to the values in the #AsContentRatingValue
@@ -100,6 +108,10 @@ export namespace Malcontent {
         static quark(): GLib.Quark;
     }
 
+    export namespace SessionLimitsType {
+        export const $gtype: GObject.GType<SessionLimitsType>;
+    }
+
     /**
      * Types of session limit which can be imposed on an account. Additional types
      * may be added in future.
@@ -141,6 +153,10 @@ export namespace Malcontent {
      * @returns deserialized session limits
      */
     function session_limits_deserialize(variant: GLib.Variant, user_id: number): SessionLimits;
+    export namespace ManagerGetValueFlags {
+        export const $gtype: GObject.GType<ManagerGetValueFlags>;
+    }
+
     /**
      * Flags to control the behaviour of getter functions like
      * mct_manager_get_app_filter() and mct_manager_get_app_filter_async().
@@ -156,6 +172,10 @@ export namespace Malcontent {
          */
         INTERACTIVE,
     }
+    export namespace ManagerSetValueFlags {
+        export const $gtype: GObject.GType<ManagerSetValueFlags>;
+    }
+
     /**
      * Flags to control the behaviour of setter functions like
      * mct_manager_set_app_filter() and mct_manager_set_app_filter_async().

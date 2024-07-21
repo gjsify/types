@@ -64,6 +64,10 @@ export namespace GstBase {
     interface GstTypeFindHelperGetRangeFunction {
         (obj: Gst.Object, offset: number, length: number, buffer: Gst.Buffer): Gst.FlowReturn;
     }
+    export namespace SrcFlags {
+        export const $gtype: GObject.GType<SrcFlags>;
+    }
+
     /**
      * The #GstElement flags that a basesrc element may have.
      */

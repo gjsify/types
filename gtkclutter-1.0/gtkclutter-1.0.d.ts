@@ -33,6 +33,10 @@ export namespace GtkClutter {
      * GtkClutter-1.0
      */
 
+    export namespace TextureError {
+        export const $gtype: GObject.GType<TextureError>;
+    }
+
     /**
      * Error enumeration for #GtkClutterTexture
      */

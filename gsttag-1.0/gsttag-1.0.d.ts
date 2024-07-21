@@ -19,6 +19,10 @@ export namespace GstTag {
      * GstTag-1.0
      */
 
+    export namespace TagDemuxResult {
+        export const $gtype: GObject.GType<TagDemuxResult>;
+    }
+
     /**
      * Result values from the parse_tag virtual function.
      */
@@ -36,6 +40,10 @@ export namespace GstTag {
          */
         OK,
     }
+    export namespace TagImageType {
+        export const $gtype: GObject.GType<TagImageType>;
+    }
+
     /**
      * Type of image contained in an image tag (specified as "image-type" field in
      * the info structure in the image's #GstSample)
@@ -745,6 +753,10 @@ export namespace GstTag {
      * @param value a vorbiscomment value string (value in key=value), must be valid UTF-8
      */
     function vorbis_tag_add(list: Gst.TagList, tag: string, value: string): void;
+    export namespace TagLicenseFlags {
+        export const $gtype: GObject.GType<TagLicenseFlags>;
+    }
+
     /**
      * See http://creativecommons.org/ns for more information.
      */

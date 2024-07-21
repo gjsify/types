@@ -23,6 +23,10 @@ export namespace GstRtspServer {
      * GstRtspServer-1.0
      */
 
+    export namespace RTSPAddressPoolResult {
+        export const $gtype: GObject.GType<RTSPAddressPoolResult>;
+    }
+
     /**
      * Result codes from RTSP address pool functions.
      */
@@ -48,6 +52,10 @@ export namespace GstRtspServer {
          */
         ELAST,
     }
+    export namespace RTSPFilterResult {
+        export const $gtype: GObject.GType<RTSPFilterResult>;
+    }
+
     /**
      * Possible return values for gst_rtsp_session_pool_filter().
      */
@@ -65,6 +73,10 @@ export namespace GstRtspServer {
          */
         REF,
     }
+    export namespace RTSPMediaStatus {
+        export const $gtype: GObject.GType<RTSPMediaStatus>;
+    }
+
     /**
      * The state of the media pipeline.
      */
@@ -95,6 +107,10 @@ export namespace GstRtspServer {
          */
         ERROR,
     }
+    export namespace RTSPPublishClockMode {
+        export const $gtype: GObject.GType<RTSPPublishClockMode>;
+    }
+
     /**
      * Whether the clock and possibly RTP/clock offset should be published according to RFC7273.
      */
@@ -112,6 +128,10 @@ export namespace GstRtspServer {
          */
         CLOCK_AND_OFFSET,
     }
+    export namespace RTSPSuspendMode {
+        export const $gtype: GObject.GType<RTSPSuspendMode>;
+    }
+
     /**
      * The suspend mode of the media pipeline. A media pipeline is suspended right
      * after creating the SDP and when the client performs a PAUSED request.
@@ -130,6 +150,10 @@ export namespace GstRtspServer {
          */
         RESET,
     }
+    export namespace RTSPThreadType {
+        export const $gtype: GObject.GType<RTSPThreadType>;
+    }
+
     /**
      * Different thread types
      */
@@ -289,6 +313,10 @@ export namespace GstRtspServer {
     interface RTSPStreamTransportFilterFunc {
         (stream: RTSPStream, trans: RTSPStreamTransport): RTSPFilterResult;
     }
+    export namespace RTSPAddressFlags {
+        export const $gtype: GObject.GType<RTSPAddressFlags>;
+    }
+
     /**
      * Flags used to control allocation of addresses
      */
@@ -318,6 +346,10 @@ export namespace GstRtspServer {
          */
         UNICAST,
     }
+    export namespace RTSPTransportMode {
+        export const $gtype: GObject.GType<RTSPTransportMode>;
+    }
+
     /**
      * The supported modes of the media.
      */

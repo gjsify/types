@@ -19,6 +19,10 @@ export namespace Notify {
      * Notify-0.7
      */
 
+    export namespace ClosedReason {
+        export const $gtype: GObject.GType<ClosedReason>;
+    }
+
     /**
      * The reason for which the notification has been closed.
      */
@@ -45,6 +49,10 @@ export namespace Notify {
          */
         UNDEFIEND,
     }
+    export namespace Urgency {
+        export const $gtype: GObject.GType<Urgency>;
+    }
+
     /**
      * The urgency level of the notification.
      */

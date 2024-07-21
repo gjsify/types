@@ -19,6 +19,10 @@ export namespace Jcat {
      * Jcat-1.0
      */
 
+    export namespace BlobKind {
+        export const $gtype: GObject.GType<BlobKind>;
+    }
+
     /**
      * The kind of blob stored as a signature on the item.
      */
@@ -68,6 +72,10 @@ export namespace Jcat {
          */
         SHA512,
     }
+    export namespace BlobMethod {
+        export const $gtype: GObject.GType<BlobMethod>;
+    }
+
     /**
      * The blob verification method.
      */
@@ -85,6 +93,10 @@ export namespace Jcat {
          */
         SIGNATURE,
     }
+    export namespace ImportFlags {
+        export const $gtype: GObject.GType<ImportFlags>;
+    }
+
     /**
      * Flags used for importing.
      */
@@ -111,6 +123,10 @@ export namespace Jcat {
      * @returns a version number, e.g. "0.1.11"
      */
     function version_string(): string;
+    export namespace BlobFlags {
+        export const $gtype: GObject.GType<BlobFlags>;
+    }
+
     /**
      * Flags used when creating the blob.
      */
@@ -124,6 +140,10 @@ export namespace Jcat {
          */
         IS_UTF8,
     }
+    export namespace ExportFlags {
+        export const $gtype: GObject.GType<ExportFlags>;
+    }
+
     /**
      * Flags used for exporting.
      */
@@ -137,6 +157,10 @@ export namespace Jcat {
          */
         NO_TIMESTAMP,
     }
+    export namespace SignFlags {
+        export const $gtype: GObject.GType<SignFlags>;
+    }
+
     /**
      * The flags to when signing a binary
      */
@@ -154,6 +178,10 @@ export namespace Jcat {
          */
         ADD_CERT,
     }
+    export namespace VerifyFlags {
+        export const $gtype: GObject.GType<VerifyFlags>;
+    }
+
     /**
      * The flags to use when interacting with a keyring
      */

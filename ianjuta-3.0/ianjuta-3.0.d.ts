@@ -29,6 +29,10 @@ export namespace IAnjuta {
      * IAnjuta-3.0
      */
 
+    export namespace BuildableCommand {
+        export const $gtype: GObject.GType<BuildableCommand>;
+    }
+
     /**
      * The enumeration is used to speficy the disered build operation
      */
@@ -138,6 +142,10 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    export namespace DebuggerBreakpointMethod {
+        export const $gtype: GObject.GType<DebuggerBreakpointMethod>;
+    }
+
     /**
      * Defines which breakpoint characteristics are supported by the debugger
      * backend.
@@ -164,6 +172,10 @@ export namespace IAnjuta {
          */
         CONDITION,
     }
+    export namespace DebuggerBreakpointType {
+        export const $gtype: GObject.GType<DebuggerBreakpointType>;
+    }
+
     /**
      * This enumeration defined various characteristics of the breakpoint.
      */
@@ -321,6 +333,10 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    export namespace DebuggerOutputType {
+        export const $gtype: GObject.GType<DebuggerOutputType>;
+    }
+
     /**
      * This enumeration is used to defined the kind of output in
      * #IAnjutaDebuggerOutputCallback
@@ -343,6 +359,10 @@ export namespace IAnjuta {
          */
         INFO_OUTPUT,
     }
+    export namespace DebuggerState {
+        export const $gtype: GObject.GType<DebuggerState>;
+    }
+
     /**
      * This enumeration is used to defined the different state of the debugger.
      */
@@ -390,6 +410,10 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    export namespace EditorAttribute {
+        export const $gtype: GObject.GType<EditorAttribute>;
+    }
+
     /**
      * This enumeration is used to specify the type of text. Note that not all
      * editors implement this.
@@ -427,6 +451,10 @@ export namespace IAnjuta {
         // Own static methods of IAnjuta.EditorError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace EditorLineModeType {
+        export const $gtype: GObject.GType<EditorLineModeType>;
     }
 
     /**
@@ -468,6 +496,10 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    export namespace IndicableIndicator {
+        export const $gtype: GObject.GType<IndicableIndicator>;
+    }
+
     /**
      * This enumeration is used to specify the appearance of the indicator
      */
@@ -504,6 +536,10 @@ export namespace IAnjuta {
         // Own static methods of IAnjuta.MarkableError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace MarkableMarker {
+        export const $gtype: GObject.GType<MarkableMarker>;
     }
 
     /**
@@ -550,6 +586,10 @@ export namespace IAnjuta {
         // Own static methods of IAnjuta.MessageManagerError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace MessageViewType {
+        export const $gtype: GObject.GType<MessageViewType>;
     }
 
     /**
@@ -653,11 +693,19 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    export namespace ProjectProbe {
+        export const $gtype: GObject.GType<ProjectProbe>;
+    }
+
     enum ProjectProbe {
         PROBE_FILES,
         PROBE_MAKE_FILES,
         PROBE_PROJECT_FILES,
     }
+    export namespace SymbolField {
+        export const $gtype: GObject.GType<SymbolField>;
+    }
+
     /**
      * Symbol Fields. Used to define and retrieve results from query. Each of
      * these fields are either integer or string. Use the right method to
@@ -743,6 +791,10 @@ export namespace IAnjuta {
          */
         FIELD_END,
     }
+    export namespace SymbolQueryDb {
+        export const $gtype: GObject.GType<SymbolQueryDb>;
+    }
+
     /**
      * Sets the database to use for the query. System database is where
      * all system library symbols are found. While project database is where
@@ -758,6 +810,10 @@ export namespace IAnjuta {
          */
         DB_SYSTEM,
     }
+    export namespace SymbolQueryFileScope {
+        export const $gtype: GObject.GType<SymbolQueryFileScope>;
+    }
+
     /**
      * Defines file scope of symbols to query.
      */
@@ -775,6 +831,10 @@ export namespace IAnjuta {
          */
         SEARCH_FS_PRIVATE,
     }
+    export namespace SymbolQueryMode {
+        export const $gtype: GObject.GType<SymbolQueryMode>;
+    }
+
     /**
      * This parameter determines the mode of query execution. By default,
      * IANJUTA_SYMBOL_QUERY_MODE_SYNC is selected.
@@ -800,6 +860,10 @@ export namespace IAnjuta {
          */
         MODE_QUEUED,
     }
+    export namespace SymbolQueryName {
+        export const $gtype: GObject.GType<SymbolQueryName>;
+    }
+
     /**
      * Names of query that defined what kind of query it is.
      */
@@ -845,6 +909,10 @@ export namespace IAnjuta {
          */
         SEARCH_PARENT_SCOPE_FILE,
     }
+    export namespace SymbolType {
+        export const $gtype: GObject.GType<SymbolType>;
+    }
+
     enum SymbolType {
         /**
          * None spedified.

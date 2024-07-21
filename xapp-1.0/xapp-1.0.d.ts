@@ -27,6 +27,10 @@ export namespace XApp {
      * XApp-1.0
      */
 
+    export namespace IconSize {
+        export const $gtype: GObject.GType<IconSize>;
+    }
+
     class IconSize {
         static $gtype: GObject.GType<IconSize>;
 
@@ -42,6 +46,10 @@ export namespace XApp {
         // Constructors of XApp.IconSize
 
         _init(...args: any[]): void;
+    }
+
+    export namespace ScrollDirection {
+        export const $gtype: GObject.GType<ScrollDirection>;
     }
 
     /**
@@ -65,6 +73,10 @@ export namespace XApp {
          */
         RIGHT,
     }
+    export namespace StatusIconState {
+        export const $gtype: GObject.GType<StatusIconState>;
+    }
+
     enum StatusIconState {
         /**
          * The #XAppStatusIcon is currently being handled

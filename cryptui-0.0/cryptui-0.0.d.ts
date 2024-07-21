@@ -27,6 +27,10 @@ export namespace CryptUI {
      * CryptUI-0.0
      */
 
+    export namespace EncType {
+        export const $gtype: GObject.GType<EncType>;
+    }
+
     /**
      * Used in key properties to indicate what kind of key it is
      *
@@ -55,12 +59,20 @@ export namespace CryptUI {
          */
         MAXVALUE,
     }
+    export namespace KeyChooserMode {
+        export const $gtype: GObject.GType<KeyChooserMode>;
+    }
+
     enum KeyChooserMode {
         RECIPIENTS,
         SIGNER,
         SUPPORT_SYMMETRIC,
         MUSTSIGN,
     }
+    export namespace KeyFlags {
+        export const $gtype: GObject.GType<KeyFlags>;
+    }
+
     /**
      * Used in key properties to indicate a key's status.  These values are
      * logically OR'd together.
@@ -102,11 +114,19 @@ export namespace CryptUI {
          */
         EXPORTABLE,
     }
+    export namespace KeyStoreMode {
+        export const $gtype: GObject.GType<KeyStoreMode>;
+    }
+
     enum KeyStoreMode {
         ALL,
         SELECTED,
         RESULTS,
     }
+    export namespace Location {
+        export const $gtype: GObject.GType<Location>;
+    }
+
     /**
      * Indicates where a key is located.
      *
@@ -135,6 +155,10 @@ export namespace CryptUI {
          */
         LOCAL,
     }
+    export namespace Validity {
+        export const $gtype: GObject.GType<Validity>;
+    }
+
     /**
      * What the validity of the key is.
      *

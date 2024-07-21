@@ -27,6 +27,10 @@ export namespace Caja {
      * Caja-2.0
      */
 
+    export namespace OperationResult {
+        export const $gtype: GObject.GType<OperationResult>;
+    }
+
     enum OperationResult {
         /**
          * the operation succeeded, and the extension

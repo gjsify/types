@@ -27,6 +27,10 @@ export namespace GooCanvas {
      * GooCanvas-3.0
      */
 
+    export namespace CairoAntialias {
+        export const $gtype: GObject.GType<CairoAntialias>;
+    }
+
     /**
      * #GooCairoAntialias is simply a wrapper for the #cairo_antialias_t type,
      * allowing it to be used for #GObject properties.
@@ -39,6 +43,10 @@ export namespace GooCanvas {
         GRAY,
         SUBPIXEL,
     }
+    export namespace CairoFillRule {
+        export const $gtype: GObject.GType<CairoFillRule>;
+    }
+
     /**
      * #GooCairoFillRule is simply a wrapper for the #cairo_fill_rule_t type,
      * allowing it to be used for #GObject properties.
@@ -49,6 +57,10 @@ export namespace GooCanvas {
         WINDING,
         EVEN_ODD,
     }
+    export namespace CairoHintMetrics {
+        export const $gtype: GObject.GType<CairoHintMetrics>;
+    }
+
     /**
      * #GooCairoHintMetrics is simply a wrapper for the #cairo_hint_metrics_t type,
      * allowing it to be used for #GObject properties.
@@ -60,6 +72,10 @@ export namespace GooCanvas {
         OFF,
         ON,
     }
+    export namespace CairoLineCap {
+        export const $gtype: GObject.GType<CairoLineCap>;
+    }
+
     /**
      * #GooCairoLineCap is simply a wrapper for the #cairo_line_cap_t type,
      * allowing it to be used for #GObject properties.
@@ -71,6 +87,10 @@ export namespace GooCanvas {
         ROUND,
         SQUARE,
     }
+    export namespace CairoLineJoin {
+        export const $gtype: GObject.GType<CairoLineJoin>;
+    }
+
     /**
      * #GooCairoLineJoin is simply a wrapper for the #cairo_line_join_t type,
      * allowing it to be used for #GObject properties.
@@ -82,6 +102,10 @@ export namespace GooCanvas {
         ROUND,
         BEVEL,
     }
+    export namespace CairoOperator {
+        export const $gtype: GObject.GType<CairoOperator>;
+    }
+
     /**
      * #GooCairoOperator is simply a wrapper for the #cairo_operator_t type,
      * allowing it to be used for #GObject properties.
@@ -104,6 +128,10 @@ export namespace GooCanvas {
         ADD,
         SATURATE,
     }
+    export namespace CanvasAnchorType {
+        export const $gtype: GObject.GType<CanvasAnchorType>;
+    }
+
     /**
      * GooCanvasAnchorType is used to specify the positions of objects relative to
      * a particular anchor point.
@@ -178,6 +206,10 @@ export namespace GooCanvas {
          */
         E,
     }
+    export namespace CanvasAnimateType {
+        export const $gtype: GObject.GType<CanvasAnimateType>;
+    }
+
     /**
      * #GooCanvasAnimateType is used to specify what happens when the end of an
      * animation is reached.
@@ -202,6 +234,10 @@ export namespace GooCanvas {
          */
         BOUNCE,
     }
+    export namespace CanvasItemVisibility {
+        export const $gtype: GObject.GType<CanvasItemVisibility>;
+    }
+
     /**
      * The #GooCanvasItemVisibility enumeration is used to specify when a canvas
      * item is visible.
@@ -228,6 +264,10 @@ export namespace GooCanvas {
          */
         VISIBLE_ABOVE_THRESHOLD,
     }
+    export namespace CanvasPathCommandType {
+        export const $gtype: GObject.GType<CanvasPathCommandType>;
+    }
+
     /**
      * GooCanvasPathCommandType specifies the type of each command in the path.
      * See the path element in the <ulink url="http://www.w3.org/Graphics/SVG/">
@@ -366,6 +406,10 @@ export namespace GooCanvas {
     function canvas_item_model_class_list_child_properties(mclass: typeof GObject.Object): GObject.ParamSpec[];
     type CairoMatrix = object | null;
     type CairoPattern = object | null;
+    export namespace CanvasPointerEvents {
+        export const $gtype: GObject.GType<CanvasPointerEvents>;
+    }
+
     /**
      * Specifies when an item receives pointer events such as mouse clicks.
      */

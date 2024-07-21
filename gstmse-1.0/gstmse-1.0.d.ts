@@ -18,6 +18,10 @@ export namespace GstMse {
      * GstMse-1.0
      */
 
+    export namespace MediaSourceEOSError {
+        export const $gtype: GObject.GType<MediaSourceEOSError>;
+    }
+
     /**
      * Reasons for ending a #GstMediaSource using gst_media_source_end_of_stream().
      *
@@ -67,6 +71,10 @@ export namespace GstMse {
         static quark(): GLib.Quark;
     }
 
+    export namespace MediaSourceReadyState {
+        export const $gtype: GObject.GType<MediaSourceReadyState>;
+    }
+
     /**
      * Describes the possible states of the Media Source.
      *
@@ -89,6 +97,10 @@ export namespace GstMse {
          */
         ENDED,
     }
+    export namespace MseSrcReadyState {
+        export const $gtype: GObject.GType<MseSrcReadyState>;
+    }
+
     /**
      * Describes how much information a #GstMseSrc has about the media it is playing
      * back at the current playback #GstMseSrc:position. This type corresponds
@@ -125,6 +137,10 @@ export namespace GstMse {
          */
         ENOUGH_DATA,
     }
+    export namespace SourceBufferAppendMode {
+        export const $gtype: GObject.GType<SourceBufferAppendMode>;
+    }
+
     /**
      * [Specification](https://www.w3.org/TR/media-source-2/#dom-appendmode)
      */

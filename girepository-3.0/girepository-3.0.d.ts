@@ -18,6 +18,10 @@ export namespace GIRepository {
      * GIRepository-3.0
      */
 
+    export namespace ArrayType {
+        export const $gtype: GObject.GType<ArrayType>;
+    }
+
     /**
      * The type of array in a [class`GIRepository`.TypeInfo].
      */
@@ -39,6 +43,10 @@ export namespace GIRepository {
          */
         BYTE_ARRAY,
     }
+    export namespace Direction {
+        export const $gtype: GObject.GType<Direction>;
+    }
+
     /**
      * The direction of a [class`GIRepository`.ArgInfo].
      */
@@ -86,6 +94,10 @@ export namespace GIRepository {
         _init(...args: any[]): void;
     }
 
+    export namespace RepositoryError {
+        export const $gtype: GObject.GType<RepositoryError>;
+    }
+
     /**
      * An error code used with `GI_REPOSITORY_ERROR` in a [type`GLib`.Error]
      * returned from a [class`GIRepository`.Repository] routine.
@@ -111,6 +123,10 @@ export namespace GIRepository {
          */
         LIBRARY_NOT_FOUND,
     }
+    export namespace ScopeType {
+        export const $gtype: GObject.GType<ScopeType>;
+    }
+
     /**
      * Scope type of a [class`GIRepository`.ArgInfo] representing callback,
      * determines how the callback is invoked and is used to decided when the invoke
@@ -144,6 +160,10 @@ export namespace GIRepository {
          */
         FOREVER,
     }
+    export namespace Transfer {
+        export const $gtype: GObject.GType<Transfer>;
+    }
+
     /**
      * `GITransfer` specifies who’s responsible for freeing the resources after an
      * ownership transfer is complete.
@@ -184,6 +204,10 @@ export namespace GIRepository {
          */
         EVERYTHING,
     }
+    export namespace TypeTag {
+        export const $gtype: GObject.GType<TypeTag>;
+    }
+
     /**
      * The type tag of a [class`GIRepository`.TypeInfo].
      */
@@ -334,6 +358,10 @@ export namespace GIRepository {
      * @returns the string
      */
     function type_tag_to_string(type: TypeTag): string;
+    export namespace FieldInfoFlags {
+        export const $gtype: GObject.GType<FieldInfoFlags>;
+    }
+
     /**
      * Flags for a [class`GIRepository`.FieldInfo].
      */
@@ -347,6 +375,10 @@ export namespace GIRepository {
          */
         WRITABLE,
     }
+    export namespace FunctionInfoFlags {
+        export const $gtype: GObject.GType<FunctionInfoFlags>;
+    }
+
     /**
      * Flags for a [class`GIRepository`.FunctionInfo] struct.
      */
@@ -372,6 +404,10 @@ export namespace GIRepository {
          */
         WRAPS_VFUNC,
     }
+    export namespace RepositoryLoadFlags {
+        export const $gtype: GObject.GType<RepositoryLoadFlags>;
+    }
+
     /**
      * Flags that control how a typelib is loaded.
      */
@@ -385,6 +421,10 @@ export namespace GIRepository {
          */
         LAZY,
     }
+    export namespace VFuncInfoFlags {
+        export const $gtype: GObject.GType<VFuncInfoFlags>;
+    }
+
     /**
      * Flags of a [class`GIRepository`.VFuncInfo] struct.
      */

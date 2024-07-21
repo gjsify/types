@@ -19,6 +19,10 @@ export namespace Camel {
      * Camel-1.2
      */
 
+    export namespace AuthenticationResult {
+        export const $gtype: GObject.GType<AuthenticationResult>;
+    }
+
     /**
      * Authentication result codes used by #CamelService.
      */
@@ -36,6 +40,10 @@ export namespace Camel {
          */
         REJECTED,
     }
+    export namespace CertTrust {
+        export const $gtype: GObject.GType<CertTrust>;
+    }
+
     enum CertTrust {
         UNKNOWN,
         NEVER,
@@ -44,12 +52,20 @@ export namespace Camel {
         ULTIMATE,
         TEMPORARY,
     }
+    export namespace CipherContextError {
+        export const $gtype: GObject.GType<CipherContextError>;
+    }
+
     enum CipherContextError {
         /**
          * one or more recipient's public key was not found
          */
         CIPHER_CONTEXT_ERROR_KEY_NOT_FOUND,
     }
+    export namespace CipherHash {
+        export const $gtype: GObject.GType<CipherHash>;
+    }
+
     enum CipherHash {
         DEFAULT,
         MD2,
@@ -62,16 +78,28 @@ export namespace Camel {
         TIGER192,
         HAVAL5160,
     }
+    export namespace CipherValidityEncrypt {
+        export const $gtype: GObject.GType<CipherValidityEncrypt>;
+    }
+
     enum CipherValidityEncrypt {
         NONE,
         WEAK,
         ENCRYPTED,
         STRONG,
     }
+    export namespace CipherValidityMode {
+        export const $gtype: GObject.GType<CipherValidityMode>;
+    }
+
     enum CipherValidityMode {
         SIGN,
         ENCRYPT,
     }
+    export namespace CipherValiditySign {
+        export const $gtype: GObject.GType<CipherValiditySign>;
+    }
+
     enum CipherValiditySign {
         NONE,
         GOOD,
@@ -79,6 +107,10 @@ export namespace Camel {
         UNKNOWN,
         NEED_PUBLIC_KEY,
     }
+    export namespace CompareType {
+        export const $gtype: GObject.GType<CompareType>;
+    }
+
     /**
      * Declares the compare type to use.
      */
@@ -92,12 +124,20 @@ export namespace Camel {
          */
         SENSITIVE,
     }
+    export namespace DBError {
+        export const $gtype: GObject.GType<DBError>;
+    }
+
     enum DBError {
         /**
          * database is corrupt
          */
         DB_ERROR_CORRUPT,
     }
+    export namespace DBKnownColumnNames {
+        export const $gtype: GObject.GType<DBKnownColumnNames>;
+    }
+
     /**
      * An enum of all the known columns, which can be used for a quick column lookups.
      */
@@ -271,6 +311,10 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
+    export namespace FetchHeadersType {
+        export const $gtype: GObject.GType<FetchHeadersType>;
+    }
+
     /**
      * Describes what headers to fetch when downloading message summaries.
      */
@@ -288,6 +332,10 @@ export namespace Camel {
          */
         ALL,
     }
+    export namespace FetchType {
+        export const $gtype: GObject.GType<FetchType>;
+    }
+
     enum FetchType {
         /**
          * fetch old messages
@@ -346,6 +394,10 @@ export namespace Camel {
         static quark(): GLib.Quark;
     }
 
+    export namespace GpgTrust {
+        export const $gtype: GObject.GType<GpgTrust>;
+    }
+
     /**
      * GPG key trust levels.
      */
@@ -375,6 +427,10 @@ export namespace Camel {
          */
         ULTIMATE,
     }
+    export namespace HTMLParserState {
+        export const $gtype: GObject.GType<HTMLParserState>;
+    }
+
     enum HTMLParserState {
         DATA,
         ENT,
@@ -391,11 +447,19 @@ export namespace Camel {
         EOD,
         EOF,
     }
+    export namespace HeaderAddressType {
+        export const $gtype: GObject.GType<HeaderAddressType>;
+    }
+
     enum HeaderAddressType {
         NONE,
         NAME,
         GROUP,
     }
+    export namespace JunkStatus {
+        export const $gtype: GObject.GType<JunkStatus>;
+    }
+
     /**
      * These are result codes used when passing messages through a junk filter.
      */
@@ -417,10 +481,18 @@ export namespace Camel {
          */
         MESSAGE_IS_NOT_JUNK,
     }
+    export namespace LockType {
+        export const $gtype: GObject.GType<LockType>;
+    }
+
     enum LockType {
         READ,
         WRITE,
     }
+    export namespace MemPoolFlags {
+        export const $gtype: GObject.GType<MemPoolFlags>;
+    }
+
     enum MemPoolFlags {
         /**
          * Allocate to native structure alignment
@@ -439,6 +511,10 @@ export namespace Camel {
          */
         MASK,
     }
+    export namespace MimeFilterBasicType {
+        export const $gtype: GObject.GType<MimeFilterBasicType>;
+    }
+
     enum MimeFilterBasicType {
         INVALID,
         BASE64_ENC,
@@ -448,22 +524,42 @@ export namespace Camel {
         UU_ENC,
         UU_DEC,
     }
+    export namespace MimeFilterCRLFDirection {
+        export const $gtype: GObject.GType<MimeFilterCRLFDirection>;
+    }
+
     enum MimeFilterCRLFDirection {
         ENCODE,
         DECODE,
     }
+    export namespace MimeFilterCRLFMode {
+        export const $gtype: GObject.GType<MimeFilterCRLFMode>;
+    }
+
     enum MimeFilterCRLFMode {
         DOTS,
         ONLY,
     }
+    export namespace MimeFilterGZipMode {
+        export const $gtype: GObject.GType<MimeFilterGZipMode>;
+    }
+
     enum MimeFilterGZipMode {
         ZIP,
         UNZIP,
     }
+    export namespace MimeFilterYencDirection {
+        export const $gtype: GObject.GType<MimeFilterYencDirection>;
+    }
+
     enum MimeFilterYencDirection {
         ENCODE,
         DECODE,
     }
+    export namespace MimeParserState {
+        export const $gtype: GObject.GType<MimeParserState>;
+    }
+
     enum MimeParserState {
         INITIAL,
         PRE_FROM,
@@ -482,6 +578,10 @@ export namespace Camel {
         MULTIPART_END,
         MESSAGE_END,
     }
+    export namespace NetworkSecurityMethod {
+        export const $gtype: GObject.GType<NetworkSecurityMethod>;
+    }
+
     /**
      * Methods for establishing an encrypted (or unencrypted) network connection.
      */
@@ -500,6 +600,10 @@ export namespace Camel {
          */
         STARTTLS_ON_STANDARD_PORT,
     }
+    export namespace ProviderConfType {
+        export const $gtype: GObject.GType<ProviderConfType>;
+    }
+
     enum ProviderConfType {
         END,
         SECTION_START,
@@ -513,10 +617,18 @@ export namespace Camel {
         PLACEHOLDER,
         ADVANCED_SECTION_START,
     }
+    export namespace ProviderType {
+        export const $gtype: GObject.GType<ProviderType>;
+    }
+
     enum ProviderType {
         STORE,
         TRANSPORT,
     }
+    export namespace SExpResultType {
+        export const $gtype: GObject.GType<SExpResultType>;
+    }
+
     /**
      * Defines type of a #CamelSExpResult.
      */
@@ -546,6 +658,10 @@ export namespace Camel {
          */
         UNDEFINED,
     }
+    export namespace SExpTermType {
+        export const $gtype: GObject.GType<SExpTermType>;
+    }
+
     /**
      * Defines type of a #CamelSExpTerm and partly also #CamelSExpSymbol
      */
@@ -579,15 +695,27 @@ export namespace Camel {
          */
         VAR,
     }
+    export namespace SMIMESign {
+        export const $gtype: GObject.GType<SMIMESign>;
+    }
+
     enum SMIMESign {
         CLEARSIGN,
         ENVELOPED,
     }
+    export namespace SaslAnonTraceType {
+        export const $gtype: GObject.GType<SaslAnonTraceType>;
+    }
+
     enum SaslAnonTraceType {
         EMAIL,
         OPAQUE,
         EMPTY,
     }
+    export namespace ServiceConnectionStatus {
+        export const $gtype: GObject.GType<ServiceConnectionStatus>;
+    }
+
     /**
      * Connection status returned by camel_service_get_connection_status().
      */
@@ -645,11 +773,19 @@ export namespace Camel {
         static quark(): GLib.Quark;
     }
 
+    export namespace SessionAlertType {
+        export const $gtype: GObject.GType<SessionAlertType>;
+    }
+
     enum SessionAlertType {
         INFO,
         WARNING,
         ERROR,
     }
+    export namespace SortType {
+        export const $gtype: GObject.GType<SortType>;
+    }
+
     /**
      * Determines the direction of a sort.
      */
@@ -687,6 +823,10 @@ export namespace Camel {
         static quark(): GLib.Quark;
     }
 
+    export namespace StreamBufferMode {
+        export const $gtype: GObject.GType<StreamBufferMode>;
+    }
+
     enum StreamBufferMode {
         BUFFER,
         NONE,
@@ -694,6 +834,10 @@ export namespace Camel {
         WRITE,
         MODE,
     }
+    export namespace ThreeState {
+        export const $gtype: GObject.GType<ThreeState>;
+    }
+
     /**
      * Describes a three-state value, which can be either Off, On or Inconsistent.
      */
@@ -711,6 +855,10 @@ export namespace Camel {
          */
         INCONSISTENT,
     }
+    export namespace TimeUnit {
+        export const $gtype: GObject.GType<TimeUnit>;
+    }
+
     /**
      * Declares time unit, which serves to interpret the time value,
      * like in #CamelOfflineSettings.
@@ -733,6 +881,10 @@ export namespace Camel {
          */
         YEARS,
     }
+    export namespace TransferEncoding {
+        export const $gtype: GObject.GType<TransferEncoding>;
+    }
+
     enum TransferEncoding {
         ENCODING_DEFAULT,
         ENCODING_7BIT,
@@ -743,11 +895,19 @@ export namespace Camel {
         ENCODING_UUENCODE,
         NUM_ENCODINGS,
     }
+    export namespace VTrashFolderType {
+        export const $gtype: GObject.GType<VTrashFolderType>;
+    }
+
     enum VTrashFolderType {
         TRASH,
         JUNK,
         LAST,
     }
+    export namespace _search_match_t {
+        export const $gtype: GObject.GType<_search_match_t>;
+    }
+
     enum _search_match_t {
         EXACT,
         CONTAINS,
@@ -756,6 +916,10 @@ export namespace Camel {
         ENDS,
         SOUNDEX,
     }
+    export namespace _search_t {
+        export const $gtype: GObject.GType<_search_t>;
+    }
+
     enum _search_t {
         ASIS,
         ENCODED,
@@ -763,6 +927,10 @@ export namespace Camel {
         ADDRESS_ENCODED,
         MLIST,
     }
+    export namespace _search_word_t {
+        export const $gtype: GObject.GType<_search_word_t>;
+    }
+
     enum _search_word_t {
         SIMPLE,
         COMPLEX,
@@ -2161,25 +2329,45 @@ export namespace Camel {
     interface UrlScanFunc {
         (_in: string, pos: string, inend: string, match: UrlMatch): boolean;
     }
+    export namespace BestencEncoding {
+        export const $gtype: GObject.GType<BestencEncoding>;
+    }
+
     enum BestencEncoding {
         '7BIT',
         '8BIT',
         BINARY,
         TEXT,
     }
+    export namespace BestencRequired {
+        export const $gtype: GObject.GType<BestencRequired>;
+    }
+
     enum BestencRequired {
         GET_ENCODING,
         GET_CHARSET,
         LF_IS_CRLF,
         NO_FROM,
     }
+    export namespace BlockFileFlags {
+        export const $gtype: GObject.GType<BlockFileFlags>;
+    }
+
     enum BlockFileFlags {
         BLOCK_FILE_SYNC,
     }
+    export namespace BlockFlags {
+        export const $gtype: GObject.GType<BlockFlags>;
+    }
+
     enum BlockFlags {
         DIRTY,
         DETACHED,
     }
+    export namespace FolderFlags {
+        export const $gtype: GObject.GType<FolderFlags>;
+    }
+
     enum FolderFlags {
         HAS_SUMMARY_CAPABILITY,
         FILTER_RECENT,
@@ -2188,6 +2376,10 @@ export namespace Camel {
         IS_JUNK,
         FILTER_JUNK,
     }
+    export namespace FolderInfoFlags {
+        export const $gtype: GObject.GType<FolderInfoFlags>;
+    }
+
     /**
      * These flags are abstractions.  It's up to the CamelProvider to give
      * them suitable interpretations.  Use #CAMEL_FOLDER_TYPE_MASK to isolate
@@ -2307,6 +2499,10 @@ export namespace Camel {
          */
         FLAGS_LAST,
     }
+    export namespace FolderSummaryFlags {
+        export const $gtype: GObject.GType<FolderSummaryFlags>;
+    }
+
     enum FolderSummaryFlags {
         /**
          * There are changes in summary, which should be saved.
@@ -2318,6 +2514,10 @@ export namespace Camel {
          */
         IN_MEMORY_ONLY,
     }
+    export namespace MessageFlags {
+        export const $gtype: GObject.GType<MessageFlags>;
+    }
+
     enum MessageFlags {
         ANSWERED,
         DELETED,
@@ -2334,15 +2534,27 @@ export namespace Camel {
         JUNK_LEARN,
         USER,
     }
+    export namespace MimeFilterCanonFlags {
+        export const $gtype: GObject.GType<MimeFilterCanonFlags>;
+    }
+
     enum MimeFilterCanonFlags {
         CRLF,
         FROM,
         STRIP,
     }
+    export namespace MimeFilterEnrichedFlags {
+        export const $gtype: GObject.GType<MimeFilterEnrichedFlags>;
+    }
+
     enum MimeFilterEnrichedFlags {
         NONE,
         IS_RICHTEXT,
     }
+    export namespace MimeFilterToHTMLFlags {
+        export const $gtype: GObject.GType<MimeFilterToHTMLFlags>;
+    }
+
     /**
      * Flags for converting text/plain content into text/html.
      */
@@ -2405,6 +2617,10 @@ export namespace Camel {
          */
         PRESERVE_TABS,
     }
+    export namespace ParamFlags {
+        export const $gtype: GObject.GType<ParamFlags>;
+    }
+
     /**
      * These flags extend #GParamFlags.  Most of the time you will use them
      * in conjunction with g_object_class_install_property().
@@ -2417,6 +2633,10 @@ export namespace Camel {
          */
         PARAM_PERSISTENT,
     }
+    export namespace ProviderFlags {
+        export const $gtype: GObject.GType<ProviderFlags>;
+    }
+
     enum ProviderFlags {
         /**
          * Provider works with remote data.
@@ -2475,6 +2695,10 @@ export namespace Camel {
          */
         SUPPORTS_PURGE_MESSAGE_CACHE,
     }
+    export namespace ProviderURLFlags {
+        export const $gtype: GObject.GType<ProviderURLFlags>;
+    }
+
     enum ProviderURLFlags {
         ALLOW_USER,
         ALLOW_AUTH,
@@ -2498,6 +2722,10 @@ export namespace Camel {
         FRAGMENT_IS_PATH,
         PATH_IS_ABSOLUTE,
     }
+    export namespace RecipientCertificateFlags {
+        export const $gtype: GObject.GType<RecipientCertificateFlags>;
+    }
+
     /**
      * Flags used to camel_session_get_recipient_certificates_sync() call.
      */
@@ -2513,12 +2741,20 @@ export namespace Camel {
          */
         PGP,
     }
+    export namespace SMIMEDescribe {
+        export const $gtype: GObject.GType<SMIMEDescribe>;
+    }
+
     enum SMIMEDescribe {
         SIGNED,
         ENCRYPTED,
         CERTS,
         CRLS,
     }
+    export namespace StoreFlags {
+        export const $gtype: GObject.GType<StoreFlags>;
+    }
+
     enum StoreFlags {
         VTRASH,
         VJUNK,
@@ -2531,6 +2767,10 @@ export namespace Camel {
         SUPPORTS_INITIAL_SETUP,
         IS_BUILTIN,
     }
+    export namespace StoreGetFolderFlags {
+        export const $gtype: GObject.GType<StoreGetFolderFlags>;
+    }
+
     /**
      * Open mode for folder.
      */
@@ -2557,6 +2797,10 @@ export namespace Camel {
          */
         PRIVATE,
     }
+    export namespace StoreGetFolderInfoFlags {
+        export const $gtype: GObject.GType<StoreGetFolderInfoFlags>;
+    }
+
     enum StoreGetFolderInfoFlags {
         FAST,
         RECURSIVE,
@@ -2579,6 +2823,10 @@ export namespace Camel {
          */
         REFRESH,
     }
+    export namespace StoreInfoFlags {
+        export const $gtype: GObject.GType<StoreInfoFlags>;
+    }
+
     enum StoreInfoFlags {
         NOSELECT,
         NOINFERIORS,
@@ -2607,19 +2855,35 @@ export namespace Camel {
         WRITEONLY,
         FLAGGED,
     }
+    export namespace StorePermissionFlags {
+        export const $gtype: GObject.GType<StorePermissionFlags>;
+    }
+
     enum StorePermissionFlags {
         READ,
         WRITE,
     }
+    export namespace URLFlags {
+        export const $gtype: GObject.GType<URLFlags>;
+    }
+
     enum URLFlags {
         PARAMS,
         AUTH,
     }
+    export namespace UUDecodeState {
+        export const $gtype: GObject.GType<UUDecodeState>;
+    }
+
     enum UUDecodeState {
         INIT,
         BEGIN,
         END,
     }
+    export namespace _search_flags_t {
+        export const $gtype: GObject.GType<_search_flags_t>;
+    }
+
     enum _search_flags_t {
         START,
         END,

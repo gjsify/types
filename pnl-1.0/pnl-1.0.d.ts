@@ -27,6 +27,10 @@ export namespace Pnl {
      * Pnl-1.0
      */
 
+    export namespace AnimationMode {
+        export const $gtype: GObject.GType<AnimationMode>;
+    }
+
     enum AnimationMode {
         LINEAR,
         EASE_IN_QUAD,
@@ -36,6 +40,10 @@ export namespace Pnl {
         EASE_OUT_CUBIC,
         EASE_IN_OUT_CUBIC,
     }
+    export namespace DockRevealerTransitionType {
+        export const $gtype: GObject.GType<DockRevealerTransitionType>;
+    }
+
     enum DockRevealerTransitionType {
         NONE,
         SLIDE_RIGHT,

@@ -21,12 +21,20 @@ export namespace ColorHug {
      * ColorHug-1.0
      */
 
+    export namespace ColorSelect {
+        export const $gtype: GObject.GType<ColorSelect>;
+    }
+
     enum ColorSelect {
         RED,
         WHITE,
         BLUE,
         GREEN,
     }
+    export namespace DeviceMode {
+        export const $gtype: GObject.GType<DeviceMode>;
+    }
+
     enum DeviceMode {
         UNKNOWN,
         LEGACY,
@@ -39,6 +47,10 @@ export namespace ColorHug {
         BOOTLOADER_ALS,
         FIRMWARE_ALS,
     }
+    export namespace Error {
+        export const $gtype: GObject.GType<Error>;
+    }
+
     enum Error {
         NONE,
         UNKNOWN_CMD,
@@ -77,6 +89,10 @@ export namespace ColorHug {
         I2C_SLAVE_CONFIG,
         SELF_TEST_EEPROM,
     }
+    export namespace FreqScale {
+        export const $gtype: GObject.GType<FreqScale>;
+    }
+
     class FreqScale {
         static $gtype: GObject.GType<FreqScale>;
 
@@ -92,10 +108,18 @@ export namespace ColorHug {
         _init(...args: any[]): void;
     }
 
+    export namespace MeasureMode {
+        export const $gtype: GObject.GType<MeasureMode>;
+    }
+
     enum MeasureMode {
         FREQUENCY,
         DURATION,
     }
+    export namespace SpectrumKind {
+        export const $gtype: GObject.GType<SpectrumKind>;
+    }
+
     enum SpectrumKind {
         RAW,
         DARK_CAL,
@@ -1691,6 +1715,10 @@ export namespace ColorHug {
      */
     function sha1_parse(value: string, sha1: Sha1): boolean;
     function strerror(error_enum: Error): string;
+    export namespace DeviceQueueProcessFlags {
+        export const $gtype: GObject.GType<DeviceQueueProcessFlags>;
+    }
+
     /**
      * CH_DEVICE_QUEUE_PROCESS_FLAGS_NONE:
      * 	Normal operation, where a single device command failure makes
@@ -1715,16 +1743,28 @@ export namespace ColorHug {
         CONTINUE_ERRORS,
         NONFATAL_ERRORS,
     }
+    export namespace Illuminant {
+        export const $gtype: GObject.GType<Illuminant>;
+    }
+
     enum Illuminant {
         NONE,
         A,
         UV,
     }
+    export namespace PcbErrata {
+        export const $gtype: GObject.GType<PcbErrata>;
+    }
+
     enum PcbErrata {
         NONE,
         SWAPPED_LEDS,
         NO_WELCOME,
     }
+    export namespace StatusLed {
+        export const $gtype: GObject.GType<StatusLed>;
+    }
+
     enum StatusLed {
         GREEN,
         RED,

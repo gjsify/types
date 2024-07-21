@@ -18,6 +18,10 @@ export namespace CloudProviders {
      * CloudProviders-0.3
      */
 
+    export namespace AccountStatus {
+        export const $gtype: GObject.GType<AccountStatus>;
+    }
+
     enum AccountStatus {
         INVALID,
         IDLE,

@@ -491,6 +491,10 @@ export namespace UDisks {
      * @returns The last property id.
      */
     function volume_group_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    export namespace PartitionTypeInfoFlags {
+        export const $gtype: GObject.GType<PartitionTypeInfoFlags>;
+    }
+
     /**
      * Flags describing a partition type.
      */

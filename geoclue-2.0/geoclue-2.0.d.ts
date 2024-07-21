@@ -18,6 +18,10 @@ export namespace Geoclue {
      * Geoclue-2.0
      */
 
+    export namespace AccuracyLevel {
+        export const $gtype: GObject.GType<AccuracyLevel>;
+    }
+
     enum AccuracyLevel {
         NONE,
         COUNTRY,
@@ -65,6 +69,10 @@ export namespace Geoclue {
      * @returns The last property id.
      */
     function manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    export namespace ClientProxyCreateFlags {
+        export const $gtype: GObject.GType<ClientProxyCreateFlags>;
+    }
+
     enum ClientProxyCreateFlags {
         NONE,
         AUTO_DELETE,

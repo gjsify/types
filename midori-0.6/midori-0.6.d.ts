@@ -32,16 +32,28 @@ export namespace Midori {
      * Midori-0.6
      */
 
+    export namespace DebugFlags {
+        export const $gtype: GObject.GType<DebugFlags>;
+    }
+
     enum DebugFlags {
         NONE,
         HISTORY,
     }
+    export namespace StartupType {
+        export const $gtype: GObject.GType<StartupType>;
+    }
+
     enum StartupType {
         SPEED_DIAL,
         HOMEPAGE,
         LAST_OPEN_PAGES,
         DELAYED_PAGES,
     }
+    export namespace ProxyType {
+        export const $gtype: GObject.GType<ProxyType>;
+    }
+
     enum ProxyType {
         AUTOMATIC,
         HTTP,

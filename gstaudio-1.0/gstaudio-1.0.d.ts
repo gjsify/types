@@ -19,6 +19,10 @@ export namespace GstAudio {
      * GstAudio-1.0
      */
 
+    export namespace AudioBaseSinkDiscontReason {
+        export const $gtype: GObject.GType<AudioBaseSinkDiscontReason>;
+    }
+
     /**
      * Different possible reasons for discontinuities. This enum is useful for the custom
      * slave method.
@@ -49,6 +53,10 @@ export namespace GstAudio {
          */
         DEVICE_FAILURE,
     }
+    export namespace AudioBaseSinkSlaveMethod {
+        export const $gtype: GObject.GType<AudioBaseSinkSlaveMethod>;
+    }
+
     /**
      * Different possible clock slaving algorithms used when the internal audio
      * clock is not selected as the pipeline master clock.
@@ -72,6 +80,10 @@ export namespace GstAudio {
          */
         CUSTOM,
     }
+    export namespace AudioBaseSrcSlaveMethod {
+        export const $gtype: GObject.GType<AudioBaseSrcSlaveMethod>;
+    }
+
     /**
      * Different possible clock slaving algorithms when the internal audio clock was
      * not selected as the pipeline clock.
@@ -96,6 +108,10 @@ export namespace GstAudio {
          */
         NONE,
     }
+    export namespace AudioCdSrcMode {
+        export const $gtype: GObject.GType<AudioCdSrcMode>;
+    }
+
     /**
      * Mode in which the CD audio source operates. Influences timestamping,
      * EOS handling and seeking.
@@ -110,6 +126,10 @@ export namespace GstAudio {
          */
         CONTINUOUS,
     }
+    export namespace AudioChannelPosition {
+        export const $gtype: GObject.GType<AudioChannelPosition>;
+    }
+
     /**
      * Audio channel positions.
      *
@@ -265,6 +285,10 @@ export namespace GstAudio {
          */
         SURROUND_RIGHT,
     }
+    export namespace AudioDitherMethod {
+        export const $gtype: GObject.GType<AudioDitherMethod>;
+    }
+
     /**
      * Set of available dithering methods.
      */
@@ -286,6 +310,10 @@ export namespace GstAudio {
          */
         TPDF_HF,
     }
+    export namespace AudioFormat {
+        export const $gtype: GObject.GType<AudioFormat>;
+    }
+
     /**
      * Enum value describing the most common audio formats.
      */
@@ -475,6 +503,10 @@ export namespace GstAudio {
          */
         F64,
     }
+    export namespace AudioLayout {
+        export const $gtype: GObject.GType<AudioLayout>;
+    }
+
     /**
      * Layout of the audio samples for the different channels.
      */
@@ -488,6 +520,10 @@ export namespace GstAudio {
          */
         NON_INTERLEAVED,
     }
+    export namespace AudioNoiseShapingMethod {
+        export const $gtype: GObject.GType<AudioNoiseShapingMethod>;
+    }
+
     /**
      * Set of available noise shaping methods
      */
@@ -513,6 +549,10 @@ export namespace GstAudio {
          */
         HIGH,
     }
+    export namespace AudioResamplerFilterInterpolation {
+        export const $gtype: GObject.GType<AudioResamplerFilterInterpolation>;
+    }
+
     /**
      * The different filter interpolation methods.
      */
@@ -532,6 +572,10 @@ export namespace GstAudio {
          */
         CUBIC,
     }
+    export namespace AudioResamplerFilterMode {
+        export const $gtype: GObject.GType<AudioResamplerFilterMode>;
+    }
+
     /**
      * Select for the filter tables should be set up.
      */
@@ -553,6 +597,10 @@ export namespace GstAudio {
          */
         AUTO,
     }
+    export namespace AudioResamplerMethod {
+        export const $gtype: GObject.GType<AudioResamplerMethod>;
+    }
+
     /**
      * Different subsampling and upsampling methods
      */
@@ -580,6 +628,10 @@ export namespace GstAudio {
          */
         KAISER,
     }
+    export namespace AudioRingBufferFormatType {
+        export const $gtype: GObject.GType<AudioRingBufferFormatType>;
+    }
+
     /**
      * The format of the samples in the ringbuffer.
      */
@@ -645,6 +697,10 @@ export namespace GstAudio {
          */
         FLAC,
     }
+    export namespace AudioRingBufferState {
+        export const $gtype: GObject.GType<AudioRingBufferState>;
+    }
+
     /**
      * The state of the ringbuffer.
      */
@@ -668,6 +724,10 @@ export namespace GstAudio {
          */
         ERROR,
     }
+    export namespace StreamVolumeFormat {
+        export const $gtype: GObject.GType<StreamVolumeFormat>;
+    }
+
     /**
      * Different representations of a stream volume. gst_stream_volume_convert_volume()
      * allows to convert between the different representations.
@@ -1308,6 +1368,10 @@ export namespace GstAudio {
     interface AudioRingBufferCallback {
         (rbuf: AudioRingBuffer, data: Uint8Array | string): void;
     }
+    export namespace AudioChannelMixerFlags {
+        export const $gtype: GObject.GType<AudioChannelMixerFlags>;
+    }
+
     /**
      * Flags passed to gst_audio_channel_mixer_new()
      */
@@ -1333,6 +1397,10 @@ export namespace GstAudio {
          */
         UNPOSITIONED_OUT,
     }
+    export namespace AudioConverterFlags {
+        export const $gtype: GObject.GType<AudioConverterFlags>;
+    }
+
     /**
      * Extra flags passed to gst_audio_converter_new() and gst_audio_converter_samples().
      */
@@ -1352,6 +1420,10 @@ export namespace GstAudio {
          */
         VARIABLE_RATE,
     }
+    export namespace AudioFlags {
+        export const $gtype: GObject.GType<AudioFlags>;
+    }
+
     /**
      * Extra audio flags
      */
@@ -1366,6 +1438,10 @@ export namespace GstAudio {
          */
         UNPOSITIONED,
     }
+    export namespace AudioFormatFlags {
+        export const $gtype: GObject.GType<AudioFormatFlags>;
+    }
+
     /**
      * The different audio flags that a format info can have.
      */
@@ -1392,6 +1468,10 @@ export namespace GstAudio {
          */
         UNPACK,
     }
+    export namespace AudioPackFlags {
+        export const $gtype: GObject.GType<AudioPackFlags>;
+    }
+
     /**
      * The different flags that can be used when packing and unpacking.
      */
@@ -1409,6 +1489,10 @@ export namespace GstAudio {
          */
         TRUNCATE_RANGE,
     }
+    export namespace AudioQuantizeFlags {
+        export const $gtype: GObject.GType<AudioQuantizeFlags>;
+    }
+
     /**
      * Extra flags that can be passed to gst_audio_quantize_new()
      */
@@ -1422,6 +1506,10 @@ export namespace GstAudio {
          */
         NON_INTERLEAVED,
     }
+    export namespace AudioResamplerFlags {
+        export const $gtype: GObject.GType<AudioResamplerFlags>;
+    }
+
     /**
      * Different resampler flags.
      */

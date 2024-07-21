@@ -18,6 +18,10 @@ export namespace GWeather {
      * GWeather-4.0
      */
 
+    export namespace ConditionPhenomenon {
+        export const $gtype: GObject.GType<ConditionPhenomenon>;
+    }
+
     /**
      * The current or forecasted significant phenomenon.
      */
@@ -55,6 +59,10 @@ export namespace GWeather {
         DUST_WHIRLS,
         LAST,
     }
+    export namespace ConditionQualifier {
+        export const $gtype: GObject.GType<ConditionQualifier>;
+    }
+
     /**
      * An additional modifier applied to a #GWeatherConditionPhenomenon to
      * describe the current or forecasted weather conditions.
@@ -134,6 +142,10 @@ export namespace GWeather {
          */
         LAST,
     }
+    export namespace DistanceUnit {
+        export const $gtype: GObject.GType<DistanceUnit>;
+    }
+
     /**
      * The measure unit to use for sky visibility values, when retrieved
      * by gweather_info_get_value_visibility().
@@ -160,6 +172,10 @@ export namespace GWeather {
          */
         MILES,
     }
+    export namespace LocationLevel {
+        export const $gtype: GObject.GType<LocationLevel>;
+    }
+
     /**
      * The size/scope of a particular [class`GWeather`.Location].
      *
@@ -216,6 +232,10 @@ export namespace GWeather {
          */
         NAMED_TIMEZONE,
     }
+    export namespace PressureUnit {
+        export const $gtype: GObject.GType<PressureUnit>;
+    }
+
     /**
      * The measure unit to use for atmospheric pressure values, when
      * retrieved by gweather_info_get_value_pressure().
@@ -255,6 +275,10 @@ export namespace GWeather {
          */
         ATM,
     }
+    export namespace Sky {
+        export const $gtype: GObject.GType<Sky>;
+    }
+
     /**
      * The sky and cloud visibility. In general it is discouraged to
      * use this value directly to compute the forecast icon: applications
@@ -291,6 +315,10 @@ export namespace GWeather {
          */
         LAST,
     }
+    export namespace SpeedUnit {
+        export const $gtype: GObject.GType<SpeedUnit>;
+    }
+
     /**
      * The measure unit to use for wind speed values, when retrieved by
      * gweather_info_get_value_wind().
@@ -325,6 +353,10 @@ export namespace GWeather {
          */
         BFT,
     }
+    export namespace TemperatureUnit {
+        export const $gtype: GObject.GType<TemperatureUnit>;
+    }
+
     /**
      * The measure unit to use for temperature values, when retrieved by
      * the gweather_info_get_value_temp() family of functions.
@@ -351,6 +383,10 @@ export namespace GWeather {
          */
         FAHRENHEIT,
     }
+    export namespace WindDirection {
+        export const $gtype: GObject.GType<WindDirection>;
+    }
+
     /**
      * The direction of the prevailing wind. Composite values
      * such as north-north-east indicate a direction between the
@@ -459,6 +495,10 @@ export namespace GWeather {
     interface FilterFunc {
         (location: Location): boolean;
     }
+    export namespace FormatOptions {
+        export const $gtype: GObject.GType<FormatOptions>;
+    }
+
     /**
      * Format options to influence the text returned by the
      * `gweather_*_to_string_full()` functions.
@@ -479,6 +519,10 @@ export namespace GWeather {
          */
         NO_CAPITALIZATION,
     }
+    export namespace Provider {
+        export const $gtype: GObject.GType<Provider>;
+    }
+
     enum Provider {
         /**
          * no provider, no weather information available

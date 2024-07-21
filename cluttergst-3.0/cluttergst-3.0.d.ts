@@ -35,6 +35,10 @@ export namespace ClutterGst {
      * ClutterGst-3.0
      */
 
+    export namespace BufferingMode {
+        export const $gtype: GObject.GType<BufferingMode>;
+    }
+
     /**
      * Different buffering policies clutter-gst supports
      */
@@ -107,6 +111,10 @@ export namespace ClutterGst {
         entries: GLib.OptionEntry,
         translation_domain: string,
     ): [Clutter.InitError, string[] | null];
+    export namespace SeekFlags {
+        export const $gtype: GObject.GType<SeekFlags>;
+    }
+
     /**
      * Flags that can be given to clutter_gst_player_set_seek_flags().
      */

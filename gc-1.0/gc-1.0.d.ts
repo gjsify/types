@@ -22,6 +22,10 @@ export namespace Gc {
      * Gc-1.0
      */
 
+    export namespace Category {
+        export const $gtype: GObject.GType<Category>;
+    }
+
     enum Category {
         NONE,
         LETTER,
@@ -43,6 +47,10 @@ export namespace Gc {
         EMOJI_SYMBOLS,
         EMOJI_FLAGS,
     }
+    export namespace SearchError {
+        export const $gtype: GObject.GType<SearchError>;
+    }
+
     enum SearchError {
         FAILED,
         INVALID_STATE,
@@ -57,6 +65,10 @@ export namespace Gc {
     interface SearchFunc {
         (uc: number): boolean;
     }
+    export namespace SearchFlag {
+        export const $gtype: GObject.GType<SearchFlag>;
+    }
+
     enum SearchFlag {
         NONE,
         WORD,

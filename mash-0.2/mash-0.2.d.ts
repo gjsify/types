@@ -32,6 +32,10 @@ export namespace Mash {
      * Mash-0.2
      */
 
+    export namespace DataError {
+        export const $gtype: GObject.GType<DataError>;
+    }
+
     /**
      * Error enumeration for #MashData
      */
@@ -42,6 +46,10 @@ export namespace Mash {
         INVALID,
         UNSUPPORTED,
     }
+    export namespace DataFlags {
+        export const $gtype: GObject.GType<DataFlags>;
+    }
+
     /**
      * Flags used for modifying the data as it is loaded. These can be
      * passed to mash_data_load().

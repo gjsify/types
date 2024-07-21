@@ -28,6 +28,10 @@ export namespace Libxfce4panel {
      * Libxfce4panel-2.0
      */
 
+    export namespace PanelPluginMode {
+        export const $gtype: GObject.GType<PanelPluginMode>;
+    }
+
     /**
      * Orientation of the plugin in the panel.
      */
@@ -45,6 +49,10 @@ export namespace Libxfce4panel {
          */
         DESKBAR,
     }
+    export namespace PanelPluginProviderPropType {
+        export const $gtype: GObject.GType<PanelPluginProviderPropType>;
+    }
+
     enum PanelPluginProviderPropType {
         SET_SIZE,
         SET_ICON_SIZE,
@@ -67,6 +75,10 @@ export namespace Libxfce4panel {
         ACTION_ASK_REMOVE,
         SET_OPACITY,
     }
+    export namespace PanelPluginProviderSignal {
+        export const $gtype: GObject.GType<PanelPluginProviderSignal>;
+    }
+
     enum PanelPluginProviderSignal {
         MOVE_PLUGIN,
         EXPAND_PLUGIN,
@@ -87,6 +99,10 @@ export namespace Libxfce4panel {
         SHRINK_PLUGIN,
         UNSHRINK_PLUGIN,
     }
+    export namespace ScreenPosition {
+        export const $gtype: GObject.GType<ScreenPosition>;
+    }
+
     /**
      * There are three screen positions for each side of the screen:
      * LEFT/TOP, CENTER and RIGHT/BOTTOM. The XfceScreenPosition is expressed

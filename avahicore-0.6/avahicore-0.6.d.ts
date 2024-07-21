@@ -15,12 +15,20 @@ export namespace AvahiCore {
      * AvahiCore-0.6
      */
 
+    export namespace Protocol {
+        export const $gtype: GObject.GType<Protocol>;
+    }
+
     enum Protocol {
         INET,
         INET6,
         UNSPEC,
     }
     function server_get_host_name(): string;
+    export namespace PublishFlags {
+        export const $gtype: GObject.GType<PublishFlags>;
+    }
+
     enum PublishFlags {
         UNIQUE,
         NO_PROBE,

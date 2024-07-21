@@ -34,6 +34,10 @@ export namespace Builder {
      * Builder-1.0
      */
 
+    export namespace ViewGridSplit {
+        export const $gtype: GObject.GType<ViewGridSplit>;
+    }
+
     /**
      * %GB_VIEW_GRID_SPLIT_LEFT:
      * %GB_VIEW_GRID_SPLIT_RIGHT:

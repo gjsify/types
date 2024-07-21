@@ -34,6 +34,10 @@ export namespace RB {
      * RB-3.0
      */
 
+    export namespace DisplayPageGroupCategory {
+        export const $gtype: GObject.GType<DisplayPageGroupCategory>;
+    }
+
     enum DisplayPageGroupCategory {
         FIXED,
         REMOVABLE,
@@ -42,6 +46,10 @@ export namespace RB {
         TOOLS,
         LAST,
     }
+    export namespace DisplayPageGroupType {
+        export const $gtype: GObject.GType<DisplayPageGroupType>;
+    }
+
     /**
      * Predefined categories of page group. The order they're defined here is the order they
      * appear in the page tree.
@@ -68,6 +76,10 @@ export namespace RB {
          */
         TOOLS,
     }
+    export namespace DisplayPageModelColumn {
+        export const $gtype: GObject.GType<DisplayPageModelColumn>;
+    }
+
     /**
      * Columns present in the display page model.
      */
@@ -101,6 +113,10 @@ export namespace RB {
         // Own static methods of RB.EncoderError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace EntryViewColumn {
+        export const $gtype: GObject.GType<EntryViewColumn>;
     }
 
     /**
@@ -183,11 +199,19 @@ export namespace RB {
          */
         COMPOSER,
     }
+    export namespace EntryViewState {
+        export const $gtype: GObject.GType<EntryViewState>;
+    }
+
     enum EntryViewState {
         NOT_PLAYING,
         PLAYING,
         PAUSED,
     }
+    export namespace ExtDBSourceType {
+        export const $gtype: GObject.GType<ExtDBSourceType>;
+    }
+
     enum ExtDBSourceType {
         NONE,
         SEARCH,
@@ -195,6 +219,10 @@ export namespace RB {
         USER,
         USER_EXPLICIT,
     }
+    export namespace GstMediaType {
+        export const $gtype: GObject.GType<GstMediaType>;
+    }
+
     enum GstMediaType {
         NONE,
         CONTAINER,
@@ -202,6 +230,10 @@ export namespace RB {
         VIDEO,
         OTHER,
     }
+    export namespace MetaDataError {
+        export const $gtype: GObject.GType<MetaDataError>;
+    }
+
     enum MetaDataError {
         IO,
         MISSING_PLUGIN,
@@ -211,6 +243,10 @@ export namespace RB {
         INTERNAL,
         EMPTY_FILE,
     }
+    export namespace MetaDataField {
+        export const $gtype: GObject.GType<MetaDataField>;
+    }
+
     /**
      * Metadata fields that can be read from and written to files.
      */
@@ -391,6 +427,10 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
+    export namespace MetadataFieldType {
+        export const $gtype: GObject.GType<MetadataFieldType>;
+    }
+
     enum MetadataFieldType {
         TITLE,
         ARTIST,
@@ -462,6 +502,10 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
+    export namespace PlayerPlayType {
+        export const $gtype: GObject.GType<PlayerPlayType>;
+    }
+
     enum PlayerPlayType {
         /**
          * Replace the existing stream
@@ -476,17 +520,29 @@ export namespace RB {
          */
         CROSSFADE,
     }
+    export namespace PlaylistExportType {
+        export const $gtype: GObject.GType<PlaylistExportType>;
+    }
+
     enum PlaylistExportType {
         UNKNOWN,
         M3U,
         PLS,
         XSPF,
     }
+    export namespace PlaylistManagerError {
+        export const $gtype: GObject.GType<PlaylistManagerError>;
+    }
+
     enum PlaylistManagerError {
         PARSE,
         PLAYLIST_EXISTS,
         PLAYLIST_NOT_FOUND,
     }
+    export namespace PodcastFeedUpdateStatus {
+        export const $gtype: GObject.GType<PodcastFeedUpdateStatus>;
+    }
+
     enum PodcastFeedUpdateStatus {
         STARTED,
         ERROR,
@@ -513,11 +569,19 @@ export namespace RB {
         _init(...args: any[]): void;
     }
 
+    export namespace PodcastParseStatus {
+        export const $gtype: GObject.GType<PodcastParseStatus>;
+    }
+
     enum PodcastParseStatus {
         UNPARSED,
         SUCCESS,
         ERROR,
     }
+    export namespace RhythmDBEntryAvailability {
+        export const $gtype: GObject.GType<RhythmDBEntryAvailability>;
+    }
+
     /**
      * Various events that can result in changes to the entry's availability.
      */
@@ -539,6 +603,10 @@ export namespace RB {
          */
         NOT_FOUND,
     }
+    export namespace RhythmDBEntryCategory {
+        export const $gtype: GObject.GType<RhythmDBEntryCategory>;
+    }
+
     /**
      * Categories used to group entry types.  These are used in a few places to control
      * handling of entries.
@@ -561,9 +629,17 @@ export namespace RB {
          */
         VIRTUAL,
     }
+    export namespace RhythmDBError {
+        export const $gtype: GObject.GType<RhythmDBError>;
+    }
+
     enum RhythmDBError {
         RHYTHMDB_ERROR_ACCESS_FAILED,
     }
+    export namespace RhythmDBPropType {
+        export const $gtype: GObject.GType<RhythmDBPropType>;
+    }
+
     enum RhythmDBPropType {
         TYPE,
         ENTRY_ID,
@@ -642,17 +718,29 @@ export namespace RB {
         COMPOSER_SORTNAME_SORT_KEY,
         COMPOSER_SORTNAME_FOLDED,
     }
+    export namespace RhythmDBPropertyModelColumn {
+        export const $gtype: GObject.GType<RhythmDBPropertyModelColumn>;
+    }
+
     enum RhythmDBPropertyModelColumn {
         PROPERTY_TITLE,
         VALUE_PRIORITY,
         TRACK_COUNT,
     }
+    export namespace RhythmDBQueryModelLimitType {
+        export const $gtype: GObject.GType<RhythmDBQueryModelLimitType>;
+    }
+
     enum RhythmDBQueryModelLimitType {
         NO_LIMIT,
         LIMIT_COUNT,
         LIMIT_SIZE,
         LIMIT_DURATION,
     }
+    export namespace RhythmDBQueryType {
+        export const $gtype: GObject.GType<RhythmDBQueryType>;
+    }
+
     enum RhythmDBQueryType {
         QUERY_END,
         DISJUNCTIVE_MARKER,
@@ -672,11 +760,19 @@ export namespace RB {
         YEAR_GREATER_THAN,
         YEAR_LESS_THAN,
     }
+    export namespace ShellActivationType {
+        export const $gtype: GObject.GType<ShellActivationType>;
+    }
+
     enum ShellActivationType {
         SELECT,
         PLAY,
         ALWAYS_PLAY,
     }
+    export namespace ShellError {
+        export const $gtype: GObject.GType<ShellError>;
+    }
+
     enum ShellError {
         NO_SUCH_URI,
         NO_SUCH_PROPERTY,
@@ -729,6 +825,10 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
+    export namespace ShellPrefsUILocation {
+        export const $gtype: GObject.GType<ShellPrefsUILocation>;
+    }
+
     /**
      * Locations available for adding new widgets to the preferences dialog.
      */
@@ -742,24 +842,40 @@ export namespace RB {
          */
         PLAYBACK,
     }
+    export namespace ShellUILocation {
+        export const $gtype: GObject.GType<ShellUILocation>;
+    }
+
     enum ShellUILocation {
         SIDEBAR,
         RIGHT_SIDEBAR,
         MAIN_TOP,
         MAIN_BOTTOM,
     }
+    export namespace SourceEOFType {
+        export const $gtype: GObject.GType<SourceEOFType>;
+    }
+
     enum SourceEOFType {
         ERROR,
         STOP,
         RETRY,
         NEXT,
     }
+    export namespace SourceLoadStatus {
+        export const $gtype: GObject.GType<SourceLoadStatus>;
+    }
+
     enum SourceLoadStatus {
         NOT_LOADED,
         WAITING,
         LOADING,
         LOADED,
     }
+    export namespace TaskOutcome {
+        export const $gtype: GObject.GType<TaskOutcome>;
+    }
+
     enum TaskOutcome {
         NONE,
         COMPLETE,

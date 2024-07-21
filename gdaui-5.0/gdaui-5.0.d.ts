@@ -29,6 +29,10 @@ export namespace Gdaui {
      * Gdaui-5.0
      */
 
+    export namespace Action {
+        export const $gtype: GObject.GType<Action>;
+    }
+
     enum Action {
         NEW_DATA,
         WRITE_MODIFIED_DATA,
@@ -44,6 +48,10 @@ export namespace Gdaui {
         MOVE_NEXT_CHUNCK,
         MOVE_LAST_CHUNCK,
     }
+    export namespace BasicFormPart {
+        export const $gtype: GObject.GType<BasicFormPart>;
+    }
+
     enum BasicFormPart {
         LABELS,
         ENTRIES,
@@ -60,6 +68,10 @@ export namespace Gdaui {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace DataProxyWriteMode {
+        export const $gtype: GObject.GType<DataProxyWriteMode>;
     }
 
     /**
@@ -123,6 +135,10 @@ export namespace Gdaui {
             data?: any | null,
         ): void;
     }
+    export namespace ActionMode {
+        export const $gtype: GObject.GType<ActionMode>;
+    }
+
     enum ActionMode {
         NAVIGATION_ARROWS,
         NAVIGATION_SCROLL,
@@ -133,6 +149,10 @@ export namespace Gdaui {
         ASK_CONFIRM_INSERT,
         REPORT_ERROR,
     }
+    export namespace DataProxyInfoFlag {
+        export const $gtype: GObject.GType<DataProxyInfoFlag>;
+    }
+
     enum DataProxyInfoFlag {
         NONE,
         CURRENT_ROW,
@@ -141,6 +161,10 @@ export namespace Gdaui {
         CHUNCK_CHANGE_BUTTONS,
         NO_FILTER,
     }
+    export namespace LoginMode {
+        export const $gtype: GObject.GType<LoginMode>;
+    }
+
     /**
      * Defines the aspect of the #GdauiLogin widget
      */

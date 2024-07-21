@@ -16,17 +16,29 @@ export namespace Skk {
      * Skk-1.0
      */
 
+    export namespace KanaMode {
+        export const $gtype: GObject.GType<KanaMode>;
+    }
+
     enum KanaMode {
         HIRAGANA,
         KATAKANA,
         HANKAKU_KATAKANA,
     }
+    export namespace PeriodStyle {
+        export const $gtype: GObject.GType<PeriodStyle>;
+    }
+
     enum PeriodStyle {
         JA_JA,
         EN_EN,
         JA_EN,
         EN_JA,
     }
+    export namespace InputMode {
+        export const $gtype: GObject.GType<InputMode>;
+    }
+
     enum InputMode {
         HIRAGANA,
         KATAKANA,
@@ -2152,6 +2164,10 @@ export namespace Skk {
     interface GetTime {
         (): number;
     }
+    export namespace ModifierType {
+        export const $gtype: GObject.GType<ModifierType>;
+    }
+
     enum ModifierType {
         NONE,
         SHIFT_MASK,

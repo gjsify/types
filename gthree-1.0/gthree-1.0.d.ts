@@ -21,6 +21,10 @@ export namespace Gthree {
      * Gthree-1.0
      */
 
+    export namespace AttributeType {
+        export const $gtype: GObject.GType<AttributeType>;
+    }
+
     enum AttributeType {
         DOUBLE,
         FLOAT,
@@ -31,10 +35,18 @@ export namespace Gthree {
         UINT8,
         INT8,
     }
+    export namespace BindMode {
+        export const $gtype: GObject.GType<BindMode>;
+    }
+
     enum BindMode {
         ATTACHED,
         DETACHED,
     }
+    export namespace BlendMode {
+        export const $gtype: GObject.GType<BlendMode>;
+    }
+
     enum BlendMode {
         NO,
         NORMAL,
@@ -43,25 +55,45 @@ export namespace Gthree {
         MULTIPLY,
         CUSTOM,
     }
+    export namespace CullFace {
+        export const $gtype: GObject.GType<CullFace>;
+    }
+
     enum CullFace {
         NONE,
         FRONT,
         BACK,
         FRONT_BACK,
     }
+    export namespace DataType {
+        export const $gtype: GObject.GType<DataType>;
+    }
+
     enum DataType {
         UNSIGNED_BYTE,
         BYTE,
     }
+    export namespace DepthPackingFormat {
+        export const $gtype: GObject.GType<DepthPackingFormat>;
+    }
+
     enum DepthPackingFormat {
         BASIC,
         RGBA,
     }
+    export namespace DrawMode {
+        export const $gtype: GObject.GType<DrawMode>;
+    }
+
     enum DrawMode {
         TRIANGLES,
         TRIANGLE_STRIP,
         TRIANGLE_FAN,
     }
+    export namespace EncodingFormat {
+        export const $gtype: GObject.GType<EncodingFormat>;
+    }
+
     enum EncodingFormat {
         LINEAR,
         SRGB,
@@ -72,11 +104,19 @@ export namespace Gthree {
         RGBM16,
         RGBD,
     }
+    export namespace EndingMode {
+        export const $gtype: GObject.GType<EndingMode>;
+    }
+
     enum EndingMode {
         ZERO_CURVATURE,
         ZERO_SLOPE,
         WRAP_AROUND,
     }
+    export namespace Filter {
+        export const $gtype: GObject.GType<Filter>;
+    }
+
     enum Filter {
         NEAREST,
         NEAREST_MIPMAP_NEAREST,
@@ -85,27 +125,51 @@ export namespace Gthree {
         LINEAR_MIPMAP_NEAREST,
         LINEAR_MIPMAP_LINEAR,
     }
+    export namespace FogStyle {
+        export const $gtype: GObject.GType<FogStyle>;
+    }
+
     enum FogStyle {
         LINEAR,
         EXP2,
     }
+    export namespace FrontFaceDirection {
+        export const $gtype: GObject.GType<FrontFaceDirection>;
+    }
+
     enum FrontFaceDirection {
         CW,
         CCW,
     }
+    export namespace InterpolationMode {
+        export const $gtype: GObject.GType<InterpolationMode>;
+    }
+
     enum InterpolationMode {
         DISCRETE,
         LINEAR,
         SMOOTH,
     }
+    export namespace LoaderError {
+        export const $gtype: GObject.GType<LoaderError>;
+    }
+
     enum LoaderError {
         LOADER_ERROR_FAIL,
     }
+    export namespace LoopMode {
+        export const $gtype: GObject.GType<LoopMode>;
+    }
+
     enum LoopMode {
         ONCE,
         REPEAT,
         PINGPONG,
     }
+    export namespace Mapping {
+        export const $gtype: GObject.GType<Mapping>;
+    }
+
     enum Mapping {
         UV,
         CUBE_REFLECTION,
@@ -113,39 +177,71 @@ export namespace Gthree {
         SPHERICAL_REFLECTION,
         SPHERICAL_REFRACTION,
     }
+    export namespace NormalMapType {
+        export const $gtype: GObject.GType<NormalMapType>;
+    }
+
     enum NormalMapType {
         TANGENT_SPACE,
         OBJECT_SPACE,
     }
+    export namespace Operation {
+        export const $gtype: GObject.GType<Operation>;
+    }
+
     enum Operation {
         MULTIPLY,
         MIX,
         ADD,
     }
+    export namespace Precision {
+        export const $gtype: GObject.GType<Precision>;
+    }
+
     enum Precision {
         LOW,
         MEDIUM,
         HIGH,
     }
+    export namespace ShadingType {
+        export const $gtype: GObject.GType<ShadingType>;
+    }
+
     enum ShadingType {
         NONE,
         FLAT,
         SMOOTH,
     }
+    export namespace ShadowMapType {
+        export const $gtype: GObject.GType<ShadowMapType>;
+    }
+
     enum ShadowMapType {
         BASIC,
         PCF,
         PCF_SOFT,
     }
+    export namespace Side {
+        export const $gtype: GObject.GType<Side>;
+    }
+
     enum Side {
         FRONT,
         BACK,
         DOUBLE,
     }
+    export namespace TextureFormat {
+        export const $gtype: GObject.GType<TextureFormat>;
+    }
+
     enum TextureFormat {
         RGBA,
         RGB,
     }
+    export namespace UniformType {
+        export const $gtype: GObject.GType<UniformType>;
+    }
+
     enum UniformType {
         INT,
         FLOAT,
@@ -172,12 +268,20 @@ export namespace Gthree {
         TEXTURE_ARRAY,
         UNIFORMS_ARRAY,
     }
+    export namespace ValueType {
+        export const $gtype: GObject.GType<ValueType>;
+    }
+
     enum ValueType {
         COLOR,
         NUMBER,
         QUATERNION,
         VECTOR,
     }
+    export namespace Wrapping {
+        export const $gtype: GObject.GType<Wrapping>;
+    }
+
     enum Wrapping {
         REPEAT,
         CLAMP,

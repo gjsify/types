@@ -28,15 +28,27 @@ export namespace Liferea {
      * Liferea-3.0
      */
 
+    export namespace feedListFindType {
+        export const $gtype: GObject.GType<feedListFindType>;
+    }
+
     enum feedListFindType {
         ODE_BY_URL,
         ODE_BY_ID,
         OLDER_BY_TITLE,
     }
+    export namespace itemViewMode {
+        export const $gtype: GObject.GType<itemViewMode>;
+    }
+
     enum itemViewMode {
         SINGLE_ITEM,
         NODE_INFO,
     }
+    export namespace lifereaIcon {
+        export const $gtype: GObject.GType<lifereaIcon>;
+    }
+
     enum lifereaIcon {
         CON_UNREAD,
         CON_FLAG,
@@ -54,6 +66,10 @@ export namespace Liferea {
         CON_ENCLOSURE,
         AX_ICONS,
     }
+    export namespace nodeSourceState {
+        export const $gtype: GObject.GType<nodeSourceState>;
+    }
+
     enum nodeSourceState {
         NONE,
         IN_PROGRESS,
@@ -61,12 +77,20 @@ export namespace Liferea {
         NO_AUTH,
         MIGRATE,
     }
+    export namespace nodeViewSortType {
+        export const $gtype: GObject.GType<nodeViewSortType>;
+    }
+
     enum nodeViewSortType {
         TIME,
         TITLE,
         PARENT,
         STATE,
     }
+    export namespace nodeViewType {
+        export const $gtype: GObject.GType<nodeViewType>;
+    }
+
     enum nodeViewType {
         NORMAL,
         WIDE,
@@ -216,6 +240,10 @@ export namespace Liferea {
     interface nodeActionFunc {
         (node: nodePtr): void;
     }
+    export namespace nodeSourceCapability {
+        export const $gtype: GObject.GType<nodeSourceCapability>;
+    }
+
     enum nodeSourceCapability {
         IS_ROOT,
         DYNAMIC_CREATION,
@@ -229,6 +257,10 @@ export namespace Liferea {
         CAN_LOGIN,
         REPARENT_NODE,
     }
+    export namespace nodeSourceUpdate {
+        export const $gtype: GObject.GType<nodeSourceUpdate>;
+    }
+
     enum nodeSourceUpdate {
         LIST,
         LOGIN,

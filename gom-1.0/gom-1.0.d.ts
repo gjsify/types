@@ -39,6 +39,10 @@ export namespace Gom {
         static quark(): GLib.Quark;
     }
 
+    export namespace FilterMode {
+        export const $gtype: GObject.GType<FilterMode>;
+    }
+
     enum FilterMode {
         SQL,
         OR,
@@ -54,6 +58,10 @@ export namespace Gom {
         IS_NULL,
         IS_NOT_NULL,
     }
+    export namespace SortingMode {
+        export const $gtype: GObject.GType<SortingMode>;
+    }
+
     enum SortingMode {
         ASCENDING,
         DESCENDING,

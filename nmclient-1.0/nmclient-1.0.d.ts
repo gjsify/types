@@ -51,6 +51,10 @@ export namespace NMClient {
         static quark(): GLib.Quark;
     }
 
+    export namespace ClientPermission {
+        export const $gtype: GObject.GType<ClientPermission>;
+    }
+
     /**
      * #NMClientPermission values indicate various permissions that NetworkManager
      * clients can obtain to perform certain tasks on behalf of the current user.
@@ -139,6 +143,10 @@ export namespace NMClient {
          */
         LAST,
     }
+    export namespace ClientPermissionResult {
+        export const $gtype: GObject.GType<ClientPermissionResult>;
+    }
+
     /**
      * #NMClientPermissionResult values indicate what authorizations and permissions
      * the user requires to obtain a given #NMClientPermission
@@ -823,6 +831,10 @@ export namespace NMClient {
         static quark(): GLib.Quark;
     }
 
+    export namespace WimaxNspNetworkType {
+        export const $gtype: GObject.GType<WimaxNspNetworkType>;
+    }
+
     /**
      * WiMAX network type.
      */
@@ -1138,6 +1150,10 @@ export namespace NMClient {
     type Ssid = object | null;
     type StringArray = object | null;
     type UintArray = object | null;
+    export namespace SecretAgentCapabilities {
+        export const $gtype: GObject.GType<SecretAgentCapabilities>;
+    }
+
     /**
      * #NMSecretAgentCapabilities indicate various capabilities of the agent.
      */
@@ -1157,6 +1173,10 @@ export namespace NMClient {
          */
         LAST,
     }
+    export namespace SecretAgentGetSecretsFlags {
+        export const $gtype: GObject.GType<SecretAgentGetSecretsFlags>;
+    }
+
     /**
      * #NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
      */

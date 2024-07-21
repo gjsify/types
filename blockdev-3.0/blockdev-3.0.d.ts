@@ -33,6 +33,10 @@ export namespace BlockDev {
         _init(...args: any[]): void;
     }
 
+    export namespace BtrfsTech {
+        export const $gtype: GObject.GType<BtrfsTech>;
+    }
+
     enum BtrfsTech {
         FS,
         MULTI_DEV,
@@ -69,6 +73,10 @@ export namespace BlockDev {
         _init(...args: any[]): void;
     }
 
+    export namespace CryptoKeyslotContextType {
+        export const $gtype: GObject.GType<CryptoKeyslotContextType>;
+    }
+
     enum CryptoKeyslotContextType {
         NONE,
         PASSPHRASE,
@@ -76,10 +84,18 @@ export namespace BlockDev {
         KEYRING,
         VOLUME_KEY,
     }
+    export namespace CryptoLUKSVersion {
+        export const $gtype: GObject.GType<CryptoLUKSVersion>;
+    }
+
     enum CryptoLUKSVersion {
         LUKS1,
         LUKS2,
     }
+    export namespace CryptoTech {
+        export const $gtype: GObject.GType<CryptoTech>;
+    }
+
     enum CryptoTech {
         LUKS,
         TRUECRYPT,
@@ -108,6 +124,10 @@ export namespace BlockDev {
         _init(...args: any[]): void;
     }
 
+    export namespace DMTech {
+        export const $gtype: GObject.GType<DMTech>;
+    }
+
     enum DMTech {
         DM_TECH_MAP,
     }
@@ -134,6 +154,10 @@ export namespace BlockDev {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace FSTech {
+        export const $gtype: GObject.GType<FSTech>;
     }
 
     enum FSTech {
@@ -166,6 +190,10 @@ export namespace BlockDev {
         _init(...args: any[]): void;
     }
 
+    export namespace LVMCacheMode {
+        export const $gtype: GObject.GType<LVMCacheMode>;
+    }
+
     enum LVMCacheMode {
         UNKNOWN,
         WRITETHROUGH,
@@ -194,6 +222,10 @@ export namespace BlockDev {
         _init(...args: any[]): void;
     }
 
+    export namespace LVMTech {
+        export const $gtype: GObject.GType<LVMTech>;
+    }
+
     enum LVMTech {
         BASIC,
         BASIC_SNAP,
@@ -208,11 +240,19 @@ export namespace BlockDev {
         DEVICES,
         SHARED,
     }
+    export namespace LVMVDOCompressionState {
+        export const $gtype: GObject.GType<LVMVDOCompressionState>;
+    }
+
     enum LVMVDOCompressionState {
         UNKNOWN,
         ONLINE,
         OFFLINE,
     }
+    export namespace LVMVDOIndexState {
+        export const $gtype: GObject.GType<LVMVDOIndexState>;
+    }
+
     enum LVMVDOIndexState {
         UNKNOWN,
         ERROR,
@@ -222,12 +262,20 @@ export namespace BlockDev {
         OFFLINE,
         ONLINE,
     }
+    export namespace LVMVDOOperatingMode {
+        export const $gtype: GObject.GType<LVMVDOOperatingMode>;
+    }
+
     enum LVMVDOOperatingMode {
         UNKNOWN,
         RECOVERING,
         READ_ONLY,
         NORMAL,
     }
+    export namespace LVMVDOWritePolicy {
+        export const $gtype: GObject.GType<LVMVDOWritePolicy>;
+    }
+
     enum LVMVDOWritePolicy {
         UNKNOWN,
         AUTO,
@@ -247,6 +295,10 @@ export namespace BlockDev {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace LoopTech {
+        export const $gtype: GObject.GType<LoopTech>;
     }
 
     enum LoopTech {
@@ -270,6 +322,10 @@ export namespace BlockDev {
         _init(...args: any[]): void;
     }
 
+    export namespace MDTech {
+        export const $gtype: GObject.GType<MDTech>;
+    }
+
     enum MDTech {
         MD_TECH_MDRAID,
     }
@@ -288,6 +344,10 @@ export namespace BlockDev {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace MpathTech {
+        export const $gtype: GObject.GType<MpathTech>;
     }
 
     enum MpathTech {
@@ -311,6 +371,10 @@ export namespace BlockDev {
         _init(...args: any[]): void;
     }
 
+    export namespace NVDIMMNamespaceMode {
+        export const $gtype: GObject.GType<NVDIMMNamespaceMode>;
+    }
+
     enum NVDIMMNamespaceMode {
         RAW,
         SECTOR,
@@ -320,9 +384,17 @@ export namespace BlockDev {
         DEVDAX,
         UNKNOWN,
     }
+    export namespace NVDIMMTech {
+        export const $gtype: GObject.GType<NVDIMMTech>;
+    }
+
     enum NVDIMMTech {
         NVDIMM_TECH_NAMESPACE,
     }
+    export namespace NVMEControllerType {
+        export const $gtype: GObject.GType<NVMEControllerType>;
+    }
+
     enum NVMEControllerType {
         UNKNOWN,
         IO,
@@ -359,11 +431,19 @@ export namespace BlockDev {
         _init(...args: any[]): void;
     }
 
+    export namespace NVMEFormatSecureErase {
+        export const $gtype: GObject.GType<NVMEFormatSecureErase>;
+    }
+
     enum NVMEFormatSecureErase {
         NONE,
         USER_DATA,
         CRYPTO,
     }
+    export namespace NVMELBAFormatRelativePerformance {
+        export const $gtype: GObject.GType<NVMELBAFormatRelativePerformance>;
+    }
+
     enum NVMELBAFormatRelativePerformance {
         UNKNOWN,
         BEST,
@@ -371,12 +451,20 @@ export namespace BlockDev {
         GOOD,
         DEGRADED,
     }
+    export namespace NVMESanitizeAction {
+        export const $gtype: GObject.GType<NVMESanitizeAction>;
+    }
+
     enum NVMESanitizeAction {
         EXIT_FAILURE,
         BLOCK_ERASE,
         OVERWRITE,
         CRYPTO_ERASE,
     }
+    export namespace NVMESanitizeStatus {
+        export const $gtype: GObject.GType<NVMESanitizeStatus>;
+    }
+
     enum NVMESanitizeStatus {
         NEVER_SANITIZED,
         IN_PROGESS,
@@ -384,6 +472,10 @@ export namespace BlockDev {
         SUCCESS_NO_DEALLOC,
         FAILED,
     }
+    export namespace NVMESelfTestAction {
+        export const $gtype: GObject.GType<NVMESelfTestAction>;
+    }
+
     enum NVMESelfTestAction {
         NOT_RUNNING,
         SHORT,
@@ -391,6 +483,10 @@ export namespace BlockDev {
         VENDOR_SPECIFIC,
         ABORT,
     }
+    export namespace NVMESelfTestResult {
+        export const $gtype: GObject.GType<NVMESelfTestResult>;
+    }
+
     enum NVMESelfTestResult {
         NO_ERROR,
         ABORTED,
@@ -403,10 +499,18 @@ export namespace BlockDev {
         ABORTED_UNKNOWN,
         ABORTED_SANITIZE,
     }
+    export namespace NVMETech {
+        export const $gtype: GObject.GType<NVMETech>;
+    }
+
     enum NVMETech {
         NVME,
         FABRICS,
     }
+    export namespace NVMETransportType {
+        export const $gtype: GObject.GType<NVMETransportType>;
+    }
+
     enum NVMETransportType {
         UNSPECIFIED,
         RDMA,
@@ -414,6 +518,10 @@ export namespace BlockDev {
         TCP,
         LOOP,
     }
+    export namespace PartAlign {
+        export const $gtype: GObject.GType<PartAlign>;
+    }
+
     enum PartAlign {
         NONE,
         MINIMAL,
@@ -435,15 +543,27 @@ export namespace BlockDev {
         _init(...args: any[]): void;
     }
 
+    export namespace PartTableType {
+        export const $gtype: GObject.GType<PartTableType>;
+    }
+
     enum PartTableType {
         MSDOS,
         GPT,
         UNDEF,
     }
+    export namespace PartTech {
+        export const $gtype: GObject.GType<PartTech>;
+    }
+
     enum PartTech {
         MBR,
         GPT,
     }
+    export namespace PartType {
+        export const $gtype: GObject.GType<PartType>;
+    }
+
     enum PartType {
         NORMAL,
         LOGICAL,
@@ -452,12 +572,20 @@ export namespace BlockDev {
         METADATA,
         PROTECTED,
     }
+    export namespace PartTypeReq {
+        export const $gtype: GObject.GType<PartTypeReq>;
+    }
+
     enum PartTypeReq {
         NORMAL,
         LOGICAL,
         EXTENDED,
         NEXT,
     }
+    export namespace Plugin {
+        export const $gtype: GObject.GType<Plugin>;
+    }
+
     enum Plugin {
         LVM,
         BTRFS,
@@ -493,6 +621,10 @@ export namespace BlockDev {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace SwapTech {
+        export const $gtype: GObject.GType<SwapTech>;
     }
 
     enum SwapTech {
@@ -561,6 +693,10 @@ export namespace BlockDev {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace UtilsProgStatus {
+        export const $gtype: GObject.GType<UtilsProgStatus>;
     }
 
     enum UtilsProgStatus {
@@ -2024,12 +2160,20 @@ export namespace BlockDev {
     interface UtilsProgFunc {
         (task_id: number, status: UtilsProgStatus, completion: number, msg?: string | null): void;
     }
+    export namespace BtrfsTechMode {
+        export const $gtype: GObject.GType<BtrfsTechMode>;
+    }
+
     enum BtrfsTechMode {
         CREATE,
         DELETE,
         MODIFY,
         QUERY,
     }
+    export namespace CryptoIntegrityOpenFlags {
+        export const $gtype: GObject.GType<CryptoIntegrityOpenFlags>;
+    }
+
     enum CryptoIntegrityOpenFlags {
         NO_JOURNAL,
         RECOVERY,
@@ -2038,6 +2182,10 @@ export namespace BlockDev {
         RECALCULATE_RESET,
         ALLOW_DISCARDS,
     }
+    export namespace CryptoTechMode {
+        export const $gtype: GObject.GType<CryptoTechMode>;
+    }
+
     enum CryptoTechMode {
         CREATE,
         OPEN_CLOSE,
@@ -2049,15 +2197,27 @@ export namespace BlockDev {
         BACKUP_RESTORE,
         MODIFY,
     }
+    export namespace DMTechMode {
+        export const $gtype: GObject.GType<DMTechMode>;
+    }
+
     enum DMTechMode {
         CREATE_ACTIVATE,
         REMOVE_DEACTIVATE,
         QUERY,
     }
+    export namespace FSConfigureFlags {
+        export const $gtype: GObject.GType<FSConfigureFlags>;
+    }
+
     enum FSConfigureFlags {
         LABEL,
         UUID,
     }
+    export namespace FSF2FSFeature {
+        export const $gtype: GObject.GType<FSF2FSFeature>;
+    }
+
     enum FSF2FSFeature {
         ENCRYPT,
         BLKZONED,
@@ -2072,14 +2232,26 @@ export namespace BlockDev {
         VERITY,
         SB_CHKSUM,
     }
+    export namespace FSFeatureFlags {
+        export const $gtype: GObject.GType<FSFeatureFlags>;
+    }
+
     enum FSFeatureFlags {
         OWNERS,
         PARTITION_TABLE,
     }
+    export namespace FSFsckFlags {
+        export const $gtype: GObject.GType<FSFsckFlags>;
+    }
+
     enum FSFsckFlags {
         CHECK,
         REPAIR,
     }
+    export namespace FSMkfsOptionsFlags {
+        export const $gtype: GObject.GType<FSMkfsOptionsFlags>;
+    }
+
     /**
      * Flags indicating mkfs options are available for given filesystem type.
      */
@@ -2091,6 +2263,10 @@ export namespace BlockDev {
         FORCE,
         NOPT,
     }
+    export namespace FSResizeFlags {
+        export const $gtype: GObject.GType<FSResizeFlags>;
+    }
+
     /**
      * Flags indicating whether a filesystem resize action supports growing and/or
      * shrinking if mounted or unmounted.
@@ -2101,6 +2277,10 @@ export namespace BlockDev {
         ONLINE_SHRINK,
         ONLINE_GROW,
     }
+    export namespace FSTechMode {
+        export const $gtype: GObject.GType<FSTechMode>;
+    }
+
     enum FSTechMode {
         MKFS,
         WIPE,
@@ -2111,6 +2291,10 @@ export namespace BlockDev {
         RESIZE,
         SET_UUID,
     }
+    export namespace LVMCachePoolFlags {
+        export const $gtype: GObject.GType<LVMCachePoolFlags>;
+    }
+
     enum LVMCachePoolFlags {
         STRIPED,
         RAID1,
@@ -2123,28 +2307,48 @@ export namespace BlockDev {
         META_RAID6,
         META_RAID10,
     }
+    export namespace LVMTechMode {
+        export const $gtype: GObject.GType<LVMTechMode>;
+    }
+
     enum LVMTechMode {
         CREATE,
         REMOVE,
         MODIFY,
         QUERY,
     }
+    export namespace LoopTechMode {
+        export const $gtype: GObject.GType<LoopTechMode>;
+    }
+
     enum LoopTechMode {
         CREATE,
         DESTROY,
         MODIFY,
         QUERY,
     }
+    export namespace MDTechMode {
+        export const $gtype: GObject.GType<MDTechMode>;
+    }
+
     enum MDTechMode {
         CREATE,
         DELETE,
         MODIFY,
         QUERY,
     }
+    export namespace MpathTechMode {
+        export const $gtype: GObject.GType<MpathTechMode>;
+    }
+
     enum MpathTechMode {
         QUERY,
         MODIFY,
     }
+    export namespace NVDIMMTechMode {
+        export const $gtype: GObject.GType<NVDIMMTechMode>;
+    }
+
     enum NVDIMMTechMode {
         CREATE,
         REMOVE,
@@ -2152,6 +2356,10 @@ export namespace BlockDev {
         QUERY,
         RECONFIGURE,
     }
+    export namespace NVMEControllerFeature {
+        export const $gtype: GObject.GType<NVMEControllerFeature>;
+    }
+
     enum NVMEControllerFeature {
         MULTIPORT,
         MULTICTRL,
@@ -2172,12 +2380,20 @@ export namespace BlockDev {
         MGMT_PCIE,
         MGMT_SMBUS,
     }
+    export namespace NVMENamespaceFeature {
+        export const $gtype: GObject.GType<NVMENamespaceFeature>;
+    }
+
     enum NVMENamespaceFeature {
         THIN,
         MULTIPATH_SHARED,
         FORMAT_PROGRESS,
         ROTATIONAL,
     }
+    export namespace NVMESmartCriticalWarning {
+        export const $gtype: GObject.GType<NVMESmartCriticalWarning>;
+    }
+
     enum NVMESmartCriticalWarning {
         SPARE,
         TEMPERATURE,
@@ -2186,11 +2402,19 @@ export namespace BlockDev {
         VOLATILE_MEM,
         PMR_READONLY,
     }
+    export namespace NVMETechMode {
+        export const $gtype: GObject.GType<NVMETechMode>;
+    }
+
     enum NVMETechMode {
         INFO,
         MANAGE,
         INITIATOR,
     }
+    export namespace PartTechMode {
+        export const $gtype: GObject.GType<PartTechMode>;
+    }
+
     enum PartTechMode {
         CREATE_TABLE,
         MODIFY_TABLE,
@@ -2198,6 +2422,10 @@ export namespace BlockDev {
         MODIFY_PART,
         QUERY_PART,
     }
+    export namespace SwapTechMode {
+        export const $gtype: GObject.GType<SwapTechMode>;
+    }
+
     enum SwapTechMode {
         CREATE,
         ACTIVATE_DEACTIVATE,

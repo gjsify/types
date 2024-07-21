@@ -18,11 +18,19 @@ export namespace OSTree {
      * OSTree-1.0
      */
 
+    export namespace DeploymentUnlockedState {
+        export const $gtype: GObject.GType<DeploymentUnlockedState>;
+    }
+
     enum DeploymentUnlockedState {
         NONE,
         DEVELOPMENT,
         HOTFIX,
     }
+    export namespace GpgSignatureAttr {
+        export const $gtype: GObject.GType<GpgSignatureAttr>;
+    }
+
     /**
      * Signature attributes available from an #OstreeGpgVerifyResult.
      * The attribute's #GVariantType is shown in brackets.
@@ -81,6 +89,10 @@ export namespace OSTree {
          */
         USER_EMAIL,
     }
+    export namespace GpgSignatureFormatFlags {
+        export const $gtype: GObject.GType<GpgSignatureFormatFlags>;
+    }
+
     /**
      * Formatting flags for ostree_gpg_verify_result_describe().  Currently
      * there's only one possible output format, but this enumeration allows
@@ -92,6 +104,10 @@ export namespace OSTree {
          */
         GPG_SIGNATURE_FORMAT_DEFAULT,
     }
+    export namespace ObjectType {
+        export const $gtype: GObject.GType<ObjectType>;
+    }
+
     /**
      * Enumeration for core object types; %OSTREE_OBJECT_TYPE_FILE is for
      * content, the other types are metadata.
@@ -122,6 +138,10 @@ export namespace OSTree {
          */
         COMMIT_META,
     }
+    export namespace RepoCheckoutMode {
+        export const $gtype: GObject.GType<RepoCheckoutMode>;
+    }
+
     enum RepoCheckoutMode {
         /**
          * No special options
@@ -132,6 +152,10 @@ export namespace OSTree {
          */
         USER,
     }
+    export namespace RepoCheckoutOverwriteMode {
+        export const $gtype: GObject.GType<RepoCheckoutOverwriteMode>;
+    }
+
     enum RepoCheckoutOverwriteMode {
         /**
          * No special options
@@ -142,6 +166,10 @@ export namespace OSTree {
          */
         UNION_FILES,
     }
+    export namespace RepoCommitFilterResult {
+        export const $gtype: GObject.GType<RepoCommitFilterResult>;
+    }
+
     enum RepoCommitFilterResult {
         /**
          * Do commit this object
@@ -152,18 +180,30 @@ export namespace OSTree {
          */
         SKIP,
     }
+    export namespace RepoCommitIterResult {
+        export const $gtype: GObject.GType<RepoCommitIterResult>;
+    }
+
     enum RepoCommitIterResult {
         ERROR,
         END,
         FILE,
         DIR,
     }
+    export namespace RepoListRefsExtFlags {
+        export const $gtype: GObject.GType<RepoListRefsExtFlags>;
+    }
+
     enum RepoListRefsExtFlags {
         /**
          * No flags.
          */
         REPO_LIST_REFS_EXT_NONE,
     }
+    export namespace RepoMode {
+        export const $gtype: GObject.GType<RepoMode>;
+    }
+
     /**
      * See the documentation of #OstreeRepo for more information about the
      * possible modes.
@@ -182,6 +222,10 @@ export namespace OSTree {
          */
         BARE_USER,
     }
+    export namespace RepoPruneFlags {
+        export const $gtype: GObject.GType<RepoPruneFlags>;
+    }
+
     enum RepoPruneFlags {
         /**
          * No special options for pruning
@@ -196,6 +240,10 @@ export namespace OSTree {
          */
         REFS_ONLY,
     }
+    export namespace RepoRemoteChange {
+        export const $gtype: GObject.GType<RepoRemoteChange>;
+    }
+
     /**
      * The remote change operation.
      */
@@ -205,12 +253,20 @@ export namespace OSTree {
         DELETE,
         DELETE_IF_EXISTS,
     }
+    export namespace RepoResolveRevExtFlags {
+        export const $gtype: GObject.GType<RepoResolveRevExtFlags>;
+    }
+
     enum RepoResolveRevExtFlags {
         /**
          * No flags.
          */
         REPO_RESOLVE_REV_EXT_NONE,
     }
+    export namespace StaticDeltaGenerateOpt {
+        export const $gtype: GObject.GType<StaticDeltaGenerateOpt>;
+    }
+
     /**
      * Parameters controlling optimization of static deltas.
      */
@@ -549,10 +605,18 @@ export namespace OSTree {
     interface RepoCommitModifierXattrCallback {
         (repo: Repo, path: string, file_info: Gio.FileInfo): GLib.Variant;
     }
+    export namespace DiffFlags {
+        export const $gtype: GObject.GType<DiffFlags>;
+    }
+
     enum DiffFlags {
         NONE,
         IGNORE_XATTRS,
     }
+    export namespace RepoCommitModifierFlags {
+        export const $gtype: GObject.GType<RepoCommitModifierFlags>;
+    }
+
     enum RepoCommitModifierFlags {
         /**
          * No special flags
@@ -567,12 +631,24 @@ export namespace OSTree {
          */
         GENERATE_SIZES,
     }
+    export namespace RepoCommitState {
+        export const $gtype: GObject.GType<RepoCommitState>;
+    }
+
     enum RepoCommitState {
         REPO_COMMIT_STATE_PARTIAL,
     }
+    export namespace RepoCommitTraverseFlags {
+        export const $gtype: GObject.GType<RepoCommitTraverseFlags>;
+    }
+
     enum RepoCommitTraverseFlags {
         REPO_COMMIT_TRAVERSE_FLAG_NONE,
     }
+    export namespace RepoListObjectsFlags {
+        export const $gtype: GObject.GType<RepoListObjectsFlags>;
+    }
+
     enum RepoListObjectsFlags {
         /**
          * List only loose (plain file) objects
@@ -591,6 +667,10 @@ export namespace OSTree {
          */
         NO_PARENTS,
     }
+    export namespace RepoPullFlags {
+        export const $gtype: GObject.GType<RepoPullFlags>;
+    }
+
     enum RepoPullFlags {
         /**
          * No special options for pull
@@ -609,17 +689,29 @@ export namespace OSTree {
          */
         UNTRUSTED,
     }
+    export namespace SePolicyRestoreconFlags {
+        export const $gtype: GObject.GType<SePolicyRestoreconFlags>;
+    }
+
     enum SePolicyRestoreconFlags {
         NONE,
         ALLOW_NOLABEL,
         KEEP_EXISTING,
     }
+    export namespace SysrootSimpleWriteDeploymentFlags {
+        export const $gtype: GObject.GType<SysrootSimpleWriteDeploymentFlags>;
+    }
+
     enum SysrootSimpleWriteDeploymentFlags {
         NONE,
         RETAIN,
         NOT_DEFAULT,
         NO_CLEAN,
     }
+    export namespace SysrootUpgraderFlags {
+        export const $gtype: GObject.GType<SysrootUpgraderFlags>;
+    }
+
     /**
      * Flags controlling operation of an #OstreeSysrootUpgrader.
      */
@@ -629,6 +721,10 @@ export namespace OSTree {
          */
         IGNORE_UNCONFIGURED,
     }
+    export namespace SysrootUpgraderPullFlags {
+        export const $gtype: GObject.GType<SysrootUpgraderPullFlags>;
+    }
+
     enum SysrootUpgraderPullFlags {
         NONE,
         ALLOW_OLDER,

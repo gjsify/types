@@ -16,11 +16,19 @@ export namespace Libinsane {
      * Libinsane-1.0
      */
 
+    export namespace ConstraintType {
+        export const $gtype: GObject.GType<ConstraintType>;
+    }
+
     enum ConstraintType {
         NONE,
         RANGE,
         LIST,
     }
+    export namespace DeviceLocations {
+        export const $gtype: GObject.GType<DeviceLocations>;
+    }
+
     enum DeviceLocations {
         ANY,
         LOCAL_ONLY,
@@ -52,6 +60,10 @@ export namespace Libinsane {
         _init(...args: any[]): void;
     }
 
+    export namespace ImgFormat {
+        export const $gtype: GObject.GType<ImgFormat>;
+    }
+
     enum ImgFormat {
         RAW_RGB_24,
         GRAYSCALE_8,
@@ -71,18 +83,30 @@ export namespace Libinsane {
         PICT,
         TIFF,
     }
+    export namespace ItemType {
+        export const $gtype: GObject.GType<ItemType>;
+    }
+
     enum ItemType {
         DEVICE,
         FLATBED,
         ADF,
         UNIDENTIFIED,
     }
+    export namespace LogLevel {
+        export const $gtype: GObject.GType<LogLevel>;
+    }
+
     enum LogLevel {
         DEBUG,
         INFO,
         WARNING,
         ERROR,
     }
+    export namespace Unit {
+        export const $gtype: GObject.GType<Unit>;
+    }
+
     enum Unit {
         NONE,
         PIXEL,
@@ -95,6 +119,10 @@ export namespace Libinsane {
     function error_quark(): GLib.Quark;
     function register_logger(logger: Logger): void;
     function unregister_logger(): void;
+    export namespace Capability {
+        export const $gtype: GObject.GType<Capability>;
+    }
+
     /**
      * Not actually an enum but a bit field.
      */
@@ -106,6 +134,10 @@ export namespace Libinsane {
         SW_SELECT,
         INACTIVE,
     }
+    export namespace SetFlag {
+        export const $gtype: GObject.GType<SetFlag>;
+    }
+
     enum SetFlag {
         NONE,
         INEXACT,

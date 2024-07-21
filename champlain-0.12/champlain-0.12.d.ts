@@ -29,6 +29,10 @@ export namespace Champlain {
      * Champlain-0.12
      */
 
+    export namespace MapProjection {
+        export const $gtype: GObject.GType<MapProjection>;
+    }
+
     /**
      * Projections supported by the library.
      */
@@ -38,6 +42,10 @@ export namespace Champlain {
          */
         MERCATOR,
     }
+    export namespace SelectionMode {
+        export const $gtype: GObject.GType<SelectionMode>;
+    }
+
     /**
      * Selection mode
      */
@@ -55,6 +63,10 @@ export namespace Champlain {
          */
         MULTIPLE,
     }
+    export namespace State {
+        export const $gtype: GObject.GType<State>;
+    }
+
     /**
      * Tile loading state.
      */
@@ -77,6 +89,10 @@ export namespace Champlain {
          */
         DONE,
     }
+    export namespace Unit {
+        export const $gtype: GObject.GType<Unit>;
+    }
+
     /**
      * Units used by the scale.
      */

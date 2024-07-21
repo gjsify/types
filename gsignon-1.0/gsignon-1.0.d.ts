@@ -191,6 +191,10 @@ export namespace gSignon {
         static quark(): GLib.Quark;
     }
 
+    export namespace SessionDataUiPolicy {
+        export const $gtype: GObject.GType<SessionDataUiPolicy>;
+    }
+
     /**
      * UI policy for the signon process, passed to the UI plugin.
      */
@@ -316,6 +320,10 @@ export namespace gSignon {
     interface QueryMethodsCb {
         (auth_service: AuthService, methods: string[], error: GLib.Error): void;
     }
+    export namespace IdentityType {
+        export const $gtype: GObject.GType<IdentityType>;
+    }
+
     /**
      * Identity types used in #SignonIdentityInfo.
      */

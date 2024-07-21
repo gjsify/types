@@ -18,6 +18,10 @@ export namespace Zeitgeist {
      * Zeitgeist-2.0
      */
 
+    export namespace ResultType {
+        export const $gtype: GObject.GType<ResultType>;
+    }
+
     enum ResultType {
         MOST_RECENT_EVENTS,
         LEAST_RECENT_EVENTS,
@@ -56,10 +60,18 @@ export namespace Zeitgeist {
         LEAST_POPULAR_CURRENT_ORIGIN,
         RELEVANCY,
     }
+    export namespace RelevantResultType {
+        export const $gtype: GObject.GType<RelevantResultType>;
+    }
+
     enum RelevantResultType {
         RECENT,
         RELATED,
     }
+    export namespace StorageState {
+        export const $gtype: GObject.GType<StorageState>;
+    }
+
     enum StorageState {
         NOT_AVAILABLE,
         AVAILABLE,

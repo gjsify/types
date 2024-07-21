@@ -22,11 +22,19 @@ export namespace GstCuda {
      * GstCuda-1.0
      */
 
+    export namespace CudaGraphicsResourceType {
+        export const $gtype: GObject.GType<CudaGraphicsResourceType>;
+    }
+
     enum CudaGraphicsResourceType {
         NONE,
         GL_BUFFER,
         D3D11_RESOURCE,
     }
+    export namespace CudaQuarkId {
+        export const $gtype: GObject.GType<CudaQuarkId>;
+    }
+
     enum CudaQuarkId {
         GRAPHICS_RESOURCE,
         MAX,
@@ -106,6 +114,10 @@ export namespace GstCuda {
      * @param mem A #GstMemory
      */
     function is_cuda_memory(mem: Gst.Memory): boolean;
+    export namespace CudaMemoryTransfer {
+        export const $gtype: GObject.GType<CudaMemoryTransfer>;
+    }
+
     enum CudaMemoryTransfer {
         /**
          * the device memory needs downloading

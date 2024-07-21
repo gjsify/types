@@ -19,6 +19,10 @@ export namespace Poppler {
      * Poppler-0.18
      */
 
+    export namespace ActionLayerAction {
+        export const $gtype: GObject.GType<ActionLayerAction>;
+    }
+
     /**
      * Layer actions
      */
@@ -36,6 +40,10 @@ export namespace Poppler {
          */
         TOGGLE,
     }
+    export namespace ActionMovieOperation {
+        export const $gtype: GObject.GType<ActionMovieOperation>;
+    }
+
     /**
      * Movie operations
      */
@@ -57,6 +65,10 @@ export namespace Poppler {
          */
         STOP,
     }
+    export namespace ActionType {
+        export const $gtype: GObject.GType<ActionType>;
+    }
+
     /**
      * Action types
      */
@@ -110,6 +122,10 @@ export namespace Poppler {
          */
         RESET_FORM,
     }
+    export namespace AdditionalActionType {
+        export const $gtype: GObject.GType<AdditionalActionType>;
+    }
+
     /**
      * Form field additional action types to be passed to `poppler_form_field_get_additional_action`
      */
@@ -133,19 +149,35 @@ export namespace Poppler {
          */
         CALCULATE_FIELD,
     }
+    export namespace AnnotExternalDataType {
+        export const $gtype: GObject.GType<AnnotExternalDataType>;
+    }
+
     enum AnnotExternalDataType {
         '3D',
         UNKNOWN,
     }
+    export namespace AnnotFreeTextQuadding {
+        export const $gtype: GObject.GType<AnnotFreeTextQuadding>;
+    }
+
     enum AnnotFreeTextQuadding {
         LEFT_JUSTIFIED,
         CENTERED,
         RIGHT_JUSTIFIED,
     }
+    export namespace AnnotMarkupReplyType {
+        export const $gtype: GObject.GType<AnnotMarkupReplyType>;
+    }
+
     enum AnnotMarkupReplyType {
         R,
         GROUP,
     }
+    export namespace AnnotStampIcon {
+        export const $gtype: GObject.GType<AnnotStampIcon>;
+    }
+
     enum AnnotStampIcon {
         UNKNOWN,
         APPROVED,
@@ -163,6 +195,10 @@ export namespace Poppler {
         TOP_SECRET,
         NONE,
     }
+    export namespace AnnotTextState {
+        export const $gtype: GObject.GType<AnnotTextState>;
+    }
+
     enum AnnotTextState {
         MARKED,
         UNMARKED,
@@ -173,6 +209,10 @@ export namespace Poppler {
         NONE,
         UNKNOWN,
     }
+    export namespace AnnotType {
+        export const $gtype: GObject.GType<AnnotType>;
+    }
+
     enum AnnotType {
         UNKNOWN,
         TEXT,
@@ -201,6 +241,10 @@ export namespace Poppler {
         WATERMARK,
         '3D',
     }
+    export namespace Backend {
+        export const $gtype: GObject.GType<Backend>;
+    }
+
     /**
      * Backend codes returned by poppler_get_backend().
      */
@@ -218,6 +262,10 @@ export namespace Poppler {
          */
         CAIRO,
     }
+    export namespace CertificateStatus {
+        export const $gtype: GObject.GType<CertificateStatus>;
+    }
+
     /**
      * Signature certificate verification results
      */
@@ -251,6 +299,10 @@ export namespace Poppler {
          */
         NOT_VERIFIED,
     }
+    export namespace DestType {
+        export const $gtype: GObject.GType<DestType>;
+    }
+
     /**
      * Destination types
      */
@@ -353,6 +405,10 @@ export namespace Poppler {
         static quark(): GLib.Quark;
     }
 
+    export namespace FontType {
+        export const $gtype: GObject.GType<FontType>;
+    }
+
     /**
      * Font types
      */
@@ -406,15 +462,27 @@ export namespace Poppler {
          */
         CID_TYPE2OT,
     }
+    export namespace FormButtonType {
+        export const $gtype: GObject.GType<FormButtonType>;
+    }
+
     enum FormButtonType {
         PUSH,
         CHECK,
         RADIO,
     }
+    export namespace FormChoiceType {
+        export const $gtype: GObject.GType<FormChoiceType>;
+    }
+
     enum FormChoiceType {
         COMBO,
         LIST,
     }
+    export namespace FormFieldType {
+        export const $gtype: GObject.GType<FormFieldType>;
+    }
+
     enum FormFieldType {
         UNKNOWN,
         BUTTON,
@@ -422,11 +490,19 @@ export namespace Poppler {
         CHOICE,
         SIGNATURE,
     }
+    export namespace FormTextType {
+        export const $gtype: GObject.GType<FormTextType>;
+    }
+
     enum FormTextType {
         NORMAL,
         MULTILINE,
         FILE_SELECT,
     }
+    export namespace MoviePlayMode {
+        export const $gtype: GObject.GType<MoviePlayMode>;
+    }
+
     /**
      * Play mode enum values.
      */
@@ -449,6 +525,10 @@ export namespace Poppler {
          */
         PALINDROME,
     }
+    export namespace PDFConformance {
+        export const $gtype: GObject.GType<PDFConformance>;
+    }
+
     /**
      * PDF Subtype Conformance
      */
@@ -490,6 +570,10 @@ export namespace Poppler {
          */
         NONE,
     }
+    export namespace PDFPart {
+        export const $gtype: GObject.GType<PDFPart>;
+    }
+
     /**
      * PDF Subtype Part
      */
@@ -547,6 +631,10 @@ export namespace Poppler {
         _init(...args: any[]): void;
     }
 
+    export namespace PDFSubtype {
+        export const $gtype: GObject.GType<PDFSubtype>;
+    }
+
     /**
      * PDF Subtype
      */
@@ -580,6 +668,10 @@ export namespace Poppler {
          */
         NONE,
     }
+    export namespace PageLayout {
+        export const $gtype: GObject.GType<PageLayout>;
+    }
+
     /**
      * Page layout types
      */
@@ -613,6 +705,10 @@ export namespace Poppler {
          */
         TWO_PAGE_RIGHT,
     }
+    export namespace PageMode {
+        export const $gtype: GObject.GType<PageMode>;
+    }
+
     /**
      * Page modes
      */
@@ -646,6 +742,10 @@ export namespace Poppler {
          */
         USE_ATTACHMENTS,
     }
+    export namespace PageTransitionAlignment {
+        export const $gtype: GObject.GType<PageTransitionAlignment>;
+    }
+
     /**
      * Page transition alignment types for #POPPLER_PAGE_TRANSITION_SPLIT
      * and #POPPLER_PAGE_TRANSITION_BLINDS transition types
@@ -660,6 +760,10 @@ export namespace Poppler {
          */
         VERTICAL,
     }
+    export namespace PageTransitionDirection {
+        export const $gtype: GObject.GType<PageTransitionDirection>;
+    }
+
     /**
      * Page transition direction types for #POPPLER_PAGE_TRANSITION_SPLIT,
      * #POPPLER_PAGE_TRANSITION_BOX and #POPPLER_PAGE_TRANSITION_FLY transition types
@@ -674,6 +778,10 @@ export namespace Poppler {
          */
         OUTWARD,
     }
+    export namespace PageTransitionType {
+        export const $gtype: GObject.GType<PageTransitionType>;
+    }
+
     /**
      * Page transition types
      */
@@ -731,6 +839,10 @@ export namespace Poppler {
          */
         FADE,
     }
+    export namespace PrintDuplex {
+        export const $gtype: GObject.GType<PrintDuplex>;
+    }
+
     /**
      * Duplex viewer preference
      */
@@ -752,6 +864,10 @@ export namespace Poppler {
          */
         DUPLEX_FLIP_LONG_EDGE,
     }
+    export namespace PrintScaling {
+        export const $gtype: GObject.GType<PrintScaling>;
+    }
+
     /**
      * PrintScaling viewer preference
      */
@@ -765,6 +881,10 @@ export namespace Poppler {
          */
         NONE,
     }
+    export namespace SelectionStyle {
+        export const $gtype: GObject.GType<SelectionStyle>;
+    }
+
     /**
      * Selection styles
      */
@@ -782,6 +902,10 @@ export namespace Poppler {
          */
         LINE,
     }
+    export namespace SignatureStatus {
+        export const $gtype: GObject.GType<SignatureStatus>;
+    }
+
     /**
      * Signature verification results
      */
@@ -815,12 +939,20 @@ export namespace Poppler {
          */
         NOT_VERIFIED,
     }
+    export namespace StructureBlockAlign {
+        export const $gtype: GObject.GType<StructureBlockAlign>;
+    }
+
     enum StructureBlockAlign {
         BEFORE,
         MIDDLE,
         AFTER,
         JUSTIFY,
     }
+    export namespace StructureBorderStyle {
+        export const $gtype: GObject.GType<StructureBorderStyle>;
+    }
+
     enum StructureBorderStyle {
         NONE,
         HIDDEN,
@@ -832,6 +964,10 @@ export namespace Poppler {
         INSET,
         OUTSET,
     }
+    export namespace StructureElementKind {
+        export const $gtype: GObject.GType<StructureElementKind>;
+    }
+
     enum StructureElementKind {
         CONTENT,
         OBJECT_REFERENCE,
@@ -885,6 +1021,10 @@ export namespace Poppler {
         FORMULA,
         FORM,
     }
+    export namespace StructureFormRole {
+        export const $gtype: GObject.GType<StructureFormRole>;
+    }
+
     enum StructureFormRole {
         UNDEFINED,
         RADIO_BUTTON,
@@ -892,11 +1032,19 @@ export namespace Poppler {
         TEXT_VALUE,
         CHECKBOX,
     }
+    export namespace StructureFormState {
+        export const $gtype: GObject.GType<StructureFormState>;
+    }
+
     enum StructureFormState {
         ON,
         OFF,
         NEUTRAL,
     }
+    export namespace StructureGlyphOrientation {
+        export const $gtype: GObject.GType<StructureGlyphOrientation>;
+    }
+
     class StructureGlyphOrientation {
         static $gtype: GObject.GType<StructureGlyphOrientation>;
 
@@ -913,11 +1061,19 @@ export namespace Poppler {
         _init(...args: any[]): void;
     }
 
+    export namespace StructureInlineAlign {
+        export const $gtype: GObject.GType<StructureInlineAlign>;
+    }
+
     enum StructureInlineAlign {
         START,
         CENTER,
         END,
     }
+    export namespace StructureListNumbering {
+        export const $gtype: GObject.GType<StructureListNumbering>;
+    }
+
     enum StructureListNumbering {
         NONE,
         DISC,
@@ -929,6 +1085,10 @@ export namespace Poppler {
         UPPER_ALPHA,
         LOWER_ALPHA,
     }
+    export namespace StructurePlacement {
+        export const $gtype: GObject.GType<StructurePlacement>;
+    }
+
     enum StructurePlacement {
         BLOCK,
         INLINE,
@@ -936,6 +1096,10 @@ export namespace Poppler {
         START,
         END,
     }
+    export namespace StructureRubyAlign {
+        export const $gtype: GObject.GType<StructureRubyAlign>;
+    }
+
     enum StructureRubyAlign {
         START,
         CENTER,
@@ -943,29 +1107,49 @@ export namespace Poppler {
         JUSTIFY,
         DISTRIBUTE,
     }
+    export namespace StructureRubyPosition {
+        export const $gtype: GObject.GType<StructureRubyPosition>;
+    }
+
     enum StructureRubyPosition {
         BEFORE,
         AFTER,
         WARICHU,
         INLINE,
     }
+    export namespace StructureTableScope {
+        export const $gtype: GObject.GType<StructureTableScope>;
+    }
+
     enum StructureTableScope {
         ROW,
         COLUMN,
         BOTH,
     }
+    export namespace StructureTextAlign {
+        export const $gtype: GObject.GType<StructureTextAlign>;
+    }
+
     enum StructureTextAlign {
         START,
         CENTER,
         END,
         JUSTIFY,
     }
+    export namespace StructureTextDecoration {
+        export const $gtype: GObject.GType<StructureTextDecoration>;
+    }
+
     enum StructureTextDecoration {
         NONE,
         UNDERLINE,
         OVERLINE,
         LINETHROUGH,
     }
+    export namespace StructureWritingMode {
+        export const $gtype: GObject.GType<StructureWritingMode>;
+    }
+
     enum StructureWritingMode {
         LR_TB,
         RL_TB,
@@ -1080,6 +1264,10 @@ export namespace Poppler {
     interface NssPasswordFunc {
         (text: string): string;
     }
+    export namespace AnnotFlag {
+        export const $gtype: GObject.GType<AnnotFlag>;
+    }
+
     enum AnnotFlag {
         UNKNOWN,
         INVISIBLE,
@@ -1093,6 +1281,10 @@ export namespace Poppler {
         TOGGLE_NO_VIEW,
         LOCKED_CONTENTS,
     }
+    export namespace FindFlags {
+        export const $gtype: GObject.GType<FindFlags>;
+    }
+
     /**
      * Flags using while searching text in a page
      */
@@ -1127,6 +1319,10 @@ export namespace Poppler {
          */
         MULTILINE,
     }
+    export namespace Permissions {
+        export const $gtype: GObject.GType<Permissions>;
+    }
+
     /**
      * Permissions
      */
@@ -1170,6 +1366,10 @@ export namespace Poppler {
          */
         FULL,
     }
+    export namespace PrintFlags {
+        export const $gtype: GObject.GType<PrintFlags>;
+    }
+
     /**
      * Printing flags
      */
@@ -1191,6 +1391,10 @@ export namespace Poppler {
          */
         ALL,
     }
+    export namespace SignatureValidationFlags {
+        export const $gtype: GObject.GType<SignatureValidationFlags>;
+    }
+
     /**
      * Signature validation flags
      */
@@ -1208,6 +1412,10 @@ export namespace Poppler {
          */
         USE_AIA_CERTIFICATE_FETCH,
     }
+    export namespace StructureGetTextFlags {
+        export const $gtype: GObject.GType<StructureGetTextFlags>;
+    }
+
     enum StructureGetTextFlags {
         /**
          * No flags.
@@ -1220,6 +1428,10 @@ export namespace Poppler {
          */
         RECURSIVE,
     }
+    export namespace ViewerPreferences {
+        export const $gtype: GObject.GType<ViewerPreferences>;
+    }
+
     /**
      * Viewer preferences
      */

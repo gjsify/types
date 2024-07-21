@@ -90,6 +90,10 @@ export namespace FPrint {
         static quark(): GLib.Quark;
     }
 
+    export namespace DeviceRetry {
+        export const $gtype: GObject.GType<DeviceRetry>;
+    }
+
     /**
      * Error codes representing scan failures resulting in the user needing to
      * retry.
@@ -117,6 +121,10 @@ export namespace FPrint {
          */
         REMOVE_FINGER,
     }
+    export namespace DeviceType {
+        export const $gtype: GObject.GType<DeviceType>;
+    }
+
     enum DeviceType {
         /**
          * The device is a virtual device
@@ -131,6 +139,10 @@ export namespace FPrint {
          */
         USB,
     }
+    export namespace Finger {
+        export const $gtype: GObject.GType<Finger>;
+    }
+
     enum Finger {
         /**
          * The finger is unknown
@@ -185,6 +197,10 @@ export namespace FPrint {
          */
         LAST,
     }
+    export namespace ScanType {
+        export const $gtype: GObject.GType<ScanType>;
+    }
+
     enum ScanType {
         /**
          * Sensor requires swiping the finger.
@@ -195,6 +211,10 @@ export namespace FPrint {
          */
         PRESS,
     }
+    export namespace Temperature {
+        export const $gtype: GObject.GType<Temperature>;
+    }
+
     /**
      * When a device is created, it is assumed to be cold. Applications such as
      * fprintd may want to ensure all devices on the system are cold before
@@ -223,6 +243,10 @@ export namespace FPrint {
     interface MatchCb {
         (device: Device, match?: Print | null, print?: Print | null, error?: GLib.Error | null): void;
     }
+    export namespace DeviceFeature {
+        export const $gtype: GObject.GType<DeviceFeature>;
+    }
+
     enum DeviceFeature {
         /**
          * Device does not support any feature
@@ -269,6 +293,10 @@ export namespace FPrint {
          */
         UPDATE_PRINT,
     }
+    export namespace FingerStatusFlags {
+        export const $gtype: GObject.GType<FingerStatusFlags>;
+    }
+
     enum FingerStatusFlags {
         /**
          * Sensor has not the finger on it, nor requires it

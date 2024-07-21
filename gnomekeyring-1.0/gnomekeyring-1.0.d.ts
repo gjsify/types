@@ -16,6 +16,10 @@ export namespace GnomeKeyring {
      * GnomeKeyring-1.0
      */
 
+    export namespace AccessRestriction {
+        export const $gtype: GObject.GType<AccessRestriction>;
+    }
+
     /**
      * Type of access restriction.
      */
@@ -33,10 +37,18 @@ export namespace GnomeKeyring {
          */
         ALLOW,
     }
+    export namespace AttributeType {
+        export const $gtype: GObject.GType<AttributeType>;
+    }
+
     enum AttributeType {
         STRING,
         UINT32,
     }
+    export namespace ItemType {
+        export const $gtype: GObject.GType<ItemType>;
+    }
+
     /**
      * The types of items.
      */
@@ -70,6 +82,10 @@ export namespace GnomeKeyring {
          */
         LAST_TYPE,
     }
+    export namespace Result {
+        export const $gtype: GObject.GType<Result>;
+    }
+
     /**
      * Various result codes returned by functions.
      */
@@ -615,6 +631,10 @@ export namespace GnomeKeyring {
     interface OperationGetStringCallback {
         (result: Result, string?: string | null): void;
     }
+    export namespace AccessType {
+        export const $gtype: GObject.GType<AccessType>;
+    }
+
     /**
      * Type of access.
      */
@@ -632,6 +652,10 @@ export namespace GnomeKeyring {
          */
         REMOVE,
     }
+    export namespace ItemInfoFlags {
+        export const $gtype: GObject.GType<ItemInfoFlags>;
+    }
+
     enum ItemInfoFlags {
         BASICS,
         SECRET,

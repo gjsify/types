@@ -18,6 +18,10 @@ export namespace Mbim {
      * Mbim-1.0
      */
 
+    export namespace AccessMediaType {
+        export const $gtype: GObject.GType<AccessMediaType>;
+    }
+
     /**
      * Access type preference.
      */
@@ -35,6 +39,10 @@ export namespace Mbim {
          */
         '3GPP_PREFERRED',
     }
+    export namespace ActivationCommand {
+        export const $gtype: GObject.GType<ActivationCommand>;
+    }
+
     /**
      * Activation Command.
      */
@@ -48,6 +56,10 @@ export namespace Mbim {
          */
         ACTIVATE,
     }
+    export namespace ActivationState {
+        export const $gtype: GObject.GType<ActivationState>;
+    }
+
     /**
      * Activation State.
      */
@@ -73,6 +85,10 @@ export namespace Mbim {
          */
         DEACTIVATING,
     }
+    export namespace AtdsProviderPlmnMode {
+        export const $gtype: GObject.GType<AtdsProviderPlmnMode>;
+    }
+
     /**
      * Provider PLMN mode.
      */
@@ -90,6 +106,10 @@ export namespace Mbim {
          */
         LTE,
     }
+    export namespace AtdsRatMode {
+        export const $gtype: GObject.GType<AtdsRatMode>;
+    }
+
     /**
      * RAT mode preferences.
      */
@@ -111,6 +131,10 @@ export namespace Mbim {
          */
         '4G_ONLY',
     }
+    export namespace AuthProtocol {
+        export const $gtype: GObject.GType<AuthProtocol>;
+    }
+
     /**
      * Auth Protocol.
      */
@@ -132,6 +156,10 @@ export namespace Mbim {
          */
         MSCHAPV2,
     }
+    export namespace CarrierLockCause {
+        export const $gtype: GObject.GType<CarrierLockCause>;
+    }
+
     /**
      * Carrier lock cause.
      */
@@ -149,6 +177,10 @@ export namespace Mbim {
          */
         SIM_LOCK_POLICY_MATCHED,
     }
+    export namespace CarrierLockModemState {
+        export const $gtype: GObject.GType<CarrierLockModemState>;
+    }
+
     /**
      * State of modem after a carrier lock state update.
      */
@@ -170,6 +202,10 @@ export namespace Mbim {
          */
         REGISTERED,
     }
+    export namespace CarrierLockStatus {
+        export const $gtype: GObject.GType<CarrierLockStatus>;
+    }
+
     /**
      * Status of carrier lock.
      */
@@ -183,6 +219,10 @@ export namespace Mbim {
          */
         APPLIED,
     }
+    export namespace CidAtds {
+        export const $gtype: GObject.GType<CidAtds>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_ATDS service.
      */
@@ -212,6 +252,10 @@ export namespace Mbim {
          */
         REGISTER_STATE,
     }
+    export namespace CidAuth {
+        export const $gtype: GObject.GType<CidAuth>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_AUTH service.
      */
@@ -233,6 +277,10 @@ export namespace Mbim {
          */
         SIM,
     }
+    export namespace CidBasicConnect {
+        export const $gtype: GObject.GType<CidBasicConnect>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_BASIC_CONNECT service.
      */
@@ -330,6 +378,10 @@ export namespace Mbim {
          */
         MULTICARRIER_PROVIDERS,
     }
+    export namespace CidDss {
+        export const $gtype: GObject.GType<CidDss>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_DSS service.
      */
@@ -343,6 +395,10 @@ export namespace Mbim {
          */
         CONNECT,
     }
+    export namespace CidGoogle {
+        export const $gtype: GObject.GType<CidGoogle>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_GOOGLE service.
      */
@@ -356,6 +412,10 @@ export namespace Mbim {
          */
         CARRIER_LOCK,
     }
+    export namespace CidIntelFirmwareUpdate {
+        export const $gtype: GObject.GType<CidIntelFirmwareUpdate>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_INTEL_FIRMWARE_UPDATE service.
      */
@@ -369,6 +429,10 @@ export namespace Mbim {
          */
         MODEM_REBOOT,
     }
+    export namespace CidIntelMutualAuthentication {
+        export const $gtype: GObject.GType<CidIntelMutualAuthentication>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION service.
      */
@@ -382,6 +446,10 @@ export namespace Mbim {
          */
         FCC_LOCK,
     }
+    export namespace CidIntelThermalRf {
+        export const $gtype: GObject.GType<CidIntelThermalRf>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_INTEL_THERMAL_RF service.
      */
@@ -395,6 +463,10 @@ export namespace Mbim {
          */
         RFIM,
     }
+    export namespace CidIntelTools {
+        export const $gtype: GObject.GType<CidIntelTools>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_INTEL_TOOLS service.
      */
@@ -408,6 +480,10 @@ export namespace Mbim {
          */
         TRACE_CONFIG,
     }
+    export namespace CidMsBasicConnectExtensions {
+        export const $gtype: GObject.GType<CidMsBasicConnectExtensions>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_BASIC_CONNECT_EXTENSIONS service.
      */
@@ -481,6 +557,10 @@ export namespace Mbim {
          */
         WAKE_REASON,
     }
+    export namespace CidMsFirmwareId {
+        export const $gtype: GObject.GType<CidMsFirmwareId>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_FIRMWARE_ID service.
      */
@@ -494,6 +574,10 @@ export namespace Mbim {
          */
         GET,
     }
+    export namespace CidMsHostShutdown {
+        export const $gtype: GObject.GType<CidMsHostShutdown>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_HOST_SHUTDOWN service.
      */
@@ -507,6 +591,10 @@ export namespace Mbim {
          */
         NOTIFY,
     }
+    export namespace CidMsSar {
+        export const $gtype: GObject.GType<CidMsSar>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_SAR service.
      */
@@ -524,6 +612,10 @@ export namespace Mbim {
          */
         TRANSMISSION_STATUS,
     }
+    export namespace CidMsUiccLowLevelAccess {
+        export const $gtype: GObject.GType<CidMsUiccLowLevelAccess>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_UICC_LOW_LEVEL_ACCESS service.
      */
@@ -573,6 +665,10 @@ export namespace Mbim {
          */
         READ_RECORD,
     }
+    export namespace CidMsVoiceExtensions {
+        export const $gtype: GObject.GType<CidMsVoiceExtensions>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_VOICE_EXTENSIONS service.
      */
@@ -586,6 +682,10 @@ export namespace Mbim {
          */
         NITZ,
     }
+    export namespace CidPhonebook {
+        export const $gtype: GObject.GType<CidPhonebook>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_PHONEBOOK service.
      */
@@ -611,6 +711,10 @@ export namespace Mbim {
          */
         WRITE,
     }
+    export namespace CidProxyControl {
+        export const $gtype: GObject.GType<CidProxyControl>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_PROXY_CONTROL service.
      */
@@ -628,6 +732,10 @@ export namespace Mbim {
          */
         VERSION,
     }
+    export namespace CidQdu {
+        export const $gtype: GObject.GType<CidQdu>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_QDU service.
      */
@@ -657,6 +765,10 @@ export namespace Mbim {
          */
         QUECTEL_READ_VERSION,
     }
+    export namespace CidQmi {
+        export const $gtype: GObject.GType<CidQmi>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_QMI service.
      */
@@ -670,6 +782,10 @@ export namespace Mbim {
          */
         MSG,
     }
+    export namespace CidQuectel {
+        export const $gtype: GObject.GType<CidQuectel>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_QUECTEL service.
      */
@@ -683,6 +799,10 @@ export namespace Mbim {
          */
         RADIO_STATE,
     }
+    export namespace CidSms {
+        export const $gtype: GObject.GType<CidSms>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_SMS service.
      */
@@ -712,6 +832,10 @@ export namespace Mbim {
          */
         MESSAGE_STORE_STATUS,
     }
+    export namespace CidStk {
+        export const $gtype: GObject.GType<CidStk>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_STK service.
      */
@@ -733,6 +857,10 @@ export namespace Mbim {
          */
         ENVELOPE,
     }
+    export namespace CidUssd {
+        export const $gtype: GObject.GType<CidUssd>;
+    }
+
     /**
      * MBIM commands in the %MBIM_SERVICE_USSD service.
      */
@@ -746,6 +874,10 @@ export namespace Mbim {
          */
         USSD,
     }
+    export namespace Compression {
+        export const $gtype: GObject.GType<Compression>;
+    }
+
     /**
      * Compression.
      */
@@ -759,6 +891,10 @@ export namespace Mbim {
          */
         ENABLE,
     }
+    export namespace ContextIpType {
+        export const $gtype: GObject.GType<ContextIpType>;
+    }
+
     /**
      * Context IP Type.
      */
@@ -784,6 +920,10 @@ export namespace Mbim {
          */
         IPV4_AND_IPV6,
     }
+    export namespace ContextMediaType {
+        export const $gtype: GObject.GType<ContextMediaType>;
+    }
+
     /**
      * Media type, specifying whether the modem is used for cellular or
      * iWLAN (Wi-Fi offload).
@@ -802,6 +942,10 @@ export namespace Mbim {
          */
         ALL,
     }
+    export namespace ContextOperation {
+        export const $gtype: GObject.GType<ContextOperation>;
+    }
+
     /**
      * Command to run when updating context configuration.
      */
@@ -819,6 +963,10 @@ export namespace Mbim {
          */
         RESTORE_FACTORY,
     }
+    export namespace ContextRoamingControl {
+        export const $gtype: GObject.GType<ContextRoamingControl>;
+    }
+
     /**
      * Type of roaming control.
      */
@@ -852,6 +1000,10 @@ export namespace Mbim {
          */
         ALLOW_ALL,
     }
+    export namespace ContextSource {
+        export const $gtype: GObject.GType<ContextSource>;
+    }
+
     /**
      * Source of context creation.
      */
@@ -877,6 +1029,10 @@ export namespace Mbim {
          */
         DEVICE,
     }
+    export namespace ContextState {
+        export const $gtype: GObject.GType<ContextState>;
+    }
+
     /**
      * Status of the context, specifying whether it's enabled or disabled.
      */
@@ -890,6 +1046,10 @@ export namespace Mbim {
          */
         ENABLED,
     }
+    export namespace ContextType {
+        export const $gtype: GObject.GType<ContextType>;
+    }
+
     /**
      * Enumeration of the generic MBIM context types.
      */
@@ -1025,6 +1185,10 @@ export namespace Mbim {
         static quark(): GLib.Quark;
     }
 
+    export namespace DefaultPduActivationHint {
+        export const $gtype: GObject.GType<DefaultPduActivationHint>;
+    }
+
     /**
      * Hint regarding the activation of the default PDU session.
      */
@@ -1038,6 +1202,10 @@ export namespace Mbim {
          */
         LIKELY,
     }
+    export namespace DeviceType {
+        export const $gtype: GObject.GType<DeviceType>;
+    }
+
     /**
      * Type of device.
      */
@@ -1059,6 +1227,10 @@ export namespace Mbim {
          */
         REMOTE,
     }
+    export namespace DrxCycle {
+        export const $gtype: GObject.GType<DrxCycle>;
+    }
+
     /**
      * DRX cycle settings.
      */
@@ -1100,6 +1272,10 @@ export namespace Mbim {
         _init(...args: any[]): void;
     }
 
+    export namespace DssLinkState {
+        export const $gtype: GObject.GType<DssLinkState>;
+    }
+
     /**
      * Action performed in the link state.
      */
@@ -1113,6 +1289,10 @@ export namespace Mbim {
          */
         ACTIVATE,
     }
+    export namespace EmergencyModeState {
+        export const $gtype: GObject.GType<EmergencyModeState>;
+    }
+
     /**
      * Emergency mode state.
      */
@@ -1126,6 +1306,10 @@ export namespace Mbim {
          */
         ON,
     }
+    export namespace IntelBootMode {
+        export const $gtype: GObject.GType<IntelBootMode>;
+    }
+
     /**
      * Modem intel boot mode.
      */
@@ -1155,6 +1339,10 @@ export namespace Mbim {
          */
         FAST_DOWNLOAD_MODE,
     }
+    export namespace IntelServingCellInfo {
+        export const $gtype: GObject.GType<IntelServingCellInfo>;
+    }
+
     /**
      * Serving cell information.
      */
@@ -1180,6 +1368,10 @@ export namespace Mbim {
          */
         RADIO_OFF,
     }
+    export namespace LadnInfo {
+        export const $gtype: GObject.GType<LadnInfo>;
+    }
+
     /**
      * Local Area Data Network (LADN) information state.
      */
@@ -1193,6 +1385,10 @@ export namespace Mbim {
          */
         REQUESTED,
     }
+    export namespace LteAttachContextOperation {
+        export const $gtype: GObject.GType<LteAttachContextOperation>;
+    }
+
     /**
      * Command to run when updating LTE attach configuration.
      */
@@ -1206,6 +1402,10 @@ export namespace Mbim {
          */
         RESTORE_FACTORY,
     }
+    export namespace LteAttachContextRoamingControl {
+        export const $gtype: GObject.GType<LteAttachContextRoamingControl>;
+    }
+
     /**
      * Type of roaming control.
      */
@@ -1223,6 +1423,10 @@ export namespace Mbim {
          */
         NON_PARTNER,
     }
+    export namespace LteAttachState {
+        export const $gtype: GObject.GType<LteAttachState>;
+    }
+
     /**
      * LTE attach state.
      */
@@ -1236,6 +1440,10 @@ export namespace Mbim {
          */
         ATTACHED,
     }
+    export namespace MessageCommandType {
+        export const $gtype: GObject.GType<MessageCommandType>;
+    }
+
     /**
      * Type of command message.
      */
@@ -1253,6 +1461,10 @@ export namespace Mbim {
          */
         SET,
     }
+    export namespace MessageType {
+        export const $gtype: GObject.GType<MessageType>;
+    }
+
     /**
      * Type of MBIM messages.
      */
@@ -1298,6 +1510,10 @@ export namespace Mbim {
          */
         INDICATE_STATUS,
     }
+    export namespace MicoMode {
+        export const $gtype: GObject.GType<MicoMode>;
+    }
+
     /**
      * Mobile Initiated Connection Only (MICO) Mode state.
      *
@@ -1322,6 +1538,10 @@ export namespace Mbim {
          */
         DEFAULT,
     }
+    export namespace ModemConfigurationStatus {
+        export const $gtype: GObject.GType<ModemConfigurationStatus>;
+    }
+
     /**
      * Modem configuration status.
      */
@@ -1339,6 +1559,10 @@ export namespace Mbim {
          */
         COMPLETED,
     }
+    export namespace NetworkIdleHintState {
+        export const $gtype: GObject.GType<NetworkIdleHintState>;
+    }
+
     /**
      * Enable or disable network idle hint.
      */
@@ -1352,6 +1576,10 @@ export namespace Mbim {
          */
         ENABLED,
     }
+    export namespace NwError {
+        export const $gtype: GObject.GType<NwError>;
+    }
+
     /**
      * Network errors.
      */
@@ -1625,6 +1853,10 @@ export namespace Mbim {
          */
         MULTIPLE_ACCESSES_TO_A_PDN_CONNECTION_NOT_ALLOWED,
     }
+    export namespace PacketServiceAction {
+        export const $gtype: GObject.GType<PacketServiceAction>;
+    }
+
     /**
      * Packet Service Action.
      */
@@ -1638,6 +1870,10 @@ export namespace Mbim {
          */
         DETACH,
     }
+    export namespace PacketServiceState {
+        export const $gtype: GObject.GType<PacketServiceState>;
+    }
+
     /**
      * Packet Service State.
      */
@@ -1663,6 +1899,10 @@ export namespace Mbim {
          */
         DETACHED,
     }
+    export namespace PcoType {
+        export const $gtype: GObject.GType<PcoType>;
+    }
+
     /**
      * Type of PCO structure.
      */
@@ -1676,6 +1916,10 @@ export namespace Mbim {
          */
         PARTIAL,
     }
+    export namespace PhonebookFlag {
+        export const $gtype: GObject.GType<PhonebookFlag>;
+    }
+
     /**
      * Flags to use when reading the phonebook.
      */
@@ -1689,6 +1933,10 @@ export namespace Mbim {
          */
         INDEX,
     }
+    export namespace PhonebookState {
+        export const $gtype: GObject.GType<PhonebookState>;
+    }
+
     /**
      * Phonebook state.
      */
@@ -1702,6 +1950,10 @@ export namespace Mbim {
          */
         INITIALIZED,
     }
+    export namespace PhonebookWriteFlag {
+        export const $gtype: GObject.GType<PhonebookWriteFlag>;
+    }
+
     /**
      * Flags to use when writing the phonebook.
      */
@@ -1715,6 +1967,10 @@ export namespace Mbim {
          */
         INDEX,
     }
+    export namespace PinFormat {
+        export const $gtype: GObject.GType<PinFormat>;
+    }
+
     /**
      * Format of the expected PIN code.
      */
@@ -1732,6 +1988,10 @@ export namespace Mbim {
          */
         ALPHANUMERIC,
     }
+    export namespace PinMode {
+        export const $gtype: GObject.GType<PinMode>;
+    }
+
     /**
      * Whether the lock is enabled or disabled.
      */
@@ -1749,6 +2009,10 @@ export namespace Mbim {
          */
         DISABLED,
     }
+    export namespace PinOperation {
+        export const $gtype: GObject.GType<PinOperation>;
+    }
+
     /**
      * Operation to perform on the PIN.
      */
@@ -1770,6 +2034,10 @@ export namespace Mbim {
          */
         CHANGE,
     }
+    export namespace PinState {
+        export const $gtype: GObject.GType<PinState>;
+    }
+
     /**
      * PIN States.
      */
@@ -1783,6 +2051,10 @@ export namespace Mbim {
          */
         LOCKED,
     }
+    export namespace PinType {
+        export const $gtype: GObject.GType<PinType>;
+    }
+
     /**
      * PIN Types.
      */
@@ -1928,6 +2200,10 @@ export namespace Mbim {
         static quark(): GLib.Quark;
     }
 
+    export namespace QduFileType {
+        export const $gtype: GObject.GType<QduFileType>;
+    }
+
     /**
      * QDU session result.
      */
@@ -1937,6 +2213,10 @@ export namespace Mbim {
          */
         PACKAGE,
     }
+    export namespace QduQuectelRebootType {
+        export const $gtype: GObject.GType<QduQuectelRebootType>;
+    }
+
     /**
      * QDU Quectel Reboot session type.
      */
@@ -1946,6 +2226,10 @@ export namespace Mbim {
          */
         EDL,
     }
+    export namespace QduQuectelVersionType {
+        export const $gtype: GObject.GType<QduQuectelVersionType>;
+    }
+
     /**
      * QDU Quectel Read Version session type.
      */
@@ -1955,6 +2239,10 @@ export namespace Mbim {
          */
         ID,
     }
+    export namespace QduSessionAction {
+        export const $gtype: GObject.GType<QduSessionAction>;
+    }
+
     /**
      * Action performed for the session initialization.
      */
@@ -1968,6 +2256,10 @@ export namespace Mbim {
          */
         STOP,
     }
+    export namespace QduSessionResult {
+        export const $gtype: GObject.GType<QduSessionResult>;
+    }
+
     /**
      * QDU session result.
      */
@@ -1981,6 +2273,10 @@ export namespace Mbim {
          */
         FAILURE,
     }
+    export namespace QduSessionStatus {
+        export const $gtype: GObject.GType<QduSessionStatus>;
+    }
+
     /**
      * QDU session status.
      */
@@ -1998,6 +2294,10 @@ export namespace Mbim {
          */
         APPLY_UPDATE,
     }
+    export namespace QduSessionType {
+        export const $gtype: GObject.GType<QduSessionType>;
+    }
+
     /**
      * QDU session types.
      */
@@ -2011,6 +2311,10 @@ export namespace Mbim {
          */
         LE,
     }
+    export namespace QuectelRadioSwitchState {
+        export const $gtype: GObject.GType<QuectelRadioSwitchState>;
+    }
+
     /**
      * Radio switch state.
      */
@@ -2028,6 +2332,10 @@ export namespace Mbim {
          */
         FCC_LOCKED,
     }
+    export namespace RadioSwitchState {
+        export const $gtype: GObject.GType<RadioSwitchState>;
+    }
+
     /**
      * Radio switch state.
      */
@@ -2041,6 +2349,10 @@ export namespace Mbim {
          */
         ON,
     }
+    export namespace RegisterAction {
+        export const $gtype: GObject.GType<RegisterAction>;
+    }
+
     /**
      * Type of registration requested.
      */
@@ -2054,6 +2366,10 @@ export namespace Mbim {
          */
         MANUAL,
     }
+    export namespace RegisterMode {
+        export const $gtype: GObject.GType<RegisterMode>;
+    }
+
     /**
      * Type of registration requested.
      */
@@ -2071,6 +2387,10 @@ export namespace Mbim {
          */
         MANUAL,
     }
+    export namespace RegisterState {
+        export const $gtype: GObject.GType<RegisterState>;
+    }
+
     /**
      * Registration state.
      */
@@ -2104,6 +2424,10 @@ export namespace Mbim {
          */
         DENIED,
     }
+    export namespace SarBackoffState {
+        export const $gtype: GObject.GType<SarBackoffState>;
+    }
+
     /**
      * SAR backoff state.
      */
@@ -2117,6 +2441,10 @@ export namespace Mbim {
          */
         ENABLED,
     }
+    export namespace SarControlMode {
+        export const $gtype: GObject.GType<SarControlMode>;
+    }
+
     /**
      * SAR backoff mechanism control modes.
      */
@@ -2130,6 +2458,10 @@ export namespace Mbim {
          */
         OS,
     }
+    export namespace SarWifiHardwareState {
+        export const $gtype: GObject.GType<SarWifiHardwareState>;
+    }
+
     /**
      * Whether the Wi-Fi and cellular SAR are integrated at hardware level.
      */
@@ -2143,6 +2475,10 @@ export namespace Mbim {
          */
         NOT_INTEGRATED,
     }
+    export namespace Service {
+        export const $gtype: GObject.GType<Service>;
+    }
+
     /**
      * Enumeration of the generic MBIM services.
      */
@@ -2244,6 +2580,10 @@ export namespace Mbim {
          */
         GOOGLE,
     }
+    export namespace SmsCdmaEncoding {
+        export const $gtype: GObject.GType<SmsCdmaEncoding>;
+    }
+
     /**
      * Type of encoding of a CDMA SMS.
      */
@@ -2289,6 +2629,10 @@ export namespace Mbim {
          */
         GSM_7BIT,
     }
+    export namespace SmsCdmaLang {
+        export const $gtype: GObject.GType<SmsCdmaLang>;
+    }
+
     /**
      * Language of a CDMA SMS.
      */
@@ -2326,6 +2670,10 @@ export namespace Mbim {
          */
         HEBREW,
     }
+    export namespace SmsFlag {
+        export const $gtype: GObject.GType<SmsFlag>;
+    }
+
     /**
      * Flags to use when requesting to read SMS. `MBIM_SMS_FLAG_ALL` and
      * `MBIM_SMS_FLAG_NEW` are mandatory, all the others are optional.
@@ -2356,6 +2704,10 @@ export namespace Mbim {
          */
         DRAFT,
     }
+    export namespace SmsFormat {
+        export const $gtype: GObject.GType<SmsFormat>;
+    }
+
     /**
      * SMS format.
      */
@@ -2369,6 +2721,10 @@ export namespace Mbim {
          */
         CDMA,
     }
+    export namespace SmsStatus {
+        export const $gtype: GObject.GType<SmsStatus>;
+    }
+
     /**
      * Status of a SMS message.
      */
@@ -2390,6 +2746,10 @@ export namespace Mbim {
          */
         SENT,
     }
+    export namespace SmsStorageState {
+        export const $gtype: GObject.GType<SmsStorageState>;
+    }
+
     /**
      * State of the SMS storage.
      */
@@ -2627,6 +2987,10 @@ export namespace Mbim {
         static quark(): GLib.Quark;
     }
 
+    export namespace StkPacProfile {
+        export const $gtype: GObject.GType<StkPacProfile>;
+    }
+
     /**
      * Proactive command profile.
      */
@@ -2664,6 +3028,10 @@ export namespace Mbim {
          */
         HANDLED_BY_HOST_FUNCTION_ABLE_TO_HANDLE,
     }
+    export namespace StkPacType {
+        export const $gtype: GObject.GType<StkPacType>;
+    }
+
     /**
      * Type of proactive command.
      */
@@ -2677,6 +3045,10 @@ export namespace Mbim {
          */
         NOTIFICATION,
     }
+    export namespace SubscriberReadyState {
+        export const $gtype: GObject.GType<SubscriberReadyState>;
+    }
+
     /**
      * Ready state of the subscriber.
      */
@@ -2715,6 +3087,10 @@ export namespace Mbim {
          */
         NO_ESIM_PROFILE,
     }
+    export namespace TlvType {
+        export const $gtype: GObject.GType<TlvType>;
+    }
+
     /**
      * Type of the MBIM TLV.
      */
@@ -2792,6 +3168,10 @@ export namespace Mbim {
          */
         WAKE_PACKET,
     }
+    export namespace TraceCommand {
+        export const $gtype: GObject.GType<TraceCommand>;
+    }
+
     /**
      * The trace command value.
      */
@@ -2813,6 +3193,10 @@ export namespace Mbim {
          */
         FLASH_INTERVAL,
     }
+    export namespace TransmissionNotificationStatus {
+        export const $gtype: GObject.GType<TransmissionNotificationStatus>;
+    }
+
     /**
      * Whether modem channel transmission status notification is disabled or enabled.
      */
@@ -2826,6 +3210,10 @@ export namespace Mbim {
          */
         ENABLED,
     }
+    export namespace TransmissionState {
+        export const $gtype: GObject.GType<TransmissionState>;
+    }
+
     /**
      * Whether modem is having TX traffic every hysteresis timeout.
      */
@@ -2839,6 +3227,10 @@ export namespace Mbim {
          */
         ACTIVE,
     }
+    export namespace UiccApplicationType {
+        export const $gtype: GObject.GType<UiccApplicationType>;
+    }
+
     /**
      * Type of UICC application.
      */
@@ -2872,6 +3264,10 @@ export namespace Mbim {
          */
         ISIM,
     }
+    export namespace UiccClassByteType {
+        export const $gtype: GObject.GType<UiccClassByteType>;
+    }
+
     /**
      * Specifies the type of class byte definition.
      */
@@ -2885,6 +3281,10 @@ export namespace Mbim {
          */
         EXTENDED,
     }
+    export namespace UiccFileAccessibility {
+        export const $gtype: GObject.GType<UiccFileAccessibility>;
+    }
+
     /**
      * The UICC file accessibility.
      */
@@ -2902,6 +3302,10 @@ export namespace Mbim {
          */
         SHAREABLE,
     }
+    export namespace UiccFileStructure {
+        export const $gtype: GObject.GType<UiccFileStructure>;
+    }
+
     /**
      * The UICC file structure.
      */
@@ -2927,6 +3331,10 @@ export namespace Mbim {
          */
         BER_TLV,
     }
+    export namespace UiccFileType {
+        export const $gtype: GObject.GType<UiccFileType>;
+    }
+
     /**
      * The UICC file type.
      */
@@ -2948,6 +3356,10 @@ export namespace Mbim {
          */
         DF_OR_ADF,
     }
+    export namespace UiccPassThroughAction {
+        export const $gtype: GObject.GType<UiccPassThroughAction>;
+    }
+
     /**
      * Pass through actions host can specify to modem. Upon reset
      * treats UICC as if pass through or as a regular UICC
@@ -2962,6 +3374,10 @@ export namespace Mbim {
          */
         ENABLE,
     }
+    export namespace UiccPassThroughStatus {
+        export const $gtype: GObject.GType<UiccPassThroughStatus>;
+    }
+
     /**
      * Pass through status of the modem specifies to the host.
      */
@@ -2975,6 +3391,10 @@ export namespace Mbim {
          */
         ENABLED,
     }
+    export namespace UiccSecureMessaging {
+        export const $gtype: GObject.GType<UiccSecureMessaging>;
+    }
+
     /**
      * Specifies whether apdu is exchanged using secure messaging.
      */
@@ -2988,6 +3408,10 @@ export namespace Mbim {
          */
         NO_HDR_AUTH,
     }
+    export namespace UiccSlotState {
+        export const $gtype: GObject.GType<UiccSlotState>;
+    }
+
     /**
      * MbimUiccSlotState
      */
@@ -3029,6 +3453,10 @@ export namespace Mbim {
          */
         STATE_ACTIVE_ESIM_NO_PROFILES,
     }
+    export namespace UssdAction {
+        export const $gtype: GObject.GType<UssdAction>;
+    }
+
     /**
      * USSD action.
      */
@@ -3046,6 +3474,10 @@ export namespace Mbim {
          */
         CANCEL,
     }
+    export namespace UssdResponse {
+        export const $gtype: GObject.GType<UssdResponse>;
+    }
+
     /**
      * USSD response.
      */
@@ -3075,6 +3507,10 @@ export namespace Mbim {
          */
         NETWORK_TIMEOUT,
     }
+    export namespace UssdSessionState {
+        export const $gtype: GObject.GType<UssdSessionState>;
+    }
+
     /**
      * Session state.
      */
@@ -3088,6 +3524,10 @@ export namespace Mbim {
          */
         EXISTING_SESSION,
     }
+    export namespace VisibleProvidersAction {
+        export const $gtype: GObject.GType<VisibleProvidersAction>;
+    }
+
     /**
      * Type of action to perform when listing visible providers.
      */
@@ -3101,6 +3541,10 @@ export namespace Mbim {
          */
         RESTRICTED_SCAN,
     }
+    export namespace VoiceCallState {
+        export const $gtype: GObject.GType<VoiceCallState>;
+    }
+
     /**
      * Voice Call State.
      */
@@ -3118,6 +3562,10 @@ export namespace Mbim {
          */
         HANG_UP,
     }
+    export namespace VoiceClass {
+        export const $gtype: GObject.GType<VoiceClass>;
+    }
+
     /**
      * Voice class.
      */
@@ -3139,6 +3587,10 @@ export namespace Mbim {
          */
         SIMULTANEOUS_VOICE_DATA,
     }
+    export namespace WakeType {
+        export const $gtype: GObject.GType<WakeType>;
+    }
+
     /**
      * Wake type.
      */
@@ -4265,6 +4717,10 @@ export namespace Mbim {
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
     function wake_type_get_string(val: WakeType): string;
+    export namespace CellularClass {
+        export const $gtype: GObject.GType<CellularClass>;
+    }
+
     /**
      * Cellular class.
      */
@@ -4282,6 +4738,10 @@ export namespace Mbim {
          */
         CDMA,
     }
+    export namespace CtrlCaps {
+        export const $gtype: GObject.GType<CtrlCaps>;
+    }
+
     /**
      * Control capabilities.
      */
@@ -4323,6 +4783,10 @@ export namespace Mbim {
          */
         SIM_HOT_SWAP_CAPABLE,
     }
+    export namespace DataClass {
+        export const $gtype: GObject.GType<DataClass>;
+    }
+
     /**
      * Data class.
      *
@@ -4403,6 +4867,10 @@ export namespace Mbim {
          */
         CUSTOM,
     }
+    export namespace DataClassV3 {
+        export const $gtype: GObject.GType<DataClassV3>;
+    }
+
     /**
      * Data class update in MBIMEx v3.0.
      *
@@ -4477,6 +4945,10 @@ export namespace Mbim {
          */
         CUSTOM,
     }
+    export namespace DataSubclass {
+        export const $gtype: GObject.GType<DataSubclass>;
+    }
+
     /**
      * Flags specifying the data subclass.
      */
@@ -4506,6 +4978,10 @@ export namespace Mbim {
          */
         '5G_NGENDC',
     }
+    export namespace DeviceOpenFlags {
+        export const $gtype: GObject.GType<DeviceOpenFlags>;
+    }
+
     /**
      * Flags to specify which actions to be performed when the device is open.
      */
@@ -4527,6 +5003,10 @@ export namespace Mbim {
          */
         MS_MBIMEX_V3,
     }
+    export namespace FrequencyRange {
+        export const $gtype: GObject.GType<FrequencyRange>;
+    }
+
     /**
      * Frequency Range.
      */
@@ -4556,6 +5036,10 @@ export namespace Mbim {
         _init(...args: any[]): void;
     }
 
+    export namespace IPConfigurationAvailableFlag {
+        export const $gtype: GObject.GType<IPConfigurationAvailableFlag>;
+    }
+
     /**
      * Mask of available information about an IP address.
      */
@@ -4581,6 +5065,10 @@ export namespace Mbim {
          */
         MTU,
     }
+    export namespace ProviderState {
+        export const $gtype: GObject.GType<ProviderState>;
+    }
+
     /**
      * State of the provider.
      */
@@ -4614,6 +5102,10 @@ export namespace Mbim {
          */
         PREFERRED_MULTICARRIER,
     }
+    export namespace ReadyInfoFlag {
+        export const $gtype: GObject.GType<ReadyInfoFlag>;
+    }
+
     /**
      * Flag specifying how the ready info is treated.
      */
@@ -4627,6 +5119,10 @@ export namespace Mbim {
          */
         PROTECT_UNIQUE_ID,
     }
+    export namespace RegistrationFlag {
+        export const $gtype: GObject.GType<RegistrationFlag>;
+    }
+
     /**
      * Registration flags.
      */
@@ -4644,6 +5140,10 @@ export namespace Mbim {
          */
         PACKET_SERVICE_AUTOMATIC_ATTACH,
     }
+    export namespace SimClass {
+        export const $gtype: GObject.GType<SimClass>;
+    }
+
     /**
      * SIM class.
      */
@@ -4661,6 +5161,10 @@ export namespace Mbim {
          */
         REMOVABLE,
     }
+    export namespace SmsCaps {
+        export const $gtype: GObject.GType<SmsCaps>;
+    }
+
     /**
      * SMS capabilities.
      */
@@ -4686,6 +5190,10 @@ export namespace Mbim {
          */
         TEXT_SEND,
     }
+    export namespace SmsStatusFlag {
+        export const $gtype: GObject.GType<SmsStatusFlag>;
+    }
+
     /**
      * SMS status flags.
      */
@@ -4703,6 +5211,10 @@ export namespace Mbim {
          */
         NEW_MESSAGE,
     }
+    export namespace SubscriberReadyStatusFlag {
+        export const $gtype: GObject.GType<SubscriberReadyStatusFlag>;
+    }
+
     /**
      * Flags specifying SIM related details.
      */

@@ -28,6 +28,10 @@ export namespace Mks {
      * Mks-1
      */
 
+    export namespace MouseButton {
+        export const $gtype: GObject.GType<MouseButton>;
+    }
+
     /**
      * A mouse button.
      */
@@ -61,6 +65,10 @@ export namespace Mks {
          */
         EXTRA,
     }
+    export namespace ScreenKind {
+        export const $gtype: GObject.GType<ScreenKind>;
+    }
+
     /**
      * A screen kind.
      */
@@ -74,6 +82,10 @@ export namespace Mks {
          */
         GRAPHIC,
     }
+    export namespace TouchEventKind {
+        export const $gtype: GObject.GType<TouchEventKind>;
+    }
+
     /**
      * The type of a touch event.
      */
@@ -130,6 +142,10 @@ export namespace Mks {
      * The function must be called before using any of the library functions.
      */
     function init(): void;
+    export namespace KeyboardModifier {
+        export const $gtype: GObject.GType<KeyboardModifier>;
+    }
+
     /**
      * The active keyboard modifiers.
      */

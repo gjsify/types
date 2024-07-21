@@ -29,6 +29,10 @@ export namespace Tepl {
      * Tepl-5
      */
 
+    export namespace NewlineType {
+        export const $gtype: GObject.GType<NewlineType>;
+    }
+
     enum NewlineType {
         /**
          * line feed, used on UNIX.
@@ -44,6 +48,10 @@ export namespace Tepl {
          */
         CR_LF,
     }
+    export namespace SelectionType {
+        export const $gtype: GObject.GType<SelectionType>;
+    }
+
     enum SelectionType {
         /**
          * No selection.
@@ -381,6 +389,10 @@ export namespace Tepl {
      * @returns A newly allocated string with the replacements. Free with g_free().
      */
     function utils_str_replace(string: string, search: string, replacement: string): string;
+    export namespace FileSaverFlags {
+        export const $gtype: GObject.GType<FileSaverFlags>;
+    }
+
     /**
      * Flags to define the behavior of a #TeplFileSaver.
      */
@@ -394,6 +406,10 @@ export namespace Tepl {
          */
         CREATE_BACKUP,
     }
+    export namespace GutterRendererFoldsState {
+        export const $gtype: GObject.GType<GutterRendererFoldsState>;
+    }
+
     /**
      * The folding state at a certain line in the #GtkTextBuffer.
      *

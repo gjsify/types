@@ -28,6 +28,10 @@ export namespace GtkSource {
      * GtkSource-5
      */
 
+    export namespace BackgroundPatternType {
+        export const $gtype: GObject.GType<BackgroundPatternType>;
+    }
+
     enum BackgroundPatternType {
         /**
          * no pattern
@@ -38,6 +42,10 @@ export namespace GtkSource {
          */
         GRID,
     }
+    export namespace BracketMatchType {
+        export const $gtype: GObject.GType<BracketMatchType>;
+    }
+
     enum BracketMatchType {
         /**
          * there is no bracket to match.
@@ -57,6 +65,10 @@ export namespace GtkSource {
          */
         FOUND,
     }
+    export namespace ChangeCaseType {
+        export const $gtype: GObject.GType<ChangeCaseType>;
+    }
+
     enum ChangeCaseType {
         /**
          * change case to lowercase.
@@ -75,11 +87,19 @@ export namespace GtkSource {
          */
         TITLE,
     }
+    export namespace CompletionActivation {
+        export const $gtype: GObject.GType<CompletionActivation>;
+    }
+
     enum CompletionActivation {
         NONE,
         INTERACTIVE,
         USER_REQUESTED,
     }
+    export namespace CompletionColumn {
+        export const $gtype: GObject.GType<CompletionColumn>;
+    }
+
     enum CompletionColumn {
         ICON,
         BEFORE,
@@ -88,6 +108,10 @@ export namespace GtkSource {
         COMMENT,
         DETAILS,
     }
+    export namespace CompressionType {
+        export const $gtype: GObject.GType<CompressionType>;
+    }
+
     enum CompressionType {
         /**
          * plain text.
@@ -160,6 +184,10 @@ export namespace GtkSource {
         static quark(): GLib.Quark;
     }
 
+    export namespace GutterRendererAlignmentMode {
+        export const $gtype: GObject.GType<GutterRendererAlignmentMode>;
+    }
+
     /**
      * The alignment mode of the renderer, when a cell spans multiple lines (due to
      * text wrapping).
@@ -178,6 +206,10 @@ export namespace GtkSource {
          */
         LAST,
     }
+    export namespace NewlineType {
+        export const $gtype: GObject.GType<NewlineType>;
+    }
+
     enum NewlineType {
         /**
          * line feed, used on UNIX.
@@ -193,6 +225,10 @@ export namespace GtkSource {
          */
         CR_LF,
     }
+    export namespace SmartHomeEndType {
+        export const $gtype: GObject.GType<SmartHomeEndType>;
+    }
+
     enum SmartHomeEndType {
         /**
          * smart-home-end disabled.
@@ -216,6 +252,10 @@ export namespace GtkSource {
          */
         ALWAYS,
     }
+    export namespace ViewGutterPosition {
+        export const $gtype: GObject.GType<ViewGutterPosition>;
+    }
+
     enum ViewGutterPosition {
         /**
          * the gutter position of the lines
@@ -400,6 +440,10 @@ export namespace GtkSource {
     interface SchedulerCallback {
         (deadline: number): boolean;
     }
+    export namespace FileSaverFlags {
+        export const $gtype: GObject.GType<FileSaverFlags>;
+    }
+
     /**
      * Flags to define the behavior of a [flags`FileSaverFlags]`.
      */
@@ -421,6 +465,10 @@ export namespace GtkSource {
          */
         CREATE_BACKUP,
     }
+    export namespace SortFlags {
+        export const $gtype: GObject.GType<SortFlags>;
+    }
+
     enum SortFlags {
         /**
          * no flags specified
@@ -439,6 +487,10 @@ export namespace GtkSource {
          */
         REMOVE_DUPLICATES,
     }
+    export namespace SpaceLocationFlags {
+        export const $gtype: GObject.GType<SpaceLocationFlags>;
+    }
+
     /**
      * #GtkSourceSpaceLocationFlags contains flags for white space locations.
      *
@@ -468,6 +520,10 @@ export namespace GtkSource {
          */
         ALL,
     }
+    export namespace SpaceTypeFlags {
+        export const $gtype: GObject.GType<SpaceTypeFlags>;
+    }
+
     /**
      * #GtkSourceSpaceTypeFlags contains flags for white space types.
      */

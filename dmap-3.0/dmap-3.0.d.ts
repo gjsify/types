@@ -19,6 +19,10 @@ export namespace DMAP {
      * DMAP-3.0
      */
 
+    export namespace ConnectionState {
+        export const $gtype: GObject.GType<ConnectionState>;
+    }
+
     enum ConnectionState {
         GET_INFO,
         LOGIN,
@@ -30,6 +34,10 @@ export namespace DMAP {
         LOGOUT,
         DONE,
     }
+    export namespace ContentCode {
+        export const $gtype: GObject.GType<ContentCode>;
+    }
+
     enum ContentCode {
         CC_INVALID,
         RAW,
@@ -204,6 +212,10 @@ export namespace DMAP {
         static quark(): GLib.Quark;
     }
 
+    export namespace MdnsBrowserServiceType {
+        export const $gtype: GObject.GType<MdnsBrowserServiceType>;
+    }
+
     enum MdnsBrowserServiceType {
         INVALID,
         DAAP,
@@ -212,6 +224,10 @@ export namespace DMAP {
         RAOP,
         LAST,
     }
+    export namespace MdnsBrowserTransportProtocol {
+        export const $gtype: GObject.GType<MdnsBrowserTransportProtocol>;
+    }
+
     enum MdnsBrowserTransportProtocol {
         TCP,
         UDP,
@@ -235,12 +251,20 @@ export namespace DMAP {
         static quark(): GLib.Quark;
     }
 
+    export namespace MediaKind {
+        export const $gtype: GObject.GType<MediaKind>;
+    }
+
     enum MediaKind {
         MUSIC,
         MOVIE,
         PODCAST,
         TV_SHOW,
     }
+    export namespace Type {
+        export const $gtype: GObject.GType<Type>;
+    }
+
     enum Type {
         BYTE,
         SIGNED_INT,

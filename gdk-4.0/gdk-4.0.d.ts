@@ -24,6 +24,10 @@ export namespace Gdk {
      * Gdk-4.0
      */
 
+    export namespace AxisUse {
+        export const $gtype: GObject.GType<AxisUse>;
+    }
+
     /**
      * Defines how device axes are interpreted by GTK.
      *
@@ -85,6 +89,10 @@ export namespace Gdk {
          */
         LAST,
     }
+    export namespace CrossingMode {
+        export const $gtype: GObject.GType<CrossingMode>;
+    }
+
     /**
      * Specifies the crossing mode for enter and leave events.
      */
@@ -131,6 +139,10 @@ export namespace Gdk {
          */
         DEVICE_SWITCH,
     }
+    export namespace DevicePadFeature {
+        export const $gtype: GObject.GType<DevicePadFeature>;
+    }
+
     /**
      * A pad feature.
      */
@@ -148,6 +160,10 @@ export namespace Gdk {
          */
         STRIP,
     }
+    export namespace DeviceToolType {
+        export const $gtype: GObject.GType<DeviceToolType>;
+    }
+
     /**
      * Indicates the specific type of tool being used being a tablet. Such as an
      * airbrush, pencil, etc.
@@ -219,6 +235,10 @@ export namespace Gdk {
         static quark(): GLib.Quark;
     }
 
+    export namespace DragCancelReason {
+        export const $gtype: GObject.GType<DragCancelReason>;
+    }
+
     /**
      * Used in `GdkDrag` to the reason of a cancelled DND operation.
      */
@@ -236,6 +256,10 @@ export namespace Gdk {
          */
         ERROR,
     }
+    export namespace EventType {
+        export const $gtype: GObject.GType<EventType>;
+    }
+
     /**
      * Specifies the type of the event.
      */
@@ -369,6 +393,10 @@ export namespace Gdk {
          */
         EVENT_LAST,
     }
+    export namespace FullscreenMode {
+        export const $gtype: GObject.GType<FullscreenMode>;
+    }
+
     /**
      * Indicates which monitor a surface should span over when in fullscreen mode.
      */
@@ -421,6 +449,10 @@ export namespace Gdk {
         static quark(): GLib.Quark;
     }
 
+    export namespace Gravity {
+        export const $gtype: GObject.GType<Gravity>;
+    }
+
     /**
      * Defines the reference point of a surface and is used in `GdkPopupLayout`.
      */
@@ -467,6 +499,10 @@ export namespace Gdk {
          */
         STATIC,
     }
+    export namespace InputSource {
+        export const $gtype: GObject.GType<InputSource>;
+    }
+
     /**
      * An enumeration describing the type of an input device in general terms.
      */
@@ -504,6 +540,10 @@ export namespace Gdk {
          */
         TABLET_PAD,
     }
+    export namespace KeyMatch {
+        export const $gtype: GObject.GType<KeyMatch>;
+    }
+
     /**
      * Describes how well an event matches a given keyval and modifiers.
      *
@@ -524,6 +564,10 @@ export namespace Gdk {
          */
         EXACT,
     }
+    export namespace MemoryFormat {
+        export const $gtype: GObject.GType<MemoryFormat>;
+    }
+
     /**
      * `GdkMemoryFormat` describes formats that image data can have in memory.
      *
@@ -685,6 +729,10 @@ export namespace Gdk {
          */
         N_FORMATS,
     }
+    export namespace NotifyType {
+        export const $gtype: GObject.GType<NotifyType>;
+    }
+
     /**
      * Specifies the kind of crossing for enter and leave events.
      *
@@ -724,6 +772,10 @@ export namespace Gdk {
          */
         UNKNOWN,
     }
+    export namespace ScrollDirection {
+        export const $gtype: GObject.GType<ScrollDirection>;
+    }
+
     /**
      * Specifies the direction for scroll events.
      */
@@ -750,6 +802,10 @@ export namespace Gdk {
          */
         SMOOTH,
     }
+    export namespace ScrollUnit {
+        export const $gtype: GObject.GType<ScrollUnit>;
+    }
+
     /**
      * Specifies the unit of scroll deltas.
      *
@@ -779,6 +835,10 @@ export namespace Gdk {
          */
         SURFACE,
     }
+    export namespace SubpixelLayout {
+        export const $gtype: GObject.GType<SubpixelLayout>;
+    }
+
     /**
      * This enumeration describes how the red, green and blue components
      * of physical pixels on an output device are laid out.
@@ -809,6 +869,10 @@ export namespace Gdk {
          */
         VERTICAL_BGR,
     }
+    export namespace SurfaceEdge {
+        export const $gtype: GObject.GType<SurfaceEdge>;
+    }
+
     /**
      * Determines a surface edge or corner.
      */
@@ -882,11 +946,19 @@ export namespace Gdk {
         static quark(): GLib.Quark;
     }
 
+    export namespace TitlebarGesture {
+        export const $gtype: GObject.GType<TitlebarGesture>;
+    }
+
     enum TitlebarGesture {
         DOUBLE_CLICK,
         RIGHT_CLICK,
         MIDDLE_CLICK,
     }
+    export namespace TouchpadGesturePhase {
+        export const $gtype: GObject.GType<TouchpadGesturePhase>;
+    }
+
     /**
      * Specifies the current state of a touchpad gesture.
      *
@@ -3753,6 +3825,10 @@ export namespace Gdk {
     interface ContentSerializeFunc {
         (serializer: ContentSerializer): void;
     }
+    export namespace AnchorHints {
+        export const $gtype: GObject.GType<AnchorHints>;
+    }
+
     /**
      * Positioning hints for aligning a surface relative to a rectangle.
      *
@@ -3808,6 +3884,10 @@ export namespace Gdk {
          */
         RESIZE,
     }
+    export namespace AxisFlags {
+        export const $gtype: GObject.GType<AxisFlags>;
+    }
+
     /**
      * Flags describing the current capabilities of a device/tool.
      */
@@ -3857,6 +3937,10 @@ export namespace Gdk {
          */
         SLIDER,
     }
+    export namespace DragAction {
+        export const $gtype: GObject.GType<DragAction>;
+    }
+
     /**
      * Used in `GdkDrop` and `GdkDrag` to indicate the actions that the
      * destination can and should do with the dropped data.
@@ -3882,6 +3966,10 @@ export namespace Gdk {
          */
         ASK,
     }
+    export namespace FrameClockPhase {
+        export const $gtype: GObject.GType<FrameClockPhase>;
+    }
+
     /**
      * Used to represent the different paint clock phases that can be requested.
      *
@@ -3921,6 +4009,10 @@ export namespace Gdk {
          */
         AFTER_PAINT,
     }
+    export namespace GLAPI {
+        export const $gtype: GObject.GType<GLAPI>;
+    }
+
     /**
      * The list of the different APIs that GdkGLContext can potentially support.
      */
@@ -3934,6 +4026,10 @@ export namespace Gdk {
          */
         GLES,
     }
+    export namespace ModifierType {
+        export const $gtype: GObject.GType<ModifierType>;
+    }
+
     /**
      * Flags to indicate the state of modifier keys and mouse buttons
      * in events.
@@ -4002,6 +4098,10 @@ export namespace Gdk {
          */
         META_MASK,
     }
+    export namespace PaintableFlags {
+        export const $gtype: GObject.GType<PaintableFlags>;
+    }
+
     /**
      * Flags about a paintable object.
      *
@@ -4021,6 +4121,10 @@ export namespace Gdk {
          */
         CONTENTS,
     }
+    export namespace SeatCapabilities {
+        export const $gtype: GObject.GType<SeatCapabilities>;
+    }
+
     /**
      * Flags describing the seat capabilities.
      */
@@ -4058,6 +4162,10 @@ export namespace Gdk {
          */
         ALL,
     }
+    export namespace ToplevelState {
+        export const $gtype: GObject.GType<ToplevelState>;
+    }
+
     /**
      * Specifies the state of a toplevel surface.
      *

@@ -23,6 +23,10 @@ export namespace Gdk {
      * Gdk-2.0
      */
 
+    export namespace AxisUse {
+        export const $gtype: GObject.GType<AxisUse>;
+    }
+
     enum AxisUse {
         IGNORE,
         X,
@@ -33,16 +37,28 @@ export namespace Gdk {
         WHEEL,
         LAST,
     }
+    export namespace ByteOrder {
+        export const $gtype: GObject.GType<ByteOrder>;
+    }
+
     enum ByteOrder {
         LSB_FIRST,
         MSB_FIRST,
     }
+    export namespace CapStyle {
+        export const $gtype: GObject.GType<CapStyle>;
+    }
+
     enum CapStyle {
         NOT_LAST,
         BUTT,
         ROUND,
         PROJECTING,
     }
+    export namespace CrossingMode {
+        export const $gtype: GObject.GType<CrossingMode>;
+    }
+
     enum CrossingMode {
         NORMAL,
         GRAB,
@@ -51,6 +67,10 @@ export namespace Gdk {
         GTK_UNGRAB,
         STATE_CHANGED,
     }
+    export namespace CursorType {
+        export const $gtype: GObject.GType<CursorType>;
+    }
+
     enum CursorType {
         X_CURSOR,
         ARROW,
@@ -133,6 +153,10 @@ export namespace Gdk {
         BLANK_CURSOR,
         CURSOR_IS_PIXMAP,
     }
+    export namespace DragProtocol {
+        export const $gtype: GObject.GType<DragProtocol>;
+    }
+
     enum DragProtocol {
         MOTIF,
         XDND,
@@ -142,6 +166,10 @@ export namespace Gdk {
         OLE2,
         LOCAL,
     }
+    export namespace EventType {
+        export const $gtype: GObject.GType<EventType>;
+    }
+
     enum EventType {
         NOTHING,
         DELETE,
@@ -183,30 +211,54 @@ export namespace Gdk {
         DAMAGE,
         EVENT_LAST,
     }
+    export namespace ExtensionMode {
+        export const $gtype: GObject.GType<ExtensionMode>;
+    }
+
     enum ExtensionMode {
         NONE,
         ALL,
         CURSOR,
     }
+    export namespace Fill {
+        export const $gtype: GObject.GType<Fill>;
+    }
+
     enum Fill {
         SOLID,
         TILED,
         STIPPLED,
         OPAQUE_STIPPLED,
     }
+    export namespace FillRule {
+        export const $gtype: GObject.GType<FillRule>;
+    }
+
     enum FillRule {
         EVEN_ODD_RULE,
         WINDING_RULE,
     }
+    export namespace FilterReturn {
+        export const $gtype: GObject.GType<FilterReturn>;
+    }
+
     enum FilterReturn {
         CONTINUE,
         TRANSLATE,
         REMOVE,
     }
+    export namespace FontType {
+        export const $gtype: GObject.GType<FontType>;
+    }
+
     enum FontType {
         FONT,
         FONTSET,
     }
+    export namespace Function {
+        export const $gtype: GObject.GType<Function>;
+    }
+
     enum Function {
         COPY,
         INVERT,
@@ -225,6 +277,10 @@ export namespace Gdk {
         NOR,
         SET,
     }
+    export namespace GrabStatus {
+        export const $gtype: GObject.GType<GrabStatus>;
+    }
+
     enum GrabStatus {
         SUCCESS,
         ALREADY_GRABBED,
@@ -232,6 +288,10 @@ export namespace Gdk {
         NOT_VIEWABLE,
         FROZEN,
     }
+    export namespace Gravity {
+        export const $gtype: GObject.GType<Gravity>;
+    }
+
     enum Gravity {
         NORTH_WEST,
         NORTH,
@@ -244,32 +304,56 @@ export namespace Gdk {
         SOUTH_EAST,
         STATIC,
     }
+    export namespace ImageType {
+        export const $gtype: GObject.GType<ImageType>;
+    }
+
     enum ImageType {
         NORMAL,
         SHARED,
         FASTEST,
     }
+    export namespace InputMode {
+        export const $gtype: GObject.GType<InputMode>;
+    }
+
     enum InputMode {
         DISABLED,
         SCREEN,
         WINDOW,
     }
+    export namespace InputSource {
+        export const $gtype: GObject.GType<InputSource>;
+    }
+
     enum InputSource {
         MOUSE,
         PEN,
         ERASER,
         CURSOR,
     }
+    export namespace JoinStyle {
+        export const $gtype: GObject.GType<JoinStyle>;
+    }
+
     enum JoinStyle {
         MITER,
         ROUND,
         BEVEL,
     }
+    export namespace LineStyle {
+        export const $gtype: GObject.GType<LineStyle>;
+    }
+
     enum LineStyle {
         SOLID,
         ON_OFF_DASH,
         DOUBLE_DASH,
     }
+    export namespace NotifyType {
+        export const $gtype: GObject.GType<NotifyType>;
+    }
+
     enum NotifyType {
         ANCESTOR,
         VIRTUAL,
@@ -278,41 +362,73 @@ export namespace Gdk {
         NONLINEAR_VIRTUAL,
         UNKNOWN,
     }
+    export namespace OverlapType {
+        export const $gtype: GObject.GType<OverlapType>;
+    }
+
     enum OverlapType {
         IN,
         OUT,
         PART,
     }
+    export namespace OwnerChange {
+        export const $gtype: GObject.GType<OwnerChange>;
+    }
+
     enum OwnerChange {
         NEW_OWNER,
         DESTROY,
         CLOSE,
     }
+    export namespace PropMode {
+        export const $gtype: GObject.GType<PropMode>;
+    }
+
     enum PropMode {
         REPLACE,
         PREPEND,
         APPEND,
     }
+    export namespace PropertyState {
+        export const $gtype: GObject.GType<PropertyState>;
+    }
+
     enum PropertyState {
         NEW_VALUE,
         DELETE,
     }
+    export namespace RgbDither {
+        export const $gtype: GObject.GType<RgbDither>;
+    }
+
     enum RgbDither {
         NONE,
         NORMAL,
         MAX,
     }
+    export namespace ScrollDirection {
+        export const $gtype: GObject.GType<ScrollDirection>;
+    }
+
     enum ScrollDirection {
         UP,
         DOWN,
         LEFT,
         RIGHT,
     }
+    export namespace SettingAction {
+        export const $gtype: GObject.GType<SettingAction>;
+    }
+
     enum SettingAction {
         NEW,
         CHANGED,
         DELETED,
     }
+    export namespace Status {
+        export const $gtype: GObject.GType<Status>;
+    }
+
     enum Status {
         OK,
         ERROR,
@@ -320,15 +436,27 @@ export namespace Gdk {
         ERROR_FILE,
         ERROR_MEM,
     }
+    export namespace SubwindowMode {
+        export const $gtype: GObject.GType<SubwindowMode>;
+    }
+
     enum SubwindowMode {
         CLIP_BY_CHILDREN,
         INCLUDE_INFERIORS,
     }
+    export namespace VisibilityState {
+        export const $gtype: GObject.GType<VisibilityState>;
+    }
+
     enum VisibilityState {
         UNOBSCURED,
         PARTIAL,
         FULLY_OBSCURED,
     }
+    export namespace VisualType {
+        export const $gtype: GObject.GType<VisualType>;
+    }
+
     enum VisualType {
         STATIC_GRAY,
         GRAYSCALE,
@@ -337,10 +465,18 @@ export namespace Gdk {
         TRUE_COLOR,
         DIRECT_COLOR,
     }
+    export namespace WindowClass {
+        export const $gtype: GObject.GType<WindowClass>;
+    }
+
     enum WindowClass {
         OUTPUT,
         ONLY,
     }
+    export namespace WindowEdge {
+        export const $gtype: GObject.GType<WindowEdge>;
+    }
+
     enum WindowEdge {
         NORTH_WEST,
         NORTH,
@@ -351,6 +487,10 @@ export namespace Gdk {
         SOUTH,
         SOUTH_EAST,
     }
+    export namespace WindowType {
+        export const $gtype: GObject.GType<WindowType>;
+    }
+
     enum WindowType {
         ROOT,
         TOPLEVEL,
@@ -360,6 +500,10 @@ export namespace Gdk {
         FOREIGN,
         OFFSCREEN,
     }
+    export namespace WindowTypeHint {
+        export const $gtype: GObject.GType<WindowTypeHint>;
+    }
+
     enum WindowTypeHint {
         NORMAL,
         DIALOG,
@@ -4570,6 +4714,10 @@ export namespace Gdk {
     interface SpanFunc {
         (span: Span, data?: any | null): void;
     }
+    export namespace DragAction {
+        export const $gtype: GObject.GType<DragAction>;
+    }
+
     enum DragAction {
         DEFAULT,
         COPY,
@@ -4578,6 +4726,10 @@ export namespace Gdk {
         PRIVATE,
         ASK,
     }
+    export namespace EventMask {
+        export const $gtype: GObject.GType<EventMask>;
+    }
+
     enum EventMask {
         EXPOSURE_MASK,
         POINTER_MOTION_MASK,
@@ -4602,6 +4754,10 @@ export namespace Gdk {
         SCROLL_MASK,
         ALL_EVENTS_MASK,
     }
+    export namespace GCValuesMask {
+        export const $gtype: GObject.GType<GCValuesMask>;
+    }
+
     enum GCValuesMask {
         FOREGROUND,
         BACKGROUND,
@@ -4622,11 +4778,19 @@ export namespace Gdk {
         CAP_STYLE,
         JOIN_STYLE,
     }
+    export namespace InputCondition {
+        export const $gtype: GObject.GType<InputCondition>;
+    }
+
     enum InputCondition {
         READ,
         WRITE,
         EXCEPTION,
     }
+    export namespace ModifierType {
+        export const $gtype: GObject.GType<ModifierType>;
+    }
+
     enum ModifierType {
         SHIFT_MASK,
         LOCK_MASK,
@@ -4647,6 +4811,10 @@ export namespace Gdk {
         RELEASE_MASK,
         MODIFIER_MASK,
     }
+    export namespace WMDecoration {
+        export const $gtype: GObject.GType<WMDecoration>;
+    }
+
     enum WMDecoration {
         ALL,
         BORDER,
@@ -4656,6 +4824,10 @@ export namespace Gdk {
         MINIMIZE,
         MAXIMIZE,
     }
+    export namespace WMFunction {
+        export const $gtype: GObject.GType<WMFunction>;
+    }
+
     enum WMFunction {
         ALL,
         RESIZE,
@@ -4664,6 +4836,10 @@ export namespace Gdk {
         MAXIMIZE,
         CLOSE,
     }
+    export namespace WindowAttributesType {
+        export const $gtype: GObject.GType<WindowAttributesType>;
+    }
+
     enum WindowAttributesType {
         TITLE,
         X,
@@ -4675,6 +4851,10 @@ export namespace Gdk {
         NOREDIR,
         TYPE_HINT,
     }
+    export namespace WindowHints {
+        export const $gtype: GObject.GType<WindowHints>;
+    }
+
     enum WindowHints {
         POS,
         MIN_SIZE,
@@ -4686,6 +4866,10 @@ export namespace Gdk {
         USER_POS,
         USER_SIZE,
     }
+    export namespace WindowState {
+        export const $gtype: GObject.GType<WindowState>;
+    }
+
     enum WindowState {
         WITHDRAWN,
         ICONIFIED,

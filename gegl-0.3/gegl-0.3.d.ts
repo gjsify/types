@@ -16,6 +16,10 @@ export namespace Gegl {
      * Gegl-0.3
      */
 
+    export namespace AbyssPolicy {
+        export const $gtype: GObject.GType<AbyssPolicy>;
+    }
+
     enum AbyssPolicy {
         NONE,
         CLAMP,
@@ -23,11 +27,19 @@ export namespace Gegl {
         BLACK,
         WHITE,
     }
+    export namespace DistanceMetric {
+        export const $gtype: GObject.GType<DistanceMetric>;
+    }
+
     enum DistanceMetric {
         EUCLIDEAN,
         MANHATTAN,
         CHEBYSHEV,
     }
+    export namespace DitherMethod {
+        export const $gtype: GObject.GType<DitherMethod>;
+    }
+
     enum DitherMethod {
         NONE,
         FLOYD_STEINBERG,
@@ -39,10 +51,18 @@ export namespace Gegl {
         XOR,
         XOR_COVARIANT,
     }
+    export namespace Orientation {
+        export const $gtype: GObject.GType<Orientation>;
+    }
+
     enum Orientation {
         HORIZONTAL,
         VERTICAL,
     }
+    export namespace SamplerType {
+        export const $gtype: GObject.GType<SamplerType>;
+    }
+
     enum SamplerType {
         NEAREST,
         LINEAR,
@@ -50,11 +70,19 @@ export namespace Gegl {
         NOHALO,
         LOHALO,
     }
+    export namespace SplitStrategy {
+        export const $gtype: GObject.GType<SplitStrategy>;
+    }
+
     enum SplitStrategy {
         AUTO,
         HORIZONTAL,
         VERTICAL,
     }
+    export namespace TileCommand {
+        export const $gtype: GObject.GType<TileCommand>;
+    }
+
     enum TileCommand {
         IDLE,
         SET,
@@ -508,20 +536,36 @@ export namespace Gegl {
             data?: any | null,
         ): any | null;
     }
+    export namespace AccessMode {
+        export const $gtype: GObject.GType<AccessMode>;
+    }
+
     enum AccessMode {
         READ,
         WRITE,
         READWRITE,
     }
+    export namespace BlitFlags {
+        export const $gtype: GObject.GType<BlitFlags>;
+    }
+
     enum BlitFlags {
         DEFAULT,
         CACHE,
         DIRTY,
     }
+    export namespace PadType {
+        export const $gtype: GObject.GType<PadType>;
+    }
+
     enum PadType {
         OUTPUT,
         INPUT,
     }
+    export namespace SerializeFlag {
+        export const $gtype: GObject.GType<SerializeFlag>;
+    }
+
     enum SerializeFlag {
         TRIM_DEFAULTS,
         VERSION,

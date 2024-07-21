@@ -19,6 +19,10 @@ export namespace PackageKitPlugin {
      * PackageKitPlugin-1.0
      */
 
+    export namespace BackendJobSignal {
+        export const $gtype: GObject.GType<BackendJobSignal>;
+    }
+
     enum BackendJobSignal {
         ALLOW_CANCEL,
         DETAILS,
@@ -43,6 +47,10 @@ export namespace PackageKitPlugin {
         CATEGORY,
         LAST,
     }
+    export namespace HintEnum {
+        export const $gtype: GObject.GType<HintEnum>;
+    }
+
     enum HintEnum {
         FALSE,
         TRUE,
@@ -50,6 +58,10 @@ export namespace PackageKitPlugin {
         INVALID,
         LAST,
     }
+    export namespace PluginPhase {
+        export const $gtype: GObject.GType<PluginPhase>;
+    }
+
     enum PluginPhase {
         INIT,
         TRANSACTION_CONTENT_TYPES,
@@ -61,6 +73,10 @@ export namespace PackageKitPlugin {
         STATE_CHANGED,
         UNKNOWN,
     }
+    export namespace TransactionState {
+        export const $gtype: GObject.GType<TransactionState>;
+    }
+
     enum TransactionState {
         NEW,
         WAITING_FOR_AUTH,

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/adw-1)
 
 
-GJS TypeScript type definitions for Adw-1, generated from library version 1.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.8.
+GJS TypeScript type definitions for Adw-1, generated from library version 1.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.9.
 
 
 ## Install

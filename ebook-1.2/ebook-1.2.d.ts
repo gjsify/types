@@ -24,6 +24,10 @@ export namespace EBook {
      * EBook-1.2
      */
 
+    export namespace BookStatus {
+        export const $gtype: GObject.GType<BookStatus>;
+    }
+
     /**
      * Error codes for the #E_BOOK_ERROR error
      */

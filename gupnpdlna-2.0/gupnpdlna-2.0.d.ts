@@ -16,6 +16,10 @@ export namespace GUPnPDLNA {
      * GUPnPDLNA-2.0
      */
 
+    export namespace ValueState {
+        export const $gtype: GObject.GType<ValueState>;
+    }
+
     /**
      * Flags describing a state of GUPnP DLNA Value.
      */

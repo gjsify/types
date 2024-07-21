@@ -30,6 +30,10 @@ export namespace WebKitWebExtension {
      * WebKitWebExtension-6.0
      */
 
+    export namespace ContextMenuAction {
+        export const $gtype: GObject.GType<ContextMenuAction>;
+    }
+
     /**
      * Enum values used to denote the stock actions for
      * #WebKitContextMenuItem<!-- -->s
@@ -224,6 +228,10 @@ export namespace WebKitWebExtension {
          */
         CUSTOM,
     }
+    export namespace UserMessageError {
+        export const $gtype: GObject.GType<UserMessageError>;
+    }
+
     /**
      * Enum values used to denote errors happening when sending user messages.
      */
@@ -239,6 +247,10 @@ export namespace WebKitWebExtension {
     interface WebExtensionInitializeWithUserDataFunction {
         (extension: WebExtension, user_data: GLib.Variant): void;
     }
+    export namespace HitTestResultContext {
+        export const $gtype: GObject.GType<HitTestResultContext>;
+    }
+
     /**
      * Enum values with flags representing the context of a #WebKitHitTestResult.
      */

@@ -23,6 +23,10 @@ export namespace GES {
      * GES-1.0
      */
 
+    export namespace AssetLoadingReturn {
+        export const $gtype: GObject.GType<AssetLoadingReturn>;
+    }
+
     enum AssetLoadingReturn {
         /**
          * Indicates that an error occurred
@@ -39,6 +43,10 @@ export namespace GES {
          */
         OK,
     }
+    export namespace ChildrenControlMode {
+        export const $gtype: GObject.GType<ChildrenControlMode>;
+    }
+
     /**
      * To be used by subclasses only. This indicate how to handle a change in
      * a child.
@@ -50,6 +58,10 @@ export namespace GES {
         UPDATE_ALL_VALUES,
         LAST,
     }
+    export namespace Edge {
+        export const $gtype: GObject.GType<Edge>;
+    }
+
     /**
      * The edges of an object contain in a #GESTimeline or #GESTrack
      */
@@ -81,6 +93,10 @@ export namespace GES {
          */
         NONE,
     }
+    export namespace EditMode {
+        export const $gtype: GObject.GType<EditMode>;
+    }
+
     /**
      * When a single timeline element is edited within its timeline at some
      * position, using ges_timeline_element_edit(), depending on the edit
@@ -315,6 +331,10 @@ export namespace GES {
          */
         SLIDE,
     }
+    export namespace Error {
+        export const $gtype: GObject.GType<Error>;
+    }
+
     enum Error {
         /**
          * The ID passed is malformed
@@ -356,6 +376,10 @@ export namespace GES {
         INVALID_OVERLAP_IN_TRACK,
         INVALID_EFFECT_BIN_DESCRIPTION,
     }
+    export namespace TextHAlign {
+        export const $gtype: GObject.GType<TextHAlign>;
+    }
+
     /**
      * Horizontal alignment of the text.
      */
@@ -378,6 +402,10 @@ export namespace GES {
         POSITION,
         ABSOLUTE,
     }
+    export namespace TextVAlign {
+        export const $gtype: GObject.GType<TextVAlign>;
+    }
+
     /**
      * Vertical alignment of the text.
      */
@@ -404,6 +432,10 @@ export namespace GES {
         CENTER,
         ABSOLUTE,
     }
+    export namespace VideoStandardTransitionType {
+        export const $gtype: GObject.GType<VideoStandardTransitionType>;
+    }
+
     enum VideoStandardTransitionType {
         /**
          * Transition type has not been set,
@@ -699,6 +731,10 @@ export namespace GES {
          */
         FADE_IN,
     }
+    export namespace VideoTestPattern {
+        export const $gtype: GObject.GType<VideoTestPattern>;
+    }
+
     /**
      * The test pattern to produce
      */
@@ -951,6 +987,10 @@ export namespace GES {
     interface MetaForeachFunc {
         (container: MetaContainer, key: string, value: GObject.Value | any): void;
     }
+    export namespace MarkerFlags {
+        export const $gtype: GObject.GType<MarkerFlags>;
+    }
+
     enum MarkerFlags {
         /**
          * Marker does not serve any special purpose.
@@ -961,6 +1001,10 @@ export namespace GES {
          */
         SNAPPABLE,
     }
+    export namespace MetaFlag {
+        export const $gtype: GObject.GType<MetaFlag>;
+    }
+
     enum MetaFlag {
         /**
          * The metadata is readable
@@ -975,6 +1019,10 @@ export namespace GES {
          */
         READWRITE,
     }
+    export namespace PipelineFlags {
+        export const $gtype: GObject.GType<PipelineFlags>;
+    }
+
     /**
      * The various modes a #GESPipeline can be configured to.
      */
@@ -1009,6 +1057,10 @@ export namespace GES {
          */
         SMART_RENDER,
     }
+    export namespace TrackType {
+        export const $gtype: GObject.GType<TrackType>;
+    }
+
     /**
      * Types of content handled by a track. If the content is not one of
      * `GES_TRACK_TYPE_AUDIO,` `GES_TRACK_TYPE_VIDEO` or `GES_TRACK_TYPE_TEXT,`

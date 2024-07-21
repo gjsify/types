@@ -27,6 +27,10 @@ export namespace Handy {
      * Handy-1
      */
 
+    export namespace CenteringPolicy {
+        export const $gtype: GObject.GType<CenteringPolicy>;
+    }
+
     /**
      * Describes title centering behavior of a [class`HeaderBar]` widget.
      */
@@ -40,6 +44,10 @@ export namespace Handy {
          */
         STRICT,
     }
+    export namespace ColorScheme {
+        export const $gtype: GObject.GType<ColorScheme>;
+    }
+
     /**
      * Application color schemes for [property`StyleManager:`color-scheme].
      */
@@ -69,6 +77,10 @@ export namespace Handy {
          */
         FORCE_DARK,
     }
+    export namespace DeckTransitionType {
+        export const $gtype: GObject.GType<DeckTransitionType>;
+    }
+
     /**
      * Describes the possible transitions in a [class`Deck]` widget.
      *
@@ -93,6 +105,10 @@ export namespace Handy {
          */
         SLIDE,
     }
+    export namespace FlapFoldPolicy {
+        export const $gtype: GObject.GType<FlapFoldPolicy>;
+    }
+
     /**
      * Describes the possible folding behavior of a [class`Flap]` widget.
      */
@@ -112,6 +128,10 @@ export namespace Handy {
          */
         AUTO,
     }
+    export namespace FlapTransitionType {
+        export const $gtype: GObject.GType<FlapTransitionType>;
+    }
+
     /**
      * Describes transitions types of a [class`Flap]` widget.
      *
@@ -139,6 +159,10 @@ export namespace Handy {
          */
         SLIDE,
     }
+    export namespace HeaderGroupChildType {
+        export const $gtype: GObject.GType<HeaderGroupChildType>;
+    }
+
     /**
      * Describes the child types handled by [class`HeaderGroup]`.
      *
@@ -160,6 +184,10 @@ export namespace Handy {
          */
         HEADER_GROUP,
     }
+    export namespace LeafletTransitionType {
+        export const $gtype: GObject.GType<LeafletTransitionType>;
+    }
+
     /**
      * Describes the possible transitions in a [class`Leaflet]` widget.
      *
@@ -184,6 +212,10 @@ export namespace Handy {
          */
         SLIDE,
     }
+    export namespace NavigationDirection {
+        export const $gtype: GObject.GType<NavigationDirection>;
+    }
+
     /**
      * Describes the direction of a swipe navigation gesture.
      */
@@ -199,6 +231,10 @@ export namespace Handy {
          */
         FORWARD,
     }
+    export namespace SqueezerTransitionType {
+        export const $gtype: GObject.GType<SqueezerTransitionType>;
+    }
+
     /**
      * Describes the possible transitions in a [class`Squeezer]` widget.
      */
@@ -212,6 +248,10 @@ export namespace Handy {
          */
         CROSSFADE,
     }
+    export namespace ViewSwitcherPolicy {
+        export const $gtype: GObject.GType<ViewSwitcherPolicy>;
+    }
+
     /**
      * Describes the adaptive modes of [class`ViewSwitcher]`.
      */

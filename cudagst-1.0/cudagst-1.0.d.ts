@@ -15,33 +15,61 @@ export namespace CudaGst {
      * CudaGst-1.0
      */
 
+    export namespace GLDeviceList {
+        export const $gtype: GObject.GType<GLDeviceList>;
+    }
+
     enum GLDeviceList {
         GL_DEVICE_LIST_ALL,
     }
+    export namespace address_mode {
+        export const $gtype: GObject.GType<address_mode>;
+    }
+
     enum address_mode {
         WRAP,
         CLAMP,
         MIRROR,
         BORDER,
     }
+    export namespace array_format {
+        export const $gtype: GObject.GType<array_format>;
+    }
+
     enum array_format {
         INT8,
         INT16,
     }
+    export namespace device_attribute {
+        export const $gtype: GObject.GType<device_attribute>;
+    }
+
     enum device_attribute {
         TEXTURE_ALIGNMENT,
         COMPUTE_CAPABILITY_MAJOR,
         COMPUTE_CAPABILITY_MINOR,
     }
+    export namespace filter_mode {
+        export const $gtype: GObject.GType<filter_mode>;
+    }
+
     enum filter_mode {
         POINT,
         LINEAR,
     }
+    export namespace graphicsMapResourceFlags {
+        export const $gtype: GObject.GType<graphicsMapResourceFlags>;
+    }
+
     enum graphicsMapResourceFlags {
         NONE,
         READ_ONLY,
         WRITE_DISCARD,
     }
+    export namespace graphicsRegisterFlags {
+        export const $gtype: GObject.GType<graphicsRegisterFlags>;
+    }
+
     enum graphicsRegisterFlags {
         NONE,
         READ_ONLY,
@@ -49,24 +77,44 @@ export namespace CudaGst {
         SURFACE_LOAD_STORE,
         TEXTURE_GATHER,
     }
+    export namespace memorytype {
+        export const $gtype: GObject.GType<memorytype>;
+    }
+
     enum memorytype {
         HOST,
         DEVICE,
         ARRAY,
         UNIFIED,
     }
+    export namespace resourceViewFormat {
+        export const $gtype: GObject.GType<resourceViewFormat>;
+    }
+
     enum resourceViewFormat {
         RES_VIEW_FORMAT_NONE,
     }
+    export namespace resourcetype {
+        export const $gtype: GObject.GType<resourcetype>;
+    }
+
     enum resourcetype {
         ARRAY,
         MIPMAPPED_ARRAY,
         LINEAR,
         PITCH2D,
     }
+    export namespace result {
+        export const $gtype: GObject.GType<result>;
+    }
+
     enum result {
         SUCCESS,
     }
+    export namespace stream_flags {
+        export const $gtype: GObject.GType<stream_flags>;
+    }
+
     enum stream_flags {
         DEFAULT,
         NON_BLOCKING,

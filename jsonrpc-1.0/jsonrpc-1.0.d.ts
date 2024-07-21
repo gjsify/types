@@ -18,6 +18,10 @@ export namespace Jsonrpc {
      * Jsonrpc-1.0
      */
 
+    export namespace ClientError {
+        export const $gtype: GObject.GType<ClientError>;
+    }
+
     enum ClientError {
         PARSE_ERROR,
         INVALID_REQUEST,

@@ -101,6 +101,10 @@ export namespace Fwupd {
         _init(...args: any[]): void;
     }
 
+    export namespace KeyringKind {
+        export const $gtype: GObject.GType<KeyringKind>;
+    }
+
     /**
      * The update state.
      */
@@ -126,6 +130,10 @@ export namespace Fwupd {
          */
         JCAT,
     }
+    export namespace ReleaseUrgency {
+        export const $gtype: GObject.GType<ReleaseUrgency>;
+    }
+
     /**
      * The release urgency.
      */
@@ -151,6 +159,10 @@ export namespace Fwupd {
          */
         CRITICAL,
     }
+    export namespace RemoteKind {
+        export const $gtype: GObject.GType<RemoteKind>;
+    }
+
     /**
      * The kind of remote.
      */
@@ -172,6 +184,10 @@ export namespace Fwupd {
          */
         DIRECTORY,
     }
+    export namespace SecurityAttrLevel {
+        export const $gtype: GObject.GType<SecurityAttrLevel>;
+    }
+
     /**
      * The HSI level.
      */
@@ -201,6 +217,10 @@ export namespace Fwupd {
          */
         SYSTEM_ATTESTATION,
     }
+    export namespace SecurityAttrResult {
+        export const $gtype: GObject.GType<SecurityAttrResult>;
+    }
+
     /**
      * The HSI result.
      */
@@ -266,6 +286,10 @@ export namespace Fwupd {
          */
         NOT_SUPPORTED,
     }
+    export namespace Status {
+        export const $gtype: GObject.GType<Status>;
+    }
+
     /**
      * The flags to show daemon status.
      */
@@ -327,6 +351,10 @@ export namespace Fwupd {
          */
         SHUTDOWN,
     }
+    export namespace UpdateState {
+        export const $gtype: GObject.GType<UpdateState>;
+    }
+
     /**
      * The update state.
      */
@@ -356,6 +384,10 @@ export namespace Fwupd {
          */
         FAILED_TRANSIENT,
     }
+    export namespace VersionFormat {
+        export const $gtype: GObject.GType<VersionFormat>;
+    }
+
     /**
      * The flags used when parsing version numbers.
      *
@@ -765,6 +797,10 @@ export namespace Fwupd {
      * @returns A string, e.g. `quad`, or %NULL if not known
      */
     function version_format_to_string(kind: VersionFormat): string;
+    export namespace ClientDownloadFlags {
+        export const $gtype: GObject.GType<ClientDownloadFlags>;
+    }
+
     /**
      * The options to use for downloading.
      */
@@ -778,6 +814,10 @@ export namespace Fwupd {
          */
         ONLY_IPFS,
     }
+    export namespace ClientUploadFlags {
+        export const $gtype: GObject.GType<ClientUploadFlags>;
+    }
+
     /**
      * The options to use for uploading.
      */
@@ -791,6 +831,10 @@ export namespace Fwupd {
          */
         ALWAYS_MULTIPART,
     }
+    export namespace FeatureFlags {
+        export const $gtype: GObject.GType<FeatureFlags>;
+    }
+
     /**
      * The flags to the feature capabilities of the front-end client.
      */
@@ -816,6 +860,10 @@ export namespace Fwupd {
          */
         SWITCH_BRANCH,
     }
+    export namespace GuidFlags {
+        export const $gtype: GObject.GType<GuidFlags>;
+    }
+
     /**
      * The flags to show how the data should be converted.
      */
@@ -833,6 +881,10 @@ export namespace Fwupd {
          */
         MIXED_ENDIAN,
     }
+    export namespace InstallFlags {
+        export const $gtype: GObject.GType<InstallFlags>;
+    }
+
     /**
      * Flags to set when performing the firmware update or install.
      */
@@ -882,6 +934,10 @@ export namespace Fwupd {
          */
         NO_SEARCH,
     }
+    export namespace SecurityAttrFlags {
+        export const $gtype: GObject.GType<SecurityAttrFlags>;
+    }
+
     /**
      * The flags available for HSI attributes.
      */
@@ -911,6 +967,10 @@ export namespace Fwupd {
          */
         RUNTIME_ISSUE,
     }
+    export namespace SelfSignFlags {
+        export const $gtype: GObject.GType<SelfSignFlags>;
+    }
+
     /**
      * Flags to set when performing the firmware update or install.
      */
@@ -928,6 +988,10 @@ export namespace Fwupd {
          */
         ADD_CERT,
     }
+    export namespace TrustFlags {
+        export const $gtype: GObject.GType<TrustFlags>;
+    }
+
     /**
      * The flags to show the level of trust.
      */

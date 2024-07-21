@@ -16,6 +16,10 @@ export namespace GIRepository {
      * GIRepository-2.0
      */
 
+    export namespace ArrayType {
+        export const $gtype: GObject.GType<ArrayType>;
+    }
+
     /**
      * The type of array in a #GITypeInfo.
      */
@@ -37,6 +41,10 @@ export namespace GIRepository {
          */
         BYTE_ARRAY,
     }
+    export namespace Direction {
+        export const $gtype: GObject.GType<Direction>;
+    }
+
     /**
      * The direction of a #GIArgInfo.
      */
@@ -54,6 +62,10 @@ export namespace GIRepository {
          */
         INOUT,
     }
+    export namespace InfoType {
+        export const $gtype: GObject.GType<InfoType>;
+    }
+
     /**
      * The type of a GIBaseInfo struct.
      */
@@ -140,6 +152,10 @@ export namespace GIRepository {
          */
         UNRESOLVED,
     }
+    export namespace RepositoryError {
+        export const $gtype: GObject.GType<RepositoryError>;
+    }
+
     /**
      * An error code used with #G_IREPOSITORY_ERROR in a #GError returned
      * from a #GIRepository routine.
@@ -165,6 +181,10 @@ export namespace GIRepository {
          */
         LIBRARY_NOT_FOUND,
     }
+    export namespace ScopeType {
+        export const $gtype: GObject.GType<ScopeType>;
+    }
+
     /**
      * Scope type of a #GIArgInfo representing callback, determines how the
      * callback is invoked and is used to decided when the invoke structs
@@ -197,6 +217,10 @@ export namespace GIRepository {
          */
         FOREVER,
     }
+    export namespace Transfer {
+        export const $gtype: GObject.GType<Transfer>;
+    }
+
     /**
      * The transfer is the exchange of data between two parts, from the callee to
      * the caller. The callee is either a function/method/signal or an
@@ -232,6 +256,10 @@ export namespace GIRepository {
          */
         EVERYTHING,
     }
+    export namespace TypeTag {
+        export const $gtype: GObject.GType<TypeTag>;
+    }
+
     /**
      * The type tag of a #GITypeInfo.
      */
@@ -326,6 +354,10 @@ export namespace GIRepository {
          */
         UNICHAR,
     }
+    export namespace nvokeError {
+        export const $gtype: GObject.GType<nvokeError>;
+    }
+
     /**
      * An error occuring while invoking a function via
      * g_function_info_invoke().
@@ -1514,6 +1546,10 @@ export namespace GIRepository {
      * @returns the signal or %NULL if none set
      */
     function vfunc_info_get_signal(info: VFuncInfo): SignalInfo;
+    export namespace FieldInfoFlags {
+        export const $gtype: GObject.GType<FieldInfoFlags>;
+    }
+
     /**
      * Flags for a #GIFieldInfo.
      */
@@ -1527,6 +1563,10 @@ export namespace GIRepository {
          */
         WRITABLE,
     }
+    export namespace FunctionInfoFlags {
+        export const $gtype: GObject.GType<FunctionInfoFlags>;
+    }
+
     /**
      * Flags for a #GIFunctionInfo struct.
      */
@@ -1556,6 +1596,10 @@ export namespace GIRepository {
          */
         THROWS,
     }
+    export namespace RepositoryLoadFlags {
+        export const $gtype: GObject.GType<RepositoryLoadFlags>;
+    }
+
     /**
      * Flags that control how a typelib is loaded.
      */
@@ -1565,6 +1609,10 @@ export namespace GIRepository {
          */
         IREPOSITORY_LOAD_FLAG_LAZY,
     }
+    export namespace VFuncInfoFlags {
+        export const $gtype: GObject.GType<VFuncInfoFlags>;
+    }
+
     /**
      * Flags of a #GIVFuncInfo struct.
      */

@@ -28,6 +28,10 @@ export namespace Gkbd {
      * Gkbd-3.0
      */
 
+    export namespace KeyboardDrawingGroupLevelPosition {
+        export const $gtype: GObject.GType<KeyboardDrawingGroupLevelPosition>;
+    }
+
     enum KeyboardDrawingGroupLevelPosition {
         TOPLEFT,
         TOPRIGHT,
@@ -37,6 +41,10 @@ export namespace Gkbd {
         FIRST,
         LAST,
     }
+    export namespace KeyboardDrawingItemType {
+        export const $gtype: GObject.GType<KeyboardDrawingItemType>;
+    }
+
     enum KeyboardDrawingItemType {
         INVALID,
         KEY,

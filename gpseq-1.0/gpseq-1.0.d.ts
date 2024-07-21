@@ -302,6 +302,10 @@ export namespace Gpseq {
     interface VoidTaskFunc {
         (): void;
     }
+    export namespace CollectorFeatures {
+        export const $gtype: GObject.GType<CollectorFeatures>;
+    }
+
     enum CollectorFeatures {
         CONCURRENT,
         UNORDERED,

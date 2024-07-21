@@ -26,6 +26,10 @@ export namespace GdkX11 {
      * GdkX11-4.0
      */
 
+    export namespace X11DeviceType {
+        export const $gtype: GObject.GType<X11DeviceType>;
+    }
+
     enum X11DeviceType {
         LOGICAL,
         PHYSICAL,

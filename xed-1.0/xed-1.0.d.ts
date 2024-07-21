@@ -28,10 +28,18 @@ export namespace Xed {
      * Xed-1.0
      */
 
+    export namespace SearchMode {
+        export const $gtype: GObject.GType<SearchMode>;
+    }
+
     enum SearchMode {
         SEARCH,
         REPLACE,
     }
+    export namespace TabState {
+        export const $gtype: GObject.GType<TabState>;
+    }
+
     enum TabState {
         STATE_NORMAL,
         STATE_LOADING,
@@ -250,6 +258,10 @@ export namespace Xed {
     interface MessageTypeForeach {
         (key: string, type: GObject.GType, required: boolean): void;
     }
+    export namespace DebugSection {
+        export const $gtype: GObject.GType<DebugSection>;
+    }
+
     enum DebugSection {
         NO_DEBUG,
         DEBUG_VIEW,
@@ -268,6 +280,10 @@ export namespace Xed {
         DEBUG_LOADER,
         DEBUG_SAVER,
     }
+    export namespace WindowState {
+        export const $gtype: GObject.GType<WindowState>;
+    }
+
     enum WindowState {
         NORMAL,
         SAVING,

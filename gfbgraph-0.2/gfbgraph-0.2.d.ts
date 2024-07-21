@@ -21,6 +21,10 @@ export namespace GFBGraph {
      * GFBGraph-0.2
      */
 
+    export namespace NodeError {
+        export const $gtype: GObject.GType<NodeError>;
+    }
+
     enum NodeError {
         CONNECTIONABLE,
         CONNECTABLE,

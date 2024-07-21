@@ -46,6 +46,10 @@ export namespace GXPS {
         _init(...args: any[]): void;
     }
 
+    export namespace FileError {
+        export const $gtype: GObject.GType<FileError>;
+    }
+
     /**
      * Error codes returned by #GXPSFile functions.
      */
@@ -55,6 +59,10 @@ export namespace GXPS {
          */
         FILE_ERROR_INVALID,
     }
+    export namespace PageError {
+        export const $gtype: GObject.GType<PageError>;
+    }
+
     /**
      * Error codes returned by #GXPSPage functions
      */

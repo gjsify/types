@@ -33,6 +33,10 @@ export namespace Meta {
      * Meta-15
      */
 
+    export namespace ButtonFunction {
+        export const $gtype: GObject.GType<ButtonFunction>;
+    }
+
     /**
      * Function a window button can have.
      *
@@ -61,10 +65,18 @@ export namespace Meta {
          */
         LAST,
     }
+    export namespace CloseDialogResponse {
+        export const $gtype: GObject.GType<CloseDialogResponse>;
+    }
+
     enum CloseDialogResponse {
         WAIT,
         FORCE_CLOSE,
     }
+    export namespace CompEffect {
+        export const $gtype: GObject.GType<CompEffect>;
+    }
+
     /**
      * Indicates the appropriate effect to show the user for
      * meta_compositor_show_window() and meta_compositor_hide_window()
@@ -97,10 +109,18 @@ export namespace Meta {
          */
         NONE,
     }
+    export namespace CompositorType {
+        export const $gtype: GObject.GType<CompositorType>;
+    }
+
     enum CompositorType {
         WAYLAND,
         X11,
     }
+    export namespace Cursor {
+        export const $gtype: GObject.GType<Cursor>;
+    }
+
     enum Cursor {
         NONE,
         /**
@@ -181,6 +201,10 @@ export namespace Meta {
         BLANK,
         LAST,
     }
+    export namespace DisplayCorner {
+        export const $gtype: GObject.GType<DisplayCorner>;
+    }
+
     enum DisplayCorner {
         /**
          * top-left corner
@@ -199,6 +223,10 @@ export namespace Meta {
          */
         BOTTOMRIGHT,
     }
+    export namespace DisplayDirection {
+        export const $gtype: GObject.GType<DisplayDirection>;
+    }
+
     enum DisplayDirection {
         /**
          * up
@@ -217,6 +245,10 @@ export namespace Meta {
          */
         RIGHT,
     }
+    export namespace EdgeType {
+        export const $gtype: GObject.GType<EdgeType>;
+    }
+
     enum EdgeType {
         /**
          * Whether the edge belongs to a window
@@ -231,6 +263,10 @@ export namespace Meta {
          */
         SCREEN,
     }
+    export namespace ExitCode {
+        export const $gtype: GObject.GType<ExitCode>;
+    }
+
     enum ExitCode {
         /**
          * Success
@@ -241,6 +277,10 @@ export namespace Meta {
          */
         ERROR,
     }
+    export namespace FrameType {
+        export const $gtype: GObject.GType<FrameType>;
+    }
+
     enum FrameType {
         /**
          * Normal frame
@@ -275,6 +315,10 @@ export namespace Meta {
          */
         LAST,
     }
+    export namespace GrabOp {
+        export const $gtype: GObject.GType<GrabOp>;
+    }
+
     enum GrabOp {
         /**
          * None
@@ -359,6 +403,10 @@ export namespace Meta {
          */
         KEYBOARD_RESIZING_W,
     }
+    export namespace Gravity {
+        export const $gtype: GObject.GType<Gravity>;
+    }
+
     enum Gravity {
         NONE,
         NORTH_WEST,
@@ -372,10 +420,18 @@ export namespace Meta {
         SOUTH_EAST,
         STATIC,
     }
+    export namespace InhibitShortcutsDialogResponse {
+        export const $gtype: GObject.GType<InhibitShortcutsDialogResponse>;
+    }
+
     enum InhibitShortcutsDialogResponse {
         ALLOW,
         DENY,
     }
+    export namespace KeyBindingAction {
+        export const $gtype: GObject.GType<KeyBindingAction>;
+    }
+
     enum KeyBindingAction {
         /**
          * FILLME
@@ -737,6 +793,10 @@ export namespace Meta {
          */
         LAST,
     }
+    export namespace LaterType {
+        export const $gtype: GObject.GType<LaterType>;
+    }
+
     enum LaterType {
         /**
          * call in a resize processing phase that is done
@@ -765,10 +825,18 @@ export namespace Meta {
          */
         IDLE,
     }
+    export namespace LocaleDirection {
+        export const $gtype: GObject.GType<LocaleDirection>;
+    }
+
     enum LocaleDirection {
         LTR,
         RTL,
     }
+    export namespace MonitorSwitchConfigType {
+        export const $gtype: GObject.GType<MonitorSwitchConfigType>;
+    }
+
     enum MonitorSwitchConfigType {
         ALL_MIRROR,
         ALL_LINEAR,
@@ -776,6 +844,10 @@ export namespace Meta {
         BUILTIN,
         UNKNOWN,
     }
+    export namespace MotionDirection {
+        export const $gtype: GObject.GType<MotionDirection>;
+    }
+
     enum MotionDirection {
         /**
          * Upwards motion
@@ -810,6 +882,10 @@ export namespace Meta {
          */
         DOWN_RIGHT,
     }
+    export namespace MultiTextureFormat {
+        export const $gtype: GObject.GType<MultiTextureFormat>;
+    }
+
     /**
      * A representation for complex pixel formats
      *
@@ -843,20 +919,36 @@ export namespace Meta {
          */
         YUV420,
     }
+    export namespace PadDirection {
+        export const $gtype: GObject.GType<PadDirection>;
+    }
+
     enum PadDirection {
         UP,
         DOWN,
         CW,
         CCW,
     }
+    export namespace PadFeatureType {
+        export const $gtype: GObject.GType<PadFeatureType>;
+    }
+
     enum PadFeatureType {
         RING,
         STRIP,
     }
+    export namespace PowerSaveChangeReason {
+        export const $gtype: GObject.GType<PowerSaveChangeReason>;
+    }
+
     enum PowerSaveChangeReason {
         MODE_CHANGE,
         HOTPLUG,
     }
+    export namespace Preference {
+        export const $gtype: GObject.GType<Preference>;
+    }
+
     enum Preference {
         /**
          * mouse button modifiers
@@ -992,17 +1084,29 @@ export namespace Meta {
         LOCATE_POINTER,
         CHECK_ALIVE_TIMEOUT,
     }
+    export namespace SelectionType {
+        export const $gtype: GObject.GType<SelectionType>;
+    }
+
     enum SelectionType {
         SELECTION_PRIMARY,
         SELECTION_CLIPBOARD,
         SELECTION_DND,
         N_SELECTION_TYPES,
     }
+    export namespace ShadowMode {
+        export const $gtype: GObject.GType<ShadowMode>;
+    }
+
     enum ShadowMode {
         AUTO,
         FORCED_OFF,
         FORCED_ON,
     }
+    export namespace Side {
+        export const $gtype: GObject.GType<Side>;
+    }
+
     enum Side {
         /**
          * Left side
@@ -1021,6 +1125,10 @@ export namespace Meta {
          */
         BOTTOM,
     }
+    export namespace SizeChange {
+        export const $gtype: GObject.GType<SizeChange>;
+    }
+
     enum SizeChange {
         MAXIMIZE,
         UNMAXIMIZE,
@@ -1028,6 +1136,10 @@ export namespace Meta {
         UNFULLSCREEN,
         MONITOR_MOVE,
     }
+    export namespace StackLayer {
+        export const $gtype: GObject.GType<StackLayer>;
+    }
+
     /**
      * Layers a window can be in.
      * These MUST be in the order of stacking.
@@ -1062,6 +1174,10 @@ export namespace Meta {
          */
         LAST,
     }
+    export namespace TabList {
+        export const $gtype: GObject.GType<TabList>;
+    }
+
     enum TabList {
         /**
          * Normal windows
@@ -1080,6 +1196,10 @@ export namespace Meta {
          */
         NORMAL_ALL,
     }
+    export namespace TabShowType {
+        export const $gtype: GObject.GType<TabShowType>;
+    }
+
     enum TabShowType {
         /**
          * Show icon (Alt-Tab mode)
@@ -1090,6 +1210,10 @@ export namespace Meta {
          */
         INSTANTLY,
     }
+    export namespace WindowClientType {
+        export const $gtype: GObject.GType<WindowClientType>;
+    }
+
     enum WindowClientType {
         /**
          * A Wayland based window
@@ -1100,6 +1224,10 @@ export namespace Meta {
          */
         X11,
     }
+    export namespace WindowMenuType {
+        export const $gtype: GObject.GType<WindowMenuType>;
+    }
+
     /**
      * Menu the compositor should display for a given window
      */
@@ -1113,6 +1241,10 @@ export namespace Meta {
          */
         APP,
     }
+    export namespace WindowType {
+        export const $gtype: GObject.GType<WindowType>;
+    }
+
     enum WindowType {
         /**
          * Normal
@@ -1355,10 +1487,18 @@ export namespace Meta {
     interface WindowForeachFunc {
         (window: Window): boolean;
     }
+    export namespace BackendCapabilities {
+        export const $gtype: GObject.GType<BackendCapabilities>;
+    }
+
     enum BackendCapabilities {
         NONE,
         BARRIERS,
     }
+    export namespace BarrierDirection {
+        export const $gtype: GObject.GType<BarrierDirection>;
+    }
+
     enum BarrierDirection {
         /**
          * Positive direction in the X axis
@@ -1377,10 +1517,18 @@ export namespace Meta {
          */
         NEGATIVE_Y,
     }
+    export namespace BarrierFlags {
+        export const $gtype: GObject.GType<BarrierFlags>;
+    }
+
     enum BarrierFlags {
         NONE,
         STICKY,
     }
+    export namespace DebugPaintFlag {
+        export const $gtype: GObject.GType<DebugPaintFlag>;
+    }
+
     enum DebugPaintFlag {
         /**
          * default
@@ -1391,6 +1539,10 @@ export namespace Meta {
          */
         OPAQUE_REGION,
     }
+    export namespace DebugTopic {
+        export const $gtype: GObject.GType<DebugTopic>;
+    }
+
     enum DebugTopic {
         /**
          * verbose logging
@@ -1511,6 +1663,10 @@ export namespace Meta {
          */
         KMS_DEADLINE,
     }
+    export namespace Direction {
+        export const $gtype: GObject.GType<Direction>;
+    }
+
     enum Direction {
         /**
          * Left
@@ -1545,6 +1701,10 @@ export namespace Meta {
          */
         VERTICAL,
     }
+    export namespace KeyBindingFlags {
+        export const $gtype: GObject.GType<KeyBindingFlags>;
+    }
+
     enum KeyBindingFlags {
         /**
          * none
@@ -1583,6 +1743,10 @@ export namespace Meta {
          */
         TRIGGER_RELEASE,
     }
+    export namespace KeyboardA11yFlags {
+        export const $gtype: GObject.GType<KeyboardA11yFlags>;
+    }
+
     /**
      * Keyboard accessibility features.
      */
@@ -1602,6 +1766,10 @@ export namespace Meta {
         STICKY_KEYS_BEEP,
         FEATURE_STATE_CHANGE_BEEP,
     }
+    export namespace MaximizeFlags {
+        export const $gtype: GObject.GType<MaximizeFlags>;
+    }
+
     enum MaximizeFlags {
         /**
          * Horizontal

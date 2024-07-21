@@ -116,6 +116,10 @@ export namespace GCalc {
         _init(...args: any[]): void;
     }
 
+    export namespace GParserTokenType {
+        export const $gtype: GObject.GType<GParserTokenType>;
+    }
+
     enum GParserTokenType {
         NONE,
         EOF,
@@ -159,6 +163,10 @@ export namespace GCalc {
         INTERR,
         HASH,
     }
+    export namespace GroupLevel {
+        export const $gtype: GObject.GType<GroupLevel>;
+    }
+
     enum GroupLevel {
         ONE,
         TWO,

@@ -23,6 +23,10 @@ export namespace EBookContacts {
      * EBookContacts-1.2
      */
 
+    export namespace BookChangeType {
+        export const $gtype: GObject.GType<BookChangeType>;
+    }
+
     /**
      * The type of change in an #EBookChange
      */
@@ -75,6 +79,10 @@ export namespace EBookContacts {
         _init(...args: any[]): void;
     }
 
+    export namespace BookCursorOrigin {
+        export const $gtype: GObject.GType<BookCursorOrigin>;
+    }
+
     /**
      * Specifies the start position to in the list of traversed contacts
      * in calls to e_book_client_cursor_step().
@@ -96,6 +104,10 @@ export namespace EBookContacts {
          */
         END,
     }
+    export namespace BookCursorSortType {
+        export const $gtype: GObject.GType<BookCursorSortType>;
+    }
+
     /**
      * Specifies the sort order of an ordered query
      */
@@ -109,6 +121,10 @@ export namespace EBookContacts {
          */
         DESCENDING,
     }
+    export namespace BookIndexType {
+        export const $gtype: GObject.GType<BookIndexType>;
+    }
+
     /**
      * The type of index defined by e_source_backend_summary_setup_set_indexed_fields()
      */
@@ -133,6 +149,10 @@ export namespace EBookContacts {
          */
         SORT_KEY,
     }
+    export namespace BookQueryTest {
+        export const $gtype: GObject.GType<BookQueryTest>;
+    }
+
     /**
      * The kind of test a query created by e_book_query_field_test() shall perform.
      *
@@ -189,6 +209,10 @@ export namespace EBookContacts {
          */
         LAST,
     }
+    export namespace BookViewStatus {
+        export const $gtype: GObject.GType<BookViewStatus>;
+    }
+
     /**
      * Status messages used in notifications in the deprecated #EBookView class
      */
@@ -218,6 +242,10 @@ export namespace EBookContacts {
          */
         ERROR_OTHER_ERROR,
     }
+    export namespace ContactField {
+        export const $gtype: GObject.GType<ContactField>;
+    }
+
     enum ContactField {
         UID,
         FILE_AS,
@@ -373,10 +401,18 @@ export namespace EBookContacts {
         FIRST_LABEL_ID,
         LAST_LABEL_ID,
     }
+    export namespace ContactPhotoType {
+        export const $gtype: GObject.GType<ContactPhotoType>;
+    }
+
     enum ContactPhotoType {
         INLINED,
         URI,
     }
+    export namespace PhoneNumberCountrySource {
+        export const $gtype: GObject.GType<PhoneNumberCountrySource>;
+    }
+
     /**
      * The origin of a parsed EPhoneNumber's country calling code.
      */
@@ -444,6 +480,10 @@ export namespace EBookContacts {
         _init(...args: any[]): void;
     }
 
+    export namespace PhoneNumberFormat {
+        export const $gtype: GObject.GType<PhoneNumberFormat>;
+    }
+
     /**
      * The supported formatting rules for phone numbers.
      */
@@ -468,6 +508,10 @@ export namespace EBookContacts {
          */
         RFC3966,
     }
+    export namespace PhoneNumberMatch {
+        export const $gtype: GObject.GType<PhoneNumberMatch>;
+    }
+
     /**
      * The strength of a phone number match.
      *
@@ -552,6 +596,10 @@ export namespace EBookContacts {
          */
         SHORT,
     }
+    export namespace VCardFormat {
+        export const $gtype: GObject.GType<VCardFormat>;
+    }
+
     class VCardFormat {
         static $gtype: GObject.GType<VCardFormat>;
 
@@ -912,6 +960,10 @@ export namespace EBookContacts {
      */
     function phone_number_is_supported(): boolean;
     type ContactAttrList = object | null;
+    export namespace BookClientViewFlags {
+        export const $gtype: GObject.GType<BookClientViewFlags>;
+    }
+
     /**
      * Flags that control the behaviour of an #EBookClientView.
      */
@@ -934,6 +986,10 @@ export namespace EBookContacts {
          */
         MANUAL_QUERY,
     }
+    export namespace BookCursorStepFlags {
+        export const $gtype: GObject.GType<BookCursorStepFlags>;
+    }
+
     /**
      * Defines the behaviour of e_book_client_cursor_step().
      */
@@ -947,6 +1003,10 @@ export namespace EBookContacts {
          */
         FETCH,
     }
+    export namespace BookOperationFlags {
+        export const $gtype: GObject.GType<BookOperationFlags>;
+    }
+
     /**
      * Book operation flags, to specify behavior in certain situations. The conflict
      * resolution mode flags cannot be combined together, where the `E_BOOK_OPERATION_FLAG_CONFLICT_KEEP_LOCAL`

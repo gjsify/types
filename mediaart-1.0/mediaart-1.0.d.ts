@@ -53,6 +53,10 @@ export namespace MediaArt {
         _init(...args: any[]): void;
     }
 
+    export namespace Type {
+        export const $gtype: GObject.GType<Type>;
+    }
+
     /**
      * This type categorized the type of media art we're dealing with.
      */
@@ -184,6 +188,10 @@ export namespace MediaArt {
      * @returns @original stripped of invalid characters which must be freed. On error or if @original is empty, %NULL is returned.
      */
     function strip_invalid_entities(original: string): string;
+    export namespace ProcessFlags {
+        export const $gtype: GObject.GType<ProcessFlags>;
+    }
+
     /**
      * This type categorized the flags used when processing media art.
      */

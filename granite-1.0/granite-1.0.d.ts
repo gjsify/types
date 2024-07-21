@@ -35,6 +35,10 @@ export namespace Granite {
      * Granite-1.0
      */
 
+    export namespace ServicesLogLevel {
+        export const $gtype: GObject.GType<ServicesLogLevel>;
+    }
+
     enum ServicesLogLevel {
         DEBUG,
         INFO,
@@ -56,11 +60,19 @@ export namespace Granite {
         _init(...args: any[]): void;
     }
 
+    export namespace WidgetsDynamicNotebookTabBarBehavior {
+        export const $gtype: GObject.GType<WidgetsDynamicNotebookTabBarBehavior>;
+    }
+
     enum WidgetsDynamicNotebookTabBarBehavior {
         ALWAYS,
         SINGLE,
         NEVER,
     }
+    export namespace WidgetsStorageBarItemDescription {
+        export const $gtype: GObject.GType<WidgetsStorageBarItemDescription>;
+    }
+
     enum WidgetsStorageBarItemDescription {
         OTHER,
         AUDIO,
@@ -69,6 +81,10 @@ export namespace Granite {
         APP,
         FILES,
     }
+    export namespace CollapseMode {
+        export const $gtype: GObject.GType<CollapseMode>;
+    }
+
     enum CollapseMode {
         NONE,
         LEFT,
@@ -78,16 +94,28 @@ export namespace Granite {
         BOTTOM,
         LAST,
     }
+    export namespace TextStyle {
+        export const $gtype: GObject.GType<TextStyle>;
+    }
+
     enum TextStyle {
         TITLE,
         H1,
         H2,
         H3,
     }
+    export namespace CloseButtonPosition {
+        export const $gtype: GObject.GType<CloseButtonPosition>;
+    }
+
     enum CloseButtonPosition {
         LEFT,
         RIGHT,
     }
+    export namespace SettingsPageStatusType {
+        export const $gtype: GObject.GType<SettingsPageStatusType>;
+    }
+
     enum SettingsPageStatusType {
         ERROR,
         OFFLINE,
@@ -95,6 +123,10 @@ export namespace Granite {
         WARNING,
         NONE,
     }
+    export namespace SettingsColorScheme {
+        export const $gtype: GObject.GType<SettingsColorScheme>;
+    }
+
     enum SettingsColorScheme {
         NO_PREFERENCE,
         DARK,

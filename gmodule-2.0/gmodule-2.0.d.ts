@@ -79,6 +79,10 @@ export namespace GModule {
     interface ModuleUnload {
         (module: Module): void;
     }
+    export namespace ModuleFlags {
+        export const $gtype: GObject.GType<ModuleFlags>;
+    }
+
     /**
      * Flags passed to g_module_open().
      * Note that these flags are not supported on all platforms.

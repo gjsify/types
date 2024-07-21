@@ -20,6 +20,10 @@ export namespace Dmap {
      * Dmap-4.0
      */
 
+    export namespace ConnectionState {
+        export const $gtype: GObject.GType<ConnectionState>;
+    }
+
     /**
      * Enumeration of connection states.
      */
@@ -61,6 +65,10 @@ export namespace Dmap {
          */
         DONE,
     }
+    export namespace ContentCode {
+        export const $gtype: GObject.GType<ContentCode>;
+    }
+
     enum ContentCode {
         CC_INVALID,
         RAW,
@@ -228,16 +236,28 @@ export namespace Dmap {
         CC_CAIV,
         CC_CAVC,
     }
+    export namespace ControlPlayState {
+        export const $gtype: GObject.GType<ControlPlayState>;
+    }
+
     enum ControlPlayState {
         STOPPED,
         PAUSED,
         PLAYING,
     }
+    export namespace ControlRepeatState {
+        export const $gtype: GObject.GType<ControlRepeatState>;
+    }
+
     enum ControlRepeatState {
         NONE,
         SINGLE,
         ALL,
     }
+    export namespace DbId {
+        export const $gtype: GObject.GType<DbId>;
+    }
+
     /**
      * Special DmapDb ID values.
      */
@@ -315,11 +335,19 @@ export namespace Dmap {
         static quark(): GLib.Quark;
     }
 
+    export namespace MdnsServiceTransportProtocol {
+        export const $gtype: GObject.GType<MdnsServiceTransportProtocol>;
+    }
+
     enum MdnsServiceTransportProtocol {
         TCP,
         UDP,
         LAST,
     }
+    export namespace MdnsServiceType {
+        export const $gtype: GObject.GType<MdnsServiceType>;
+    }
+
     /**
      * Enum values used to specify the service type.
      */
@@ -349,12 +377,20 @@ export namespace Dmap {
          */
         LAST,
     }
+    export namespace MediaKind {
+        export const $gtype: GObject.GType<MediaKind>;
+    }
+
     enum MediaKind {
         MUSIC,
         MOVIE,
         PODCAST,
         TV_SHOW,
     }
+    export namespace ShareAuthMethod {
+        export const $gtype: GObject.GType<ShareAuthMethod>;
+    }
+
     enum ShareAuthMethod {
         NONE,
         NAME_AND_PASSWORD,

@@ -19,6 +19,10 @@ export namespace Gcr {
      * Gcr-4
      */
 
+    export namespace CertificateChainStatus {
+        export const $gtype: GObject.GType<CertificateChainStatus>;
+    }
+
     /**
      * The status of a built certificate chain. Will be set to
      * %GCR_CERTIFICATE_CHAIN_UNKNOWN for certificate chains that have not been
@@ -60,6 +64,10 @@ export namespace Gcr {
          */
         ANCHORED,
     }
+    export namespace CertificateRequestFormat {
+        export const $gtype: GObject.GType<CertificateRequestFormat>;
+    }
+
     /**
      * The format of a certificate request. Currently only PKCS#10 is supported.
      */
@@ -69,6 +77,10 @@ export namespace Gcr {
          */
         CERTIFICATE_REQUEST_PKCS10,
     }
+    export namespace DataError {
+        export const $gtype: GObject.GType<DataError>;
+    }
+
     /**
      * Values responding to error codes for parsing and serializing data.
      */
@@ -90,6 +102,10 @@ export namespace Gcr {
          */
         LOCKED,
     }
+    export namespace DataFormat {
+        export const $gtype: GObject.GType<DataFormat>;
+    }
+
     /**
      * The various format identifiers.
      */
@@ -219,6 +235,10 @@ export namespace Gcr {
          */
         PEM_PUBLIC_KEY,
     }
+    export namespace PromptReply {
+        export const $gtype: GObject.GType<PromptReply>;
+    }
+
     /**
      * Various replies returned by [method`Prompt`.confirm] and friends.
      */
@@ -232,6 +252,10 @@ export namespace Gcr {
          */
         CONTINUE,
     }
+    export namespace SystemPromptError {
+        export const $gtype: GObject.GType<SystemPromptError>;
+    }
+
     /**
      * No error returned by the #GcrSystemPrompt is suitable for display or
      * to the user.
@@ -246,6 +270,10 @@ export namespace Gcr {
          */
         SYSTEM_PROMPT_IN_PROGRESS,
     }
+    export namespace SystemPrompterMode {
+        export const $gtype: GObject.GType<SystemPrompterMode>;
+    }
+
     /**
      * The mode for the system prompter. Most system prompters can only show
      * one prompt at a time and would use the %GCR_SYSTEM_PROMPTER_SINGLE mode.
@@ -1006,6 +1034,10 @@ export namespace Gcr {
      * @returns %TRUE if the pinned certificate no longer exists
      */
     function trust_remove_pinned_certificate_finish(result: Gio.AsyncResult): boolean;
+    export namespace CertificateChainFlags {
+        export const $gtype: GObject.GType<CertificateChainFlags>;
+    }
+
     /**
      * Flags to be used with the gcr_certificate_chain_build() operation.
      */
@@ -1022,6 +1054,10 @@ export namespace Gcr {
          */
         NO_LOOKUPS,
     }
+    export namespace CertificateSectionFlags {
+        export const $gtype: GObject.GType<CertificateSectionFlags>;
+    }
+
     enum CertificateSectionFlags {
         NONE,
         IMPORTANT,

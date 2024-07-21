@@ -29,6 +29,10 @@ export namespace GcrUi {
      * GcrUi-3
      */
 
+    export namespace CollectionModelMode {
+        export const $gtype: GObject.GType<CollectionModelMode>;
+    }
+
     /**
      * If a [class`CollectionModel]` is created with a mode of
      * %GCR_COLLECTION_MODEL_TREE, then any included objects that are themselves a

@@ -26,6 +26,10 @@ export namespace Gsk {
      * Gsk-4.0
      */
 
+    export namespace BlendMode {
+        export const $gtype: GObject.GType<BlendMode>;
+    }
+
     /**
      * The blend modes available for render nodes.
      *
@@ -104,6 +108,10 @@ export namespace Gsk {
          */
         LUMINOSITY,
     }
+    export namespace Corner {
+        export const $gtype: GObject.GType<Corner>;
+    }
+
     /**
      * The corner indices used by `GskRoundedRect`.
      */
@@ -125,6 +133,10 @@ export namespace Gsk {
          */
         BOTTOM_LEFT,
     }
+    export namespace FillRule {
+        export const $gtype: GObject.GType<FillRule>;
+    }
+
     /**
      * `GskFillRule` is used to select how paths are filled.
      *
@@ -156,6 +168,10 @@ export namespace Gsk {
          */
         EVEN_ODD,
     }
+    export namespace GLUniformType {
+        export const $gtype: GObject.GType<GLUniformType>;
+    }
+
     /**
      * This defines the types of the uniforms that `GskGLShaders`
      * declare.
@@ -197,6 +213,10 @@ export namespace Gsk {
          */
         VEC4,
     }
+    export namespace LineCap {
+        export const $gtype: GObject.GType<LineCap>;
+    }
+
     /**
      * Specifies how to render the start and end points of contours or
      * dashes when stroking.
@@ -230,6 +250,10 @@ export namespace Gsk {
          */
         SQUARE,
     }
+    export namespace LineJoin {
+        export const $gtype: GObject.GType<LineJoin>;
+    }
+
     /**
      * Specifies how to render the junction of two lines when stroking.
      *
@@ -261,6 +285,10 @@ export namespace Gsk {
          */
         BEVEL,
     }
+    export namespace MaskMode {
+        export const $gtype: GObject.GType<MaskMode>;
+    }
+
     /**
      * The mask modes available for mask nodes.
      */
@@ -284,6 +312,10 @@ export namespace Gsk {
          */
         INVERTED_LUMINANCE,
     }
+    export namespace PathDirection {
+        export const $gtype: GObject.GType<PathDirection>;
+    }
+
     /**
      * The values of the `GskPathDirection` enum are used to pick one
      * of the four tangents at a given point on the path.
@@ -319,6 +351,10 @@ export namespace Gsk {
          */
         FROM_END,
     }
+    export namespace PathOperation {
+        export const $gtype: GObject.GType<PathOperation>;
+    }
+
     /**
      * Path operations are used to describe the segments of a `GskPath`.
      *
@@ -358,6 +394,10 @@ export namespace Gsk {
          */
         CONIC,
     }
+    export namespace RenderNodeType {
+        export const $gtype: GObject.GType<RenderNodeType>;
+    }
+
     /**
      * The type of a node determines what the node is rendering.
      */
@@ -487,6 +527,10 @@ export namespace Gsk {
          */
         SUBSURFACE_NODE,
     }
+    export namespace ScalingFilter {
+        export const $gtype: GObject.GType<ScalingFilter>;
+    }
+
     /**
      * The filters used when scaling texture data.
      *
@@ -540,6 +584,10 @@ export namespace Gsk {
         // Own static methods of Gsk.SerializationError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace TransformCategory {
+        export const $gtype: GObject.GType<TransformCategory>;
     }
 
     /**
@@ -677,6 +725,10 @@ export namespace Gsk {
     interface PathForeachFunc {
         (op: PathOperation, pts: Graphene.Point, n_pts: number, weight: number): boolean;
     }
+    export namespace PathForeachFlags {
+        export const $gtype: GObject.GType<PathForeachFlags>;
+    }
+
     /**
      * Flags that can be passed to gsk_path_foreach() to influence what
      * kinds of operations the path is decomposed into.

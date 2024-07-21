@@ -32,10 +32,18 @@ export namespace Entangle {
      * Entangle-0.1
      */
 
+    export namespace CameraCaptureTarget {
+        export const $gtype: GObject.GType<CameraCaptureTarget>;
+    }
+
     enum CameraCaptureTarget {
         RAM,
         CARD,
     }
+    export namespace CameraManualFocusStep {
+        export const $gtype: GObject.GType<CameraManualFocusStep>;
+    }
+
     enum CameraManualFocusStep {
         IN_COARSE,
         IN_MEDIUM,
@@ -44,12 +52,20 @@ export namespace Entangle {
         OUT_MEDIUM,
         OUT_FINE,
     }
+    export namespace ColourProfileIntent {
+        export const $gtype: GObject.GType<ColourProfileIntent>;
+    }
+
     enum ColourProfileIntent {
         PERCEPTUAL,
         REL_COLOURIMETRIC,
         SATURATION,
         ABS_COLOURIMETRIC,
     }
+    export namespace ImageDisplayGrid {
+        export const $gtype: GObject.GType<ImageDisplayGrid>;
+    }
+
     enum ImageDisplayGrid {
         NONE,
         CENTER_LINES,
@@ -58,6 +74,10 @@ export namespace Entangle {
         RULE_OF_5THS,
         GOLDEN_SECTIONS,
     }
+    export namespace PixbufImageSlot {
+        export const $gtype: GObject.GType<PixbufImageSlot>;
+    }
+
     enum PixbufImageSlot {
         MASTER,
         PREVIEW,

@@ -28,11 +28,19 @@ export namespace Pluma {
      * Pluma-1.0
      */
 
+    export namespace DocumentNewlineType {
+        export const $gtype: GObject.GType<DocumentNewlineType>;
+    }
+
     enum DocumentNewlineType {
         LF,
         CR,
         CR_LF,
     }
+    export namespace TabState {
+        export const $gtype: GObject.GType<TabState>;
+    }
+
     enum TabState {
         STATE_NORMAL,
         STATE_LOADING,
@@ -235,6 +243,10 @@ export namespace Pluma {
     interface MessageTypeForeach {
         (key: string, type: GObject.GType, required: boolean): void;
     }
+    export namespace DebugSection {
+        export const $gtype: GObject.GType<DebugSection>;
+    }
+
     enum DebugSection {
         NO_DEBUG,
         DEBUG_VIEW,
@@ -253,6 +265,10 @@ export namespace Pluma {
         DEBUG_LOADER,
         DEBUG_SAVER,
     }
+    export namespace DocumentSaveFlags {
+        export const $gtype: GObject.GType<DocumentSaveFlags>;
+    }
+
     enum DocumentSaveFlags {
         /**
          * save file despite external modifications.
@@ -267,6 +283,10 @@ export namespace Pluma {
          */
         PRESERVE_BACKUP,
     }
+    export namespace LockdownMask {
+        export const $gtype: GObject.GType<LockdownMask>;
+    }
+
     enum LockdownMask {
         COMMAND_LINE,
         PRINTING,
@@ -274,6 +294,10 @@ export namespace Pluma {
         SAVE_TO_DISK,
         ALL,
     }
+    export namespace SearchFlags {
+        export const $gtype: GObject.GType<SearchFlags>;
+    }
+
     enum SearchFlags {
         DONT_SET_FLAGS,
         ENTIRE_WORD,
@@ -281,6 +305,10 @@ export namespace Pluma {
         PARSE_ESCAPES,
         MATCH_REGEX,
     }
+    export namespace WindowState {
+        export const $gtype: GObject.GType<WindowState>;
+    }
+
     enum WindowState {
         NORMAL,
         SAVING,

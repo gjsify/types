@@ -20,6 +20,10 @@ export namespace Unity {
      * Unity-6.0
      */
 
+    export namespace CategoryType {
+        export const $gtype: GObject.GType<CategoryType>;
+    }
+
     enum CategoryType {
         NONE,
         APPLICATION,
@@ -49,11 +53,19 @@ export namespace Unity {
         CAR,
         N_CATEGORIES,
     }
+    export namespace IconSizeHint {
+        export const $gtype: GObject.GType<IconSizeHint>;
+    }
+
     enum IconSizeHint {
         DEFAULT,
         SMALL,
         LARGE,
     }
+    export namespace HandledType {
+        export const $gtype: GObject.GType<HandledType>;
+    }
+
     enum HandledType {
         NOT_HANDLED,
         SHOW_DASH,
@@ -61,12 +73,20 @@ export namespace Unity {
         GOTO_DASH_URI,
         SHOW_PREVIEW,
     }
+    export namespace CategoryRenderer {
+        export const $gtype: GObject.GType<CategoryRenderer>;
+    }
+
     enum CategoryRenderer {
         VERTICAL_TILE,
         HORIZONTAL_TILE,
         LIST_TILE,
         FLOW,
     }
+    export namespace FilterRenderer {
+        export const $gtype: GObject.GType<FilterRenderer>;
+    }
+
     enum FilterRenderer {
         CHECK_OPTIONS,
         RADIO_OPTIONS,
@@ -74,6 +94,10 @@ export namespace Unity {
         RATINGS,
         CHECK_OPTIONS_COMPACT,
     }
+    export namespace LayoutHint {
+        export const $gtype: GObject.GType<LayoutHint>;
+    }
+
     enum LayoutHint {
         NONE,
         LEFT,
@@ -81,24 +105,44 @@ export namespace Unity {
         TOP,
         BOTTOM,
     }
+    export namespace SearchType {
+        export const $gtype: GObject.GType<SearchType>;
+    }
+
     enum SearchType {
         DEFAULT,
         GLOBAL,
         N_TYPES,
     }
+    export namespace PlaybackState {
+        export const $gtype: GObject.GType<PlaybackState>;
+    }
+
     enum PlaybackState {
         PLAYING,
         PAUSED,
     }
+    export namespace OptionsFilterSortType {
+        export const $gtype: GObject.GType<OptionsFilterSortType>;
+    }
+
     enum OptionsFilterSortType {
         MANUAL,
         DISPLAY_NAME,
         ID,
     }
+    export namespace PreferencesManagerRemoteContent {
+        export const $gtype: GObject.GType<PreferencesManagerRemoteContent>;
+    }
+
     enum PreferencesManagerRemoteContent {
         ALL,
         NONE,
     }
+    export namespace MusicPreviewTrackState {
+        export const $gtype: GObject.GType<MusicPreviewTrackState>;
+    }
+
     enum MusicPreviewTrackState {
         STOPPED,
         PLAYING,

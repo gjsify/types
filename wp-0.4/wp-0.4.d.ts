@@ -18,12 +18,20 @@ export namespace Wp {
      * Wp-0.4
      */
 
+    export namespace ConstraintType {
+        export const $gtype: GObject.GType<ConstraintType>;
+    }
+
     enum ConstraintType {
         NONE,
         PW_GLOBAL_PROPERTY,
         PW_PROPERTY,
         G_PROPERTY,
     }
+    export namespace ConstraintVerb {
+        export const $gtype: GObject.GType<ConstraintVerb>;
+    }
+
     enum ConstraintVerb {
         EQUALS,
         NOT_EQUALS,
@@ -33,6 +41,10 @@ export namespace Wp {
         IS_PRESENT,
         IS_ABSENT,
     }
+    export namespace DBusState {
+        export const $gtype: GObject.GType<DBusState>;
+    }
+
     /**
      * The state of the dbus connection.
      */
@@ -41,15 +53,27 @@ export namespace Wp {
         CONNECTING,
         CONNECTED,
     }
+    export namespace Direction {
+        export const $gtype: GObject.GType<Direction>;
+    }
+
     enum Direction {
         INPUT,
         OUTPUT,
     }
+    export namespace LibraryErrorEnum {
+        export const $gtype: GObject.GType<LibraryErrorEnum>;
+    }
+
     enum LibraryErrorEnum {
         INVARIANT,
         INVALID_ARGUMENT,
         OPERATION_FAILED,
     }
+    export namespace LinkState {
+        export const $gtype: GObject.GType<LinkState>;
+    }
+
     enum LinkState {
         ERROR,
         UNLINKED,
@@ -59,6 +83,10 @@ export namespace Wp {
         PAUSED,
         ACTIVE,
     }
+    export namespace NodeState {
+        export const $gtype: GObject.GType<NodeState>;
+    }
+
     enum NodeState {
         ERROR,
         CREATING,
@@ -66,11 +94,19 @@ export namespace Wp {
         IDLE,
         RUNNING,
     }
+    export namespace SiAdapterPortsState {
+        export const $gtype: GObject.GType<SiAdapterPortsState>;
+    }
+
     enum SiAdapterPortsState {
         NONE,
         CONFIGURING,
         CONFIGURED,
     }
+    export namespace TransitionStep {
+        export const $gtype: GObject.GType<TransitionStep>;
+    }
+
     enum TransitionStep {
         NONE,
         ERROR,
@@ -333,12 +369,20 @@ export namespace Wp {
     interface IteratorForeachFunc {
         (item: GObject.Value | any, data?: any | null): void;
     }
+    export namespace DbusFeatures {
+        export const $gtype: GObject.GType<DbusFeatures>;
+    }
+
     /**
      * Flags to be used as WpObjectFeatures for WpDbus.
      */
     enum DbusFeatures {
         ENABLED,
     }
+    export namespace InitFlags {
+        export const $gtype: GObject.GType<InitFlags>;
+    }
+
     enum InitFlags {
         PIPEWIRE,
         SPA_TYPES,
@@ -346,6 +390,10 @@ export namespace Wp {
         SET_GLIB_LOG,
         ALL,
     }
+    export namespace InterestMatch {
+        export const $gtype: GObject.GType<InterestMatch>;
+    }
+
     enum InterestMatch {
         NONE,
         GTYPE,
@@ -353,13 +401,25 @@ export namespace Wp {
         PW_PROPERTIES,
         G_PROPERTIES,
     }
+    export namespace InterestMatchFlags {
+        export const $gtype: GObject.GType<InterestMatchFlags>;
+    }
+
     enum InterestMatchFlags {
         NONE,
         CHECK_ALL,
     }
+    export namespace LinkFeatures {
+        export const $gtype: GObject.GType<LinkFeatures>;
+    }
+
     enum LinkFeatures {
         ESTABLISHED,
     }
+    export namespace LookupDirs {
+        export const $gtype: GObject.GType<LookupDirs>;
+    }
+
     enum LookupDirs {
         ENV_CONFIG,
         ENV_DATA,
@@ -367,15 +427,31 @@ export namespace Wp {
         ETC,
         PREFIX_SHARE,
     }
+    export namespace MetadataFeatures {
+        export const $gtype: GObject.GType<MetadataFeatures>;
+    }
+
     enum MetadataFeatures {
         DATA,
     }
+    export namespace NodeFeatures {
+        export const $gtype: GObject.GType<NodeFeatures>;
+    }
+
     enum NodeFeatures {
         PORTS,
     }
+    export namespace PluginFeatures {
+        export const $gtype: GObject.GType<PluginFeatures>;
+    }
+
     enum PluginFeatures {
         ENABLED,
     }
+    export namespace ProxyFeatures {
+        export const $gtype: GObject.GType<ProxyFeatures>;
+    }
+
     enum ProxyFeatures {
         PROXY_FEATURE_BOUND,
         PIPEWIRE_OBJECT_FEATURE_INFO,
@@ -385,10 +461,18 @@ export namespace Wp {
         PIPEWIRE_OBJECT_FEATURE_PARAM_PORT_CONFIG,
         PIPEWIRE_OBJECT_FEATURE_PARAM_ROUTE,
     }
+    export namespace SessionItemFeatures {
+        export const $gtype: GObject.GType<SessionItemFeatures>;
+    }
+
     enum SessionItemFeatures {
         ACTIVE,
         EXPORTED,
     }
+    export namespace SpaDeviceFeatures {
+        export const $gtype: GObject.GType<SpaDeviceFeatures>;
+    }
+
     enum SpaDeviceFeatures {
         ENABLED,
     }

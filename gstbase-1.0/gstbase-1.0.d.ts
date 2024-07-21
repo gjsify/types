@@ -18,6 +18,10 @@ export namespace GstBase {
      * GstBase-1.0
      */
 
+    export namespace AggregatorStartTimeSelection {
+        export const $gtype: GObject.GType<AggregatorStartTimeSelection>;
+    }
+
     enum AggregatorStartTimeSelection {
         /**
          * Start at running time 0.
@@ -312,6 +316,10 @@ export namespace GstBase {
     interface TypeFindHelperGetRangeFunction {
         (obj: Gst.Object, parent: Gst.Object | null, offset: number, length: number): Gst.FlowReturn;
     }
+    export namespace BaseParseFrameFlags {
+        export const $gtype: GObject.GType<BaseParseFrameFlags>;
+    }
+
     /**
      * Flags to be used in a #GstBaseParseFrame.
      */
@@ -351,6 +359,10 @@ export namespace GstBase {
          */
         QUEUE,
     }
+    export namespace BaseSrcFlags {
+        export const $gtype: GObject.GType<BaseSrcFlags>;
+    }
+
     /**
      * The #GstElement flags that a basesrc element may have.
      */
@@ -368,6 +380,10 @@ export namespace GstBase {
          */
         LAST,
     }
+    export namespace CollectPadsStateFlags {
+        export const $gtype: GObject.GType<CollectPadsStateFlags>;
+    }
+
     enum CollectPadsStateFlags {
         /**
          * Set if collectdata's pad is EOS.

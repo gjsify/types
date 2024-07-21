@@ -188,6 +188,10 @@ export namespace Signon {
         static quark(): GLib.Quark;
     }
 
+    export namespace SessionDataUiPolicy {
+        export const $gtype: GObject.GType<SessionDataUiPolicy>;
+    }
+
     /**
      * Policy for the signon process, passed to the UI plugin.
      */
@@ -247,6 +251,10 @@ export namespace Signon {
      */
     const SESSION_DATA_WINDOW_ID: string;
     function error_quark(): GLib.Quark;
+    export namespace IdentityType {
+        export const $gtype: GObject.GType<IdentityType>;
+    }
+
     /**
      * Types used in #SignonIdentityInfo.
      */

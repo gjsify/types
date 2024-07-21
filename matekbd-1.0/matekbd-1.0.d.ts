@@ -28,6 +28,10 @@ export namespace Matekbd {
      * Matekbd-1.0
      */
 
+    export namespace KeyboardDrawingGroupLevelPosition {
+        export const $gtype: GObject.GType<KeyboardDrawingGroupLevelPosition>;
+    }
+
     enum KeyboardDrawingGroupLevelPosition {
         TOPLEFT,
         TOPRIGHT,
@@ -37,6 +41,10 @@ export namespace Matekbd {
         FIRST,
         LAST,
     }
+    export namespace KeyboardDrawingItemType {
+        export const $gtype: GObject.GType<KeyboardDrawingItemType>;
+    }
+
     enum KeyboardDrawingItemType {
         INVALID,
         KEY,

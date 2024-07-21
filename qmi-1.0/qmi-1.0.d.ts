@@ -87,6 +87,10 @@ export namespace Qmi {
         static quark(): GLib.Quark;
     }
 
+    export namespace CtlDataFormat {
+        export const $gtype: GObject.GType<CtlDataFormat>;
+    }
+
     /**
      * Controls whether the network port data format includes a QoS header or not.
      * Should normally be set to ABSENT.
@@ -101,6 +105,10 @@ export namespace Qmi {
          */
         PRESENT,
     }
+    export namespace CtlDataLinkProtocol {
+        export const $gtype: GObject.GType<CtlDataLinkProtocol>;
+    }
+
     /**
      * Determines the network port data format.
      */
@@ -115,6 +123,10 @@ export namespace Qmi {
          */
         RAW_IP,
     }
+    export namespace DataEndpointType {
+        export const $gtype: GObject.GType<DataEndpointType>;
+    }
+
     /**
      * Data Endpoint Type.
      */
@@ -148,6 +160,10 @@ export namespace Qmi {
          */
         UNDEFINED,
     }
+    export namespace DeviceExpectedDataFormat {
+        export const $gtype: GObject.GType<DeviceExpectedDataFormat>;
+    }
+
     /**
      * Data format expected by the kernel.
      *
@@ -173,6 +189,10 @@ export namespace Qmi {
          */
         QMAP_PASS_THROUGH,
     }
+    export namespace DmsActivationState {
+        export const $gtype: GObject.GType<DmsActivationState>;
+    }
+
     /**
      * State of the service activation.
      */
@@ -222,6 +242,10 @@ export namespace Qmi {
          */
         OTASP_COMMITED,
     }
+    export namespace DmsBootImageDownloadMode {
+        export const $gtype: GObject.GType<DmsBootImageDownloadMode>;
+    }
+
     /**
      * Specifies the mode for the next boot.
      */
@@ -235,6 +259,10 @@ export namespace Qmi {
          */
         BOOT_AND_RECOVERY,
     }
+    export namespace DmsDataServiceCapability {
+        export const $gtype: GObject.GType<DmsDataServiceCapability>;
+    }
+
     /**
      * Data service capability.
      */
@@ -260,6 +288,10 @@ export namespace Qmi {
          */
         NON_SIMULTANEOUS_CS_PS,
     }
+    export namespace DmsFirmwareImageType {
+        export const $gtype: GObject.GType<DmsFirmwareImageType>;
+    }
+
     /**
      * Type of firmware image.
      */
@@ -273,6 +305,10 @@ export namespace Qmi {
          */
         PRI,
     }
+    export namespace DmsFoxconnDeviceMode {
+        export const $gtype: GObject.GType<DmsFoxconnDeviceMode>;
+    }
+
     /**
      * Foxconn specific device modes.
      */
@@ -290,6 +326,10 @@ export namespace Qmi {
          */
         FASTBOOT_OTA,
     }
+    export namespace DmsFoxconnFirmwareVersionType {
+        export const $gtype: GObject.GType<DmsFoxconnFirmwareVersionType>;
+    }
+
     /**
      * Foxconn specific firmware version types.
      */
@@ -307,6 +347,10 @@ export namespace Qmi {
          */
         APPS,
     }
+    export namespace DmsHpDeviceMode {
+        export const $gtype: GObject.GType<DmsHpDeviceMode>;
+    }
+
     /**
      * HP specific device modes.
      */
@@ -316,6 +360,10 @@ export namespace Qmi {
          */
         FASTBOOT,
     }
+    export namespace DmsMacType {
+        export const $gtype: GObject.GType<DmsMacType>;
+    }
+
     /**
      * Specifies the device from which the MAC address should be queried.
      */
@@ -329,6 +377,10 @@ export namespace Qmi {
          */
         BT,
     }
+    export namespace DmsOperatingMode {
+        export const $gtype: GObject.GType<DmsOperatingMode>;
+    }
+
     /**
      * Operating mode of the device.
      */
@@ -370,6 +422,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace DmsRadioInterface {
+        export const $gtype: GObject.GType<DmsRadioInterface>;
+    }
+
     /**
      * Radio interface type.
      */
@@ -403,6 +459,10 @@ export namespace Qmi {
          */
         '5GNR',
     }
+    export namespace DmsSimCapability {
+        export const $gtype: GObject.GType<DmsSimCapability>;
+    }
+
     /**
      * SIM capability.
      */
@@ -416,6 +476,10 @@ export namespace Qmi {
          */
         SUPPORTED,
     }
+    export namespace DmsSwiUsbComposition {
+        export const $gtype: GObject.GType<DmsSwiUsbComposition>;
+    }
+
     /**
      * Sierra Wireless USB composition modes.
      */
@@ -529,6 +593,10 @@ export namespace Qmi {
         _init(...args: any[]): void;
     }
 
+    export namespace DmsTimeReferenceType {
+        export const $gtype: GObject.GType<DmsTimeReferenceType>;
+    }
+
     /**
      * Time reference type.
      */
@@ -538,6 +606,10 @@ export namespace Qmi {
          */
         USER,
     }
+    export namespace DmsTimeSource {
+        export const $gtype: GObject.GType<DmsTimeSource>;
+    }
+
     /**
      * Source of the timestamp.
      */
@@ -555,6 +627,10 @@ export namespace Qmi {
          */
         HDR_NETWORK,
     }
+    export namespace DmsUimFacility {
+        export const $gtype: GObject.GType<DmsUimFacility>;
+    }
+
     /**
      * UIM personalization facilities.
      */
@@ -580,6 +656,10 @@ export namespace Qmi {
          */
         PF,
     }
+    export namespace DmsUimFacilityState {
+        export const $gtype: GObject.GType<DmsUimFacilityState>;
+    }
+
     /**
      * State of the UIM facility.
      */
@@ -597,6 +677,10 @@ export namespace Qmi {
          */
         BLOCKED,
     }
+    export namespace DmsUimPinId {
+        export const $gtype: GObject.GType<DmsUimPinId>;
+    }
+
     /**
      * The PIN identifier.
      */
@@ -610,6 +694,10 @@ export namespace Qmi {
          */
         PIN2,
     }
+    export namespace DmsUimPinStatus {
+        export const $gtype: GObject.GType<DmsUimPinStatus>;
+    }
+
     /**
      * The PIN status.
      */
@@ -647,6 +735,10 @@ export namespace Qmi {
          */
         CHANGED,
     }
+    export namespace DmsUimState {
+        export const $gtype: GObject.GType<DmsUimState>;
+    }
+
     /**
      * State of the UIM.
      */
@@ -672,6 +764,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace DsdApnType {
+        export const $gtype: GObject.GType<DsdApnType>;
+    }
+
     /**
      * APN type.
      */
@@ -717,6 +813,10 @@ export namespace Qmi {
          */
         EMERGENCY,
     }
+    export namespace DsdDataSystemNetworkType {
+        export const $gtype: GObject.GType<DsdDataSystemNetworkType>;
+    }
+
     /**
      * Network type of the data system.
      */
@@ -734,6 +834,10 @@ export namespace Qmi {
          */
         WLAN,
     }
+    export namespace DsdRadioAccessTechnology {
+        export const $gtype: GObject.GType<DsdRadioAccessTechnology>;
+    }
+
     /**
      * Radio access technology.
      */
@@ -783,6 +887,10 @@ export namespace Qmi {
          */
         '3GPP2_WLAN',
     }
+    export namespace Endian {
+        export const $gtype: GObject.GType<Endian>;
+    }
+
     /**
      * Type of endianness.
      */
@@ -796,6 +904,10 @@ export namespace Qmi {
          */
         BIG,
     }
+    export namespace FoxFirmwareVersionType {
+        export const $gtype: GObject.GType<FoxFirmwareVersionType>;
+    }
+
     /**
      * Foxconn specific firmware version types.
      */
@@ -813,6 +925,10 @@ export namespace Qmi {
          */
         APPS,
     }
+    export namespace GasFirmwareListingMode {
+        export const $gtype: GObject.GType<GasFirmwareListingMode>;
+    }
+
     /**
      * Mode when retrieving a list of stored firmwares.
      */
@@ -830,6 +946,10 @@ export namespace Qmi {
          */
         SPECIFIC_FIRMWARE,
     }
+    export namespace GasUsbCompositionEndpointType {
+        export const $gtype: GObject.GType<GasUsbCompositionEndpointType>;
+    }
+
     /**
      * Peripheral endpoint type.
      */
@@ -843,6 +963,10 @@ export namespace Qmi {
          */
         HSIC,
     }
+    export namespace LocEngineState {
+        export const $gtype: GObject.GType<LocEngineState>;
+    }
+
     /**
      * State of the engine.
      *
@@ -858,6 +982,10 @@ export namespace Qmi {
          */
         OFF,
     }
+    export namespace LocFixRecurrenceType {
+        export const $gtype: GObject.GType<LocFixRecurrenceType>;
+    }
+
     /**
      * Whether to request a single or periodic fixes.
      *
@@ -873,6 +1001,10 @@ export namespace Qmi {
          */
         SINGLE_FIX,
     }
+    export namespace LocHealthStatus {
+        export const $gtype: GObject.GType<LocHealthStatus>;
+    }
+
     /**
      * Whether a satellite is healthy or unhealthy.
      *
@@ -888,6 +1020,10 @@ export namespace Qmi {
          */
         HEALTHY,
     }
+    export namespace LocIndicationStatus {
+        export const $gtype: GObject.GType<LocIndicationStatus>;
+    }
+
     /**
      * General result of a received indication.
      *
@@ -923,6 +1059,10 @@ export namespace Qmi {
          */
         TIMEOUT,
     }
+    export namespace LocIntermediateReportState {
+        export const $gtype: GObject.GType<LocIntermediateReportState>;
+    }
+
     /**
      * Whether to enable or disable intermediate state reporting.
      */
@@ -940,6 +1080,10 @@ export namespace Qmi {
          */
         DISABLE,
     }
+    export namespace LocLockType {
+        export const $gtype: GObject.GType<LocLockType>;
+    }
+
     /**
      * Location engine lock type.
      */
@@ -961,6 +1105,10 @@ export namespace Qmi {
          */
         ALL,
     }
+    export namespace LocNavigationData {
+        export const $gtype: GObject.GType<LocNavigationData>;
+    }
+
     /**
      * Whether the ephemeris or almanac exist for a satellite.
      *
@@ -976,6 +1124,10 @@ export namespace Qmi {
          */
         ALMANAC,
     }
+    export namespace LocOperationMode {
+        export const $gtype: GObject.GType<LocOperationMode>;
+    }
+
     /**
      * Which operation mode to use.
      *
@@ -1007,6 +1159,10 @@ export namespace Qmi {
          */
         WWAN,
     }
+    export namespace LocPredictedOrbitsDataFormat {
+        export const $gtype: GObject.GType<LocPredictedOrbitsDataFormat>;
+    }
+
     /**
      * Type of predicted orbits data.
      */
@@ -1016,6 +1172,10 @@ export namespace Qmi {
          */
         XTRA,
     }
+    export namespace LocReliability {
+        export const $gtype: GObject.GType<LocReliability>;
+    }
+
     /**
      * Reliability of the provided information.
      *
@@ -1043,6 +1203,10 @@ export namespace Qmi {
          */
         HIGH,
     }
+    export namespace LocSatelliteStatus {
+        export const $gtype: GObject.GType<LocSatelliteStatus>;
+    }
+
     /**
      * Whether the engine searches or tracks a satellite.
      *
@@ -1062,6 +1226,10 @@ export namespace Qmi {
          */
         TRACKING,
     }
+    export namespace LocServerType {
+        export const $gtype: GObject.GType<LocServerType>;
+    }
+
     /**
      * Server type for Assisted-GPS.
      */
@@ -1087,6 +1255,10 @@ export namespace Qmi {
          */
         CUSTOM_PDE,
     }
+    export namespace LocSessionStatus {
+        export const $gtype: GObject.GType<LocSessionStatus>;
+    }
+
     /**
      * Status of a received session indication.
      *
@@ -1126,6 +1298,10 @@ export namespace Qmi {
          */
         ENGINE_LOCKED,
     }
+    export namespace LocSystem {
+        export const $gtype: GObject.GType<LocSystem>;
+    }
+
     /**
      * Which location system a satellite is part of.
      *
@@ -1153,6 +1329,10 @@ export namespace Qmi {
          */
         GLONASS,
     }
+    export namespace LocTimeSource {
+        export const $gtype: GObject.GType<LocTimeSource>;
+    }
+
     /**
      * Source of the used time.
      *
@@ -1228,6 +1408,10 @@ export namespace Qmi {
          */
         BDS_TOW_DECODE,
     }
+    export namespace NasActiveBand {
+        export const $gtype: GObject.GType<NasActiveBand>;
+    }
+
     /**
      * Band classes.
      */
@@ -1801,6 +1985,10 @@ export namespace Qmi {
          */
         NR5G_53,
     }
+    export namespace NasAttachState {
+        export const $gtype: GObject.GType<NasAttachState>;
+    }
+
     /**
      * Domain attach state.
      */
@@ -1818,6 +2006,10 @@ export namespace Qmi {
          */
         DETACHED,
     }
+    export namespace NasBoolean {
+        export const $gtype: GObject.GType<NasBoolean>;
+    }
+
     /**
      * Boolean flag with validity info.
      */
@@ -1835,6 +2027,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasCallBarringStatus {
+        export const $gtype: GObject.GType<NasCallBarringStatus>;
+    }
+
     /**
      * Status of the call barring functionality.
      */
@@ -1860,6 +2056,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasCdmaPilotType {
+        export const $gtype: GObject.GType<NasCdmaPilotType>;
+    }
+
     /**
      * The pilot set the pilot belongs to.
      */
@@ -1873,6 +2073,10 @@ export namespace Qmi {
          */
         NEIGHBOR,
     }
+    export namespace NasCdmaPrlPreference {
+        export const $gtype: GObject.GType<NasCdmaPrlPreference>;
+    }
+
     /**
      * Flags specifying the preference when using CDMA Band Class 0.
      */
@@ -1890,6 +2094,10 @@ export namespace Qmi {
          */
         ANY,
     }
+    export namespace NasCellBroadcastCapability {
+        export const $gtype: GObject.GType<NasCellBroadcastCapability>;
+    }
+
     /**
      * Cell broadcast support.
      */
@@ -1907,6 +2115,10 @@ export namespace Qmi {
          */
         ON,
     }
+    export namespace NasChangeDuration {
+        export const $gtype: GObject.GType<NasChangeDuration>;
+    }
+
     /**
      * Duration of the change setting.
      */
@@ -1920,6 +2132,10 @@ export namespace Qmi {
          */
         PERMANENT,
     }
+    export namespace NasDLBandwidth {
+        export const $gtype: GObject.GType<NasDLBandwidth>;
+    }
+
     /**
      * DL Bandwidth.
      */
@@ -1967,6 +2183,10 @@ export namespace Qmi {
         // Constructors of Qmi.NasDLBandwidth
 
         _init(...args: any[]): void;
+    }
+
+    export namespace NasDataCapability {
+        export const $gtype: GObject.GType<NasDataCapability>;
     }
 
     /**
@@ -2030,6 +2250,10 @@ export namespace Qmi {
          */
         DC_HSDPA_PLUS,
     }
+    export namespace NasDayOfWeek {
+        export const $gtype: GObject.GType<NasDayOfWeek>;
+    }
+
     /**
      * The day of the week.
      */
@@ -2063,6 +2287,10 @@ export namespace Qmi {
          */
         SUNDAY,
     }
+    export namespace NasDaylightSavingsAdjustment {
+        export const $gtype: GObject.GType<NasDaylightSavingsAdjustment>;
+    }
+
     /**
      * The number of hours a time is adjusted for daylight savings.
      */
@@ -2080,6 +2308,10 @@ export namespace Qmi {
          */
         TWO_HOURS,
     }
+    export namespace NasDrx {
+        export const $gtype: GObject.GType<NasDrx>;
+    }
+
     /**
      * DRX setting of the device.
      */
@@ -2105,6 +2337,10 @@ export namespace Qmi {
          */
         CN9_T256,
     }
+    export namespace NasEvdoSinrLevel {
+        export const $gtype: GObject.GType<NasEvdoSinrLevel>;
+    }
+
     /**
      * EV-DO SINR level.
      */
@@ -2158,6 +2394,10 @@ export namespace Qmi {
         _init(...args: any[]): void;
     }
 
+    export namespace NasGsmWcdmaAcquisitionOrderPreference {
+        export const $gtype: GObject.GType<NasGsmWcdmaAcquisitionOrderPreference>;
+    }
+
     /**
      * GSM/WCDMA acquisition order preference.
      */
@@ -2175,6 +2415,10 @@ export namespace Qmi {
          */
         WCDMA,
     }
+    export namespace NasHdrPersonality {
+        export const $gtype: GObject.GType<NasHdrPersonality>;
+    }
+
     /**
      * HDR personality type.
      */
@@ -2192,6 +2436,10 @@ export namespace Qmi {
          */
         EHRPD,
     }
+    export namespace NasHdrProtocolRevision {
+        export const $gtype: GObject.GType<NasHdrProtocolRevision>;
+    }
+
     /**
      * HDR protocol revision.
      */
@@ -2213,6 +2461,10 @@ export namespace Qmi {
          */
         REL_B,
     }
+    export namespace NasLteCellAccessStatus {
+        export const $gtype: GObject.GType<NasLteCellAccessStatus>;
+    }
+
     /**
      * Cell access status for LTE calls.
      */
@@ -2238,6 +2490,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasLteRegistrationDomain {
+        export const $gtype: GObject.GType<NasLteRegistrationDomain>;
+    }
+
     /**
      * LTE registration domain.
      */
@@ -2263,6 +2519,10 @@ export namespace Qmi {
          */
         LIMITED_SERVICE,
     }
+    export namespace NasLteVoiceDomain {
+        export const $gtype: GObject.GType<NasLteVoiceDomain>;
+    }
+
     /**
      * LTE voice domain.
      */
@@ -2284,6 +2544,10 @@ export namespace Qmi {
          */
         '3GPP',
     }
+    export namespace NasNetworkDescriptionDisplay {
+        export const $gtype: GObject.GType<NasNetworkDescriptionDisplay>;
+    }
+
     /**
      * Setup to define whether the network description should be displayed.
      */
@@ -2301,6 +2565,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasNetworkDescriptionEncoding {
+        export const $gtype: GObject.GType<NasNetworkDescriptionEncoding>;
+    }
+
     /**
      * Type of encoding used in the network description.
      */
@@ -2322,6 +2590,10 @@ export namespace Qmi {
          */
         GSM,
     }
+    export namespace NasNetworkNameSource {
+        export const $gtype: GObject.GType<NasNetworkNameSource>;
+    }
+
     /**
      * Network name source.
      */
@@ -2355,6 +2627,10 @@ export namespace Qmi {
          */
         SERVICE_PROVIDER_NAME,
     }
+    export namespace NasNetworkRegisterType {
+        export const $gtype: GObject.GType<NasNetworkRegisterType>;
+    }
+
     /**
      * Type of network registration.
      */
@@ -2368,6 +2644,10 @@ export namespace Qmi {
          */
         MANUAL,
     }
+    export namespace NasNetworkScanResult {
+        export const $gtype: GObject.GType<NasNetworkScanResult>;
+    }
+
     /**
      * Network scan result.
      */
@@ -2385,6 +2665,10 @@ export namespace Qmi {
          */
         RADIO_LINK_FAILURE,
     }
+    export namespace NasNetworkSelectionPreference {
+        export const $gtype: GObject.GType<NasNetworkSelectionPreference>;
+    }
+
     /**
      * Network selection preference.
      */
@@ -2398,6 +2682,10 @@ export namespace Qmi {
          */
         MANUAL,
     }
+    export namespace NasNetworkSelectionRegistrationRestriction {
+        export const $gtype: GObject.GType<NasNetworkSelectionRegistrationRestriction>;
+    }
+
     /**
      * Registration restriction.
      */
@@ -2415,6 +2703,10 @@ export namespace Qmi {
          */
         LIMITED,
     }
+    export namespace NasNetworkServiceDomain {
+        export const $gtype: GObject.GType<NasNetworkServiceDomain>;
+    }
+
     /**
      * Network Service Domain.
      */
@@ -2440,6 +2732,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasNetworkType {
+        export const $gtype: GObject.GType<NasNetworkType>;
+    }
+
     /**
      * Type of network.
      */
@@ -2457,6 +2753,10 @@ export namespace Qmi {
          */
         '3GPP',
     }
+    export namespace NasPlmnEncodingScheme {
+        export const $gtype: GObject.GType<NasPlmnEncodingScheme>;
+    }
+
     /**
      * PLMN name encoding schemes.  See 3GPP TS 24.008 section "Network Name
      * information element".
@@ -2471,6 +2771,10 @@ export namespace Qmi {
          */
         UCS2LE,
     }
+    export namespace NasPlmnLanguageId {
+        export const $gtype: GObject.GType<NasPlmnLanguageId>;
+    }
+
     /**
      * Language ID used when encoding the PLMN.
      */
@@ -2488,6 +2792,10 @@ export namespace Qmi {
          */
         ZH_SIMP,
     }
+    export namespace NasPlmnNameCountryInitials {
+        export const $gtype: GObject.GType<NasPlmnNameCountryInitials>;
+    }
+
     /**
      * PLMN name country initials options. See 3GPP TS 24.008
      * section "Network Name information element".
@@ -2506,6 +2814,10 @@ export namespace Qmi {
          */
         INIITALS_UNSPECIFIED,
     }
+    export namespace NasPlmnNameSpareBits {
+        export const $gtype: GObject.GType<NasPlmnNameSpareBits>;
+    }
+
     /**
      * PLMN name spare bits in last octet of a network name.  See 3GPP TS 24.008
      * section "Network Name information element".
@@ -2544,6 +2856,10 @@ export namespace Qmi {
          */
         BITS_28,
     }
+    export namespace NasPreferenceDuration {
+        export const $gtype: GObject.GType<NasPreferenceDuration>;
+    }
+
     /**
      * Duration of the preference setting.
      */
@@ -2577,6 +2893,10 @@ export namespace Qmi {
          */
         INTERNAL_ONE_CALL_3,
     }
+    export namespace NasPsAttachAction {
+        export const $gtype: GObject.GType<NasPsAttachAction>;
+    }
+
     /**
      * Packet Switched domain attach/detach action.
      */
@@ -2590,6 +2910,10 @@ export namespace Qmi {
          */
         DETACH,
     }
+    export namespace NasRadioInterface {
+        export const $gtype: GObject.GType<NasRadioInterface>;
+    }
+
     /**
      * Radio interface technology.
      */
@@ -2635,6 +2959,10 @@ export namespace Qmi {
          */
         '5GNR',
     }
+    export namespace NasRegistrationState {
+        export const $gtype: GObject.GType<NasRegistrationState>;
+    }
+
     /**
      * Status of the network registration.
      */
@@ -2660,6 +2988,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasRejectCause {
+        export const $gtype: GObject.GType<NasRejectCause>;
+    }
+
     /**
      * Reason why a request from the mobile station is rejected by the network.
      *
@@ -2908,6 +3240,10 @@ export namespace Qmi {
          */
         UNSPECIFIED_PROTOCOL_ERROR,
     }
+    export namespace NasRoamingIndicatorStatus {
+        export const $gtype: GObject.GType<NasRoamingIndicatorStatus>;
+    }
+
     /**
      * Status of the roaming indication.
      */
@@ -2921,6 +3257,10 @@ export namespace Qmi {
          */
         OFF,
     }
+    export namespace NasRoamingPreference {
+        export const $gtype: GObject.GType<NasRoamingPreference>;
+    }
+
     /**
      * Roaming preference.
      */
@@ -2942,6 +3282,10 @@ export namespace Qmi {
          */
         ANY,
     }
+    export namespace NasRoamingStatus {
+        export const $gtype: GObject.GType<NasRoamingStatus>;
+    }
+
     /**
      * Roaming status.
      */
@@ -2999,6 +3343,10 @@ export namespace Qmi {
          */
         BANNER_OFF,
     }
+    export namespace NasScellState {
+        export const $gtype: GObject.GType<NasScellState>;
+    }
+
     /**
      * SCell State.
      */
@@ -3016,6 +3364,10 @@ export namespace Qmi {
          */
         ACTIVATED,
     }
+    export namespace NasServiceDomainPreference {
+        export const $gtype: GObject.GType<NasServiceDomainPreference>;
+    }
+
     /**
      * Service domain preference.
      */
@@ -3041,6 +3393,10 @@ export namespace Qmi {
          */
         PS_DETACH,
     }
+    export namespace NasServiceStatus {
+        export const $gtype: GObject.GType<NasServiceStatus>;
+    }
+
     /**
      * Status of the service.
      */
@@ -3066,6 +3422,10 @@ export namespace Qmi {
          */
         POWER_SAVE,
     }
+    export namespace NasSimRejectState {
+        export const $gtype: GObject.GType<NasSimRejectState>;
+    }
+
     /**
      * Reject information of the SIM.
      */
@@ -3091,6 +3451,10 @@ export namespace Qmi {
          */
         CS_PS_INVALID,
     }
+    export namespace NasSwiEmmConnectionState {
+        export const $gtype: GObject.GType<NasSwiEmmConnectionState>;
+    }
+
     /**
      * EMM connection state state. (Sierra Wireless specific).
      */
@@ -3116,6 +3480,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasSwiEmmState {
+        export const $gtype: GObject.GType<NasSwiEmmState>;
+    }
+
     /**
      * EMM registration state. (Sierra Wireless specific).
      */
@@ -3153,6 +3521,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasSwiImsRegState {
+        export const $gtype: GObject.GType<NasSwiImsRegState>;
+    }
+
     /**
      * IMS registration state. (Sierra Wireless specific).
      */
@@ -3182,6 +3554,10 @@ export namespace Qmi {
          */
         _UNKNOWN,
     }
+    export namespace NasSwiModemMode {
+        export const $gtype: GObject.GType<NasSwiModemMode>;
+    }
+
     /**
      * Modem mode (Sierra Wireless specific).
      */
@@ -3239,6 +3615,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasSwiPsState {
+        export const $gtype: GObject.GType<NasSwiPsState>;
+    }
+
     /**
      * PS registration state. (Sierra Wireless specific).
      */
@@ -3256,6 +3636,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasSwiSystemMode {
+        export const $gtype: GObject.GType<NasSwiSystemMode>;
+    }
+
     /**
      * System mode (Sierra Wireless specific).
      */
@@ -3301,6 +3685,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace NasUsagePreference {
+        export const $gtype: GObject.GType<NasUsagePreference>;
+    }
+
     /**
      * Modem usage preference.
      */
@@ -3318,6 +3706,10 @@ export namespace Qmi {
          */
         DATA_CENTRIC,
     }
+    export namespace NasVoiceDomainPreference {
+        export const $gtype: GObject.GType<NasVoiceDomainPreference>;
+    }
+
     /**
      * Voice domain preference.
      */
@@ -3339,6 +3731,10 @@ export namespace Qmi {
          */
         PS_PREFERRED,
     }
+    export namespace NasWcdmaHsService {
+        export const $gtype: GObject.GType<NasWcdmaHsService>;
+    }
+
     /**
      * Call status on high speed.
      */
@@ -3376,6 +3772,10 @@ export namespace Qmi {
          */
         DC_HSDPA_PLUS_HSUPA_SUPPORTED,
     }
+    export namespace NasWcdmaRrcState {
+        export const $gtype: GObject.GType<NasWcdmaRrcState>;
+    }
+
     /**
      * RRC state.
      */
@@ -3401,6 +3801,10 @@ export namespace Qmi {
          */
         CELL_DCH,
     }
+    export namespace OmaHfaFeatureDoneState {
+        export const $gtype: GObject.GType<OmaHfaFeatureDoneState>;
+    }
+
     /**
      * HFA feature done state.
      */
@@ -3418,6 +3822,10 @@ export namespace Qmi {
          */
         FAILED,
     }
+    export namespace OmaSessionFailedReason {
+        export const $gtype: GObject.GType<OmaSessionFailedReason>;
+    }
+
     /**
      * Session failure reason.
      */
@@ -3447,6 +3855,10 @@ export namespace Qmi {
          */
         SESSION_CANCELLED,
     }
+    export namespace OmaSessionState {
+        export const $gtype: GObject.GType<OmaSessionState>;
+    }
+
     /**
      * State of the OMA-DM session.
      */
@@ -3496,6 +3908,10 @@ export namespace Qmi {
          */
         MIP_PROFILE_DOWNLOADED,
     }
+    export namespace OmaSessionType {
+        export const $gtype: GObject.GType<OmaSessionType>;
+    }
+
     /**
      * Type of OMA-DM session.
      */
@@ -3529,6 +3945,10 @@ export namespace Qmi {
          */
         DEVICE_INITIATED_PRL_UPDATE,
     }
+    export namespace PbmSessionType {
+        export const $gtype: GObject.GType<PbmSessionType>;
+    }
+
     /**
      * Type of phonebook management session.
      */
@@ -3566,6 +3986,10 @@ export namespace Qmi {
          */
         GLOBAL_PHONEBOOK_SLOT_2,
     }
+    export namespace PdcConfigurationType {
+        export const $gtype: GObject.GType<PdcConfigurationType>;
+    }
+
     /**
      * Configuration type for change/load configuration.
      */
@@ -3579,6 +4003,10 @@ export namespace Qmi {
          */
         SOFTWARE,
     }
+    export namespace PdcRefreshEventType {
+        export const $gtype: GObject.GType<PdcRefreshEventType>;
+    }
+
     /**
      * Refresh event type.
      */
@@ -3596,6 +4024,10 @@ export namespace Qmi {
          */
         CLIENT_REFRESH,
     }
+    export namespace PdsNetworkMode {
+        export const $gtype: GObject.GType<PdsNetworkMode>;
+    }
+
     /**
      * Network mode used during the A-GPS setup.
      */
@@ -3609,6 +4041,10 @@ export namespace Qmi {
          */
         CDMA,
     }
+    export namespace PdsOperatingMode {
+        export const $gtype: GObject.GType<PdsOperatingMode>;
+    }
+
     /**
      * GPS operating mode.
      */
@@ -3626,6 +4062,10 @@ export namespace Qmi {
          */
         MS_ASSISTED,
     }
+    export namespace PdsOperationMode {
+        export const $gtype: GObject.GType<PdsOperationMode>;
+    }
+
     /**
      * Operation mode used to compute the position.
      */
@@ -3647,6 +4087,10 @@ export namespace Qmi {
          */
         MS_ASSISTED,
     }
+    export namespace PdsPositionSessionStatus {
+        export const $gtype: GObject.GType<PdsPositionSessionStatus>;
+    }
+
     /**
      * Status of the positioning session.
      */
@@ -3688,6 +4132,10 @@ export namespace Qmi {
          */
         E911_SESSION_IN_PROGRESS,
     }
+    export namespace PdsTrackingSessionState {
+        export const $gtype: GObject.GType<PdsTrackingSessionState>;
+    }
+
     /**
      * State of the tracking session.
      */
@@ -4229,6 +4677,10 @@ export namespace Qmi {
         static quark(): GLib.Quark;
     }
 
+    export namespace QosEvent {
+        export const $gtype: GObject.GType<QosEvent>;
+    }
+
     /**
      * QoS event.
      */
@@ -4262,6 +4714,10 @@ export namespace Qmi {
          */
         INFO_CODE_UPDATED,
     }
+    export namespace QosStatus {
+        export const $gtype: GObject.GType<QosStatus>;
+    }
+
     /**
      * QoS flow status.
      */
@@ -4283,6 +4739,10 @@ export namespace Qmi {
          */
         GONE,
     }
+    export namespace SarRfState {
+        export const $gtype: GObject.GType<SarRfState>;
+    }
+
     /**
      * SAR RF state. Each RF state corresponds to a TX power, and the mapping between TX power and RF state is dictated by NV items.
      */
@@ -4382,6 +4842,10 @@ export namespace Qmi {
         // Constructors of Qmi.SarRfState
 
         _init(...args: any[]): void;
+    }
+
+    export namespace Service {
+        export const $gtype: GObject.GType<Service>;
     }
 
     /**
@@ -4597,6 +5061,10 @@ export namespace Qmi {
          */
         ATR,
     }
+    export namespace SioPort {
+        export const $gtype: GObject.GType<SioPort>;
+    }
+
     /**
      * SIO (serial I/O) port numbers. All ports available in the modem have a SIO
      * port number. This enum is incomplete, only few port numbers are publicly
@@ -4640,6 +5108,10 @@ export namespace Qmi {
          */
         A2_MUX_RMNET7,
     }
+    export namespace UimCardApplicationPersonalizationFeature {
+        export const $gtype: GObject.GType<UimCardApplicationPersonalizationFeature>;
+    }
+
     /**
      * Card application personalization feature, when a code is required.
      */
@@ -4713,6 +5185,10 @@ export namespace Qmi {
          */
         GW_CARRIER,
     }
+    export namespace UimCardApplicationPersonalizationFeatureStatus {
+        export const $gtype: GObject.GType<UimCardApplicationPersonalizationFeatureStatus>;
+    }
+
     /**
      * Card application personalization feature status.
      */
@@ -4790,6 +5266,10 @@ export namespace Qmi {
          */
         GW_CARRIER,
     }
+    export namespace UimCardApplicationPersonalizationState {
+        export const $gtype: GObject.GType<UimCardApplicationPersonalizationState>;
+    }
+
     /**
      * Card application personalization state.
      */
@@ -4819,6 +5299,10 @@ export namespace Qmi {
          */
         PERMANENTLY_BLOCKED,
     }
+    export namespace UimCardApplicationState {
+        export const $gtype: GObject.GType<UimCardApplicationState>;
+    }
+
     /**
      * Card application state.
      */
@@ -4856,6 +5340,10 @@ export namespace Qmi {
          */
         READY,
     }
+    export namespace UimCardApplicationType {
+        export const $gtype: GObject.GType<UimCardApplicationType>;
+    }
+
     /**
      * Card application type.
      */
@@ -4885,6 +5373,10 @@ export namespace Qmi {
          */
         ISIM,
     }
+    export namespace UimCardError {
+        export const $gtype: GObject.GType<UimCardError>;
+    }
+
     /**
      * Card error.
      */
@@ -4922,6 +5414,10 @@ export namespace Qmi {
          */
         TECHNICAL,
     }
+    export namespace UimCardProtocol {
+        export const $gtype: GObject.GType<UimCardProtocol>;
+    }
+
     /**
      * Protocol for the card.
      */
@@ -4939,6 +5435,10 @@ export namespace Qmi {
          */
         UICC,
     }
+    export namespace UimCardState {
+        export const $gtype: GObject.GType<UimCardState>;
+    }
+
     /**
      * State of the card.
      */
@@ -4956,6 +5456,10 @@ export namespace Qmi {
          */
         ERROR,
     }
+    export namespace UimDepersonalizationOperation {
+        export const $gtype: GObject.GType<UimDepersonalizationOperation>;
+    }
+
     /**
      * Depersonalization operation to perform.
      */
@@ -4969,6 +5473,10 @@ export namespace Qmi {
          */
         UNBLOCK,
     }
+    export namespace UimFileType {
+        export const $gtype: GObject.GType<UimFileType>;
+    }
+
     /**
      * Type of UIM file.
      */
@@ -4994,6 +5502,10 @@ export namespace Qmi {
          */
         MASTER_FILE,
     }
+    export namespace UimPhysicalCardState {
+        export const $gtype: GObject.GType<UimPhysicalCardState>;
+    }
+
     /**
      * State of the physical card.
      */
@@ -5011,6 +5523,10 @@ export namespace Qmi {
          */
         PRESENT,
     }
+    export namespace UimPinId {
+        export const $gtype: GObject.GType<UimPinId>;
+    }
+
     /**
      * PIN ID.
      */
@@ -5036,6 +5552,10 @@ export namespace Qmi {
          */
         HIDDEN_KEY,
     }
+    export namespace UimPinState {
+        export const $gtype: GObject.GType<UimPinState>;
+    }
+
     /**
      * The PIN state.
      */
@@ -5065,6 +5585,10 @@ export namespace Qmi {
          */
         PERMANENTLY_BLOCKED,
     }
+    export namespace UimRefreshMode {
+        export const $gtype: GObject.GType<UimRefreshMode>;
+    }
+
     /**
      * Refresh mode
      */
@@ -5098,6 +5622,10 @@ export namespace Qmi {
          */
         '3G_RESET',
     }
+    export namespace UimRefreshStage {
+        export const $gtype: GObject.GType<UimRefreshStage>;
+    }
+
     /**
      * Current stage of the refresh procedure.
      */
@@ -5119,6 +5647,10 @@ export namespace Qmi {
          */
         END_WITH_FAILURE,
     }
+    export namespace UimSecurityAttributeLogic {
+        export const $gtype: GObject.GType<UimSecurityAttributeLogic>;
+    }
+
     /**
      * Logic applicable to security attributes.
      */
@@ -5144,6 +5676,10 @@ export namespace Qmi {
          */
         SINGLE,
     }
+    export namespace UimSessionType {
+        export const $gtype: GObject.GType<UimSessionType>;
+    }
+
     /**
      * Type of UIM session.
      */
@@ -5249,6 +5785,10 @@ export namespace Qmi {
          */
         LOGICAL_CHANNEL_SLOT_5,
     }
+    export namespace UimSlotState {
+        export const $gtype: GObject.GType<UimSlotState>;
+    }
+
     /**
      * State of the slot.
      */
@@ -5262,6 +5802,10 @@ export namespace Qmi {
          */
         ACTIVE,
     }
+    export namespace VoiceAlphaDataCodingScheme {
+        export const $gtype: GObject.GType<VoiceAlphaDataCodingScheme>;
+    }
+
     /**
      * Alpha Coding Scheme.
      */
@@ -5275,6 +5819,10 @@ export namespace Qmi {
          */
         UCS2,
     }
+    export namespace VoiceAls {
+        export const $gtype: GObject.GType<VoiceAls>;
+    }
+
     /**
      * ALS line indicator.
      */
@@ -5300,6 +5848,10 @@ export namespace Qmi {
         _init(...args: any[]): void;
     }
 
+    export namespace VoiceCallControlResultType {
+        export const $gtype: GObject.GType<VoiceCallControlResultType>;
+    }
+
     /**
      * Call control result type.
      */
@@ -5317,6 +5869,10 @@ export namespace Qmi {
          */
         USSD,
     }
+    export namespace VoiceCallControlSupplementaryServiceType {
+        export const $gtype: GObject.GType<VoiceCallControlSupplementaryServiceType>;
+    }
+
     /**
      * Call control supplementary service type.
      */
@@ -5350,6 +5906,10 @@ export namespace Qmi {
          */
         USSD,
     }
+    export namespace VoiceCallDirection {
+        export const $gtype: GObject.GType<VoiceCallDirection>;
+    }
+
     /**
      * Call direction.
      */
@@ -5367,6 +5927,10 @@ export namespace Qmi {
          */
         MT,
     }
+    export namespace VoiceCallEndReason {
+        export const $gtype: GObject.GType<VoiceCallEndReason>;
+    }
+
     /**
      * Possible call end reasons resulting from a voice call or supplementary
      * service connection being terminated.
@@ -6161,6 +6725,10 @@ export namespace Qmi {
          */
         '1XCSFB_HARD_FAILURE',
     }
+    export namespace VoiceCallMode {
+        export const $gtype: GObject.GType<VoiceCallMode>;
+    }
+
     /**
      * Call mode.
      */
@@ -6186,6 +6754,10 @@ export namespace Qmi {
          */
         LTE,
     }
+    export namespace VoiceCallState {
+        export const $gtype: GObject.GType<VoiceCallState>;
+    }
+
     /**
      * State of a call.
      */
@@ -6235,6 +6807,10 @@ export namespace Qmi {
          */
         SETUP,
     }
+    export namespace VoiceCallType {
+        export const $gtype: GObject.GType<VoiceCallType>;
+    }
+
     /**
      * Type of a voice call.
      */
@@ -6264,6 +6840,10 @@ export namespace Qmi {
          */
         SUPS,
     }
+    export namespace VoiceDomain {
+        export const $gtype: GObject.GType<VoiceDomain>;
+    }
+
     /**
      * Voice domain preference.
      */
@@ -6285,6 +6865,10 @@ export namespace Qmi {
          */
         PS_PREFERRED,
     }
+    export namespace VoicePresentation {
+        export const $gtype: GObject.GType<VoicePresentation>;
+    }
+
     /**
      * Remote party number presentation indicator.
      */
@@ -6306,6 +6890,10 @@ export namespace Qmi {
          */
         PAYPHONE,
     }
+    export namespace VoicePrivacy {
+        export const $gtype: GObject.GType<VoicePrivacy>;
+    }
+
     /**
      * Voice privacy.
      */
@@ -6319,6 +6907,10 @@ export namespace Qmi {
          */
         ENHANCED,
     }
+    export namespace VoiceServiceOption {
+        export const $gtype: GObject.GType<VoiceServiceOption>;
+    }
+
     /**
      * Service option.
      */
@@ -6364,6 +6956,10 @@ export namespace Qmi {
          */
         WVRC,
     }
+    export namespace VoiceSupplementaryServiceAction {
+        export const $gtype: GObject.GType<VoiceSupplementaryServiceAction>;
+    }
+
     /**
      * Supplementary service action.
      */
@@ -6385,6 +6981,10 @@ export namespace Qmi {
          */
         ERASE,
     }
+    export namespace VoiceSupplementaryServiceNotificationType {
+        export const $gtype: GObject.GType<VoiceSupplementaryServiceNotificationType>;
+    }
+
     /**
      * Supplementary service notification type.
      */
@@ -6458,6 +7058,10 @@ export namespace Qmi {
          */
         INCOMING_CALL_IS_ECT,
     }
+    export namespace VoiceSupplementaryServiceReason {
+        export const $gtype: GObject.GType<VoiceSupplementaryServiceReason>;
+    }
+
     /**
      * Supplementary service reason.
      */
@@ -6523,6 +7127,10 @@ export namespace Qmi {
          */
         CALL_WAITING,
     }
+    export namespace VoiceSupplementaryServiceType {
+        export const $gtype: GObject.GType<VoiceSupplementaryServiceType>;
+    }
+
     /**
      * Supplementary service type during call.
      */
@@ -6572,6 +7180,10 @@ export namespace Qmi {
          */
         LOCAL_UNHOLD,
     }
+    export namespace VoiceTtyMode {
+        export const $gtype: GObject.GType<VoiceTtyMode>;
+    }
+
     /**
      * TTY mode.
      */
@@ -6593,6 +7205,10 @@ export namespace Qmi {
          */
         OFF,
     }
+    export namespace VoiceUserAction {
+        export const $gtype: GObject.GType<VoiceUserAction>;
+    }
+
     /**
      * User action type.
      */
@@ -6610,6 +7226,10 @@ export namespace Qmi {
          */
         REQUIRED,
     }
+    export namespace VoiceUssDataCodingScheme {
+        export const $gtype: GObject.GType<VoiceUssDataCodingScheme>;
+    }
+
     /**
      * Data Coding Scheme used in USSD operations.
      */
@@ -6631,6 +7251,10 @@ export namespace Qmi {
          */
         UCS2,
     }
+    export namespace WdaDataAggregationProtocol {
+        export const $gtype: GObject.GType<WdaDataAggregationProtocol>;
+    }
+
     /**
      * Data aggregation protocol in uplink or downlink.
      */
@@ -6676,6 +7300,10 @@ export namespace Qmi {
          */
         QMAPV5,
     }
+    export namespace WdaLinkLayerProtocol {
+        export const $gtype: GObject.GType<WdaLinkLayerProtocol>;
+    }
+
     /**
      * Link layer protocol.
      */
@@ -6693,6 +7321,10 @@ export namespace Qmi {
          */
         RAW_IP,
     }
+    export namespace WdsAttachPdnListAction {
+        export const $gtype: GObject.GType<WdsAttachPdnListAction>;
+    }
+
     /**
      * Action when setting the attach PDN list.
      */
@@ -6706,6 +7338,10 @@ export namespace Qmi {
          */
         DETACH_OR_PDN_DISCONNECT,
     }
+    export namespace WdsAutoconnectSetting {
+        export const $gtype: GObject.GType<WdsAutoconnectSetting>;
+    }
+
     /**
      * Status of the autoconnect setting.
      */
@@ -6723,6 +7359,10 @@ export namespace Qmi {
          */
         PAUSED,
     }
+    export namespace WdsAutoconnectSettingRoaming {
+        export const $gtype: GObject.GType<WdsAutoconnectSettingRoaming>;
+    }
+
     /**
      * Status of the autoconnect setting while roaming.
      */
@@ -6736,6 +7376,10 @@ export namespace Qmi {
          */
         HOME_ONLY,
     }
+    export namespace WdsCallEndReason {
+        export const $gtype: GObject.GType<WdsCallEndReason>;
+    }
+
     /**
      * Reason for ending the call.
      */
@@ -7029,6 +7673,10 @@ export namespace Qmi {
          */
         EVDO_HDR_RELEASED_BY_CM,
     }
+    export namespace WdsCallType {
+        export const $gtype: GObject.GType<WdsCallType>;
+    }
+
     /**
      * Type of call to originate.
      */
@@ -7042,6 +7690,10 @@ export namespace Qmi {
          */
         EMBEDDED,
     }
+    export namespace WdsClientType {
+        export const $gtype: GObject.GType<WdsClientType>;
+    }
+
     /**
      * Client Type
      */
@@ -7055,6 +7707,10 @@ export namespace Qmi {
          */
         UNDEFINED,
     }
+    export namespace WdsConnectionStatus {
+        export const $gtype: GObject.GType<WdsConnectionStatus>;
+    }
+
     /**
      * Status of the network connection.
      */
@@ -7080,6 +7736,10 @@ export namespace Qmi {
          */
         AUTHENTICATING,
     }
+    export namespace WdsDataBearerTechnology {
+        export const $gtype: GObject.GType<WdsDataBearerTechnology>;
+    }
+
     /**
      * Data bearer technology.
      */
@@ -7169,6 +7829,10 @@ export namespace Qmi {
          */
         TDSCDMA_HSUPA,
     }
+    export namespace WdsDataCallStatus {
+        export const $gtype: GObject.GType<WdsDataCallStatus>;
+    }
+
     /**
      * Data call status.
      */
@@ -7186,6 +7850,10 @@ export namespace Qmi {
          */
         TERMINATED,
     }
+    export namespace WdsDataCallType {
+        export const $gtype: GObject.GType<WdsDataCallType>;
+    }
+
     /**
      * Data call type.
      */
@@ -7207,6 +7875,10 @@ export namespace Qmi {
          */
         MODEM_EMBEDDED,
     }
+    export namespace WdsDataSystem {
+        export const $gtype: GObject.GType<WdsDataSystem>;
+    }
+
     /**
      * Data system type.
      */
@@ -7240,6 +7912,10 @@ export namespace Qmi {
          */
         TDSCDMA,
     }
+    export namespace WdsDataSystemNetworkType {
+        export const $gtype: GObject.GType<WdsDataSystemNetworkType>;
+    }
+
     /**
      * Network type of the data system.
      */
@@ -7253,6 +7929,10 @@ export namespace Qmi {
          */
         '3GPP2',
     }
+    export namespace WdsDeliveryOrder {
+        export const $gtype: GObject.GType<WdsDeliveryOrder>;
+    }
+
     /**
      * QoS delivery order.
      */
@@ -7270,6 +7950,10 @@ export namespace Qmi {
          */
         OFF,
     }
+    export namespace WdsDormancyStatus {
+        export const $gtype: GObject.GType<WdsDormancyStatus>;
+    }
+
     /**
      * Dormancy status.
      */
@@ -7287,6 +7971,10 @@ export namespace Qmi {
          */
         TRAFFIC_CHANNEL_ACTIVE,
     }
+    export namespace WdsDsProfileError {
+        export const $gtype: GObject.GType<WdsDsProfileError>;
+    }
+
     /**
      * Extended DS profile errors.
      */
@@ -7372,6 +8060,10 @@ export namespace Qmi {
          */
         '3GPP2_INVALID_PROFILE_ID',
     }
+    export namespace WdsExtendedTechnologyPreference {
+        export const $gtype: GObject.GType<WdsExtendedTechnologyPreference>;
+    }
+
     /**
      * Type of network allowed when trying to connect.
      */
@@ -7397,6 +8089,10 @@ export namespace Qmi {
          */
         MODEM_LINK_LOCAL,
     }
+    export namespace WdsIpFamily {
+        export const $gtype: GObject.GType<WdsIpFamily>;
+    }
+
     /**
      * Type of IP family.
      */
@@ -7418,6 +8114,10 @@ export namespace Qmi {
          */
         UNSPECIFIED,
     }
+    export namespace WdsIpSupportType {
+        export const $gtype: GObject.GType<WdsIpSupportType>;
+    }
+
     /**
      * IP support type.
      */
@@ -7435,6 +8135,10 @@ export namespace Qmi {
          */
         IPV4V6,
     }
+    export namespace WdsNetworkType {
+        export const $gtype: GObject.GType<WdsNetworkType>;
+    }
+
     /**
      * Network type of the data bearer.
      */
@@ -7452,6 +8156,10 @@ export namespace Qmi {
          */
         '3GPP',
     }
+    export namespace WdsPdpDataCompressionType {
+        export const $gtype: GObject.GType<WdsPdpDataCompressionType>;
+    }
+
     /**
      * PDP data compression types.
      */
@@ -7473,6 +8181,10 @@ export namespace Qmi {
          */
         V44,
     }
+    export namespace WdsPdpHeaderCompressionType {
+        export const $gtype: GObject.GType<WdsPdpHeaderCompressionType>;
+    }
+
     /**
      * PDP header compression types.
      */
@@ -7498,6 +8210,10 @@ export namespace Qmi {
          */
         RFC3095,
     }
+    export namespace WdsPdpType {
+        export const $gtype: GObject.GType<WdsPdpType>;
+    }
+
     /**
      * PDP context type.
      */
@@ -7519,6 +8235,10 @@ export namespace Qmi {
          */
         IPV4_OR_IPV6,
     }
+    export namespace WdsProfileChangeEvent {
+        export const $gtype: GObject.GType<WdsProfileChangeEvent>;
+    }
+
     /**
      * Profile change event.
      */
@@ -7540,6 +8260,10 @@ export namespace Qmi {
          */
         SUBSCRIPTION_CHANGE_EVENT,
     }
+    export namespace WdsProfileFamily {
+        export const $gtype: GObject.GType<WdsProfileFamily>;
+    }
+
     /**
      * Profile family.
      */
@@ -7553,6 +8277,10 @@ export namespace Qmi {
          */
         TETHERED,
     }
+    export namespace WdsProfileType {
+        export const $gtype: GObject.GType<WdsProfileType>;
+    }
+
     /**
      * Profile network type family.
      */
@@ -7574,6 +8302,10 @@ export namespace Qmi {
          */
         ALL,
     }
+    export namespace WdsQosClassIdentifier {
+        export const $gtype: GObject.GType<WdsQosClassIdentifier>;
+    }
+
     /**
      * QoS Class Identifier.
      */
@@ -7615,6 +8347,10 @@ export namespace Qmi {
          */
         NON_GUARANTEED_BITRATE8,
     }
+    export namespace WdsRadioAccessTechnology {
+        export const $gtype: GObject.GType<WdsRadioAccessTechnology>;
+    }
+
     /**
      * Radio access technology.
      */
@@ -7668,6 +8404,10 @@ export namespace Qmi {
          */
         '3GPP2_MAXIMUM',
     }
+    export namespace WdsSduErroneousDelivery {
+        export const $gtype: GObject.GType<WdsSduErroneousDelivery>;
+    }
+
     /**
      * Whether SDUs detected as erroneous are delivered or not.
      */
@@ -7689,6 +8429,10 @@ export namespace Qmi {
          */
         DISABLED,
     }
+    export namespace WdsSduErrorRatio {
+        export const $gtype: GObject.GType<WdsSduErrorRatio>;
+    }
+
     /**
      * Target value for the fraction of SDUs lost or detected as erroneous.
      */
@@ -7726,6 +8470,10 @@ export namespace Qmi {
          */
         '1E1',
     }
+    export namespace WdsSduResidualBitErrorRatio {
+        export const $gtype: GObject.GType<WdsSduResidualBitErrorRatio>;
+    }
+
     /**
      * Target value for the undetected bit error ratio in the delivered SDUs.
      */
@@ -7771,6 +8519,10 @@ export namespace Qmi {
          */
         '6E8',
     }
+    export namespace WdsTetheredCallType {
+        export const $gtype: GObject.GType<WdsTetheredCallType>;
+    }
+
     /**
      * Tethered call type.
      */
@@ -7788,6 +8540,10 @@ export namespace Qmi {
          */
         DUN,
     }
+    export namespace WdsTrafficClass {
+        export const $gtype: GObject.GType<WdsTrafficClass>;
+    }
+
     /**
      * QoS Traffic Classes.
      */
@@ -7813,6 +8569,10 @@ export namespace Qmi {
          */
         BACKGROUND,
     }
+    export namespace WdsVerboseCallEndReason3gpp {
+        export const $gtype: GObject.GType<WdsVerboseCallEndReason3gpp>;
+    }
+
     /**
      * 3GPP-specific call end reasons, given when the `QmiWdsVerboseCallEndReasonType` is #QMI_WDS_VERBOSE_CALL_END_REASON_TYPE_3GPP.
      */
@@ -7978,6 +8738,10 @@ export namespace Qmi {
          */
         INVALID_PROXY_CALL_SESSION_CONTROL_FUNCTION_ADDRESS,
     }
+    export namespace WdsVerboseCallEndReasonCm {
+        export const $gtype: GObject.GType<WdsVerboseCallEndReasonCm>;
+    }
+
     /**
      * Call manager specific call end reasons, given when the `QmiWdsVerboseCallEndReasonType` is #QMI_WDS_VERBOSE_CALL_END_REASON_TYPE_CM.
      */
@@ -8487,6 +9251,10 @@ export namespace Qmi {
          */
         CALL_CONTROL_REJECTED,
     }
+    export namespace WdsVerboseCallEndReasonEhrpd {
+        export const $gtype: GObject.GType<WdsVerboseCallEndReasonEhrpd>;
+    }
+
     /**
      * eHRPD-specific call end reasons, given when the `QmiWdsVerboseCallEndReasonType` is #QMI_WDS_VERBOSE_CALL_END_REASON_TYPE_EHRPD.
      */
@@ -8556,6 +9324,10 @@ export namespace Qmi {
          */
         VSNCP_3GPP2_PDN_EXISTS_FOR_THIS_APN,
     }
+    export namespace WdsVerboseCallEndReasonInternal {
+        export const $gtype: GObject.GType<WdsVerboseCallEndReasonInternal>;
+    }
+
     /**
      * Internal call end reasons, given when the `QmiWdsVerboseCallEndReasonType` is #QMI_WDS_VERBOSE_CALL_END_REASON_TYPE_INTERNAL.
      */
@@ -8757,6 +9529,10 @@ export namespace Qmi {
          */
         VALIDATION_FAILURE,
     }
+    export namespace WdsVerboseCallEndReasonIpv6 {
+        export const $gtype: GObject.GType<WdsVerboseCallEndReasonIpv6>;
+    }
+
     /**
      * IPv6-specific call end reasons, given when the `QmiWdsVerboseCallEndReasonType` is #QMI_WDS_VERBOSE_CALL_END_REASON_TYPE_IPV6.
      */
@@ -8774,6 +9550,10 @@ export namespace Qmi {
          */
         DISABLED,
     }
+    export namespace WdsVerboseCallEndReasonMip {
+        export const $gtype: GObject.GType<WdsVerboseCallEndReasonMip>;
+    }
+
     /**
      * Mobile IP specific call end reasons, given when the `QmiWdsVerboseCallEndReasonType` is #QMI_WDS_VERBOSE_CALL_END_REASON_TYPE_MIP.
      */
@@ -8903,6 +9683,10 @@ export namespace Qmi {
          */
         HA_ERROR_ENCAPSULATION_UNAVAILABLE,
     }
+    export namespace WdsVerboseCallEndReasonPpp {
+        export const $gtype: GObject.GType<WdsVerboseCallEndReasonPpp>;
+    }
+
     /**
      * PPP-specific call end reasons, given when the `QmiWdsVerboseCallEndReasonType` is #QMI_WDS_VERBOSE_CALL_END_REASON_TYPE_PPP.
      */
@@ -8936,6 +9720,10 @@ export namespace Qmi {
          */
         CLOSE_IN_PROGRESS,
     }
+    export namespace WdsVerboseCallEndReasonType {
+        export const $gtype: GObject.GType<WdsVerboseCallEndReasonType>;
+    }
+
     /**
      * Type of verbose call end reason.
      */
@@ -8969,6 +9757,10 @@ export namespace Qmi {
          */
         IPV6,
     }
+    export namespace WmsAckFailureCause {
+        export const $gtype: GObject.GType<WmsAckFailureCause>;
+    }
+
     /**
      * Ack failure cause.
      */
@@ -8986,6 +9778,10 @@ export namespace Qmi {
          */
         NOT_SENT,
     }
+    export namespace WmsAckIndicator {
+        export const $gtype: GObject.GType<WmsAckIndicator>;
+    }
+
     /**
      * Indication of whether ACK needs to be sent or not.
      */
@@ -8999,6 +9795,10 @@ export namespace Qmi {
          */
         DO_NOT_SEND,
     }
+    export namespace WmsCdmaCauseCode {
+        export const $gtype: GObject.GType<WmsCdmaCauseCode>;
+    }
+
     /**
      * Cause codes when failed to send an SMS in CDMA.
      */
@@ -9116,6 +9916,10 @@ export namespace Qmi {
          */
         GENERAL_OTHER,
     }
+    export namespace WmsCdmaErrorClass {
+        export const $gtype: GObject.GType<WmsCdmaErrorClass>;
+    }
+
     /**
      * Error class reported from the network when failed to send an SMS in CDMA,
      * or reported by the device when failed to process a transfer-only CDMA message.
@@ -9138,6 +9942,10 @@ export namespace Qmi {
          */
         PERMANENT_DEVICE,
     }
+    export namespace WmsCdmaServiceOption {
+        export const $gtype: GObject.GType<WmsCdmaServiceOption>;
+    }
+
     /**
      * CDMA service option selection.
      */
@@ -9165,6 +9973,10 @@ export namespace Qmi {
         // Constructors of Qmi.WmsCdmaServiceOption
 
         _init(...args: any[]): void;
+    }
+
+    export namespace WmsGsmUmtsRpCause {
+        export const $gtype: GObject.GType<WmsGsmUmtsRpCause>;
     }
 
     /**
@@ -9268,6 +10080,10 @@ export namespace Qmi {
          */
         INTERWORKING,
     }
+    export namespace WmsGsmUmtsTpCause {
+        export const $gtype: GObject.GType<WmsGsmUmtsTpCause>;
+    }
+
     /**
      * RT cause codes when failed to send an SMS in GSM/WCDMA.
      */
@@ -9377,6 +10193,10 @@ export namespace Qmi {
          */
         UNSPECIFIED_ERROR,
     }
+    export namespace WmsMessageClass {
+        export const $gtype: GObject.GType<WmsMessageClass>;
+    }
+
     /**
      * Message class.
      */
@@ -9418,6 +10238,10 @@ export namespace Qmi {
         _init(...args: any[]): void;
     }
 
+    export namespace WmsMessageDeliveryFailureType {
+        export const $gtype: GObject.GType<WmsMessageDeliveryFailureType>;
+    }
+
     /**
      * Type of message delivery failure.
      */
@@ -9431,6 +10255,10 @@ export namespace Qmi {
          */
         PERMANENT,
     }
+    export namespace WmsMessageFormat {
+        export const $gtype: GObject.GType<WmsMessageFormat>;
+    }
+
     /**
      * Type of message.
      */
@@ -9452,6 +10280,10 @@ export namespace Qmi {
          */
         MWI,
     }
+    export namespace WmsMessageMode {
+        export const $gtype: GObject.GType<WmsMessageMode>;
+    }
+
     /**
      * Message mode.
      */
@@ -9465,6 +10297,10 @@ export namespace Qmi {
          */
         GSM_WCDMA,
     }
+    export namespace WmsMessageProtocol {
+        export const $gtype: GObject.GType<WmsMessageProtocol>;
+    }
+
     /**
      * Type of message protocol.
      */
@@ -9478,6 +10314,10 @@ export namespace Qmi {
          */
         WCDMA,
     }
+    export namespace WmsMessageTagType {
+        export const $gtype: GObject.GType<WmsMessageTagType>;
+    }
+
     /**
      * Type of message tag.
      */
@@ -9499,6 +10339,10 @@ export namespace Qmi {
          */
         MO_NOT_SENT,
     }
+    export namespace WmsMessageType {
+        export const $gtype: GObject.GType<WmsMessageType>;
+    }
+
     /**
      * Type of message.
      */
@@ -9508,6 +10352,10 @@ export namespace Qmi {
          */
         POINT,
     }
+    export namespace WmsNotificationType {
+        export const $gtype: GObject.GType<WmsNotificationType>;
+    }
+
     /**
      * Type of notification.
      */
@@ -9525,6 +10373,10 @@ export namespace Qmi {
          */
         SECONDARY_UMTS,
     }
+    export namespace WmsReceiptAction {
+        export const $gtype: GObject.GType<WmsReceiptAction>;
+    }
+
     /**
      * Action to perform when a message is received.
      */
@@ -9550,6 +10402,10 @@ export namespace Qmi {
          */
         UNKNOWN,
     }
+    export namespace WmsStorageType {
+        export const $gtype: GObject.GType<WmsStorageType>;
+    }
+
     /**
      * Type of messaging storage.
      */
@@ -9567,6 +10423,10 @@ export namespace Qmi {
          */
         NONE,
     }
+    export namespace WmsTransferIndication {
+        export const $gtype: GObject.GType<WmsTransferIndication>;
+    }
+
     /**
      * Transfer indication actions.
      */
@@ -14190,6 +15050,10 @@ export namespace Qmi {
     interface MessageForeachRawTlvFn {
         (type: number, value: number, length: number): void;
     }
+    export namespace CtlFlag {
+        export const $gtype: GObject.GType<CtlFlag>;
+    }
+
     /**
      * QMI flags in messages of the %QMI_SERVICE_CTL service.
      */
@@ -14207,6 +15071,10 @@ export namespace Qmi {
          */
         INDICATION,
     }
+    export namespace DeviceAddLinkFlags {
+        export const $gtype: GObject.GType<DeviceAddLinkFlags>;
+    }
+
     /**
      * Flags specifying the behavior of the new link.
      */
@@ -14232,6 +15100,10 @@ export namespace Qmi {
          */
         EGRESS_MAP_CKSUMV5,
     }
+    export namespace DeviceOpenFlags {
+        export const $gtype: GObject.GType<DeviceOpenFlags>;
+    }
+
     /**
      * Flags to specify which actions to be performed when the device is open.
      */
@@ -14281,6 +15153,10 @@ export namespace Qmi {
          */
         EXPECT_INDICATIONS,
     }
+    export namespace DeviceReleaseClientFlags {
+        export const $gtype: GObject.GType<DeviceReleaseClientFlags>;
+    }
+
     /**
      * Flags to specify which actions to be performed when releasing the client.
      */
@@ -14294,6 +15170,10 @@ export namespace Qmi {
          */
         RELEASE_CID,
     }
+    export namespace DmsBandCapability {
+        export const $gtype: GObject.GType<DmsBandCapability>;
+    }
+
     /**
      * Frequency band capabilities.
      *
@@ -14461,6 +15341,10 @@ export namespace Qmi {
          */
         WCDMA_1500,
     }
+    export namespace DmsLteBandCapability {
+        export const $gtype: GObject.GType<DmsLteBandCapability>;
+    }
+
     /**
      * LTE-specific Frequency bands.
      */
@@ -14634,6 +15518,10 @@ export namespace Qmi {
         _init(...args: any[]): void;
     }
 
+    export namespace DmsOfflineReason {
+        export const $gtype: GObject.GType<DmsOfflineReason>;
+    }
+
     /**
      * Reasons for being in Offline (`QMI_DMS_OPERATING_MODE_OFFLINE)` state.
      */
@@ -14655,6 +15543,10 @@ export namespace Qmi {
          */
         DEVICE_MEMORY_FULL,
     }
+    export namespace DmsPowerState {
+        export const $gtype: GObject.GType<DmsPowerState>;
+    }
+
     /**
      * Flags specifying the current power state.
      *
@@ -14687,6 +15579,10 @@ export namespace Qmi {
          */
         FAULT,
     }
+    export namespace DsdApnTypePreference {
+        export const $gtype: GObject.GType<DsdApnTypePreference>;
+    }
+
     /**
      * APN type preference as a bitmask.
      */
@@ -14732,6 +15628,10 @@ export namespace Qmi {
          */
         EMERGENCY,
     }
+    export namespace DsdSoMask {
+        export const $gtype: GObject.GType<DsdSoMask>;
+    }
+
     /**
      * Service Option (SO) mask.
      */
@@ -14893,6 +15793,10 @@ export namespace Qmi {
          */
         '3GPP_SO_MASK_5G_SA',
     }
+    export namespace LocDeleteCellDatabase {
+        export const $gtype: GObject.GType<LocDeleteCellDatabase>;
+    }
+
     /**
      * Type of data to delete from the cell database.
      */
@@ -14938,6 +15842,10 @@ export namespace Qmi {
          */
         NEIGHBOR_INFO,
     }
+    export namespace LocDeleteClockInfo {
+        export const $gtype: GObject.GType<LocDeleteClockInfo>;
+    }
+
     /**
      * Type of data to delete from the clock information.
      */
@@ -14987,6 +15895,10 @@ export namespace Qmi {
          */
         DISABLE_TT,
     }
+    export namespace LocDeleteGnssData {
+        export const $gtype: GObject.GType<LocDeleteGnssData>;
+    }
+
     /**
      * Flags to use when deleting GNSS assistance data.
      *
@@ -15070,6 +15982,10 @@ export namespace Qmi {
          */
         FREQ_BIAS_EST,
     }
+    export namespace LocDeleteSvInfo {
+        export const $gtype: GObject.GType<LocDeleteSvInfo>;
+    }
+
     /**
      * Type of data to delete for a given satellite.
      */
@@ -15083,6 +15999,10 @@ export namespace Qmi {
          */
         ALMANAC,
     }
+    export namespace LocEventRegistrationFlag {
+        export const $gtype: GObject.GType<LocEventRegistrationFlag>;
+    }
+
     /**
      * For which events to register the subscription.
      *
@@ -15166,6 +16086,10 @@ export namespace Qmi {
          */
         MOTION_DATA_CONTROL,
     }
+    export namespace LocNmeaType {
+        export const $gtype: GObject.GType<LocNmeaType>;
+    }
+
     /**
      * NMEA trace types that may be enabled in the GNSS engine.
      */
@@ -15203,6 +16127,10 @@ export namespace Qmi {
          */
         ALL,
     }
+    export namespace LocSatelliteValidInformation {
+        export const $gtype: GObject.GType<LocSatelliteValidInformation>;
+    }
+
     /**
      * Which information about the satellite is valid.
      *
@@ -15242,6 +16170,10 @@ export namespace Qmi {
          */
         SIGNAL_TO_NOISE_RATIO,
     }
+    export namespace LocSensorDataUsage {
+        export const $gtype: GObject.GType<LocSensorDataUsage>;
+    }
+
     /**
      * Which sensors where used and for which measurements.
      *
@@ -15273,6 +16205,10 @@ export namespace Qmi {
          */
         AIDED_VELOCITY,
     }
+    export namespace LocServerAddressType {
+        export const $gtype: GObject.GType<LocServerAddressType>;
+    }
+
     /**
      * Type of server address for Assisted-GPS.
      */
@@ -15294,6 +16230,10 @@ export namespace Qmi {
          */
         URL,
     }
+    export namespace LocTechnologyUsed {
+        export const $gtype: GObject.GType<LocTechnologyUsed>;
+    }
+
     /**
      * Which technology has been used.
      *
@@ -15333,6 +16273,10 @@ export namespace Qmi {
          */
         HYBRID,
     }
+    export namespace NasBandPreference {
+        export const $gtype: GObject.GType<NasBandPreference>;
+    }
+
     /**
      * Flags to specify frequency band preferences.
      *
@@ -15500,6 +16444,10 @@ export namespace Qmi {
          */
         WCDMA_1500,
     }
+    export namespace NasLteBandPreference {
+        export const $gtype: GObject.GType<NasLteBandPreference>;
+    }
+
     /**
      * Flags to specify LTE-specific frequency band preferences.
      */
@@ -15673,6 +16621,10 @@ export namespace Qmi {
         _init(...args: any[]): void;
     }
 
+    export namespace NasNetworkNameDisplayCondition {
+        export const $gtype: GObject.GType<NasNetworkNameDisplayCondition>;
+    }
+
     /**
      * Flags used to control display of the PLMN name and Service Provider Name. See
      * 3GPP TS 51.011 descripton of the EFspn SIM file for more details.
@@ -15693,6 +16645,10 @@ export namespace Qmi {
          */
         SPN_NOT_REQUIRED_IF_UNKNOWN_NETWORK,
     }
+    export namespace NasNetworkScanType {
+        export const $gtype: GObject.GType<NasNetworkScanType>;
+    }
+
     /**
      * Flags to use when specifying which networks to scan.
      */
@@ -15714,6 +16670,10 @@ export namespace Qmi {
          */
         TD_SCDMA,
     }
+    export namespace NasNetworkStatus {
+        export const $gtype: GObject.GType<NasNetworkStatus>;
+    }
+
     /**
      * Flags to specify the status of a given network.
      */
@@ -15751,6 +16711,10 @@ export namespace Qmi {
          */
         NOT_PREFERRED,
     }
+    export namespace NasPlmnAccessTechnologyIdentifier {
+        export const $gtype: GObject.GType<NasPlmnAccessTechnologyIdentifier>;
+    }
+
     /**
      * Preferred networks access technology identifier as specified in
      * ETSI TS 131 102, chapter 4.2.5.
@@ -15785,6 +16749,10 @@ export namespace Qmi {
          */
         ALL,
     }
+    export namespace NasRadioTechnologyPreference {
+        export const $gtype: GObject.GType<NasRadioTechnologyPreference>;
+    }
+
     /**
      * Flags to specify the radio technology preference.
      */
@@ -15818,6 +16786,10 @@ export namespace Qmi {
          */
         LTE,
     }
+    export namespace NasRatModePreference {
+        export const $gtype: GObject.GType<NasRatModePreference>;
+    }
+
     /**
      * Flags specifying radio access technology mode preference.
      */
@@ -15851,6 +16823,10 @@ export namespace Qmi {
          */
         '5GNR',
     }
+    export namespace NasSignalStrengthRequest {
+        export const $gtype: GObject.GType<NasSignalStrengthRequest>;
+    }
+
     /**
      * Extra information to request when gathering Signal Strength.
      */
@@ -15892,6 +16868,10 @@ export namespace Qmi {
          */
         LTE_RSRP,
     }
+    export namespace NasTdScdmaBandPreference {
+        export const $gtype: GObject.GType<NasTdScdmaBandPreference>;
+    }
+
     /**
      * Flags to specify TD-SCDMA-specific frequency band preferences.
      */
@@ -15921,6 +16901,10 @@ export namespace Qmi {
          */
         F,
     }
+    export namespace PbmEventRegistrationFlag {
+        export const $gtype: GObject.GType<PbmEventRegistrationFlag>;
+    }
+
     /**
      * Flags to use to register to phonebook indications.
      */
@@ -15950,6 +16934,10 @@ export namespace Qmi {
          */
         GAS_UPDATE,
     }
+    export namespace PbmPhonebookType {
+        export const $gtype: GObject.GType<PbmPhonebookType>;
+    }
+
     /**
      * Phonebook type.
      */
@@ -15987,6 +16975,10 @@ export namespace Qmi {
          */
         MBN,
     }
+    export namespace PdsDataValid {
+        export const $gtype: GObject.GType<PdsDataValid>;
+    }
+
     /**
      * Flags to indicate which position data parameters are valid.
      */
@@ -16084,6 +17076,10 @@ export namespace Qmi {
          */
         OPERATING_MODE,
     }
+    export namespace ServiceFlag {
+        export const $gtype: GObject.GType<ServiceFlag>;
+    }
+
     /**
      * QMI flags in messages which are not of the %QMI_SERVICE_CTL service.
      */
@@ -16105,6 +17101,10 @@ export namespace Qmi {
          */
         INDICATION,
     }
+    export namespace UimConfiguration {
+        export const $gtype: GObject.GType<UimConfiguration>;
+    }
+
     /**
      * Requested configurations. If none explicitly requested, all configuration
      * items are returned.
@@ -16123,6 +17123,10 @@ export namespace Qmi {
          */
         HALT_SUBSCRIPTION,
     }
+    export namespace UimEventRegistrationFlag {
+        export const $gtype: GObject.GType<UimEventRegistrationFlag>;
+    }
+
     /**
      * Flags to use to register to UIM indications.
      */
@@ -16144,6 +17148,10 @@ export namespace Qmi {
          */
         PHYSICAL_SLOT_STATUS,
     }
+    export namespace UimSecurityAttribute {
+        export const $gtype: GObject.GType<UimSecurityAttribute>;
+    }
+
     /**
      * Security Attributes.
      */
@@ -16165,6 +17173,10 @@ export namespace Qmi {
          */
         ADM,
     }
+    export namespace VoiceWcdmaAmrStatus {
+        export const $gtype: GObject.GType<VoiceWcdmaAmrStatus>;
+    }
+
     /**
      * WCDMA AMR status.
      */
@@ -16190,6 +17202,10 @@ export namespace Qmi {
          */
         GSM_AMR_NB,
     }
+    export namespace WdsApnTypeMask {
+        export const $gtype: GObject.GType<WdsApnTypeMask>;
+    }
+
     /**
      * APN type as a bitmask.
      */
@@ -16219,6 +17235,10 @@ export namespace Qmi {
          */
         EMERGENCY,
     }
+    export namespace WdsAuthentication {
+        export const $gtype: GObject.GType<WdsAuthentication>;
+    }
+
     /**
      * PDP context authentication protocols.
      */
@@ -16236,6 +17256,10 @@ export namespace Qmi {
          */
         CHAP,
     }
+    export namespace WdsExtendedDataBearerTechnology3gpp {
+        export const $gtype: GObject.GType<WdsExtendedDataBearerTechnology3gpp>;
+    }
+
     /**
      * 3GPP extended data bearer technologies.
      */
@@ -16301,6 +17325,10 @@ export namespace Qmi {
          */
         LTE_TDD,
     }
+    export namespace WdsExtendedDataBearerTechnology3gpp2 {
+        export const $gtype: GObject.GType<WdsExtendedDataBearerTechnology3gpp2>;
+    }
+
     /**
      * 3GPP2 extended data bearer technologies.
      */
@@ -16362,6 +17390,10 @@ export namespace Qmi {
          */
         HDR_EVDO_FMC,
     }
+    export namespace WdsPacketStatisticsMaskFlag {
+        export const $gtype: GObject.GType<WdsPacketStatisticsMaskFlag>;
+    }
+
     /**
      * Mask to use when requesting packet statistics.
      */
@@ -16407,6 +17439,10 @@ export namespace Qmi {
          */
         RX_PACKETS_DROPPED,
     }
+    export namespace WdsRat3gpp {
+        export const $gtype: GObject.GType<WdsRat3gpp>;
+    }
+
     /**
      * Flags specifying the 3GPP-specific Radio Access Technology, when the data
      * bearer network type is `QMI_WDS_NETWORK_TYPE_3`GPP.
@@ -16461,6 +17497,10 @@ export namespace Qmi {
          */
         NULL_BEARER,
     }
+    export namespace WdsRat3gpp2 {
+        export const $gtype: GObject.GType<WdsRat3gpp2>;
+    }
+
     /**
      * Flags specifying the 3GPP2-specific Radio Access Technology, when the data
      * bearer network type is `QMI_WDS_NETWORK_TYPE_3`GPP2.
@@ -16499,6 +17539,10 @@ export namespace Qmi {
          */
         NULL_BEARER,
     }
+    export namespace WdsRequestedSettings {
+        export const $gtype: GObject.GType<WdsRequestedSettings>;
+    }
+
     /**
      * Flags specifying requested WDS settings.
      */
@@ -16584,6 +17628,10 @@ export namespace Qmi {
          */
         OPERATOR_RESERVED_PCO,
     }
+    export namespace WdsSetEventReportTransferStatistics {
+        export const $gtype: GObject.GType<WdsSetEventReportTransferStatistics>;
+    }
+
     /**
      * Flags indicating which WDS Set Event Report Transfer Statistics indicators
      * should be emitted.
@@ -16630,6 +17678,10 @@ export namespace Qmi {
          */
         RX_PACKETS_DROPPED,
     }
+    export namespace WdsSoCdma1x {
+        export const $gtype: GObject.GType<WdsSoCdma1x>;
+    }
+
     /**
      * Flags specifying the Service Option when the bearer network type is
      * `QMI_WDS_NETWORK_TYPE_3`GPP2 and when the Radio Access Technology mask
@@ -16653,6 +17705,10 @@ export namespace Qmi {
          */
         IS2000_REL_A,
     }
+    export namespace WdsSoEvdoRev0 {
+        export const $gtype: GObject.GType<WdsSoEvdoRev0>;
+    }
+
     /**
      * Flags specifying the Service Option when the bearer network type is
      * `QMI_WDS_NETWORK_TYPE_3`GPP2 and when the Radio Access Technology mask
@@ -16668,6 +17724,10 @@ export namespace Qmi {
          */
         DPA,
     }
+    export namespace WdsSoEvdoRevA {
+        export const $gtype: GObject.GType<WdsSoEvdoRevA>;
+    }
+
     /**
      * Flags specifying the Service Option when the bearer network type is
      * `QMI_WDS_NETWORK_TYPE_3`GPP2 and when the Radio Access Technology mask
@@ -16695,6 +17755,10 @@ export namespace Qmi {
          */
         EMPA_EHRPD,
     }
+    export namespace WdsSoEvdoRevB {
+        export const $gtype: GObject.GType<WdsSoEvdoRevB>;
+    }
+
     /**
      * Flags specifying the Service Option when the bearer network type is
      * `QMI_WDS_NETWORK_TYPE_3`GPP2 and when the Radio Access Technology mask
@@ -16730,6 +17794,10 @@ export namespace Qmi {
          */
         MMPA_EHRPD,
     }
+    export namespace WdsTechnologyPreference {
+        export const $gtype: GObject.GType<WdsTechnologyPreference>;
+    }
+
     /**
      * Type of network allowed when trying to connect.
      */

@@ -18,6 +18,10 @@ export namespace GCab {
      * GCab-1.0
      */
 
+    export namespace Compression {
+        export const $gtype: GObject.GType<Compression>;
+    }
+
     /**
      * Compression used by the #GCabFolder.
      */
@@ -72,6 +76,10 @@ export namespace GCab {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace FileAttribute {
+        export const $gtype: GObject.GType<FileAttribute>;
     }
 
     /**

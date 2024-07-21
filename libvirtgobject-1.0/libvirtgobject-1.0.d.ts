@@ -21,6 +21,10 @@ export namespace LibvirtGObject {
      * LibvirtGObject-1.0
      */
 
+    export namespace DomainDeleteFlags {
+        export const $gtype: GObject.GType<DomainDeleteFlags>;
+    }
+
     enum DomainDeleteFlags {
         /**
          * No flags
@@ -38,6 +42,10 @@ export namespace LibvirtGObject {
         REMOVE_NVRAM,
         KEEP_NVRAM,
     }
+    export namespace DomainRebootFlags {
+        export const $gtype: GObject.GType<DomainRebootFlags>;
+    }
+
     enum DomainRebootFlags {
         /**
          * No flags, hypervisor choice
@@ -52,6 +60,10 @@ export namespace LibvirtGObject {
          */
         GUEST_AGENT,
     }
+    export namespace DomainShutdownFlags {
+        export const $gtype: GObject.GType<DomainShutdownFlags>;
+    }
+
     enum DomainShutdownFlags {
         /**
          * No flags, hypervisor choice
@@ -66,6 +78,10 @@ export namespace LibvirtGObject {
          */
         GUEST_AGENT,
     }
+    export namespace DomainSnapshotCreateFlags {
+        export const $gtype: GObject.GType<DomainSnapshotCreateFlags>;
+    }
+
     enum DomainSnapshotCreateFlags {
         /**
          * No flags
@@ -105,6 +121,10 @@ export namespace LibvirtGObject {
          */
         ATOMIC,
     }
+    export namespace DomainSnapshotDeleteFlags {
+        export const $gtype: GObject.GType<DomainSnapshotDeleteFlags>;
+    }
+
     enum DomainSnapshotDeleteFlags {
         /**
          * Also delete children
@@ -119,6 +139,10 @@ export namespace LibvirtGObject {
          */
         CHILDREN_ONLY,
     }
+    export namespace DomainSnapshotListFlags {
+        export const $gtype: GObject.GType<DomainSnapshotListFlags>;
+    }
+
     enum DomainSnapshotListFlags {
         /**
          * List all snapshots
@@ -171,6 +195,10 @@ export namespace LibvirtGObject {
          */
         EXTERNAL,
     }
+    export namespace DomainSnapshotRevertFlags {
+        export const $gtype: GObject.GType<DomainSnapshotRevertFlags>;
+    }
+
     enum DomainSnapshotRevertFlags {
         /**
          * Run after revert
@@ -185,6 +213,10 @@ export namespace LibvirtGObject {
          */
         FORCE,
     }
+    export namespace DomainState {
+        export const $gtype: GObject.GType<DomainState>;
+    }
+
     enum DomainState {
         NONE,
         RUNNING,
@@ -195,6 +227,10 @@ export namespace LibvirtGObject {
         CRASHED,
         PMSUSPENDED,
     }
+    export namespace DomainUpdateDeviceFlags {
+        export const $gtype: GObject.GType<DomainUpdateDeviceFlags>;
+    }
+
     enum DomainUpdateDeviceFlags {
         /**
          * Update current domain state
@@ -209,6 +245,10 @@ export namespace LibvirtGObject {
          */
         CONFIG,
     }
+    export namespace DomainXMLFlags {
+        export const $gtype: GObject.GType<DomainXMLFlags>;
+    }
+
     enum DomainXMLFlags {
         /**
          * No flags
@@ -227,6 +267,10 @@ export namespace LibvirtGObject {
          */
         UPDATE_CPU,
     }
+    export namespace IPAddrType {
+        export const $gtype: GObject.GType<IPAddrType>;
+    }
+
     enum IPAddrType {
         /**
          * IPv4 Address.
@@ -237,6 +281,10 @@ export namespace LibvirtGObject {
          */
         IPV6,
     }
+    export namespace StoragePoolState {
+        export const $gtype: GObject.GType<StoragePoolState>;
+    }
+
     enum StoragePoolState {
         INACTIVE,
         BUILDING,
@@ -244,6 +292,10 @@ export namespace LibvirtGObject {
         DEGRADED,
         INACCESSIBLE,
     }
+    export namespace StorageVolResizeFlags {
+        export const $gtype: GObject.GType<StorageVolResizeFlags>;
+    }
+
     enum StorageVolResizeFlags {
         /**
          * No flags
@@ -263,6 +315,10 @@ export namespace LibvirtGObject {
          */
         SHRINK,
     }
+    export namespace StorageVolType {
+        export const $gtype: GObject.GType<StorageVolType>;
+    }
+
     enum StorageVolType {
         FILE,
         BLOCK,
@@ -290,6 +346,10 @@ export namespace LibvirtGObject {
     type StoragePoolHandle = object | null;
     type StorageVolHandle = object | null;
     type StreamHandle = object | null;
+    export namespace DomainStartFlags {
+        export const $gtype: GObject.GType<DomainStartFlags>;
+    }
+
     enum DomainStartFlags {
         NONE,
         PAUSED,
@@ -297,6 +357,10 @@ export namespace LibvirtGObject {
         BYPASS_CACHE,
         FORCE_BOOT,
     }
+    export namespace StreamIOCondition {
+        export const $gtype: GObject.GType<StreamIOCondition>;
+    }
+
     enum StreamIOCondition {
         READABLE,
         WRITABLE,

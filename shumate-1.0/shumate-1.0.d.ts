@@ -54,6 +54,10 @@ export namespace Shumate {
         static quark(): GLib.Quark;
     }
 
+    export namespace GeometryType {
+        export const $gtype: GObject.GType<GeometryType>;
+    }
+
     /**
      * A type of geometry.
      */
@@ -87,6 +91,10 @@ export namespace Shumate {
          */
         MULTIPOLYGON,
     }
+    export namespace MapProjection {
+        export const $gtype: GObject.GType<MapProjection>;
+    }
+
     /**
      * Projections supported by the library.
      */
@@ -96,6 +104,10 @@ export namespace Shumate {
          */
         MERCATOR,
     }
+    export namespace State {
+        export const $gtype: GObject.GType<State>;
+    }
+
     /**
      * Tile loading state.
      */
@@ -201,6 +213,10 @@ export namespace Shumate {
          * Gets the #ShumateTileDownloader error quark.
          */
         static quark(): GLib.Quark;
+    }
+
+    export namespace Unit {
+        export const $gtype: GObject.GType<Unit>;
     }
 
     /**

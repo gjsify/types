@@ -19,6 +19,10 @@ export namespace Cogl {
      * Cogl-12
      */
 
+    export namespace AttributeType {
+        export const $gtype: GObject.GType<AttributeType>;
+    }
+
     /**
      * Data types for the components of a vertex attribute.
      */
@@ -46,6 +50,10 @@ export namespace Cogl {
          */
         FLOAT,
     }
+    export namespace BitmapError {
+        export const $gtype: GObject.GType<BitmapError>;
+    }
+
     /**
      * Error codes that can be thrown when performing bitmap
      * operations. Note that gdk_pixbuf_new_from_file() can also throw
@@ -68,6 +76,10 @@ export namespace Cogl {
          */
         CORRUPT_IMAGE,
     }
+    export namespace BlendStringError {
+        export const $gtype: GObject.GType<BlendStringError>;
+    }
+
     /**
      * Error enumeration for the blend strings parser
      */
@@ -90,6 +102,10 @@ export namespace Cogl {
          */
         GPU_UNSUPPORTED_ERROR,
     }
+    export namespace DepthTestFunction {
+        export const $gtype: GObject.GType<DepthTestFunction>;
+    }
+
     /**
      * When using depth testing one of these functions is used to compare
      * the depth of an incoming fragment against the depth value currently
@@ -139,6 +155,10 @@ export namespace Cogl {
          */
         ALWAYS,
     }
+    export namespace FeatureID {
+        export const $gtype: GObject.GType<FeatureID>;
+    }
+
     /**
      * All the capabilities that can vary between different GPUs supported
      * by Cogl. Applications that depend on any of these features should explicitly
@@ -182,6 +202,10 @@ export namespace Cogl {
         OGL_FEATURE_ID_BLIT_FRAMEBUFFER,
         OGL_FEATURE_ID_TIMESTAMP_QUERY,
     }
+    export namespace FilterReturn {
+        export const $gtype: GObject.GType<FilterReturn>;
+    }
+
     /**
      * Return values for the #CoglXlibFilterFunc and #CoglWin32FilterFunc functions.
      */
@@ -196,6 +220,10 @@ export namespace Cogl {
          */
         REMOVE,
     }
+    export namespace FrameEvent {
+        export const $gtype: GObject.GType<FrameEvent>;
+    }
+
     /**
      * Identifiers that are passed to #CoglFrameCallback functions
      * (registered using cogl_onscreen_add_frame_callback()) that
@@ -230,9 +258,17 @@ export namespace Cogl {
          */
         COMPLETE,
     }
+    export namespace FramebufferError {
+        export const $gtype: GObject.GType<FramebufferError>;
+    }
+
     enum FramebufferError {
         FRAMEBUFFER_ERROR_ALLOCATE,
     }
+    export namespace GraphicsResetStatus {
+        export const $gtype: GObject.GType<GraphicsResetStatus>;
+    }
+
     /**
      * All the error values that might be returned by
      * cogl_get_graphics_reset_status(). Each value's meaning corresponds
@@ -246,6 +282,10 @@ export namespace Cogl {
         UNKNOWN_CONTEXT_RESET,
         PURGED_CONTEXT_RESET,
     }
+    export namespace IndicesType {
+        export const $gtype: GObject.GType<IndicesType>;
+    }
+
     /**
      * You should aim to use the smallest data type that gives you enough
      * range, since it reduces the size of your index array and can help
@@ -271,6 +311,10 @@ export namespace Cogl {
          */
         INT,
     }
+    export namespace PipelineAlphaFunc {
+        export const $gtype: GObject.GType<PipelineAlphaFunc>;
+    }
+
     /**
      * Alpha testing happens before blending primitives with the framebuffer and
      * gives an opportunity to discard fragments based on a comparison with the
@@ -317,6 +361,10 @@ export namespace Cogl {
          */
         ALWAYS,
     }
+    export namespace PipelineCullFaceMode {
+        export const $gtype: GObject.GType<PipelineCullFaceMode>;
+    }
+
     /**
      * Specifies which faces should be culled. This can be set on a
      * pipeline using cogl_pipeline_set_cull_face_mode().
@@ -340,6 +388,10 @@ export namespace Cogl {
          */
         BOTH,
     }
+    export namespace PipelineFilter {
+        export const $gtype: GObject.GType<PipelineFilter>;
+    }
+
     /**
      * Texture filtering is used whenever the current pixel maps either to more
      * than one texture element (texel) or less than one. These filter enums
@@ -385,6 +437,10 @@ export namespace Cogl {
          */
         LINEAR_MIPMAP_LINEAR,
     }
+    export namespace PipelineWrapMode {
+        export const $gtype: GObject.GType<PipelineWrapMode>;
+    }
+
     /**
      * The wrap mode specifies what happens when texture coordinates
      * outside the range 0→1 are used. Note that if the filter mode is
@@ -421,6 +477,10 @@ export namespace Cogl {
          */
         AUTOMATIC,
     }
+    export namespace RendererError {
+        export const $gtype: GObject.GType<RendererError>;
+    }
+
     enum RendererError {
         XLIB_DISPLAY_OPEN,
         BAD_CONSTRAINT,
@@ -438,6 +498,10 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
+    export namespace ShaderType {
+        export const $gtype: GObject.GType<ShaderType>;
+    }
+
     /**
      * Types of shaders
      */
@@ -451,6 +515,10 @@ export namespace Cogl {
          */
         FRAGMENT,
     }
+    export namespace SnippetHook {
+        export const $gtype: GObject.GType<SnippetHook>;
+    }
+
     /**
      * #CoglSnippetHook is used to specify a location within a
      * #CoglPipeline where the code of the snippet should be used when it
@@ -780,6 +848,10 @@ export namespace Cogl {
          */
         TEXTURE_LOOKUP,
     }
+    export namespace StereoMode {
+        export const $gtype: GObject.GType<StereoMode>;
+    }
+
     /**
      * Represents how draw should affect the two buffers
      * of a stereo framebuffer. See cogl_framebuffer_set_stereo_mode().
@@ -798,6 +870,10 @@ export namespace Cogl {
          */
         RIGHT,
     }
+    export namespace SystemError {
+        export const $gtype: GObject.GType<SystemError>;
+    }
+
     /**
      * Error enumeration for Cogl
      *
@@ -829,6 +905,10 @@ export namespace Cogl {
          */
         NO_MEMORY,
     }
+    export namespace TextureComponents {
+        export const $gtype: GObject.GType<TextureComponents>;
+    }
+
     /**
      * See cogl_texture_set_components().
      */
@@ -856,6 +936,10 @@ export namespace Cogl {
          */
         DEPTH,
     }
+    export namespace TextureError {
+        export const $gtype: GObject.GType<TextureError>;
+    }
+
     /**
      * Error codes that can be thrown when allocating textures.
      */
@@ -875,6 +959,10 @@ export namespace Cogl {
          */
         TYPE,
     }
+    export namespace VerticesMode {
+        export const $gtype: GObject.GType<VerticesMode>;
+    }
+
     /**
      * Different ways of interpreting vertices when drawing.
      */
@@ -913,6 +1001,10 @@ export namespace Cogl {
          */
         TRIANGLE_FAN,
     }
+    export namespace Winding {
+        export const $gtype: GObject.GType<Winding>;
+    }
+
     /**
      * Enum used to represent the two directions of rotation. This can be
      * used to set the front face for culling by calling
@@ -928,6 +1020,10 @@ export namespace Cogl {
          */
         COUNTER_CLOCKWISE,
     }
+    export namespace WinsysFeature {
+        export const $gtype: GObject.GType<WinsysFeature>;
+    }
+
     enum WinsysFeature {
         VBLANK_COUNTER,
         VBLANK_WAIT,
@@ -1330,6 +1426,10 @@ export namespace Cogl {
     interface Texture2DEGLImageExternalAlloc {
         (tex_2d: Texture2D): boolean;
     }
+    export namespace BufferBit {
+        export const $gtype: GObject.GType<BufferBit>;
+    }
+
     /**
      * Types of auxiliary buffers
      */
@@ -1347,6 +1447,10 @@ export namespace Cogl {
          */
         STENCIL,
     }
+    export namespace BufferTarget {
+        export const $gtype: GObject.GType<BufferTarget>;
+    }
+
     /**
      * Target flags for FBOs.
      */
@@ -1360,10 +1464,18 @@ export namespace Cogl {
          */
         OFFSCREEN_BUFFER,
     }
+    export namespace EglImageFlags {
+        export const $gtype: GObject.GType<EglImageFlags>;
+    }
+
     enum EglImageFlags {
         NONE,
         NO_GET_DATA,
     }
+    export namespace PixelFormat {
+        export const $gtype: GObject.GType<PixelFormat>;
+    }
+
     /**
      * Pixel formats used by Cogl. For the formats with a byte per
      * component, the order of the components specify the order in
@@ -1539,6 +1651,10 @@ export namespace Cogl {
         DEPTH_32,
         DEPTH_24_STENCIL_8,
     }
+    export namespace ReadPixelsFlags {
+        export const $gtype: GObject.GType<ReadPixelsFlags>;
+    }
+
     /**
      * Flags for cogl_framebuffer_read_pixels_into_bitmap()
      */

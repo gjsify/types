@@ -19,6 +19,10 @@ export namespace TelepathyLogger {
      * TelepathyLogger-0.2
      */
 
+    export namespace EntityType {
+        export const $gtype: GObject.GType<EntityType>;
+    }
+
     enum EntityType {
         /**
          * the current contact's type is unknown
@@ -40,6 +44,10 @@ export namespace TelepathyLogger {
          */
         SELF,
     }
+    export namespace LogManagerError {
+        export const $gtype: GObject.GType<LogManagerError>;
+    }
+
     enum LogManagerError {
         /**
          * Error return when adding logs fails
@@ -49,6 +57,10 @@ export namespace TelepathyLogger {
     interface LogEventFilter {
         (event: Event): boolean;
     }
+    export namespace EventTypeMask {
+        export const $gtype: GObject.GType<EventTypeMask>;
+    }
+
     /**
      * Mask used to filter type of #TplEvent returned.
      */

@@ -16,6 +16,10 @@ export namespace MPID {
      * MPID-3.0
      */
 
+    export namespace Error {
+        export const $gtype: GObject.GType<Error>;
+    }
+
     enum Error {
         /**
          * Indicates no error has occurred
@@ -39,6 +43,10 @@ export namespace MPID {
          */
         DEVICE_INFO_MISSING,
     }
+    export namespace Source {
+        export const $gtype: GObject.GType<Source>;
+    }
+
     enum Source {
         /**
          * No device information is available
@@ -53,6 +61,10 @@ export namespace MPID {
          */
         OVERRIDE,
     }
+    export namespace SourceType {
+        export const $gtype: GObject.GType<SourceType>;
+    }
+
     enum SourceType {
         NO_DEVICE_INFO,
         SYSTEM_DEVICE_INFO,

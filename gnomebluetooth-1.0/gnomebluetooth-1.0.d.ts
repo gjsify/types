@@ -27,6 +27,10 @@ export namespace GnomeBluetooth {
      * GnomeBluetooth-1.0
      */
 
+    export namespace Category {
+        export const $gtype: GObject.GType<Category>;
+    }
+
     /**
      * The category of a Bluetooth devices.
      */
@@ -52,6 +56,10 @@ export namespace GnomeBluetooth {
          */
         PAIRED_OR_TRUSTED,
     }
+    export namespace Column {
+        export const $gtype: GObject.GType<Column>;
+    }
+
     /**
      * A column identifier to pass to bluetooth_chooser_get_selected_device_info().
      */
@@ -125,6 +133,10 @@ export namespace GnomeBluetooth {
          */
         UUIDS,
     }
+    export namespace Status {
+        export const $gtype: GObject.GType<Status>;
+    }
+
     /**
      * The connection status of a service on a particular device. Note that `BLUETOOTH_STATUS_CONNECTING` and `BLUETOOTH_STATUS_PLAYING` might not be available for all services.
      */
@@ -218,6 +230,10 @@ export namespace GnomeBluetooth {
      * @returns %TRUE if the address is valid, %FALSE if not.
      */
     function verify_address(bdaddr: string): boolean;
+    export namespace Type {
+        export const $gtype: GObject.GType<Type>;
+    }
+
     /**
      * The type of a Bluetooth device. See also %BLUETOOTH_TYPE_INPUT and %BLUETOOTH_TYPE_AUDIO
      */

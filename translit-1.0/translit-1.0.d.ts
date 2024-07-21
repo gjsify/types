@@ -18,6 +18,10 @@ export namespace Translit {
      * Translit-1.0
      */
 
+    export namespace ErrorEnum {
+        export const $gtype: GObject.GType<ErrorEnum>;
+    }
+
     enum ErrorEnum {
         NO_SUCH_BACKEND,
         LOAD_FAILED,

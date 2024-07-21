@@ -20,6 +20,10 @@ export namespace Ags {
      * Ags-6.0
      */
 
+    export namespace ByteOrder {
+        export const $gtype: GObject.GType<ByteOrder>;
+    }
+
     /**
      * Endianess.
      */
@@ -33,6 +37,10 @@ export namespace Ags {
          */
         BYTE_ORDER_BE,
     }
+    export namespace FileError {
+        export const $gtype: GObject.GType<FileError>;
+    }
+
     /**
      * Enum values to indicated failures to used with #GError-struct.
      */
@@ -69,6 +77,10 @@ export namespace Ags {
         _init(...args: any[]): void;
     }
 
+    export namespace SeekType {
+        export const $gtype: GObject.GType<SeekType>;
+    }
+
     /**
      * Seek type.
      */
@@ -86,12 +98,20 @@ export namespace Ags {
          */
         SEEK_END,
     }
+    export namespace SolverPolynomialError {
+        export const $gtype: GObject.GType<SolverPolynomialError>;
+    }
+
     enum SolverPolynomialError {
         SYMBOL_MISMATCH,
         EXPONENT_MISMATCH,
         DIVISION_BY_ZERO,
         EXPONENT_NOT_CONSTANT,
     }
+    export namespace SoundcardFormat {
+        export const $gtype: GObject.GType<SoundcardFormat>;
+    }
+
     /**
      * #AgsSoundcardFormat specifies the audio data representation to be used.
      */
@@ -1573,6 +1593,10 @@ export namespace Ags {
     interface ReturnableThreadCallback {
         (returnable_thread: ReturnableThread, data?: any | null): void;
     }
+    export namespace ApplicationContextFlags {
+        export const $gtype: GObject.GType<ApplicationContextFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsApplicationContext by
      * enable/disable as flags.
@@ -1583,6 +1607,10 @@ export namespace Ags {
          */
         APPLICATION_CONTEXT_TYPES_REGISTERED,
     }
+    export namespace ConnectableFlags {
+        export const $gtype: GObject.GType<ConnectableFlags>;
+    }
+
     /**
      * Enum values to specify particular state.
      */
@@ -1596,6 +1624,10 @@ export namespace Ags {
          */
         CONNECTED,
     }
+    export namespace FileFlags {
+        export const $gtype: GObject.GType<FileFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsFile by
      * enable/disable as flags.
@@ -1626,6 +1658,10 @@ export namespace Ags {
          */
         FILE_WRITE_EMBEDDED_AUDIO,
     }
+    export namespace RegexUtilCompileFlags {
+        export const $gtype: GObject.GType<RegexUtilCompileFlags>;
+    }
+
     /**
      * AGS_REGEX_UTIL_POSIX_EXTENDED_SYNTAX: extended regular expression syntax
      * AGS_REGEX_UTIL_CASE_INSENSITIVE: do not differentiate case
@@ -1640,6 +1676,10 @@ export namespace Ags {
         REGEX_UTIL_NO_POSITION_REPORT_OF_MATCHES,
         REGEX_UTIL_NO_NEWLINE_MATCH,
     }
+    export namespace RegexUtilExecuteFlags {
+        export const $gtype: GObject.GType<RegexUtilExecuteFlags>;
+    }
+
     /**
      * AGS_REGEX_UTIL_NOT_BEGINNING_OF_LINE: match-beginning-of-line operator always fails, the beginning of of string should not be interpreted as beginning of line
      * AGS_REGEX_UTIL_NOT_END_OF_LINE: match-end-of-line operator always fails
@@ -1652,6 +1692,10 @@ export namespace Ags {
         REGEX_UTIL_END_OF_LINE,
         REGEX_UTIL_START_END,
     }
+    export namespace ReturnableThreadFlags {
+        export const $gtype: GObject.GType<ReturnableThreadFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsReturnableThread by
      * enable/disable as flags.
@@ -1670,6 +1714,10 @@ export namespace Ags {
          */
         RETURNABLE_THREAD_RUN_ONCE,
     }
+    export namespace SecurityContextMode {
+        export const $gtype: GObject.GType<SecurityContextMode>;
+    }
+
     /**
      * The #AgsSecurityContextMode specifies basic account permissions.
      */
@@ -1695,6 +1743,10 @@ export namespace Ags {
          */
         SECURITY_CONTEXT_ACCOUNT_WRITE,
     }
+    export namespace ServerFlags {
+        export const $gtype: GObject.GType<ServerFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsServer by
      * enable/disable as flags.
@@ -1729,6 +1781,10 @@ export namespace Ags {
          */
         SERVER_AUTO_START,
     }
+    export namespace SoundcardCapability {
+        export const $gtype: GObject.GType<SoundcardCapability>;
+    }
+
     /**
      * Enum values to tell about capability.
      */
@@ -1746,6 +1802,10 @@ export namespace Ags {
          */
         SOUNDCARD_CAPABILITY_DUPLEX,
     }
+    export namespace TaskCompletionFlags {
+        export const $gtype: GObject.GType<TaskCompletionFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsTaskCompletion by
      * enable/disable as flags.
@@ -1768,6 +1828,10 @@ export namespace Ags {
          */
         TASK_COMPLETION_COMPLETED,
     }
+    export namespace TaskFlags {
+        export const $gtype: GObject.GType<TaskFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsTask by
      * enable/disable as flags.
@@ -1782,6 +1846,10 @@ export namespace Ags {
          */
         CYCLIC,
     }
+    export namespace ThreadApplicationContextFlags {
+        export const $gtype: GObject.GType<ThreadApplicationContextFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsThreadApplicationContext by
      * enable/disable as sync_flags.
@@ -1792,6 +1860,10 @@ export namespace Ags {
          */
         THREAD_APPLICATION_CONTEXT_SINGLE_THREAD,
     }
+    export namespace ThreadFlags {
+        export const $gtype: GObject.GType<ThreadFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsThread by
      * enable/disable as flags.
@@ -1826,6 +1898,10 @@ export namespace Ags {
          */
         THREAD_TIME_ACCOUNTING,
     }
+    export namespace ThreadPoolFlags {
+        export const $gtype: GObject.GType<ThreadPoolFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsThreadPool by
      * enable/disable as sync_flags.
@@ -1840,6 +1916,10 @@ export namespace Ags {
          */
         THREAD_POOL_RT_SETUP,
     }
+    export namespace ThreadStatusFlags {
+        export const $gtype: GObject.GType<ThreadStatusFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsThread by
      * enable/disable as status flags.
@@ -1898,6 +1978,10 @@ export namespace Ags {
          */
         THREAD_STATUS_SYNCED_FREQ,
     }
+    export namespace ThreadSyncTicFlags {
+        export const $gtype: GObject.GType<ThreadSyncTicFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsThread by
      * enable/disable as sync tic flags.
@@ -1976,6 +2060,10 @@ export namespace Ags {
          */
         THREAD_SYNC_TIC_DONE_8,
     }
+    export namespace TimestampFlags {
+        export const $gtype: GObject.GType<TimestampFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsTimestamp by
      * enable/disable as sync_flags.
@@ -1994,6 +2082,10 @@ export namespace Ags {
          */
         TIMESTAMP_OUTDATED,
     }
+    export namespace TurtleFlags {
+        export const $gtype: GObject.GType<TurtleFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsTurtle by
      * enable/disable as sync_flags.
@@ -2004,6 +2096,10 @@ export namespace Ags {
          */
         TURTLE_TOLOWER,
     }
+    export namespace WorkerThreadStatusFlags {
+        export const $gtype: GObject.GType<WorkerThreadStatusFlags>;
+    }
+
     /**
      * Enum values to control the behavior or indicate internal state of #AgsWorkerThread by
      * enable/disable as status flags.

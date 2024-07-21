@@ -27,6 +27,10 @@ export namespace Handy {
      * Handy-0.0
      */
 
+    export namespace ArrowsDirection {
+        export const $gtype: GObject.GType<ArrowsDirection>;
+    }
+
     enum ArrowsDirection {
         /**
          * Arrows point upwards
@@ -45,6 +49,10 @@ export namespace Handy {
          */
         RIGHT,
     }
+    export namespace CenteringPolicy {
+        export const $gtype: GObject.GType<CenteringPolicy>;
+    }
+
     enum CenteringPolicy {
         /**
          * Keep the title centered when possible
@@ -55,6 +63,10 @@ export namespace Handy {
          */
         STRICT,
     }
+    export namespace Fold {
+        export const $gtype: GObject.GType<Fold>;
+    }
+
     /**
      * Represents the fold of widgets and other objects which can be switched
      * between folded and unfolded state on the fly, like HdyLeaflet.
@@ -69,6 +81,10 @@ export namespace Handy {
          */
         FOLDED,
     }
+    export namespace LeafletChildTransitionType {
+        export const $gtype: GObject.GType<LeafletChildTransitionType>;
+    }
+
     /**
      * These enumeration values describe the possible transitions between pages in a
      * #HdyLeaflet widget.
@@ -95,6 +111,10 @@ export namespace Handy {
          */
         UNDER,
     }
+    export namespace LeafletModeTransitionType {
+        export const $gtype: GObject.GType<LeafletModeTransitionType>;
+    }
+
     /**
      * These enumeration values describe the possible transitions between pages in a
      * #HdyLeaflet widget.
@@ -109,6 +129,10 @@ export namespace Handy {
          */
         SLIDE,
     }
+    export namespace LeafletTransitionType {
+        export const $gtype: GObject.GType<LeafletTransitionType>;
+    }
+
     /**
      * This enumeration value describes the possible transitions between modes and
      * children in a #HdyLeaflet widget.
@@ -133,6 +157,10 @@ export namespace Handy {
          */
         UNDER,
     }
+    export namespace PaginatorIndicatorStyle {
+        export const $gtype: GObject.GType<PaginatorIndicatorStyle>;
+    }
+
     /**
      * These enumeration values describe the possible page indicator styles in a
      * #HdyPaginator widget.
@@ -153,6 +181,10 @@ export namespace Handy {
          */
         LINES,
     }
+    export namespace SqueezerTransitionType {
+        export const $gtype: GObject.GType<SqueezerTransitionType>;
+    }
+
     /**
      * These enumeration values describe the possible transitions between children
      * in a #HdySqueezer widget.
@@ -167,6 +199,10 @@ export namespace Handy {
          */
         CROSSFADE,
     }
+    export namespace ViewSwitcherPolicy {
+        export const $gtype: GObject.GType<ViewSwitcherPolicy>;
+    }
+
     enum ViewSwitcherPolicy {
         /**
          * Automatically adapt to the best fitting mode

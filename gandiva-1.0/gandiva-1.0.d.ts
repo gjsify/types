@@ -19,6 +19,10 @@ export namespace Gandiva {
      * Gandiva-1.0
      */
 
+    export namespace ResultNullableType {
+        export const $gtype: GObject.GType<ResultNullableType>;
+    }
+
     /**
      * They are corresponding to `gandiva::ResultNullableType` values.
      */

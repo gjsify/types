@@ -18,6 +18,10 @@ export namespace GMime {
      * GMime-2.6
      */
 
+    export namespace CertificateTrust {
+        export const $gtype: GObject.GType<CertificateTrust>;
+    }
+
     /**
      * The trust value of a certificate.
      */
@@ -47,6 +51,10 @@ export namespace GMime {
          */
         ULTIMATE,
     }
+    export namespace CipherAlgo {
+        export const $gtype: GObject.GType<CipherAlgo>;
+    }
+
     /**
      * A cipher algorithm.
      */
@@ -100,6 +108,10 @@ export namespace GMime {
          */
         CAMELLIA256,
     }
+    export namespace ContentEncoding {
+        export const $gtype: GObject.GType<ContentEncoding>;
+    }
+
     /**
      * A Content-Transfer-Encoding enumeration.
      */
@@ -133,6 +145,10 @@ export namespace GMime {
          */
         UUENCODE,
     }
+    export namespace DigestAlgo {
+        export const $gtype: GObject.GType<DigestAlgo>;
+    }
+
     /**
      * A hash algorithm.
      */
@@ -186,6 +202,10 @@ export namespace GMime {
          */
         MD4,
     }
+    export namespace EncodingConstraint {
+        export const $gtype: GObject.GType<EncodingConstraint>;
+    }
+
     /**
      * Used with functions like g_mime_filter_best_encoding() and
      * g_mime_object_encode() as the 'constraint' argument. These values
@@ -206,6 +226,10 @@ export namespace GMime {
          */
         BINARY,
     }
+    export namespace FilterFromMode {
+        export const $gtype: GObject.GType<FilterFromMode>;
+    }
+
     /**
      * The mode for a #GMimeFilterFrom filter.
      */
@@ -223,6 +247,10 @@ export namespace GMime {
          */
         ARMOR,
     }
+    export namespace FilterGZipMode {
+        export const $gtype: GObject.GType<FilterGZipMode>;
+    }
+
     /**
      * The mode for the #GMimeFilterGZip filter.
      */
@@ -236,6 +264,10 @@ export namespace GMime {
          */
         UNZIP,
     }
+    export namespace PubKeyAlgo {
+        export const $gtype: GObject.GType<PubKeyAlgo>;
+    }
+
     /**
      * A public-key algorithm.
      */
@@ -269,6 +301,10 @@ export namespace GMime {
          */
         ELG,
     }
+    export namespace RecipientType {
+        export const $gtype: GObject.GType<RecipientType>;
+    }
+
     /**
      * A message recipient type.
      */
@@ -286,6 +322,10 @@ export namespace GMime {
          */
         BCC,
     }
+    export namespace SeekWhence {
+        export const $gtype: GObject.GType<SeekWhence>;
+    }
+
     /**
      * Relative seek position.
      */
@@ -303,6 +343,10 @@ export namespace GMime {
          */
         END,
     }
+    export namespace SignatureStatus {
+        export const $gtype: GObject.GType<SignatureStatus>;
+    }
+
     /**
      * A value representing the signature status for a particular
      * #GMimeSignature.
@@ -321,6 +365,10 @@ export namespace GMime {
          */
         BAD,
     }
+    export namespace StreamBufferMode {
+        export const $gtype: GObject.GType<StreamBufferMode>;
+    }
+
     /**
      * The buffering mode for a #GMimeStreamBuffer stream.
      */
@@ -1016,6 +1064,10 @@ export namespace GMime {
     interface PasswordRequestFunc {
         (ctx: CryptoContext, user_id: string, prompt_ctx: string, reprompt: boolean, response: Stream): boolean;
     }
+    export namespace FilterBestFlags {
+        export const $gtype: GObject.GType<FilterBestFlags>;
+    }
+
     /**
      * Bit flags to enable charset and/or encoding scanning to make
      * educated guesses as to what the best charset and/or encodings to
@@ -1031,6 +1083,10 @@ export namespace GMime {
          */
         ENCODING,
     }
+    export namespace SignatureError {
+        export const $gtype: GObject.GType<SignatureError>;
+    }
+
     /**
      * Possible errors that a #GMimeSignature could have.
      */

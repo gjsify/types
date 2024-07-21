@@ -20,6 +20,10 @@ export namespace SpiceClientGLib {
      * SpiceClientGLib-2.0
      */
 
+    export namespace ChannelEvent {
+        export const $gtype: GObject.GType<ChannelEvent>;
+    }
+
     /**
      * An event, emitted by #SpiceChannel::channel-event signal.
      */
@@ -104,6 +108,10 @@ export namespace SpiceClientGLib {
         _init(...args: any[]): void;
     }
 
+    export namespace QmpPortVmAction {
+        export const $gtype: GObject.GType<QmpPortVmAction>;
+    }
+
     /**
      * An action to perform on the VM.
      */
@@ -133,6 +141,10 @@ export namespace SpiceClientGLib {
          */
         LAST,
     }
+    export namespace SessionMigration {
+        export const $gtype: GObject.GType<SessionMigration>;
+    }
+
     /**
      * Session migration state.
      */
@@ -586,6 +598,10 @@ export namespace SpiceClientGLib {
         (channel: Channel, _in: MsgIn): void;
     }
     type VReader = object | null;
+    export namespace InputsLock {
+        export const $gtype: GObject.GType<InputsLock>;
+    }
+
     /**
      * Constants used to synchronize modifiers between a client and a guest.
      */
@@ -603,6 +619,10 @@ export namespace SpiceClientGLib {
          */
         CAPS_LOCK,
     }
+    export namespace SessionVerify {
+        export const $gtype: GObject.GType<SessionVerify>;
+    }
+
     /**
      * Peer certificate verification parameters flags.
      */

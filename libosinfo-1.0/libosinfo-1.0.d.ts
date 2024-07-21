@@ -19,6 +19,10 @@ export namespace Libosinfo {
      * Libosinfo-1.0
      */
 
+    export namespace DeviceDriverSigningReq {
+        export const $gtype: GObject.GType<DeviceDriverSigningReq>;
+    }
+
     enum DeviceDriverSigningReq {
         /**
          * Script do not require device drivers
@@ -69,6 +73,10 @@ export namespace Libosinfo {
         static quark(): GLib.Quark;
     }
 
+    export namespace InstallConfigParamPolicy {
+        export const $gtype: GObject.GType<InstallConfigParamPolicy>;
+    }
+
     /**
      * Policy for configuration parameter presence
      */
@@ -86,6 +94,10 @@ export namespace Libosinfo {
          */
         OPTIONAL,
     }
+    export namespace InstallScriptInstallationSource {
+        export const $gtype: GObject.GType<InstallScriptInstallationSource>;
+    }
+
     enum InstallScriptInstallationSource {
         /**
          * A media will be used as
@@ -143,6 +155,10 @@ export namespace Libosinfo {
         static quark(): GLib.Quark;
     }
 
+    export namespace PathFormat {
+        export const $gtype: GObject.GType<PathFormat>;
+    }
+
     enum PathFormat {
         /**
          * Unix/Linux path format, e.g /home/foo/bar.txt
@@ -153,6 +169,10 @@ export namespace Libosinfo {
          */
         DOS,
     }
+    export namespace ProductRelationship {
+        export const $gtype: GObject.GType<ProductRelationship>;
+    }
+
     /**
      * Enum values used to form relationships between products
      */
@@ -170,6 +190,10 @@ export namespace Libosinfo {
          */
         CLONES,
     }
+    export namespace ReleaseStatus {
+        export const $gtype: GObject.GType<ReleaseStatus>;
+    }
+
     enum ReleaseStatus {
         /**
          * A released OS. (Since: 0.2.9)
@@ -375,6 +399,10 @@ export namespace Libosinfo {
      * @returns the #GQuark representing the string.
      */
     function tree_error_quark(): GLib.Quark;
+    export namespace InstallScriptInjectionMethod {
+        export const $gtype: GObject.GType<InstallScriptInjectionMethod>;
+    }
+
     enum InstallScriptInjectionMethod {
         /**
          * Support injection of the
@@ -402,6 +430,10 @@ export namespace Libosinfo {
          */
         WEB,
     }
+    export namespace MediaDetectFlags {
+        export const $gtype: GObject.GType<MediaDetectFlags>;
+    }
+
     /**
      * OSINFO_MEDIA_DETECT_REQUIRE_BOOTABLE: Requires a media to be bootable.
      * Flags used for detecting a media.

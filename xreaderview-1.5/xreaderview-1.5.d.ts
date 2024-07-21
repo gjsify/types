@@ -28,6 +28,10 @@ export namespace XreaderView {
      * XreaderView-1.5
      */
 
+    export namespace JobPriority {
+        export const $gtype: GObject.GType<JobPriority>;
+    }
+
     enum JobPriority {
         PRIORITY_URGENT,
         PRIORITY_HIGH,
@@ -35,15 +39,27 @@ export namespace XreaderView {
         PRIORITY_NONE,
         N_PRIORITIES,
     }
+    export namespace JobRunMode {
+        export const $gtype: GObject.GType<JobRunMode>;
+    }
+
     enum JobRunMode {
         THREAD,
         MAIN_LOOP,
     }
+    export namespace SizingMode {
+        export const $gtype: GObject.GType<SizingMode>;
+    }
+
     enum SizingMode {
         BEST_FIT,
         FIT_WIDTH,
         FREE,
     }
+    export namespace ViewSelectionMode {
+        export const $gtype: GObject.GType<ViewSelectionMode>;
+    }
+
     enum ViewSelectionMode {
         TEXT,
         RECTANGLE,
@@ -68,6 +84,10 @@ export namespace XreaderView {
     function stock_icons_init(): void;
     function stock_icons_set_screen(screen: Gdk.Screen): void;
     function stock_icons_shutdown(): void;
+    export namespace JobPageDataFlags {
+        export const $gtype: GObject.GType<JobPageDataFlags>;
+    }
+
     enum JobPageDataFlags {
         NONE,
         LINKS,

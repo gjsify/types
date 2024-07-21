@@ -51,11 +51,19 @@ export namespace Eog {
         static quark(): GLib.Quark;
     }
 
+    export namespace ImageMetadataStatus {
+        export const $gtype: GObject.GType<ImageMetadataStatus>;
+    }
+
     enum ImageMetadataStatus {
         NOT_READ,
         NOT_AVAILABLE,
         READY,
     }
+    export namespace ImageStatus {
+        export const $gtype: GObject.GType<ImageStatus>;
+    }
+
     enum ImageStatus {
         UNKNOWN,
         LOADING,
@@ -63,12 +71,20 @@ export namespace Eog {
         SAVING,
         FAILED,
     }
+    export namespace JobPriority {
+        export const $gtype: GObject.GType<JobPriority>;
+    }
+
     enum JobPriority {
         PRIORITY_HIGH,
         PRIORITY_MEDIUM,
         PRIORITY_LOW,
         N_PRIORITIES,
     }
+    export namespace ListStoreColumn {
+        export const $gtype: GObject.GType<ListStoreColumn>;
+    }
+
     enum ListStoreColumn {
         THUMBNAIL,
         THUMB_SET,
@@ -76,12 +92,20 @@ export namespace Eog {
         EOG_JOB,
         NUM_COLUMNS,
     }
+    export namespace ThumbNavMode {
+        export const $gtype: GObject.GType<ThumbNavMode>;
+    }
+
     enum ThumbNavMode {
         ONE_ROW,
         ONE_COLUMN,
         MULTIPLE_ROWS,
         MULTIPLE_COLUMNS,
     }
+    export namespace ThumbViewSelectionChange {
+        export const $gtype: GObject.GType<ThumbViewSelectionChange>;
+    }
+
     enum ThumbViewSelectionChange {
         CURRENT,
         LEFT,
@@ -90,6 +114,10 @@ export namespace Eog {
         LAST,
         RANDOM,
     }
+    export namespace TransformType {
+        export const $gtype: GObject.GType<TransformType>;
+    }
+
     enum TransformType {
         NONE,
         ROT_90,
@@ -100,6 +128,10 @@ export namespace Eog {
         TRANSPOSE,
         TRANSVERSE,
     }
+    export namespace TransparencyStyle {
+        export const $gtype: GObject.GType<TransparencyStyle>;
+    }
+
     /**
      * Used to define how transparent image parts are drawn.
      */
@@ -138,6 +170,10 @@ export namespace Eog {
         static quark(): GLib.Quark;
     }
 
+    export namespace UCType {
+        export const $gtype: GObject.GType<UCType>;
+    }
+
     enum UCType {
         STRING,
         FILENAME,
@@ -153,6 +189,10 @@ export namespace Eog {
         SECOND,
         END,
     }
+    export namespace WindowError {
+        export const $gtype: GObject.GType<WindowError>;
+    }
+
     enum WindowError {
         CONTROL_NOT_FOUND,
         UI_NOT_FOUND,
@@ -162,18 +202,30 @@ export namespace Eog {
         GENERIC,
         UNKNOWN,
     }
+    export namespace WindowGalleryPos {
+        export const $gtype: GObject.GType<WindowGalleryPos>;
+    }
+
     enum WindowGalleryPos {
         BOTTOM,
         LEFT,
         TOP,
         RIGHT,
     }
+    export namespace WindowMode {
+        export const $gtype: GObject.GType<WindowMode>;
+    }
+
     enum WindowMode {
         UNKNOWN,
         NORMAL,
         FULLSCREEN,
         SLIDESHOW,
     }
+    export namespace ZoomMode {
+        export const $gtype: GObject.GType<ZoomMode>;
+    }
+
     /**
      * Used to determine the zooming behaviour of an #EogScrollView.
      */
@@ -238,6 +290,10 @@ export namespace Eog {
     function thumbnail_load(image: Image): GdkPixbuf.Pixbuf;
     function uc_error_quark(): GLib.Quark;
     type ExifData = object | null;
+    export namespace Debug {
+        export const $gtype: GObject.GType<Debug>;
+    }
+
     enum Debug {
         NO_DEBUG,
         WINDOW,
@@ -253,12 +309,20 @@ export namespace Eog {
         LCMS,
         PLUGINS,
     }
+    export namespace ImageData {
+        export const $gtype: GObject.GType<ImageData>;
+    }
+
     enum ImageData {
         IMAGE,
         DIMENSION,
         EXIF,
         XMP,
     }
+    export namespace StartupFlags {
+        export const $gtype: GObject.GType<StartupFlags>;
+    }
+
     enum StartupFlags {
         FULLSCREEN,
         SLIDE_SHOW,

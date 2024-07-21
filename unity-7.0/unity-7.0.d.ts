@@ -20,6 +20,10 @@ export namespace Unity {
      * Unity-7.0
      */
 
+    export namespace CategoryType {
+        export const $gtype: GObject.GType<CategoryType>;
+    }
+
     enum CategoryType {
         NONE,
         APPLICATION,
@@ -49,11 +53,19 @@ export namespace Unity {
         CAR,
         N_CATEGORIES,
     }
+    export namespace IconSizeHint {
+        export const $gtype: GObject.GType<IconSizeHint>;
+    }
+
     enum IconSizeHint {
         DEFAULT,
         SMALL,
         LARGE,
     }
+    export namespace CategoryRenderer {
+        export const $gtype: GObject.GType<CategoryRenderer>;
+    }
+
     enum CategoryRenderer {
         DEFAULT,
         GRID,
@@ -64,6 +76,10 @@ export namespace Unity {
         VERTICAL_TILE,
         HORIZONTAL_TILE,
     }
+    export namespace CategoryContentType {
+        export const $gtype: GObject.GType<CategoryContentType>;
+    }
+
     enum CategoryContentType {
         DEFAULT,
         APPLICATIONS,
@@ -73,6 +89,10 @@ export namespace Unity {
         SOCIAL,
         WEATHER,
     }
+    export namespace FilterRenderer {
+        export const $gtype: GObject.GType<FilterRenderer>;
+    }
+
     enum FilterRenderer {
         CHECK_OPTIONS,
         RADIO_OPTIONS,
@@ -80,6 +100,10 @@ export namespace Unity {
         RATINGS,
         CHECK_OPTIONS_COMPACT,
     }
+    export namespace LayoutHint {
+        export const $gtype: GObject.GType<LayoutHint>;
+    }
+
     enum LayoutHint {
         NONE,
         LEFT,
@@ -87,6 +111,10 @@ export namespace Unity {
         TOP,
         BOTTOM,
     }
+    export namespace HandledType {
+        export const $gtype: GObject.GType<HandledType>;
+    }
+
     enum HandledType {
         NOT_HANDLED,
         SHOW_DASH,
@@ -95,52 +123,96 @@ export namespace Unity {
         SHOW_PREVIEW,
         PERFORM_SEARCH,
     }
+    export namespace SearchType {
+        export const $gtype: GObject.GType<SearchType>;
+    }
+
     enum SearchType {
         DEFAULT,
         GLOBAL,
         N_TYPES,
     }
+    export namespace ResultType {
+        export const $gtype: GObject.GType<ResultType>;
+    }
+
     enum ResultType {
         DEFAULT,
         PERSONAL,
         SEMI_PERSONAL,
     }
+    export namespace SerializationType {
+        export const $gtype: GObject.GType<SerializationType>;
+    }
+
     enum SerializationType {
         BINARY,
         JSON,
     }
+    export namespace PlaybackState {
+        export const $gtype: GObject.GType<PlaybackState>;
+    }
+
     enum PlaybackState {
         PLAYING,
         PAUSED,
     }
+    export namespace OptionsFilterSortType {
+        export const $gtype: GObject.GType<OptionsFilterSortType>;
+    }
+
     enum OptionsFilterSortType {
         MANUAL,
         DISPLAY_NAME,
         ID,
     }
+    export namespace PreferencesManagerRemoteContent {
+        export const $gtype: GObject.GType<PreferencesManagerRemoteContent>;
+    }
+
     enum PreferencesManagerRemoteContent {
         ALL,
         NONE,
     }
+    export namespace MusicPreviewTrackState {
+        export const $gtype: GObject.GType<MusicPreviewTrackState>;
+    }
+
     enum MusicPreviewTrackState {
         STOPPED,
         PLAYING,
         PAUSED,
     }
+    export namespace PaymentPreviewType {
+        export const $gtype: GObject.GType<PaymentPreviewType>;
+    }
+
     enum PaymentPreviewType {
         APPLICATION,
         MUSIC,
         ERROR,
     }
+    export namespace SchemaFieldType {
+        export const $gtype: GObject.GType<SchemaFieldType>;
+    }
+
     enum SchemaFieldType {
         OPTIONAL,
         REQUIRED,
     }
+    export namespace AggregatorScopeSortFlags {
+        export const $gtype: GObject.GType<AggregatorScopeSortFlags>;
+    }
+
     enum AggregatorScopeSortFlags {
         ASCENDING,
         DESCENDING,
         CASE_INSENSITIVE,
     }
+    export namespace AggregatorScopeMergeMode {
+        export const $gtype: GObject.GType<AggregatorScopeMergeMode>;
+    }
+
     enum AggregatorScopeMergeMode {
         CATEGORY_ID,
         OWNER_SCOPE,

@@ -28,6 +28,10 @@ export namespace Gedit {
      * Gedit-3.0
      */
 
+    export namespace TabState {
+        export const $gtype: GObject.GType<TabState>;
+    }
+
     enum TabState {
         STATE_NORMAL,
         STATE_LOADING,
@@ -237,6 +241,10 @@ export namespace Gedit {
     interface MessageCallback {
         (bus: MessageBus, message: Message): void;
     }
+    export namespace DebugSection {
+        export const $gtype: GObject.GType<DebugSection>;
+    }
+
     /**
      * Enumeration of debug sections.
      *
@@ -259,6 +267,10 @@ export namespace Gedit {
         DEBUG_APP,
         DEBUG_UTILS,
     }
+    export namespace WindowState {
+        export const $gtype: GObject.GType<WindowState>;
+    }
+
     enum WindowState {
         NORMAL,
         SAVING,

@@ -34,16 +34,28 @@ export namespace MetaTest {
      * MetaTest-12
      */
 
+    export namespace ContextTestType {
+        export const $gtype: GObject.GType<ContextTestType>;
+    }
+
     enum ContextTestType {
         HEADLESS,
         VKMS,
         NESTED,
     }
+    export namespace ContextTestFlag {
+        export const $gtype: GObject.GType<ContextTestFlag>;
+    }
+
     enum ContextTestFlag {
         NONE,
         TEST_CLIENT,
         NO_X11,
     }
+    export namespace TestRunFlags {
+        export const $gtype: GObject.GType<TestRunFlags>;
+    }
+
     enum TestRunFlags {
         NONE,
         CAN_SKIP,

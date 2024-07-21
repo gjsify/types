@@ -17,6 +17,10 @@ export namespace Avahi {
      * Avahi-0.6
      */
 
+    export namespace BrowserEvent {
+        export const $gtype: GObject.GType<BrowserEvent>;
+    }
+
     enum BrowserEvent {
         GA_BROWSER_NEW,
         GA_BROWSER_REMOVE,
@@ -24,11 +28,19 @@ export namespace Avahi {
         GA_BROWSER_ALL_FOR_NOW,
         GA_BROWSER_FAILURE,
     }
+    export namespace ClientFlags {
+        export const $gtype: GObject.GType<ClientFlags>;
+    }
+
     enum ClientFlags {
         GA_CLIENT_FLAG_NO_FLAGS,
         GA_CLIENT_FLAG_IGNORE_USER_CONFIG,
         GA_CLIENT_FLAG_NO_FAIL,
     }
+    export namespace ClientState {
+        export const $gtype: GObject.GType<ClientState>;
+    }
+
     enum ClientState {
         GA_CLIENT_STATE_NOT_STARTED,
         GA_CLIENT_STATE_S_REGISTERING,
@@ -37,6 +49,10 @@ export namespace Avahi {
         GA_CLIENT_STATE_FAILURE,
         GA_CLIENT_STATE_CONNECTING,
     }
+    export namespace EntryGroupState {
+        export const $gtype: GObject.GType<EntryGroupState>;
+    }
+
     enum EntryGroupState {
         GA_ENTRY_GROUP_STATE_UNCOMMITED,
         GA_ENTRY_GROUP_STATE_REGISTERING,
@@ -44,6 +60,10 @@ export namespace Avahi {
         GA_ENTRY_GROUP_STATE_COLLISION,
         GA_ENTRY_GROUP_STATE_FAILURE,
     }
+    export namespace LookupFlags {
+        export const $gtype: GObject.GType<LookupFlags>;
+    }
+
     enum LookupFlags {
         GA_LOOKUP_NO_FLAGS,
         GA_LOOKUP_USE_WIDE_AREA,
@@ -51,6 +71,10 @@ export namespace Avahi {
         GA_LOOKUP_NO_TXT,
         GA_LOOKUP_NO_ADDRESS,
     }
+    export namespace LookupResultFlags {
+        export const $gtype: GObject.GType<LookupResultFlags>;
+    }
+
     enum LookupResultFlags {
         GA_LOOKUP_RESULT_CACHED,
         GA_LOOKUP_RESULT_WIDE_AREA,
@@ -59,11 +83,19 @@ export namespace Avahi {
         GA_LOOKUP_RESULT_OUR_OWN,
         GA_LOOKUP_RESULT_STATIC,
     }
+    export namespace Protocol {
+        export const $gtype: GObject.GType<Protocol>;
+    }
+
     enum Protocol {
         GA_PROTOCOL_INET,
         GA_PROTOCOL_INET6,
         GA_PROTOCOL_UNSPEC,
     }
+    export namespace ResolverEvent {
+        export const $gtype: GObject.GType<ResolverEvent>;
+    }
+
     enum ResolverEvent {
         GA_RESOLVER_FOUND,
         GA_RESOLVER_FAILURE,

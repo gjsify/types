@@ -27,10 +27,18 @@ export namespace Gucharmap {
      * Gucharmap-2.90
      */
 
+    export namespace CharmapPageType {
+        export const $gtype: GObject.GType<CharmapPageType>;
+    }
+
     enum CharmapPageType {
         CHARTABLE,
         DETAILS,
     }
+    export namespace UnicodeVersion {
+        export const $gtype: GObject.GType<UnicodeVersion>;
+    }
+
     enum UnicodeVersion {
         UNASSIGNED,
         '1_1',

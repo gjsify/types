@@ -23,6 +23,10 @@ export namespace RygelCore {
      * RygelCore-2.6
      */
 
+    export namespace LogLevel {
+        export const $gtype: GObject.GType<LogLevel>;
+    }
+
     enum LogLevel {
         INVALID,
         ERROR,
@@ -32,6 +36,10 @@ export namespace RygelCore {
         DEFAULT,
         DEBUG,
     }
+    export namespace ConfigurationEntry {
+        export const $gtype: GObject.GType<ConfigurationEntry>;
+    }
+
     enum ConfigurationEntry {
         INTERFACE,
         PORT,
@@ -44,6 +52,10 @@ export namespace RygelCore {
         MUSIC_UPLOAD_FOLDER,
         PICTURE_UPLOAD_FOLDER,
     }
+    export namespace SectionEntry {
+        export const $gtype: GObject.GType<SectionEntry>;
+    }
+
     enum SectionEntry {
         TITLE,
         ENABLED,
@@ -76,6 +88,10 @@ export namespace RygelCore {
     }
 
     function get_pretty_host_name(): string;
+    export namespace PluginCapabilities {
+        export const $gtype: GObject.GType<PluginCapabilities>;
+    }
+
     enum PluginCapabilities {
         NONE,
         IMAGE_UPLOAD,

@@ -20,6 +20,10 @@ export namespace GstVa {
      * GstVa-1.0
      */
 
+    export namespace VaFeature {
+        export const $gtype: GObject.GType<VaFeature>;
+    }
+
     enum VaFeature {
         /**
          * The feature is disabled.
@@ -34,6 +38,10 @@ export namespace GstVa {
          */
         AUTO,
     }
+    export namespace VaImplementation {
+        export const $gtype: GObject.GType<VaImplementation>;
+    }
+
     /**
      * Types of different VA API implemented drivers. These are the typical and
      * the most widely used VA drivers.

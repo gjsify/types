@@ -18,6 +18,10 @@ export namespace Tracker {
      * Tracker-1.0
      */
 
+    export namespace SparqlValueType {
+        export const $gtype: GObject.GType<SparqlValueType>;
+    }
+
     enum SparqlValueType {
         UNBOUND,
         URI,
@@ -28,6 +32,10 @@ export namespace Tracker {
         BLANK_NODE,
         BOOLEAN,
     }
+    export namespace SparqlBuilderState {
+        export const $gtype: GObject.GType<SparqlBuilderState>;
+    }
+
     enum SparqlBuilderState {
         UPDATE,
         INSERT,

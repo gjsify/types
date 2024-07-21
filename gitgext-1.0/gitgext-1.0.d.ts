@@ -30,6 +30,10 @@ export namespace GitgExt {
      * GitgExt-1.0
      */
 
+    export namespace SelectionMode {
+        export const $gtype: GObject.GType<SelectionMode>;
+    }
+
     enum SelectionMode {
         NORMAL,
         SELECTION,
@@ -43,6 +47,10 @@ export namespace GitgExt {
     interface RefNameEditingDone {
         (new_name: string, cancelled: boolean): void;
     }
+    export namespace ExternalChangeHint {
+        export const $gtype: GObject.GType<ExternalChangeHint>;
+    }
+
     enum ExternalChangeHint {
         NONE,
         REFS,

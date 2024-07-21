@@ -26,6 +26,10 @@ export namespace PolkitAgent {
      * @param object_path The D-Bus object path to use for the authentication agent or %NULL for the default object path.
      */
     function register_listener(listener: Listener, subject: Polkit.Subject, object_path: string): boolean;
+    export namespace RegisterFlags {
+        export const $gtype: GObject.GType<RegisterFlags>;
+    }
+
     /**
      * Flags used in polkit_agent_listener_register().
      */

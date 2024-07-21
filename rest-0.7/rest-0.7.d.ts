@@ -19,6 +19,10 @@ export namespace Rest {
      * Rest-0.7
      */
 
+    export namespace MemoryUse {
+        export const $gtype: GObject.GType<MemoryUse>;
+    }
+
     enum MemoryUse {
         /**
          * the memory block can be assumed to always exist for the
@@ -35,6 +39,10 @@ export namespace Rest {
          */
         COPY,
     }
+    export namespace OAuthSignatureMethod {
+        export const $gtype: GObject.GType<OAuthSignatureMethod>;
+    }
+
     /**
      * The signature method to use when signing method calls.  `PLAINTEXT` is only
      * recommended for testing, in general `HMAC_SHA1` is well supported and more

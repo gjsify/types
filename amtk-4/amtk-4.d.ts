@@ -168,6 +168,10 @@ export namespace Amtk {
      * @returns the URI of @item. Free with g_free() when no longer needed.
      */
     function utils_recent_chooser_menu_get_item_uri(menu: Gtk.RecentChooserMenu, item: Gtk.MenuItem): string;
+    export namespace FactoryFlags {
+        export const $gtype: GObject.GType<FactoryFlags>;
+    }
+
     /**
      * #AmtkFactoryFlags permits to control how a factory function creates the
      * object, to ignore some steps.

@@ -18,6 +18,10 @@ export namespace CMenu {
      * CMenu-3.0
      */
 
+    export namespace TreeItemType {
+        export const $gtype: GObject.GType<TreeItemType>;
+    }
+
     enum TreeItemType {
         INVALID,
         DIRECTORY,
@@ -27,6 +31,10 @@ export namespace CMenu {
         ALIAS,
     }
     const DESKTOPAPPINFO_FLATPAK_SUFFIX: string;
+    export namespace TreeFlags {
+        export const $gtype: GObject.GType<TreeFlags>;
+    }
+
     enum TreeFlags {
         NONE,
         INCLUDE_EXCLUDED,

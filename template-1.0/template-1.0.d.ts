@@ -52,6 +52,10 @@ export namespace Template {
         static quark(): GLib.Quark;
     }
 
+    export namespace ExprBuiltin {
+        export const $gtype: GObject.GType<ExprBuiltin>;
+    }
+
     enum ExprBuiltin {
         ABS,
         CEIL,
@@ -77,6 +81,10 @@ export namespace Template {
         CAST_DOUBLE,
         CAST_BOOL,
     }
+    export namespace ExprType {
+        export const $gtype: GObject.GType<ExprType>;
+    }
+
     enum ExprType {
         ADD,
         SUB,
@@ -112,6 +120,10 @@ export namespace Template {
         NOP,
         NULL,
     }
+    export namespace SymbolType {
+        export const $gtype: GObject.GType<SymbolType>;
+    }
+
     enum SymbolType {
         EXPR,
         VALUE,

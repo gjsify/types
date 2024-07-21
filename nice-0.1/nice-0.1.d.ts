@@ -18,6 +18,10 @@ export namespace Nice {
      * Nice-0.1
      */
 
+    export namespace CandidateTransport {
+        export const $gtype: GObject.GType<CandidateTransport>;
+    }
+
     /**
      * An enum representing the type of transport to use
      */
@@ -39,6 +43,10 @@ export namespace Nice {
          */
         TCP_SO,
     }
+    export namespace CandidateType {
+        export const $gtype: GObject.GType<CandidateType>;
+    }
+
     /**
      * An enum representing the type of a candidate
      */
@@ -60,6 +68,10 @@ export namespace Nice {
          */
         RELAYED,
     }
+    export namespace Compatibility {
+        export const $gtype: GObject.GType<Compatibility>;
+    }
+
     /**
      * An enum to specify which compatible specifications the #NiceAgent should use.
      * Use with nice_agent_new()
@@ -113,6 +125,10 @@ export namespace Nice {
          */
         LAST,
     }
+    export namespace ComponentState {
+        export const $gtype: GObject.GType<ComponentState>;
+    }
+
     /**
      * An enum representing the state of a component.
      * <para> See also: #NiceAgent::component-state-changed </para>
@@ -149,6 +165,10 @@ export namespace Nice {
          */
         LAST,
     }
+    export namespace ComponentType {
+        export const $gtype: GObject.GType<ComponentType>;
+    }
+
     /**
      * Convenience enum representing the type of a component for use as the
      * component_id for RTP/RTCP usages.
@@ -169,6 +189,10 @@ export namespace Nice {
          */
         RTCP,
     }
+    export namespace NominationMode {
+        export const $gtype: GObject.GType<NominationMode>;
+    }
+
     /**
      * An enum to specity the kind of nomination mode to use by
      * the agent, as described in RFC 5245. Two modes exists,
@@ -188,6 +212,10 @@ export namespace Nice {
          */
         AGGRESSIVE,
     }
+    export namespace ProxyType {
+        export const $gtype: GObject.GType<ProxyType>;
+    }
+
     /**
      * An enum to specify which proxy type to use for relaying.
      * Note that the proxies will only be used with TCP TURN relaying.
@@ -211,6 +239,10 @@ export namespace Nice {
          */
         LAST,
     }
+    export namespace PseudoTcpDebugLevel {
+        export const $gtype: GObject.GType<PseudoTcpDebugLevel>;
+    }
+
     /**
      * Valid values of debug levels to be set.
      */
@@ -228,6 +260,10 @@ export namespace Nice {
          */
         VERBOSE,
     }
+    export namespace PseudoTcpShutdown {
+        export const $gtype: GObject.GType<PseudoTcpShutdown>;
+    }
+
     /**
      * Options for which parts of a connection to shut down when calling
      * pseudo_tcp_socket_shutdown(). These correspond to the values passed to POSIX
@@ -247,6 +283,10 @@ export namespace Nice {
          */
         RDWR,
     }
+    export namespace PseudoTcpState {
+        export const $gtype: GObject.GType<PseudoTcpState>;
+    }
+
     /**
      * An enum representing the state of the #PseudoTcpSocket. These states
      * correspond to the TCP states in RFC 793.
@@ -306,6 +346,10 @@ export namespace Nice {
          */
         LAST_ACK,
     }
+    export namespace PseudoTcpWriteResult {
+        export const $gtype: GObject.GType<PseudoTcpWriteResult>;
+    }
+
     /**
      * An enum representing the result value of the write operation requested by
      * the #PseudoTcpSocket.
@@ -326,6 +370,10 @@ export namespace Nice {
          */
         FAIL,
     }
+    export namespace RelayType {
+        export const $gtype: GObject.GType<RelayType>;
+    }
+
     /**
      * An enum representing the type of relay to use
      */
@@ -438,6 +486,10 @@ export namespace Nice {
     interface AgentRecvFunc {
         (agent: Agent, stream_id: number, component_id: number, len: number, buf: string): void;
     }
+    export namespace AgentOption {
+        export const $gtype: GObject.GType<AgentOption>;
+    }
+
     /**
      * These are options that can be passed to nice_agent_new_full(). They set
      * various properties on the agent. Not including them sets the property to

@@ -18,6 +18,10 @@ export namespace IBus {
      * IBus-1.0
      */
 
+    export namespace AttrType {
+        export const $gtype: GObject.GType<AttrType>;
+    }
+
     /**
      * Type enumeration of IBusText attribute.
      */
@@ -35,6 +39,10 @@ export namespace IBus {
          */
         BACKGROUND,
     }
+    export namespace AttrUnderline {
+        export const $gtype: GObject.GType<AttrUnderline>;
+    }
+
     /**
      * Type of IBusText attribute.
      */
@@ -60,6 +68,10 @@ export namespace IBus {
          */
         ERROR,
     }
+    export namespace BusRequestNameReply {
+        export const $gtype: GObject.GType<BusRequestNameReply>;
+    }
+
     enum BusRequestNameReply {
         /**
          * same as DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER
@@ -78,6 +90,10 @@ export namespace IBus {
          */
         ALREADY_OWNER,
     }
+    export namespace BusStartServiceByNameReply {
+        export const $gtype: GObject.GType<BusStartServiceByNameReply>;
+    }
+
     enum BusStartServiceByNameReply {
         /**
          * same as DBUS_START_REPLY_SUCCESS
@@ -114,6 +130,10 @@ export namespace IBus {
         // Own static methods of IBus.Error
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace InputPurpose {
+        export const $gtype: GObject.GType<InputPurpose>;
     }
 
     /**
@@ -185,6 +205,10 @@ export namespace IBus {
          */
         TERMINAL,
     }
+    export namespace Orientation {
+        export const $gtype: GObject.GType<Orientation>;
+    }
+
     /**
      * Orientation of UI.
      */
@@ -202,6 +226,10 @@ export namespace IBus {
          */
         SYSTEM,
     }
+    export namespace PreeditFocusMode {
+        export const $gtype: GObject.GType<PreeditFocusMode>;
+    }
+
     /**
      * Pre-edit commit mode when the focus is lost.
      */
@@ -215,6 +243,10 @@ export namespace IBus {
          */
         COMMIT,
     }
+    export namespace PropState {
+        export const $gtype: GObject.GType<PropState>;
+    }
+
     /**
      * State of #IBusProperty. The actual effect depends on #IBusPropType of the
      * IBusProperty.
@@ -246,6 +278,10 @@ export namespace IBus {
          */
         INCONSISTENT,
     }
+    export namespace PropType {
+        export const $gtype: GObject.GType<PropType>;
+    }
+
     /**
      * Type enumeration of IBusProperty.
      */
@@ -272,6 +308,10 @@ export namespace IBus {
          */
         SEPARATOR,
     }
+    export namespace XEventType {
+        export const $gtype: GObject.GType<XEventType>;
+    }
+
     enum XEventType {
         NOTHING,
         KEY_PRESS,
@@ -4954,6 +4994,10 @@ export namespace IBus {
     interface UnicodeDataLoadAsyncFinish {
         (data_list: UnicodeData[]): void;
     }
+    export namespace BusNameFlag {
+        export const $gtype: GObject.GType<BusNameFlag>;
+    }
+
     enum BusNameFlag {
         /**
          * same as DBUS_NAME_FLAG_ALLOW_REPLACEMENT
@@ -4968,6 +5012,10 @@ export namespace IBus {
          */
         DO_NOT_QUEUE,
     }
+    export namespace Capabilite {
+        export const $gtype: GObject.GType<Capabilite>;
+    }
+
     /**
      * Capability flags of UI.
      */
@@ -5009,6 +5057,10 @@ export namespace IBus {
         SYNC_PROCESS_KEY,
         SYNC_PROCESS_KEY_V2,
     }
+    export namespace InputHints {
+        export const $gtype: GObject.GType<InputHints>;
+    }
+
     /**
      * Describes hints that might be taken into account by engines.  Note
      * that engines may already tailor their behaviour according to the
@@ -5078,6 +5130,10 @@ export namespace IBus {
          */
         PRIVATE,
     }
+    export namespace ModifierType {
+        export const $gtype: GObject.GType<ModifierType>;
+    }
+
     /**
      * Handles key modifier such as control, shift and alt and release event.
      * Note that nits 15 - 25 are currently unused, while bit 29 is used internally.
@@ -5168,6 +5224,10 @@ export namespace IBus {
          */
         MODIFIER_MASK,
     }
+    export namespace ObjectFlags {
+        export const $gtype: GObject.GType<ObjectFlags>;
+    }
+
     /**
      * The flags are used internally.
      */

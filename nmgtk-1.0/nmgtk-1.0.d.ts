@@ -30,6 +30,10 @@ export namespace NMGtk {
      * NMGtk-1.0
      */
 
+    export namespace MobileFamily {
+        export const $gtype: GObject.GType<MobileFamily>;
+    }
+
     enum MobileFamily {
         UNKNOWN,
         '3GPP',

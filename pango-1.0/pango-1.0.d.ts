@@ -21,6 +21,10 @@ export namespace Pango {
      * Pango-1.0
      */
 
+    export namespace Alignment {
+        export const $gtype: GObject.GType<Alignment>;
+    }
+
     /**
      * `PangoAlignment` describes how to align the lines of a `PangoLayout`
      * within the available space.
@@ -45,6 +49,10 @@ export namespace Pango {
          */
         RIGHT,
     }
+    export namespace AttrType {
+        export const $gtype: GObject.GType<AttrType>;
+    }
+
     /**
      * The `PangoAttrType` distinguishes between different types of attributes.
      *
@@ -204,6 +212,10 @@ export namespace Pango {
          */
         FONT_SCALE,
     }
+    export namespace BaselineShift {
+        export const $gtype: GObject.GType<BaselineShift>;
+    }
+
     /**
      * An enumeration that affects baseline shifts between runs.
      */
@@ -223,6 +235,10 @@ export namespace Pango {
          */
         SUBSCRIPT,
     }
+    export namespace BidiType {
+        export const $gtype: GObject.GType<BidiType>;
+    }
+
     /**
      * `PangoBidiType` represents the bidirectional character
      * type of a Unicode character.
@@ -324,6 +340,10 @@ export namespace Pango {
          */
         PDI,
     }
+    export namespace CoverageLevel {
+        export const $gtype: GObject.GType<CoverageLevel>;
+    }
+
     /**
      * `PangoCoverageLevel` is used to indicate how well a font can
      * represent a particular Unicode character for a particular script.
@@ -357,6 +377,10 @@ export namespace Pango {
          */
         EXACT,
     }
+    export namespace Direction {
+        export const $gtype: GObject.GType<Direction>;
+    }
+
     /**
      * `PangoDirection` represents a direction in the Unicode bidirectional
      * algorithm.
@@ -409,6 +433,10 @@ export namespace Pango {
          */
         NEUTRAL,
     }
+    export namespace EllipsizeMode {
+        export const $gtype: GObject.GType<EllipsizeMode>;
+    }
+
     /**
      * `PangoEllipsizeMode` describes what sort of ellipsization
      * should be applied to text.
@@ -435,6 +463,10 @@ export namespace Pango {
          */
         END,
     }
+    export namespace FontScale {
+        export const $gtype: GObject.GType<FontScale>;
+    }
+
     /**
      * An enumeration that affects font sizes for superscript
      * and subscript positioning and for (emulated) Small Caps.
@@ -457,6 +489,10 @@ export namespace Pango {
          */
         SMALL_CAPS,
     }
+    export namespace Gravity {
+        export const $gtype: GObject.GType<Gravity>;
+    }
+
     /**
      * `PangoGravity` represents the orientation of glyphs in a segment
      * of text.
@@ -494,6 +530,10 @@ export namespace Pango {
          */
         AUTO,
     }
+    export namespace GravityHint {
+        export const $gtype: GObject.GType<GravityHint>;
+    }
+
     /**
      * `PangoGravityHint` defines how horizontal scripts should behave in a
      * vertical context.
@@ -554,6 +594,10 @@ export namespace Pango {
         static quark(): GLib.Quark;
     }
 
+    export namespace Overline {
+        export const $gtype: GObject.GType<Overline>;
+    }
+
     /**
      * The `PangoOverline` enumeration is used to specify whether text
      * should be overlined, and if so, the type of line.
@@ -569,6 +613,10 @@ export namespace Pango {
          */
         SINGLE,
     }
+    export namespace RenderPart {
+        export const $gtype: GObject.GType<RenderPart>;
+    }
+
     /**
      * `PangoRenderPart` defines different items to render for such
      * purposes as setting colors.
@@ -595,6 +643,10 @@ export namespace Pango {
          */
         OVERLINE,
     }
+    export namespace Script {
+        export const $gtype: GObject.GType<Script>;
+    }
+
     /**
      * The `PangoScript` enumeration identifies different writing
      * systems.
@@ -1082,6 +1134,10 @@ export namespace Pango {
          */
         SIGNWRITING,
     }
+    export namespace Stretch {
+        export const $gtype: GObject.GType<Stretch>;
+    }
+
     /**
      * An enumeration specifying the width of the font relative to other designs
      * within a family.
@@ -1124,6 +1180,10 @@ export namespace Pango {
          */
         ULTRA_EXPANDED,
     }
+    export namespace Style {
+        export const $gtype: GObject.GType<Style>;
+    }
+
     /**
      * An enumeration specifying the various slant styles possible for a font.
      */
@@ -1141,6 +1201,10 @@ export namespace Pango {
          */
         ITALIC,
     }
+    export namespace TabAlign {
+        export const $gtype: GObject.GType<TabAlign>;
+    }
+
     /**
      * `PangoTabAlign` specifies where the text appears relative to the tab stop
      * position.
@@ -1167,6 +1231,10 @@ export namespace Pango {
          */
         DECIMAL,
     }
+    export namespace TextTransform {
+        export const $gtype: GObject.GType<TextTransform>;
+    }
+
     /**
      * An enumeration that affects how Pango treats characters during shaping.
      */
@@ -1189,6 +1257,10 @@ export namespace Pango {
          */
         CAPITALIZE,
     }
+    export namespace Underline {
+        export const $gtype: GObject.GType<Underline>;
+    }
+
     /**
      * The `PangoUnderline` enumeration is used to specify whether text
      * should be underlined, and if so, the type of underlining.
@@ -1245,6 +1317,10 @@ export namespace Pango {
          */
         ERROR_LINE,
     }
+    export namespace Variant {
+        export const $gtype: GObject.GType<Variant>;
+    }
+
     /**
      * An enumeration specifying capitalization variant of the font.
      */
@@ -1286,6 +1362,10 @@ export namespace Pango {
          */
         TITLE_CAPS,
     }
+    export namespace Weight {
+        export const $gtype: GObject.GType<Weight>;
+    }
+
     /**
      * An enumeration specifying the weight (boldness) of a font.
      *
@@ -1342,6 +1422,10 @@ export namespace Pango {
          */
         ULTRAHEAVY,
     }
+    export namespace WrapMode {
+        export const $gtype: GObject.GType<WrapMode>;
+    }
+
     /**
      * `PangoWrapMode` describes how to wrap the lines of a `PangoLayout`
      * to the desired width.
@@ -2673,6 +2757,10 @@ export namespace Pango {
     interface FontsetForeachFunc {
         (fontset: Fontset, font: Font): boolean;
     }
+    export namespace FontMask {
+        export const $gtype: GObject.GType<FontMask>;
+    }
+
     /**
      * The bits in a `PangoFontMask` correspond to the set fields in a
      * `PangoFontDescription`.
@@ -2711,6 +2799,10 @@ export namespace Pango {
          */
         VARIATIONS,
     }
+    export namespace LayoutDeserializeFlags {
+        export const $gtype: GObject.GType<LayoutDeserializeFlags>;
+    }
+
     /**
      * Flags that influence the behavior of [func`Pango`.Layout.deserialize].
      *
@@ -2727,6 +2819,10 @@ export namespace Pango {
          */
         CONTEXT,
     }
+    export namespace LayoutSerializeFlags {
+        export const $gtype: GObject.GType<LayoutSerializeFlags>;
+    }
+
     /**
      * Flags that influence the behavior of [method`Pango`.Layout.serialize].
      *
@@ -2746,6 +2842,10 @@ export namespace Pango {
          */
         OUTPUT,
     }
+    export namespace ShapeFlags {
+        export const $gtype: GObject.GType<ShapeFlags>;
+    }
+
     /**
      * Flags influencing the shaping process.
      *
@@ -2762,6 +2862,10 @@ export namespace Pango {
          */
         ROUND_POSITIONS,
     }
+    export namespace ShowFlags {
+        export const $gtype: GObject.GType<ShowFlags>;
+    }
+
     /**
      * These flags affect how Pango treats characters that are normally
      * not visible in the output.

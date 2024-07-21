@@ -16,6 +16,10 @@ export namespace Modulemd {
      * Modulemd-2.0
      */
 
+    export namespace CompressionTypeEnum {
+        export const $gtype: GObject.GType<CompressionTypeEnum>;
+    }
+
     enum CompressionTypeEnum {
         /**
          * Zstandard compression; since 2.15
@@ -54,6 +58,10 @@ export namespace Modulemd {
          */
         SENTINEL,
     }
+    export namespace DefaultsVersionEnum {
+        export const $gtype: GObject.GType<DefaultsVersionEnum>;
+    }
+
     enum DefaultsVersionEnum {
         /**
          * Represents an error handling mdversion.
@@ -128,6 +136,10 @@ export namespace Modulemd {
         _init(...args: any[]): void;
     }
 
+    export namespace ErrorEnum {
+        export const $gtype: GObject.GType<ErrorEnum>;
+    }
+
     enum ErrorEnum {
         /**
          * Represents an error encountered while upgrading the
@@ -167,6 +179,10 @@ export namespace Modulemd {
          */
         NOT_IMPLEMENTED,
     }
+    export namespace ModuleStreamVersionEnum {
+        export const $gtype: GObject.GType<ModuleStreamVersionEnum>;
+    }
+
     enum ModuleStreamVersionEnum {
         /**
          * Represents an error handling module stream
@@ -193,6 +209,10 @@ export namespace Modulemd {
          */
         LATEST,
     }
+    export namespace ObsoletesVersionEnum {
+        export const $gtype: GObject.GType<ObsoletesVersionEnum>;
+    }
+
     enum ObsoletesVersionEnum {
         /**
          * Represents an error handling mdversion.
@@ -213,6 +233,10 @@ export namespace Modulemd {
          */
         LATEST,
     }
+    export namespace PackagerVersionEnum {
+        export const $gtype: GObject.GType<PackagerVersionEnum>;
+    }
+
     enum PackagerVersionEnum {
         /**
          * Represents an error handling module stream
@@ -292,6 +316,10 @@ export namespace Modulemd {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace YamlErrorEnum {
+        export const $gtype: GObject.GType<YamlErrorEnum>;
     }
 
     enum YamlErrorEnum {

@@ -18,6 +18,10 @@ export namespace Libmsi {
      * Libmsi-1.0
      */
 
+    export namespace ColInfo {
+        export const $gtype: GObject.GType<ColInfo>;
+    }
+
     enum ColInfo {
         NAMES,
         TYPES,
@@ -71,6 +75,10 @@ export namespace Libmsi {
         static quark(): GLib.Quark;
     }
 
+    export namespace Property {
+        export const $gtype: GObject.GType<Property>;
+    }
+
     enum Property {
         DICTIONARY,
         CODEPAGE,
@@ -93,6 +101,10 @@ export namespace Libmsi {
         APPNAME,
         SECURITY,
     }
+    export namespace PropertyType {
+        export const $gtype: GObject.GType<PropertyType>;
+    }
+
     enum PropertyType {
         EMPTY,
         INT,
@@ -137,6 +149,10 @@ export namespace Libmsi {
     const NULL_INT: number;
     function db_error_quark(): GLib.Quark;
     function result_error_quark(): GLib.Quark;
+    export namespace DbFlags {
+        export const $gtype: GObject.GType<DbFlags>;
+    }
+
     enum DbFlags {
         READONLY,
         CREATE,

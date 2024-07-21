@@ -24,11 +24,19 @@ export namespace Caribou {
      * Caribou-1.0
      */
 
+    export namespace ModifierState {
+        export const $gtype: GObject.GType<ModifierState>;
+    }
+
     enum ModifierState {
         NONE,
         LATCHED,
         LOCKED,
     }
+    export namespace ScanGrouping {
+        export const $gtype: GObject.GType<ScanGrouping>;
+    }
+
     enum ScanGrouping {
         NONE,
         SUBGROUPS,

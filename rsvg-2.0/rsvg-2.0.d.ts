@@ -46,6 +46,10 @@ export namespace Rsvg {
         static quark(): GLib.Quark;
     }
 
+    export namespace Unit {
+        export const $gtype: GObject.GType<Unit>;
+    }
+
     /**
      * Units for the `RsvgLength` struct.  These have the same meaning as [CSS length
      * units](https://www.w3.org/TR/CSS21/syndata.html#length-units).
@@ -264,6 +268,10 @@ export namespace Rsvg {
     interface SizeFunc {
         (): void;
     }
+    export namespace HandleFlags {
+        export const $gtype: GObject.GType<HandleFlags>;
+    }
+
     /**
      * Configuration flags for an [class`Rsvg`.Handle].  Note that not all of [class`Rsvg`.Handle]'s
      * constructors let you specify flags.  For this reason, [ctor`Rsvg`.Handle.new_from_gfile_sync]

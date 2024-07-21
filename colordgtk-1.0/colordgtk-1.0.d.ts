@@ -28,6 +28,10 @@ export namespace ColordGtk {
      * ColordGtk-1.0
      */
 
+    export namespace WindowError {
+        export const $gtype: GObject.GType<WindowError>;
+    }
+
     /**
      * Errors that can be thrown
      */

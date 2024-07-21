@@ -28,12 +28,20 @@ export namespace GtkVnc {
      * GtkVnc-2.0
      */
 
+    export namespace DisplayCredential {
+        export const $gtype: GObject.GType<DisplayCredential>;
+    }
+
     enum DisplayCredential {
         PASSWORD,
         USERNAME,
         CLIENTNAME,
         CA_CERT_DATA,
     }
+    export namespace DisplayDepthColor {
+        export const $gtype: GObject.GType<DisplayDepthColor>;
+    }
+
     enum DisplayDepthColor {
         DEFAULT,
         FULL,
@@ -41,6 +49,10 @@ export namespace GtkVnc {
         LOW,
         ULTRA_LOW,
     }
+    export namespace DisplayKeyEvent {
+        export const $gtype: GObject.GType<DisplayKeyEvent>;
+    }
+
     enum DisplayKeyEvent {
         PRESS,
         RELEASE,

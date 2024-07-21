@@ -18,23 +18,39 @@ export namespace Gvc {
      * Gvc-1.0
      */
 
+    export namespace MixerControlState {
+        export const $gtype: GObject.GType<MixerControlState>;
+    }
+
     enum MixerControlState {
         CLOSED,
         READY,
         CONNECTING,
         FAILED,
     }
+    export namespace MixerStreamState {
+        export const $gtype: GObject.GType<MixerStreamState>;
+    }
+
     enum MixerStreamState {
         INVALID,
         RUNNING,
         IDLE,
         SUSPENDED,
     }
+    export namespace MixerUIDeviceDirection {
+        export const $gtype: GObject.GType<MixerUIDeviceDirection>;
+    }
+
     enum MixerUIDeviceDirection {
         INPUT,
         OUTPUT,
     }
     const MIXER_UI_DEVICE_INVALID: number;
+    export namespace HeadsetPortChoice {
+        export const $gtype: GObject.GType<HeadsetPortChoice>;
+    }
+
     enum HeadsetPortChoice {
         NONE,
         HEADPHONES,

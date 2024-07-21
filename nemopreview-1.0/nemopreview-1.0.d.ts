@@ -41,6 +41,10 @@ export namespace NemoPreview {
      * NemoPreview-1.0
      */
 
+    export namespace SoundPlayerState {
+        export const $gtype: GObject.GType<SoundPlayerState>;
+    }
+
     enum SoundPlayerState {
         UNKNOWN,
         IDLE,

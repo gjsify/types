@@ -28,6 +28,10 @@ export namespace Libxfce4ui {
      * Libxfce4ui-2.0
      */
 
+    export namespace GtkMenuItem {
+        export const $gtype: GObject.GType<GtkMenuItem>;
+    }
+
     /**
      * List of item types which are supported by the #XfceGtkActionEntry.
      * To be extended if required.
@@ -50,6 +54,10 @@ export namespace Libxfce4ui {
          */
         RADIO_MENU_ITEM,
     }
+    export namespace SMClientPriority {
+        export const $gtype: GObject.GType<SMClientPriority>;
+    }
+
     /**
      * Some sample priority values for use with xfce_sm_client_set_priority().
      */
@@ -83,6 +91,10 @@ export namespace Libxfce4ui {
          */
         LOWEST,
     }
+    export namespace SMClientRestartStyle {
+        export const $gtype: GObject.GType<SMClientRestartStyle>;
+    }
+
     /**
      * An enumeration describing how the session manager should restart
      * the application.
@@ -100,6 +112,10 @@ export namespace Libxfce4ui {
          */
         IMMEDIATELY,
     }
+    export namespace SMClientShutdownHint {
+        export const $gtype: GObject.GType<SMClientShutdownHint>;
+    }
+
     /**
      * Hints to the session manager what kind of shutdown the session manager
      * should perform.
@@ -122,6 +138,10 @@ export namespace Libxfce4ui {
          */
         REBOOT,
     }
+    export namespace SmCLientErrorEnum {
+        export const $gtype: GObject.GType<SmCLientErrorEnum>;
+    }
+
     /**
      * Error codes returned by XfceSmCLient functions.
      */

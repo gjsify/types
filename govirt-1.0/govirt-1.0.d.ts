@@ -56,10 +56,18 @@ export namespace GoVirt {
         static quark(): GLib.Quark;
     }
 
+    export namespace VmDisplayType {
+        export const $gtype: GObject.GType<VmDisplayType>;
+    }
+
     enum VmDisplayType {
         SPICE,
         VNC,
     }
+    export namespace VmState {
+        export const $gtype: GObject.GType<VmState>;
+    }
+
     enum VmState {
         DOWN,
         UP,

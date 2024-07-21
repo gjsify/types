@@ -57,6 +57,10 @@ export namespace LightDM {
         static quark(): GLib.Quark;
     }
 
+    export namespace MessageType {
+        export const $gtype: GObject.GType<MessageType>;
+    }
+
     enum MessageType {
         /**
          * Informational message.
@@ -67,6 +71,10 @@ export namespace LightDM {
          */
         ERROR,
     }
+    export namespace PromptType {
+        export const $gtype: GObject.GType<PromptType>;
+    }
+
     /**
      * Prompt types the client is required to display.
      */

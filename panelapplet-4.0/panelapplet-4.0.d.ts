@@ -28,6 +28,10 @@ export namespace PanelApplet {
      * PanelApplet-4.0
      */
 
+    export namespace AppletOrient {
+        export const $gtype: GObject.GType<AppletOrient>;
+    }
+
     /**
      * Type defining the orientation of the applet. The values may seem backward
      * (e.g. %PANEL_APPLET_ORIENT_RIGHT means the panel is on the left side), but
@@ -43,6 +47,10 @@ export namespace PanelApplet {
     interface AppletFactoryCallback {
         (applet: Applet, iid: string): boolean;
     }
+    export namespace AppletFlags {
+        export const $gtype: GObject.GType<AppletFlags>;
+    }
+
     /**
      * Flags to be used with panel_applet_get_flags()/panel_applet_set_flags(), to
      * indicate to the panel a specific behavior requested by the #PanelApplet.

@@ -1,6 +1,6 @@
 {
     "name": "@girs/xreaderview-1.5",
-    "version": "1.5.0-4.0.0-beta.8",
+    "version": "1.5.0-4.0.0-beta.9",
     "description": "GJS TypeScript type definitions for XreaderView-1.5, generated from library version 1.5.0",
     "type": "module",
     "module": "xreaderview-1.5.js",

@@ -20,6 +20,10 @@ export namespace GstBadAudio {
      * GstBadAudio-1.0
      */
 
+    export namespace NonstreamAudioOutputMode {
+        export const $gtype: GObject.GType<NonstreamAudioOutputMode>;
+    }
+
     /**
      * The output mode defines how the output behaves with regards to looping. Either the playback position is
      * moved back to the beginning of the loop, acting like a backwards seek, or it increases steadily, as if
@@ -35,6 +39,10 @@ export namespace GstBadAudio {
          */
         STEADY,
     }
+    export namespace NonstreamAudioSubsongMode {
+        export const $gtype: GObject.GType<NonstreamAudioSubsongMode>;
+    }
+
     /**
      * The subsong mode defines how the decoder shall handle subsongs.
      */

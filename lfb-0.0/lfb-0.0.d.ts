@@ -18,6 +18,10 @@ export namespace Lfb {
      * Lfb-0.0
      */
 
+    export namespace EventEndReason {
+        export const $gtype: GObject.GType<EventEndReason>;
+    }
+
     /**
      * Enum values used to indicate why the feedbacks for an event ended.
      */
@@ -40,6 +44,10 @@ export namespace Lfb {
          */
         EXPLICIT,
     }
+    export namespace EventState {
+        export const $gtype: GObject.GType<EventState>;
+    }
+
     /**
      * Enum values to indicate the current state of the feedbacks
      * triggered by an event.

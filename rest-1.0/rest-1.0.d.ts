@@ -19,6 +19,10 @@ export namespace Rest {
      * Rest-1.0
      */
 
+    export namespace MemoryUse {
+        export const $gtype: GObject.GType<MemoryUse>;
+    }
+
     enum MemoryUse {
         /**
          * the memory block can be assumed to always exist for the

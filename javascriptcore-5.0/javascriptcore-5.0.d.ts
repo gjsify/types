@@ -16,6 +16,10 @@ export namespace JavaScriptCore {
      * JavaScriptCore-5.0
      */
 
+    export namespace CheckSyntaxMode {
+        export const $gtype: GObject.GType<CheckSyntaxMode>;
+    }
+
     /**
      * Enum values to specify a mode to check for syntax errors in jsc_context_check_syntax().
      */
@@ -29,6 +33,10 @@ export namespace JavaScriptCore {
          */
         MODULE,
     }
+    export namespace CheckSyntaxResult {
+        export const $gtype: GObject.GType<CheckSyntaxResult>;
+    }
+
     /**
      * Enum values to specify the result of jsc_context_check_syntax().
      */
@@ -58,6 +66,10 @@ export namespace JavaScriptCore {
          */
         STACK_OVERFLOW_ERROR,
     }
+    export namespace OptionType {
+        export const $gtype: GObject.GType<OptionType>;
+    }
+
     /**
      * Enum values for options types.
      */
@@ -91,6 +103,10 @@ export namespace JavaScriptCore {
          */
         RANGE_STRING,
     }
+    export namespace TypedArrayType {
+        export const $gtype: GObject.GType<TypedArrayType>;
+    }
+
     /**
      * Possible types of the elements contained in a typed array.
      */
@@ -354,6 +370,10 @@ export namespace JavaScriptCore {
     interface OptionsFunc {
         (option: string, type: OptionType, description?: string | null): boolean;
     }
+    export namespace ValuePropertyFlags {
+        export const $gtype: GObject.GType<ValuePropertyFlags>;
+    }
+
     /**
      * Flags used when defining properties with jsc_value_object_define_property_data() and
      * jsc_value_object_define_property_accessor().

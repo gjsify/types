@@ -18,6 +18,10 @@ export namespace Gst {
      * Gst-0.10
      */
 
+    export namespace ActivateMode {
+        export const $gtype: GObject.GType<ActivateMode>;
+    }
+
     /**
      * The status of a GstPad. After activating a pad, which usually happens when the
      * parent element goes from READY to PAUSED, the GstActivateMode defines if the
@@ -28,6 +32,10 @@ export namespace Gst {
         PUSH,
         PULL,
     }
+    export namespace BufferListItem {
+        export const $gtype: GObject.GType<BufferListItem>;
+    }
+
     /**
      * The result of the #GstBufferListFunc.
      */
@@ -36,6 +44,10 @@ export namespace Gst {
         SKIP_GROUP,
         END,
     }
+    export namespace BufferingMode {
+        export const $gtype: GObject.GType<BufferingMode>;
+    }
+
     /**
      * The different types of buffering methods.
      */
@@ -45,6 +57,10 @@ export namespace Gst {
         TIMESHIFT,
         LIVE,
     }
+    export namespace BusSyncReply {
+        export const $gtype: GObject.GType<BusSyncReply>;
+    }
+
     /**
      * The result values for a GstBusSyncHandler.
      */
@@ -53,6 +69,10 @@ export namespace Gst {
         PASS,
         ASYNC,
     }
+    export namespace ClockEntryType {
+        export const $gtype: GObject.GType<ClockEntryType>;
+    }
+
     /**
      * The type of the clock entry
      */
@@ -60,6 +80,10 @@ export namespace Gst {
         SINGLE,
         PERIODIC,
     }
+    export namespace ClockReturn {
+        export const $gtype: GObject.GType<ClockReturn>;
+    }
+
     /**
      * The return value of a clock operation.
      */
@@ -72,6 +96,10 @@ export namespace Gst {
         ERROR,
         UNSUPPORTED,
     }
+    export namespace ClockType {
+        export const $gtype: GObject.GType<ClockType>;
+    }
+
     /**
      * The different kind of clocks.
      */
@@ -79,6 +107,10 @@ export namespace Gst {
         REALTIME,
         MONOTONIC,
     }
+    export namespace CoreError {
+        export const $gtype: GObject.GType<CoreError>;
+    }
+
     /**
      * Core errors are errors inside the core GStreamer library.
      */
@@ -99,6 +131,10 @@ export namespace Gst {
         DISABLED,
         NUM_ERRORS,
     }
+    export namespace DebugColorFlags {
+        export const $gtype: GObject.GType<DebugColorFlags>;
+    }
+
     /**
      * These are some terminal style flags you can use when creating your
      * debugging categories to make them stand out in debugging output.
@@ -123,6 +159,10 @@ export namespace Gst {
         BOLD,
         UNDERLINE,
     }
+    export namespace DebugLevel {
+        export const $gtype: GObject.GType<DebugLevel>;
+    }
+
     /**
      * The level defines the importance of a debugging message. The more important a
      * message is, the greater the probability that the debugging system outputs it.
@@ -139,6 +179,10 @@ export namespace Gst {
         MEMDUMP,
         COUNT,
     }
+    export namespace EventType {
+        export const $gtype: GObject.GType<EventType>;
+    }
+
     /**
      * #GstEventType lists the standard event types that can be sent in a pipeline.
      * The custom event types can be used for private messages between elements
@@ -167,6 +211,10 @@ export namespace Gst {
         CUSTOM_BOTH,
         CUSTOM_BOTH_OOB,
     }
+    export namespace FlowReturn {
+        export const $gtype: GObject.GType<FlowReturn>;
+    }
+
     /**
      * sent yet) (unused/unimplemented).
      * this error should post an error message with more
@@ -199,6 +247,10 @@ export namespace Gst {
         CUSTOM_ERROR_1,
         CUSTOM_ERROR_2,
     }
+    export namespace Format {
+        export const $gtype: GObject.GType<Format>;
+    }
+
     /**
      * Standard predefined formats
      */
@@ -210,6 +262,10 @@ export namespace Gst {
         BUFFERS,
         PERCENT,
     }
+    export namespace IndexCertainty {
+        export const $gtype: GObject.GType<IndexCertainty>;
+    }
+
     /**
      * The certainty of a group in the index.
      */
@@ -218,6 +274,10 @@ export namespace Gst {
         CERTAIN,
         FUZZY,
     }
+    export namespace IndexEntryType {
+        export const $gtype: GObject.GType<IndexEntryType>;
+    }
+
     /**
      * The different types of entries in the index.
      */
@@ -227,6 +287,10 @@ export namespace Gst {
         OBJECT,
         FORMAT,
     }
+    export namespace IndexLookupMethod {
+        export const $gtype: GObject.GType<IndexLookupMethod>;
+    }
+
     /**
      * Specify the method to find an index entry in the index.
      */
@@ -235,6 +299,10 @@ export namespace Gst {
         BEFORE,
         AFTER,
     }
+    export namespace IndexResolverMethod {
+        export const $gtype: GObject.GType<IndexResolverMethod>;
+    }
+
     /**
      * The method used to resolve index writers
      */
@@ -243,6 +311,10 @@ export namespace Gst {
         GTYPE,
         PATH,
     }
+    export namespace IteratorItem {
+        export const $gtype: GObject.GType<IteratorItem>;
+    }
+
     /**
      * The result of a #GstIteratorItemFunction.
      */
@@ -251,6 +323,10 @@ export namespace Gst {
         PASS,
         END,
     }
+    export namespace IteratorResult {
+        export const $gtype: GObject.GType<IteratorResult>;
+    }
+
     /**
      * The result of gst_iterator_next().
      */
@@ -260,6 +336,10 @@ export namespace Gst {
         RESYNC,
         ERROR,
     }
+    export namespace LibraryError {
+        export const $gtype: GObject.GType<LibraryError>;
+    }
+
     /**
      * Library errors are for errors from the library being used by elements
      * (initializing, finalizing, settings, ...)
@@ -273,6 +353,10 @@ export namespace Gst {
         ENCODE,
         NUM_ERRORS,
     }
+    export namespace PadDirection {
+        export const $gtype: GObject.GType<PadDirection>;
+    }
+
     /**
      * The direction of a pad.
      */
@@ -281,6 +365,10 @@ export namespace Gst {
         SRC,
         SINK,
     }
+    export namespace PadLinkReturn {
+        export const $gtype: GObject.GType<PadLinkReturn>;
+    }
+
     /**
      * Result values from gst_pad_link and friends.
      */
@@ -293,6 +381,10 @@ export namespace Gst {
         NOSCHED,
         REFUSED,
     }
+    export namespace PadPresence {
+        export const $gtype: GObject.GType<PadPresence>;
+    }
+
     /**
      * Indicates when this pad will become available.
      */
@@ -301,6 +393,10 @@ export namespace Gst {
         SOMETIMES,
         REQUEST,
     }
+    export namespace ParseError {
+        export const $gtype: GObject.GType<ParseError>;
+    }
+
     /**
      * The different parsing errors that can occur.
      */
@@ -313,6 +409,10 @@ export namespace Gst {
         EMPTY_BIN,
         EMPTY,
     }
+    export namespace PluginError {
+        export const $gtype: GObject.GType<PluginError>;
+    }
+
     /**
      * The plugin loading errors
      */
@@ -321,6 +421,10 @@ export namespace Gst {
         DEPENDENCIES,
         NAME_MISMATCH,
     }
+    export namespace QueryType {
+        export const $gtype: GObject.GType<QueryType>;
+    }
+
     /**
      * Standard predefined Query types
      */
@@ -339,6 +443,10 @@ export namespace Gst {
         CUSTOM,
         URI,
     }
+    export namespace Rank {
+        export const $gtype: GObject.GType<Rank>;
+    }
+
     /**
      * Element priority ranks. Defines the order in which the autoplugger (or
      * similar rank-picking mechanisms, such as e.g. gst_element_make_from_uri())
@@ -352,6 +460,10 @@ export namespace Gst {
         SECONDARY,
         PRIMARY,
     }
+    export namespace ResourceError {
+        export const $gtype: GObject.GType<ResourceError>;
+    }
+
     /**
      * Resource errors are for any resource used by an element:
      * memory, files, network connections, process space, ...
@@ -374,6 +486,10 @@ export namespace Gst {
         NO_SPACE_LEFT,
         NUM_ERRORS,
     }
+    export namespace SearchMode {
+        export const $gtype: GObject.GType<SearchMode>;
+    }
+
     /**
      * The different search modes.
      */
@@ -382,6 +498,10 @@ export namespace Gst {
         BEFORE,
         AFTER,
     }
+    export namespace SeekType {
+        export const $gtype: GObject.GType<SeekType>;
+    }
+
     /**
      * The different types of seek events. When constructing a seek event with
      * gst_event_new_seek(), a format, a seek method and optional flags are to
@@ -394,6 +514,10 @@ export namespace Gst {
         SET,
         END,
     }
+    export namespace State {
+        export const $gtype: GObject.GType<State>;
+    }
+
     /**
      * The possible states an element can be in. States can be changed using
      * gst_element_set_state() and checked using gst_element_get_state().
@@ -405,6 +529,10 @@ export namespace Gst {
         PAUSED,
         PLAYING,
     }
+    export namespace StateChange {
+        export const $gtype: GObject.GType<StateChange>;
+    }
+
     /**
      * These are the different state changes an element goes through.
      * %GST_STATE_NULL &rArr; %GST_STATE_PLAYING is called an upwards state change
@@ -418,6 +546,10 @@ export namespace Gst {
         PAUSED_TO_READY,
         READY_TO_NULL,
     }
+    export namespace StateChangeReturn {
+        export const $gtype: GObject.GType<StateChangeReturn>;
+    }
+
     /**
      * The possible return values from a state change function. Only
      */
@@ -427,6 +559,10 @@ export namespace Gst {
         ASYNC,
         NO_PREROLL,
     }
+    export namespace StreamError {
+        export const $gtype: GObject.GType<StreamError>;
+    }
+
     /**
      * Stream errors are for anything related to the stream being processed:
      * format errors, media type errors, ...
@@ -448,6 +584,10 @@ export namespace Gst {
         DECRYPT_NOKEY,
         NUM_ERRORS,
     }
+    export namespace StreamStatusType {
+        export const $gtype: GObject.GType<StreamStatusType>;
+    }
+
     /**
      * The type of a %GST_MESSAGE_STREAM_STATUS. The stream status messages inform the
      * application of new streaming threads and their status.
@@ -461,6 +601,10 @@ export namespace Gst {
         PAUSE,
         STOP,
     }
+    export namespace StructureChangeType {
+        export const $gtype: GObject.GType<StructureChangeType>;
+    }
+
     /**
      * The type of a %GST_MESSAGE_STRUCTURE_CHANGE.
      */
@@ -468,6 +612,10 @@ export namespace Gst {
         LINK,
         UNLINK,
     }
+    export namespace TagFlag {
+        export const $gtype: GObject.GType<TagFlag>;
+    }
+
     /**
      * Extra tag flags used when registering tags.
      */
@@ -478,6 +626,10 @@ export namespace Gst {
         DECODED,
         COUNT,
     }
+    export namespace TagMergeMode {
+        export const $gtype: GObject.GType<TagMergeMode>;
+    }
+
     /**
      * The different tag merging modes are basically replace, overwrite and append,
      * already in the element and (B) the ones that are supplied to the element (
@@ -554,6 +706,10 @@ export namespace Gst {
         KEEP_ALL,
         COUNT,
     }
+    export namespace TaskState {
+        export const $gtype: GObject.GType<TaskState>;
+    }
+
     /**
      * The different states a task can be in
      */
@@ -562,6 +718,10 @@ export namespace Gst {
         STOPPED,
         PAUSED,
     }
+    export namespace TypeFindProbability {
+        export const $gtype: GObject.GType<TypeFindProbability>;
+    }
+
     /**
      * The probability of the typefind function. Higher values have more certainty
      * in doing a reliable typefind.
@@ -573,6 +733,10 @@ export namespace Gst {
         NEARLY_CERTAIN,
         MAXIMUM,
     }
+    export namespace URIType {
+        export const $gtype: GObject.GType<URIType>;
+    }
+
     /**
      * The different types of URI direction.
      */
@@ -1193,6 +1357,10 @@ export namespace Gst {
     type Date = object | null;
     type GError = object | null;
     type TagList = unknown;
+    export namespace AllocTraceFlags {
+        export const $gtype: GObject.GType<AllocTraceFlags>;
+    }
+
     /**
      * Flags indicating which tracing feature to enable.
      */
@@ -1200,6 +1368,10 @@ export namespace Gst {
         LIVE,
         MEM_LIVE,
     }
+    export namespace AssocFlags {
+        export const $gtype: GObject.GType<AssocFlags>;
+    }
+
     /**
      * Flags for an association entry.
      */
@@ -1209,6 +1381,10 @@ export namespace Gst {
         DELTA_UNIT,
         LAST,
     }
+    export namespace BaseSrcFlags {
+        export const $gtype: GObject.GType<BaseSrcFlags>;
+    }
+
     /**
      * The #GstElement flags that a basesrc element may have.
      */
@@ -1216,6 +1392,10 @@ export namespace Gst {
         STARTED,
         FLAG_LAST,
     }
+    export namespace BinFlags {
+        export const $gtype: GObject.GType<BinFlags>;
+    }
+
     /**
      * GstBinFlags are a set of flags specific to bins. Most are set/used
      * internally. They can be checked using the GST_OBJECT_FLAG_IS_SET () macro,
@@ -1224,6 +1404,10 @@ export namespace Gst {
     enum BinFlags {
         LAST,
     }
+    export namespace BufferCopyFlags {
+        export const $gtype: GObject.GType<BufferCopyFlags>;
+    }
+
     /**
      * A set of flags that can be provided to the gst_buffer_copy_metadata()
      * function to specify which metadata fields should be copied.
@@ -1233,6 +1417,10 @@ export namespace Gst {
         TIMESTAMPS,
         CAPS,
     }
+    export namespace BufferFlag {
+        export const $gtype: GObject.GType<BufferFlag>;
+    }
+
     /**
      * A set of buffer flags used to describe properties of a #GstBuffer.
      */
@@ -1248,6 +1436,10 @@ export namespace Gst {
         MEDIA3,
         LAST,
     }
+    export namespace BusFlags {
+        export const $gtype: GObject.GType<BusFlags>;
+    }
+
     /**
      * The standard flags that a bus may have.
      */
@@ -1255,12 +1447,20 @@ export namespace Gst {
         FLUSHING,
         FLAG_LAST,
     }
+    export namespace CapsFlags {
+        export const $gtype: GObject.GType<CapsFlags>;
+    }
+
     /**
      * Extra flags for a caps.
      */
     enum CapsFlags {
         ANY,
     }
+    export namespace ClockFlags {
+        export const $gtype: GObject.GType<ClockFlags>;
+    }
+
     /**
      * The capabilities of this clock
      */
@@ -1273,6 +1473,10 @@ export namespace Gst {
         CAN_SET_MASTER,
         LAST,
     }
+    export namespace DebugGraphDetails {
+        export const $gtype: GObject.GType<DebugGraphDetails>;
+    }
+
     /**
      * Available details for pipeline graphs produced by GST_DEBUG_BIN_TO_DOT_FILE()
      * and GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS().
@@ -1284,6 +1488,10 @@ export namespace Gst {
         STATES,
         ALL,
     }
+    export namespace ElementFlags {
+        export const $gtype: GObject.GType<ElementFlags>;
+    }
+
     /**
      * The standard flags that an element may have.
      */
@@ -1293,6 +1501,10 @@ export namespace Gst {
         UNPARENTING,
         FLAG_LAST,
     }
+    export namespace EventTypeFlags {
+        export const $gtype: GObject.GType<EventTypeFlags>;
+    }
+
     /**
      * #GstEventTypeFlags indicate the aspects of the different #GstEventType
      * values. You can get the type flags of a #GstEventType with the
@@ -1303,6 +1515,10 @@ export namespace Gst {
         DOWNSTREAM,
         SERIALIZED,
     }
+    export namespace IndexFlags {
+        export const $gtype: GObject.GType<IndexFlags>;
+    }
+
     /**
      * Flags for this index
      */
@@ -1311,6 +1527,10 @@ export namespace Gst {
         READABLE,
         FLAG_LAST,
     }
+    export namespace MessageType {
+        export const $gtype: GObject.GType<MessageType>;
+    }
+
     /**
      * The different message types that are available.
      */
@@ -1343,6 +1563,10 @@ export namespace Gst {
         QOS,
         ANY,
     }
+    export namespace MiniObjectFlags {
+        export const $gtype: GObject.GType<MiniObjectFlags>;
+    }
+
     /**
      * Flags for the padtemplate
      */
@@ -1350,6 +1574,10 @@ export namespace Gst {
         READONLY,
         LAST,
     }
+    export namespace ObjectFlags {
+        export const $gtype: GObject.GType<ObjectFlags>;
+    }
+
     /**
      * The standard flags that an gstobject may have.
      */
@@ -1358,6 +1586,10 @@ export namespace Gst {
         FLOATING,
         FLAG_LAST,
     }
+    export namespace PadFlags {
+        export const $gtype: GObject.GType<PadFlags>;
+    }
+
     /**
      * Pad state flags
      */
@@ -1369,6 +1601,10 @@ export namespace Gst {
         BLOCKING,
         FLAG_LAST,
     }
+    export namespace PadLinkCheck {
+        export const $gtype: GObject.GType<PadLinkCheck>;
+    }
+
     /**
      * The amount of checking to be done when linking pads. `GST_PAD_LINK_CHECK_CAPS`
      * and `GST_PAD_LINK_CHECK_TEMPLATE_CAPS` are mutually exclusive. If both are
@@ -1386,6 +1622,10 @@ export namespace Gst {
         TEMPLATE_CAPS,
         CAPS,
     }
+    export namespace PadTemplateFlags {
+        export const $gtype: GObject.GType<PadTemplateFlags>;
+    }
+
     /**
      * Flags for the padtemplate
      */
@@ -1393,6 +1633,10 @@ export namespace Gst {
         FIXED,
         FLAG_LAST,
     }
+    export namespace ParseFlags {
+        export const $gtype: GObject.GType<ParseFlags>;
+    }
+
     /**
      * Parsing options.
      */
@@ -1400,6 +1644,10 @@ export namespace Gst {
         NONE,
         FATAL_ERRORS,
     }
+    export namespace PipelineFlags {
+        export const $gtype: GObject.GType<PipelineFlags>;
+    }
+
     /**
      * Pipeline flags
      */
@@ -1407,6 +1655,10 @@ export namespace Gst {
         FIXED_CLOCK,
         LAST,
     }
+    export namespace PluginDependencyFlags {
+        export const $gtype: GObject.GType<PluginDependencyFlags>;
+    }
+
     /**
      * Flags used in connection with gst_plugin_add_dependency().
      */
@@ -1416,6 +1668,10 @@ export namespace Gst {
         PATHS_ARE_DEFAULT_ONLY,
         FILE_NAME_IS_SUFFIX,
     }
+    export namespace PluginFlags {
+        export const $gtype: GObject.GType<PluginFlags>;
+    }
+
     /**
      * The plugin loading state
      */
@@ -1423,6 +1679,10 @@ export namespace Gst {
         CACHED,
         BLACKLISTED,
     }
+    export namespace SeekFlags {
+        export const $gtype: GObject.GType<SeekFlags>;
+    }
+
     /**
      * Flags to be used with gst_element_seek() or gst_event_new_seek(). All flags
      * can be used together.

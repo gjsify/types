@@ -17,6 +17,10 @@ export namespace Grl {
      * Grl-0.1
      */
 
+    export namespace CoreError {
+        export const $gtype: GObject.GType<CoreError>;
+    }
+
     /**
      * These constants identify all the available core errors
      */
@@ -41,6 +45,10 @@ export namespace Grl {
         NOTIFY_CHANGED_FAILED,
         OPERATION_CANCELLED,
     }
+    export namespace LogLevel {
+        export const $gtype: GObject.GType<LogLevel>;
+    }
+
     /**
      * Grilo log levels. Defines the level of verbosity selected in Grilo.
      */
@@ -53,6 +61,10 @@ export namespace Grl {
         DEBUG,
         LAST,
     }
+    export namespace MediaSerializeType {
+        export const $gtype: GObject.GType<MediaSerializeType>;
+    }
+
     /**
      * GrlMedia serialize type
      */
@@ -61,6 +73,10 @@ export namespace Grl {
         PARTIAL,
         FULL,
     }
+    export namespace MediaSourceChangeType {
+        export const $gtype: GObject.GType<MediaSourceChangeType>;
+    }
+
     /**
      * Specifies which kind of change has happened in the plugin
      */
@@ -69,6 +85,10 @@ export namespace Grl {
         ADDED,
         REMOVED,
     }
+    export namespace PluginRank {
+        export const $gtype: GObject.GType<PluginRank>;
+    }
+
     /**
      * Module priority ranks. Defines the order in which the resolver
      * (or similar rank-picking mechanisms) will choose this plugin
@@ -295,6 +315,10 @@ export namespace Grl {
     interface MetadataSourceSetMetadataCb {
         (source: MetadataSource, media: Media, failed_keys: GObject.ParamSpec[], error: number): void;
     }
+    export namespace MetadataResolutionFlags {
+        export const $gtype: GObject.GType<MetadataResolutionFlags>;
+    }
+
     /**
      * GrlMetadata resolution flags
      */
@@ -304,6 +328,10 @@ export namespace Grl {
         IDLE_RELAY,
         FAST_ONLY,
     }
+    export namespace MetadataWritingFlags {
+        export const $gtype: GObject.GType<MetadataWritingFlags>;
+    }
+
     /**
      * Flags for metadata writing operations.
      */
@@ -311,6 +339,10 @@ export namespace Grl {
         NORMAL,
         FULL,
     }
+    export namespace SupportedOps {
+        export const $gtype: GObject.GType<SupportedOps>;
+    }
+
     /**
      * Bitwise flags which reflect the kind of operations that a
      * #GrlMediaPlugin supports.

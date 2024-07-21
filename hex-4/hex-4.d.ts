@@ -28,6 +28,10 @@ export namespace Hex {
      * Hex-4
      */
 
+    export namespace ChangeType {
+        export const $gtype: GObject.GType<ChangeType>;
+    }
+
     /**
      * Type of change operation.
      */
@@ -41,6 +45,10 @@ export namespace Hex {
          */
         BYTE,
     }
+    export namespace WidgetGroupType {
+        export const $gtype: GObject.GType<WidgetGroupType>;
+    }
+
     /**
      * Specifies how data is to be grouped by the #HexWidget.
      */
@@ -93,6 +101,10 @@ export namespace Hex {
      * @returns a pointer to a valid implementation of a [iface@Hex.Buffer] interface, pre-cast as type #HexBuffer, or %NULL if the operation failed. Starting with 4.2, if a specific backend is requested, and the system supports plugins as a whole but cannot load that specified plugin, %NULL will be returned as though the operation failed, so as to customize the fallback scheme programmatically.
      */
     function buffer_util_new(plugin?: string | null, file?: Gio.File | null): Buffer;
+    export namespace SearchFlags {
+        export const $gtype: GObject.GType<SearchFlags>;
+    }
+
     /**
      * Bitwise flags for search options that can be combined as desired.
      */

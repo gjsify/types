@@ -18,6 +18,10 @@ export namespace Colord {
      * Colord-1.0
      */
 
+    export namespace ClientError {
+        export const $gtype: GObject.GType<ClientError>;
+    }
+
     /**
      * Errors that can be thrown
      */
@@ -51,6 +55,10 @@ export namespace Colord {
          */
         FILE_INVALID,
     }
+    export namespace ColorBlackbodyFlags {
+        export const $gtype: GObject.GType<ColorBlackbodyFlags>;
+    }
+
     /**
      * Flags used when returning an RGB color from a temperature.
      */
@@ -64,6 +72,10 @@ export namespace Colord {
          */
         USE_PLANCKIAN,
     }
+    export namespace Colorspace {
+        export const $gtype: GObject.GType<Colorspace>;
+    }
+
     /**
      * The known colorspace.
      */
@@ -80,6 +92,10 @@ export namespace Colord {
         CMYK,
         CMY,
     }
+    export namespace DeviceError {
+        export const $gtype: GObject.GType<DeviceError>;
+    }
+
     /**
      * Errors that can be thrown
      */
@@ -121,6 +137,10 @@ export namespace Colord {
          */
         NOT_ENABLED,
     }
+    export namespace DeviceKind {
+        export const $gtype: GObject.GType<DeviceKind>;
+    }
+
     /**
      * The device type.
      */
@@ -132,6 +152,10 @@ export namespace Colord {
         CAMERA,
         WEBCAM,
     }
+    export namespace DeviceMode {
+        export const $gtype: GObject.GType<DeviceMode>;
+    }
+
     /**
      * The device mode.
      */
@@ -140,6 +164,10 @@ export namespace Colord {
         PHYSICAL,
         VIRTUAL,
     }
+    export namespace DeviceRelation {
+        export const $gtype: GObject.GType<DeviceRelation>;
+    }
+
     /**
      * The device to profile relationship.
      */
@@ -148,6 +176,10 @@ export namespace Colord {
         SOFT,
         HARD,
     }
+    export namespace IccError {
+        export const $gtype: GObject.GType<IccError>;
+    }
+
     /**
      * The ICC error code.
      */
@@ -189,6 +221,10 @@ export namespace Colord {
          */
         INTERNAL,
     }
+    export namespace IccSaveFlags {
+        export const $gtype: GObject.GType<IccSaveFlags>;
+    }
+
     /**
      * Flags used when saving an ICC profile.
      */
@@ -198,6 +234,10 @@ export namespace Colord {
          */
         NONE,
     }
+    export namespace It8Error {
+        export const $gtype: GObject.GType<It8Error>;
+    }
+
     /**
      * Errors that can be thrown
      */
@@ -209,6 +249,10 @@ export namespace Colord {
         INVALID_FORMAT,
         UNKNOWN_KIND,
     }
+    export namespace It8Kind {
+        export const $gtype: GObject.GType<It8Kind>;
+    }
+
     /**
      * The kind of IT8 file.
      */
@@ -222,6 +266,10 @@ export namespace Colord {
         SPECT,
         CMF,
     }
+    export namespace ObjectScope {
+        export const $gtype: GObject.GType<ObjectScope>;
+    }
+
     /**
      * The options type.
      */
@@ -231,6 +279,10 @@ export namespace Colord {
         TEMP,
         DISK,
     }
+    export namespace ProfileError {
+        export const $gtype: GObject.GType<ProfileError>;
+    }
+
     /**
      * Errors that can be thrown
      */
@@ -268,6 +320,10 @@ export namespace Colord {
          */
         FAILED_TO_GET_UID,
     }
+    export namespace ProfileKind {
+        export const $gtype: GObject.GType<ProfileKind>;
+    }
+
     /**
      * The profile type.
      */
@@ -281,6 +337,10 @@ export namespace Colord {
         ABSTRACT,
         NAMED_COLOR,
     }
+    export namespace ProfileQuality {
+        export const $gtype: GObject.GType<ProfileQuality>;
+    }
+
     /**
      * The quality of the profile produced through calibration.
      */
@@ -298,6 +358,10 @@ export namespace Colord {
          */
         HIGH,
     }
+    export namespace ProfileWarning {
+        export const $gtype: GObject.GType<ProfileWarning>;
+    }
+
     /**
      * The warning about the profile. Profiles with warnings can still be
      * used, but may be of limited use.
@@ -352,6 +416,10 @@ export namespace Colord {
          */
         WHITEPOINT_UNLIKELY,
     }
+    export namespace RenderingIntent {
+        export const $gtype: GObject.GType<RenderingIntent>;
+    }
+
     /**
      * The rendering intent.
      */
@@ -377,6 +445,10 @@ export namespace Colord {
          */
         ABSOLUTE_COLORIMETRIC,
     }
+    export namespace SensorCap {
+        export const $gtype: GObject.GType<SensorCap>;
+    }
+
     /**
      * The sensor capabilities, i.e. things the sensor can do.
      */
@@ -400,6 +472,10 @@ export namespace Colord {
         CALIBRATION_DARK,
         CALIBRATION_IRRADIANCE,
     }
+    export namespace SensorError {
+        export const $gtype: GObject.GType<SensorError>;
+    }
+
     /**
      * The sensor error code.
      */
@@ -449,6 +525,10 @@ export namespace Colord {
          */
         REQUIRED_IRRADIANCE_CALIBRATION,
     }
+    export namespace SensorKind {
+        export const $gtype: GObject.GType<SensorKind>;
+    }
+
     /**
      * The sensor type.
      */
@@ -482,6 +562,10 @@ export namespace Colord {
         SPARK,
         SPYDERX,
     }
+    export namespace SensorState {
+        export const $gtype: GObject.GType<SensorState>;
+    }
+
     /**
      * The state of the sensor.
      */
@@ -492,6 +576,10 @@ export namespace Colord {
         MEASURING,
         BUSY,
     }
+    export namespace StandardSpace {
+        export const $gtype: GObject.GType<StandardSpace>;
+    }
+
     /**
      * A standard colorspace
      */
@@ -771,6 +859,10 @@ export namespace Colord {
      * @returns the standard colorspace, e.g. 'srgb'.
      */
     function standard_space_to_string(standard_space: StandardSpace): string;
+    export namespace IccLoadFlags {
+        export const $gtype: GObject.GType<IccLoadFlags>;
+    }
+
     /**
      * Flags used when loading an ICC profile.
      */

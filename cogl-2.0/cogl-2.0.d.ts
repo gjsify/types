@@ -17,6 +17,10 @@ export namespace Cogl {
      * Cogl-2.0
      */
 
+    export namespace AttributeType {
+        export const $gtype: GObject.GType<AttributeType>;
+    }
+
     /**
      * Data types for the components of a vertex attribute.
      */
@@ -44,6 +48,10 @@ export namespace Cogl {
          */
         FLOAT,
     }
+    export namespace BitmapError {
+        export const $gtype: GObject.GType<BitmapError>;
+    }
+
     /**
      * Error codes that can be thrown when performing bitmap
      * operations. Note that gdk_pixbuf_new_from_file() can also throw
@@ -66,6 +74,10 @@ export namespace Cogl {
          */
         CORRUPT_IMAGE,
     }
+    export namespace BlendStringError {
+        export const $gtype: GObject.GType<BlendStringError>;
+    }
+
     /**
      * Error enumeration for the blend strings parser
      */
@@ -88,6 +100,10 @@ export namespace Cogl {
          */
         GPU_UNSUPPORTED_ERROR,
     }
+    export namespace BufferError {
+        export const $gtype: GObject.GType<BufferError>;
+    }
+
     /**
      * Error enumeration for #CoglBuffer
      */
@@ -99,6 +115,10 @@ export namespace Cogl {
          */
         BUFFER_ERROR_MAP,
     }
+    export namespace BufferUpdateHint {
+        export const $gtype: GObject.GType<BufferUpdateHint>;
+    }
+
     /**
      * The update hint on a buffer allows the user to give some detail on how often
      * the buffer data is going to be updated.
@@ -118,6 +138,10 @@ export namespace Cogl {
          */
         STREAM,
     }
+    export namespace DepthTestFunction {
+        export const $gtype: GObject.GType<DepthTestFunction>;
+    }
+
     /**
      * When using depth testing one of these functions is used to compare
      * the depth of an incoming fragment against the depth value currently
@@ -167,6 +191,10 @@ export namespace Cogl {
          */
         ALWAYS,
     }
+    export namespace Driver {
+        export const $gtype: GObject.GType<Driver>;
+    }
+
     /**
      * Identifiers for underlying hardware drivers that may be used by
      * Cogl for rendering.
@@ -201,6 +229,10 @@ export namespace Cogl {
          */
         WEBGL,
     }
+    export namespace FeatureID {
+        export const $gtype: GObject.GType<FeatureID>;
+    }
+
     /**
      * All the capabilities that can vary between different GPUs supported
      * by Cogl. Applications that depend on any of these features should explicitly
@@ -334,6 +366,10 @@ export namespace Cogl {
          */
         OGL_FEATURE_ID_BUFFER_AGE,
     }
+    export namespace FilterReturn {
+        export const $gtype: GObject.GType<FilterReturn>;
+    }
+
     /**
      * Return values for the #CoglXlibFilterFunc and #CoglWin32FilterFunc functions.
      */
@@ -348,6 +384,10 @@ export namespace Cogl {
          */
         REMOVE,
     }
+    export namespace FogMode {
+        export const $gtype: GObject.GType<FogMode>;
+    }
+
     /**
      * The fog mode determines the equation used to calculate the fogging blend
      * factor while fogging is enabled. The simplest %COGL_FOG_MODE_LINEAR mode
@@ -391,6 +431,10 @@ export namespace Cogl {
          */
         EXPONENTIAL_SQUARED,
     }
+    export namespace FrameEvent {
+        export const $gtype: GObject.GType<FrameEvent>;
+    }
+
     /**
      * Identifiers that are passed to #CoglFrameCallback functions
      * (registered using cogl_onscreen_add_frame_callback()) that
@@ -425,9 +469,17 @@ export namespace Cogl {
          */
         COMPLETE,
     }
+    export namespace FramebufferError {
+        export const $gtype: GObject.GType<FramebufferError>;
+    }
+
     enum FramebufferError {
         FRAMEBUFFER_ERROR_ALLOCATE,
     }
+    export namespace GLES2ContextError {
+        export const $gtype: GObject.GType<GLES2ContextError>;
+    }
+
     /**
      * Error codes that relate to the cogl_gles2_context api.
      */
@@ -444,6 +496,10 @@ export namespace Cogl {
          */
         DRIVER,
     }
+    export namespace IndicesType {
+        export const $gtype: GObject.GType<IndicesType>;
+    }
+
     /**
      * You should aim to use the smallest data type that gives you enough
      * range, since it reduces the size of your index array and can help
@@ -469,6 +525,10 @@ export namespace Cogl {
          */
         INT,
     }
+    export namespace MaterialAlphaFunc {
+        export const $gtype: GObject.GType<MaterialAlphaFunc>;
+    }
+
     enum MaterialAlphaFunc {
         NEVER,
         LESS,
@@ -479,6 +539,10 @@ export namespace Cogl {
         GEQUAL,
         ALWAYS,
     }
+    export namespace MaterialFilter {
+        export const $gtype: GObject.GType<MaterialFilter>;
+    }
+
     enum MaterialFilter {
         NEAREST,
         LINEAR,
@@ -487,14 +551,26 @@ export namespace Cogl {
         NEAREST_MIPMAP_LINEAR,
         LINEAR_MIPMAP_LINEAR,
     }
+    export namespace MaterialLayerType {
+        export const $gtype: GObject.GType<MaterialLayerType>;
+    }
+
     enum MaterialLayerType {
         TEXTURE,
     }
+    export namespace MaterialWrapMode {
+        export const $gtype: GObject.GType<MaterialWrapMode>;
+    }
+
     enum MaterialWrapMode {
         REPEAT,
         CLAMP_TO_EDGE,
         AUTOMATIC,
     }
+    export namespace PipelineAlphaFunc {
+        export const $gtype: GObject.GType<PipelineAlphaFunc>;
+    }
+
     /**
      * Alpha testing happens before blending primitives with the framebuffer and
      * gives an opportunity to discard fragments based on a comparison with the
@@ -541,6 +617,10 @@ export namespace Cogl {
          */
         ALWAYS,
     }
+    export namespace PipelineCullFaceMode {
+        export const $gtype: GObject.GType<PipelineCullFaceMode>;
+    }
+
     /**
      * Specifies which faces should be culled. This can be set on a
      * pipeline using cogl_pipeline_set_cull_face_mode().
@@ -564,6 +644,10 @@ export namespace Cogl {
          */
         BOTH,
     }
+    export namespace PipelineFilter {
+        export const $gtype: GObject.GType<PipelineFilter>;
+    }
+
     /**
      * Texture filtering is used whenever the current pixel maps either to more
      * than one texture element (texel) or less than one. These filter enums
@@ -609,6 +693,10 @@ export namespace Cogl {
          */
         LINEAR_MIPMAP_LINEAR,
     }
+    export namespace PipelineWrapMode {
+        export const $gtype: GObject.GType<PipelineWrapMode>;
+    }
+
     /**
      * The wrap mode specifies what happens when texture coordinates
      * outside the range 0→1 are used. Note that if the filter mode is
@@ -645,6 +733,10 @@ export namespace Cogl {
          */
         AUTOMATIC,
     }
+    export namespace PixelFormat {
+        export const $gtype: GObject.GType<PixelFormat>;
+    }
+
     /**
      * Pixel formats used by Cogl. For the formats with a byte per
      * component, the order of the components specify the order in
@@ -784,6 +876,10 @@ export namespace Cogl {
         DEPTH_32,
         DEPTH_24_STENCIL_8,
     }
+    export namespace PollFDEvent {
+        export const $gtype: GObject.GType<PollFDEvent>;
+    }
+
     /**
      * A bitmask of events that Cogl may need to wake on for a file
      * descriptor. Note that these all have the same values as the
@@ -817,14 +913,26 @@ export namespace Cogl {
          */
         NVAL,
     }
+    export namespace RendererError {
+        export const $gtype: GObject.GType<RendererError>;
+    }
+
     enum RendererError {
         XLIB_DISPLAY_OPEN,
         BAD_CONSTRAINT,
     }
+    export namespace ShaderType {
+        export const $gtype: GObject.GType<ShaderType>;
+    }
+
     enum ShaderType {
         VERTEX,
         FRAGMENT,
     }
+    export namespace SnippetHook {
+        export const $gtype: GObject.GType<SnippetHook>;
+    }
+
     /**
      * #CoglSnippetHook is used to specify a location within a
      * #CoglPipeline where the code of the snippet should be used when it
@@ -1154,6 +1262,10 @@ export namespace Cogl {
          */
         TEXTURE_LOOKUP,
     }
+    export namespace StereoMode {
+        export const $gtype: GObject.GType<StereoMode>;
+    }
+
     /**
      * Represents how draw should affect the two buffers
      * of a stereo framebuffer. See cogl_framebuffer_set_stereo_mode().
@@ -1172,6 +1284,10 @@ export namespace Cogl {
          */
         RIGHT,
     }
+    export namespace SubpixelOrder {
+        export const $gtype: GObject.GType<SubpixelOrder>;
+    }
+
     /**
      * Some output devices (such as LCD panels) display colors
      * by making each pixel consist of smaller "subpixels"
@@ -1218,6 +1334,10 @@ export namespace Cogl {
          */
         VERTICAL_BGR,
     }
+    export namespace SystemError {
+        export const $gtype: GObject.GType<SystemError>;
+    }
+
     /**
      * Error enumeration for Cogl
      *
@@ -1251,6 +1371,10 @@ export namespace Cogl {
          */
         COGL_SYSTEM_ERROR_NO_MEMORY,
     }
+    export namespace TextureComponents {
+        export const $gtype: GObject.GType<TextureComponents>;
+    }
+
     /**
      * See cogl_texture_set_components().
      */
@@ -1278,6 +1402,10 @@ export namespace Cogl {
          */
         DEPTH,
     }
+    export namespace TextureError {
+        export const $gtype: GObject.GType<TextureError>;
+    }
+
     /**
      * Error codes that can be thrown when allocating textures.
      */
@@ -1297,6 +1425,10 @@ export namespace Cogl {
          */
         TYPE,
     }
+    export namespace TexturePixmapX11Error {
+        export const $gtype: GObject.GType<TexturePixmapX11Error>;
+    }
+
     /**
      * Error codes that can be thrown when performing texture-pixmap-x11
      * operations.
@@ -1307,12 +1439,20 @@ export namespace Cogl {
          */
         TEXTURE_PIXMAP_X11_ERROR_X11,
     }
+    export namespace TexturePixmapX11ReportLevel {
+        export const $gtype: GObject.GType<TexturePixmapX11ReportLevel>;
+    }
+
     enum TexturePixmapX11ReportLevel {
         RAW_RECTANGLES,
         DELTA_RECTANGLES,
         BOUNDING_BOX,
         NON_EMPTY,
     }
+    export namespace TextureType {
+        export const $gtype: GObject.GType<TextureType>;
+    }
+
     /**
      * Constants representing the underlying hardware texture type of a
      * #CoglTexture.
@@ -1331,6 +1471,10 @@ export namespace Cogl {
          */
         RECTANGLE,
     }
+    export namespace VerticesMode {
+        export const $gtype: GObject.GType<VerticesMode>;
+    }
+
     /**
      * Different ways of interpreting vertices when drawing.
      */
@@ -1369,6 +1513,10 @@ export namespace Cogl {
          */
         TRIANGLE_FAN,
     }
+    export namespace Winding {
+        export const $gtype: GObject.GType<Winding>;
+    }
+
     /**
      * Enum used to represent the two directions of rotation. This can be
      * used to set the front face for culling by calling
@@ -1384,6 +1532,10 @@ export namespace Cogl {
          */
         COUNTER_CLOCKWISE,
     }
+    export namespace WinsysFeature {
+        export const $gtype: GObject.GType<WinsysFeature>;
+    }
+
     enum WinsysFeature {
         MULTIPLE_ONSCREEN,
         SWAP_THROTTLE,
@@ -1398,6 +1550,10 @@ export namespace Cogl {
         SYNC_AND_COMPLETE_EVENT,
         N_FEATURES,
     }
+    export namespace WinsysID {
+        export const $gtype: GObject.GType<WinsysID>;
+    }
+
     /**
      * Identifies specific window system backends that Cogl supports.
      *
@@ -2467,6 +2623,10 @@ export namespace Cogl {
     interface SwapBuffersNotify {
         (framebuffer: Framebuffer): void;
     }
+    export namespace BufferAccess {
+        export const $gtype: GObject.GType<BufferAccess>;
+    }
+
     /**
      * The access hints for cogl_buffer_set_update_hint()
      */
@@ -2485,6 +2645,10 @@ export namespace Cogl {
          */
         READ_WRITE,
     }
+    export namespace BufferBit {
+        export const $gtype: GObject.GType<BufferBit>;
+    }
+
     /**
      * Types of auxiliary buffers
      */
@@ -2502,6 +2666,10 @@ export namespace Cogl {
          */
         STENCIL,
     }
+    export namespace BufferMapHint {
+        export const $gtype: GObject.GType<BufferMapHint>;
+    }
+
     /**
      * Hints to Cogl about how you are planning to modify the data once it
      * is mapped.
@@ -2522,6 +2690,10 @@ export namespace Cogl {
          */
         _RANGE,
     }
+    export namespace BufferTarget {
+        export const $gtype: GObject.GType<BufferTarget>;
+    }
+
     /**
      * Target flags for FBOs.
      */
@@ -2535,6 +2707,10 @@ export namespace Cogl {
          */
         OFFSCREEN_BUFFER,
     }
+    export namespace ColorMask {
+        export const $gtype: GObject.GType<ColorMask>;
+    }
+
     /**
      * Defines a bit mask of color channels. This can be used with
      * cogl_pipeline_set_color_mask() for example to define which color
@@ -2567,6 +2743,10 @@ export namespace Cogl {
          */
         ALL,
     }
+    export namespace FeatureFlags {
+        export const $gtype: GObject.GType<FeatureFlags>;
+    }
+
     /**
      * Flags for the supported features.
      */
@@ -2682,6 +2862,10 @@ export namespace Cogl {
          */
         DEPTH_TEXTURE,
     }
+    export namespace ReadPixelsFlags {
+        export const $gtype: GObject.GType<ReadPixelsFlags>;
+    }
+
     /**
      * Flags for cogl_framebuffer_read_pixels_into_bitmap()
      */
@@ -2691,6 +2875,10 @@ export namespace Cogl {
          */
         COLOR_BUFFER,
     }
+    export namespace RendererConstraint {
+        export const $gtype: GObject.GType<RendererConstraint>;
+    }
+
     /**
      * These constraint flags are hard-coded features of the different renderer
      * backends. Sometimes a platform may support multiple rendering options which
@@ -2726,6 +2914,10 @@ export namespace Cogl {
          */
         SUPPORTS_COGL_GLES2,
     }
+    export namespace TextureFlags {
+        export const $gtype: GObject.GType<TextureFlags>;
+    }
+
     /**
      * Flags to pass to the cogl_texture_new_* family of functions.
      */

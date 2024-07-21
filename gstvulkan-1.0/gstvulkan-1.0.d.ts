@@ -21,9 +21,17 @@ export namespace GstVulkan {
      * GstVulkan-1.0
      */
 
+    export namespace VulkanBarrierFlags {
+        export const $gtype: GObject.GType<VulkanBarrierFlags>;
+    }
+
     enum VulkanBarrierFlags {
         NONE,
     }
+    export namespace VulkanBarrierType {
+        export const $gtype: GObject.GType<VulkanBarrierType>;
+    }
+
     enum VulkanBarrierType {
         /**
          * no barrier type
@@ -61,6 +69,10 @@ export namespace GstVulkan {
         static to_g_error(result: Vulkan.Result, format: string, ___: any[]): [Vulkan.Result, GLib.Error | null];
     }
 
+    export namespace VulkanFormatScaling {
+        export const $gtype: GObject.GType<VulkanFormatScaling>;
+    }
+
     enum VulkanFormatScaling {
         /**
          * [0, 2^n - 1] -> [0.0, 1.0]
@@ -91,6 +103,10 @@ export namespace GstVulkan {
          */
         SRGB,
     }
+    export namespace VulkanHandleType {
+        export const $gtype: GObject.GType<VulkanHandleType>;
+    }
+
     enum VulkanHandleType {
         /**
          * descripter set layout
@@ -391,6 +407,10 @@ export namespace GstVulkan {
     interface VulkanTrashNotify {
         (device: VulkanDevice): void;
     }
+    export namespace VulkanDisplayType {
+        export const $gtype: GObject.GType<VulkanDisplayType>;
+    }
+
     enum VulkanDisplayType {
         /**
          * no display
@@ -422,6 +442,10 @@ export namespace GstVulkan {
          */
         ANY,
     }
+    export namespace VulkanFormatFlags {
+        export const $gtype: GObject.GType<VulkanFormatFlags>;
+    }
+
     enum VulkanFormatFlags {
         /**
          * is a YUV format

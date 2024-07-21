@@ -18,6 +18,10 @@ export namespace Tracker {
      * Tracker-3.0
      */
 
+    export namespace DeserializeFlags {
+        export const $gtype: GObject.GType<DeserializeFlags>;
+    }
+
     /**
      * Flags affecting deserialization from a RDF data format.
      */
@@ -27,6 +31,10 @@ export namespace Tracker {
          */
         NONE,
     }
+    export namespace NotifierEventType {
+        export const $gtype: GObject.GType<NotifierEventType>;
+    }
+
     /**
      * Notifier event types.
      */
@@ -44,6 +52,10 @@ export namespace Tracker {
          */
         UPDATE,
     }
+    export namespace RdfFormat {
+        export const $gtype: GObject.GType<RdfFormat>;
+    }
+
     /**
      * Describes a RDF format to be used in data exchange.
      */
@@ -69,6 +81,10 @@ export namespace Tracker {
          */
         LAST,
     }
+    export namespace SerializeFlags {
+        export const $gtype: GObject.GType<SerializeFlags>;
+    }
+
     /**
      * Flags affecting serialization into a RDF data format.
      */
@@ -171,6 +187,10 @@ export namespace Tracker {
         // Own static methods of Tracker.SparqlError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace SparqlValueType {
+        export const $gtype: GObject.GType<SparqlValueType>;
     }
 
     /**
@@ -334,6 +354,10 @@ export namespace Tracker {
      * @returns A newly generated UUID URN.
      */
     function sparql_get_uuid_urn(): string;
+    export namespace SparqlConnectionFlags {
+        export const $gtype: GObject.GType<SparqlConnectionFlags>;
+    }
+
     /**
      * Connection flags to modify #TrackerSparqlConnection behavior.
      */

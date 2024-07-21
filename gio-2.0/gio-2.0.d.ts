@@ -54,6 +54,10 @@ export namespace Gio {
      * Gio-2.0
      */
 
+    export namespace BusType {
+        export const $gtype: GObject.GType<BusType>;
+    }
+
     /**
      * An enumeration for well-known message buses.
      */
@@ -75,6 +79,10 @@ export namespace Gio {
          */
         SESSION,
     }
+    export namespace ConverterResult {
+        export const $gtype: GObject.GType<ConverterResult>;
+    }
+
     /**
      * Results returned from g_converter_convert().
      */
@@ -96,6 +104,10 @@ export namespace Gio {
          */
         FLUSHED,
     }
+    export namespace CredentialsType {
+        export const $gtype: GObject.GType<CredentialsType>;
+    }
+
     /**
      * Enumeration describing different kinds of native credential types.
      */
@@ -478,6 +490,10 @@ export namespace Gio {
         static unregister_error(error_domain: GLib.Quark, error_code: number, dbus_error_name: string): boolean;
     }
 
+    export namespace DBusMessageByteOrder {
+        export const $gtype: GObject.GType<DBusMessageByteOrder>;
+    }
+
     /**
      * Enumeration used to describe the byte order of a D-Bus message.
      */
@@ -491,6 +507,10 @@ export namespace Gio {
          */
         LITTLE_ENDIAN,
     }
+    export namespace DBusMessageHeaderField {
+        export const $gtype: GObject.GType<DBusMessageHeaderField>;
+    }
+
     /**
      * Header fields used in #GDBusMessage.
      */
@@ -536,6 +556,10 @@ export namespace Gio {
          */
         NUM_UNIX_FDS,
     }
+    export namespace DBusMessageType {
+        export const $gtype: GObject.GType<DBusMessageType>;
+    }
+
     /**
      * Message types used in #GDBusMessage.
      */
@@ -561,6 +585,10 @@ export namespace Gio {
          */
         SIGNAL,
     }
+    export namespace DataStreamByteOrder {
+        export const $gtype: GObject.GType<DataStreamByteOrder>;
+    }
+
     /**
      * #GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
      * across various machine architectures.
@@ -579,6 +607,10 @@ export namespace Gio {
          */
         HOST_ENDIAN,
     }
+    export namespace DataStreamNewlineType {
+        export const $gtype: GObject.GType<DataStreamNewlineType>;
+    }
+
     /**
      * #GDataStreamNewlineType is used when checking for or setting the line endings for a given file.
      */
@@ -600,6 +632,10 @@ export namespace Gio {
          */
         ANY,
     }
+    export namespace DriveStartStopType {
+        export const $gtype: GObject.GType<DriveStartStopType>;
+    }
+
     /**
      * Enumeration describing how a drive can be started/stopped.
      */
@@ -633,6 +669,10 @@ export namespace Gio {
          */
         PASSWORD,
     }
+    export namespace EmblemOrigin {
+        export const $gtype: GObject.GType<EmblemOrigin>;
+    }
+
     /**
      * GEmblemOrigin is used to add information about the origin of the emblem
      * to #GEmblem.
@@ -655,6 +695,10 @@ export namespace Gio {
          */
         TAG,
     }
+    export namespace FileAttributeStatus {
+        export const $gtype: GObject.GType<FileAttributeStatus>;
+    }
+
     /**
      * Used by g_file_set_attributes_from_info() when setting file attributes.
      */
@@ -672,6 +716,10 @@ export namespace Gio {
          */
         ERROR_SETTING,
     }
+    export namespace FileAttributeType {
+        export const $gtype: GObject.GType<FileAttributeType>;
+    }
+
     /**
      * The data types for file attributes.
      */
@@ -717,6 +765,10 @@ export namespace Gio {
          */
         STRINGV,
     }
+    export namespace FileMonitorEvent {
+        export const $gtype: GObject.GType<FileMonitorEvent>;
+    }
+
     /**
      * Specifies what type of event a monitor event is.
      */
@@ -773,6 +825,10 @@ export namespace Gio {
          */
         MOVED_OUT,
     }
+    export namespace FileType {
+        export const $gtype: GObject.GType<FileType>;
+    }
+
     /**
      * Indicates the file's on-disk type.
      *
@@ -817,6 +873,10 @@ export namespace Gio {
          */
         MOUNTABLE,
     }
+    export namespace FilesystemPreviewType {
+        export const $gtype: GObject.GType<FilesystemPreviewType>;
+    }
+
     /**
      * Indicates a hint from the file system whether files should be
      * previewed in a file manager. Returned as the value of the key
@@ -1083,6 +1143,10 @@ export namespace Gio {
         _init(...args: any[]): void;
     }
 
+    export namespace IOModuleScopeFlags {
+        export const $gtype: GObject.GType<IOModuleScopeFlags>;
+    }
+
     /**
      * Flags for use with g_io_module_scope_new().
      */
@@ -1098,6 +1162,10 @@ export namespace Gio {
          */
         BLOCK_DUPLICATES,
     }
+    export namespace MemoryMonitorWarningLevel {
+        export const $gtype: GObject.GType<MemoryMonitorWarningLevel>;
+    }
+
     /**
      * Memory availability warning levels.
      *
@@ -1130,6 +1198,10 @@ export namespace Gio {
          */
         CRITICAL,
     }
+    export namespace MountOperationResult {
+        export const $gtype: GObject.GType<MountOperationResult>;
+    }
+
     /**
      * #GMountOperationResult is returned as a result when a request for
      * information is send by the mounting operation.
@@ -1151,6 +1223,10 @@ export namespace Gio {
          */
         UNHANDLED,
     }
+    export namespace NetworkConnectivity {
+        export const $gtype: GObject.GType<NetworkConnectivity>;
+    }
+
     /**
      * The host's network connectivity state, as reported by #GNetworkMonitor.
      */
@@ -1178,6 +1254,10 @@ export namespace Gio {
          */
         FULL,
     }
+    export namespace NotificationPriority {
+        export const $gtype: GObject.GType<NotificationPriority>;
+    }
+
     /**
      * Priority levels for #GNotifications.
      */
@@ -1207,6 +1287,10 @@ export namespace Gio {
          */
         URGENT,
     }
+    export namespace PasswordSave {
+        export const $gtype: GObject.GType<PasswordSave>;
+    }
+
     /**
      * #GPasswordSave is used to indicate the lifespan of a saved password.
      *
@@ -1227,6 +1311,10 @@ export namespace Gio {
          */
         PERMANENTLY,
     }
+    export namespace PollableReturn {
+        export const $gtype: GObject.GType<PollableReturn>;
+    }
+
     /**
      * Return value for various IO operations that signal errors via the
      * return value and not necessarily via a #GError.
@@ -1287,6 +1375,10 @@ export namespace Gio {
          * Gets the #GResolver Error Quark.
          */
         static quark(): GLib.Quark;
+    }
+
+    export namespace ResolverRecordType {
+        export const $gtype: GObject.GType<ResolverRecordType>;
     }
 
     /**
@@ -1374,6 +1466,10 @@ export namespace Gio {
         static quark(): GLib.Quark;
     }
 
+    export namespace SocketClientEvent {
+        export const $gtype: GObject.GType<SocketClientEvent>;
+    }
+
     /**
      * Describes an event occurring on a #GSocketClient. See the
      * #GSocketClient::event signal for more details.
@@ -1425,6 +1521,10 @@ export namespace Gio {
          */
         COMPLETE,
     }
+    export namespace SocketFamily {
+        export const $gtype: GObject.GType<SocketFamily>;
+    }
+
     /**
      * The protocol family of a #GSocketAddress. (These values are
      * identical to the system defines %AF_INET, %AF_INET6 and %AF_UNIX,
@@ -1448,6 +1548,10 @@ export namespace Gio {
          */
         IPV6,
     }
+    export namespace SocketListenerEvent {
+        export const $gtype: GObject.GType<SocketListenerEvent>;
+    }
+
     /**
      * Describes an event occurring on a #GSocketListener. See the
      * #GSocketListener::event signal for more details.
@@ -1474,6 +1578,10 @@ export namespace Gio {
          */
         LISTENED,
     }
+    export namespace SocketProtocol {
+        export const $gtype: GObject.GType<SocketProtocol>;
+    }
+
     /**
      * A protocol identifier is specified when creating a #GSocket, which is a
      * family/type specific identifier, where 0 means the default protocol for
@@ -1505,6 +1613,10 @@ export namespace Gio {
          */
         SCTP,
     }
+    export namespace SocketType {
+        export const $gtype: GObject.GType<SocketType>;
+    }
+
     /**
      * Flags used when creating a #GSocket. Some protocols may not implement
      * all the socket types.
@@ -1529,6 +1641,10 @@ export namespace Gio {
          */
         SEQPACKET,
     }
+    export namespace TlsAuthenticationMode {
+        export const $gtype: GObject.GType<TlsAuthenticationMode>;
+    }
+
     /**
      * The client authentication mode for a #GTlsServerConnection.
      */
@@ -1546,6 +1662,10 @@ export namespace Gio {
          */
         REQUIRED,
     }
+    export namespace TlsCertificateRequestFlags {
+        export const $gtype: GObject.GType<TlsCertificateRequestFlags>;
+    }
+
     /**
      * Flags for g_tls_interaction_request_certificate(),
      * g_tls_interaction_request_certificate_async(), and
@@ -1611,6 +1731,10 @@ export namespace Gio {
         static quark(): GLib.Quark;
     }
 
+    export namespace TlsChannelBindingType {
+        export const $gtype: GObject.GType<TlsChannelBindingType>;
+    }
+
     /**
      * The type of TLS channel binding data to retrieve from #GTlsConnection
      * or #GDtlsConnection, as documented by RFC 5929 or RFC 9266. The
@@ -1634,6 +1758,10 @@ export namespace Gio {
          */
         EXPORTER,
     }
+    export namespace TlsDatabaseLookupFlags {
+        export const $gtype: GObject.GType<TlsDatabaseLookupFlags>;
+    }
+
     /**
      * Flags for g_tls_database_lookup_certificate_for_handle(),
      * g_tls_database_lookup_certificate_issuer(),
@@ -1719,6 +1847,10 @@ export namespace Gio {
         static quark(): GLib.Quark;
     }
 
+    export namespace TlsInteractionResult {
+        export const $gtype: GObject.GType<TlsInteractionResult>;
+    }
+
     /**
      * #GTlsInteractionResult is returned by various functions in #GTlsInteraction
      * when finishing an interaction request.
@@ -1740,6 +1872,10 @@ export namespace Gio {
          */
         FAILED,
     }
+    export namespace TlsProtocolVersion {
+        export const $gtype: GObject.GType<TlsProtocolVersion>;
+    }
+
     /**
      * The TLS or DTLS protocol version used by a #GTlsConnection or
      * #GDtlsConnection. The integer values of these versions are sequential
@@ -1785,6 +1921,10 @@ export namespace Gio {
          */
         DTLS_1_2,
     }
+    export namespace TlsRehandshakeMode {
+        export const $gtype: GObject.GType<TlsRehandshakeMode>;
+    }
+
     /**
      * When to allow rehandshaking. See
      * g_tls_connection_set_rehandshake_mode().
@@ -1803,6 +1943,10 @@ export namespace Gio {
          */
         UNSAFELY,
     }
+    export namespace UnixSocketAddressType {
+        export const $gtype: GObject.GType<UnixSocketAddressType>;
+    }
+
     /**
      * The type of name used by a #GUnixSocketAddress.
      * %G_UNIX_SOCKET_ADDRESS_PATH indicates a traditional unix domain
@@ -1841,6 +1985,10 @@ export namespace Gio {
          */
         ABSTRACT_PADDED,
     }
+    export namespace ZlibCompressorFormat {
+        export const $gtype: GObject.GType<ZlibCompressorFormat>;
+    }
+
     /**
      * Used to select the type of data format to use for #GZlibDecompressor
      * and #GZlibCompressor.
@@ -5112,6 +5260,10 @@ export namespace Gio {
     interface VfsFileLookupFunc {
         (vfs: Vfs, identifier: string): File;
     }
+    export namespace AppInfoCreateFlags {
+        export const $gtype: GObject.GType<AppInfoCreateFlags>;
+    }
+
     /**
      * Flags used when creating a #GAppInfo.
      */
@@ -5133,6 +5285,10 @@ export namespace Gio {
          */
         SUPPORTS_STARTUP_NOTIFICATION,
     }
+    export namespace ApplicationFlags {
+        export const $gtype: GObject.GType<ApplicationFlags>;
+    }
+
     /**
      * Flags used to define the behaviour of a #GApplication.
      */
@@ -5210,6 +5366,10 @@ export namespace Gio {
          */
         REPLACE,
     }
+    export namespace AskPasswordFlags {
+        export const $gtype: GObject.GType<AskPasswordFlags>;
+    }
+
     /**
      * #GAskPasswordFlags are used to request specific information from the
      * user, or to notify the user of their choices in an authentication
@@ -5241,6 +5401,10 @@ export namespace Gio {
          */
         TCRYPT,
     }
+    export namespace BusNameOwnerFlags {
+        export const $gtype: GObject.GType<BusNameOwnerFlags>;
+    }
+
     /**
      * Flags used in g_bus_own_name().
      */
@@ -5264,6 +5428,10 @@ export namespace Gio {
          */
         DO_NOT_QUEUE,
     }
+    export namespace BusNameWatcherFlags {
+        export const $gtype: GObject.GType<BusNameWatcherFlags>;
+    }
+
     /**
      * Flags used in g_bus_watch_name().
      */
@@ -5279,6 +5447,10 @@ export namespace Gio {
          */
         AUTO_START,
     }
+    export namespace ConverterFlags {
+        export const $gtype: GObject.GType<ConverterFlags>;
+    }
+
     /**
      * Flags used when calling a g_converter_convert().
      */
@@ -5296,6 +5468,10 @@ export namespace Gio {
          */
         FLUSH,
     }
+    export namespace DBusCallFlags {
+        export const $gtype: GObject.GType<DBusCallFlags>;
+    }
+
     /**
      * Flags used in g_dbus_connection_call() and similar APIs.
      */
@@ -5316,6 +5492,10 @@ export namespace Gio {
          */
         ALLOW_INTERACTIVE_AUTHORIZATION,
     }
+    export namespace DBusCapabilityFlags {
+        export const $gtype: GObject.GType<DBusCapabilityFlags>;
+    }
+
     /**
      * Capabilities negotiated with the remote peer.
      */
@@ -5330,6 +5510,10 @@ export namespace Gio {
          */
         UNIX_FD_PASSING,
     }
+    export namespace DBusConnectionFlags {
+        export const $gtype: GObject.GType<DBusConnectionFlags>;
+    }
+
     /**
      * Flags used when creating a new #GDBusConnection.
      */
@@ -5377,6 +5561,10 @@ export namespace Gio {
          */
         CROSS_NAMESPACE,
     }
+    export namespace DBusInterfaceSkeletonFlags {
+        export const $gtype: GObject.GType<DBusInterfaceSkeletonFlags>;
+    }
+
     /**
      * Flags describing the behavior of a #GDBusInterfaceSkeleton instance.
      */
@@ -5393,6 +5581,10 @@ export namespace Gio {
          */
         HANDLE_METHOD_INVOCATIONS_IN_THREAD,
     }
+    export namespace DBusMessageFlags {
+        export const $gtype: GObject.GType<DBusMessageFlags>;
+    }
+
     /**
      * Message flags used in #GDBusMessage.
      */
@@ -5417,6 +5609,10 @@ export namespace Gio {
          */
         ALLOW_INTERACTIVE_AUTHORIZATION,
     }
+    export namespace DBusObjectManagerClientFlags {
+        export const $gtype: GObject.GType<DBusObjectManagerClientFlags>;
+    }
+
     /**
      * Flags used when constructing a #GDBusObjectManagerClient.
      */
@@ -5433,6 +5629,10 @@ export namespace Gio {
          */
         DO_NOT_AUTO_START,
     }
+    export namespace DBusPropertyInfoFlags {
+        export const $gtype: GObject.GType<DBusPropertyInfoFlags>;
+    }
+
     /**
      * Flags describing the access control of a D-Bus property.
      */
@@ -5450,6 +5650,10 @@ export namespace Gio {
          */
         WRITABLE,
     }
+    export namespace DBusProxyFlags {
+        export const $gtype: GObject.GType<DBusProxyFlags>;
+    }
+
     /**
      * Flags used when constructing an instance of a #GDBusProxy derived class.
      */
@@ -5490,6 +5694,10 @@ export namespace Gio {
          */
         NO_MATCH_RULE,
     }
+    export namespace DBusSendMessageFlags {
+        export const $gtype: GObject.GType<DBusSendMessageFlags>;
+    }
+
     /**
      * Flags used when sending #GDBusMessages on a #GDBusConnection.
      */
@@ -5505,6 +5713,10 @@ export namespace Gio {
          */
         PRESERVE_SERIAL,
     }
+    export namespace DBusServerFlags {
+        export const $gtype: GObject.GType<DBusServerFlags>;
+    }
+
     /**
      * Flags used when creating a #GDBusServer.
      */
@@ -5530,6 +5742,10 @@ export namespace Gio {
          */
         AUTHENTICATION_REQUIRE_SAME_USER,
     }
+    export namespace DBusSignalFlags {
+        export const $gtype: GObject.GType<DBusSignalFlags>;
+    }
+
     /**
      * Flags used when subscribing to signals via g_dbus_connection_signal_subscribe().
      */
@@ -5556,6 +5772,10 @@ export namespace Gio {
          */
         MATCH_ARG0_PATH,
     }
+    export namespace DBusSubtreeFlags {
+        export const $gtype: GObject.GType<DBusSubtreeFlags>;
+    }
+
     /**
      * Flags passed to g_dbus_connection_register_subtree().
      */
@@ -5571,6 +5791,10 @@ export namespace Gio {
          */
         DISPATCH_TO_UNENUMERATED_NODES,
     }
+    export namespace DriveStartFlags {
+        export const $gtype: GObject.GType<DriveStartFlags>;
+    }
+
     /**
      * Flags used when starting a drive.
      */
@@ -5580,6 +5804,10 @@ export namespace Gio {
          */
         NONE,
     }
+    export namespace FileAttributeInfoFlags {
+        export const $gtype: GObject.GType<FileAttributeInfoFlags>;
+    }
+
     /**
      * Flags specifying the behaviour of an attribute.
      */
@@ -5597,6 +5825,10 @@ export namespace Gio {
          */
         COPY_WHEN_MOVED,
     }
+    export namespace FileCopyFlags {
+        export const $gtype: GObject.GType<FileCopyFlags>;
+    }
+
     /**
      * Flags used when copying or moving files.
      */
@@ -5635,6 +5867,10 @@ export namespace Gio {
          */
         TARGET_DEFAULT_MODIFIED_TIME,
     }
+    export namespace FileCreateFlags {
+        export const $gtype: GObject.GType<FileCreateFlags>;
+    }
+
     /**
      * Flags used when an operation may create a file.
      */
@@ -5662,6 +5898,10 @@ export namespace Gio {
          */
         REPLACE_DESTINATION,
     }
+    export namespace FileMeasureFlags {
+        export const $gtype: GObject.GType<FileMeasureFlags>;
+    }
+
     /**
      * Flags that can be used with g_file_measure_disk_usage().
      */
@@ -5692,6 +5932,10 @@ export namespace Gio {
          */
         NO_XDEV,
     }
+    export namespace FileMonitorFlags {
+        export const $gtype: GObject.GType<FileMonitorFlags>;
+    }
+
     /**
      * Flags used to set what a #GFileMonitor will watch for.
      */
@@ -5726,6 +5970,10 @@ export namespace Gio {
          */
         WATCH_MOVES,
     }
+    export namespace FileQueryInfoFlags {
+        export const $gtype: GObject.GType<FileQueryInfoFlags>;
+    }
+
     /**
      * Flags used when querying a #GFileInfo.
      */
@@ -5739,6 +5987,10 @@ export namespace Gio {
          */
         NOFOLLOW_SYMLINKS,
     }
+    export namespace IOStreamSpliceFlags {
+        export const $gtype: GObject.GType<IOStreamSpliceFlags>;
+    }
+
     /**
      * GIOStreamSpliceFlags determine how streams should be spliced.
      */
@@ -5763,6 +6015,10 @@ export namespace Gio {
          */
         WAIT_FOR_BOTH,
     }
+    export namespace MountMountFlags {
+        export const $gtype: GObject.GType<MountMountFlags>;
+    }
+
     /**
      * Flags used when mounting a mount.
      */
@@ -5772,6 +6028,10 @@ export namespace Gio {
          */
         NONE,
     }
+    export namespace MountUnmountFlags {
+        export const $gtype: GObject.GType<MountUnmountFlags>;
+    }
+
     /**
      * Flags used when an unmounting a mount.
      */
@@ -5786,6 +6046,10 @@ export namespace Gio {
          */
         FORCE,
     }
+    export namespace OutputStreamSpliceFlags {
+        export const $gtype: GObject.GType<OutputStreamSpliceFlags>;
+    }
+
     /**
      * GOutputStreamSpliceFlags determine how streams should be spliced.
      */
@@ -5805,6 +6069,10 @@ export namespace Gio {
          */
         CLOSE_TARGET,
     }
+    export namespace ResolverNameLookupFlags {
+        export const $gtype: GObject.GType<ResolverNameLookupFlags>;
+    }
+
     /**
      * Flags to modify lookup behavior.
      */
@@ -5822,6 +6090,10 @@ export namespace Gio {
          */
         IPV6_ONLY,
     }
+    export namespace ResourceFlags {
+        export const $gtype: GObject.GType<ResourceFlags>;
+    }
+
     /**
      * GResourceFlags give information about a particular file inside a resource
      * bundle.
@@ -5836,6 +6108,10 @@ export namespace Gio {
          */
         COMPRESSED,
     }
+    export namespace ResourceLookupFlags {
+        export const $gtype: GObject.GType<ResourceLookupFlags>;
+    }
+
     /**
      * GResourceLookupFlags determine how resource path lookups are handled.
      */
@@ -5845,6 +6121,10 @@ export namespace Gio {
          */
         NONE,
     }
+    export namespace SettingsBindFlags {
+        export const $gtype: GObject.GType<SettingsBindFlags>;
+    }
+
     /**
      * Flags used when creating a binding. These flags determine in which
      * direction the binding works. The default is to synchronize in both
@@ -5881,6 +6161,10 @@ export namespace Gio {
          */
         INVERT_BOOLEAN,
     }
+    export namespace SocketMsgFlags {
+        export const $gtype: GObject.GType<SocketMsgFlags>;
+    }
+
     /**
      * Flags used in g_socket_receive_message() and g_socket_send_message().
      * The flags listed in the enum are some commonly available flags, but the
@@ -5908,6 +6192,10 @@ export namespace Gio {
          */
         DONTROUTE,
     }
+    export namespace SubprocessFlags {
+        export const $gtype: GObject.GType<SubprocessFlags>;
+    }
+
     /**
      * Flags to define the behaviour of a #GSubprocess.
      *
@@ -5977,6 +6265,10 @@ export namespace Gio {
          */
         SEARCH_PATH_FROM_ENVP,
     }
+    export namespace TestDBusFlags {
+        export const $gtype: GObject.GType<TestDBusFlags>;
+    }
+
     /**
      * Flags to define future #GTestDBus behaviour.
      */
@@ -5986,6 +6278,10 @@ export namespace Gio {
          */
         NONE,
     }
+    export namespace TlsCertificateFlags {
+        export const $gtype: GObject.GType<TlsCertificateFlags>;
+    }
+
     /**
      * A set of flags describing TLS certification validation. This can be
      * used to describe why a particular certificate was rejected (for
@@ -6044,6 +6340,10 @@ export namespace Gio {
          */
         VALIDATE_ALL,
     }
+    export namespace TlsDatabaseVerifyFlags {
+        export const $gtype: GObject.GType<TlsDatabaseVerifyFlags>;
+    }
+
     /**
      * Flags for g_tls_database_verify_chain().
      */
@@ -6053,6 +6353,10 @@ export namespace Gio {
          */
         NONE,
     }
+    export namespace TlsPasswordFlags {
+        export const $gtype: GObject.GType<TlsPasswordFlags>;
+    }
+
     /**
      * Various flags for the password.
      */

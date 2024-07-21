@@ -17,17 +17,29 @@ export namespace LibvirtGConfig {
      * LibvirtGConfig-1.0
      */
 
+    export namespace DomainChannelTargetType {
+        export const $gtype: GObject.GType<DomainChannelTargetType>;
+    }
+
     enum DomainChannelTargetType {
         GUESTFWD,
         VIRTIO,
         SPICEPORT,
     }
+    export namespace DomainClockOffset {
+        export const $gtype: GObject.GType<DomainClockOffset>;
+    }
+
     enum DomainClockOffset {
         UTC,
         LOCALTIME,
         TIMEZONE,
         VARIABLE,
     }
+    export namespace DomainConsoleTargetType {
+        export const $gtype: GObject.GType<DomainConsoleTargetType>;
+    }
+
     enum DomainConsoleTargetType {
         XEN,
         SERIAL,
@@ -36,6 +48,10 @@ export namespace LibvirtGConfig {
         LXC,
         OPENVZ,
     }
+    export namespace DomainControllerUsbModel {
+        export const $gtype: GObject.GType<DomainControllerUsbModel>;
+    }
+
     enum DomainControllerUsbModel {
         PIIX3_UHCI,
         PIIX4_UHCI,
@@ -48,6 +64,10 @@ export namespace LibvirtGConfig {
         PCI_OHCI,
         QEMU_XHCI,
     }
+    export namespace DomainCpuFeaturePolicy {
+        export const $gtype: GObject.GType<DomainCpuFeaturePolicy>;
+    }
+
     enum DomainCpuFeaturePolicy {
         FORCE,
         REQUIRE,
@@ -55,16 +75,28 @@ export namespace LibvirtGConfig {
         DISABLE,
         FORBID,
     }
+    export namespace DomainCpuMatchPolicy {
+        export const $gtype: GObject.GType<DomainCpuMatchPolicy>;
+    }
+
     enum DomainCpuMatchPolicy {
         MINIMUM,
         EXACT,
         STRICT,
     }
+    export namespace DomainCpuMode {
+        export const $gtype: GObject.GType<DomainCpuMode>;
+    }
+
     enum DomainCpuMode {
         CUSTOM,
         HOST_MODEL,
         HOST_PASSTHROUGH,
     }
+    export namespace DomainDiskBus {
+        export const $gtype: GObject.GType<DomainDiskBus>;
+    }
+
     enum DomainDiskBus {
         IDE,
         FDC,
@@ -75,6 +107,10 @@ export namespace LibvirtGConfig {
         UML,
         SATA,
     }
+    export namespace DomainDiskCacheType {
+        export const $gtype: GObject.GType<DomainDiskCacheType>;
+    }
+
     enum DomainDiskCacheType {
         DEFAULT,
         NONE,
@@ -83,20 +119,36 @@ export namespace LibvirtGConfig {
         DIRECTSYNC,
         UNSAFE,
     }
+    export namespace DomainDiskDriverDiscard {
+        export const $gtype: GObject.GType<DomainDiskDriverDiscard>;
+    }
+
     enum DomainDiskDriverDiscard {
         UNMAP,
         IGNORE,
     }
+    export namespace DomainDiskDriverErrorPolicy {
+        export const $gtype: GObject.GType<DomainDiskDriverErrorPolicy>;
+    }
+
     enum DomainDiskDriverErrorPolicy {
         STOP,
         REPORT,
         IGNORE,
         ENOSPACE,
     }
+    export namespace DomainDiskDriverIoPolicy {
+        export const $gtype: GObject.GType<DomainDiskDriverIoPolicy>;
+    }
+
     enum DomainDiskDriverIoPolicy {
         THREADS,
         NATIVE,
     }
+    export namespace DomainDiskFormat {
+        export const $gtype: GObject.GType<DomainDiskFormat>;
+    }
+
     enum DomainDiskFormat {
         RAW,
         DIR,
@@ -113,32 +165,56 @@ export namespace LibvirtGConfig {
         FAT,
         VHD,
     }
+    export namespace DomainDiskGuestDeviceType {
+        export const $gtype: GObject.GType<DomainDiskGuestDeviceType>;
+    }
+
     enum DomainDiskGuestDeviceType {
         DISK,
         FLOPPY,
         CDROM,
     }
+    export namespace DomainDiskSnapshotType {
+        export const $gtype: GObject.GType<DomainDiskSnapshotType>;
+    }
+
     enum DomainDiskSnapshotType {
         NO,
         INTERNAL,
         EXTERNAL,
     }
+    export namespace DomainDiskStartupPolicy {
+        export const $gtype: GObject.GType<DomainDiskStartupPolicy>;
+    }
+
     enum DomainDiskStartupPolicy {
         MANDATORY,
         REQUISITE,
         OPTIONAL,
     }
+    export namespace DomainDiskType {
+        export const $gtype: GObject.GType<DomainDiskType>;
+    }
+
     enum DomainDiskType {
         FILE,
         BLOCK,
         DIR,
         NETWORK,
     }
+    export namespace DomainFilesysAccessType {
+        export const $gtype: GObject.GType<DomainFilesysAccessType>;
+    }
+
     enum DomainFilesysAccessType {
         PASSTHROUGH,
         MAPPED,
         SQUASH,
     }
+    export namespace DomainFilesysDriverType {
+        export const $gtype: GObject.GType<DomainFilesysDriverType>;
+    }
+
     enum DomainFilesysDriverType {
         DEFAULT,
         PATH,
@@ -147,6 +223,10 @@ export namespace LibvirtGConfig {
         NBD,
         PLOOP,
     }
+    export namespace DomainFilesysType {
+        export const $gtype: GObject.GType<DomainFilesysType>;
+    }
+
     enum DomainFilesysType {
         MOUNT,
         BLOCK,
@@ -155,6 +235,10 @@ export namespace LibvirtGConfig {
         RAM,
         BIND,
     }
+    export namespace DomainGraphicsSpiceImageCompression {
+        export const $gtype: GObject.GType<DomainGraphicsSpiceImageCompression>;
+    }
+
     enum DomainGraphicsSpiceImageCompression {
         AUTO_GLZ,
         AUTO_LZ,
@@ -163,21 +247,37 @@ export namespace LibvirtGConfig {
         LZ,
         OFF,
     }
+    export namespace DomainInputBus {
+        export const $gtype: GObject.GType<DomainInputBus>;
+    }
+
     enum DomainInputBus {
         PS2,
         USB,
         XEN,
     }
+    export namespace DomainInputDeviceType {
+        export const $gtype: GObject.GType<DomainInputDeviceType>;
+    }
+
     enum DomainInputDeviceType {
         MOUSE,
         TABLET,
         KEYBOARD,
     }
+    export namespace DomainInterfaceLinkState {
+        export const $gtype: GObject.GType<DomainInterfaceLinkState>;
+    }
+
     enum DomainInterfaceLinkState {
         DEFAULT,
         UP,
         DOWN,
     }
+    export namespace DomainLifecycleAction {
+        export const $gtype: GObject.GType<DomainLifecycleAction>;
+    }
+
     enum DomainLifecycleAction {
         DESTROY,
         RESTART,
@@ -186,30 +286,54 @@ export namespace LibvirtGConfig {
         COREDUMP_DESTROY,
         COREDUMP_RESTART,
     }
+    export namespace DomainLifecycleEvent {
+        export const $gtype: GObject.GType<DomainLifecycleEvent>;
+    }
+
     enum DomainLifecycleEvent {
         ON_POWEROFF,
         ON_REBOOT,
         ON_CRASH,
     }
+    export namespace DomainMemballoonModel {
+        export const $gtype: GObject.GType<DomainMemballoonModel>;
+    }
+
     enum DomainMemballoonModel {
         NONE,
         VIRTIO,
     }
+    export namespace DomainOsBootDevice {
+        export const $gtype: GObject.GType<DomainOsBootDevice>;
+    }
+
     enum DomainOsBootDevice {
         FD,
         HD,
         CDROM,
         NETWORK,
     }
+    export namespace DomainOsFirmware {
+        export const $gtype: GObject.GType<DomainOsFirmware>;
+    }
+
     enum DomainOsFirmware {
         BIOS,
         EFI,
     }
+    export namespace DomainOsSmBiosMode {
+        export const $gtype: GObject.GType<DomainOsSmBiosMode>;
+    }
+
     enum DomainOsSmBiosMode {
         EMULATE,
         HOST,
         SYSINFO,
     }
+    export namespace DomainOsType {
+        export const $gtype: GObject.GType<DomainOsType>;
+    }
+
     enum DomainOsType {
         HVM,
         LINUX,
@@ -217,13 +341,25 @@ export namespace LibvirtGConfig {
         XEN,
         UML,
     }
+    export namespace DomainRedirdevBus {
+        export const $gtype: GObject.GType<DomainRedirdevBus>;
+    }
+
     enum DomainRedirdevBus {
         USB,
     }
+    export namespace DomainSeclabelType {
+        export const $gtype: GObject.GType<DomainSeclabelType>;
+    }
+
     enum DomainSeclabelType {
         DYNAMIC,
         STATIC,
     }
+    export namespace DomainSnapshotDomainState {
+        export const $gtype: GObject.GType<DomainSnapshotDomainState>;
+    }
+
     enum DomainSnapshotDomainState {
         NOSTATE,
         RUNNING,
@@ -235,11 +371,19 @@ export namespace LibvirtGConfig {
         PMSUSPENDED,
         DISK_SNAPSHOT,
     }
+    export namespace DomainSnapshotMemoryState {
+        export const $gtype: GObject.GType<DomainSnapshotMemoryState>;
+    }
+
     enum DomainSnapshotMemoryState {
         NONE,
         INTERNAL,
         EXTERNAL,
     }
+    export namespace DomainSoundModel {
+        export const $gtype: GObject.GType<DomainSoundModel>;
+    }
+
     enum DomainSoundModel {
         SB16,
         ES1370,
@@ -248,12 +392,20 @@ export namespace LibvirtGConfig {
         ICH6,
         ICH9,
     }
+    export namespace DomainTimerTickPolicy {
+        export const $gtype: GObject.GType<DomainTimerTickPolicy>;
+    }
+
     enum DomainTimerTickPolicy {
         DELAY,
         CATCHUP,
         MERGE,
         DISCARD,
     }
+    export namespace DomainVideoModel {
+        export const $gtype: GObject.GType<DomainVideoModel>;
+    }
+
     enum DomainVideoModel {
         VGA,
         CIRRUS,
@@ -264,6 +416,10 @@ export namespace LibvirtGConfig {
         VIRTIO,
         BOCHS,
     }
+    export namespace DomainVirtType {
+        export const $gtype: GObject.GType<DomainVirtType>;
+    }
+
     enum DomainVirtType {
         QEMU,
         KQEMU,
@@ -281,6 +437,10 @@ export namespace LibvirtGConfig {
         ONE,
         PHYP,
     }
+    export namespace StoragePoolType {
+        export const $gtype: GObject.GType<StoragePoolType>;
+    }
+
     enum StoragePoolType {
         DIR,
         FS,
@@ -293,6 +453,10 @@ export namespace LibvirtGConfig {
     }
     function init(argv?: string[] | null): string[] | null;
     function init_check(argv?: string[] | null): [boolean, string[] | null];
+    export namespace StorageVolTargetFeatures {
+        export const $gtype: GObject.GType<StorageVolTargetFeatures>;
+    }
+
     enum StorageVolTargetFeatures {
         REFCOUNT,
     }

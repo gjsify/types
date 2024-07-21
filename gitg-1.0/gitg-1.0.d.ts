@@ -29,11 +29,19 @@ export namespace Gitg {
      * Gitg-1.0
      */
 
+    export namespace AuthenticationLifeTime {
+        export const $gtype: GObject.GType<AuthenticationLifeTime>;
+    }
+
     enum AuthenticationLifeTime {
         FORGET,
         SESSION,
         FOREVER,
     }
+    export namespace CommitModelColumns {
+        export const $gtype: GObject.GType<CommitModelColumns>;
+    }
+
     enum CommitModelColumns {
         SHA1,
         SUBJECT,
@@ -49,6 +57,10 @@ export namespace Gitg {
         COMMIT,
         NUM,
     }
+    export namespace RefType {
+        export const $gtype: GObject.GType<RefType>;
+    }
+
     enum RefType {
         NONE,
         BRANCH,
@@ -56,32 +68,56 @@ export namespace Gitg {
         TAG,
         STASH,
     }
+    export namespace RefState {
+        export const $gtype: GObject.GType<RefState>;
+    }
+
     enum RefState {
         NONE,
         SELECTED,
         PRELIGHT,
     }
+    export namespace RemoteState {
+        export const $gtype: GObject.GType<RemoteState>;
+    }
+
     enum RemoteState {
         DISCONNECTED,
         CONNECTING,
         CONNECTED,
         TRANSFERRING,
     }
+    export namespace SelectionMode {
+        export const $gtype: GObject.GType<SelectionMode>;
+    }
+
     enum SelectionMode {
         NORMAL,
         SELECTION,
     }
+    export namespace DeleteSources {
+        export const $gtype: GObject.GType<DeleteSources>;
+    }
+
     enum DeleteSources {
         CANCEL,
         TRASH,
         DELETE,
     }
+    export namespace SidebarHint {
+        export const $gtype: GObject.GType<SidebarHint>;
+    }
+
     enum SidebarHint {
         NONE,
         HEADER,
         SEPARATOR,
         DUMMY,
     }
+    export namespace SidebarColumn {
+        export const $gtype: GObject.GType<SidebarColumn>;
+    }
+
     enum SidebarColumn {
         HINT,
         SECTION,
@@ -161,12 +197,20 @@ export namespace Gitg {
         _init(...args: any[]): void;
     }
 
+    export namespace PatchSetType {
+        export const $gtype: GObject.GType<PatchSetType>;
+    }
+
     enum PatchSetType {
         ADD,
         REMOVE,
     }
     function commit_model_columns_type(): GObject.GType;
     function init(): void;
+    export namespace LaneTag {
+        export const $gtype: GObject.GType<LaneTag>;
+    }
+
     enum LaneTag {
         NONE,
         START,
@@ -176,6 +220,10 @@ export namespace Gitg {
         SIGN_UNSTAGED,
         HIDDEN,
     }
+    export namespace StageCommitOptions {
+        export const $gtype: GObject.GType<StageCommitOptions>;
+    }
+
     enum StageCommitOptions {
         NONE,
         SIGN_OFF,

@@ -19,9 +19,17 @@ export namespace GUsb {
      * GUsb-1.0
      */
 
+    export namespace ContextError {
+        export const $gtype: GObject.GType<ContextError>;
+    }
+
     enum ContextError {
         CONTEXT_ERROR_INTERNAL,
     }
+    export namespace DeviceClassCode {
+        export const $gtype: GObject.GType<DeviceClassCode>;
+    }
+
     /**
      * The USB device class.
      */
@@ -48,6 +56,10 @@ export namespace GUsb {
         APPLICATION_SPECIFIC,
         VENDOR_SPECIFIC,
     }
+    export namespace DeviceDirection {
+        export const $gtype: GObject.GType<DeviceDirection>;
+    }
+
     /**
      * The message direction.
      */
@@ -55,6 +67,10 @@ export namespace GUsb {
         DEVICE_TO_HOST,
         HOST_TO_DEVICE,
     }
+    export namespace DeviceError {
+        export const $gtype: GObject.GType<DeviceError>;
+    }
+
     /**
      * The error code.
      */
@@ -104,6 +120,10 @@ export namespace GUsb {
          */
         BUSY,
     }
+    export namespace DeviceLangid {
+        export const $gtype: GObject.GType<DeviceLangid>;
+    }
+
     /**
      * The USB language ID.
      */
@@ -111,6 +131,10 @@ export namespace GUsb {
         INVALID,
         ENGLISH_UNITED_STATES,
     }
+    export namespace DeviceRecipient {
+        export const $gtype: GObject.GType<DeviceRecipient>;
+    }
+
     /**
      * The message recipient.
      */
@@ -120,6 +144,10 @@ export namespace GUsb {
         ENDPOINT,
         OTHER,
     }
+    export namespace DeviceRequestType {
+        export const $gtype: GObject.GType<DeviceRequestType>;
+    }
+
     /**
      * The message request type.
      */
@@ -169,6 +197,10 @@ export namespace GUsb {
      * @returns a version number, e.g. "0.3.1"
      */
     function version_string(): string;
+    export namespace ContextFlags {
+        export const $gtype: GObject.GType<ContextFlags>;
+    }
+
     /**
      * The flags to use for the context.
      */
@@ -179,6 +211,10 @@ export namespace GUsb {
         SAVE_REMOVED_DEVICES,
         DEBUG,
     }
+    export namespace DeviceClaimInterfaceFlags {
+        export const $gtype: GObject.GType<DeviceClaimInterfaceFlags>;
+    }
+
     /**
      * Flags for the g_usb_device_claim_interface and
      * g_usb_device_release_interface methods flags parameters.

@@ -28,6 +28,10 @@ export namespace Gtef {
      * Gtef-2
      */
 
+    export namespace CompressionType {
+        export const $gtype: GObject.GType<CompressionType>;
+    }
+
     enum CompressionType {
         /**
          * plain text.
@@ -95,6 +99,10 @@ export namespace Gtef {
         static quark(): GLib.Quark;
     }
 
+    export namespace NewlineType {
+        export const $gtype: GObject.GType<NewlineType>;
+    }
+
     enum NewlineType {
         /**
          * line feed, used on UNIX.
@@ -110,6 +118,10 @@ export namespace Gtef {
          */
         CR_LF,
     }
+    export namespace SelectionType {
+        export const $gtype: GObject.GType<SelectionType>;
+    }
+
     enum SelectionType {
         /**
          * No selection.
@@ -227,6 +239,10 @@ export namespace Gtef {
      * @returns the URI of @item. Free with g_free() when no longer needed.
      */
     function utils_recent_chooser_menu_get_item_uri(menu: Gtk.RecentChooserMenu, item: Gtk.MenuItem): string;
+    export namespace FileSaverFlags {
+        export const $gtype: GObject.GType<FileSaverFlags>;
+    }
+
     /**
      * Flags to define the behavior of a #GtefFileSaver.
      */
@@ -248,6 +264,10 @@ export namespace Gtef {
          */
         CREATE_BACKUP,
     }
+    export namespace GutterRendererFoldsState {
+        export const $gtype: GObject.GType<GutterRendererFoldsState>;
+    }
+
     /**
      * The folding state at a certain line in the #GtkTextBuffer.
      *

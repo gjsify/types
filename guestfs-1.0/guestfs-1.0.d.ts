@@ -18,6 +18,10 @@ export namespace Guestfs {
      * Guestfs-1.0
      */
 
+    export namespace SessionEvent {
+        export const $gtype: GObject.GType<SessionEvent>;
+    }
+
     /**
      * For more detail on libguestfs events, see "SETTING CALLBACKS TO HANDLE
      * EVENTS" in guestfs(3).
@@ -64,6 +68,10 @@ export namespace Guestfs {
          */
         WARNING,
     }
+    export namespace Tristate {
+        export const $gtype: GObject.GType<Tristate>;
+    }
+
     /**
      * An object representing a tristate: i.e. true, false, or unset. If a language
      * binding has a native concept of true and false which also correspond to the

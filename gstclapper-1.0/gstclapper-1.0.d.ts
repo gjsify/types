@@ -23,6 +23,10 @@ export namespace GstClapper {
      * GstClapper-1.0
      */
 
+    export namespace ClapperColorBalanceType {
+        export const $gtype: GObject.GType<ClapperColorBalanceType>;
+    }
+
     enum ClapperColorBalanceType {
         /**
          * hue or color balance.
@@ -67,6 +71,10 @@ export namespace GstClapper {
         static quark(): GLib.Quark;
     }
 
+    export namespace ClapperSeekMode {
+        export const $gtype: GObject.GType<ClapperSeekMode>;
+    }
+
     enum ClapperSeekMode {
         /**
          * default seek method (flush only).
@@ -81,6 +89,10 @@ export namespace GstClapper {
          */
         FAST,
     }
+    export namespace ClapperSnapshotFormat {
+        export const $gtype: GObject.GType<ClapperSnapshotFormat>;
+    }
+
     enum ClapperSnapshotFormat {
         /**
          * RAW Native.
@@ -103,6 +115,10 @@ export namespace GstClapper {
          */
         PNG,
     }
+    export namespace ClapperState {
+        export const $gtype: GObject.GType<ClapperState>;
+    }
+
     enum ClapperState {
         /**
          * clapper is stopped.

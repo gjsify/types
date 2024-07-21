@@ -28,17 +28,29 @@ export namespace SugarExt {
      * SugarExt-1.0
      */
 
+    export namespace ClientEndStyle {
+        export const $gtype: GObject.GType<ClientEndStyle>;
+    }
+
     enum ClientEndStyle {
         END_SESSION_DEFAULT,
         LOGOUT,
         REBOOT,
         SHUTDOWN,
     }
+    export namespace ClientMode {
+        export const $gtype: GObject.GType<ClientMode>;
+    }
+
     enum ClientMode {
         DISABLED,
         NO_RESTART,
         NORMAL,
     }
+    export namespace ClientXSMPState {
+        export const $gtype: GObject.GType<ClientXSMPState>;
+    }
+
     enum ClientXSMPState {
         START,
         IDLE,
@@ -49,15 +61,27 @@ export namespace SugarExt {
         SHUTDOWN_CANCELLED,
         CONNECTION_CLOSED,
     }
+    export namespace SessionLogoutMode {
+        export const $gtype: GObject.GType<SessionLogoutMode>;
+    }
+
     enum SessionLogoutMode {
         NORMAL,
         NO_CONFIRMATION,
         FORCE,
     }
+    export namespace SessionLogoutType {
+        export const $gtype: GObject.GType<SessionLogoutType>;
+    }
+
     enum SessionLogoutType {
         LOGOUT,
         SHUTDOWN,
     }
+    export namespace SessionPhase {
+        export const $gtype: GObject.GType<SessionPhase>;
+    }
+
     enum SessionPhase {
         STARTUP,
         INITIALIZATION,

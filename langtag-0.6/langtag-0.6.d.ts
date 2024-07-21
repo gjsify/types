@@ -16,10 +16,18 @@ export namespace LangTag {
      * LangTag-0.6
      */
 
+    export namespace ErrorType {
+        export const $gtype: GObject.GType<ErrorType>;
+    }
+
     /**
      * Error code used in this library.
      */
     enum ErrorType {}
+    export namespace TagFilter {
+        export const $gtype: GObject.GType<TagFilter>;
+    }
+
     /**
      * This is used as a binary count sequence with lt_tag_get_string_with_filter()
      * to allow only given tags to be the outcome.

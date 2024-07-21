@@ -166,6 +166,10 @@ export namespace GUPnP {
         static quark(): GLib.Quark;
     }
 
+    export namespace ServiceActionArgDirection {
+        export const $gtype: GObject.GType<ServiceActionArgDirection>;
+    }
+
     /**
      * Represents the direction of a service state variable.
      */

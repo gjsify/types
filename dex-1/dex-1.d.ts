@@ -18,6 +18,10 @@ export namespace Dex {
      * Dex-1
      */
 
+    export namespace BlockKind {
+        export const $gtype: GObject.GType<BlockKind>;
+    }
+
     enum BlockKind {
         THEN,
         CATCH,
@@ -44,6 +48,10 @@ export namespace Dex {
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+    }
+
+    export namespace FutureStatus {
+        export const $gtype: GObject.GType<FutureStatus>;
     }
 
     enum FutureStatus {

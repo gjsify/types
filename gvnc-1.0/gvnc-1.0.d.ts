@@ -18,6 +18,10 @@ export namespace GVnc {
      * GVnc-1.0
      */
 
+    export namespace AudioFormatType {
+        export const $gtype: GObject.GType<AudioFormatType>;
+    }
+
     enum AudioFormatType {
         U8,
         S8,
@@ -26,6 +30,10 @@ export namespace GVnc {
         U32,
         S32,
     }
+    export namespace ConnectionAuth {
+        export const $gtype: GObject.GType<ConnectionAuth>;
+    }
+
     enum ConnectionAuth {
         INVALID,
         /**
@@ -77,6 +85,10 @@ export namespace GVnc {
          */
         MSLOGON,
     }
+    export namespace ConnectionAuthVencrypt {
+        export const $gtype: GObject.GType<ConnectionAuthVencrypt>;
+    }
+
     enum ConnectionAuthVencrypt {
         PLAIN,
         TLSNONE,
@@ -88,12 +100,20 @@ export namespace GVnc {
         X509SASL,
         TLSSASL,
     }
+    export namespace ConnectionCredential {
+        export const $gtype: GObject.GType<ConnectionCredential>;
+    }
+
     enum ConnectionCredential {
         PASSWORD,
         USERNAME,
         CLIENTNAME,
         CA_CERT_DATA,
     }
+    export namespace ConnectionEncoding {
+        export const $gtype: GObject.GType<ConnectionEncoding>;
+    }
+
     enum ConnectionEncoding {
         RAW,
         COPY_RECT,
@@ -127,11 +147,19 @@ export namespace GVnc {
         XVP,
         ALPHA_CURSOR,
     }
+    export namespace ConnectionPowerAction {
+        export const $gtype: GObject.GType<ConnectionPowerAction>;
+    }
+
     enum ConnectionPowerAction {
         SHUTDOWN,
         REBOOT,
         RESET,
     }
+    export namespace ConnectionResizeStatus {
+        export const $gtype: GObject.GType<ConnectionResizeStatus>;
+    }
+
     enum ConnectionResizeStatus {
         UNSUPPORTED,
         OK,

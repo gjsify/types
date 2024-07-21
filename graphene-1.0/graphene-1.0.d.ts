@@ -16,6 +16,10 @@ export namespace Graphene {
      * Graphene-1.0
      */
 
+    export namespace EulerOrder {
+        export const $gtype: GObject.GType<EulerOrder>;
+    }
+
     /**
      * Specify the order of the rotations on each axis.
      *
@@ -155,6 +159,10 @@ export namespace Graphene {
          */
         RZYZ,
     }
+    export namespace RayIntersectionKind {
+        export const $gtype: GObject.GType<RayIntersectionKind>;
+    }
+
     /**
      * The type of intersection.
      */

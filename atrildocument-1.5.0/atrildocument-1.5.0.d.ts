@@ -27,6 +27,10 @@ export namespace AtrilDocument {
      * AtrilDocument-1.5.0
      */
 
+    export namespace AnnotationTextIcon {
+        export const $gtype: GObject.GType<AnnotationTextIcon>;
+    }
+
     enum AnnotationTextIcon {
         NOTE,
         COMMENT,
@@ -39,11 +43,19 @@ export namespace AtrilDocument {
         CIRCLE,
         UNKNOWN,
     }
+    export namespace AnnotationType {
+        export const $gtype: GObject.GType<AnnotationType>;
+    }
+
     enum AnnotationType {
         UNKNOWN,
         TEXT,
         ATTACHMENT,
     }
+    export namespace CompressionType {
+        export const $gtype: GObject.GType<CompressionType>;
+    }
+
     enum CompressionType {
         NONE,
         BZIP2,
@@ -69,6 +81,10 @@ export namespace AtrilDocument {
         static quark(): GLib.Quark;
     }
 
+    export namespace DocumentLayout {
+        export const $gtype: GObject.GType<DocumentLayout>;
+    }
+
     enum DocumentLayout {
         SINGLE_PAGE,
         ONE_COLUMN,
@@ -77,6 +93,10 @@ export namespace AtrilDocument {
         TWO_PAGE_LEFT,
         TWO_PAGE_RIGHT,
     }
+    export namespace DocumentMode {
+        export const $gtype: GObject.GType<DocumentMode>;
+    }
+
     enum DocumentMode {
         NONE,
         USE_OC,
@@ -85,25 +105,45 @@ export namespace AtrilDocument {
         USE_ATTACHMENTS,
         PRESENTATION,
     }
+    export namespace FileExporterFormat {
+        export const $gtype: GObject.GType<FileExporterFormat>;
+    }
+
     enum FileExporterFormat {
         UNKNOWN,
         PS,
         PDF,
     }
+    export namespace FormFieldButtonType {
+        export const $gtype: GObject.GType<FormFieldButtonType>;
+    }
+
     enum FormFieldButtonType {
         PUSH,
         CHECK,
         RADIO,
     }
+    export namespace FormFieldChoiceType {
+        export const $gtype: GObject.GType<FormFieldChoiceType>;
+    }
+
     enum FormFieldChoiceType {
         COMBO,
         LIST,
     }
+    export namespace FormFieldTextType {
+        export const $gtype: GObject.GType<FormFieldTextType>;
+    }
+
     enum FormFieldTextType {
         NORMAL,
         MULTILINE,
         FILE_SELECT,
     }
+    export namespace LinkActionType {
+        export const $gtype: GObject.GType<LinkActionType>;
+    }
+
     enum LinkActionType {
         GOTO_DEST,
         GOTO_REMOTE,
@@ -112,6 +152,10 @@ export namespace AtrilDocument {
         NAMED,
         LAYERS_STATE,
     }
+    export namespace LinkDestType {
+        export const $gtype: GObject.GType<LinkDestType>;
+    }
+
     enum LinkDestType {
         PAGE,
         XYZ,
@@ -124,19 +168,35 @@ export namespace AtrilDocument {
         HLINK,
         UNKNOWN,
     }
+    export namespace SelectionStyle {
+        export const $gtype: GObject.GType<SelectionStyle>;
+    }
+
     enum SelectionStyle {
         GLYPH,
         WORD,
         LINE,
     }
+    export namespace TransitionEffectAlignment {
+        export const $gtype: GObject.GType<TransitionEffectAlignment>;
+    }
+
     enum TransitionEffectAlignment {
         HORIZONTAL,
         VERTICAL,
     }
+    export namespace TransitionEffectDirection {
+        export const $gtype: GObject.GType<TransitionEffectDirection>;
+    }
+
     enum TransitionEffectDirection {
         INWARD,
         OUTWARD,
     }
+    export namespace TransitionEffectType {
+        export const $gtype: GObject.GType<TransitionEffectType>;
+    }
+
     enum TransitionEffectType {
         REPLACE,
         SPLIT,
@@ -246,6 +306,10 @@ export namespace AtrilDocument {
      * @returns %TRUE on success, or %FALSE on error with @error filled in
      */
     function xfer_uri_simple(from: string, to: string): boolean;
+    export namespace AnnotationsSaveMask {
+        export const $gtype: GObject.GType<AnnotationsSaveMask>;
+    }
+
     enum AnnotationsSaveMask {
         NONE,
         CONTENTS,
@@ -259,6 +323,10 @@ export namespace AtrilDocument {
         ATTACHMENT,
         ALL,
     }
+    export namespace DocumentInfoFields {
+        export const $gtype: GObject.GType<DocumentInfoFields>;
+    }
+
     enum DocumentInfoFields {
         TITLE,
         FORMAT,
@@ -279,6 +347,10 @@ export namespace AtrilDocument {
         PAPER_SIZE,
         LICENSE,
     }
+    export namespace DocumentPermissions {
+        export const $gtype: GObject.GType<DocumentPermissions>;
+    }
+
     enum DocumentPermissions {
         OK_TO_PRINT,
         OK_TO_MODIFY,
@@ -286,6 +358,10 @@ export namespace AtrilDocument {
         OK_TO_ADD_NOTES,
         FULL,
     }
+    export namespace DocumentUIHints {
+        export const $gtype: GObject.GType<DocumentUIHints>;
+    }
+
     enum DocumentUIHints {
         HIDE_TOOLBAR,
         HIDE_MENUBAR,
@@ -295,6 +371,10 @@ export namespace AtrilDocument {
         DISPLAY_DOC_TITLE,
         DIRECTION_RTL,
     }
+    export namespace FileExporterCapabilities {
+        export const $gtype: GObject.GType<FileExporterCapabilities>;
+    }
+
     enum FileExporterCapabilities {
         PAGE_SET,
         COPIES,

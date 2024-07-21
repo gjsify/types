@@ -29,6 +29,10 @@ export namespace Budgie {
      * Budgie-1.0
      */
 
+    export namespace PopoverPositionPolicy {
+        export const $gtype: GObject.GType<PopoverPositionPolicy>;
+    }
+
     /**
      * The BudgiePopoverPositionPolicy determines how the #BudgiePopover will be
      * placed on screen. The default policy (AUTOMATIC) will try to place the
@@ -52,6 +56,10 @@ export namespace Budgie {
     const APPLET_KEY_ALIGN: string;
     const APPLET_KEY_NAME: string;
     const APPLET_KEY_POS: string;
+    export namespace PanelAction {
+        export const $gtype: GObject.GType<PanelAction>;
+    }
+
     /**
      * BudgiePanelAction's are bitwise OR'd so that a #BudgieApplet may expose
      * the actions that it supports, when the panel is interacted with in
@@ -65,6 +73,10 @@ export namespace Budgie {
         MENU,
         MAX,
     }
+    export namespace PanelPosition {
+        export const $gtype: GObject.GType<PanelPosition>;
+    }
+
     /**
      * Each applet lives on a unique panel which can live on any one of
      * the 4 screen edges. Internally this is represented with a bitmask

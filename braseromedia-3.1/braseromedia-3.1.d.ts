@@ -27,6 +27,10 @@ export namespace BraseroMedia {
      * BraseroMedia-3.1
      */
 
+    export namespace MediaError {
+        export const $gtype: GObject.GType<MediaError>;
+    }
+
     /**
      * Error codes returned by libbrasero-media
      */
@@ -74,6 +78,10 @@ export namespace BraseroMedia {
     function media_quark(): GLib.Quark;
     function units_get_time_string(time: number, with_unit: boolean, round: boolean): string;
     function units_get_time_string_from_size(size: number, with_unit: boolean, round: boolean): string;
+    export namespace DriveCaps {
+        export const $gtype: GObject.GType<DriveCaps>;
+    }
+
     enum DriveCaps {
         NONE,
         CDR,
@@ -88,6 +96,10 @@ export namespace BraseroMedia {
         BDR,
         BDRW,
     }
+    export namespace DriveType {
+        export const $gtype: GObject.GType<DriveType>;
+    }
+
     enum DriveType {
         NONE,
         FILE,
@@ -96,6 +108,10 @@ export namespace BraseroMedia {
         ALL_BUT_FILE,
         ALL,
     }
+    export namespace Media {
+        export const $gtype: GObject.GType<Media>;
+    }
+
     /**
      * This enum allows to define all characteristics for a media (closed, writable, ...)
      * and identify all types of optical media.
@@ -128,6 +144,10 @@ export namespace BraseroMedia {
         HAS_DATA,
         HAS_AUDIO,
     }
+    export namespace MediaType {
+        export const $gtype: GObject.GType<MediaType>;
+    }
+
     enum MediaType {
         NONE,
         FILE,

@@ -32,12 +32,20 @@ export namespace Mx {
      * Mx-1.0
      */
 
+    export namespace ActorManagerError {
+        export const $gtype: GObject.GType<ActorManagerError>;
+    }
+
     enum ActorManagerError {
         CONTAINER_DESTROYED,
         ACTOR_DESTROYED,
         CREATION_FAILED,
         UNKNOWN_OPERATION,
     }
+    export namespace Align {
+        export const $gtype: GObject.GType<Align>;
+    }
+
     /**
      * Set the alignment of the item
      */
@@ -55,11 +63,19 @@ export namespace Mx {
          */
         END,
     }
+    export namespace DragAxis {
+        export const $gtype: GObject.GType<DragAxis>;
+    }
+
     enum DragAxis {
         NONE,
         X,
         Y,
     }
+    export namespace FocusDirection {
+        export const $gtype: GObject.GType<FocusDirection>;
+    }
+
     enum FocusDirection {
         OUT,
         UP,
@@ -69,6 +85,10 @@ export namespace Mx {
         NEXT,
         PREVIOUS,
     }
+    export namespace FocusHint {
+        export const $gtype: GObject.GType<FocusHint>;
+    }
+
     enum FocusHint {
         FIRST,
         LAST,
@@ -78,6 +98,10 @@ export namespace Mx {
         FROM_LEFT,
         FROM_RIGHT,
     }
+    export namespace FontWeight {
+        export const $gtype: GObject.GType<FontWeight>;
+    }
+
     /**
      * Support values of font weight
      */
@@ -119,6 +143,10 @@ export namespace Mx {
         static quark(): GLib.Quark;
     }
 
+    export namespace ImageScaleMode {
+        export const $gtype: GObject.GType<ImageScaleMode>;
+    }
+
     /**
      * Defines the scaling mode of an image.
      */
@@ -136,17 +164,29 @@ export namespace Mx {
          */
         CROP,
     }
+    export namespace KineticScrollViewState {
+        export const $gtype: GObject.GType<KineticScrollViewState>;
+    }
+
     enum KineticScrollViewState {
         IDLE,
         PANNING,
         SCROLLING,
         CLAMPING,
     }
+    export namespace LongPressAction {
+        export const $gtype: GObject.GType<LongPressAction>;
+    }
+
     enum LongPressAction {
         QUERY,
         ACTION,
         CANCEL,
     }
+    export namespace Orientation {
+        export const $gtype: GObject.GType<Orientation>;
+    }
+
     /**
      * Defines the orientation of various layout widgets.
      */
@@ -160,6 +200,10 @@ export namespace Mx {
          */
         VERTICAL,
     }
+    export namespace Position {
+        export const $gtype: GObject.GType<Position>;
+    }
+
     /**
      * Defines the position of an interface element.
      */
@@ -181,6 +225,10 @@ export namespace Mx {
          */
         LEFT,
     }
+    export namespace ScrollPolicy {
+        export const $gtype: GObject.GType<ScrollPolicy>;
+    }
+
     /**
      * Defines the scrolling policy of scrollable widgets.
      */
@@ -202,9 +250,17 @@ export namespace Mx {
          */
         BOTH,
     }
+    export namespace StyleError {
+        export const $gtype: GObject.GType<StyleError>;
+    }
+
     enum StyleError {
         INVALID_FILE,
     }
+    export namespace TooltipAnimation {
+        export const $gtype: GObject.GType<TooltipAnimation>;
+    }
+
     /**
      * Defines the animation when tooltips are shown and hidden.
      */
@@ -218,6 +274,10 @@ export namespace Mx {
          */
         FADE,
     }
+    export namespace WindowRotation {
+        export const $gtype: GObject.GType<WindowRotation>;
+    }
+
     /**
      * Defines the clock-wise rotation angle of a window.
      */
@@ -322,10 +382,18 @@ export namespace Mx {
     interface ClipboardCallbackFunc {
         (clipboard: Clipboard, text: string): void;
     }
+    export namespace ApplicationFlags {
+        export const $gtype: GObject.GType<ApplicationFlags>;
+    }
+
     enum ApplicationFlags {
         SINGLE_INSTANCE,
         KEEP_ALIVE,
     }
+    export namespace StyleChangedFlags {
+        export const $gtype: GObject.GType<StyleChangedFlags>;
+    }
+
     enum StyleChangedFlags {
         /**
          * No flag set

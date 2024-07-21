@@ -27,6 +27,10 @@ export namespace Gdl {
      * Gdl-3
      */
 
+    export namespace DockBarStyle {
+        export const $gtype: GObject.GType<DockBarStyle>;
+    }
+
     /**
      * Used to customize the appearance of a #GdlDockBar.
      */
@@ -48,6 +52,10 @@ export namespace Gdl {
          */
         AUTO,
     }
+    export namespace DockItemButtonImageType {
+        export const $gtype: GObject.GType<DockItemButtonImageType>;
+    }
+
     /**
      * Define the image displayed.
      */
@@ -61,6 +69,10 @@ export namespace Gdl {
          */
         ICONIFY,
     }
+    export namespace DockPlacement {
+        export const $gtype: GObject.GType<DockPlacement>;
+    }
+
     /**
      * Described the docking position.
      */
@@ -94,6 +106,10 @@ export namespace Gdl {
          */
         FLOATING,
     }
+    export namespace SwitcherStyle {
+        export const $gtype: GObject.GType<SwitcherStyle>;
+    }
+
     /**
      * Used to customize the appearance of the tabs in #GdlDockNotebook.
      */
@@ -154,6 +170,10 @@ export namespace Gdl {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    export namespace DockItemBehavior {
+        export const $gtype: GObject.GType<DockItemBehavior>;
+    }
+
     /**
      * Described the behaviour of a doc item. The item can have multiple flags set.
      */
@@ -211,6 +231,10 @@ export namespace Gdl {
          */
         NO_GRIP,
     }
+    export namespace DockItemFlags {
+        export const $gtype: GObject.GType<DockItemFlags>;
+    }
+
     /**
      * Status flag of a GdlDockItem. Don't use unless you derive a widget from GdlDockItem
      */
@@ -232,6 +256,10 @@ export namespace Gdl {
          */
         USER_ACTION,
     }
+    export namespace DockObjectFlags {
+        export const $gtype: GObject.GType<DockObjectFlags>;
+    }
+
     /**
      * Described the state of a #GdlDockObject.
      *
@@ -256,6 +284,10 @@ export namespace Gdl {
          */
         IN_DETACH,
     }
+    export namespace DockParamFlags {
+        export const $gtype: GObject.GType<DockParamFlags>;
+    }
+
     /**
      * Used to flag additional characteristics to GObject properties used in dock
      * object.

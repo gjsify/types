@@ -18,6 +18,10 @@ export namespace Gck {
      * Gck-2
      */
 
+    export namespace BuilderFlags {
+        export const $gtype: GObject.GType<BuilderFlags>;
+    }
+
     /**
      * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
      */
@@ -288,6 +292,10 @@ export namespace Gck {
     interface Allocator {
         (data: any | null, length: number): any | null;
     }
+    export namespace SessionOptions {
+        export const $gtype: GObject.GType<SessionOptions>;
+    }
+
     /**
      * Options for creating sessions.
      */
@@ -309,6 +317,10 @@ export namespace Gck {
          */
         AUTHENTICATE,
     }
+    export namespace UriFlags {
+        export const $gtype: GObject.GType<UriFlags>;
+    }
+
     /**
      * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
      * combined.

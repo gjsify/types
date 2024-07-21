@@ -19,6 +19,10 @@ export namespace SecretUnstable {
      * SecretUnstable-0
      */
 
+    export namespace CollectionCreateFlags {
+        export const $gtype: GObject.GType<CollectionCreateFlags>;
+    }
+
     /**
      * Flags for secret_collection_create().
      */
@@ -28,6 +32,10 @@ export namespace SecretUnstable {
          */
         COLLECTION_CREATE_NONE,
     }
+    export namespace CollectionFlags {
+        export const $gtype: GObject.GType<CollectionFlags>;
+    }
+
     /**
      * Flags which determine which parts of the #SecretCollection proxy are initialized.
      */
@@ -41,6 +49,10 @@ export namespace SecretUnstable {
          */
         LOAD_ITEMS,
     }
+    export namespace ItemCreateFlags {
+        export const $gtype: GObject.GType<ItemCreateFlags>;
+    }
+
     /**
      * Flags for secret_item_create().
      */
@@ -54,6 +66,10 @@ export namespace SecretUnstable {
          */
         REPLACE,
     }
+    export namespace ItemFlags {
+        export const $gtype: GObject.GType<ItemFlags>;
+    }
+
     /**
      * Flags which determine which parts of the #SecretItem proxy are initialized.
      */
@@ -67,6 +83,10 @@ export namespace SecretUnstable {
          */
         LOAD_SECRET,
     }
+    export namespace SearchFlags {
+        export const $gtype: GObject.GType<SearchFlags>;
+    }
+
     /**
      * Various flags to be used with secret_service_search() and secret_service_search_sync().
      */
@@ -88,6 +108,10 @@ export namespace SecretUnstable {
          */
         LOAD_SECRETS,
     }
+    export namespace ServiceFlags {
+        export const $gtype: GObject.GType<ServiceFlags>;
+    }
+
     /**
      * Flags which determine which parts of the #SecretService proxy are initialized
      * during a secret_service_get() or secret_service_open() operation.

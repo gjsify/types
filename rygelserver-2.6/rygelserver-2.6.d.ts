@@ -28,15 +28,27 @@ export namespace RygelServer {
      * RygelServer-2.6
      */
 
+    export namespace LogicalOperator {
+        export const $gtype: GObject.GType<LogicalOperator>;
+    }
+
     enum LogicalOperator {
         AND,
         OR,
     }
+    export namespace ObjectEventType {
+        export const $gtype: GObject.GType<ObjectEventType>;
+    }
+
     enum ObjectEventType {
         ADDED,
         MODIFIED,
         DELETED,
     }
+    export namespace SerializerType {
+        export const $gtype: GObject.GType<SerializerType>;
+    }
+
     enum SerializerType {
         GENERIC_DIDL,
         DIDL_S,

@@ -37,16 +37,28 @@ export namespace St {
      * St-13
      */
 
+    export namespace BackgroundSize {
+        export const $gtype: GObject.GType<BackgroundSize>;
+    }
+
     enum BackgroundSize {
         AUTO,
         CONTAIN,
         COVER,
         FIXED,
     }
+    export namespace ClipboardType {
+        export const $gtype: GObject.GType<ClipboardType>;
+    }
+
     enum ClipboardType {
         PRIMARY,
         CLIPBOARD,
     }
+    export namespace Corner {
+        export const $gtype: GObject.GType<Corner>;
+    }
+
     /**
      * Used to target a particular corner of a #StThemeNode element.
      */
@@ -68,6 +80,10 @@ export namespace St {
          */
         BOTTOMLEFT,
     }
+    export namespace DirectionType {
+        export const $gtype: GObject.GType<DirectionType>;
+    }
+
     /**
      * Enumeration for focus direction.
      */
@@ -97,6 +113,10 @@ export namespace St {
          */
         RIGHT,
     }
+    export namespace GradientType {
+        export const $gtype: GObject.GType<GradientType>;
+    }
+
     /**
      * Used to specify options when rendering gradients.
      */
@@ -118,6 +138,10 @@ export namespace St {
          */
         RADIAL,
     }
+    export namespace IconStyle {
+        export const $gtype: GObject.GType<IconStyle>;
+    }
+
     /**
      * Used to specify options when looking up icons.
      */
@@ -164,12 +188,20 @@ export namespace St {
         static quark(): GLib.Quark;
     }
 
+    export namespace PolicyType {
+        export const $gtype: GObject.GType<PolicyType>;
+    }
+
     enum PolicyType {
         ALWAYS,
         AUTOMATIC,
         NEVER,
         EXTERNAL,
     }
+    export namespace Side {
+        export const $gtype: GObject.GType<Side>;
+    }
+
     /**
      * Used to target a particular side of a #StThemeNode element.
      */
@@ -191,11 +223,19 @@ export namespace St {
          */
         LEFT,
     }
+    export namespace SystemColorScheme {
+        export const $gtype: GObject.GType<SystemColorScheme>;
+    }
+
     enum SystemColorScheme {
         DEFAULT,
         PREFER_DARK,
         PREFER_LIGHT,
     }
+    export namespace TextAlign {
+        export const $gtype: GObject.GType<TextAlign>;
+    }
+
     /**
      * Used to align text in a label.
      */
@@ -214,6 +254,10 @@ export namespace St {
         RIGHT,
         JUSTIFY,
     }
+    export namespace TextureCachePolicy {
+        export const $gtype: GObject.GType<TextureCachePolicy>;
+    }
+
     enum TextureCachePolicy {
         NONE,
         FOREVER,
@@ -236,6 +280,10 @@ export namespace St {
     interface EntryCursorFunc {
         (entry: Entry, use_ibeam: boolean, data?: any | null): void;
     }
+    export namespace ButtonMask {
+        export const $gtype: GObject.GType<ButtonMask>;
+    }
+
     /**
      * A mask representing which mouse buttons an #StButton responds to.
      */
@@ -253,6 +301,10 @@ export namespace St {
          */
         THREE,
     }
+    export namespace IconLookupFlags {
+        export const $gtype: GObject.GType<IconLookupFlags>;
+    }
+
     /**
      * Used to specify options for st_icon_theme_lookup_icon()
      */
@@ -301,6 +353,10 @@ export namespace St {
          */
         DIR_RTL,
     }
+    export namespace TextDecoration {
+        export const $gtype: GObject.GType<TextDecoration>;
+    }
+
     /**
      * Flags used to determine the decoration of text.
      *

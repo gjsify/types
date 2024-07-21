@@ -30,6 +30,10 @@ export namespace WebKit2WebExtension {
      * WebKit2WebExtension-5.0
      */
 
+    export namespace ConsoleMessageLevel {
+        export const $gtype: GObject.GType<ConsoleMessageLevel>;
+    }
+
     /**
      * Enum values used to denote the various levels of console messages.
      */
@@ -55,6 +59,10 @@ export namespace WebKit2WebExtension {
          */
         DEBUG,
     }
+    export namespace ConsoleMessageSource {
+        export const $gtype: GObject.GType<ConsoleMessageSource>;
+    }
+
     /**
      * Enum values used to denote the various sources of console messages.
      */
@@ -80,6 +88,10 @@ export namespace WebKit2WebExtension {
          */
         OTHER,
     }
+    export namespace ContextMenuAction {
+        export const $gtype: GObject.GType<ContextMenuAction>;
+    }
+
     /**
      * Enum values used to denote the stock actions for
      * #WebKitContextMenuItem<!-- -->s
@@ -274,6 +286,10 @@ export namespace WebKit2WebExtension {
          */
         CUSTOM,
     }
+    export namespace FormSubmissionStep {
+        export const $gtype: GObject.GType<FormSubmissionStep>;
+    }
+
     /**
      * Used to indicate a particular stage in form submission. See
      * #WebKitWebPage::will-submit-form.
@@ -290,6 +306,10 @@ export namespace WebKit2WebExtension {
          */
         COMPLETE,
     }
+    export namespace UserMessageError {
+        export const $gtype: GObject.GType<UserMessageError>;
+    }
+
     /**
      * Enum values used to denote errors happening when sending user messages.
      */
@@ -445,6 +465,10 @@ export namespace WebKit2WebExtension {
     interface WebExtensionInitializeWithUserDataFunction {
         (extension: WebExtension, user_data: GLib.Variant): void;
     }
+    export namespace HitTestResultContext {
+        export const $gtype: GObject.GType<HitTestResultContext>;
+    }
+
     /**
      * Enum values with flags representing the context of a #WebKitHitTestResult.
      */

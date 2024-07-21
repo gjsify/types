@@ -23,6 +23,10 @@ export namespace GstPlayer {
      * GstPlayer-1.0
      */
 
+    export namespace PlayerColorBalanceType {
+        export const $gtype: GObject.GType<PlayerColorBalanceType>;
+    }
+
     enum PlayerColorBalanceType {
         /**
          * hue or color balance.
@@ -67,6 +71,10 @@ export namespace GstPlayer {
         static quark(): GLib.Quark;
     }
 
+    export namespace PlayerSnapshotFormat {
+        export const $gtype: GObject.GType<PlayerSnapshotFormat>;
+    }
+
     enum PlayerSnapshotFormat {
         RAW_NATIVE,
         RAW_XRGB,
@@ -74,6 +82,10 @@ export namespace GstPlayer {
         JPG,
         PNG,
     }
+    export namespace PlayerState {
+        export const $gtype: GObject.GType<PlayerState>;
+    }
+
     enum PlayerState {
         /**
          * the player is stopped.

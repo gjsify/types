@@ -32,12 +32,20 @@ export namespace Gee {
         _init(...args: any[]): void;
     }
 
+    export namespace ConcurrentSetRangeType {
+        export const $gtype: GObject.GType<ConcurrentSetRangeType>;
+    }
+
     enum ConcurrentSetRangeType {
         HEAD,
         TAIL,
         BOUNDED,
         EMPTY,
     }
+    export namespace HazardPointerPolicy {
+        export const $gtype: GObject.GType<HazardPointerPolicy>;
+    }
+
     enum HazardPointerPolicy {
         DEFAULT,
         THREAD_EXIT,
@@ -46,10 +54,18 @@ export namespace Gee {
         TRY_RELEASE,
         RELEASE,
     }
+    export namespace HazardPointerReleasePolicy {
+        export const $gtype: GObject.GType<HazardPointerReleasePolicy>;
+    }
+
     enum HazardPointerReleasePolicy {
         HELPER_THREAD,
         MAIN_LOOP,
     }
+    export namespace TraversableStream {
+        export const $gtype: GObject.GType<TraversableStream>;
+    }
+
     enum TraversableStream {
         YIELD,
         CONTINUE,

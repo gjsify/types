@@ -22,6 +22,10 @@ export namespace GData {
      * GData-0.0
      */
 
+    export namespace BatchOperationType {
+        export const $gtype: GObject.GType<BatchOperationType>;
+    }
+
     /**
      * Indicates which type of batch operation caused the current #GDataBatchOperationCallback to be called.
      */
@@ -66,6 +70,10 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
+    export namespace MediaExpression {
+        export const $gtype: GObject.GType<MediaExpression>;
+    }
+
     /**
      * An enum representing the possible values of #GDataMediaContent:expression.
      */
@@ -83,6 +91,10 @@ export namespace GData {
          */
         NONSTOP,
     }
+    export namespace MediaMedium {
+        export const $gtype: GObject.GType<MediaMedium>;
+    }
+
     /**
      * An enum representing the possible values of #GDataMediaContent:medium.
      */
@@ -112,6 +124,10 @@ export namespace GData {
          */
         EXECUTABLE,
     }
+    export namespace OperationType {
+        export const $gtype: GObject.GType<OperationType>;
+    }
+
     /**
      * Representations of the different operations performed by the library.
      */
@@ -174,6 +190,10 @@ export namespace GData {
         // Own static methods of GData.ParserError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace PicasaWebVisibility {
+        export const $gtype: GObject.GType<PicasaWebVisibility>;
     }
 
     /**
@@ -261,6 +281,10 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
+    export namespace YouTubeAge {
+        export const $gtype: GObject.GType<YouTubeAge>;
+    }
+
     /**
      * Video ages, allowing queries to be limited to videos uploaded in a recent time period.
      */
@@ -282,6 +306,10 @@ export namespace GData {
          */
         THIS_MONTH,
     }
+    export namespace YouTubePermission {
+        export const $gtype: GObject.GType<YouTubePermission>;
+    }
+
     /**
      * Permissions for actions which can be set on a #GDataYouTubeVideo using gdata_youtube_video_set_access_control().
      *
@@ -302,6 +330,10 @@ export namespace GData {
          */
         MODERATED,
     }
+    export namespace YouTubeSafeSearch {
+        export const $gtype: GObject.GType<YouTubeSafeSearch>;
+    }
+
     /**
      * Safe search levels for removing restricted entries from query results. For more information, see the
      * <ulink type="http" url="https://developers.google.com/youtube/v3/docs/search/list#safeSearch">online documentation</ulink>.
@@ -352,6 +384,10 @@ export namespace GData {
         // Own static methods of GData.YouTubeServiceError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace YouTubeStandardFeedType {
+        export const $gtype: GObject.GType<YouTubeStandardFeedType>;
     }
 
     /**

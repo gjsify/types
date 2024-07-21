@@ -18,6 +18,10 @@ export namespace TelepathyGLib {
      * TelepathyGLib-0.12
      */
 
+    export namespace AccessControlType {
+        export const $gtype: GObject.GType<AccessControlType>;
+    }
+
     /**
      * <![CDATA[         A type for communication access control. These control           policies are used in           CommunicationPolicy.DRAFT           as well as most rich presence interfaces.          New interfaces should use this type, and NOT           Rich_Presence_Access_Control_Type.       ]]>
      *
@@ -53,6 +57,10 @@ export namespace TelepathyGLib {
          */
         NOT_UNDERSTOOD,
     }
+    export namespace CMInfoSource {
+        export const $gtype: GObject.GType<CMInfoSource>;
+    }
+
     /**
      * Describes possible sources of information on connection managers'
      * supported protocols.
@@ -74,6 +82,10 @@ export namespace TelepathyGLib {
          */
         LIVE,
     }
+    export namespace CallContentDisposition {
+        export const $gtype: GObject.GType<CallContentDisposition>;
+    }
+
     /**
      * <![CDATA[         The disposition of this content, which defines whether to         automatically start sending data on the streams when         Accept is         called on the channel.       ]]>
      *
@@ -89,6 +101,10 @@ export namespace TelepathyGLib {
          */
         INITIAL,
     }
+    export namespace CallContentPacketizationType {
+        export const $gtype: GObject.GType<CallContentPacketizationType>;
+    }
+
     /**
      * <![CDATA[         A packetization method that can be used for a content.       ]]>
      *
@@ -108,6 +124,10 @@ export namespace TelepathyGLib {
          */
         MSN_WEBCAM,
     }
+    export namespace CallState {
+        export const $gtype: GObject.GType<CallState>;
+    }
+
     /**
      * <![CDATA[         The state of a call, as a whole.          The allowed transitions are:                     Pending_Initiator → Initialising (for outgoing calls,             when Accept is called)           Initialising → Initialised (for outgoing calls, when             the remote client indicates that the user has been notified about             the call. If the network is known not to provide feedback about whether             the remote side is ringing, then the call should immediately be             set to Initialised.           Initialising → Initialised (for incoming calls, when e.g. the             implementation has been initialised far enough that it is sensible             to notify the user about the call (to reduce the probability that             the user will pick up the call and have it immediately fail).             The UI should then alert the user about the call, and call             SetRinging)           Initialised → Accepted (for outgoing calls to a contact,             when the remote contact accepts the call; for incoming calls, when             Accept is called.)           Accepted → Active (when the local user successfully             joins the call/conference, and media is known to be flowing             successfully; also, when temporary connection problems are             resolved (See below)). If the network is known not to provide             feedback about when the call is properly connected, the call             should immediately be set to Active.           Active → Accepted (when there are temporary connection problems             that the CM is aware of and able to recover from)           any state → Ended (when the call is terminated             normally, or when an error occurs that the CM is unable to recover             from)                   Clients MAY consider unknown values from this enum to be an           error - additional values will not be defined after the Call           specification is declared to be stable.       ]]>
      *
@@ -143,6 +163,10 @@ export namespace TelepathyGLib {
          */
         ENDED,
     }
+    export namespace CallStateChangeReason {
+        export const $gtype: GObject.GType<CallStateChangeReason>;
+    }
+
     /**
      * <![CDATA[         A simple representation of the reason for a change in the call's         state, which may be used by simple clients, or used as a fallback         when the DBus_Reason member of a Call_State_Reason         struct is not understood.       ]]>
      *
@@ -206,6 +230,10 @@ export namespace TelepathyGLib {
          */
         CONNECTIVITY_ERROR,
     }
+    export namespace CallStreamCandidateType {
+        export const $gtype: GObject.GType<CallStreamCandidateType>;
+    }
+
     /**
      * <![CDATA[         The network topology that an IP candidate represents. This can         sometimes be used to infer what kind of performance characteristics         (latency, bandwith, etc) can be expected of connections made to this         candidate.       ]]>
      *
@@ -237,6 +265,10 @@ export namespace TelepathyGLib {
          */
         MULTICAST,
     }
+    export namespace CaptchaCancelReason {
+        export const $gtype: GObject.GType<CaptchaCancelReason>;
+    }
+
     /**
      * <![CDATA[         A reason why captcha authentication was aborted by the client.       ]]>
      *
@@ -256,6 +288,10 @@ export namespace TelepathyGLib {
          */
         SERVICE_CONFUSED,
     }
+    export namespace CaptchaStatus {
+        export const $gtype: GObject.GType<CaptchaStatus>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -281,6 +317,10 @@ export namespace TelepathyGLib {
          */
         FAILED,
     }
+    export namespace ChannelChatState {
+        export const $gtype: GObject.GType<ChannelChatState>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -306,6 +346,10 @@ export namespace TelepathyGLib {
          */
         COMPOSING,
     }
+    export namespace ChannelContactSearchState {
+        export const $gtype: GObject.GType<ChannelContactSearchState>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -331,6 +375,10 @@ export namespace TelepathyGLib {
          */
         FAILED,
     }
+    export namespace ChannelGroupChangeReason {
+        export const $gtype: GObject.GType<ChannelGroupChangeReason>;
+    }
+
     /**
      * <![CDATA[         The reason for a set of handles to move to one of           Members,           LocalPendingMembers or           RemotePendingMembers, or to be removed           from the group. A client may supply a reason when attempting to           remove members from a group with           RemoveMembersWithReason, and reasons           are supplied by the CM when emitting           MembersChanged and           MembersChangedDetailed. Some reason           codes have different meanings depending on the Actor in a           MembersChanged signal.       ]]>
      *
@@ -386,6 +434,10 @@ export namespace TelepathyGLib {
          */
         SEPARATED,
     }
+    export namespace ChannelTextMessageType {
+        export const $gtype: GObject.GType<ChannelTextMessageType>;
+    }
+
     /**
      * <![CDATA[         The type of message.       ]]>
      *
@@ -413,6 +465,10 @@ export namespace TelepathyGLib {
          */
         DELIVERY_REPORT,
     }
+    export namespace ChannelTextSendError {
+        export const $gtype: GObject.GType<ChannelTextSendError>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -442,6 +498,10 @@ export namespace TelepathyGLib {
          */
         NOT_IMPLEMENTED,
     }
+    export namespace ConnectionPresenceType {
+        export const $gtype: GObject.GType<ConnectionPresenceType>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -483,6 +543,10 @@ export namespace TelepathyGLib {
          */
         ERROR,
     }
+    export namespace ConnectionStatus {
+        export const $gtype: GObject.GType<ConnectionStatus>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -500,6 +564,10 @@ export namespace TelepathyGLib {
          */
         DISCONNECTED,
     }
+    export namespace ConnectionStatusReason {
+        export const $gtype: GObject.GType<ConnectionStatusReason>;
+    }
+
     /**
      * <![CDATA[         A reason why the status of the connection changed. Apart from           Requested, the values of this enumeration only make sense as           reasons why the status changed to Disconnected.       ]]>
      *
@@ -575,6 +643,10 @@ export namespace TelepathyGLib {
          */
         CERT_LIMIT_EXCEEDED,
     }
+    export namespace ContactFeature {
+        export const $gtype: GObject.GType<ContactFeature>;
+    }
+
     /**
      * Enumeration representing the features a #TpContact can optionally support.
      * When requesting a #TpContact, library users specify the desired features;
@@ -643,6 +715,10 @@ export namespace TelepathyGLib {
          */
         CONTACT_BLOCKING,
     }
+    export namespace ContactListState {
+        export const $gtype: GObject.GType<ContactListState>;
+    }
+
     /**
      * <![CDATA[         The progress made in retrieving the contact list.       ]]>
      *
@@ -666,6 +742,10 @@ export namespace TelepathyGLib {
          */
         SUCCESS,
     }
+    export namespace ContactMetadataStorageType {
+        export const $gtype: GObject.GType<ContactMetadataStorageType>;
+    }
+
     /**
      * <![CDATA[         Values of this enumeration indicate the extent to which metadata           such as aliases and group memberships can be stored for the contacts           on a particular connection.          On some protocols, certain metadata (for instance, contact aliases)           can only be stored for contacts on the contact list, or contacts           with a particular contact list state.          To make it easier to deal with such protocols, if clients set           metadata on a contact who is not in the required state, the           Connection MUST cache the metadata for the duration of the session.           If clients request the attributes of that contact after the           appropriate "set" method has returned successfully, the Connection           MUST return the new (cached) value.          If the contact is later placed in the required state to store           metadata (for instance, if subscription to the contact's presence           is requested, on a protocol like MSN where the alias has storage type           Subscribed_Or_Pending), the connection MUST store the cached           metadata at that time.                     If the Connection didn't cache changes in this way, a client             intending to change the alias on MSN would have to wait until             the server acknowledged the subscription request; in the meantime,             other clients would still display the old alias.                   The only exception to that general rule is that if the Connection           cannot store particular metadata at all (i.e. the           storage type is None), it MUST reject attempts to set it.                     If the implementation knows that metadata can't be stored at             all, it's useful to report that, which can be done             synchronously. In general, user interfaces should detect             storage type None and not display editing controls at all.                ]]>
      *
@@ -689,6 +769,10 @@ export namespace TelepathyGLib {
          */
         ANYONE,
     }
+    export namespace DBusError {
+        export const $gtype: GObject.GType<DBusError>;
+    }
+
     /**
      * #GError codes for use with the %TP_DBUS_ERRORS domain.
      *
@@ -757,6 +841,10 @@ export namespace TelepathyGLib {
          */
         INCONSISTENT,
     }
+    export namespace DTMFEvent {
+        export const $gtype: GObject.GType<DTMFEvent>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -826,6 +914,10 @@ export namespace TelepathyGLib {
          */
         LETTER_D,
     }
+    export namespace DebugLevel {
+        export const $gtype: GObject.GType<DebugLevel>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -855,6 +947,10 @@ export namespace TelepathyGLib {
          */
         DEBUG,
     }
+    export namespace DeliveryStatus {
+        export const $gtype: GObject.GType<DeliveryStatus>;
+    }
+
     /**
      * <![CDATA[         The status of a message as indicated by a delivery report.          If this enum is extended in future specifications, this should           only be to add new, non-overlapping conditions (i.e. all failures           should still be signalled as either Temporarily_Failed           or Permanently_Failed). If additional detail is required (e.g.           distinguishing between the various types of permanent failure) this           will be done using additional           Delivery_Report_Header_Keys.       ]]>
      *
@@ -1249,6 +1345,10 @@ export namespace TelepathyGLib {
         _init(...args: any[]): void;
     }
 
+    export namespace FileHashType {
+        export const $gtype: GObject.GType<FileHashType>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1270,6 +1370,10 @@ export namespace TelepathyGLib {
          */
         SHA256,
     }
+    export namespace FileTransferState {
+        export const $gtype: GObject.GType<FileTransferState>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1299,6 +1403,10 @@ export namespace TelepathyGLib {
          */
         CANCELLED,
     }
+    export namespace FileTransferStateChangeReason {
+        export const $gtype: GObject.GType<FileTransferStateChangeReason>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1328,6 +1436,10 @@ export namespace TelepathyGLib {
          */
         REMOTE_ERROR,
     }
+    export namespace HTTPMethod {
+        export const $gtype: GObject.GType<HTTPMethod>;
+    }
+
     /**
      * <![CDATA[         The HTTP Method with which to request a URL.       ]]>
      *
@@ -1343,6 +1455,10 @@ export namespace TelepathyGLib {
          */
         POST,
     }
+    export namespace HandleType {
+        export const $gtype: GObject.GType<HandleType>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1368,6 +1484,10 @@ export namespace TelepathyGLib {
          */
         GROUP,
     }
+    export namespace LocalHoldState {
+        export const $gtype: GObject.GType<LocalHoldState>;
+    }
+
     /**
      * <![CDATA[         The hold state of a channel.       ]]>
      *
@@ -1391,6 +1511,10 @@ export namespace TelepathyGLib {
          */
         PENDING_UNHOLD,
     }
+    export namespace LocalHoldStateReason {
+        export const $gtype: GObject.GType<LocalHoldStateReason>;
+    }
+
     /**
      * <![CDATA[         The reason for a change to the Local_Hold_State. Clients MUST         treat unknown values as equivalent to Local_Hold_State_Reason_None.       ]]>
      *
@@ -1410,6 +1534,10 @@ export namespace TelepathyGLib {
          */
         RESOURCE_NOT_AVAILABLE,
     }
+    export namespace MediaStreamBaseProto {
+        export const $gtype: GObject.GType<MediaStreamBaseProto>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1423,6 +1551,10 @@ export namespace TelepathyGLib {
          */
         TCP,
     }
+    export namespace MediaStreamDirection {
+        export const $gtype: GObject.GType<MediaStreamDirection>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1444,6 +1576,10 @@ export namespace TelepathyGLib {
          */
         BIDIRECTIONAL,
     }
+    export namespace MediaStreamError {
+        export const $gtype: GObject.GType<MediaStreamError>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1481,6 +1617,10 @@ export namespace TelepathyGLib {
          */
         MEDIA_ERROR,
     }
+    export namespace MediaStreamState {
+        export const $gtype: GObject.GType<MediaStreamState>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1498,6 +1638,10 @@ export namespace TelepathyGLib {
          */
         CONNECTED,
     }
+    export namespace MediaStreamTransportType {
+        export const $gtype: GObject.GType<MediaStreamTransportType>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1515,6 +1659,10 @@ export namespace TelepathyGLib {
          */
         RELAY,
     }
+    export namespace MediaStreamType {
+        export const $gtype: GObject.GType<MediaStreamType>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1528,6 +1676,10 @@ export namespace TelepathyGLib {
          */
         VIDEO,
     }
+    export namespace RCPTXRRTTMode {
+        export const $gtype: GObject.GType<RCPTXRRTTMode>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1541,6 +1693,10 @@ export namespace TelepathyGLib {
          */
         SENDER,
     }
+    export namespace RichPresenceAccessControlType {
+        export const $gtype: GObject.GType<RichPresenceAccessControlType>;
+    }
+
     /**
      * <![CDATA[         A type of access control for Rich_Presence_Access_Control.           For most types, the exact access control is given by an associated           variant.                     These are the access control types from XMPP publish/subscribe           (XEP-0060).                   Location           uses this for historical reasons, new interfaces will use           Access_Control_Type.       ]]>
      *
@@ -1564,6 +1720,10 @@ export namespace TelepathyGLib {
          */
         OPEN,
     }
+    export namespace SASLAbortReason {
+        export const $gtype: GObject.GType<SASLAbortReason>;
+    }
+
     /**
      * <![CDATA[         A reason why SASL authentication was aborted by the client.       ]]>
      *
@@ -1579,6 +1739,10 @@ export namespace TelepathyGLib {
          */
         USER_ABORT,
     }
+    export namespace SASLStatus {
+        export const $gtype: GObject.GType<SASLStatus>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1612,6 +1776,10 @@ export namespace TelepathyGLib {
          */
         CLIENT_FAILED,
     }
+    export namespace SendingState {
+        export const $gtype: GObject.GType<SendingState>;
+    }
+
     /**
      * <![CDATA[         Enum indicating whether a contact is sending media.       ]]>
      *
@@ -1635,6 +1803,10 @@ export namespace TelepathyGLib {
          */
         PENDING_STOP_SENDING,
     }
+    export namespace ServicePointType {
+        export const $gtype: GObject.GType<ServicePointType>;
+    }
+
     /**
      * <![CDATA[         The various types of service points a channel might connect to.       ]]>
      *
@@ -1654,6 +1826,10 @@ export namespace TelepathyGLib {
          */
         COUNSELING,
     }
+    export namespace SocketAccessControl {
+        export const $gtype: GObject.GType<SocketAccessControl>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1675,6 +1851,10 @@ export namespace TelepathyGLib {
          */
         CREDENTIALS,
     }
+    export namespace SocketAddressType {
+        export const $gtype: GObject.GType<SocketAddressType>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1696,6 +1876,10 @@ export namespace TelepathyGLib {
          */
         IPV6,
     }
+    export namespace StreamComponent {
+        export const $gtype: GObject.GType<StreamComponent>;
+    }
+
     /**
      * <![CDATA[         Media streams can use more than one UDP socket: one for RTP (data)         and one for RTCP (control). Most of the time, they are adjacent         to each other, but some protocols (xmpp) signal each port separately.       ]]>
      *
@@ -1715,6 +1899,10 @@ export namespace TelepathyGLib {
          */
         CONTROL,
     }
+    export namespace StreamEndpointState {
+        export const $gtype: GObject.GType<StreamEndpointState>;
+    }
+
     /**
      * <![CDATA[         Represents the state of ICE negotiation for a single component of a         stream to an endpoint.       ]]>
      *
@@ -1742,6 +1930,10 @@ export namespace TelepathyGLib {
          */
         FAILED,
     }
+    export namespace StreamFlowState {
+        export const $gtype: GObject.GType<StreamFlowState>;
+    }
+
     /**
      * <![CDATA[         The type of SendingState         and ReceivingState.       ]]>
      *
@@ -1765,6 +1957,10 @@ export namespace TelepathyGLib {
          */
         STARTED,
     }
+    export namespace StreamTransportType {
+        export const $gtype: GObject.GType<StreamTransportType>;
+    }
+
     /**
      * <![CDATA[         A transport that can be used for streaming.       ]]>
      *
@@ -1800,6 +1996,10 @@ export namespace TelepathyGLib {
          */
         MULTICAST,
     }
+    export namespace SubscriptionState {
+        export const $gtype: GObject.GType<SubscriptionState>;
+    }
+
     /**
      * <![CDATA[         An enumeration indicating whether presence subscription is denied,           denied but pending permission, or allowed. The exact semantics           vary according to where this type is used: see the           subscribe and           publish contact attributes for           details.       ]]>
      *
@@ -1827,6 +2027,10 @@ export namespace TelepathyGLib {
          */
         YES,
     }
+    export namespace TLSCertificateRejectReason {
+        export const $gtype: GObject.GType<TLSCertificateRejectReason>;
+    }
+
     /**
      * <![CDATA[         Possible reasons to reject a TLS certificate.       ]]>
      *
@@ -1874,6 +2078,10 @@ export namespace TelepathyGLib {
          */
         LIMIT_EXCEEDED,
     }
+    export namespace TLSCertificateState {
+        export const $gtype: GObject.GType<TLSCertificateState>;
+    }
+
     /**
      * <![CDATA[         The possible states for a TLSCertificate         object.       ]]>
      *
@@ -1893,6 +2101,10 @@ export namespace TelepathyGLib {
          */
         REJECTED,
     }
+    export namespace TubeChannelState {
+        export const $gtype: GObject.GType<TubeChannelState>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1914,6 +2126,10 @@ export namespace TelepathyGLib {
          */
         NOT_OFFERED,
     }
+    export namespace TubeState {
+        export const $gtype: GObject.GType<TubeState>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -1931,6 +2147,10 @@ export namespace TelepathyGLib {
          */
         OPEN,
     }
+    export namespace TubeType {
+        export const $gtype: GObject.GType<TubeType>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -3584,6 +3804,10 @@ export namespace TelepathyGLib {
     }
     type ContactInfoList = object | null;
     type ContactInfoSpecList = object | null;
+    export namespace AnonymityModeFlags {
+        export const $gtype: GObject.GType<AnonymityModeFlags>;
+    }
+
     /**
      * <![CDATA[         Flags for the various types of anonymity modes.  These modes are solely to         inform the CM of the desired anonymous settings.  It is up to the         CM to determine whether the anonymity modes should be handled within         the CM itself, or whether the network that a CM might be talking to         should be enforcing anonymity.          CMs MAY support only a subset of these modes, and specific         connections MAY support none at all.       ]]>
      *
@@ -3603,6 +3827,10 @@ export namespace TelepathyGLib {
          */
         NETWORK_INFO,
     }
+    export namespace CallFlags {
+        export const $gtype: GObject.GType<CallFlags>;
+    }
+
     /**
      * <![CDATA[         A set of flags representing additional information than is available         in CallState. Many of these flags only make         sense in a particular (or may explain why a call is in a specific         state).       ]]>
      *
@@ -3630,6 +3858,10 @@ export namespace TelepathyGLib {
          */
         CLEARING,
     }
+    export namespace CallMemberFlags {
+        export const $gtype: GObject.GType<CallMemberFlags>;
+    }
+
     /**
      * <![CDATA[         A set of flags representing the status of a remote contact in a           call.          It is protocol- and client-specific whether a particular contact           will ever have a particular flag set on them, and Telepathy clients           SHOULD NOT assume that a flag will ever be set.                     180 Ringing in SIP, and its equivalent in XMPP, are optional             informational messages, and implementations are not required             to send them. The same applies to the messages used to indicate             hold state.                ]]>
      *
@@ -3649,6 +3881,10 @@ export namespace TelepathyGLib {
          */
         CONFERENCE_HOST,
     }
+    export namespace CaptchaFlags {
+        export const $gtype: GObject.GType<CaptchaFlags>;
+    }
+
     /**
      * <![CDATA[         Extra flags to include with Captcha information       ]]>
      *
@@ -3660,6 +3896,10 @@ export namespace TelepathyGLib {
          */
         CAPTCHA_FLAGS_REQUIRED,
     }
+    export namespace ChannelCallStateFlags {
+        export const $gtype: GObject.GType<ChannelCallStateFlags>;
+    }
+
     /**
      * <![CDATA[         A set of flags representing call states.       ]]>
      *
@@ -3691,6 +3931,10 @@ export namespace TelepathyGLib {
          */
         CONFERENCE_HOST,
     }
+    export namespace ChannelGroupFlags {
+        export const $gtype: GObject.GType<ChannelGroupFlags>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -3752,6 +3996,10 @@ export namespace TelepathyGLib {
          */
         MESSAGE_DEPART,
     }
+    export namespace ChannelMediaCapabilities {
+        export const $gtype: GObject.GType<ChannelMediaCapabilities>;
+    }
+
     /**
      * <![CDATA[         The channel-type-specific capability flags used for         Channel.Type.StreamedMedia in the Connection.Interface.Capabilities         interface. See the InitialAudio         property for details of the mechanisms that will replace this.       ]]>
      *
@@ -3783,6 +4031,10 @@ export namespace TelepathyGLib {
          */
         IMMUTABLE_STREAMS,
     }
+    export namespace ChannelPasswordFlags {
+        export const $gtype: GObject.GType<ChannelPasswordFlags>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -3796,6 +4048,10 @@ export namespace TelepathyGLib {
          */
         HINT,
     }
+    export namespace ChannelTextMessageFlags {
+        export const $gtype: GObject.GType<ChannelTextMessageFlags>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -3817,6 +4073,10 @@ export namespace TelepathyGLib {
          */
         RESCUED,
     }
+    export namespace ConnMgrParamFlags {
+        export const $gtype: GObject.GType<ConnMgrParamFlags>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -3842,6 +4102,10 @@ export namespace TelepathyGLib {
          */
         DBUS_PROPERTY,
     }
+    export namespace ConnectionAliasFlags {
+        export const $gtype: GObject.GType<ConnectionAliasFlags>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -3851,6 +4115,10 @@ export namespace TelepathyGLib {
          */
         CONNECTION_ALIAS_FLAG_USER_SET,
     }
+    export namespace ConnectionCapabilityFlags {
+        export const $gtype: GObject.GType<ConnectionCapabilityFlags>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -3864,6 +4132,10 @@ export namespace TelepathyGLib {
          */
         INVITE,
     }
+    export namespace ContactBlockingCapabilities {
+        export const $gtype: GObject.GType<ContactBlockingCapabilities>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -3873,6 +4145,10 @@ export namespace TelepathyGLib {
          */
         CONTACT_BLOCKING_CAPABILITY_CAN_REPORT_ABUSIVE,
     }
+    export namespace ContactInfoFieldFlags {
+        export const $gtype: GObject.GType<ContactInfoFieldFlags>;
+    }
+
     /**
      * <![CDATA[         Flags describing the behaviour of a vCard field.       ]]>
      *
@@ -3888,6 +4164,10 @@ export namespace TelepathyGLib {
          */
         OVERWRITTEN_BY_NICKNAME,
     }
+    export namespace ContactInfoFlags {
+        export const $gtype: GObject.GType<ContactInfoFlags>;
+    }
+
     /**
      * <![CDATA[         Flags defining the behaviour of contact information on this protocol.         Some protocols provide no information on contacts without an explicit         request; others always push information to the connection manager as         and when it changes.       ]]>
      *
@@ -3903,6 +4183,10 @@ export namespace TelepathyGLib {
          */
         PUSH,
     }
+    export namespace DBusNameType {
+        export const $gtype: GObject.GType<DBusNameType>;
+    }
+
     /**
      * A set of flags indicating which D-Bus bus names are acceptable.
      * They can be combined with the bitwise-or operator to accept multiple
@@ -3939,6 +4223,10 @@ export namespace TelepathyGLib {
          */
         ANY,
     }
+    export namespace DBusPropertiesMixinFlags {
+        export const $gtype: GObject.GType<DBusPropertiesMixinFlags>;
+    }
+
     /**
      * Bitfield representing allowed access to a property. At most one of
      * %TP_DBUS_PROPERTIES_MIXIN_FLAG_EMITS_CHANGED and
@@ -3969,6 +4257,10 @@ export namespace TelepathyGLib {
          */
         EMITS_INVALIDATED,
     }
+    export namespace DeliveryReportingSupportFlags {
+        export const $gtype: GObject.GType<DeliveryReportingSupportFlags>;
+    }
+
     /**
      * <![CDATA[         Flags indicating the level of support for delivery reporting on this         channel, as found on the         DeliveryReportingSupport property. Any         future flags added to this set will conform to the         convention that the presence of an extra flag implies that         more operations will succeed. Note that CMs may always provide more         reports than are requested in the         Message_Sending_Flags passed to         SendMessage.                     If senders want delivery reports, they should ask for them.  If they           don't want delivery reports, they can just ignore them, so there's no           need to have capability discovery for what will happen if a delivery           report isn't requested.                ]]>
      *
@@ -3992,6 +4284,10 @@ export namespace TelepathyGLib {
          */
         DELETED,
     }
+    export namespace LocationFeatures {
+        export const $gtype: GObject.GType<LocationFeatures>;
+    }
+
     /**
      * <![CDATA[         Flags describing the Location features which may be supported on any         given connection.       ]]>
      *
@@ -4003,6 +4299,10 @@ export namespace TelepathyGLib {
          */
         LOCATION_FEATURE_CAN_SET,
     }
+    export namespace MailNotificationFlags {
+        export const $gtype: GObject.GType<MailNotificationFlags>;
+    }
+
     /**
      * <![CDATA[         Flags representing capabilities provided by a connection manager.           Those values can be used as bitfield. Some flags depend on, or           conflict with, each other.          Connections SHOULD implement as many of these features as the           underlying protocol allows, preferring to implement           Supports_Unread_Mails instead of Emits_Mails_Received if both are           possible.       ]]>
      *
@@ -4034,6 +4334,10 @@ export namespace TelepathyGLib {
          */
         THREAD_BASED,
     }
+    export namespace MediaStreamPendingSend {
+        export const $gtype: GObject.GType<MediaStreamPendingSend>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -4047,6 +4351,10 @@ export namespace TelepathyGLib {
          */
         REMOTE_SEND,
     }
+    export namespace MessagePartSupportFlags {
+        export const $gtype: GObject.GType<MessagePartSupportFlags>;
+    }
+
     /**
      * <![CDATA[         Flags indicating the level of support for message parts on this           channel. They are designed such that setting more flags always           implies that the channel has more capabilities.          If no flags are set, this indicates that messages may contain           a single message part whose content-type is any of the types           from SupportedContentTypes, possibly with some alternatives.          There is no flag indicating support for alternatives. This is           because the SendMessage implementation can always accept messages           containing alternatives, even if the underlying protocol does not,           by deleting all alternatives except the first (most preferred)           that is supported.                     Each of the flags so far implies the previous flag, so we could           have used a simple enumeration here; however, we've defined           the message-part support indicator as a flag set for future           expansion.                   See SupportedContentTypes for some           examples.       ]]>
      *
@@ -4062,6 +4370,10 @@ export namespace TelepathyGLib {
          */
         MULTIPLE_ATTACHMENTS,
     }
+    export namespace MessageSendingFlags {
+        export const $gtype: GObject.GType<MessageSendingFlags>;
+    }
+
     /**
      * <![CDATA[         Flags altering the way a message is sent. The "most usual" action         should always be to have these flags unset. Some indication of which         flags are supported is provided by the         DeliveryReportingSupport property.       ]]>
      *
@@ -4081,6 +4393,10 @@ export namespace TelepathyGLib {
          */
         DELETED,
     }
+    export namespace PropertyFlags {
+        export const $gtype: GObject.GType<PropertyFlags>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -4094,6 +4410,10 @@ export namespace TelepathyGLib {
          */
         WRITE,
     }
+    export namespace RTCPXRStatisticsFlags {
+        export const $gtype: GObject.GType<RTCPXRStatisticsFlags>;
+    }
+
     /**
      * Bitfield/set of flags generated from the Telepathy specification.
      */
@@ -4119,6 +4439,10 @@ export namespace TelepathyGLib {
          */
         HL,
     }
+    export namespace StorageRestrictionFlags {
+        export const $gtype: GObject.GType<StorageRestrictionFlags>;
+    }
+
     /**
      * <![CDATA[         Flags indicating restrictions imposed on an Account by its storage         method.       ]]>
      *

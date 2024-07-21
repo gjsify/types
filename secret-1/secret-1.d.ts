@@ -18,6 +18,10 @@ export namespace Secret {
      * Secret-1
      */
 
+    export namespace BackendFlags {
+        export const $gtype: GObject.GType<BackendFlags>;
+    }
+
     /**
      * Flags which determine which parts of the #SecretBackend are initialized.
      */
@@ -37,6 +41,10 @@ export namespace Secret {
          */
         LOAD_COLLECTIONS,
     }
+    export namespace Error {
+        export const $gtype: GObject.GType<Error>;
+    }
+
     /**
      * Errors returned by the Secret Service.
      *
@@ -88,6 +96,10 @@ export namespace Secret {
          */
         EMPTY_TABLE,
     }
+    export namespace SchemaAttributeType {
+        export const $gtype: GObject.GType<SchemaAttributeType>;
+    }
+
     /**
      * The type of an attribute in a [struct`SecretSchema]`.
      *
@@ -109,6 +121,10 @@ export namespace Secret {
          */
         BOOLEAN,
     }
+    export namespace SchemaType {
+        export const $gtype: GObject.GType<SchemaType>;
+    }
+
     /**
      * Different types of schemas for storing secrets, intended for use with
      * [func`get_schema]`.
@@ -711,6 +727,10 @@ export namespace Secret {
      * @param password password to clear
      */
     function password_wipe(password?: string | null): void;
+    export namespace CollectionCreateFlags {
+        export const $gtype: GObject.GType<CollectionCreateFlags>;
+    }
+
     /**
      * Flags for [func`Collection`.create].
      */
@@ -720,6 +740,10 @@ export namespace Secret {
          */
         NONE,
     }
+    export namespace CollectionFlags {
+        export const $gtype: GObject.GType<CollectionFlags>;
+    }
+
     /**
      * Flags which determine which parts of the #SecretCollection proxy are initialized.
      */
@@ -733,6 +757,10 @@ export namespace Secret {
          */
         LOAD_ITEMS,
     }
+    export namespace ItemCreateFlags {
+        export const $gtype: GObject.GType<ItemCreateFlags>;
+    }
+
     /**
      * Flags for [func`Item`.create].
      */
@@ -746,6 +774,10 @@ export namespace Secret {
          */
         REPLACE,
     }
+    export namespace ItemFlags {
+        export const $gtype: GObject.GType<ItemFlags>;
+    }
+
     /**
      * Flags which determine which parts of the #SecretItem proxy are initialized.
      */
@@ -759,6 +791,10 @@ export namespace Secret {
          */
         LOAD_SECRET,
     }
+    export namespace SchemaFlags {
+        export const $gtype: GObject.GType<SchemaFlags>;
+    }
+
     /**
      * Flags for a #SecretSchema definition.
      */
@@ -773,6 +809,10 @@ export namespace Secret {
          */
         DONT_MATCH_NAME,
     }
+    export namespace SearchFlags {
+        export const $gtype: GObject.GType<SearchFlags>;
+    }
+
     /**
      * Various flags to be used with [method`Service`.search] and [method`Service`.search_sync].
      */
@@ -794,6 +834,10 @@ export namespace Secret {
          */
         LOAD_SECRETS,
     }
+    export namespace ServiceFlags {
+        export const $gtype: GObject.GType<ServiceFlags>;
+    }
+
     /**
      * Flags which determine which parts of the #SecretService proxy are initialized
      * during a [func`Service`.get] or [func`Service`.open] operation.

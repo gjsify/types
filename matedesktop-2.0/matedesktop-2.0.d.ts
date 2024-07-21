@@ -27,11 +27,19 @@ export namespace MateDesktop {
      * MateDesktop-2.0
      */
 
+    export namespace BGColorType {
+        export const $gtype: GObject.GType<BGColorType>;
+    }
+
     enum BGColorType {
         SOLID,
         H_GRADIENT,
         V_GRADIENT,
     }
+    export namespace BGPlacement {
+        export const $gtype: GObject.GType<BGPlacement>;
+    }
+
     enum BGPlacement {
         TILED,
         ZOOMED,
@@ -60,11 +68,19 @@ export namespace MateDesktop {
         _init(...args: any[]): void;
     }
 
+    export namespace DesktopItemStatus {
+        export const $gtype: GObject.GType<DesktopItemStatus>;
+    }
+
     enum DesktopItemStatus {
         UNCHANGED,
         CHANGED,
         DISAPPEARED,
     }
+    export namespace DesktopItemType {
+        export const $gtype: GObject.GType<DesktopItemType>;
+    }
+
     enum DesktopItemType {
         NULL,
         OTHER,
@@ -76,6 +92,10 @@ export namespace MateDesktop {
         SERVICE,
         SERVICE_TYPE,
     }
+    export namespace DesktopThumbnailSize {
+        export const $gtype: GObject.GType<DesktopThumbnailSize>;
+    }
+
     enum DesktopThumbnailSize {
         NORMAL,
         LARGE,
@@ -298,9 +318,17 @@ export namespace MateDesktop {
     interface ColorSelectionChangePaletteWithScreenFunc {
         (screen: Gdk.Screen, colors: Gdk.RGBA, n_colors: number): void;
     }
+    export namespace DesktopItemIconFlags {
+        export const $gtype: GObject.GType<DesktopItemIconFlags>;
+    }
+
     enum DesktopItemIconFlags {
         DESKTOP_ITEM_ICON_NO_KDE,
     }
+    export namespace DesktopItemLaunchFlags {
+        export const $gtype: GObject.GType<DesktopItemLaunchFlags>;
+    }
+
     enum DesktopItemLaunchFlags {
         ONLY_ONE,
         USE_CURRENT_DIR,
@@ -308,10 +336,18 @@ export namespace MateDesktop {
         APPEND_PATHS,
         DO_NOT_REAP_CHILD,
     }
+    export namespace DesktopItemLoadFlags {
+        export const $gtype: GObject.GType<DesktopItemLoadFlags>;
+    }
+
     enum DesktopItemLoadFlags {
         ONLY_IF_EXISTS,
         NO_TRANSLATIONS,
     }
+    export namespace RRRotation {
+        export const $gtype: GObject.GType<RRRotation>;
+    }
+
     enum RRRotation {
         ROTATION_0,
         ROTATION_90,

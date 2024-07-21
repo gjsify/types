@@ -18,6 +18,10 @@ export namespace Grl {
      * Grl-0.3
      */
 
+    export namespace CoreError {
+        export const $gtype: GObject.GType<CoreError>;
+    }
+
     /**
      * These constants identify all the available core errors
      */
@@ -99,6 +103,10 @@ export namespace Grl {
          */
         AUTHENTICATION_TOKEN,
     }
+    export namespace LogLevel {
+        export const $gtype: GObject.GType<LogLevel>;
+    }
+
     /**
      * Grilo log levels. Defines the level of verbosity selected in Grilo.
      */
@@ -132,6 +140,10 @@ export namespace Grl {
          */
         LAST,
     }
+    export namespace MediaSerializeType {
+        export const $gtype: GObject.GType<MediaSerializeType>;
+    }
+
     /**
      * GrlMedia serialize type
      */
@@ -149,6 +161,10 @@ export namespace Grl {
          */
         FULL,
     }
+    export namespace MediaType {
+        export const $gtype: GObject.GType<MediaType>;
+    }
+
     enum MediaType {
         /**
          * unknown media
@@ -171,6 +187,10 @@ export namespace Grl {
          */
         CONTAINER,
     }
+    export namespace Rank {
+        export const $gtype: GObject.GType<Rank>;
+    }
+
     /**
      * Source priority ranks. Defines the order in which the resolver
      * (or similar rank-picking mechanisms) will choose this source
@@ -202,6 +222,10 @@ export namespace Grl {
          */
         HIGHEST,
     }
+    export namespace SourceChangeType {
+        export const $gtype: GObject.GType<SourceChangeType>;
+    }
+
     /**
      * Specifies which kind of change has happened in the plugin
      */
@@ -529,6 +553,10 @@ export namespace Grl {
     interface SourceStoreCb {
         (source: Source, media: Media, failed_keys: KeyID[], error?: GLib.Error | null): void;
     }
+    export namespace ResolutionFlags {
+        export const $gtype: GObject.GType<ResolutionFlags>;
+    }
+
     /**
      * Resolution flags
      */
@@ -550,6 +578,10 @@ export namespace Grl {
          */
         FAST_ONLY,
     }
+    export namespace SupportedMedia {
+        export const $gtype: GObject.GType<SupportedMedia>;
+    }
+
     enum SupportedMedia {
         /**
          * no media
@@ -572,6 +604,10 @@ export namespace Grl {
          */
         ALL,
     }
+    export namespace SupportedOps {
+        export const $gtype: GObject.GType<SupportedOps>;
+    }
+
     /**
      * Bitwise flags which reflect the kind of operations that a
      * #GrlSource supports.
@@ -623,6 +659,10 @@ export namespace Grl {
          */
         NOTIFY_CHANGE,
     }
+    export namespace TypeFilter {
+        export const $gtype: GObject.GType<TypeFilter>;
+    }
+
     /**
      * Type of media to allow.
      */
@@ -648,6 +688,10 @@ export namespace Grl {
          */
         ALL,
     }
+    export namespace WriteFlags {
+        export const $gtype: GObject.GType<WriteFlags>;
+    }
+
     /**
      * Flags for writing operations.
      */

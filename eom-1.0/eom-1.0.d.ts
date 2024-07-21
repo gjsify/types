@@ -50,11 +50,19 @@ export namespace Eom {
         static quark(): GLib.Quark;
     }
 
+    export namespace ImageMetadataStatus {
+        export const $gtype: GObject.GType<ImageMetadataStatus>;
+    }
+
     enum ImageMetadataStatus {
         NOT_READ,
         NOT_AVAILABLE,
         READY,
     }
+    export namespace ImageStatus {
+        export const $gtype: GObject.GType<ImageStatus>;
+    }
+
     enum ImageStatus {
         UNKNOWN,
         LOADING,
@@ -62,6 +70,10 @@ export namespace Eom {
         SAVING,
         FAILED,
     }
+    export namespace JobSaveResponse {
+        export const $gtype: GObject.GType<JobSaveResponse>;
+    }
+
     enum JobSaveResponse {
         NONE,
         RETRY,
@@ -70,6 +82,10 @@ export namespace Eom {
         CANCEL,
         LAST,
     }
+    export namespace ListStoreColumn {
+        export const $gtype: GObject.GType<ListStoreColumn>;
+    }
+
     enum ListStoreColumn {
         THUMBNAIL,
         THUMB_SET,
@@ -77,18 +93,30 @@ export namespace Eom {
         EOM_JOB,
         NUM_COLUMNS,
     }
+    export namespace PropertiesDialogPage {
+        export const $gtype: GObject.GType<PropertiesDialogPage>;
+    }
+
     enum PropertiesDialogPage {
         PAGE_GENERAL,
         PAGE_EXIF,
         PAGE_DETAILS,
         N_PAGES,
     }
+    export namespace ThumbNavMode {
+        export const $gtype: GObject.GType<ThumbNavMode>;
+    }
+
     enum ThumbNavMode {
         ONE_ROW,
         ONE_COLUMN,
         MULTIPLE_ROWS,
         MULTIPLE_COLUMNS,
     }
+    export namespace ThumbViewSelectionChange {
+        export const $gtype: GObject.GType<ThumbViewSelectionChange>;
+    }
+
     enum ThumbViewSelectionChange {
         CURRENT,
         LEFT,
@@ -97,6 +125,10 @@ export namespace Eom {
         LAST,
         RANDOM,
     }
+    export namespace TransformType {
+        export const $gtype: GObject.GType<TransformType>;
+    }
+
     enum TransformType {
         NONE,
         ROT_90,
@@ -107,17 +139,29 @@ export namespace Eom {
         TRANSPOSE,
         TRANSVERSE,
     }
+    export namespace TransparencyStyle {
+        export const $gtype: GObject.GType<TransparencyStyle>;
+    }
+
     enum TransparencyStyle {
         BACKGROUND,
         CHECKED,
         COLOR,
     }
+    export namespace WindowCollectionPos {
+        export const $gtype: GObject.GType<WindowCollectionPos>;
+    }
+
     enum WindowCollectionPos {
         BOTTOM,
         LEFT,
         TOP,
         RIGHT,
     }
+    export namespace WindowError {
+        export const $gtype: GObject.GType<WindowError>;
+    }
+
     enum WindowError {
         CONTROL_NOT_FOUND,
         UI_NOT_FOUND,
@@ -127,6 +171,10 @@ export namespace Eom {
         GENERIC,
         UNKNOWN,
     }
+    export namespace WindowMode {
+        export const $gtype: GObject.GType<WindowMode>;
+    }
+
     enum WindowMode {
         UNKNOWN,
         NORMAL,
@@ -179,6 +227,10 @@ export namespace Eom {
      */
     function thumbnail_load(image: Image): GdkPixbuf.Pixbuf;
     type ExifData = object | null;
+    export namespace Debug {
+        export const $gtype: GObject.GType<Debug>;
+    }
+
     enum Debug {
         NO_DEBUG,
         WINDOW,
@@ -194,12 +246,20 @@ export namespace Eom {
         LCMS,
         PLUGINS,
     }
+    export namespace ImageData {
+        export const $gtype: GObject.GType<ImageData>;
+    }
+
     enum ImageData {
         IMAGE,
         DIMENSION,
         EXIF,
         XMP,
     }
+    export namespace StartupFlags {
+        export const $gtype: GObject.GType<StartupFlags>;
+    }
+
     enum StartupFlags {
         FULLSCREEN,
         SLIDE_SHOW,

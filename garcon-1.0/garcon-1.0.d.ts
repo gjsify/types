@@ -19,15 +19,27 @@ export namespace Garcon {
      * Garcon-1.0
      */
 
+    export namespace MenuLayoutMergeType {
+        export const $gtype: GObject.GType<MenuLayoutMergeType>;
+    }
+
     enum MenuLayoutMergeType {
         MENUS,
         FILES,
         ALL,
     }
+    export namespace MenuMergeFileType {
+        export const $gtype: GObject.GType<MenuMergeFileType>;
+    }
+
     enum MenuMergeFileType {
         PATH,
         PARENT,
     }
+    export namespace MenuNodeType {
+        export const $gtype: GObject.GType<MenuNodeType>;
+    }
+
     enum MenuNodeType {
         INVALID,
         MENU,

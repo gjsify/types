@@ -16,6 +16,10 @@ export namespace GPlugin {
      * GPlugin-1.0
      */
 
+    export namespace PluginState {
+        export const $gtype: GObject.GType<PluginState>;
+    }
+
     /**
      * The known states of a plugin.
      */
@@ -154,6 +158,10 @@ export namespace GPlugin {
     interface ManagerForeachFunc {
         (id: string, plugins: Plugin[], data?: any | null): void;
     }
+    export namespace CoreFlags {
+        export const $gtype: GObject.GType<CoreFlags>;
+    }
+
     /**
      * Flags to configure behaviors in GPlugin.
      */

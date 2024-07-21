@@ -20,6 +20,10 @@ export namespace GXml {
      * GXml-0.16
      */
 
+    export namespace CssSelectorType {
+        export const $gtype: GObject.GType<CssSelectorType>;
+    }
+
     enum CssSelectorType {
         CLASS,
         ID,
@@ -39,6 +43,10 @@ export namespace GXml {
         AFTER,
         BEFORE,
     }
+    export namespace NodeType {
+        export const $gtype: GObject.GType<NodeType>;
+    }
+
     enum NodeType {
         INVALID,
         ELEMENT,
@@ -54,6 +62,10 @@ export namespace GXml {
         DOCUMENT_FRAGMENT,
         NOTATION,
     }
+    export namespace XPathObjectType {
+        export const $gtype: GObject.GType<XPathObjectType>;
+    }
+
     enum XPathObjectType {
         UNDEFINED,
         NODESET,
@@ -255,17 +267,29 @@ export namespace GXml {
         _init(...args: any[]): void;
     }
 
+    export namespace TDocumentReadType {
+        export const $gtype: GObject.GType<TDocumentReadType>;
+    }
+
     enum TDocumentReadType {
         NEXT,
         CONTINUE,
         STOP,
     }
+    export namespace DomEventPhase {
+        export const $gtype: GObject.GType<DomEventPhase>;
+    }
+
     enum DomEventPhase {
         NONE,
         CAPTURING_PHASE,
         AT_TARGET,
         BUBBLING_PHASE,
     }
+    export namespace DomNodeNodeType {
+        export const $gtype: GObject.GType<DomNodeNodeType>;
+    }
+
     enum DomNodeNodeType {
         INVALID,
         ELEMENT_NODE,
@@ -281,6 +305,10 @@ export namespace GXml {
         DOCUMENT_FRAGMENT_NODE,
         NOTATION_NODE,
     }
+    export namespace DomRangeBoundaryPoints {
+        export const $gtype: GObject.GType<DomRangeBoundaryPoints>;
+    }
+
     enum DomRangeBoundaryPoints {
         START_TO_START,
         START_TO_END,
@@ -290,6 +318,10 @@ export namespace GXml {
     interface DomMutationCallback {
         (mutations: Gee.List, observer: DomMutationObserver): void;
     }
+    export namespace DomEventFlags {
+        export const $gtype: GObject.GType<DomEventFlags>;
+    }
+
     enum DomEventFlags {
         STOP_PROPAGATION_FLAG,
         STOP_IMMEDIATE_PROPAGATION_FLAG,
@@ -297,6 +329,10 @@ export namespace GXml {
         INITIALIZED_FLAG,
         DISPATCH_FLAG,
     }
+    export namespace DomNodeDocumentPosition {
+        export const $gtype: GObject.GType<DomNodeDocumentPosition>;
+    }
+
     enum DomNodeDocumentPosition {
         NONE,
         DISCONNECTED,

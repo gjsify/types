@@ -47,6 +47,10 @@ export namespace GSSDP {
         static quark(): GLib.Quark;
     }
 
+    export namespace UDAVersion {
+        export const $gtype: GObject.GType<UDAVersion>;
+    }
+
     /**
      * Implemented behavior of the UDA (Unified Device Architecture) protocol.
      */

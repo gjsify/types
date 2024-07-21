@@ -28,6 +28,10 @@ export namespace Anjuta {
      * Anjuta-3.0
      */
 
+    export namespace CommandBarEntryType {
+        export const $gtype: GObject.GType<CommandBarEntryType>;
+    }
+
     /**
      * Specifies if the entry corresponds to a frame or a button.
      * Buttons are added to the last frame that appears before the button entry
@@ -48,6 +52,10 @@ export namespace Anjuta {
          */
         BUTTON,
     }
+    export namespace CommandQueueExecuteMode {
+        export const $gtype: GObject.GType<CommandQueueExecuteMode>;
+    }
+
     enum CommandQueueExecuteMode {
         AUTOMATIC,
         MANUAL,
@@ -73,6 +81,10 @@ export namespace Anjuta {
         // Own static methods of Anjuta.ConvertError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace LauncherOutputType {
+        export const $gtype: GObject.GType<LauncherOutputType>;
     }
 
     enum LauncherOutputType {
@@ -163,16 +175,28 @@ export namespace Anjuta {
         static quark(): GLib.Quark;
     }
 
+    export namespace ProjectValueType {
+        export const $gtype: GObject.GType<ProjectValueType>;
+    }
+
     enum ProjectValueType {
         STRING,
         LIST,
         BOOLEAN,
         MAP,
     }
+    export namespace SerializerMode {
+        export const $gtype: GObject.GType<SerializerMode>;
+    }
+
     enum SerializerMode {
         READ,
         WRITE,
     }
+    export namespace SessionPhase {
+        export const $gtype: GObject.GType<SessionPhase>;
+    }
+
     enum SessionPhase {
         START,
         FIRST,
@@ -195,6 +219,10 @@ export namespace Anjuta {
         // Own static methods of Anjuta.ShellError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace ShellPlacement {
+        export const $gtype: GObject.GType<ShellPlacement>;
     }
 
     enum ShellPlacement {
@@ -439,6 +467,10 @@ export namespace Anjuta {
     interface TokenForeachFunc {
         (token: Token, data?: any | null): void;
     }
+    export namespace ProjectNodeState {
+        export const $gtype: GObject.GType<ProjectNodeState>;
+    }
+
     enum ProjectNodeState {
         OK,
         MODIFIED,
@@ -454,6 +486,10 @@ export namespace Anjuta {
         CAN_SAVE,
         REMOVE_FILE,
     }
+    export namespace ProjectNodeType {
+        export const $gtype: GObject.GType<ProjectNodeType>;
+    }
+
     enum ProjectNodeType {
         UNKNOWN,
         SHAREDLIB,
@@ -494,12 +530,20 @@ export namespace Anjuta {
         VARIABLE,
         OBJECT,
     }
+    export namespace ProjectPropertyFlags {
+        export const $gtype: GObject.GType<ProjectPropertyFlags>;
+    }
+
     enum ProjectPropertyFlags {
         READ_ONLY,
         READ_WRITE,
         HIDDEN,
         STATIC,
     }
+    export namespace TokenType {
+        export const $gtype: GObject.GType<TokenType>;
+    }
+
     enum TokenType {
         NONE,
         EOL,
@@ -549,6 +593,10 @@ export namespace Anjuta {
         REMOVED,
         ADDED,
     }
+    export namespace VcsStatus {
+        export const $gtype: GObject.GType<VcsStatus>;
+    }
+
     enum VcsStatus {
         MODIFIED,
         ADDED,

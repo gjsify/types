@@ -27,11 +27,19 @@ export namespace MatePanelApplet {
      * MatePanelApplet-4.0
      */
 
+    export namespace AppletBackgroundType {
+        export const $gtype: GObject.GType<AppletBackgroundType>;
+    }
+
     enum AppletBackgroundType {
         NO_BACKGROUND,
         COLOR_BACKGROUND,
         PIXMAP_BACKGROUND,
     }
+    export namespace AppletOrient {
+        export const $gtype: GObject.GType<AppletOrient>;
+    }
+
     enum AppletOrient {
         UP,
         DOWN,
@@ -42,6 +50,10 @@ export namespace MatePanelApplet {
     interface AppletFactoryCallback {
         (applet: Applet, iid: string): boolean;
     }
+    export namespace AppletFlags {
+        export const $gtype: GObject.GType<AppletFlags>;
+    }
+
     enum AppletFlags {
         FLAGS_NONE,
         EXPAND_MAJOR,

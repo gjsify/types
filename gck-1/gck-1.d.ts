@@ -18,6 +18,10 @@ export namespace Gck {
      * Gck-1
      */
 
+    export namespace BuilderFlags {
+        export const $gtype: GObject.GType<BuilderFlags>;
+    }
+
     /**
      * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
      */
@@ -31,6 +35,10 @@ export namespace Gck {
          */
         SECURE_MEMORY,
     }
+    export namespace Error {
+        export const $gtype: GObject.GType<Error>;
+    }
+
     /**
      * Various error codes. All the `CKR_XXX` error codes from PKCS#11 are also
      * relevant error codes.
@@ -45,6 +53,10 @@ export namespace Gck {
          */
         PROBLEM,
     }
+    export namespace UriError {
+        export const $gtype: GObject.GType<UriError>;
+    }
+
     /**
      * Various error codes used with PKCS#11 URIs
      */
@@ -282,6 +294,10 @@ export namespace Gck {
     interface Allocator {
         (data: any | null, length: number): any | null;
     }
+    export namespace SessionOptions {
+        export const $gtype: GObject.GType<SessionOptions>;
+    }
+
     /**
      * Options for creating sessions.
      */
@@ -303,6 +319,10 @@ export namespace Gck {
          */
         AUTHENTICATE,
     }
+    export namespace UriFlags {
+        export const $gtype: GObject.GType<UriFlags>;
+    }
+
     /**
      * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
      * combined.

@@ -18,6 +18,10 @@ export namespace Passim {
      * Passim-1.0
      */
 
+    export namespace Status {
+        export const $gtype: GObject.GType<Status>;
+    }
+
     enum Status {
         UNKNOWN,
         STARTING,

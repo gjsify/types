@@ -18,6 +18,10 @@ export namespace Xmlb {
      * Xmlb-2.0
      */
 
+    export namespace OpcodeKind {
+        export const $gtype: GObject.GType<OpcodeKind>;
+    }
+
     enum OpcodeKind {
         /**
          * Unknown opcode
@@ -113,6 +117,10 @@ export namespace Xmlb {
     interface NodeTransmogrifyFunc {
         (self: Node): boolean;
     }
+    export namespace BuilderCompileFlags {
+        export const $gtype: GObject.GType<BuilderCompileFlags>;
+    }
+
     /**
      * The flags for converting to XML.
      */
@@ -146,6 +154,10 @@ export namespace Xmlb {
          */
         SINGLE_ROOT,
     }
+    export namespace BuilderNodeFlags {
+        export const $gtype: GObject.GType<BuilderNodeFlags>;
+    }
+
     /**
      * The flags used when building a node.
      */
@@ -180,6 +192,10 @@ export namespace Xmlb {
          */
         STRIP_TEXT,
     }
+    export namespace BuilderSourceFlags {
+        export const $gtype: GObject.GType<BuilderSourceFlags>;
+    }
+
     /**
      * The flags for converting to XML.
      */
@@ -203,6 +219,10 @@ export namespace Xmlb {
          */
         WATCH_DIRECTORY,
     }
+    export namespace MachineDebugFlags {
+        export const $gtype: GObject.GType<MachineDebugFlags>;
+    }
+
     /**
      * The flags to control the amount of debugging is generated.
      */
@@ -228,6 +248,10 @@ export namespace Xmlb {
          */
         SHOW_SLOW_PATH,
     }
+    export namespace MachineParseFlags {
+        export const $gtype: GObject.GType<MachineParseFlags>;
+    }
+
     /**
      * The flags to control the parsing behaviour.
      */
@@ -241,6 +265,10 @@ export namespace Xmlb {
          */
         OPTIMIZE,
     }
+    export namespace NodeExportFlags {
+        export const $gtype: GObject.GType<NodeExportFlags>;
+    }
+
     /**
      * The flags for converting to XML.
      */
@@ -275,6 +303,10 @@ export namespace Xmlb {
          */
         COLLAPSE_EMPTY,
     }
+    export namespace OpcodeFlags {
+        export const $gtype: GObject.GType<OpcodeFlags>;
+    }
+
     /**
      * The opcode flags. The values have been carefully chosen so that a simple
      * bitmask can be done to know how to compare for equality.
@@ -309,6 +341,10 @@ export namespace Xmlb {
          */
         TOKENIZED,
     }
+    export namespace QueryFlags {
+        export const $gtype: GObject.GType<QueryFlags>;
+    }
+
     /**
      * The flags used for queries.
      */
@@ -334,6 +370,10 @@ export namespace Xmlb {
          */
         FORCE_NODE_CACHE,
     }
+    export namespace SiloLoadFlags {
+        export const $gtype: GObject.GType<SiloLoadFlags>;
+    }
+
     /**
      * The flags for loading a silo.
      */
@@ -351,6 +391,10 @@ export namespace Xmlb {
          */
         WATCH_BLOB,
     }
+    export namespace SiloProfileFlags {
+        export const $gtype: GObject.GType<SiloProfileFlags>;
+    }
+
     /**
      * The flags used when profiling a silo.
      */

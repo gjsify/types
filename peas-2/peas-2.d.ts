@@ -18,6 +18,10 @@ export namespace Peas {
      * Peas-2
      */
 
+    export namespace PluginInfoError {
+        export const $gtype: GObject.GType<PluginInfoError>;
+    }
+
     /**
      * These identify the various errors that can occur while
      * loading a plugin.

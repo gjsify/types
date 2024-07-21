@@ -64,6 +64,10 @@ export namespace Accounts {
         _init(...args: any[]): void;
     }
 
+    export namespace Error {
+        export const $gtype: GObject.GType<Error>;
+    }
+
     enum Error {
         DB,
         DISPOSED,
@@ -71,6 +75,10 @@ export namespace Accounts {
         DB_LOCKED,
         ACCOUNT_NOT_FOUND,
     }
+    export namespace SettingSource {
+        export const $gtype: GObject.GType<SettingSource>;
+    }
+
     /**
      * The source of a setting on a #AgAccount.
      */

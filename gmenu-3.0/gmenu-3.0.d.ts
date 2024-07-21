@@ -18,6 +18,10 @@ export namespace GMenu {
      * GMenu-3.0
      */
 
+    export namespace TreeItemType {
+        export const $gtype: GObject.GType<TreeItemType>;
+    }
+
     enum TreeItemType {
         INVALID,
         DIRECTORY,
@@ -26,6 +30,10 @@ export namespace GMenu {
         HEADER,
         ALIAS,
     }
+    export namespace TreeFlags {
+        export const $gtype: GObject.GType<TreeFlags>;
+    }
+
     enum TreeFlags {
         NONE,
         INCLUDE_EXCLUDED,

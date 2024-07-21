@@ -19,6 +19,10 @@ export namespace Gsf {
      * Gsf-1
      */
 
+    export namespace ClipFormat {
+        export const $gtype: GObject.GType<ClipFormat>;
+    }
+
     enum ClipFormat {
         /**
          * Windows clipboard format
@@ -45,6 +49,10 @@ export namespace Gsf {
          */
         UNKNOWN,
     }
+    export namespace ClipFormatWindows {
+        export const $gtype: GObject.GType<ClipFormatWindows>;
+    }
+
     enum ClipFormatWindows {
         /**
          * error
@@ -87,6 +95,10 @@ export namespace Gsf {
         _init(...args: any[]): void;
     }
 
+    export namespace OutputCsvQuotingMode {
+        export const $gtype: GObject.GType<OutputCsvQuotingMode>;
+    }
+
     /**
      * Controls when to add quotes around fields.
      */
@@ -104,6 +116,10 @@ export namespace Gsf {
          */
         ALWAYS,
     }
+    export namespace XMLContent {
+        export const $gtype: GObject.GType<XMLContent>;
+    }
+
     /**
      * Controls the handling of character data within a parser node.
      */
@@ -125,6 +141,10 @@ export namespace Gsf {
          */
         '2ND',
     }
+    export namespace ZipCompressionMethod {
+        export const $gtype: GObject.GType<ZipCompressionMethod>;
+    }
+
     enum ZipCompressionMethod {
         STORED,
         SHRUNK,

@@ -19,6 +19,10 @@ export namespace GstVideo {
      * GstVideo-1.0
      */
 
+    export namespace ColorBalanceType {
+        export const $gtype: GObject.GType<ColorBalanceType>;
+    }
+
     /**
      * An enumeration indicating whether an element implements color balancing
      * operations in software or in dedicated hardware. In general, dedicated
@@ -37,6 +41,10 @@ export namespace GstVideo {
          */
         SOFTWARE,
     }
+    export namespace NavigationCommand {
+        export const $gtype: GObject.GType<NavigationCommand>;
+    }
+
     /**
      * A set of commands that may be issued to an element providing the
      * #GstNavigation interface. The available commands can be queried via
@@ -127,6 +135,10 @@ export namespace GstVideo {
          */
         NEXT_ANGLE,
     }
+    export namespace NavigationEventType {
+        export const $gtype: GObject.GType<NavigationEventType>;
+    }
+
     /**
      * Enum values for the various events that an element implementing the
      * GstNavigation interface might send up the pipeline. Touch events have been
@@ -205,6 +217,10 @@ export namespace GstVideo {
          */
         TOUCH_CANCEL,
     }
+    export namespace NavigationMessageType {
+        export const $gtype: GObject.GType<NavigationMessageType>;
+    }
+
     /**
      * A set of notifications that may be received on the bus when navigation
      * related status changes.
@@ -238,6 +254,10 @@ export namespace GstVideo {
          */
         EVENT,
     }
+    export namespace NavigationQueryType {
+        export const $gtype: GObject.GType<NavigationQueryType>;
+    }
+
     /**
      * Types of navigation interface queries.
      */
@@ -255,6 +275,10 @@ export namespace GstVideo {
          */
         ANGLES,
     }
+    export namespace VideoAFDSpec {
+        export const $gtype: GObject.GType<VideoAFDSpec>;
+    }
+
     /**
      * Enumeration of the different standards that may apply to AFD data:
      *
@@ -277,6 +301,10 @@ export namespace GstVideo {
         ATSC_A53,
         SMPTE_ST2016_1,
     }
+    export namespace VideoAFDValue {
+        export const $gtype: GObject.GType<VideoAFDValue>;
+    }
+
     /**
      * Enumeration of the various values for Active Format Description (AFD)
      *
@@ -374,6 +402,10 @@ export namespace GstVideo {
          */
         '16_9_LETTER_4_3_CENTER',
     }
+    export namespace VideoAlphaMode {
+        export const $gtype: GObject.GType<VideoAlphaMode>;
+    }
+
     /**
      * Different alpha modes.
      */
@@ -397,6 +429,10 @@ export namespace GstVideo {
          */
         MULT,
     }
+    export namespace VideoAncillaryDID {
+        export const $gtype: GObject.GType<VideoAncillaryDID>;
+    }
+
     enum VideoAncillaryDID {
         UNDEFINED,
         DELETION,
@@ -411,6 +447,10 @@ export namespace GstVideo {
         HANC_SDTV_AUDIO_DATA_2_FIRST,
         HANC_SDTV_AUDIO_DATA_2_LAST,
     }
+    export namespace VideoAncillaryDID16 {
+        export const $gtype: GObject.GType<VideoAncillaryDID16>;
+    }
+
     /**
      * Some know types of Ancillary Data identifiers.
      */
@@ -428,6 +468,10 @@ export namespace GstVideo {
          */
         S2016_3_AFD_BAR,
     }
+    export namespace VideoCaptionType {
+        export const $gtype: GObject.GType<VideoCaptionType>;
+    }
+
     /**
      * The various known types of Closed Caption (CC).
      */
@@ -470,6 +514,10 @@ export namespace GstVideo {
          */
         CEA708_CDP,
     }
+    export namespace VideoChromaMethod {
+        export const $gtype: GObject.GType<VideoChromaMethod>;
+    }
+
     /**
      * Different subsampling and upsampling methods
      */
@@ -485,6 +533,10 @@ export namespace GstVideo {
          */
         LINEAR,
     }
+    export namespace VideoChromaMode {
+        export const $gtype: GObject.GType<VideoChromaMode>;
+    }
+
     /**
      * Different chroma downsampling and upsampling modes
      */
@@ -506,6 +558,10 @@ export namespace GstVideo {
          */
         NONE,
     }
+    export namespace VideoColorMatrix {
+        export const $gtype: GObject.GType<VideoColorMatrix>;
+    }
+
     /**
      * The color matrix is used to convert between Y'PbPr and
      * non-linear RGB (R'G'B')
@@ -542,6 +598,10 @@ export namespace GstVideo {
          */
         BT2020,
     }
+    export namespace VideoColorPrimaries {
+        export const $gtype: GObject.GType<VideoColorPrimaries>;
+    }
+
     /**
      * The color primaries define the how to transform linear RGB values to and from
      * the CIE XYZ colorspace.
@@ -609,6 +669,10 @@ export namespace GstVideo {
          */
         EBU3213,
     }
+    export namespace VideoColorRange {
+        export const $gtype: GObject.GType<VideoColorRange>;
+    }
+
     /**
      * Possible color range values. These constants are defined for 8 bit color
      * values and can be scaled for other bit depths.
@@ -628,6 +692,10 @@ export namespace GstVideo {
          */
         '16_235',
     }
+    export namespace VideoDitherMethod {
+        export const $gtype: GObject.GType<VideoDitherMethod>;
+    }
+
     /**
      * Different dithering methods to use.
      */
@@ -653,6 +721,10 @@ export namespace GstVideo {
          */
         BAYER,
     }
+    export namespace VideoFieldOrder {
+        export const $gtype: GObject.GType<VideoFieldOrder>;
+    }
+
     /**
      * Field order of interlaced content. This is only valid for
      * interlace-mode=interleaved and not interlace-mode=mixed. In the case of
@@ -674,6 +746,10 @@ export namespace GstVideo {
          */
         BOTTOM_FIELD_FIRST,
     }
+    export namespace VideoFormat {
+        export const $gtype: GObject.GType<VideoFormat>;
+    }
+
     /**
      * Enum value describing the most common video formats.
      *
@@ -1146,6 +1222,10 @@ export namespace GstVideo {
          */
         NV12_10BE_8L128,
     }
+    export namespace VideoGLTextureOrientation {
+        export const $gtype: GObject.GType<VideoGLTextureOrientation>;
+    }
+
     /**
      * The orientation of the GL texture.
      */
@@ -1167,6 +1247,10 @@ export namespace GstVideo {
          */
         FLIP_Y_FLIP,
     }
+    export namespace VideoGLTextureType {
+        export const $gtype: GObject.GType<VideoGLTextureType>;
+    }
+
     /**
      * The GL texture type.
      */
@@ -1200,6 +1284,10 @@ export namespace GstVideo {
          */
         RG,
     }
+    export namespace VideoGammaMode {
+        export const $gtype: GObject.GType<VideoGammaMode>;
+    }
+
     enum VideoGammaMode {
         /**
          * disable gamma handling
@@ -1211,6 +1299,10 @@ export namespace GstVideo {
          */
         REMAP,
     }
+    export namespace VideoInterlaceMode {
+        export const $gtype: GObject.GType<VideoInterlaceMode>;
+    }
+
     /**
      * The possible values of the #GstVideoInterlaceMode describing the interlace
      * mode of the stream.
@@ -1249,6 +1341,10 @@ export namespace GstVideo {
          */
         ALTERNATE,
     }
+    export namespace VideoMatrixMode {
+        export const $gtype: GObject.GType<VideoMatrixMode>;
+    }
+
     /**
      * Different color matrix conversion modes
      */
@@ -1272,6 +1368,10 @@ export namespace GstVideo {
          */
         NONE,
     }
+    export namespace VideoMultiviewFramePacking {
+        export const $gtype: GObject.GType<VideoMultiviewFramePacking>;
+    }
+
     /**
      * #GstVideoMultiviewFramePacking represents the subset of #GstVideoMultiviewMode
      * values that can be applied to any video frame without needing extra metadata.
@@ -1335,6 +1435,10 @@ export namespace GstVideo {
          */
         CHECKERBOARD,
     }
+    export namespace VideoMultiviewMode {
+        export const $gtype: GObject.GType<VideoMultiviewMode>;
+    }
+
     /**
      * All possible stereoscopic 3D and multiview representations.
      * In conjunction with #GstVideoMultiviewFlags, describes how
@@ -1414,6 +1518,10 @@ export namespace GstVideo {
          */
         SEPARATED,
     }
+    export namespace VideoOrientationMethod {
+        export const $gtype: GObject.GType<VideoOrientationMethod>;
+    }
+
     /**
      * The different video orientation methods.
      */
@@ -1471,6 +1579,10 @@ export namespace GstVideo {
         _init(...args: any[]): void;
     }
 
+    export namespace VideoPrimariesMode {
+        export const $gtype: GObject.GType<VideoPrimariesMode>;
+    }
+
     /**
      * Different primaries conversion modes
      */
@@ -1489,6 +1601,10 @@ export namespace GstVideo {
          */
         FAST,
     }
+    export namespace VideoResamplerMethod {
+        export const $gtype: GObject.GType<VideoResamplerMethod>;
+    }
+
     /**
      * Different subsampling and upsampling methods
      */
@@ -1516,6 +1632,10 @@ export namespace GstVideo {
          */
         LANCZOS,
     }
+    export namespace VideoTileMode {
+        export const $gtype: GObject.GType<VideoTileMode>;
+    }
+
     /**
      * Enum value describing the available tiling modes.
      */
@@ -1536,6 +1656,10 @@ export namespace GstVideo {
          */
         LINEAR,
     }
+    export namespace VideoTileType {
+        export const $gtype: GObject.GType<VideoTileType>;
+    }
+
     /**
      * Enum value describing the most common tiling types.
      */
@@ -1547,6 +1671,10 @@ export namespace GstVideo {
          */
         INDEXED,
     }
+    export namespace VideoTransferFunction {
+        export const $gtype: GObject.GType<VideoTransferFunction>;
+    }
+
     /**
      * The video transfer function defines the formula for converting between
      * non-linear RGB (R'G'B') and linear RGB
@@ -1636,6 +1764,10 @@ export namespace GstVideo {
          */
         BT601,
     }
+    export namespace VideoVBIParserResult {
+        export const $gtype: GObject.GType<VideoVBIParserResult>;
+    }
+
     /**
      * Return values for #GstVideoVBIParser
      */
@@ -3334,6 +3466,10 @@ export namespace GstVideo {
     interface VideoGLTextureUpload {
         (meta: VideoGLTextureUploadMeta, texture_id: number): boolean;
     }
+    export namespace NavigationModifierType {
+        export const $gtype: GObject.GType<NavigationModifierType>;
+    }
+
     /**
      * Flags to indicate the state of modifier keys and mouse buttons
      * in events.
@@ -3409,6 +3545,10 @@ export namespace GstVideo {
          */
         MASK,
     }
+    export namespace VideoBufferFlags {
+        export const $gtype: GObject.GType<VideoBufferFlags>;
+    }
+
     /**
      * Additional video buffer flags. These flags can potentially be used on any
      * buffers carrying closed caption data, or video data - even encoded data.
@@ -3480,6 +3620,10 @@ export namespace GstVideo {
          */
         LAST,
     }
+    export namespace VideoChromaFlags {
+        export const $gtype: GObject.GType<VideoChromaFlags>;
+    }
+
     /**
      * Extra flags that influence the result from gst_video_chroma_resample_new().
      */
@@ -3493,6 +3637,10 @@ export namespace GstVideo {
          */
         INTERLACED,
     }
+    export namespace VideoChromaSite {
+        export const $gtype: GObject.GType<VideoChromaSite>;
+    }
+
     /**
      * Various Chroma sitings.
      */
@@ -3534,6 +3682,10 @@ export namespace GstVideo {
          */
         DV,
     }
+    export namespace VideoCodecFrameFlags {
+        export const $gtype: GObject.GType<VideoCodecFrameFlags>;
+    }
+
     /**
      * Flags for #GstVideoCodecFrame
      */
@@ -3559,6 +3711,10 @@ export namespace GstVideo {
          */
         CORRUPTED,
     }
+    export namespace VideoDecoderRequestSyncPointFlags {
+        export const $gtype: GObject.GType<VideoDecoderRequestSyncPointFlags>;
+    }
+
     /**
      * Flags to be used in combination with gst_video_decoder_request_sync_point().
      * See the function documentation for more details.
@@ -3575,6 +3731,10 @@ export namespace GstVideo {
          */
         CORRUPT_OUTPUT,
     }
+    export namespace VideoDitherFlags {
+        export const $gtype: GObject.GType<VideoDitherFlags>;
+    }
+
     /**
      * Extra flags that influence the result from gst_video_chroma_resample_new().
      */
@@ -3592,6 +3752,10 @@ export namespace GstVideo {
          */
         QUANTIZE,
     }
+    export namespace VideoFlags {
+        export const $gtype: GObject.GType<VideoFlags>;
+    }
+
     /**
      * Extra video flags
      */
@@ -3611,6 +3775,10 @@ export namespace GstVideo {
          */
         PREMULTIPLIED_ALPHA,
     }
+    export namespace VideoFormatFlags {
+        export const $gtype: GObject.GType<VideoFormatFlags>;
+    }
+
     /**
      * The different video flags that a format info can have.
      */
@@ -3665,6 +3833,10 @@ export namespace GstVideo {
          */
         SUBTILES,
     }
+    export namespace VideoFrameFlags {
+        export const $gtype: GObject.GType<VideoFrameFlags>;
+    }
+
     /**
      * Extra video frame flags
      */
@@ -3714,6 +3886,10 @@ export namespace GstVideo {
          */
         BOTTOM_FIELD,
     }
+    export namespace VideoFrameMapFlags {
+        export const $gtype: GObject.GType<VideoFrameMapFlags>;
+    }
+
     /**
      * Additional mapping flags for gst_video_frame_map().
      */
@@ -3730,6 +3906,10 @@ export namespace GstVideo {
          */
         LAST,
     }
+    export namespace VideoMultiviewFlags {
+        export const $gtype: GObject.GType<VideoMultiviewFlags>;
+    }
+
     /**
      * GstVideoMultiviewFlags are used to indicate extra properties of a
      * stereo/multiview stream beyond the frame layout and buffer mapping
@@ -3785,6 +3965,10 @@ export namespace GstVideo {
          */
         MIXED_MONO,
     }
+    export namespace VideoOverlayFormatFlags {
+        export const $gtype: GObject.GType<VideoOverlayFormatFlags>;
+    }
+
     /**
      * Overlay format flags.
      */
@@ -3802,6 +3986,10 @@ export namespace GstVideo {
          */
         GLOBAL_ALPHA,
     }
+    export namespace VideoPackFlags {
+        export const $gtype: GObject.GType<VideoPackFlags>;
+    }
+
     /**
      * The different flags that can be used when packing and unpacking.
      */
@@ -3825,6 +4013,10 @@ export namespace GstVideo {
          */
         INTERLACED,
     }
+    export namespace VideoResamplerFlags {
+        export const $gtype: GObject.GType<VideoResamplerFlags>;
+    }
+
     /**
      * Different resampler flags.
      */
@@ -3840,6 +4032,10 @@ export namespace GstVideo {
          */
         HALF_TAPS,
     }
+    export namespace VideoScalerFlags {
+        export const $gtype: GObject.GType<VideoScalerFlags>;
+    }
+
     /**
      * Different scale flags.
      */
@@ -3853,6 +4049,10 @@ export namespace GstVideo {
          */
         INTERLACED,
     }
+    export namespace VideoTimeCodeFlags {
+        export const $gtype: GObject.GType<VideoTimeCodeFlags>;
+    }
+
     /**
      * Flags related to the time code information.
      * For drop frame, only 30000/1001 and 60000/1001 frame rates are supported.

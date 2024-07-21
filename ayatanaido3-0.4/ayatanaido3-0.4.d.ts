@@ -27,19 +27,35 @@ export namespace AyatanaIdo3 {
      * AyatanaIdo3-0.4
      */
 
+    export namespace RangeStyle {
+        export const $gtype: GObject.GType<RangeStyle>;
+    }
+
     enum RangeStyle {
         DEFAULT,
         SMALL,
     }
+    export namespace ScaleMenuItemStyle {
+        export const $gtype: GObject.GType<ScaleMenuItemStyle>;
+    }
+
     enum ScaleMenuItemStyle {
         NONE,
         IMAGE,
         LABEL,
     }
+    export namespace TimelineDirection {
+        export const $gtype: GObject.GType<TimelineDirection>;
+    }
+
     enum TimelineDirection {
         FORWARD,
         BACKWARD,
     }
+    export namespace TimelineProgressType {
+        export const $gtype: GObject.GType<TimelineProgressType>;
+    }
+
     enum TimelineProgressType {
         LINEAR,
         SINUSOIDAL,

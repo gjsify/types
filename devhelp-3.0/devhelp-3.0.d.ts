@@ -30,6 +30,10 @@ export namespace Devhelp {
      * Devhelp-3.0
      */
 
+    export namespace LinkType {
+        export const $gtype: GObject.GType<LinkType>;
+    }
+
     /**
      * The type of the content the link points to.
      */
@@ -112,6 +116,10 @@ export namespace Devhelp {
      */
     function init(): void;
     function link_type_to_string(link_type: LinkType): string;
+    export namespace LinkFlags {
+        export const $gtype: GObject.GType<LinkFlags>;
+    }
+
     enum LinkFlags {
         /**
          * No flags set.

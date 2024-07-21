@@ -2499,6 +2499,10 @@ export namespace GObject {
     type VariantBuilder = object | null;
     type VariantDict = object | null;
     type VariantType = object | null;
+    export namespace BindingFlags {
+        export const $gtype: GType<BindingFlags>;
+    }
+
     /**
      * Flags to be passed to g_object_bind_property() or
      * g_object_bind_property_full().
@@ -2532,6 +2536,10 @@ export namespace GObject {
          */
         INVERT_BOOLEAN,
     }
+    export namespace ConnectFlags {
+        export const $gtype: GType<ConnectFlags>;
+    }
+
     /**
      * The connection flags are used to specify the behaviour of a signal's
      * connection.
@@ -2553,6 +2561,10 @@ export namespace GObject {
          */
         SWAPPED,
     }
+    export namespace IOCondition {
+        export const $gtype: GType<IOCondition>;
+    }
+
     enum IOCondition {
         IN,
         OUT,
@@ -2561,6 +2573,10 @@ export namespace GObject {
         HUP,
         NVAL,
     }
+    export namespace ParamFlags {
+        export const $gtype: GType<ParamFlags>;
+    }
+
     /**
      * Through the #GParamFlags flag values, certain aspects of parameters
      * can be configured.
@@ -2633,6 +2649,10 @@ export namespace GObject {
          */
         DEPRECATED,
     }
+    export namespace SignalFlags {
+        export const $gtype: GType<SignalFlags>;
+    }
+
     /**
      * The signal flags are used to specify a signal's behaviour.
      */
@@ -2691,6 +2711,10 @@ export namespace GObject {
          */
         ACCUMULATOR_FIRST_RUN,
     }
+    export namespace SignalMatchType {
+        export const $gtype: GType<SignalMatchType>;
+    }
+
     /**
      * The match types specify what g_signal_handlers_block_matched(),
      * g_signal_handlers_unblock_matched() and g_signal_handlers_disconnect_matched()
@@ -2722,6 +2746,10 @@ export namespace GObject {
          */
         UNBLOCKED,
     }
+    export namespace TypeDebugFlags {
+        export const $gtype: GType<TypeDebugFlags>;
+    }
+
     /**
      * These flags used to be passed to g_type_init_with_debug_flags() which
      * is now deprecated.
@@ -2751,6 +2779,10 @@ export namespace GObject {
          */
         MASK,
     }
+    export namespace TypeFlags {
+        export const $gtype: GType<TypeFlags>;
+    }
+
     /**
      * Bit masks used to check or determine characteristics of a type.
      */
@@ -2782,6 +2814,10 @@ export namespace GObject {
          */
         DEPRECATED,
     }
+    export namespace TypeFundamentalFlags {
+        export const $gtype: GType<TypeFundamentalFlags>;
+    }
+
     /**
      * Bit masks used to check or determine specific characteristics of a
      * fundamental type.

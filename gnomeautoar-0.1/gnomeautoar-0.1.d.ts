@@ -18,12 +18,20 @@ export namespace GnomeAutoar {
      * GnomeAutoar-0.1
      */
 
+    export namespace ConflictAction {
+        export const $gtype: GObject.GType<ConflictAction>;
+    }
+
     enum ConflictAction {
         UNHANDLED,
         SKIP,
         OVERWRITE,
         CHANGE_DESTINATION,
     }
+    export namespace Filter {
+        export const $gtype: GObject.GType<Filter>;
+    }
+
     /**
      * This is a non-negative number which represents filters supported by
      * libarchive. A libarchive filter is a filter which can convert a
@@ -71,6 +79,10 @@ export namespace GnomeAutoar {
          */
         LRZIP,
     }
+    export namespace Format {
+        export const $gtype: GObject.GType<Format>;
+    }
+
     /**
      * This is a non-negative number which represents formats supported by
      * libarchive. A libarchive format is a file format which can store many

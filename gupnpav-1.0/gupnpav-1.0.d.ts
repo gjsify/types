@@ -17,6 +17,10 @@ export namespace GUPnPAV {
      * GUPnPAV-1.0
      */
 
+    export namespace CDSLastChangeEvent {
+        export const $gtype: GObject.GType<CDSLastChangeEvent>;
+    }
+
     enum CDSLastChangeEvent {
         /**
          * Invalid #GUPnPCDSLastChangeEntry.
@@ -43,6 +47,10 @@ export namespace GUPnPAV {
          */
         ST_DONE,
     }
+    export namespace DIDLLiteFragmentResult {
+        export const $gtype: GObject.GType<DIDLLiteFragmentResult>;
+    }
+
     /**
      * Possible return values of the gupnp_didl_lite_object_apply_fragments() call.
      */
@@ -116,6 +124,10 @@ export namespace GUPnPAV {
         _init(...args: any[]): void;
     }
 
+    export namespace SearchCriteriaOp {
+        export const $gtype: GObject.GType<SearchCriteriaOp>;
+    }
+
     /**
      * The possible operators in SearchCriteria strings.
      */
@@ -161,6 +173,10 @@ export namespace GUPnPAV {
          */
         EXISTS,
     }
+    export namespace SearchCriteriaParserError {
+        export const $gtype: GObject.GType<SearchCriteriaParserError>;
+    }
+
     enum SearchCriteriaParserError {
         /**
          * Parsing the search criteria
@@ -182,6 +198,10 @@ export namespace GUPnPAV {
      */
     function format_date_time_for_didl_lite(date_time: GLib.DateTime, date_only: boolean): string;
     function protocol_error_quark(): GLib.Quark;
+    export namespace DLNAConversion {
+        export const $gtype: GObject.GType<DLNAConversion>;
+    }
+
     /**
      * The DLNA conversion flags for a resource.
      */
@@ -195,6 +215,10 @@ export namespace GUPnPAV {
          */
         TRANSCODED,
     }
+    export namespace DLNAFlags {
+        export const $gtype: GObject.GType<DLNAFlags>;
+    }
+
     /**
      * The miscellaneous operations supported by a resource. For details on these
      * flags please refer to section 7.3.37.2 of DLNA Networked Device
@@ -274,6 +298,10 @@ export namespace GUPnPAV {
          */
         LOP_CLEARTEXT_BYTESEEK,
     }
+    export namespace DLNAOperation {
+        export const $gtype: GObject.GType<DLNAOperation>;
+    }
+
     /**
      * The seek operations supported by a resource.
      */
@@ -291,6 +319,10 @@ export namespace GUPnPAV {
          */
         TIMESEEK,
     }
+    export namespace OCMFlags {
+        export const $gtype: GObject.GType<OCMFlags>;
+    }
+
     /**
      * The DLNA OCM flags supported by a DIDL-Lite Object. For details on these
      * flags please refer to section 7.3.118.4 of DLNA Networked Device

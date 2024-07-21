@@ -18,16 +18,28 @@ export namespace GPaste {
      * GPaste-2
      */
 
+    export namespace ItemKind {
+        export const $gtype: GObject.GType<ItemKind>;
+    }
+
     enum ItemKind {
         TEXT,
         URIS,
         IMAGE,
         PASSWORD,
     }
+    export namespace UpdateAction {
+        export const $gtype: GObject.GType<UpdateAction>;
+    }
+
     enum UpdateAction {
         REPLACE,
         REMOVE,
     }
+    export namespace UpdateTarget {
+        export const $gtype: GObject.GType<UpdateTarget>;
+    }
+
     enum UpdateTarget {
         ALL,
         POSITION,
@@ -228,6 +240,10 @@ export namespace GPaste {
      * @returns the encoded text
      */
     function util_xml_encode(text: string): string;
+    export namespace GnomeShellActionMode {
+        export const $gtype: GObject.GType<GnomeShellActionMode>;
+    }
+
     /**
      * Controls in which GNOME Shell states an action (like keybindings and gestures)
      * should be handled.
@@ -279,6 +295,10 @@ export namespace GPaste {
          */
         ALL,
     }
+    export namespace MetaKeyBindingFlags {
+        export const $gtype: GObject.GType<MetaKeyBindingFlags>;
+    }
+
     enum MetaKeyBindingFlags {
         /**
          * none

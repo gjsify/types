@@ -47,6 +47,10 @@ export namespace Dee {
         _init(...args: any[]): void;
     }
 
+    export namespace SharedModelAccessMode {
+        export const $gtype: GObject.GType<SharedModelAccessMode>;
+    }
+
     /**
      * Enumeration defining behavior of the model with regards to writes from
      * other peers in the swarm.
@@ -55,9 +59,17 @@ export namespace Dee {
         WORLD_WRITABLE,
         LEADER_WRITABLE,
     }
+    export namespace SharedModelError {
+        export const $gtype: GObject.GType<SharedModelError>;
+    }
+
     enum SharedModelError {
         SHARED_MODEL_ERROR_LEADER_INVALIDATED,
     }
+    export namespace SharedModelFlushMode {
+        export const $gtype: GObject.GType<SharedModelFlushMode>;
+    }
+
     /**
      * Enumeration defining flushing behavior of a shared model.
      */
@@ -65,6 +77,10 @@ export namespace Dee {
         AUTOMATIC,
         MANUAL,
     }
+    export namespace TransactionError {
+        export const $gtype: GObject.GType<TransactionError>;
+    }
+
     /**
      * Error codes for the #DeeTransaction class. These codes will be set when the
      * error domain is #DEE_TRANSACTION_ERROR.
@@ -239,6 +255,10 @@ export namespace Dee {
     interface TermFilterFunc {
         (terms_in: TermList, terms_out: TermList): void;
     }
+    export namespace TermMatchFlag {
+        export const $gtype: GObject.GType<TermMatchFlag>;
+    }
+
     /**
      * Flags passed to dee_index_lookup() to control how matching is done.
      * Note that it is not required that index backends support more than just

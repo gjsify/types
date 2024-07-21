@@ -18,6 +18,10 @@ export namespace Soup {
      * Soup-3.0
      */
 
+    export namespace CacheType {
+        export const $gtype: GObject.GType<CacheType>;
+    }
+
     /**
      * The type of cache; this affects what kinds of responses will be
      * saved.
@@ -32,6 +36,10 @@ export namespace Soup {
          */
         SHARED,
     }
+    export namespace CookieJarAcceptPolicy {
+        export const $gtype: GObject.GType<CookieJarAcceptPolicy>;
+    }
+
     /**
      * The policy for accepting or rejecting cookies returned in
      * responses.
@@ -76,6 +84,10 @@ export namespace Soup {
          */
         GRANDFATHERED_THIRD_PARTY,
     }
+    export namespace DateFormat {
+        export const $gtype: GObject.GType<DateFormat>;
+    }
+
     /**
      * Date formats that [func`date_time_to_string]` can use.
      *
@@ -96,6 +108,10 @@ export namespace Soup {
          */
         COOKIE,
     }
+    export namespace Encoding {
+        export const $gtype: GObject.GType<Encoding>;
+    }
+
     /**
      * How a message body is encoded for transport
      */
@@ -128,6 +144,10 @@ export namespace Soup {
          */
         BYTERANGES,
     }
+    export namespace HTTPVersion {
+        export const $gtype: GObject.GType<HTTPVersion>;
+    }
+
     /**
      * Indicates the HTTP protocol version being used.
      */
@@ -145,6 +165,10 @@ export namespace Soup {
          */
         HTTP_2_0,
     }
+    export namespace LoggerLogLevel {
+        export const $gtype: GObject.GType<LoggerLogLevel>;
+    }
+
     /**
      * Describes the level of logging output to provide.
      */
@@ -167,6 +191,10 @@ export namespace Soup {
          */
         BODY,
     }
+    export namespace MemoryUse {
+        export const $gtype: GObject.GType<MemoryUse>;
+    }
+
     /**
      * The lifetime of the memory being passed.
      */
@@ -189,6 +217,10 @@ export namespace Soup {
          */
         COPY,
     }
+    export namespace MessageHeadersType {
+        export const $gtype: GObject.GType<MessageHeadersType>;
+    }
+
     /**
      * Value passed to [ctor`MessageHeaders`.new] to set certain default
      * behaviors.
@@ -207,6 +239,10 @@ export namespace Soup {
          */
         MULTIPART,
     }
+    export namespace MessagePriority {
+        export const $gtype: GObject.GType<MessagePriority>;
+    }
+
     /**
      * Priorities that can be set on a [class`Message]` to instruct the message queue
      * to process it before any other message with lower priority.
@@ -240,6 +276,10 @@ export namespace Soup {
          */
         VERY_HIGH,
     }
+    export namespace SameSitePolicy {
+        export const $gtype: GObject.GType<SameSitePolicy>;
+    }
+
     /**
      * Represents the same-site policies of a cookie.
      */
@@ -312,6 +352,10 @@ export namespace Soup {
          * Registers error quark for SoupSession if needed.
          */
         static quark(): GLib.Quark;
+    }
+
+    export namespace Status {
+        export const $gtype: GObject.GType<Status>;
     }
 
     /**
@@ -603,6 +647,10 @@ export namespace Soup {
         static quark(): GLib.Quark;
     }
 
+    export namespace URIComponent {
+        export const $gtype: GObject.GType<URIComponent>;
+    }
+
     /**
      * Enum values passed to [func`uri_copy]` to indicate the components of
      * the URI that should be updated with the given values.
@@ -649,6 +697,10 @@ export namespace Soup {
          */
         FRAGMENT,
     }
+    export namespace WebsocketCloseCode {
+        export const $gtype: GObject.GType<WebsocketCloseCode>;
+    }
+
     /**
      * Pre-defined close codes that can be passed to
      * [method`WebsocketConnection`.close] or received from
@@ -716,6 +768,10 @@ export namespace Soup {
          */
         TLS_HANDSHAKE,
     }
+    export namespace WebsocketConnectionType {
+        export const $gtype: GObject.GType<WebsocketConnectionType>;
+    }
+
     /**
      * The type of a [class`WebsocketConnection]`.
      */
@@ -733,6 +789,10 @@ export namespace Soup {
          */
         SERVER,
     }
+    export namespace WebsocketDataType {
+        export const $gtype: GObject.GType<WebsocketDataType>;
+    }
+
     /**
      * The type of data contained in a [signal`WebsocketConnection:`:message] signal.
      */
@@ -785,6 +845,10 @@ export namespace Soup {
          * Registers error quark for SoupWebsocket if needed.
          */
         static quark(): GLib.Quark;
+    }
+
+    export namespace WebsocketState {
+        export const $gtype: GObject.GType<WebsocketState>;
     }
 
     /**
@@ -1456,6 +1520,10 @@ export namespace Soup {
     interface ServerWebsocketCallback {
         (server: Server, msg: ServerMessage, path: string, connection: WebsocketConnection): void;
     }
+    export namespace Cacheability {
+        export const $gtype: GObject.GType<Cacheability>;
+    }
+
     /**
      * Indicates if a message should or shouldn't be cached.
      */
@@ -1477,6 +1545,10 @@ export namespace Soup {
          */
         VALIDATES,
     }
+    export namespace Expectation {
+        export const $gtype: GObject.GType<Expectation>;
+    }
+
     /**
      * Represents the parsed value of the "Expect" header.
      */
@@ -1490,6 +1562,10 @@ export namespace Soup {
          */
         CONTINUE,
     }
+    export namespace MessageFlags {
+        export const $gtype: GObject.GType<MessageFlags>;
+    }
+
     /**
      * Various flags that can be set on a #SoupMessage to alter its
      * behavior.
@@ -1530,6 +1606,10 @@ export namespace Soup {
          */
         COLLECT_METRICS,
     }
+    export namespace ServerListenOptions {
+        export const $gtype: GObject.GType<ServerListenOptions>;
+    }
+
     /**
      * Options to pass to [method`Server`.listen], etc.
      *

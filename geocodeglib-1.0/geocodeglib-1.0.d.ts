@@ -62,6 +62,10 @@ export namespace GeocodeGlib {
         static quark(): GLib.Quark;
     }
 
+    export namespace LocationCRS {
+        export const $gtype: GObject.GType<LocationCRS>;
+    }
+
     /**
      * Coordinate Reference System Identification for a location.
      */
@@ -71,6 +75,10 @@ export namespace GeocodeGlib {
          */
         WGS84,
     }
+    export namespace LocationURIScheme {
+        export const $gtype: GObject.GType<LocationURIScheme>;
+    }
+
     /**
      * The URI scheme for this location.
      */
@@ -80,6 +88,10 @@ export namespace GeocodeGlib {
          */
         GEO,
     }
+    export namespace PlaceOsmType {
+        export const $gtype: GObject.GType<PlaceOsmType>;
+    }
+
     /**
      * Osm type of the place.
      */
@@ -101,6 +113,10 @@ export namespace GeocodeGlib {
          */
         WAY,
     }
+    export namespace PlaceType {
+        export const $gtype: GObject.GType<PlaceType>;
+    }
+
     /**
      * Type of the place.
      */

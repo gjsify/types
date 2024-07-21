@@ -26,6 +26,10 @@ export namespace GtkSource {
      * GtkSource-2.0
      */
 
+    export namespace BracketMatchType {
+        export const $gtype: GObject.GType<BracketMatchType>;
+    }
+
     enum BracketMatchType {
         /**
          * there is no bracket to match.
@@ -45,10 +49,18 @@ export namespace GtkSource {
          */
         FOUND,
     }
+    export namespace CompletionError {
+        export const $gtype: GObject.GType<CompletionError>;
+    }
+
     enum CompletionError {
         ALREADY_BOUND,
         NOT_BOUND,
     }
+    export namespace SmartHomeEndType {
+        export const $gtype: GObject.GType<SmartHomeEndType>;
+    }
+
     enum SmartHomeEndType {
         /**
          * smart-home-end disabled.
@@ -72,6 +84,10 @@ export namespace GtkSource {
          */
         ALWAYS,
     }
+    export namespace ViewGutterPosition {
+        export const $gtype: GObject.GType<ViewGutterPosition>;
+    }
+
     enum ViewGutterPosition {
         /**
          * the gutter position of the lines
@@ -150,6 +166,10 @@ export namespace GtkSource {
     interface ViewMarkTooltipFunc {
         (mark: Mark): string;
     }
+    export namespace CompletionActivation {
+        export const $gtype: GObject.GType<CompletionActivation>;
+    }
+
     enum CompletionActivation {
         /**
          * none.
@@ -165,6 +185,10 @@ export namespace GtkSource {
          */
         USER_REQUESTED,
     }
+    export namespace DrawSpacesFlags {
+        export const $gtype: GObject.GType<DrawSpacesFlags>;
+    }
+
     /**
      * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
      * of GTK_SOURCE_DRAW_SPACES_LEADING, GTK_SOURCE_DRAW_SPACES_TEXT or
@@ -205,6 +229,10 @@ export namespace GtkSource {
          */
         ALL,
     }
+    export namespace SearchFlags {
+        export const $gtype: GObject.GType<SearchFlags>;
+    }
+
     enum SearchFlags {
         VISIBLE_ONLY,
         TEXT_ONLY,

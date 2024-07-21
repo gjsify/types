@@ -1,6 +1,6 @@
 {
     "name": "@girs/gtksource-300",
-    "version": "300.0.0-4.0.0-beta.8",
+    "version": "300.0.0-4.0.0-beta.9",
     "description": "GJS TypeScript type definitions for GtkSource-300, generated from library version 300.0.0",
     "type": "module",
     "module": "gtksource-300.js",

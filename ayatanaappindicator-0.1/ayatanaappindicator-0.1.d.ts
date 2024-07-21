@@ -26,6 +26,10 @@ export namespace AyatanaAppIndicator {
      * AyatanaAppIndicator-0.1
      */
 
+    export namespace IndicatorCategory {
+        export const $gtype: GObject.GType<IndicatorCategory>;
+    }
+
     /**
      * The category provides grouping for the indicators so that
      * users can find indicators that are similar together.
@@ -52,6 +56,10 @@ export namespace AyatanaAppIndicator {
          */
         OTHER,
     }
+    export namespace IndicatorStatus {
+        export const $gtype: GObject.GType<IndicatorStatus>;
+    }
+
     /**
      * These are the states that the indicator can be on in
      * the user's panel.  The indicator by default starts

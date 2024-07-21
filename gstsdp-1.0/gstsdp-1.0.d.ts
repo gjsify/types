@@ -18,6 +18,10 @@ export namespace GstSdp {
      * GstSdp-1.0
      */
 
+    export namespace MIKEYCacheType {
+        export const $gtype: GObject.GType<MIKEYCacheType>;
+    }
+
     /**
      * The different cache types
      */
@@ -36,6 +40,10 @@ export namespace GstSdp {
          */
         FOR_CSB,
     }
+    export namespace MIKEYEncAlg {
+        export const $gtype: GObject.GType<MIKEYEncAlg>;
+    }
+
     /**
      * The encryption algorithm used to encrypt the Encr data field
      */
@@ -57,6 +65,10 @@ export namespace GstSdp {
          */
         AES_GCM_128,
     }
+    export namespace MIKEYKVType {
+        export const $gtype: GObject.GType<MIKEYKVType>;
+    }
+
     /**
      * The key validity type
      */
@@ -74,6 +86,10 @@ export namespace GstSdp {
          */
         INTERVAL,
     }
+    export namespace MIKEYKeyDataType {
+        export const $gtype: GObject.GType<MIKEYKeyDataType>;
+    }
+
     /**
      * The type of key.
      */
@@ -87,6 +103,10 @@ export namespace GstSdp {
          */
         TEK,
     }
+    export namespace MIKEYMacAlg {
+        export const $gtype: GObject.GType<MIKEYMacAlg>;
+    }
+
     /**
      * Specifies the authentication algorithm used
      */
@@ -100,6 +120,10 @@ export namespace GstSdp {
          */
         HMAC_SHA_1_160,
     }
+    export namespace MIKEYMapType {
+        export const $gtype: GObject.GType<MIKEYMapType>;
+    }
+
     /**
      * Specifies the method of uniquely mapping Crypto Sessions to the security
      * protocol sessions.
@@ -110,6 +134,10 @@ export namespace GstSdp {
          */
         MIKEY_MAP_TYPE_SRTP,
     }
+    export namespace MIKEYPRFFunc {
+        export const $gtype: GObject.GType<MIKEYPRFFunc>;
+    }
+
     /**
      * The PRF function that has been/will be used for key derivation
      */
@@ -119,6 +147,10 @@ export namespace GstSdp {
          */
         MIKEY_PRF_MIKEY_1,
     }
+    export namespace MIKEYPayloadType {
+        export const $gtype: GObject.GType<MIKEYPayloadType>;
+    }
+
     /**
      * Different MIKEY Payload types.
      */
@@ -184,6 +216,10 @@ export namespace GstSdp {
          */
         GEN_EXT,
     }
+    export namespace MIKEYSecProto {
+        export const $gtype: GObject.GType<MIKEYSecProto>;
+    }
+
     /**
      * Specifies the security protocol
      */
@@ -193,6 +229,10 @@ export namespace GstSdp {
          */
         MIKEY_SEC_PROTO_SRTP,
     }
+    export namespace MIKEYSecSRTP {
+        export const $gtype: GObject.GType<MIKEYSecSRTP>;
+    }
+
     /**
      * This policy specifies the parameters for SRTP and SRTCP
      */
@@ -254,6 +294,10 @@ export namespace GstSdp {
          */
         AEAD_AUTH_TAG_LEN,
     }
+    export namespace MIKEYTSType {
+        export const $gtype: GObject.GType<MIKEYTSType>;
+    }
+
     /**
      * Specifies the timestamp type.
      */
@@ -271,6 +315,10 @@ export namespace GstSdp {
          */
         COUNTER,
     }
+    export namespace MIKEYType {
+        export const $gtype: GObject.GType<MIKEYType>;
+    }
+
     /**
      * Different MIKEY data types.
      */
@@ -308,6 +356,10 @@ export namespace GstSdp {
          */
         ERROR,
     }
+    export namespace SDPResult {
+        export const $gtype: GObject.GType<SDPResult>;
+    }
+
     /**
      * Return values for the SDP functions.
      */

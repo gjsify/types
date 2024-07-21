@@ -16,6 +16,10 @@ export namespace Playerctl {
      * Playerctl-2.0
      */
 
+    export namespace LoopStatus {
+        export const $gtype: GObject.GType<LoopStatus>;
+    }
+
     /**
      * Loop status enumeration for a #PlayerctlPlayer
      */
@@ -34,6 +38,10 @@ export namespace Playerctl {
          */
         PLAYLIST,
     }
+    export namespace PlaybackStatus {
+        export const $gtype: GObject.GType<PlaybackStatus>;
+    }
+
     /**
      * Playback status enumeration for a #PlayerctlPlayer
      */
@@ -51,6 +59,10 @@ export namespace Playerctl {
          */
         STOPPED,
     }
+    export namespace Source {
+        export const $gtype: GObject.GType<Source>;
+    }
+
     /**
      * The source of the name used to control the player.
      */

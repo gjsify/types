@@ -19,6 +19,10 @@ export namespace GstWebRTC {
      * GstWebRTC-1.0
      */
 
+    export namespace WebRTCBundlePolicy {
+        export const $gtype: GObject.GType<WebRTCBundlePolicy>;
+    }
+
     /**
      * See https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-24#section-4.1.1
      * for more information.
@@ -41,6 +45,10 @@ export namespace GstWebRTC {
          */
         MAX_BUNDLE,
     }
+    export namespace WebRTCDTLSSetup {
+        export const $gtype: GObject.GType<WebRTCDTLSSetup>;
+    }
+
     enum WebRTCDTLSSetup {
         /**
          * none
@@ -59,6 +67,10 @@ export namespace GstWebRTC {
          */
         PASSIVE,
     }
+    export namespace WebRTCDTLSTransportState {
+        export const $gtype: GObject.GType<WebRTCDTLSTransportState>;
+    }
+
     enum WebRTCDTLSTransportState {
         /**
          * new
@@ -81,6 +93,10 @@ export namespace GstWebRTC {
          */
         CONNECTED,
     }
+    export namespace WebRTCDataChannelState {
+        export const $gtype: GObject.GType<WebRTCDataChannelState>;
+    }
+
     /**
      * See <http://w3c.github.io/webrtc-pc/#dom-rtcdatachannelstate>
      */
@@ -165,6 +181,10 @@ export namespace GstWebRTC {
         static quark(): GLib.Quark;
     }
 
+    export namespace WebRTCFECType {
+        export const $gtype: GObject.GType<WebRTCFECType>;
+    }
+
     enum WebRTCFECType {
         /**
          * none
@@ -175,6 +195,10 @@ export namespace GstWebRTC {
          */
         ULP_RED,
     }
+    export namespace WebRTCICEComponent {
+        export const $gtype: GObject.GType<WebRTCICEComponent>;
+    }
+
     enum WebRTCICEComponent {
         /**
          * RTP component
@@ -185,6 +209,10 @@ export namespace GstWebRTC {
          */
         RTCP,
     }
+    export namespace WebRTCICEConnectionState {
+        export const $gtype: GObject.GType<WebRTCICEConnectionState>;
+    }
+
     /**
      * See <http://w3c.github.io/webrtc-pc/#dom-rtciceconnectionstate>
      */
@@ -218,6 +246,10 @@ export namespace GstWebRTC {
          */
         CLOSED,
     }
+    export namespace WebRTCICEGatheringState {
+        export const $gtype: GObject.GType<WebRTCICEGatheringState>;
+    }
+
     /**
      * See <http://w3c.github.io/webrtc-pc/#dom-rtcicegatheringstate>
      */
@@ -235,6 +267,10 @@ export namespace GstWebRTC {
          */
         COMPLETE,
     }
+    export namespace WebRTCICERole {
+        export const $gtype: GObject.GType<WebRTCICERole>;
+    }
+
     enum WebRTCICERole {
         /**
          * controlled
@@ -245,6 +281,10 @@ export namespace GstWebRTC {
          */
         CONTROLLING,
     }
+    export namespace WebRTCICETransportPolicy {
+        export const $gtype: GObject.GType<WebRTCICETransportPolicy>;
+    }
+
     /**
      * See https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-24#section-4.1.1
      * for more information.
@@ -259,6 +299,10 @@ export namespace GstWebRTC {
          */
         RELAY,
     }
+    export namespace WebRTCKind {
+        export const $gtype: GObject.GType<WebRTCKind>;
+    }
+
     /**
      * https://w3c.github.io/mediacapture-main/#dom-mediastreamtrack-kind
      */
@@ -276,6 +320,10 @@ export namespace GstWebRTC {
          */
         VIDEO,
     }
+    export namespace WebRTCPeerConnectionState {
+        export const $gtype: GObject.GType<WebRTCPeerConnectionState>;
+    }
+
     /**
      * See <http://w3c.github.io/webrtc-pc/#dom-rtcpeerconnectionstate>
      */
@@ -305,6 +353,10 @@ export namespace GstWebRTC {
          */
         CLOSED,
     }
+    export namespace WebRTCPriorityType {
+        export const $gtype: GObject.GType<WebRTCPriorityType>;
+    }
+
     /**
      * See <http://w3c.github.io/webrtc-pc/#dom-rtcprioritytype>
      */
@@ -326,6 +378,10 @@ export namespace GstWebRTC {
          */
         HIGH,
     }
+    export namespace WebRTCRTPTransceiverDirection {
+        export const $gtype: GObject.GType<WebRTCRTPTransceiverDirection>;
+    }
+
     enum WebRTCRTPTransceiverDirection {
         /**
          * none
@@ -348,6 +404,10 @@ export namespace GstWebRTC {
          */
         SENDRECV,
     }
+    export namespace WebRTCSCTPTransportState {
+        export const $gtype: GObject.GType<WebRTCSCTPTransportState>;
+    }
+
     /**
      * See <http://w3c.github.io/webrtc-pc/#dom-rtcsctptransportstate>
      */
@@ -369,6 +429,10 @@ export namespace GstWebRTC {
          */
         CLOSED,
     }
+    export namespace WebRTCSDPType {
+        export const $gtype: GObject.GType<WebRTCSDPType>;
+    }
+
     /**
      * See <http://w3c.github.io/webrtc-pc/#rtcsdptype>
      */
@@ -390,6 +454,10 @@ export namespace GstWebRTC {
          */
         ROLLBACK,
     }
+    export namespace WebRTCSignalingState {
+        export const $gtype: GObject.GType<WebRTCSignalingState>;
+    }
+
     /**
      * See <http://w3c.github.io/webrtc-pc/#dom-rtcsignalingstate>
      */
@@ -419,6 +487,10 @@ export namespace GstWebRTC {
          */
         HAVE_REMOTE_PRANSWER,
     }
+    export namespace WebRTCStatsType {
+        export const $gtype: GObject.GType<WebRTCStatsType>;
+    }
+
     /**
      * See <https://w3c.github.io/webrtc-stats/#dom-rtcstatstype>
      */

@@ -47,6 +47,10 @@ export namespace GstTranscoder {
         static quark(): GLib.Quark;
     }
 
+    export namespace TranscoderMessage {
+        export const $gtype: GObject.GType<TranscoderMessage>;
+    }
+
     /**
      * Types of messages that will be posted on the transcoder API bus.
      *
@@ -78,6 +82,10 @@ export namespace GstTranscoder {
          */
         WARNING,
     }
+    export namespace TranscoderState {
+        export const $gtype: GObject.GType<TranscoderState>;
+    }
+
     /**
      * High level representation of the transcoder pipeline state.
      */

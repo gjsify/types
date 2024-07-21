@@ -29,6 +29,10 @@ export namespace Panel {
      * Panel-1
      */
 
+    export namespace Area {
+        export const $gtype: GObject.GType<Area>;
+    }
+
     /**
      * The area of the panel.
      */

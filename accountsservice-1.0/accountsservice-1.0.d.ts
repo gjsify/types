@@ -18,6 +18,10 @@ export namespace AccountsService {
      * AccountsService-1.0
      */
 
+    export namespace UserAccountType {
+        export const $gtype: GObject.GType<UserAccountType>;
+    }
+
     /**
      * Type of user account
      */
@@ -68,6 +72,10 @@ export namespace AccountsService {
         // Own static methods of AccountsService.UserManagerError
 
         static quark(): GLib.Quark;
+    }
+
+    export namespace UserPasswordMode {
+        export const $gtype: GObject.GType<UserPasswordMode>;
     }
 
     /**

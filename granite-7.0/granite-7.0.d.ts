@@ -49,6 +49,10 @@ export namespace Granite {
         _init(...args: any[]): void;
     }
 
+    export namespace SettingsPageStatusType {
+        export const $gtype: GObject.GType<SettingsPageStatusType>;
+    }
+
     enum SettingsPageStatusType {
         ERROR,
         OFFLINE,
@@ -56,6 +60,10 @@ export namespace Granite {
         WARNING,
         NONE,
     }
+    export namespace SettingsColorScheme {
+        export const $gtype: GObject.GType<SettingsColorScheme>;
+    }
+
     enum SettingsColorScheme {
         NO_PREFERENCE,
         DARK,

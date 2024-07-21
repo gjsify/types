@@ -17,11 +17,19 @@ export namespace Mtk {
      * Mtk-14
      */
 
+    export namespace RegionOverlap {
+        export const $gtype: GObject.GType<RegionOverlap>;
+    }
+
     enum RegionOverlap {
         OUT,
         IN,
         PART,
     }
+    export namespace RoundingStrategy {
+        export const $gtype: GObject.GType<RoundingStrategy>;
+    }
+
     enum RoundingStrategy {
         SHRINK,
         GROW,

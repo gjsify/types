@@ -18,6 +18,10 @@ export namespace Ggit {
      * Ggit-1.0
      */
 
+    export namespace BranchType {
+        export const $gtype: GObject.GType<BranchType>;
+    }
+
     /**
      * The type of a branch.
      */
@@ -31,12 +35,20 @@ export namespace Ggit {
          */
         REMOTE,
     }
+    export namespace CloneLocal {
+        export const $gtype: GObject.GType<CloneLocal>;
+    }
+
     enum CloneLocal {
         AUTO,
         LOCAL,
         NO_LOCAL,
         NO_LINKS,
     }
+    export namespace ConfigLevel {
+        export const $gtype: GObject.GType<ConfigLevel>;
+    }
+
     /**
      * Priority level of a config file.
      * These priority levels correspond to the natural escalation logic
@@ -72,6 +84,10 @@ export namespace Ggit {
          */
         HIGHEST,
     }
+    export namespace DeltaType {
+        export const $gtype: GObject.GType<DeltaType>;
+    }
+
     /**
      * Describes the type of change the delta is.
      */
@@ -112,6 +128,10 @@ export namespace Ggit {
         UNREADABLE,
         CONFLICTED,
     }
+    export namespace DiffBinaryType {
+        export const $gtype: GObject.GType<DiffBinaryType>;
+    }
+
     /**
      * When producing a binary diff, the binary data returned will be
      * either the deflated full ("literal") contents of the file, or
@@ -123,6 +143,10 @@ export namespace Ggit {
         LITERAL,
         DELTA,
     }
+    export namespace DiffFormatType {
+        export const $gtype: GObject.GType<DiffFormatType>;
+    }
+
     /**
      * Possible output formats for diff data.
      */
@@ -148,6 +172,10 @@ export namespace Ggit {
          */
         NAME_STATUS,
     }
+    export namespace DiffLineType {
+        export const $gtype: GObject.GType<DiffLineType>;
+    }
+
     /**
      * These values describe where a line came from and will be passed to
      * the #GgitDiffLineCallback when iterating over a diff.
@@ -193,6 +221,10 @@ export namespace Ggit {
          */
         BINARY,
     }
+    export namespace Direction {
+        export const $gtype: GObject.GType<Direction>;
+    }
+
     enum Direction {
         FETCH,
         PUSH,
@@ -249,6 +281,10 @@ export namespace Ggit {
         static quark(): GLib.Quark;
     }
 
+    export namespace FileMode {
+        export const $gtype: GObject.GType<FileMode>;
+    }
+
     enum FileMode {
         UNREADABLE,
         TREE,
@@ -257,12 +293,20 @@ export namespace Ggit {
         LINK,
         COMMIT,
     }
+    export namespace MergeFileFavor {
+        export const $gtype: GObject.GType<MergeFileFavor>;
+    }
+
     enum MergeFileFavor {
         NORMAL,
         OURS,
         THEIRS,
         UNION,
     }
+    export namespace PackbuilderStage {
+        export const $gtype: GObject.GType<PackbuilderStage>;
+    }
+
     /**
      * Valid stages for pack building.
      */
@@ -276,6 +320,10 @@ export namespace Ggit {
          */
         DELTAFICATION,
     }
+    export namespace ProxyType {
+        export const $gtype: GObject.GType<ProxyType>;
+    }
+
     /**
      * The type of proxy to use.
      */
@@ -293,6 +341,10 @@ export namespace Ggit {
          */
         SPECIFIED,
     }
+    export namespace RebaseOperationType {
+        export const $gtype: GObject.GType<RebaseOperationType>;
+    }
+
     /**
      * Type of rebase operation in-progress.
      */
@@ -329,6 +381,10 @@ export namespace Ggit {
          */
         EXEC,
     }
+    export namespace RefType {
+        export const $gtype: GObject.GType<RefType>;
+    }
+
     /**
      * Describes the type a reference is.
      */
@@ -350,6 +406,10 @@ export namespace Ggit {
          */
         LISTALL,
     }
+    export namespace RemoteCompletionType {
+        export const $gtype: GObject.GType<RemoteCompletionType>;
+    }
+
     /**
      * Argument to the completion callback which tells it which operation finished.
      */
@@ -367,6 +427,10 @@ export namespace Ggit {
          */
         ERROR,
     }
+    export namespace RemoteDownloadTagsType {
+        export const $gtype: GObject.GType<RemoteDownloadTagsType>;
+    }
+
     /**
      * Automatic tag following option
      *
@@ -391,6 +455,10 @@ export namespace Ggit {
          */
         ALL,
     }
+    export namespace ResetType {
+        export const $gtype: GObject.GType<ResetType>;
+    }
+
     /**
      * Describes the type of reset to perform.
      */
@@ -409,6 +477,10 @@ export namespace Ggit {
          */
         HARD,
     }
+    export namespace StatusShow {
+        export const $gtype: GObject.GType<StatusShow>;
+    }
+
     /**
      * Show options for #ggit_repository_file_status_foreach. Determines which
      * files are included in the status.
@@ -428,6 +500,10 @@ export namespace Ggit {
          */
         WORKDIR_ONLY,
     }
+    export namespace SubmoduleIgnore {
+        export const $gtype: GObject.GType<SubmoduleIgnore>;
+    }
+
     /**
      * Describes which submodules should be ignored.
      */
@@ -453,6 +529,10 @@ export namespace Ggit {
          */
         ALL,
     }
+    export namespace SubmoduleRecurse {
+        export const $gtype: GObject.GType<SubmoduleRecurse>;
+    }
+
     /**
      * Options for submodule recurse.
      * Represents the value of `submodule.$name.fetchRecurseSubmodules`
@@ -472,6 +552,10 @@ export namespace Ggit {
          */
         ONDEMAND,
     }
+    export namespace SubmoduleUpdate {
+        export const $gtype: GObject.GType<SubmoduleUpdate>;
+    }
+
     /**
      * Describes how a submodule should be updated.
      */
@@ -500,6 +584,10 @@ export namespace Ggit {
          */
         DEFAULT,
     }
+    export namespace TreeWalkMode {
+        export const $gtype: GObject.GType<TreeWalkMode>;
+    }
+
     /**
      * Describes in which order a tree walk should be performed.
      */
@@ -618,6 +706,10 @@ export namespace Ggit {
     interface TreeWalkCallback {
         (root: string, entry: TreeEntry): number;
     }
+    export namespace AttributeCheckFlags {
+        export const $gtype: GObject.GType<AttributeCheckFlags>;
+    }
+
     /**
      * Attribute check flags indicate the order in which to check for gitattributes.
      * git core uses `GGIT_ATTRIBUTE_CHECK_FILE_THEN_INDEX` for all operations,
@@ -641,6 +733,10 @@ export namespace Ggit {
          */
         NO_SYSTEM,
     }
+    export namespace BlameFlags {
+        export const $gtype: GObject.GType<BlameFlags>;
+    }
+
     enum BlameFlags {
         /**
          * Normal blame, the default.
@@ -652,6 +748,10 @@ export namespace Ggit {
          */
         TRACK_COPIES_SAME_FILE,
     }
+    export namespace CheckoutNotifyFlags {
+        export const $gtype: GObject.GType<CheckoutNotifyFlags>;
+    }
+
     enum CheckoutNotifyFlags {
         NONE,
         CONFLICT,
@@ -661,6 +761,10 @@ export namespace Ggit {
         IGNORED,
         ALL,
     }
+    export namespace CheckoutStrategy {
+        export const $gtype: GObject.GType<CheckoutStrategy>;
+    }
+
     enum CheckoutStrategy {
         NONE,
         SAFE,
@@ -685,6 +789,10 @@ export namespace Ggit {
         UPDATE_SUBMODULES,
         UPDATE_SUBMODULES_IF_CHANGED,
     }
+    export namespace CreateFlags {
+        export const $gtype: GObject.GType<CreateFlags>;
+    }
+
     /**
      * Describes how something should be created.
      */
@@ -698,6 +806,10 @@ export namespace Ggit {
          */
         FORCE,
     }
+    export namespace Credtype {
+        export const $gtype: GObject.GType<Credtype>;
+    }
+
     enum Credtype {
         USERPASS_PLAINTEXT,
         SSH_KEY,
@@ -705,6 +817,10 @@ export namespace Ggit {
         DEFAULT,
         SSH_INTERACTIVE,
     }
+    export namespace DiffFindFlags {
+        export const $gtype: GObject.GType<DiffFindFlags>;
+    }
+
     enum DiffFindFlags {
         FIND_BY_CONFIG,
         FIND_RENAMES,
@@ -723,6 +839,10 @@ export namespace Ggit {
         BREAK_REWRITES_FOR_RENAMES_ONLY,
         FIND_REMOVE_UNMODIFIED,
     }
+    export namespace DiffFlag {
+        export const $gtype: GObject.GType<DiffFlag>;
+    }
+
     /**
      * Describes the diff file and/or delta flags
      */
@@ -740,10 +860,18 @@ export namespace Ggit {
          */
         VALID_ID,
     }
+    export namespace DiffFormatEmailFlags {
+        export const $gtype: GObject.GType<DiffFormatEmailFlags>;
+    }
+
     enum DiffFormatEmailFlags {
         NONE,
         EXCLUDE_SUBJECT_PATCH_MARKER,
     }
+    export namespace DiffOption {
+        export const $gtype: GObject.GType<DiffOption>;
+    }
+
     /**
      * How the diff should be generated.
      */
@@ -851,11 +979,19 @@ export namespace Ggit {
          */
         SHOW_BINARY,
     }
+    export namespace FeatureFlags {
+        export const $gtype: GObject.GType<FeatureFlags>;
+    }
+
     enum FeatureFlags {
         THREADS,
         HTTPS,
         SSH,
     }
+    export namespace MergeFileFlags {
+        export const $gtype: GObject.GType<MergeFileFlags>;
+    }
+
     /**
      * GGIT_MERGE_FILE_DEFAULT: Defaults.
      * GGIT_MERGE_FILE_STYLE_MERGE: Create standard conflicted merge files.
@@ -878,6 +1014,10 @@ export namespace Ggit {
         DIFF_PATIENCE,
         DIFF_MINIMAL,
     }
+    export namespace MergeFlags {
+        export const $gtype: GObject.GType<MergeFlags>;
+    }
+
     enum MergeFlags {
         /**
          * detect renames that occur between the common
@@ -903,6 +1043,10 @@ export namespace Ggit {
          */
         NO_RECURSIVE,
     }
+    export namespace SortMode {
+        export const $gtype: GObject.GType<SortMode>;
+    }
+
     /**
      * The type of sorting mode for the revision walker.
      */
@@ -932,6 +1076,10 @@ export namespace Ggit {
          */
         REVERSE,
     }
+    export namespace StashFlags {
+        export const $gtype: GObject.GType<StashFlags>;
+    }
+
     /**
      * Describes how a stash should be applied.
      */
@@ -956,6 +1104,10 @@ export namespace Ggit {
          */
         INCLUDE_IGNORED,
     }
+    export namespace StatusFlags {
+        export const $gtype: GObject.GType<StatusFlags>;
+    }
+
     /**
      * Describes a file's status.
      */
@@ -999,6 +1151,10 @@ export namespace Ggit {
         IGNORED,
         CONFLICTED,
     }
+    export namespace StatusOption {
+        export const $gtype: GObject.GType<StatusOption>;
+    }
+
     /**
      * GGIT_STATUS_OPTION_INCLUDE_UNTRACKED: include untracked files (default).
      * GGIT_STATUS_OPTION_INCLUDE_IGNORED: include ignored files (default).
@@ -1032,6 +1188,10 @@ export namespace Ggit {
         SORT_CASE_INSENSITIVELY,
         DEFAULT,
     }
+    export namespace SubmoduleStatus {
+        export const $gtype: GObject.GType<SubmoduleStatus>;
+    }
+
     /**
      * FIXME
      */

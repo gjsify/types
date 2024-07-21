@@ -18,6 +18,10 @@ export namespace UPowerGlib {
      * UPowerGlib-1.0
      */
 
+    export namespace DeviceKind {
+        export const $gtype: GObject.GType<DeviceKind>;
+    }
+
     /**
      * The device type.
      */
@@ -36,6 +40,10 @@ export namespace UPowerGlib {
         COMPUTER,
         LAST,
     }
+    export namespace DeviceLevel {
+        export const $gtype: GObject.GType<DeviceLevel>;
+    }
+
     /**
      * The warning level of a battery.
      */
@@ -48,6 +56,10 @@ export namespace UPowerGlib {
         ACTION,
         LAST,
     }
+    export namespace DeviceState {
+        export const $gtype: GObject.GType<DeviceState>;
+    }
+
     /**
      * The device state.
      */
@@ -61,6 +73,10 @@ export namespace UPowerGlib {
         PENDING_DISCHARGE,
         LAST,
     }
+    export namespace DeviceTechnology {
+        export const $gtype: GObject.GType<DeviceTechnology>;
+    }
+
     /**
      * The device technology.
      */

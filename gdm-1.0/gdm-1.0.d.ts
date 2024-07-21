@@ -18,6 +18,10 @@ export namespace Gdm {
      * Gdm-1.0
      */
 
+    export namespace ClientError {
+        export const $gtype: GObject.GType<ClientError>;
+    }
+
     enum ClientError {
         CLIENT_ERROR_GENERIC,
     }

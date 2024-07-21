@@ -20,6 +20,10 @@ export namespace Kkc {
      * Kkc-1.0
      */
 
+    export namespace KanaMode {
+        export const $gtype: GObject.GType<KanaMode>;
+    }
+
     enum KanaMode {
         HIRAGANA,
         KATAKANA,
@@ -27,16 +31,28 @@ export namespace Kkc {
         LATIN,
         WIDE_LATIN,
     }
+    export namespace PunctuationStyle {
+        export const $gtype: GObject.GType<PunctuationStyle>;
+    }
+
     enum PunctuationStyle {
         JA_JA,
         EN_EN,
         JA_EN,
         EN_JA,
     }
+    export namespace DictionaryCallbackReturn {
+        export const $gtype: GObject.GType<DictionaryCallbackReturn>;
+    }
+
     enum DictionaryCallbackReturn {
         CONTINUE,
         REMOVE,
     }
+    export namespace InputMode {
+        export const $gtype: GObject.GType<InputMode>;
+    }
+
     enum InputMode {
         HIRAGANA,
         KATAKANA,
@@ -2202,6 +2218,10 @@ export namespace Kkc {
     interface GetTime {
         (): number;
     }
+    export namespace ModifierType {
+        export const $gtype: GObject.GType<ModifierType>;
+    }
+
     enum ModifierType {
         NONE,
         SHIFT_MASK,

@@ -25,6 +25,10 @@ export namespace EDataBook {
      * EDataBook-1.2
      */
 
+    export namespace BookBackendSexpCompareKind {
+        export const $gtype: GObject.GType<BookBackendSexpCompareKind>;
+    }
+
     /**
      * What compare function should be used when comparing two values.
      */
@@ -50,6 +54,10 @@ export namespace EDataBook {
          */
         IS,
     }
+    export namespace BookCacheCursorOrigin {
+        export const $gtype: GObject.GType<BookCacheCursorOrigin>;
+    }
+
     /**
      * Specifies the start position to in the list of traversed contacts
      * in calls to e_book_cache_cursor_step().
@@ -71,6 +79,10 @@ export namespace EDataBook {
          */
         END,
     }
+    export namespace BookSqliteError {
+        export const $gtype: GObject.GType<BookSqliteError>;
+    }
+
     /**
      * Defines the types of possible errors reported by the #EBookSqlite
      */
@@ -111,6 +123,10 @@ export namespace EDataBook {
          */
         LOAD,
     }
+    export namespace bSqlChangeType {
+        export const $gtype: GObject.GType<bSqlChangeType>;
+    }
+
     /**
      * Indicates the type of change which occurred in an #EbSqlChangeCallback
      */
@@ -128,6 +144,10 @@ export namespace EDataBook {
          */
         LAST,
     }
+    export namespace bSqlCursorOrigin {
+        export const $gtype: GObject.GType<bSqlCursorOrigin>;
+    }
+
     /**
      * Specifies the start position to in the list of traversed contacts
      * in calls to e_book_sqlite_cursor_step().
@@ -149,6 +169,10 @@ export namespace EDataBook {
          */
         END,
     }
+    export namespace bSqlLockType {
+        export const $gtype: GObject.GType<bSqlLockType>;
+    }
+
     /**
      * Indicates the type of lock requested in e_book_sqlite_lock()
      */
@@ -162,6 +186,10 @@ export namespace EDataBook {
          */
         WRITE,
     }
+    export namespace bSqlUnlockAction {
+        export const $gtype: GObject.GType<bSqlUnlockAction>;
+    }
+
     /**
      * Indicates what type of action to take while unlocking the sqlite with e_book_sqlite_unlock()
      *
@@ -307,6 +335,10 @@ export namespace EDataBook {
     interface bSqlVCardCallback {
         (uid: string, extra: string): string;
     }
+    export namespace BookCacheCursorStepFlags {
+        export const $gtype: GObject.GType<BookCacheCursorStepFlags>;
+    }
+
     /**
      * Defines the behaviour of e_book_cache_cursor_step().
      */
@@ -320,6 +352,10 @@ export namespace EDataBook {
          */
         FETCH,
     }
+    export namespace bSqlCursorStepFlags {
+        export const $gtype: GObject.GType<bSqlCursorStepFlags>;
+    }
+
     /**
      * Defines the behaviour of e_book_sqlite_cursor_step().
      */

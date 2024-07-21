@@ -16,6 +16,10 @@ export namespace GUPnPIgd {
      * GUPnPIgd-1.0
      */
 
+    export namespace SimpleIgdError {
+        export const $gtype: GObject.GType<SimpleIgdError>;
+    }
+
     /**
      * Errors coming out of the GUPnPSimpleIGD object.
      */

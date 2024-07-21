@@ -17,6 +17,10 @@ export namespace Atspi {
      * Atspi-2.0
      */
 
+    export namespace CollectionMatchType {
+        export const $gtype: GObject.GType<CollectionMatchType>;
+    }
+
     /**
      * Enumeration used by #AtspiMatchRule to specify
      * how to interpret #AtspiAccessible objects.
@@ -51,6 +55,10 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+    export namespace CollectionSortOrder {
+        export const $gtype: GObject.GType<CollectionSortOrder>;
+    }
+
     /**
      * Enumeration used by interface #AtspiCollection to specify
      * the way #AtspiAccesible objects should be sorted.
@@ -90,6 +98,10 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+    export namespace CollectionTreeTraversalType {
+        export const $gtype: GObject.GType<CollectionTreeTraversalType>;
+    }
+
     /**
      * Enumeration used by interface #AtspiCollection to specify
      * restrictions on #AtspiAccesible objects to be traversed.
@@ -113,6 +125,10 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+    export namespace ComponentLayer {
+        export const $gtype: GObject.GType<ComponentLayer>;
+    }
+
     /**
      * The #AtspiComponentLayer of an #AtspiComponent instance indicates its
      * relative stacking order with respect to the onscreen visual representation
@@ -179,6 +195,10 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+    export namespace CoordType {
+        export const $gtype: GObject.GType<CoordType>;
+    }
+
     /**
      * Enumeration used by #AtspiComponent, #AtspiImage, and #AtspiText interfaces
      * to specify whether coordinates are relative to the window or the screen.
@@ -199,6 +219,10 @@ export namespace Atspi {
          */
         PARENT,
     }
+    export namespace EventType {
+        export const $gtype: GObject.GType<EventType>;
+    }
+
     /**
      * Enumeration used to specify the event types of interest to an
      * #AtspiEventListener, or
@@ -226,6 +250,10 @@ export namespace Atspi {
          */
         BUTTON_RELEASED_EVENT,
     }
+    export namespace KeyEventType {
+        export const $gtype: GObject.GType<KeyEventType>;
+    }
+
     /**
      * Deprecated. Should not be used.
      */
@@ -239,6 +267,10 @@ export namespace Atspi {
          */
         RELEASED,
     }
+    export namespace KeySynthType {
+        export const $gtype: GObject.GType<KeySynthType>;
+    }
+
     /**
      * Enumeration used when synthesizing keyboard input via
      * #atspi_generate_keyboard_event.
@@ -289,6 +321,10 @@ export namespace Atspi {
          */
         UNLOCKMODIFIERS,
     }
+    export namespace Live {
+        export const $gtype: GObject.GType<Live>;
+    }
+
     /**
      * Enumeration used to indicate a type of live region and how assertive it
      * should be in terms of speaking notifications. Currently, this is only used
@@ -309,6 +345,10 @@ export namespace Atspi {
          */
         ASSERTIVE,
     }
+    export namespace LocaleType {
+        export const $gtype: GObject.GType<LocaleType>;
+    }
+
     /**
      * Used by interfaces #AtspiText and #AtspiDocument, this
      * enumeration corresponds to the POSIX 'setlocale' enum values.
@@ -343,6 +383,10 @@ export namespace Atspi {
          */
         TIME,
     }
+    export namespace ModifierType {
+        export const $gtype: GObject.GType<ModifierType>;
+    }
+
     enum ModifierType {
         /**
          * The left or right 'Shift' key.
@@ -383,6 +427,10 @@ export namespace Atspi {
          */
         NUMLOCK,
     }
+    export namespace RelationType {
+        export const $gtype: GObject.GType<RelationType>;
+    }
+
     /**
      * #AtspiRelationType specifies a relationship between objects
      * (possibly one-to-many
@@ -558,6 +606,10 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+    export namespace Role {
+        export const $gtype: GObject.GType<Role>;
+    }
+
     /**
      * Enumeration used by interface #AtspiAccessible to specify the role
      * of an #AtspiAccessible object.
@@ -1294,6 +1346,10 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+    export namespace ScrollType {
+        export const $gtype: GObject.GType<ScrollType>;
+    }
+
     /**
      * Enumeration used by interface #AtspiAccessible to specify where an
      * #AtspiAccessible object should be placed on the screen when using scroll_to.
@@ -1334,6 +1390,10 @@ export namespace Atspi {
          */
         ANYWHERE,
     }
+    export namespace StateType {
+        export const $gtype: GObject.GType<StateType>;
+    }
+
     /**
      * Enumeration used by various interfaces indicating every possible state
      * an #AtspiAccesible object can assume.
@@ -1639,6 +1699,10 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+    export namespace TextBoundaryType {
+        export const $gtype: GObject.GType<TextBoundaryType>;
+    }
+
     /**
      * Specifies the boundary conditions determining a run of text as returned from
      * #atspi_text_get_text_at_offset, #atspi_text_get_text_after_offset, and
@@ -1700,6 +1764,10 @@ export namespace Atspi {
          */
         LINE_END,
     }
+    export namespace TextClipType {
+        export const $gtype: GObject.GType<TextClipType>;
+    }
+
     /**
      * Enumeration used by interface #AtspiText to indicate
      * how to treat characters intersecting bounding boxes.
@@ -1725,6 +1793,10 @@ export namespace Atspi {
          */
         BOTH,
     }
+    export namespace TextGranularity {
+        export const $gtype: GObject.GType<TextGranularity>;
+    }
+
     /**
      * Text granularity types used for specifying the granularity of the region of
      * text we are interested in.
@@ -2065,6 +2137,10 @@ export namespace Atspi {
     interface KeyCallback {
         (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void;
     }
+    export namespace Cache {
+        export const $gtype: GObject.GType<Cache>;
+    }
+
     enum Cache {
         NONE,
         PARENT,
@@ -2079,6 +2155,10 @@ export namespace Atspi {
         DEFAULT,
         UNDEFINED,
     }
+    export namespace KeyListenerSyncType {
+        export const $gtype: GObject.GType<KeyListenerSyncType>;
+    }
+
     /**
      * Specifies the type of a key listener event.
      * The values above can and should be bitwise-'OR'-ed

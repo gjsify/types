@@ -18,6 +18,10 @@ export namespace Fep {
      * Fep-1.0
      */
 
+    export namespace GAttrType {
+        export const $gtype: GObject.GType<GAttrType>;
+    }
+
     enum GAttrType {
         /**
          * Decorate with underline
@@ -48,6 +52,10 @@ export namespace Fep {
          */
         BLINK,
     }
+    export namespace GAttrUnderline {
+        export const $gtype: GObject.GType<GAttrUnderline>;
+    }
+
     enum GAttrUnderline {
         /**
          * No underline
@@ -70,6 +78,10 @@ export namespace Fep {
          */
         ERROR,
     }
+    export namespace GEventType {
+        export const $gtype: GObject.GType<GEventType>;
+    }
+
     enum GEventType {
         /**
          * Nothing happend; used to indicate error

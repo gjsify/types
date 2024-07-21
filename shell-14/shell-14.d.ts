@@ -43,16 +43,28 @@ export namespace Shell {
      * Shell-14
      */
 
+    export namespace AppLaunchGpu {
+        export const $gtype: GObject.GType<AppLaunchGpu>;
+    }
+
     enum AppLaunchGpu {
         APP_PREF,
         DISCRETE,
         DEFAULT,
     }
+    export namespace AppState {
+        export const $gtype: GObject.GType<AppState>;
+    }
+
     enum AppState {
         STOPPED,
         STARTING,
         RUNNING,
     }
+    export namespace BlurMode {
+        export const $gtype: GObject.GType<BlurMode>;
+    }
+
     /**
      * The mode of blurring of the effect.
      */
@@ -66,11 +78,19 @@ export namespace Shell {
          */
         BACKGROUND,
     }
+    export namespace NetworkAgentResponse {
+        export const $gtype: GObject.GType<NetworkAgentResponse>;
+    }
+
     enum NetworkAgentResponse {
         CONFIRMED,
         USER_CANCELED,
         INTERNAL_ERROR,
     }
+    export namespace SnippetHook {
+        export const $gtype: GObject.GType<SnippetHook>;
+    }
+
     /**
      * Temporary hack to work around Cogl not exporting CoglSnippetHook in
      * the 1.0 API. Don't use.
@@ -327,6 +347,10 @@ export namespace Shell {
     interface PerfStatisticsCallback {
         (perf_log: PerfLog, data?: any | null): void;
     }
+    export namespace ActionMode {
+        export const $gtype: GObject.GType<ActionMode>;
+    }
+
     /**
      * Controls in which GNOME Shell states an action (like keybindings and gestures)
      * should be handled.

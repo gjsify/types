@@ -27,6 +27,10 @@ export namespace OsmGpsMap {
      * OsmGpsMap-1.0
      */
 
+    export namespace MapKey_t {
+        export const $gtype: GObject.GType<MapKey_t>;
+    }
+
     enum MapKey_t {
         FULLSCREEN,
         ZOOMIN,
@@ -37,6 +41,10 @@ export namespace OsmGpsMap {
         RIGHT,
         MAX,
     }
+    export namespace MapSource_t {
+        export const $gtype: GObject.GType<MapSource_t>;
+    }
+
     enum MapSource_t {
         NULL,
         OPENSTREETMAP,
