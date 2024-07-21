@@ -18,75 +18,101 @@ export namespace Gst {
      * Gst-0.10
      */
 
-    export namespace ActivateMode {
-        export const $gtype: GObject.GType<ActivateMode>;
-    }
+    /**
+     * The status of a GstPad. After activating a pad, which usually happens when the
+     * parent element goes from READY to PAUSED, the GstActivateMode defines if the
+     * pad operates in push or pull mode.
+     */
 
     /**
      * The status of a GstPad. After activating a pad, which usually happens when the
      * parent element goes from READY to PAUSED, the GstActivateMode defines if the
      * pad operates in push or pull mode.
      */
+    export namespace ActivateMode {
+        export const $gtype: GObject.GType<ActivateMode>;
+    }
+
     enum ActivateMode {
         NONE,
         PUSH,
         PULL,
     }
-    export namespace BufferListItem {
-        export const $gtype: GObject.GType<BufferListItem>;
-    }
+    /**
+     * The result of the #GstBufferListFunc.
+     */
 
     /**
      * The result of the #GstBufferListFunc.
      */
+    export namespace BufferListItem {
+        export const $gtype: GObject.GType<BufferListItem>;
+    }
+
     enum BufferListItem {
         CONTINUE,
         SKIP_GROUP,
         END,
     }
-    export namespace BufferingMode {
-        export const $gtype: GObject.GType<BufferingMode>;
-    }
+    /**
+     * The different types of buffering methods.
+     */
 
     /**
      * The different types of buffering methods.
      */
+    export namespace BufferingMode {
+        export const $gtype: GObject.GType<BufferingMode>;
+    }
+
     enum BufferingMode {
         STREAM,
         DOWNLOAD,
         TIMESHIFT,
         LIVE,
     }
-    export namespace BusSyncReply {
-        export const $gtype: GObject.GType<BusSyncReply>;
-    }
+    /**
+     * The result values for a GstBusSyncHandler.
+     */
 
     /**
      * The result values for a GstBusSyncHandler.
      */
+    export namespace BusSyncReply {
+        export const $gtype: GObject.GType<BusSyncReply>;
+    }
+
     enum BusSyncReply {
         DROP,
         PASS,
         ASYNC,
     }
-    export namespace ClockEntryType {
-        export const $gtype: GObject.GType<ClockEntryType>;
-    }
+    /**
+     * The type of the clock entry
+     */
 
     /**
      * The type of the clock entry
      */
+    export namespace ClockEntryType {
+        export const $gtype: GObject.GType<ClockEntryType>;
+    }
+
     enum ClockEntryType {
         SINGLE,
         PERIODIC,
     }
-    export namespace ClockReturn {
-        export const $gtype: GObject.GType<ClockReturn>;
-    }
+    /**
+     * The return value of a clock operation.
+     */
 
     /**
      * The return value of a clock operation.
      */
+    export namespace ClockReturn {
+        export const $gtype: GObject.GType<ClockReturn>;
+    }
+
     enum ClockReturn {
         OK,
         EARLY,
@@ -96,24 +122,32 @@ export namespace Gst {
         ERROR,
         UNSUPPORTED,
     }
-    export namespace ClockType {
-        export const $gtype: GObject.GType<ClockType>;
-    }
+    /**
+     * The different kind of clocks.
+     */
 
     /**
      * The different kind of clocks.
      */
+    export namespace ClockType {
+        export const $gtype: GObject.GType<ClockType>;
+    }
+
     enum ClockType {
         REALTIME,
         MONOTONIC,
     }
-    export namespace CoreError {
-        export const $gtype: GObject.GType<CoreError>;
-    }
+    /**
+     * Core errors are errors inside the core GStreamer library.
+     */
 
     /**
      * Core errors are errors inside the core GStreamer library.
      */
+    export namespace CoreError {
+        export const $gtype: GObject.GType<CoreError>;
+    }
+
     enum CoreError {
         FAILED,
         TOO_LAZY,
@@ -131,14 +165,19 @@ export namespace Gst {
         DISABLED,
         NUM_ERRORS,
     }
-    export namespace DebugColorFlags {
-        export const $gtype: GObject.GType<DebugColorFlags>;
-    }
+    /**
+     * These are some terminal style flags you can use when creating your
+     * debugging categories to make them stand out in debugging output.
+     */
 
     /**
      * These are some terminal style flags you can use when creating your
      * debugging categories to make them stand out in debugging output.
      */
+    export namespace DebugColorFlags {
+        export const $gtype: GObject.GType<DebugColorFlags>;
+    }
+
     enum DebugColorFlags {
         FG_BLACK,
         FG_RED,
@@ -159,14 +198,19 @@ export namespace Gst {
         BOLD,
         UNDERLINE,
     }
-    export namespace DebugLevel {
-        export const $gtype: GObject.GType<DebugLevel>;
-    }
+    /**
+     * The level defines the importance of a debugging message. The more important a
+     * message is, the greater the probability that the debugging system outputs it.
+     */
 
     /**
      * The level defines the importance of a debugging message. The more important a
      * message is, the greater the probability that the debugging system outputs it.
      */
+    export namespace DebugLevel {
+        export const $gtype: GObject.GType<DebugLevel>;
+    }
+
     enum DebugLevel {
         NONE,
         ERROR,
@@ -179,9 +223,14 @@ export namespace Gst {
         MEMDUMP,
         COUNT,
     }
-    export namespace EventType {
-        export const $gtype: GObject.GType<EventType>;
-    }
+    /**
+     * #GstEventType lists the standard event types that can be sent in a pipeline.
+     * The custom event types can be used for private messages between elements
+     * that can't be expressed using normal
+     * GStreamer buffer passing semantics. Custom events carry an arbitrary
+     * #GstStructure.
+     * Specific custom events are distinguished by the name of the structure.
+     */
 
     /**
      * #GstEventType lists the standard event types that can be sent in a pipeline.
@@ -191,6 +240,10 @@ export namespace Gst {
      * #GstStructure.
      * Specific custom events are distinguished by the name of the structure.
      */
+    export namespace EventType {
+        export const $gtype: GObject.GType<EventType>;
+    }
+
     enum EventType {
         UNKNOWN,
         FLUSH_START,
@@ -211,9 +264,22 @@ export namespace Gst {
         CUSTOM_BOTH,
         CUSTOM_BOTH_OOB,
     }
-    export namespace FlowReturn {
-        export const $gtype: GObject.GType<FlowReturn>;
-    }
+    /**
+     * sent yet) (unused/unimplemented).
+     * this error should post an error message with more
+     * details.
+     * this (and higher) to define custom success
+     * codes. Since 0.10.7.
+     * custom success code to this to avoid compiler
+     * warnings). Since 0.10.29.
+     * this (and lower) to define custom error codes.
+     * Since 0.10.7.
+     * custom error code to this to avoid compiler
+     * warnings). Since 0.10.29.
+     * The result of passing data to a pad.
+     * Note that the custom return values should not be exposed outside of the
+     * element scope and are available since 0.10.7.
+     */
 
     /**
      * sent yet) (unused/unimplemented).
@@ -231,6 +297,10 @@ export namespace Gst {
      * Note that the custom return values should not be exposed outside of the
      * element scope and are available since 0.10.7.
      */
+    export namespace FlowReturn {
+        export const $gtype: GObject.GType<FlowReturn>;
+    }
+
     enum FlowReturn {
         CUSTOM_SUCCESS_2,
         CUSTOM_SUCCESS_1,
@@ -247,13 +317,17 @@ export namespace Gst {
         CUSTOM_ERROR_1,
         CUSTOM_ERROR_2,
     }
-    export namespace Format {
-        export const $gtype: GObject.GType<Format>;
-    }
+    /**
+     * Standard predefined formats
+     */
 
     /**
      * Standard predefined formats
      */
+    export namespace Format {
+        export const $gtype: GObject.GType<Format>;
+    }
+
     enum Format {
         UNDEFINED,
         DEFAULT,
@@ -262,88 +336,117 @@ export namespace Gst {
         BUFFERS,
         PERCENT,
     }
-    export namespace IndexCertainty {
-        export const $gtype: GObject.GType<IndexCertainty>;
-    }
+    /**
+     * The certainty of a group in the index.
+     */
 
     /**
      * The certainty of a group in the index.
      */
+    export namespace IndexCertainty {
+        export const $gtype: GObject.GType<IndexCertainty>;
+    }
+
     enum IndexCertainty {
         UNKNOWN,
         CERTAIN,
         FUZZY,
     }
-    export namespace IndexEntryType {
-        export const $gtype: GObject.GType<IndexEntryType>;
-    }
+    /**
+     * The different types of entries in the index.
+     */
 
     /**
      * The different types of entries in the index.
      */
+    export namespace IndexEntryType {
+        export const $gtype: GObject.GType<IndexEntryType>;
+    }
+
     enum IndexEntryType {
         ID,
         ASSOCIATION,
         OBJECT,
         FORMAT,
     }
-    export namespace IndexLookupMethod {
-        export const $gtype: GObject.GType<IndexLookupMethod>;
-    }
+    /**
+     * Specify the method to find an index entry in the index.
+     */
 
     /**
      * Specify the method to find an index entry in the index.
      */
+    export namespace IndexLookupMethod {
+        export const $gtype: GObject.GType<IndexLookupMethod>;
+    }
+
     enum IndexLookupMethod {
         EXACT,
         BEFORE,
         AFTER,
     }
-    export namespace IndexResolverMethod {
-        export const $gtype: GObject.GType<IndexResolverMethod>;
-    }
+    /**
+     * The method used to resolve index writers
+     */
 
     /**
      * The method used to resolve index writers
      */
+    export namespace IndexResolverMethod {
+        export const $gtype: GObject.GType<IndexResolverMethod>;
+    }
+
     enum IndexResolverMethod {
         CUSTOM,
         GTYPE,
         PATH,
     }
-    export namespace IteratorItem {
-        export const $gtype: GObject.GType<IteratorItem>;
-    }
+    /**
+     * The result of a #GstIteratorItemFunction.
+     */
 
     /**
      * The result of a #GstIteratorItemFunction.
      */
+    export namespace IteratorItem {
+        export const $gtype: GObject.GType<IteratorItem>;
+    }
+
     enum IteratorItem {
         SKIP,
         PASS,
         END,
     }
-    export namespace IteratorResult {
-        export const $gtype: GObject.GType<IteratorResult>;
-    }
+    /**
+     * The result of gst_iterator_next().
+     */
 
     /**
      * The result of gst_iterator_next().
      */
+    export namespace IteratorResult {
+        export const $gtype: GObject.GType<IteratorResult>;
+    }
+
     enum IteratorResult {
         DONE,
         OK,
         RESYNC,
         ERROR,
     }
-    export namespace LibraryError {
-        export const $gtype: GObject.GType<LibraryError>;
-    }
+    /**
+     * Library errors are for errors from the library being used by elements
+     * (initializing, finalizing, settings, ...)
+     */
 
     /**
      * Library errors are for errors from the library being used by elements
      * (initializing, finalizing, settings, ...)
      */
+    export namespace LibraryError {
+        export const $gtype: GObject.GType<LibraryError>;
+    }
+
     enum LibraryError {
         FAILED,
         TOO_LAZY,
@@ -353,25 +456,33 @@ export namespace Gst {
         ENCODE,
         NUM_ERRORS,
     }
-    export namespace PadDirection {
-        export const $gtype: GObject.GType<PadDirection>;
-    }
+    /**
+     * The direction of a pad.
+     */
 
     /**
      * The direction of a pad.
      */
+    export namespace PadDirection {
+        export const $gtype: GObject.GType<PadDirection>;
+    }
+
     enum PadDirection {
         UNKNOWN,
         SRC,
         SINK,
     }
-    export namespace PadLinkReturn {
-        export const $gtype: GObject.GType<PadLinkReturn>;
-    }
+    /**
+     * Result values from gst_pad_link and friends.
+     */
 
     /**
      * Result values from gst_pad_link and friends.
      */
+    export namespace PadLinkReturn {
+        export const $gtype: GObject.GType<PadLinkReturn>;
+    }
+
     enum PadLinkReturn {
         OK,
         WRONG_HIERARCHY,
@@ -381,25 +492,33 @@ export namespace Gst {
         NOSCHED,
         REFUSED,
     }
-    export namespace PadPresence {
-        export const $gtype: GObject.GType<PadPresence>;
-    }
+    /**
+     * Indicates when this pad will become available.
+     */
 
     /**
      * Indicates when this pad will become available.
      */
+    export namespace PadPresence {
+        export const $gtype: GObject.GType<PadPresence>;
+    }
+
     enum PadPresence {
         ALWAYS,
         SOMETIMES,
         REQUEST,
     }
-    export namespace ParseError {
-        export const $gtype: GObject.GType<ParseError>;
-    }
+    /**
+     * The different parsing errors that can occur.
+     */
 
     /**
      * The different parsing errors that can occur.
      */
+    export namespace ParseError {
+        export const $gtype: GObject.GType<ParseError>;
+    }
+
     enum ParseError {
         SYNTAX,
         NO_SUCH_ELEMENT,
@@ -409,25 +528,33 @@ export namespace Gst {
         EMPTY_BIN,
         EMPTY,
     }
-    export namespace PluginError {
-        export const $gtype: GObject.GType<PluginError>;
-    }
+    /**
+     * The plugin loading errors
+     */
 
     /**
      * The plugin loading errors
      */
+    export namespace PluginError {
+        export const $gtype: GObject.GType<PluginError>;
+    }
+
     enum PluginError {
         MODULE,
         DEPENDENCIES,
         NAME_MISMATCH,
     }
-    export namespace QueryType {
-        export const $gtype: GObject.GType<QueryType>;
-    }
+    /**
+     * Standard predefined Query types
+     */
 
     /**
      * Standard predefined Query types
      */
+    export namespace QueryType {
+        export const $gtype: GObject.GType<QueryType>;
+    }
+
     enum QueryType {
         NONE,
         POSITION,
@@ -443,9 +570,13 @@ export namespace Gst {
         CUSTOM,
         URI,
     }
-    export namespace Rank {
-        export const $gtype: GObject.GType<Rank>;
-    }
+    /**
+     * Element priority ranks. Defines the order in which the autoplugger (or
+     * similar rank-picking mechanisms, such as e.g. gst_element_make_from_uri())
+     * will choose this element over an alternative one with the same function.
+     * These constants serve as a rough guidance for defining the rank of a
+     * #GstPluginFeature. Any value is valid, including values bigger than
+     */
 
     /**
      * Element priority ranks. Defines the order in which the autoplugger (or
@@ -454,21 +585,31 @@ export namespace Gst {
      * These constants serve as a rough guidance for defining the rank of a
      * #GstPluginFeature. Any value is valid, including values bigger than
      */
+    export namespace Rank {
+        export const $gtype: GObject.GType<Rank>;
+    }
+
     enum Rank {
         NONE,
         MARGINAL,
         SECONDARY,
         PRIMARY,
     }
-    export namespace ResourceError {
-        export const $gtype: GObject.GType<ResourceError>;
-    }
+    /**
+     * Resource errors are for any resource used by an element:
+     * memory, files, network connections, process space, ...
+     * They're typically used by source and sink elements.
+     */
 
     /**
      * Resource errors are for any resource used by an element:
      * memory, files, network connections, process space, ...
      * They're typically used by source and sink elements.
      */
+    export namespace ResourceError {
+        export const $gtype: GObject.GType<ResourceError>;
+    }
+
     enum ResourceError {
         FAILED,
         TOO_LAZY,
@@ -486,21 +627,28 @@ export namespace Gst {
         NO_SPACE_LEFT,
         NUM_ERRORS,
     }
-    export namespace SearchMode {
-        export const $gtype: GObject.GType<SearchMode>;
-    }
+    /**
+     * The different search modes.
+     */
 
     /**
      * The different search modes.
      */
+    export namespace SearchMode {
+        export const $gtype: GObject.GType<SearchMode>;
+    }
+
     enum SearchMode {
         EXACT,
         BEFORE,
         AFTER,
     }
-    export namespace SeekType {
-        export const $gtype: GObject.GType<SeekType>;
-    }
+    /**
+     * The different types of seek events. When constructing a seek event with
+     * gst_event_new_seek(), a format, a seek method and optional flags are to
+     * be provided. The seek event is then inserted into the graph with
+     * gst_pad_send_event() or gst_element_send_event().
+     */
 
     /**
      * The different types of seek events. When constructing a seek event with
@@ -508,20 +656,29 @@ export namespace Gst {
      * be provided. The seek event is then inserted into the graph with
      * gst_pad_send_event() or gst_element_send_event().
      */
+    export namespace SeekType {
+        export const $gtype: GObject.GType<SeekType>;
+    }
+
     enum SeekType {
         NONE,
         CUR,
         SET,
         END,
     }
-    export namespace State {
-        export const $gtype: GObject.GType<State>;
-    }
+    /**
+     * The possible states an element can be in. States can be changed using
+     * gst_element_set_state() and checked using gst_element_get_state().
+     */
 
     /**
      * The possible states an element can be in. States can be changed using
      * gst_element_set_state() and checked using gst_element_get_state().
      */
+    export namespace State {
+        export const $gtype: GObject.GType<State>;
+    }
+
     enum State {
         VOID_PENDING,
         NULL,
@@ -529,15 +686,21 @@ export namespace Gst {
         PAUSED,
         PLAYING,
     }
-    export namespace StateChange {
-        export const $gtype: GObject.GType<StateChange>;
-    }
+    /**
+     * These are the different state changes an element goes through.
+     * %GST_STATE_NULL &rArr; %GST_STATE_PLAYING is called an upwards state change
+     * and %GST_STATE_PLAYING &rArr; %GST_STATE_NULL a downwards state change.
+     */
 
     /**
      * These are the different state changes an element goes through.
      * %GST_STATE_NULL &rArr; %GST_STATE_PLAYING is called an upwards state change
      * and %GST_STATE_PLAYING &rArr; %GST_STATE_NULL a downwards state change.
      */
+    export namespace StateChange {
+        export const $gtype: GObject.GType<StateChange>;
+    }
+
     enum StateChange {
         NULL_TO_READY,
         READY_TO_PAUSED,
@@ -546,28 +709,38 @@ export namespace Gst {
         PAUSED_TO_READY,
         READY_TO_NULL,
     }
-    export namespace StateChangeReturn {
-        export const $gtype: GObject.GType<StateChangeReturn>;
-    }
+    /**
+     * The possible return values from a state change function. Only
+     */
 
     /**
      * The possible return values from a state change function. Only
      */
+    export namespace StateChangeReturn {
+        export const $gtype: GObject.GType<StateChangeReturn>;
+    }
+
     enum StateChangeReturn {
         FAILURE,
         SUCCESS,
         ASYNC,
         NO_PREROLL,
     }
-    export namespace StreamError {
-        export const $gtype: GObject.GType<StreamError>;
-    }
+    /**
+     * Stream errors are for anything related to the stream being processed:
+     * format errors, media type errors, ...
+     * They're typically used by decoders, demuxers, converters, ...
+     */
 
     /**
      * Stream errors are for anything related to the stream being processed:
      * format errors, media type errors, ...
      * They're typically used by decoders, demuxers, converters, ...
      */
+    export namespace StreamError {
+        export const $gtype: GObject.GType<StreamError>;
+    }
+
     enum StreamError {
         FAILED,
         TOO_LAZY,
@@ -584,14 +757,19 @@ export namespace Gst {
         DECRYPT_NOKEY,
         NUM_ERRORS,
     }
-    export namespace StreamStatusType {
-        export const $gtype: GObject.GType<StreamStatusType>;
-    }
+    /**
+     * The type of a %GST_MESSAGE_STREAM_STATUS. The stream status messages inform the
+     * application of new streaming threads and their status.
+     */
 
     /**
      * The type of a %GST_MESSAGE_STREAM_STATUS. The stream status messages inform the
      * application of new streaming threads and their status.
      */
+    export namespace StreamStatusType {
+        export const $gtype: GObject.GType<StreamStatusType>;
+    }
+
     enum StreamStatusType {
         CREATE,
         ENTER,
@@ -601,24 +779,32 @@ export namespace Gst {
         PAUSE,
         STOP,
     }
-    export namespace StructureChangeType {
-        export const $gtype: GObject.GType<StructureChangeType>;
-    }
+    /**
+     * The type of a %GST_MESSAGE_STRUCTURE_CHANGE.
+     */
 
     /**
      * The type of a %GST_MESSAGE_STRUCTURE_CHANGE.
      */
+    export namespace StructureChangeType {
+        export const $gtype: GObject.GType<StructureChangeType>;
+    }
+
     enum StructureChangeType {
         LINK,
         UNLINK,
     }
-    export namespace TagFlag {
-        export const $gtype: GObject.GType<TagFlag>;
-    }
+    /**
+     * Extra tag flags used when registering tags.
+     */
 
     /**
      * Extra tag flags used when registering tags.
      */
+    export namespace TagFlag {
+        export const $gtype: GObject.GType<TagFlag>;
+    }
+
     enum TagFlag {
         UNDEFINED,
         META,
@@ -626,9 +812,72 @@ export namespace Gst {
         DECODED,
         COUNT,
     }
-    export namespace TagMergeMode {
-        export const $gtype: GObject.GType<TagMergeMode>;
-    }
+    /**
+     * The different tag merging modes are basically replace, overwrite and append,
+     * already in the element and (B) the ones that are supplied to the element (
+     * e.g. via gst_tag_setter_merge_tags() / gst_tag_setter_add_tags() or a
+     * %GST_EVENT_TAG), how are these tags merged?
+     * In the table below this is shown for the cases that a tag exists in the list
+     * (A) or does not exists (!A) and combinations thereof.
+     * <table frame="all" colsep="1" rowsep="1">
+     * <title>merge mode</title>
+     * <tgroup cols='5' align='left'>
+     * <thead>
+     * <row>
+     * <entry>merge mode</entry>
+     * <entry>A + B</entry>
+     * <entry>A + !B</entry>
+     * <entry>!A + B</entry>
+     * <entry>!A + !B</entry>
+     * </row>
+     * </thead>
+     * <tbody>
+     * <row>
+     * <entry>REPLACE_ALL</entry>
+     * <entry>B</entry>
+     * <entry>-</entry>
+     * <entry>B</entry>
+     * <entry>-</entry>
+     * </row>
+     * <row>
+     * <entry>REPLACE</entry>
+     * <entry>B</entry>
+     * <entry>A</entry>
+     * <entry>B</entry>
+     * <entry>-</entry>
+     * </row>
+     * <row>
+     * <entry>APPEND</entry>
+     * <entry>A, B</entry>
+     * <entry>A</entry>
+     * <entry>B</entry>
+     * <entry>-</entry>
+     * </row>
+     * <row>
+     * <entry>PREPEND</entry>
+     * <entry>B, A</entry>
+     * <entry>A</entry>
+     * <entry>B</entry>
+     * <entry>-</entry>
+     * </row>
+     * <row>
+     * <entry>KEEP</entry>
+     * <entry>A</entry>
+     * <entry>A</entry>
+     * <entry>B</entry>
+     * <entry>-</entry>
+     * </row>
+     * <row>
+     * <entry>KEEP_ALL</entry>
+     * <entry>A</entry>
+     * <entry>A</entry>
+     * <entry>-</entry>
+     * <entry>-</entry>
+     * </row>
+     * </tbody>
+     * </tgroup>
+     * </table>
+     */
 
     /**
      * The different tag merging modes are basically replace, overwrite and append,
@@ -696,6 +945,10 @@ export namespace Gst {
      * </tgroup>
      * </table>
      */
+    export namespace TagMergeMode {
+        export const $gtype: GObject.GType<TagMergeMode>;
+    }
+
     enum TagMergeMode {
         UNDEFINED,
         REPLACE_ALL,
@@ -706,26 +959,35 @@ export namespace Gst {
         KEEP_ALL,
         COUNT,
     }
-    export namespace TaskState {
-        export const $gtype: GObject.GType<TaskState>;
-    }
+    /**
+     * The different states a task can be in
+     */
 
     /**
      * The different states a task can be in
      */
+    export namespace TaskState {
+        export const $gtype: GObject.GType<TaskState>;
+    }
+
     enum TaskState {
         STARTED,
         STOPPED,
         PAUSED,
     }
-    export namespace TypeFindProbability {
-        export const $gtype: GObject.GType<TypeFindProbability>;
-    }
+    /**
+     * The probability of the typefind function. Higher values have more certainty
+     * in doing a reliable typefind.
+     */
 
     /**
      * The probability of the typefind function. Higher values have more certainty
      * in doing a reliable typefind.
      */
+    export namespace TypeFindProbability {
+        export const $gtype: GObject.GType<TypeFindProbability>;
+    }
+
     enum TypeFindProbability {
         MINIMUM,
         POSSIBLE,
@@ -733,13 +995,17 @@ export namespace Gst {
         NEARLY_CERTAIN,
         MAXIMUM,
     }
-    export namespace URIType {
-        export const $gtype: GObject.GType<URIType>;
-    }
+    /**
+     * The different types of URI direction.
+     */
 
     /**
      * The different types of URI direction.
      */
+    export namespace URIType {
+        export const $gtype: GObject.GType<URIType>;
+    }
+
     enum URIType {
         UNKNOWN,
         SINK,
@@ -1357,73 +1623,100 @@ export namespace Gst {
     type Date = object | null;
     type GError = object | null;
     type TagList = unknown;
-    export namespace AllocTraceFlags {
-        export const $gtype: GObject.GType<AllocTraceFlags>;
-    }
+    /**
+     * Flags indicating which tracing feature to enable.
+     */
 
     /**
      * Flags indicating which tracing feature to enable.
      */
+    export namespace AllocTraceFlags {
+        export const $gtype: GObject.GType<AllocTraceFlags>;
+    }
+
     enum AllocTraceFlags {
         LIVE,
         MEM_LIVE,
     }
-    export namespace AssocFlags {
-        export const $gtype: GObject.GType<AssocFlags>;
-    }
+    /**
+     * Flags for an association entry.
+     */
 
     /**
      * Flags for an association entry.
      */
+    export namespace AssocFlags {
+        export const $gtype: GObject.GType<AssocFlags>;
+    }
+
     enum AssocFlags {
         NONE,
         KEY_UNIT,
         DELTA_UNIT,
         LAST,
     }
-    export namespace BaseSrcFlags {
-        export const $gtype: GObject.GType<BaseSrcFlags>;
-    }
+    /**
+     * The #GstElement flags that a basesrc element may have.
+     */
 
     /**
      * The #GstElement flags that a basesrc element may have.
      */
+    export namespace BaseSrcFlags {
+        export const $gtype: GObject.GType<BaseSrcFlags>;
+    }
+
     enum BaseSrcFlags {
         STARTED,
         FLAG_LAST,
     }
-    export namespace BinFlags {
-        export const $gtype: GObject.GType<BinFlags>;
-    }
+    /**
+     * GstBinFlags are a set of flags specific to bins. Most are set/used
+     * internally. They can be checked using the GST_OBJECT_FLAG_IS_SET () macro,
+     * and (un)set using GST_OBJECT_FLAG_SET () and GST_OBJECT_FLAG_UNSET ().
+     */
 
     /**
      * GstBinFlags are a set of flags specific to bins. Most are set/used
      * internally. They can be checked using the GST_OBJECT_FLAG_IS_SET () macro,
      * and (un)set using GST_OBJECT_FLAG_SET () and GST_OBJECT_FLAG_UNSET ().
      */
+    export namespace BinFlags {
+        export const $gtype: GObject.GType<BinFlags>;
+    }
+
     enum BinFlags {
         LAST,
     }
-    export namespace BufferCopyFlags {
-        export const $gtype: GObject.GType<BufferCopyFlags>;
-    }
+    /**
+     * A set of flags that can be provided to the gst_buffer_copy_metadata()
+     * function to specify which metadata fields should be copied.
+     */
 
     /**
      * A set of flags that can be provided to the gst_buffer_copy_metadata()
      * function to specify which metadata fields should be copied.
      */
+    export namespace BufferCopyFlags {
+        export const $gtype: GObject.GType<BufferCopyFlags>;
+    }
+
     enum BufferCopyFlags {
         FLAGS,
         TIMESTAMPS,
         CAPS,
     }
-    export namespace BufferFlag {
-        export const $gtype: GObject.GType<BufferFlag>;
-    }
+    /**
+     * A set of buffer flags used to describe properties of a #GstBuffer.
+     */
 
     /**
      * A set of buffer flags used to describe properties of a #GstBuffer.
      */
+    export namespace BufferFlag {
+        export const $gtype: GObject.GType<BufferFlag>;
+    }
+
     enum BufferFlag {
         READONLY,
         PREROLL,
@@ -1436,34 +1729,46 @@ export namespace Gst {
         MEDIA3,
         LAST,
     }
-    export namespace BusFlags {
-        export const $gtype: GObject.GType<BusFlags>;
-    }
+    /**
+     * The standard flags that a bus may have.
+     */
 
     /**
      * The standard flags that a bus may have.
      */
+    export namespace BusFlags {
+        export const $gtype: GObject.GType<BusFlags>;
+    }
+
     enum BusFlags {
         FLUSHING,
         FLAG_LAST,
     }
-    export namespace CapsFlags {
-        export const $gtype: GObject.GType<CapsFlags>;
-    }
+    /**
+     * Extra flags for a caps.
+     */
 
     /**
      * Extra flags for a caps.
      */
+    export namespace CapsFlags {
+        export const $gtype: GObject.GType<CapsFlags>;
+    }
+
     enum CapsFlags {
         ANY,
     }
-    export namespace ClockFlags {
-        export const $gtype: GObject.GType<ClockFlags>;
-    }
+    /**
+     * The capabilities of this clock
+     */
 
     /**
      * The capabilities of this clock
      */
+    export namespace ClockFlags {
+        export const $gtype: GObject.GType<ClockFlags>;
+    }
+
     enum ClockFlags {
         CAN_DO_SINGLE_SYNC,
         CAN_DO_SINGLE_ASYNC,
@@ -1473,14 +1778,19 @@ export namespace Gst {
         CAN_SET_MASTER,
         LAST,
     }
-    export namespace DebugGraphDetails {
-        export const $gtype: GObject.GType<DebugGraphDetails>;
-    }
+    /**
+     * Available details for pipeline graphs produced by GST_DEBUG_BIN_TO_DOT_FILE()
+     * and GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS().
+     */
 
     /**
      * Available details for pipeline graphs produced by GST_DEBUG_BIN_TO_DOT_FILE()
      * and GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS().
      */
+    export namespace DebugGraphDetails {
+        export const $gtype: GObject.GType<DebugGraphDetails>;
+    }
+
     enum DebugGraphDetails {
         MEDIA_TYPE,
         CAPS_DETAILS,
@@ -1488,52 +1798,70 @@ export namespace Gst {
         STATES,
         ALL,
     }
-    export namespace ElementFlags {
-        export const $gtype: GObject.GType<ElementFlags>;
-    }
+    /**
+     * The standard flags that an element may have.
+     */
 
     /**
      * The standard flags that an element may have.
      */
+    export namespace ElementFlags {
+        export const $gtype: GObject.GType<ElementFlags>;
+    }
+
     enum ElementFlags {
         LOCKED_STATE,
         IS_SINK,
         UNPARENTING,
         FLAG_LAST,
     }
-    export namespace EventTypeFlags {
-        export const $gtype: GObject.GType<EventTypeFlags>;
-    }
+    /**
+     * #GstEventTypeFlags indicate the aspects of the different #GstEventType
+     * values. You can get the type flags of a #GstEventType with the
+     * gst_event_type_get_flags() function.
+     */
 
     /**
      * #GstEventTypeFlags indicate the aspects of the different #GstEventType
      * values. You can get the type flags of a #GstEventType with the
      * gst_event_type_get_flags() function.
      */
+    export namespace EventTypeFlags {
+        export const $gtype: GObject.GType<EventTypeFlags>;
+    }
+
     enum EventTypeFlags {
         UPSTREAM,
         DOWNSTREAM,
         SERIALIZED,
     }
-    export namespace IndexFlags {
-        export const $gtype: GObject.GType<IndexFlags>;
-    }
+    /**
+     * Flags for this index
+     */
 
     /**
      * Flags for this index
      */
+    export namespace IndexFlags {
+        export const $gtype: GObject.GType<IndexFlags>;
+    }
+
     enum IndexFlags {
         WRITABLE,
         READABLE,
         FLAG_LAST,
     }
-    export namespace MessageType {
-        export const $gtype: GObject.GType<MessageType>;
-    }
+    /**
+     * The different message types that are available.
+     */
 
     /**
      * The different message types that are available.
      */
+    export namespace MessageType {
+        export const $gtype: GObject.GType<MessageType>;
+    }
+
     enum MessageType {
         UNKNOWN,
         EOS,
@@ -1563,36 +1891,48 @@ export namespace Gst {
         QOS,
         ANY,
     }
-    export namespace MiniObjectFlags {
-        export const $gtype: GObject.GType<MiniObjectFlags>;
-    }
+    /**
+     * Flags for the padtemplate
+     */
 
     /**
      * Flags for the padtemplate
      */
+    export namespace MiniObjectFlags {
+        export const $gtype: GObject.GType<MiniObjectFlags>;
+    }
+
     enum MiniObjectFlags {
         READONLY,
         LAST,
     }
-    export namespace ObjectFlags {
-        export const $gtype: GObject.GType<ObjectFlags>;
-    }
+    /**
+     * The standard flags that an gstobject may have.
+     */
 
     /**
      * The standard flags that an gstobject may have.
      */
+    export namespace ObjectFlags {
+        export const $gtype: GObject.GType<ObjectFlags>;
+    }
+
     enum ObjectFlags {
         DISPOSING,
         FLOATING,
         FLAG_LAST,
     }
-    export namespace PadFlags {
-        export const $gtype: GObject.GType<PadFlags>;
-    }
+    /**
+     * Pad state flags
+     */
 
     /**
      * Pad state flags
      */
+    export namespace PadFlags {
+        export const $gtype: GObject.GType<PadFlags>;
+    }
+
     enum PadFlags {
         BLOCKED,
         FLUSHING,
@@ -1601,9 +1941,17 @@ export namespace Gst {
         BLOCKING,
         FLAG_LAST,
     }
-    export namespace PadLinkCheck {
-        export const $gtype: GObject.GType<PadLinkCheck>;
-    }
+    /**
+     * The amount of checking to be done when linking pads. `GST_PAD_LINK_CHECK_CAPS`
+     * and `GST_PAD_LINK_CHECK_TEMPLATE_CAPS` are mutually exclusive. If both are
+     * specified, expensive but safe `GST_PAD_LINK_CHECK_CAPS` are performed.
+     * <warning><para>
+     * Only disable some of the checks if you are 100% certain you know the link
+     * will not fail because of hierarchy/caps compatibility failures. If uncertain,
+     * use the default checks (%GST_PAD_LINK_CHECK_DEFAULT) or the regular methods
+     * for linking the pads.
+     * </para></warning>
+     */
 
     /**
      * The amount of checking to be done when linking pads. `GST_PAD_LINK_CHECK_CAPS`
@@ -1616,72 +1964,111 @@ export namespace Gst {
      * for linking the pads.
      * </para></warning>
      */
+    export namespace PadLinkCheck {
+        export const $gtype: GObject.GType<PadLinkCheck>;
+    }
+
     enum PadLinkCheck {
         NOTHING,
         HIERARCHY,
         TEMPLATE_CAPS,
         CAPS,
     }
-    export namespace PadTemplateFlags {
-        export const $gtype: GObject.GType<PadTemplateFlags>;
-    }
+    /**
+     * Flags for the padtemplate
+     */
 
     /**
      * Flags for the padtemplate
      */
+    export namespace PadTemplateFlags {
+        export const $gtype: GObject.GType<PadTemplateFlags>;
+    }
+
     enum PadTemplateFlags {
         FIXED,
         FLAG_LAST,
     }
-    export namespace ParseFlags {
-        export const $gtype: GObject.GType<ParseFlags>;
-    }
+    /**
+     * Parsing options.
+     */
 
     /**
      * Parsing options.
      */
+    export namespace ParseFlags {
+        export const $gtype: GObject.GType<ParseFlags>;
+    }
+
     enum ParseFlags {
         NONE,
         FATAL_ERRORS,
     }
-    export namespace PipelineFlags {
-        export const $gtype: GObject.GType<PipelineFlags>;
-    }
+    /**
+     * Pipeline flags
+     */
 
     /**
      * Pipeline flags
      */
+    export namespace PipelineFlags {
+        export const $gtype: GObject.GType<PipelineFlags>;
+    }
+
     enum PipelineFlags {
         FIXED_CLOCK,
         LAST,
     }
-    export namespace PluginDependencyFlags {
-        export const $gtype: GObject.GType<PluginDependencyFlags>;
-    }
+    /**
+     * Flags used in connection with gst_plugin_add_dependency().
+     */
 
     /**
      * Flags used in connection with gst_plugin_add_dependency().
      */
+    export namespace PluginDependencyFlags {
+        export const $gtype: GObject.GType<PluginDependencyFlags>;
+    }
+
     enum PluginDependencyFlags {
         NONE,
         RECURSE,
         PATHS_ARE_DEFAULT_ONLY,
         FILE_NAME_IS_SUFFIX,
     }
-    export namespace PluginFlags {
-        export const $gtype: GObject.GType<PluginFlags>;
-    }
+    /**
+     * The plugin loading state
+     */
 
     /**
      * The plugin loading state
      */
+    export namespace PluginFlags {
+        export const $gtype: GObject.GType<PluginFlags>;
+    }
+
     enum PluginFlags {
         CACHED,
         BLACKLISTED,
     }
-    export namespace SeekFlags {
-        export const $gtype: GObject.GType<SeekFlags>;
-    }
+    /**
+     * Flags to be used with gst_element_seek() or gst_event_new_seek(). All flags
+     * can be used together.
+     * A non flushing seek might take some time to perform as the currently
+     * playing data in the pipeline will not be cleared.
+     * An accurate seek might be slower for formats that don't have any indexes
+     * or timestamp markers in the stream. Specifying this flag might require a
+     * complete scan of the file in those cases.
+     * no EOS will be emmited by the element that performed the seek, but a
+     * #GST_MESSAGE_SEGMENT_DONE message will be posted on the bus by the element.
+     * When this message is posted, it is possible to send a new seek event to
+     * continue playback. With this seek method it is possible to perform seemless
+     * looping or simple linear editing.
+     * When doing fast forward (rate > 1.0) or fast reverse (rate < -1.0) trickmode
+     * playback, the `GST_SEEK_FLAG_SKIP` flag can be used to instruct decoders
+     * and demuxers to adjust the playback rate by skipping frames. This can improve
+     * performance and decrease CPU usage because not all frames need to be decoded.
+     */
 
     /**
      * Flags to be used with gst_element_seek() or gst_event_new_seek(). All flags
@@ -1701,6 +2088,10 @@ export namespace Gst {
      * and demuxers to adjust the playback rate by skipping frames. This can improve
      * performance and decrease CPU usage because not all frames need to be decoded.
      */
+    export namespace SeekFlags {
+        export const $gtype: GObject.GType<SeekFlags>;
+    }
+
     enum SeekFlags {
         NONE,
         FLUSH,

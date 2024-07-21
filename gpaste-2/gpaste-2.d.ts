@@ -28,6 +28,7 @@ export namespace GPaste {
         IMAGE,
         PASSWORD,
     }
+
     export namespace UpdateAction {
         export const $gtype: GObject.GType<UpdateAction>;
     }
@@ -36,6 +37,7 @@ export namespace GPaste {
         REPLACE,
         REMOVE,
     }
+
     export namespace UpdateTarget {
         export const $gtype: GObject.GType<UpdateTarget>;
     }
@@ -240,14 +242,19 @@ export namespace GPaste {
      * @returns the encoded text
      */
     function util_xml_encode(text: string): string;
-    export namespace GnomeShellActionMode {
-        export const $gtype: GObject.GType<GnomeShellActionMode>;
-    }
+    /**
+     * Controls in which GNOME Shell states an action (like keybindings and gestures)
+     * should be handled.
+     */
 
     /**
      * Controls in which GNOME Shell states an action (like keybindings and gestures)
      * should be handled.
      */
+    export namespace GnomeShellActionMode {
+        export const $gtype: GObject.GType<GnomeShellActionMode>;
+    }
+
     enum GnomeShellActionMode {
         /**
          * block action
@@ -295,6 +302,7 @@ export namespace GPaste {
          */
         ALL,
     }
+
     export namespace MetaKeyBindingFlags {
         export const $gtype: GObject.GType<MetaKeyBindingFlags>;
     }

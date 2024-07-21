@@ -48,6 +48,7 @@ export namespace Gdaui {
         MOVE_NEXT_CHUNCK,
         MOVE_LAST_CHUNCK,
     }
+
     export namespace BasicFormPart {
         export const $gtype: GObject.GType<BasicFormPart>;
     }
@@ -70,14 +71,19 @@ export namespace Gdaui {
         _init(...args: any[]): void;
     }
 
-    export namespace DataProxyWriteMode {
-        export const $gtype: GObject.GType<DataProxyWriteMode>;
-    }
+    /**
+     * Defines when the data modifications held in the underlying #GdaDataProxy are written to the
+     * data model being proxied (using gda_data_proxy_apply_row_changes()).
+     */
 
     /**
      * Defines when the data modifications held in the underlying #GdaDataProxy are written to the
      * data model being proxied (using gda_data_proxy_apply_row_changes()).
      */
+    export namespace DataProxyWriteMode {
+        export const $gtype: GObject.GType<DataProxyWriteMode>;
+    }
+
     enum DataProxyWriteMode {
         /**
          * write only when explicitly requested
@@ -135,6 +141,7 @@ export namespace Gdaui {
             data?: any | null,
         ): void;
     }
+
     export namespace ActionMode {
         export const $gtype: GObject.GType<ActionMode>;
     }
@@ -149,6 +156,7 @@ export namespace Gdaui {
         ASK_CONFIRM_INSERT,
         REPORT_ERROR,
     }
+
     export namespace DataProxyInfoFlag {
         export const $gtype: GObject.GType<DataProxyInfoFlag>;
     }
@@ -161,13 +169,17 @@ export namespace Gdaui {
         CHUNCK_CHANGE_BUTTONS,
         NO_FILTER,
     }
-    export namespace LoginMode {
-        export const $gtype: GObject.GType<LoginMode>;
-    }
+    /**
+     * Defines the aspect of the #GdauiLogin widget
+     */
 
     /**
      * Defines the aspect of the #GdauiLogin widget
      */
+    export namespace LoginMode {
+        export const $gtype: GObject.GType<LoginMode>;
+    }
+
     enum LoginMode {
         ENABLE_CONTROL_CENTRE_MODE,
         HIDE_DSN_SELECTION_MODE,

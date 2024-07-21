@@ -31,6 +31,7 @@ export namespace Kkc {
         LATIN,
         WIDE_LATIN,
     }
+
     export namespace PunctuationStyle {
         export const $gtype: GObject.GType<PunctuationStyle>;
     }
@@ -41,6 +42,7 @@ export namespace Kkc {
         JA_EN,
         EN_JA,
     }
+
     export namespace DictionaryCallbackReturn {
         export const $gtype: GObject.GType<DictionaryCallbackReturn>;
     }
@@ -49,6 +51,7 @@ export namespace Kkc {
         CONTINUE,
         REMOVE,
     }
+
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
@@ -2218,6 +2221,7 @@ export namespace Kkc {
     interface GetTime {
         (): number;
     }
+
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }

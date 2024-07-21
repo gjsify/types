@@ -18,13 +18,17 @@ export namespace Tracker {
      * Tracker-2.0
      */
 
-    export namespace NotifierEventType {
-        export const $gtype: GObject.GType<NotifierEventType>;
-    }
+    /**
+     * Notifier event types.
+     */
 
     /**
      * Notifier event types.
      */
+    export namespace NotifierEventType {
+        export const $gtype: GObject.GType<NotifierEventType>;
+    }
+
     enum NotifierEventType {
         /**
          * An element was created.
@@ -39,6 +43,7 @@ export namespace Tracker {
          */
         UPDATE,
     }
+
     export namespace SparqlConnectionFlags {
         export const $gtype: GObject.GType<SparqlConnectionFlags>;
     }
@@ -47,6 +52,7 @@ export namespace Tracker {
         NONE,
         READONLY,
     }
+
     export namespace SparqlValueType {
         export const $gtype: GObject.GType<SparqlValueType>;
     }
@@ -130,13 +136,17 @@ export namespace Tracker {
     function sparql_escape_uri(uri: string): string;
     function sparql_escape_string(literal: string): string;
     function sparql_get_uuid_urn(): string;
-    export namespace NotifierFlags {
-        export const $gtype: GObject.GType<NotifierFlags>;
-    }
+    /**
+     * Flags affecting #TrackerNotifier behavior.
+     */
 
     /**
      * Flags affecting #TrackerNotifier behavior.
      */
+    export namespace NotifierFlags {
+        export const $gtype: GObject.GType<NotifierFlags>;
+    }
+
     enum NotifierFlags {
         /**
          * No flags

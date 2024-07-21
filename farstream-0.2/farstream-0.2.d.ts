@@ -18,13 +18,17 @@ export namespace Farstream {
      * Farstream-0.2
      */
 
-    export namespace CandidateType {
-        export const $gtype: GObject.GType<CandidateType>;
-    }
+    /**
+     * An enum for the type of candidate used/reported
+     */
 
     /**
      * An enum for the type of candidate used/reported
      */
+    export namespace CandidateType {
+        export const $gtype: GObject.GType<CandidateType>;
+    }
+
     enum CandidateType {
         /**
          * A host candidate (local)
@@ -47,13 +51,17 @@ export namespace Farstream {
          */
         MULTICAST,
     }
-    export namespace ComponentType {
-        export const $gtype: GObject.GType<ComponentType>;
-    }
+    /**
+     * This enum contains the component IDs defined in ICE-19
+     */
 
     /**
      * This enum contains the component IDs defined in ICE-19
      */
+    export namespace ComponentType {
+        export const $gtype: GObject.GType<ComponentType>;
+    }
+
     enum ComponentType {
         /**
          * Use this when specifying a component is innapropriate
@@ -68,10 +76,6 @@ export namespace Farstream {
          */
         RTCP,
     }
-    export namespace DTMFEvent {
-        export const $gtype: GObject.GType<DTMFEvent>;
-    }
-
     /**
      * An enum that represents the different DTMF event that can be sent to a
      * #FsSession. The values corresponds those those defined in RFC 4733
@@ -111,13 +115,17 @@ export namespace Farstream {
         _init(...args: any[]): void;
     }
 
-    export namespace DTMFMethod {
-        export const $gtype: GObject.GType<DTMFMethod>;
-    }
+    /**
+     * An enum that represents the different ways a DTMF event can be sent
+     */
 
     /**
      * An enum that represents the different ways a DTMF event can be sent
      */
+    export namespace DTMFMethod {
+        export const $gtype: GObject.GType<DTMFMethod>;
+    }
+
     enum DTMFMethod {
         /**
          * Send as a special payload type defined by RFC 4733
@@ -209,13 +217,17 @@ export namespace Farstream {
         static quark(): GLib.Quark;
     }
 
-    export namespace MediaType {
-        export const $gtype: GObject.GType<MediaType>;
-    }
+    /**
+     * Enum used to signify the media type of a codec or stream.
+     */
 
     /**
      * Enum used to signify the media type of a codec or stream.
      */
+    export namespace MediaType {
+        export const $gtype: GObject.GType<MediaType>;
+    }
+
     enum MediaType {
         /**
          * A media type that encodes audio.
@@ -234,13 +246,17 @@ export namespace Farstream {
          */
         LAST,
     }
-    export namespace NetworkProtocol {
-        export const $gtype: GObject.GType<NetworkProtocol>;
-    }
+    /**
+     * An enum for the base IP protocol
+     */
 
     /**
      * An enum for the base IP protocol
      */
+    export namespace NetworkProtocol {
+        export const $gtype: GObject.GType<NetworkProtocol>;
+    }
+
     enum NetworkProtocol {
         /**
          * A UDP based protocol
@@ -268,15 +284,21 @@ export namespace Farstream {
          */
         TCP_SO,
     }
-    export namespace StreamState {
-        export const $gtype: GObject.GType<StreamState>;
-    }
+    /**
+     * These are the possible states of a stream, a simple multicast stream
+     * could only be in "disconnected" or "ready" state.
+     * An stream using an ICE transmitter would use all of these.
+     */
 
     /**
      * These are the possible states of a stream, a simple multicast stream
      * could only be in "disconnected" or "ready" state.
      * An stream using an ICE transmitter would use all of these.
      */
+    export namespace StreamState {
+        export const $gtype: GObject.GType<StreamState>;
+    }
+
     enum StreamState {
         /**
          * connectivity checks have been completed,
@@ -462,13 +484,17 @@ export namespace Farstream {
     type CandidateList = object | null;
     type CodecGList = object | null;
     type RtpHeaderExtensionGList = object | null;
-    export namespace StreamDirection {
-        export const $gtype: GObject.GType<StreamDirection>;
-    }
+    /**
+     * An enum for specifying the direction of a stream
+     */
 
     /**
      * An enum for specifying the direction of a stream
      */
+    export namespace StreamDirection {
+        export const $gtype: GObject.GType<StreamDirection>;
+    }
+
     enum StreamDirection {
         /**
          * No direction specified

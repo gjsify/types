@@ -24,6 +24,7 @@ export namespace GDesktopEnums {
         VERTICAL,
         HORIZONTAL,
     }
+
     export namespace BackgroundStyle {
         export const $gtype: GObject.GType<BackgroundStyle>;
     }
@@ -37,6 +38,7 @@ export namespace GDesktopEnums {
         ZOOM,
         SPANNED,
     }
+
     export namespace ClockFormat {
         export const $gtype: GObject.GType<ClockFormat>;
     }
@@ -45,6 +47,7 @@ export namespace GDesktopEnums {
         '24H',
         '12H',
     }
+
     export namespace ColorScheme {
         export const $gtype: GObject.GType<ColorScheme>;
     }
@@ -54,6 +57,7 @@ export namespace GDesktopEnums {
         PREFER_DARK,
         PREFER_LIGHT,
     }
+
     export namespace DeviceSendEvents {
         export const $gtype: GObject.GType<DeviceSendEvents>;
     }
@@ -63,6 +67,7 @@ export namespace GDesktopEnums {
         DISABLED,
         DISABLED_ON_EXTERNAL_MOUSE,
     }
+
     export namespace FocusMode {
         export const $gtype: GObject.GType<FocusMode>;
     }
@@ -72,6 +77,7 @@ export namespace GDesktopEnums {
         SLOPPY,
         MOUSE,
     }
+
     export namespace FocusNewWindows {
         export const $gtype: GObject.GType<FocusNewWindows>;
     }
@@ -80,6 +86,7 @@ export namespace GDesktopEnums {
         SMART,
         STRICT,
     }
+
     export namespace FontAntialiasingMode {
         export const $gtype: GObject.GType<FontAntialiasingMode>;
     }
@@ -89,6 +96,7 @@ export namespace GDesktopEnums {
         GRAYSCALE,
         RGBA,
     }
+
     export namespace FontHinting {
         export const $gtype: GObject.GType<FontHinting>;
     }
@@ -99,6 +107,7 @@ export namespace GDesktopEnums {
         MEDIUM,
         FULL,
     }
+
     export namespace FontRgbaOrder {
         export const $gtype: GObject.GType<FontRgbaOrder>;
     }
@@ -110,6 +119,7 @@ export namespace GDesktopEnums {
         VRGB,
         VBGR,
     }
+
     export namespace LocationAccuracyLevel {
         export const $gtype: GObject.GType<LocationAccuracyLevel>;
     }
@@ -121,6 +131,7 @@ export namespace GDesktopEnums {
         STREET,
         EXACT,
     }
+
     export namespace MagnifierCaretTrackingMode {
         export const $gtype: GObject.GType<MagnifierCaretTrackingMode>;
     }
@@ -131,6 +142,7 @@ export namespace GDesktopEnums {
         PROPORTIONAL,
         PUSH,
     }
+
     export namespace MagnifierFocusTrackingMode {
         export const $gtype: GObject.GType<MagnifierFocusTrackingMode>;
     }
@@ -141,6 +153,7 @@ export namespace GDesktopEnums {
         PROPORTIONAL,
         PUSH,
     }
+
     export namespace MagnifierMouseTrackingMode {
         export const $gtype: GObject.GType<MagnifierMouseTrackingMode>;
     }
@@ -151,6 +164,7 @@ export namespace GDesktopEnums {
         PROPORTIONAL,
         PUSH,
     }
+
     export namespace MagnifierScreenPosition {
         export const $gtype: GObject.GType<MagnifierScreenPosition>;
     }
@@ -163,6 +177,7 @@ export namespace GDesktopEnums {
         LEFT_HALF,
         RIGHT_HALF,
     }
+
     export namespace MouseDwellDirection {
         export const $gtype: GObject.GType<MouseDwellDirection>;
     }
@@ -173,6 +188,7 @@ export namespace GDesktopEnums {
         UP,
         DOWN,
     }
+
     export namespace MouseDwellMode {
         export const $gtype: GObject.GType<MouseDwellMode>;
     }
@@ -181,6 +197,7 @@ export namespace GDesktopEnums {
         WINDOW,
         GESTURE,
     }
+
     export namespace PadButtonAction {
         export const $gtype: GObject.GType<PadButtonAction>;
     }
@@ -191,6 +208,7 @@ export namespace GDesktopEnums {
         SWITCH_MONITOR,
         KEYBINDING,
     }
+
     export namespace PointerAccelProfile {
         export const $gtype: GObject.GType<PointerAccelProfile>;
     }
@@ -200,6 +218,7 @@ export namespace GDesktopEnums {
         FLAT,
         ADAPTIVE,
     }
+
     export namespace PointingStickScrollMethod {
         export const $gtype: GObject.GType<PointingStickScrollMethod>;
     }
@@ -209,6 +228,7 @@ export namespace GDesktopEnums {
         NONE,
         ON_BUTTON_DOWN,
     }
+
     export namespace ProxyMode {
         export const $gtype: GObject.GType<ProxyMode>;
     }
@@ -218,6 +238,7 @@ export namespace GDesktopEnums {
         MANUAL,
         AUTO,
     }
+
     export namespace ScreensaverMode {
         export const $gtype: GObject.GType<ScreensaverMode>;
     }
@@ -227,6 +248,7 @@ export namespace GDesktopEnums {
         RANDOM,
         SINGLE,
     }
+
     export namespace StylusButtonAction {
         export const $gtype: GObject.GType<StylusButtonAction>;
     }
@@ -238,6 +260,7 @@ export namespace GDesktopEnums {
         BACK,
         FORWARD,
     }
+
     export namespace TabletMapping {
         export const $gtype: GObject.GType<TabletMapping>;
     }
@@ -246,6 +269,7 @@ export namespace GDesktopEnums {
         ABSOLUTE,
         RELATIVE,
     }
+
     export namespace TitlebarAction {
         export const $gtype: GObject.GType<TitlebarAction>;
     }
@@ -260,6 +284,7 @@ export namespace GDesktopEnums {
         LOWER,
         MENU,
     }
+
     export namespace ToolbarIconSize {
         export const $gtype: GObject.GType<ToolbarIconSize>;
     }
@@ -268,6 +293,7 @@ export namespace GDesktopEnums {
         SMALL,
         LARGE,
     }
+
     export namespace ToolbarStyle {
         export const $gtype: GObject.GType<ToolbarStyle>;
     }
@@ -278,6 +304,7 @@ export namespace GDesktopEnums {
         ICONS,
         TEXT,
     }
+
     export namespace TouchpadClickMethod {
         export const $gtype: GObject.GType<TouchpadClickMethod>;
     }
@@ -288,6 +315,7 @@ export namespace GDesktopEnums {
         AREAS,
         FINGERS,
     }
+
     export namespace TouchpadHandedness {
         export const $gtype: GObject.GType<TouchpadHandedness>;
     }
@@ -297,6 +325,7 @@ export namespace GDesktopEnums {
         LEFT,
         MOUSE,
     }
+
     export namespace TouchpadTapButtonMap {
         export const $gtype: GObject.GType<TouchpadTapButtonMap>;
     }
@@ -306,6 +335,7 @@ export namespace GDesktopEnums {
         LRM,
         LMR,
     }
+
     export namespace UsbProtection {
         export const $gtype: GObject.GType<UsbProtection>;
     }
@@ -314,6 +344,7 @@ export namespace GDesktopEnums {
         LOCKSCREEN,
         ALWAYS,
     }
+
     export namespace VisualBellType {
         export const $gtype: GObject.GType<VisualBellType>;
     }

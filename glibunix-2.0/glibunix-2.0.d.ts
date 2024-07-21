@@ -16,13 +16,17 @@ export namespace GLibUnix {
      * GLibUnix-2.0
      */
 
-    export namespace PipeEnd {
-        export const $gtype: GObject.GType<PipeEnd>;
-    }
+    /**
+     * Mnemonic constants for the ends of a Unix pipe.
+     */
 
     /**
      * Mnemonic constants for the ends of a Unix pipe.
      */
+    export namespace PipeEnd {
+        export const $gtype: GObject.GType<PipeEnd>;
+    }
+
     enum PipeEnd {
         /**
          * The readable file descriptor 0

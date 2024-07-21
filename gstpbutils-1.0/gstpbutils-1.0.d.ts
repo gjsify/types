@@ -21,13 +21,17 @@ export namespace GstPbutils {
      * GstPbutils-1.0
      */
 
-    export namespace AudioVisualizerShader {
-        export const $gtype: GObject.GType<AudioVisualizerShader>;
-    }
+    /**
+     * Different types of supported background shading functions.
+     */
 
     /**
      * Different types of supported background shading functions.
      */
+    export namespace AudioVisualizerShader {
+        export const $gtype: GObject.GType<AudioVisualizerShader>;
+    }
+
     enum AudioVisualizerShader {
         /**
          * no shading
@@ -70,13 +74,17 @@ export namespace GstPbutils {
          */
         FADE_AND_MOVE_VERT_IN,
     }
-    export namespace DiscovererResult {
-        export const $gtype: GObject.GType<DiscovererResult>;
-    }
+    /**
+     * Result values for the discovery process.
+     */
 
     /**
      * Result values for the discovery process.
      */
+    export namespace DiscovererResult {
+        export const $gtype: GObject.GType<DiscovererResult>;
+    }
+
     enum DiscovererResult {
         /**
          * The discovery was successful
@@ -103,9 +111,14 @@ export namespace GstPbutils {
          */
         MISSING_PLUGINS,
     }
-    export namespace InstallPluginsReturn {
-        export const $gtype: GObject.GType<InstallPluginsReturn>;
-    }
+    /**
+     * Result codes returned by gst_install_plugins_async() and
+     * gst_install_plugins_sync(), and also the result code passed to the
+     * #GstInstallPluginsResultFunc specified with gst_install_plugins_async().
+     *
+     * These codes indicate success or failure of starting an external installer
+     * program and to what extent the requested plugins could be installed.
+     */
 
     /**
      * Result codes returned by gst_install_plugins_async() and
@@ -115,6 +128,10 @@ export namespace GstPbutils {
      * These codes indicate success or failure of starting an external installer
      * program and to what extent the requested plugins could be installed.
      */
+    export namespace InstallPluginsReturn {
+        export const $gtype: GObject.GType<InstallPluginsReturn>;
+    }
+
     enum InstallPluginsReturn {
         /**
          * all of the requested plugins could be
@@ -851,14 +868,19 @@ export namespace GstPbutils {
     interface InstallPluginsResultFunc {
         (result: InstallPluginsReturn): void;
     }
-    export namespace DiscovererSerializeFlags {
-        export const $gtype: GObject.GType<DiscovererSerializeFlags>;
-    }
+    /**
+     * You can use these flags to control what is serialized by
+     * gst_discoverer_info_to_variant()
+     */
 
     /**
      * You can use these flags to control what is serialized by
      * gst_discoverer_info_to_variant()
      */
+    export namespace DiscovererSerializeFlags {
+        export const $gtype: GObject.GType<DiscovererSerializeFlags>;
+    }
+
     enum DiscovererSerializeFlags {
         /**
          * Serialize only basic information, excluding
@@ -883,14 +905,19 @@ export namespace GstPbutils {
          */
         ALL,
     }
-    export namespace PbUtilsCapsDescriptionFlags {
-        export const $gtype: GObject.GType<PbUtilsCapsDescriptionFlags>;
-    }
+    /**
+     * Flags that are returned by gst_pb_utils_get_caps_description_flags() and
+     * describe the format of the caps.
+     */
 
     /**
      * Flags that are returned by gst_pb_utils_get_caps_description_flags() and
      * describe the format of the caps.
      */
+    export namespace PbUtilsCapsDescriptionFlags {
+        export const $gtype: GObject.GType<PbUtilsCapsDescriptionFlags>;
+    }
+
     enum PbUtilsCapsDescriptionFlags {
         /**
          * Caps describe a container format.

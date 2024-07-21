@@ -31,6 +31,7 @@ export namespace GstCuda {
         GL_BUFFER,
         D3D11_RESOURCE,
     }
+
     export namespace CudaQuarkId {
         export const $gtype: GObject.GType<CudaQuarkId>;
     }
@@ -114,6 +115,7 @@ export namespace GstCuda {
      * @param mem A #GstMemory
      */
     function is_cuda_memory(mem: Gst.Memory): boolean;
+
     export namespace CudaMemoryTransfer {
         export const $gtype: GObject.GType<CudaMemoryTransfer>;
     }

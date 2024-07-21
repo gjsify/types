@@ -27,14 +27,19 @@ export namespace Vte {
      * Vte-2.91
      */
 
-    export namespace Align {
-        export const $gtype: GObject.GType<Align>;
-    }
+    /**
+     * An enumeration type that can be used to specify how the terminal
+     * uses extra allocated space.
+     */
 
     /**
      * An enumeration type that can be used to specify how the terminal
      * uses extra allocated space.
      */
+    export namespace Align {
+        export const $gtype: GObject.GType<Align>;
+    }
+
     enum Align {
         /**
          * align to left/top
@@ -49,14 +54,19 @@ export namespace Vte {
          */
         END,
     }
-    export namespace CursorBlinkMode {
-        export const $gtype: GObject.GType<CursorBlinkMode>;
-    }
+    /**
+     * An enumerated type which can be used to indicate the cursor blink mode
+     * for the terminal.
+     */
 
     /**
      * An enumerated type which can be used to indicate the cursor blink mode
      * for the terminal.
      */
+    export namespace CursorBlinkMode {
+        export const $gtype: GObject.GType<CursorBlinkMode>;
+    }
+
     enum CursorBlinkMode {
         /**
          * Follow GTK+ settings for cursor blinking.
@@ -71,14 +81,19 @@ export namespace Vte {
          */
         OFF,
     }
-    export namespace CursorShape {
-        export const $gtype: GObject.GType<CursorShape>;
-    }
+    /**
+     * An enumerated type which can be used to indicate what should the terminal
+     * draw at the cursor position.
+     */
 
     /**
      * An enumerated type which can be used to indicate what should the terminal
      * draw at the cursor position.
      */
+    export namespace CursorShape {
+        export const $gtype: GObject.GType<CursorShape>;
+    }
+
     enum CursorShape {
         /**
          * Draw a block cursor.  This is the default.
@@ -94,15 +109,21 @@ export namespace Vte {
          */
         UNDERLINE,
     }
-    export namespace EraseBinding {
-        export const $gtype: GObject.GType<EraseBinding>;
-    }
+    /**
+     * An enumerated type which can be used to indicate which string the terminal
+     * should send to an application when the user presses the Delete or Backspace
+     * keys.
+     */
 
     /**
      * An enumerated type which can be used to indicate which string the terminal
      * should send to an application when the user presses the Delete or Backspace
      * keys.
      */
+    export namespace EraseBinding {
+        export const $gtype: GObject.GType<EraseBinding>;
+    }
+
     enum EraseBinding {
         /**
          * For backspace, attempt to determine the right value from the terminal's IO settings.  For delete, use the control sequence.
@@ -125,14 +146,19 @@ export namespace Vte {
          */
         TTY,
     }
-    export namespace Format {
-        export const $gtype: GObject.GType<Format>;
-    }
+    /**
+     * An enumeration type that can be used to specify the format the selection
+     * should be copied to the clipboard in.
+     */
 
     /**
      * An enumeration type that can be used to specify the format the selection
      * should be copied to the clipboard in.
      */
+    export namespace Format {
+        export const $gtype: GObject.GType<Format>;
+    }
+
     enum Format {
         /**
          * Export as plain text
@@ -201,14 +227,19 @@ export namespace Vte {
         static quark(): GLib.Quark;
     }
 
-    export namespace TextBlinkMode {
-        export const $gtype: GObject.GType<TextBlinkMode>;
-    }
+    /**
+     * An enumerated type which can be used to indicate whether the terminal allows
+     * the text contents to be blinked.
+     */
 
     /**
      * An enumerated type which can be used to indicate whether the terminal allows
      * the text contents to be blinked.
      */
+    export namespace TextBlinkMode {
+        export const $gtype: GObject.GType<TextBlinkMode>;
+    }
+
     enum TextBlinkMode {
         /**
          * Do not blink the text.
@@ -227,14 +258,19 @@ export namespace Vte {
          */
         ALWAYS,
     }
-    export namespace WriteFlags {
-        export const $gtype: GObject.GType<WriteFlags>;
-    }
+    /**
+     * A flag type to determine how terminal contents should be written
+     * to an output stream.
+     */
 
     /**
      * A flag type to determine how terminal contents should be written
      * to an output stream.
      */
+    export namespace WriteFlags {
+        export const $gtype: GObject.GType<WriteFlags>;
+    }
+
     enum WriteFlags {
         /**
          * Write contents as UTF-8 text.  This is the default.
@@ -361,13 +397,17 @@ export namespace Vte {
     interface TerminalSpawnAsyncCallback {
         (terminal: Terminal, pid: GLib.Pid, error?: GLib.Error | null): void;
     }
-    export namespace FeatureFlags {
-        export const $gtype: GObject.GType<FeatureFlags>;
-    }
+    /**
+     * An enumeration type for features.
+     */
 
     /**
      * An enumeration type for features.
      */
+    export namespace FeatureFlags {
+        export const $gtype: GObject.GType<FeatureFlags>;
+    }
+
     enum FeatureFlags {
         /**
          * whether VTE was built with bidirectional text support
@@ -390,6 +430,7 @@ export namespace Vte {
          */
         FLAGS_MASK,
     }
+
     export namespace PtyFlags {
         export const $gtype: GObject.GType<PtyFlags>;
     }

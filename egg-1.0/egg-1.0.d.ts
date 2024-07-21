@@ -40,6 +40,7 @@ export namespace Egg {
         EASE_OUT_CUBIC,
         EASE_IN_OUT_CUBIC,
     }
+
     export namespace SliderPosition {
         export const $gtype: GObject.GType<SliderPosition>;
     }
@@ -51,6 +52,7 @@ export namespace Egg {
         BOTTOM,
         LEFT,
     }
+
     export namespace ThreeGridColumn {
         export const $gtype: GObject.GType<ThreeGridColumn>;
     }

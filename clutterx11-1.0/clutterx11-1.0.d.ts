@@ -30,13 +30,17 @@ export namespace ClutterX11 {
      * ClutterX11-1.0
      */
 
-    export namespace FilterReturn {
-        export const $gtype: GObject.GType<FilterReturn>;
-    }
+    /**
+     * Return values for the #ClutterX11FilterFunc function.
+     */
 
     /**
      * Return values for the #ClutterX11FilterFunc function.
      */
+    export namespace FilterReturn {
+        export const $gtype: GObject.GType<FilterReturn>;
+    }
+
     enum FilterReturn {
         /**
          * The event was not handled, continues the

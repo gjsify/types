@@ -18,14 +18,19 @@ export namespace GSystem {
      * GSystem-1.0
      */
 
-    export namespace SubprocessStreamDisposition {
-        export const $gtype: GObject.GType<SubprocessStreamDisposition>;
-    }
+    /**
+     * Flags to define the behaviour of the standard input/output/error of
+     * a #GSSubprocess.
+     */
 
     /**
      * Flags to define the behaviour of the standard input/output/error of
      * a #GSSubprocess.
      */
+    export namespace SubprocessStreamDisposition {
+        export const $gtype: GObject.GType<SubprocessStreamDisposition>;
+    }
+
     enum SubprocessStreamDisposition {
         /**
          * Redirect to operating system's null output stream

@@ -18,13 +18,17 @@ export namespace Soup {
      * Soup-2.4
      */
 
-    export namespace AddressFamily {
-        export const $gtype: GObject.GType<AddressFamily>;
-    }
+    /**
+     * The supported address families.
+     */
 
     /**
      * The supported address families.
      */
+    export namespace AddressFamily {
+        export const $gtype: GObject.GType<AddressFamily>;
+    }
+
     enum AddressFamily {
         /**
          * an invalid %SoupAddress
@@ -39,6 +43,7 @@ export namespace Soup {
          */
         IPV6,
     }
+
     export namespace CacheResponse {
         export const $gtype: GObject.GType<CacheResponse>;
     }
@@ -48,14 +53,19 @@ export namespace Soup {
         NEEDS_VALIDATION,
         STALE,
     }
-    export namespace CacheType {
-        export const $gtype: GObject.GType<CacheType>;
-    }
+    /**
+     * The type of cache; this affects what kinds of responses will be
+     * saved.
+     */
 
     /**
      * The type of cache; this affects what kinds of responses will be
      * saved.
      */
+    export namespace CacheType {
+        export const $gtype: GObject.GType<CacheType>;
+    }
+
     enum CacheType {
         /**
          * a single-user cache
@@ -66,6 +76,7 @@ export namespace Soup {
          */
         SHARED,
     }
+
     export namespace ConnectionState {
         export const $gtype: GObject.GType<ConnectionState>;
     }
@@ -78,14 +89,19 @@ export namespace Soup {
         REMOTE_DISCONNECTED,
         DISCONNECTED,
     }
-    export namespace CookieJarAcceptPolicy {
-        export const $gtype: GObject.GType<CookieJarAcceptPolicy>;
-    }
+    /**
+     * The policy for accepting or rejecting cookies returned in
+     * responses.
+     */
 
     /**
      * The policy for accepting or rejecting cookies returned in
      * responses.
      */
+    export namespace CookieJarAcceptPolicy {
+        export const $gtype: GObject.GType<CookieJarAcceptPolicy>;
+    }
+
     enum CookieJarAcceptPolicy {
         /**
          * accept all cookies unconditionally.
@@ -126,9 +142,17 @@ export namespace Soup {
          */
         GRANDFATHERED_THIRD_PARTY,
     }
-    export namespace DateFormat {
-        export const $gtype: GObject.GType<DateFormat>;
-    }
+    /**
+     * Date formats that soup_date_to_string() can use.
+     *
+     * `SOUP_DATE_HTTP` and `SOUP_DATE_COOKIE` always coerce the time to
+     * UTC. `SOUP_DATE_ISO8`601_XMLRPC uses the time as given, ignoring the
+     * offset completely. `SOUP_DATE_RFC2`822 and the other ISO 8601
+     * variants use the local time, appending the offset information if
+     * available.
+     *
+     * This enum may be extended with more values in future releases.
+     */
 
     /**
      * Date formats that soup_date_to_string() can use.
@@ -141,6 +165,10 @@ export namespace Soup {
      *
      * This enum may be extended with more values in future releases.
      */
+    export namespace DateFormat {
+        export const $gtype: GObject.GType<DateFormat>;
+    }
+
     enum DateFormat {
         /**
          * RFC 1123 format, used by the HTTP "Date" header. Eg
@@ -176,13 +204,17 @@ export namespace Soup {
          */
         ISO8601_XMLRPC,
     }
-    export namespace Encoding {
-        export const $gtype: GObject.GType<Encoding>;
-    }
+    /**
+     * How a message body is encoded for transport
+     */
 
     /**
      * How a message body is encoded for transport
      */
+    export namespace Encoding {
+        export const $gtype: GObject.GType<Encoding>;
+    }
+
     enum Encoding {
         /**
          * unknown / error
@@ -212,13 +244,17 @@ export namespace Soup {
          */
         BYTERANGES,
     }
-    export namespace HTTPVersion {
-        export const $gtype: GObject.GType<HTTPVersion>;
-    }
+    /**
+     * Indicates the HTTP protocol version being used.
+     */
 
     /**
      * Indicates the HTTP protocol version being used.
      */
+    export namespace HTTPVersion {
+        export const $gtype: GObject.GType<HTTPVersion>;
+    }
+
     enum HTTPVersion {
         /**
          * HTTP 1.0 (RFC 1945)
@@ -229,6 +265,7 @@ export namespace Soup {
          */
         HTTP_1_1,
     }
+
     export namespace KnownStatusCode {
         export const $gtype: GObject.GType<KnownStatusCode>;
     }
@@ -298,13 +335,17 @@ export namespace Soup {
         INSUFFICIENT_STORAGE,
         NOT_EXTENDED,
     }
-    export namespace LoggerLogLevel {
-        export const $gtype: GObject.GType<LoggerLogLevel>;
-    }
+    /**
+     * Describes the level of logging output to provide.
+     */
 
     /**
      * Describes the level of logging output to provide.
      */
+    export namespace LoggerLogLevel {
+        export const $gtype: GObject.GType<LoggerLogLevel>;
+    }
+
     enum LoggerLogLevel {
         /**
          * No logging
@@ -325,9 +366,13 @@ export namespace Soup {
          */
         BODY,
     }
-    export namespace MemoryUse {
-        export const $gtype: GObject.GType<MemoryUse>;
-    }
+    /**
+     * Describes how #SoupBuffer should use the data passed in by the
+     * caller.
+     *
+     * See also soup_buffer_new_with_owner(), which allows to you create a
+     * buffer containing data which is owned by another object.
+     */
 
     /**
      * Describes how #SoupBuffer should use the data passed in by the
@@ -336,6 +381,10 @@ export namespace Soup {
      * See also soup_buffer_new_with_owner(), which allows to you create a
      * buffer containing data which is owned by another object.
      */
+    export namespace MemoryUse {
+        export const $gtype: GObject.GType<MemoryUse>;
+    }
+
     enum MemoryUse {
         /**
          * The memory is statically allocated and
@@ -364,14 +413,19 @@ export namespace Soup {
          */
         TEMPORARY,
     }
-    export namespace MessageHeadersType {
-        export const $gtype: GObject.GType<MessageHeadersType>;
-    }
+    /**
+     * Value passed to soup_message_headers_new() to set certain default
+     * behaviors.
+     */
 
     /**
      * Value passed to soup_message_headers_new() to set certain default
      * behaviors.
      */
+    export namespace MessageHeadersType {
+        export const $gtype: GObject.GType<MessageHeadersType>;
+    }
+
     enum MessageHeadersType {
         /**
          * request headers
@@ -386,15 +440,21 @@ export namespace Soup {
          */
         MULTIPART,
     }
-    export namespace MessagePriority {
-        export const $gtype: GObject.GType<MessagePriority>;
-    }
+    /**
+     * Priorities that can be set on a #SoupMessage to instruct the
+     * message queue to process it before any other message with lower
+     * priority.
+     */
 
     /**
      * Priorities that can be set on a #SoupMessage to instruct the
      * message queue to process it before any other message with lower
      * priority.
      */
+    export namespace MessagePriority {
+        export const $gtype: GObject.GType<MessagePriority>;
+    }
+
     enum MessagePriority {
         /**
          * The lowest priority, the messages
@@ -498,13 +558,17 @@ export namespace Soup {
          */
         STRICT,
     }
-    export namespace SocketIOStatus {
-        export const $gtype: GObject.GType<SocketIOStatus>;
-    }
+    /**
+     * Return value from the #SoupSocket IO methods.
+     */
 
     /**
      * Return value from the #SoupSocket IO methods.
      */
+    export namespace SocketIOStatus {
+        export const $gtype: GObject.GType<SocketIOStatus>;
+    }
+
     enum SocketIOStatus {
         /**
          * Success
@@ -523,9 +587,18 @@ export namespace Soup {
          */
         ERROR,
     }
-    export namespace Status {
-        export const $gtype: GObject.GType<Status>;
-    }
+    /**
+     * These represent the known HTTP status code values, plus various
+     * network and internal errors.
+     *
+     * Note that no libsoup functions take or return this type directly;
+     * any function that works with status codes will accept unrecognized
+     * status codes as well.
+     *
+     * Prior to 2.44 this type was called
+     * <literal>SoupKnownStatusCode</literal>, but the individual values
+     * have always had the names they have now.
+     */
 
     /**
      * These represent the known HTTP status code values, plus various
@@ -539,6 +612,10 @@ export namespace Soup {
      * <literal>SoupKnownStatusCode</literal>, but the individual values
      * have always had the names they have now.
      */
+    export namespace Status {
+        export const $gtype: GObject.GType<Status>;
+    }
+
     enum Status {
         /**
          * No status available. (Eg, the message has not
@@ -851,9 +928,12 @@ export namespace Soup {
         static quark(): GLib.Quark;
     }
 
-    export namespace WebsocketCloseCode {
-        export const $gtype: GObject.GType<WebsocketCloseCode>;
-    }
+    /**
+     * Pre-defined close codes that can be passed to
+     * soup_websocket_connection_close() or received from
+     * soup_websocket_connection_get_close_code(). (However, other codes
+     * are also allowed.)
+     */
 
     /**
      * Pre-defined close codes that can be passed to
@@ -861,6 +941,10 @@ export namespace Soup {
      * soup_websocket_connection_get_close_code(). (However, other codes
      * are also allowed.)
      */
+    export namespace WebsocketCloseCode {
+        export const $gtype: GObject.GType<WebsocketCloseCode>;
+    }
+
     enum WebsocketCloseCode {
         /**
          * a normal, non-error close
@@ -921,13 +1005,17 @@ export namespace Soup {
          */
         TLS_HANDSHAKE,
     }
-    export namespace WebsocketConnectionType {
-        export const $gtype: GObject.GType<WebsocketConnectionType>;
-    }
+    /**
+     * The type of a #SoupWebsocketConnection.
+     */
 
     /**
      * The type of a #SoupWebsocketConnection.
      */
+    export namespace WebsocketConnectionType {
+        export const $gtype: GObject.GType<WebsocketConnectionType>;
+    }
+
     enum WebsocketConnectionType {
         /**
          * unknown/invalid connection
@@ -942,14 +1030,19 @@ export namespace Soup {
          */
         SERVER,
     }
-    export namespace WebsocketDataType {
-        export const $gtype: GObject.GType<WebsocketDataType>;
-    }
+    /**
+     * The type of data contained in a #SoupWebsocketConnection::message
+     * signal.
+     */
 
     /**
      * The type of data contained in a #SoupWebsocketConnection::message
      * signal.
      */
+    export namespace WebsocketDataType {
+        export const $gtype: GObject.GType<WebsocketDataType>;
+    }
+
     enum WebsocketDataType {
         /**
          * UTF-8 text
@@ -960,13 +1053,17 @@ export namespace Soup {
          */
         BINARY,
     }
-    export namespace WebsocketError {
-        export const $gtype: GObject.GType<WebsocketError>;
-    }
+    /**
+     * WebSocket-related errors.
+     */
 
     /**
      * WebSocket-related errors.
      */
+    export namespace WebsocketError {
+        export const $gtype: GObject.GType<WebsocketError>;
+    }
+
     enum WebsocketError {
         /**
          * a generic error
@@ -988,13 +1085,17 @@ export namespace Soup {
          */
         BAD_ORIGIN,
     }
-    export namespace WebsocketState {
-        export const $gtype: GObject.GType<WebsocketState>;
-    }
+    /**
+     * The state of the WebSocket connection.
+     */
 
     /**
      * The state of the WebSocket connection.
      */
+    export namespace WebsocketState {
+        export const $gtype: GObject.GType<WebsocketState>;
+    }
+
     enum WebsocketState {
         /**
          * the connection is ready to send messages
@@ -1028,9 +1129,12 @@ export namespace Soup {
         static quark(): GLib.Quark;
     }
 
-    export namespace XMLRPCFault {
-        export const $gtype: GObject.GType<XMLRPCFault>;
-    }
+    /**
+     * Pre-defined XML-RPC fault codes from <ulink
+     * url="http://xmlrpc-epi.sourceforge.net/specs/rfc.fault_codes.php">http://xmlrpc-epi.sourceforge.net/specs/rfc.fault_codes.php</ulink>.
+     * These are an extension, not part of the XML-RPC spec; you can't
+     * assume servers will use them.
+     */
 
     /**
      * Pre-defined XML-RPC fault codes from <ulink
@@ -1038,6 +1142,10 @@ export namespace Soup {
      * These are an extension, not part of the XML-RPC spec; you can't
      * assume servers will use them.
      */
+    export namespace XMLRPCFault {
+        export const $gtype: GObject.GType<XMLRPCFault>;
+    }
+
     enum XMLRPCFault {
         /**
          * request was not
@@ -2538,6 +2646,7 @@ export namespace Soup {
         (sock: Socket, status: number): void;
     }
     type ByteArray = object | null;
+
     export namespace Cacheability {
         export const $gtype: GObject.GType<Cacheability>;
     }
@@ -2548,13 +2657,17 @@ export namespace Soup {
         INVALIDATES,
         VALIDATES,
     }
-    export namespace Expectation {
-        export const $gtype: GObject.GType<Expectation>;
-    }
+    /**
+     * Represents the parsed value of the "Expect" header.
+     */
 
     /**
      * Represents the parsed value of the "Expect" header.
      */
+    export namespace Expectation {
+        export const $gtype: GObject.GType<Expectation>;
+    }
+
     enum Expectation {
         /**
          * any unrecognized expectation
@@ -2565,14 +2678,19 @@ export namespace Soup {
          */
         CONTINUE,
     }
-    export namespace MessageFlags {
-        export const $gtype: GObject.GType<MessageFlags>;
-    }
+    /**
+     * Various flags that can be set on a #SoupMessage to alter its
+     * behavior.
+     */
 
     /**
      * Various flags that can be set on a #SoupMessage to alter its
      * behavior.
      */
+    export namespace MessageFlags {
+        export const $gtype: GObject.GType<MessageFlags>;
+    }
+
     enum MessageFlags {
         /**
          * The session should not follow redirect
@@ -2640,9 +2758,15 @@ export namespace Soup {
          */
         DO_NOT_USE_AUTH_CACHE,
     }
-    export namespace ServerListenOptions {
-        export const $gtype: GObject.GType<ServerListenOptions>;
-    }
+    /**
+     * Options to pass to soup_server_listen(), etc.
+     *
+     * %SOUP_SERVER_LISTEN_IPV4_ONLY and %SOUP_SERVER_LISTEN_IPV6_ONLY
+     * only make sense with soup_server_listen_all() and
+     * soup_server_listen_local(), not plain soup_server_listen() (which
+     * simply listens on whatever kind of socket you give it). And you
+     * cannot specify both of them in a single call.
+     */
 
     /**
      * Options to pass to soup_server_listen(), etc.
@@ -2653,6 +2777,10 @@ export namespace Soup {
      * simply listens on whatever kind of socket you give it). And you
      * cannot specify both of them in a single call.
      */
+    export namespace ServerListenOptions {
+        export const $gtype: GObject.GType<ServerListenOptions>;
+    }
+
     enum ServerListenOptions {
         /**
          * Listen for https connections rather

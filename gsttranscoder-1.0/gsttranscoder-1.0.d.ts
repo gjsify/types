@@ -47,15 +47,21 @@ export namespace GstTranscoder {
         static quark(): GLib.Quark;
     }
 
-    export namespace TranscoderMessage {
-        export const $gtype: GObject.GType<TranscoderMessage>;
-    }
+    /**
+     * Types of messages that will be posted on the transcoder API bus.
+     *
+     * See also #gst_transcoder_get_message_bus()
+     */
 
     /**
      * Types of messages that will be posted on the transcoder API bus.
      *
      * See also #gst_transcoder_get_message_bus()
      */
+    export namespace TranscoderMessage {
+        export const $gtype: GObject.GType<TranscoderMessage>;
+    }
+
     enum TranscoderMessage {
         /**
          * Sink position changed
@@ -82,13 +88,17 @@ export namespace GstTranscoder {
          */
         WARNING,
     }
-    export namespace TranscoderState {
-        export const $gtype: GObject.GType<TranscoderState>;
-    }
+    /**
+     * High level representation of the transcoder pipeline state.
+     */
 
     /**
      * High level representation of the transcoder pipeline state.
      */
+    export namespace TranscoderState {
+        export const $gtype: GObject.GType<TranscoderState>;
+    }
+
     enum TranscoderState {
         /**
          * the transcoder is stopped.

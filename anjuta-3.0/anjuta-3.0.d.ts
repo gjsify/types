@@ -28,14 +28,19 @@ export namespace Anjuta {
      * Anjuta-3.0
      */
 
-    export namespace CommandBarEntryType {
-        export const $gtype: GObject.GType<CommandBarEntryType>;
-    }
+    /**
+     * Specifies if the entry corresponds to a frame or a button.
+     * Buttons are added to the last frame that appears before the button entry
+     */
 
     /**
      * Specifies if the entry corresponds to a frame or a button.
      * Buttons are added to the last frame that appears before the button entry
      */
+    export namespace CommandBarEntryType {
+        export const $gtype: GObject.GType<CommandBarEntryType>;
+    }
+
     enum CommandBarEntryType {
         /**
          * This entry should create a frame in the
@@ -52,6 +57,7 @@ export namespace Anjuta {
          */
         BUTTON,
     }
+
     export namespace CommandQueueExecuteMode {
         export const $gtype: GObject.GType<CommandQueueExecuteMode>;
     }
@@ -185,6 +191,7 @@ export namespace Anjuta {
         BOOLEAN,
         MAP,
     }
+
     export namespace SerializerMode {
         export const $gtype: GObject.GType<SerializerMode>;
     }
@@ -193,6 +200,7 @@ export namespace Anjuta {
         READ,
         WRITE,
     }
+
     export namespace SessionPhase {
         export const $gtype: GObject.GType<SessionPhase>;
     }
@@ -467,6 +475,7 @@ export namespace Anjuta {
     interface TokenForeachFunc {
         (token: Token, data?: any | null): void;
     }
+
     export namespace ProjectNodeState {
         export const $gtype: GObject.GType<ProjectNodeState>;
     }
@@ -486,6 +495,7 @@ export namespace Anjuta {
         CAN_SAVE,
         REMOVE_FILE,
     }
+
     export namespace ProjectNodeType {
         export const $gtype: GObject.GType<ProjectNodeType>;
     }
@@ -530,6 +540,7 @@ export namespace Anjuta {
         VARIABLE,
         OBJECT,
     }
+
     export namespace ProjectPropertyFlags {
         export const $gtype: GObject.GType<ProjectPropertyFlags>;
     }
@@ -540,6 +551,7 @@ export namespace Anjuta {
         HIDDEN,
         STATIC,
     }
+
     export namespace TokenType {
         export const $gtype: GObject.GType<TokenType>;
     }
@@ -593,6 +605,7 @@ export namespace Anjuta {
         REMOVED,
         ADDED,
     }
+
     export namespace VcsStatus {
         export const $gtype: GObject.GType<VcsStatus>;
     }

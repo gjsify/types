@@ -34,6 +34,7 @@ export namespace DMAP {
         LOGOUT,
         DONE,
     }
+
     export namespace ContentCode {
         export const $gtype: GObject.GType<ContentCode>;
     }
@@ -224,6 +225,7 @@ export namespace DMAP {
         RAOP,
         LAST,
     }
+
     export namespace MdnsBrowserTransportProtocol {
         export const $gtype: GObject.GType<MdnsBrowserTransportProtocol>;
     }
@@ -261,6 +263,7 @@ export namespace DMAP {
         PODCAST,
         TV_SHOW,
     }
+
     export namespace Type {
         export const $gtype: GObject.GType<Type>;
     }

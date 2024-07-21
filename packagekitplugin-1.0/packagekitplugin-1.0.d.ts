@@ -47,6 +47,7 @@ export namespace PackageKitPlugin {
         CATEGORY,
         LAST,
     }
+
     export namespace HintEnum {
         export const $gtype: GObject.GType<HintEnum>;
     }
@@ -58,6 +59,7 @@ export namespace PackageKitPlugin {
         INVALID,
         LAST,
     }
+
     export namespace PluginPhase {
         export const $gtype: GObject.GType<PluginPhase>;
     }
@@ -73,6 +75,7 @@ export namespace PackageKitPlugin {
         STATE_CHANGED,
         UNKNOWN,
     }
+
     export namespace TransactionState {
         export const $gtype: GObject.GType<TransactionState>;
     }

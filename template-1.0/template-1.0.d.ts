@@ -81,6 +81,7 @@ export namespace Template {
         CAST_DOUBLE,
         CAST_BOOL,
     }
+
     export namespace ExprType {
         export const $gtype: GObject.GType<ExprType>;
     }
@@ -120,6 +121,7 @@ export namespace Template {
         NOP,
         NULL,
     }
+
     export namespace SymbolType {
         export const $gtype: GObject.GType<SymbolType>;
     }

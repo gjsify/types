@@ -53,13 +53,17 @@ export namespace Polkit {
         static quark(): GLib.Quark;
     }
 
-    export namespace ImplicitAuthorization {
-        export const $gtype: GObject.GType<ImplicitAuthorization>;
-    }
+    /**
+     * Possible implicit authorizations.
+     */
 
     /**
      * Possible implicit authorizations.
      */
+    export namespace ImplicitAuthorization {
+        export const $gtype: GObject.GType<ImplicitAuthorization>;
+    }
+
     enum ImplicitAuthorization {
         /**
          * Unknown whether the subject is authorized, never returned in any public API.
@@ -107,13 +111,17 @@ export namespace Polkit {
      * @returns A #PolkitSubject or %NULL if @error is set. Free with g_object_unref().
      */
     function subject_from_string(str: string): Subject;
-    export namespace AuthorityFeatures {
-        export const $gtype: GObject.GType<AuthorityFeatures>;
-    }
+    /**
+     * Flags describing features supported by the Authority implementation.
+     */
 
     /**
      * Flags describing features supported by the Authority implementation.
      */
+    export namespace AuthorityFeatures {
+        export const $gtype: GObject.GType<AuthorityFeatures>;
+    }
+
     enum AuthorityFeatures {
         /**
          * No flags set.
@@ -125,13 +133,17 @@ export namespace Polkit {
          */
         TEMPORARY_AUTHORIZATION,
     }
-    export namespace CheckAuthorizationFlags {
-        export const $gtype: GObject.GType<CheckAuthorizationFlags>;
-    }
+    /**
+     * Possible flags when checking authorizations.
+     */
 
     /**
      * Possible flags when checking authorizations.
      */
+    export namespace CheckAuthorizationFlags {
+        export const $gtype: GObject.GType<CheckAuthorizationFlags>;
+    }
+
     enum CheckAuthorizationFlags {
         /**
          * No flags set.

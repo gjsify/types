@@ -18,13 +18,17 @@ export namespace Snapd {
      * Snapd-2
      */
 
-    export namespace AliasStatus {
-        export const $gtype: GObject.GType<AliasStatus>;
-    }
+    /**
+     * Status of an alias.
+     */
 
     /**
      * Status of an alias.
      */
+    export namespace AliasStatus {
+        export const $gtype: GObject.GType<AliasStatus>;
+    }
+
     enum AliasStatus {
         /**
          * the alias status is unknown.
@@ -51,13 +55,17 @@ export namespace Snapd {
          */
         MANUAL,
     }
-    export namespace ChangeFilter {
-        export const $gtype: GObject.GType<ChangeFilter>;
-    }
+    /**
+     * Filter to apply to changes.
+     */
 
     /**
      * Filter to apply to changes.
      */
+    export namespace ChangeFilter {
+        export const $gtype: GObject.GType<ChangeFilter>;
+    }
+
     enum ChangeFilter {
         /**
          * Return all changes.
@@ -72,13 +80,17 @@ export namespace Snapd {
          */
         READY,
     }
-    export namespace Confinement {
-        export const $gtype: GObject.GType<Confinement>;
-    }
+    /**
+     * Confinement used by a snap.
+     */
 
     /**
      * Confinement used by a snap.
      */
+    export namespace Confinement {
+        export const $gtype: GObject.GType<Confinement>;
+    }
+
     enum Confinement {
         /**
          * the confinement of the snap is unknown.
@@ -97,13 +109,17 @@ export namespace Snapd {
          */
         CLASSIC,
     }
-    export namespace DaemonType {
-        export const $gtype: GObject.GType<DaemonType>;
-    }
+    /**
+     * Type of daemon.
+     */
 
     /**
      * Type of daemon.
      */
+    export namespace DaemonType {
+        export const $gtype: GObject.GType<DaemonType>;
+    }
+
     enum DaemonType {
         /**
          * Not a daemon
@@ -314,13 +330,17 @@ export namespace Snapd {
         static quark(): GLib.Quark;
     }
 
-    export namespace MaintenanceKind {
-        export const $gtype: GObject.GType<MaintenanceKind>;
-    }
+    /**
+     * Type of snap.
+     */
 
     /**
      * Type of snap.
      */
+    export namespace MaintenanceKind {
+        export const $gtype: GObject.GType<MaintenanceKind>;
+    }
+
     enum MaintenanceKind {
         /**
          * an unknown maintenance kind is occurring.
@@ -335,13 +355,17 @@ export namespace Snapd {
          */
         SYSTEM_RESTART,
     }
-    export namespace MarkdownNodeType {
-        export const $gtype: GObject.GType<MarkdownNodeType>;
-    }
+    /**
+     * Type of markdown node.
+     */
 
     /**
      * Type of markdown node.
      */
+    export namespace MarkdownNodeType {
+        export const $gtype: GObject.GType<MarkdownNodeType>;
+    }
+
     enum MarkdownNodeType {
         /**
          * a piece of text.
@@ -380,10 +404,6 @@ export namespace Snapd {
          */
         URL,
     }
-    export namespace MarkdownVersion {
-        export const $gtype: GObject.GType<MarkdownVersion>;
-    }
-
     /**
      * Version of markdown to parse. Picking a version will ensure only nodes of the expected type are decoded.
      */
@@ -405,13 +425,17 @@ export namespace Snapd {
         _init(...args: any[]): void;
     }
 
-    export namespace PublisherValidation {
-        export const $gtype: GObject.GType<PublisherValidation>;
-    }
+    /**
+     * State of validation for a publisher.
+     */
 
     /**
      * State of validation for a publisher.
      */
+    export namespace PublisherValidation {
+        export const $gtype: GObject.GType<PublisherValidation>;
+    }
+
     enum PublisherValidation {
         /**
          * the validation state of the publisher is unknown.
@@ -430,13 +454,17 @@ export namespace Snapd {
          */
         STARRED,
     }
-    export namespace SnapStatus {
-        export const $gtype: GObject.GType<SnapStatus>;
-    }
+    /**
+     * The current state of a snap.
+     */
 
     /**
      * The current state of a snap.
      */
+    export namespace SnapStatus {
+        export const $gtype: GObject.GType<SnapStatus>;
+    }
+
     enum SnapStatus {
         /**
          * the snap state is unknown.
@@ -459,13 +487,17 @@ export namespace Snapd {
          */
         ACTIVE,
     }
-    export namespace SnapType {
-        export const $gtype: GObject.GType<SnapType>;
-    }
+    /**
+     * Type of snap.
+     */
 
     /**
      * Type of snap.
      */
+    export namespace SnapType {
+        export const $gtype: GObject.GType<SnapType>;
+    }
+
     enum SnapType {
         /**
          * the type of snap is unknown.
@@ -500,13 +532,17 @@ export namespace Snapd {
          */
         SNAPD,
     }
-    export namespace SystemConfinement {
-        export const $gtype: GObject.GType<SystemConfinement>;
-    }
+    /**
+     * Confinement used by a snap.
+     */
 
     /**
      * Confinement used by a snap.
      */
+    export namespace SystemConfinement {
+        export const $gtype: GObject.GType<SystemConfinement>;
+    }
+
     enum SystemConfinement {
         /**
          * the confinement of the system is unknown.
@@ -521,13 +557,17 @@ export namespace Snapd {
          */
         PARTIAL,
     }
-    export namespace ThemeStatus {
-        export const $gtype: GObject.GType<ThemeStatus>;
-    }
+    /**
+     * The status of a snap-packaged desktop theme.
+     */
 
     /**
      * The status of a snap-packaged desktop theme.
      */
+    export namespace ThemeStatus {
+        export const $gtype: GObject.GType<ThemeStatus>;
+    }
+
     enum ThemeStatus {
         /**
          * the theme is installed.
@@ -621,13 +661,17 @@ export namespace Snapd {
     interface ProgressCallback {
         (client: Client, change: Change, deprecated?: any | null): void;
     }
-    export namespace CreateUserFlags {
-        export const $gtype: GObject.GType<CreateUserFlags>;
-    }
+    /**
+     * Flag to control when a user accounts is created.
+     */
 
     /**
      * Flag to control when a user accounts is created.
      */
+    export namespace CreateUserFlags {
+        export const $gtype: GObject.GType<CreateUserFlags>;
+    }
+
     enum CreateUserFlags {
         /**
          * No flags, default behaviour.
@@ -642,13 +686,17 @@ export namespace Snapd {
          */
         KNOWN,
     }
-    export namespace FindFlags {
-        export const $gtype: GObject.GType<FindFlags>;
-    }
+    /**
+     * Flag to change how a find is performed.
+     */
 
     /**
      * Flag to change how a find is performed.
      */
+    export namespace FindFlags {
+        export const $gtype: GObject.GType<FindFlags>;
+    }
+
     enum FindFlags {
         /**
          * No flags, default behaviour.
@@ -677,13 +725,17 @@ export namespace Snapd {
          */
         MATCH_COMMON_ID,
     }
-    export namespace GetAppsFlags {
-        export const $gtype: GObject.GType<GetAppsFlags>;
-    }
+    /**
+     * Flag to change which apps are returned.
+     */
 
     /**
      * Flag to change which apps are returned.
      */
+    export namespace GetAppsFlags {
+        export const $gtype: GObject.GType<GetAppsFlags>;
+    }
+
     enum GetAppsFlags {
         /**
          * No flags, default behaviour.
@@ -694,13 +746,17 @@ export namespace Snapd {
          */
         SELECT_SERVICES,
     }
-    export namespace GetConnectionsFlags {
-        export const $gtype: GObject.GType<GetConnectionsFlags>;
-    }
+    /**
+     * Flag to change how connections are returned.
+     */
 
     /**
      * Flag to change how connections are returned.
      */
+    export namespace GetConnectionsFlags {
+        export const $gtype: GObject.GType<GetConnectionsFlags>;
+    }
+
     enum GetConnectionsFlags {
         /**
          * No flags, default behaviour.
@@ -711,13 +767,17 @@ export namespace Snapd {
          */
         SELECT_ALL,
     }
-    export namespace GetInterfacesFlags {
-        export const $gtype: GObject.GType<GetInterfacesFlags>;
-    }
+    /**
+     * Flags to control how interface information is returned.
+     */
 
     /**
      * Flags to control how interface information is returned.
      */
+    export namespace GetInterfacesFlags {
+        export const $gtype: GObject.GType<GetInterfacesFlags>;
+    }
+
     enum GetInterfacesFlags {
         /**
          * No flags, default behaviour.
@@ -740,13 +800,17 @@ export namespace Snapd {
          */
         ONLY_CONNECTED,
     }
-    export namespace GetSnapsFlags {
-        export const $gtype: GObject.GType<GetSnapsFlags>;
-    }
+    /**
+     * Flag to change which snaps are returned.
+     */
 
     /**
      * Flag to change which snaps are returned.
      */
+    export namespace GetSnapsFlags {
+        export const $gtype: GObject.GType<GetSnapsFlags>;
+    }
+
     enum GetSnapsFlags {
         /**
          * No flags, default behaviour.
@@ -757,13 +821,17 @@ export namespace Snapd {
          */
         INCLUDE_INACTIVE,
     }
-    export namespace InstallFlags {
-        export const $gtype: GObject.GType<InstallFlags>;
-    }
+    /**
+     * Flags to control install options.
+     */
 
     /**
      * Flags to control install options.
      */
+    export namespace InstallFlags {
+        export const $gtype: GObject.GType<InstallFlags>;
+    }
+
     enum InstallFlags {
         /**
          * No flags, default behaviour.
@@ -788,13 +856,17 @@ export namespace Snapd {
          */
         JAILMODE,
     }
-    export namespace RemoveFlags {
-        export const $gtype: GObject.GType<RemoveFlags>;
-    }
+    /**
+     * Flags to control remove options.
+     */
 
     /**
      * Flags to control remove options.
      */
+    export namespace RemoveFlags {
+        export const $gtype: GObject.GType<RemoveFlags>;
+    }
+
     enum RemoveFlags {
         /**
          * No flags, default behaviour.

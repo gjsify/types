@@ -26,9 +26,15 @@ export namespace Gsk {
      * Gsk-4.0
      */
 
-    export namespace BlendMode {
-        export const $gtype: GObject.GType<BlendMode>;
-    }
+    /**
+     * The blend modes available for render nodes.
+     *
+     * The implementation of each blend mode is deferred to the
+     * rendering pipeline.
+     *
+     * See <https://www.w3.org/TR/compositing-1/#blending> for more information
+     * on blending and blend modes.
+     */
 
     /**
      * The blend modes available for render nodes.
@@ -39,6 +45,10 @@ export namespace Gsk {
      * See <https://www.w3.org/TR/compositing-1/#blending> for more information
      * on blending and blend modes.
      */
+    export namespace BlendMode {
+        export const $gtype: GObject.GType<BlendMode>;
+    }
+
     enum BlendMode {
         /**
          * The default blend mode, which specifies no blending
@@ -108,13 +118,17 @@ export namespace Gsk {
          */
         LUMINOSITY,
     }
-    export namespace Corner {
-        export const $gtype: GObject.GType<Corner>;
-    }
+    /**
+     * The corner indices used by `GskRoundedRect`.
+     */
 
     /**
      * The corner indices used by `GskRoundedRect`.
      */
+    export namespace Corner {
+        export const $gtype: GObject.GType<Corner>;
+    }
+
     enum Corner {
         /**
          * The top left corner
@@ -133,9 +147,20 @@ export namespace Gsk {
          */
         BOTTOM_LEFT,
     }
-    export namespace FillRule {
-        export const $gtype: GObject.GType<FillRule>;
-    }
+    /**
+     * `GskFillRule` is used to select how paths are filled.
+     *
+     * Whether or not a point is included in the fill is determined by taking
+     * a ray from that point to infinity and looking at intersections with the
+     * path. The ray can be in any direction, as long as it doesn't pass through
+     * the end point of a segment or have a tricky intersection such as
+     * intersecting tangent to the path.
+     *
+     * (Note that filling is not actually implemented in this way. This
+     * is just a description of the rule that is applied.)
+     *
+     * New entries may be added in future versions.
+     */
 
     /**
      * `GskFillRule` is used to select how paths are filled.
@@ -151,6 +176,10 @@ export namespace Gsk {
      *
      * New entries may be added in future versions.
      */
+    export namespace FillRule {
+        export const $gtype: GObject.GType<FillRule>;
+    }
+
     enum FillRule {
         /**
          * If the path crosses the ray from
@@ -168,9 +197,13 @@ export namespace Gsk {
          */
         EVEN_ODD,
     }
-    export namespace GLUniformType {
-        export const $gtype: GObject.GType<GLUniformType>;
-    }
+    /**
+     * This defines the types of the uniforms that `GskGLShaders`
+     * declare.
+     *
+     * It defines both what the type is called in the GLSL shader
+     * code, and what the corresponding C type is on the Gtk side.
+     */
 
     /**
      * This defines the types of the uniforms that `GskGLShaders`
@@ -179,6 +212,10 @@ export namespace Gsk {
      * It defines both what the type is called in the GLSL shader
      * code, and what the corresponding C type is on the Gtk side.
      */
+    export namespace GLUniformType {
+        export const $gtype: GObject.GType<GLUniformType>;
+    }
+
     enum GLUniformType {
         /**
          * No type, used for uninitialized or unspecified values.
@@ -213,9 +250,22 @@ export namespace Gsk {
          */
         VEC4,
     }
-    export namespace LineCap {
-        export const $gtype: GObject.GType<LineCap>;
-    }
+    /**
+     * Specifies how to render the start and end points of contours or
+     * dashes when stroking.
+     *
+     * The default line cap style is `GSK_LINE_CAP_BUTT`.
+     *
+     * New entries may be added in future versions.
+     *
+     * <figure>
+     *   <picture>
+     *     <source srcset="caps-dark.png" media="(prefers-color-scheme: dark)">
+     *     <img alt="Line Cap Styles" src="caps-light.png">
+     *   </picture>
+     *   <figcaption>GSK_LINE_CAP_BUTT, GSK_LINE_CAP_ROUND, GSK_LINE_CAP_SQUARE</figcaption>
+     * </figure>
+     */
 
     /**
      * Specifies how to render the start and end points of contours or
@@ -233,6 +283,10 @@ export namespace Gsk {
      *   <figcaption>GSK_LINE_CAP_BUTT, GSK_LINE_CAP_ROUND, GSK_LINE_CAP_SQUARE</figcaption>
      * </figure>
      */
+    export namespace LineCap {
+        export const $gtype: GObject.GType<LineCap>;
+    }
+
     enum LineCap {
         /**
          * Start and stop the line exactly at the start
@@ -250,9 +304,21 @@ export namespace Gsk {
          */
         SQUARE,
     }
-    export namespace LineJoin {
-        export const $gtype: GObject.GType<LineJoin>;
-    }
+    /**
+     * Specifies how to render the junction of two lines when stroking.
+     *
+     * The default line join style is `GSK_LINE_JOIN_MITER`.
+     *
+     * New entries may be added in future versions.
+     *
+     * <figure>
+     *   <picture>
+     *     <source srcset="join-dark.png" media="(prefers-color-scheme: dark)">
+     *     <img alt="Line Join Styles" src="join-light.png">
+     *   </picture>
+     *   <figcaption>GSK_LINE_JOINT_MITER, GSK_LINE_JOINT_ROUND, GSK_LINE_JOIN_BEVEL</figcaption>
+     * </figure>
+     */
 
     /**
      * Specifies how to render the junction of two lines when stroking.
@@ -269,6 +335,10 @@ export namespace Gsk {
      *   <figcaption>GSK_LINE_JOINT_MITER, GSK_LINE_JOINT_ROUND, GSK_LINE_JOIN_BEVEL</figcaption>
      * </figure>
      */
+    export namespace LineJoin {
+        export const $gtype: GObject.GType<LineJoin>;
+    }
+
     enum LineJoin {
         /**
          * Use a sharp angled corner
@@ -285,13 +355,17 @@ export namespace Gsk {
          */
         BEVEL,
     }
-    export namespace MaskMode {
-        export const $gtype: GObject.GType<MaskMode>;
-    }
+    /**
+     * The mask modes available for mask nodes.
+     */
 
     /**
      * The mask modes available for mask nodes.
      */
+    export namespace MaskMode {
+        export const $gtype: GObject.GType<MaskMode>;
+    }
+
     enum MaskMode {
         /**
          * Use the alpha channel of the mask
@@ -312,9 +386,19 @@ export namespace Gsk {
          */
         INVERTED_LUMINANCE,
     }
-    export namespace PathDirection {
-        export const $gtype: GObject.GType<PathDirection>;
-    }
+    /**
+     * The values of the `GskPathDirection` enum are used to pick one
+     * of the four tangents at a given point on the path.
+     *
+     * Note that the directions for `GSK_PATH_FROM_START/``GSK_PATH_TO_END` and
+     * `GSK_PATH_TO_START/``GSK_PATH_FROM_END` will coincide for smooth points.
+     * Only sharp turns will exhibit four different directions.
+     *
+     * <picture>
+     *   <source srcset="directions-dark.png" media="(prefers-color-scheme: dark)">
+     *   <img alt="Path Tangents" src="directions-light.png">
+     * </picture>
+     */
 
     /**
      * The values of the `GskPathDirection` enum are used to pick one
@@ -329,6 +413,10 @@ export namespace Gsk {
      *   <img alt="Path Tangents" src="directions-light.png">
      * </picture>
      */
+    export namespace PathDirection {
+        export const $gtype: GObject.GType<PathDirection>;
+    }
+
     enum PathDirection {
         /**
          * The tangent in path direction of the incoming side
@@ -351,15 +439,21 @@ export namespace Gsk {
          */
         FROM_END,
     }
-    export namespace PathOperation {
-        export const $gtype: GObject.GType<PathOperation>;
-    }
+    /**
+     * Path operations are used to describe the segments of a `GskPath`.
+     *
+     * More values may be added in the future.
+     */
 
     /**
      * Path operations are used to describe the segments of a `GskPath`.
      *
      * More values may be added in the future.
      */
+    export namespace PathOperation {
+        export const $gtype: GObject.GType<PathOperation>;
+    }
+
     enum PathOperation {
         /**
          * A move-to operation, with 1 point describing the target point.
@@ -394,13 +488,17 @@ export namespace Gsk {
          */
         CONIC,
     }
-    export namespace RenderNodeType {
-        export const $gtype: GObject.GType<RenderNodeType>;
-    }
+    /**
+     * The type of a node determines what the node is rendering.
+     */
 
     /**
      * The type of a node determines what the node is rendering.
      */
+    export namespace RenderNodeType {
+        export const $gtype: GObject.GType<RenderNodeType>;
+    }
+
     enum RenderNodeType {
         /**
          * Error type. No node will ever have this type.
@@ -527,9 +625,12 @@ export namespace Gsk {
          */
         SUBSURFACE_NODE,
     }
-    export namespace ScalingFilter {
-        export const $gtype: GObject.GType<ScalingFilter>;
-    }
+    /**
+     * The filters used when scaling texture data.
+     *
+     * The actual implementation of each filter is deferred to the
+     * rendering pipeline.
+     */
 
     /**
      * The filters used when scaling texture data.
@@ -537,6 +638,10 @@ export namespace Gsk {
      * The actual implementation of each filter is deferred to the
      * rendering pipeline.
      */
+    export namespace ScalingFilter {
+        export const $gtype: GObject.GType<ScalingFilter>;
+    }
+
     enum ScalingFilter {
         /**
          * linear interpolation filter
@@ -586,9 +691,18 @@ export namespace Gsk {
         static quark(): GLib.Quark;
     }
 
-    export namespace TransformCategory {
-        export const $gtype: GObject.GType<TransformCategory>;
-    }
+    /**
+     * The categories of matrices relevant for GSK and GTK.
+     *
+     * Note that any category includes matrices of all later categories.
+     * So if you want to for example check if a matrix is a 2D matrix,
+     * `category >= GSK_TRANSFORM_CATEGORY_2D` is the way to do this.
+     *
+     * Also keep in mind that rounding errors may cause matrices to not
+     * conform to their categories. Otherwise, matrix operations done via
+     * multiplication will not worsen categories. So for the matrix
+     * multiplication `C = A * B`, `category(C) = MIN (category(A), category(B))`.
+     */
 
     /**
      * The categories of matrices relevant for GSK and GTK.
@@ -602,6 +716,10 @@ export namespace Gsk {
      * multiplication will not worsen categories. So for the matrix
      * multiplication `C = A * B`, `category(C) = MIN (category(A), category(B))`.
      */
+    export namespace TransformCategory {
+        export const $gtype: GObject.GType<TransformCategory>;
+    }
+
     enum TransformCategory {
         /**
          * The category of the matrix has not been
@@ -725,9 +843,15 @@ export namespace Gsk {
     interface PathForeachFunc {
         (op: PathOperation, pts: Graphene.Point, n_pts: number, weight: number): boolean;
     }
-    export namespace PathForeachFlags {
-        export const $gtype: GObject.GType<PathForeachFlags>;
-    }
+    /**
+     * Flags that can be passed to gsk_path_foreach() to influence what
+     * kinds of operations the path is decomposed into.
+     *
+     * By default, [method`Gsk`.Path.foreach] will only emit a path with all
+     * operations flattened to straight lines to allow for maximum compatibility.
+     * The only operations emitted will be `GSK_PATH_MOVE`, `GSK_PATH_LINE` and
+     * `GSK_PATH_CLOSE`.
+     */
 
     /**
      * Flags that can be passed to gsk_path_foreach() to influence what
@@ -738,6 +862,10 @@ export namespace Gsk {
      * The only operations emitted will be `GSK_PATH_MOVE`, `GSK_PATH_LINE` and
      * `GSK_PATH_CLOSE`.
      */
+    export namespace PathForeachFlags {
+        export const $gtype: GObject.GType<PathForeachFlags>;
+    }
+
     enum PathForeachFlags {
         /**
          * The default behavior, only allow lines.

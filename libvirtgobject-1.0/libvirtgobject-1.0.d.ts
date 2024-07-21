@@ -42,6 +42,7 @@ export namespace LibvirtGObject {
         REMOVE_NVRAM,
         KEEP_NVRAM,
     }
+
     export namespace DomainRebootFlags {
         export const $gtype: GObject.GType<DomainRebootFlags>;
     }
@@ -60,6 +61,7 @@ export namespace LibvirtGObject {
          */
         GUEST_AGENT,
     }
+
     export namespace DomainShutdownFlags {
         export const $gtype: GObject.GType<DomainShutdownFlags>;
     }
@@ -78,6 +80,7 @@ export namespace LibvirtGObject {
          */
         GUEST_AGENT,
     }
+
     export namespace DomainSnapshotCreateFlags {
         export const $gtype: GObject.GType<DomainSnapshotCreateFlags>;
     }
@@ -121,6 +124,7 @@ export namespace LibvirtGObject {
          */
         ATOMIC,
     }
+
     export namespace DomainSnapshotDeleteFlags {
         export const $gtype: GObject.GType<DomainSnapshotDeleteFlags>;
     }
@@ -139,6 +143,7 @@ export namespace LibvirtGObject {
          */
         CHILDREN_ONLY,
     }
+
     export namespace DomainSnapshotListFlags {
         export const $gtype: GObject.GType<DomainSnapshotListFlags>;
     }
@@ -195,6 +200,7 @@ export namespace LibvirtGObject {
          */
         EXTERNAL,
     }
+
     export namespace DomainSnapshotRevertFlags {
         export const $gtype: GObject.GType<DomainSnapshotRevertFlags>;
     }
@@ -213,6 +219,7 @@ export namespace LibvirtGObject {
          */
         FORCE,
     }
+
     export namespace DomainState {
         export const $gtype: GObject.GType<DomainState>;
     }
@@ -227,6 +234,7 @@ export namespace LibvirtGObject {
         CRASHED,
         PMSUSPENDED,
     }
+
     export namespace DomainUpdateDeviceFlags {
         export const $gtype: GObject.GType<DomainUpdateDeviceFlags>;
     }
@@ -245,6 +253,7 @@ export namespace LibvirtGObject {
          */
         CONFIG,
     }
+
     export namespace DomainXMLFlags {
         export const $gtype: GObject.GType<DomainXMLFlags>;
     }
@@ -267,6 +276,7 @@ export namespace LibvirtGObject {
          */
         UPDATE_CPU,
     }
+
     export namespace IPAddrType {
         export const $gtype: GObject.GType<IPAddrType>;
     }
@@ -281,6 +291,7 @@ export namespace LibvirtGObject {
          */
         IPV6,
     }
+
     export namespace StoragePoolState {
         export const $gtype: GObject.GType<StoragePoolState>;
     }
@@ -292,6 +303,7 @@ export namespace LibvirtGObject {
         DEGRADED,
         INACCESSIBLE,
     }
+
     export namespace StorageVolResizeFlags {
         export const $gtype: GObject.GType<StorageVolResizeFlags>;
     }
@@ -315,6 +327,7 @@ export namespace LibvirtGObject {
          */
         SHRINK,
     }
+
     export namespace StorageVolType {
         export const $gtype: GObject.GType<StorageVolType>;
     }
@@ -346,6 +359,7 @@ export namespace LibvirtGObject {
     type StoragePoolHandle = object | null;
     type StorageVolHandle = object | null;
     type StreamHandle = object | null;
+
     export namespace DomainStartFlags {
         export const $gtype: GObject.GType<DomainStartFlags>;
     }
@@ -357,6 +371,7 @@ export namespace LibvirtGObject {
         BYPASS_CACHE,
         FORCE_BOOT,
     }
+
     export namespace StreamIOCondition {
         export const $gtype: GObject.GType<StreamIOCondition>;
     }

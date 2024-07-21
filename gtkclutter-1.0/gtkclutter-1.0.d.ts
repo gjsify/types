@@ -33,13 +33,17 @@ export namespace GtkClutter {
      * GtkClutter-1.0
      */
 
-    export namespace TextureError {
-        export const $gtype: GObject.GType<TextureError>;
-    }
+    /**
+     * Error enumeration for #GtkClutterTexture
+     */
 
     /**
      * Error enumeration for #GtkClutterTexture
      */
+    export namespace TextureError {
+        export const $gtype: GObject.GType<TextureError>;
+    }
+
     enum TextureError {
         /**
          * Invalid stock id

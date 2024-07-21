@@ -39,6 +39,7 @@ export namespace AtrilView {
         PRIORITY_NONE,
         N_PRIORITIES,
     }
+
     export namespace JobRunMode {
         export const $gtype: GObject.GType<JobRunMode>;
     }
@@ -47,6 +48,7 @@ export namespace AtrilView {
         THREAD,
         MAIN_LOOP,
     }
+
     export namespace PageLayout {
         export const $gtype: GObject.GType<PageLayout>;
     }
@@ -56,6 +58,7 @@ export namespace AtrilView {
         DUAL,
         AUTOMATIC,
     }
+
     export namespace SizingMode {
         export const $gtype: GObject.GType<SizingMode>;
     }
@@ -87,6 +90,7 @@ export namespace AtrilView {
      */
     function stock_icons_init(): void;
     function stock_icons_set_screen(screen: Gdk.Screen): void;
+
     export namespace JobPageDataFlags {
         export const $gtype: GObject.GType<JobPageDataFlags>;
     }

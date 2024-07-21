@@ -39,6 +39,7 @@ export namespace XreaderView {
         PRIORITY_NONE,
         N_PRIORITIES,
     }
+
     export namespace JobRunMode {
         export const $gtype: GObject.GType<JobRunMode>;
     }
@@ -47,6 +48,7 @@ export namespace XreaderView {
         THREAD,
         MAIN_LOOP,
     }
+
     export namespace SizingMode {
         export const $gtype: GObject.GType<SizingMode>;
     }
@@ -56,6 +58,7 @@ export namespace XreaderView {
         FIT_WIDTH,
         FREE,
     }
+
     export namespace ViewSelectionMode {
         export const $gtype: GObject.GType<ViewSelectionMode>;
     }
@@ -84,6 +87,7 @@ export namespace XreaderView {
     function stock_icons_init(): void;
     function stock_icons_set_screen(screen: Gdk.Screen): void;
     function stock_icons_shutdown(): void;
+
     export namespace JobPageDataFlags {
         export const $gtype: GObject.GType<JobPageDataFlags>;
     }

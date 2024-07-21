@@ -36,6 +36,7 @@ export namespace Xed {
         SEARCH,
         REPLACE,
     }
+
     export namespace TabState {
         export const $gtype: GObject.GType<TabState>;
     }
@@ -258,6 +259,7 @@ export namespace Xed {
     interface MessageTypeForeach {
         (key: string, type: GObject.GType, required: boolean): void;
     }
+
     export namespace DebugSection {
         export const $gtype: GObject.GType<DebugSection>;
     }
@@ -280,6 +282,7 @@ export namespace Xed {
         DEBUG_LOADER,
         DEBUG_SAVER,
     }
+
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }

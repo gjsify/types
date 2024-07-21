@@ -38,6 +38,7 @@ export namespace Gitg {
         SESSION,
         FOREVER,
     }
+
     export namespace CommitModelColumns {
         export const $gtype: GObject.GType<CommitModelColumns>;
     }
@@ -57,6 +58,7 @@ export namespace Gitg {
         COMMIT,
         NUM,
     }
+
     export namespace RefType {
         export const $gtype: GObject.GType<RefType>;
     }
@@ -68,6 +70,7 @@ export namespace Gitg {
         TAG,
         STASH,
     }
+
     export namespace RefState {
         export const $gtype: GObject.GType<RefState>;
     }
@@ -77,6 +80,7 @@ export namespace Gitg {
         SELECTED,
         PRELIGHT,
     }
+
     export namespace RemoteState {
         export const $gtype: GObject.GType<RemoteState>;
     }
@@ -87,6 +91,7 @@ export namespace Gitg {
         CONNECTED,
         TRANSFERRING,
     }
+
     export namespace SelectionMode {
         export const $gtype: GObject.GType<SelectionMode>;
     }
@@ -95,6 +100,7 @@ export namespace Gitg {
         NORMAL,
         SELECTION,
     }
+
     export namespace DeleteSources {
         export const $gtype: GObject.GType<DeleteSources>;
     }
@@ -104,6 +110,7 @@ export namespace Gitg {
         TRASH,
         DELETE,
     }
+
     export namespace SidebarHint {
         export const $gtype: GObject.GType<SidebarHint>;
     }
@@ -114,6 +121,7 @@ export namespace Gitg {
         SEPARATOR,
         DUMMY,
     }
+
     export namespace SidebarColumn {
         export const $gtype: GObject.GType<SidebarColumn>;
     }
@@ -207,6 +215,7 @@ export namespace Gitg {
     }
     function commit_model_columns_type(): GObject.GType;
     function init(): void;
+
     export namespace LaneTag {
         export const $gtype: GObject.GType<LaneTag>;
     }
@@ -220,6 +229,7 @@ export namespace Gitg {
         SIGN_UNSTAGED,
         HIDDEN,
     }
+
     export namespace StageCommitOptions {
         export const $gtype: GObject.GType<StageCommitOptions>;
     }

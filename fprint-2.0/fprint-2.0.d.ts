@@ -90,14 +90,19 @@ export namespace FPrint {
         static quark(): GLib.Quark;
     }
 
-    export namespace DeviceRetry {
-        export const $gtype: GObject.GType<DeviceRetry>;
-    }
+    /**
+     * Error codes representing scan failures resulting in the user needing to
+     * retry.
+     */
 
     /**
      * Error codes representing scan failures resulting in the user needing to
      * retry.
      */
+    export namespace DeviceRetry {
+        export const $gtype: GObject.GType<DeviceRetry>;
+    }
+
     enum DeviceRetry {
         /**
          * The scan did not succeed due to poor scan quality
@@ -121,6 +126,7 @@ export namespace FPrint {
          */
         REMOVE_FINGER,
     }
+
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -139,6 +145,7 @@ export namespace FPrint {
          */
         USB,
     }
+
     export namespace Finger {
         export const $gtype: GObject.GType<Finger>;
     }
@@ -197,6 +204,7 @@ export namespace FPrint {
          */
         LAST,
     }
+
     export namespace ScanType {
         export const $gtype: GObject.GType<ScanType>;
     }
@@ -211,9 +219,12 @@ export namespace FPrint {
          */
         PRESS,
     }
-    export namespace Temperature {
-        export const $gtype: GObject.GType<Temperature>;
-    }
+    /**
+     * When a device is created, it is assumed to be cold. Applications such as
+     * fprintd may want to ensure all devices on the system are cold before
+     * shutting down in order to ensure that the cool-off period is not violated
+     * because the internal libfprint state about the device is lost.
+     */
 
     /**
      * When a device is created, it is assumed to be cold. Applications such as
@@ -221,6 +232,10 @@ export namespace FPrint {
      * shutting down in order to ensure that the cool-off period is not violated
      * because the internal libfprint state about the device is lost.
      */
+    export namespace Temperature {
+        export const $gtype: GObject.GType<Temperature>;
+    }
+
     enum Temperature {
         /**
          * Sensor is considered cold.
@@ -243,6 +258,7 @@ export namespace FPrint {
     interface MatchCb {
         (device: Device, match?: Print | null, print?: Print | null, error?: GLib.Error | null): void;
     }
+
     export namespace DeviceFeature {
         export const $gtype: GObject.GType<DeviceFeature>;
     }
@@ -293,6 +309,7 @@ export namespace FPrint {
          */
         UPDATE_PRINT,
     }
+
     export namespace FingerStatusFlags {
         export const $gtype: GObject.GType<FingerStatusFlags>;
     }

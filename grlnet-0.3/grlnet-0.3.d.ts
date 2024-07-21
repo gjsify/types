@@ -19,14 +19,19 @@ export namespace GrlNet {
      * GrlNet-0.3
      */
 
-    export namespace WcError {
-        export const $gtype: GObject.GType<WcError>;
-    }
+    /**
+     * These constants identify all the available errors managed by
+     * the web client.
+     */
 
     /**
      * These constants identify all the available errors managed by
      * the web client.
      */
+    export namespace WcError {
+        export const $gtype: GObject.GType<WcError>;
+    }
+
     enum WcError {
         /**
          * Deprecated. For generic errors, you

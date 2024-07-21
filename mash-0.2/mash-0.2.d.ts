@@ -32,13 +32,17 @@ export namespace Mash {
      * Mash-0.2
      */
 
-    export namespace DataError {
-        export const $gtype: GObject.GType<DataError>;
-    }
+    /**
+     * Error enumeration for #MashData
+     */
 
     /**
      * Error enumeration for #MashData
      */
+    export namespace DataError {
+        export const $gtype: GObject.GType<DataError>;
+    }
+
     enum DataError {
         UNKNOWN_FORMAT,
         UNKNOWN,
@@ -46,9 +50,26 @@ export namespace Mash {
         INVALID,
         UNSUPPORTED,
     }
-    export namespace DataFlags {
-        export const $gtype: GObject.GType<DataFlags>;
-    }
+    /**
+     * Flags used for modifying the data as it is loaded. These can be
+     * passed to mash_data_load().
+     *
+     * If any of the negate flags are set then they cause the vertex and
+     * normal coordinates for the specified axis to be negated. This could
+     * be useful when loading a model from a tool which uses a different
+     * coordinate system than the one used in your application. For
+     * example, in Blender if the view is rotated such that the x-axis is
+     * pointing to the right, and the z-axis is pointing out of the screen
+     * then y-axis would be pointing directly up. However in Clutter the
+     * default transformation is set up such that the y-axis would be
+     * pointing down. Therefore if a model is loaded from Blender it would
+     * appear upside-down. Also all of the front faces would be in
+     * clockwise order. If backface culling is then enabled then the wrong
+     * faces would be culled with the default Cogl settings.
+     *
+     * To avoid these issues when exporting from Blender it is common to
+     * pass the %MASH_DATA_NEGATE_Y flag.
+     */
 
     /**
      * Flags used for modifying the data as it is loaded. These can be
@@ -70,6 +91,10 @@ export namespace Mash {
      * To avoid these issues when exporting from Blender it is common to
      * pass the %MASH_DATA_NEGATE_Y flag.
      */
+    export namespace DataFlags {
+        export const $gtype: GObject.GType<DataFlags>;
+    }
+
     enum DataFlags {
         NONE,
         NEGATE_X,

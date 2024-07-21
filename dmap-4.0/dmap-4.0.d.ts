@@ -20,13 +20,17 @@ export namespace Dmap {
      * Dmap-4.0
      */
 
-    export namespace ConnectionState {
-        export const $gtype: GObject.GType<ConnectionState>;
-    }
+    /**
+     * Enumeration of connection states.
+     */
 
     /**
      * Enumeration of connection states.
      */
+    export namespace ConnectionState {
+        export const $gtype: GObject.GType<ConnectionState>;
+    }
+
     enum ConnectionState {
         /**
          * getting DMAP server information
@@ -65,6 +69,7 @@ export namespace Dmap {
          */
         DONE,
     }
+
     export namespace ContentCode {
         export const $gtype: GObject.GType<ContentCode>;
     }
@@ -236,6 +241,7 @@ export namespace Dmap {
         CC_CAIV,
         CC_CAVC,
     }
+
     export namespace ControlPlayState {
         export const $gtype: GObject.GType<ControlPlayState>;
     }
@@ -245,6 +251,7 @@ export namespace Dmap {
         PAUSED,
         PLAYING,
     }
+
     export namespace ControlRepeatState {
         export const $gtype: GObject.GType<ControlRepeatState>;
     }
@@ -254,13 +261,17 @@ export namespace Dmap {
         SINGLE,
         ALL,
     }
-    export namespace DbId {
-        export const $gtype: GObject.GType<DbId>;
-    }
+    /**
+     * Special DmapDb ID values.
+     */
 
     /**
      * Special DmapDb ID values.
      */
+    export namespace DbId {
+        export const $gtype: GObject.GType<DbId>;
+    }
+
     enum DbId {
         /**
          * the value which represents a bad DmapDb ID.
@@ -344,13 +355,17 @@ export namespace Dmap {
         UDP,
         LAST,
     }
-    export namespace MdnsServiceType {
-        export const $gtype: GObject.GType<MdnsServiceType>;
-    }
+    /**
+     * Enum values used to specify the service type.
+     */
 
     /**
      * Enum values used to specify the service type.
      */
+    export namespace MdnsServiceType {
+        export const $gtype: GObject.GType<MdnsServiceType>;
+    }
+
     enum MdnsServiceType {
         /**
          * an invalid service type
@@ -377,6 +392,7 @@ export namespace Dmap {
          */
         LAST,
     }
+
     export namespace MediaKind {
         export const $gtype: GObject.GType<MediaKind>;
     }
@@ -387,6 +403,7 @@ export namespace Dmap {
         PODCAST,
         TV_SHOW,
     }
+
     export namespace ShareAuthMethod {
         export const $gtype: GObject.GType<ShareAuthMethod>;
     }

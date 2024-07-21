@@ -26,6 +26,7 @@ export namespace Mtk {
         IN,
         PART,
     }
+
     export namespace RoundingStrategy {
         export const $gtype: GObject.GType<RoundingStrategy>;
     }

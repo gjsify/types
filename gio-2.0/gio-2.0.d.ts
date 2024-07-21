@@ -54,13 +54,17 @@ export namespace Gio {
      * Gio-2.0
      */
 
-    export namespace BusType {
-        export const $gtype: GObject.GType<BusType>;
-    }
+    /**
+     * An enumeration for well-known message buses.
+     */
 
     /**
      * An enumeration for well-known message buses.
      */
+    export namespace BusType {
+        export const $gtype: GObject.GType<BusType>;
+    }
+
     enum BusType {
         /**
          * An alias for the message bus that activated the process, if any.
@@ -79,13 +83,17 @@ export namespace Gio {
          */
         SESSION,
     }
-    export namespace ConverterResult {
-        export const $gtype: GObject.GType<ConverterResult>;
-    }
+    /**
+     * Results returned from g_converter_convert().
+     */
 
     /**
      * Results returned from g_converter_convert().
      */
+    export namespace ConverterResult {
+        export const $gtype: GObject.GType<ConverterResult>;
+    }
+
     enum ConverterResult {
         /**
          * There was an error during conversion.
@@ -104,13 +112,17 @@ export namespace Gio {
          */
         FLUSHED,
     }
-    export namespace CredentialsType {
-        export const $gtype: GObject.GType<CredentialsType>;
-    }
+    /**
+     * Enumeration describing different kinds of native credential types.
+     */
 
     /**
      * Enumeration describing different kinds of native credential types.
      */
+    export namespace CredentialsType {
+        export const $gtype: GObject.GType<CredentialsType>;
+    }
+
     enum CredentialsType {
         /**
          * Indicates an invalid native credential type.
@@ -490,13 +502,17 @@ export namespace Gio {
         static unregister_error(error_domain: GLib.Quark, error_code: number, dbus_error_name: string): boolean;
     }
 
-    export namespace DBusMessageByteOrder {
-        export const $gtype: GObject.GType<DBusMessageByteOrder>;
-    }
+    /**
+     * Enumeration used to describe the byte order of a D-Bus message.
+     */
 
     /**
      * Enumeration used to describe the byte order of a D-Bus message.
      */
+    export namespace DBusMessageByteOrder {
+        export const $gtype: GObject.GType<DBusMessageByteOrder>;
+    }
+
     enum DBusMessageByteOrder {
         /**
          * The byte order is big endian.
@@ -507,13 +523,17 @@ export namespace Gio {
          */
         LITTLE_ENDIAN,
     }
-    export namespace DBusMessageHeaderField {
-        export const $gtype: GObject.GType<DBusMessageHeaderField>;
-    }
+    /**
+     * Header fields used in #GDBusMessage.
+     */
 
     /**
      * Header fields used in #GDBusMessage.
      */
+    export namespace DBusMessageHeaderField {
+        export const $gtype: GObject.GType<DBusMessageHeaderField>;
+    }
+
     enum DBusMessageHeaderField {
         /**
          * Not a valid header field.
@@ -556,13 +576,17 @@ export namespace Gio {
          */
         NUM_UNIX_FDS,
     }
-    export namespace DBusMessageType {
-        export const $gtype: GObject.GType<DBusMessageType>;
-    }
+    /**
+     * Message types used in #GDBusMessage.
+     */
 
     /**
      * Message types used in #GDBusMessage.
      */
+    export namespace DBusMessageType {
+        export const $gtype: GObject.GType<DBusMessageType>;
+    }
+
     enum DBusMessageType {
         /**
          * Message is of invalid type.
@@ -585,14 +609,19 @@ export namespace Gio {
          */
         SIGNAL,
     }
-    export namespace DataStreamByteOrder {
-        export const $gtype: GObject.GType<DataStreamByteOrder>;
-    }
+    /**
+     * #GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
+     * across various machine architectures.
+     */
 
     /**
      * #GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
      * across various machine architectures.
      */
+    export namespace DataStreamByteOrder {
+        export const $gtype: GObject.GType<DataStreamByteOrder>;
+    }
+
     enum DataStreamByteOrder {
         /**
          * Selects Big Endian byte order.
@@ -607,13 +636,17 @@ export namespace Gio {
          */
         HOST_ENDIAN,
     }
-    export namespace DataStreamNewlineType {
-        export const $gtype: GObject.GType<DataStreamNewlineType>;
-    }
+    /**
+     * #GDataStreamNewlineType is used when checking for or setting the line endings for a given file.
+     */
 
     /**
      * #GDataStreamNewlineType is used when checking for or setting the line endings for a given file.
      */
+    export namespace DataStreamNewlineType {
+        export const $gtype: GObject.GType<DataStreamNewlineType>;
+    }
+
     enum DataStreamNewlineType {
         /**
          * Selects "LF" line endings, common on most modern UNIX platforms.
@@ -632,13 +665,17 @@ export namespace Gio {
          */
         ANY,
     }
-    export namespace DriveStartStopType {
-        export const $gtype: GObject.GType<DriveStartStopType>;
-    }
+    /**
+     * Enumeration describing how a drive can be started/stopped.
+     */
 
     /**
      * Enumeration describing how a drive can be started/stopped.
      */
+    export namespace DriveStartStopType {
+        export const $gtype: GObject.GType<DriveStartStopType>;
+    }
+
     enum DriveStartStopType {
         /**
          * Unknown or drive doesn't support
@@ -669,14 +706,19 @@ export namespace Gio {
          */
         PASSWORD,
     }
-    export namespace EmblemOrigin {
-        export const $gtype: GObject.GType<EmblemOrigin>;
-    }
+    /**
+     * GEmblemOrigin is used to add information about the origin of the emblem
+     * to #GEmblem.
+     */
 
     /**
      * GEmblemOrigin is used to add information about the origin of the emblem
      * to #GEmblem.
      */
+    export namespace EmblemOrigin {
+        export const $gtype: GObject.GType<EmblemOrigin>;
+    }
+
     enum EmblemOrigin {
         /**
          * Emblem of unknown origin
@@ -695,13 +737,17 @@ export namespace Gio {
          */
         TAG,
     }
-    export namespace FileAttributeStatus {
-        export const $gtype: GObject.GType<FileAttributeStatus>;
-    }
+    /**
+     * Used by g_file_set_attributes_from_info() when setting file attributes.
+     */
 
     /**
      * Used by g_file_set_attributes_from_info() when setting file attributes.
      */
+    export namespace FileAttributeStatus {
+        export const $gtype: GObject.GType<FileAttributeStatus>;
+    }
+
     enum FileAttributeStatus {
         /**
          * Attribute value is unset (empty).
@@ -716,13 +762,17 @@ export namespace Gio {
          */
         ERROR_SETTING,
     }
-    export namespace FileAttributeType {
-        export const $gtype: GObject.GType<FileAttributeType>;
-    }
+    /**
+     * The data types for file attributes.
+     */
 
     /**
      * The data types for file attributes.
      */
+    export namespace FileAttributeType {
+        export const $gtype: GObject.GType<FileAttributeType>;
+    }
+
     enum FileAttributeType {
         /**
          * indicates an invalid or uninitialized type.
@@ -765,13 +815,17 @@ export namespace Gio {
          */
         STRINGV,
     }
-    export namespace FileMonitorEvent {
-        export const $gtype: GObject.GType<FileMonitorEvent>;
-    }
+    /**
+     * Specifies what type of event a monitor event is.
+     */
 
     /**
      * Specifies what type of event a monitor event is.
      */
+    export namespace FileMonitorEvent {
+        export const $gtype: GObject.GType<FileMonitorEvent>;
+    }
+
     enum FileMonitorEvent {
         /**
          * a file changed.
@@ -825,9 +879,18 @@ export namespace Gio {
          */
         MOVED_OUT,
     }
-    export namespace FileType {
-        export const $gtype: GObject.GType<FileType>;
-    }
+    /**
+     * Indicates the file's on-disk type.
+     *
+     * On Windows systems a file will never have %G_FILE_TYPE_SYMBOLIC_LINK type;
+     * use #GFileInfo and %G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK to determine
+     * whether a file is a symlink or not. This is due to the fact that NTFS does
+     * not have a single filesystem object type for symbolic links - it has
+     * files that symlink to files, and directories that symlink to directories.
+     * #GFileType enumeration cannot precisely represent this important distinction,
+     * which is why all Windows symlinks will continue to be reported as
+     * %G_FILE_TYPE_REGULAR or %G_FILE_TYPE_DIRECTORY.
+     */
 
     /**
      * Indicates the file's on-disk type.
@@ -841,6 +904,10 @@ export namespace Gio {
      * which is why all Windows symlinks will continue to be reported as
      * %G_FILE_TYPE_REGULAR or %G_FILE_TYPE_DIRECTORY.
      */
+    export namespace FileType {
+        export const $gtype: GObject.GType<FileType>;
+    }
+
     enum FileType {
         /**
          * File's type is unknown.
@@ -873,15 +940,21 @@ export namespace Gio {
          */
         MOUNTABLE,
     }
-    export namespace FilesystemPreviewType {
-        export const $gtype: GObject.GType<FilesystemPreviewType>;
-    }
+    /**
+     * Indicates a hint from the file system whether files should be
+     * previewed in a file manager. Returned as the value of the key
+     * %G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.
+     */
 
     /**
      * Indicates a hint from the file system whether files should be
      * previewed in a file manager. Returned as the value of the key
      * %G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.
      */
+    export namespace FilesystemPreviewType {
+        export const $gtype: GObject.GType<FilesystemPreviewType>;
+    }
+
     enum FilesystemPreviewType {
         /**
          * Only preview files if user has explicitly requested it.
@@ -1143,13 +1216,17 @@ export namespace Gio {
         _init(...args: any[]): void;
     }
 
-    export namespace IOModuleScopeFlags {
-        export const $gtype: GObject.GType<IOModuleScopeFlags>;
-    }
+    /**
+     * Flags for use with g_io_module_scope_new().
+     */
 
     /**
      * Flags for use with g_io_module_scope_new().
      */
+    export namespace IOModuleScopeFlags {
+        export const $gtype: GObject.GType<IOModuleScopeFlags>;
+    }
+
     enum IOModuleScopeFlags {
         /**
          * No module scan flags
@@ -1162,9 +1239,18 @@ export namespace Gio {
          */
         BLOCK_DUPLICATES,
     }
-    export namespace MemoryMonitorWarningLevel {
-        export const $gtype: GObject.GType<MemoryMonitorWarningLevel>;
-    }
+    /**
+     * Memory availability warning levels.
+     *
+     * Note that because new values might be added, it is recommended that applications check
+     * #GMemoryMonitorWarningLevel as ranges, for example:
+     *
+     * ```c
+     * if (warning_level > G_MEMORY_MONITOR_WARNING_LEVEL_LOW)
+     *   drop_caches ();
+     * ```
+     *
+     */
 
     /**
      * Memory availability warning levels.
@@ -1178,6 +1264,10 @@ export namespace Gio {
      * ```
      *
      */
+    export namespace MemoryMonitorWarningLevel {
+        export const $gtype: GObject.GType<MemoryMonitorWarningLevel>;
+    }
+
     enum MemoryMonitorWarningLevel {
         /**
          * Memory on the device is low, processes
@@ -1198,14 +1288,19 @@ export namespace Gio {
          */
         CRITICAL,
     }
-    export namespace MountOperationResult {
-        export const $gtype: GObject.GType<MountOperationResult>;
-    }
+    /**
+     * #GMountOperationResult is returned as a result when a request for
+     * information is send by the mounting operation.
+     */
 
     /**
      * #GMountOperationResult is returned as a result when a request for
      * information is send by the mounting operation.
      */
+    export namespace MountOperationResult {
+        export const $gtype: GObject.GType<MountOperationResult>;
+    }
+
     enum MountOperationResult {
         /**
          * The request was fulfilled and the
@@ -1223,13 +1318,17 @@ export namespace Gio {
          */
         UNHANDLED,
     }
-    export namespace NetworkConnectivity {
-        export const $gtype: GObject.GType<NetworkConnectivity>;
-    }
+    /**
+     * The host's network connectivity state, as reported by #GNetworkMonitor.
+     */
 
     /**
      * The host's network connectivity state, as reported by #GNetworkMonitor.
      */
+    export namespace NetworkConnectivity {
+        export const $gtype: GObject.GType<NetworkConnectivity>;
+    }
+
     enum NetworkConnectivity {
         /**
          * The host is not configured with a
@@ -1254,13 +1353,17 @@ export namespace Gio {
          */
         FULL,
     }
-    export namespace NotificationPriority {
-        export const $gtype: GObject.GType<NotificationPriority>;
-    }
+    /**
+     * Priority levels for #GNotifications.
+     */
 
     /**
      * Priority levels for #GNotifications.
      */
+    export namespace NotificationPriority {
+        export const $gtype: GObject.GType<NotificationPriority>;
+    }
+
     enum NotificationPriority {
         /**
          * the default priority, to be used for the
@@ -1287,9 +1390,12 @@ export namespace Gio {
          */
         URGENT,
     }
-    export namespace PasswordSave {
-        export const $gtype: GObject.GType<PasswordSave>;
-    }
+    /**
+     * #GPasswordSave is used to indicate the lifespan of a saved password.
+     *
+     * #Gvfs stores passwords in the Gnome keyring when this flag allows it
+     * to, and later retrieves it again from there.
+     */
 
     /**
      * #GPasswordSave is used to indicate the lifespan of a saved password.
@@ -1297,6 +1403,10 @@ export namespace Gio {
      * #Gvfs stores passwords in the Gnome keyring when this flag allows it
      * to, and later retrieves it again from there.
      */
+    export namespace PasswordSave {
+        export const $gtype: GObject.GType<PasswordSave>;
+    }
+
     enum PasswordSave {
         /**
          * never save a password.
@@ -1311,9 +1421,17 @@ export namespace Gio {
          */
         PERMANENTLY,
     }
-    export namespace PollableReturn {
-        export const $gtype: GObject.GType<PollableReturn>;
-    }
+    /**
+     * Return value for various IO operations that signal errors via the
+     * return value and not necessarily via a #GError.
+     *
+     * This enum exists to be able to return errors to callers without having to
+     * allocate a #GError. Allocating #GErrors can be quite expensive for
+     * regularly happening errors like %G_IO_ERROR_WOULD_BLOCK.
+     *
+     * In case of %G_POLLABLE_RETURN_FAILED a #GError should be set for the
+     * operation to give details about the error that happened.
+     */
 
     /**
      * Return value for various IO operations that signal errors via the
@@ -1326,6 +1444,10 @@ export namespace Gio {
      * In case of %G_POLLABLE_RETURN_FAILED a #GError should be set for the
      * operation to give details about the error that happened.
      */
+    export namespace PollableReturn {
+        export const $gtype: GObject.GType<PollableReturn>;
+    }
+
     enum PollableReturn {
         /**
          * Generic error condition for when an operation fails.
@@ -1377,9 +1499,38 @@ export namespace Gio {
         static quark(): GLib.Quark;
     }
 
-    export namespace ResolverRecordType {
-        export const $gtype: GObject.GType<ResolverRecordType>;
-    }
+    /**
+     * The type of record that g_resolver_lookup_records() or
+     * g_resolver_lookup_records_async() should retrieve. The records are returned
+     * as lists of #GVariant tuples. Each record type has different values in
+     * the variant tuples returned.
+     *
+     * %G_RESOLVER_RECORD_SRV records are returned as variants with the signature
+     * `(qqqs)`, containing a `guint16` with the priority, a `guint16` with the
+     * weight, a `guint16` with the port, and a string of the hostname.
+     *
+     * %G_RESOLVER_RECORD_MX records are returned as variants with the signature
+     * `(qs)`, representing a `guint16` with the preference, and a string containing
+     * the mail exchanger hostname.
+     *
+     * %G_RESOLVER_RECORD_TXT records are returned as variants with the signature
+     * `(as)`, representing an array of the strings in the text record. Note: Most TXT
+     * records only contain a single string, but
+     * [RFC 1035](https://tools.ietf.org/html/rfc1035#section-3.3.14) does allow a
+     * record to contain multiple strings. The RFC which defines the interpretation
+     * of a specific TXT record will likely require concatenation of multiple
+     * strings if they are present, as with
+     * [RFC 7208](https://tools.ietf.org/html/rfc7208#section-3.3).
+     *
+     * %G_RESOLVER_RECORD_SOA records are returned as variants with the signature
+     * `(ssuuuuu)`, representing a string containing the primary name server, a
+     * string containing the administrator, the serial as a `guint32`, the refresh
+     * interval as a `guint32`, the retry interval as a `guint32`, the expire timeout
+     * as a `guint32`, and the TTL as a `guint32`.
+     *
+     * %G_RESOLVER_RECORD_NS records are returned as variants with the signature
+     * `(s)`, representing a string of the hostname of the name server.
+     */
 
     /**
      * The type of record that g_resolver_lookup_records() or
@@ -1413,6 +1564,10 @@ export namespace Gio {
      * %G_RESOLVER_RECORD_NS records are returned as variants with the signature
      * `(s)`, representing a string of the hostname of the name server.
      */
+    export namespace ResolverRecordType {
+        export const $gtype: GObject.GType<ResolverRecordType>;
+    }
+
     enum ResolverRecordType {
         /**
          * look up DNS SRV records for a domain
@@ -1466,9 +1621,12 @@ export namespace Gio {
         static quark(): GLib.Quark;
     }
 
-    export namespace SocketClientEvent {
-        export const $gtype: GObject.GType<SocketClientEvent>;
-    }
+    /**
+     * Describes an event occurring on a #GSocketClient. See the
+     * #GSocketClient::event signal for more details.
+     *
+     * Additional values may be added to this type in the future.
+     */
 
     /**
      * Describes an event occurring on a #GSocketClient. See the
@@ -1476,6 +1634,10 @@ export namespace Gio {
      *
      * Additional values may be added to this type in the future.
      */
+    export namespace SocketClientEvent {
+        export const $gtype: GObject.GType<SocketClientEvent>;
+    }
+
     enum SocketClientEvent {
         /**
          * The client is doing a DNS lookup.
@@ -1521,15 +1683,21 @@ export namespace Gio {
          */
         COMPLETE,
     }
-    export namespace SocketFamily {
-        export const $gtype: GObject.GType<SocketFamily>;
-    }
+    /**
+     * The protocol family of a #GSocketAddress. (These values are
+     * identical to the system defines %AF_INET, %AF_INET6 and %AF_UNIX,
+     * if available.)
+     */
 
     /**
      * The protocol family of a #GSocketAddress. (These values are
      * identical to the system defines %AF_INET, %AF_INET6 and %AF_UNIX,
      * if available.)
      */
+    export namespace SocketFamily {
+        export const $gtype: GObject.GType<SocketFamily>;
+    }
+
     enum SocketFamily {
         /**
          * no address family
@@ -1548,9 +1716,12 @@ export namespace Gio {
          */
         IPV6,
     }
-    export namespace SocketListenerEvent {
-        export const $gtype: GObject.GType<SocketListenerEvent>;
-    }
+    /**
+     * Describes an event occurring on a #GSocketListener. See the
+     * #GSocketListener::event signal for more details.
+     *
+     * Additional values may be added to this type in the future.
+     */
 
     /**
      * Describes an event occurring on a #GSocketListener. See the
@@ -1558,6 +1729,10 @@ export namespace Gio {
      *
      * Additional values may be added to this type in the future.
      */
+    export namespace SocketListenerEvent {
+        export const $gtype: GObject.GType<SocketListenerEvent>;
+    }
+
     enum SocketListenerEvent {
         /**
          * The listener is about to bind a socket.
@@ -1578,9 +1753,15 @@ export namespace Gio {
          */
         LISTENED,
     }
-    export namespace SocketProtocol {
-        export const $gtype: GObject.GType<SocketProtocol>;
-    }
+    /**
+     * A protocol identifier is specified when creating a #GSocket, which is a
+     * family/type specific identifier, where 0 means the default protocol for
+     * the particular family/type.
+     *
+     * This enum contains a set of commonly available and used protocols. You
+     * can also pass any other identifiers handled by the platform in order to
+     * use protocols not listed here.
+     */
 
     /**
      * A protocol identifier is specified when creating a #GSocket, which is a
@@ -1591,6 +1772,10 @@ export namespace Gio {
      * can also pass any other identifiers handled by the platform in order to
      * use protocols not listed here.
      */
+    export namespace SocketProtocol {
+        export const $gtype: GObject.GType<SocketProtocol>;
+    }
+
     enum SocketProtocol {
         /**
          * The protocol type is unknown
@@ -1613,14 +1798,19 @@ export namespace Gio {
          */
         SCTP,
     }
-    export namespace SocketType {
-        export const $gtype: GObject.GType<SocketType>;
-    }
+    /**
+     * Flags used when creating a #GSocket. Some protocols may not implement
+     * all the socket types.
+     */
 
     /**
      * Flags used when creating a #GSocket. Some protocols may not implement
      * all the socket types.
      */
+    export namespace SocketType {
+        export const $gtype: GObject.GType<SocketType>;
+    }
+
     enum SocketType {
         /**
          * Type unknown or wrong
@@ -1641,13 +1831,17 @@ export namespace Gio {
          */
         SEQPACKET,
     }
-    export namespace TlsAuthenticationMode {
-        export const $gtype: GObject.GType<TlsAuthenticationMode>;
-    }
+    /**
+     * The client authentication mode for a #GTlsServerConnection.
+     */
 
     /**
      * The client authentication mode for a #GTlsServerConnection.
      */
+    export namespace TlsAuthenticationMode {
+        export const $gtype: GObject.GType<TlsAuthenticationMode>;
+    }
+
     enum TlsAuthenticationMode {
         /**
          * client authentication not required
@@ -1662,15 +1856,21 @@ export namespace Gio {
          */
         REQUIRED,
     }
-    export namespace TlsCertificateRequestFlags {
-        export const $gtype: GObject.GType<TlsCertificateRequestFlags>;
-    }
+    /**
+     * Flags for g_tls_interaction_request_certificate(),
+     * g_tls_interaction_request_certificate_async(), and
+     * g_tls_interaction_invoke_request_certificate().
+     */
 
     /**
      * Flags for g_tls_interaction_request_certificate(),
      * g_tls_interaction_request_certificate_async(), and
      * g_tls_interaction_invoke_request_certificate().
      */
+    export namespace TlsCertificateRequestFlags {
+        export const $gtype: GObject.GType<TlsCertificateRequestFlags>;
+    }
+
     enum TlsCertificateRequestFlags {
         /**
          * No flags
@@ -1731,9 +1931,12 @@ export namespace Gio {
         static quark(): GLib.Quark;
     }
 
-    export namespace TlsChannelBindingType {
-        export const $gtype: GObject.GType<TlsChannelBindingType>;
-    }
+    /**
+     * The type of TLS channel binding data to retrieve from #GTlsConnection
+     * or #GDtlsConnection, as documented by RFC 5929 or RFC 9266. The
+     * [`tls-unique-for-telnet`](https://tools.ietf.org/html/rfc5929#section-5)
+     * binding type is not currently implemented.
+     */
 
     /**
      * The type of TLS channel binding data to retrieve from #GTlsConnection
@@ -1741,6 +1944,10 @@ export namespace Gio {
      * [`tls-unique-for-telnet`](https://tools.ietf.org/html/rfc5929#section-5)
      * binding type is not currently implemented.
      */
+    export namespace TlsChannelBindingType {
+        export const $gtype: GObject.GType<TlsChannelBindingType>;
+    }
+
     enum TlsChannelBindingType {
         /**
          * [`tls-unique`](https://tools.ietf.org/html/rfc5929#section-3) binding
@@ -1758,15 +1965,21 @@ export namespace Gio {
          */
         EXPORTER,
     }
-    export namespace TlsDatabaseLookupFlags {
-        export const $gtype: GObject.GType<TlsDatabaseLookupFlags>;
-    }
+    /**
+     * Flags for g_tls_database_lookup_certificate_for_handle(),
+     * g_tls_database_lookup_certificate_issuer(),
+     * and g_tls_database_lookup_certificates_issued_by().
+     */
 
     /**
      * Flags for g_tls_database_lookup_certificate_for_handle(),
      * g_tls_database_lookup_certificate_issuer(),
      * and g_tls_database_lookup_certificates_issued_by().
      */
+    export namespace TlsDatabaseLookupFlags {
+        export const $gtype: GObject.GType<TlsDatabaseLookupFlags>;
+    }
+
     enum TlsDatabaseLookupFlags {
         /**
          * No lookup flags
@@ -1847,14 +2060,19 @@ export namespace Gio {
         static quark(): GLib.Quark;
     }
 
-    export namespace TlsInteractionResult {
-        export const $gtype: GObject.GType<TlsInteractionResult>;
-    }
+    /**
+     * #GTlsInteractionResult is returned by various functions in #GTlsInteraction
+     * when finishing an interaction request.
+     */
 
     /**
      * #GTlsInteractionResult is returned by various functions in #GTlsInteraction
      * when finishing an interaction request.
      */
+    export namespace TlsInteractionResult {
+        export const $gtype: GObject.GType<TlsInteractionResult>;
+    }
+
     enum TlsInteractionResult {
         /**
          * The interaction was unhandled (i.e. not
@@ -1872,9 +2090,17 @@ export namespace Gio {
          */
         FAILED,
     }
-    export namespace TlsProtocolVersion {
-        export const $gtype: GObject.GType<TlsProtocolVersion>;
-    }
+    /**
+     * The TLS or DTLS protocol version used by a #GTlsConnection or
+     * #GDtlsConnection. The integer values of these versions are sequential
+     * to ensure newer known protocol versions compare greater than older
+     * known versions. Any known DTLS protocol version will compare greater
+     * than any SSL or TLS protocol version. The protocol version may be
+     * %G_TLS_PROTOCOL_VERSION_UNKNOWN if the TLS backend supports a newer
+     * protocol version that GLib does not yet know about. This means that
+     * it's possible for an unknown DTLS protocol version to compare less
+     * than the TLS protocol versions.
+     */
 
     /**
      * The TLS or DTLS protocol version used by a #GTlsConnection or
@@ -1887,6 +2113,10 @@ export namespace Gio {
      * it's possible for an unknown DTLS protocol version to compare less
      * than the TLS protocol versions.
      */
+    export namespace TlsProtocolVersion {
+        export const $gtype: GObject.GType<TlsProtocolVersion>;
+    }
+
     enum TlsProtocolVersion {
         /**
          * No protocol version or unknown protocol version
@@ -1921,14 +2151,19 @@ export namespace Gio {
          */
         DTLS_1_2,
     }
-    export namespace TlsRehandshakeMode {
-        export const $gtype: GObject.GType<TlsRehandshakeMode>;
-    }
+    /**
+     * When to allow rehandshaking. See
+     * g_tls_connection_set_rehandshake_mode().
+     */
 
     /**
      * When to allow rehandshaking. See
      * g_tls_connection_set_rehandshake_mode().
      */
+    export namespace TlsRehandshakeMode {
+        export const $gtype: GObject.GType<TlsRehandshakeMode>;
+    }
+
     enum TlsRehandshakeMode {
         /**
          * Never allow rehandshaking
@@ -1943,9 +2178,21 @@ export namespace Gio {
          */
         UNSAFELY,
     }
-    export namespace UnixSocketAddressType {
-        export const $gtype: GObject.GType<UnixSocketAddressType>;
-    }
+    /**
+     * The type of name used by a #GUnixSocketAddress.
+     * %G_UNIX_SOCKET_ADDRESS_PATH indicates a traditional unix domain
+     * socket bound to a filesystem path. %G_UNIX_SOCKET_ADDRESS_ANONYMOUS
+     * indicates a socket not bound to any name (eg, a client-side socket,
+     * or a socket created with socketpair()).
+     *
+     * For abstract sockets, there are two incompatible ways of naming
+     * them; the man pages suggest using the entire `struct sockaddr_un`
+     * as the name, padding the unused parts of the %sun_path field with
+     * zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
+     * However, many programs instead just use a portion of %sun_path, and
+     * pass an appropriate smaller length to bind() or connect(). This is
+     * %G_UNIX_SOCKET_ADDRESS_ABSTRACT.
+     */
 
     /**
      * The type of name used by a #GUnixSocketAddress.
@@ -1962,6 +2209,10 @@ export namespace Gio {
      * pass an appropriate smaller length to bind() or connect(). This is
      * %G_UNIX_SOCKET_ADDRESS_ABSTRACT.
      */
+    export namespace UnixSocketAddressType {
+        export const $gtype: GObject.GType<UnixSocketAddressType>;
+    }
+
     enum UnixSocketAddressType {
         /**
          * invalid
@@ -1985,14 +2236,19 @@ export namespace Gio {
          */
         ABSTRACT_PADDED,
     }
-    export namespace ZlibCompressorFormat {
-        export const $gtype: GObject.GType<ZlibCompressorFormat>;
-    }
+    /**
+     * Used to select the type of data format to use for #GZlibDecompressor
+     * and #GZlibCompressor.
+     */
 
     /**
      * Used to select the type of data format to use for #GZlibDecompressor
      * and #GZlibCompressor.
      */
+    export namespace ZlibCompressorFormat {
+        export const $gtype: GObject.GType<ZlibCompressorFormat>;
+    }
+
     enum ZlibCompressorFormat {
         /**
          * deflate compression with zlib header
@@ -5260,13 +5516,17 @@ export namespace Gio {
     interface VfsFileLookupFunc {
         (vfs: Vfs, identifier: string): File;
     }
-    export namespace AppInfoCreateFlags {
-        export const $gtype: GObject.GType<AppInfoCreateFlags>;
-    }
+    /**
+     * Flags used when creating a #GAppInfo.
+     */
 
     /**
      * Flags used when creating a #GAppInfo.
      */
+    export namespace AppInfoCreateFlags {
+        export const $gtype: GObject.GType<AppInfoCreateFlags>;
+    }
+
     enum AppInfoCreateFlags {
         /**
          * No flags.
@@ -5285,13 +5545,17 @@ export namespace Gio {
          */
         SUPPORTS_STARTUP_NOTIFICATION,
     }
-    export namespace ApplicationFlags {
-        export const $gtype: GObject.GType<ApplicationFlags>;
-    }
+    /**
+     * Flags used to define the behaviour of a #GApplication.
+     */
 
     /**
      * Flags used to define the behaviour of a #GApplication.
      */
+    export namespace ApplicationFlags {
+        export const $gtype: GObject.GType<ApplicationFlags>;
+    }
+
     enum ApplicationFlags {
         /**
          * Default. Deprecated in 2.74, use
@@ -5366,15 +5630,21 @@ export namespace Gio {
          */
         REPLACE,
     }
-    export namespace AskPasswordFlags {
-        export const $gtype: GObject.GType<AskPasswordFlags>;
-    }
+    /**
+     * #GAskPasswordFlags are used to request specific information from the
+     * user, or to notify the user of their choices in an authentication
+     * situation.
+     */
 
     /**
      * #GAskPasswordFlags are used to request specific information from the
      * user, or to notify the user of their choices in an authentication
      * situation.
      */
+    export namespace AskPasswordFlags {
+        export const $gtype: GObject.GType<AskPasswordFlags>;
+    }
+
     enum AskPasswordFlags {
         /**
          * operation requires a password.
@@ -5401,13 +5671,17 @@ export namespace Gio {
          */
         TCRYPT,
     }
-    export namespace BusNameOwnerFlags {
-        export const $gtype: GObject.GType<BusNameOwnerFlags>;
-    }
+    /**
+     * Flags used in g_bus_own_name().
+     */
 
     /**
      * Flags used in g_bus_own_name().
      */
+    export namespace BusNameOwnerFlags {
+        export const $gtype: GObject.GType<BusNameOwnerFlags>;
+    }
+
     enum BusNameOwnerFlags {
         /**
          * No flags set.
@@ -5428,13 +5702,17 @@ export namespace Gio {
          */
         DO_NOT_QUEUE,
     }
-    export namespace BusNameWatcherFlags {
-        export const $gtype: GObject.GType<BusNameWatcherFlags>;
-    }
+    /**
+     * Flags used in g_bus_watch_name().
+     */
 
     /**
      * Flags used in g_bus_watch_name().
      */
+    export namespace BusNameWatcherFlags {
+        export const $gtype: GObject.GType<BusNameWatcherFlags>;
+    }
+
     enum BusNameWatcherFlags {
         /**
          * No flags set.
@@ -5447,13 +5725,17 @@ export namespace Gio {
          */
         AUTO_START,
     }
-    export namespace ConverterFlags {
-        export const $gtype: GObject.GType<ConverterFlags>;
-    }
+    /**
+     * Flags used when calling a g_converter_convert().
+     */
 
     /**
      * Flags used when calling a g_converter_convert().
      */
+    export namespace ConverterFlags {
+        export const $gtype: GObject.GType<ConverterFlags>;
+    }
+
     enum ConverterFlags {
         /**
          * No flags.
@@ -5468,13 +5750,17 @@ export namespace Gio {
          */
         FLUSH,
     }
-    export namespace DBusCallFlags {
-        export const $gtype: GObject.GType<DBusCallFlags>;
-    }
+    /**
+     * Flags used in g_dbus_connection_call() and similar APIs.
+     */
 
     /**
      * Flags used in g_dbus_connection_call() and similar APIs.
      */
+    export namespace DBusCallFlags {
+        export const $gtype: GObject.GType<DBusCallFlags>;
+    }
+
     enum DBusCallFlags {
         /**
          * No flags set.
@@ -5492,13 +5778,17 @@ export namespace Gio {
          */
         ALLOW_INTERACTIVE_AUTHORIZATION,
     }
-    export namespace DBusCapabilityFlags {
-        export const $gtype: GObject.GType<DBusCapabilityFlags>;
-    }
+    /**
+     * Capabilities negotiated with the remote peer.
+     */
 
     /**
      * Capabilities negotiated with the remote peer.
      */
+    export namespace DBusCapabilityFlags {
+        export const $gtype: GObject.GType<DBusCapabilityFlags>;
+    }
+
     enum DBusCapabilityFlags {
         /**
          * No flags set.
@@ -5510,13 +5800,17 @@ export namespace Gio {
          */
         UNIX_FD_PASSING,
     }
-    export namespace DBusConnectionFlags {
-        export const $gtype: GObject.GType<DBusConnectionFlags>;
-    }
+    /**
+     * Flags used when creating a new #GDBusConnection.
+     */
 
     /**
      * Flags used when creating a new #GDBusConnection.
      */
+    export namespace DBusConnectionFlags {
+        export const $gtype: GObject.GType<DBusConnectionFlags>;
+    }
+
     enum DBusConnectionFlags {
         /**
          * No flags set.
@@ -5561,13 +5855,17 @@ export namespace Gio {
          */
         CROSS_NAMESPACE,
     }
-    export namespace DBusInterfaceSkeletonFlags {
-        export const $gtype: GObject.GType<DBusInterfaceSkeletonFlags>;
-    }
+    /**
+     * Flags describing the behavior of a #GDBusInterfaceSkeleton instance.
+     */
 
     /**
      * Flags describing the behavior of a #GDBusInterfaceSkeleton instance.
      */
+    export namespace DBusInterfaceSkeletonFlags {
+        export const $gtype: GObject.GType<DBusInterfaceSkeletonFlags>;
+    }
+
     enum DBusInterfaceSkeletonFlags {
         /**
          * No flags set.
@@ -5581,13 +5879,17 @@ export namespace Gio {
          */
         HANDLE_METHOD_INVOCATIONS_IN_THREAD,
     }
-    export namespace DBusMessageFlags {
-        export const $gtype: GObject.GType<DBusMessageFlags>;
-    }
+    /**
+     * Message flags used in #GDBusMessage.
+     */
 
     /**
      * Message flags used in #GDBusMessage.
      */
+    export namespace DBusMessageFlags {
+        export const $gtype: GObject.GType<DBusMessageFlags>;
+    }
+
     enum DBusMessageFlags {
         /**
          * No flags set.
@@ -5609,13 +5911,17 @@ export namespace Gio {
          */
         ALLOW_INTERACTIVE_AUTHORIZATION,
     }
-    export namespace DBusObjectManagerClientFlags {
-        export const $gtype: GObject.GType<DBusObjectManagerClientFlags>;
-    }
+    /**
+     * Flags used when constructing a #GDBusObjectManagerClient.
+     */
 
     /**
      * Flags used when constructing a #GDBusObjectManagerClient.
      */
+    export namespace DBusObjectManagerClientFlags {
+        export const $gtype: GObject.GType<DBusObjectManagerClientFlags>;
+    }
+
     enum DBusObjectManagerClientFlags {
         /**
          * No flags set.
@@ -5629,13 +5935,17 @@ export namespace Gio {
          */
         DO_NOT_AUTO_START,
     }
-    export namespace DBusPropertyInfoFlags {
-        export const $gtype: GObject.GType<DBusPropertyInfoFlags>;
-    }
+    /**
+     * Flags describing the access control of a D-Bus property.
+     */
 
     /**
      * Flags describing the access control of a D-Bus property.
      */
+    export namespace DBusPropertyInfoFlags {
+        export const $gtype: GObject.GType<DBusPropertyInfoFlags>;
+    }
+
     enum DBusPropertyInfoFlags {
         /**
          * No flags set.
@@ -5650,13 +5960,17 @@ export namespace Gio {
          */
         WRITABLE,
     }
-    export namespace DBusProxyFlags {
-        export const $gtype: GObject.GType<DBusProxyFlags>;
-    }
+    /**
+     * Flags used when constructing an instance of a #GDBusProxy derived class.
+     */
 
     /**
      * Flags used when constructing an instance of a #GDBusProxy derived class.
      */
+    export namespace DBusProxyFlags {
+        export const $gtype: GObject.GType<DBusProxyFlags>;
+    }
+
     enum DBusProxyFlags {
         /**
          * No flags set.
@@ -5694,13 +6008,17 @@ export namespace Gio {
          */
         NO_MATCH_RULE,
     }
-    export namespace DBusSendMessageFlags {
-        export const $gtype: GObject.GType<DBusSendMessageFlags>;
-    }
+    /**
+     * Flags used when sending #GDBusMessages on a #GDBusConnection.
+     */
 
     /**
      * Flags used when sending #GDBusMessages on a #GDBusConnection.
      */
+    export namespace DBusSendMessageFlags {
+        export const $gtype: GObject.GType<DBusSendMessageFlags>;
+    }
+
     enum DBusSendMessageFlags {
         /**
          * No flags set.
@@ -5713,13 +6031,17 @@ export namespace Gio {
          */
         PRESERVE_SERIAL,
     }
-    export namespace DBusServerFlags {
-        export const $gtype: GObject.GType<DBusServerFlags>;
-    }
+    /**
+     * Flags used when creating a #GDBusServer.
+     */
 
     /**
      * Flags used when creating a #GDBusServer.
      */
+    export namespace DBusServerFlags {
+        export const $gtype: GObject.GType<DBusServerFlags>;
+    }
+
     enum DBusServerFlags {
         /**
          * No flags set.
@@ -5742,13 +6064,17 @@ export namespace Gio {
          */
         AUTHENTICATION_REQUIRE_SAME_USER,
     }
-    export namespace DBusSignalFlags {
-        export const $gtype: GObject.GType<DBusSignalFlags>;
-    }
+    /**
+     * Flags used when subscribing to signals via g_dbus_connection_signal_subscribe().
+     */
 
     /**
      * Flags used when subscribing to signals via g_dbus_connection_signal_subscribe().
      */
+    export namespace DBusSignalFlags {
+        export const $gtype: GObject.GType<DBusSignalFlags>;
+    }
+
     enum DBusSignalFlags {
         /**
          * No flags set.
@@ -5772,13 +6098,17 @@ export namespace Gio {
          */
         MATCH_ARG0_PATH,
     }
-    export namespace DBusSubtreeFlags {
-        export const $gtype: GObject.GType<DBusSubtreeFlags>;
-    }
+    /**
+     * Flags passed to g_dbus_connection_register_subtree().
+     */
 
     /**
      * Flags passed to g_dbus_connection_register_subtree().
      */
+    export namespace DBusSubtreeFlags {
+        export const $gtype: GObject.GType<DBusSubtreeFlags>;
+    }
+
     enum DBusSubtreeFlags {
         /**
          * No flags set.
@@ -5791,26 +6121,34 @@ export namespace Gio {
          */
         DISPATCH_TO_UNENUMERATED_NODES,
     }
-    export namespace DriveStartFlags {
-        export const $gtype: GObject.GType<DriveStartFlags>;
-    }
+    /**
+     * Flags used when starting a drive.
+     */
 
     /**
      * Flags used when starting a drive.
      */
+    export namespace DriveStartFlags {
+        export const $gtype: GObject.GType<DriveStartFlags>;
+    }
+
     enum DriveStartFlags {
         /**
          * No flags set.
          */
         NONE,
     }
-    export namespace FileAttributeInfoFlags {
-        export const $gtype: GObject.GType<FileAttributeInfoFlags>;
-    }
+    /**
+     * Flags specifying the behaviour of an attribute.
+     */
 
     /**
      * Flags specifying the behaviour of an attribute.
      */
+    export namespace FileAttributeInfoFlags {
+        export const $gtype: GObject.GType<FileAttributeInfoFlags>;
+    }
+
     enum FileAttributeInfoFlags {
         /**
          * no flags set.
@@ -5825,13 +6163,17 @@ export namespace Gio {
          */
         COPY_WHEN_MOVED,
     }
-    export namespace FileCopyFlags {
-        export const $gtype: GObject.GType<FileCopyFlags>;
-    }
+    /**
+     * Flags used when copying or moving files.
+     */
 
     /**
      * Flags used when copying or moving files.
      */
+    export namespace FileCopyFlags {
+        export const $gtype: GObject.GType<FileCopyFlags>;
+    }
+
     enum FileCopyFlags {
         /**
          * No flags set.
@@ -5867,13 +6209,17 @@ export namespace Gio {
          */
         TARGET_DEFAULT_MODIFIED_TIME,
     }
-    export namespace FileCreateFlags {
-        export const $gtype: GObject.GType<FileCreateFlags>;
-    }
+    /**
+     * Flags used when an operation may create a file.
+     */
 
     /**
      * Flags used when an operation may create a file.
      */
+    export namespace FileCreateFlags {
+        export const $gtype: GObject.GType<FileCreateFlags>;
+    }
+
     enum FileCreateFlags {
         /**
          * No flags set.
@@ -5898,13 +6244,17 @@ export namespace Gio {
          */
         REPLACE_DESTINATION,
     }
-    export namespace FileMeasureFlags {
-        export const $gtype: GObject.GType<FileMeasureFlags>;
-    }
+    /**
+     * Flags that can be used with g_file_measure_disk_usage().
+     */
 
     /**
      * Flags that can be used with g_file_measure_disk_usage().
      */
+    export namespace FileMeasureFlags {
+        export const $gtype: GObject.GType<FileMeasureFlags>;
+    }
+
     enum FileMeasureFlags {
         /**
          * No flags set.
@@ -5932,13 +6282,17 @@ export namespace Gio {
          */
         NO_XDEV,
     }
-    export namespace FileMonitorFlags {
-        export const $gtype: GObject.GType<FileMonitorFlags>;
-    }
+    /**
+     * Flags used to set what a #GFileMonitor will watch for.
+     */
 
     /**
      * Flags used to set what a #GFileMonitor will watch for.
      */
+    export namespace FileMonitorFlags {
+        export const $gtype: GObject.GType<FileMonitorFlags>;
+    }
+
     enum FileMonitorFlags {
         /**
          * No flags set.
@@ -5970,13 +6324,17 @@ export namespace Gio {
          */
         WATCH_MOVES,
     }
-    export namespace FileQueryInfoFlags {
-        export const $gtype: GObject.GType<FileQueryInfoFlags>;
-    }
+    /**
+     * Flags used when querying a #GFileInfo.
+     */
 
     /**
      * Flags used when querying a #GFileInfo.
      */
+    export namespace FileQueryInfoFlags {
+        export const $gtype: GObject.GType<FileQueryInfoFlags>;
+    }
+
     enum FileQueryInfoFlags {
         /**
          * No flags set.
@@ -5987,13 +6345,17 @@ export namespace Gio {
          */
         NOFOLLOW_SYMLINKS,
     }
-    export namespace IOStreamSpliceFlags {
-        export const $gtype: GObject.GType<IOStreamSpliceFlags>;
-    }
+    /**
+     * GIOStreamSpliceFlags determine how streams should be spliced.
+     */
 
     /**
      * GIOStreamSpliceFlags determine how streams should be spliced.
      */
+    export namespace IOStreamSpliceFlags {
+        export const $gtype: GObject.GType<IOStreamSpliceFlags>;
+    }
+
     enum IOStreamSpliceFlags {
         /**
          * Do not close either stream.
@@ -6015,26 +6377,34 @@ export namespace Gio {
          */
         WAIT_FOR_BOTH,
     }
-    export namespace MountMountFlags {
-        export const $gtype: GObject.GType<MountMountFlags>;
-    }
+    /**
+     * Flags used when mounting a mount.
+     */
 
     /**
      * Flags used when mounting a mount.
      */
+    export namespace MountMountFlags {
+        export const $gtype: GObject.GType<MountMountFlags>;
+    }
+
     enum MountMountFlags {
         /**
          * No flags set.
          */
         NONE,
     }
-    export namespace MountUnmountFlags {
-        export const $gtype: GObject.GType<MountUnmountFlags>;
-    }
+    /**
+     * Flags used when an unmounting a mount.
+     */
 
     /**
      * Flags used when an unmounting a mount.
      */
+    export namespace MountUnmountFlags {
+        export const $gtype: GObject.GType<MountUnmountFlags>;
+    }
+
     enum MountUnmountFlags {
         /**
          * No flags set.
@@ -6046,13 +6416,17 @@ export namespace Gio {
          */
         FORCE,
     }
-    export namespace OutputStreamSpliceFlags {
-        export const $gtype: GObject.GType<OutputStreamSpliceFlags>;
-    }
+    /**
+     * GOutputStreamSpliceFlags determine how streams should be spliced.
+     */
 
     /**
      * GOutputStreamSpliceFlags determine how streams should be spliced.
      */
+    export namespace OutputStreamSpliceFlags {
+        export const $gtype: GObject.GType<OutputStreamSpliceFlags>;
+    }
+
     enum OutputStreamSpliceFlags {
         /**
          * Do not close either stream.
@@ -6069,13 +6443,17 @@ export namespace Gio {
          */
         CLOSE_TARGET,
     }
-    export namespace ResolverNameLookupFlags {
-        export const $gtype: GObject.GType<ResolverNameLookupFlags>;
-    }
+    /**
+     * Flags to modify lookup behavior.
+     */
 
     /**
      * Flags to modify lookup behavior.
      */
+    export namespace ResolverNameLookupFlags {
+        export const $gtype: GObject.GType<ResolverNameLookupFlags>;
+    }
+
     enum ResolverNameLookupFlags {
         /**
          * default behavior (same as g_resolver_lookup_by_name())
@@ -6090,14 +6468,19 @@ export namespace Gio {
          */
         IPV6_ONLY,
     }
-    export namespace ResourceFlags {
-        export const $gtype: GObject.GType<ResourceFlags>;
-    }
+    /**
+     * GResourceFlags give information about a particular file inside a resource
+     * bundle.
+     */
 
     /**
      * GResourceFlags give information about a particular file inside a resource
      * bundle.
      */
+    export namespace ResourceFlags {
+        export const $gtype: GObject.GType<ResourceFlags>;
+    }
+
     enum ResourceFlags {
         /**
          * No flags set.
@@ -6108,28 +6491,38 @@ export namespace Gio {
          */
         COMPRESSED,
     }
-    export namespace ResourceLookupFlags {
-        export const $gtype: GObject.GType<ResourceLookupFlags>;
-    }
+    /**
+     * GResourceLookupFlags determine how resource path lookups are handled.
+     */
 
     /**
      * GResourceLookupFlags determine how resource path lookups are handled.
      */
+    export namespace ResourceLookupFlags {
+        export const $gtype: GObject.GType<ResourceLookupFlags>;
+    }
+
     enum ResourceLookupFlags {
         /**
          * No flags set.
          */
         NONE,
     }
-    export namespace SettingsBindFlags {
-        export const $gtype: GObject.GType<SettingsBindFlags>;
-    }
+    /**
+     * Flags used when creating a binding. These flags determine in which
+     * direction the binding works. The default is to synchronize in both
+     * directions.
+     */
 
     /**
      * Flags used when creating a binding. These flags determine in which
      * direction the binding works. The default is to synchronize in both
      * directions.
      */
+    export namespace SettingsBindFlags {
+        export const $gtype: GObject.GType<SettingsBindFlags>;
+    }
+
     enum SettingsBindFlags {
         /**
          * Equivalent to `G_SETTINGS_BIND_GET|G_SETTINGS_BIND_SET`
@@ -6161,9 +6554,13 @@ export namespace Gio {
          */
         INVERT_BOOLEAN,
     }
-    export namespace SocketMsgFlags {
-        export const $gtype: GObject.GType<SocketMsgFlags>;
-    }
+    /**
+     * Flags used in g_socket_receive_message() and g_socket_send_message().
+     * The flags listed in the enum are some commonly available flags, but the
+     * values used for them are the same as on the platform, and any other flags
+     * are passed in/out as is. So to use a platform specific flag, just include
+     * the right system header and pass in the flag.
+     */
 
     /**
      * Flags used in g_socket_receive_message() and g_socket_send_message().
@@ -6172,6 +6569,10 @@ export namespace Gio {
      * are passed in/out as is. So to use a platform specific flag, just include
      * the right system header and pass in the flag.
      */
+    export namespace SocketMsgFlags {
+        export const $gtype: GObject.GType<SocketMsgFlags>;
+    }
+
     enum SocketMsgFlags {
         /**
          * No flags.
@@ -6192,9 +6593,17 @@ export namespace Gio {
          */
         DONTROUTE,
     }
-    export namespace SubprocessFlags {
-        export const $gtype: GObject.GType<SubprocessFlags>;
-    }
+    /**
+     * Flags to define the behaviour of a #GSubprocess.
+     *
+     * Note that the default for stdin is to redirect from `/dev/null`.  For
+     * stdout and stderr the default are for them to inherit the
+     * corresponding descriptor from the calling process.
+     *
+     * Note that it is a programmer error to mix 'incompatible' flags.  For
+     * example, you may not request both %G_SUBPROCESS_FLAGS_STDOUT_PIPE and
+     * %G_SUBPROCESS_FLAGS_STDOUT_SILENCE.
+     */
 
     /**
      * Flags to define the behaviour of a #GSubprocess.
@@ -6207,6 +6616,10 @@ export namespace Gio {
      * example, you may not request both %G_SUBPROCESS_FLAGS_STDOUT_PIPE and
      * %G_SUBPROCESS_FLAGS_STDOUT_SILENCE.
      */
+    export namespace SubprocessFlags {
+        export const $gtype: GObject.GType<SubprocessFlags>;
+    }
+
     enum SubprocessFlags {
         /**
          * No flags.
@@ -6265,22 +6678,36 @@ export namespace Gio {
          */
         SEARCH_PATH_FROM_ENVP,
     }
-    export namespace TestDBusFlags {
-        export const $gtype: GObject.GType<TestDBusFlags>;
-    }
+    /**
+     * Flags to define future #GTestDBus behaviour.
+     */
 
     /**
      * Flags to define future #GTestDBus behaviour.
      */
+    export namespace TestDBusFlags {
+        export const $gtype: GObject.GType<TestDBusFlags>;
+    }
+
     enum TestDBusFlags {
         /**
          * No flags.
          */
         NONE,
     }
-    export namespace TlsCertificateFlags {
-        export const $gtype: GObject.GType<TlsCertificateFlags>;
-    }
+    /**
+     * A set of flags describing TLS certification validation. This can be
+     * used to describe why a particular certificate was rejected (for
+     * example, in #GTlsConnection::accept-certificate).
+     *
+     * GLib guarantees that if certificate verification fails, at least one
+     * flag will be set, but it does not guarantee that all possible flags
+     * will be set. Accordingly, you may not safely decide to ignore any
+     * particular type of error. For example, it would be incorrect to mask
+     * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
+     * because this could potentially be the only error flag set even if
+     * other problems exist with the certificate.
+     */
 
     /**
      * A set of flags describing TLS certification validation. This can be
@@ -6295,6 +6722,10 @@ export namespace Gio {
      * because this could potentially be the only error flag set even if
      * other problems exist with the certificate.
      */
+    export namespace TlsCertificateFlags {
+        export const $gtype: GObject.GType<TlsCertificateFlags>;
+    }
+
     enum TlsCertificateFlags {
         /**
          * No flags set. Since: 2.74
@@ -6340,26 +6771,34 @@ export namespace Gio {
          */
         VALIDATE_ALL,
     }
-    export namespace TlsDatabaseVerifyFlags {
-        export const $gtype: GObject.GType<TlsDatabaseVerifyFlags>;
-    }
+    /**
+     * Flags for g_tls_database_verify_chain().
+     */
 
     /**
      * Flags for g_tls_database_verify_chain().
      */
+    export namespace TlsDatabaseVerifyFlags {
+        export const $gtype: GObject.GType<TlsDatabaseVerifyFlags>;
+    }
+
     enum TlsDatabaseVerifyFlags {
         /**
          * No verification flags
          */
         NONE,
     }
-    export namespace TlsPasswordFlags {
-        export const $gtype: GObject.GType<TlsPasswordFlags>;
-    }
+    /**
+     * Various flags for the password.
+     */
 
     /**
      * Various flags for the password.
      */
+    export namespace TlsPasswordFlags {
+        export const $gtype: GObject.GType<TlsPasswordFlags>;
+    }
+
     enum TlsPasswordFlags {
         /**
          * No flags

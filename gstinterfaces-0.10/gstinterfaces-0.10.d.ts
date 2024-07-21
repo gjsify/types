@@ -19,9 +19,12 @@ export namespace GstInterfaces {
      * GstInterfaces-0.10
      */
 
-    export namespace ColorBalanceType {
-        export const $gtype: GObject.GType<ColorBalanceType>;
-    }
+    /**
+     * An enumeration indicating whether an element implements color balancing
+     * operations in software or in dedicated hardware. In general, dedicated
+     * hardware implementations (such as those provided by xvimagesink) are
+     * preferred.
+     */
 
     /**
      * An enumeration indicating whether an element implements color balancing
@@ -29,17 +32,25 @@ export namespace GstInterfaces {
      * hardware implementations (such as those provided by xvimagesink) are
      * preferred.
      */
+    export namespace ColorBalanceType {
+        export const $gtype: GObject.GType<ColorBalanceType>;
+    }
+
     enum ColorBalanceType {
         HARDWARE,
         SOFTWARE,
     }
-    export namespace MixerMessageType {
-        export const $gtype: GObject.GType<MixerMessageType>;
-    }
+    /**
+     * An enumeration for the type of a GstMixer message received on the bus
+     */
 
     /**
      * An enumeration for the type of a GstMixer message received on the bus
      */
+    export namespace MixerMessageType {
+        export const $gtype: GObject.GType<MixerMessageType>;
+    }
+
     enum MixerMessageType {
         INVALID,
         MUTE_TOGGLED,
@@ -49,6 +60,7 @@ export namespace GstInterfaces {
         OPTIONS_LIST_CHANGED,
         MIXER_CHANGED,
     }
+
     export namespace MixerType {
         export const $gtype: GObject.GType<MixerType>;
     }
@@ -57,9 +69,19 @@ export namespace GstInterfaces {
         HARDWARE,
         SOFTWARE,
     }
-    export namespace NavigationCommand {
-        export const $gtype: GObject.GType<NavigationCommand>;
-    }
+    /**
+     * A set of commands that may be issued to an element providing the
+     * #GstNavigation interface. The available commands can be queried via
+     * the gst_navigation_query_new_commands() query.
+     * For convenience in handling DVD navigation, the MENU commands are aliased as:
+     * GST_NAVIGATION_COMMAND_DVD_MENU            = `GST_NAVIGATION_COMMAND_MENU1`
+     * GST_NAVIGATION_COMMAND_DVD_TITLE_MENU      = `GST_NAVIGATION_COMMAND_MENU2`
+     * GST_NAVIGATION_COMMAND_DVD_ROOT_MENU       = `GST_NAVIGATION_COMMAND_MENU3`
+     * GST_NAVIGATION_COMMAND_DVD_SUBPICTURE_MENU = `GST_NAVIGATION_COMMAND_MENU4`
+     * GST_NAVIGATION_COMMAND_DVD_AUDIO_MENU      = `GST_NAVIGATION_COMMAND_MENU5`
+     * GST_NAVIGATION_COMMAND_DVD_ANGLE_MENU      = `GST_NAVIGATION_COMMAND_MENU6`
+     * GST_NAVIGATION_COMMAND_DVD_CHAPTER_MENU    = `GST_NAVIGATION_COMMAND_MENU7`
+     */
 
     /**
      * A set of commands that may be issued to an element providing the
@@ -74,6 +96,10 @@ export namespace GstInterfaces {
      * GST_NAVIGATION_COMMAND_DVD_ANGLE_MENU      = `GST_NAVIGATION_COMMAND_MENU6`
      * GST_NAVIGATION_COMMAND_DVD_CHAPTER_MENU    = `GST_NAVIGATION_COMMAND_MENU7`
      */
+    export namespace NavigationCommand {
+        export const $gtype: GObject.GType<NavigationCommand>;
+    }
+
     enum NavigationCommand {
         INVALID,
         MENU1,
@@ -91,14 +117,19 @@ export namespace GstInterfaces {
         PREV_ANGLE,
         NEXT_ANGLE,
     }
-    export namespace NavigationEventType {
-        export const $gtype: GObject.GType<NavigationEventType>;
-    }
+    /**
+     * Enum values for the various events that an element implementing the
+     * GstNavigation interface might send up the pipeline.
+     */
 
     /**
      * Enum values for the various events that an element implementing the
      * GstNavigation interface might send up the pipeline.
      */
+    export namespace NavigationEventType {
+        export const $gtype: GObject.GType<NavigationEventType>;
+    }
+
     enum NavigationEventType {
         INVALID,
         KEY_PRESS,
@@ -108,20 +139,26 @@ export namespace GstInterfaces {
         MOUSE_MOVE,
         COMMAND,
     }
-    export namespace NavigationMessageType {
-        export const $gtype: GObject.GType<NavigationMessageType>;
-    }
+    /**
+     * A set of notifications that may be received on the bus when navigation
+     * related status changes.
+     */
 
     /**
      * A set of notifications that may be received on the bus when navigation
      * related status changes.
      */
+    export namespace NavigationMessageType {
+        export const $gtype: GObject.GType<NavigationMessageType>;
+    }
+
     enum NavigationMessageType {
         INVALID,
         MOUSE_OVER,
         COMMANDS_CHANGED,
         ANGLES_CHANGED,
     }
+
     export namespace NavigationQueryType {
         export const $gtype: GObject.GType<NavigationQueryType>;
     }
@@ -131,9 +168,12 @@ export namespace GstInterfaces {
         COMMANDS,
         ANGLES,
     }
-    export namespace StreamVolumeFormat {
-        export const $gtype: GObject.GType<StreamVolumeFormat>;
-    }
+    /**
+     * Different representations of a stream volume. gst_stream_volume_convert()
+     * allows to convert between the different representations.
+     * Formulas to convert from a linear to a cubic or dB volume are
+     * cbrt(val) and 20 * log10 (val).
+     */
 
     /**
      * Different representations of a stream volume. gst_stream_volume_convert()
@@ -141,6 +181,10 @@ export namespace GstInterfaces {
      * Formulas to convert from a linear to a cubic or dB volume are
      * cbrt(val) and 20 * log10 (val).
      */
+    export namespace StreamVolumeFormat {
+        export const $gtype: GObject.GType<StreamVolumeFormat>;
+    }
+
     enum StreamVolumeFormat {
         LINEAR,
         CUBIC,
@@ -368,27 +412,36 @@ export namespace GstInterfaces {
      */
     function navigation_query_set_commandsv(query: Gst.Query, n_cmds: number, cmds: NavigationCommand): void;
     function stream_volume_convert_volume(from: StreamVolumeFormat, to: StreamVolumeFormat, val: number): number;
-    export namespace MixerFlags {
-        export const $gtype: GObject.GType<MixerFlags>;
-    }
+    /**
+     * Flags indicating which optional features are supported by a mixer
+     * implementation.
+     */
 
     /**
      * Flags indicating which optional features are supported by a mixer
      * implementation.
      */
+    export namespace MixerFlags {
+        export const $gtype: GObject.GType<MixerFlags>;
+    }
+
     enum MixerFlags {
         NONE,
         AUTO_NOTIFICATIONS,
         HAS_WHITELIST,
         GROUPING,
     }
-    export namespace MixerTrackFlags {
-        export const $gtype: GObject.GType<MixerTrackFlags>;
-    }
+    /**
+     * Mixer track flags.
+     */
 
     /**
      * Mixer track flags.
      */
+    export namespace MixerTrackFlags {
+        export const $gtype: GObject.GType<MixerTrackFlags>;
+    }
+
     enum MixerTrackFlags {
         INPUT,
         OUTPUT,
@@ -402,14 +455,19 @@ export namespace GstInterfaces {
         READONLY,
         WRITEONLY,
     }
-    export namespace TunerChannelFlags {
-        export const $gtype: GObject.GType<TunerChannelFlags>;
-    }
+    /**
+     * An enumeration for flags indicating the available capabilities
+     * of a #GstTunerChannel.
+     */
 
     /**
      * An enumeration for flags indicating the available capabilities
      * of a #GstTunerChannel.
      */
+    export namespace TunerChannelFlags {
+        export const $gtype: GObject.GType<TunerChannelFlags>;
+    }
+
     enum TunerChannelFlags {
         INPUT,
         OUTPUT,

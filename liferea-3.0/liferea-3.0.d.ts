@@ -37,6 +37,7 @@ export namespace Liferea {
         ODE_BY_ID,
         OLDER_BY_TITLE,
     }
+
     export namespace itemViewMode {
         export const $gtype: GObject.GType<itemViewMode>;
     }
@@ -45,6 +46,7 @@ export namespace Liferea {
         SINGLE_ITEM,
         NODE_INFO,
     }
+
     export namespace lifereaIcon {
         export const $gtype: GObject.GType<lifereaIcon>;
     }
@@ -66,6 +68,7 @@ export namespace Liferea {
         CON_ENCLOSURE,
         AX_ICONS,
     }
+
     export namespace nodeSourceState {
         export const $gtype: GObject.GType<nodeSourceState>;
     }
@@ -77,6 +80,7 @@ export namespace Liferea {
         NO_AUTH,
         MIGRATE,
     }
+
     export namespace nodeViewSortType {
         export const $gtype: GObject.GType<nodeViewSortType>;
     }
@@ -87,6 +91,7 @@ export namespace Liferea {
         PARENT,
         STATE,
     }
+
     export namespace nodeViewType {
         export const $gtype: GObject.GType<nodeViewType>;
     }
@@ -240,6 +245,7 @@ export namespace Liferea {
     interface nodeActionFunc {
         (node: nodePtr): void;
     }
+
     export namespace nodeSourceCapability {
         export const $gtype: GObject.GType<nodeSourceCapability>;
     }
@@ -257,6 +263,7 @@ export namespace Liferea {
         CAN_LOGIN,
         REPARENT_NODE,
     }
+
     export namespace nodeSourceUpdate {
         export const $gtype: GObject.GType<nodeSourceUpdate>;
     }

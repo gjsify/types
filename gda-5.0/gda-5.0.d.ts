@@ -24,6 +24,7 @@ export namespace Gda {
     enum BatchError {
         BATCH_CONFLICTING_PARAMETER_ERROR,
     }
+
     export namespace ConfigError {
         export const $gtype: GObject.GType<ConfigError>;
     }
@@ -34,6 +35,7 @@ export namespace Gda {
         PROVIDER_NOT_FOUND_ERROR,
         PROVIDER_CREATION_ERROR,
     }
+
     export namespace ConnectionError {
         export const $gtype: GObject.GType<ConnectionError>;
     }
@@ -53,6 +55,7 @@ export namespace Gda {
         META_DATA_CONTEXT_ERROR,
         UNSUPPORTED_ASYNC_EXEC_ERROR,
     }
+
     export namespace ConnectionEventCode {
         export const $gtype: GObject.GType<ConnectionEventCode>;
     }
@@ -78,6 +81,7 @@ export namespace Gda {
         SYNTAX_ERROR,
         UNKNOWN,
     }
+
     export namespace ConnectionEventType {
         export const $gtype: GObject.GType<ConnectionEventType>;
     }
@@ -88,14 +92,19 @@ export namespace Gda {
         ERROR,
         COMMAND,
     }
-    export namespace ConnectionFeature {
-        export const $gtype: GObject.GType<ConnectionFeature>;
-    }
+    /**
+     * Used in gda_connection_supports_feature() and gda_server_provider_supports_feature() to test if a connection
+     * or a database provider supports some specific feature.
+     */
 
     /**
      * Used in gda_connection_supports_feature() and gda_server_provider_supports_feature() to test if a connection
      * or a database provider supports some specific feature.
      */
+    export namespace ConnectionFeature {
+        export const $gtype: GObject.GType<ConnectionFeature>;
+    }
+
     enum ConnectionFeature {
         /**
          * test for aggregates support
@@ -174,14 +183,19 @@ export namespace Gda {
          */
         LAST,
     }
-    export namespace ConnectionMetaType {
-        export const $gtype: GObject.GType<ConnectionMetaType>;
-    }
+    /**
+     * Used with gda_connection_get_meta_store_data() to describe what meta data to extract from
+     * a connection's associated #GdaMetaStore.
+     */
 
     /**
      * Used with gda_connection_get_meta_store_data() to describe what meta data to extract from
      * a connection's associated #GdaMetaStore.
      */
+    export namespace ConnectionMetaType {
+        export const $gtype: GObject.GType<ConnectionMetaType>;
+    }
+
     enum ConnectionMetaType {
         /**
          * lists the <link linkend="GdaConnectionMetaTypeGDA_CONNECTION_META_NAMESPACES">namespaces</link> (or schemas for PostgreSQL)
@@ -208,6 +222,7 @@ export namespace Gda {
          */
         INDEXES,
     }
+
     export namespace DataComparatorError {
         export const $gtype: GObject.GType<DataComparatorError>;
     }
@@ -250,13 +265,17 @@ export namespace Gda {
         END_BATCH_UPDATE,
         REFRESH,
     }
-    export namespace DataModelIOFormat {
-        export const $gtype: GObject.GType<DataModelIOFormat>;
-    }
+    /**
+     * Format to use when exporting a data model, see gda_data_model_export_to_string() and gda_data_model_export_to_file()
+     */
 
     /**
      * Format to use when exporting a data model, see gda_data_model_export_to_string() and gda_data_model_export_to_file()
      */
+    export namespace DataModelIOFormat {
+        export const $gtype: GObject.GType<DataModelIOFormat>;
+    }
+
     enum DataModelIOFormat {
         /**
          * data is exported as an XML structure
@@ -271,6 +290,7 @@ export namespace Gda {
          */
         TEXT_TABLE,
     }
+
     export namespace DataModelIterError {
         export const $gtype: GObject.GType<DataModelIterError>;
     }
@@ -278,13 +298,17 @@ export namespace Gda {
     enum DataModelIterError {
         DATA_MODEL_ITER_COLUMN_OUT_OF_RANGE_ERROR,
     }
-    export namespace DataPivotAggregate {
-        export const $gtype: GObject.GType<DataPivotAggregate>;
-    }
+    /**
+     * Possible operations for the data fields.
+     */
 
     /**
      * Possible operations for the data fields.
      */
+    export namespace DataPivotAggregate {
+        export const $gtype: GObject.GType<DataPivotAggregate>;
+    }
+
     enum DataPivotAggregate {
         AVG,
         COUNT,
@@ -292,13 +316,17 @@ export namespace Gda {
         MIN,
         SUM,
     }
-    export namespace DataPivotError {
-        export const $gtype: GObject.GType<DataPivotError>;
-    }
+    /**
+     * Possible #GdaDataPivot related errors.
+     */
 
     /**
      * Possible #GdaDataPivot related errors.
      */
+    export namespace DataPivotError {
+        export const $gtype: GObject.GType<DataPivotError>;
+    }
+
     enum DataPivotError {
         INTERNAL_ERROR,
         SOURCE_MODEL_ERROR,
@@ -306,17 +334,22 @@ export namespace Gda {
         USAGE_ERROR,
         OVERFLOW_ERROR,
     }
-    export namespace DataPivotFieldType {
-        export const $gtype: GObject.GType<DataPivotFieldType>;
-    }
+    /**
+     * Define types of field to be used when defining a #GdaDataPivot analysis.
+     */
 
     /**
      * Define types of field to be used when defining a #GdaDataPivot analysis.
      */
+    export namespace DataPivotFieldType {
+        export const $gtype: GObject.GType<DataPivotFieldType>;
+    }
+
     enum DataPivotFieldType {
         ROW,
         COLUMN,
     }
+
     export namespace DataProxyError {
         export const $gtype: GObject.GType<DataProxyError>;
     }
@@ -328,14 +361,19 @@ export namespace Gda {
         READ_ONLY_ROW,
         FILTER_ERROR,
     }
-    export namespace DataSelectConditionType {
-        export const $gtype: GObject.GType<DataSelectConditionType>;
-    }
+    /**
+     * Defines what criteria gda_data_select_compute_modification_statements_ext() uses
+     * to uniquely identify a single row in a table when creating modification statements.
+     */
 
     /**
      * Defines what criteria gda_data_select_compute_modification_statements_ext() uses
      * to uniquely identify a single row in a table when creating modification statements.
      */
+    export namespace DataSelectConditionType {
+        export const $gtype: GObject.GType<DataSelectConditionType>;
+    }
+
     enum DataSelectConditionType {
         /**
          * only primary key fields are used
@@ -346,6 +384,7 @@ export namespace Gda {
          */
         ALL_COLUMNS,
     }
+
     export namespace DataSelectError {
         export const $gtype: GObject.GType<DataSelectError>;
     }
@@ -358,6 +397,7 @@ export namespace Gda {
         SQL_ERROR,
         SAFETY_LOCKED_ERROR,
     }
+
     export namespace DiffType {
         export const $gtype: GObject.GType<DiffType>;
     }
@@ -367,6 +407,7 @@ export namespace Gda {
         REMOVE_ROW,
         MODIFY_ROW,
     }
+
     export namespace HolderError {
         export const $gtype: GObject.GType<HolderError>;
     }
@@ -376,13 +417,17 @@ export namespace Gda {
         VALUE_TYPE_ERROR,
         VALUE_NULL_ERROR,
     }
-    export namespace LdapSearchScope {
-        export const $gtype: GObject.GType<LdapSearchScope>;
-    }
+    /**
+     * Defines the search scope of an LDAP search command, relative to the base object.
+     */
 
     /**
      * Defines the search scope of an LDAP search command, relative to the base object.
      */
+    export namespace LdapSearchScope {
+        export const $gtype: GObject.GType<LdapSearchScope>;
+    }
+
     enum LdapSearchScope {
         /**
          * search of the base object only
@@ -397,13 +442,17 @@ export namespace Gda {
          */
         SUBTREE,
     }
-    export namespace MetaDbObjectType {
-        export const $gtype: GObject.GType<MetaDbObjectType>;
-    }
+    /**
+     * Type of database object which can be handled as a #GdaMetaDbObject
+     */
 
     /**
      * Type of database object which can be handled as a #GdaMetaDbObject
      */
+    export namespace MetaDbObjectType {
+        export const $gtype: GObject.GType<MetaDbObjectType>;
+    }
+
     enum MetaDbObjectType {
         /**
          * unknown type
@@ -418,14 +467,19 @@ export namespace Gda {
          */
         VIEW,
     }
-    export namespace MetaForeignKeyPolicy {
-        export const $gtype: GObject.GType<MetaForeignKeyPolicy>;
-    }
+    /**
+     * Defines the filtering policy of a foreign key when invoked on an UPDATE
+     * or DELETE operation.
+     */
 
     /**
      * Defines the filtering policy of a foreign key when invoked on an UPDATE
      * or DELETE operation.
      */
+    export namespace MetaForeignKeyPolicy {
+        export const $gtype: GObject.GType<MetaForeignKeyPolicy>;
+    }
+
     enum MetaForeignKeyPolicy {
         /**
          * unspecified policy
@@ -456,13 +510,17 @@ export namespace Gda {
          */
         SET_DEFAULT,
     }
-    export namespace MetaSortType {
-        export const $gtype: GObject.GType<MetaSortType>;
-    }
+    /**
+     * Types of sorting
+     */
 
     /**
      * Types of sorting
      */
+    export namespace MetaSortType {
+        export const $gtype: GObject.GType<MetaSortType>;
+    }
+
     enum MetaSortType {
         /**
          * sort alphabetically
@@ -473,6 +531,7 @@ export namespace Gda {
          */
         DEPENDENCIES,
     }
+
     export namespace MetaStoreChangeType {
         export const $gtype: GObject.GType<MetaStoreChangeType>;
     }
@@ -482,6 +541,7 @@ export namespace Gda {
         REMOVE,
         MODIFY,
     }
+
     export namespace MetaStoreError {
         export const $gtype: GObject.GType<MetaStoreError>;
     }
@@ -500,6 +560,7 @@ export namespace Gda {
         SCHEMA_OBJECT_DESCR_ERROR,
         TRANSACTION_ALREADY_STARTED_ERROR,
     }
+
     export namespace MetaStructError {
         export const $gtype: GObject.GType<MetaStructError>;
     }
@@ -510,6 +571,7 @@ export namespace Gda {
         INCOHERENCE_ERROR,
         XML_ERROR,
     }
+
     export namespace ServerOperationError {
         export const $gtype: GObject.GType<ServerOperationError>;
     }
@@ -519,6 +581,7 @@ export namespace Gda {
         INCORRECT_VALUE_ERROR,
         XML_ERROR,
     }
+
     export namespace ServerOperationNodeStatus {
         export const $gtype: GObject.GType<ServerOperationNodeStatus>;
     }
@@ -528,6 +591,7 @@ export namespace Gda {
         REQUIRED,
         UNKNOWN,
     }
+
     export namespace ServerOperationNodeType {
         export const $gtype: GObject.GType<ServerOperationNodeType>;
     }
@@ -541,6 +605,7 @@ export namespace Gda {
         DATA_MODEL_COLUMN,
         UNKNOWN,
     }
+
     export namespace ServerOperationType {
         export const $gtype: GObject.GType<ServerOperationType>;
     }
@@ -564,6 +629,7 @@ export namespace Gda {
         DROP_USER,
         LAST,
     }
+
     export namespace ServerProviderError {
         export const $gtype: GObject.GType<ServerProviderError>;
     }
@@ -584,6 +650,7 @@ export namespace Gda {
         MISUSE_ERROR,
         FILE_NOT_FOUND_ERROR,
     }
+
     export namespace SetError {
         export const $gtype: GObject.GType<SetError>;
     }
@@ -595,13 +662,17 @@ export namespace Gda {
         READ_ONLY_ERROR,
         IMPLEMENTATION_ERROR,
     }
-    export namespace SqlAnyPartType {
-        export const $gtype: GObject.GType<SqlAnyPartType>;
-    }
+    /**
+     * Type of part.
+     */
 
     /**
      * Type of part.
      */
+    export namespace SqlAnyPartType {
+        export const $gtype: GObject.GType<SqlAnyPartType>;
+    }
+
     enum SqlAnyPartType {
         /**
          * structure is a #GdaSqlStatementSelect
@@ -696,6 +767,7 @@ export namespace Gda {
          */
         SQL_SELECT_ORDER,
     }
+
     export namespace SqlBuilderError {
         export const $gtype: GObject.GType<SqlBuilderError>;
     }
@@ -760,6 +832,7 @@ export namespace Gda {
         NOTILIKE,
         GLOB,
     }
+
     export namespace SqlParserError {
         export const $gtype: GObject.GType<SqlParserError>;
     }
@@ -769,6 +842,7 @@ export namespace Gda {
         OVERFLOW_ERROR,
         EMPTY_SQL_ERROR,
     }
+
     export namespace SqlParserFlavour {
         export const $gtype: GObject.GType<SqlParserFlavour>;
     }
@@ -780,6 +854,7 @@ export namespace Gda {
         ORACLE,
         POSTGRESQL,
     }
+
     export namespace SqlParserMode {
         export const $gtype: GObject.GType<SqlParserMode>;
     }
@@ -788,6 +863,7 @@ export namespace Gda {
         PARSE,
         DELIMIT,
     }
+
     export namespace SqlSelectJoinType {
         export const $gtype: GObject.GType<SqlSelectJoinType>;
     }
@@ -800,6 +876,7 @@ export namespace Gda {
         RIGHT,
         FULL,
     }
+
     export namespace SqlStatementCompoundType {
         export const $gtype: GObject.GType<SqlStatementCompoundType>;
     }
@@ -812,13 +889,17 @@ export namespace Gda {
         EXCEPT,
         EXCEPT_ALL,
     }
-    export namespace SqlStatementType {
-        export const $gtype: GObject.GType<SqlStatementType>;
-    }
+    /**
+     * Known types of statements
+     */
 
     /**
      * Known types of statements
      */
+    export namespace SqlStatementType {
+        export const $gtype: GObject.GType<SqlStatementType>;
+    }
+
     enum SqlStatementType {
         /**
          * a SELECT statement
@@ -873,6 +954,7 @@ export namespace Gda {
          */
         NONE,
     }
+
     export namespace StatementError {
         export const $gtype: GObject.GType<StatementError>;
     }
@@ -886,14 +968,19 @@ export namespace Gda {
         PARAM_TYPE_ERROR,
         PARAM_ERROR,
     }
-    export namespace ThreadNotificationType {
-        export const $gtype: GObject.GType<ThreadNotificationType>;
-    }
+    /**
+     * Defines the kind of notification which can be obtained when reading from te #GIOChannel
+     * returned by gda_thread_wrapper_get_io_channel().
+     */
 
     /**
      * Defines the kind of notification which can be obtained when reading from te #GIOChannel
      * returned by gda_thread_wrapper_get_io_channel().
      */
+    export namespace ThreadNotificationType {
+        export const $gtype: GObject.GType<ThreadNotificationType>;
+    }
+
     enum ThreadNotificationType {
         /**
          * the notification regards a job finished
@@ -904,6 +991,7 @@ export namespace Gda {
          */
         SIGNAL,
     }
+
     export namespace ThreadWrapperError {
         export const $gtype: GObject.GType<ThreadWrapperError>;
     }
@@ -911,6 +999,7 @@ export namespace Gda {
     enum ThreadWrapperError {
         THREAD_WRAPPER_UNKNOWN_ERROR,
     }
+
     export namespace TransactionIsolation {
         export const $gtype: GObject.GType<TransactionIsolation>;
     }
@@ -922,6 +1011,7 @@ export namespace Gda {
         REPEATABLE_READ,
         SERIALIZABLE,
     }
+
     export namespace TransactionStatusEventType {
         export const $gtype: GObject.GType<TransactionStatusEventType>;
     }
@@ -931,6 +1021,7 @@ export namespace Gda {
         SQL,
         SUB_TRANSACTION,
     }
+
     export namespace TransactionStatusState {
         export const $gtype: GObject.GType<TransactionStatusState>;
     }
@@ -939,6 +1030,7 @@ export namespace Gda {
         OK,
         FAILED,
     }
+
     export namespace TreeError {
         export const $gtype: GObject.GType<TreeError>;
     }
@@ -946,6 +1038,7 @@ export namespace Gda {
     enum TreeError {
         TREE_UNKNOWN_ERROR,
     }
+
     export namespace TreeManagerError {
         export const $gtype: GObject.GType<TreeManagerError>;
     }
@@ -953,6 +1046,7 @@ export namespace Gda {
     enum TreeManagerError {
         TREE_MANAGER_UNKNOWN_ERROR,
     }
+
     export namespace TreeNodeError {
         export const $gtype: GObject.GType<TreeNodeError>;
     }
@@ -960,6 +1054,7 @@ export namespace Gda {
     enum TreeNodeError {
         TREE_NODE_UNKNOWN_ERROR,
     }
+
     export namespace XaTransactionError {
         export const $gtype: GObject.GType<XaTransactionError>;
     }
@@ -1677,9 +1772,46 @@ export namespace Gda {
     }
     type Default = object | null;
     type Null = object | null;
-    export namespace ConnectionOptions {
-        export const $gtype: GObject.GType<ConnectionOptions>;
-    }
+    /**
+     * Specifies some aspects of a connection when opening it.
+     *
+     * Additional information about the GDA_CONNECTION_OPTIONS_SQL_IDENTIFIERS_CASE_SENSITIVE flag:
+     * <itemizedlist>
+     *   <listitem><para>For example without this flag, if the table
+     *       name specified in a #GdaServerOperation to create a table is
+     *       <emphasis>MyTable</emphasis>, then usually the database will create a table named
+     *       <emphasis>mytable</emphasis>, whereas with this flag, the table will be created
+     *       as <emphasis>MyTable</emphasis> (note that in the end the database may still decide
+     *       to name the table <emphasis>mytable</emphasis> or differently if it can't do
+     *       otherwise).</para></listitem>
+     *   <listitem><para>Libgda will not apply this rule when parsing SQL code, the SQL code being parsed
+     *       has to be conform to the database it will be used with</para></listitem>
+     * </itemizedlist>
+     *
+     * Additional information about the GDA_CONNECTION_OPTIONS_THREAD_SAFE and GDA_CONNECTION_OPTIONS_THREAD_ISOLATED flags:
+     * The GDA_CONNECTION_OPTIONS_THREAD_SAFE flag specifies that it has to be able to use the returned connection object from
+     * several threads at once (locking is ensured by the #GdaConnection itself). Depending on the database provider's
+     * implementation and on the native libraries it uses, the "normal" connection object might not respect this requirement,
+     * and in this case a specific thread is started and used as the unique thread which will manipulate the actual connection,
+     * while a "wrapper connection" is actually returned and used by the caller (that wrapper connection passes method calls
+     * from the calling thread to the actual connection's specific thread, and gets the results back).
+     *
+     * The GDA_CONNECTION_OPTIONS_THREAD_ISOLATED forces using a specific thread and a "wrapper connection" even if the
+     * "normal" connection would itself be thread safe; this is useful for example to be sure the asynchronous API can
+     * always be used (see gda_connection_async_statement_execute()).
+     *
+     * Having a specific thread and a "wrapper connection" definitely has an impact on the performances (because it involves
+     * messages passing between threads for every method call), so using the
+     * GDA_CONNECTION_OPTIONS_THREAD_SAFE or GDA_CONNECTION_OPTIONS_THREAD_ISOLATED flags should be carefully considered.
+     *
+     * Note about the `GDA_CONNECTION_OPTIONS_AUTO_META_DATA` flag:
+     * <itemizedlist>
+     *  <listitem><para>Every time a DDL statement is successfully executed, the associated meta data, if
+     *               defined, will be updated, which has a impact on performances</para></listitem>
+     *  <listitem><para>If a transaction is started and some DDL statements are executed and the transaction
+     *            is not rolled back or committed, then the meta data may end up being wrong</para></listitem>
+     * </itemizedlist>
+     */
 
     /**
      * Specifies some aspects of a connection when opening it.
@@ -1721,6 +1853,10 @@ export namespace Gda {
      *            is not rolled back or committed, then the meta data may end up being wrong</para></listitem>
      * </itemizedlist>
      */
+    export namespace ConnectionOptions {
+        export const $gtype: GObject.GType<ConnectionOptions>;
+    }
+
     enum ConnectionOptions {
         /**
          * no specific aspect
@@ -1755,6 +1891,7 @@ export namespace Gda {
          */
         AUTO_META_DATA,
     }
+
     export namespace DataModelAccessFlags {
         export const $gtype: GObject.GType<DataModelAccessFlags>;
     }
@@ -1769,6 +1906,7 @@ export namespace Gda {
         DELETE,
         WRITE,
     }
+
     export namespace MetaGraphInfo {
         export const $gtype: GObject.GType<MetaGraphInfo>;
     }
@@ -1776,13 +1914,17 @@ export namespace Gda {
     enum MetaGraphInfo {
         META_GRAPH_COLUMNS,
     }
-    export namespace MetaStructFeature {
-        export const $gtype: GObject.GType<MetaStructFeature>;
-    }
+    /**
+     * Controls which features are computed about database objects.
+     */
 
     /**
      * Controls which features are computed about database objects.
      */
+    export namespace MetaStructFeature {
+        export const $gtype: GObject.GType<MetaStructFeature>;
+    }
+
     enum MetaStructFeature {
         /**
          * database objects only have their own attributes
@@ -1801,6 +1943,7 @@ export namespace Gda {
          */
         ALL,
     }
+
     export namespace ServerOperationCreateTableFlag {
         export const $gtype: GObject.GType<ServerOperationCreateTableFlag>;
     }
@@ -1814,13 +1957,17 @@ export namespace Gda {
         FKEY_FLAG,
         PKEY_AUTOINC_FLAG,
     }
-    export namespace SqlIdentifierStyle {
-        export const $gtype: GObject.GType<SqlIdentifierStyle>;
-    }
+    /**
+     * Specifies how SQL identifiers are represented by a specific database
+     */
 
     /**
      * Specifies how SQL identifiers are represented by a specific database
      */
+    export namespace SqlIdentifierStyle {
+        export const $gtype: GObject.GType<SqlIdentifierStyle>;
+    }
+
     enum SqlIdentifierStyle {
         /**
          * case insensitive SQL identifiers are represented in lower case (meaning that any SQL identifier which has a non lower case character is case sensitive)
@@ -1831,13 +1978,17 @@ export namespace Gda {
          */
         UPPER_CASE,
     }
-    export namespace StatementModelUsage {
-        export const $gtype: GObject.GType<StatementModelUsage>;
-    }
+    /**
+     * These flags specify how the #GdaDataModel returned when executing a #GdaStatement will be used
+     */
 
     /**
      * These flags specify how the #GdaDataModel returned when executing a #GdaStatement will be used
      */
+    export namespace StatementModelUsage {
+        export const $gtype: GObject.GType<StatementModelUsage>;
+    }
+
     enum StatementModelUsage {
         /**
          * access to the data model will be random (usually this will result in a data model completely stored in memory)
@@ -1864,13 +2015,17 @@ export namespace Gda {
          */
         OFFLINE,
     }
-    export namespace StatementSqlFlag {
-        export const $gtype: GObject.GType<StatementSqlFlag>;
-    }
+    /**
+     * Specifies rendering options
+     */
 
     /**
      * Specifies rendering options
      */
+    export namespace StatementSqlFlag {
+        export const $gtype: GObject.GType<StatementSqlFlag>;
+    }
+
     enum StatementSqlFlag {
         /**
          * rendering will replace parameters with their values
@@ -1909,6 +2064,7 @@ export namespace Gda {
          */
         TIMEZONE_TO_GMT,
     }
+
     export namespace ValueAttribute {
         export const $gtype: GObject.GType<ValueAttribute>;
     }

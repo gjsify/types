@@ -33,13 +33,17 @@ export namespace ClutterGst {
      * ClutterGst-2.0
      */
 
-    export namespace BufferingMode {
-        export const $gtype: GObject.GType<BufferingMode>;
-    }
+    /**
+     * Different buffering policies clutter-gst supports
+     */
 
     /**
      * Different buffering policies clutter-gst supports
      */
+    export namespace BufferingMode {
+        export const $gtype: GObject.GType<BufferingMode>;
+    }
+
     enum BufferingMode {
         /**
          * In-memory buffering
@@ -108,13 +112,17 @@ export namespace ClutterGst {
      * @param object_class a #GObjectClass
      */
     function player_class_init(object_class: typeof GObject.Object): void;
-    export namespace SeekFlags {
-        export const $gtype: GObject.GType<SeekFlags>;
-    }
+    /**
+     * Flags that can be given to clutter_gst_video_texture_set_seek_flags().
+     */
 
     /**
      * Flags that can be given to clutter_gst_video_texture_set_seek_flags().
      */
+    export namespace SeekFlags {
+        export const $gtype: GObject.GType<SeekFlags>;
+    }
+
     enum SeekFlags {
         /**
          * Fast seeks (key frame boundaries, default)

@@ -33,6 +33,7 @@ export namespace Caribou {
         LATCHED,
         LOCKED,
     }
+
     export namespace ScanGrouping {
         export const $gtype: GObject.GType<ScanGrouping>;
     }

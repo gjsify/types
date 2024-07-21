@@ -24,15 +24,21 @@ export namespace PangoOT {
      * PangoOT-1.0
      */
 
-    export namespace TableType {
-        export const $gtype: GObject.GType<TableType>;
-    }
+    /**
+     * The PangoOTTableType enumeration values are used to
+     * identify the various OpenType tables in the
+     * pango_ot_info_… functions.
+     */
 
     /**
      * The PangoOTTableType enumeration values are used to
      * identify the various OpenType tables in the
      * pango_ot_info_… functions.
      */
+    export namespace TableType {
+        export const $gtype: GObject.GType<TableType>;
+    }
+
     enum TableType {
         /**
          * The GSUB table.

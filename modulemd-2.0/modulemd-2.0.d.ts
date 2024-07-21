@@ -58,6 +58,7 @@ export namespace Modulemd {
          */
         SENTINEL,
     }
+
     export namespace DefaultsVersionEnum {
         export const $gtype: GObject.GType<DefaultsVersionEnum>;
     }
@@ -179,6 +180,7 @@ export namespace Modulemd {
          */
         NOT_IMPLEMENTED,
     }
+
     export namespace ModuleStreamVersionEnum {
         export const $gtype: GObject.GType<ModuleStreamVersionEnum>;
     }
@@ -209,6 +211,7 @@ export namespace Modulemd {
          */
         LATEST,
     }
+
     export namespace ObsoletesVersionEnum {
         export const $gtype: GObject.GType<ObsoletesVersionEnum>;
     }
@@ -233,6 +236,7 @@ export namespace Modulemd {
          */
         LATEST,
     }
+
     export namespace PackagerVersionEnum {
         export const $gtype: GObject.GType<PackagerVersionEnum>;
     }

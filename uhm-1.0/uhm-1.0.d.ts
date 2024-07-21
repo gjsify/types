@@ -19,13 +19,17 @@ export namespace Uhm {
      * Uhm-1.0
      */
 
-    export namespace ServerError {
-        export const $gtype: GObject.GType<ServerError>;
-    }
+    /**
+     * Error codes for #UhmServer operations.
+     */
 
     /**
      * Error codes for #UhmServer operations.
      */
+    export namespace ServerError {
+        export const $gtype: GObject.GType<ServerError>;
+    }
+
     enum ServerError {
         /**
          * In comparison mode, a message received from the client did not match the next message in the current trace file.

@@ -18,13 +18,17 @@ export namespace Gck {
      * Gck-2
      */
 
-    export namespace BuilderFlags {
-        export const $gtype: GObject.GType<BuilderFlags>;
-    }
+    /**
+     * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
+     */
 
     /**
      * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
      */
+    export namespace BuilderFlags {
+        export const $gtype: GObject.GType<BuilderFlags>;
+    }
+
     enum BuilderFlags {
         /**
          * no special flags
@@ -292,13 +296,17 @@ export namespace Gck {
     interface Allocator {
         (data: any | null, length: number): any | null;
     }
-    export namespace SessionOptions {
-        export const $gtype: GObject.GType<SessionOptions>;
-    }
+    /**
+     * Options for creating sessions.
+     */
 
     /**
      * Options for creating sessions.
      */
+    export namespace SessionOptions {
+        export const $gtype: GObject.GType<SessionOptions>;
+    }
+
     enum SessionOptions {
         /**
          * Open session as read only
@@ -317,14 +325,19 @@ export namespace Gck {
          */
         AUTHENTICATE,
     }
-    export namespace UriFlags {
-        export const $gtype: GObject.GType<UriFlags>;
-    }
+    /**
+     * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
+     * combined.
+     */
 
     /**
      * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
      * combined.
      */
+    export namespace UriFlags {
+        export const $gtype: GObject.GType<UriFlags>;
+    }
+
     enum UriFlags {
         /**
          * the URI will be used to match objects.

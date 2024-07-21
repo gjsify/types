@@ -41,6 +41,7 @@ export namespace MyPaint {
         INPUT_BRUSH_RADIUS,
         INPUTS_COUNT,
     }
+
     export namespace BrushSetting {
         export const $gtype: GObject.GType<BrushSetting>;
     }
@@ -112,6 +113,7 @@ export namespace MyPaint {
         SETTING_PAINT_MODE,
         SETTINGS_COUNT,
     }
+
     export namespace BrushState {
         export const $gtype: GObject.GType<BrushState>;
     }

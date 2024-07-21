@@ -60,6 +60,7 @@ export namespace Zeitgeist {
         LEAST_POPULAR_CURRENT_ORIGIN,
         RELEVANCY,
     }
+
     export namespace RelevantResultType {
         export const $gtype: GObject.GType<RelevantResultType>;
     }
@@ -68,6 +69,7 @@ export namespace Zeitgeist {
         RECENT,
         RELATED,
     }
+
     export namespace StorageState {
         export const $gtype: GObject.GType<StorageState>;
     }

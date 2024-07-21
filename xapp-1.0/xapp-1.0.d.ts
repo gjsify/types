@@ -27,10 +27,6 @@ export namespace XApp {
      * XApp-1.0
      */
 
-    export namespace IconSize {
-        export const $gtype: GObject.GType<IconSize>;
-    }
-
     class IconSize {
         static $gtype: GObject.GType<IconSize>;
 
@@ -48,13 +44,17 @@ export namespace XApp {
         _init(...args: any[]): void;
     }
 
-    export namespace ScrollDirection {
-        export const $gtype: GObject.GType<ScrollDirection>;
-    }
+    /**
+     * Represents the direction of icon scroll events.
+     */
 
     /**
      * Represents the direction of icon scroll events.
      */
+    export namespace ScrollDirection {
+        export const $gtype: GObject.GType<ScrollDirection>;
+    }
+
     enum ScrollDirection {
         /**
          * Scroll theoretical content up.
@@ -73,6 +73,7 @@ export namespace XApp {
          */
         RIGHT,
     }
+
     export namespace StatusIconState {
         export const $gtype: GObject.GType<StatusIconState>;
     }

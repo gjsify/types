@@ -22,6 +22,7 @@ export namespace CudaGst {
     enum GLDeviceList {
         GL_DEVICE_LIST_ALL,
     }
+
     export namespace address_mode {
         export const $gtype: GObject.GType<address_mode>;
     }
@@ -32,6 +33,7 @@ export namespace CudaGst {
         MIRROR,
         BORDER,
     }
+
     export namespace array_format {
         export const $gtype: GObject.GType<array_format>;
     }
@@ -40,6 +42,7 @@ export namespace CudaGst {
         INT8,
         INT16,
     }
+
     export namespace device_attribute {
         export const $gtype: GObject.GType<device_attribute>;
     }
@@ -49,6 +52,7 @@ export namespace CudaGst {
         COMPUTE_CAPABILITY_MAJOR,
         COMPUTE_CAPABILITY_MINOR,
     }
+
     export namespace filter_mode {
         export const $gtype: GObject.GType<filter_mode>;
     }
@@ -57,6 +61,7 @@ export namespace CudaGst {
         POINT,
         LINEAR,
     }
+
     export namespace graphicsMapResourceFlags {
         export const $gtype: GObject.GType<graphicsMapResourceFlags>;
     }
@@ -66,6 +71,7 @@ export namespace CudaGst {
         READ_ONLY,
         WRITE_DISCARD,
     }
+
     export namespace graphicsRegisterFlags {
         export const $gtype: GObject.GType<graphicsRegisterFlags>;
     }
@@ -77,6 +83,7 @@ export namespace CudaGst {
         SURFACE_LOAD_STORE,
         TEXTURE_GATHER,
     }
+
     export namespace memorytype {
         export const $gtype: GObject.GType<memorytype>;
     }
@@ -87,6 +94,7 @@ export namespace CudaGst {
         ARRAY,
         UNIFIED,
     }
+
     export namespace resourceViewFormat {
         export const $gtype: GObject.GType<resourceViewFormat>;
     }
@@ -94,6 +102,7 @@ export namespace CudaGst {
     enum resourceViewFormat {
         RES_VIEW_FORMAT_NONE,
     }
+
     export namespace resourcetype {
         export const $gtype: GObject.GType<resourcetype>;
     }
@@ -104,6 +113,7 @@ export namespace CudaGst {
         LINEAR,
         PITCH2D,
     }
+
     export namespace result {
         export const $gtype: GObject.GType<result>;
     }
@@ -111,6 +121,7 @@ export namespace CudaGst {
     enum result {
         SUCCESS,
     }
+
     export namespace stream_flags {
         export const $gtype: GObject.GType<stream_flags>;
     }

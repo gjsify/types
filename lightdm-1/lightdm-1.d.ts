@@ -71,13 +71,17 @@ export namespace LightDM {
          */
         ERROR,
     }
-    export namespace PromptType {
-        export const $gtype: GObject.GType<PromptType>;
-    }
+    /**
+     * Prompt types the client is required to display.
+     */
 
     /**
      * Prompt types the client is required to display.
      */
+    export namespace PromptType {
+        export const $gtype: GObject.GType<PromptType>;
+    }
+
     enum PromptType {
         /**
          * prompt is a question.  The information can be shown as it is entered.

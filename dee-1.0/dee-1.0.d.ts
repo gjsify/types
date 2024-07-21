@@ -47,18 +47,24 @@ export namespace Dee {
         _init(...args: any[]): void;
     }
 
-    export namespace SharedModelAccessMode {
-        export const $gtype: GObject.GType<SharedModelAccessMode>;
-    }
+    /**
+     * Enumeration defining behavior of the model with regards to writes from
+     * other peers in the swarm.
+     */
 
     /**
      * Enumeration defining behavior of the model with regards to writes from
      * other peers in the swarm.
      */
+    export namespace SharedModelAccessMode {
+        export const $gtype: GObject.GType<SharedModelAccessMode>;
+    }
+
     enum SharedModelAccessMode {
         WORLD_WRITABLE,
         LEADER_WRITABLE,
     }
+
     export namespace SharedModelError {
         export const $gtype: GObject.GType<SharedModelError>;
     }
@@ -66,25 +72,34 @@ export namespace Dee {
     enum SharedModelError {
         SHARED_MODEL_ERROR_LEADER_INVALIDATED,
     }
-    export namespace SharedModelFlushMode {
-        export const $gtype: GObject.GType<SharedModelFlushMode>;
-    }
+    /**
+     * Enumeration defining flushing behavior of a shared model.
+     */
 
     /**
      * Enumeration defining flushing behavior of a shared model.
      */
+    export namespace SharedModelFlushMode {
+        export const $gtype: GObject.GType<SharedModelFlushMode>;
+    }
+
     enum SharedModelFlushMode {
         AUTOMATIC,
         MANUAL,
     }
-    export namespace TransactionError {
-        export const $gtype: GObject.GType<TransactionError>;
-    }
+    /**
+     * Error codes for the #DeeTransaction class. These codes will be set when the
+     * error domain is #DEE_TRANSACTION_ERROR.
+     */
 
     /**
      * Error codes for the #DeeTransaction class. These codes will be set when the
      * error domain is #DEE_TRANSACTION_ERROR.
      */
+    export namespace TransactionError {
+        export const $gtype: GObject.GType<TransactionError>;
+    }
+
     enum TransactionError {
         /**
          * The target model has been
@@ -255,9 +270,14 @@ export namespace Dee {
     interface TermFilterFunc {
         (terms_in: TermList, terms_out: TermList): void;
     }
-    export namespace TermMatchFlag {
-        export const $gtype: GObject.GType<TermMatchFlag>;
-    }
+    /**
+     * Flags passed to dee_index_lookup() to control how matching is done.
+     * Note that it is not required that index backends support more than just
+     * #DEE_TERM_MATCH_EXACT.
+     *
+     * You can query for the supported flags with
+     * dee_index_get_supported_term_match_flags().
+     */
 
     /**
      * Flags passed to dee_index_lookup() to control how matching is done.
@@ -267,6 +287,10 @@ export namespace Dee {
      * You can query for the supported flags with
      * dee_index_get_supported_term_match_flags().
      */
+    export namespace TermMatchFlag {
+        export const $gtype: GObject.GType<TermMatchFlag>;
+    }
+
     enum TermMatchFlag {
         /**
          * Match terms byte for byte as specified in the

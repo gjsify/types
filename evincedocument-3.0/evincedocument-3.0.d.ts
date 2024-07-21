@@ -43,6 +43,7 @@ export namespace EvinceDocument {
         CIRCLE,
         UNKNOWN,
     }
+
     export namespace AnnotationTextMarkupType {
         export const $gtype: GObject.GType<AnnotationTextMarkupType>;
     }
@@ -53,6 +54,7 @@ export namespace EvinceDocument {
         UNDERLINE,
         SQUIGGLY,
     }
+
     export namespace AnnotationType {
         export const $gtype: GObject.GType<AnnotationType>;
     }
@@ -63,6 +65,7 @@ export namespace EvinceDocument {
         ATTACHMENT,
         TEXT_MARKUP,
     }
+
     export namespace AnnotationsOverMarkup {
         export const $gtype: GObject.GType<AnnotationsOverMarkup>;
     }
@@ -73,6 +76,7 @@ export namespace EvinceDocument {
         YES,
         NOT,
     }
+
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
@@ -83,6 +87,7 @@ export namespace EvinceDocument {
         GZIP,
         LZMA,
     }
+
     export namespace DocumentContainsJS {
         export const $gtype: GObject.GType<DocumentContainsJS>;
     }
@@ -123,6 +128,7 @@ export namespace EvinceDocument {
         TWO_PAGE_LEFT,
         TWO_PAGE_RIGHT,
     }
+
     export namespace DocumentMode {
         export const $gtype: GObject.GType<DocumentMode>;
     }
@@ -135,6 +141,7 @@ export namespace EvinceDocument {
         USE_ATTACHMENTS,
         PRESENTATION,
     }
+
     export namespace FileExporterFormat {
         export const $gtype: GObject.GType<FileExporterFormat>;
     }
@@ -144,6 +151,7 @@ export namespace EvinceDocument {
         PS,
         PDF,
     }
+
     export namespace FormFieldButtonType {
         export const $gtype: GObject.GType<FormFieldButtonType>;
     }
@@ -153,6 +161,7 @@ export namespace EvinceDocument {
         CHECK,
         RADIO,
     }
+
     export namespace FormFieldChoiceType {
         export const $gtype: GObject.GType<FormFieldChoiceType>;
     }
@@ -161,6 +170,7 @@ export namespace EvinceDocument {
         COMBO,
         LIST,
     }
+
     export namespace FormFieldTextType {
         export const $gtype: GObject.GType<FormFieldTextType>;
     }
@@ -170,6 +180,7 @@ export namespace EvinceDocument {
         MULTILINE,
         FILE_SELECT,
     }
+
     export namespace LinkActionType {
         export const $gtype: GObject.GType<LinkActionType>;
     }
@@ -183,6 +194,7 @@ export namespace EvinceDocument {
         LAYERS_STATE,
         RESET_FORM,
     }
+
     export namespace LinkDestType {
         export const $gtype: GObject.GType<LinkDestType>;
     }
@@ -198,6 +210,7 @@ export namespace EvinceDocument {
         PAGE_LABEL,
         UNKNOWN,
     }
+
     export namespace SelectionStyle {
         export const $gtype: GObject.GType<SelectionStyle>;
     }
@@ -207,6 +220,7 @@ export namespace EvinceDocument {
         WORD,
         LINE,
     }
+
     export namespace TransitionEffectAlignment {
         export const $gtype: GObject.GType<TransitionEffectAlignment>;
     }
@@ -215,6 +229,7 @@ export namespace EvinceDocument {
         HORIZONTAL,
         VERTICAL,
     }
+
     export namespace TransitionEffectDirection {
         export const $gtype: GObject.GType<TransitionEffectDirection>;
     }
@@ -223,6 +238,7 @@ export namespace EvinceDocument {
         INWARD,
         OUTWARD,
     }
+
     export namespace TransitionEffectType {
         export const $gtype: GObject.GType<TransitionEffectType>;
     }
@@ -346,6 +362,7 @@ export namespace EvinceDocument {
      */
     function xfer_uri_simple(from: string, to: string): boolean;
     function xmp_parse(xmp: string, size: number, info: DocumentInfo): boolean;
+
     export namespace AnnotationsSaveMask {
         export const $gtype: GObject.GType<AnnotationsSaveMask>;
     }
@@ -365,6 +382,7 @@ export namespace EvinceDocument {
         TEXT_MARKUP_TYPE,
         ALL,
     }
+
     export namespace DocumentInfoFields {
         export const $gtype: GObject.GType<DocumentInfoFields>;
     }
@@ -390,6 +408,7 @@ export namespace EvinceDocument {
         LICENSE,
         CONTAINS_JS,
     }
+
     export namespace DocumentLoadFlags {
         export const $gtype: GObject.GType<DocumentLoadFlags>;
     }
@@ -398,6 +417,7 @@ export namespace EvinceDocument {
         NONE,
         NO_CACHE,
     }
+
     export namespace DocumentPermissions {
         export const $gtype: GObject.GType<DocumentPermissions>;
     }
@@ -409,6 +429,7 @@ export namespace EvinceDocument {
         OK_TO_ADD_NOTES,
         FULL,
     }
+
     export namespace DocumentUIHints {
         export const $gtype: GObject.GType<DocumentUIHints>;
     }
@@ -422,6 +443,7 @@ export namespace EvinceDocument {
         DISPLAY_DOC_TITLE,
         DIRECTION_RTL,
     }
+
     export namespace FileExporterCapabilities {
         export const $gtype: GObject.GType<FileExporterCapabilities>;
     }
@@ -437,6 +459,7 @@ export namespace EvinceDocument {
         PREVIEW,
         NUMBER_UP,
     }
+
     export namespace FindOptions {
         export const $gtype: GObject.GType<FindOptions>;
     }

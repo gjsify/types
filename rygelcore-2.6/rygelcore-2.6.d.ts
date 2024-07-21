@@ -36,6 +36,7 @@ export namespace RygelCore {
         DEFAULT,
         DEBUG,
     }
+
     export namespace ConfigurationEntry {
         export const $gtype: GObject.GType<ConfigurationEntry>;
     }
@@ -52,6 +53,7 @@ export namespace RygelCore {
         MUSIC_UPLOAD_FOLDER,
         PICTURE_UPLOAD_FOLDER,
     }
+
     export namespace SectionEntry {
         export const $gtype: GObject.GType<SectionEntry>;
     }
@@ -88,6 +90,7 @@ export namespace RygelCore {
     }
 
     function get_pretty_host_name(): string;
+
     export namespace PluginCapabilities {
         export const $gtype: GObject.GType<PluginCapabilities>;
     }

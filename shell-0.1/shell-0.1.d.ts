@@ -54,6 +54,7 @@ export namespace Shell {
         DISCRETE,
         DEFAULT,
     }
+
     export namespace AppState {
         export const $gtype: GObject.GType<AppState>;
     }
@@ -63,13 +64,17 @@ export namespace Shell {
         STARTING,
         RUNNING,
     }
-    export namespace BlurMode {
-        export const $gtype: GObject.GType<BlurMode>;
-    }
+    /**
+     * The mode of blurring of the effect.
+     */
 
     /**
      * The mode of blurring of the effect.
      */
+    export namespace BlurMode {
+        export const $gtype: GObject.GType<BlurMode>;
+    }
+
     enum BlurMode {
         /**
          * blur the actor contents, and its children
@@ -80,6 +85,7 @@ export namespace Shell {
          */
         BACKGROUND,
     }
+
     export namespace NetworkAgentResponse {
         export const $gtype: GObject.GType<NetworkAgentResponse>;
     }
@@ -89,14 +95,19 @@ export namespace Shell {
         USER_CANCELED,
         INTERNAL_ERROR,
     }
-    export namespace SnippetHook {
-        export const $gtype: GObject.GType<SnippetHook>;
-    }
+    /**
+     * Temporary hack to work around Cogl not exporting CoglSnippetHook in
+     * the 1.0 API. Don't use.
+     */
 
     /**
      * Temporary hack to work around Cogl not exporting CoglSnippetHook in
      * the 1.0 API. Don't use.
      */
+    export namespace SnippetHook {
+        export const $gtype: GObject.GType<SnippetHook>;
+    }
+
     enum SnippetHook {
         VERTEX,
         VERTEX_TRANSFORM,
@@ -278,14 +289,19 @@ export namespace Shell {
     interface PerfStatisticsCallback {
         (perf_log: PerfLog, data?: any | null): void;
     }
-    export namespace ActionMode {
-        export const $gtype: GObject.GType<ActionMode>;
-    }
+    /**
+     * Controls in which GNOME Shell states an action (like keybindings and gestures)
+     * should be handled.
+     */
 
     /**
      * Controls in which GNOME Shell states an action (like keybindings and gestures)
      * should be handled.
      */
+    export namespace ActionMode {
+        export const $gtype: GObject.GType<ActionMode>;
+    }
+
     enum ActionMode {
         /**
          * block action

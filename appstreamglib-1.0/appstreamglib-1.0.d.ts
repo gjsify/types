@@ -19,13 +19,17 @@ export namespace AppStreamGlib {
      * AppStreamGlib-1.0
      */
 
-    export namespace AgreementKind {
-        export const $gtype: GObject.GType<AgreementKind>;
-    }
+    /**
+     * The kind of the agreement.
+     */
 
     /**
      * The kind of the agreement.
      */
+    export namespace AgreementKind {
+        export const $gtype: GObject.GType<AgreementKind>;
+    }
+
     enum AgreementKind {
         /**
          * Unknown value
@@ -44,13 +48,17 @@ export namespace AppStreamGlib {
          */
         PRIVACY,
     }
-    export namespace AppError {
-        export const $gtype: GObject.GType<AppError>;
-    }
+    /**
+     * The error type.
+     */
 
     /**
      * The error type.
      */
+    export namespace AppError {
+        export const $gtype: GObject.GType<AppError>;
+    }
+
     enum AppError {
         /**
          * Generic failure
@@ -61,13 +69,17 @@ export namespace AppStreamGlib {
          */
         INVALID_TYPE,
     }
-    export namespace AppKind {
-        export const $gtype: GObject.GType<AppKind>;
-    }
+    /**
+     * The component type.
+     */
 
     /**
      * The component type.
      */
+    export namespace AppKind {
+        export const $gtype: GObject.GType<AppKind>;
+    }
+
     enum AppKind {
         /**
          * Type invalid or not known
@@ -142,13 +154,17 @@ export namespace AppStreamGlib {
          */
         ICON_THEME,
     }
-    export namespace AppMergeKind {
-        export const $gtype: GObject.GType<AppMergeKind>;
-    }
+    /**
+     * The component merge kind.
+     */
 
     /**
      * The component merge kind.
      */
+    export namespace AppMergeKind {
+        export const $gtype: GObject.GType<AppMergeKind>;
+    }
+
     enum AppMergeKind {
         /**
          * Unknown merge type
@@ -167,13 +183,17 @@ export namespace AppStreamGlib {
          */
         APPEND,
     }
-    export namespace AppScope {
-        export const $gtype: GObject.GType<AppScope>;
-    }
+    /**
+     * The application scope.
+     */
 
     /**
      * The application scope.
      */
+    export namespace AppScope {
+        export const $gtype: GObject.GType<AppScope>;
+    }
+
     enum AppScope {
         /**
          * Unknown scope
@@ -188,13 +208,17 @@ export namespace AppStreamGlib {
          */
         SYSTEM,
     }
-    export namespace AppState {
-        export const $gtype: GObject.GType<AppState>;
-    }
+    /**
+     * The application state.
+     */
 
     /**
      * The application state.
      */
+    export namespace AppState {
+        export const $gtype: GObject.GType<AppState>;
+    }
+
     enum AppState {
         /**
          * Unknown state
@@ -245,13 +269,17 @@ export namespace AppStreamGlib {
          */
         PURCHASING,
     }
-    export namespace AppTrustFlags {
-        export const $gtype: GObject.GType<AppTrustFlags>;
-    }
+    /**
+     * The flags to use when checking input.
+     */
 
     /**
      * The flags to use when checking input.
      */
+    export namespace AppTrustFlags {
+        export const $gtype: GObject.GType<AppTrustFlags>;
+    }
+
     enum AppTrustFlags {
         /**
          * Trusted data with no validation
@@ -266,13 +294,17 @@ export namespace AppStreamGlib {
          */
         CHECK_VALID_UTF8,
     }
-    export namespace AppValidateFlags {
-        export const $gtype: GObject.GType<AppValidateFlags>;
-    }
+    /**
+     * The flags to use when validating.
+     */
 
     /**
      * The flags to use when validating.
      */
+    export namespace AppValidateFlags {
+        export const $gtype: GObject.GType<AppValidateFlags>;
+    }
+
     enum AppValidateFlags {
         /**
          * No extra flags to use
@@ -295,13 +327,17 @@ export namespace AppStreamGlib {
          */
         ALL_APPS,
     }
-    export namespace BundleKind {
-        export const $gtype: GObject.GType<BundleKind>;
-    }
+    /**
+     * The bundle type.
+     */
 
     /**
      * The bundle type.
      */
+    export namespace BundleKind {
+        export const $gtype: GObject.GType<BundleKind>;
+    }
+
     enum BundleKind {
         /**
          * Type invalid or not known
@@ -332,13 +368,17 @@ export namespace AppStreamGlib {
          */
         APPIMAGE,
     }
-    export namespace ChecksumTarget {
-        export const $gtype: GObject.GType<ChecksumTarget>;
-    }
+    /**
+     * The checksum target type.
+     */
 
     /**
      * The checksum target type.
      */
+    export namespace ChecksumTarget {
+        export const $gtype: GObject.GType<ChecksumTarget>;
+    }
+
     enum ChecksumTarget {
         /**
          * Unknown state
@@ -361,13 +401,17 @@ export namespace AppStreamGlib {
          */
         DEVICE,
     }
-    export namespace ContentRatingSystem {
-        export const $gtype: GObject.GType<ContentRatingSystem>;
-    }
+    /**
+     * A content rating system for a particular territory.
+     */
 
     /**
      * A content rating system for a particular territory.
      */
+    export namespace ContentRatingSystem {
+        export const $gtype: GObject.GType<ContentRatingSystem>;
+    }
+
     enum ContentRatingSystem {
         /**
          * Unknown ratings system
@@ -434,13 +478,17 @@ export namespace AppStreamGlib {
          */
         IARC,
     }
-    export namespace ContentRatingValue {
-        export const $gtype: GObject.GType<ContentRatingValue>;
-    }
+    /**
+     * The specified level of an content_rating rating ID.
+     */
 
     /**
      * The specified level of an content_rating rating ID.
      */
+    export namespace ContentRatingValue {
+        export const $gtype: GObject.GType<ContentRatingValue>;
+    }
+
     enum ContentRatingValue {
         /**
          * Unknown value
@@ -463,13 +511,17 @@ export namespace AppStreamGlib {
          */
         INTENSE,
     }
-    export namespace FormatKind {
-        export const $gtype: GObject.GType<FormatKind>;
-    }
+    /**
+     * The format kind.
+     */
 
     /**
      * The format kind.
      */
+    export namespace FormatKind {
+        export const $gtype: GObject.GType<FormatKind>;
+    }
+
     enum FormatKind {
         /**
          * Not formatd from a file
@@ -492,26 +544,34 @@ export namespace AppStreamGlib {
          */
         METAINFO,
     }
-    export namespace IconError {
-        export const $gtype: GObject.GType<IconError>;
-    }
+    /**
+     * The error type.
+     */
 
     /**
      * The error type.
      */
+    export namespace IconError {
+        export const $gtype: GObject.GType<IconError>;
+    }
+
     enum IconError {
         /**
          * Generic failure
          */
         FAILED,
     }
-    export namespace IconKind {
-        export const $gtype: GObject.GType<IconKind>;
-    }
+    /**
+     * The icon type.
+     */
 
     /**
      * The icon type.
      */
+    export namespace IconKind {
+        export const $gtype: GObject.GType<IconKind>;
+    }
+
     enum IconKind {
         /**
          * Type invalid or not known
@@ -538,13 +598,17 @@ export namespace AppStreamGlib {
          */
         LOCAL,
     }
-    export namespace IconLoadFlags {
-        export const $gtype: GObject.GType<IconLoadFlags>;
-    }
+    /**
+     * The flags to use when loading icons.
+     */
 
     /**
      * The flags to use when loading icons.
      */
+    export namespace IconLoadFlags {
+        export const $gtype: GObject.GType<IconLoadFlags>;
+    }
+
     enum IconLoadFlags {
         /**
          * No extra flags to use
@@ -555,13 +619,17 @@ export namespace AppStreamGlib {
          */
         SEARCH_SIZE,
     }
-    export namespace IdKind {
-        export const $gtype: GObject.GType<IdKind>;
-    }
+    /**
+     * The component type.
+     */
 
     /**
      * The component type.
      */
+    export namespace IdKind {
+        export const $gtype: GObject.GType<IdKind>;
+    }
+
     enum IdKind {
         /**
          * Type invalid or not known
@@ -608,13 +676,17 @@ export namespace AppStreamGlib {
          */
         GENERIC,
     }
-    export namespace ImageKind {
-        export const $gtype: GObject.GType<ImageKind>;
-    }
+    /**
+     * The image type.
+     */
 
     /**
      * The image type.
      */
+    export namespace ImageKind {
+        export const $gtype: GObject.GType<ImageKind>;
+    }
+
     enum ImageKind {
         /**
          * Type invalid or not known
@@ -629,13 +701,17 @@ export namespace AppStreamGlib {
          */
         THUMBNAIL,
     }
-    export namespace ImageLoadFlags {
-        export const $gtype: GObject.GType<ImageLoadFlags>;
-    }
+    /**
+     * The flags used for loading images.
+     */
 
     /**
      * The flags used for loading images.
      */
+    export namespace ImageLoadFlags {
+        export const $gtype: GObject.GType<ImageLoadFlags>;
+    }
+
     enum ImageLoadFlags {
         /**
          * No special flags set
@@ -662,13 +738,17 @@ export namespace AppStreamGlib {
          */
         ALWAYS_RESIZE,
     }
-    export namespace ImageSaveFlags {
-        export const $gtype: GObject.GType<ImageSaveFlags>;
-    }
+    /**
+     * The flags used for saving images.
+     */
 
     /**
      * The flags used for saving images.
      */
+    export namespace ImageSaveFlags {
+        export const $gtype: GObject.GType<ImageSaveFlags>;
+    }
+
     enum ImageSaveFlags {
         /**
          * No special flags set
@@ -714,13 +794,17 @@ export namespace AppStreamGlib {
         _init(...args: any[]): void;
     }
 
-    export namespace KudoKind {
-        export const $gtype: GObject.GType<KudoKind>;
-    }
+    /**
+     * The kudo type.
+     */
 
     /**
      * The kudo type.
      */
+    export namespace KudoKind {
+        export const $gtype: GObject.GType<KudoKind>;
+    }
+
     enum KudoKind {
         /**
          * Type invalid or not known
@@ -755,13 +839,17 @@ export namespace AppStreamGlib {
          */
         HI_DPI_ICON,
     }
-    export namespace LaunchableKind {
-        export const $gtype: GObject.GType<LaunchableKind>;
-    }
+    /**
+     * The launchable type.
+     */
 
     /**
      * The launchable type.
      */
+    export namespace LaunchableKind {
+        export const $gtype: GObject.GType<LaunchableKind>;
+    }
+
     enum LaunchableKind {
         /**
          * Type invalid or not known
@@ -784,13 +872,17 @@ export namespace AppStreamGlib {
          */
         URL,
     }
-    export namespace MarkupConvertFormat {
-        export const $gtype: GObject.GType<MarkupConvertFormat>;
-    }
+    /**
+     * The format used when converting to or from AppStream descriptions.
+     */
 
     /**
      * The format used when converting to or from AppStream descriptions.
      */
+    export namespace MarkupConvertFormat {
+        export const $gtype: GObject.GType<MarkupConvertFormat>;
+    }
+
     enum MarkupConvertFormat {
         /**
          * UTF-8 text
@@ -840,13 +932,17 @@ export namespace AppStreamGlib {
         _init(...args: any[]): void;
     }
 
-    export namespace NodeInsertFlags {
-        export const $gtype: GObject.GType<NodeInsertFlags>;
-    }
+    /**
+     * The flags to use when inserting a node.
+     */
 
     /**
      * The flags to use when inserting a node.
      */
+    export namespace NodeInsertFlags {
+        export const $gtype: GObject.GType<NodeInsertFlags>;
+    }
+
     enum NodeInsertFlags {
         /**
          * No extra flags to use
@@ -877,13 +973,17 @@ export namespace AppStreamGlib {
          */
         BASE64_ENCODED,
     }
-    export namespace NodeToXmlFlags {
-        export const $gtype: GObject.GType<NodeToXmlFlags>;
-    }
+    /**
+     * The flags for converting to XML.
+     */
 
     /**
      * The flags for converting to XML.
      */
+    export namespace NodeToXmlFlags {
+        export const $gtype: GObject.GType<NodeToXmlFlags>;
+    }
+
     enum NodeToXmlFlags {
         /**
          * No extra flags to use
@@ -910,13 +1010,17 @@ export namespace AppStreamGlib {
          */
         SORT_CHILDREN,
     }
-    export namespace ProblemKind {
-        export const $gtype: GObject.GType<ProblemKind>;
-    }
+    /**
+     * The problem type.
+     */
 
     /**
      * The problem type.
      */
+    export namespace ProblemKind {
+        export const $gtype: GObject.GType<ProblemKind>;
+    }
+
     enum ProblemKind {
         /**
          * Type invalid or not known
@@ -979,13 +1083,17 @@ export namespace AppStreamGlib {
          */
         RESOLUTION_INCORRECT,
     }
-    export namespace ProvideKind {
-        export const $gtype: GObject.GType<ProvideKind>;
-    }
+    /**
+     * The provide type.
+     */
 
     /**
      * The provide type.
      */
+    export namespace ProvideKind {
+        export const $gtype: GObject.GType<ProvideKind>;
+    }
+
     enum ProvideKind {
         /**
          * Type invalid or not known
@@ -1036,13 +1144,17 @@ export namespace AppStreamGlib {
          */
         ID,
     }
-    export namespace ReleaseKind {
-        export const $gtype: GObject.GType<ReleaseKind>;
-    }
+    /**
+     * The release size kind.
+     */
 
     /**
      * The release size kind.
      */
+    export namespace ReleaseKind {
+        export const $gtype: GObject.GType<ReleaseKind>;
+    }
+
     enum ReleaseKind {
         /**
          * Unknown release type
@@ -1057,13 +1169,17 @@ export namespace AppStreamGlib {
          */
         DEVELOPMENT,
     }
-    export namespace ReleaseState {
-        export const $gtype: GObject.GType<ReleaseState>;
-    }
+    /**
+     * The release state.
+     */
 
     /**
      * The release state.
      */
+    export namespace ReleaseState {
+        export const $gtype: GObject.GType<ReleaseState>;
+    }
+
     enum ReleaseState {
         /**
          * Unknown state
@@ -1078,13 +1194,17 @@ export namespace AppStreamGlib {
          */
         AVAILABLE,
     }
-    export namespace RequireCompare {
-        export const $gtype: GObject.GType<RequireCompare>;
-    }
+    /**
+     * The relational comparison type.
+     */
 
     /**
      * The relational comparison type.
      */
+    export namespace RequireCompare {
+        export const $gtype: GObject.GType<RequireCompare>;
+    }
+
     enum RequireCompare {
         /**
          * Comparison predicate invalid or not known
@@ -1123,13 +1243,17 @@ export namespace AppStreamGlib {
          */
         REGEX,
     }
-    export namespace RequireKind {
-        export const $gtype: GObject.GType<RequireKind>;
-    }
+    /**
+     * The require type.
+     */
 
     /**
      * The require type.
      */
+    export namespace RequireKind {
+        export const $gtype: GObject.GType<RequireKind>;
+    }
+
     enum RequireKind {
         /**
          * Type invalid or not known
@@ -1160,13 +1284,17 @@ export namespace AppStreamGlib {
          */
         MEMORY,
     }
-    export namespace ScreenshotKind {
-        export const $gtype: GObject.GType<ScreenshotKind>;
-    }
+    /**
+     * The screenshot type.
+     */
 
     /**
      * The screenshot type.
      */
+    export namespace ScreenshotKind {
+        export const $gtype: GObject.GType<ScreenshotKind>;
+    }
+
     enum ScreenshotKind {
         /**
          * Type invalid or not known
@@ -1181,13 +1309,17 @@ export namespace AppStreamGlib {
          */
         DEFAULT,
     }
-    export namespace SizeKind {
-        export const $gtype: GObject.GType<SizeKind>;
-    }
+    /**
+     * The release size kind.
+     */
 
     /**
      * The release size kind.
      */
+    export namespace SizeKind {
+        export const $gtype: GObject.GType<SizeKind>;
+    }
+
     enum SizeKind {
         /**
          * Not known
@@ -1202,26 +1334,34 @@ export namespace AppStreamGlib {
          */
         DOWNLOAD,
     }
-    export namespace StoreError {
-        export const $gtype: GObject.GType<StoreError>;
-    }
+    /**
+     * The error type.
+     */
 
     /**
      * The error type.
      */
+    export namespace StoreError {
+        export const $gtype: GObject.GType<StoreError>;
+    }
+
     enum StoreError {
         /**
          * Generic failure
          */
         FAILED,
     }
-    export namespace StoreSearchFlags {
-        export const $gtype: GObject.GType<StoreSearchFlags>;
-    }
+    /**
+     * The flags to use when searching in the store.
+     */
 
     /**
      * The flags to use when searching in the store.
      */
+    export namespace StoreSearchFlags {
+        export const $gtype: GObject.GType<StoreSearchFlags>;
+    }
+
     enum StoreSearchFlags {
         /**
          * No extra flags to use
@@ -1232,13 +1372,17 @@ export namespace AppStreamGlib {
          */
         USE_WILDCARDS,
     }
-    export namespace StoreWatchFlags {
-        export const $gtype: GObject.GType<StoreWatchFlags>;
-    }
+    /**
+     * The flags to use when local files are added or removed from the store.
+     */
 
     /**
      * The flags to use when local files are added or removed from the store.
      */
+    export namespace StoreWatchFlags {
+        export const $gtype: GObject.GType<StoreWatchFlags>;
+    }
+
     enum StoreWatchFlags {
         /**
          * No extra flags to use
@@ -1253,13 +1397,17 @@ export namespace AppStreamGlib {
          */
         REMOVED,
     }
-    export namespace SuggestKind {
-        export const $gtype: GObject.GType<SuggestKind>;
-    }
+    /**
+     * The suggest type.
+     */
 
     /**
      * The suggest type.
      */
+    export namespace SuggestKind {
+        export const $gtype: GObject.GType<SuggestKind>;
+    }
+
     enum SuggestKind {
         /**
          * Type invalid or not known
@@ -1274,13 +1422,17 @@ export namespace AppStreamGlib {
          */
         HEURISTIC,
     }
-    export namespace Tag {
-        export const $gtype: GObject.GType<Tag>;
-    }
+    /**
+     * The tag type.
+     */
 
     /**
      * The tag type.
      */
+    export namespace Tag {
+        export const $gtype: GObject.GType<Tag>;
+    }
+
     enum Tag {
         /**
          * Type invalid or not known
@@ -1540,13 +1692,17 @@ export namespace AppStreamGlib {
         MODALIAS,
         LIBRARY,
     }
-    export namespace TagFlags {
-        export const $gtype: GObject.GType<TagFlags>;
-    }
+    /**
+     * The flags to use when matching %AsTag's.
+     */
 
     /**
      * The flags to use when matching %AsTag's.
      */
+    export namespace TagFlags {
+        export const $gtype: GObject.GType<TagFlags>;
+    }
+
     enum TagFlags {
         /**
          * No special actions to use
@@ -1561,13 +1717,17 @@ export namespace AppStreamGlib {
          */
         USE_TRANSLATED,
     }
-    export namespace TranslationKind {
-        export const $gtype: GObject.GType<TranslationKind>;
-    }
+    /**
+     * The translation type.
+     */
 
     /**
      * The translation type.
      */
+    export namespace TranslationKind {
+        export const $gtype: GObject.GType<TranslationKind>;
+    }
+
     enum TranslationKind {
         /**
          * Type invalid or not known
@@ -1582,13 +1742,17 @@ export namespace AppStreamGlib {
          */
         QT,
     }
-    export namespace UrgencyKind {
-        export const $gtype: GObject.GType<UrgencyKind>;
-    }
+    /**
+     * The urgency of a release.
+     */
 
     /**
      * The urgency of a release.
      */
+    export namespace UrgencyKind {
+        export const $gtype: GObject.GType<UrgencyKind>;
+    }
+
     enum UrgencyKind {
         /**
          * Urgency invalid or not known
@@ -1611,13 +1775,17 @@ export namespace AppStreamGlib {
          */
         CRITICAL,
     }
-    export namespace UrlKind {
-        export const $gtype: GObject.GType<UrlKind>;
-    }
+    /**
+     * The URL type.
+     */
 
     /**
      * The URL type.
      */
+    export namespace UrlKind {
+        export const $gtype: GObject.GType<UrlKind>;
+    }
+
     enum UrlKind {
         /**
          * Type invalid or not known
@@ -1695,13 +1863,17 @@ export namespace AppStreamGlib {
         _init(...args: any[]): void;
     }
 
-    export namespace UtilsLocation {
-        export const $gtype: GObject.GType<UtilsLocation>;
-    }
+    /**
+     * The flags used when installing and removing metadata files.
+     */
 
     /**
      * The flags used when installing and removing metadata files.
      */
+    export namespace UtilsLocation {
+        export const $gtype: GObject.GType<UtilsLocation>;
+    }
+
     enum UtilsLocation {
         /**
          * Installed by the vendor, shared
@@ -2265,13 +2437,17 @@ export namespace AppStreamGlib {
      * @returns A version number, e.g. "1.0.3"
      */
     function utils_version_parse(version: string): string;
-    export namespace AppParseFlags {
-        export const $gtype: GObject.GType<AppParseFlags>;
-    }
+    /**
+     * The flags to use when parsing resources.
+     */
 
     /**
      * The flags to use when parsing resources.
      */
+    export namespace AppParseFlags {
+        export const $gtype: GObject.GType<AppParseFlags>;
+    }
+
     enum AppParseFlags {
         /**
          * No special actions to use
@@ -2310,13 +2486,17 @@ export namespace AppStreamGlib {
          */
         ONLY_NATIVE_LANGS,
     }
-    export namespace AppQuirk {
-        export const $gtype: GObject.GType<AppQuirk>;
-    }
+    /**
+     * The component attributes.
+     */
 
     /**
      * The component attributes.
      */
+    export namespace AppQuirk {
+        export const $gtype: GObject.GType<AppQuirk>;
+    }
+
     enum AppQuirk {
         /**
          * No special attributes
@@ -2371,14 +2551,19 @@ export namespace AppStreamGlib {
          */
         DEVELOPER_VERIFIED,
     }
-    export namespace AppSearchMatch {
-        export const $gtype: GObject.GType<AppSearchMatch>;
-    }
+    /**
+     * The token match kind, which we want to be exactly 16 bits for storage
+     * reasons.
+     */
 
     /**
      * The token match kind, which we want to be exactly 16 bits for storage
      * reasons.
      */
+    export namespace AppSearchMatch {
+        export const $gtype: GObject.GType<AppSearchMatch>;
+    }
+
     enum AppSearchMatch {
         /**
          * No token matching
@@ -2417,13 +2602,17 @@ export namespace AppStreamGlib {
          */
         ORIGIN,
     }
-    export namespace AppSubsumeFlags {
-        export const $gtype: GObject.GType<AppSubsumeFlags>;
-    }
+    /**
+     * The flags to use when subsuming applications.
+     */
 
     /**
      * The flags to use when subsuming applications.
      */
+    export namespace AppSubsumeFlags {
+        export const $gtype: GObject.GType<AppSubsumeFlags>;
+    }
+
     enum AppSubsumeFlags {
         /**
          * No special actions to use
@@ -2576,13 +2765,17 @@ export namespace AppStreamGlib {
          */
         AGREEMENTS,
     }
-    export namespace InfLoadFlags {
-        export const $gtype: GObject.GType<InfLoadFlags>;
-    }
+    /**
+     * The flags used when loading INF files.
+     */
 
     /**
      * The flags used when loading INF files.
      */
+    export namespace InfLoadFlags {
+        export const $gtype: GObject.GType<InfLoadFlags>;
+    }
+
     enum InfLoadFlags {
         /**
          * No flags set
@@ -2597,13 +2790,17 @@ export namespace AppStreamGlib {
          */
         CASE_INSENSITIVE,
     }
-    export namespace MarkupConvertFlag {
-        export const $gtype: GObject.GType<MarkupConvertFlag>;
-    }
+    /**
+     * The flags used when converting descriptions from AppStream-style.
+     */
 
     /**
      * The flags used when converting descriptions from AppStream-style.
      */
+    export namespace MarkupConvertFlag {
+        export const $gtype: GObject.GType<MarkupConvertFlag>;
+    }
+
     enum MarkupConvertFlag {
         /**
          * No flags set
@@ -2614,13 +2811,17 @@ export namespace AppStreamGlib {
          */
         IGNORE_ERRORS,
     }
-    export namespace NodeFromXmlFlags {
-        export const $gtype: GObject.GType<NodeFromXmlFlags>;
-    }
+    /**
+     * The flags for converting from XML.
+     */
 
     /**
      * The flags for converting from XML.
      */
+    export namespace NodeFromXmlFlags {
+        export const $gtype: GObject.GType<NodeFromXmlFlags>;
+    }
+
     enum NodeFromXmlFlags {
         /**
          * No extra flags to use
@@ -2639,13 +2840,17 @@ export namespace AppStreamGlib {
          */
         ONLY_NATIVE_LANGS,
     }
-    export namespace ReviewFlags {
-        export const $gtype: GObject.GType<ReviewFlags>;
-    }
+    /**
+     * The flags for the review.
+     */
 
     /**
      * The flags for the review.
      */
+    export namespace ReviewFlags {
+        export const $gtype: GObject.GType<ReviewFlags>;
+    }
+
     enum ReviewFlags {
         /**
          * No special flags set
@@ -2660,13 +2865,17 @@ export namespace AppStreamGlib {
          */
         VOTED,
     }
-    export namespace StoreAddFlags {
-        export const $gtype: GObject.GType<StoreAddFlags>;
-    }
+    /**
+     * The flags to use when adding applications to the store.
+     */
 
     /**
      * The flags to use when adding applications to the store.
      */
+    export namespace StoreAddFlags {
+        export const $gtype: GObject.GType<StoreAddFlags>;
+    }
+
     enum StoreAddFlags {
         /**
          * No extra flags to use
@@ -2689,13 +2898,17 @@ export namespace AppStreamGlib {
          */
         ONLY_NATIVE_LANGS,
     }
-    export namespace StoreLoadFlags {
-        export const $gtype: GObject.GType<StoreLoadFlags>;
-    }
+    /**
+     * The flags to use when loading the store.
+     */
 
     /**
      * The flags to use when loading the store.
      */
+    export namespace StoreLoadFlags {
+        export const $gtype: GObject.GType<StoreLoadFlags>;
+    }
+
     enum StoreLoadFlags {
         /**
          * No extra flags to use
@@ -2746,13 +2959,17 @@ export namespace AppStreamGlib {
          */
         ONLY_MERGE_APPS,
     }
-    export namespace UniqueIdMatchFlags {
-        export const $gtype: GObject.GType<UniqueIdMatchFlags>;
-    }
+    /**
+     * The flags used when matching unique IDs.
+     */
 
     /**
      * The flags used when matching unique IDs.
      */
+    export namespace UniqueIdMatchFlags {
+        export const $gtype: GObject.GType<UniqueIdMatchFlags>;
+    }
+
     enum UniqueIdMatchFlags {
         /**
          * No flags set
@@ -2783,13 +3000,17 @@ export namespace AppStreamGlib {
          */
         BRANCH,
     }
-    export namespace UtilsFindIconFlag {
-        export const $gtype: GObject.GType<UtilsFindIconFlag>;
-    }
+    /**
+     * The flags used when finding icons.
+     */
 
     /**
      * The flags used when finding icons.
      */
+    export namespace UtilsFindIconFlag {
+        export const $gtype: GObject.GType<UtilsFindIconFlag>;
+    }
+
     enum UtilsFindIconFlag {
         /**
          * No flags set
@@ -2800,13 +3021,17 @@ export namespace AppStreamGlib {
          */
         HI_DPI,
     }
-    export namespace VersionCompareFlag {
-        export const $gtype: GObject.GType<VersionCompareFlag>;
-    }
+    /**
+     * The flags used when comparing version numbers.
+     */
 
     /**
      * The flags used when comparing version numbers.
      */
+    export namespace VersionCompareFlag {
+        export const $gtype: GObject.GType<VersionCompareFlag>;
+    }
+
     enum VersionCompareFlag {
         /**
          * No flags set
@@ -2817,13 +3042,17 @@ export namespace AppStreamGlib {
          */
         USE_HEURISTICS,
     }
-    export namespace VersionParseFlag {
-        export const $gtype: GObject.GType<VersionParseFlag>;
-    }
+    /**
+     * The flags used when parsing version numbers.
+     */
 
     /**
      * The flags used when parsing version numbers.
      */
+    export namespace VersionParseFlag {
+        export const $gtype: GObject.GType<VersionParseFlag>;
+    }
+
     enum VersionParseFlag {
         /**
          * No flags set

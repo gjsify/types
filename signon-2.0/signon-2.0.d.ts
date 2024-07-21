@@ -188,13 +188,17 @@ export namespace Signon {
         static quark(): GLib.Quark;
     }
 
-    export namespace SessionDataUiPolicy {
-        export const $gtype: GObject.GType<SessionDataUiPolicy>;
-    }
+    /**
+     * Policy for the signon process, passed to the UI plugin.
+     */
 
     /**
      * Policy for the signon process, passed to the UI plugin.
      */
+    export namespace SessionDataUiPolicy {
+        export const $gtype: GObject.GType<SessionDataUiPolicy>;
+    }
+
     enum SessionDataUiPolicy {
         /**
          * The plugin can decide when to show UI.
@@ -251,13 +255,17 @@ export namespace Signon {
      */
     const SESSION_DATA_WINDOW_ID: string;
     function error_quark(): GLib.Quark;
-    export namespace IdentityType {
-        export const $gtype: GObject.GType<IdentityType>;
-    }
+    /**
+     * Types used in #SignonIdentityInfo.
+     */
 
     /**
      * Types used in #SignonIdentityInfo.
      */
+    export namespace IdentityType {
+        export const $gtype: GObject.GType<IdentityType>;
+    }
+
     enum IdentityType {
         /**
          * an identity that is not an app, web or network

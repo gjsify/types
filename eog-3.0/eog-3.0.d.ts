@@ -60,6 +60,7 @@ export namespace Eog {
         NOT_AVAILABLE,
         READY,
     }
+
     export namespace ImageStatus {
         export const $gtype: GObject.GType<ImageStatus>;
     }
@@ -71,6 +72,7 @@ export namespace Eog {
         SAVING,
         FAILED,
     }
+
     export namespace JobPriority {
         export const $gtype: GObject.GType<JobPriority>;
     }
@@ -81,6 +83,7 @@ export namespace Eog {
         PRIORITY_LOW,
         N_PRIORITIES,
     }
+
     export namespace ListStoreColumn {
         export const $gtype: GObject.GType<ListStoreColumn>;
     }
@@ -92,6 +95,7 @@ export namespace Eog {
         EOG_JOB,
         NUM_COLUMNS,
     }
+
     export namespace ThumbNavMode {
         export const $gtype: GObject.GType<ThumbNavMode>;
     }
@@ -102,6 +106,7 @@ export namespace Eog {
         MULTIPLE_ROWS,
         MULTIPLE_COLUMNS,
     }
+
     export namespace ThumbViewSelectionChange {
         export const $gtype: GObject.GType<ThumbViewSelectionChange>;
     }
@@ -114,6 +119,7 @@ export namespace Eog {
         LAST,
         RANDOM,
     }
+
     export namespace TransformType {
         export const $gtype: GObject.GType<TransformType>;
     }
@@ -128,13 +134,17 @@ export namespace Eog {
         TRANSPOSE,
         TRANSVERSE,
     }
-    export namespace TransparencyStyle {
-        export const $gtype: GObject.GType<TransparencyStyle>;
-    }
+    /**
+     * Used to define how transparent image parts are drawn.
+     */
 
     /**
      * Used to define how transparent image parts are drawn.
      */
+    export namespace TransparencyStyle {
+        export const $gtype: GObject.GType<TransparencyStyle>;
+    }
+
     enum TransparencyStyle {
         /**
          * Use the background color of the current UI theme
@@ -189,6 +199,7 @@ export namespace Eog {
         SECOND,
         END,
     }
+
     export namespace WindowError {
         export const $gtype: GObject.GType<WindowError>;
     }
@@ -202,6 +213,7 @@ export namespace Eog {
         GENERIC,
         UNKNOWN,
     }
+
     export namespace WindowGalleryPos {
         export const $gtype: GObject.GType<WindowGalleryPos>;
     }
@@ -212,6 +224,7 @@ export namespace Eog {
         TOP,
         RIGHT,
     }
+
     export namespace WindowMode {
         export const $gtype: GObject.GType<WindowMode>;
     }
@@ -222,13 +235,17 @@ export namespace Eog {
         FULLSCREEN,
         SLIDESHOW,
     }
-    export namespace ZoomMode {
-        export const $gtype: GObject.GType<ZoomMode>;
-    }
+    /**
+     * Used to determine the zooming behaviour of an #EogScrollView.
+     */
 
     /**
      * Used to determine the zooming behaviour of an #EogScrollView.
      */
+    export namespace ZoomMode {
+        export const $gtype: GObject.GType<ZoomMode>;
+    }
+
     enum ZoomMode {
         /**
          * Use the currently set zoom factor to display the image
@@ -290,6 +307,7 @@ export namespace Eog {
     function thumbnail_load(image: Image): GdkPixbuf.Pixbuf;
     function uc_error_quark(): GLib.Quark;
     type ExifData = object | null;
+
     export namespace Debug {
         export const $gtype: GObject.GType<Debug>;
     }
@@ -309,6 +327,7 @@ export namespace Eog {
         LCMS,
         PLUGINS,
     }
+
     export namespace ImageData {
         export const $gtype: GObject.GType<ImageData>;
     }
@@ -319,6 +338,7 @@ export namespace Eog {
         EXIF,
         XMP,
     }
+
     export namespace StartupFlags {
         export const $gtype: GObject.GType<StartupFlags>;
     }

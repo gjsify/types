@@ -47,6 +47,7 @@ export namespace GitgExt {
     interface RefNameEditingDone {
         (new_name: string, cancelled: boolean): void;
     }
+
     export namespace ExternalChangeHint {
         export const $gtype: GObject.GType<ExternalChangeHint>;
     }

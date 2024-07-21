@@ -25,6 +25,7 @@ export namespace ICal {
         DISCARD_TOKEN,
         TREAT_AS_ERROR,
     }
+
     export namespace component_kind {
         export const $gtype: GObject.GType<component_kind>;
     }
@@ -64,6 +65,7 @@ export namespace ICal {
         VPATCH_COMPONENT,
         XPATCH_COMPONENT,
     }
+
     export namespace errorenum {
         export const $gtype: GObject.GType<errorenum>;
     }
@@ -81,6 +83,7 @@ export namespace ICal {
         UNIMPLEMENTED_ERROR,
         UNKNOWN_ERROR,
     }
+
     export namespace errorstate {
         export const $gtype: GObject.GType<errorstate>;
     }
@@ -91,6 +94,7 @@ export namespace ICal {
         DEFAULT,
         UNKNOWN,
     }
+
     export namespace parameter_action {
         export const $gtype: GObject.GType<parameter_action>;
     }
@@ -101,6 +105,7 @@ export namespace ICal {
         ABORT,
         NONE,
     }
+
     export namespace parameter_cutype {
         export const $gtype: GObject.GType<parameter_cutype>;
     }
@@ -114,6 +119,7 @@ export namespace ICal {
         UNKNOWN,
         NONE,
     }
+
     export namespace parameter_display {
         export const $gtype: GObject.GType<parameter_display>;
     }
@@ -126,6 +132,7 @@ export namespace ICal {
         THUMBNAIL,
         NONE,
     }
+
     export namespace parameter_enable {
         export const $gtype: GObject.GType<parameter_enable>;
     }
@@ -136,6 +143,7 @@ export namespace ICal {
         FALSE,
         NONE,
     }
+
     export namespace parameter_encoding {
         export const $gtype: GObject.GType<parameter_encoding>;
     }
@@ -146,6 +154,7 @@ export namespace ICal {
         BASE64,
         NONE,
     }
+
     export namespace parameter_fbtype {
         export const $gtype: GObject.GType<parameter_fbtype>;
     }
@@ -158,6 +167,7 @@ export namespace ICal {
         BUSYTENTATIVE,
         NONE,
     }
+
     export namespace parameter_feature {
         export const $gtype: GObject.GType<parameter_feature>;
     }
@@ -173,6 +183,7 @@ export namespace ICal {
         VIDEO,
         NONE,
     }
+
     export namespace parameter_kind {
         export const $gtype: GObject.GType<parameter_kind>;
     }
@@ -231,6 +242,7 @@ export namespace ICal {
         XLICERRORTYPE_PARAMETER,
         NO_PARAMETER,
     }
+
     export namespace parameter_local {
         export const $gtype: GObject.GType<parameter_local>;
     }
@@ -241,6 +253,7 @@ export namespace ICal {
         FALSE,
         NONE,
     }
+
     export namespace parameter_partstat {
         export const $gtype: GObject.GType<parameter_partstat>;
     }
@@ -257,6 +270,7 @@ export namespace ICal {
         FAILED,
         NONE,
     }
+
     export namespace parameter_patchaction {
         export const $gtype: GObject.GType<parameter_patchaction>;
     }
@@ -269,6 +283,7 @@ export namespace ICal {
         BYPARAM,
         NONE,
     }
+
     export namespace parameter_range {
         export const $gtype: GObject.GType<parameter_range>;
     }
@@ -279,6 +294,7 @@ export namespace ICal {
         THISANDFUTURE,
         NONE,
     }
+
     export namespace parameter_related {
         export const $gtype: GObject.GType<parameter_related>;
     }
@@ -289,6 +305,7 @@ export namespace ICal {
         END,
         NONE,
     }
+
     export namespace parameter_reltype {
         export const $gtype: GObject.GType<parameter_reltype>;
     }
@@ -301,6 +318,7 @@ export namespace ICal {
         POLL,
         NONE,
     }
+
     export namespace parameter_required {
         export const $gtype: GObject.GType<parameter_required>;
     }
@@ -311,6 +329,7 @@ export namespace ICal {
         FALSE,
         NONE,
     }
+
     export namespace parameter_role {
         export const $gtype: GObject.GType<parameter_role>;
     }
@@ -323,6 +342,7 @@ export namespace ICal {
         NONPARTICIPANT,
         NONE,
     }
+
     export namespace parameter_rsvp {
         export const $gtype: GObject.GType<parameter_rsvp>;
     }
@@ -333,6 +353,7 @@ export namespace ICal {
         FALSE,
         NONE,
     }
+
     export namespace parameter_scheduleagent {
         export const $gtype: GObject.GType<parameter_scheduleagent>;
     }
@@ -343,6 +364,7 @@ export namespace ICal {
         CLIENT,
         NONE,
     }
+
     export namespace parameter_scheduleforcesend {
         export const $gtype: GObject.GType<parameter_scheduleforcesend>;
     }
@@ -353,6 +375,7 @@ export namespace ICal {
         REPLY,
         NONE,
     }
+
     export namespace parameter_stayinformed {
         export const $gtype: GObject.GType<parameter_stayinformed>;
     }
@@ -363,6 +386,7 @@ export namespace ICal {
         FALSE,
         NONE,
     }
+
     export namespace parameter_substate {
         export const $gtype: GObject.GType<parameter_substate>;
     }
@@ -374,6 +398,7 @@ export namespace ICal {
         SUSPENDED,
         NONE,
     }
+
     export namespace parameter_value {
         export const $gtype: GObject.GType<parameter_value>;
     }
@@ -396,6 +421,7 @@ export namespace ICal {
         CALADDRESS,
         NONE,
     }
+
     export namespace parameter_xliccomparetype {
         export const $gtype: GObject.GType<parameter_xliccomparetype>;
     }
@@ -413,6 +439,7 @@ export namespace ICal {
         ISNOTNULL,
         NONE,
     }
+
     export namespace parameter_xlicerrortype {
         export const $gtype: GObject.GType<parameter_xlicerrortype>;
     }
@@ -430,6 +457,7 @@ export namespace ICal {
         VCALPROPPARSEERROR,
         NONE,
     }
+
     export namespace parser_state {
         export const $gtype: GObject.GType<parser_state>;
     }
@@ -441,6 +469,7 @@ export namespace ICal {
         END_COMP,
         IN_PROGRESS,
     }
+
     export namespace property_action {
         export const $gtype: GObject.GType<property_action>;
     }
@@ -453,6 +482,7 @@ export namespace ICal {
         PROCEDURE,
         NONE,
     }
+
     export namespace property_busytype {
         export const $gtype: GObject.GType<property_busytype>;
     }
@@ -464,6 +494,7 @@ export namespace ICal {
         BUSYTENTATIVE,
         NONE,
     }
+
     export namespace property_carlevel {
         export const $gtype: GObject.GType<property_carlevel>;
     }
@@ -475,6 +506,7 @@ export namespace ICal {
         CARFULL1,
         NONE,
     }
+
     export namespace property_class {
         export const $gtype: GObject.GType<property_class>;
     }
@@ -486,6 +518,7 @@ export namespace ICal {
         CONFIDENTIAL,
         NONE,
     }
+
     export namespace property_cmd {
         export const $gtype: GObject.GType<property_cmd>;
     }
@@ -506,6 +539,7 @@ export namespace ICal {
         SETLOCALE,
         NONE,
     }
+
     export namespace property_kind {
         export const $gtype: GObject.GType<property_kind>;
     }
@@ -637,6 +671,7 @@ export namespace ICal {
         XLICMIMEOPTINFO_PROPERTY,
         NO_PROPERTY,
     }
+
     export namespace property_method {
         export const $gtype: GObject.GType<property_method>;
     }
@@ -661,6 +696,7 @@ export namespace ICal {
         POLLSTATUS,
         NONE,
     }
+
     export namespace property_pollcompletion {
         export const $gtype: GObject.GType<property_pollcompletion>;
     }
@@ -673,6 +709,7 @@ export namespace ICal {
         CLIENT,
         NONE,
     }
+
     export namespace property_pollmode {
         export const $gtype: GObject.GType<property_pollmode>;
     }
@@ -682,6 +719,7 @@ export namespace ICal {
         BASIC,
         NONE,
     }
+
     export namespace property_querylevel {
         export const $gtype: GObject.GType<property_querylevel>;
     }
@@ -692,6 +730,7 @@ export namespace ICal {
         CALQLNONE,
         NONE,
     }
+
     export namespace property_status {
         export const $gtype: GObject.GType<property_status>;
     }
@@ -712,6 +751,7 @@ export namespace ICal {
         DELETED,
         NONE,
     }
+
     export namespace property_taskmode {
         export const $gtype: GObject.GType<property_taskmode>;
     }
@@ -723,6 +763,7 @@ export namespace ICal {
         AUTOMATICSTATUS,
         NONE,
     }
+
     export namespace property_transp {
         export const $gtype: GObject.GType<property_transp>;
     }
@@ -735,6 +776,7 @@ export namespace ICal {
         TRANSPARENTNOCONFLICT,
         NONE,
     }
+
     export namespace property_xlicclass {
         export const $gtype: GObject.GType<property_xlicclass>;
     }
@@ -770,6 +812,7 @@ export namespace ICal {
         UNKNOWN,
         NONE,
     }
+
     export namespace recurrencetype_frequency {
         export const $gtype: GObject.GType<recurrencetype_frequency>;
     }
@@ -784,6 +827,7 @@ export namespace ICal {
         YEARLY_RECURRENCE,
         NO_RECURRENCE,
     }
+
     export namespace recurrencetype_skip {
         export const $gtype: GObject.GType<recurrencetype_skip>;
     }
@@ -794,6 +838,7 @@ export namespace ICal {
         OMIT,
         UNDEFINED,
     }
+
     export namespace recurrencetype_weekday {
         export const $gtype: GObject.GType<recurrencetype_weekday>;
     }
@@ -808,6 +853,7 @@ export namespace ICal {
         FRIDAY_WEEKDAY,
         SATURDAY_WEEKDAY,
     }
+
     export namespace requeststatus {
         export const $gtype: GObject.GType<requeststatus>;
     }
@@ -853,6 +899,7 @@ export namespace ICal {
         '6_1_CONTAINER_NOT_FOUND',
         '9_0_UNRECOGNIZED_COMMAND',
     }
+
     export namespace restriction_kind {
         export const $gtype: GObject.GType<restriction_kind>;
     }
@@ -868,6 +915,7 @@ export namespace ICal {
         ONEMUTUAL,
         UNKNOWN,
     }
+
     export namespace value_kind {
         export const $gtype: GObject.GType<value_kind>;
     }

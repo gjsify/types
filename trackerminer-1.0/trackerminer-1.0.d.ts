@@ -19,13 +19,17 @@ export namespace TrackerMiner {
      * TrackerMiner-1.0
      */
 
-    export namespace DecoratorError {
-        export const $gtype: GObject.GType<DecoratorError>;
-    }
+    /**
+     * Possible errors returned when calling tracker_decorator_next_finish().
+     */
 
     /**
      * Possible errors returned when calling tracker_decorator_next_finish().
      */
+    export namespace DecoratorError {
+        export const $gtype: GObject.GType<DecoratorError>;
+    }
+
     enum DecoratorError {
         /**
          * There is no item to be processed
@@ -43,6 +47,7 @@ export namespace TrackerMiner {
          */
         PAUSED,
     }
+
     export namespace FilterPolicy {
         export const $gtype: GObject.GType<FilterPolicy>;
     }
@@ -51,6 +56,7 @@ export namespace TrackerMiner {
         DENY,
         ACCEPT,
     }
+
     export namespace FilterType {
         export const $gtype: GObject.GType<FilterType>;
     }
@@ -60,14 +66,19 @@ export namespace TrackerMiner {
         DIRECTORY,
         PARENT_DIRECTORY,
     }
-    export namespace MinerError {
-        export const $gtype: GObject.GType<MinerError>;
-    }
+    /**
+     * Possible errors returned when calling #TrackerMiner APIs or
+     * subclassed miners where the error is generic to all miners.
+     */
 
     /**
      * Possible errors returned when calling #TrackerMiner APIs or
      * subclassed miners where the error is generic to all miners.
      */
+    export namespace MinerError {
+        export const $gtype: GObject.GType<MinerError>;
+    }
+
     enum MinerError {
         /**
          * No name was given when creating
@@ -101,14 +112,19 @@ export namespace TrackerMiner {
          */
         INVALID_COOKIE,
     }
-    export namespace MinerFSError {
-        export const $gtype: GObject.GType<MinerFSError>;
-    }
+    /**
+     * Possible errors returned when calling creating new objects based on
+     * the #TrackerMinerFS type and other APIs available with this class.
+     */
 
     /**
      * Possible errors returned when calling creating new objects based on
      * the #TrackerMinerFS type and other APIs available with this class.
      */
+    export namespace MinerFSError {
+        export const $gtype: GObject.GType<MinerFSError>;
+    }
+
     enum MinerFSError {
         /**
          * There was an error during
@@ -117,6 +133,7 @@ export namespace TrackerMiner {
          */
         MINER_FS_ERROR_INIT,
     }
+
     export namespace NetworkType {
         export const $gtype: GObject.GType<NetworkType>;
     }
@@ -152,6 +169,7 @@ export namespace TrackerMiner {
      * Used as the domain for any #GErrors reported by `TrackerMiner` objects.
      */
     const MINER_ERROR_DOMAIN: string;
+
     export namespace DirectoryFlags {
         export const $gtype: GObject.GType<DirectoryFlags>;
     }

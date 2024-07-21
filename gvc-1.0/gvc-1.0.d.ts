@@ -28,6 +28,7 @@ export namespace Gvc {
         CONNECTING,
         FAILED,
     }
+
     export namespace MixerStreamState {
         export const $gtype: GObject.GType<MixerStreamState>;
     }
@@ -38,6 +39,7 @@ export namespace Gvc {
         IDLE,
         SUSPENDED,
     }
+
     export namespace MixerUIDeviceDirection {
         export const $gtype: GObject.GType<MixerUIDeviceDirection>;
     }
@@ -47,6 +49,7 @@ export namespace Gvc {
         OUTPUT,
     }
     const MIXER_UI_DEVICE_INVALID: number;
+
     export namespace HeadsetPortChoice {
         export const $gtype: GObject.GType<HeadsetPortChoice>;
     }

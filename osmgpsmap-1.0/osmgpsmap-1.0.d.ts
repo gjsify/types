@@ -41,6 +41,7 @@ export namespace OsmGpsMap {
         RIGHT,
         MAX,
     }
+
     export namespace MapSource_t {
         export const $gtype: GObject.GType<MapSource_t>;
     }

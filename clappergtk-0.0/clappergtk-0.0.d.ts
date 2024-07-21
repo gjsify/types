@@ -69,6 +69,7 @@ export namespace ClapperGtk {
      */
     function get_player_from_ancestor(widget: Gtk.Widget): Clapper.Player | null;
     function get_resource(): Gio.Resource;
+
     export namespace VideoActionMask {
         export const $gtype: GObject.GType<VideoActionMask>;
     }

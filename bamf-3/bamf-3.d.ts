@@ -30,6 +30,7 @@ export namespace Bamf {
         RESTORE_ALL,
         PICKER,
     }
+
     export namespace WindowMaximizationType {
         export const $gtype: GObject.GType<WindowMaximizationType>;
     }
@@ -40,6 +41,7 @@ export namespace Bamf {
         VERTICAL_MAXIMIZED,
         MAXIMIZED,
     }
+
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }

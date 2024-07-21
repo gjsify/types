@@ -52,6 +52,7 @@ export namespace BraseroBurn {
         EJECTING,
         LAST,
     }
+
     export namespace BurnError {
         export const $gtype: GObject.GType<BurnError>;
     }
@@ -91,6 +92,7 @@ export namespace BraseroBurn {
         ERROR_TMP_DIRECTORY,
         ERROR_ENCRYPTION_KEY,
     }
+
     export namespace BurnResult {
         export const $gtype: GObject.GType<BurnResult>;
     }
@@ -107,6 +109,7 @@ export namespace BraseroBurn {
         NEED_RELOAD,
         NOT_SUPPORTED,
     }
+
     export namespace PluginErrorType {
         export const $gtype: GObject.GType<PluginErrorType>;
     }
@@ -121,6 +124,7 @@ export namespace BraseroBurn {
         LIBRARY_VERSION,
         MISSING_GSTREAMER_PLUGIN,
     }
+
     export namespace SessionError {
         export const $gtype: GObject.GType<SessionError>;
     }
@@ -139,6 +143,7 @@ export namespace BraseroBurn {
         NOT_SUPPORTED,
         DISC_PROTECTED,
     }
+
     export namespace StatusType {
         export const $gtype: GObject.GType<StatusType>;
     }
@@ -149,6 +154,7 @@ export namespace BraseroBurn {
         QUESTION,
         INFORMATION,
     }
+
     export namespace TrackDataCfgColumn {
         export const $gtype: GObject.GType<TrackDataCfgColumn>;
     }
@@ -197,6 +203,7 @@ export namespace BraseroBurn {
     interface ForeachPluginErrorCb {
         (type: PluginErrorType, detail: string): BurnResult;
     }
+
     export namespace BurnFlag {
         export const $gtype: GObject.GType<BurnFlag>;
     }
@@ -219,6 +226,7 @@ export namespace BraseroBurn {
         RAW,
         LAST,
     }
+
     export namespace ChecksumType {
         export const $gtype: GObject.GType<ChecksumType>;
     }
@@ -233,6 +241,7 @@ export namespace BraseroBurn {
         SHA256,
         SHA256_FILE,
     }
+
     export namespace ImageFS {
         export const $gtype: GObject.GType<ImageFS>;
     }
@@ -248,6 +257,7 @@ export namespace BraseroBurn {
         ISO_FS_DEEP_DIRECTORY,
         FS_ANY,
     }
+
     export namespace ImageFormat {
         export const $gtype: GObject.GType<ImageFormat>;
     }
@@ -260,6 +270,7 @@ export namespace BraseroBurn {
         CDRDAO,
         ANY,
     }
+
     export namespace StreamFormat {
         export const $gtype: GObject.GType<StreamFormat>;
     }

@@ -30,6 +30,7 @@ export namespace GVnc {
         U32,
         S32,
     }
+
     export namespace ConnectionAuth {
         export const $gtype: GObject.GType<ConnectionAuth>;
     }
@@ -85,6 +86,7 @@ export namespace GVnc {
          */
         MSLOGON,
     }
+
     export namespace ConnectionAuthVencrypt {
         export const $gtype: GObject.GType<ConnectionAuthVencrypt>;
     }
@@ -100,6 +102,7 @@ export namespace GVnc {
         X509SASL,
         TLSSASL,
     }
+
     export namespace ConnectionCredential {
         export const $gtype: GObject.GType<ConnectionCredential>;
     }
@@ -110,6 +113,7 @@ export namespace GVnc {
         CLIENTNAME,
         CA_CERT_DATA,
     }
+
     export namespace ConnectionEncoding {
         export const $gtype: GObject.GType<ConnectionEncoding>;
     }
@@ -147,6 +151,7 @@ export namespace GVnc {
         XVP,
         ALPHA_CURSOR,
     }
+
     export namespace ConnectionPowerAction {
         export const $gtype: GObject.GType<ConnectionPowerAction>;
     }
@@ -156,6 +161,7 @@ export namespace GVnc {
         REBOOT,
         RESET,
     }
+
     export namespace ConnectionResizeStatus {
         export const $gtype: GObject.GType<ConnectionResizeStatus>;
     }

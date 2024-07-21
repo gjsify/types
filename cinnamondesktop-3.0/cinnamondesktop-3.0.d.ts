@@ -36,6 +36,7 @@ export namespace CinnamonDesktop {
         NORMAL,
         LARGE,
     }
+
     export namespace RRDpmsMode {
         export const $gtype: GObject.GType<RRDpmsMode>;
     }
@@ -269,6 +270,7 @@ export namespace CinnamonDesktop {
     interface InstallerClientCallback {
         (success: boolean): void;
     }
+
     export namespace RRRotation {
         export const $gtype: GObject.GType<RRRotation>;
     }

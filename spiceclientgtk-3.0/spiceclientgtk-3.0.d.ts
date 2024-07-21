@@ -30,13 +30,17 @@ export namespace SpiceClientGtk {
      * SpiceClientGtk-3.0
      */
 
-    export namespace DisplayKeyEvent {
-        export const $gtype: GObject.GType<DisplayKeyEvent>;
-    }
+    /**
+     * Constants for key events.
+     */
 
     /**
      * Constants for key events.
      */
+    export namespace DisplayKeyEvent {
+        export const $gtype: GObject.GType<DisplayKeyEvent>;
+    }
+
     enum DisplayKeyEvent {
         /**
          * key press

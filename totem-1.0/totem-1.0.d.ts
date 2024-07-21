@@ -28,13 +28,17 @@ export namespace Totem {
      * Totem-1.0
      */
 
-    export namespace RemoteCommand {
-        export const $gtype: GObject.GType<RemoteCommand>;
-    }
+    /**
+     * Represents a command which can be sent to a running Totem instance remotely.
+     */
 
     /**
      * Represents a command which can be sent to a running Totem instance remotely.
      */
+    export namespace RemoteCommand {
+        export const $gtype: GObject.GType<RemoteCommand>;
+    }
+
     enum RemoteCommand {
         /**
          * unknown command
@@ -149,13 +153,17 @@ export namespace Totem {
          */
         TOGGLE_ASPECT_RATIO,
     }
-    export namespace RemoteSetting {
-        export const $gtype: GObject.GType<RemoteSetting>;
-    }
+    /**
+     * Represents a boolean setting or preference on a remote Totem instance.
+     */
 
     /**
      * Represents a boolean setting or preference on a remote Totem instance.
      */
+    export namespace RemoteSetting {
+        export const $gtype: GObject.GType<RemoteSetting>;
+    }
+
     enum RemoteSetting {
         /**
          * whether repeat is enabled

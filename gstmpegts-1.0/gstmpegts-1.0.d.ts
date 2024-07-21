@@ -18,9 +18,12 @@ export namespace GstMpegts {
      * GstMpegts-1.0
      */
 
-    export namespace ATSCDescriptorType {
-        export const $gtype: GObject.GType<ATSCDescriptorType>;
-    }
+    /**
+     * These values correspond to the registered descriptor type from
+     * the various ATSC specifications.
+     *
+     * Consult the relevant specifications for more details.
+     */
 
     /**
      * These values correspond to the registered descriptor type from
@@ -28,6 +31,10 @@ export namespace GstMpegts {
      *
      * Consult the relevant specifications for more details.
      */
+    export namespace ATSCDescriptorType {
+        export const $gtype: GObject.GType<ATSCDescriptorType>;
+    }
+
     enum ATSCDescriptorType {
         STUFFING,
         AC3,
@@ -52,15 +59,21 @@ export namespace GstMpegts {
         CRC32,
         GROUP_LINK,
     }
-    export namespace ATSCStreamType {
-        export const $gtype: GObject.GType<ATSCStreamType>;
-    }
+    /**
+     * Type of mpeg-ts streams for ATSC, as defined by the ATSC Code Points
+     * Registry. For convenience, some stream types from %GstMpegtsScteStreamType
+     * are also included.
+     */
 
     /**
      * Type of mpeg-ts streams for ATSC, as defined by the ATSC Code Points
      * Registry. For convenience, some stream types from %GstMpegtsScteStreamType
      * are also included.
      */
+    export namespace ATSCStreamType {
+        export const $gtype: GObject.GType<ATSCStreamType>;
+    }
+
     enum ATSCStreamType {
         /**
          * DigiCipher II video | Identical to ITU-T Rec. H.262 | ISO/IEC 13818-2 Video
@@ -91,6 +104,7 @@ export namespace GstMpegts {
          */
         AUDIO_DTS_HD,
     }
+
     export namespace AtscMGTTableType {
         export const $gtype: GObject.GType<AtscMGTTableType>;
     }
@@ -101,6 +115,7 @@ export namespace GstMpegts {
         ETT0,
         ETT127,
     }
+
     export namespace CableOuterFECScheme {
         export const $gtype: GObject.GType<CableOuterFECScheme>;
     }
@@ -110,6 +125,7 @@ export namespace GstMpegts {
         NONE,
         RS_204_188,
     }
+
     export namespace ComponentStreamContent {
         export const $gtype: GObject.GType<ComponentStreamContent>;
     }
@@ -124,6 +140,7 @@ export namespace GstMpegts {
         DTS,
         SRM_CPCM,
     }
+
     export namespace ContentNibbleHi {
         export const $gtype: GObject.GType<ContentNibbleHi>;
     }
@@ -141,6 +158,7 @@ export namespace GstMpegts {
         LEISURE_HOBBIES,
         SPECIAL_CHARACTERISTICS,
     }
+
     export namespace DVBCodeRate {
         export const $gtype: GObject.GType<DVBCodeRate>;
     }
@@ -160,9 +178,14 @@ export namespace GstMpegts {
         '9_10',
         '2_5',
     }
-    export namespace DVBDescriptorType {
-        export const $gtype: GObject.GType<DVBDescriptorType>;
-    }
+    /**
+     * The type of #GstMpegtsDescriptor
+     *
+     * These values correspond to the registered descriptor type from
+     * the various DVB specifications.
+     *
+     * Consult the relevant specifications for more details.
+     */
 
     /**
      * The type of #GstMpegtsDescriptor
@@ -172,6 +195,10 @@ export namespace GstMpegts {
      *
      * Consult the relevant specifications for more details.
      */
+    export namespace DVBDescriptorType {
+        export const $gtype: GObject.GType<DVBDescriptorType>;
+    }
+
     enum DVBDescriptorType {
         NETWORK_NAME,
         SERVICE_LIST,
@@ -243,9 +270,14 @@ export namespace GstMpegts {
         FTA_CONTENT_MANAGEMENT,
         EXTENSION,
     }
-    export namespace DVBExtendedDescriptorType {
-        export const $gtype: GObject.GType<DVBExtendedDescriptorType>;
-    }
+    /**
+     * The type of #GstMpegtsDescriptor
+     *
+     * These values correspond to the registered extended descriptor
+     * type from the various DVB specifications.
+     *
+     * Consult the relevant specifications for more details.
+     */
 
     /**
      * The type of #GstMpegtsDescriptor
@@ -255,6 +287,10 @@ export namespace GstMpegts {
      *
      * Consult the relevant specifications for more details.
      */
+    export namespace DVBExtendedDescriptorType {
+        export const $gtype: GObject.GType<DVBExtendedDescriptorType>;
+    }
+
     enum DVBExtendedDescriptorType {
         IMAGE_ICON,
         CPCM_DELIVERY_SIGNALLING,
@@ -281,6 +317,7 @@ export namespace GstMpegts {
          */
         AUDIO_PRESELECTION,
     }
+
     export namespace DVBLinkageHandOverType {
         export const $gtype: GObject.GType<DVBLinkageHandOverType>;
     }
@@ -291,13 +328,17 @@ export namespace GstMpegts {
         LOCAL_VARIATION,
         ASSOCIATED,
     }
-    export namespace DVBLinkageType {
-        export const $gtype: GObject.GType<DVBLinkageType>;
-    }
+    /**
+     * Linkage Type (EN 300 468 v.1.13.1)
+     */
 
     /**
      * Linkage Type (EN 300 468 v.1.13.1)
      */
+    export namespace DVBLinkageType {
+        export const $gtype: GObject.GType<DVBLinkageType>;
+    }
+
     enum DVBLinkageType {
         RESERVED_00,
         INFORMATION,
@@ -315,6 +356,7 @@ export namespace GstMpegts {
         EVENT,
         EXTENDED_EVENT,
     }
+
     export namespace DVBScramblingModeType {
         export const $gtype: GObject.GType<DVBScramblingModeType>;
     }
@@ -330,15 +372,21 @@ export namespace GstMpegts {
         ATIS_0,
         ATIS_F,
     }
-    export namespace DVBServiceType {
-        export const $gtype: GObject.GType<DVBServiceType>;
-    }
+    /**
+     * The type of service of a channel.
+     *
+     * As specified in Table 87 of ETSI EN 300 468 v1.13.1
+     */
 
     /**
      * The type of service of a channel.
      *
      * As specified in Table 87 of ETSI EN 300 468 v1.13.1
      */
+    export namespace DVBServiceType {
+        export const $gtype: GObject.GType<DVBServiceType>;
+    }
+
     enum DVBServiceType {
         RESERVED_00,
         DIGITAL_TELEVISION,
@@ -369,15 +417,21 @@ export namespace GstMpegts {
         ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE,
         RESERVED_FF,
     }
-    export namespace DVBTeletextType {
-        export const $gtype: GObject.GType<DVBTeletextType>;
-    }
+    /**
+     * The type of teletext page.
+     *
+     * As specified in Table 100 of ETSI EN 300 468 v1.13.1
+     */
 
     /**
      * The type of teletext page.
      *
      * As specified in Table 100 of ETSI EN 300 468 v1.13.1
      */
+    export namespace DVBTeletextType {
+        export const $gtype: GObject.GType<DVBTeletextType>;
+    }
+
     enum DVBTeletextType {
         NITIAL_PAGE,
         UBTITLE_PAGE,
@@ -385,9 +439,14 @@ export namespace GstMpegts {
         ROGRAMME_SCHEDULE_PAGE,
         EARING_IMPAIRED_PAGE,
     }
-    export namespace DescriptorType {
-        export const $gtype: GObject.GType<DescriptorType>;
-    }
+    /**
+     * The type of #GstMpegtsDescriptor
+     *
+     * These values correspond to the registered descriptor type from
+     * the base MPEG-TS specifications (ITU H.222.0 | ISO/IEC 13818-1).
+     *
+     * Consult the relevant specifications for more details.
+     */
 
     /**
      * The type of #GstMpegtsDescriptor
@@ -397,6 +456,10 @@ export namespace GstMpegts {
      *
      * Consult the relevant specifications for more details.
      */
+    export namespace DescriptorType {
+        export const $gtype: GObject.GType<DescriptorType>;
+    }
+
     enum DescriptorType {
         RESERVED_00,
         RESERVED_01,
@@ -453,14 +516,19 @@ export namespace GstMpegts {
         STEREOSCOPIC_PROGRAM_INFO,
         STEREOSCOPIC_VIDEO_INFO,
     }
-    export namespace HdmvStreamType {
-        export const $gtype: GObject.GType<HdmvStreamType>;
-    }
+    /**
+     * Type of mpeg-ts streams for Blu-ray formats. To be matched with the
+     * stream-type of a #GstMpegtsSection.
+     */
 
     /**
      * Type of mpeg-ts streams for Blu-ray formats. To be matched with the
      * stream-type of a #GstMpegtsSection.
      */
+    export namespace HdmvStreamType {
+        export const $gtype: GObject.GType<HdmvStreamType>;
+    }
+
     enum HdmvStreamType {
         AUDIO_LPCM,
         AUDIO_AC3,
@@ -476,9 +544,12 @@ export namespace GstMpegts {
         AUDIO_AC3_PLUS_SECONDARY,
         AUDIO_DTS_HD_SECONDARY,
     }
-    export namespace ISDBDescriptorType {
-        export const $gtype: GObject.GType<ISDBDescriptorType>;
-    }
+    /**
+     * These values correspond to the registered descriptor type from
+     * the various ISDB specifications.
+     *
+     * Consult the relevant specifications for more details.
+     */
 
     /**
      * These values correspond to the registered descriptor type from
@@ -486,6 +557,10 @@ export namespace GstMpegts {
      *
      * Consult the relevant specifications for more details.
      */
+    export namespace ISDBDescriptorType {
+        export const $gtype: GObject.GType<ISDBDescriptorType>;
+    }
+
     enum ISDBDescriptorType {
         HIERARCHICAL_TRANSMISSION,
         DIGITAL_COPY_CONTROL,
@@ -520,6 +595,7 @@ export namespace GstMpegts {
         CONTENT_AVAILABILITY,
         SERVICE_GROUP,
     }
+
     export namespace Iso639AudioType {
         export const $gtype: GObject.GType<Iso639AudioType>;
     }
@@ -530,9 +606,12 @@ export namespace GstMpegts {
         HEARING_IMPAIRED,
         VISUAL_IMPAIRED_COMMENTARY,
     }
-    export namespace MiscDescriptorType {
-        export const $gtype: GObject.GType<MiscDescriptorType>;
-    }
+    /**
+     * The type of #GstMpegtsDescriptor
+     *
+     * These values correspond to miscellaneous descriptor types that are
+     * not yet identified from known specifications.
+     */
 
     /**
      * The type of #GstMpegtsDescriptor
@@ -540,9 +619,14 @@ export namespace GstMpegts {
      * These values correspond to miscellaneous descriptor types that are
      * not yet identified from known specifications.
      */
+    export namespace MiscDescriptorType {
+        export const $gtype: GObject.GType<MiscDescriptorType>;
+    }
+
     enum MiscDescriptorType {
         MTS_DESC_DTG_LOGICAL_CHANNEL,
     }
+
     export namespace ModulationType {
         export const $gtype: GObject.GType<ModulationType>;
     }
@@ -564,15 +648,21 @@ export namespace GstMpegts {
         QAM_4_NR_,
         NONE,
     }
-    export namespace RunningStatus {
-        export const $gtype: GObject.GType<RunningStatus>;
-    }
+    /**
+     * Running status of a service.
+     *
+     * Corresponds to table 6 of ETSI EN 300 468 (v1.13.0)
+     */
 
     /**
      * Running status of a service.
      *
      * Corresponds to table 6 of ETSI EN 300 468 (v1.13.0)
      */
+    export namespace RunningStatus {
+        export const $gtype: GObject.GType<RunningStatus>;
+    }
+
     enum RunningStatus {
         UNDEFINED,
         NOT_RUNNING,
@@ -581,13 +671,17 @@ export namespace GstMpegts {
         RUNNING,
         OFF_AIR,
     }
-    export namespace SCTEDescriptorType {
-        export const $gtype: GObject.GType<SCTEDescriptorType>;
-    }
+    /**
+     * These values correspond to the ones defined by SCTE (amongst other in ANSI/SCTE 57)
+     */
 
     /**
      * These values correspond to the ones defined by SCTE (amongst other in ANSI/SCTE 57)
      */
+    export namespace SCTEDescriptorType {
+        export const $gtype: GObject.GType<SCTEDescriptorType>;
+    }
+
     enum SCTEDescriptorType {
         STUFFING,
         AC3,
@@ -598,6 +692,7 @@ export namespace GstMpegts {
         MODULATION_PARAMS,
         TRANSPORT_STREAM_ID,
     }
+
     export namespace SCTESpliceCommandType {
         export const $gtype: GObject.GType<SCTESpliceCommandType>;
     }
@@ -610,6 +705,7 @@ export namespace GstMpegts {
         BANDWIDTH,
         PRIVATE,
     }
+
     export namespace SCTESpliceDescriptor {
         export const $gtype: GObject.GType<SCTESpliceDescriptor>;
     }
@@ -621,6 +717,7 @@ export namespace GstMpegts {
         TIME,
         AUDIO,
     }
+
     export namespace SatellitePolarizationType {
         export const $gtype: GObject.GType<SatellitePolarizationType>;
     }
@@ -631,10 +728,6 @@ export namespace GstMpegts {
         CIRCULAR_LEFT,
         CIRCULAR_RIGHT,
     }
-    export namespace SatelliteRolloff {
-        export const $gtype: GObject.GType<SatelliteRolloff>;
-    }
-
     class SatelliteRolloff {
         static $gtype: GObject.GType<SatelliteRolloff>;
 
@@ -651,14 +744,19 @@ export namespace GstMpegts {
         _init(...args: any[]): void;
     }
 
-    export namespace ScteStreamType {
-        export const $gtype: GObject.GType<ScteStreamType>;
-    }
+    /**
+     * Type of mpeg-ts streams for SCTE. Most users would want to use the
+     * #GstMpegtsATSCStreamType instead since it also covers these stream types
+     */
 
     /**
      * Type of mpeg-ts streams for SCTE. Most users would want to use the
      * #GstMpegtsATSCStreamType instead since it also covers these stream types
      */
+    export namespace ScteStreamType {
+        export const $gtype: GObject.GType<ScteStreamType>;
+    }
+
     enum ScteStreamType {
         /**
          * SCTE-27 Subtitling
@@ -696,9 +794,14 @@ export namespace GstMpegts {
          */
         ASYNC_DATA,
     }
-    export namespace SectionATSCTableID {
-        export const $gtype: GObject.GType<SectionATSCTableID>;
-    }
+    /**
+     * Values for a #GstMpegtsSection table_id.
+     *
+     * These are the registered ATSC section `table_id` variants. Unless specified
+     * otherwise, they are defined in the "ATSC A/65" specification.
+     *
+     * see also: #GstMpegtsSectionTableID and other variants.
+     */
 
     /**
      * Values for a #GstMpegtsSection table_id.
@@ -708,6 +811,10 @@ export namespace GstMpegts {
      *
      * see also: #GstMpegtsSectionTableID and other variants.
      */
+    export namespace SectionATSCTableID {
+        export const $gtype: GObject.GType<SectionATSCTableID>;
+    }
+
     enum SectionATSCTableID {
         /**
          * Master Guide Table (MGT)
@@ -773,9 +880,14 @@ export namespace GstMpegts {
          */
         SATELLITE_VIRTUAL_CHANNEL,
     }
-    export namespace SectionDVBTableID {
-        export const $gtype: GObject.GType<SectionDVBTableID>;
-    }
+    /**
+     * Values for a #GstMpegtsSection table_id.
+     *
+     * These are the registered DVB table_id variants. Unless specified otherwise,
+     * they come from the DVB Specification for SI (ETSI EN 300 468).
+     *
+     * see also: #GstMpegtsSectionTableID
+     */
 
     /**
      * Values for a #GstMpegtsSection table_id.
@@ -785,6 +897,10 @@ export namespace GstMpegts {
      *
      * see also: #GstMpegtsSectionTableID
      */
+    export namespace SectionDVBTableID {
+        export const $gtype: GObject.GType<SectionDVBTableID>;
+    }
+
     enum SectionDVBTableID {
         /**
          * Network Information Table (NIT), Actual Network
@@ -921,9 +1037,13 @@ export namespace GstMpegts {
         TIM,
         LL_FEC_PARITY_DATA_TABLE,
     }
-    export namespace SectionSCTETableID {
-        export const $gtype: GObject.GType<SectionSCTETableID>;
-    }
+    /**
+     * Values for a #GstMpegtsSection table_id.
+     *
+     * These are the registered SCTE table_id variants.
+     *
+     * see also: #GstMpegtsSectionTableID
+     */
 
     /**
      * Values for a #GstMpegtsSection table_id.
@@ -932,6 +1052,10 @@ export namespace GstMpegts {
      *
      * see also: #GstMpegtsSectionTableID
      */
+    export namespace SectionSCTETableID {
+        export const $gtype: GObject.GType<SectionSCTETableID>;
+    }
+
     enum SectionSCTETableID {
         /**
          * SCTE-18 Emergency Alert System
@@ -962,9 +1086,14 @@ export namespace GstMpegts {
          */
         SPLICE,
     }
-    export namespace SectionTableID {
-        export const $gtype: GObject.GType<SectionTableID>;
-    }
+    /**
+     * Values for a #GstMpegtsSection table_id
+     *
+     * These are the registered ITU H.222.0 | ISO/IEC 13818-1 table_id variants.
+     *
+     * see also #GstMpegtsSectionATSCTableID, #GstMpegtsSectionDVBTableID, and
+     * #GstMpegtsSectionSCTETableID
+     */
 
     /**
      * Values for a #GstMpegtsSection table_id
@@ -974,6 +1103,10 @@ export namespace GstMpegts {
      * see also #GstMpegtsSectionATSCTableID, #GstMpegtsSectionDVBTableID, and
      * #GstMpegtsSectionSCTETableID
      */
+    export namespace SectionTableID {
+        export const $gtype: GObject.GType<SectionTableID>;
+    }
+
     enum SectionTableID {
         /**
          * Program Association Table (PAT)
@@ -1048,15 +1181,21 @@ export namespace GstMpegts {
          */
         UNSET,
     }
-    export namespace SectionType {
-        export const $gtype: GObject.GType<SectionType>;
-    }
+    /**
+     * Types of #GstMpegtsSection that the library handles. This covers all the
+     * MPEG-TS and derivate specification that the library can properly identify and
+     * use.
+     */
 
     /**
      * Types of #GstMpegtsSection that the library handles. This covers all the
      * MPEG-TS and derivate specification that the library can properly identify and
      * use.
      */
+    export namespace SectionType {
+        export const $gtype: GObject.GType<SectionType>;
+    }
+
     enum SectionType {
         /**
          * Unknown section type
@@ -1139,9 +1278,15 @@ export namespace GstMpegts {
          */
         SCTE_SIT,
     }
-    export namespace StreamType {
-        export const $gtype: GObject.GType<StreamType>;
-    }
+    /**
+     * Type of MPEG-TS stream type.
+     *
+     * These values correspond to the base standard registered types. Depending
+     * on the variant of mpeg-ts being used (Bluray, ATSC, DVB, ...), other
+     * types might also be used, but will not conflict with these.
+     *
+     * Corresponds to table 2-34 of ITU H.222.0 | ISO/IEC 13818-1
+     */
 
     /**
      * Type of MPEG-TS stream type.
@@ -1152,6 +1297,10 @@ export namespace GstMpegts {
      *
      * Corresponds to table 2-34 of ITU H.222.0 | ISO/IEC 13818-1
      */
+    export namespace StreamType {
+        export const $gtype: GObject.GType<StreamType>;
+    }
+
     enum StreamType {
         /**
          * ITU-T | ISO/IEC Reserved
@@ -1337,6 +1486,7 @@ export namespace GstMpegts {
          */
         USER_PRIVATE_EA,
     }
+
     export namespace TerrestrialGuardInterval {
         export const $gtype: GObject.GType<TerrestrialGuardInterval>;
     }
@@ -1354,10 +1504,6 @@ export namespace GstMpegts {
         PN595,
         PN945,
     }
-    export namespace TerrestrialHierarchy {
-        export const $gtype: GObject.GType<TerrestrialHierarchy>;
-    }
-
     class TerrestrialHierarchy {
         static $gtype: GObject.GType<TerrestrialHierarchy>;
 
@@ -1597,10 +1743,6 @@ export namespace GstMpegts {
     interface PacketizeFunc {
         (section: Section): boolean;
     }
-    export namespace RegistrationId {
-        export const $gtype: GObject.GType<RegistrationId>;
-    }
-
     /**
      * Well-known registration ids, expressed as native-endian 32bit integers. These
      * are used in descriptors of type %GST_MTS_DESC_REGISTRATION. Unless specified

@@ -54,13 +54,17 @@ export namespace Shumate {
         static quark(): GLib.Quark;
     }
 
-    export namespace GeometryType {
-        export const $gtype: GObject.GType<GeometryType>;
-    }
+    /**
+     * A type of geometry.
+     */
 
     /**
      * A type of geometry.
      */
+    export namespace GeometryType {
+        export const $gtype: GObject.GType<GeometryType>;
+    }
+
     enum GeometryType {
         /**
          * Unknown geometry type
@@ -91,26 +95,34 @@ export namespace Shumate {
          */
         MULTIPOLYGON,
     }
-    export namespace MapProjection {
-        export const $gtype: GObject.GType<MapProjection>;
-    }
+    /**
+     * Projections supported by the library.
+     */
 
     /**
      * Projections supported by the library.
      */
+    export namespace MapProjection {
+        export const $gtype: GObject.GType<MapProjection>;
+    }
+
     enum MapProjection {
         /**
          * Currently the only supported projection
          */
         MERCATOR,
     }
-    export namespace State {
-        export const $gtype: GObject.GType<State>;
-    }
+    /**
+     * Tile loading state.
+     */
 
     /**
      * Tile loading state.
      */
+    export namespace State {
+        export const $gtype: GObject.GType<State>;
+    }
+
     enum State {
         /**
          * Initial or undefined state
@@ -215,13 +227,17 @@ export namespace Shumate {
         static quark(): GLib.Quark;
     }
 
-    export namespace Unit {
-        export const $gtype: GObject.GType<Unit>;
-    }
+    /**
+     * Units used by the scale.
+     */
 
     /**
      * Units used by the scale.
      */
+    export namespace Unit {
+        export const $gtype: GObject.GType<Unit>;
+    }
+
     enum Unit {
         /**
          * Both metric and imperial units

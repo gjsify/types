@@ -47,6 +47,7 @@ export namespace Gc {
         EMOJI_SYMBOLS,
         EMOJI_FLAGS,
     }
+
     export namespace SearchError {
         export const $gtype: GObject.GType<SearchError>;
     }
@@ -65,6 +66,7 @@ export namespace Gc {
     interface SearchFunc {
         (uc: number): boolean;
     }
+
     export namespace SearchFlag {
         export const $gtype: GObject.GType<SearchFlag>;
     }

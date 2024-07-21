@@ -73,13 +73,17 @@ export namespace Libosinfo {
         static quark(): GLib.Quark;
     }
 
-    export namespace InstallConfigParamPolicy {
-        export const $gtype: GObject.GType<InstallConfigParamPolicy>;
-    }
+    /**
+     * Policy for configuration parameter presence
+     */
 
     /**
      * Policy for configuration parameter presence
      */
+    export namespace InstallConfigParamPolicy {
+        export const $gtype: GObject.GType<InstallConfigParamPolicy>;
+    }
+
     enum InstallConfigParamPolicy {
         /**
          * no policy defined
@@ -94,6 +98,7 @@ export namespace Libosinfo {
          */
         OPTIONAL,
     }
+
     export namespace InstallScriptInstallationSource {
         export const $gtype: GObject.GType<InstallScriptInstallationSource>;
     }
@@ -169,13 +174,17 @@ export namespace Libosinfo {
          */
         DOS,
     }
-    export namespace ProductRelationship {
-        export const $gtype: GObject.GType<ProductRelationship>;
-    }
+    /**
+     * Enum values used to form relationships between products
+     */
 
     /**
      * Enum values used to form relationships between products
      */
+    export namespace ProductRelationship {
+        export const $gtype: GObject.GType<ProductRelationship>;
+    }
+
     enum ProductRelationship {
         /**
          * a descendent (RHEL-5 derives from Fedora-6)
@@ -190,6 +199,7 @@ export namespace Libosinfo {
          */
         CLONES,
     }
+
     export namespace ReleaseStatus {
         export const $gtype: GObject.GType<ReleaseStatus>;
     }
@@ -399,6 +409,7 @@ export namespace Libosinfo {
      * @returns the #GQuark representing the string.
      */
     function tree_error_quark(): GLib.Quark;
+
     export namespace InstallScriptInjectionMethod {
         export const $gtype: GObject.GType<InstallScriptInjectionMethod>;
     }
@@ -430,14 +441,19 @@ export namespace Libosinfo {
          */
         WEB,
     }
-    export namespace MediaDetectFlags {
-        export const $gtype: GObject.GType<MediaDetectFlags>;
-    }
+    /**
+     * OSINFO_MEDIA_DETECT_REQUIRE_BOOTABLE: Requires a media to be bootable.
+     * Flags used for detecting a media.
+     */
 
     /**
      * OSINFO_MEDIA_DETECT_REQUIRE_BOOTABLE: Requires a media to be bootable.
      * Flags used for detecting a media.
      */
+    export namespace MediaDetectFlags {
+        export const $gtype: GObject.GType<MediaDetectFlags>;
+    }
+
     enum MediaDetectFlags {
         BOOTABLE,
     }

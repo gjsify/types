@@ -25,6 +25,7 @@ export namespace AvahiCore {
         UNSPEC,
     }
     function server_get_host_name(): string;
+
     export namespace PublishFlags {
         export const $gtype: GObject.GType<PublishFlags>;
     }

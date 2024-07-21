@@ -28,6 +28,7 @@ export namespace Gegl {
         BLACK,
         WHITE,
     }
+
     export namespace BablVariant {
         export const $gtype: GObject.GType<BablVariant>;
     }
@@ -43,6 +44,7 @@ export namespace Gegl {
         PERCEPTUAL_PREMULTIPLIED_IF_ALPHA,
         ADD_ALPHA,
     }
+
     export namespace CachePolicy {
         export const $gtype: GObject.GType<CachePolicy>;
     }
@@ -52,6 +54,7 @@ export namespace Gegl {
         NEVER,
         ALWAYS,
     }
+
     export namespace DistanceMetric {
         export const $gtype: GObject.GType<DistanceMetric>;
     }
@@ -61,6 +64,7 @@ export namespace Gegl {
         MANHATTAN,
         CHEBYSHEV,
     }
+
     export namespace DitherMethod {
         export const $gtype: GObject.GType<DitherMethod>;
     }
@@ -78,19 +82,24 @@ export namespace Gegl {
         BLUE_NOISE,
         BLUE_NOISE_COVARIANT,
     }
-    export namespace MapFlags {
-        export const $gtype: GObject.GType<MapFlags>;
-    }
+    /**
+     * Flags controlling the mapping strategy.
+     */
 
     /**
      * Flags controlling the mapping strategy.
      */
+    export namespace MapFlags {
+        export const $gtype: GObject.GType<MapFlags>;
+    }
+
     enum MapFlags {
         /**
          * Prevent further mapping from being registered.
          */
         MAP_EXCLUDE_UNMAPPED,
     }
+
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
@@ -99,6 +108,7 @@ export namespace Gegl {
         HORIZONTAL,
         VERTICAL,
     }
+
     export namespace RectangleAlignment {
         export const $gtype: GObject.GType<RectangleAlignment>;
     }
@@ -108,14 +118,19 @@ export namespace Gegl {
         SUPERSET,
         NEAREST,
     }
-    export namespace ResolutionUnit {
-        export const $gtype: GObject.GType<ResolutionUnit>;
-    }
+    /**
+     * An enumerated type specifying resolution (density) units.  If resolution
+     * units are unknown, X and Y resolution specify the pixel aspect ratio.
+     */
 
     /**
      * An enumerated type specifying resolution (density) units.  If resolution
      * units are unknown, X and Y resolution specify the pixel aspect ratio.
      */
+    export namespace ResolutionUnit {
+        export const $gtype: GObject.GType<ResolutionUnit>;
+    }
+
     enum ResolutionUnit {
         /**
          * Unknown or resolution not applicable.
@@ -130,6 +145,7 @@ export namespace Gegl {
          */
         DPM,
     }
+
     export namespace SamplerType {
         export const $gtype: GObject.GType<SamplerType>;
     }
@@ -141,6 +157,7 @@ export namespace Gegl {
         NOHALO,
         LOHALO,
     }
+
     export namespace SplitStrategy {
         export const $gtype: GObject.GType<SplitStrategy>;
     }
@@ -150,6 +167,7 @@ export namespace Gegl {
         HORIZONTAL,
         VERTICAL,
     }
+
     export namespace TileCommand {
         export const $gtype: GObject.GType<TileCommand>;
     }
@@ -649,6 +667,7 @@ export namespace Gegl {
             data?: any | null,
         ): any | null;
     }
+
     export namespace AccessMode {
         export const $gtype: GObject.GType<AccessMode>;
     }
@@ -658,6 +677,7 @@ export namespace Gegl {
         WRITE,
         READWRITE,
     }
+
     export namespace BlitFlags {
         export const $gtype: GObject.GType<BlitFlags>;
     }
@@ -667,6 +687,7 @@ export namespace Gegl {
         CACHE,
         DIRTY,
     }
+
     export namespace PadType {
         export const $gtype: GObject.GType<PadType>;
     }
@@ -675,6 +696,7 @@ export namespace Gegl {
         OUTPUT,
         INPUT,
     }
+
     export namespace SerializeFlag {
         export const $gtype: GObject.GType<SerializeFlag>;
     }

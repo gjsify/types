@@ -40,6 +40,7 @@ export namespace Entangle {
         RAM,
         CARD,
     }
+
     export namespace CameraManualFocusStep {
         export const $gtype: GObject.GType<CameraManualFocusStep>;
     }
@@ -52,6 +53,7 @@ export namespace Entangle {
         OUT_MEDIUM,
         OUT_FINE,
     }
+
     export namespace ColourProfileIntent {
         export const $gtype: GObject.GType<ColourProfileIntent>;
     }
@@ -62,6 +64,7 @@ export namespace Entangle {
         SATURATION,
         ABS_COLOURIMETRIC,
     }
+
     export namespace ImageDisplayGrid {
         export const $gtype: GObject.GType<ImageDisplayGrid>;
     }
@@ -74,6 +77,7 @@ export namespace Entangle {
         RULE_OF_5THS,
         GOLDEN_SECTIONS,
     }
+
     export namespace PixbufImageSlot {
         export const $gtype: GObject.GType<PixbufImageSlot>;
     }

@@ -28,13 +28,17 @@ export namespace Mks {
      * Mks-1
      */
 
-    export namespace MouseButton {
-        export const $gtype: GObject.GType<MouseButton>;
-    }
+    /**
+     * A mouse button.
+     */
 
     /**
      * A mouse button.
      */
+    export namespace MouseButton {
+        export const $gtype: GObject.GType<MouseButton>;
+    }
+
     enum MouseButton {
         /**
          * Left button.
@@ -65,13 +69,17 @@ export namespace Mks {
          */
         EXTRA,
     }
-    export namespace ScreenKind {
-        export const $gtype: GObject.GType<ScreenKind>;
-    }
+    /**
+     * A screen kind.
+     */
 
     /**
      * A screen kind.
      */
+    export namespace ScreenKind {
+        export const $gtype: GObject.GType<ScreenKind>;
+    }
+
     enum ScreenKind {
         /**
          * A text only screen.
@@ -82,13 +90,17 @@ export namespace Mks {
          */
         GRAPHIC,
     }
-    export namespace TouchEventKind {
-        export const $gtype: GObject.GType<TouchEventKind>;
-    }
+    /**
+     * The type of a touch event.
+     */
 
     /**
      * The type of a touch event.
      */
+    export namespace TouchEventKind {
+        export const $gtype: GObject.GType<TouchEventKind>;
+    }
+
     enum TouchEventKind {
         /**
          * The touch event has just started.
@@ -142,13 +154,17 @@ export namespace Mks {
      * The function must be called before using any of the library functions.
      */
     function init(): void;
-    export namespace KeyboardModifier {
-        export const $gtype: GObject.GType<KeyboardModifier>;
-    }
+    /**
+     * The active keyboard modifiers.
+     */
 
     /**
      * The active keyboard modifiers.
      */
+    export namespace KeyboardModifier {
+        export const $gtype: GObject.GType<KeyboardModifier>;
+    }
+
     enum KeyboardModifier {
         /**
          * No modifier.

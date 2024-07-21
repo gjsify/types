@@ -18,13 +18,17 @@ export namespace Mbim {
      * Mbim-1.0
      */
 
-    export namespace AccessMediaType {
-        export const $gtype: GObject.GType<AccessMediaType>;
-    }
+    /**
+     * Access type preference.
+     */
 
     /**
      * Access type preference.
      */
+    export namespace AccessMediaType {
+        export const $gtype: GObject.GType<AccessMediaType>;
+    }
+
     enum AccessMediaType {
         /**
          * None, or unknown.
@@ -39,13 +43,17 @@ export namespace Mbim {
          */
         '3GPP_PREFERRED',
     }
-    export namespace ActivationCommand {
-        export const $gtype: GObject.GType<ActivationCommand>;
-    }
+    /**
+     * Activation Command.
+     */
 
     /**
      * Activation Command.
      */
+    export namespace ActivationCommand {
+        export const $gtype: GObject.GType<ActivationCommand>;
+    }
+
     enum ActivationCommand {
         /**
          * Deactivate.
@@ -56,13 +64,17 @@ export namespace Mbim {
          */
         ACTIVATE,
     }
-    export namespace ActivationState {
-        export const $gtype: GObject.GType<ActivationState>;
-    }
+    /**
+     * Activation State.
+     */
 
     /**
      * Activation State.
      */
+    export namespace ActivationState {
+        export const $gtype: GObject.GType<ActivationState>;
+    }
+
     enum ActivationState {
         /**
          * Unknown.
@@ -85,13 +97,17 @@ export namespace Mbim {
          */
         DEACTIVATING,
     }
-    export namespace AtdsProviderPlmnMode {
-        export const $gtype: GObject.GType<AtdsProviderPlmnMode>;
-    }
+    /**
+     * Provider PLMN mode.
+     */
 
     /**
      * Provider PLMN mode.
      */
+    export namespace AtdsProviderPlmnMode {
+        export const $gtype: GObject.GType<AtdsProviderPlmnMode>;
+    }
+
     enum AtdsProviderPlmnMode {
         /**
          * GSM.
@@ -106,13 +122,17 @@ export namespace Mbim {
          */
         LTE,
     }
-    export namespace AtdsRatMode {
-        export const $gtype: GObject.GType<AtdsRatMode>;
-    }
+    /**
+     * RAT mode preferences.
+     */
 
     /**
      * RAT mode preferences.
      */
+    export namespace AtdsRatMode {
+        export const $gtype: GObject.GType<AtdsRatMode>;
+    }
+
     enum AtdsRatMode {
         /**
          * Automatic.
@@ -131,13 +151,17 @@ export namespace Mbim {
          */
         '4G_ONLY',
     }
-    export namespace AuthProtocol {
-        export const $gtype: GObject.GType<AuthProtocol>;
-    }
+    /**
+     * Auth Protocol.
+     */
 
     /**
      * Auth Protocol.
      */
+    export namespace AuthProtocol {
+        export const $gtype: GObject.GType<AuthProtocol>;
+    }
+
     enum AuthProtocol {
         /**
          * None.
@@ -156,13 +180,17 @@ export namespace Mbim {
          */
         MSCHAPV2,
     }
-    export namespace CarrierLockCause {
-        export const $gtype: GObject.GType<CarrierLockCause>;
-    }
+    /**
+     * Carrier lock cause.
+     */
 
     /**
      * Carrier lock cause.
      */
+    export namespace CarrierLockCause {
+        export const $gtype: GObject.GType<CarrierLockCause>;
+    }
+
     enum CarrierLockCause {
         /**
          * Cause not applicable.
@@ -177,13 +205,17 @@ export namespace Mbim {
          */
         SIM_LOCK_POLICY_MATCHED,
     }
-    export namespace CarrierLockModemState {
-        export const $gtype: GObject.GType<CarrierLockModemState>;
-    }
+    /**
+     * State of modem after a carrier lock state update.
+     */
 
     /**
      * State of modem after a carrier lock state update.
      */
+    export namespace CarrierLockModemState {
+        export const $gtype: GObject.GType<CarrierLockModemState>;
+    }
+
     enum CarrierLockModemState {
         /**
          * Modem deregistered.
@@ -202,13 +234,17 @@ export namespace Mbim {
          */
         REGISTERED,
     }
-    export namespace CarrierLockStatus {
-        export const $gtype: GObject.GType<CarrierLockStatus>;
-    }
+    /**
+     * Status of carrier lock.
+     */
 
     /**
      * Status of carrier lock.
      */
+    export namespace CarrierLockStatus {
+        export const $gtype: GObject.GType<CarrierLockStatus>;
+    }
+
     enum CarrierLockStatus {
         /**
          * Carrier lock not applied.
@@ -219,13 +255,17 @@ export namespace Mbim {
          */
         APPLIED,
     }
-    export namespace CidAtds {
-        export const $gtype: GObject.GType<CidAtds>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_ATDS service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_ATDS service.
      */
+    export namespace CidAtds {
+        export const $gtype: GObject.GType<CidAtds>;
+    }
+
     enum CidAtds {
         /**
          * Unknown command.
@@ -252,13 +292,17 @@ export namespace Mbim {
          */
         REGISTER_STATE,
     }
-    export namespace CidAuth {
-        export const $gtype: GObject.GType<CidAuth>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_AUTH service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_AUTH service.
      */
+    export namespace CidAuth {
+        export const $gtype: GObject.GType<CidAuth>;
+    }
+
     enum CidAuth {
         /**
          * Unknow command
@@ -277,13 +321,17 @@ export namespace Mbim {
          */
         SIM,
     }
-    export namespace CidBasicConnect {
-        export const $gtype: GObject.GType<CidBasicConnect>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_BASIC_CONNECT service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_BASIC_CONNECT service.
      */
+    export namespace CidBasicConnect {
+        export const $gtype: GObject.GType<CidBasicConnect>;
+    }
+
     enum CidBasicConnect {
         /**
          * Unknown command.
@@ -378,13 +426,17 @@ export namespace Mbim {
          */
         MULTICARRIER_PROVIDERS,
     }
-    export namespace CidDss {
-        export const $gtype: GObject.GType<CidDss>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_DSS service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_DSS service.
      */
+    export namespace CidDss {
+        export const $gtype: GObject.GType<CidDss>;
+    }
+
     enum CidDss {
         /**
          * Unknown command.
@@ -395,13 +447,17 @@ export namespace Mbim {
          */
         CONNECT,
     }
-    export namespace CidGoogle {
-        export const $gtype: GObject.GType<CidGoogle>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_GOOGLE service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_GOOGLE service.
      */
+    export namespace CidGoogle {
+        export const $gtype: GObject.GType<CidGoogle>;
+    }
+
     enum CidGoogle {
         /**
          * Unknown command.
@@ -412,13 +468,17 @@ export namespace Mbim {
          */
         CARRIER_LOCK,
     }
-    export namespace CidIntelFirmwareUpdate {
-        export const $gtype: GObject.GType<CidIntelFirmwareUpdate>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_INTEL_FIRMWARE_UPDATE service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_INTEL_FIRMWARE_UPDATE service.
      */
+    export namespace CidIntelFirmwareUpdate {
+        export const $gtype: GObject.GType<CidIntelFirmwareUpdate>;
+    }
+
     enum CidIntelFirmwareUpdate {
         /**
          * Unknown command.
@@ -429,13 +489,17 @@ export namespace Mbim {
          */
         MODEM_REBOOT,
     }
-    export namespace CidIntelMutualAuthentication {
-        export const $gtype: GObject.GType<CidIntelMutualAuthentication>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION service.
      */
+    export namespace CidIntelMutualAuthentication {
+        export const $gtype: GObject.GType<CidIntelMutualAuthentication>;
+    }
+
     enum CidIntelMutualAuthentication {
         /**
          * Unknown command.
@@ -446,13 +510,17 @@ export namespace Mbim {
          */
         FCC_LOCK,
     }
-    export namespace CidIntelThermalRf {
-        export const $gtype: GObject.GType<CidIntelThermalRf>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_INTEL_THERMAL_RF service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_INTEL_THERMAL_RF service.
      */
+    export namespace CidIntelThermalRf {
+        export const $gtype: GObject.GType<CidIntelThermalRf>;
+    }
+
     enum CidIntelThermalRf {
         /**
          * Unknown command.
@@ -463,13 +531,17 @@ export namespace Mbim {
          */
         RFIM,
     }
-    export namespace CidIntelTools {
-        export const $gtype: GObject.GType<CidIntelTools>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_INTEL_TOOLS service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_INTEL_TOOLS service.
      */
+    export namespace CidIntelTools {
+        export const $gtype: GObject.GType<CidIntelTools>;
+    }
+
     enum CidIntelTools {
         /**
          * Unknown command.
@@ -480,13 +552,17 @@ export namespace Mbim {
          */
         TRACE_CONFIG,
     }
-    export namespace CidMsBasicConnectExtensions {
-        export const $gtype: GObject.GType<CidMsBasicConnectExtensions>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_MS_BASIC_CONNECT_EXTENSIONS service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_BASIC_CONNECT_EXTENSIONS service.
      */
+    export namespace CidMsBasicConnectExtensions {
+        export const $gtype: GObject.GType<CidMsBasicConnectExtensions>;
+    }
+
     enum CidMsBasicConnectExtensions {
         /**
          * Unknown command.
@@ -557,13 +633,17 @@ export namespace Mbim {
          */
         WAKE_REASON,
     }
-    export namespace CidMsFirmwareId {
-        export const $gtype: GObject.GType<CidMsFirmwareId>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_MS_FIRMWARE_ID service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_FIRMWARE_ID service.
      */
+    export namespace CidMsFirmwareId {
+        export const $gtype: GObject.GType<CidMsFirmwareId>;
+    }
+
     enum CidMsFirmwareId {
         /**
          * Unknown command.
@@ -574,13 +654,17 @@ export namespace Mbim {
          */
         GET,
     }
-    export namespace CidMsHostShutdown {
-        export const $gtype: GObject.GType<CidMsHostShutdown>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_MS_HOST_SHUTDOWN service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_HOST_SHUTDOWN service.
      */
+    export namespace CidMsHostShutdown {
+        export const $gtype: GObject.GType<CidMsHostShutdown>;
+    }
+
     enum CidMsHostShutdown {
         /**
          * Unknown command.
@@ -591,13 +675,17 @@ export namespace Mbim {
          */
         NOTIFY,
     }
-    export namespace CidMsSar {
-        export const $gtype: GObject.GType<CidMsSar>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_MS_SAR service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_SAR service.
      */
+    export namespace CidMsSar {
+        export const $gtype: GObject.GType<CidMsSar>;
+    }
+
     enum CidMsSar {
         /**
          * Unknown command.
@@ -612,13 +700,17 @@ export namespace Mbim {
          */
         TRANSMISSION_STATUS,
     }
-    export namespace CidMsUiccLowLevelAccess {
-        export const $gtype: GObject.GType<CidMsUiccLowLevelAccess>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_MS_UICC_LOW_LEVEL_ACCESS service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_UICC_LOW_LEVEL_ACCESS service.
      */
+    export namespace CidMsUiccLowLevelAccess {
+        export const $gtype: GObject.GType<CidMsUiccLowLevelAccess>;
+    }
+
     enum CidMsUiccLowLevelAccess {
         /**
          * Unknown command.
@@ -665,13 +757,17 @@ export namespace Mbim {
          */
         READ_RECORD,
     }
-    export namespace CidMsVoiceExtensions {
-        export const $gtype: GObject.GType<CidMsVoiceExtensions>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_MS_VOICE_EXTENSIONS service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_MS_VOICE_EXTENSIONS service.
      */
+    export namespace CidMsVoiceExtensions {
+        export const $gtype: GObject.GType<CidMsVoiceExtensions>;
+    }
+
     enum CidMsVoiceExtensions {
         /**
          * Unknown command.
@@ -682,13 +778,17 @@ export namespace Mbim {
          */
         NITZ,
     }
-    export namespace CidPhonebook {
-        export const $gtype: GObject.GType<CidPhonebook>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_PHONEBOOK service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_PHONEBOOK service.
      */
+    export namespace CidPhonebook {
+        export const $gtype: GObject.GType<CidPhonebook>;
+    }
+
     enum CidPhonebook {
         /**
          * Unknown command.
@@ -711,13 +811,17 @@ export namespace Mbim {
          */
         WRITE,
     }
-    export namespace CidProxyControl {
-        export const $gtype: GObject.GType<CidProxyControl>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_PROXY_CONTROL service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_PROXY_CONTROL service.
      */
+    export namespace CidProxyControl {
+        export const $gtype: GObject.GType<CidProxyControl>;
+    }
+
     enum CidProxyControl {
         /**
          * Unknown command.
@@ -732,13 +836,17 @@ export namespace Mbim {
          */
         VERSION,
     }
-    export namespace CidQdu {
-        export const $gtype: GObject.GType<CidQdu>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_QDU service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_QDU service.
      */
+    export namespace CidQdu {
+        export const $gtype: GObject.GType<CidQdu>;
+    }
+
     enum CidQdu {
         /**
          * Unknown command.
@@ -765,13 +873,17 @@ export namespace Mbim {
          */
         QUECTEL_READ_VERSION,
     }
-    export namespace CidQmi {
-        export const $gtype: GObject.GType<CidQmi>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_QMI service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_QMI service.
      */
+    export namespace CidQmi {
+        export const $gtype: GObject.GType<CidQmi>;
+    }
+
     enum CidQmi {
         /**
          * Unknown command.
@@ -782,13 +894,17 @@ export namespace Mbim {
          */
         MSG,
     }
-    export namespace CidQuectel {
-        export const $gtype: GObject.GType<CidQuectel>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_QUECTEL service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_QUECTEL service.
      */
+    export namespace CidQuectel {
+        export const $gtype: GObject.GType<CidQuectel>;
+    }
+
     enum CidQuectel {
         /**
          * Unknown command.
@@ -799,13 +915,17 @@ export namespace Mbim {
          */
         RADIO_STATE,
     }
-    export namespace CidSms {
-        export const $gtype: GObject.GType<CidSms>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_SMS service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_SMS service.
      */
+    export namespace CidSms {
+        export const $gtype: GObject.GType<CidSms>;
+    }
+
     enum CidSms {
         /**
          * Unknown command.
@@ -832,13 +952,17 @@ export namespace Mbim {
          */
         MESSAGE_STORE_STATUS,
     }
-    export namespace CidStk {
-        export const $gtype: GObject.GType<CidStk>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_STK service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_STK service.
      */
+    export namespace CidStk {
+        export const $gtype: GObject.GType<CidStk>;
+    }
+
     enum CidStk {
         /**
          * Unknown command.
@@ -857,13 +981,17 @@ export namespace Mbim {
          */
         ENVELOPE,
     }
-    export namespace CidUssd {
-        export const $gtype: GObject.GType<CidUssd>;
-    }
+    /**
+     * MBIM commands in the %MBIM_SERVICE_USSD service.
+     */
 
     /**
      * MBIM commands in the %MBIM_SERVICE_USSD service.
      */
+    export namespace CidUssd {
+        export const $gtype: GObject.GType<CidUssd>;
+    }
+
     enum CidUssd {
         /**
          * Unknown command. Since 1.4.
@@ -874,13 +1002,17 @@ export namespace Mbim {
          */
         USSD,
     }
-    export namespace Compression {
-        export const $gtype: GObject.GType<Compression>;
-    }
+    /**
+     * Compression.
+     */
 
     /**
      * Compression.
      */
+    export namespace Compression {
+        export const $gtype: GObject.GType<Compression>;
+    }
+
     enum Compression {
         /**
          * None.
@@ -891,13 +1023,17 @@ export namespace Mbim {
          */
         ENABLE,
     }
-    export namespace ContextIpType {
-        export const $gtype: GObject.GType<ContextIpType>;
-    }
+    /**
+     * Context IP Type.
+     */
 
     /**
      * Context IP Type.
      */
+    export namespace ContextIpType {
+        export const $gtype: GObject.GType<ContextIpType>;
+    }
+
     enum ContextIpType {
         /**
          * It is up to the function to decide, the host does not care.
@@ -920,14 +1056,19 @@ export namespace Mbim {
          */
         IPV4_AND_IPV6,
     }
-    export namespace ContextMediaType {
-        export const $gtype: GObject.GType<ContextMediaType>;
-    }
+    /**
+     * Media type, specifying whether the modem is used for cellular or
+     * iWLAN (Wi-Fi offload).
+     */
 
     /**
      * Media type, specifying whether the modem is used for cellular or
      * iWLAN (Wi-Fi offload).
      */
+    export namespace ContextMediaType {
+        export const $gtype: GObject.GType<ContextMediaType>;
+    }
+
     enum ContextMediaType {
         /**
          * Context allowed to be used only wen registered over cellular.
@@ -942,13 +1083,17 @@ export namespace Mbim {
          */
         ALL,
     }
-    export namespace ContextOperation {
-        export const $gtype: GObject.GType<ContextOperation>;
-    }
+    /**
+     * Command to run when updating context configuration.
+     */
 
     /**
      * Command to run when updating context configuration.
      */
+    export namespace ContextOperation {
+        export const $gtype: GObject.GType<ContextOperation>;
+    }
+
     enum ContextOperation {
         /**
          * Adds or replaces an existing context.
@@ -963,13 +1108,17 @@ export namespace Mbim {
          */
         RESTORE_FACTORY,
     }
-    export namespace ContextRoamingControl {
-        export const $gtype: GObject.GType<ContextRoamingControl>;
-    }
+    /**
+     * Type of roaming control.
+     */
 
     /**
      * Type of roaming control.
      */
+    export namespace ContextRoamingControl {
+        export const $gtype: GObject.GType<ContextRoamingControl>;
+    }
+
     enum ContextRoamingControl {
         /**
          * Context allowed to be used in home network.
@@ -1000,13 +1149,17 @@ export namespace Mbim {
          */
         ALLOW_ALL,
     }
-    export namespace ContextSource {
-        export const $gtype: GObject.GType<ContextSource>;
-    }
+    /**
+     * Source of context creation.
+     */
 
     /**
      * Source of context creation.
      */
+    export namespace ContextSource {
+        export const $gtype: GObject.GType<ContextSource>;
+    }
+
     enum ContextSource {
         /**
          * Context created by enterprise IT.
@@ -1029,13 +1182,17 @@ export namespace Mbim {
          */
         DEVICE,
     }
-    export namespace ContextState {
-        export const $gtype: GObject.GType<ContextState>;
-    }
+    /**
+     * Status of the context, specifying whether it's enabled or disabled.
+     */
 
     /**
      * Status of the context, specifying whether it's enabled or disabled.
      */
+    export namespace ContextState {
+        export const $gtype: GObject.GType<ContextState>;
+    }
+
     enum ContextState {
         /**
          * Disabled.
@@ -1046,13 +1203,17 @@ export namespace Mbim {
          */
         ENABLED,
     }
-    export namespace ContextType {
-        export const $gtype: GObject.GType<ContextType>;
-    }
+    /**
+     * Enumeration of the generic MBIM context types.
+     */
 
     /**
      * Enumeration of the generic MBIM context types.
      */
+    export namespace ContextType {
+        export const $gtype: GObject.GType<ContextType>;
+    }
+
     enum ContextType {
         /**
          * Invalid context type.
@@ -1185,13 +1346,17 @@ export namespace Mbim {
         static quark(): GLib.Quark;
     }
 
-    export namespace DefaultPduActivationHint {
-        export const $gtype: GObject.GType<DefaultPduActivationHint>;
-    }
+    /**
+     * Hint regarding the activation of the default PDU session.
+     */
 
     /**
      * Hint regarding the activation of the default PDU session.
      */
+    export namespace DefaultPduActivationHint {
+        export const $gtype: GObject.GType<DefaultPduActivationHint>;
+    }
+
     enum DefaultPduActivationHint {
         /**
          * Default PDU session activation is unlikely to happen soon.
@@ -1202,13 +1367,17 @@ export namespace Mbim {
          */
         LIKELY,
     }
-    export namespace DeviceType {
-        export const $gtype: GObject.GType<DeviceType>;
-    }
+    /**
+     * Type of device.
+     */
 
     /**
      * Type of device.
      */
+    export namespace DeviceType {
+        export const $gtype: GObject.GType<DeviceType>;
+    }
+
     enum DeviceType {
         /**
          * Unknown type.
@@ -1227,10 +1396,6 @@ export namespace Mbim {
          */
         REMOTE,
     }
-    export namespace DrxCycle {
-        export const $gtype: GObject.GType<DrxCycle>;
-    }
-
     /**
      * DRX cycle settings.
      */
@@ -1272,13 +1437,17 @@ export namespace Mbim {
         _init(...args: any[]): void;
     }
 
-    export namespace DssLinkState {
-        export const $gtype: GObject.GType<DssLinkState>;
-    }
+    /**
+     * Action performed in the link state.
+     */
 
     /**
      * Action performed in the link state.
      */
+    export namespace DssLinkState {
+        export const $gtype: GObject.GType<DssLinkState>;
+    }
+
     enum DssLinkState {
         /**
          * Deactivate.
@@ -1289,13 +1458,17 @@ export namespace Mbim {
          */
         ACTIVATE,
     }
-    export namespace EmergencyModeState {
-        export const $gtype: GObject.GType<EmergencyModeState>;
-    }
+    /**
+     * Emergency mode state.
+     */
 
     /**
      * Emergency mode state.
      */
+    export namespace EmergencyModeState {
+        export const $gtype: GObject.GType<EmergencyModeState>;
+    }
+
     enum EmergencyModeState {
         /**
          * Off.
@@ -1306,13 +1479,17 @@ export namespace Mbim {
          */
         ON,
     }
-    export namespace IntelBootMode {
-        export const $gtype: GObject.GType<IntelBootMode>;
-    }
+    /**
+     * Modem intel boot mode.
+     */
 
     /**
      * Modem intel boot mode.
      */
+    export namespace IntelBootMode {
+        export const $gtype: GObject.GType<IntelBootMode>;
+    }
+
     enum IntelBootMode {
         /**
          * Normal boot mode.
@@ -1339,13 +1516,17 @@ export namespace Mbim {
          */
         FAST_DOWNLOAD_MODE,
     }
-    export namespace IntelServingCellInfo {
-        export const $gtype: GObject.GType<IntelServingCellInfo>;
-    }
+    /**
+     * Serving cell information.
+     */
 
     /**
      * Serving cell information.
      */
+    export namespace IntelServingCellInfo {
+        export const $gtype: GObject.GType<IntelServingCellInfo>;
+    }
+
     enum IntelServingCellInfo {
         /**
          * Primary cell.
@@ -1368,13 +1549,17 @@ export namespace Mbim {
          */
         RADIO_OFF,
     }
-    export namespace LadnInfo {
-        export const $gtype: GObject.GType<LadnInfo>;
-    }
+    /**
+     * Local Area Data Network (LADN) information state.
+     */
 
     /**
      * Local Area Data Network (LADN) information state.
      */
+    export namespace LadnInfo {
+        export const $gtype: GObject.GType<LadnInfo>;
+    }
+
     enum LadnInfo {
         /**
          * Information not needed.
@@ -1385,13 +1570,17 @@ export namespace Mbim {
          */
         REQUESTED,
     }
-    export namespace LteAttachContextOperation {
-        export const $gtype: GObject.GType<LteAttachContextOperation>;
-    }
+    /**
+     * Command to run when updating LTE attach configuration.
+     */
 
     /**
      * Command to run when updating LTE attach configuration.
      */
+    export namespace LteAttachContextOperation {
+        export const $gtype: GObject.GType<LteAttachContextOperation>;
+    }
+
     enum LteAttachContextOperation {
         /**
          * Overwrite existing contexts.
@@ -1402,13 +1591,17 @@ export namespace Mbim {
          */
         RESTORE_FACTORY,
     }
-    export namespace LteAttachContextRoamingControl {
-        export const $gtype: GObject.GType<LteAttachContextRoamingControl>;
-    }
+    /**
+     * Type of roaming control.
+     */
 
     /**
      * Type of roaming control.
      */
+    export namespace LteAttachContextRoamingControl {
+        export const $gtype: GObject.GType<LteAttachContextRoamingControl>;
+    }
+
     enum LteAttachContextRoamingControl {
         /**
          * Context allowed to be used on home network.
@@ -1423,13 +1616,17 @@ export namespace Mbim {
          */
         NON_PARTNER,
     }
-    export namespace LteAttachState {
-        export const $gtype: GObject.GType<LteAttachState>;
-    }
+    /**
+     * LTE attach state.
+     */
 
     /**
      * LTE attach state.
      */
+    export namespace LteAttachState {
+        export const $gtype: GObject.GType<LteAttachState>;
+    }
+
     enum LteAttachState {
         /**
          * Detached.
@@ -1440,13 +1637,17 @@ export namespace Mbim {
          */
         ATTACHED,
     }
-    export namespace MessageCommandType {
-        export const $gtype: GObject.GType<MessageCommandType>;
-    }
+    /**
+     * Type of command message.
+     */
 
     /**
      * Type of command message.
      */
+    export namespace MessageCommandType {
+        export const $gtype: GObject.GType<MessageCommandType>;
+    }
+
     enum MessageCommandType {
         /**
          * Unknown type.
@@ -1461,13 +1662,17 @@ export namespace Mbim {
          */
         SET,
     }
-    export namespace MessageType {
-        export const $gtype: GObject.GType<MessageType>;
-    }
+    /**
+     * Type of MBIM messages.
+     */
 
     /**
      * Type of MBIM messages.
      */
+    export namespace MessageType {
+        export const $gtype: GObject.GType<MessageType>;
+    }
+
     enum MessageType {
         /**
          * Invalid MBIM message.
@@ -1510,9 +1715,12 @@ export namespace Mbim {
          */
         INDICATE_STATUS,
     }
-    export namespace MicoMode {
-        export const $gtype: GObject.GType<MicoMode>;
-    }
+    /**
+     * Mobile Initiated Connection Only (MICO) Mode state.
+     *
+     * The `MBIM_MICO_MODE_DEFAULT` value should only be used in set operations, it
+     * should never be returned by the module upon a query.
+     */
 
     /**
      * Mobile Initiated Connection Only (MICO) Mode state.
@@ -1520,6 +1728,10 @@ export namespace Mbim {
      * The `MBIM_MICO_MODE_DEFAULT` value should only be used in set operations, it
      * should never be returned by the module upon a query.
      */
+    export namespace MicoMode {
+        export const $gtype: GObject.GType<MicoMode>;
+    }
+
     enum MicoMode {
         /**
          * Disabled.
@@ -1538,13 +1750,17 @@ export namespace Mbim {
          */
         DEFAULT,
     }
-    export namespace ModemConfigurationStatus {
-        export const $gtype: GObject.GType<ModemConfigurationStatus>;
-    }
+    /**
+     * Modem configuration status.
+     */
 
     /**
      * Modem configuration status.
      */
+    export namespace ModemConfigurationStatus {
+        export const $gtype: GObject.GType<ModemConfigurationStatus>;
+    }
+
     enum ModemConfigurationStatus {
         /**
          * Unknown
@@ -1559,13 +1775,17 @@ export namespace Mbim {
          */
         COMPLETED,
     }
-    export namespace NetworkIdleHintState {
-        export const $gtype: GObject.GType<NetworkIdleHintState>;
-    }
+    /**
+     * Enable or disable network idle hint.
+     */
 
     /**
      * Enable or disable network idle hint.
      */
+    export namespace NetworkIdleHintState {
+        export const $gtype: GObject.GType<NetworkIdleHintState>;
+    }
+
     enum NetworkIdleHintState {
         /**
          * Disabled.
@@ -1576,13 +1796,17 @@ export namespace Mbim {
          */
         ENABLED,
     }
-    export namespace NwError {
-        export const $gtype: GObject.GType<NwError>;
-    }
+    /**
+     * Network errors.
+     */
 
     /**
      * Network errors.
      */
+    export namespace NwError {
+        export const $gtype: GObject.GType<NwError>;
+    }
+
     enum NwError {
         /**
          * No error. Since 1.28.
@@ -1853,13 +2077,17 @@ export namespace Mbim {
          */
         MULTIPLE_ACCESSES_TO_A_PDN_CONNECTION_NOT_ALLOWED,
     }
-    export namespace PacketServiceAction {
-        export const $gtype: GObject.GType<PacketServiceAction>;
-    }
+    /**
+     * Packet Service Action.
+     */
 
     /**
      * Packet Service Action.
      */
+    export namespace PacketServiceAction {
+        export const $gtype: GObject.GType<PacketServiceAction>;
+    }
+
     enum PacketServiceAction {
         /**
          * Attach.
@@ -1870,13 +2098,17 @@ export namespace Mbim {
          */
         DETACH,
     }
-    export namespace PacketServiceState {
-        export const $gtype: GObject.GType<PacketServiceState>;
-    }
+    /**
+     * Packet Service State.
+     */
 
     /**
      * Packet Service State.
      */
+    export namespace PacketServiceState {
+        export const $gtype: GObject.GType<PacketServiceState>;
+    }
+
     enum PacketServiceState {
         /**
          * Unknown.
@@ -1899,13 +2131,17 @@ export namespace Mbim {
          */
         DETACHED,
     }
-    export namespace PcoType {
-        export const $gtype: GObject.GType<PcoType>;
-    }
+    /**
+     * Type of PCO structure.
+     */
 
     /**
      * Type of PCO structure.
      */
+    export namespace PcoType {
+        export const $gtype: GObject.GType<PcoType>;
+    }
+
     enum PcoType {
         /**
          * The PCO structure is complete.
@@ -1916,13 +2152,17 @@ export namespace Mbim {
          */
         PARTIAL,
     }
-    export namespace PhonebookFlag {
-        export const $gtype: GObject.GType<PhonebookFlag>;
-    }
+    /**
+     * Flags to use when reading the phonebook.
+     */
 
     /**
      * Flags to use when reading the phonebook.
      */
+    export namespace PhonebookFlag {
+        export const $gtype: GObject.GType<PhonebookFlag>;
+    }
+
     enum PhonebookFlag {
         /**
          * Request all.
@@ -1933,13 +2173,17 @@ export namespace Mbim {
          */
         INDEX,
     }
-    export namespace PhonebookState {
-        export const $gtype: GObject.GType<PhonebookState>;
-    }
+    /**
+     * Phonebook state.
+     */
 
     /**
      * Phonebook state.
      */
+    export namespace PhonebookState {
+        export const $gtype: GObject.GType<PhonebookState>;
+    }
+
     enum PhonebookState {
         /**
          * Not initialized.
@@ -1950,13 +2194,17 @@ export namespace Mbim {
          */
         INITIALIZED,
     }
-    export namespace PhonebookWriteFlag {
-        export const $gtype: GObject.GType<PhonebookWriteFlag>;
-    }
+    /**
+     * Flags to use when writing the phonebook.
+     */
 
     /**
      * Flags to use when writing the phonebook.
      */
+    export namespace PhonebookWriteFlag {
+        export const $gtype: GObject.GType<PhonebookWriteFlag>;
+    }
+
     enum PhonebookWriteFlag {
         /**
          * Store the record in an unused slot.
@@ -1967,13 +2215,17 @@ export namespace Mbim {
          */
         INDEX,
     }
-    export namespace PinFormat {
-        export const $gtype: GObject.GType<PinFormat>;
-    }
+    /**
+     * Format of the expected PIN code.
+     */
 
     /**
      * Format of the expected PIN code.
      */
+    export namespace PinFormat {
+        export const $gtype: GObject.GType<PinFormat>;
+    }
+
     enum PinFormat {
         /**
          * Unknown format.
@@ -1988,13 +2240,17 @@ export namespace Mbim {
          */
         ALPHANUMERIC,
     }
-    export namespace PinMode {
-        export const $gtype: GObject.GType<PinMode>;
-    }
+    /**
+     * Whether the lock is enabled or disabled.
+     */
 
     /**
      * Whether the lock is enabled or disabled.
      */
+    export namespace PinMode {
+        export const $gtype: GObject.GType<PinMode>;
+    }
+
     enum PinMode {
         /**
          * Not supported.
@@ -2009,13 +2265,17 @@ export namespace Mbim {
          */
         DISABLED,
     }
-    export namespace PinOperation {
-        export const $gtype: GObject.GType<PinOperation>;
-    }
+    /**
+     * Operation to perform on the PIN.
+     */
 
     /**
      * Operation to perform on the PIN.
      */
+    export namespace PinOperation {
+        export const $gtype: GObject.GType<PinOperation>;
+    }
+
     enum PinOperation {
         /**
          * Enter the specified PIN into the device.
@@ -2034,13 +2294,17 @@ export namespace Mbim {
          */
         CHANGE,
     }
-    export namespace PinState {
-        export const $gtype: GObject.GType<PinState>;
-    }
+    /**
+     * PIN States.
+     */
 
     /**
      * PIN States.
      */
+    export namespace PinState {
+        export const $gtype: GObject.GType<PinState>;
+    }
+
     enum PinState {
         /**
          * The device does not require a PIN.
@@ -2051,13 +2315,17 @@ export namespace Mbim {
          */
         LOCKED,
     }
-    export namespace PinType {
-        export const $gtype: GObject.GType<PinType>;
-    }
+    /**
+     * PIN Types.
+     */
 
     /**
      * PIN Types.
      */
+    export namespace PinType {
+        export const $gtype: GObject.GType<PinType>;
+    }
+
     enum PinType {
         /**
          * Unknown or unset.
@@ -2200,52 +2468,68 @@ export namespace Mbim {
         static quark(): GLib.Quark;
     }
 
-    export namespace QduFileType {
-        export const $gtype: GObject.GType<QduFileType>;
-    }
+    /**
+     * QDU session result.
+     */
 
     /**
      * QDU session result.
      */
+    export namespace QduFileType {
+        export const $gtype: GObject.GType<QduFileType>;
+    }
+
     enum QduFileType {
         /**
          * LE Package
          */
         PACKAGE,
     }
-    export namespace QduQuectelRebootType {
-        export const $gtype: GObject.GType<QduQuectelRebootType>;
-    }
+    /**
+     * QDU Quectel Reboot session type.
+     */
 
     /**
      * QDU Quectel Reboot session type.
      */
+    export namespace QduQuectelRebootType {
+        export const $gtype: GObject.GType<QduQuectelRebootType>;
+    }
+
     enum QduQuectelRebootType {
         /**
          * Reboot to Emergency Download mode
          */
         EDL,
     }
-    export namespace QduQuectelVersionType {
-        export const $gtype: GObject.GType<QduQuectelVersionType>;
-    }
+    /**
+     * QDU Quectel Read Version session type.
+     */
 
     /**
      * QDU Quectel Read Version session type.
      */
+    export namespace QduQuectelVersionType {
+        export const $gtype: GObject.GType<QduQuectelVersionType>;
+    }
+
     enum QduQuectelVersionType {
         /**
          * Firmware Build ID
          */
         ID,
     }
-    export namespace QduSessionAction {
-        export const $gtype: GObject.GType<QduSessionAction>;
-    }
+    /**
+     * Action performed for the session initialization.
+     */
 
     /**
      * Action performed for the session initialization.
      */
+    export namespace QduSessionAction {
+        export const $gtype: GObject.GType<QduSessionAction>;
+    }
+
     enum QduSessionAction {
         /**
          * Start.
@@ -2256,13 +2540,17 @@ export namespace Mbim {
          */
         STOP,
     }
-    export namespace QduSessionResult {
-        export const $gtype: GObject.GType<QduSessionResult>;
-    }
+    /**
+     * QDU session result.
+     */
 
     /**
      * QDU session result.
      */
+    export namespace QduSessionResult {
+        export const $gtype: GObject.GType<QduSessionResult>;
+    }
+
     enum QduSessionResult {
         /**
          * Success
@@ -2273,13 +2561,17 @@ export namespace Mbim {
          */
         FAILURE,
     }
-    export namespace QduSessionStatus {
-        export const $gtype: GObject.GType<QduSessionStatus>;
-    }
+    /**
+     * QDU session status.
+     */
 
     /**
      * QDU session status.
      */
+    export namespace QduSessionStatus {
+        export const $gtype: GObject.GType<QduSessionStatus>;
+    }
+
     enum QduSessionStatus {
         /**
          * Update session is not active.
@@ -2294,13 +2586,17 @@ export namespace Mbim {
          */
         APPLY_UPDATE,
     }
-    export namespace QduSessionType {
-        export const $gtype: GObject.GType<QduSessionType>;
-    }
+    /**
+     * QDU session types.
+     */
 
     /**
      * QDU session types.
      */
+    export namespace QduSessionType {
+        export const $gtype: GObject.GType<QduSessionType>;
+    }
+
     enum QduSessionType {
         /**
          * No update session.
@@ -2311,13 +2607,17 @@ export namespace Mbim {
          */
         LE,
     }
-    export namespace QuectelRadioSwitchState {
-        export const $gtype: GObject.GType<QuectelRadioSwitchState>;
-    }
+    /**
+     * Radio switch state.
+     */
 
     /**
      * Radio switch state.
      */
+    export namespace QuectelRadioSwitchState {
+        export const $gtype: GObject.GType<QuectelRadioSwitchState>;
+    }
+
     enum QuectelRadioSwitchState {
         /**
          * Radio is off.
@@ -2332,13 +2632,17 @@ export namespace Mbim {
          */
         FCC_LOCKED,
     }
-    export namespace RadioSwitchState {
-        export const $gtype: GObject.GType<RadioSwitchState>;
-    }
+    /**
+     * Radio switch state.
+     */
 
     /**
      * Radio switch state.
      */
+    export namespace RadioSwitchState {
+        export const $gtype: GObject.GType<RadioSwitchState>;
+    }
+
     enum RadioSwitchState {
         /**
          * Radio is off.
@@ -2349,13 +2653,17 @@ export namespace Mbim {
          */
         ON,
     }
-    export namespace RegisterAction {
-        export const $gtype: GObject.GType<RegisterAction>;
-    }
+    /**
+     * Type of registration requested.
+     */
 
     /**
      * Type of registration requested.
      */
+    export namespace RegisterAction {
+        export const $gtype: GObject.GType<RegisterAction>;
+    }
+
     enum RegisterAction {
         /**
          * Automatic registration.
@@ -2366,13 +2674,17 @@ export namespace Mbim {
          */
         MANUAL,
     }
-    export namespace RegisterMode {
-        export const $gtype: GObject.GType<RegisterMode>;
-    }
+    /**
+     * Type of registration requested.
+     */
 
     /**
      * Type of registration requested.
      */
+    export namespace RegisterMode {
+        export const $gtype: GObject.GType<RegisterMode>;
+    }
+
     enum RegisterMode {
         /**
          * Unknown.
@@ -2387,13 +2699,17 @@ export namespace Mbim {
          */
         MANUAL,
     }
-    export namespace RegisterState {
-        export const $gtype: GObject.GType<RegisterState>;
-    }
+    /**
+     * Registration state.
+     */
 
     /**
      * Registration state.
      */
+    export namespace RegisterState {
+        export const $gtype: GObject.GType<RegisterState>;
+    }
+
     enum RegisterState {
         /**
          * Unknown registration state.
@@ -2424,13 +2740,17 @@ export namespace Mbim {
          */
         DENIED,
     }
-    export namespace SarBackoffState {
-        export const $gtype: GObject.GType<SarBackoffState>;
-    }
+    /**
+     * SAR backoff state.
+     */
 
     /**
      * SAR backoff state.
      */
+    export namespace SarBackoffState {
+        export const $gtype: GObject.GType<SarBackoffState>;
+    }
+
     enum SarBackoffState {
         /**
          * SAR backoff is disabled.
@@ -2441,13 +2761,17 @@ export namespace Mbim {
          */
         ENABLED,
     }
-    export namespace SarControlMode {
-        export const $gtype: GObject.GType<SarControlMode>;
-    }
+    /**
+     * SAR backoff mechanism control modes.
+     */
 
     /**
      * SAR backoff mechanism control modes.
      */
+    export namespace SarControlMode {
+        export const $gtype: GObject.GType<SarControlMode>;
+    }
+
     enum SarControlMode {
         /**
          * SAR backoff is controlled by the modem directly.
@@ -2458,13 +2782,17 @@ export namespace Mbim {
          */
         OS,
     }
-    export namespace SarWifiHardwareState {
-        export const $gtype: GObject.GType<SarWifiHardwareState>;
-    }
+    /**
+     * Whether the Wi-Fi and cellular SAR are integrated at hardware level.
+     */
 
     /**
      * Whether the Wi-Fi and cellular SAR are integrated at hardware level.
      */
+    export namespace SarWifiHardwareState {
+        export const $gtype: GObject.GType<SarWifiHardwareState>;
+    }
+
     enum SarWifiHardwareState {
         /**
          * Integrated.
@@ -2475,13 +2803,17 @@ export namespace Mbim {
          */
         NOT_INTEGRATED,
     }
-    export namespace Service {
-        export const $gtype: GObject.GType<Service>;
-    }
+    /**
+     * Enumeration of the generic MBIM services.
+     */
 
     /**
      * Enumeration of the generic MBIM services.
      */
+    export namespace Service {
+        export const $gtype: GObject.GType<Service>;
+    }
+
     enum Service {
         /**
          * Invalid service.
@@ -2580,13 +2912,17 @@ export namespace Mbim {
          */
         GOOGLE,
     }
-    export namespace SmsCdmaEncoding {
-        export const $gtype: GObject.GType<SmsCdmaEncoding>;
-    }
+    /**
+     * Type of encoding of a CDMA SMS.
+     */
 
     /**
      * Type of encoding of a CDMA SMS.
      */
+    export namespace SmsCdmaEncoding {
+        export const $gtype: GObject.GType<SmsCdmaEncoding>;
+    }
+
     enum SmsCdmaEncoding {
         /**
          * Octet.
@@ -2629,13 +2965,17 @@ export namespace Mbim {
          */
         GSM_7BIT,
     }
-    export namespace SmsCdmaLang {
-        export const $gtype: GObject.GType<SmsCdmaLang>;
-    }
+    /**
+     * Language of a CDMA SMS.
+     */
 
     /**
      * Language of a CDMA SMS.
      */
+    export namespace SmsCdmaLang {
+        export const $gtype: GObject.GType<SmsCdmaLang>;
+    }
+
     enum SmsCdmaLang {
         /**
          * Unknown language.
@@ -2670,14 +3010,19 @@ export namespace Mbim {
          */
         HEBREW,
     }
-    export namespace SmsFlag {
-        export const $gtype: GObject.GType<SmsFlag>;
-    }
+    /**
+     * Flags to use when requesting to read SMS. `MBIM_SMS_FLAG_ALL` and
+     * `MBIM_SMS_FLAG_NEW` are mandatory, all the others are optional.
+     */
 
     /**
      * Flags to use when requesting to read SMS. `MBIM_SMS_FLAG_ALL` and
      * `MBIM_SMS_FLAG_NEW` are mandatory, all the others are optional.
      */
+    export namespace SmsFlag {
+        export const $gtype: GObject.GType<SmsFlag>;
+    }
+
     enum SmsFlag {
         /**
          * All.
@@ -2704,13 +3049,17 @@ export namespace Mbim {
          */
         DRAFT,
     }
-    export namespace SmsFormat {
-        export const $gtype: GObject.GType<SmsFormat>;
-    }
+    /**
+     * SMS format.
+     */
 
     /**
      * SMS format.
      */
+    export namespace SmsFormat {
+        export const $gtype: GObject.GType<SmsFormat>;
+    }
+
     enum SmsFormat {
         /**
          * PDU format.
@@ -2721,13 +3070,17 @@ export namespace Mbim {
          */
         CDMA,
     }
-    export namespace SmsStatus {
-        export const $gtype: GObject.GType<SmsStatus>;
-    }
+    /**
+     * Status of a SMS message.
+     */
 
     /**
      * Status of a SMS message.
      */
+    export namespace SmsStatus {
+        export const $gtype: GObject.GType<SmsStatus>;
+    }
+
     enum SmsStatus {
         /**
          * New.
@@ -2746,13 +3099,17 @@ export namespace Mbim {
          */
         SENT,
     }
-    export namespace SmsStorageState {
-        export const $gtype: GObject.GType<SmsStorageState>;
-    }
+    /**
+     * State of the SMS storage.
+     */
 
     /**
      * State of the SMS storage.
      */
+    export namespace SmsStorageState {
+        export const $gtype: GObject.GType<SmsStorageState>;
+    }
+
     enum SmsStorageState {
         /**
          * Storage not initialized.
@@ -2987,13 +3344,17 @@ export namespace Mbim {
         static quark(): GLib.Quark;
     }
 
-    export namespace StkPacProfile {
-        export const $gtype: GObject.GType<StkPacProfile>;
-    }
+    /**
+     * Proactive command profile.
+     */
 
     /**
      * Proactive command profile.
      */
+    export namespace StkPacProfile {
+        export const $gtype: GObject.GType<StkPacProfile>;
+    }
+
     enum StkPacProfile {
         /**
          * Command not handled by function but handled by host.
@@ -3028,13 +3389,17 @@ export namespace Mbim {
          */
         HANDLED_BY_HOST_FUNCTION_ABLE_TO_HANDLE,
     }
-    export namespace StkPacType {
-        export const $gtype: GObject.GType<StkPacType>;
-    }
+    /**
+     * Type of proactive command.
+     */
 
     /**
      * Type of proactive command.
      */
+    export namespace StkPacType {
+        export const $gtype: GObject.GType<StkPacType>;
+    }
+
     enum StkPacType {
         /**
          * Host is requested to handle the Proactive command.
@@ -3045,13 +3410,17 @@ export namespace Mbim {
          */
         NOTIFICATION,
     }
-    export namespace SubscriberReadyState {
-        export const $gtype: GObject.GType<SubscriberReadyState>;
-    }
+    /**
+     * Ready state of the subscriber.
+     */
 
     /**
      * Ready state of the subscriber.
      */
+    export namespace SubscriberReadyState {
+        export const $gtype: GObject.GType<SubscriberReadyState>;
+    }
+
     enum SubscriberReadyState {
         /**
          * Not initialized.
@@ -3087,13 +3456,17 @@ export namespace Mbim {
          */
         NO_ESIM_PROFILE,
     }
-    export namespace TlvType {
-        export const $gtype: GObject.GType<TlvType>;
-    }
+    /**
+     * Type of the MBIM TLV.
+     */
 
     /**
      * Type of the MBIM TLV.
      */
+    export namespace TlvType {
+        export const $gtype: GObject.GType<TlvType>;
+    }
+
     enum TlvType {
         /**
          * Invalid TLV type.
@@ -3168,13 +3541,17 @@ export namespace Mbim {
          */
         WAKE_PACKET,
     }
-    export namespace TraceCommand {
-        export const $gtype: GObject.GType<TraceCommand>;
-    }
+    /**
+     * The trace command value.
+     */
 
     /**
      * The trace command value.
      */
+    export namespace TraceCommand {
+        export const $gtype: GObject.GType<TraceCommand>;
+    }
+
     enum TraceCommand {
         /**
          * Trace command mode value.
@@ -3193,13 +3570,17 @@ export namespace Mbim {
          */
         FLASH_INTERVAL,
     }
-    export namespace TransmissionNotificationStatus {
-        export const $gtype: GObject.GType<TransmissionNotificationStatus>;
-    }
+    /**
+     * Whether modem channel transmission status notification is disabled or enabled.
+     */
 
     /**
      * Whether modem channel transmission status notification is disabled or enabled.
      */
+    export namespace TransmissionNotificationStatus {
+        export const $gtype: GObject.GType<TransmissionNotificationStatus>;
+    }
+
     enum TransmissionNotificationStatus {
         /**
          * Notification disabled.
@@ -3210,13 +3591,17 @@ export namespace Mbim {
          */
         ENABLED,
     }
-    export namespace TransmissionState {
-        export const $gtype: GObject.GType<TransmissionState>;
-    }
+    /**
+     * Whether modem is having TX traffic every hysteresis timeout.
+     */
 
     /**
      * Whether modem is having TX traffic every hysteresis timeout.
      */
+    export namespace TransmissionState {
+        export const $gtype: GObject.GType<TransmissionState>;
+    }
+
     enum TransmissionState {
         /**
          * Modem was not actively transmitting data.
@@ -3227,13 +3612,17 @@ export namespace Mbim {
          */
         ACTIVE,
     }
-    export namespace UiccApplicationType {
-        export const $gtype: GObject.GType<UiccApplicationType>;
-    }
+    /**
+     * Type of UICC application.
+     */
 
     /**
      * Type of UICC application.
      */
+    export namespace UiccApplicationType {
+        export const $gtype: GObject.GType<UiccApplicationType>;
+    }
+
     enum UiccApplicationType {
         /**
          * Unknown.
@@ -3264,13 +3653,17 @@ export namespace Mbim {
          */
         ISIM,
     }
-    export namespace UiccClassByteType {
-        export const $gtype: GObject.GType<UiccClassByteType>;
-    }
+    /**
+     * Specifies the type of class byte definition.
+     */
 
     /**
      * Specifies the type of class byte definition.
      */
+    export namespace UiccClassByteType {
+        export const $gtype: GObject.GType<UiccClassByteType>;
+    }
+
     enum UiccClassByteType {
         /**
          * Defined according to first interindustry definition in ISO 7816-4.
@@ -3281,13 +3674,17 @@ export namespace Mbim {
          */
         EXTENDED,
     }
-    export namespace UiccFileAccessibility {
-        export const $gtype: GObject.GType<UiccFileAccessibility>;
-    }
+    /**
+     * The UICC file accessibility.
+     */
 
     /**
      * The UICC file accessibility.
      */
+    export namespace UiccFileAccessibility {
+        export const $gtype: GObject.GType<UiccFileAccessibility>;
+    }
+
     enum UiccFileAccessibility {
         /**
          * Unknown.
@@ -3302,13 +3699,17 @@ export namespace Mbim {
          */
         SHAREABLE,
     }
-    export namespace UiccFileStructure {
-        export const $gtype: GObject.GType<UiccFileStructure>;
-    }
+    /**
+     * The UICC file structure.
+     */
 
     /**
      * The UICC file structure.
      */
+    export namespace UiccFileStructure {
+        export const $gtype: GObject.GType<UiccFileStructure>;
+    }
+
     enum UiccFileStructure {
         /**
          * Unknown.
@@ -3331,13 +3732,17 @@ export namespace Mbim {
          */
         BER_TLV,
     }
-    export namespace UiccFileType {
-        export const $gtype: GObject.GType<UiccFileType>;
-    }
+    /**
+     * The UICC file type.
+     */
 
     /**
      * The UICC file type.
      */
+    export namespace UiccFileType {
+        export const $gtype: GObject.GType<UiccFileType>;
+    }
+
     enum UiccFileType {
         /**
          * Unknown.
@@ -3356,14 +3761,19 @@ export namespace Mbim {
          */
         DF_OR_ADF,
     }
-    export namespace UiccPassThroughAction {
-        export const $gtype: GObject.GType<UiccPassThroughAction>;
-    }
+    /**
+     * Pass through actions host can specify to modem. Upon reset
+     * treats UICC as if pass through or as a regular UICC
+     */
 
     /**
      * Pass through actions host can specify to modem. Upon reset
      * treats UICC as if pass through or as a regular UICC
      */
+    export namespace UiccPassThroughAction {
+        export const $gtype: GObject.GType<UiccPassThroughAction>;
+    }
+
     enum UiccPassThroughAction {
         /**
          * Disable pass through.
@@ -3374,13 +3784,17 @@ export namespace Mbim {
          */
         ENABLE,
     }
-    export namespace UiccPassThroughStatus {
-        export const $gtype: GObject.GType<UiccPassThroughStatus>;
-    }
+    /**
+     * Pass through status of the modem specifies to the host.
+     */
 
     /**
      * Pass through status of the modem specifies to the host.
      */
+    export namespace UiccPassThroughStatus {
+        export const $gtype: GObject.GType<UiccPassThroughStatus>;
+    }
+
     enum UiccPassThroughStatus {
         /**
          * Pass through disabled.
@@ -3391,13 +3805,17 @@ export namespace Mbim {
          */
         ENABLED,
     }
-    export namespace UiccSecureMessaging {
-        export const $gtype: GObject.GType<UiccSecureMessaging>;
-    }
+    /**
+     * Specifies whether apdu is exchanged using secure messaging.
+     */
 
     /**
      * Specifies whether apdu is exchanged using secure messaging.
      */
+    export namespace UiccSecureMessaging {
+        export const $gtype: GObject.GType<UiccSecureMessaging>;
+    }
+
     enum UiccSecureMessaging {
         /**
          * No secure messaging.
@@ -3408,13 +3826,17 @@ export namespace Mbim {
          */
         NO_HDR_AUTH,
     }
-    export namespace UiccSlotState {
-        export const $gtype: GObject.GType<UiccSlotState>;
-    }
+    /**
+     * MbimUiccSlotState
+     */
 
     /**
      * MbimUiccSlotState
      */
+    export namespace UiccSlotState {
+        export const $gtype: GObject.GType<UiccSlotState>;
+    }
+
     enum UiccSlotState {
         /**
          * The modem is still in the process of initializing so the SIM slot state is not deterministic.
@@ -3453,13 +3875,17 @@ export namespace Mbim {
          */
         STATE_ACTIVE_ESIM_NO_PROFILES,
     }
-    export namespace UssdAction {
-        export const $gtype: GObject.GType<UssdAction>;
-    }
+    /**
+     * USSD action.
+     */
 
     /**
      * USSD action.
      */
+    export namespace UssdAction {
+        export const $gtype: GObject.GType<UssdAction>;
+    }
+
     enum UssdAction {
         /**
          * Initiate USSD session.
@@ -3474,13 +3900,17 @@ export namespace Mbim {
          */
         CANCEL,
     }
-    export namespace UssdResponse {
-        export const $gtype: GObject.GType<UssdResponse>;
-    }
+    /**
+     * USSD response.
+     */
 
     /**
      * USSD response.
      */
+    export namespace UssdResponse {
+        export const $gtype: GObject.GType<UssdResponse>;
+    }
+
     enum UssdResponse {
         /**
          * No action required.
@@ -3507,13 +3937,17 @@ export namespace Mbim {
          */
         NETWORK_TIMEOUT,
     }
-    export namespace UssdSessionState {
-        export const $gtype: GObject.GType<UssdSessionState>;
-    }
+    /**
+     * Session state.
+     */
 
     /**
      * Session state.
      */
+    export namespace UssdSessionState {
+        export const $gtype: GObject.GType<UssdSessionState>;
+    }
+
     enum UssdSessionState {
         /**
          * New session.
@@ -3524,13 +3958,17 @@ export namespace Mbim {
          */
         EXISTING_SESSION,
     }
-    export namespace VisibleProvidersAction {
-        export const $gtype: GObject.GType<VisibleProvidersAction>;
-    }
+    /**
+     * Type of action to perform when listing visible providers.
+     */
 
     /**
      * Type of action to perform when listing visible providers.
      */
+    export namespace VisibleProvidersAction {
+        export const $gtype: GObject.GType<VisibleProvidersAction>;
+    }
+
     enum VisibleProvidersAction {
         /**
          * Full scan.
@@ -3541,13 +3979,17 @@ export namespace Mbim {
          */
         RESTRICTED_SCAN,
     }
-    export namespace VoiceCallState {
-        export const $gtype: GObject.GType<VoiceCallState>;
-    }
+    /**
+     * Voice Call State.
+     */
 
     /**
      * Voice Call State.
      */
+    export namespace VoiceCallState {
+        export const $gtype: GObject.GType<VoiceCallState>;
+    }
+
     enum VoiceCallState {
         /**
          * None.
@@ -3562,13 +4004,17 @@ export namespace Mbim {
          */
         HANG_UP,
     }
-    export namespace VoiceClass {
-        export const $gtype: GObject.GType<VoiceClass>;
-    }
+    /**
+     * Voice class.
+     */
 
     /**
      * Voice class.
      */
+    export namespace VoiceClass {
+        export const $gtype: GObject.GType<VoiceClass>;
+    }
+
     enum VoiceClass {
         /**
          * Unknown voice class.
@@ -3587,13 +4033,17 @@ export namespace Mbim {
          */
         SIMULTANEOUS_VOICE_DATA,
     }
-    export namespace WakeType {
-        export const $gtype: GObject.GType<WakeType>;
-    }
+    /**
+     * Wake type.
+     */
 
     /**
      * Wake type.
      */
+    export namespace WakeType {
+        export const $gtype: GObject.GType<WakeType>;
+    }
+
     enum WakeType {
         /**
          * A CID response wakes device.
@@ -4717,13 +5167,17 @@ export namespace Mbim {
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
     function wake_type_get_string(val: WakeType): string;
-    export namespace CellularClass {
-        export const $gtype: GObject.GType<CellularClass>;
-    }
+    /**
+     * Cellular class.
+     */
 
     /**
      * Cellular class.
      */
+    export namespace CellularClass {
+        export const $gtype: GObject.GType<CellularClass>;
+    }
+
     enum CellularClass {
         /**
          * None. Since 1.30.
@@ -4738,13 +5192,17 @@ export namespace Mbim {
          */
         CDMA,
     }
-    export namespace CtrlCaps {
-        export const $gtype: GObject.GType<CtrlCaps>;
-    }
+    /**
+     * Control capabilities.
+     */
 
     /**
      * Control capabilities.
      */
+    export namespace CtrlCaps {
+        export const $gtype: GObject.GType<CtrlCaps>;
+    }
+
     enum CtrlCaps {
         /**
          * None. Since 1.28.
@@ -4783,9 +5241,16 @@ export namespace Mbim {
          */
         SIM_HOT_SWAP_CAPABLE,
     }
-    export namespace DataClass {
-        export const $gtype: GObject.GType<DataClass>;
-    }
+    /**
+     * Data class.
+     *
+     * Both 5G related values are introduced in MBIM Extension v2.0, but given
+     * the update is compatible with the original MBIM enumeration, devices may
+     * report them without having enabled MBIM Extension v2.0 support.
+     *
+     * This type is updated in MBIM Extension v3.0 in a non-backwards compatible
+     * way, see #MbimDataClassV3.
+     */
 
     /**
      * Data class.
@@ -4797,6 +5262,10 @@ export namespace Mbim {
      * This type is updated in MBIM Extension v3.0 in a non-backwards compatible
      * way, see #MbimDataClassV3.
      */
+    export namespace DataClass {
+        export const $gtype: GObject.GType<DataClass>;
+    }
+
     enum DataClass {
         /**
          * None. Since 1.30.
@@ -4867,9 +5336,14 @@ export namespace Mbim {
          */
         CUSTOM,
     }
-    export namespace DataClassV3 {
-        export const $gtype: GObject.GType<DataClassV3>;
-    }
+    /**
+     * Data class update in MBIMEx v3.0.
+     *
+     * There is now a single flag for 5G, and the new #MbimDataSubclass helps to
+     * identify the specific 5G setup.
+     *
+     * This type should be considered incompatible with #MbimDataClass.
+     */
 
     /**
      * Data class update in MBIMEx v3.0.
@@ -4879,6 +5353,10 @@ export namespace Mbim {
      *
      * This type should be considered incompatible with #MbimDataClass.
      */
+    export namespace DataClassV3 {
+        export const $gtype: GObject.GType<DataClassV3>;
+    }
+
     enum DataClassV3 {
         /**
          * None. Since 1.30.
@@ -4945,13 +5423,17 @@ export namespace Mbim {
          */
         CUSTOM,
     }
-    export namespace DataSubclass {
-        export const $gtype: GObject.GType<DataSubclass>;
-    }
+    /**
+     * Flags specifying the data subclass.
+     */
 
     /**
      * Flags specifying the data subclass.
      */
+    export namespace DataSubclass {
+        export const $gtype: GObject.GType<DataSubclass>;
+    }
+
     enum DataSubclass {
         /**
          * No data subclass.
@@ -4978,13 +5460,17 @@ export namespace Mbim {
          */
         '5G_NGENDC',
     }
-    export namespace DeviceOpenFlags {
-        export const $gtype: GObject.GType<DeviceOpenFlags>;
-    }
+    /**
+     * Flags to specify which actions to be performed when the device is open.
+     */
 
     /**
      * Flags to specify which actions to be performed when the device is open.
      */
+    export namespace DeviceOpenFlags {
+        export const $gtype: GObject.GType<DeviceOpenFlags>;
+    }
+
     enum DeviceOpenFlags {
         /**
          * None.
@@ -5003,10 +5489,6 @@ export namespace Mbim {
          */
         MS_MBIMEX_V3,
     }
-    export namespace FrequencyRange {
-        export const $gtype: GObject.GType<FrequencyRange>;
-    }
-
     /**
      * Frequency Range.
      */
@@ -5036,13 +5518,17 @@ export namespace Mbim {
         _init(...args: any[]): void;
     }
 
-    export namespace IPConfigurationAvailableFlag {
-        export const $gtype: GObject.GType<IPConfigurationAvailableFlag>;
-    }
+    /**
+     * Mask of available information about an IP address.
+     */
 
     /**
      * Mask of available information about an IP address.
      */
+    export namespace IPConfigurationAvailableFlag {
+        export const $gtype: GObject.GType<IPConfigurationAvailableFlag>;
+    }
+
     enum IPConfigurationAvailableFlag {
         /**
          * No info available.
@@ -5065,13 +5551,17 @@ export namespace Mbim {
          */
         MTU,
     }
-    export namespace ProviderState {
-        export const $gtype: GObject.GType<ProviderState>;
-    }
+    /**
+     * State of the provider.
+     */
 
     /**
      * State of the provider.
      */
+    export namespace ProviderState {
+        export const $gtype: GObject.GType<ProviderState>;
+    }
+
     enum ProviderState {
         /**
          * Unknown.
@@ -5102,13 +5592,17 @@ export namespace Mbim {
          */
         PREFERRED_MULTICARRIER,
     }
-    export namespace ReadyInfoFlag {
-        export const $gtype: GObject.GType<ReadyInfoFlag>;
-    }
+    /**
+     * Flag specifying how the ready info is treated.
+     */
 
     /**
      * Flag specifying how the ready info is treated.
      */
+    export namespace ReadyInfoFlag {
+        export const $gtype: GObject.GType<ReadyInfoFlag>;
+    }
+
     enum ReadyInfoFlag {
         /**
          * Device in normal mode. Since 1.16.
@@ -5119,13 +5613,17 @@ export namespace Mbim {
          */
         PROTECT_UNIQUE_ID,
     }
-    export namespace RegistrationFlag {
-        export const $gtype: GObject.GType<RegistrationFlag>;
-    }
+    /**
+     * Registration flags.
+     */
 
     /**
      * Registration flags.
      */
+    export namespace RegistrationFlag {
+        export const $gtype: GObject.GType<RegistrationFlag>;
+    }
+
     enum RegistrationFlag {
         /**
          * None.
@@ -5140,13 +5638,17 @@ export namespace Mbim {
          */
         PACKET_SERVICE_AUTOMATIC_ATTACH,
     }
-    export namespace SimClass {
-        export const $gtype: GObject.GType<SimClass>;
-    }
+    /**
+     * SIM class.
+     */
 
     /**
      * SIM class.
      */
+    export namespace SimClass {
+        export const $gtype: GObject.GType<SimClass>;
+    }
+
     enum SimClass {
         /**
          * None. Since 1.30.
@@ -5161,13 +5663,17 @@ export namespace Mbim {
          */
         REMOVABLE,
     }
-    export namespace SmsCaps {
-        export const $gtype: GObject.GType<SmsCaps>;
-    }
+    /**
+     * SMS capabilities.
+     */
 
     /**
      * SMS capabilities.
      */
+    export namespace SmsCaps {
+        export const $gtype: GObject.GType<SmsCaps>;
+    }
+
     enum SmsCaps {
         /**
          * None. Since 1.30.
@@ -5190,13 +5696,17 @@ export namespace Mbim {
          */
         TEXT_SEND,
     }
-    export namespace SmsStatusFlag {
-        export const $gtype: GObject.GType<SmsStatusFlag>;
-    }
+    /**
+     * SMS status flags.
+     */
 
     /**
      * SMS status flags.
      */
+    export namespace SmsStatusFlag {
+        export const $gtype: GObject.GType<SmsStatusFlag>;
+    }
+
     enum SmsStatusFlag {
         /**
          * None.
@@ -5211,13 +5721,17 @@ export namespace Mbim {
          */
         NEW_MESSAGE,
     }
-    export namespace SubscriberReadyStatusFlag {
-        export const $gtype: GObject.GType<SubscriberReadyStatusFlag>;
-    }
+    /**
+     * Flags specifying SIM related details.
+     */
 
     /**
      * Flags specifying SIM related details.
      */
+    export namespace SubscriberReadyStatusFlag {
+        export const $gtype: GObject.GType<SubscriberReadyStatusFlag>;
+    }
+
     enum SubscriberReadyStatusFlag {
         /**
          * None.

@@ -18,14 +18,19 @@ export namespace TrackerControl {
      * TrackerControl-1.0
      */
 
-    export namespace MinerManagerError {
-        export const $gtype: GObject.GType<MinerManagerError>;
-    }
+    /**
+     * Enumeration values used in errors returned by the
+     * #TrackerMinerManager API.
+     */
 
     /**
      * Enumeration values used in errors returned by the
      * #TrackerMinerManager API.
      */
+    export namespace MinerManagerError {
+        export const $gtype: GObject.GType<MinerManagerError>;
+    }
+
     enum MinerManagerError {
         /**
          * The miner in question

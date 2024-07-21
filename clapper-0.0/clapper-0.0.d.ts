@@ -42,6 +42,7 @@ export namespace Clapper {
          */
         NONCURRENT,
     }
+
     export namespace MarkerType {
         export const $gtype: GObject.GType<MarkerType>;
     }
@@ -67,6 +68,7 @@ export namespace Clapper {
         CUSTOM_2,
         CUSTOM_3,
     }
+
     export namespace PlayerSeekMethod {
         export const $gtype: GObject.GType<PlayerSeekMethod>;
     }
@@ -85,6 +87,7 @@ export namespace Clapper {
          */
         FAST,
     }
+
     export namespace PlayerState {
         export const $gtype: GObject.GType<PlayerState>;
     }
@@ -107,6 +110,7 @@ export namespace Clapper {
          */
         PLAYING,
     }
+
     export namespace QueueProgressionMode {
         export const $gtype: GObject.GType<QueueProgressionMode>;
     }
@@ -137,6 +141,7 @@ export namespace Clapper {
          */
         SHUFFLE,
     }
+
     export namespace StreamType {
         export const $gtype: GObject.GType<StreamType>;
     }

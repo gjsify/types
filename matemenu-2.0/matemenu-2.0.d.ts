@@ -30,6 +30,7 @@ export namespace MateMenu {
         HEADER,
         ALIAS,
     }
+
     export namespace TreeFlags {
         export const $gtype: GObject.GType<TreeFlags>;
     }

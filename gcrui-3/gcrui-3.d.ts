@@ -29,9 +29,12 @@ export namespace GcrUi {
      * GcrUi-3
      */
 
-    export namespace CollectionModelMode {
-        export const $gtype: GObject.GType<CollectionModelMode>;
-    }
+    /**
+     * If a [class`CollectionModel]` is created with a mode of
+     * %GCR_COLLECTION_MODEL_TREE, then any included objects that are themselves a
+     * [iface`Gcr`.Collection], will have all child
+     * objects include as child rows in a tree form.
+     */
 
     /**
      * If a [class`CollectionModel]` is created with a mode of
@@ -39,6 +42,10 @@ export namespace GcrUi {
      * [iface`Gcr`.Collection], will have all child
      * objects include as child rows in a tree form.
      */
+    export namespace CollectionModelMode {
+        export const $gtype: GObject.GType<CollectionModelMode>;
+    }
+
     enum CollectionModelMode {
         /**
          * only objects in the top collection, no child objects

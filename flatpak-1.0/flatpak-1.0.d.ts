@@ -192,13 +192,17 @@ export namespace Flatpak {
         static quark(): GLib.Quark;
     }
 
-    export namespace RefKind {
-        export const $gtype: GObject.GType<RefKind>;
-    }
+    /**
+     * The kind of artifact that a FlatpakRef refers to.
+     */
 
     /**
      * The kind of artifact that a FlatpakRef refers to.
      */
+    export namespace RefKind {
+        export const $gtype: GObject.GType<RefKind>;
+    }
+
     enum RefKind {
         /**
          * An application
@@ -209,13 +213,17 @@ export namespace Flatpak {
          */
         RUNTIME,
     }
-    export namespace RemoteType {
-        export const $gtype: GObject.GType<RemoteType>;
-    }
+    /**
+     * Different types of `FlatpakRemote`.
+     */
 
     /**
      * Different types of `FlatpakRemote`.
      */
+    export namespace RemoteType {
+        export const $gtype: GObject.GType<RemoteType>;
+    }
+
     enum RemoteType {
         /**
          * Statically configured remote
@@ -230,13 +238,17 @@ export namespace Flatpak {
          */
         LAN,
     }
-    export namespace StorageType {
-        export const $gtype: GObject.GType<StorageType>;
-    }
+    /**
+     * Information about the storage of an installation.
+     */
 
     /**
      * Information about the storage of an installation.
      */
+    export namespace StorageType {
+        export const $gtype: GObject.GType<StorageType>;
+    }
+
     enum StorageType {
         /**
          * default
@@ -259,13 +271,17 @@ export namespace Flatpak {
          */
         NETWORK,
     }
-    export namespace TransactionOperationType {
-        export const $gtype: GObject.GType<TransactionOperationType>;
-    }
+    /**
+     * The type of a #FlatpakTransactionOperation.
+     */
 
     /**
      * The type of a #FlatpakTransactionOperation.
      */
+    export namespace TransactionOperationType {
+        export const $gtype: GObject.GType<TransactionOperationType>;
+    }
+
     enum TransactionOperationType {
         /**
          * Install a ref from a remote
@@ -288,13 +304,17 @@ export namespace Flatpak {
          */
         LAST_TYPE,
     }
-    export namespace TransactionRemoteReason {
-        export const $gtype: GObject.GType<TransactionRemoteReason>;
-    }
+    /**
+     * The reason for #FlatpakTransaction::add-new-remote.
+     */
 
     /**
      * The reason for #FlatpakTransaction::add-new-remote.
      */
+    export namespace TransactionRemoteReason {
+        export const $gtype: GObject.GType<TransactionRemoteReason>;
+    }
+
     enum TransactionRemoteReason {
         /**
          * The remote specified in the flatpakref has other apps too
@@ -346,13 +366,17 @@ export namespace Flatpak {
     interface ProgressCallback {
         (status: string, progress: number, estimating: boolean): void;
     }
-    export namespace InstallFlags {
-        export const $gtype: GObject.GType<InstallFlags>;
-    }
+    /**
+     * Flags to alter the behavior of flatpak_installation_install_full().
+     */
 
     /**
      * Flags to alter the behavior of flatpak_installation_install_full().
      */
+    export namespace InstallFlags {
+        export const $gtype: GObject.GType<InstallFlags>;
+    }
+
     enum InstallFlags {
         /**
          * Default
@@ -377,13 +401,17 @@ export namespace Flatpak {
          */
         NO_TRIGGERS,
     }
-    export namespace LaunchFlags {
-        export const $gtype: GObject.GType<LaunchFlags>;
-    }
+    /**
+     * Flags to alter the behavior of flatpak_installation_launch_full().
+     */
 
     /**
      * Flags to alter the behavior of flatpak_installation_launch_full().
      */
+    export namespace LaunchFlags {
+        export const $gtype: GObject.GType<LaunchFlags>;
+    }
+
     enum LaunchFlags {
         /**
          * Default
@@ -395,13 +423,17 @@ export namespace Flatpak {
          */
         DO_NOT_REAP,
     }
-    export namespace QueryFlags {
-        export const $gtype: GObject.GType<QueryFlags>;
-    }
+    /**
+     * Flags to alter the behavior of e.g flatpak_installation_list_remote_refs_sync_full().
+     */
 
     /**
      * Flags to alter the behavior of e.g flatpak_installation_list_remote_refs_sync_full().
      */
+    export namespace QueryFlags {
+        export const $gtype: GObject.GType<QueryFlags>;
+    }
+
     enum QueryFlags {
         /**
          * Default
@@ -423,39 +455,51 @@ export namespace Flatpak {
          */
         ALL_ARCHES,
     }
-    export namespace TransactionErrorDetails {
-        export const $gtype: GObject.GType<TransactionErrorDetails>;
-    }
+    /**
+     * The details for #FlatpakTransaction::operation-error.
+     */
 
     /**
      * The details for #FlatpakTransaction::operation-error.
      */
+    export namespace TransactionErrorDetails {
+        export const $gtype: GObject.GType<TransactionErrorDetails>;
+    }
+
     enum TransactionErrorDetails {
         /**
          * The operation failure was not fatal
          */
         FATAL,
     }
-    export namespace TransactionResult {
-        export const $gtype: GObject.GType<TransactionResult>;
-    }
+    /**
+     * The details for #FlatpakTransaction::operation-done.
+     */
 
     /**
      * The details for #FlatpakTransaction::operation-done.
      */
+    export namespace TransactionResult {
+        export const $gtype: GObject.GType<TransactionResult>;
+    }
+
     enum TransactionResult {
         /**
          * The update caused no changes
          */
         CHANGE,
     }
-    export namespace UninstallFlags {
-        export const $gtype: GObject.GType<UninstallFlags>;
-    }
+    /**
+     * Flags to alter the behavior of flatpak_installation_uninstall_full().
+     */
 
     /**
      * Flags to alter the behavior of flatpak_installation_uninstall_full().
      */
+    export namespace UninstallFlags {
+        export const $gtype: GObject.GType<UninstallFlags>;
+    }
+
     enum UninstallFlags {
         /**
          * Default
@@ -472,13 +516,17 @@ export namespace Flatpak {
          */
         NO_TRIGGERS,
     }
-    export namespace UpdateFlags {
-        export const $gtype: GObject.GType<UpdateFlags>;
-    }
+    /**
+     * Flags to alter the behavior of flatpak_installation_update().
+     */
 
     /**
      * Flags to alter the behavior of flatpak_installation_update().
      */
+    export namespace UpdateFlags {
+        export const $gtype: GObject.GType<UpdateFlags>;
+    }
+
     enum UpdateFlags {
         /**
          * Fetch remote builds and install the latest one (default)

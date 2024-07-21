@@ -118,6 +118,7 @@ export namespace Gtef {
          */
         CR_LF,
     }
+
     export namespace SelectionType {
         export const $gtype: GObject.GType<SelectionType>;
     }
@@ -239,13 +240,17 @@ export namespace Gtef {
      * @returns the URI of @item. Free with g_free() when no longer needed.
      */
     function utils_recent_chooser_menu_get_item_uri(menu: Gtk.RecentChooserMenu, item: Gtk.MenuItem): string;
-    export namespace FileSaverFlags {
-        export const $gtype: GObject.GType<FileSaverFlags>;
-    }
+    /**
+     * Flags to define the behavior of a #GtefFileSaver.
+     */
 
     /**
      * Flags to define the behavior of a #GtefFileSaver.
      */
+    export namespace FileSaverFlags {
+        export const $gtype: GObject.GType<FileSaverFlags>;
+    }
+
     enum FileSaverFlags {
         /**
          * No flags.
@@ -264,9 +269,13 @@ export namespace Gtef {
          */
         CREATE_BACKUP,
     }
-    export namespace GutterRendererFoldsState {
-        export const $gtype: GObject.GType<GutterRendererFoldsState>;
-    }
+    /**
+     * The folding state at a certain line in the #GtkTextBuffer.
+     *
+     * Since #GtefGutterRendererFolds has a flat view of the folding tree, some
+     * states can be combined; for example, %GTEF_GUTTER_RENDERER_FOLDS_STATE_END
+     * and %GTEF_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
+     */
 
     /**
      * The folding state at a certain line in the #GtkTextBuffer.
@@ -275,6 +284,10 @@ export namespace Gtef {
      * states can be combined; for example, %GTEF_GUTTER_RENDERER_FOLDS_STATE_END
      * and %GTEF_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
      */
+    export namespace GutterRendererFoldsState {
+        export const $gtype: GObject.GType<GutterRendererFoldsState>;
+    }
+
     enum GutterRendererFoldsState {
         /**
          * No code folding here.

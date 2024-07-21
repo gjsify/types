@@ -82,6 +82,7 @@ export namespace GstPlayer {
         JPG,
         PNG,
     }
+
     export namespace PlayerState {
         export const $gtype: GObject.GType<PlayerState>;
     }

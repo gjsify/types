@@ -28,6 +28,7 @@ export namespace GstVulkan {
     enum VulkanBarrierFlags {
         NONE,
     }
+
     export namespace VulkanBarrierType {
         export const $gtype: GObject.GType<VulkanBarrierType>;
     }
@@ -103,6 +104,7 @@ export namespace GstVulkan {
          */
         SRGB,
     }
+
     export namespace VulkanHandleType {
         export const $gtype: GObject.GType<VulkanHandleType>;
     }
@@ -407,6 +409,7 @@ export namespace GstVulkan {
     interface VulkanTrashNotify {
         (device: VulkanDevice): void;
     }
+
     export namespace VulkanDisplayType {
         export const $gtype: GObject.GType<VulkanDisplayType>;
     }
@@ -442,6 +445,7 @@ export namespace GstVulkan {
          */
         ANY,
     }
+
     export namespace VulkanFormatFlags {
         export const $gtype: GObject.GType<VulkanFormatFlags>;
     }

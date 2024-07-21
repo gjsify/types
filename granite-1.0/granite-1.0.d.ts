@@ -69,6 +69,7 @@ export namespace Granite {
         SINGLE,
         NEVER,
     }
+
     export namespace WidgetsStorageBarItemDescription {
         export const $gtype: GObject.GType<WidgetsStorageBarItemDescription>;
     }
@@ -81,6 +82,7 @@ export namespace Granite {
         APP,
         FILES,
     }
+
     export namespace CollapseMode {
         export const $gtype: GObject.GType<CollapseMode>;
     }
@@ -94,6 +96,7 @@ export namespace Granite {
         BOTTOM,
         LAST,
     }
+
     export namespace TextStyle {
         export const $gtype: GObject.GType<TextStyle>;
     }
@@ -104,6 +107,7 @@ export namespace Granite {
         H2,
         H3,
     }
+
     export namespace CloseButtonPosition {
         export const $gtype: GObject.GType<CloseButtonPosition>;
     }
@@ -112,6 +116,7 @@ export namespace Granite {
         LEFT,
         RIGHT,
     }
+
     export namespace SettingsPageStatusType {
         export const $gtype: GObject.GType<SettingsPageStatusType>;
     }
@@ -123,6 +128,7 @@ export namespace Granite {
         WARNING,
         NONE,
     }
+
     export namespace SettingsColorScheme {
         export const $gtype: GObject.GType<SettingsColorScheme>;
     }

@@ -16,14 +16,19 @@ export namespace Atk {
      * Atk-1.0
      */
 
-    export namespace CoordType {
-        export const $gtype: GObject.GType<CoordType>;
-    }
+    /**
+     * Specifies how xy coordinates are to be interpreted. Used by functions such
+     * as atk_component_get_position() and atk_text_get_character_extents()
+     */
 
     /**
      * Specifies how xy coordinates are to be interpreted. Used by functions such
      * as atk_component_get_position() and atk_text_get_character_extents()
      */
+    export namespace CoordType {
+        export const $gtype: GObject.GType<CoordType>;
+    }
+
     enum CoordType {
         /**
          * specifies xy coordinates relative to the screen
@@ -40,13 +45,17 @@ export namespace Atk {
          */
         PARENT,
     }
-    export namespace KeyEventType {
-        export const $gtype: GObject.GType<KeyEventType>;
-    }
+    /**
+     * Specifies the type of a keyboard evemt.
+     */
 
     /**
      * Specifies the type of a keyboard evemt.
      */
+    export namespace KeyEventType {
+        export const $gtype: GObject.GType<KeyEventType>;
+    }
+
     enum KeyEventType {
         /**
          * specifies a key press event
@@ -61,9 +70,13 @@ export namespace Atk {
          */
         LAST_DEFINED,
     }
-    export namespace Layer {
-        export const $gtype: GObject.GType<Layer>;
-    }
+    /**
+     * Describes the layer of a component
+     *
+     * These enumerated "layer values" are used when determining which UI
+     * rendering layer a component is drawn into, which can help in making
+     * determinations of when components occlude one another.
+     */
 
     /**
      * Describes the layer of a component
@@ -72,6 +85,10 @@ export namespace Atk {
      * rendering layer a component is drawn into, which can help in making
      * determinations of when components occlude one another.
      */
+    export namespace Layer {
+        export const $gtype: GObject.GType<Layer>;
+    }
+
     enum Layer {
         /**
          * The object does not have a layer
@@ -106,9 +123,12 @@ export namespace Atk {
          */
         WINDOW,
     }
-    export namespace Live {
-        export const $gtype: GObject.GType<Live>;
-    }
+    /**
+     * Enumeration used to indicate a type of live region and how assertive it
+     * should be in terms of speaking notifications. Currently, this is only used
+     * for "notification" events, but it may be used for additional purposes
+     * in the future.
+     */
 
     /**
      * Enumeration used to indicate a type of live region and how assertive it
@@ -116,6 +136,10 @@ export namespace Atk {
      * for "notification" events, but it may be used for additional purposes
      * in the future.
      */
+    export namespace Live {
+        export const $gtype: GObject.GType<Live>;
+    }
+
     enum Live {
         /**
          * No live region.
@@ -130,13 +154,17 @@ export namespace Atk {
          */
         ASSERTIVE,
     }
-    export namespace RelationType {
-        export const $gtype: GObject.GType<RelationType>;
-    }
+    /**
+     * Describes the type of the relation
+     */
 
     /**
      * Describes the type of the relation
      */
+    export namespace RelationType {
+        export const $gtype: GObject.GType<RelationType>;
+    }
+
     enum RelationType {
         /**
          * Not used, represens "no relationship" or an error condition.
@@ -256,9 +284,13 @@ export namespace Atk {
          */
         LAST_DEFINED,
     }
-    export namespace Role {
-        export const $gtype: GObject.GType<Role>;
-    }
+    /**
+     * Describes the role of an object
+     *
+     * These are the built-in enumerated roles that UI components can have
+     * in ATK.  Other roles may be added at runtime, so an AtkRole >=
+     * %ATK_ROLE_LAST_DEFINED is not necessarily an error.
+     */
 
     /**
      * Describes the role of an object
@@ -267,6 +299,10 @@ export namespace Atk {
      * in ATK.  Other roles may be added at runtime, so an AtkRole >=
      * %ATK_ROLE_LAST_DEFINED is not necessarily an error.
      */
+    export namespace Role {
+        export const $gtype: GObject.GType<Role>;
+    }
+
     enum Role {
         /**
          * Invalid role
@@ -860,13 +896,17 @@ export namespace Atk {
          */
         LAST_DEFINED,
     }
-    export namespace ScrollType {
-        export const $gtype: GObject.GType<ScrollType>;
-    }
+    /**
+     * Specifies where an object should be placed on the screen when using scroll_to.
+     */
 
     /**
      * Specifies where an object should be placed on the screen when using scroll_to.
      */
+    export namespace ScrollType {
+        export const $gtype: GObject.GType<ScrollType>;
+    }
+
     enum ScrollType {
         /**
          * Scroll the object vertically and horizontally to bring
@@ -905,13 +945,17 @@ export namespace Atk {
          */
         ANYWHERE,
     }
-    export namespace StateType {
-        export const $gtype: GObject.GType<StateType>;
-    }
+    /**
+     * The possible types of states of an object
+     */
 
     /**
      * The possible types of states of an object
      */
+    export namespace StateType {
+        export const $gtype: GObject.GType<StateType>;
+    }
+
     enum StateType {
         /**
          * Indicates an invalid state - probably an error condition.
@@ -1161,13 +1205,17 @@ export namespace Atk {
          */
         LAST_DEFINED,
     }
-    export namespace TextAttribute {
-        export const $gtype: GObject.GType<TextAttribute>;
-    }
+    /**
+     * Describes the text attributes supported
+     */
 
     /**
      * Describes the text attributes supported
      */
+    export namespace TextAttribute {
+        export const $gtype: GObject.GType<TextAttribute>;
+    }
+
     enum TextAttribute {
         /**
          * Invalid attribute, like bad spelling or grammar.
@@ -1290,15 +1338,21 @@ export namespace Atk {
          */
         LAST_DEFINED,
     }
-    export namespace TextBoundary {
-        export const $gtype: GObject.GType<TextBoundary>;
-    }
+    /**
+     * Text boundary types used for specifying boundaries for regions of text.
+     * This enumeration is deprecated since 2.9.4 and should not be used. Use
+     * AtkTextGranularity with #atk_text_get_string_at_offset instead.
+     */
 
     /**
      * Text boundary types used for specifying boundaries for regions of text.
      * This enumeration is deprecated since 2.9.4 and should not be used. Use
      * AtkTextGranularity with #atk_text_get_string_at_offset instead.
      */
+    export namespace TextBoundary {
+        export const $gtype: GObject.GType<TextBoundary>;
+    }
+
     enum TextBoundary {
         /**
          * Boundary is the boundary between characters
@@ -1336,13 +1390,17 @@ export namespace Atk {
          */
         LINE_END,
     }
-    export namespace TextClipType {
-        export const $gtype: GObject.GType<TextClipType>;
-    }
+    /**
+     * Describes the type of clipping required.
+     */
 
     /**
      * Describes the type of clipping required.
      */
+    export namespace TextClipType {
+        export const $gtype: GObject.GType<TextClipType>;
+    }
+
     enum TextClipType {
         /**
          * No clipping to be done
@@ -1361,14 +1419,19 @@ export namespace Atk {
          */
         BOTH,
     }
-    export namespace TextGranularity {
-        export const $gtype: GObject.GType<TextGranularity>;
-    }
+    /**
+     * Text granularity types used for specifying the granularity of the region of
+     * text we are interested in.
+     */
 
     /**
      * Text granularity types used for specifying the granularity of the region of
      * text we are interested in.
      */
+    export namespace TextGranularity {
+        export const $gtype: GObject.GType<TextGranularity>;
+    }
+
     enum TextGranularity {
         /**
          * Granularity is defined by the boundaries between characters
@@ -1400,15 +1463,21 @@ export namespace Atk {
          */
         PARAGRAPH,
     }
-    export namespace ValueType {
-        export const $gtype: GObject.GType<ValueType>;
-    }
+    /**
+     * Default types for a given value. Those are defined in order to
+     * easily get localized strings to describe a given value or a given
+     * subrange, using atk_value_type_get_localized_name().
+     */
 
     /**
      * Default types for a given value. Those are defined in order to
      * easily get localized strings to describe a given value or a given
      * subrange, using atk_value_type_get_localized_name().
      */
+    export namespace ValueType {
+        export const $gtype: GObject.GType<ValueType>;
+    }
+
     enum ValueType {
         VERY_WEAK,
         WEAK,
@@ -1717,13 +1786,17 @@ export namespace Atk {
     interface PropertyChangeHandler {
         (obj: Object, vals: PropertyValues): void;
     }
-    export namespace HyperlinkStateFlags {
-        export const $gtype: GObject.GType<HyperlinkStateFlags>;
-    }
+    /**
+     * Describes the type of link
+     */
 
     /**
      * Describes the type of link
      */
+    export namespace HyperlinkStateFlags {
+        export const $gtype: GObject.GType<HyperlinkStateFlags>;
+    }
+
     enum HyperlinkStateFlags {
         /**
          * Link is inline

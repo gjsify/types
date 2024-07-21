@@ -33,6 +33,7 @@ export namespace GXml {
         AFTER,
         PRECEDED,
     }
+
     export namespace CssSelectorType {
         export const $gtype: GObject.GType<CssSelectorType>;
     }
@@ -51,6 +52,7 @@ export namespace GXml {
         ATTRIBUTE_ENDS_WITH,
         PSEUDO_CLASS,
     }
+
     export namespace NodeType {
         export const $gtype: GObject.GType<NodeType>;
     }
@@ -70,6 +72,7 @@ export namespace GXml {
         DOCUMENT_FRAGMENT,
         NOTATION,
     }
+
     export namespace XPathObjectType {
         export const $gtype: GObject.GType<XPathObjectType>;
     }
@@ -270,6 +273,7 @@ export namespace GXml {
         REJECT,
         SKIP,
     }
+
     export namespace DomEventPhase {
         export const $gtype: GObject.GType<DomEventPhase>;
     }
@@ -280,6 +284,7 @@ export namespace GXml {
         AT_TARGET,
         BUBBLING_PHASE,
     }
+
     export namespace DomNodeNodeType {
         export const $gtype: GObject.GType<DomNodeNodeType>;
     }
@@ -299,6 +304,7 @@ export namespace GXml {
         DOCUMENT_FRAGMENT_NODE,
         NOTATION_NODE,
     }
+
     export namespace DomRangeBoundaryPoints {
         export const $gtype: GObject.GType<DomRangeBoundaryPoints>;
     }
@@ -312,6 +318,7 @@ export namespace GXml {
     interface DomMutationCallback {
         (mutations: Gee.List, observer: DomMutationObserver): void;
     }
+
     export namespace DomEventFlags {
         export const $gtype: GObject.GType<DomEventFlags>;
     }
@@ -323,6 +330,7 @@ export namespace GXml {
         INITIALIZED_FLAG,
         DISPATCH_FLAG,
     }
+
     export namespace DomNodeDocumentPosition {
         export const $gtype: GObject.GType<DomNodeDocumentPosition>;
     }

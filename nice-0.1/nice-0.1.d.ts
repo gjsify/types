@@ -18,13 +18,17 @@ export namespace Nice {
      * Nice-0.1
      */
 
-    export namespace CandidateTransport {
-        export const $gtype: GObject.GType<CandidateTransport>;
-    }
+    /**
+     * An enum representing the type of transport to use
+     */
 
     /**
      * An enum representing the type of transport to use
      */
+    export namespace CandidateTransport {
+        export const $gtype: GObject.GType<CandidateTransport>;
+    }
+
     enum CandidateTransport {
         /**
          * UDP transport
@@ -43,13 +47,17 @@ export namespace Nice {
          */
         TCP_SO,
     }
-    export namespace CandidateType {
-        export const $gtype: GObject.GType<CandidateType>;
-    }
+    /**
+     * An enum representing the type of a candidate
+     */
 
     /**
      * An enum representing the type of a candidate
      */
+    export namespace CandidateType {
+        export const $gtype: GObject.GType<CandidateType>;
+    }
+
     enum CandidateType {
         /**
          * A host candidate
@@ -68,9 +76,23 @@ export namespace Nice {
          */
         RELAYED,
     }
-    export namespace Compatibility {
-        export const $gtype: GObject.GType<Compatibility>;
-    }
+    /**
+     * An enum to specify which compatible specifications the #NiceAgent should use.
+     * Use with nice_agent_new()
+     *
+     * <warning>`NICE_COMPATIBILITY_DRAFT1`9 is deprecated and should not be used
+     * in newly-written code. It is kept for compatibility reasons and
+     * represents the same compatibility as `NICE_COMPATIBILITY_RFC5`245 </warning>
+     *  <note>
+     *    <para>
+     *    If `NICE_COMPATIBILITY_RFC5`245 compatibility mode is used for a non-reliable
+     *    agent, then ICE-UDP will be used with higher priority and ICE-TCP will also
+     *    be used when the UDP connectivity fails. If it is used with a reliable agent,
+     *    then ICE-UDP will be used with the TCP-Over-UDP (#PseudoTcpSocket) if ICE-TCP
+     *    fails and ICE-UDP succeeds.
+     *   </para>
+     *  </note>
+     */
 
     /**
      * An enum to specify which compatible specifications the #NiceAgent should use.
@@ -89,6 +111,10 @@ export namespace Nice {
      *   </para>
      *  </note>
      */
+    export namespace Compatibility {
+        export const $gtype: GObject.GType<Compatibility>;
+    }
+
     enum Compatibility {
         /**
          * Use compatibility with the RFC5245 ICE-UDP specs
@@ -125,14 +151,19 @@ export namespace Nice {
          */
         LAST,
     }
-    export namespace ComponentState {
-        export const $gtype: GObject.GType<ComponentState>;
-    }
+    /**
+     * An enum representing the state of a component.
+     * <para> See also: #NiceAgent::component-state-changed </para>
+     */
 
     /**
      * An enum representing the state of a component.
      * <para> See also: #NiceAgent::component-state-changed </para>
      */
+    export namespace ComponentState {
+        export const $gtype: GObject.GType<ComponentState>;
+    }
+
     enum ComponentState {
         /**
          * No activity scheduled
@@ -165,9 +196,16 @@ export namespace Nice {
          */
         LAST,
     }
-    export namespace ComponentType {
-        export const $gtype: GObject.GType<ComponentType>;
-    }
+    /**
+     * Convenience enum representing the type of a component for use as the
+     * component_id for RTP/RTCP usages.
+     *  <example>
+     *    <title>Example of use.</title>
+     *    <programlisting>
+     *    nice_agent_send (agent, stream_id, NICE_COMPONENT_TYPE_RTP, len, buf);
+     *    </programlisting>
+     *   </example>
+     */
 
     /**
      * Convenience enum representing the type of a component for use as the
@@ -179,6 +217,10 @@ export namespace Nice {
      *    </programlisting>
      *   </example>
      */
+    export namespace ComponentType {
+        export const $gtype: GObject.GType<ComponentType>;
+    }
+
     enum ComponentType {
         /**
          * RTP Component type
@@ -189,9 +231,15 @@ export namespace Nice {
          */
         RTCP,
     }
-    export namespace NominationMode {
-        export const $gtype: GObject.GType<NominationMode>;
-    }
+    /**
+     * An enum to specity the kind of nomination mode to use by
+     * the agent, as described in RFC 5245. Two modes exists,
+     * regular and aggressive. They differ by the way the controlling
+     * agent chooses to put the USE-CANDIDATE attribute in its STUN
+     * messages. The aggressive mode is supposed to nominate a pair
+     * faster, than the regular mode, potentially causing the nominated
+     * pair to change until the connection check completes.
+     */
 
     /**
      * An enum to specity the kind of nomination mode to use by
@@ -202,6 +250,10 @@ export namespace Nice {
      * faster, than the regular mode, potentially causing the nominated
      * pair to change until the connection check completes.
      */
+    export namespace NominationMode {
+        export const $gtype: GObject.GType<NominationMode>;
+    }
+
     enum NominationMode {
         /**
          * Regular nomination mode
@@ -212,15 +264,21 @@ export namespace Nice {
          */
         AGGRESSIVE,
     }
-    export namespace ProxyType {
-        export const $gtype: GObject.GType<ProxyType>;
-    }
+    /**
+     * An enum to specify which proxy type to use for relaying.
+     * Note that the proxies will only be used with TCP TURN relaying.
+     * <para> See also: #NiceAgent:proxy-type </para>
+     */
 
     /**
      * An enum to specify which proxy type to use for relaying.
      * Note that the proxies will only be used with TCP TURN relaying.
      * <para> See also: #NiceAgent:proxy-type </para>
      */
+    export namespace ProxyType {
+        export const $gtype: GObject.GType<ProxyType>;
+    }
+
     enum ProxyType {
         /**
          * Do not use a proxy
@@ -239,13 +297,17 @@ export namespace Nice {
          */
         LAST,
     }
-    export namespace PseudoTcpDebugLevel {
-        export const $gtype: GObject.GType<PseudoTcpDebugLevel>;
-    }
+    /**
+     * Valid values of debug levels to be set.
+     */
 
     /**
      * Valid values of debug levels to be set.
      */
+    export namespace PseudoTcpDebugLevel {
+        export const $gtype: GObject.GType<PseudoTcpDebugLevel>;
+    }
+
     enum PseudoTcpDebugLevel {
         /**
          * Disable debug messages
@@ -260,15 +322,21 @@ export namespace Nice {
          */
         VERBOSE,
     }
-    export namespace PseudoTcpShutdown {
-        export const $gtype: GObject.GType<PseudoTcpShutdown>;
-    }
+    /**
+     * Options for which parts of a connection to shut down when calling
+     * pseudo_tcp_socket_shutdown(). These correspond to the values passed to POSIX
+     * shutdown().
+     */
 
     /**
      * Options for which parts of a connection to shut down when calling
      * pseudo_tcp_socket_shutdown(). These correspond to the values passed to POSIX
      * shutdown().
      */
+    export namespace PseudoTcpShutdown {
+        export const $gtype: GObject.GType<PseudoTcpShutdown>;
+    }
+
     enum PseudoTcpShutdown {
         /**
          * Shut down the local reader only
@@ -283,15 +351,21 @@ export namespace Nice {
          */
         RDWR,
     }
-    export namespace PseudoTcpState {
-        export const $gtype: GObject.GType<PseudoTcpState>;
-    }
+    /**
+     * An enum representing the state of the #PseudoTcpSocket. These states
+     * correspond to the TCP states in RFC 793.
+     * <para> See also: #PseudoTcpSocket:state </para>
+     */
 
     /**
      * An enum representing the state of the #PseudoTcpSocket. These states
      * correspond to the TCP states in RFC 793.
      * <para> See also: #PseudoTcpSocket:state </para>
      */
+    export namespace PseudoTcpState {
+        export const $gtype: GObject.GType<PseudoTcpState>;
+    }
+
     enum PseudoTcpState {
         /**
          * The socket's initial state. The socket isn't connected and is
@@ -346,15 +420,21 @@ export namespace Nice {
          */
         LAST_ACK,
     }
-    export namespace PseudoTcpWriteResult {
-        export const $gtype: GObject.GType<PseudoTcpWriteResult>;
-    }
+    /**
+     * An enum representing the result value of the write operation requested by
+     * the #PseudoTcpSocket.
+     * <para> See also: %PseudoTcpCallbacks:WritePacket </para>
+     */
 
     /**
      * An enum representing the result value of the write operation requested by
      * the #PseudoTcpSocket.
      * <para> See also: %PseudoTcpCallbacks:WritePacket </para>
      */
+    export namespace PseudoTcpWriteResult {
+        export const $gtype: GObject.GType<PseudoTcpWriteResult>;
+    }
+
     enum PseudoTcpWriteResult {
         /**
          * The write operation was successful
@@ -370,13 +450,17 @@ export namespace Nice {
          */
         FAIL,
     }
-    export namespace RelayType {
-        export const $gtype: GObject.GType<RelayType>;
-    }
+    /**
+     * An enum representing the type of relay to use
+     */
 
     /**
      * An enum representing the type of relay to use
      */
+    export namespace RelayType {
+        export const $gtype: GObject.GType<RelayType>;
+    }
+
     enum RelayType {
         /**
          * A TURN relay using UDP
@@ -486,15 +570,21 @@ export namespace Nice {
     interface AgentRecvFunc {
         (agent: Agent, stream_id: number, component_id: number, len: number, buf: string): void;
     }
-    export namespace AgentOption {
-        export const $gtype: GObject.GType<AgentOption>;
-    }
+    /**
+     * These are options that can be passed to nice_agent_new_full(). They set
+     * various properties on the agent. Not including them sets the property to
+     * the other value.
+     */
 
     /**
      * These are options that can be passed to nice_agent_new_full(). They set
      * various properties on the agent. Not including them sets the property to
      * the other value.
      */
+    export namespace AgentOption {
+        export const $gtype: GObject.GType<AgentOption>;
+    }
+
     enum AgentOption {
         /**
          * No enabled options (Since: 0.1.19)

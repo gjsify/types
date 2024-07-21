@@ -18,13 +18,17 @@ export namespace GCab {
      * GCab-1.0
      */
 
-    export namespace Compression {
-        export const $gtype: GObject.GType<Compression>;
-    }
+    /**
+     * Compression used by the #GCabFolder.
+     */
 
     /**
      * Compression used by the #GCabFolder.
      */
+    export namespace Compression {
+        export const $gtype: GObject.GType<Compression>;
+    }
+
     enum Compression {
         /**
          * No compression.
@@ -78,13 +82,17 @@ export namespace GCab {
         _init(...args: any[]): void;
     }
 
-    export namespace FileAttribute {
-        export const $gtype: GObject.GType<FileAttribute>;
-    }
+    /**
+     * Attributes associated with the #GCabFile.
+     */
 
     /**
      * Attributes associated with the #GCabFile.
      */
+    export namespace FileAttribute {
+        export const $gtype: GObject.GType<FileAttribute>;
+    }
+
     enum FileAttribute {
         /**
          * file is read-only

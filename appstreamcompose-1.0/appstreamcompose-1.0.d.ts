@@ -78,13 +78,17 @@ export namespace AppStreamCompose {
         static quark(): GLib.Quark;
     }
 
-    export namespace IconState {
-        export const $gtype: GObject.GType<IconState>;
-    }
+    /**
+     * Designated state for an icon of a given size.
+     */
 
     /**
      * Designated state for an icon of a given size.
      */
+    export namespace IconState {
+        export const $gtype: GObject.GType<IconState>;
+    }
+
     enum IconState {
         /**
          * Ignore icons of this size.
@@ -130,13 +134,17 @@ export namespace AppStreamCompose {
         static quark(): GLib.Quark;
     }
 
-    export namespace ImageFormat {
-        export const $gtype: GObject.GType<ImageFormat>;
-    }
+    /**
+     * File format of an image.
+     */
 
     /**
      * File format of an image.
      */
+    export namespace ImageFormat {
+        export const $gtype: GObject.GType<ImageFormat>;
+    }
+
     enum ImageFormat {
         /**
          * Unknown image format.
@@ -305,6 +313,7 @@ export namespace AppStreamCompose {
     interface CheckMetadataEarlyFn {
         (cres: Result, unit: Unit): void;
     }
+
     export namespace ComposeFlags {
         export const $gtype: GObject.GType<ComposeFlags>;
     }
@@ -325,13 +334,17 @@ export namespace AppStreamCompose {
         NO_FINAL_CHECK,
         NO_PARTIAL_URLS,
     }
-    export namespace ImageLoadFlags {
-        export const $gtype: GObject.GType<ImageLoadFlags>;
-    }
+    /**
+     * The flags used for loading images.
+     */
 
     /**
      * The flags used for loading images.
      */
+    export namespace ImageLoadFlags {
+        export const $gtype: GObject.GType<ImageLoadFlags>;
+    }
+
     enum ImageLoadFlags {
         /**
          * No special flags set
@@ -350,13 +363,17 @@ export namespace AppStreamCompose {
          */
         ALWAYS_RESIZE,
     }
-    export namespace ImageSaveFlags {
-        export const $gtype: GObject.GType<ImageSaveFlags>;
-    }
+    /**
+     * The flags used for saving images.
+     */
 
     /**
      * The flags used for saving images.
      */
+    export namespace ImageSaveFlags {
+        export const $gtype: GObject.GType<ImageSaveFlags>;
+    }
+
     enum ImageSaveFlags {
         /**
          * No special flags set

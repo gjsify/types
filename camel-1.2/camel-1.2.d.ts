@@ -19,13 +19,17 @@ export namespace Camel {
      * Camel-1.2
      */
 
-    export namespace AuthenticationResult {
-        export const $gtype: GObject.GType<AuthenticationResult>;
-    }
+    /**
+     * Authentication result codes used by #CamelService.
+     */
 
     /**
      * Authentication result codes used by #CamelService.
      */
+    export namespace AuthenticationResult {
+        export const $gtype: GObject.GType<AuthenticationResult>;
+    }
+
     enum AuthenticationResult {
         /**
          * An error occurred while authenticating.
@@ -40,6 +44,7 @@ export namespace Camel {
          */
         REJECTED,
     }
+
     export namespace CertTrust {
         export const $gtype: GObject.GType<CertTrust>;
     }
@@ -52,6 +57,7 @@ export namespace Camel {
         ULTIMATE,
         TEMPORARY,
     }
+
     export namespace CipherContextError {
         export const $gtype: GObject.GType<CipherContextError>;
     }
@@ -62,6 +68,7 @@ export namespace Camel {
          */
         CIPHER_CONTEXT_ERROR_KEY_NOT_FOUND,
     }
+
     export namespace CipherHash {
         export const $gtype: GObject.GType<CipherHash>;
     }
@@ -78,6 +85,7 @@ export namespace Camel {
         TIGER192,
         HAVAL5160,
     }
+
     export namespace CipherValidityEncrypt {
         export const $gtype: GObject.GType<CipherValidityEncrypt>;
     }
@@ -88,6 +96,7 @@ export namespace Camel {
         ENCRYPTED,
         STRONG,
     }
+
     export namespace CipherValidityMode {
         export const $gtype: GObject.GType<CipherValidityMode>;
     }
@@ -96,6 +105,7 @@ export namespace Camel {
         SIGN,
         ENCRYPT,
     }
+
     export namespace CipherValiditySign {
         export const $gtype: GObject.GType<CipherValiditySign>;
     }
@@ -107,13 +117,17 @@ export namespace Camel {
         UNKNOWN,
         NEED_PUBLIC_KEY,
     }
-    export namespace CompareType {
-        export const $gtype: GObject.GType<CompareType>;
-    }
+    /**
+     * Declares the compare type to use.
+     */
 
     /**
      * Declares the compare type to use.
      */
+    export namespace CompareType {
+        export const $gtype: GObject.GType<CompareType>;
+    }
+
     enum CompareType {
         /**
          * compare case insensitively
@@ -124,6 +138,7 @@ export namespace Camel {
          */
         SENSITIVE,
     }
+
     export namespace DBError {
         export const $gtype: GObject.GType<DBError>;
     }
@@ -134,13 +149,17 @@ export namespace Camel {
          */
         DB_ERROR_CORRUPT,
     }
-    export namespace DBKnownColumnNames {
-        export const $gtype: GObject.GType<DBKnownColumnNames>;
-    }
+    /**
+     * An enum of all the known columns, which can be used for a quick column lookups.
+     */
 
     /**
      * An enum of all the known columns, which can be used for a quick column lookups.
      */
+    export namespace DBKnownColumnNames {
+        export const $gtype: GObject.GType<DBKnownColumnNames>;
+    }
+
     enum DBKnownColumnNames {
         /**
          * unknown column name
@@ -311,13 +330,17 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    export namespace FetchHeadersType {
-        export const $gtype: GObject.GType<FetchHeadersType>;
-    }
+    /**
+     * Describes what headers to fetch when downloading message summaries.
+     */
 
     /**
      * Describes what headers to fetch when downloading message summaries.
      */
+    export namespace FetchHeadersType {
+        export const $gtype: GObject.GType<FetchHeadersType>;
+    }
+
     enum FetchHeadersType {
         /**
          * Fetch only basic headers (Date, From, To, Subject, etc.).
@@ -332,6 +355,7 @@ export namespace Camel {
          */
         ALL,
     }
+
     export namespace FetchType {
         export const $gtype: GObject.GType<FetchType>;
     }
@@ -394,13 +418,17 @@ export namespace Camel {
         static quark(): GLib.Quark;
     }
 
-    export namespace GpgTrust {
-        export const $gtype: GObject.GType<GpgTrust>;
-    }
+    /**
+     * GPG key trust levels.
+     */
 
     /**
      * GPG key trust levels.
      */
+    export namespace GpgTrust {
+        export const $gtype: GObject.GType<GpgTrust>;
+    }
+
     enum GpgTrust {
         /**
          * no trust set
@@ -427,6 +455,7 @@ export namespace Camel {
          */
         ULTIMATE,
     }
+
     export namespace HTMLParserState {
         export const $gtype: GObject.GType<HTMLParserState>;
     }
@@ -447,6 +476,7 @@ export namespace Camel {
         EOD,
         EOF,
     }
+
     export namespace HeaderAddressType {
         export const $gtype: GObject.GType<HeaderAddressType>;
     }
@@ -456,13 +486,17 @@ export namespace Camel {
         NAME,
         GROUP,
     }
-    export namespace JunkStatus {
-        export const $gtype: GObject.GType<JunkStatus>;
-    }
+    /**
+     * These are result codes used when passing messages through a junk filter.
+     */
 
     /**
      * These are result codes used when passing messages through a junk filter.
      */
+    export namespace JunkStatus {
+        export const $gtype: GObject.GType<JunkStatus>;
+    }
+
     enum JunkStatus {
         /**
          * An error occurred while invoking the junk filter.
@@ -481,6 +515,7 @@ export namespace Camel {
          */
         MESSAGE_IS_NOT_JUNK,
     }
+
     export namespace LockType {
         export const $gtype: GObject.GType<LockType>;
     }
@@ -489,6 +524,7 @@ export namespace Camel {
         READ,
         WRITE,
     }
+
     export namespace MemPoolFlags {
         export const $gtype: GObject.GType<MemPoolFlags>;
     }
@@ -511,6 +547,7 @@ export namespace Camel {
          */
         MASK,
     }
+
     export namespace MimeFilterBasicType {
         export const $gtype: GObject.GType<MimeFilterBasicType>;
     }
@@ -524,6 +561,7 @@ export namespace Camel {
         UU_ENC,
         UU_DEC,
     }
+
     export namespace MimeFilterCRLFDirection {
         export const $gtype: GObject.GType<MimeFilterCRLFDirection>;
     }
@@ -532,6 +570,7 @@ export namespace Camel {
         ENCODE,
         DECODE,
     }
+
     export namespace MimeFilterCRLFMode {
         export const $gtype: GObject.GType<MimeFilterCRLFMode>;
     }
@@ -540,6 +579,7 @@ export namespace Camel {
         DOTS,
         ONLY,
     }
+
     export namespace MimeFilterGZipMode {
         export const $gtype: GObject.GType<MimeFilterGZipMode>;
     }
@@ -548,6 +588,7 @@ export namespace Camel {
         ZIP,
         UNZIP,
     }
+
     export namespace MimeFilterYencDirection {
         export const $gtype: GObject.GType<MimeFilterYencDirection>;
     }
@@ -556,6 +597,7 @@ export namespace Camel {
         ENCODE,
         DECODE,
     }
+
     export namespace MimeParserState {
         export const $gtype: GObject.GType<MimeParserState>;
     }
@@ -578,13 +620,17 @@ export namespace Camel {
         MULTIPART_END,
         MESSAGE_END,
     }
-    export namespace NetworkSecurityMethod {
-        export const $gtype: GObject.GType<NetworkSecurityMethod>;
-    }
+    /**
+     * Methods for establishing an encrypted (or unencrypted) network connection.
+     */
 
     /**
      * Methods for establishing an encrypted (or unencrypted) network connection.
      */
+    export namespace NetworkSecurityMethod {
+        export const $gtype: GObject.GType<NetworkSecurityMethod>;
+    }
+
     enum NetworkSecurityMethod {
         /**
          * Use an unencrypted network connection.
@@ -600,6 +646,7 @@ export namespace Camel {
          */
         STARTTLS_ON_STANDARD_PORT,
     }
+
     export namespace ProviderConfType {
         export const $gtype: GObject.GType<ProviderConfType>;
     }
@@ -617,6 +664,7 @@ export namespace Camel {
         PLACEHOLDER,
         ADVANCED_SECTION_START,
     }
+
     export namespace ProviderType {
         export const $gtype: GObject.GType<ProviderType>;
     }
@@ -625,13 +673,17 @@ export namespace Camel {
         STORE,
         TRANSPORT,
     }
-    export namespace SExpResultType {
-        export const $gtype: GObject.GType<SExpResultType>;
-    }
+    /**
+     * Defines type of a #CamelSExpResult.
+     */
 
     /**
      * Defines type of a #CamelSExpResult.
      */
+    export namespace SExpResultType {
+        export const $gtype: GObject.GType<SExpResultType>;
+    }
+
     enum SExpResultType {
         /**
          * type is a ptrarray, what it points to is implementation dependant
@@ -658,13 +710,17 @@ export namespace Camel {
          */
         UNDEFINED,
     }
-    export namespace SExpTermType {
-        export const $gtype: GObject.GType<SExpTermType>;
-    }
+    /**
+     * Defines type of a #CamelSExpTerm and partly also #CamelSExpSymbol
+     */
 
     /**
      * Defines type of a #CamelSExpTerm and partly also #CamelSExpSymbol
      */
+    export namespace SExpTermType {
+        export const $gtype: GObject.GType<SExpTermType>;
+    }
+
     enum SExpTermType {
         /**
          * integer literal
@@ -695,6 +751,7 @@ export namespace Camel {
          */
         VAR,
     }
+
     export namespace SMIMESign {
         export const $gtype: GObject.GType<SMIMESign>;
     }
@@ -703,6 +760,7 @@ export namespace Camel {
         CLEARSIGN,
         ENVELOPED,
     }
+
     export namespace SaslAnonTraceType {
         export const $gtype: GObject.GType<SaslAnonTraceType>;
     }
@@ -712,13 +770,17 @@ export namespace Camel {
         OPAQUE,
         EMPTY,
     }
-    export namespace ServiceConnectionStatus {
-        export const $gtype: GObject.GType<ServiceConnectionStatus>;
-    }
+    /**
+     * Connection status returned by camel_service_get_connection_status().
+     */
 
     /**
      * Connection status returned by camel_service_get_connection_status().
      */
+    export namespace ServiceConnectionStatus {
+        export const $gtype: GObject.GType<ServiceConnectionStatus>;
+    }
+
     enum ServiceConnectionStatus {
         /**
          * #CamelService is disconnected from a remote server.
@@ -782,13 +844,17 @@ export namespace Camel {
         WARNING,
         ERROR,
     }
-    export namespace SortType {
-        export const $gtype: GObject.GType<SortType>;
-    }
+    /**
+     * Determines the direction of a sort.
+     */
 
     /**
      * Determines the direction of a sort.
      */
+    export namespace SortType {
+        export const $gtype: GObject.GType<SortType>;
+    }
+
     enum SortType {
         /**
          * Sorting is in ascending order.
@@ -834,13 +900,17 @@ export namespace Camel {
         WRITE,
         MODE,
     }
-    export namespace ThreeState {
-        export const $gtype: GObject.GType<ThreeState>;
-    }
+    /**
+     * Describes a three-state value, which can be either Off, On or Inconsistent.
+     */
 
     /**
      * Describes a three-state value, which can be either Off, On or Inconsistent.
      */
+    export namespace ThreeState {
+        export const $gtype: GObject.GType<ThreeState>;
+    }
+
     enum ThreeState {
         /**
          * the three-state value is Off
@@ -855,14 +925,19 @@ export namespace Camel {
          */
         INCONSISTENT,
     }
-    export namespace TimeUnit {
-        export const $gtype: GObject.GType<TimeUnit>;
-    }
+    /**
+     * Declares time unit, which serves to interpret the time value,
+     * like in #CamelOfflineSettings.
+     */
 
     /**
      * Declares time unit, which serves to interpret the time value,
      * like in #CamelOfflineSettings.
      */
+    export namespace TimeUnit {
+        export const $gtype: GObject.GType<TimeUnit>;
+    }
+
     enum TimeUnit {
         /**
          * days
@@ -881,6 +956,7 @@ export namespace Camel {
          */
         YEARS,
     }
+
     export namespace TransferEncoding {
         export const $gtype: GObject.GType<TransferEncoding>;
     }
@@ -895,6 +971,7 @@ export namespace Camel {
         ENCODING_UUENCODE,
         NUM_ENCODINGS,
     }
+
     export namespace VTrashFolderType {
         export const $gtype: GObject.GType<VTrashFolderType>;
     }
@@ -904,6 +981,7 @@ export namespace Camel {
         JUNK,
         LAST,
     }
+
     export namespace _search_match_t {
         export const $gtype: GObject.GType<_search_match_t>;
     }
@@ -916,6 +994,7 @@ export namespace Camel {
         ENDS,
         SOUNDEX,
     }
+
     export namespace _search_t {
         export const $gtype: GObject.GType<_search_t>;
     }
@@ -927,6 +1006,7 @@ export namespace Camel {
         ADDRESS_ENCODED,
         MLIST,
     }
+
     export namespace _search_word_t {
         export const $gtype: GObject.GType<_search_word_t>;
     }
@@ -2329,6 +2409,7 @@ export namespace Camel {
     interface UrlScanFunc {
         (_in: string, pos: string, inend: string, match: UrlMatch): boolean;
     }
+
     export namespace BestencEncoding {
         export const $gtype: GObject.GType<BestencEncoding>;
     }
@@ -2339,6 +2420,7 @@ export namespace Camel {
         BINARY,
         TEXT,
     }
+
     export namespace BestencRequired {
         export const $gtype: GObject.GType<BestencRequired>;
     }
@@ -2349,6 +2431,7 @@ export namespace Camel {
         LF_IS_CRLF,
         NO_FROM,
     }
+
     export namespace BlockFileFlags {
         export const $gtype: GObject.GType<BlockFileFlags>;
     }
@@ -2356,6 +2439,7 @@ export namespace Camel {
     enum BlockFileFlags {
         BLOCK_FILE_SYNC,
     }
+
     export namespace BlockFlags {
         export const $gtype: GObject.GType<BlockFlags>;
     }
@@ -2364,6 +2448,7 @@ export namespace Camel {
         DIRTY,
         DETACHED,
     }
+
     export namespace FolderFlags {
         export const $gtype: GObject.GType<FolderFlags>;
     }
@@ -2376,15 +2461,21 @@ export namespace Camel {
         IS_JUNK,
         FILTER_JUNK,
     }
-    export namespace FolderInfoFlags {
-        export const $gtype: GObject.GType<FolderInfoFlags>;
-    }
+    /**
+     * These flags are abstractions.  It's up to the CamelProvider to give
+     * them suitable interpretations.  Use #CAMEL_FOLDER_TYPE_MASK to isolate
+     * the folder's type.
+     */
 
     /**
      * These flags are abstractions.  It's up to the CamelProvider to give
      * them suitable interpretations.  Use #CAMEL_FOLDER_TYPE_MASK to isolate
      * the folder's type.
      */
+    export namespace FolderInfoFlags {
+        export const $gtype: GObject.GType<FolderInfoFlags>;
+    }
+
     enum FolderInfoFlags {
         /**
          * The folder cannot contain messages.
@@ -2499,6 +2590,7 @@ export namespace Camel {
          */
         FLAGS_LAST,
     }
+
     export namespace FolderSummaryFlags {
         export const $gtype: GObject.GType<FolderSummaryFlags>;
     }
@@ -2514,6 +2606,7 @@ export namespace Camel {
          */
         IN_MEMORY_ONLY,
     }
+
     export namespace MessageFlags {
         export const $gtype: GObject.GType<MessageFlags>;
     }
@@ -2534,6 +2627,7 @@ export namespace Camel {
         JUNK_LEARN,
         USER,
     }
+
     export namespace MimeFilterCanonFlags {
         export const $gtype: GObject.GType<MimeFilterCanonFlags>;
     }
@@ -2543,6 +2637,7 @@ export namespace Camel {
         FROM,
         STRIP,
     }
+
     export namespace MimeFilterEnrichedFlags {
         export const $gtype: GObject.GType<MimeFilterEnrichedFlags>;
     }
@@ -2551,13 +2646,17 @@ export namespace Camel {
         NONE,
         IS_RICHTEXT,
     }
-    export namespace MimeFilterToHTMLFlags {
-        export const $gtype: GObject.GType<MimeFilterToHTMLFlags>;
-    }
+    /**
+     * Flags for converting text/plain content into text/html.
+     */
 
     /**
      * Flags for converting text/plain content into text/html.
      */
+    export namespace MimeFilterToHTMLFlags {
+        export const $gtype: GObject.GType<MimeFilterToHTMLFlags>;
+    }
+
     enum MimeFilterToHTMLFlags {
         /**
          * Enclose the content in &lt;pre&gt; ... &lt;/pre&gt; tags.
@@ -2617,14 +2716,19 @@ export namespace Camel {
          */
         PRESERVE_TABS,
     }
-    export namespace ParamFlags {
-        export const $gtype: GObject.GType<ParamFlags>;
-    }
+    /**
+     * These flags extend #GParamFlags.  Most of the time you will use them
+     * in conjunction with g_object_class_install_property().
+     */
 
     /**
      * These flags extend #GParamFlags.  Most of the time you will use them
      * in conjunction with g_object_class_install_property().
      */
+    export namespace ParamFlags {
+        export const $gtype: GObject.GType<ParamFlags>;
+    }
+
     enum ParamFlags {
         /**
          * The parameter is persistent, which means its value is saved to
@@ -2633,6 +2737,7 @@ export namespace Camel {
          */
         PARAM_PERSISTENT,
     }
+
     export namespace ProviderFlags {
         export const $gtype: GObject.GType<ProviderFlags>;
     }
@@ -2695,6 +2800,7 @@ export namespace Camel {
          */
         SUPPORTS_PURGE_MESSAGE_CACHE,
     }
+
     export namespace ProviderURLFlags {
         export const $gtype: GObject.GType<ProviderURLFlags>;
     }
@@ -2722,13 +2828,17 @@ export namespace Camel {
         FRAGMENT_IS_PATH,
         PATH_IS_ABSOLUTE,
     }
-    export namespace RecipientCertificateFlags {
-        export const $gtype: GObject.GType<RecipientCertificateFlags>;
-    }
+    /**
+     * Flags used to camel_session_get_recipient_certificates_sync() call.
+     */
 
     /**
      * Flags used to camel_session_get_recipient_certificates_sync() call.
      */
+    export namespace RecipientCertificateFlags {
+        export const $gtype: GObject.GType<RecipientCertificateFlags>;
+    }
+
     enum RecipientCertificateFlags {
         /**
          * Retrieve S/MIME certificates; this cannot be used
@@ -2741,6 +2851,7 @@ export namespace Camel {
          */
         PGP,
     }
+
     export namespace SMIMEDescribe {
         export const $gtype: GObject.GType<SMIMEDescribe>;
     }
@@ -2751,6 +2862,7 @@ export namespace Camel {
         CERTS,
         CRLS,
     }
+
     export namespace StoreFlags {
         export const $gtype: GObject.GType<StoreFlags>;
     }
@@ -2767,13 +2879,17 @@ export namespace Camel {
         SUPPORTS_INITIAL_SETUP,
         IS_BUILTIN,
     }
-    export namespace StoreGetFolderFlags {
-        export const $gtype: GObject.GType<StoreGetFolderFlags>;
-    }
+    /**
+     * Open mode for folder.
+     */
 
     /**
      * Open mode for folder.
      */
+    export namespace StoreGetFolderFlags {
+        export const $gtype: GObject.GType<StoreGetFolderFlags>;
+    }
+
     enum StoreGetFolderFlags {
         /**
          * no flags
@@ -2797,6 +2913,7 @@ export namespace Camel {
          */
         PRIVATE,
     }
+
     export namespace StoreGetFolderInfoFlags {
         export const $gtype: GObject.GType<StoreGetFolderInfoFlags>;
     }
@@ -2823,6 +2940,7 @@ export namespace Camel {
          */
         REFRESH,
     }
+
     export namespace StoreInfoFlags {
         export const $gtype: GObject.GType<StoreInfoFlags>;
     }
@@ -2855,6 +2973,7 @@ export namespace Camel {
         WRITEONLY,
         FLAGGED,
     }
+
     export namespace StorePermissionFlags {
         export const $gtype: GObject.GType<StorePermissionFlags>;
     }
@@ -2863,6 +2982,7 @@ export namespace Camel {
         READ,
         WRITE,
     }
+
     export namespace URLFlags {
         export const $gtype: GObject.GType<URLFlags>;
     }
@@ -2871,6 +2991,7 @@ export namespace Camel {
         PARAMS,
         AUTH,
     }
+
     export namespace UUDecodeState {
         export const $gtype: GObject.GType<UUDecodeState>;
     }
@@ -2880,6 +3001,7 @@ export namespace Camel {
         BEGIN,
         END,
     }
+
     export namespace _search_flags_t {
         export const $gtype: GObject.GType<_search_flags_t>;
     }

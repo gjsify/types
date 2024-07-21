@@ -25,6 +25,7 @@ export namespace Libinsane {
         RANGE,
         LIST,
     }
+
     export namespace DeviceLocations {
         export const $gtype: GObject.GType<DeviceLocations>;
     }
@@ -83,6 +84,7 @@ export namespace Libinsane {
         PICT,
         TIFF,
     }
+
     export namespace ItemType {
         export const $gtype: GObject.GType<ItemType>;
     }
@@ -93,6 +95,7 @@ export namespace Libinsane {
         ADF,
         UNIDENTIFIED,
     }
+
     export namespace LogLevel {
         export const $gtype: GObject.GType<LogLevel>;
     }
@@ -103,6 +106,7 @@ export namespace Libinsane {
         WARNING,
         ERROR,
     }
+
     export namespace Unit {
         export const $gtype: GObject.GType<Unit>;
     }
@@ -119,13 +123,17 @@ export namespace Libinsane {
     function error_quark(): GLib.Quark;
     function register_logger(logger: Logger): void;
     function unregister_logger(): void;
-    export namespace Capability {
-        export const $gtype: GObject.GType<Capability>;
-    }
+    /**
+     * Not actually an enum but a bit field.
+     */
 
     /**
      * Not actually an enum but a bit field.
      */
+    export namespace Capability {
+        export const $gtype: GObject.GType<Capability>;
+    }
+
     enum Capability {
         NONE,
         EMULATED,
@@ -134,6 +142,7 @@ export namespace Libinsane {
         SW_SELECT,
         INACTIVE,
     }
+
     export namespace SetFlag {
         export const $gtype: GObject.GType<SetFlag>;
     }

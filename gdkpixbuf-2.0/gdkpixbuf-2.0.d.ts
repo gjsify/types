@@ -18,9 +18,12 @@ export namespace GdkPixbuf {
      * GdkPixbuf-2.0
      */
 
-    export namespace Colorspace {
-        export const $gtype: GObject.GType<Colorspace>;
-    }
+    /**
+     * This enumeration defines the color spaces that are supported by
+     * the gdk-pixbuf library.
+     *
+     * Currently only RGB is supported.
+     */
 
     /**
      * This enumeration defines the color spaces that are supported by
@@ -28,15 +31,27 @@ export namespace GdkPixbuf {
      *
      * Currently only RGB is supported.
      */
+    export namespace Colorspace {
+        export const $gtype: GObject.GType<Colorspace>;
+    }
+
     enum Colorspace {
         /**
          * Indicates a red/green/blue additive color space.
          */
         RGB,
     }
-    export namespace InterpType {
-        export const $gtype: GObject.GType<InterpType>;
-    }
+    /**
+     * Interpolation modes for scaling functions.
+     *
+     * The `GDK_INTERP_NEAREST` mode is the fastest scaling method, but has
+     * horrible quality when scaling down; `GDK_INTERP_BILINEAR` is the best
+     * choice if you aren't sure what to choose, it has a good speed/quality
+     * balance.
+     *
+     * **Note**: Cubic filtering is missing from the list; hyperbolic
+     * interpolation is just as fast and results in higher quality.
+     */
 
     /**
      * Interpolation modes for scaling functions.
@@ -49,6 +64,10 @@ export namespace GdkPixbuf {
      * **Note**: Cubic filtering is missing from the list; hyperbolic
      * interpolation is just as fast and results in higher quality.
      */
+    export namespace InterpType {
+        export const $gtype: GObject.GType<InterpType>;
+    }
+
     enum InterpType {
         /**
          * Nearest neighbor sampling; this is the fastest
@@ -84,9 +103,20 @@ export namespace GdkPixbuf {
          */
         HYPER,
     }
-    export namespace PixbufAlphaMode {
-        export const $gtype: GObject.GType<PixbufAlphaMode>;
-    }
+    /**
+     * Control the alpha channel for drawables.
+     *
+     * These values can be passed to gdk_pixbuf_xlib_render_to_drawable_alpha()
+     * in gdk-pixbuf-xlib to control how the alpha channel of an image should
+     * be handled.
+     *
+     * This function can create a bilevel clipping mask (black and white) and use
+     * it while painting the image.
+     *
+     * In the future, when the X Window System gets an alpha channel extension,
+     * it will be possible to do full alpha compositing onto arbitrary drawables.
+     * For now both cases fall back to a bilevel clipping mask.
+     */
 
     /**
      * Control the alpha channel for drawables.
@@ -102,6 +132,10 @@ export namespace GdkPixbuf {
      * it will be possible to do full alpha compositing onto arbitrary drawables.
      * For now both cases fall back to a bilevel clipping mask.
      */
+    export namespace PixbufAlphaMode {
+        export const $gtype: GObject.GType<PixbufAlphaMode>;
+    }
+
     enum PixbufAlphaMode {
         /**
          * A bilevel clipping mask (black and white)
@@ -167,15 +201,21 @@ export namespace GdkPixbuf {
         static quark(): GLib.Quark;
     }
 
-    export namespace PixbufRotation {
-        export const $gtype: GObject.GType<PixbufRotation>;
-    }
+    /**
+     * The possible rotations which can be passed to gdk_pixbuf_rotate_simple().
+     *
+     * To make them easier to use, their numerical values are the actual degrees.
+     */
 
     /**
      * The possible rotations which can be passed to gdk_pixbuf_rotate_simple().
      *
      * To make them easier to use, their numerical values are the actual degrees.
      */
+    export namespace PixbufRotation {
+        export const $gtype: GObject.GType<PixbufRotation>;
+    }
+
     enum PixbufRotation {
         /**
          * No rotation.
@@ -259,14 +299,19 @@ export namespace GdkPixbuf {
     interface PixbufSaveFunc {
         (buf: Uint8Array | string): boolean;
     }
-    export namespace PixbufFormatFlags {
-        export const $gtype: GObject.GType<PixbufFormatFlags>;
-    }
+    /**
+     * Flags which allow a module to specify further details about the supported
+     * operations.
+     */
 
     /**
      * Flags which allow a module to specify further details about the supported
      * operations.
      */
+    export namespace PixbufFormatFlags {
+        export const $gtype: GObject.GType<PixbufFormatFlags>;
+    }
+
     enum PixbufFormatFlags {
         /**
          * the module can write out images in the format.

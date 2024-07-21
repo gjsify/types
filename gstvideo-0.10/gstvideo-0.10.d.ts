@@ -20,13 +20,17 @@ export namespace GstVideo {
      * GstVideo-0.10
      */
 
-    export namespace Format {
-        export const $gtype: GObject.GType<Format>;
-    }
+    /**
+     * Enum value describing the most common video formats.
+     */
 
     /**
      * Enum value describing the most common video formats.
      */
+    export namespace Format {
+        export const $gtype: GObject.GType<Format>;
+    }
+
     enum Format {
         UNKNOWN,
         I420,

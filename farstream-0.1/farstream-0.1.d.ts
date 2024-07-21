@@ -19,13 +19,17 @@ export namespace Farstream {
      * Farstream-0.1
      */
 
-    export namespace CandidateType {
-        export const $gtype: GObject.GType<CandidateType>;
-    }
+    /**
+     * An enum for the type of candidate used/reported
+     */
 
     /**
      * An enum for the type of candidate used/reported
      */
+    export namespace CandidateType {
+        export const $gtype: GObject.GType<CandidateType>;
+    }
+
     enum CandidateType {
         HOST,
         SRFLX,
@@ -33,22 +37,22 @@ export namespace Farstream {
         RELAY,
         MULTICAST,
     }
-    export namespace ComponentType {
-        export const $gtype: GObject.GType<ComponentType>;
-    }
+    /**
+     * This enum contains the component IDs defined in ICE-19
+     */
 
     /**
      * This enum contains the component IDs defined in ICE-19
      */
+    export namespace ComponentType {
+        export const $gtype: GObject.GType<ComponentType>;
+    }
+
     enum ComponentType {
         NONE,
         RTP,
         RTCP,
     }
-    export namespace DTMFEvent {
-        export const $gtype: GObject.GType<DTMFEvent>;
-    }
-
     /**
      * An enum that represents the different DTMF event that can be sent to a
      * #FsSession. The values corresponds those those defined in RFC 4733
@@ -88,13 +92,17 @@ export namespace Farstream {
         _init(...args: any[]): void;
     }
 
-    export namespace DTMFMethod {
-        export const $gtype: GObject.GType<DTMFMethod>;
-    }
+    /**
+     * An enum that represents the different ways a DTMF event can be sent
+     */
 
     /**
      * An enum that represents the different ways a DTMF event can be sent
      */
+    export namespace DTMFMethod {
+        export const $gtype: GObject.GType<DTMFMethod>;
+    }
+
     enum DTMFMethod {
         RTP_RFC4733,
         SOUND,
@@ -131,38 +139,52 @@ export namespace Farstream {
         static quark(): GLib.Quark;
     }
 
-    export namespace MediaType {
-        export const $gtype: GObject.GType<MediaType>;
-    }
+    /**
+     * Enum used to signify the media type of a codec or stream.
+     */
 
     /**
      * Enum used to signify the media type of a codec or stream.
      */
+    export namespace MediaType {
+        export const $gtype: GObject.GType<MediaType>;
+    }
+
     enum MediaType {
         AUDIO,
         VIDEO,
         LAST,
     }
-    export namespace NetworkProtocol {
-        export const $gtype: GObject.GType<NetworkProtocol>;
-    }
+    /**
+     * An enum for the base IP protocol
+     */
 
     /**
      * An enum for the base IP protocol
      */
+    export namespace NetworkProtocol {
+        export const $gtype: GObject.GType<NetworkProtocol>;
+    }
+
     enum NetworkProtocol {
         UDP,
         TCP,
     }
-    export namespace StreamState {
-        export const $gtype: GObject.GType<StreamState>;
-    }
+    /**
+     * These are the possible states of a stream, a simple multicast stream
+     * could only be in "disconnected" or "ready" state.
+     * An stream using an ICE transmitter would use all of these.
+     */
 
     /**
      * These are the possible states of a stream, a simple multicast stream
      * could only be in "disconnected" or "ready" state.
      * An stream using an ICE transmitter would use all of these.
      */
+    export namespace StreamState {
+        export const $gtype: GObject.GType<StreamState>;
+    }
+
     enum StreamState {
         FAILED,
         DISCONNECTED,
@@ -309,13 +331,17 @@ export namespace Farstream {
     type CodecGList = object | null;
     type RtpHeaderExtension = object | null;
     type RtpHeaderExtensionGList = object | null;
-    export namespace StreamDirection {
-        export const $gtype: GObject.GType<StreamDirection>;
-    }
+    /**
+     * An enum for specifying the direction of a stream
+     */
 
     /**
      * An enum for specifying the direction of a stream
      */
+    export namespace StreamDirection {
+        export const $gtype: GObject.GType<StreamDirection>;
+    }
+
     enum StreamDirection {
         NONE,
         SEND,

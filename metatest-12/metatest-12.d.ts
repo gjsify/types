@@ -43,6 +43,7 @@ export namespace MetaTest {
         VKMS,
         NESTED,
     }
+
     export namespace ContextTestFlag {
         export const $gtype: GObject.GType<ContextTestFlag>;
     }
@@ -52,6 +53,7 @@ export namespace MetaTest {
         TEST_CLIENT,
         NO_X11,
     }
+
     export namespace TestRunFlags {
         export const $gtype: GObject.GType<TestRunFlags>;
     }

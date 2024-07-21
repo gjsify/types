@@ -48,6 +48,7 @@ export namespace Tepl {
          */
         CR_LF,
     }
+
     export namespace SelectionType {
         export const $gtype: GObject.GType<SelectionType>;
     }
@@ -389,13 +390,17 @@ export namespace Tepl {
      * @returns A newly allocated string with the replacements. Free with g_free().
      */
     function utils_str_replace(string: string, search: string, replacement: string): string;
-    export namespace FileSaverFlags {
-        export const $gtype: GObject.GType<FileSaverFlags>;
-    }
+    /**
+     * Flags to define the behavior of a #TeplFileSaver.
+     */
 
     /**
      * Flags to define the behavior of a #TeplFileSaver.
      */
+    export namespace FileSaverFlags {
+        export const $gtype: GObject.GType<FileSaverFlags>;
+    }
+
     enum FileSaverFlags {
         /**
          * No flags.
@@ -406,9 +411,13 @@ export namespace Tepl {
          */
         CREATE_BACKUP,
     }
-    export namespace GutterRendererFoldsState {
-        export const $gtype: GObject.GType<GutterRendererFoldsState>;
-    }
+    /**
+     * The folding state at a certain line in the #GtkTextBuffer.
+     *
+     * Since #TeplGutterRendererFolds has a flat view of the folding tree, some
+     * states can be combined; for example, %TEPL_GUTTER_RENDERER_FOLDS_STATE_END
+     * and %TEPL_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
+     */
 
     /**
      * The folding state at a certain line in the #GtkTextBuffer.
@@ -417,6 +426,10 @@ export namespace Tepl {
      * states can be combined; for example, %TEPL_GUTTER_RENDERER_FOLDS_STATE_END
      * and %TEPL_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
      */
+    export namespace GutterRendererFoldsState {
+        export const $gtype: GObject.GType<GutterRendererFoldsState>;
+    }
+
     enum GutterRendererFoldsState {
         /**
          * No code folding here.

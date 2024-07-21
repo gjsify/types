@@ -27,15 +27,21 @@ export namespace Unique {
      * Unique-3.0
      */
 
-    export namespace Command {
-        export const $gtype: GObject.GType<Command>;
-    }
+    /**
+     * Command to send to a currently active instance. User defined commands
+     * should be positive integers, and should be added using the
+     * unique_app_add_command() function after creating a #UniqueApp instance
+     */
 
     /**
      * Command to send to a currently active instance. User defined commands
      * should be positive integers, and should be added using the
      * unique_app_add_command() function after creating a #UniqueApp instance
      */
+    export namespace Command {
+        export const $gtype: GObject.GType<Command>;
+    }
+
     enum Command {
         INVALID,
         ACTIVATE,
@@ -43,14 +49,19 @@ export namespace Unique {
         OPEN,
         CLOSE,
     }
-    export namespace Response {
-        export const $gtype: GObject.GType<Response>;
-    }
+    /**
+     * Response that a currently active instance of the application should
+     * return to the caller which sent a command.
+     */
 
     /**
      * Response that a currently active instance of the application should
      * return to the caller which sent a command.
      */
+    export namespace Response {
+        export const $gtype: GObject.GType<Response>;
+    }
+
     enum Response {
         INVALID,
         OK,

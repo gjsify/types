@@ -42,6 +42,7 @@ export namespace Gd {
         PULSE,
         LAST,
     }
+
     export namespace MainViewType {
         export const $gtype: GObject.GType<MainViewType>;
     }
@@ -50,6 +51,7 @@ export namespace Gd {
         ICON,
         LIST,
     }
+
     export namespace StackTransitionType {
         export const $gtype: GObject.GType<StackTransitionType>;
     }

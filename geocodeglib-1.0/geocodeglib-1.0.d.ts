@@ -62,39 +62,51 @@ export namespace GeocodeGlib {
         static quark(): GLib.Quark;
     }
 
-    export namespace LocationCRS {
-        export const $gtype: GObject.GType<LocationCRS>;
-    }
+    /**
+     * Coordinate Reference System Identification for a location.
+     */
 
     /**
      * Coordinate Reference System Identification for a location.
      */
+    export namespace LocationCRS {
+        export const $gtype: GObject.GType<LocationCRS>;
+    }
+
     enum LocationCRS {
         /**
          * CRS is World Geodetic System, standard for Earth.
          */
         WGS84,
     }
-    export namespace LocationURIScheme {
-        export const $gtype: GObject.GType<LocationURIScheme>;
-    }
+    /**
+     * The URI scheme for this location.
+     */
 
     /**
      * The URI scheme for this location.
      */
+    export namespace LocationURIScheme {
+        export const $gtype: GObject.GType<LocationURIScheme>;
+    }
+
     enum LocationURIScheme {
         /**
          * The 'geo' URI scheme, RFC 5870
          */
         GEO,
     }
-    export namespace PlaceOsmType {
-        export const $gtype: GObject.GType<PlaceOsmType>;
-    }
+    /**
+     * Osm type of the place.
+     */
 
     /**
      * Osm type of the place.
      */
+    export namespace PlaceOsmType {
+        export const $gtype: GObject.GType<PlaceOsmType>;
+    }
+
     enum PlaceOsmType {
         /**
          * Unknown type
@@ -113,13 +125,17 @@ export namespace GeocodeGlib {
          */
         WAY,
     }
-    export namespace PlaceType {
-        export const $gtype: GObject.GType<PlaceType>;
-    }
+    /**
+     * Type of the place.
+     */
 
     /**
      * Type of the place.
      */
+    export namespace PlaceType {
+        export const $gtype: GObject.GType<PlaceType>;
+    }
+
     enum PlaceType {
         /**
          * Type is unknown for this place.

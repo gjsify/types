@@ -41,6 +41,7 @@ export namespace GtkSource {
          */
         GRID,
     }
+
     export namespace BracketMatchType {
         export const $gtype: GObject.GType<BracketMatchType>;
     }
@@ -64,6 +65,7 @@ export namespace GtkSource {
          */
         FOUND,
     }
+
     export namespace ChangeCaseType {
         export const $gtype: GObject.GType<ChangeCaseType>;
     }
@@ -192,14 +194,19 @@ export namespace GtkSource {
         static quark(): GLib.Quark;
     }
 
-    export namespace GutterRendererAlignmentMode {
-        export const $gtype: GObject.GType<GutterRendererAlignmentMode>;
-    }
+    /**
+     * The alignment mode of the renderer, when a cell spans multiple lines (due to
+     * text wrapping).
+     */
 
     /**
      * The alignment mode of the renderer, when a cell spans multiple lines (due to
      * text wrapping).
      */
+    export namespace GutterRendererAlignmentMode {
+        export const $gtype: GObject.GType<GutterRendererAlignmentMode>;
+    }
+
     enum GutterRendererAlignmentMode {
         /**
          * The full cell.
@@ -214,6 +221,7 @@ export namespace GtkSource {
          */
         LAST,
     }
+
     export namespace NewlineType {
         export const $gtype: GObject.GType<NewlineType>;
     }
@@ -233,6 +241,7 @@ export namespace GtkSource {
          */
         CR_LF,
     }
+
     export namespace SmartHomeEndType {
         export const $gtype: GObject.GType<SmartHomeEndType>;
     }
@@ -260,6 +269,7 @@ export namespace GtkSource {
          */
         ALWAYS,
     }
+
     export namespace ViewGutterPosition {
         export const $gtype: GObject.GType<ViewGutterPosition>;
     }
@@ -341,6 +351,7 @@ export namespace GtkSource {
      * @returns the unescaped @text.
      */
     function utils_unescape_search_text(text: string): string;
+
     export namespace CompletionActivation {
         export const $gtype: GObject.GType<CompletionActivation>;
     }
@@ -363,9 +374,12 @@ export namespace GtkSource {
          */
         USER_REQUESTED,
     }
-    export namespace DrawSpacesFlags {
-        export const $gtype: GObject.GType<DrawSpacesFlags>;
-    }
+    /**
+     * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
+     * of GTK_SOURCE_DRAW_SPACES_LEADING, GTK_SOURCE_DRAW_SPACES_TEXT or
+     * GTK_SOURCE_DRAW_SPACES_TRAILING is specified, whitespaces at any position in
+     * the line will be drawn (i.e. it has the same effect as specifying all of them).
+     */
 
     /**
      * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
@@ -373,6 +387,10 @@ export namespace GtkSource {
      * GTK_SOURCE_DRAW_SPACES_TRAILING is specified, whitespaces at any position in
      * the line will be drawn (i.e. it has the same effect as specifying all of them).
      */
+    export namespace DrawSpacesFlags {
+        export const $gtype: GObject.GType<DrawSpacesFlags>;
+    }
+
     enum DrawSpacesFlags {
         /**
          * whether the space character should be drawn.
@@ -409,13 +427,17 @@ export namespace GtkSource {
          */
         ALL,
     }
-    export namespace FileSaverFlags {
-        export const $gtype: GObject.GType<FileSaverFlags>;
-    }
+    /**
+     * Flags to define the behavior of a #GtkSourceFileSaver.
+     */
 
     /**
      * Flags to define the behavior of a #GtkSourceFileSaver.
      */
+    export namespace FileSaverFlags {
+        export const $gtype: GObject.GType<FileSaverFlags>;
+    }
+
     enum FileSaverFlags {
         /**
          * No flags.
@@ -434,6 +456,7 @@ export namespace GtkSource {
          */
         CREATE_BACKUP,
     }
+
     export namespace GutterRendererState {
         export const $gtype: GObject.GType<GutterRendererState>;
     }
@@ -459,6 +482,7 @@ export namespace GtkSource {
          */
         SELECTED,
     }
+
     export namespace SortFlags {
         export const $gtype: GObject.GType<SortFlags>;
     }
@@ -481,9 +505,12 @@ export namespace GtkSource {
          */
         REMOVE_DUPLICATES,
     }
-    export namespace SpaceLocationFlags {
-        export const $gtype: GObject.GType<SpaceLocationFlags>;
-    }
+    /**
+     * #GtkSourceSpaceLocationFlags contains flags for white space locations.
+     *
+     * If a line contains only white spaces (no text), the white spaces match both
+     * %GTK_SOURCE_SPACE_LOCATION_LEADING and %GTK_SOURCE_SPACE_LOCATION_TRAILING.
+     */
 
     /**
      * #GtkSourceSpaceLocationFlags contains flags for white space locations.
@@ -491,6 +518,10 @@ export namespace GtkSource {
      * If a line contains only white spaces (no text), the white spaces match both
      * %GTK_SOURCE_SPACE_LOCATION_LEADING and %GTK_SOURCE_SPACE_LOCATION_TRAILING.
      */
+    export namespace SpaceLocationFlags {
+        export const $gtype: GObject.GType<SpaceLocationFlags>;
+    }
+
     enum SpaceLocationFlags {
         /**
          * No flags.
@@ -514,13 +545,17 @@ export namespace GtkSource {
          */
         ALL,
     }
-    export namespace SpaceTypeFlags {
-        export const $gtype: GObject.GType<SpaceTypeFlags>;
-    }
+    /**
+     * #GtkSourceSpaceTypeFlags contains flags for white space types.
+     */
 
     /**
      * #GtkSourceSpaceTypeFlags contains flags for white space types.
      */
+    export namespace SpaceTypeFlags {
+        export const $gtype: GObject.GType<SpaceTypeFlags>;
+    }
+
     enum SpaceTypeFlags {
         /**
          * No flags.

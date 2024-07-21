@@ -316,13 +316,17 @@ export namespace GstBase {
     interface TypeFindHelperGetRangeFunction {
         (obj: Gst.Object, parent: Gst.Object | null, offset: number, length: number): Gst.FlowReturn;
     }
-    export namespace BaseParseFrameFlags {
-        export const $gtype: GObject.GType<BaseParseFrameFlags>;
-    }
+    /**
+     * Flags to be used in a #GstBaseParseFrame.
+     */
 
     /**
      * Flags to be used in a #GstBaseParseFrame.
      */
+    export namespace BaseParseFrameFlags {
+        export const $gtype: GObject.GType<BaseParseFrameFlags>;
+    }
+
     enum BaseParseFrameFlags {
         /**
          * no flag
@@ -359,13 +363,17 @@ export namespace GstBase {
          */
         QUEUE,
     }
-    export namespace BaseSrcFlags {
-        export const $gtype: GObject.GType<BaseSrcFlags>;
-    }
+    /**
+     * The #GstElement flags that a basesrc element may have.
+     */
 
     /**
      * The #GstElement flags that a basesrc element may have.
      */
+    export namespace BaseSrcFlags {
+        export const $gtype: GObject.GType<BaseSrcFlags>;
+    }
+
     enum BaseSrcFlags {
         /**
          * has source is starting
@@ -380,6 +388,7 @@ export namespace GstBase {
          */
         LAST,
     }
+
     export namespace CollectPadsStateFlags {
         export const $gtype: GObject.GType<CollectPadsStateFlags>;
     }

@@ -59,6 +59,7 @@ export namespace Eom {
         NOT_AVAILABLE,
         READY,
     }
+
     export namespace ImageStatus {
         export const $gtype: GObject.GType<ImageStatus>;
     }
@@ -70,6 +71,7 @@ export namespace Eom {
         SAVING,
         FAILED,
     }
+
     export namespace JobSaveResponse {
         export const $gtype: GObject.GType<JobSaveResponse>;
     }
@@ -82,6 +84,7 @@ export namespace Eom {
         CANCEL,
         LAST,
     }
+
     export namespace ListStoreColumn {
         export const $gtype: GObject.GType<ListStoreColumn>;
     }
@@ -93,6 +96,7 @@ export namespace Eom {
         EOM_JOB,
         NUM_COLUMNS,
     }
+
     export namespace PropertiesDialogPage {
         export const $gtype: GObject.GType<PropertiesDialogPage>;
     }
@@ -103,6 +107,7 @@ export namespace Eom {
         PAGE_DETAILS,
         N_PAGES,
     }
+
     export namespace ThumbNavMode {
         export const $gtype: GObject.GType<ThumbNavMode>;
     }
@@ -113,6 +118,7 @@ export namespace Eom {
         MULTIPLE_ROWS,
         MULTIPLE_COLUMNS,
     }
+
     export namespace ThumbViewSelectionChange {
         export const $gtype: GObject.GType<ThumbViewSelectionChange>;
     }
@@ -125,6 +131,7 @@ export namespace Eom {
         LAST,
         RANDOM,
     }
+
     export namespace TransformType {
         export const $gtype: GObject.GType<TransformType>;
     }
@@ -139,6 +146,7 @@ export namespace Eom {
         TRANSPOSE,
         TRANSVERSE,
     }
+
     export namespace TransparencyStyle {
         export const $gtype: GObject.GType<TransparencyStyle>;
     }
@@ -148,6 +156,7 @@ export namespace Eom {
         CHECKED,
         COLOR,
     }
+
     export namespace WindowCollectionPos {
         export const $gtype: GObject.GType<WindowCollectionPos>;
     }
@@ -158,6 +167,7 @@ export namespace Eom {
         TOP,
         RIGHT,
     }
+
     export namespace WindowError {
         export const $gtype: GObject.GType<WindowError>;
     }
@@ -171,6 +181,7 @@ export namespace Eom {
         GENERIC,
         UNKNOWN,
     }
+
     export namespace WindowMode {
         export const $gtype: GObject.GType<WindowMode>;
     }
@@ -227,6 +238,7 @@ export namespace Eom {
      */
     function thumbnail_load(image: Image): GdkPixbuf.Pixbuf;
     type ExifData = object | null;
+
     export namespace Debug {
         export const $gtype: GObject.GType<Debug>;
     }
@@ -246,6 +258,7 @@ export namespace Eom {
         LCMS,
         PLUGINS,
     }
+
     export namespace ImageData {
         export const $gtype: GObject.GType<ImageData>;
     }
@@ -256,6 +269,7 @@ export namespace Eom {
         EXIF,
         XMP,
     }
+
     export namespace StartupFlags {
         export const $gtype: GObject.GType<StartupFlags>;
     }

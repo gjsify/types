@@ -43,6 +43,7 @@ export namespace Ide {
         TOOL,
         TESTS,
     }
+
     export namespace BufferLineChange {
         export const $gtype: GObject.GType<BufferLineChange>;
     }
@@ -53,6 +54,7 @@ export namespace Ide {
         CHANGED,
         DELETED,
     }
+
     export namespace BuildLogStream {
         export const $gtype: GObject.GType<BuildLogStream>;
     }
@@ -61,6 +63,7 @@ export namespace Ide {
         STDOUT,
         STDERR,
     }
+
     export namespace CursorType {
         export const $gtype: GObject.GType<CursorType>;
     }
@@ -124,6 +127,7 @@ export namespace Ide {
         STOP,
         CONTINUE,
     }
+
     export namespace IndentStyle {
         export const $gtype: GObject.GType<IndentStyle>;
     }
@@ -132,9 +136,12 @@ export namespace Ide {
         SPACES,
         TABS,
     }
-    export namespace LayoutGridSplit {
-        export const $gtype: GObject.GType<LayoutGridSplit>;
-    }
+    /**
+     * %IDE_LAYOUT_GRID_SPLIT_LEFT:
+     * %IDE_LAYOUT_GRID_SPLIT_RIGHT:
+     * %IDE_LAYOUT_GRID_SPLIT_MOVE_LEFT:
+     * %IDE_LAYOUT_GRID_SPLIT_MOVE_RIGHT:
+     */
 
     /**
      * %IDE_LAYOUT_GRID_SPLIT_LEFT:
@@ -142,6 +149,10 @@ export namespace Ide {
      * %IDE_LAYOUT_GRID_SPLIT_MOVE_LEFT:
      * %IDE_LAYOUT_GRID_SPLIT_MOVE_RIGHT:
      */
+    export namespace LayoutGridSplit {
+        export const $gtype: GObject.GType<LayoutGridSplit>;
+    }
+
     enum LayoutGridSplit {
         LEFT,
         RIGHT,
@@ -165,21 +176,28 @@ export namespace Ide {
         static quark(): GLib.Quark;
     }
 
-    export namespace SourceViewModeType {
-        export const $gtype: GObject.GType<SourceViewModeType>;
-    }
+    /**
+     * The type of keyboard mode.
+     */
 
     /**
      * The type of keyboard mode.
      */
+    export namespace SourceViewModeType {
+        export const $gtype: GObject.GType<SourceViewModeType>;
+    }
+
     enum SourceViewModeType {
         TRANSIENT,
         PERMANENT,
         MODAL,
     }
-    export namespace SourceViewMovement {
-        export const $gtype: GObject.GType<SourceViewMovement>;
-    }
+    /**
+     * The type of movement.
+     *
+     * Some of these movements may be modified by using the modify-repeat action.
+     * First adjust the repeat and then perform the "movement" action.
+     */
 
     /**
      * The type of movement.
@@ -187,6 +205,10 @@ export namespace Ide {
      * Some of these movements may be modified by using the modify-repeat action.
      * First adjust the repeat and then perform the "movement" action.
      */
+    export namespace SourceViewMovement {
+        export const $gtype: GObject.GType<SourceViewMovement>;
+    }
+
     enum SourceViewMovement {
         /**
          * move to previous character in the file.
@@ -417,13 +439,17 @@ export namespace Ide {
          */
         PREVIOUS_MATCH_SEARCH_CHAR,
     }
-    export namespace SourceViewTheatric {
-        export const $gtype: GObject.GType<SourceViewTheatric>;
-    }
+    /**
+     * The style of theatric.
+     */
 
     /**
      * The style of theatric.
      */
+    export namespace SourceViewTheatric {
+        export const $gtype: GObject.GType<SourceViewTheatric>;
+    }
+
     enum SourceViewTheatric {
         /**
          * expand from selection location.
@@ -434,6 +460,7 @@ export namespace Ide {
          */
         SHRINK,
     }
+
     export namespace SymbolKind {
         export const $gtype: GObject.GType<SymbolKind>;
     }
@@ -484,6 +511,7 @@ export namespace Ide {
         XML_COMMENT,
         XML_CDATA,
     }
+
     export namespace ThreadPoolKind {
         export const $gtype: GObject.GType<ThreadPoolKind>;
     }
@@ -493,6 +521,7 @@ export namespace Ide {
         INDEXER,
         LAST,
     }
+
     export namespace TransferError {
         export const $gtype: GObject.GType<TransferError>;
     }
@@ -831,6 +860,7 @@ export namespace Ide {
     interface WidgetContextHandler {
         (widget: Gtk.Widget, context: Context): void;
     }
+
     export namespace BufferLineFlags {
         export const $gtype: GObject.GType<BufferLineFlags>;
     }
@@ -844,6 +874,7 @@ export namespace Ide {
         WARNING,
         NOTE,
     }
+
     export namespace BuildPhase {
         export const $gtype: GObject.GType<BuildPhase>;
     }
@@ -864,6 +895,7 @@ export namespace Ide {
         FINISHED,
         FAILED,
     }
+
     export namespace SymbolFlags {
         export const $gtype: GObject.GType<SymbolFlags>;
     }
@@ -874,13 +906,17 @@ export namespace Ide {
         IS_MEMBER,
         IS_DEPRECATED,
     }
-    export namespace UriParseFlags {
-        export const $gtype: GObject.GType<UriParseFlags>;
-    }
+    /**
+     * Flags that control how a URI string is parsed (or re-parsed).
+     */
 
     /**
      * Flags that control how a URI string is parsed (or re-parsed).
      */
+    export namespace UriParseFlags {
+        export const $gtype: GObject.GType<UriParseFlags>;
+    }
+
     enum UriParseFlags {
         /**
          * Parse the URI strictly according to the RFC
@@ -926,6 +962,7 @@ export namespace Ide {
          */
         UTF8_ONLY,
     }
+
     export namespace UriToStringFlags {
         export const $gtype: GObject.GType<UriToStringFlags>;
     }
@@ -934,6 +971,7 @@ export namespace Ide {
         AUTH_PARAMS,
         FRAGMENT,
     }
+
     export namespace WorkbenchOpenFlags {
         export const $gtype: GObject.GType<WorkbenchOpenFlags>;
     }

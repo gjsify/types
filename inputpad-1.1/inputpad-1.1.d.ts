@@ -38,6 +38,7 @@ export namespace InputPad {
         STRINGS,
         COMMANDS,
     }
+
     export namespace WindowShowLayoutType {
         export const $gtype: GObject.GType<WindowShowLayoutType>;
     }
@@ -46,6 +47,7 @@ export namespace InputPad {
         NOTHING,
         DEFAULT,
     }
+
     export namespace WindowShowTableType {
         export const $gtype: GObject.GType<WindowShowTableType>;
     }
@@ -55,6 +57,7 @@ export namespace InputPad {
         CUSTOM,
         ALL,
     }
+
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }

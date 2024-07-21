@@ -19,13 +19,17 @@ export namespace Manette {
      * Manette-0.2
      */
 
-    export namespace EventType {
-        export const $gtype: GObject.GType<EventType>;
-    }
+    /**
+     * Specifies the type of the event.
+     */
 
     /**
      * Specifies the type of the event.
      */
+    export namespace EventType {
+        export const $gtype: GObject.GType<EventType>;
+    }
+
     enum EventType {
         /**
          * a special code to indicate a null event

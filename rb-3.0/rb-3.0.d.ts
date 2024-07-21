@@ -46,14 +46,19 @@ export namespace RB {
         TOOLS,
         LAST,
     }
-    export namespace DisplayPageGroupType {
-        export const $gtype: GObject.GType<DisplayPageGroupType>;
-    }
+    /**
+     * Predefined categories of page group. The order they're defined here is the order they
+     * appear in the page tree.
+     */
 
     /**
      * Predefined categories of page group. The order they're defined here is the order they
      * appear in the page tree.
      */
+    export namespace DisplayPageGroupType {
+        export const $gtype: GObject.GType<DisplayPageGroupType>;
+    }
+
     enum DisplayPageGroupType {
         /**
          * Fixed single instance sources (e.g., library)
@@ -76,13 +81,17 @@ export namespace RB {
          */
         TOOLS,
     }
-    export namespace DisplayPageModelColumn {
-        export const $gtype: GObject.GType<DisplayPageModelColumn>;
-    }
+    /**
+     * Columns present in the display page model.
+     */
 
     /**
      * Columns present in the display page model.
      */
+    export namespace DisplayPageModelColumn {
+        export const $gtype: GObject.GType<DisplayPageModelColumn>;
+    }
+
     enum DisplayPageModelColumn {
         /**
          * TRUE if the page is the playing source
@@ -115,9 +124,12 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
-    export namespace EntryViewColumn {
-        export const $gtype: GObject.GType<EntryViewColumn>;
-    }
+    /**
+     * Predefined column types to use in #RBEntryView<!-- -->s.  Use
+     * #rb_entry_view_append_column to add these to an entry view.
+     * The predefined column names map directly to the #RhythmDBEntry properties
+     * the columns display.
+     */
 
     /**
      * Predefined column types to use in #RBEntryView<!-- -->s.  Use
@@ -125,6 +137,10 @@ export namespace RB {
      * The predefined column names map directly to the #RhythmDBEntry properties
      * the columns display.
      */
+    export namespace EntryViewColumn {
+        export const $gtype: GObject.GType<EntryViewColumn>;
+    }
+
     enum EntryViewColumn {
         /**
          * the track number column
@@ -199,6 +215,7 @@ export namespace RB {
          */
         COMPOSER,
     }
+
     export namespace EntryViewState {
         export const $gtype: GObject.GType<EntryViewState>;
     }
@@ -208,6 +225,7 @@ export namespace RB {
         PLAYING,
         PAUSED,
     }
+
     export namespace ExtDBSourceType {
         export const $gtype: GObject.GType<ExtDBSourceType>;
     }
@@ -219,6 +237,7 @@ export namespace RB {
         USER,
         USER_EXPLICIT,
     }
+
     export namespace GstMediaType {
         export const $gtype: GObject.GType<GstMediaType>;
     }
@@ -230,6 +249,7 @@ export namespace RB {
         VIDEO,
         OTHER,
     }
+
     export namespace MetaDataError {
         export const $gtype: GObject.GType<MetaDataError>;
     }
@@ -243,13 +263,17 @@ export namespace RB {
         INTERNAL,
         EMPTY_FILE,
     }
-    export namespace MetaDataField {
-        export const $gtype: GObject.GType<MetaDataField>;
-    }
+    /**
+     * Metadata fields that can be read from and written to files.
+     */
 
     /**
      * Metadata fields that can be read from and written to files.
      */
+    export namespace MetaDataField {
+        export const $gtype: GObject.GType<MetaDataField>;
+    }
+
     enum MetaDataField {
         /**
          * Title of the recording
@@ -520,6 +544,7 @@ export namespace RB {
          */
         CROSSFADE,
     }
+
     export namespace PlaylistExportType {
         export const $gtype: GObject.GType<PlaylistExportType>;
     }
@@ -530,6 +555,7 @@ export namespace RB {
         PLS,
         XSPF,
     }
+
     export namespace PlaylistManagerError {
         export const $gtype: GObject.GType<PlaylistManagerError>;
     }
@@ -539,6 +565,7 @@ export namespace RB {
         PLAYLIST_EXISTS,
         PLAYLIST_NOT_FOUND,
     }
+
     export namespace PodcastFeedUpdateStatus {
         export const $gtype: GObject.GType<PodcastFeedUpdateStatus>;
     }
@@ -578,13 +605,17 @@ export namespace RB {
         SUCCESS,
         ERROR,
     }
-    export namespace RhythmDBEntryAvailability {
-        export const $gtype: GObject.GType<RhythmDBEntryAvailability>;
-    }
+    /**
+     * Various events that can result in changes to the entry's availability.
+     */
 
     /**
      * Various events that can result in changes to the entry's availability.
      */
+    export namespace RhythmDBEntryAvailability {
+        export const $gtype: GObject.GType<RhythmDBEntryAvailability>;
+    }
+
     enum RhythmDBEntryAvailability {
         /**
          * File was checked and found present
@@ -603,14 +634,19 @@ export namespace RB {
          */
         NOT_FOUND,
     }
-    export namespace RhythmDBEntryCategory {
-        export const $gtype: GObject.GType<RhythmDBEntryCategory>;
-    }
+    /**
+     * Categories used to group entry types.  These are used in a few places to control
+     * handling of entries.
+     */
 
     /**
      * Categories used to group entry types.  These are used in a few places to control
      * handling of entries.
      */
+    export namespace RhythmDBEntryCategory {
+        export const $gtype: GObject.GType<RhythmDBEntryCategory>;
+    }
+
     enum RhythmDBEntryCategory {
         /**
          * Normal files on disk
@@ -629,6 +665,7 @@ export namespace RB {
          */
         VIRTUAL,
     }
+
     export namespace RhythmDBError {
         export const $gtype: GObject.GType<RhythmDBError>;
     }
@@ -636,6 +673,7 @@ export namespace RB {
     enum RhythmDBError {
         RHYTHMDB_ERROR_ACCESS_FAILED,
     }
+
     export namespace RhythmDBPropType {
         export const $gtype: GObject.GType<RhythmDBPropType>;
     }
@@ -718,6 +756,7 @@ export namespace RB {
         COMPOSER_SORTNAME_SORT_KEY,
         COMPOSER_SORTNAME_FOLDED,
     }
+
     export namespace RhythmDBPropertyModelColumn {
         export const $gtype: GObject.GType<RhythmDBPropertyModelColumn>;
     }
@@ -727,6 +766,7 @@ export namespace RB {
         VALUE_PRIORITY,
         TRACK_COUNT,
     }
+
     export namespace RhythmDBQueryModelLimitType {
         export const $gtype: GObject.GType<RhythmDBQueryModelLimitType>;
     }
@@ -737,6 +777,7 @@ export namespace RB {
         LIMIT_SIZE,
         LIMIT_DURATION,
     }
+
     export namespace RhythmDBQueryType {
         export const $gtype: GObject.GType<RhythmDBQueryType>;
     }
@@ -760,6 +801,7 @@ export namespace RB {
         YEAR_GREATER_THAN,
         YEAR_LESS_THAN,
     }
+
     export namespace ShellActivationType {
         export const $gtype: GObject.GType<ShellActivationType>;
     }
@@ -769,6 +811,7 @@ export namespace RB {
         PLAY,
         ALWAYS_PLAY,
     }
+
     export namespace ShellError {
         export const $gtype: GObject.GType<ShellError>;
     }
@@ -825,13 +868,17 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
-    export namespace ShellPrefsUILocation {
-        export const $gtype: GObject.GType<ShellPrefsUILocation>;
-    }
+    /**
+     * Locations available for adding new widgets to the preferences dialog.
+     */
 
     /**
      * Locations available for adding new widgets to the preferences dialog.
      */
+    export namespace ShellPrefsUILocation {
+        export const $gtype: GObject.GType<ShellPrefsUILocation>;
+    }
+
     enum ShellPrefsUILocation {
         /**
          * The "general" preferences page
@@ -842,6 +889,7 @@ export namespace RB {
          */
         PLAYBACK,
     }
+
     export namespace ShellUILocation {
         export const $gtype: GObject.GType<ShellUILocation>;
     }
@@ -852,6 +900,7 @@ export namespace RB {
         MAIN_TOP,
         MAIN_BOTTOM,
     }
+
     export namespace SourceEOFType {
         export const $gtype: GObject.GType<SourceEOFType>;
     }
@@ -862,6 +911,7 @@ export namespace RB {
         RETRY,
         NEXT,
     }
+
     export namespace SourceLoadStatus {
         export const $gtype: GObject.GType<SourceLoadStatus>;
     }
@@ -872,6 +922,7 @@ export namespace RB {
         LOADING,
         LOADED,
     }
+
     export namespace TaskOutcome {
         export const $gtype: GObject.GType<TaskOutcome>;
     }

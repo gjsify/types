@@ -35,6 +35,7 @@ export namespace Gucharmap {
         CHARTABLE,
         DETAILS,
     }
+
     export namespace UnicodeVersion {
         export const $gtype: GObject.GType<UnicodeVersion>;
     }

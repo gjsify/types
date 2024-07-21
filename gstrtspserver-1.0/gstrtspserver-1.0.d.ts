@@ -23,13 +23,17 @@ export namespace GstRtspServer {
      * GstRtspServer-1.0
      */
 
-    export namespace RTSPAddressPoolResult {
-        export const $gtype: GObject.GType<RTSPAddressPoolResult>;
-    }
+    /**
+     * Result codes from RTSP address pool functions.
+     */
 
     /**
      * Result codes from RTSP address pool functions.
      */
+    export namespace RTSPAddressPoolResult {
+        export const $gtype: GObject.GType<RTSPAddressPoolResult>;
+    }
+
     enum RTSPAddressPoolResult {
         /**
          * no error
@@ -52,13 +56,17 @@ export namespace GstRtspServer {
          */
         ELAST,
     }
-    export namespace RTSPFilterResult {
-        export const $gtype: GObject.GType<RTSPFilterResult>;
-    }
+    /**
+     * Possible return values for gst_rtsp_session_pool_filter().
+     */
 
     /**
      * Possible return values for gst_rtsp_session_pool_filter().
      */
+    export namespace RTSPFilterResult {
+        export const $gtype: GObject.GType<RTSPFilterResult>;
+    }
+
     enum RTSPFilterResult {
         /**
          * Remove session
@@ -73,13 +81,17 @@ export namespace GstRtspServer {
          */
         REF,
     }
-    export namespace RTSPMediaStatus {
-        export const $gtype: GObject.GType<RTSPMediaStatus>;
-    }
+    /**
+     * The state of the media pipeline.
+     */
 
     /**
      * The state of the media pipeline.
      */
+    export namespace RTSPMediaStatus {
+        export const $gtype: GObject.GType<RTSPMediaStatus>;
+    }
+
     enum RTSPMediaStatus {
         /**
          * media pipeline not prerolled
@@ -107,13 +119,17 @@ export namespace GstRtspServer {
          */
         ERROR,
     }
-    export namespace RTSPPublishClockMode {
-        export const $gtype: GObject.GType<RTSPPublishClockMode>;
-    }
+    /**
+     * Whether the clock and possibly RTP/clock offset should be published according to RFC7273.
+     */
 
     /**
      * Whether the clock and possibly RTP/clock offset should be published according to RFC7273.
      */
+    export namespace RTSPPublishClockMode {
+        export const $gtype: GObject.GType<RTSPPublishClockMode>;
+    }
+
     enum RTSPPublishClockMode {
         /**
          * Publish nothing
@@ -128,14 +144,19 @@ export namespace GstRtspServer {
          */
         CLOCK_AND_OFFSET,
     }
-    export namespace RTSPSuspendMode {
-        export const $gtype: GObject.GType<RTSPSuspendMode>;
-    }
+    /**
+     * The suspend mode of the media pipeline. A media pipeline is suspended right
+     * after creating the SDP and when the client performs a PAUSED request.
+     */
 
     /**
      * The suspend mode of the media pipeline. A media pipeline is suspended right
      * after creating the SDP and when the client performs a PAUSED request.
      */
+    export namespace RTSPSuspendMode {
+        export const $gtype: GObject.GType<RTSPSuspendMode>;
+    }
+
     enum RTSPSuspendMode {
         /**
          * Media is not suspended
@@ -150,13 +171,17 @@ export namespace GstRtspServer {
          */
         RESET,
     }
-    export namespace RTSPThreadType {
-        export const $gtype: GObject.GType<RTSPThreadType>;
-    }
+    /**
+     * Different thread types
+     */
 
     /**
      * Different thread types
      */
+    export namespace RTSPThreadType {
+        export const $gtype: GObject.GType<RTSPThreadType>;
+    }
+
     enum RTSPThreadType {
         /**
          * a thread to handle the client communication
@@ -313,13 +338,17 @@ export namespace GstRtspServer {
     interface RTSPStreamTransportFilterFunc {
         (stream: RTSPStream, trans: RTSPStreamTransport): RTSPFilterResult;
     }
-    export namespace RTSPAddressFlags {
-        export const $gtype: GObject.GType<RTSPAddressFlags>;
-    }
+    /**
+     * Flags used to control allocation of addresses
+     */
 
     /**
      * Flags used to control allocation of addresses
      */
+    export namespace RTSPAddressFlags {
+        export const $gtype: GObject.GType<RTSPAddressFlags>;
+    }
+
     enum RTSPAddressFlags {
         /**
          * no flags
@@ -346,13 +375,17 @@ export namespace GstRtspServer {
          */
         UNICAST,
     }
-    export namespace RTSPTransportMode {
-        export const $gtype: GObject.GType<RTSPTransportMode>;
-    }
+    /**
+     * The supported modes of the media.
+     */
 
     /**
      * The supported modes of the media.
      */
+    export namespace RTSPTransportMode {
+        export const $gtype: GObject.GType<RTSPTransportMode>;
+    }
+
     enum RTSPTransportMode {
         /**
          * Transport supports PLAY mode

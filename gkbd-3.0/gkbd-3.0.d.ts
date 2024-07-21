@@ -41,6 +41,7 @@ export namespace Gkbd {
         FIRST,
         LAST,
     }
+
     export namespace KeyboardDrawingItemType {
         export const $gtype: GObject.GType<KeyboardDrawingItemType>;
     }

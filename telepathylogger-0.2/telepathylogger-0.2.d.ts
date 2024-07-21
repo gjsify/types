@@ -44,6 +44,7 @@ export namespace TelepathyLogger {
          */
         SELF,
     }
+
     export namespace LogManagerError {
         export const $gtype: GObject.GType<LogManagerError>;
     }
@@ -57,13 +58,17 @@ export namespace TelepathyLogger {
     interface LogEventFilter {
         (event: Event): boolean;
     }
-    export namespace EventTypeMask {
-        export const $gtype: GObject.GType<EventTypeMask>;
-    }
+    /**
+     * Mask used to filter type of #TplEvent returned.
+     */
 
     /**
      * Mask used to filter type of #TplEvent returned.
      */
+    export namespace EventTypeMask {
+        export const $gtype: GObject.GType<EventTypeMask>;
+    }
+
     enum EventTypeMask {
         /**
          * Mask to #TplTextEvent

@@ -24,13 +24,17 @@ export namespace EBook {
      * EBook-1.2
      */
 
-    export namespace BookStatus {
-        export const $gtype: GObject.GType<BookStatus>;
-    }
+    /**
+     * Error codes for the #E_BOOK_ERROR error
+     */
 
     /**
      * Error codes for the #E_BOOK_ERROR error
      */
+    export namespace BookStatus {
+        export const $gtype: GObject.GType<BookStatus>;
+    }
+
     enum BookStatus {
         OK,
         INVALID_ARG,

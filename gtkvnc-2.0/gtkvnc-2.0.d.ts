@@ -38,6 +38,7 @@ export namespace GtkVnc {
         CLIENTNAME,
         CA_CERT_DATA,
     }
+
     export namespace DisplayDepthColor {
         export const $gtype: GObject.GType<DisplayDepthColor>;
     }
@@ -49,6 +50,7 @@ export namespace GtkVnc {
         LOW,
         ULTRA_LOW,
     }
+
     export namespace DisplayKeyEvent {
         export const $gtype: GObject.GType<DisplayKeyEvent>;
     }

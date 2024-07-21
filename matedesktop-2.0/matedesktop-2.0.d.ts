@@ -36,6 +36,7 @@ export namespace MateDesktop {
         H_GRADIENT,
         V_GRADIENT,
     }
+
     export namespace BGPlacement {
         export const $gtype: GObject.GType<BGPlacement>;
     }
@@ -77,6 +78,7 @@ export namespace MateDesktop {
         CHANGED,
         DISAPPEARED,
     }
+
     export namespace DesktopItemType {
         export const $gtype: GObject.GType<DesktopItemType>;
     }
@@ -92,6 +94,7 @@ export namespace MateDesktop {
         SERVICE,
         SERVICE_TYPE,
     }
+
     export namespace DesktopThumbnailSize {
         export const $gtype: GObject.GType<DesktopThumbnailSize>;
     }
@@ -318,6 +321,7 @@ export namespace MateDesktop {
     interface ColorSelectionChangePaletteWithScreenFunc {
         (screen: Gdk.Screen, colors: Gdk.RGBA, n_colors: number): void;
     }
+
     export namespace DesktopItemIconFlags {
         export const $gtype: GObject.GType<DesktopItemIconFlags>;
     }
@@ -325,6 +329,7 @@ export namespace MateDesktop {
     enum DesktopItemIconFlags {
         DESKTOP_ITEM_ICON_NO_KDE,
     }
+
     export namespace DesktopItemLaunchFlags {
         export const $gtype: GObject.GType<DesktopItemLaunchFlags>;
     }
@@ -336,6 +341,7 @@ export namespace MateDesktop {
         APPEND_PATHS,
         DO_NOT_REAP_CHILD,
     }
+
     export namespace DesktopItemLoadFlags {
         export const $gtype: GObject.GType<DesktopItemLoadFlags>;
     }
@@ -344,6 +350,7 @@ export namespace MateDesktop {
         ONLY_IF_EXISTS,
         NO_TRANSLATIONS,
     }
+
     export namespace RRRotation {
         export const $gtype: GObject.GType<RRRotation>;
     }

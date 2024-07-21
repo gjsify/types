@@ -64,6 +64,7 @@ export namespace GoVirt {
         SPICE,
         VNC,
     }
+
     export namespace VmState {
         export const $gtype: GObject.GType<VmState>;
     }

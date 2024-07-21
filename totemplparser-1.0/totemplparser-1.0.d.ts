@@ -50,13 +50,17 @@ export namespace TotemPlParser {
         static quark(): GLib.Quark;
     }
 
-    export namespace ParserResult {
-        export const $gtype: GObject.GType<ParserResult>;
-    }
+    /**
+     * Gives the result of parsing a playlist.
+     */
 
     /**
      * Gives the result of parsing a playlist.
      */
+    export namespace ParserResult {
+        export const $gtype: GObject.GType<ParserResult>;
+    }
+
     enum ParserResult {
         /**
          * The playlist could not be handled.
@@ -80,13 +84,17 @@ export namespace TotemPlParser {
          */
         CANCELLED,
     }
-    export namespace ParserType {
-        export const $gtype: GObject.GType<ParserType>;
-    }
+    /**
+     * The type of playlist a #TotemPlParser will parse.
+     */
 
     /**
      * The type of playlist a #TotemPlParser will parse.
      */
+    export namespace ParserType {
+        export const $gtype: GObject.GType<ParserType>;
+    }
+
     enum ParserType {
         /**
          * PLS parser

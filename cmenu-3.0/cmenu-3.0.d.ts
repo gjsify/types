@@ -31,6 +31,7 @@ export namespace CMenu {
         ALIAS,
     }
     const DESKTOPAPPINFO_FLATPAK_SUFFIX: string;
+
     export namespace TreeFlags {
         export const $gtype: GObject.GType<TreeFlags>;
     }

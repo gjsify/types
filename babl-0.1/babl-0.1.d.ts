@@ -26,6 +26,7 @@ export namespace Babl {
         ABSOLUTE_COLORIMETRIC,
         PERFORMANCE,
     }
+
     export namespace SpaceFlags {
         export const $gtype: GObject.GType<SpaceFlags>;
     }
@@ -430,6 +431,7 @@ export namespace Babl {
             n: number,
         ): void;
     }
+
     export namespace ModelFlag {
         export const $gtype: GObject.GType<ModelFlag>;
     }

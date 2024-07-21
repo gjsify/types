@@ -28,15 +28,21 @@ export namespace GnomeAutoar {
         OVERWRITE,
         CHANGE_DESTINATION,
     }
-    export namespace Filter {
-        export const $gtype: GObject.GType<Filter>;
-    }
+    /**
+     * This is a non-negative number which represents filters supported by
+     * libarchive. A libarchive filter is a filter which can convert a
+     * regular file into a compressed file.
+     */
 
     /**
      * This is a non-negative number which represents filters supported by
      * libarchive. A libarchive filter is a filter which can convert a
      * regular file into a compressed file.
      */
+    export namespace Filter {
+        export const $gtype: GObject.GType<Filter>;
+    }
+
     enum Filter {
         /**
          * %ARCHIVE_FILTER_NONE: No filter
@@ -79,15 +85,21 @@ export namespace GnomeAutoar {
          */
         LRZIP,
     }
-    export namespace Format {
-        export const $gtype: GObject.GType<Format>;
-    }
+    /**
+     * This is a non-negative number which represents formats supported by
+     * libarchive. A libarchive format is a file format which can store many
+     * files as a archive file.
+     */
 
     /**
      * This is a non-negative number which represents formats supported by
      * libarchive. A libarchive format is a file format which can store many
      * files as a archive file.
      */
+    export namespace Format {
+        export const $gtype: GObject.GType<Format>;
+    }
+
     enum Format {
         /**
          * %ARCHIVE_FORMAT_ZIP: Zip archive

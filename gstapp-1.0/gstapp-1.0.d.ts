@@ -19,14 +19,19 @@ export namespace GstApp {
      * GstApp-1.0
      */
 
-    export namespace AppLeakyType {
-        export const $gtype: GObject.GType<AppLeakyType>;
-    }
+    /**
+     * Buffer dropping scheme to avoid the element's internal queue to block when
+     * full.
+     */
 
     /**
      * Buffer dropping scheme to avoid the element's internal queue to block when
      * full.
      */
+    export namespace AppLeakyType {
+        export const $gtype: GObject.GType<AppLeakyType>;
+    }
+
     enum AppLeakyType {
         /**
          * Not Leaky
@@ -41,13 +46,17 @@ export namespace GstApp {
          */
         DOWNSTREAM,
     }
-    export namespace AppStreamType {
-        export const $gtype: GObject.GType<AppStreamType>;
-    }
+    /**
+     * The stream type.
+     */
 
     /**
      * The stream type.
      */
+    export namespace AppStreamType {
+        export const $gtype: GObject.GType<AppStreamType>;
+    }
+
     enum AppStreamType {
         /**
          * No seeking is supported in the stream, such as a

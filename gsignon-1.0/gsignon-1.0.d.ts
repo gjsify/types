@@ -191,13 +191,17 @@ export namespace gSignon {
         static quark(): GLib.Quark;
     }
 
-    export namespace SessionDataUiPolicy {
-        export const $gtype: GObject.GType<SessionDataUiPolicy>;
-    }
+    /**
+     * UI policy for the signon process, passed to the UI plugin.
+     */
 
     /**
      * UI policy for the signon process, passed to the UI plugin.
      */
+    export namespace SessionDataUiPolicy {
+        export const $gtype: GObject.GType<SessionDataUiPolicy>;
+    }
+
     enum SessionDataUiPolicy {
         /**
          * The plugin can decide when to show UI.
@@ -320,13 +324,17 @@ export namespace gSignon {
     interface QueryMethodsCb {
         (auth_service: AuthService, methods: string[], error: GLib.Error): void;
     }
-    export namespace IdentityType {
-        export const $gtype: GObject.GType<IdentityType>;
-    }
+    /**
+     * Identity types used in #SignonIdentityInfo.
+     */
 
     /**
      * Identity types used in #SignonIdentityInfo.
      */
+    export namespace IdentityType {
+        export const $gtype: GObject.GType<IdentityType>;
+    }
+
     enum IdentityType {
         /**
          * an identity that is not an app, web or network

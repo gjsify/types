@@ -19,15 +19,21 @@ export namespace Gcr {
      * Gcr-3
      */
 
-    export namespace CertificateChainStatus {
-        export const $gtype: GObject.GType<CertificateChainStatus>;
-    }
+    /**
+     * The status of a built certificate chain. Will be set to
+     * %GCR_CERTIFICATE_CHAIN_UNKNOWN for certificate chains that have not been
+     * built.
+     */
 
     /**
      * The status of a built certificate chain. Will be set to
      * %GCR_CERTIFICATE_CHAIN_UNKNOWN for certificate chains that have not been
      * built.
      */
+    export namespace CertificateChainStatus {
+        export const $gtype: GObject.GType<CertificateChainStatus>;
+    }
+
     enum CertificateChainStatus {
         /**
          * The certificate chain's status is unknown.
@@ -64,26 +70,34 @@ export namespace Gcr {
          */
         ANCHORED,
     }
-    export namespace CertificateRequestFormat {
-        export const $gtype: GObject.GType<CertificateRequestFormat>;
-    }
+    /**
+     * The format of a certificate request. Currently only PKCS#10 is supported.
+     */
 
     /**
      * The format of a certificate request. Currently only PKCS#10 is supported.
      */
+    export namespace CertificateRequestFormat {
+        export const $gtype: GObject.GType<CertificateRequestFormat>;
+    }
+
     enum CertificateRequestFormat {
         /**
          * certificate request is in PKCS#10 format
          */
         CERTIFICATE_REQUEST_PKCS10,
     }
-    export namespace DataError {
-        export const $gtype: GObject.GType<DataError>;
-    }
+    /**
+     * Values responding to error codes for parsing and serializing data.
+     */
 
     /**
      * Values responding to error codes for parsing and serializing data.
      */
+    export namespace DataError {
+        export const $gtype: GObject.GType<DataError>;
+    }
+
     enum DataError {
         /**
          * Failed to parse or serialize the data
@@ -102,13 +116,17 @@ export namespace Gcr {
          */
         LOCKED,
     }
-    export namespace DataFormat {
-        export const $gtype: GObject.GType<DataFormat>;
-    }
+    /**
+     * The various format identifiers.
+     */
 
     /**
      * The various format identifiers.
      */
+    export namespace DataFormat {
+        export const $gtype: GObject.GType<DataFormat>;
+    }
+
     enum DataFormat {
         /**
          * Represents all the formats, when enabling or disabling
@@ -235,13 +253,17 @@ export namespace Gcr {
          */
         PEM_PUBLIC_KEY,
     }
-    export namespace PromptReply {
-        export const $gtype: GObject.GType<PromptReply>;
-    }
+    /**
+     * Various replies returned by [method`Prompt`.confirm] and friends.
+     */
 
     /**
      * Various replies returned by [method`Prompt`.confirm] and friends.
      */
+    export namespace PromptReply {
+        export const $gtype: GObject.GType<PromptReply>;
+    }
+
     enum PromptReply {
         /**
          * the prompt was cancelled
@@ -252,9 +274,14 @@ export namespace Gcr {
          */
         CONTINUE,
     }
-    export namespace SystemPromptError {
-        export const $gtype: GObject.GType<SystemPromptError>;
-    }
+    /**
+     * No error returned by the #GcrSystemPrompt is suitable for display or
+     * to the user.
+     *
+     * If the system prompter can only show one prompt at a time, and there is
+     * already a prompt being displayed, and the timeout waiting to open the
+     * prompt expires, then %GCR_SYSTEM_PROMPT_IN_PROGRESS is returned.
+     */
 
     /**
      * No error returned by the #GcrSystemPrompt is suitable for display or
@@ -264,20 +291,29 @@ export namespace Gcr {
      * already a prompt being displayed, and the timeout waiting to open the
      * prompt expires, then %GCR_SYSTEM_PROMPT_IN_PROGRESS is returned.
      */
+    export namespace SystemPromptError {
+        export const $gtype: GObject.GType<SystemPromptError>;
+    }
+
     enum SystemPromptError {
         /**
          * another prompt is already in progress
          */
         SYSTEM_PROMPT_IN_PROGRESS,
     }
-    export namespace SystemPrompterMode {
-        export const $gtype: GObject.GType<SystemPrompterMode>;
-    }
+    /**
+     * The mode for the system prompter. Most system prompters can only show
+     * one prompt at a time and would use the %GCR_SYSTEM_PROMPTER_SINGLE mode.
+     */
 
     /**
      * The mode for the system prompter. Most system prompters can only show
      * one prompt at a time and would use the %GCR_SYSTEM_PROMPTER_SINGLE mode.
      */
+    export namespace SystemPrompterMode {
+        export const $gtype: GObject.GType<SystemPrompterMode>;
+    }
+
     enum SystemPrompterMode {
         /**
          * only one prompt shown at a time
@@ -971,13 +1007,17 @@ export namespace Gcr {
     interface FilterCollectionFunc<A = GObject.Object> {
         (object: A): boolean;
     }
-    export namespace CertificateChainFlags {
-        export const $gtype: GObject.GType<CertificateChainFlags>;
-    }
+    /**
+     * Flags to be used with the gcr_certificate_chain_build() operation.
+     */
 
     /**
      * Flags to be used with the gcr_certificate_chain_build() operation.
      */
+    export namespace CertificateChainFlags {
+        export const $gtype: GObject.GType<CertificateChainFlags>;
+    }
+
     enum CertificateChainFlags {
         /**
          * no flags
@@ -991,6 +1031,7 @@ export namespace Gcr {
          */
         NO_LOOKUPS,
     }
+
     export namespace ColumnFlags {
         export const $gtype: GObject.GType<ColumnFlags>;
     }

@@ -43,6 +43,7 @@ export namespace AtrilDocument {
         CIRCLE,
         UNKNOWN,
     }
+
     export namespace AnnotationType {
         export const $gtype: GObject.GType<AnnotationType>;
     }
@@ -52,6 +53,7 @@ export namespace AtrilDocument {
         TEXT,
         ATTACHMENT,
     }
+
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
@@ -93,6 +95,7 @@ export namespace AtrilDocument {
         TWO_PAGE_LEFT,
         TWO_PAGE_RIGHT,
     }
+
     export namespace DocumentMode {
         export const $gtype: GObject.GType<DocumentMode>;
     }
@@ -105,6 +108,7 @@ export namespace AtrilDocument {
         USE_ATTACHMENTS,
         PRESENTATION,
     }
+
     export namespace FileExporterFormat {
         export const $gtype: GObject.GType<FileExporterFormat>;
     }
@@ -114,6 +118,7 @@ export namespace AtrilDocument {
         PS,
         PDF,
     }
+
     export namespace FormFieldButtonType {
         export const $gtype: GObject.GType<FormFieldButtonType>;
     }
@@ -123,6 +128,7 @@ export namespace AtrilDocument {
         CHECK,
         RADIO,
     }
+
     export namespace FormFieldChoiceType {
         export const $gtype: GObject.GType<FormFieldChoiceType>;
     }
@@ -131,6 +137,7 @@ export namespace AtrilDocument {
         COMBO,
         LIST,
     }
+
     export namespace FormFieldTextType {
         export const $gtype: GObject.GType<FormFieldTextType>;
     }
@@ -140,6 +147,7 @@ export namespace AtrilDocument {
         MULTILINE,
         FILE_SELECT,
     }
+
     export namespace LinkActionType {
         export const $gtype: GObject.GType<LinkActionType>;
     }
@@ -152,6 +160,7 @@ export namespace AtrilDocument {
         NAMED,
         LAYERS_STATE,
     }
+
     export namespace LinkDestType {
         export const $gtype: GObject.GType<LinkDestType>;
     }
@@ -168,6 +177,7 @@ export namespace AtrilDocument {
         HLINK,
         UNKNOWN,
     }
+
     export namespace SelectionStyle {
         export const $gtype: GObject.GType<SelectionStyle>;
     }
@@ -177,6 +187,7 @@ export namespace AtrilDocument {
         WORD,
         LINE,
     }
+
     export namespace TransitionEffectAlignment {
         export const $gtype: GObject.GType<TransitionEffectAlignment>;
     }
@@ -185,6 +196,7 @@ export namespace AtrilDocument {
         HORIZONTAL,
         VERTICAL,
     }
+
     export namespace TransitionEffectDirection {
         export const $gtype: GObject.GType<TransitionEffectDirection>;
     }
@@ -193,6 +205,7 @@ export namespace AtrilDocument {
         INWARD,
         OUTWARD,
     }
+
     export namespace TransitionEffectType {
         export const $gtype: GObject.GType<TransitionEffectType>;
     }
@@ -306,6 +319,7 @@ export namespace AtrilDocument {
      * @returns %TRUE on success, or %FALSE on error with @error filled in
      */
     function xfer_uri_simple(from: string, to: string): boolean;
+
     export namespace AnnotationsSaveMask {
         export const $gtype: GObject.GType<AnnotationsSaveMask>;
     }
@@ -323,6 +337,7 @@ export namespace AtrilDocument {
         ATTACHMENT,
         ALL,
     }
+
     export namespace DocumentInfoFields {
         export const $gtype: GObject.GType<DocumentInfoFields>;
     }
@@ -347,6 +362,7 @@ export namespace AtrilDocument {
         PAPER_SIZE,
         LICENSE,
     }
+
     export namespace DocumentPermissions {
         export const $gtype: GObject.GType<DocumentPermissions>;
     }
@@ -358,6 +374,7 @@ export namespace AtrilDocument {
         OK_TO_ADD_NOTES,
         FULL,
     }
+
     export namespace DocumentUIHints {
         export const $gtype: GObject.GType<DocumentUIHints>;
     }
@@ -371,6 +388,7 @@ export namespace AtrilDocument {
         DISPLAY_DOC_TITLE,
         DIRECTION_RTL,
     }
+
     export namespace FileExporterCapabilities {
         export const $gtype: GObject.GType<FileExporterCapabilities>;
     }

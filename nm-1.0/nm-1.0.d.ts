@@ -18,13 +18,17 @@ export namespace NM {
      * NM-1.0
      */
 
-    export namespace __80211Mode {
-        export const $gtype: GObject.GType<__80211Mode>;
-    }
+    /**
+     * Indicates the 802.11 mode an access point or device is currently in.
+     */
 
     /**
      * Indicates the 802.11 mode an access point or device is currently in.
      */
+    export namespace __80211Mode {
+        export const $gtype: GObject.GType<__80211Mode>;
+    }
+
     enum __80211Mode {
         /**
          * the device or access point mode is unknown
@@ -53,15 +57,21 @@ export namespace NM {
          */
         MESH,
     }
-    export namespace ActiveConnectionState {
-        export const $gtype: GObject.GType<ActiveConnectionState>;
-    }
+    /**
+     * #NMActiveConnectionState values indicate the state of a connection to a
+     * specific network while it is starting, connected, or disconnecting from that
+     * network.
+     */
 
     /**
      * #NMActiveConnectionState values indicate the state of a connection to a
      * specific network while it is starting, connected, or disconnecting from that
      * network.
      */
+    export namespace ActiveConnectionState {
+        export const $gtype: GObject.GType<ActiveConnectionState>;
+    }
+
     enum ActiveConnectionState {
         /**
          * the state of the connection is unknown
@@ -86,13 +96,17 @@ export namespace NM {
          */
         DEACTIVATED,
     }
-    export namespace ActiveConnectionStateReason {
-        export const $gtype: GObject.GType<ActiveConnectionStateReason>;
-    }
+    /**
+     * Active connection state reasons.
+     */
 
     /**
      * Active connection state reasons.
      */
+    export namespace ActiveConnectionStateReason {
+        export const $gtype: GObject.GType<ActiveConnectionStateReason>;
+    }
+
     enum ActiveConnectionStateReason {
         /**
          * The reason for the active connection
@@ -222,9 +236,15 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
-    export namespace Capability {
-        export const $gtype: GObject.GType<Capability>;
-    }
+    /**
+     * #NMCapability names the numbers in the Capabilities property.
+     * Capabilities are positive numbers. They are part of stable API
+     * and a certain capability number is guaranteed not to change.
+     *
+     * The range 0x7000 - 0x7FFF of capabilities is guaranteed not to be
+     * used by upstream NetworkManager. It could thus be used for downstream
+     * extensions.
+     */
 
     /**
      * #NMCapability names the numbers in the Capabilities property.
@@ -235,6 +255,10 @@ export namespace NM {
      * used by upstream NetworkManager. It could thus be used for downstream
      * extensions.
      */
+    export namespace Capability {
+        export const $gtype: GObject.GType<Capability>;
+    }
+
     enum Capability {
         /**
          * Teams can be managed. This means the team device plugin
@@ -288,14 +312,19 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
-    export namespace ClientPermission {
-        export const $gtype: GObject.GType<ClientPermission>;
-    }
+    /**
+     * #NMClientPermission values indicate various permissions that NetworkManager
+     * clients can obtain to perform certain tasks on behalf of the current user.
+     */
 
     /**
      * #NMClientPermission values indicate various permissions that NetworkManager
      * clients can obtain to perform certain tasks on behalf of the current user.
      */
+    export namespace ClientPermission {
+        export const $gtype: GObject.GType<ClientPermission>;
+    }
+
     enum ClientPermission {
         /**
          * unknown or no permission
@@ -388,14 +417,19 @@ export namespace NM {
          */
         LAST,
     }
-    export namespace ClientPermissionResult {
-        export const $gtype: GObject.GType<ClientPermissionResult>;
-    }
+    /**
+     * #NMClientPermissionResult values indicate what authorizations and permissions
+     * the user requires to obtain a given #NMClientPermission
+     */
 
     /**
      * #NMClientPermissionResult values indicate what authorizations and permissions
      * the user requires to obtain a given #NMClientPermission
      */
+    export namespace ClientPermissionResult {
+        export const $gtype: GObject.GType<ClientPermissionResult>;
+    }
+
     enum ClientPermissionResult {
         /**
          * unknown or no authorization
@@ -520,6 +554,7 @@ export namespace NM {
          */
         MULTIPLE,
     }
+
     export namespace ConnectivityState {
         export const $gtype: GObject.GType<ConnectivityState>;
     }
@@ -758,13 +793,17 @@ export namespace NM {
          */
         FAILED,
     }
-    export namespace DeviceStateReason {
-        export const $gtype: GObject.GType<DeviceStateReason>;
-    }
+    /**
+     * Device state change reason codes
+     */
 
     /**
      * Device state change reason codes
      */
+    export namespace DeviceStateReason {
+        export const $gtype: GObject.GType<DeviceStateReason>;
+    }
+
     enum DeviceStateReason {
         /**
          * No reason given
@@ -1044,14 +1083,19 @@ export namespace NM {
          */
         DEVICE_HANDLER_FAILED,
     }
-    export namespace DeviceType {
-        export const $gtype: GObject.GType<DeviceType>;
-    }
+    /**
+     * #NMDeviceType values indicate the type of hardware represented by a
+     * device object.
+     */
 
     /**
      * #NMDeviceType values indicate the type of hardware represented by a
      * device object.
      */
+    export namespace DeviceType {
+        export const $gtype: GObject.GType<DeviceType>;
+    }
+
     enum DeviceType {
         /**
          * unknown device
@@ -1191,13 +1235,17 @@ export namespace NM {
          */
         HSR,
     }
-    export namespace IPTunnelMode {
-        export const $gtype: GObject.GType<IPTunnelMode>;
-    }
+    /**
+     * The tunneling mode.
+     */
 
     /**
      * The tunneling mode.
      */
+    export namespace IPTunnelMode {
+        export const $gtype: GObject.GType<IPTunnelMode>;
+    }
+
     enum IPTunnelMode {
         /**
          * Unknown/unset tunnel mode
@@ -1248,14 +1296,19 @@ export namespace NM {
          */
         IP6GRETAP,
     }
-    export namespace KeyfileHandlerType {
-        export const $gtype: GObject.GType<KeyfileHandlerType>;
-    }
+    /**
+     * The type of the callback for %NMKeyfileReadHandler and %NMKeyfileWriteHandler.
+     * Depending on the type, you can interpret %NMKeyfileHandlerData.
+     */
 
     /**
      * The type of the callback for %NMKeyfileReadHandler and %NMKeyfileWriteHandler.
      * Depending on the type, you can interpret %NMKeyfileHandlerData.
      */
+    export namespace KeyfileHandlerType {
+        export const $gtype: GObject.GType<KeyfileHandlerType>;
+    }
+
     enum KeyfileHandlerType {
         /**
          * a warning.
@@ -1267,13 +1320,17 @@ export namespace NM {
          */
         WRITE_CERT,
     }
-    export namespace KeyfileWarnSeverity {
-        export const $gtype: GObject.GType<KeyfileWarnSeverity>;
-    }
+    /**
+     * The severity level of %NM_KEYFILE_HANDLER_TYPE_WARN events.
+     */
 
     /**
      * The severity level of %NM_KEYFILE_HANDLER_TYPE_WARN events.
      */
+    export namespace KeyfileWarnSeverity {
+        export const $gtype: GObject.GType<KeyfileWarnSeverity>;
+    }
+
     enum KeyfileWarnSeverity {
         /**
          * debug message
@@ -1377,9 +1434,34 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
-    export namespace Metered {
-        export const $gtype: GObject.GType<Metered>;
-    }
+    /**
+     * The NMMetered enum has two different purposes: one is to configure
+     * "connection.metered" setting of a connection profile in #NMSettingConnection, and
+     * the other is to express the actual metered state of the #NMDevice at a given moment.
+     *
+     * For the connection profile only #NM_METERED_UNKNOWN, #NM_METERED_NO
+     * and #NM_METERED_YES are allowed.
+     *
+     * The device's metered state at runtime is determined by the profile
+     * which is currently active. If the profile explicitly specifies #NM_METERED_NO
+     * or #NM_METERED_YES, then the device's metered state is as such.
+     * If the connection profile leaves it undecided at #NM_METERED_UNKNOWN (the default),
+     * then NetworkManager tries to guess the metered state, for example based on the
+     * device type or on DHCP options (like Android devices exposing a "ANDROID_METERED"
+     * DHCP vendor option). This then leads to either #NM_METERED_GUESS_NO or #NM_METERED_GUESS_YES.
+     *
+     * Most applications probably should treat the runtime state #NM_METERED_GUESS_YES
+     * like #NM_METERED_YES, and all other states as not metered.
+     *
+     * Note that the per-device metered states are then combined to a global metered
+     * state. This is basically the metered state of the device with the best default
+     * route. However, that generalization of a global metered state may not be correct
+     * if the default routes for IPv4 and IPv6 are on different devices, or if policy
+     * routing is configured. In general, the global metered state tries to express whether
+     * the traffic is likely metered, but since that depends on the traffic itself,
+     * there is not one answer in all cases. Hence, an application may want to consider
+     * the per-device's metered states.
+     */
 
     /**
      * The NMMetered enum has two different purposes: one is to configure
@@ -1409,6 +1491,10 @@ export namespace NM {
      * there is not one answer in all cases. Hence, an application may want to consider
      * the per-device's metered states.
      */
+    export namespace Metered {
+        export const $gtype: GObject.GType<Metered>;
+    }
+
     enum Metered {
         /**
          * The metered status is unknown
@@ -1431,13 +1517,17 @@ export namespace NM {
          */
         GUESS_NO,
     }
-    export namespace RollbackResult {
-        export const $gtype: GObject.GType<RollbackResult>;
-    }
+    /**
+     * The result of a checkpoint Rollback() operation for a specific device.
+     */
 
     /**
      * The result of a checkpoint Rollback() operation for a specific device.
      */
+    export namespace RollbackResult {
+        export const $gtype: GObject.GType<RollbackResult>;
+    }
+
     enum RollbackResult {
         /**
          * the rollback succeeded.
@@ -1510,14 +1600,19 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
-    export namespace Setting8021xCKFormat {
-        export const $gtype: GObject.GType<Setting8021xCKFormat>;
-    }
+    /**
+     * #NMSetting8021xCKFormat values indicate the general type of a certificate
+     * or private key
+     */
 
     /**
      * #NMSetting8021xCKFormat values indicate the general type of a certificate
      * or private key
      */
+    export namespace Setting8021xCKFormat {
+        export const $gtype: GObject.GType<Setting8021xCKFormat>;
+    }
+
     enum Setting8021xCKFormat {
         /**
          * unknown file format
@@ -1538,15 +1633,21 @@ export namespace NM {
          */
         PKCS12,
     }
-    export namespace Setting8021xCKScheme {
-        export const $gtype: GObject.GType<Setting8021xCKScheme>;
-    }
+    /**
+     * #NMSetting8021xCKScheme values indicate how a certificate or private key is
+     * stored in the setting properties, either as a blob of the item's data, or as
+     * a path to a certificate or private key file on the filesystem
+     */
 
     /**
      * #NMSetting8021xCKScheme values indicate how a certificate or private key is
      * stored in the setting properties, either as a blob of the item's data, or as
      * a path to a certificate or private key file on the filesystem
      */
+    export namespace Setting8021xCKScheme {
+        export const $gtype: GObject.GType<Setting8021xCKScheme>;
+    }
+
     enum Setting8021xCKScheme {
         /**
          * unknown certificate or private key
@@ -1569,14 +1670,19 @@ export namespace NM {
          */
         PKCS11,
     }
-    export namespace SettingCompareFlags {
-        export const $gtype: GObject.GType<SettingCompareFlags>;
-    }
+    /**
+     * These flags modify the comparison behavior when comparing two settings or
+     * two connections.
+     */
 
     /**
      * These flags modify the comparison behavior when comparing two settings or
      * two connections.
      */
+    export namespace SettingCompareFlags {
+        export const $gtype: GObject.GType<SettingCompareFlags>;
+    }
+
     enum SettingCompareFlags {
         /**
          * match all properties exactly
@@ -1633,14 +1739,19 @@ export namespace NM {
          */
         IGNORE_TIMESTAMP,
     }
-    export namespace SettingConnectionAutoconnectSlaves {
-        export const $gtype: GObject.GType<SettingConnectionAutoconnectSlaves>;
-    }
+    /**
+     * #NMSettingConnectionAutoconnectSlaves values indicate whether slave connections
+     * should be activated when master is activated.
+     */
 
     /**
      * #NMSettingConnectionAutoconnectSlaves values indicate whether slave connections
      * should be activated when master is activated.
      */
+    export namespace SettingConnectionAutoconnectSlaves {
+        export const $gtype: GObject.GType<SettingConnectionAutoconnectSlaves>;
+    }
+
     enum SettingConnectionAutoconnectSlaves {
         /**
          * default value
@@ -1657,13 +1768,17 @@ export namespace NM {
          */
         YES,
     }
-    export namespace SettingConnectionDnsOverTls {
-        export const $gtype: GObject.GType<SettingConnectionDnsOverTls>;
-    }
+    /**
+     * #NMSettingConnectionDnsOverTls values indicate whether DNSOverTls should be enabled.
+     */
 
     /**
      * #NMSettingConnectionDnsOverTls values indicate whether DNSOverTls should be enabled.
      */
+    export namespace SettingConnectionDnsOverTls {
+        export const $gtype: GObject.GType<SettingConnectionDnsOverTls>;
+    }
+
     enum SettingConnectionDnsOverTls {
         /**
          * default value
@@ -1682,13 +1797,17 @@ export namespace NM {
          */
         YES,
     }
-    export namespace SettingConnectionLldp {
-        export const $gtype: GObject.GType<SettingConnectionLldp>;
-    }
+    /**
+     * #NMSettingConnectionLldp values indicate whether LLDP should be enabled.
+     */
 
     /**
      * #NMSettingConnectionLldp values indicate whether LLDP should be enabled.
      */
+    export namespace SettingConnectionLldp {
+        export const $gtype: GObject.GType<SettingConnectionLldp>;
+    }
+
     enum SettingConnectionLldp {
         /**
          * default value
@@ -1703,13 +1822,17 @@ export namespace NM {
          */
         ENABLE_RX,
     }
-    export namespace SettingConnectionLlmnr {
-        export const $gtype: GObject.GType<SettingConnectionLlmnr>;
-    }
+    /**
+     * #NMSettingConnectionLlmnr values indicate whether LLMNR should be enabled.
+     */
 
     /**
      * #NMSettingConnectionLlmnr values indicate whether LLMNR should be enabled.
      */
+    export namespace SettingConnectionLlmnr {
+        export const $gtype: GObject.GType<SettingConnectionLlmnr>;
+    }
+
     enum SettingConnectionLlmnr {
         /**
          * default value
@@ -1728,13 +1851,17 @@ export namespace NM {
          */
         YES,
     }
-    export namespace SettingConnectionMdns {
-        export const $gtype: GObject.GType<SettingConnectionMdns>;
-    }
+    /**
+     * #NMSettingConnectionMdns values indicate whether mDNS should be enabled.
+     */
 
     /**
      * #NMSettingConnectionMdns values indicate whether mDNS should be enabled.
      */
+    export namespace SettingConnectionMdns {
+        export const $gtype: GObject.GType<SettingConnectionMdns>;
+    }
+
     enum SettingConnectionMdns {
         /**
          * default value
@@ -1753,13 +1880,17 @@ export namespace NM {
          */
         YES,
     }
-    export namespace SettingDiffResult {
-        export const $gtype: GObject.GType<SettingDiffResult>;
-    }
+    /**
+     * These values indicate the result of a setting difference operation.
+     */
 
     /**
      * These values indicate the result of a setting difference operation.
      */
+    export namespace SettingDiffResult {
+        export const $gtype: GObject.GType<SettingDiffResult>;
+    }
+
     enum SettingDiffResult {
         /**
          * unknown result
@@ -1784,13 +1915,17 @@ export namespace NM {
          */
         IN_B_DEFAULT,
     }
-    export namespace SettingIP4LinkLocal {
-        export const $gtype: GObject.GType<SettingIP4LinkLocal>;
-    }
+    /**
+     * #NMSettingIP4LinkLocal values indicate whether IPv4 link-local address protocol should be enabled.
+     */
 
     /**
      * #NMSettingIP4LinkLocal values indicate whether IPv4 link-local address protocol should be enabled.
      */
+    export namespace SettingIP4LinkLocal {
+        export const $gtype: GObject.GType<SettingIP4LinkLocal>;
+    }
+
     enum SettingIP4LinkLocal {
         /**
          * Allow fallback to a globally configured default. If unspecified,
@@ -1813,14 +1948,19 @@ export namespace NM {
          */
         ENABLED,
     }
-    export namespace SettingIP6ConfigAddrGenMode {
-        export const $gtype: GObject.GType<SettingIP6ConfigAddrGenMode>;
-    }
+    /**
+     * #NMSettingIP6ConfigAddrGenMode controls how the Interface Identifier for
+     * RFC4862 Stateless Address Autoconfiguration is created.
+     */
 
     /**
      * #NMSettingIP6ConfigAddrGenMode controls how the Interface Identifier for
      * RFC4862 Stateless Address Autoconfiguration is created.
      */
+    export namespace SettingIP6ConfigAddrGenMode {
+        export const $gtype: GObject.GType<SettingIP6ConfigAddrGenMode>;
+    }
+
     enum SettingIP6ConfigAddrGenMode {
         /**
          * The Interface Identifier is derived
@@ -1845,14 +1985,19 @@ export namespace NM {
          */
         DEFAULT,
     }
-    export namespace SettingIP6ConfigPrivacy {
-        export const $gtype: GObject.GType<SettingIP6ConfigPrivacy>;
-    }
+    /**
+     * #NMSettingIP6ConfigPrivacy values indicate if and how IPv6 Privacy
+     * Extensions are used (RFC4941).
+     */
 
     /**
      * #NMSettingIP6ConfigPrivacy values indicate if and how IPv6 Privacy
      * Extensions are used (RFC4941).
      */
+    export namespace SettingIP6ConfigPrivacy {
+        export const $gtype: GObject.GType<SettingIP6ConfigPrivacy>;
+    }
+
     enum SettingIP6ConfigPrivacy {
         /**
          * unknown or no value specified
@@ -1873,13 +2018,17 @@ export namespace NM {
          */
         PREFER_TEMP_ADDR,
     }
-    export namespace SettingMacRandomization {
-        export const $gtype: GObject.GType<SettingMacRandomization>;
-    }
+    /**
+     * Controls if and how the MAC address of a device is randomzied.
+     */
 
     /**
      * Controls if and how the MAC address of a device is randomzied.
      */
+    export namespace SettingMacRandomization {
+        export const $gtype: GObject.GType<SettingMacRandomization>;
+    }
+
     enum SettingMacRandomization {
         /**
          * the default value, which unless
@@ -1895,14 +2044,19 @@ export namespace NM {
          */
         ALWAYS,
     }
-    export namespace SettingMacsecMode {
-        export const $gtype: GObject.GType<SettingMacsecMode>;
-    }
+    /**
+     * #NMSettingMacsecMode controls how the CAK (Connectivity Association Key) used
+     * in MKA (MACsec Key Agreement) is obtained.
+     */
 
     /**
      * #NMSettingMacsecMode controls how the CAK (Connectivity Association Key) used
      * in MKA (MACsec Key Agreement) is obtained.
      */
+    export namespace SettingMacsecMode {
+        export const $gtype: GObject.GType<SettingMacsecMode>;
+    }
+
     enum SettingMacsecMode {
         /**
          * The CAK is pre-shared
@@ -1913,13 +2067,17 @@ export namespace NM {
          */
         EAP,
     }
-    export namespace SettingMacsecOffload {
-        export const $gtype: GObject.GType<SettingMacsecOffload>;
-    }
+    /**
+     * These flags control the MACsec offload mode.
+     */
 
     /**
      * These flags control the MACsec offload mode.
      */
+    export namespace SettingMacsecOffload {
+        export const $gtype: GObject.GType<SettingMacsecOffload>;
+    }
+
     enum SettingMacsecOffload {
         /**
          * use the global default; disable if not defined
@@ -1938,13 +2096,17 @@ export namespace NM {
          */
         MAC,
     }
-    export namespace SettingMacsecValidation {
-        export const $gtype: GObject.GType<SettingMacsecValidation>;
-    }
+    /**
+     * #NMSettingMacsecValidation specifies a validation mode for incoming frames.
+     */
 
     /**
      * #NMSettingMacsecValidation specifies a validation mode for incoming frames.
      */
+    export namespace SettingMacsecValidation {
+        export const $gtype: GObject.GType<SettingMacsecValidation>;
+    }
+
     enum SettingMacsecValidation {
         /**
          * All incoming frames are accepted if
@@ -1962,6 +2124,7 @@ export namespace NM {
          */
         STRICT,
     }
+
     export namespace SettingMacvlanMode {
         export const $gtype: GObject.GType<SettingMacvlanMode>;
     }
@@ -1992,13 +2155,17 @@ export namespace NM {
          */
         SOURCE,
     }
-    export namespace SettingProxyMethod {
-        export const $gtype: GObject.GType<SettingProxyMethod>;
-    }
+    /**
+     * The Proxy method.
+     */
 
     /**
      * The Proxy method.
      */
+    export namespace SettingProxyMethod {
+        export const $gtype: GObject.GType<SettingProxyMethod>;
+    }
+
     enum SettingProxyMethod {
         /**
          * No Proxy for the Connection
@@ -2009,13 +2176,17 @@ export namespace NM {
          */
         AUTO,
     }
-    export namespace SettingSerialParity {
-        export const $gtype: GObject.GType<SettingSerialParity>;
-    }
+    /**
+     * The parity setting of a serial port.
+     */
 
     /**
      * The parity setting of a serial port.
      */
+    export namespace SettingSerialParity {
+        export const $gtype: GObject.GType<SettingSerialParity>;
+    }
+
     enum SettingSerialParity {
         /**
          * No parity bits (default)
@@ -2030,13 +2201,17 @@ export namespace NM {
          */
         ODD,
     }
-    export namespace SettingTunMode {
-        export const $gtype: GObject.GType<SettingTunMode>;
-    }
+    /**
+     * #NMSettingTunMode values indicate the device type (TUN/TAP)
+     */
 
     /**
      * #NMSettingTunMode values indicate the device type (TUN/TAP)
      */
+    export namespace SettingTunMode {
+        export const $gtype: GObject.GType<SettingTunMode>;
+    }
+
     enum SettingTunMode {
         /**
          * an unknown device type
@@ -2051,13 +2226,17 @@ export namespace NM {
          */
         TAP,
     }
-    export namespace SettingWirelessPowersave {
-        export const $gtype: GObject.GType<SettingWirelessPowersave>;
-    }
+    /**
+     * These flags indicate whether wireless powersave must be enabled.
+     */
 
     /**
      * These flags indicate whether wireless powersave must be enabled.
      */
+    export namespace SettingWirelessPowersave {
+        export const $gtype: GObject.GType<SettingWirelessPowersave>;
+    }
+
     enum SettingWirelessPowersave {
         /**
          * use the default value
@@ -2076,13 +2255,17 @@ export namespace NM {
          */
         ENABLE,
     }
-    export namespace SettingWirelessSecurityFils {
-        export const $gtype: GObject.GType<SettingWirelessSecurityFils>;
-    }
+    /**
+     * These flags indicate whether FILS must be enabled.
+     */
 
     /**
      * These flags indicate whether FILS must be enabled.
      */
+    export namespace SettingWirelessSecurityFils {
+        export const $gtype: GObject.GType<SettingWirelessSecurityFils>;
+    }
+
     enum SettingWirelessSecurityFils {
         /**
          * use the default value
@@ -2101,13 +2284,17 @@ export namespace NM {
          */
         REQUIRED,
     }
-    export namespace SettingWirelessSecurityPmf {
-        export const $gtype: GObject.GType<SettingWirelessSecurityPmf>;
-    }
+    /**
+     * These flags indicate whether PMF must be enabled.
+     */
 
     /**
      * These flags indicate whether PMF must be enabled.
      */
+    export namespace SettingWirelessSecurityPmf {
+        export const $gtype: GObject.GType<SettingWirelessSecurityPmf>;
+    }
+
     enum SettingWirelessSecurityPmf {
         /**
          * use the default value
@@ -2213,6 +2400,7 @@ export namespace NM {
          */
         BASIC,
     }
+
     export namespace SriovEswitchInlineMode {
         export const $gtype: GObject.GType<SriovEswitchInlineMode>;
     }
@@ -2239,6 +2427,7 @@ export namespace NM {
          */
         TRANSPORT,
     }
+
     export namespace SriovEswitchMode {
         export const $gtype: GObject.GType<SriovEswitchMode>;
     }
@@ -2257,13 +2446,17 @@ export namespace NM {
          */
         SWITCHDEV,
     }
-    export namespace SriovVFVlanProtocol {
-        export const $gtype: GObject.GType<SriovVFVlanProtocol>;
-    }
+    /**
+     * #NMSriovVFVlanProtocol indicates the VLAN protocol to use.
+     */
 
     /**
      * #NMSriovVFVlanProtocol indicates the VLAN protocol to use.
      */
+    export namespace SriovVFVlanProtocol {
+        export const $gtype: GObject.GType<SriovVFVlanProtocol>;
+    }
+
     enum SriovVFVlanProtocol {
         /**
          * use 802.1Q
@@ -2274,13 +2467,17 @@ export namespace NM {
          */
         '1AD',
     }
-    export namespace State {
-        export const $gtype: GObject.GType<State>;
-    }
+    /**
+     * #NMState values indicate the current overall networking state.
+     */
 
     /**
      * #NMState values indicate the current overall networking state.
      */
+    export namespace State {
+        export const $gtype: GObject.GType<State>;
+    }
+
     enum State {
         /**
          * Networking state is unknown. This indicates a daemon error
@@ -2333,13 +2530,17 @@ export namespace NM {
          */
         CONNECTED_GLOBAL,
     }
-    export namespace Ternary {
-        export const $gtype: GObject.GType<Ternary>;
-    }
+    /**
+     * An boolean value that can be overridden by a default.
+     */
 
     /**
      * An boolean value that can be overridden by a default.
      */
+    export namespace Ternary {
+        export const $gtype: GObject.GType<Ternary>;
+    }
+
     enum Ternary {
         /**
          * use the globally-configured default value.
@@ -2354,15 +2555,21 @@ export namespace NM {
          */
         TRUE,
     }
-    export namespace UtilsSecurityType {
-        export const $gtype: GObject.GType<UtilsSecurityType>;
-    }
+    /**
+     * Describes generic security mechanisms that 802.11 access points may offer.
+     * Used with nm_utils_security_valid() for checking whether a given access
+     * point is compatible with a network device.
+     */
 
     /**
      * Describes generic security mechanisms that 802.11 access points may offer.
      * Used with nm_utils_security_valid() for checking whether a given access
      * point is compatible with a network device.
      */
+    export namespace UtilsSecurityType {
+        export const $gtype: GObject.GType<UtilsSecurityType>;
+    }
+
     enum UtilsSecurityType {
         /**
          * unknown or invalid security, placeholder and not used
@@ -2415,9 +2622,12 @@ export namespace NM {
          */
         WPA3_SUITE_B_192,
     }
-    export namespace VersionInfoCapability {
-        export const $gtype: GObject.GType<VersionInfoCapability>;
-    }
+    /**
+     * %_NM_VERSION_INFO_CAPABILITY_UNUSED: a dummy capability. It has no meaning,
+     *   don't use it.
+     * Currently no enum values are defined. These capabilities are exposed
+     * on D-Bus in the "VersionInfo" bit field.
+     */
 
     /**
      * %_NM_VERSION_INFO_CAPABILITY_UNUSED: a dummy capability. It has no meaning,
@@ -2425,17 +2635,26 @@ export namespace NM {
      * Currently no enum values are defined. These capabilities are exposed
      * on D-Bus in the "VersionInfo" bit field.
      */
+    export namespace VersionInfoCapability {
+        export const $gtype: GObject.GType<VersionInfoCapability>;
+    }
+
     enum VersionInfoCapability {
         UNUSED,
     }
-    export namespace VlanPriorityMap {
-        export const $gtype: GObject.GType<VlanPriorityMap>;
-    }
+    /**
+     * A selector for traffic priority maps; these map Linux SKB priorities
+     * to 802.1p priorities used in VLANs.
+     */
 
     /**
      * A selector for traffic priority maps; these map Linux SKB priorities
      * to 802.1p priorities used in VLANs.
      */
+    export namespace VlanPriorityMap {
+        export const $gtype: GObject.GType<VlanPriorityMap>;
+    }
+
     enum VlanPriorityMap {
         /**
          * map for incoming data
@@ -2446,13 +2665,17 @@ export namespace NM {
          */
         EGRESS_MAP,
     }
-    export namespace VpnConnectionState {
-        export const $gtype: GObject.GType<VpnConnectionState>;
-    }
+    /**
+     * VPN connection states
+     */
 
     /**
      * VPN connection states
      */
+    export namespace VpnConnectionState {
+        export const $gtype: GObject.GType<VpnConnectionState>;
+    }
+
     enum VpnConnectionState {
         /**
          * The state of the VPN connection is
@@ -2491,13 +2714,17 @@ export namespace NM {
          */
         DISCONNECTED,
     }
-    export namespace VpnConnectionStateReason {
-        export const $gtype: GObject.GType<VpnConnectionStateReason>;
-    }
+    /**
+     * VPN connection state reasons
+     */
 
     /**
      * VPN connection state reasons
      */
+    export namespace VpnConnectionStateReason {
+        export const $gtype: GObject.GType<VpnConnectionStateReason>;
+    }
+
     enum VpnConnectionStateReason {
         /**
          * The reason for the VPN connection
@@ -2632,13 +2859,17 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
-    export namespace VpnPluginFailure {
-        export const $gtype: GObject.GType<VpnPluginFailure>;
-    }
+    /**
+     * VPN plugin failure reasons
+     */
 
     /**
      * VPN plugin failure reasons
      */
+    export namespace VpnPluginFailure {
+        export const $gtype: GObject.GType<VpnPluginFailure>;
+    }
+
     enum VpnPluginFailure {
         /**
          * Login failed.
@@ -2654,13 +2885,17 @@ export namespace NM {
          */
         BAD_IP_CONFIG,
     }
-    export namespace VpnServiceState {
-        export const $gtype: GObject.GType<VpnServiceState>;
-    }
+    /**
+     * VPN daemon states
+     */
 
     /**
      * VPN daemon states
      */
+    export namespace VpnServiceState {
+        export const $gtype: GObject.GType<VpnServiceState>;
+    }
+
     enum VpnServiceState {
         /**
          * The state of the VPN plugin is unknown.
@@ -2691,9 +2926,17 @@ export namespace NM {
          */
         STOPPED,
     }
-    export namespace WepKeyType {
-        export const $gtype: GObject.GType<WepKeyType>;
-    }
+    /**
+     * The #NMWepKeyType values specify how any WEP keys present in the setting
+     * are interpreted.  There are no standards governing how to hash the various WEP
+     * key/passphrase formats into the actual WEP key.  Unfortunately some WEP keys
+     * can be interpreted in multiple ways, requiring the setting to specify how to
+     * interpret the any WEP keys.  For example, the key "732f2d712e4a394a375d366931"
+     * is both a valid Hexadecimal WEP key and a WEP passphrase.  Further, many
+     * ASCII keys are also valid WEP passphrases, but since passphrases and ASCII
+     * keys are hashed differently to determine the actual WEP key the type must be
+     * specified.
+     */
 
     /**
      * The #NMWepKeyType values specify how any WEP keys present in the setting
@@ -2706,6 +2949,10 @@ export namespace NM {
      * keys are hashed differently to determine the actual WEP key the type must be
      * specified.
      */
+    export namespace WepKeyType {
+        export const $gtype: GObject.GType<WepKeyType>;
+    }
+
     enum WepKeyType {
         /**
          * unknown WEP key type
@@ -2726,13 +2973,17 @@ export namespace NM {
          */
         PASSPHRASE,
     }
-    export namespace WimaxNspNetworkType {
-        export const $gtype: GObject.GType<WimaxNspNetworkType>;
-    }
+    /**
+     * WiMAX network type.
+     */
 
     /**
      * WiMAX network type.
      */
+    export namespace WimaxNspNetworkType {
+        export const $gtype: GObject.GType<WimaxNspNetworkType>;
+    }
+
     enum WimaxNspNetworkType {
         /**
          * unknown network type
@@ -4913,13 +5164,17 @@ export namespace NM {
     interface VpnIterFunc {
         (key: string, value: string): void;
     }
-    export namespace __80211ApFlags {
-        export const $gtype: GObject.GType<__80211ApFlags>;
-    }
+    /**
+     * 802.11 access point flags.
+     */
 
     /**
      * 802.11 access point flags.
      */
+    export namespace __80211ApFlags {
+        export const $gtype: GObject.GType<__80211ApFlags>;
+    }
+
     enum __80211ApFlags {
         /**
          * access point has no special capabilities
@@ -4943,15 +5198,21 @@ export namespace NM {
          */
         WPS_PIN,
     }
-    export namespace __80211ApSecurityFlags {
-        export const $gtype: GObject.GType<__80211ApSecurityFlags>;
-    }
+    /**
+     * 802.11 access point security and authentication flags.  These flags describe
+     * the current security requirements of an access point as determined from the
+     * access point's beacon.
+     */
 
     /**
      * 802.11 access point security and authentication flags.  These flags describe
      * the current security requirements of an access point as determined from the
      * access point's beacon.
      */
+    export namespace __80211ApSecurityFlags {
+        export const $gtype: GObject.GType<__80211ApSecurityFlags>;
+    }
+
     enum __80211ApSecurityFlags {
         /**
          * the access point has no special security requirements
@@ -5025,13 +5286,17 @@ export namespace NM {
          */
         KEY_MGMT_EAP_SUITE_B_192,
     }
-    export namespace ActivationStateFlags {
-        export const $gtype: GObject.GType<ActivationStateFlags>;
-    }
+    /**
+     * Flags describing the current activation state.
+     */
 
     /**
      * Flags describing the current activation state.
      */
+    export namespace ActivationStateFlags {
+        export const $gtype: GObject.GType<ActivationStateFlags>;
+    }
+
     enum ActivationStateFlags {
         /**
          * an alias for numeric zero, no flags set.
@@ -5075,14 +5340,19 @@ export namespace NM {
          */
         EXTERNAL,
     }
-    export namespace BluetoothCapabilities {
-        export const $gtype: GObject.GType<BluetoothCapabilities>;
-    }
+    /**
+     * #NMBluetoothCapabilities values indicate the usable capabilities of a
+     * Bluetooth device.
+     */
 
     /**
      * #NMBluetoothCapabilities values indicate the usable capabilities of a
      * Bluetooth device.
      */
+    export namespace BluetoothCapabilities {
+        export const $gtype: GObject.GType<BluetoothCapabilities>;
+    }
+
     enum BluetoothCapabilities {
         /**
          * device has no usable capabilities
@@ -5097,13 +5367,17 @@ export namespace NM {
          */
         NAP,
     }
-    export namespace CheckpointCreateFlags {
-        export const $gtype: GObject.GType<CheckpointCreateFlags>;
-    }
+    /**
+     * The flags for CheckpointCreate call
+     */
 
     /**
      * The flags for CheckpointCreate call
      */
+    export namespace CheckpointCreateFlags {
+        export const $gtype: GObject.GType<CheckpointCreateFlags>;
+    }
+
     enum CheckpointCreateFlags {
         /**
          * no flags
@@ -5148,6 +5422,7 @@ export namespace NM {
          */
         NO_PRESERVE_EXTERNAL_PORTS,
     }
+
     export namespace ClientInstanceFlags {
         export const $gtype: GObject.GType<ClientInstanceFlags>;
     }
@@ -5180,14 +5455,19 @@ export namespace NM {
          */
         INITIALIZED_BAD,
     }
-    export namespace ConnectionSerializationFlags {
-        export const $gtype: GObject.GType<ConnectionSerializationFlags>;
-    }
+    /**
+     * These flags determine which properties are serialized when calling
+     * nm_connection_to_dbus().
+     */
 
     /**
      * These flags determine which properties are serialized when calling
      * nm_connection_to_dbus().
      */
+    export namespace ConnectionSerializationFlags {
+        export const $gtype: GObject.GType<ConnectionSerializationFlags>;
+    }
+
     enum ConnectionSerializationFlags {
         /**
          * serialize all properties (including secrets)
@@ -5231,13 +5511,17 @@ export namespace NM {
          */
         WITH_SECRETS_NOT_SAVED,
     }
-    export namespace DeviceCapabilities {
-        export const $gtype: GObject.GType<DeviceCapabilities>;
-    }
+    /**
+     * General device capability flags.
+     */
 
     /**
      * General device capability flags.
      */
+    export namespace DeviceCapabilities {
+        export const $gtype: GObject.GType<DeviceCapabilities>;
+    }
+
     enum DeviceCapabilities {
         /**
          * device has no special capabilities
@@ -5260,13 +5544,17 @@ export namespace NM {
          */
         SRIOV,
     }
-    export namespace DeviceInterfaceFlags {
-        export const $gtype: GObject.GType<DeviceInterfaceFlags>;
-    }
+    /**
+     * Flags for a network interface.
+     */
 
     /**
      * Flags for a network interface.
      */
+    export namespace DeviceInterfaceFlags {
+        export const $gtype: GObject.GType<DeviceInterfaceFlags>;
+    }
+
     enum DeviceInterfaceFlags {
         /**
          * the interface is enabled from the
@@ -5295,9 +5583,12 @@ export namespace NM {
          */
         LLDP_CLIENT_ENABLED,
     }
-    export namespace DeviceModemCapabilities {
-        export const $gtype: GObject.GType<DeviceModemCapabilities>;
-    }
+    /**
+     * #NMDeviceModemCapabilities values indicate the generic radio access
+     * technology families a modem device supports.  For more information on the
+     * specific access technologies the device supports use the ModemManager D-Bus
+     * API.
+     */
 
     /**
      * #NMDeviceModemCapabilities values indicate the generic radio access
@@ -5305,6 +5596,10 @@ export namespace NM {
      * specific access technologies the device supports use the ModemManager D-Bus
      * API.
      */
+    export namespace DeviceModemCapabilities {
+        export const $gtype: GObject.GType<DeviceModemCapabilities>;
+    }
+
     enum DeviceModemCapabilities {
         /**
          * modem has no usable capabilities
@@ -5334,14 +5629,19 @@ export namespace NM {
          */
         '5GNR',
     }
-    export namespace DeviceReapplyFlags {
-        export const $gtype: GObject.GType<DeviceReapplyFlags>;
-    }
+    /**
+     * Flags for the Reapply() D-Bus call of a device and
+     * nm_device_reapply_async().
+     */
 
     /**
      * Flags for the Reapply() D-Bus call of a device and
      * nm_device_reapply_async().
      */
+    export namespace DeviceReapplyFlags {
+        export const $gtype: GObject.GType<DeviceReapplyFlags>;
+    }
+
     enum DeviceReapplyFlags {
         /**
          * no flag set.
@@ -5353,13 +5653,17 @@ export namespace NM {
          */
         PRESERVE_EXTERNAL_IP,
     }
-    export namespace DeviceWifiCapabilities {
-        export const $gtype: GObject.GType<DeviceWifiCapabilities>;
-    }
+    /**
+     * 802.11 specific device encryption and authentication capabilities.
+     */
 
     /**
      * 802.11 specific device encryption and authentication capabilities.
      */
+    export namespace DeviceWifiCapabilities {
+        export const $gtype: GObject.GType<DeviceWifiCapabilities>;
+    }
+
     enum DeviceWifiCapabilities {
         /**
          * device has no encryption/authentication capabilities
@@ -5422,14 +5726,19 @@ export namespace NM {
          */
         IBSS_RSN,
     }
-    export namespace DhcpHostnameFlags {
-        export const $gtype: GObject.GType<DhcpHostnameFlags>;
-    }
+    /**
+     * #NMDhcpHostnameFlags describe flags related to the DHCP hostname and
+     * FQDN.
+     */
 
     /**
      * #NMDhcpHostnameFlags describe flags related to the DHCP hostname and
      * FQDN.
      */
+    export namespace DhcpHostnameFlags {
+        export const $gtype: GObject.GType<DhcpHostnameFlags>;
+    }
+
     enum DhcpHostnameFlags {
         /**
          * no flag set. The default value from
@@ -5467,13 +5776,17 @@ export namespace NM {
          */
         FQDN_CLEAR_FLAGS,
     }
-    export namespace IPAddressCmpFlags {
-        export const $gtype: GObject.GType<IPAddressCmpFlags>;
-    }
+    /**
+     * Compare flags for nm_ip_address_cmp_full().
+     */
 
     /**
      * Compare flags for nm_ip_address_cmp_full().
      */
+    export namespace IPAddressCmpFlags {
+        export const $gtype: GObject.GType<IPAddressCmpFlags>;
+    }
+
     enum IPAddressCmpFlags {
         /**
          * no flags.
@@ -5488,6 +5801,7 @@ export namespace NM {
          */
         WITH_ATTRS,
     }
+
     export namespace IPRoutingRuleAsStringFlags {
         export const $gtype: GObject.GType<IPRoutingRuleAsStringFlags>;
     }
@@ -5515,13 +5829,17 @@ export namespace NM {
          */
         VALIDATE,
     }
-    export namespace IPTunnelFlags {
-        export const $gtype: GObject.GType<IPTunnelFlags>;
-    }
+    /**
+     * IP tunnel flags.
+     */
 
     /**
      * IP tunnel flags.
      */
+    export namespace IPTunnelFlags {
+        export const $gtype: GObject.GType<IPTunnelFlags>;
+    }
+
     enum IPTunnelFlags {
         /**
          * no flag
@@ -5555,28 +5873,38 @@ export namespace NM {
          */
         IP6_USE_ORIG_FWMARK,
     }
-    export namespace KeyfileHandlerFlags {
-        export const $gtype: GObject.GType<KeyfileHandlerFlags>;
-    }
+    /**
+     * Flags for customizing nm_keyfile_read() and nm_keyfile_write().
+     *
+     * Currently no flags are implemented.
+     */
 
     /**
      * Flags for customizing nm_keyfile_read() and nm_keyfile_write().
      *
      * Currently no flags are implemented.
      */
+    export namespace KeyfileHandlerFlags {
+        export const $gtype: GObject.GType<KeyfileHandlerFlags>;
+    }
+
     enum KeyfileHandlerFlags {
         /**
          * no flags set.
          */
         NONE,
     }
-    export namespace ManagerReloadFlags {
-        export const $gtype: GObject.GType<ManagerReloadFlags>;
-    }
+    /**
+     * Flags for the manager Reload() call.
+     */
 
     /**
      * Flags for the manager Reload() call.
      */
+    export namespace ManagerReloadFlags {
+        export const $gtype: GObject.GType<ManagerReloadFlags>;
+    }
+
     enum ManagerReloadFlags {
         /**
          * reload the NetworkManager.conf configuration
@@ -5598,6 +5926,7 @@ export namespace NM {
          */
         DNS_FULL,
     }
+
     export namespace MptcpFlags {
         export const $gtype: GObject.GType<MptcpFlags>;
     }
@@ -5671,13 +6000,17 @@ export namespace NM {
          */
         FULLMESH,
     }
-    export namespace RadioFlags {
-        export const $gtype: GObject.GType<RadioFlags>;
-    }
+    /**
+     * Flags related to radio interfaces.
+     */
 
     /**
      * Flags related to radio interfaces.
      */
+    export namespace RadioFlags {
+        export const $gtype: GObject.GType<RadioFlags>;
+    }
+
     enum RadioFlags {
         /**
          * an alias for numeric zero, no flags set.
@@ -5694,13 +6027,17 @@ export namespace NM {
          */
         WWAN_AVAILABLE,
     }
-    export namespace SecretAgentCapabilities {
-        export const $gtype: GObject.GType<SecretAgentCapabilities>;
-    }
+    /**
+     * #NMSecretAgentCapabilities indicate various capabilities of the agent.
+     */
 
     /**
      * #NMSecretAgentCapabilities indicate various capabilities of the agent.
      */
+    export namespace SecretAgentCapabilities {
+        export const $gtype: GObject.GType<SecretAgentCapabilities>;
+    }
+
     enum SecretAgentCapabilities {
         /**
          * the agent supports no special capabilities
@@ -5716,13 +6053,17 @@ export namespace NM {
          */
         LAST,
     }
-    export namespace SecretAgentGetSecretsFlags {
-        export const $gtype: GObject.GType<SecretAgentGetSecretsFlags>;
-    }
+    /**
+     * #NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
+     */
 
     /**
      * #NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
      */
+    export namespace SecretAgentGetSecretsFlags {
+        export const $gtype: GObject.GType<SecretAgentGetSecretsFlags>;
+    }
+
     enum SecretAgentGetSecretsFlags {
         /**
          * no special behavior; by default no
@@ -5767,9 +6108,13 @@ export namespace NM {
          */
         NO_ERRORS,
     }
-    export namespace Setting8021xAuthFlags {
-        export const $gtype: GObject.GType<Setting8021xAuthFlags>;
-    }
+    /**
+     * #NMSetting8021xAuthFlags values indicate which authentication settings
+     * should be used.
+     *
+     * Before 1.22, this was wrongly marked as a enum and not as a flags
+     * type.
+     */
 
     /**
      * #NMSetting8021xAuthFlags values indicate which authentication settings
@@ -5778,6 +6123,10 @@ export namespace NM {
      * Before 1.22, this was wrongly marked as a enum and not as a flags
      * type.
      */
+    export namespace Setting8021xAuthFlags {
+        export const $gtype: GObject.GType<Setting8021xAuthFlags>;
+    }
+
     enum Setting8021xAuthFlags {
         /**
          * No flags
@@ -5824,13 +6173,17 @@ export namespace NM {
          */
         ALL,
     }
-    export namespace SettingDcbFlags {
-        export const $gtype: GObject.GType<SettingDcbFlags>;
-    }
+    /**
+     * DCB feature flags.
+     */
 
     /**
      * DCB feature flags.
      */
+    export namespace SettingDcbFlags {
+        export const $gtype: GObject.GType<SettingDcbFlags>;
+    }
+
     enum SettingDcbFlags {
         /**
          * no flag
@@ -5850,15 +6203,21 @@ export namespace NM {
          */
         WILLING,
     }
-    export namespace SettingSecretFlags {
-        export const $gtype: GObject.GType<SettingSecretFlags>;
-    }
+    /**
+     * These flags indicate specific behavior related to handling of a secret.  Each
+     * secret has a corresponding set of these flags which indicate how the secret
+     * is to be stored and/or requested when it is needed.
+     */
 
     /**
      * These flags indicate specific behavior related to handling of a secret.  Each
      * secret has a corresponding set of these flags which indicate how the secret
      * is to be stored and/or requested when it is needed.
      */
+    export namespace SettingSecretFlags {
+        export const $gtype: GObject.GType<SettingSecretFlags>;
+    }
+
     enum SettingSecretFlags {
         /**
          * the system is responsible for providing and
@@ -5884,14 +6243,19 @@ export namespace NM {
          */
         NOT_REQUIRED,
     }
-    export namespace SettingWiredWakeOnLan {
-        export const $gtype: GObject.GType<SettingWiredWakeOnLan>;
-    }
+    /**
+     * Options for #NMSettingWired:wake-on-lan. Note that not all options
+     * are supported by all devices.
+     */
 
     /**
      * Options for #NMSettingWired:wake-on-lan. Note that not all options
      * are supported by all devices.
      */
+    export namespace SettingWiredWakeOnLan {
+        export const $gtype: GObject.GType<SettingWiredWakeOnLan>;
+    }
+
     enum SettingWiredWakeOnLan {
         /**
          * Wake on PHY activity
@@ -5926,9 +6290,12 @@ export namespace NM {
          */
         IGNORE,
     }
-    export namespace SettingWirelessSecurityWpsMethod {
-        export const $gtype: GObject.GType<SettingWirelessSecurityWpsMethod>;
-    }
+    /**
+     * Configure the use of WPS by a connection while it activates.
+     *
+     * Note: prior to 1.16, this was a GEnum type instead of a GFlags type
+     * although, with the same numeric values.
+     */
 
     /**
      * Configure the use of WPS by a connection while it activates.
@@ -5936,6 +6303,10 @@ export namespace NM {
      * Note: prior to 1.16, this was a GEnum type instead of a GFlags type
      * although, with the same numeric values.
      */
+    export namespace SettingWirelessSecurityWpsMethod {
+        export const $gtype: GObject.GType<SettingWirelessSecurityWpsMethod>;
+    }
+
     enum SettingWirelessSecurityWpsMethod {
         /**
          * Attempt whichever method AP supports
@@ -5958,14 +6329,19 @@ export namespace NM {
          */
         PIN,
     }
-    export namespace SettingWirelessWakeOnWLan {
-        export const $gtype: GObject.GType<SettingWirelessWakeOnWLan>;
-    }
+    /**
+     * Options for #NMSettingWireless:wake-on-wlan. Note that not all options
+     * are supported by all devices.
+     */
 
     /**
      * Options for #NMSettingWireless:wake-on-wlan. Note that not all options
      * are supported by all devices.
      */
+    export namespace SettingWirelessWakeOnWLan {
+        export const $gtype: GObject.GType<SettingWirelessWakeOnWLan>;
+    }
+
     enum SettingWirelessWakeOnWLan {
         /**
          * Wake on any activity
@@ -6011,13 +6387,17 @@ export namespace NM {
          */
         IGNORE,
     }
-    export namespace SettingsAddConnection2Flags {
-        export const $gtype: GObject.GType<SettingsAddConnection2Flags>;
-    }
+    /**
+     * Numeric flags for the "flags" argument of AddConnection2() D-Bus API.
+     */
 
     /**
      * Numeric flags for the "flags" argument of AddConnection2() D-Bus API.
      */
+    export namespace SettingsAddConnection2Flags {
+        export const $gtype: GObject.GType<SettingsAddConnection2Flags>;
+    }
+
     enum SettingsAddConnection2Flags {
         /**
          * an alias for numeric zero, no flags set.
@@ -6039,13 +6419,17 @@ export namespace NM {
          */
         BLOCK_AUTOCONNECT,
     }
-    export namespace SettingsConnectionFlags {
-        export const $gtype: GObject.GType<SettingsConnectionFlags>;
-    }
+    /**
+     * Flags describing the current activation state.
+     */
 
     /**
      * Flags describing the current activation state.
      */
+    export namespace SettingsConnectionFlags {
+        export const $gtype: GObject.GType<SettingsConnectionFlags>;
+    }
+
     enum SettingsConnectionFlags {
         /**
          * an alias for numeric zero, no flags set.
@@ -6079,6 +6463,7 @@ export namespace NM {
          */
         EXTERNAL,
     }
+
     export namespace SettingsUpdate2Flags {
         export const $gtype: GObject.GType<SettingsUpdate2Flags>;
     }
@@ -6153,6 +6538,7 @@ export namespace NM {
          */
         NO_REAPPLY,
     }
+
     export namespace TeamLinkWatcherArpPingFlags {
         export const $gtype: GObject.GType<TeamLinkWatcherArpPingFlags>;
     }
@@ -6174,13 +6560,17 @@ export namespace NM {
          */
         SEND_ALWAYS,
     }
-    export namespace VlanFlags {
-        export const $gtype: GObject.GType<VlanFlags>;
-    }
+    /**
+     * #NMVlanFlags values control the behavior of the VLAN interface.
+     */
 
     /**
      * #NMVlanFlags values control the behavior of the VLAN interface.
      */
+    export namespace VlanFlags {
+        export const $gtype: GObject.GType<VlanFlags>;
+    }
+
     enum VlanFlags {
         /**
          * indicates that this interface should reorder
@@ -6204,13 +6594,17 @@ export namespace NM {
          */
         MVRP,
     }
-    export namespace VpnEditorPluginCapability {
-        export const $gtype: GObject.GType<VpnEditorPluginCapability>;
-    }
+    /**
+     * Flags that indicate certain capabilities of the plugin to editor programs.
+     */
 
     /**
      * Flags that indicate certain capabilities of the plugin to editor programs.
      */
+    export namespace VpnEditorPluginCapability {
+        export const $gtype: GObject.GType<VpnEditorPluginCapability>;
+    }
+
     enum VpnEditorPluginCapability {
         /**
          * unknown or no capability

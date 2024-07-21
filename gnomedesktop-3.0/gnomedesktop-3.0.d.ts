@@ -38,6 +38,7 @@ export namespace GnomeDesktop {
         XLARGE,
         XXLARGE,
     }
+
     export namespace RRDpmsMode {
         export const $gtype: GObject.GType<RRDpmsMode>;
     }
@@ -49,6 +50,7 @@ export namespace GnomeDesktop {
         OFF,
         UNKNOWN,
     }
+
     export namespace RRDpmsModeType {
         export const $gtype: GObject.GType<RRDpmsModeType>;
     }
@@ -302,6 +304,7 @@ export namespace GnomeDesktop {
     interface IdleMonitorWatchFunc {
         (monitor: IdleMonitor, id: number): void;
     }
+
     export namespace RRRotation {
         export const $gtype: GObject.GType<RRRotation>;
     }

@@ -54,13 +54,17 @@ export namespace ECal {
          */
         INVALID_RANGE,
     }
-    export namespace ClientSourceType {
-        export const $gtype: GObject.GType<ClientSourceType>;
-    }
+    /**
+     * Indicates the type of calendar
+     */
 
     /**
      * Indicates the type of calendar
      */
+    export namespace ClientSourceType {
+        export const $gtype: GObject.GType<ClientSourceType>;
+    }
+
     enum ClientSourceType {
         /**
          * Events calander
@@ -75,13 +79,17 @@ export namespace ECal {
          */
         MEMOS,
     }
-    export namespace ComponentAlarmAction {
-        export const $gtype: GObject.GType<ComponentAlarmAction>;
-    }
+    /**
+     * Alarm types
+     */
 
     /**
      * Alarm types
      */
+    export namespace ComponentAlarmAction {
+        export const $gtype: GObject.GType<ComponentAlarmAction>;
+    }
+
     enum ComponentAlarmAction {
         /**
          * None
@@ -108,6 +116,7 @@ export namespace ECal {
          */
         UNKNOWN,
     }
+
     export namespace ComponentAlarmTriggerKind {
         export const $gtype: GObject.GType<ComponentAlarmTriggerKind>;
     }
@@ -118,13 +127,17 @@ export namespace ECal {
         RELATIVE_END,
         ABSOLUTE,
     }
-    export namespace ComponentClassification {
-        export const $gtype: GObject.GType<ComponentClassification>;
-    }
+    /**
+     * CLASSIFICATION property
+     */
 
     /**
      * CLASSIFICATION property
      */
+    export namespace ComponentClassification {
+        export const $gtype: GObject.GType<ComponentClassification>;
+    }
+
     enum ComponentClassification {
         /**
          * None
@@ -147,13 +160,17 @@ export namespace ECal {
          */
         UNKNOWN,
     }
-    export namespace ComponentPeriodKind {
-        export const $gtype: GObject.GType<ComponentPeriodKind>;
-    }
+    /**
+     * Way in which a period of time is specified
+     */
 
     /**
      * Way in which a period of time is specified
      */
+    export namespace ComponentPeriodKind {
+        export const $gtype: GObject.GType<ComponentPeriodKind>;
+    }
+
     enum ComponentPeriodKind {
         /**
          * Date and time
@@ -164,13 +181,17 @@ export namespace ECal {
          */
         DURATION,
     }
-    export namespace ComponentRangeKind {
-        export const $gtype: GObject.GType<ComponentRangeKind>;
-    }
+    /**
+     * The kind of range
+     */
 
     /**
      * The kind of range
      */
+    export namespace ComponentRangeKind {
+        export const $gtype: GObject.GType<ComponentRangeKind>;
+    }
+
     enum ComponentRangeKind {
         /**
          * Single
@@ -185,13 +206,17 @@ export namespace ECal {
          */
         THISFUTURE,
     }
-    export namespace ComponentTransparency {
-        export const $gtype: GObject.GType<ComponentTransparency>;
-    }
+    /**
+     * Time transparency
+     */
 
     /**
      * Time transparency
      */
+    export namespace ComponentTransparency {
+        export const $gtype: GObject.GType<ComponentTransparency>;
+    }
+
     enum ComponentTransparency {
         /**
          * None
@@ -210,15 +235,21 @@ export namespace ECal {
          */
         UNKNOWN,
     }
-    export namespace ComponentVType {
-        export const $gtype: GObject.GType<ComponentVType>;
-    }
+    /**
+     * Types of calendar components to be stored by a ECalComponent, as per RFC 2445.
+     * We don't put the alarm component type here since we store alarms as separate
+     * structures inside the other "real" components.
+     */
 
     /**
      * Types of calendar components to be stored by a ECalComponent, as per RFC 2445.
      * We don't put the alarm component type here since we store alarms as separate
      * structures inside the other "real" components.
      */
+    export namespace ComponentVType {
+        export const $gtype: GObject.GType<ComponentVType>;
+    }
+
     enum ComponentVType {
         /**
          * Unknown or unsupported component type
@@ -1350,13 +1381,17 @@ export namespace ECal {
     interface UtilForeachCategoryFunc {
         (comp: ICalGLib.Component, inout_category: string): boolean;
     }
-    export namespace ClientViewFlags {
-        export const $gtype: GObject.GType<ClientViewFlags>;
-    }
+    /**
+     * Flags that control the behaviour of an #ECalClientView.
+     */
 
     /**
      * Flags that control the behaviour of an #ECalClientView.
      */
+    export namespace ClientViewFlags {
+        export const $gtype: GObject.GType<ClientViewFlags>;
+    }
+
     enum ClientViewFlags {
         /**
          * Symbolic value for no flags
@@ -1369,13 +1404,17 @@ export namespace ECal {
          */
         NOTIFY_INITIAL,
     }
-    export namespace ObjModType {
-        export const $gtype: GObject.GType<ObjModType>;
-    }
+    /**
+     * Indicates the type of modification made to a calendar
+     */
 
     /**
      * Indicates the type of modification made to a calendar
      */
+    export namespace ObjModType {
+        export const $gtype: GObject.GType<ObjModType>;
+    }
+
     enum ObjModType {
         /**
          * Modify this component
@@ -1398,9 +1437,12 @@ export namespace ECal {
          */
         ONLY_THIS,
     }
-    export namespace OperationFlags {
-        export const $gtype: GObject.GType<OperationFlags>;
-    }
+    /**
+     * Calendar operation flags, to specify behavior in certain situations. The conflict
+     * resolution mode flags cannot be combined together, where the `E_CAL_OPERATION_FLAG_CONFLICT_KEEP_LOCAL`
+     * is the default behavior (and it is used when no other conflict resolution flag is set).
+     * The flags can be ignored when the operation or the backend don't support it.
+     */
 
     /**
      * Calendar operation flags, to specify behavior in certain situations. The conflict
@@ -1408,6 +1450,10 @@ export namespace ECal {
      * is the default behavior (and it is used when no other conflict resolution flag is set).
      * The flags can be ignored when the operation or the backend don't support it.
      */
+    export namespace OperationFlags {
+        export const $gtype: GObject.GType<OperationFlags>;
+    }
+
     enum OperationFlags {
         /**
          * no operation flags defined
@@ -1444,13 +1490,17 @@ export namespace ECal {
          */
         DISABLE_ITIP_MESSAGE,
     }
-    export namespace RecurDescribeRecurrenceFlags {
-        export const $gtype: GObject.GType<RecurDescribeRecurrenceFlags>;
-    }
+    /**
+     * Influences behaviour of e_cal_recur_describe_recurrence().
+     */
 
     /**
      * Influences behaviour of e_cal_recur_describe_recurrence().
      */
+    export namespace RecurDescribeRecurrenceFlags {
+        export const $gtype: GObject.GType<RecurDescribeRecurrenceFlags>;
+    }
+
     enum RecurDescribeRecurrenceFlags {
         /**
          * no extra flags, either returns %NULL or the recurrence description,
@@ -1468,13 +1518,17 @@ export namespace ECal {
          */
         FALLBACK,
     }
-    export namespace ReminderWatcherDescribeFlags {
-        export const $gtype: GObject.GType<ReminderWatcherDescribeFlags>;
-    }
+    /**
+     * Flags modifying behaviour of e_reminder_watcher_describe_data().
+     */
 
     /**
      * Flags modifying behaviour of e_reminder_watcher_describe_data().
      */
+    export namespace ReminderWatcherDescribeFlags {
+        export const $gtype: GObject.GType<ReminderWatcherDescribeFlags>;
+    }
+
     enum ReminderWatcherDescribeFlags {
         /**
          * None flags

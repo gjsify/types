@@ -28,6 +28,7 @@ export namespace ModemManager {
         '3GPP_PREFERRED',
         NON_3GPP_ONLY,
     }
+
     export namespace BearerIpMethod {
         export const $gtype: GObject.GType<BearerIpMethod>;
     }
@@ -38,6 +39,7 @@ export namespace ModemManager {
         STATIC,
         DHCP,
     }
+
     export namespace BearerMultiplexSupport {
         export const $gtype: GObject.GType<BearerMultiplexSupport>;
     }
@@ -48,6 +50,7 @@ export namespace ModemManager {
         REQUESTED,
         REQUIRED,
     }
+
     export namespace BearerProfileSource {
         export const $gtype: GObject.GType<BearerProfileSource>;
     }
@@ -60,6 +63,7 @@ export namespace ModemManager {
         MODEM,
         DEVICE,
     }
+
     export namespace BearerType {
         export const $gtype: GObject.GType<BearerType>;
     }
@@ -70,6 +74,7 @@ export namespace ModemManager {
         DEFAULT_ATTACH,
         DEDICATED,
     }
+
     export namespace CallDirection {
         export const $gtype: GObject.GType<CallDirection>;
     }
@@ -79,6 +84,7 @@ export namespace ModemManager {
         INCOMING,
         OUTGOING,
     }
+
     export namespace CallState {
         export const $gtype: GObject.GType<CallState>;
     }
@@ -93,6 +99,7 @@ export namespace ModemManager {
         WAITING,
         TERMINATED,
     }
+
     export namespace CallStateReason {
         export const $gtype: GObject.GType<CallStateReason>;
     }
@@ -428,10 +435,6 @@ export namespace ModemManager {
         static quark(): GLib.Quark;
     }
 
-    export namespace Modem3gppDrxCycle {
-        export const $gtype: GObject.GType<Modem3gppDrxCycle>;
-    }
-
     class Modem3gppDrxCycle {
         static $gtype: GObject.GType<Modem3gppDrxCycle>;
 
@@ -460,6 +463,7 @@ export namespace ModemManager {
         CSPS_1,
         CSPS_2,
     }
+
     export namespace Modem3gppMicoMode {
         export const $gtype: GObject.GType<Modem3gppMicoMode>;
     }
@@ -470,6 +474,7 @@ export namespace ModemManager {
         DISABLED,
         ENABLED,
     }
+
     export namespace Modem3gppNetworkAvailability {
         export const $gtype: GObject.GType<Modem3gppNetworkAvailability>;
     }
@@ -480,6 +485,7 @@ export namespace ModemManager {
         CURRENT,
         FORBIDDEN,
     }
+
     export namespace Modem3gppPacketServiceState {
         export const $gtype: GObject.GType<Modem3gppPacketServiceState>;
     }
@@ -489,6 +495,7 @@ export namespace ModemManager {
         DETACHED,
         ATTACHED,
     }
+
     export namespace Modem3gppRegistrationState {
         export const $gtype: GObject.GType<Modem3gppRegistrationState>;
     }
@@ -507,6 +514,7 @@ export namespace ModemManager {
         ROAMING_CSFB_NOT_PREFERRED,
         ATTACHED_RLOS,
     }
+
     export namespace Modem3gppSubscriptionState {
         export const $gtype: GObject.GType<Modem3gppSubscriptionState>;
     }
@@ -517,6 +525,7 @@ export namespace ModemManager {
         PROVISIONED,
         OUT_OF_DATA,
     }
+
     export namespace Modem3gppUssdSessionState {
         export const $gtype: GObject.GType<Modem3gppUssdSessionState>;
     }
@@ -527,6 +536,7 @@ export namespace ModemManager {
         ACTIVE,
         USER_RESPONSE,
     }
+
     export namespace ModemBand {
         export const $gtype: GObject.GType<ModemBand>;
     }
@@ -709,6 +719,7 @@ export namespace ModemManager {
         NGRAN_260,
         NGRAN_261,
     }
+
     export namespace ModemCdmaActivationState {
         export const $gtype: GObject.GType<ModemCdmaActivationState>;
     }
@@ -720,6 +731,7 @@ export namespace ModemManager {
         PARTIALLY_ACTIVATED,
         ACTIVATED,
     }
+
     export namespace ModemCdmaRegistrationState {
         export const $gtype: GObject.GType<ModemCdmaRegistrationState>;
     }
@@ -730,6 +742,7 @@ export namespace ModemManager {
         HOME,
         ROAMING,
     }
+
     export namespace ModemCdmaRmProtocol {
         export const $gtype: GObject.GType<ModemCdmaRmProtocol>;
     }
@@ -742,6 +755,7 @@ export namespace ModemManager {
         PACKET_NETWORK_SLIP,
         STU_III,
     }
+
     export namespace ModemContactsStorage {
         export const $gtype: GObject.GType<ModemContactsStorage>;
     }
@@ -752,6 +766,7 @@ export namespace ModemManager {
         SM,
         MT,
     }
+
     export namespace ModemLock {
         export const $gtype: GObject.GType<ModemLock>;
     }
@@ -775,6 +790,7 @@ export namespace ModemManager {
         PH_NETSUB_PIN,
         PH_NETSUB_PUK,
     }
+
     export namespace ModemPortType {
         export const $gtype: GObject.GType<ModemPortType>;
     }
@@ -790,6 +806,7 @@ export namespace ModemManager {
         AUDIO,
         IGNORED,
     }
+
     export namespace ModemPowerState {
         export const $gtype: GObject.GType<ModemPowerState>;
     }
@@ -800,6 +817,7 @@ export namespace ModemManager {
         LOW,
         ON,
     }
+
     export namespace ModemState {
         export const $gtype: GObject.GType<ModemState>;
     }
@@ -819,6 +837,7 @@ export namespace ModemManager {
         CONNECTING,
         CONNECTED,
     }
+
     export namespace ModemStateChangeReason {
         export const $gtype: GObject.GType<ModemStateChangeReason>;
     }
@@ -829,6 +848,7 @@ export namespace ModemManager {
         SUSPEND,
         FAILURE,
     }
+
     export namespace ModemStateFailedReason {
         export const $gtype: GObject.GType<ModemStateFailedReason>;
     }
@@ -841,6 +861,7 @@ export namespace ModemManager {
         UNKNOWN_CAPABILITIES,
         ESIM_WITHOUT_PROFILES,
     }
+
     export namespace OmaSessionState {
         export const $gtype: GObject.GType<OmaSessionState>;
     }
@@ -859,6 +880,7 @@ export namespace ModemManager {
         MIP_PROFILE_DOWNLOADED,
         COMPLETED,
     }
+
     export namespace OmaSessionStateFailedReason {
         export const $gtype: GObject.GType<OmaSessionStateFailedReason>;
     }
@@ -871,6 +893,7 @@ export namespace ModemManager {
         MAX_RETRY_EXCEEDED,
         SESSION_CANCELLED,
     }
+
     export namespace OmaSessionType {
         export const $gtype: GObject.GType<OmaSessionType>;
     }
@@ -922,6 +945,7 @@ export namespace ModemManager {
         SSCELL,
         INVALID,
     }
+
     export namespace SimEsimStatus {
         export const $gtype: GObject.GType<SimEsimStatus>;
     }
@@ -931,6 +955,7 @@ export namespace ModemManager {
         NO_PROFILES,
         WITH_PROFILES,
     }
+
     export namespace SimRemovability {
         export const $gtype: GObject.GType<SimRemovability>;
     }
@@ -940,6 +965,7 @@ export namespace ModemManager {
         REMOVABLE,
         NOT_REMOVABLE,
     }
+
     export namespace SimType {
         export const $gtype: GObject.GType<SimType>;
     }
@@ -949,6 +975,7 @@ export namespace ModemManager {
         PHYSICAL,
         ESIM,
     }
+
     export namespace SmsCdmaServiceCategory {
         export const $gtype: GObject.GType<SmsCdmaServiceCategory>;
     }
@@ -992,6 +1019,7 @@ export namespace ModemManager {
         CMAS_CHILD_ABDUCTION_EMERGENCY,
         CMAS_TEST,
     }
+
     export namespace SmsCdmaTeleserviceId {
         export const $gtype: GObject.GType<SmsCdmaTeleserviceId>;
     }
@@ -1007,6 +1035,7 @@ export namespace ModemManager {
         SCPT,
         CATPT,
     }
+
     export namespace SmsDeliveryState {
         export const $gtype: GObject.GType<SmsDeliveryState>;
     }
@@ -1095,6 +1124,7 @@ export namespace ModemManager {
         TEMPORARY_GENERAL_PROBLEM_USER_DATA_SIZE_ERROR,
         TEMPORARY_GENERAL_PROBLEM_OTHER,
     }
+
     export namespace SmsPduType {
         export const $gtype: GObject.GType<SmsPduType>;
     }
@@ -1111,6 +1141,7 @@ export namespace ModemManager {
         CDMA_USER_ACKNOWLEDGEMENT,
         CDMA_READ_ACKNOWLEDGEMENT,
     }
+
     export namespace SmsState {
         export const $gtype: GObject.GType<SmsState>;
     }
@@ -1123,6 +1154,7 @@ export namespace ModemManager {
         SENDING,
         SENT,
     }
+
     export namespace SmsStorage {
         export const $gtype: GObject.GType<SmsStorage>;
     }
@@ -1136,6 +1168,7 @@ export namespace ModemManager {
         BM,
         TA,
     }
+
     export namespace SmsValidityType {
         export const $gtype: GObject.GType<SmsValidityType>;
     }
@@ -2047,6 +2080,7 @@ export namespace ModemManager {
     interface UnlockRetriesForeachCb {
         (lock: ModemLock, count: number): void;
     }
+
     export namespace __3gppProfileCmpFlags {
         export const $gtype: GObject.GType<__3gppProfileCmpFlags>;
     }
@@ -2063,6 +2097,7 @@ export namespace ModemManager {
         NO_ROAMING_ALLOWANCE,
         NO_PROFILE_SOURCE,
     }
+
     export namespace BearerAllowedAuth {
         export const $gtype: GObject.GType<BearerAllowedAuth>;
     }
@@ -2076,6 +2111,7 @@ export namespace ModemManager {
         MSCHAPV2,
         EAP,
     }
+
     export namespace BearerApnType {
         export const $gtype: GObject.GType<BearerApnType>;
     }
@@ -2097,6 +2133,7 @@ export namespace ModemManager {
         XCAP,
         TETHERING,
     }
+
     export namespace BearerIpFamily {
         export const $gtype: GObject.GType<BearerIpFamily>;
     }
@@ -2109,6 +2146,7 @@ export namespace ModemManager {
         NON_IP,
         ANY,
     }
+
     export namespace BearerPropertiesCmpFlags {
         export const $gtype: GObject.GType<BearerPropertiesCmpFlags>;
     }
@@ -2125,6 +2163,7 @@ export namespace ModemManager {
         NO_ACCESS_TYPE_PREFERENCE,
         NO_ROAMING_ALLOWANCE,
     }
+
     export namespace BearerRoamingAllowance {
         export const $gtype: GObject.GType<BearerRoamingAllowance>;
     }
@@ -2135,6 +2174,7 @@ export namespace ModemManager {
         PARTNER,
         NON_PARTNER,
     }
+
     export namespace Modem3gppFacility {
         export const $gtype: GObject.GType<Modem3gppFacility>;
     }
@@ -2150,6 +2190,7 @@ export namespace ModemManager {
         PROVIDER_PERS,
         CORP_PERS,
     }
+
     export namespace ModemAccessTechnology {
         export const $gtype: GObject.GType<ModemAccessTechnology>;
     }
@@ -2176,6 +2217,7 @@ export namespace ModemManager {
         LTE_NB_IOT,
         ANY,
     }
+
     export namespace ModemCapability {
         export const $gtype: GObject.GType<ModemCapability>;
     }
@@ -2191,6 +2233,7 @@ export namespace ModemManager {
         TDS,
         ANY,
     }
+
     export namespace ModemFirmwareUpdateMethod {
         export const $gtype: GObject.GType<ModemFirmwareUpdateMethod>;
     }
@@ -2203,6 +2246,7 @@ export namespace ModemManager {
         FIREHOSE,
         SAHARA,
     }
+
     export namespace ModemLocationAssistanceDataType {
         export const $gtype: GObject.GType<ModemLocationAssistanceDataType>;
     }
@@ -2211,6 +2255,7 @@ export namespace ModemManager {
         NONE,
         XTRA,
     }
+
     export namespace ModemLocationSource {
         export const $gtype: GObject.GType<ModemLocationSource>;
     }
@@ -2225,6 +2270,7 @@ export namespace ModemManager {
         AGPS_MSA,
         AGPS_MSB,
     }
+
     export namespace ModemMode {
         export const $gtype: GObject.GType<ModemMode>;
     }
@@ -2238,6 +2284,7 @@ export namespace ModemManager {
         '5G',
         ANY,
     }
+
     export namespace OmaFeature {
         export const $gtype: GObject.GType<OmaFeature>;
     }

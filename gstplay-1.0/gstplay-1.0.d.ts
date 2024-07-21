@@ -129,6 +129,7 @@ export namespace GstPlay {
          */
         SEEK_DONE,
     }
+
     export namespace PlaySnapshotFormat {
         export const $gtype: GObject.GType<PlaySnapshotFormat>;
     }
@@ -155,6 +156,7 @@ export namespace GstPlay {
          */
         PNG,
     }
+
     export namespace PlayState {
         export const $gtype: GObject.GType<PlayState>;
     }

@@ -28,6 +28,7 @@ export namespace Folks {
         MALE,
         FEMALE,
     }
+
     export namespace TrustLevel {
         export const $gtype: GObject.GType<TrustLevel>;
     }
@@ -36,6 +37,7 @@ export namespace Folks {
         NONE,
         PERSONAS,
     }
+
     export namespace PersonaStoreTrust {
         export const $gtype: GObject.GType<PersonaStoreTrust>;
     }
@@ -45,6 +47,7 @@ export namespace Folks {
         PARTIAL,
         FULL,
     }
+
     export namespace PersonaDetail {
         export const $gtype: GObject.GType<PersonaDetail>;
     }
@@ -77,6 +80,7 @@ export namespace Folks {
         ANTI_LINKS,
         EXTENDED_INFO,
     }
+
     export namespace MatchResult {
         export const $gtype: GObject.GType<MatchResult>;
     }
@@ -91,6 +95,7 @@ export namespace Folks {
         MIN,
         MAX,
     }
+
     export namespace PresenceType {
         export const $gtype: GObject.GType<PresenceType>;
     }
@@ -106,6 +111,7 @@ export namespace Folks {
         UNKNOWN,
         ERROR,
     }
+
     export namespace MaybeBool {
         export const $gtype: GObject.GType<MaybeBool>;
     }

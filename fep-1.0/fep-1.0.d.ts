@@ -52,6 +52,7 @@ export namespace Fep {
          */
         BLINK,
     }
+
     export namespace GAttrUnderline {
         export const $gtype: GObject.GType<GAttrUnderline>;
     }
@@ -78,6 +79,7 @@ export namespace Fep {
          */
         ERROR,
     }
+
     export namespace GEventType {
         export const $gtype: GObject.GType<GEventType>;
     }

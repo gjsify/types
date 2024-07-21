@@ -51,14 +51,19 @@ export namespace NMClient {
         static quark(): GLib.Quark;
     }
 
-    export namespace ClientPermission {
-        export const $gtype: GObject.GType<ClientPermission>;
-    }
+    /**
+     * #NMClientPermission values indicate various permissions that NetworkManager
+     * clients can obtain to perform certain tasks on behalf of the current user.
+     */
 
     /**
      * #NMClientPermission values indicate various permissions that NetworkManager
      * clients can obtain to perform certain tasks on behalf of the current user.
      */
+    export namespace ClientPermission {
+        export const $gtype: GObject.GType<ClientPermission>;
+    }
+
     enum ClientPermission {
         /**
          * unknown or no permission
@@ -143,14 +148,19 @@ export namespace NMClient {
          */
         LAST,
     }
-    export namespace ClientPermissionResult {
-        export const $gtype: GObject.GType<ClientPermissionResult>;
-    }
+    /**
+     * #NMClientPermissionResult values indicate what authorizations and permissions
+     * the user requires to obtain a given #NMClientPermission
+     */
 
     /**
      * #NMClientPermissionResult values indicate what authorizations and permissions
      * the user requires to obtain a given #NMClientPermission
      */
+    export namespace ClientPermissionResult {
+        export const $gtype: GObject.GType<ClientPermissionResult>;
+    }
+
     enum ClientPermissionResult {
         /**
          * unknown or no authorization
@@ -831,13 +841,17 @@ export namespace NMClient {
         static quark(): GLib.Quark;
     }
 
-    export namespace WimaxNspNetworkType {
-        export const $gtype: GObject.GType<WimaxNspNetworkType>;
-    }
+    /**
+     * WiMAX network type.
+     */
 
     /**
      * WiMAX network type.
      */
+    export namespace WimaxNspNetworkType {
+        export const $gtype: GObject.GType<WimaxNspNetworkType>;
+    }
+
     enum WimaxNspNetworkType {
         /**
          * unknown network type
@@ -1150,13 +1164,17 @@ export namespace NMClient {
     type Ssid = object | null;
     type StringArray = object | null;
     type UintArray = object | null;
-    export namespace SecretAgentCapabilities {
-        export const $gtype: GObject.GType<SecretAgentCapabilities>;
-    }
+    /**
+     * #NMSecretAgentCapabilities indicate various capabilities of the agent.
+     */
 
     /**
      * #NMSecretAgentCapabilities indicate various capabilities of the agent.
      */
+    export namespace SecretAgentCapabilities {
+        export const $gtype: GObject.GType<SecretAgentCapabilities>;
+    }
+
     enum SecretAgentCapabilities {
         /**
          * the agent supports no special capabilities
@@ -1173,13 +1191,17 @@ export namespace NMClient {
          */
         LAST,
     }
-    export namespace SecretAgentGetSecretsFlags {
-        export const $gtype: GObject.GType<SecretAgentGetSecretsFlags>;
-    }
+    /**
+     * #NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
+     */
 
     /**
      * #NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
      */
+    export namespace SecretAgentGetSecretsFlags {
+        export const $gtype: GObject.GType<SecretAgentGetSecretsFlags>;
+    }
+
     enum SecretAgentGetSecretsFlags {
         /**
          * no special behavior; by default no

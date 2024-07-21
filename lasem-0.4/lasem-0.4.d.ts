@@ -34,6 +34,7 @@ export namespace Lasem {
         LOG,
         COUNT,
     }
+
     export namespace DomNodeType {
         export const $gtype: GObject.GType<DomNodeType>;
     }

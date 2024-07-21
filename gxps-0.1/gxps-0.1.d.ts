@@ -46,26 +46,34 @@ export namespace GXPS {
         _init(...args: any[]): void;
     }
 
-    export namespace FileError {
-        export const $gtype: GObject.GType<FileError>;
-    }
+    /**
+     * Error codes returned by #GXPSFile functions.
+     */
 
     /**
      * Error codes returned by #GXPSFile functions.
      */
+    export namespace FileError {
+        export const $gtype: GObject.GType<FileError>;
+    }
+
     enum FileError {
         /**
          * The XPS is invalid.
          */
         FILE_ERROR_INVALID,
     }
-    export namespace PageError {
-        export const $gtype: GObject.GType<PageError>;
-    }
+    /**
+     * Error codes returned by #GXPSPage functions
+     */
 
     /**
      * Error codes returned by #GXPSPage functions
      */
+    export namespace PageError {
+        export const $gtype: GObject.GType<PageError>;
+    }
+
     enum PageError {
         /**
          * The page is invalid.

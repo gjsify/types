@@ -81,6 +81,7 @@ export namespace GstAnalytics {
     function relation_get_length(instance: RelationMeta): number;
     function relation_meta_api_get_type(): GObject.GType;
     function tracking_mtd_get_mtd_type(): MtdType;
+
     export namespace RelTypes {
         export const $gtype: GObject.GType<RelTypes>;
     }

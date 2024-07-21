@@ -90,6 +90,7 @@ export namespace RpmOstree {
     function db_query_all(repo: OSTree.Repo, ref: string, cancellable?: Gio.Cancellable | null): Package[];
     function get_basearch(): string;
     function varsubst_basearch(src: string): string;
+
     export namespace DbDiffExtFlags {
         export const $gtype: GObject.GType<DbDiffExtFlags>;
     }

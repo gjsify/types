@@ -31,6 +31,7 @@ export namespace ColorHug {
         BLUE,
         GREEN,
     }
+
     export namespace DeviceMode {
         export const $gtype: GObject.GType<DeviceMode>;
     }
@@ -47,6 +48,7 @@ export namespace ColorHug {
         BOOTLOADER_ALS,
         FIRMWARE_ALS,
     }
+
     export namespace Error {
         export const $gtype: GObject.GType<Error>;
     }
@@ -89,10 +91,6 @@ export namespace ColorHug {
         I2C_SLAVE_CONFIG,
         SELF_TEST_EEPROM,
     }
-    export namespace FreqScale {
-        export const $gtype: GObject.GType<FreqScale>;
-    }
-
     class FreqScale {
         static $gtype: GObject.GType<FreqScale>;
 
@@ -116,6 +114,7 @@ export namespace ColorHug {
         FREQUENCY,
         DURATION,
     }
+
     export namespace SpectrumKind {
         export const $gtype: GObject.GType<SpectrumKind>;
     }
@@ -1715,9 +1714,25 @@ export namespace ColorHug {
      */
     function sha1_parse(value: string, sha1: Sha1): boolean;
     function strerror(error_enum: Error): string;
-    export namespace DeviceQueueProcessFlags {
-        export const $gtype: GObject.GType<DeviceQueueProcessFlags>;
-    }
+    /**
+     * CH_DEVICE_QUEUE_PROCESS_FLAGS_NONE:
+     * 	Normal operation, where a single device command failure makes
+     * the return value of the process %FALSE, but the queue contibues
+     * to run for other devices.
+     *
+     * CH_DEVICE_QUEUE_PROCESS_FLAGS_CONTINUE_ERRORS:
+     * 	Continue to submit commands to a device that has failed a
+     * command, for example where one command might not be supported
+     * in the middle of a queue of commands.
+     *
+     * CH_DEVICE_QUEUE_PROCESS_FLAGS_NONFATAL_ERRORS:
+     * 	Do not consider a device error to be fatal, but instead emit
+     * a signal and continue with the rest of the queue. If the flag
+     * %CH_DEVICE_QUEUE_PROCESS_FLAGS_CONTINUE_ERRORS is not used then
+     * other commands to the same device will not be submitted.
+     *
+     * Flags for controlling processing options
+     */
 
     /**
      * CH_DEVICE_QUEUE_PROCESS_FLAGS_NONE:
@@ -1738,11 +1753,16 @@ export namespace ColorHug {
      *
      * Flags for controlling processing options
      */
+    export namespace DeviceQueueProcessFlags {
+        export const $gtype: GObject.GType<DeviceQueueProcessFlags>;
+    }
+
     enum DeviceQueueProcessFlags {
         NONE,
         CONTINUE_ERRORS,
         NONFATAL_ERRORS,
     }
+
     export namespace Illuminant {
         export const $gtype: GObject.GType<Illuminant>;
     }
@@ -1752,6 +1772,7 @@ export namespace ColorHug {
         A,
         UV,
     }
+
     export namespace PcbErrata {
         export const $gtype: GObject.GType<PcbErrata>;
     }
@@ -1761,6 +1782,7 @@ export namespace ColorHug {
         SWAPPED_LEDS,
         NO_WELCOME,
     }
+
     export namespace StatusLed {
         export const $gtype: GObject.GType<StatusLed>;
     }

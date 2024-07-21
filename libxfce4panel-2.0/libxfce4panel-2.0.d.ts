@@ -28,13 +28,17 @@ export namespace Libxfce4panel {
      * Libxfce4panel-2.0
      */
 
-    export namespace PanelPluginMode {
-        export const $gtype: GObject.GType<PanelPluginMode>;
-    }
+    /**
+     * Orientation of the plugin in the panel.
+     */
 
     /**
      * Orientation of the plugin in the panel.
      */
+    export namespace PanelPluginMode {
+        export const $gtype: GObject.GType<PanelPluginMode>;
+    }
+
     enum PanelPluginMode {
         /**
          * Horizontal panel and plugins
@@ -49,6 +53,7 @@ export namespace Libxfce4panel {
          */
         DESKBAR,
     }
+
     export namespace PanelPluginProviderPropType {
         export const $gtype: GObject.GType<PanelPluginProviderPropType>;
     }
@@ -75,6 +80,7 @@ export namespace Libxfce4panel {
         ACTION_ASK_REMOVE,
         SET_OPACITY,
     }
+
     export namespace PanelPluginProviderSignal {
         export const $gtype: GObject.GType<PanelPluginProviderSignal>;
     }
@@ -99,9 +105,13 @@ export namespace Libxfce4panel {
         SHRINK_PLUGIN,
         UNSHRINK_PLUGIN,
     }
-    export namespace ScreenPosition {
-        export const $gtype: GObject.GType<ScreenPosition>;
-    }
+    /**
+     * There are three screen positions for each side of the screen:
+     * LEFT/TOP, CENTER and RIGHT/BOTTOM. The XfceScreenPosition is expressed
+     * as navigational direction, with possible addition of H or V to denote
+     * horizontal and vertical orientation. Additionally there are two floating
+     * positions, horizontal and vertical.
+     */
 
     /**
      * There are three screen positions for each side of the screen:
@@ -110,6 +120,10 @@ export namespace Libxfce4panel {
      * horizontal and vertical orientation. Additionally there are two floating
      * positions, horizontal and vertical.
      */
+    export namespace ScreenPosition {
+        export const $gtype: GObject.GType<ScreenPosition>;
+    }
+
     enum ScreenPosition {
         /**
          * No position has been set.

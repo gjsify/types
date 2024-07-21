@@ -28,6 +28,7 @@ export namespace Garcon {
         FILES,
         ALL,
     }
+
     export namespace MenuMergeFileType {
         export const $gtype: GObject.GType<MenuMergeFileType>;
     }
@@ -36,6 +37,7 @@ export namespace Garcon {
         PATH,
         PARENT,
     }
+
     export namespace MenuNodeType {
         export const $gtype: GObject.GType<MenuNodeType>;
     }

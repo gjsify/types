@@ -18,15 +18,21 @@ export namespace GstMse {
      * GstMse-1.0
      */
 
-    export namespace MediaSourceEOSError {
-        export const $gtype: GObject.GType<MediaSourceEOSError>;
-    }
+    /**
+     * Reasons for ending a #GstMediaSource using gst_media_source_end_of_stream().
+     *
+     * [Specification](https://www.w3.org/TR/media-source-2/#dom-endofstreamerror)
+     */
 
     /**
      * Reasons for ending a #GstMediaSource using gst_media_source_end_of_stream().
      *
      * [Specification](https://www.w3.org/TR/media-source-2/#dom-endofstreamerror)
      */
+    export namespace MediaSourceEOSError {
+        export const $gtype: GObject.GType<MediaSourceEOSError>;
+    }
+
     enum MediaSourceEOSError {
         /**
          * End the stream successfully
@@ -71,15 +77,21 @@ export namespace GstMse {
         static quark(): GLib.Quark;
     }
 
-    export namespace MediaSourceReadyState {
-        export const $gtype: GObject.GType<MediaSourceReadyState>;
-    }
+    /**
+     * Describes the possible states of the Media Source.
+     *
+     * [Specification](https://www.w3.org/TR/media-source-2/#dom-readystate)
+     */
 
     /**
      * Describes the possible states of the Media Source.
      *
      * [Specification](https://www.w3.org/TR/media-source-2/#dom-readystate)
      */
+    export namespace MediaSourceReadyState {
+        export const $gtype: GObject.GType<MediaSourceReadyState>;
+    }
+
     enum MediaSourceReadyState {
         /**
          * The #GstMediaSource is not connected to
@@ -97,9 +109,14 @@ export namespace GstMse {
          */
         ENDED,
     }
-    export namespace MseSrcReadyState {
-        export const $gtype: GObject.GType<MseSrcReadyState>;
-    }
+    /**
+     * Describes how much information a #GstMseSrc has about the media it is playing
+     * back at the current playback #GstMseSrc:position. This type corresponds
+     * directly to the ready state of a HTML Media Element and is a separate concept
+     * from #GstMediaSourceReadyState.
+     *
+     * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
+     */
 
     /**
      * Describes how much information a #GstMseSrc has about the media it is playing
@@ -109,6 +126,10 @@ export namespace GstMse {
      *
      * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
      */
+    export namespace MseSrcReadyState {
+        export const $gtype: GObject.GType<MseSrcReadyState>;
+    }
+
     enum MseSrcReadyState {
         /**
          * No information is available about the
@@ -137,13 +158,17 @@ export namespace GstMse {
          */
         ENOUGH_DATA,
     }
-    export namespace SourceBufferAppendMode {
-        export const $gtype: GObject.GType<SourceBufferAppendMode>;
-    }
+    /**
+     * [Specification](https://www.w3.org/TR/media-source-2/#dom-appendmode)
+     */
 
     /**
      * [Specification](https://www.w3.org/TR/media-source-2/#dom-appendmode)
      */
+    export namespace SourceBufferAppendMode {
+        export const $gtype: GObject.GType<SourceBufferAppendMode>;
+    }
+
     enum SourceBufferAppendMode {
         SEGMENTS,
         SEQUENCE,

@@ -39,15 +39,21 @@ export namespace Rest {
          */
         COPY,
     }
-    export namespace OAuthSignatureMethod {
-        export const $gtype: GObject.GType<OAuthSignatureMethod>;
-    }
+    /**
+     * The signature method to use when signing method calls.  `PLAINTEXT` is only
+     * recommended for testing, in general `HMAC_SHA1` is well supported and more
+     * secure.
+     */
 
     /**
      * The signature method to use when signing method calls.  `PLAINTEXT` is only
      * recommended for testing, in general `HMAC_SHA1` is well supported and more
      * secure.
      */
+    export namespace OAuthSignatureMethod {
+        export const $gtype: GObject.GType<OAuthSignatureMethod>;
+    }
+
     enum OAuthSignatureMethod {
         /**
          * plain text signatures (not recommended)

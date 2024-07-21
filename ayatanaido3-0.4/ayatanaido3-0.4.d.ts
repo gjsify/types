@@ -35,6 +35,7 @@ export namespace AyatanaIdo3 {
         DEFAULT,
         SMALL,
     }
+
     export namespace ScaleMenuItemStyle {
         export const $gtype: GObject.GType<ScaleMenuItemStyle>;
     }
@@ -44,6 +45,7 @@ export namespace AyatanaIdo3 {
         IMAGE,
         LABEL,
     }
+
     export namespace TimelineDirection {
         export const $gtype: GObject.GType<TimelineDirection>;
     }
@@ -52,6 +54,7 @@ export namespace AyatanaIdo3 {
         FORWARD,
         BACKWARD,
     }
+
     export namespace TimelineProgressType {
         export const $gtype: GObject.GType<TimelineProgressType>;
     }

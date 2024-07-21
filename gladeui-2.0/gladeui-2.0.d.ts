@@ -27,13 +27,17 @@ export namespace Gladeui {
      * Gladeui-2.0
      */
 
-    export namespace CreateReason {
-        export const $gtype: GObject.GType<CreateReason>;
-    }
+    /**
+     * These are the reasons your #GladePostCreateFunc can be called.
+     */
 
     /**
      * These are the reasons your #GladePostCreateFunc can be called.
      */
+    export namespace CreateReason {
+        export const $gtype: GObject.GType<CreateReason>;
+    }
+
     enum CreateReason {
         /**
          * Was created at the user's request
@@ -65,6 +69,7 @@ export namespace Gladeui {
          */
         REASONS,
     }
+
     export namespace CursorType {
         export const $gtype: GObject.GType<CursorType>;
     }
@@ -82,6 +87,7 @@ export namespace Gladeui {
         RESIZE_BOTTOM,
         DRAG,
     }
+
     export namespace EditorPageType {
         export const $gtype: GObject.GType<EditorPageType>;
     }
@@ -94,6 +100,7 @@ export namespace Gladeui {
         QUERY,
         SIGNAL,
     }
+
     export namespace ItemAppearance {
         export const $gtype: GObject.GType<ItemAppearance>;
     }
@@ -103,13 +110,17 @@ export namespace Gladeui {
         ICON_ONLY,
         LABEL_ONLY,
     }
-    export namespace PointerMode {
-        export const $gtype: GObject.GType<PointerMode>;
-    }
+    /**
+     * Indicates what the pointer is used for in the workspace.
+     */
 
     /**
      * Indicates what the pointer is used for in the workspace.
      */
+    export namespace PointerMode {
+        export const $gtype: GObject.GType<PointerMode>;
+    }
+
     enum PointerMode {
         /**
          * Mouse pointer used for selecting widgets
@@ -133,14 +144,19 @@ export namespace Gladeui {
          */
         ALIGN_EDIT,
     }
-    export namespace ProjectModelColumns {
-        export const $gtype: GObject.GType<ProjectModelColumns>;
-    }
+    /**
+     * The tree view columns provided by the GtkTreeModel implemented
+     * by GladeProject
+     */
 
     /**
      * The tree view columns provided by the GtkTreeModel implemented
      * by GladeProject
      */
+    export namespace ProjectModelColumns {
+        export const $gtype: GObject.GType<ProjectModelColumns>;
+    }
+
     enum ProjectModelColumns {
         /**
          * name of the icon for the widget
@@ -171,6 +187,7 @@ export namespace Gladeui {
          */
         N_COLUMNS,
     }
+
     export namespace SignalModelColumns {
         export const $gtype: GObject.GType<SignalModelColumns>;
     }
@@ -187,6 +204,7 @@ export namespace Gladeui {
         COLUMN_DETAIL,
         N_COLUMNS,
     }
+
     export namespace Stock {
         export const $gtype: GObject.GType<Stock>;
     }
@@ -194,6 +212,7 @@ export namespace Gladeui {
     enum Stock {
         DUMMY,
     }
+
     export namespace StockImage {
         export const $gtype: GObject.GType<StockImage>;
     }
@@ -201,6 +220,7 @@ export namespace Gladeui {
     enum StockImage {
         DUMMY,
     }
+
     export namespace UIMessageType {
         export const $gtype: GObject.GType<UIMessageType>;
     }
@@ -212,6 +232,7 @@ export namespace Gladeui {
         ARE_YOU_SURE,
         YES_OR_NO,
     }
+
     export namespace UtilFileDialogType {
         export const $gtype: GObject.GType<UtilFileDialogType>;
     }
@@ -830,6 +851,7 @@ export namespace Gladeui {
         (adaptor: WidgetAdaptor, widget: Widget, context: XmlContext, node: XmlNode): void;
     }
     type GList = object | null;
+
     export namespace DebugFlag {
         export const $gtype: GObject.GType<DebugFlag>;
     }
@@ -841,6 +863,7 @@ export namespace Gladeui {
         PROPERTIES,
         VERIFY,
     }
+
     export namespace PropertyState {
         export const $gtype: GObject.GType<PropertyState>;
     }
@@ -851,6 +874,7 @@ export namespace Gladeui {
         UNSUPPORTED,
         SUPPORT_DISABLED,
     }
+
     export namespace SupportMask {
         export const $gtype: GObject.GType<SupportMask>;
     }
@@ -860,6 +884,7 @@ export namespace Gladeui {
         DEPRECATED,
         MISMATCH,
     }
+
     export namespace VerifyFlags {
         export const $gtype: GObject.GType<VerifyFlags>;
     }

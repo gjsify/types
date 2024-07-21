@@ -19,13 +19,17 @@ export namespace Jcat {
      * Jcat-1.0
      */
 
-    export namespace BlobKind {
-        export const $gtype: GObject.GType<BlobKind>;
-    }
+    /**
+     * The kind of blob stored as a signature on the item.
+     */
 
     /**
      * The kind of blob stored as a signature on the item.
      */
+    export namespace BlobKind {
+        export const $gtype: GObject.GType<BlobKind>;
+    }
+
     enum BlobKind {
         /**
          * No known blob kind
@@ -72,13 +76,17 @@ export namespace Jcat {
          */
         SHA512,
     }
-    export namespace BlobMethod {
-        export const $gtype: GObject.GType<BlobMethod>;
-    }
+    /**
+     * The blob verification method.
+     */
 
     /**
      * The blob verification method.
      */
+    export namespace BlobMethod {
+        export const $gtype: GObject.GType<BlobMethod>;
+    }
+
     enum BlobMethod {
         /**
          * Unknown
@@ -93,13 +101,17 @@ export namespace Jcat {
          */
         SIGNATURE,
     }
-    export namespace ImportFlags {
-        export const $gtype: GObject.GType<ImportFlags>;
-    }
+    /**
+     * Flags used for importing.
+     */
 
     /**
      * Flags used for importing.
      */
+    export namespace ImportFlags {
+        export const $gtype: GObject.GType<ImportFlags>;
+    }
+
     enum ImportFlags {
         /**
          * No flags set
@@ -123,13 +135,17 @@ export namespace Jcat {
      * @returns a version number, e.g. "0.1.11"
      */
     function version_string(): string;
-    export namespace BlobFlags {
-        export const $gtype: GObject.GType<BlobFlags>;
-    }
+    /**
+     * Flags used when creating the blob.
+     */
 
     /**
      * Flags used when creating the blob.
      */
+    export namespace BlobFlags {
+        export const $gtype: GObject.GType<BlobFlags>;
+    }
+
     enum BlobFlags {
         /**
          * Generic binary data
@@ -140,13 +156,17 @@ export namespace Jcat {
          */
         IS_UTF8,
     }
-    export namespace ExportFlags {
-        export const $gtype: GObject.GType<ExportFlags>;
-    }
+    /**
+     * Flags used for exporting.
+     */
 
     /**
      * Flags used for exporting.
      */
+    export namespace ExportFlags {
+        export const $gtype: GObject.GType<ExportFlags>;
+    }
+
     enum ExportFlags {
         /**
          * No flags set
@@ -157,13 +177,17 @@ export namespace Jcat {
          */
         NO_TIMESTAMP,
     }
-    export namespace SignFlags {
-        export const $gtype: GObject.GType<SignFlags>;
-    }
+    /**
+     * The flags to when signing a binary
+     */
 
     /**
      * The flags to when signing a binary
      */
+    export namespace SignFlags {
+        export const $gtype: GObject.GType<SignFlags>;
+    }
+
     enum SignFlags {
         /**
          * No flags set
@@ -178,13 +202,17 @@ export namespace Jcat {
          */
         ADD_CERT,
     }
-    export namespace VerifyFlags {
-        export const $gtype: GObject.GType<VerifyFlags>;
-    }
+    /**
+     * The flags to use when interacting with a keyring
+     */
 
     /**
      * The flags to use when interacting with a keyring
      */
+    export namespace VerifyFlags {
+        export const $gtype: GObject.GType<VerifyFlags>;
+    }
+
     enum VerifyFlags {
         /**
          * No flags set

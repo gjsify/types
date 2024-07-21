@@ -20,13 +20,17 @@ export namespace AppStreamBuilder {
      * AppStreamBuilder-1.0
      */
 
-    export namespace AppSaveFlags {
-        export const $gtype: GObject.GType<AppSaveFlags>;
-    }
+    /**
+     * The flags to use when saving resources.
+     */
 
     /**
      * The flags to use when saving resources.
      */
+    export namespace AppSaveFlags {
+        export const $gtype: GObject.GType<AppSaveFlags>;
+    }
+
     enum AppSaveFlags {
         /**
          * Nothing to do
@@ -41,6 +45,7 @@ export namespace AppStreamBuilder {
          */
         SCREENSHOTS,
     }
+
     export namespace PackageKind {
         export const $gtype: GObject.GType<PackageKind>;
     }
@@ -51,6 +56,7 @@ export namespace AppStreamBuilder {
         FIRMWARE,
         LAST,
     }
+
     export namespace PackageLogLevel {
         export const $gtype: GObject.GType<PackageLogLevel>;
     }
@@ -71,13 +77,17 @@ export namespace AppStreamBuilder {
     const PACKAGE_ENSURE_SOURCE: number;
     const PACKAGE_ENSURE_URL: number;
     const PACKAGE_ENSURE_VCS: number;
-    export namespace ContextFlags {
-        export const $gtype: GObject.GType<ContextFlags>;
-    }
+    /**
+     * The flags to use when processing the context.
+     */
 
     /**
      * The flags to use when processing the context.
      */
+    export namespace ContextFlags {
+        export const $gtype: GObject.GType<ContextFlags>;
+    }
+
     enum ContextFlags {
         /**
          * No special actions to use

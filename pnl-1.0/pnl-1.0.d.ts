@@ -40,6 +40,7 @@ export namespace Pnl {
         EASE_OUT_CUBIC,
         EASE_IN_OUT_CUBIC,
     }
+
     export namespace DockRevealerTransitionType {
         export const $gtype: GObject.GType<DockRevealerTransitionType>;
     }

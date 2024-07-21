@@ -18,13 +18,17 @@ export namespace GnomeBluetooth {
      * GnomeBluetooth-3.0
      */
 
-    export namespace AdapterState {
-        export const $gtype: GObject.GType<AdapterState>;
-    }
+    /**
+     * A more precise power state for a Bluetooth adapter.
+     */
 
     /**
      * A more precise power state for a Bluetooth adapter.
      */
+    export namespace AdapterState {
+        export const $gtype: GObject.GType<AdapterState>;
+    }
+
     enum AdapterState {
         /**
          * Bluetooth adapter is missing.
@@ -47,13 +51,17 @@ export namespace GnomeBluetooth {
          */
         OFF,
     }
-    export namespace BatteryType {
-        export const $gtype: GObject.GType<BatteryType>;
-    }
+    /**
+     * The type of battery reporting supported by the device.
+     */
 
     /**
      * The type of battery reporting supported by the device.
      */
+    export namespace BatteryType {
+        export const $gtype: GObject.GType<BatteryType>;
+    }
+
     enum BatteryType {
         /**
          * no battery reporting
@@ -115,13 +123,17 @@ export namespace GnomeBluetooth {
      * @returns %TRUE if the address is valid, %FALSE if not.
      */
     function verify_address(bdaddr: string): boolean;
-    export namespace Type {
-        export const $gtype: GObject.GType<Type>;
-    }
+    /**
+     * The type of a Bluetooth device. See also %BLUETOOTH_TYPE_INPUT and %BLUETOOTH_TYPE_AUDIO
+     */
 
     /**
      * The type of a Bluetooth device. See also %BLUETOOTH_TYPE_INPUT and %BLUETOOTH_TYPE_AUDIO
      */
+    export namespace Type {
+        export const $gtype: GObject.GType<Type>;
+    }
+
     enum Type {
         /**
          * any device, or a device of an unknown type

@@ -38,14 +38,19 @@ export namespace GstVa {
          */
         AUTO,
     }
-    export namespace VaImplementation {
-        export const $gtype: GObject.GType<VaImplementation>;
-    }
+    /**
+     * Types of different VA API implemented drivers. These are the typical and
+     * the most widely used VA drivers.
+     */
 
     /**
      * Types of different VA API implemented drivers. These are the typical and
      * the most widely used VA drivers.
      */
+    export namespace VaImplementation {
+        export const $gtype: GObject.GType<VaImplementation>;
+    }
+
     enum VaImplementation {
         /**
          * The mesa gallium implementation.

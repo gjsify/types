@@ -18,13 +18,17 @@ export namespace Colord {
      * Colord-1.0
      */
 
-    export namespace ClientError {
-        export const $gtype: GObject.GType<ClientError>;
-    }
+    /**
+     * Errors that can be thrown
+     */
 
     /**
      * Errors that can be thrown
      */
+    export namespace ClientError {
+        export const $gtype: GObject.GType<ClientError>;
+    }
+
     enum ClientError {
         /**
          * An internal error occurred
@@ -55,13 +59,17 @@ export namespace Colord {
          */
         FILE_INVALID,
     }
-    export namespace ColorBlackbodyFlags {
-        export const $gtype: GObject.GType<ColorBlackbodyFlags>;
-    }
+    /**
+     * Flags used when returning an RGB color from a temperature.
+     */
 
     /**
      * Flags used when returning an RGB color from a temperature.
      */
+    export namespace ColorBlackbodyFlags {
+        export const $gtype: GObject.GType<ColorBlackbodyFlags>;
+    }
+
     enum ColorBlackbodyFlags {
         /**
          * No flags set.
@@ -72,13 +80,17 @@ export namespace Colord {
          */
         USE_PLANCKIAN,
     }
-    export namespace Colorspace {
-        export const $gtype: GObject.GType<Colorspace>;
-    }
+    /**
+     * The known colorspace.
+     */
 
     /**
      * The known colorspace.
      */
+    export namespace Colorspace {
+        export const $gtype: GObject.GType<Colorspace>;
+    }
+
     enum Colorspace {
         UNKNOWN,
         XYZ,
@@ -92,13 +104,17 @@ export namespace Colord {
         CMYK,
         CMY,
     }
-    export namespace DeviceError {
-        export const $gtype: GObject.GType<DeviceError>;
-    }
+    /**
+     * Errors that can be thrown
+     */
 
     /**
      * Errors that can be thrown
      */
+    export namespace DeviceError {
+        export const $gtype: GObject.GType<DeviceError>;
+    }
+
     enum DeviceError {
         /**
          * An internal error occurred
@@ -137,13 +153,17 @@ export namespace Colord {
          */
         NOT_ENABLED,
     }
-    export namespace DeviceKind {
-        export const $gtype: GObject.GType<DeviceKind>;
-    }
+    /**
+     * The device type.
+     */
 
     /**
      * The device type.
      */
+    export namespace DeviceKind {
+        export const $gtype: GObject.GType<DeviceKind>;
+    }
+
     enum DeviceKind {
         UNKNOWN,
         DISPLAY,
@@ -152,37 +172,49 @@ export namespace Colord {
         CAMERA,
         WEBCAM,
     }
-    export namespace DeviceMode {
-        export const $gtype: GObject.GType<DeviceMode>;
-    }
+    /**
+     * The device mode.
+     */
 
     /**
      * The device mode.
      */
+    export namespace DeviceMode {
+        export const $gtype: GObject.GType<DeviceMode>;
+    }
+
     enum DeviceMode {
         UNKNOWN,
         PHYSICAL,
         VIRTUAL,
     }
-    export namespace DeviceRelation {
-        export const $gtype: GObject.GType<DeviceRelation>;
-    }
+    /**
+     * The device to profile relationship.
+     */
 
     /**
      * The device to profile relationship.
      */
+    export namespace DeviceRelation {
+        export const $gtype: GObject.GType<DeviceRelation>;
+    }
+
     enum DeviceRelation {
         UNKNOWN,
         SOFT,
         HARD,
     }
-    export namespace IccError {
-        export const $gtype: GObject.GType<IccError>;
-    }
+    /**
+     * The ICC error code.
+     */
 
     /**
      * The ICC error code.
      */
+    export namespace IccError {
+        export const $gtype: GObject.GType<IccError>;
+    }
+
     enum IccError {
         /**
          * Failed to open file
@@ -221,26 +253,34 @@ export namespace Colord {
          */
         INTERNAL,
     }
-    export namespace IccSaveFlags {
-        export const $gtype: GObject.GType<IccSaveFlags>;
-    }
+    /**
+     * Flags used when saving an ICC profile.
+     */
 
     /**
      * Flags used when saving an ICC profile.
      */
+    export namespace IccSaveFlags {
+        export const $gtype: GObject.GType<IccSaveFlags>;
+    }
+
     enum IccSaveFlags {
         /**
          * No flags set.
          */
         NONE,
     }
-    export namespace It8Error {
-        export const $gtype: GObject.GType<It8Error>;
-    }
+    /**
+     * Errors that can be thrown
+     */
 
     /**
      * Errors that can be thrown
      */
+    export namespace It8Error {
+        export const $gtype: GObject.GType<It8Error>;
+    }
+
     enum It8Error {
         /**
          * the transaction failed for an unknown reason
@@ -249,13 +289,17 @@ export namespace Colord {
         INVALID_FORMAT,
         UNKNOWN_KIND,
     }
-    export namespace It8Kind {
-        export const $gtype: GObject.GType<It8Kind>;
-    }
+    /**
+     * The kind of IT8 file.
+     */
 
     /**
      * The kind of IT8 file.
      */
+    export namespace It8Kind {
+        export const $gtype: GObject.GType<It8Kind>;
+    }
+
     enum It8Kind {
         UNKNOWN,
         TI1,
@@ -266,26 +310,34 @@ export namespace Colord {
         SPECT,
         CMF,
     }
-    export namespace ObjectScope {
-        export const $gtype: GObject.GType<ObjectScope>;
-    }
+    /**
+     * The options type.
+     */
 
     /**
      * The options type.
      */
+    export namespace ObjectScope {
+        export const $gtype: GObject.GType<ObjectScope>;
+    }
+
     enum ObjectScope {
         UNKNOWN,
         NORMAL,
         TEMP,
         DISK,
     }
-    export namespace ProfileError {
-        export const $gtype: GObject.GType<ProfileError>;
-    }
+    /**
+     * Errors that can be thrown
+     */
 
     /**
      * Errors that can be thrown
      */
+    export namespace ProfileError {
+        export const $gtype: GObject.GType<ProfileError>;
+    }
+
     enum ProfileError {
         /**
          * An internal error occurred
@@ -320,13 +372,17 @@ export namespace Colord {
          */
         FAILED_TO_GET_UID,
     }
-    export namespace ProfileKind {
-        export const $gtype: GObject.GType<ProfileKind>;
-    }
+    /**
+     * The profile type.
+     */
 
     /**
      * The profile type.
      */
+    export namespace ProfileKind {
+        export const $gtype: GObject.GType<ProfileKind>;
+    }
+
     enum ProfileKind {
         UNKNOWN,
         INPUT_DEVICE,
@@ -337,13 +393,17 @@ export namespace Colord {
         ABSTRACT,
         NAMED_COLOR,
     }
-    export namespace ProfileQuality {
-        export const $gtype: GObject.GType<ProfileQuality>;
-    }
+    /**
+     * The quality of the profile produced through calibration.
+     */
 
     /**
      * The quality of the profile produced through calibration.
      */
+    export namespace ProfileQuality {
+        export const $gtype: GObject.GType<ProfileQuality>;
+    }
+
     enum ProfileQuality {
         /**
          * Low quality profile, fast
@@ -358,14 +418,19 @@ export namespace Colord {
          */
         HIGH,
     }
-    export namespace ProfileWarning {
-        export const $gtype: GObject.GType<ProfileWarning>;
-    }
+    /**
+     * The warning about the profile. Profiles with warnings can still be
+     * used, but may be of limited use.
+     */
 
     /**
      * The warning about the profile. Profiles with warnings can still be
      * used, but may be of limited use.
      */
+    export namespace ProfileWarning {
+        export const $gtype: GObject.GType<ProfileWarning>;
+    }
+
     enum ProfileWarning {
         /**
          * No error is found
@@ -416,13 +481,17 @@ export namespace Colord {
          */
         WHITEPOINT_UNLIKELY,
     }
-    export namespace RenderingIntent {
-        export const $gtype: GObject.GType<RenderingIntent>;
-    }
+    /**
+     * The rendering intent.
+     */
 
     /**
      * The rendering intent.
      */
+    export namespace RenderingIntent {
+        export const $gtype: GObject.GType<RenderingIntent>;
+    }
+
     enum RenderingIntent {
         /**
          * Unknown rendering intent
@@ -445,13 +514,17 @@ export namespace Colord {
          */
         ABSOLUTE_COLORIMETRIC,
     }
-    export namespace SensorCap {
-        export const $gtype: GObject.GType<SensorCap>;
-    }
+    /**
+     * The sensor capabilities, i.e. things the sensor can do.
+     */
 
     /**
      * The sensor capabilities, i.e. things the sensor can do.
      */
+    export namespace SensorCap {
+        export const $gtype: GObject.GType<SensorCap>;
+    }
+
     enum SensorCap {
         UNKNOWN,
         LCD,
@@ -472,13 +545,17 @@ export namespace Colord {
         CALIBRATION_DARK,
         CALIBRATION_IRRADIANCE,
     }
-    export namespace SensorError {
-        export const $gtype: GObject.GType<SensorError>;
-    }
+    /**
+     * The sensor error code.
+     */
 
     /**
      * The sensor error code.
      */
+    export namespace SensorError {
+        export const $gtype: GObject.GType<SensorError>;
+    }
+
     enum SensorError {
         /**
          * This action is unsupported on this hardware
@@ -525,13 +602,17 @@ export namespace Colord {
          */
         REQUIRED_IRRADIANCE_CALIBRATION,
     }
-    export namespace SensorKind {
-        export const $gtype: GObject.GType<SensorKind>;
-    }
+    /**
+     * The sensor type.
+     */
 
     /**
      * The sensor type.
      */
+    export namespace SensorKind {
+        export const $gtype: GObject.GType<SensorKind>;
+    }
+
     enum SensorKind {
         UNKNOWN,
         DUMMY,
@@ -562,13 +643,17 @@ export namespace Colord {
         SPARK,
         SPYDERX,
     }
-    export namespace SensorState {
-        export const $gtype: GObject.GType<SensorState>;
-    }
+    /**
+     * The state of the sensor.
+     */
 
     /**
      * The state of the sensor.
      */
+    export namespace SensorState {
+        export const $gtype: GObject.GType<SensorState>;
+    }
+
     enum SensorState {
         UNKNOWN,
         STARTING,
@@ -576,13 +661,17 @@ export namespace Colord {
         MEASURING,
         BUSY,
     }
-    export namespace StandardSpace {
-        export const $gtype: GObject.GType<StandardSpace>;
-    }
+    /**
+     * A standard colorspace
+     */
 
     /**
      * A standard colorspace
      */
+    export namespace StandardSpace {
+        export const $gtype: GObject.GType<StandardSpace>;
+    }
+
     enum StandardSpace {
         UNKNOWN,
         SRGB,
@@ -859,13 +948,17 @@ export namespace Colord {
      * @returns the standard colorspace, e.g. 'srgb'.
      */
     function standard_space_to_string(standard_space: StandardSpace): string;
-    export namespace IccLoadFlags {
-        export const $gtype: GObject.GType<IccLoadFlags>;
-    }
+    /**
+     * Flags used when loading an ICC profile.
+     */
 
     /**
      * Flags used when loading an ICC profile.
      */
+    export namespace IccLoadFlags {
+        export const $gtype: GObject.GType<IccLoadFlags>;
+    }
+
     enum IccLoadFlags {
         /**
          * No flags set.

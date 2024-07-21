@@ -18,26 +18,34 @@ export namespace Tracker {
      * Tracker-3.0
      */
 
-    export namespace DeserializeFlags {
-        export const $gtype: GObject.GType<DeserializeFlags>;
-    }
+    /**
+     * Flags affecting deserialization from a RDF data format.
+     */
 
     /**
      * Flags affecting deserialization from a RDF data format.
      */
+    export namespace DeserializeFlags {
+        export const $gtype: GObject.GType<DeserializeFlags>;
+    }
+
     enum DeserializeFlags {
         /**
          * No flags.
          */
         NONE,
     }
-    export namespace NotifierEventType {
-        export const $gtype: GObject.GType<NotifierEventType>;
-    }
+    /**
+     * Notifier event types.
+     */
 
     /**
      * Notifier event types.
      */
+    export namespace NotifierEventType {
+        export const $gtype: GObject.GType<NotifierEventType>;
+    }
+
     enum NotifierEventType {
         /**
          * An element was created.
@@ -52,13 +60,17 @@ export namespace Tracker {
          */
         UPDATE,
     }
-    export namespace RdfFormat {
-        export const $gtype: GObject.GType<RdfFormat>;
-    }
+    /**
+     * Describes a RDF format to be used in data exchange.
+     */
 
     /**
      * Describes a RDF format to be used in data exchange.
      */
+    export namespace RdfFormat {
+        export const $gtype: GObject.GType<RdfFormat>;
+    }
+
     enum RdfFormat {
         /**
          * Turtle format
@@ -81,13 +93,17 @@ export namespace Tracker {
          */
         LAST,
     }
-    export namespace SerializeFlags {
-        export const $gtype: GObject.GType<SerializeFlags>;
-    }
+    /**
+     * Flags affecting serialization into a RDF data format.
+     */
 
     /**
      * Flags affecting serialization into a RDF data format.
      */
+    export namespace SerializeFlags {
+        export const $gtype: GObject.GType<SerializeFlags>;
+    }
+
     enum SerializeFlags {
         /**
          * No flags.
@@ -189,13 +205,17 @@ export namespace Tracker {
         static quark(): GLib.Quark;
     }
 
-    export namespace SparqlValueType {
-        export const $gtype: GObject.GType<SparqlValueType>;
-    }
+    /**
+     * Enumeration with the possible types of the cursor's cells
+     */
 
     /**
      * Enumeration with the possible types of the cursor's cells
      */
+    export namespace SparqlValueType {
+        export const $gtype: GObject.GType<SparqlValueType>;
+    }
+
     enum SparqlValueType {
         /**
          * Unbound value type
@@ -354,13 +374,17 @@ export namespace Tracker {
      * @returns A newly generated UUID URN.
      */
     function sparql_get_uuid_urn(): string;
-    export namespace SparqlConnectionFlags {
-        export const $gtype: GObject.GType<SparqlConnectionFlags>;
-    }
+    /**
+     * Connection flags to modify #TrackerSparqlConnection behavior.
+     */
 
     /**
      * Connection flags to modify #TrackerSparqlConnection behavior.
      */
+    export namespace SparqlConnectionFlags {
+        export const $gtype: GObject.GType<SparqlConnectionFlags>;
+    }
+
     enum SparqlConnectionFlags {
         /**
          * No flags.

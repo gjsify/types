@@ -43,6 +43,7 @@ export namespace MPID {
          */
         DEVICE_INFO_MISSING,
     }
+
     export namespace Source {
         export const $gtype: GObject.GType<Source>;
     }
@@ -61,6 +62,7 @@ export namespace MPID {
          */
         OVERRIDE,
     }
+
     export namespace SourceType {
         export const $gtype: GObject.GType<SourceType>;
     }

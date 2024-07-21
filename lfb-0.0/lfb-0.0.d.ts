@@ -18,13 +18,17 @@ export namespace Lfb {
      * Lfb-0.0
      */
 
-    export namespace EventEndReason {
-        export const $gtype: GObject.GType<EventEndReason>;
-    }
+    /**
+     * Enum values used to indicate why the feedbacks for an event ended.
+     */
 
     /**
      * Enum values used to indicate why the feedbacks for an event ended.
      */
+    export namespace EventEndReason {
+        export const $gtype: GObject.GType<EventEndReason>;
+    }
+
     enum EventEndReason {
         /**
          * There was no feedback in the current theme for this event
@@ -44,14 +48,19 @@ export namespace Lfb {
          */
         EXPLICIT,
     }
-    export namespace EventState {
-        export const $gtype: GObject.GType<EventState>;
-    }
+    /**
+     * Enum values to indicate the current state of the feedbacks
+     * triggered by an event.
+     */
 
     /**
      * Enum values to indicate the current state of the feedbacks
      * triggered by an event.
      */
+    export namespace EventState {
+        export const $gtype: GObject.GType<EventState>;
+    }
+
     enum EventState {
         /**
          * An error occurred triggering feedbacks

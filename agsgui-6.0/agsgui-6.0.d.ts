@@ -37,6 +37,7 @@ export namespace AgsGui {
         INCREMENT,
         DECREMENT,
     }
+
     export namespace ExpanderFlags {
         export const $gtype: GObject.GType<ExpanderFlags>;
     }
@@ -44,6 +45,7 @@ export namespace AgsGui {
     enum ExpanderFlags {
         EXPANDER_DRAW_BORDER,
     }
+
     export namespace FileWidgetFileAction {
         export const $gtype: GObject.GType<FileWidgetFileAction>;
     }
@@ -52,6 +54,7 @@ export namespace AgsGui {
         OPEN,
         SAVE_AS,
     }
+
     export namespace FileWidgetFileFilter {
         export const $gtype: GObject.GType<FileWidgetFileFilter>;
     }
@@ -60,6 +63,7 @@ export namespace AgsGui {
         NONE,
         BY_SUFFIX,
     }
+
     export namespace LevelAction {
         export const $gtype: GObject.GType<LevelAction>;
     }
@@ -70,6 +74,7 @@ export namespace AgsGui {
         PAGE_UP,
         PAGE_DOWN,
     }
+
     export namespace LevelButtonState {
         export const $gtype: GObject.GType<LevelButtonState>;
     }
@@ -77,6 +82,7 @@ export namespace AgsGui {
     enum LevelButtonState {
         LEVEL_BUTTON_1_PRESSED,
     }
+
     export namespace LevelDataFormat {
         export const $gtype: GObject.GType<LevelDataFormat>;
     }
@@ -91,6 +97,7 @@ export namespace AgsGui {
         DOUBLE,
         COMPLEX,
     }
+
     export namespace PianoAction {
         export const $gtype: GObject.GType<PianoAction>;
     }
@@ -100,6 +107,7 @@ export namespace AgsGui {
         MOVE_CURSOR_DOWN,
         HIT_KEY,
     }
+
     export namespace PianoButtonState {
         export const $gtype: GObject.GType<PianoButtonState>;
     }
@@ -107,6 +115,7 @@ export namespace AgsGui {
     enum PianoButtonState {
         PIANO_BUTTON_1_PRESSED,
     }
+
     export namespace PianoOctave {
         export const $gtype: GObject.GType<PianoOctave>;
     }
@@ -125,6 +134,7 @@ export namespace AgsGui {
         AIS,
         H,
     }
+
     export namespace PlotFillFlags {
         export const $gtype: GObject.GType<PlotFillFlags>;
     }
@@ -132,6 +142,7 @@ export namespace AgsGui {
     enum PlotFillFlags {
         PLOT_FILL_REPLACE,
     }
+
     export namespace ScaleAction {
         export const $gtype: GObject.GType<ScaleAction>;
     }
@@ -142,6 +153,7 @@ export namespace AgsGui {
         PAGE_UP,
         PAGE_DOWN,
     }
+
     export namespace ScaleButtonState {
         export const $gtype: GObject.GType<ScaleButtonState>;
     }
@@ -149,6 +161,7 @@ export namespace AgsGui {
     enum ScaleButtonState {
         SCALE_BUTTON_1_PRESSED,
     }
+
     export namespace ScaleFlags {
         export const $gtype: GObject.GType<ScaleFlags>;
     }
@@ -156,6 +169,7 @@ export namespace AgsGui {
     enum ScaleFlags {
         SCALE_LOGARITHMIC,
     }
+
     export namespace ScaleLayout {
         export const $gtype: GObject.GType<ScaleLayout>;
     }
@@ -164,6 +178,7 @@ export namespace AgsGui {
         VERTICAL,
         HORIZONTAL,
     }
+
     export namespace TempoAction {
         export const $gtype: GObject.GType<TempoAction>;
     }
@@ -174,6 +189,7 @@ export namespace AgsGui {
         PAGE_UP,
         PAGE_DOWN,
     }
+
     export namespace TempoButtonState {
         export const $gtype: GObject.GType<TempoButtonState>;
     }
@@ -181,6 +197,7 @@ export namespace AgsGui {
     enum TempoButtonState {
         TEMPO_BUTTON_1_PRESSED,
     }
+
     export namespace TempoLayout {
         export const $gtype: GObject.GType<TempoLayout>;
     }
@@ -610,6 +627,7 @@ export namespace AgsGui {
     interface CartesianTranslateFunc {
         (x: number, y: number, ret_x: number, ret_y: number, data?: any | null): void;
     }
+
     export namespace CartesianFlags {
         export const $gtype: GObject.GType<CartesianFlags>;
     }
@@ -624,6 +642,7 @@ export namespace AgsGui {
         X_LABEL,
         Y_LABEL,
     }
+
     export namespace DialFlags {
         export const $gtype: GObject.GType<DialFlags>;
     }
@@ -638,6 +657,7 @@ export namespace AgsGui {
         SEEMLESS_MODE,
         INVERSE_LIGHT,
     }
+
     export namespace ExpanderSetFlags {
         export const $gtype: GObject.GType<ExpanderSetFlags>;
     }
@@ -649,6 +669,7 @@ export namespace AgsGui {
         LEFT_CONNECTOR,
         RIGHT_CONNECTOR,
     }
+
     export namespace FileWidgetFlags {
         export const $gtype: GObject.GType<FileWidgetFlags>;
     }
@@ -659,6 +680,7 @@ export namespace AgsGui {
         WITH_PREVIEW,
         HIDDEN_FILES_VISIBLE,
     }
+
     export namespace IconLinkFlags {
         export const $gtype: GObject.GType<IconLinkFlags>;
     }
@@ -667,6 +689,7 @@ export namespace AgsGui {
         HIGHLIGHT,
         SHOW_CONTEXT_MENU,
     }
+
     export namespace InputDialogFlags {
         export const $gtype: GObject.GType<InputDialogFlags>;
     }
@@ -675,6 +698,7 @@ export namespace AgsGui {
         STRING_INPUT,
         SPIN_BUTTON_INPUT,
     }
+
     export namespace LevelKeyMask {
         export const $gtype: GObject.GType<LevelKeyMask>;
     }
@@ -685,6 +709,7 @@ export namespace AgsGui {
         L_SHIFT,
         R_SHIFT,
     }
+
     export namespace PianoFlags {
         export const $gtype: GObject.GType<PianoFlags>;
     }
@@ -693,6 +718,7 @@ export namespace AgsGui {
         FULL_SCALE,
         OCTAVE_SCALE,
     }
+
     export namespace ScaleKeyMask {
         export const $gtype: GObject.GType<ScaleKeyMask>;
     }
@@ -703,6 +729,7 @@ export namespace AgsGui {
         L_SHIFT,
         R_SHIFT,
     }
+
     export namespace TempoKeyMask {
         export const $gtype: GObject.GType<TempoKeyMask>;
     }

@@ -18,13 +18,17 @@ export namespace Secret {
      * Secret-1
      */
 
-    export namespace BackendFlags {
-        export const $gtype: GObject.GType<BackendFlags>;
-    }
+    /**
+     * Flags which determine which parts of the #SecretBackend are initialized.
+     */
 
     /**
      * Flags which determine which parts of the #SecretBackend are initialized.
      */
+    export namespace BackendFlags {
+        export const $gtype: GObject.GType<BackendFlags>;
+    }
+
     enum BackendFlags {
         /**
          * no flags for initializing the #SecretBackend
@@ -41,9 +45,12 @@ export namespace Secret {
          */
         LOAD_COLLECTIONS,
     }
-    export namespace Error {
-        export const $gtype: GObject.GType<Error>;
-    }
+    /**
+     * Errors returned by the Secret Service.
+     *
+     * None of the errors are appropriate for display to the user. It is up to the
+     * application to handle them appropriately.
+     */
 
     /**
      * Errors returned by the Secret Service.
@@ -51,6 +58,10 @@ export namespace Secret {
      * None of the errors are appropriate for display to the user. It is up to the
      * application to handle them appropriately.
      */
+    export namespace Error {
+        export const $gtype: GObject.GType<Error>;
+    }
+
     enum Error {
         /**
          * received an invalid data or message from the Secret
@@ -96,9 +107,13 @@ export namespace Secret {
          */
         EMPTY_TABLE,
     }
-    export namespace SchemaAttributeType {
-        export const $gtype: GObject.GType<SchemaAttributeType>;
-    }
+    /**
+     * The type of an attribute in a [struct`SecretSchema]`.
+     *
+     * Attributes are stored as strings in the Secret Service, and the attribute
+     * types simply define standard ways to store integer and boolean values as
+     * strings.
+     */
 
     /**
      * The type of an attribute in a [struct`SecretSchema]`.
@@ -107,6 +122,10 @@ export namespace Secret {
      * types simply define standard ways to store integer and boolean values as
      * strings.
      */
+    export namespace SchemaAttributeType {
+        export const $gtype: GObject.GType<SchemaAttributeType>;
+    }
+
     enum SchemaAttributeType {
         /**
          * a utf-8 string attribute
@@ -121,9 +140,65 @@ export namespace Secret {
          */
         BOOLEAN,
     }
-    export namespace SchemaType {
-        export const $gtype: GObject.GType<SchemaType>;
-    }
+    /**
+     * Different types of schemas for storing secrets, intended for use with
+     * [func`get_schema]`.
+     *
+     * ## `SECRET_SCHEMA_NOTE`
+     *
+     * A predefined schema for personal passwords stored by the user in the
+     * password manager. This schema has no attributes, and the items are not
+     * meant to be used automatically by applications.
+     *
+     * When used to search for items using this schema, it will only match
+     * items that have the same schema. Items stored via libgnome-keyring with the
+     * `GNOME_KEYRING_ITEM_NOTE` item type will match.
+     *
+     * ## `SECRET_SCHEMA_COMPAT_NETWORK`
+     *
+     * A predefined schema that is compatible with items stored via the
+     * libgnome-keyring 'network password' functions. This is meant to be used by
+     * applications migrating from libgnome-keyring which stored their secrets as
+     * 'network passwords'. It is not recommended that new code use this schema.
+     *
+     * When used to search for items using this schema, it will only match
+     * items that have the same schema. Items stored via libgnome-keyring with the
+     * `GNOME_KEYRING_ITEM_NETWORK_PASSWORD` item type will match.
+     *
+     * The following attributes exist in the schema:
+     *
+     * ### Attributes:
+     *
+     * <table>
+     *     <tr>
+     *         <td><tt>user</tt>:</td>
+     *         <td>The user name (string).</td>
+     *     </tr>
+     *     <tr>
+     *         <td><tt>domain</tt>:</td>
+     *         <td>The login domain or realm (string).</td></tr>
+     *     <tr>
+     *         <td><tt>object</tt>:</td>
+     *         <td>The object or path (string).</td>
+     *     </tr>
+     *     <tr>
+     *         <td><tt>protocol</tt>:</td>
+     *         <td>The protocol (a string like 'http').</td>
+     *     </tr>
+     *     <tr>
+     *         <td><tt>port</tt>:</td>
+     *         <td>The network port (integer).</td>
+     *     </tr>
+     *     <tr>
+     *         <td><tt>server</tt>:</td>
+     *         <td>The hostname or server (string).</td>
+     *     </tr>
+     *     <tr>
+     *         <td><tt>authtype</tt>:</td>
+     *         <td>The authentication type (string).</td>
+     *     </tr>
+     * </table>
+     */
 
     /**
      * Different types of schemas for storing secrets, intended for use with
@@ -184,6 +259,10 @@ export namespace Secret {
      *     </tr>
      * </table>
      */
+    export namespace SchemaType {
+        export const $gtype: GObject.GType<SchemaType>;
+    }
+
     enum SchemaType {
         /**
          * Personal passwords
@@ -727,26 +806,34 @@ export namespace Secret {
      * @param password password to clear
      */
     function password_wipe(password?: string | null): void;
-    export namespace CollectionCreateFlags {
-        export const $gtype: GObject.GType<CollectionCreateFlags>;
-    }
+    /**
+     * Flags for [func`Collection`.create].
+     */
 
     /**
      * Flags for [func`Collection`.create].
      */
+    export namespace CollectionCreateFlags {
+        export const $gtype: GObject.GType<CollectionCreateFlags>;
+    }
+
     enum CollectionCreateFlags {
         /**
          * no flags
          */
         NONE,
     }
-    export namespace CollectionFlags {
-        export const $gtype: GObject.GType<CollectionFlags>;
-    }
+    /**
+     * Flags which determine which parts of the #SecretCollection proxy are initialized.
+     */
 
     /**
      * Flags which determine which parts of the #SecretCollection proxy are initialized.
      */
+    export namespace CollectionFlags {
+        export const $gtype: GObject.GType<CollectionFlags>;
+    }
+
     enum CollectionFlags {
         /**
          * no flags
@@ -757,13 +844,17 @@ export namespace Secret {
          */
         LOAD_ITEMS,
     }
-    export namespace ItemCreateFlags {
-        export const $gtype: GObject.GType<ItemCreateFlags>;
-    }
+    /**
+     * Flags for [func`Item`.create].
+     */
 
     /**
      * Flags for [func`Item`.create].
      */
+    export namespace ItemCreateFlags {
+        export const $gtype: GObject.GType<ItemCreateFlags>;
+    }
+
     enum ItemCreateFlags {
         /**
          * no flags
@@ -774,13 +865,17 @@ export namespace Secret {
          */
         REPLACE,
     }
-    export namespace ItemFlags {
-        export const $gtype: GObject.GType<ItemFlags>;
-    }
+    /**
+     * Flags which determine which parts of the #SecretItem proxy are initialized.
+     */
 
     /**
      * Flags which determine which parts of the #SecretItem proxy are initialized.
      */
+    export namespace ItemFlags {
+        export const $gtype: GObject.GType<ItemFlags>;
+    }
+
     enum ItemFlags {
         /**
          * no flags
@@ -791,13 +886,17 @@ export namespace Secret {
          */
         LOAD_SECRET,
     }
-    export namespace SchemaFlags {
-        export const $gtype: GObject.GType<SchemaFlags>;
-    }
+    /**
+     * Flags for a #SecretSchema definition.
+     */
 
     /**
      * Flags for a #SecretSchema definition.
      */
+    export namespace SchemaFlags {
+        export const $gtype: GObject.GType<SchemaFlags>;
+    }
+
     enum SchemaFlags {
         /**
          * no flags for the schema
@@ -809,13 +908,17 @@ export namespace Secret {
          */
         DONT_MATCH_NAME,
     }
-    export namespace SearchFlags {
-        export const $gtype: GObject.GType<SearchFlags>;
-    }
+    /**
+     * Various flags to be used with [method`Service`.search] and [method`Service`.search_sync].
+     */
 
     /**
      * Various flags to be used with [method`Service`.search] and [method`Service`.search_sync].
      */
+    export namespace SearchFlags {
+        export const $gtype: GObject.GType<SearchFlags>;
+    }
+
     enum SearchFlags {
         /**
          * no flags
@@ -834,14 +937,19 @@ export namespace Secret {
          */
         LOAD_SECRETS,
     }
-    export namespace ServiceFlags {
-        export const $gtype: GObject.GType<ServiceFlags>;
-    }
+    /**
+     * Flags which determine which parts of the #SecretService proxy are initialized
+     * during a [func`Service`.get] or [func`Service`.open] operation.
+     */
 
     /**
      * Flags which determine which parts of the #SecretService proxy are initialized
      * during a [func`Service`.get] or [func`Service`.open] operation.
      */
+    export namespace ServiceFlags {
+        export const $gtype: GObject.GType<ServiceFlags>;
+    }
+
     enum ServiceFlags {
         /**
          * no flags for initializing the #SecretService

@@ -49,6 +49,7 @@ export namespace GtkSource {
          */
         FOUND,
     }
+
     export namespace CompletionError {
         export const $gtype: GObject.GType<CompletionError>;
     }
@@ -57,6 +58,7 @@ export namespace GtkSource {
         ALREADY_BOUND,
         NOT_BOUND,
     }
+
     export namespace SmartHomeEndType {
         export const $gtype: GObject.GType<SmartHomeEndType>;
     }
@@ -84,6 +86,7 @@ export namespace GtkSource {
          */
         ALWAYS,
     }
+
     export namespace ViewGutterPosition {
         export const $gtype: GObject.GType<ViewGutterPosition>;
     }
@@ -166,6 +169,7 @@ export namespace GtkSource {
     interface ViewMarkTooltipFunc {
         (mark: Mark): string;
     }
+
     export namespace CompletionActivation {
         export const $gtype: GObject.GType<CompletionActivation>;
     }
@@ -185,9 +189,12 @@ export namespace GtkSource {
          */
         USER_REQUESTED,
     }
-    export namespace DrawSpacesFlags {
-        export const $gtype: GObject.GType<DrawSpacesFlags>;
-    }
+    /**
+     * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
+     * of GTK_SOURCE_DRAW_SPACES_LEADING, GTK_SOURCE_DRAW_SPACES_TEXT or
+     * GTK_SOURCE_DRAW_SPACES_TRAILING is specified, whitespaces at any position in
+     * the line will be drawn (i.e. it has the same effect as specifying all of them).
+     */
 
     /**
      * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
@@ -195,6 +202,10 @@ export namespace GtkSource {
      * GTK_SOURCE_DRAW_SPACES_TRAILING is specified, whitespaces at any position in
      * the line will be drawn (i.e. it has the same effect as specifying all of them).
      */
+    export namespace DrawSpacesFlags {
+        export const $gtype: GObject.GType<DrawSpacesFlags>;
+    }
+
     enum DrawSpacesFlags {
         /**
          * whether the space character should be drawn.
@@ -229,6 +240,7 @@ export namespace GtkSource {
          */
         ALL,
     }
+
     export namespace SearchFlags {
         export const $gtype: GObject.GType<SearchFlags>;
     }

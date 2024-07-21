@@ -18,13 +18,17 @@ export namespace TrackerMiner {
      * TrackerMiner-2.0
      */
 
-    export namespace DecoratorError {
-        export const $gtype: GObject.GType<DecoratorError>;
-    }
+    /**
+     * Possible errors returned when calling tracker_decorator_next_finish().
+     */
 
     /**
      * Possible errors returned when calling tracker_decorator_next_finish().
      */
+    export namespace DecoratorError {
+        export const $gtype: GObject.GType<DecoratorError>;
+    }
+
     enum DecoratorError {
         /**
          * There is no item to be processed
@@ -42,13 +46,17 @@ export namespace TrackerMiner {
          */
         PAUSED,
     }
-    export namespace FilterPolicy {
-        export const $gtype: GObject.GType<FilterPolicy>;
-    }
+    /**
+     * Flags used when defining default filter policy in the #TrackerIndexingTree.
+     */
 
     /**
      * Flags used when defining default filter policy in the #TrackerIndexingTree.
      */
+    export namespace FilterPolicy {
+        export const $gtype: GObject.GType<FilterPolicy>;
+    }
+
     enum FilterPolicy {
         /**
          * Items matching the filter will be skipped.
@@ -59,13 +67,17 @@ export namespace TrackerMiner {
          */
         ACCEPT,
     }
-    export namespace FilterType {
-        export const $gtype: GObject.GType<FilterType>;
-    }
+    /**
+     * Flags used when adding a new filter in the #TrackerIndexingTree.
+     */
 
     /**
      * Flags used when adding a new filter in the #TrackerIndexingTree.
      */
+    export namespace FilterType {
+        export const $gtype: GObject.GType<FilterType>;
+    }
+
     enum FilterType {
         /**
          * All files matching this filter will be filtered out.
@@ -80,14 +92,19 @@ export namespace TrackerMiner {
          */
         PARENT_DIRECTORY,
     }
-    export namespace MinerError {
-        export const $gtype: GObject.GType<MinerError>;
-    }
+    /**
+     * Possible errors returned when calling #TrackerMiner APIs or
+     * subclassed miners where the error is generic to all miners.
+     */
 
     /**
      * Possible errors returned when calling #TrackerMiner APIs or
      * subclassed miners where the error is generic to all miners.
      */
+    export namespace MinerError {
+        export const $gtype: GObject.GType<MinerError>;
+    }
+
     enum MinerError {
         /**
          * No name was given when creating
@@ -121,14 +138,19 @@ export namespace TrackerMiner {
          */
         INVALID_COOKIE,
     }
-    export namespace MinerFSError {
-        export const $gtype: GObject.GType<MinerFSError>;
-    }
+    /**
+     * Possible errors returned when calling creating new objects based on
+     * the #TrackerMinerFS type and other APIs available with this class.
+     */
 
     /**
      * Possible errors returned when calling creating new objects based on
      * the #TrackerMinerFS type and other APIs available with this class.
      */
+    export namespace MinerFSError {
+        export const $gtype: GObject.GType<MinerFSError>;
+    }
+
     enum MinerFSError {
         /**
          * There was an error during
@@ -137,6 +159,7 @@ export namespace TrackerMiner {
          */
         MINER_FS_ERROR_INIT,
     }
+
     export namespace MinerFSEventType {
         export const $gtype: GObject.GType<MinerFSEventType>;
     }
@@ -147,15 +170,21 @@ export namespace TrackerMiner {
         DELETED,
         MOVED,
     }
-    export namespace NetworkType {
-        export const $gtype: GObject.GType<NetworkType>;
-    }
+    /**
+     * Enumerates the different types of connections that the device might
+     * use when connected to internet. Note that not all providers might
+     * provide this information.
+     */
 
     /**
      * Enumerates the different types of connections that the device might
      * use when connected to internet. Note that not all providers might
      * provide this information.
      */
+    export namespace NetworkType {
+        export const $gtype: GObject.GType<NetworkType>;
+    }
+
     enum NetworkType {
         /**
          * Network is disconnected
@@ -209,14 +238,19 @@ export namespace TrackerMiner {
      * Used as the domain for any #GErrors reported by `TrackerMiner` objects.
      */
     const MINER_ERROR_DOMAIN: string;
-    export namespace DirectoryFlags {
-        export const $gtype: GObject.GType<DirectoryFlags>;
-    }
+    /**
+     * Flags used when adding a new directory to be indexed in the
+     * #TrackerIndexingTree and #TrackerDataProvider.
+     */
 
     /**
      * Flags used when adding a new directory to be indexed in the
      * #TrackerIndexingTree and #TrackerDataProvider.
      */
+    export namespace DirectoryFlags {
+        export const $gtype: GObject.GType<DirectoryFlags>;
+    }
+
     enum DirectoryFlags {
         /**
          * No flags.

@@ -32,6 +32,7 @@ export namespace Tracker {
         BLANK_NODE,
         BOOLEAN,
     }
+
     export namespace SparqlBuilderState {
         export const $gtype: GObject.GType<SparqlBuilderState>;
     }

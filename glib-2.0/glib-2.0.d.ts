@@ -64,9 +64,13 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace ChecksumType {
-        export const $gtype: GObject.GType<ChecksumType>;
-    }
+    /**
+     * The hashing algorithm to be used by #GChecksum when performing the
+     * digest of some data.
+     *
+     * Note that the #GChecksumType enumeration may be extended at a later
+     * date to include new hashing algorithm types.
+     */
 
     /**
      * The hashing algorithm to be used by #GChecksum when performing the
@@ -75,6 +79,10 @@ export namespace GLib {
      * Note that the #GChecksumType enumeration may be extended at a later
      * date to include new hashing algorithm types.
      */
+    export namespace ChecksumType {
+        export const $gtype: GObject.GType<ChecksumType>;
+    }
+
     enum ChecksumType {
         /**
          * Use the MD5 hashing algorithm
@@ -149,14 +157,19 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace DateDMY {
-        export const $gtype: GObject.GType<DateDMY>;
-    }
+    /**
+     * This enumeration isn't used in the API, but may be useful if you need
+     * to mark a number as a day, month, or year.
+     */
 
     /**
      * This enumeration isn't used in the API, but may be useful if you need
      * to mark a number as a day, month, or year.
      */
+    export namespace DateDMY {
+        export const $gtype: GObject.GType<DateDMY>;
+    }
+
     enum DateDMY {
         /**
          * a day
@@ -171,14 +184,19 @@ export namespace GLib {
          */
         YEAR,
     }
-    export namespace DateMonth {
-        export const $gtype: GObject.GType<DateMonth>;
-    }
+    /**
+     * Enumeration representing a month; values are %G_DATE_JANUARY,
+     * %G_DATE_FEBRUARY, etc. %G_DATE_BAD_MONTH is the invalid value.
+     */
 
     /**
      * Enumeration representing a month; values are %G_DATE_JANUARY,
      * %G_DATE_FEBRUARY, etc. %G_DATE_BAD_MONTH is the invalid value.
      */
+    export namespace DateMonth {
+        export const $gtype: GObject.GType<DateMonth>;
+    }
+
     enum DateMonth {
         /**
          * invalid value
@@ -233,14 +251,19 @@ export namespace GLib {
          */
         DECEMBER,
     }
-    export namespace DateWeekday {
-        export const $gtype: GObject.GType<DateWeekday>;
-    }
+    /**
+     * Enumeration representing a day of the week; %G_DATE_MONDAY,
+     * %G_DATE_TUESDAY, etc. %G_DATE_BAD_WEEKDAY is an invalid weekday.
+     */
 
     /**
      * Enumeration representing a day of the week; %G_DATE_MONDAY,
      * %G_DATE_TUESDAY, etc. %G_DATE_BAD_WEEKDAY is an invalid weekday.
      */
+    export namespace DateWeekday {
+        export const $gtype: GObject.GType<DateWeekday>;
+    }
+
     enum DateWeekday {
         /**
          * invalid value
@@ -275,14 +298,19 @@ export namespace GLib {
          */
         SUNDAY,
     }
-    export namespace ErrorType {
-        export const $gtype: GObject.GType<ErrorType>;
-    }
+    /**
+     * The possible errors, used in the `v_error` field
+     * of #GTokenValue, when the token is a %G_TOKEN_ERROR.
+     */
 
     /**
      * The possible errors, used in the `v_error` field
      * of #GTokenValue, when the token is a %G_TOKEN_ERROR.
      */
+    export namespace ErrorType {
+        export const $gtype: GObject.GType<ErrorType>;
+    }
+
     enum ErrorType {
         /**
          * unknown error
@@ -536,14 +564,19 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace IOError {
-        export const $gtype: GObject.GType<IOError>;
-    }
+    /**
+     * #GIOError is only used by the deprecated functions
+     * g_io_channel_read(), g_io_channel_write(), and g_io_channel_seek().
+     */
 
     /**
      * #GIOError is only used by the deprecated functions
      * g_io_channel_read(), g_io_channel_write(), and g_io_channel_seek().
      */
+    export namespace IOError {
+        export const $gtype: GObject.GType<IOError>;
+    }
+
     enum IOError {
         /**
          * no error
@@ -562,13 +595,17 @@ export namespace GLib {
          */
         UNKNOWN,
     }
-    export namespace IOStatus {
-        export const $gtype: GObject.GType<IOStatus>;
-    }
+    /**
+     * Statuses returned by most of the #GIOFuncs functions.
+     */
 
     /**
      * Statuses returned by most of the #GIOFuncs functions.
      */
+    export namespace IOStatus {
+        export const $gtype: GObject.GType<IOStatus>;
+    }
+
     enum IOStatus {
         /**
          * An error occurred.
@@ -627,9 +664,14 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace LogWriterOutput {
-        export const $gtype: GObject.GType<LogWriterOutput>;
-    }
+    /**
+     * Return values from #GLogWriterFuncs to indicate whether the given log entry
+     * was successfully handled by the writer, or whether there was an error in
+     * handling it (and hence a fallback writer should be used).
+     *
+     * If a #GLogWriterFunc ignores a log entry, it should return
+     * %G_LOG_WRITER_HANDLED.
+     */
 
     /**
      * Return values from #GLogWriterFuncs to indicate whether the given log entry
@@ -639,6 +681,10 @@ export namespace GLib {
      * If a #GLogWriterFunc ignores a log entry, it should return
      * %G_LOG_WRITER_HANDLED.
      */
+    export namespace LogWriterOutput {
+        export const $gtype: GObject.GType<LogWriterOutput>;
+    }
+
     enum LogWriterOutput {
         /**
          * Log writer has handled the log entry.
@@ -696,9 +742,13 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace NormalizeMode {
-        export const $gtype: GObject.GType<NormalizeMode>;
-    }
+    /**
+     * Defines how a Unicode string is transformed in a canonical
+     * form, standardizing such issues as whether a character with
+     * an accent is represented as a base character and combining
+     * accent or as a single precomposed character. Unicode strings
+     * should generally be normalized before comparing them.
+     */
 
     /**
      * Defines how a Unicode string is transformed in a canonical
@@ -707,6 +757,10 @@ export namespace GLib {
      * accent or as a single precomposed character. Unicode strings
      * should generally be normalized before comparing them.
      */
+    export namespace NormalizeMode {
+        export const $gtype: GObject.GType<NormalizeMode>;
+    }
+
     enum NormalizeMode {
         /**
          * standardize differences that do not affect the
@@ -771,14 +825,19 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace OnceStatus {
-        export const $gtype: GObject.GType<OnceStatus>;
-    }
+    /**
+     * The possible statuses of a one-time initialization function
+     * controlled by a #GOnce struct.
+     */
 
     /**
      * The possible statuses of a one-time initialization function
      * controlled by a #GOnce struct.
      */
+    export namespace OnceStatus {
+        export const $gtype: GObject.GType<OnceStatus>;
+    }
+
     enum OnceStatus {
         /**
          * the function has not been called yet.
@@ -793,9 +852,12 @@ export namespace GLib {
          */
         READY,
     }
-    export namespace OptionArg {
-        export const $gtype: GObject.GType<OptionArg>;
-    }
+    /**
+     * The #GOptionArg enum values determine which type of extra argument the
+     * options expect to find. If an option expects an extra argument, it can
+     * be specified in several ways; with a short option: `-x arg`, with a long
+     * option: `--name arg` or combined in a single argument: `--name=arg`.
+     */
 
     /**
      * The #GOptionArg enum values determine which type of extra argument the
@@ -803,6 +865,10 @@ export namespace GLib {
      * be specified in several ways; with a short option: `-x arg`, with a long
      * option: `--name arg` or combined in a single argument: `--name=arg`.
      */
+    export namespace OptionArg {
+        export const $gtype: GObject.GType<OptionArg>;
+    }
+
     enum OptionArg {
         /**
          * No extra argument. This is useful for simple flags or booleans.
@@ -1165,14 +1231,19 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace SeekType {
-        export const $gtype: GObject.GType<SeekType>;
-    }
+    /**
+     * An enumeration specifying the base position for a
+     * g_io_channel_seek_position() operation.
+     */
 
     /**
      * An enumeration specifying the base position for a
      * g_io_channel_seek_position() operation.
      */
+    export namespace SeekType {
+        export const $gtype: GObject.GType<SeekType>;
+    }
+
     enum SeekType {
         /**
          * the current position in the file.
@@ -1326,9 +1397,24 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace TestFileType {
-        export const $gtype: GObject.GType<TestFileType>;
-    }
+    /**
+     * The type of file to return the filename for, when used with
+     * g_test_build_filename().
+     *
+     * These two options correspond rather directly to the 'dist' and
+     * 'built' terminology that automake uses and are explicitly used to
+     * distinguish between the 'srcdir' and 'builddir' being separate.  All
+     * files in your project should either be dist (in the
+     * `EXTRA_DIST` or `dist_schema_DATA`
+     * sense, in which case they will always be in the srcdir) or built (in
+     * the `BUILT_SOURCES` sense, in which case they will
+     * always be in the builddir).
+     *
+     * Note: as a general rule of automake, files that are generated only as
+     * part of the build-from-git process (but then are distributed with the
+     * tarball) always go in srcdir (even if doing a srcdir != builddir
+     * build from git) and are considered as distributed files.
+     */
 
     /**
      * The type of file to return the filename for, when used with
@@ -1348,6 +1434,10 @@ export namespace GLib {
      * tarball) always go in srcdir (even if doing a srcdir != builddir
      * build from git) and are considered as distributed files.
      */
+    export namespace TestFileType {
+        export const $gtype: GObject.GType<TestFileType>;
+    }
+
     enum TestFileType {
         /**
          * a file that was included in the distribution tarball
@@ -1358,6 +1448,7 @@ export namespace GLib {
          */
         BUILT,
     }
+
     export namespace TestLogType {
         export const $gtype: GObject.GType<TestLogType>;
     }
@@ -1376,6 +1467,7 @@ export namespace GLib {
         START_SUITE,
         STOP_SUITE,
     }
+
     export namespace TestResult {
         export const $gtype: GObject.GType<TestResult>;
     }
@@ -1406,13 +1498,17 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace ThreadPriority {
-        export const $gtype: GObject.GType<ThreadPriority>;
-    }
+    /**
+     * Thread priorities.
+     */
 
     /**
      * Thread priorities.
      */
+    export namespace ThreadPriority {
+        export const $gtype: GObject.GType<ThreadPriority>;
+    }
+
     enum ThreadPriority {
         /**
          * a priority lower than normal
@@ -1431,9 +1527,16 @@ export namespace GLib {
          */
         URGENT,
     }
-    export namespace TimeType {
-        export const $gtype: GObject.GType<TimeType>;
-    }
+    /**
+     * Disambiguates a given time in two ways.
+     *
+     * First, specifies if the given time is in universal or local time.
+     *
+     * Second, if the time is in local time, specifies if it is local
+     * standard time or local daylight time.  This is important for the case
+     * where the same local time occurs twice (during daylight savings time
+     * transitions, for example).
+     */
 
     /**
      * Disambiguates a given time in two ways.
@@ -1445,6 +1548,10 @@ export namespace GLib {
      * where the same local time occurs twice (during daylight savings time
      * transitions, for example).
      */
+    export namespace TimeType {
+        export const $gtype: GObject.GType<TimeType>;
+    }
+
     enum TimeType {
         /**
          * the time is in local standard time
@@ -1459,14 +1566,19 @@ export namespace GLib {
          */
         UNIVERSAL,
     }
-    export namespace TokenType {
-        export const $gtype: GObject.GType<TokenType>;
-    }
+    /**
+     * The possible types of token returned from each
+     * g_scanner_get_next_token() call.
+     */
 
     /**
      * The possible types of token returned from each
      * g_scanner_get_next_token() call.
      */
+    export namespace TokenType {
+        export const $gtype: GObject.GType<TokenType>;
+    }
+
     enum TokenType {
         /**
          * the end of the file
@@ -1561,9 +1673,19 @@ export namespace GLib {
          */
         COMMENT_MULTI,
     }
-    export namespace TraverseType {
-        export const $gtype: GObject.GType<TraverseType>;
-    }
+    /**
+     * Specifies the type of traversal performed by g_tree_traverse(),
+     * g_node_traverse() and g_node_find(). The different orders are
+     * illustrated here:
+     * - In order: A, B, C, D, E, F, G, H, I
+     *   ![](Sorted_binary_tree_inorder.svg)
+     * - Pre order: F, B, A, D, C, E, G, I, H
+     *   ![](Sorted_binary_tree_preorder.svg)
+     * - Post order: A, C, E, D, B, H, I, G, F
+     *   ![](Sorted_binary_tree_postorder.svg)
+     * - Level order: F, B, G, A, D, I, C, E, H
+     *   ![](Sorted_binary_tree_breadth-first_traversal.svg)
+     */
 
     /**
      * Specifies the type of traversal performed by g_tree_traverse(),
@@ -1578,6 +1700,10 @@ export namespace GLib {
      * - Level order: F, B, G, A, D, I, C, E, H
      *   ![](Sorted_binary_tree_breadth-first_traversal.svg)
      */
+    export namespace TraverseType {
+        export const $gtype: GObject.GType<TraverseType>;
+    }
+
     enum TraverseType {
         /**
          * vists a node's left child first, then the node itself,
@@ -1604,9 +1730,14 @@ export namespace GLib {
          */
         LEVEL_ORDER,
     }
-    export namespace UnicodeBreakType {
-        export const $gtype: GObject.GType<UnicodeBreakType>;
-    }
+    /**
+     * These are the possible line break classifications.
+     *
+     * Since new Unicode versions may add new types here, applications should be ready
+     * to handle unknown values. They may be regarded as %G_UNICODE_BREAK_UNKNOWN.
+     *
+     * See [Unicode Line Breaking Algorithm](https://www.unicode.org/reports/tr14/).
+     */
 
     /**
      * These are the possible line break classifications.
@@ -1616,6 +1747,10 @@ export namespace GLib {
      *
      * See [Unicode Line Breaking Algorithm](https://www.unicode.org/reports/tr14/).
      */
+    export namespace UnicodeBreakType {
+        export const $gtype: GObject.GType<UnicodeBreakType>;
+    }
+
     enum UnicodeBreakType {
         /**
          * Mandatory Break (BK)
@@ -1806,9 +1941,16 @@ export namespace GLib {
         VIRAMA_FINAL,
         VIRAMA,
     }
-    export namespace UnicodeScript {
-        export const $gtype: GObject.GType<UnicodeScript>;
-    }
+    /**
+     * The #GUnicodeScript enumeration identifies different writing
+     * systems. The values correspond to the names as defined in the
+     * Unicode standard. The enumeration has been added in GLib 2.14,
+     * and is interchangeable with #PangoScript.
+     *
+     * Note that new types may be added in the future. Applications
+     * should be ready to handle unknown values.
+     * See [Unicode Standard Annex #24: Script names](http://www.unicode.org/reports/tr24/).
+     */
 
     /**
      * The #GUnicodeScript enumeration identifies different writing
@@ -1820,6 +1962,10 @@ export namespace GLib {
      * should be ready to handle unknown values.
      * See [Unicode Standard Annex #24: Script names](http://www.unicode.org/reports/tr24/).
      */
+    export namespace UnicodeScript {
+        export const $gtype: GObject.GType<UnicodeScript>;
+    }
+
     enum UnicodeScript {
         /**
          * a value never returned from g_unichar_get_script()
@@ -2487,15 +2633,21 @@ export namespace GLib {
          */
         NAG_MUNDARI,
     }
-    export namespace UnicodeType {
-        export const $gtype: GObject.GType<UnicodeType>;
-    }
+    /**
+     * These are the possible character classifications from the
+     * Unicode specification.
+     * See [Unicode Character Database](http://www.unicode.org/reports/tr44/#General_Category_Values).
+     */
 
     /**
      * These are the possible character classifications from the
      * Unicode specification.
      * See [Unicode Character Database](http://www.unicode.org/reports/tr44/#General_Category_Values).
      */
+    export namespace UnicodeType {
+        export const $gtype: GObject.GType<UnicodeType>;
+    }
+
     enum UnicodeType {
         /**
          * General category "Other, Control" (Cc)
@@ -2618,13 +2770,17 @@ export namespace GLib {
          */
         SPACE_SEPARATOR,
     }
-    export namespace UnixPipeEnd {
-        export const $gtype: GObject.GType<UnixPipeEnd>;
-    }
+    /**
+     * Mnemonic constants for the ends of a Unix pipe.
+     */
 
     /**
      * Mnemonic constants for the ends of a Unix pipe.
      */
+    export namespace UnixPipeEnd {
+        export const $gtype: GObject.GType<UnixPipeEnd>;
+    }
+
     enum UnixPipeEnd {
         /**
          * The readable file descriptor 0
@@ -2691,9 +2847,15 @@ export namespace GLib {
         _init(...args: any[]): void;
     }
 
-    export namespace UserDirectory {
-        export const $gtype: GObject.GType<UserDirectory>;
-    }
+    /**
+     * These are logical ids for special directories which are defined
+     * depending on the platform used. You should use g_get_user_special_dir()
+     * to retrieve the full path associated to the logical id.
+     *
+     * The #GUserDirectory enumeration can be extended at later date. Not
+     * every platform has a directory for every logical id in this
+     * enumeration.
+     */
 
     /**
      * These are logical ids for special directories which are defined
@@ -2704,6 +2866,10 @@ export namespace GLib {
      * every platform has a directory for every logical id in this
      * enumeration.
      */
+    export namespace UserDirectory {
+        export const $gtype: GObject.GType<UserDirectory>;
+    }
+
     enum UserDirectory {
         /**
          * the user's Desktop directory
@@ -2742,13 +2908,17 @@ export namespace GLib {
          */
         N_DIRECTORIES,
     }
-    export namespace VariantClass {
-        export const $gtype: GObject.GType<VariantClass>;
-    }
+    /**
+     * The range of possible top-level types of #GVariant instances.
+     */
 
     /**
      * The range of possible top-level types of #GVariant instances.
      */
+    export namespace VariantClass {
+        export const $gtype: GObject.GType<VariantClass>;
+    }
+
     enum VariantClass {
         /**
          * The #GVariant is a boolean.
@@ -12472,6 +12642,7 @@ export namespace GLib {
     interface VoidFunc {
         (): void;
     }
+
     export namespace AsciiType {
         export const $gtype: GObject.GType<AsciiType>;
     }
@@ -12489,14 +12660,19 @@ export namespace GLib {
         UPPER,
         XDIGIT,
     }
-    export namespace FileSetContentsFlags {
-        export const $gtype: GObject.GType<FileSetContentsFlags>;
-    }
+    /**
+     * Flags to pass to g_file_set_contents_full() to affect its safety and
+     * performance.
+     */
 
     /**
      * Flags to pass to g_file_set_contents_full() to affect its safety and
      * performance.
      */
+    export namespace FileSetContentsFlags {
+        export const $gtype: GObject.GType<FileSetContentsFlags>;
+    }
+
     enum FileSetContentsFlags {
         /**
          * No guarantees about file consistency or durability.
@@ -12527,13 +12703,17 @@ export namespace GLib {
          */
         ONLY_EXISTING,
     }
-    export namespace FileTest {
-        export const $gtype: GObject.GType<FileTest>;
-    }
+    /**
+     * A test to perform on a file using g_file_test().
+     */
 
     /**
      * A test to perform on a file using g_file_test().
      */
+    export namespace FileTest {
+        export const $gtype: GObject.GType<FileTest>;
+    }
+
     enum FileTest {
         /**
          * %TRUE if the file is a regular file
@@ -12559,13 +12739,17 @@ export namespace GLib {
          */
         EXISTS,
     }
-    export namespace FormatSizeFlags {
-        export const $gtype: GObject.GType<FormatSizeFlags>;
-    }
+    /**
+     * Flags to modify the format of the string returned by g_format_size_full().
+     */
 
     /**
      * Flags to modify the format of the string returned by g_format_size_full().
      */
+    export namespace FormatSizeFlags {
+        export const $gtype: GObject.GType<FormatSizeFlags>;
+    }
+
     enum FormatSizeFlags {
         /**
          * behave the same as g_format_size()
@@ -12601,13 +12785,17 @@ export namespace GLib {
          */
         ONLY_UNIT,
     }
-    export namespace HookFlagMask {
-        export const $gtype: GObject.GType<HookFlagMask>;
-    }
+    /**
+     * Flags used internally in the #GHook implementation.
+     */
 
     /**
      * Flags used internally in the #GHook implementation.
      */
+    export namespace HookFlagMask {
+        export const $gtype: GObject.GType<HookFlagMask>;
+    }
+
     enum HookFlagMask {
         /**
          * set if the hook has not been destroyed
@@ -12623,14 +12811,19 @@ export namespace GLib {
          */
         MASK,
     }
-    export namespace IOCondition {
-        export const $gtype: GObject.GType<IOCondition>;
-    }
+    /**
+     * A bitwise combination representing a condition to watch for on an
+     * event source.
+     */
 
     /**
      * A bitwise combination representing a condition to watch for on an
      * event source.
      */
+    export namespace IOCondition {
+        export const $gtype: GObject.GType<IOCondition>;
+    }
+
     enum IOCondition {
         /**
          * There is data to read.
@@ -12658,15 +12851,21 @@ export namespace GLib {
          */
         NVAL,
     }
-    export namespace IOFlags {
-        export const $gtype: GObject.GType<IOFlags>;
-    }
+    /**
+     * Specifies properties of a #GIOChannel. Some of the flags can only be
+     * read with g_io_channel_get_flags(), but not changed with
+     * g_io_channel_set_flags().
+     */
 
     /**
      * Specifies properties of a #GIOChannel. Some of the flags can only be
      * read with g_io_channel_get_flags(), but not changed with
      * g_io_channel_set_flags().
      */
+    export namespace IOFlags {
+        export const $gtype: GObject.GType<IOFlags>;
+    }
+
     enum IOFlags {
         /**
          * no special flags set. Since: 2.74
@@ -12720,13 +12919,17 @@ export namespace GLib {
          */
         SET_MASK,
     }
-    export namespace KeyFileFlags {
-        export const $gtype: GObject.GType<KeyFileFlags>;
-    }
+    /**
+     * Flags which influence the parsing.
+     */
 
     /**
      * Flags which influence the parsing.
      */
+    export namespace KeyFileFlags {
+        export const $gtype: GObject.GType<KeyFileFlags>;
+    }
+
     enum KeyFileFlags {
         /**
          * No flags, default behaviour
@@ -12747,9 +12950,12 @@ export namespace GLib {
          */
         KEEP_TRANSLATIONS,
     }
-    export namespace LogLevelFlags {
-        export const $gtype: GObject.GType<LogLevelFlags>;
-    }
+    /**
+     * Flags specifying the level of log messages.
+     *
+     * It is possible to change how GLib treats messages of the various
+     * levels using [func`GLib`.log_set_handler] and [func`GLib`.log_set_fatal_mask].
+     */
 
     /**
      * Flags specifying the level of log messages.
@@ -12757,6 +12963,10 @@ export namespace GLib {
      * It is possible to change how GLib treats messages of the various
      * levels using [func`GLib`.log_set_handler] and [func`GLib`.log_set_fatal_mask].
      */
+    export namespace LogLevelFlags {
+        export const $gtype: GObject.GType<LogLevelFlags>;
+    }
+
     enum LogLevelFlags {
         /**
          * internal flag
@@ -12798,14 +13008,19 @@ export namespace GLib {
          */
         LEVEL_MASK,
     }
-    export namespace MainContextFlags {
-        export const $gtype: GObject.GType<MainContextFlags>;
-    }
+    /**
+     * Flags to pass to g_main_context_new_with_flags() which affect the behaviour
+     * of a #GMainContext.
+     */
 
     /**
      * Flags to pass to g_main_context_new_with_flags() which affect the behaviour
      * of a #GMainContext.
      */
+    export namespace MainContextFlags {
+        export const $gtype: GObject.GType<MainContextFlags>;
+    }
+
     enum MainContextFlags {
         /**
          * Default behaviour.
@@ -12819,9 +13034,14 @@ export namespace GLib {
          */
         OWNERLESS_POLLING,
     }
-    export namespace MarkupCollectType {
-        export const $gtype: GObject.GType<MarkupCollectType>;
-    }
+    /**
+     * A mixed enumerated type and flags field. You must specify one type
+     * (string, strdup, boolean, tristate).  Additionally, you may  optionally
+     * bitwise OR the type with the flag %G_MARKUP_COLLECT_OPTIONAL.
+     *
+     * It is likely that this enum will be extended in the future to
+     * support other types.
+     */
 
     /**
      * A mixed enumerated type and flags field. You must specify one type
@@ -12831,6 +13051,10 @@ export namespace GLib {
      * It is likely that this enum will be extended in the future to
      * support other types.
      */
+    export namespace MarkupCollectType {
+        export const $gtype: GObject.GType<MarkupCollectType>;
+    }
+
     enum MarkupCollectType {
         /**
          * used to terminate the list of attributes
@@ -12872,13 +13096,17 @@ export namespace GLib {
          */
         OPTIONAL,
     }
-    export namespace MarkupParseFlags {
-        export const $gtype: GObject.GType<MarkupParseFlags>;
-    }
+    /**
+     * Flags that affect the behaviour of the parser.
+     */
 
     /**
      * Flags that affect the behaviour of the parser.
      */
+    export namespace MarkupParseFlags {
+        export const $gtype: GObject.GType<MarkupParseFlags>;
+    }
+
     enum MarkupParseFlags {
         /**
          * No special behaviour. Since: 2.74
@@ -12912,13 +13140,17 @@ export namespace GLib {
          */
         IGNORE_QUALIFIED,
     }
-    export namespace OptionFlags {
-        export const $gtype: GObject.GType<OptionFlags>;
-    }
+    /**
+     * Flags which modify individual options.
+     */
 
     /**
      * Flags which modify individual options.
      */
+    export namespace OptionFlags {
+        export const $gtype: GObject.GType<OptionFlags>;
+    }
+
     enum OptionFlags {
         /**
          * No flags. Since: 2.42.
@@ -12968,13 +13200,17 @@ export namespace GLib {
          */
         NOALIAS,
     }
-    export namespace RegexCompileFlags {
-        export const $gtype: GObject.GType<RegexCompileFlags>;
-    }
+    /**
+     * Flags specifying compile-time options.
+     */
 
     /**
      * Flags specifying compile-time options.
      */
+    export namespace RegexCompileFlags {
+        export const $gtype: GObject.GType<RegexCompileFlags>;
+    }
+
     enum RegexCompileFlags {
         /**
          * No special options set. Since: 2.74
@@ -13109,13 +13345,17 @@ export namespace GLib {
          */
         JAVASCRIPT_COMPAT,
     }
-    export namespace RegexMatchFlags {
-        export const $gtype: GObject.GType<RegexMatchFlags>;
-    }
+    /**
+     * Flags specifying match-time options.
+     */
 
     /**
      * Flags specifying match-time options.
      */
+    export namespace RegexMatchFlags {
+        export const $gtype: GObject.GType<RegexMatchFlags>;
+    }
+
     enum RegexMatchFlags {
         /**
          * No special options set. Since: 2.74
@@ -13226,13 +13466,17 @@ export namespace GLib {
          */
         NOTEMPTY_ATSTART,
     }
-    export namespace SpawnFlags {
-        export const $gtype: GObject.GType<SpawnFlags>;
-    }
+    /**
+     * Flags passed to g_spawn_sync(), g_spawn_async() and g_spawn_async_with_pipes().
+     */
 
     /**
      * Flags passed to g_spawn_sync(), g_spawn_async() and g_spawn_async_with_pipes().
      */
+    export namespace SpawnFlags {
+        export const $gtype: GObject.GType<SpawnFlags>;
+    }
+
     enum SpawnFlags {
         /**
          * no flags, default behaviour
@@ -13300,9 +13544,12 @@ export namespace GLib {
          */
         STDIN_FROM_DEV_NULL,
     }
-    export namespace TestSubprocessFlags {
-        export const $gtype: GObject.GType<TestSubprocessFlags>;
-    }
+    /**
+     * Flags to pass to g_test_trap_subprocess() to control input and output.
+     *
+     * Note that in contrast with g_test_trap_fork(), the default is to
+     * not show stdout and stderr.
+     */
 
     /**
      * Flags to pass to g_test_trap_subprocess() to control input and output.
@@ -13310,6 +13557,10 @@ export namespace GLib {
      * Note that in contrast with g_test_trap_fork(), the default is to
      * not show stdout and stderr.
      */
+    export namespace TestSubprocessFlags {
+        export const $gtype: GObject.GType<TestSubprocessFlags>;
+    }
+
     enum TestSubprocessFlags {
         /**
          * Default behaviour. Since: 2.74
@@ -13336,14 +13587,19 @@ export namespace GLib {
          */
         INHERIT_STDERR,
     }
-    export namespace TestTrapFlags {
-        export const $gtype: GObject.GType<TestTrapFlags>;
-    }
+    /**
+     * Test traps are guards around forked tests.
+     * These flags determine what traps to set.
+     */
 
     /**
      * Test traps are guards around forked tests.
      * These flags determine what traps to set.
      */
+    export namespace TestTrapFlags {
+        export const $gtype: GObject.GType<TestTrapFlags>;
+    }
+
     enum TestTrapFlags {
         /**
          * Default behaviour. Since: 2.74
@@ -13370,14 +13626,19 @@ export namespace GLib {
          */
         INHERIT_STDIN,
     }
-    export namespace TraverseFlags {
-        export const $gtype: GObject.GType<TraverseFlags>;
-    }
+    /**
+     * Specifies which nodes are visited during several of the tree
+     * functions, including g_node_traverse() and g_node_find().
+     */
 
     /**
      * Specifies which nodes are visited during several of the tree
      * functions, including g_node_traverse() and g_node_find().
      */
+    export namespace TraverseFlags {
+        export const $gtype: GObject.GType<TraverseFlags>;
+    }
+
     enum TraverseFlags {
         /**
          * only leaf nodes should be visited. This name has
@@ -13408,9 +13669,14 @@ export namespace GLib {
          */
         NON_LEAFS,
     }
-    export namespace UriFlags {
-        export const $gtype: GObject.GType<UriFlags>;
-    }
+    /**
+     * Flags that describe a URI.
+     *
+     * When parsing a URI, if you need to choose different flags based on
+     * the type of URI, you can use g_uri_peek_scheme() on the URI string
+     * to check the scheme first, and use that to decide what flags to
+     * parse it with.
+     */
 
     /**
      * Flags that describe a URI.
@@ -13420,6 +13686,10 @@ export namespace GLib {
      * to check the scheme first, and use that to decide what flags to
      * parse it with.
      */
+    export namespace UriFlags {
+        export const $gtype: GObject.GType<UriFlags>;
+    }
+
     enum UriFlags {
         /**
          * No flags set.
@@ -13481,9 +13751,12 @@ export namespace GLib {
          */
         SCHEME_NORMALIZE,
     }
-    export namespace UriHideFlags {
-        export const $gtype: GObject.GType<UriHideFlags>;
-    }
+    /**
+     * Flags describing what parts of the URI to hide in
+     * g_uri_to_string_partial(). Note that %G_URI_HIDE_PASSWORD and
+     * %G_URI_HIDE_AUTH_PARAMS will only work if the #GUri was parsed with
+     * the corresponding flags.
+     */
 
     /**
      * Flags describing what parts of the URI to hide in
@@ -13491,6 +13764,10 @@ export namespace GLib {
      * %G_URI_HIDE_AUTH_PARAMS will only work if the #GUri was parsed with
      * the corresponding flags.
      */
+    export namespace UriHideFlags {
+        export const $gtype: GObject.GType<UriHideFlags>;
+    }
+
     enum UriHideFlags {
         /**
          * No flags set.
@@ -13517,14 +13794,19 @@ export namespace GLib {
          */
         FRAGMENT,
     }
-    export namespace UriParamsFlags {
-        export const $gtype: GObject.GType<UriParamsFlags>;
-    }
+    /**
+     * Flags modifying the way parameters are handled by g_uri_parse_params() and
+     * #GUriParamsIter.
+     */
 
     /**
      * Flags modifying the way parameters are handled by g_uri_parse_params() and
      * #GUriParamsIter.
      */
+    export namespace UriParamsFlags {
+        export const $gtype: GObject.GType<UriParamsFlags>;
+    }
+
     enum UriParamsFlags {
         /**
          * No flags set.

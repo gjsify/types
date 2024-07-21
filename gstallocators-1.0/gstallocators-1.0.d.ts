@@ -74,13 +74,17 @@ export namespace GstAllocators {
     function is_fd_memory(mem: Gst.Memory): boolean;
     function is_phys_memory(mem: Gst.Memory): boolean;
     function phys_memory_get_phys_addr(mem: Gst.Memory): never;
-    export namespace FdMemoryFlags {
-        export const $gtype: GObject.GType<FdMemoryFlags>;
-    }
+    /**
+     * Various flags to control the operation of the fd backed memory.
+     */
 
     /**
      * Various flags to control the operation of the fd backed memory.
      */
+    export namespace FdMemoryFlags {
+        export const $gtype: GObject.GType<FdMemoryFlags>;
+    }
+
     enum FdMemoryFlags {
         /**
          * no flag

@@ -58,6 +58,7 @@ export namespace Gom {
         IS_NULL,
         IS_NOT_NULL,
     }
+
     export namespace SortingMode {
         export const $gtype: GObject.GType<SortingMode>;
     }

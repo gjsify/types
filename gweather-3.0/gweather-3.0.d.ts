@@ -27,13 +27,17 @@ export namespace GWeather {
      * GWeather-3.0
      */
 
-    export namespace ConditionPhenomenon {
-        export const $gtype: GObject.GType<ConditionPhenomenon>;
-    }
+    /**
+     * The current or forecasted significant phenomenon.
+     */
 
     /**
      * The current or forecasted significant phenomenon.
      */
+    export namespace ConditionPhenomenon {
+        export const $gtype: GObject.GType<ConditionPhenomenon>;
+    }
+
     enum ConditionPhenomenon {
         /**
          * value not available
@@ -68,9 +72,13 @@ export namespace GWeather {
         DUST_WHIRLS,
         LAST,
     }
-    export namespace ConditionQualifier {
-        export const $gtype: GObject.GType<ConditionQualifier>;
-    }
+    /**
+     * An additional modifier applied to a #GWeatherConditionPhenomenon to
+     * describe the current or forecasted weather conditions.
+     * The exact meaning of each qualifier is described at
+     * http://www.weather.com/glossary/ and
+     * http://www.crh.noaa.gov/arx/wx.tbl.php
+     */
 
     /**
      * An additional modifier applied to a #GWeatherConditionPhenomenon to
@@ -79,6 +87,10 @@ export namespace GWeather {
      * http://www.weather.com/glossary/ and
      * http://www.crh.noaa.gov/arx/wx.tbl.php
      */
+    export namespace ConditionQualifier {
+        export const $gtype: GObject.GType<ConditionQualifier>;
+    }
+
     enum ConditionQualifier {
         /**
          * value not available
@@ -151,14 +163,19 @@ export namespace GWeather {
          */
         LAST,
     }
-    export namespace DistanceUnit {
-        export const $gtype: GObject.GType<DistanceUnit>;
-    }
+    /**
+     * The measure unit to use for sky visibility values, when retrieved
+     * by gweather_info_get_value_visibility().
+     */
 
     /**
      * The measure unit to use for sky visibility values, when retrieved
      * by gweather_info_get_value_visibility().
      */
+    export namespace DistanceUnit {
+        export const $gtype: GObject.GType<DistanceUnit>;
+    }
+
     enum DistanceUnit {
         /**
          * invalid unit
@@ -181,9 +198,19 @@ export namespace GWeather {
          */
         MILES,
     }
-    export namespace LocationLevel {
-        export const $gtype: GObject.GType<LocationLevel>;
-    }
+    /**
+     * The size/scope of a particular #GWeatherLocation.
+     *
+     * Locations form a hierarchy, with a %GWEATHER_LOCATION_WORLD
+     * location at the top, divided into regions or countries, and so on.
+     * Countries may or may not be divided into "adm1"s, and "adm1"s may
+     * or may not be divided into "adm2"s. A city will have at least one,
+     * and possibly several, weather stations inside it. Weather stations
+     * will never appear outside of cities.
+     *
+     * Building a database with gweather_location_get_world() will never
+     * create detached instances, but deserializing might.
+     */
 
     /**
      * The size/scope of a particular #GWeatherLocation.
@@ -198,6 +225,10 @@ export namespace GWeather {
      * Building a database with gweather_location_get_world() will never
      * create detached instances, but deserializing might.
      */
+    export namespace LocationLevel {
+        export const $gtype: GObject.GType<LocationLevel>;
+    }
+
     enum LocationLevel {
         /**
          * A location representing the entire world.
@@ -241,14 +272,19 @@ export namespace GWeather {
          */
         NAMED_TIMEZONE,
     }
-    export namespace PressureUnit {
-        export const $gtype: GObject.GType<PressureUnit>;
-    }
+    /**
+     * The measure unit to use for atmospheric pressure values, when
+     * retrieved by gweather_info_get_value_pressure().
+     */
 
     /**
      * The measure unit to use for atmospheric pressure values, when
      * retrieved by gweather_info_get_value_pressure().
      */
+    export namespace PressureUnit {
+        export const $gtype: GObject.GType<PressureUnit>;
+    }
+
     enum PressureUnit {
         /**
          * invalid unit
@@ -284,9 +320,12 @@ export namespace GWeather {
          */
         ATM,
     }
-    export namespace Sky {
-        export const $gtype: GObject.GType<Sky>;
-    }
+    /**
+     * The sky and cloud visibility. In general it is discouraged to
+     * use this value directly to compute the forecast icon: applications
+     * should instead use gweather_info_get_icon_name() or
+     * gweather_info_get_symbolic_icon_name().
+     */
 
     /**
      * The sky and cloud visibility. In general it is discouraged to
@@ -294,6 +333,10 @@ export namespace GWeather {
      * should instead use gweather_info_get_icon_name() or
      * gweather_info_get_symbolic_icon_name().
      */
+    export namespace Sky {
+        export const $gtype: GObject.GType<Sky>;
+    }
+
     enum Sky {
         /**
          * value not available
@@ -324,14 +367,19 @@ export namespace GWeather {
          */
         LAST,
     }
-    export namespace SpeedUnit {
-        export const $gtype: GObject.GType<SpeedUnit>;
-    }
+    /**
+     * The measure unit to use for wind speed values, when retrieved by
+     * gweather_info_get_value_wind().
+     */
 
     /**
      * The measure unit to use for wind speed values, when retrieved by
      * gweather_info_get_value_wind().
      */
+    export namespace SpeedUnit {
+        export const $gtype: GObject.GType<SpeedUnit>;
+    }
+
     enum SpeedUnit {
         /**
          * invalid unit
@@ -362,14 +410,19 @@ export namespace GWeather {
          */
         BFT,
     }
-    export namespace TemperatureUnit {
-        export const $gtype: GObject.GType<TemperatureUnit>;
-    }
+    /**
+     * The measure unit to use for temperature values, when retrieved by
+     * the gweather_info_get_value_temp() family of functions.
+     */
 
     /**
      * The measure unit to use for temperature values, when retrieved by
      * the gweather_info_get_value_temp() family of functions.
      */
+    export namespace TemperatureUnit {
+        export const $gtype: GObject.GType<TemperatureUnit>;
+    }
+
     enum TemperatureUnit {
         /**
          * invalid unit
@@ -392,15 +445,21 @@ export namespace GWeather {
          */
         FAHRENHEIT,
     }
-    export namespace WindDirection {
-        export const $gtype: GObject.GType<WindDirection>;
-    }
+    /**
+     * The direction of the prevailing wind. Composite values
+     * such as north-north-east indicate a direction between the
+     * two component value (north and north-east).
+     */
 
     /**
      * The direction of the prevailing wind. Composite values
      * such as north-north-east indicate a direction between the
      * two component value (north and north-east).
      */
+    export namespace WindDirection {
+        export const $gtype: GObject.GType<WindDirection>;
+    }
+
     enum WindDirection {
         /**
          * value not available
@@ -529,14 +588,19 @@ export namespace GWeather {
     interface FilterFunc {
         (location: Location): boolean;
     }
-    export namespace FormatOptions {
-        export const $gtype: GObject.GType<FormatOptions>;
-    }
+    /**
+     * Format options to influence the returned string of the
+     * gweather_*_to_string_full() functions.
+     */
 
     /**
      * Format options to influence the returned string of the
      * gweather_*_to_string_full() functions.
      */
+    export namespace FormatOptions {
+        export const $gtype: GObject.GType<FormatOptions>;
+    }
+
     enum FormatOptions {
         /**
          * The default string format
@@ -553,6 +617,7 @@ export namespace GWeather {
          */
         NO_CAPITALIZATION,
     }
+
     export namespace Provider {
         export const $gtype: GObject.GType<Provider>;
     }

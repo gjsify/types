@@ -53,6 +53,7 @@ export namespace Unity {
         CAR,
         N_CATEGORIES,
     }
+
     export namespace IconSizeHint {
         export const $gtype: GObject.GType<IconSizeHint>;
     }
@@ -62,6 +63,7 @@ export namespace Unity {
         SMALL,
         LARGE,
     }
+
     export namespace CategoryRenderer {
         export const $gtype: GObject.GType<CategoryRenderer>;
     }
@@ -76,6 +78,7 @@ export namespace Unity {
         VERTICAL_TILE,
         HORIZONTAL_TILE,
     }
+
     export namespace CategoryContentType {
         export const $gtype: GObject.GType<CategoryContentType>;
     }
@@ -89,6 +92,7 @@ export namespace Unity {
         SOCIAL,
         WEATHER,
     }
+
     export namespace FilterRenderer {
         export const $gtype: GObject.GType<FilterRenderer>;
     }
@@ -100,6 +104,7 @@ export namespace Unity {
         RATINGS,
         CHECK_OPTIONS_COMPACT,
     }
+
     export namespace LayoutHint {
         export const $gtype: GObject.GType<LayoutHint>;
     }
@@ -111,6 +116,7 @@ export namespace Unity {
         TOP,
         BOTTOM,
     }
+
     export namespace HandledType {
         export const $gtype: GObject.GType<HandledType>;
     }
@@ -123,6 +129,7 @@ export namespace Unity {
         SHOW_PREVIEW,
         PERFORM_SEARCH,
     }
+
     export namespace SearchType {
         export const $gtype: GObject.GType<SearchType>;
     }
@@ -132,6 +139,7 @@ export namespace Unity {
         GLOBAL,
         N_TYPES,
     }
+
     export namespace ResultType {
         export const $gtype: GObject.GType<ResultType>;
     }
@@ -141,6 +149,7 @@ export namespace Unity {
         PERSONAL,
         SEMI_PERSONAL,
     }
+
     export namespace SerializationType {
         export const $gtype: GObject.GType<SerializationType>;
     }
@@ -149,6 +158,7 @@ export namespace Unity {
         BINARY,
         JSON,
     }
+
     export namespace PlaybackState {
         export const $gtype: GObject.GType<PlaybackState>;
     }
@@ -157,6 +167,7 @@ export namespace Unity {
         PLAYING,
         PAUSED,
     }
+
     export namespace OptionsFilterSortType {
         export const $gtype: GObject.GType<OptionsFilterSortType>;
     }
@@ -166,6 +177,7 @@ export namespace Unity {
         DISPLAY_NAME,
         ID,
     }
+
     export namespace PreferencesManagerRemoteContent {
         export const $gtype: GObject.GType<PreferencesManagerRemoteContent>;
     }
@@ -174,6 +186,7 @@ export namespace Unity {
         ALL,
         NONE,
     }
+
     export namespace MusicPreviewTrackState {
         export const $gtype: GObject.GType<MusicPreviewTrackState>;
     }
@@ -183,6 +196,7 @@ export namespace Unity {
         PLAYING,
         PAUSED,
     }
+
     export namespace PaymentPreviewType {
         export const $gtype: GObject.GType<PaymentPreviewType>;
     }
@@ -192,6 +206,7 @@ export namespace Unity {
         MUSIC,
         ERROR,
     }
+
     export namespace SchemaFieldType {
         export const $gtype: GObject.GType<SchemaFieldType>;
     }
@@ -200,6 +215,7 @@ export namespace Unity {
         OPTIONAL,
         REQUIRED,
     }
+
     export namespace AggregatorScopeSortFlags {
         export const $gtype: GObject.GType<AggregatorScopeSortFlags>;
     }
@@ -209,6 +225,7 @@ export namespace Unity {
         DESCENDING,
         CASE_INSENSITIVE,
     }
+
     export namespace AggregatorScopeMergeMode {
         export const $gtype: GObject.GType<AggregatorScopeMergeMode>;
     }

@@ -36,6 +36,7 @@ export namespace MatePanelApplet {
         COLOR_BACKGROUND,
         PIXMAP_BACKGROUND,
     }
+
     export namespace AppletOrient {
         export const $gtype: GObject.GType<AppletOrient>;
     }
@@ -50,6 +51,7 @@ export namespace MatePanelApplet {
     interface AppletFactoryCallback {
         (applet: Applet, iid: string): boolean;
     }
+
     export namespace AppletFlags {
         export const $gtype: GObject.GType<AppletFlags>;
     }

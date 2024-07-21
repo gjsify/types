@@ -25,6 +25,7 @@ export namespace GConf {
         HANDLE_UNRETURNED,
         HANDLE_ALL,
     }
+
     export namespace ClientPreloadType {
         export const $gtype: GObject.GType<ClientPreloadType>;
     }
@@ -132,6 +133,7 @@ export namespace GConf {
     interface ListenersPredicate {
         (location: string, cnxn_id: number, listener_data?: any | null): boolean;
     }
+
     export namespace UnsetFlags {
         export const $gtype: GObject.GType<UnsetFlags>;
     }

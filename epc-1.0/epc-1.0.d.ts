@@ -16,37 +16,49 @@ export namespace Epc {
      * Epc-1.0
      */
 
-    export namespace AddressFamily {
-        export const $gtype: GObject.GType<AddressFamily>;
-    }
+    /**
+     * The address family to use for contacting network services.
+     */
 
     /**
      * The address family to use for contacting network services.
      */
+    export namespace AddressFamily {
+        export const $gtype: GObject.GType<AddressFamily>;
+    }
+
     enum AddressFamily {
         UNSPEC,
         IPV4,
         IPV6,
     }
-    export namespace CollisionHandling {
-        export const $gtype: GObject.GType<CollisionHandling>;
-    }
+    /**
+     * Various strategies for handling service name collisions.
+     */
 
     /**
      * Various strategies for handling service name collisions.
      */
+    export namespace CollisionHandling {
+        export const $gtype: GObject.GType<CollisionHandling>;
+    }
+
     enum CollisionHandling {
         IGNORE,
         CHANGE_NAME,
         UNIQUE_SERVICE,
     }
-    export namespace Protocol {
-        export const $gtype: GObject.GType<Protocol>;
-    }
+    /**
+     * The transport protocols supported by libepc.
+     */
 
     /**
      * The transport protocols supported by libepc.
      */
+    export namespace Protocol {
+        export const $gtype: GObject.GType<Protocol>;
+    }
+
     enum Protocol {
         UNKNOWN,
         HTTP,
@@ -91,13 +103,17 @@ export namespace Epc {
     interface ContentsReadFunc {
         (contents: Contents, buffer: any, length: number): boolean;
     }
-    export namespace AuthFlags {
-        export const $gtype: GObject.GType<AuthFlags>;
-    }
+    /**
+     * These flags specify the authentication behaviour of an #EpcPublisher.
+     */
 
     /**
      * These flags specify the authentication behaviour of an #EpcPublisher.
      */
+    export namespace AuthFlags {
+        export const $gtype: GObject.GType<AuthFlags>;
+    }
+
     enum AuthFlags {
         DEFAULT,
         PASSWORD_TEXT_NEEDED,

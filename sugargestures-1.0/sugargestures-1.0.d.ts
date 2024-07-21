@@ -37,6 +37,7 @@ export namespace SugarGestures {
         RECOGNIZED,
         NOT_RECOGNIZED,
     }
+
     export namespace SwipeDirection {
         export const $gtype: GObject.GType<SwipeDirection>;
     }
@@ -47,6 +48,7 @@ export namespace SugarGestures {
         UP,
         DOWN,
     }
+
     export namespace EventControllerFlags {
         export const $gtype: GObject.GType<EventControllerFlags>;
     }
@@ -55,6 +57,7 @@ export namespace SugarGestures {
         NONE,
         EXCLUSIVE,
     }
+
     export namespace SwipeDirectionFlags {
         export const $gtype: GObject.GType<SwipeDirectionFlags>;
     }

@@ -38,6 +38,7 @@ export namespace GnomeRR {
         OFF,
         UNKNOWN,
     }
+
     export namespace DpmsModeType {
         export const $gtype: GObject.GType<DpmsModeType>;
     }
@@ -74,6 +75,7 @@ export namespace GnomeRR {
      * @returns the GnomeRR error domain
      */
     function error_quark(): GLib.Quark;
+
     export namespace Rotation {
         export const $gtype: GObject.GType<Rotation>;
     }

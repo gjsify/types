@@ -16,13 +16,17 @@ export namespace Dbusmenu {
      * Dbusmenu-0.4
      */
 
-    export namespace Status {
-        export const $gtype: GObject.GType<Status>;
-    }
+    /**
+     * Tracks how the menus should be presented to the user.
+     */
 
     /**
      * Tracks how the menus should be presented to the user.
      */
+    export namespace Status {
+        export const $gtype: GObject.GType<Status>;
+    }
+
     enum Status {
         /**
          * Everything is normal
@@ -33,14 +37,19 @@ export namespace Dbusmenu {
          */
         NOTICE,
     }
-    export namespace TextDirection {
-        export const $gtype: GObject.GType<TextDirection>;
-    }
+    /**
+     * The direction of text that the strings that this server
+     * 	will be sending strings as.
+     */
 
     /**
      * The direction of text that the strings that this server
      * 	will be sending strings as.
      */
+    export namespace TextDirection {
+        export const $gtype: GObject.GType<TextDirection>;
+    }
+
     enum TextDirection {
         /**
          * Unspecified text direction

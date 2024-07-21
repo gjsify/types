@@ -27,6 +27,7 @@ export namespace Gegl {
         BLACK,
         WHITE,
     }
+
     export namespace DistanceMetric {
         export const $gtype: GObject.GType<DistanceMetric>;
     }
@@ -36,6 +37,7 @@ export namespace Gegl {
         MANHATTAN,
         CHEBYSHEV,
     }
+
     export namespace DitherMethod {
         export const $gtype: GObject.GType<DitherMethod>;
     }
@@ -51,6 +53,7 @@ export namespace Gegl {
         XOR,
         XOR_COVARIANT,
     }
+
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
@@ -59,6 +62,7 @@ export namespace Gegl {
         HORIZONTAL,
         VERTICAL,
     }
+
     export namespace SamplerType {
         export const $gtype: GObject.GType<SamplerType>;
     }
@@ -70,6 +74,7 @@ export namespace Gegl {
         NOHALO,
         LOHALO,
     }
+
     export namespace SplitStrategy {
         export const $gtype: GObject.GType<SplitStrategy>;
     }
@@ -79,6 +84,7 @@ export namespace Gegl {
         HORIZONTAL,
         VERTICAL,
     }
+
     export namespace TileCommand {
         export const $gtype: GObject.GType<TileCommand>;
     }
@@ -536,6 +542,7 @@ export namespace Gegl {
             data?: any | null,
         ): any | null;
     }
+
     export namespace AccessMode {
         export const $gtype: GObject.GType<AccessMode>;
     }
@@ -545,6 +552,7 @@ export namespace Gegl {
         WRITE,
         READWRITE,
     }
+
     export namespace BlitFlags {
         export const $gtype: GObject.GType<BlitFlags>;
     }
@@ -554,6 +562,7 @@ export namespace Gegl {
         CACHE,
         DIRTY,
     }
+
     export namespace PadType {
         export const $gtype: GObject.GType<PadType>;
     }
@@ -562,6 +571,7 @@ export namespace Gegl {
         OUTPUT,
         INPUT,
     }
+
     export namespace SerializeFlag {
         export const $gtype: GObject.GType<SerializeFlag>;
     }

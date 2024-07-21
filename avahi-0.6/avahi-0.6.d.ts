@@ -28,6 +28,7 @@ export namespace Avahi {
         GA_BROWSER_ALL_FOR_NOW,
         GA_BROWSER_FAILURE,
     }
+
     export namespace ClientFlags {
         export const $gtype: GObject.GType<ClientFlags>;
     }
@@ -37,6 +38,7 @@ export namespace Avahi {
         GA_CLIENT_FLAG_IGNORE_USER_CONFIG,
         GA_CLIENT_FLAG_NO_FAIL,
     }
+
     export namespace ClientState {
         export const $gtype: GObject.GType<ClientState>;
     }
@@ -49,6 +51,7 @@ export namespace Avahi {
         GA_CLIENT_STATE_FAILURE,
         GA_CLIENT_STATE_CONNECTING,
     }
+
     export namespace EntryGroupState {
         export const $gtype: GObject.GType<EntryGroupState>;
     }
@@ -60,6 +63,7 @@ export namespace Avahi {
         GA_ENTRY_GROUP_STATE_COLLISION,
         GA_ENTRY_GROUP_STATE_FAILURE,
     }
+
     export namespace LookupFlags {
         export const $gtype: GObject.GType<LookupFlags>;
     }
@@ -71,6 +75,7 @@ export namespace Avahi {
         GA_LOOKUP_NO_TXT,
         GA_LOOKUP_NO_ADDRESS,
     }
+
     export namespace LookupResultFlags {
         export const $gtype: GObject.GType<LookupResultFlags>;
     }
@@ -83,6 +88,7 @@ export namespace Avahi {
         GA_LOOKUP_RESULT_OUR_OWN,
         GA_LOOKUP_RESULT_STATIC,
     }
+
     export namespace Protocol {
         export const $gtype: GObject.GType<Protocol>;
     }
@@ -92,6 +98,7 @@ export namespace Avahi {
         GA_PROTOCOL_INET6,
         GA_PROTOCOL_UNSPEC,
     }
+
     export namespace ResolverEvent {
         export const $gtype: GObject.GType<ResolverEvent>;
     }

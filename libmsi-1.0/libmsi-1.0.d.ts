@@ -101,6 +101,7 @@ export namespace Libmsi {
         APPNAME,
         SECURITY,
     }
+
     export namespace PropertyType {
         export const $gtype: GObject.GType<PropertyType>;
     }
@@ -149,6 +150,7 @@ export namespace Libmsi {
     const NULL_INT: number;
     function db_error_quark(): GLib.Quark;
     function result_error_quark(): GLib.Quark;
+
     export namespace DbFlags {
         export const $gtype: GObject.GType<DbFlags>;
     }

@@ -193,14 +193,19 @@ export namespace GSignond {
         _init(...args: any[]): void;
     }
 
-    export namespace PluginState {
-        export const $gtype: GObject.GType<PluginState>;
-    }
+    /**
+     * The plugin provides state updates by emitting #GSignondPlugin::status-changed
+     * signal with this enum and a string describing what happened.
+     */
 
     /**
      * The plugin provides state updates by emitting #GSignondPlugin::status-changed
      * signal with this enum and a string describing what happened.
      */
+    export namespace PluginState {
+        export const $gtype: GObject.GType<PluginState>;
+    }
+
     enum PluginState {
         /**
          * State unknown
@@ -251,13 +256,17 @@ export namespace GSignond {
          */
         HOLDING,
     }
-    export namespace SignonuiError {
-        export const $gtype: GObject.GType<SignonuiError>;
-    }
+    /**
+     * This enum defines errors that may happen during user interaction.
+     */
 
     /**
      * This enum defines errors that may happen during user interaction.
      */
+    export namespace SignonuiError {
+        export const $gtype: GObject.GType<SignonuiError>;
+    }
+
     enum SignonuiError {
         /**
          * No errors
@@ -308,13 +317,17 @@ export namespace GSignond {
          */
         FORGOT_PASSWORD,
     }
-    export namespace UiPolicy {
-        export const $gtype: GObject.GType<UiPolicy>;
-    }
+    /**
+     * Policy setting to define how plugins should handle interaction with the user.
+     */
 
     /**
      * Policy setting to define how plugins should handle interaction with the user.
      */
+    export namespace UiPolicy {
+        export const $gtype: GObject.GType<UiPolicy>;
+    }
+
     enum UiPolicy {
         /**
          * use a default user interaction scenario

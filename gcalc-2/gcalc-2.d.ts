@@ -173,6 +173,7 @@ export namespace GCalc {
         HASH,
         CURRENCY_SYMBOL,
     }
+
     export namespace MathGroupLevel {
         export const $gtype: GObject.GType<MathGroupLevel>;
     }

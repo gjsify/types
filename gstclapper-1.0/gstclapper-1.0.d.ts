@@ -89,6 +89,7 @@ export namespace GstClapper {
          */
         FAST,
     }
+
     export namespace ClapperSnapshotFormat {
         export const $gtype: GObject.GType<ClapperSnapshotFormat>;
     }
@@ -115,6 +116,7 @@ export namespace GstClapper {
          */
         PNG,
     }
+
     export namespace ClapperState {
         export const $gtype: GObject.GType<ClapperState>;
     }

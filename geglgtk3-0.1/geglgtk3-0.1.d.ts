@@ -29,13 +29,17 @@ export namespace GeglGtk3 {
      * GeglGtk3-0.1
      */
 
-    export namespace ViewAutoscale {
-        export const $gtype: GObject.GType<ViewAutoscale>;
-    }
+    /**
+     * Specifies the autoscaling behavior of #GeglGtkView.
+     */
 
     /**
      * Specifies the autoscaling behavior of #GeglGtkView.
      */
+    export namespace ViewAutoscale {
+        export const $gtype: GObject.GType<ViewAutoscale>;
+    }
+
     enum ViewAutoscale {
         /**
          * Do not autoscale

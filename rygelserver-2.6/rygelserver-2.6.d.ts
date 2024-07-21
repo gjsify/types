@@ -36,6 +36,7 @@ export namespace RygelServer {
         AND,
         OR,
     }
+
     export namespace ObjectEventType {
         export const $gtype: GObject.GType<ObjectEventType>;
     }
@@ -45,6 +46,7 @@ export namespace RygelServer {
         MODIFIED,
         DELETED,
     }
+
     export namespace SerializerType {
         export const $gtype: GObject.GType<SerializerType>;
     }

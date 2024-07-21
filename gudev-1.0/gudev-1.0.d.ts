@@ -16,13 +16,17 @@ export namespace GUdev {
      * GUdev-1.0
      */
 
-    export namespace DeviceType {
-        export const $gtype: GObject.GType<DeviceType>;
-    }
+    /**
+     * Enumeration used to specify a the type of a device.
+     */
 
     /**
      * Enumeration used to specify a the type of a device.
      */
+    export namespace DeviceType {
+        export const $gtype: GObject.GType<DeviceType>;
+    }
+
     enum DeviceType {
         /**
          * Device does not have a device file.

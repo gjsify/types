@@ -18,13 +18,17 @@ export namespace GstController {
      * GstController-1.0
      */
 
-    export namespace InterpolationMode {
-        export const $gtype: GObject.GType<InterpolationMode>;
-    }
+    /**
+     * The various interpolation modes available.
+     */
 
     /**
      * The various interpolation modes available.
      */
+    export namespace InterpolationMode {
+        export const $gtype: GObject.GType<InterpolationMode>;
+    }
+
     enum InterpolationMode {
         /**
          * steps-like interpolation, default
@@ -46,13 +50,17 @@ export namespace GstController {
          */
         CUBIC_MONOTONIC,
     }
-    export namespace LFOWaveform {
-        export const $gtype: GObject.GType<LFOWaveform>;
-    }
+    /**
+     * The various waveform modes available.
+     */
 
     /**
      * The various waveform modes available.
      */
+    export namespace LFOWaveform {
+        export const $gtype: GObject.GType<LFOWaveform>;
+    }
+
     enum LFOWaveform {
         /**
          * sine waveform

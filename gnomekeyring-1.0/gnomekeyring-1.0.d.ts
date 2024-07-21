@@ -16,13 +16,17 @@ export namespace GnomeKeyring {
      * GnomeKeyring-1.0
      */
 
-    export namespace AccessRestriction {
-        export const $gtype: GObject.GType<AccessRestriction>;
-    }
+    /**
+     * Type of access restriction.
+     */
 
     /**
      * Type of access restriction.
      */
+    export namespace AccessRestriction {
+        export const $gtype: GObject.GType<AccessRestriction>;
+    }
+
     enum AccessRestriction {
         /**
          * Ask permission.
@@ -37,6 +41,7 @@ export namespace GnomeKeyring {
          */
         ALLOW,
     }
+
     export namespace AttributeType {
         export const $gtype: GObject.GType<AttributeType>;
     }
@@ -45,13 +50,17 @@ export namespace GnomeKeyring {
         STRING,
         UINT32,
     }
-    export namespace ItemType {
-        export const $gtype: GObject.GType<ItemType>;
-    }
+    /**
+     * The types of items.
+     */
 
     /**
      * The types of items.
      */
+    export namespace ItemType {
+        export const $gtype: GObject.GType<ItemType>;
+    }
+
     enum ItemType {
         /**
          * Generic secret
@@ -82,13 +91,17 @@ export namespace GnomeKeyring {
          */
         LAST_TYPE,
     }
-    export namespace Result {
-        export const $gtype: GObject.GType<Result>;
-    }
+    /**
+     * Various result codes returned by functions.
+     */
 
     /**
      * Various result codes returned by functions.
      */
+    export namespace Result {
+        export const $gtype: GObject.GType<Result>;
+    }
+
     enum Result {
         /**
          * The operation completed successfully.
@@ -631,13 +644,17 @@ export namespace GnomeKeyring {
     interface OperationGetStringCallback {
         (result: Result, string?: string | null): void;
     }
-    export namespace AccessType {
-        export const $gtype: GObject.GType<AccessType>;
-    }
+    /**
+     * Type of access.
+     */
 
     /**
      * Type of access.
      */
+    export namespace AccessType {
+        export const $gtype: GObject.GType<AccessType>;
+    }
+
     enum AccessType {
         /**
          * Read access
@@ -652,6 +669,7 @@ export namespace GnomeKeyring {
          */
         REMOVE,
     }
+
     export namespace ItemInfoFlags {
         export const $gtype: GObject.GType<ItemInfoFlags>;
     }

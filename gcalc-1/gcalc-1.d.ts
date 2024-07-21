@@ -163,6 +163,7 @@ export namespace GCalc {
         INTERR,
         HASH,
     }
+
     export namespace GroupLevel {
         export const $gtype: GObject.GType<GroupLevel>;
     }

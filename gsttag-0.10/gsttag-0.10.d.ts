@@ -19,26 +19,35 @@ export namespace GstTag {
      * GstTag-0.10
      */
 
-    export namespace DemuxResult {
-        export const $gtype: GObject.GType<DemuxResult>;
-    }
+    /**
+     * Result values from the parse_tag virtual function.
+     */
 
     /**
      * Result values from the parse_tag virtual function.
      */
+    export namespace DemuxResult {
+        export const $gtype: GObject.GType<DemuxResult>;
+    }
+
     enum DemuxResult {
         BROKEN_TAG,
         AGAIN,
         OK,
     }
-    export namespace ImageType {
-        export const $gtype: GObject.GType<ImageType>;
-    }
+    /**
+     * Type of image contained in an image tag (specified as field in
+     * the image buffer's caps structure)
+     */
 
     /**
      * Type of image contained in an image tag (specified as field in
      * the image buffer's caps structure)
      */
+    export namespace ImageType {
+        export const $gtype: GObject.GType<ImageType>;
+    }
+
     enum ImageType {
         NONE,
         UNDEFINED,

@@ -61,6 +61,7 @@ export namespace cairo {
         DEVICE_FINISHED,
         JBIG2_GLOBAL_MISSING,
     }
+
     export namespace Content {
         export const $gtype: GObject.GType<Content>;
     }
@@ -70,6 +71,7 @@ export namespace cairo {
         ALPHA,
         COLOR_ALPHA,
     }
+
     export namespace Operator {
         export const $gtype: GObject.GType<Operator>;
     }
@@ -105,6 +107,7 @@ export namespace cairo {
         HSL_COLOR,
         HSL_LUMINOSITY,
     }
+
     export namespace Antialias {
         export const $gtype: GObject.GType<Antialias>;
     }
@@ -118,6 +121,7 @@ export namespace cairo {
         GOOD,
         BEST,
     }
+
     export namespace FillRule {
         export const $gtype: GObject.GType<FillRule>;
     }
@@ -126,6 +130,7 @@ export namespace cairo {
         WINDING,
         EVEN_ODD,
     }
+
     export namespace LineCap {
         export const $gtype: GObject.GType<LineCap>;
     }
@@ -135,6 +140,7 @@ export namespace cairo {
         ROUND,
         SQUARE,
     }
+
     export namespace LineJoin {
         export const $gtype: GObject.GType<LineJoin>;
     }
@@ -144,6 +150,7 @@ export namespace cairo {
         ROUND,
         BEVEL,
     }
+
     export namespace TextClusterFlags {
         export const $gtype: GObject.GType<TextClusterFlags>;
     }
@@ -151,6 +158,7 @@ export namespace cairo {
     enum TextClusterFlags {
         BACKWARD,
     }
+
     export namespace FontSlant {
         export const $gtype: GObject.GType<FontSlant>;
     }
@@ -160,6 +168,7 @@ export namespace cairo {
         ITALIC,
         OBLIQUE,
     }
+
     export namespace FontWeight {
         export const $gtype: GObject.GType<FontWeight>;
     }
@@ -168,6 +177,7 @@ export namespace cairo {
         NORMAL,
         BOLD,
     }
+
     export namespace SubpixelOrder {
         export const $gtype: GObject.GType<SubpixelOrder>;
     }
@@ -179,6 +189,7 @@ export namespace cairo {
         VRGB,
         VBGR,
     }
+
     export namespace HintStyle {
         export const $gtype: GObject.GType<HintStyle>;
     }
@@ -190,6 +201,7 @@ export namespace cairo {
         MEDIUM,
         FULL,
     }
+
     export namespace HintMetrics {
         export const $gtype: GObject.GType<HintMetrics>;
     }
@@ -199,6 +211,7 @@ export namespace cairo {
         OFF,
         ON,
     }
+
     export namespace FontType {
         export const $gtype: GObject.GType<FontType>;
     }
@@ -210,6 +223,7 @@ export namespace cairo {
         QUARTZ,
         USER,
     }
+
     export namespace PathDataType {
         export const $gtype: GObject.GType<PathDataType>;
     }
@@ -220,6 +234,7 @@ export namespace cairo {
         CURVE_TO,
         CLOSE_PATH,
     }
+
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -235,6 +250,7 @@ export namespace cairo {
         WIN32,
         INVALID,
     }
+
     export namespace SurfaceType {
         export const $gtype: GObject.GType<SurfaceType>;
     }
@@ -266,6 +282,7 @@ export namespace cairo {
         SUBSURFACE,
         COGL,
     }
+
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
@@ -279,6 +296,7 @@ export namespace cairo {
         RGB16_565,
         RGB30,
     }
+
     export namespace PatternType {
         export const $gtype: GObject.GType<PatternType>;
     }
@@ -291,6 +309,7 @@ export namespace cairo {
         MESH,
         RASTER_SOURCE,
     }
+
     export namespace Extend {
         export const $gtype: GObject.GType<Extend>;
     }
@@ -301,6 +320,7 @@ export namespace cairo {
         REFLECT,
         PAD,
     }
+
     export namespace Filter {
         export const $gtype: GObject.GType<Filter>;
     }
@@ -313,6 +333,7 @@ export namespace cairo {
         BILINEAR,
         GAUSSIAN,
     }
+
     export namespace RegionOverlap {
         export const $gtype: GObject.GType<RegionOverlap>;
     }

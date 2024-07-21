@@ -60,6 +60,7 @@ export namespace Granite {
         WARNING,
         NONE,
     }
+
     export namespace SettingsColorScheme {
         export const $gtype: GObject.GType<SettingsColorScheme>;
     }

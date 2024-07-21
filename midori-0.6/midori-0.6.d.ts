@@ -40,6 +40,7 @@ export namespace Midori {
         NONE,
         HISTORY,
     }
+
     export namespace StartupType {
         export const $gtype: GObject.GType<StartupType>;
     }
@@ -50,6 +51,7 @@ export namespace Midori {
         LAST_OPEN_PAGES,
         DELAYED_PAGES,
     }
+
     export namespace ProxyType {
         export const $gtype: GObject.GType<ProxyType>;
     }

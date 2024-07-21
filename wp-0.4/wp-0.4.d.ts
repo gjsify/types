@@ -28,6 +28,7 @@ export namespace Wp {
         PW_PROPERTY,
         G_PROPERTY,
     }
+
     export namespace ConstraintVerb {
         export const $gtype: GObject.GType<ConstraintVerb>;
     }
@@ -41,18 +42,23 @@ export namespace Wp {
         IS_PRESENT,
         IS_ABSENT,
     }
-    export namespace DBusState {
-        export const $gtype: GObject.GType<DBusState>;
-    }
+    /**
+     * The state of the dbus connection.
+     */
 
     /**
      * The state of the dbus connection.
      */
+    export namespace DBusState {
+        export const $gtype: GObject.GType<DBusState>;
+    }
+
     enum DBusState {
         CLOSED,
         CONNECTING,
         CONNECTED,
     }
+
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
@@ -61,6 +67,7 @@ export namespace Wp {
         INPUT,
         OUTPUT,
     }
+
     export namespace LibraryErrorEnum {
         export const $gtype: GObject.GType<LibraryErrorEnum>;
     }
@@ -70,6 +77,7 @@ export namespace Wp {
         INVALID_ARGUMENT,
         OPERATION_FAILED,
     }
+
     export namespace LinkState {
         export const $gtype: GObject.GType<LinkState>;
     }
@@ -83,6 +91,7 @@ export namespace Wp {
         PAUSED,
         ACTIVE,
     }
+
     export namespace NodeState {
         export const $gtype: GObject.GType<NodeState>;
     }
@@ -94,6 +103,7 @@ export namespace Wp {
         IDLE,
         RUNNING,
     }
+
     export namespace SiAdapterPortsState {
         export const $gtype: GObject.GType<SiAdapterPortsState>;
     }
@@ -103,6 +113,7 @@ export namespace Wp {
         CONFIGURING,
         CONFIGURED,
     }
+
     export namespace TransitionStep {
         export const $gtype: GObject.GType<TransitionStep>;
     }
@@ -369,16 +380,21 @@ export namespace Wp {
     interface IteratorForeachFunc {
         (item: GObject.Value | any, data?: any | null): void;
     }
-    export namespace DbusFeatures {
-        export const $gtype: GObject.GType<DbusFeatures>;
-    }
+    /**
+     * Flags to be used as WpObjectFeatures for WpDbus.
+     */
 
     /**
      * Flags to be used as WpObjectFeatures for WpDbus.
      */
+    export namespace DbusFeatures {
+        export const $gtype: GObject.GType<DbusFeatures>;
+    }
+
     enum DbusFeatures {
         ENABLED,
     }
+
     export namespace InitFlags {
         export const $gtype: GObject.GType<InitFlags>;
     }
@@ -390,6 +406,7 @@ export namespace Wp {
         SET_GLIB_LOG,
         ALL,
     }
+
     export namespace InterestMatch {
         export const $gtype: GObject.GType<InterestMatch>;
     }
@@ -401,6 +418,7 @@ export namespace Wp {
         PW_PROPERTIES,
         G_PROPERTIES,
     }
+
     export namespace InterestMatchFlags {
         export const $gtype: GObject.GType<InterestMatchFlags>;
     }
@@ -409,6 +427,7 @@ export namespace Wp {
         NONE,
         CHECK_ALL,
     }
+
     export namespace LinkFeatures {
         export const $gtype: GObject.GType<LinkFeatures>;
     }
@@ -416,6 +435,7 @@ export namespace Wp {
     enum LinkFeatures {
         ESTABLISHED,
     }
+
     export namespace LookupDirs {
         export const $gtype: GObject.GType<LookupDirs>;
     }
@@ -427,6 +447,7 @@ export namespace Wp {
         ETC,
         PREFIX_SHARE,
     }
+
     export namespace MetadataFeatures {
         export const $gtype: GObject.GType<MetadataFeatures>;
     }
@@ -434,6 +455,7 @@ export namespace Wp {
     enum MetadataFeatures {
         DATA,
     }
+
     export namespace NodeFeatures {
         export const $gtype: GObject.GType<NodeFeatures>;
     }
@@ -441,6 +463,7 @@ export namespace Wp {
     enum NodeFeatures {
         PORTS,
     }
+
     export namespace PluginFeatures {
         export const $gtype: GObject.GType<PluginFeatures>;
     }
@@ -448,6 +471,7 @@ export namespace Wp {
     enum PluginFeatures {
         ENABLED,
     }
+
     export namespace ProxyFeatures {
         export const $gtype: GObject.GType<ProxyFeatures>;
     }
@@ -461,6 +485,7 @@ export namespace Wp {
         PIPEWIRE_OBJECT_FEATURE_PARAM_PORT_CONFIG,
         PIPEWIRE_OBJECT_FEATURE_PARAM_ROUTE,
     }
+
     export namespace SessionItemFeatures {
         export const $gtype: GObject.GType<SessionItemFeatures>;
     }
@@ -469,6 +494,7 @@ export namespace Wp {
         ACTIVE,
         EXPORTED,
     }
+
     export namespace SpaDeviceFeatures {
         export const $gtype: GObject.GType<SpaDeviceFeatures>;
     }

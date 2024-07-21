@@ -69,6 +69,7 @@ export namespace Geoclue {
      * @returns The last property id.
      */
     function manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+
     export namespace ClientProxyCreateFlags {
         export const $gtype: GObject.GType<ClientProxyCreateFlags>;
     }

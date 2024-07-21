@@ -27,14 +27,19 @@ export namespace Nautilus {
      * Nautilus-3.0
      */
 
-    export namespace OperationResult {
-        export const $gtype: GObject.GType<OperationResult>;
-    }
+    /**
+     * Return values for asynchronous operations performed by the extension.
+     * See nautilus_info_provider_update_file_info().
+     */
 
     /**
      * Return values for asynchronous operations performed by the extension.
      * See nautilus_info_provider_update_file_info().
      */
+    export namespace OperationResult {
+        export const $gtype: GObject.GType<OperationResult>;
+    }
+
     enum OperationResult {
         /**
          * the operation succeeded, and the extension

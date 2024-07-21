@@ -25,6 +25,7 @@ export namespace Skk {
         KATAKANA,
         HANKAKU_KATAKANA,
     }
+
     export namespace PeriodStyle {
         export const $gtype: GObject.GType<PeriodStyle>;
     }
@@ -35,6 +36,7 @@ export namespace Skk {
         JA_EN,
         EN_JA,
     }
+
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
@@ -2164,6 +2166,7 @@ export namespace Skk {
     interface GetTime {
         (): number;
     }
+
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }

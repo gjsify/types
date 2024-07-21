@@ -29,9 +29,16 @@ export namespace Budgie {
      * Budgie-1.0
      */
 
-    export namespace PopoverPositionPolicy {
-        export const $gtype: GObject.GType<PopoverPositionPolicy>;
-    }
+    /**
+     * The BudgiePopoverPositionPolicy determines how the #BudgiePopover will be
+     * placed on screen. The default policy (AUTOMATIC) will try to place the
+     * popover at a sensible location relative to the parent widget, and point
+     * the tail accordingly.
+     *
+     * The TOPLEVEL_HINT policy is designed for use with panels + docks, where the
+     * top level window owning the relative-to widget sets a CSS class on itself
+     * in accordance with the screen edge, i.e. top, left, bottom, right.
+     */
 
     /**
      * The BudgiePopoverPositionPolicy determines how the #BudgiePopover will be
@@ -43,6 +50,10 @@ export namespace Budgie {
      * top level window owning the relative-to widget sets a CSS class on itself
      * in accordance with the screen edge, i.e. top, left, bottom, right.
      */
+    export namespace PopoverPositionPolicy {
+        export const $gtype: GObject.GType<PopoverPositionPolicy>;
+    }
+
     enum PopoverPositionPolicy {
         /**
          * Determine location based on the screen estate
@@ -56,15 +67,21 @@ export namespace Budgie {
     const APPLET_KEY_ALIGN: string;
     const APPLET_KEY_NAME: string;
     const APPLET_KEY_POS: string;
-    export namespace PanelAction {
-        export const $gtype: GObject.GType<PanelAction>;
-    }
+    /**
+     * BudgiePanelAction's are bitwise OR'd so that a #BudgieApplet may expose
+     * the actions that it supports, when the panel is interacted with in
+     * a global fashion (such as via the D-BUS API)
+     */
 
     /**
      * BudgiePanelAction's are bitwise OR'd so that a #BudgieApplet may expose
      * the actions that it supports, when the panel is interacted with in
      * a global fashion (such as via the D-BUS API)
      */
+    export namespace PanelAction {
+        export const $gtype: GObject.GType<PanelAction>;
+    }
+
     enum PanelAction {
         NONE,
         /**
@@ -73,15 +90,21 @@ export namespace Budgie {
         MENU,
         MAX,
     }
-    export namespace PanelPosition {
-        export const $gtype: GObject.GType<PanelPosition>;
-    }
+    /**
+     * Each applet lives on a unique panel which can live on any one of
+     * the 4 screen edges. Internally this is represented with a bitmask
+     * to enable efficient screen management.
+     */
 
     /**
      * Each applet lives on a unique panel which can live on any one of
      * the 4 screen edges. Internally this is represented with a bitmask
      * to enable efficient screen management.
      */
+    export namespace PanelPosition {
+        export const $gtype: GObject.GType<PanelPosition>;
+    }
+
     enum PanelPosition {
         /**
          * No position is yet assigned

@@ -39,6 +39,7 @@ export namespace EvinceView {
         PRIORITY_NONE,
         N_PRIORITIES,
     }
+
     export namespace JobRunMode {
         export const $gtype: GObject.GType<JobRunMode>;
     }
@@ -47,6 +48,7 @@ export namespace EvinceView {
         THREAD,
         MAIN_LOOP,
     }
+
     export namespace JobThumbnailFormat {
         export const $gtype: GObject.GType<JobThumbnailFormat>;
     }
@@ -55,6 +57,7 @@ export namespace EvinceView {
         PIXBUF,
         SURFACE,
     }
+
     export namespace PageLayout {
         export const $gtype: GObject.GType<PageLayout>;
     }
@@ -64,6 +67,7 @@ export namespace EvinceView {
         DUAL,
         AUTOMATIC,
     }
+
     export namespace SizingMode {
         export const $gtype: GObject.GType<SizingMode>;
     }
@@ -110,6 +114,7 @@ export namespace EvinceView {
     function stock_icons_init(): void;
     function stock_icons_set_screen(screen: Gdk.Screen): void;
     function stock_icons_shutdown(): void;
+
     export namespace JobPageDataFlags {
         export const $gtype: GObject.GType<JobPageDataFlags>;
     }

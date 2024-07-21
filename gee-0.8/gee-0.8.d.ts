@@ -42,6 +42,7 @@ export namespace Gee {
         BOUNDED,
         EMPTY,
     }
+
     export namespace HazardPointerPolicy {
         export const $gtype: GObject.GType<HazardPointerPolicy>;
     }
@@ -54,6 +55,7 @@ export namespace Gee {
         TRY_RELEASE,
         RELEASE,
     }
+
     export namespace HazardPointerReleasePolicy {
         export const $gtype: GObject.GType<HazardPointerReleasePolicy>;
     }
@@ -62,6 +64,7 @@ export namespace Gee {
         HELPER_THREAD,
         MAIN_LOOP,
     }
+
     export namespace TraversableStream {
         export const $gtype: GObject.GType<TraversableStream>;
     }

@@ -18,13 +18,17 @@ export namespace Json {
      * Json-1.0
      */
 
-    export namespace NodeType {
-        export const $gtype: GObject.GType<NodeType>;
-    }
+    /**
+     * Indicates the content of a node.
+     */
 
     /**
      * Indicates the content of a node.
      */
+    export namespace NodeType {
+        export const $gtype: GObject.GType<NodeType>;
+    }
+
     enum NodeType {
         /**
          * The node contains a JSON object

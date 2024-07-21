@@ -29,26 +29,34 @@ export namespace Champlain {
      * Champlain-0.12
      */
 
-    export namespace MapProjection {
-        export const $gtype: GObject.GType<MapProjection>;
-    }
+    /**
+     * Projections supported by the library.
+     */
 
     /**
      * Projections supported by the library.
      */
+    export namespace MapProjection {
+        export const $gtype: GObject.GType<MapProjection>;
+    }
+
     enum MapProjection {
         /**
          * Currently the only supported projection
          */
         MERCATOR,
     }
-    export namespace SelectionMode {
-        export const $gtype: GObject.GType<SelectionMode>;
-    }
+    /**
+     * Selection mode
+     */
 
     /**
      * Selection mode
      */
+    export namespace SelectionMode {
+        export const $gtype: GObject.GType<SelectionMode>;
+    }
+
     enum SelectionMode {
         /**
          * No marker can be selected.
@@ -63,13 +71,17 @@ export namespace Champlain {
          */
         MULTIPLE,
     }
-    export namespace State {
-        export const $gtype: GObject.GType<State>;
-    }
+    /**
+     * Tile loading state.
+     */
 
     /**
      * Tile loading state.
      */
+    export namespace State {
+        export const $gtype: GObject.GType<State>;
+    }
+
     enum State {
         /**
          * Initial or undefined state
@@ -89,13 +101,17 @@ export namespace Champlain {
          */
         DONE,
     }
-    export namespace Unit {
-        export const $gtype: GObject.GType<Unit>;
-    }
+    /**
+     * Units used by the scale.
+     */
 
     /**
      * Units used by the scale.
      */
+    export namespace Unit {
+        export const $gtype: GObject.GType<Unit>;
+    }
+
     enum Unit {
         /**
          * kilometers

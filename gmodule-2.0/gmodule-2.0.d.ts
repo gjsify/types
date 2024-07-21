@@ -79,14 +79,19 @@ export namespace GModule {
     interface ModuleUnload {
         (module: Module): void;
     }
-    export namespace ModuleFlags {
-        export const $gtype: GObject.GType<ModuleFlags>;
-    }
+    /**
+     * Flags passed to g_module_open().
+     * Note that these flags are not supported on all platforms.
+     */
 
     /**
      * Flags passed to g_module_open().
      * Note that these flags are not supported on all platforms.
      */
+    export namespace ModuleFlags {
+        export const $gtype: GObject.GType<ModuleFlags>;
+    }
+
     enum ModuleFlags {
         /**
          * specifies that symbols are only resolved when

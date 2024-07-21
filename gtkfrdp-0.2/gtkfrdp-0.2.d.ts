@@ -36,6 +36,7 @@ export namespace GtkFrdp {
         AUTHENTICATION_FAILED,
         SECURITY_NEGO_CONNECT_FAILED,
     }
+
     export namespace KeyEvent {
         export const $gtype: GObject.GType<KeyEvent>;
     }
@@ -44,6 +45,7 @@ export namespace GtkFrdp {
         PRESS,
         RELEASE,
     }
+
     export namespace MouseEvent {
         export const $gtype: GObject.GType<MouseEvent>;
     }

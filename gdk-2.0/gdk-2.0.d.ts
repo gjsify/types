@@ -37,6 +37,7 @@ export namespace Gdk {
         WHEEL,
         LAST,
     }
+
     export namespace ByteOrder {
         export const $gtype: GObject.GType<ByteOrder>;
     }
@@ -45,6 +46,7 @@ export namespace Gdk {
         LSB_FIRST,
         MSB_FIRST,
     }
+
     export namespace CapStyle {
         export const $gtype: GObject.GType<CapStyle>;
     }
@@ -55,6 +57,7 @@ export namespace Gdk {
         ROUND,
         PROJECTING,
     }
+
     export namespace CrossingMode {
         export const $gtype: GObject.GType<CrossingMode>;
     }
@@ -67,6 +70,7 @@ export namespace Gdk {
         GTK_UNGRAB,
         STATE_CHANGED,
     }
+
     export namespace CursorType {
         export const $gtype: GObject.GType<CursorType>;
     }
@@ -153,6 +157,7 @@ export namespace Gdk {
         BLANK_CURSOR,
         CURSOR_IS_PIXMAP,
     }
+
     export namespace DragProtocol {
         export const $gtype: GObject.GType<DragProtocol>;
     }
@@ -166,6 +171,7 @@ export namespace Gdk {
         OLE2,
         LOCAL,
     }
+
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
@@ -211,6 +217,7 @@ export namespace Gdk {
         DAMAGE,
         EVENT_LAST,
     }
+
     export namespace ExtensionMode {
         export const $gtype: GObject.GType<ExtensionMode>;
     }
@@ -220,6 +227,7 @@ export namespace Gdk {
         ALL,
         CURSOR,
     }
+
     export namespace Fill {
         export const $gtype: GObject.GType<Fill>;
     }
@@ -230,6 +238,7 @@ export namespace Gdk {
         STIPPLED,
         OPAQUE_STIPPLED,
     }
+
     export namespace FillRule {
         export const $gtype: GObject.GType<FillRule>;
     }
@@ -238,6 +247,7 @@ export namespace Gdk {
         EVEN_ODD_RULE,
         WINDING_RULE,
     }
+
     export namespace FilterReturn {
         export const $gtype: GObject.GType<FilterReturn>;
     }
@@ -247,6 +257,7 @@ export namespace Gdk {
         TRANSLATE,
         REMOVE,
     }
+
     export namespace FontType {
         export const $gtype: GObject.GType<FontType>;
     }
@@ -255,6 +266,7 @@ export namespace Gdk {
         FONT,
         FONTSET,
     }
+
     export namespace Function {
         export const $gtype: GObject.GType<Function>;
     }
@@ -277,6 +289,7 @@ export namespace Gdk {
         NOR,
         SET,
     }
+
     export namespace GrabStatus {
         export const $gtype: GObject.GType<GrabStatus>;
     }
@@ -288,6 +301,7 @@ export namespace Gdk {
         NOT_VIEWABLE,
         FROZEN,
     }
+
     export namespace Gravity {
         export const $gtype: GObject.GType<Gravity>;
     }
@@ -304,6 +318,7 @@ export namespace Gdk {
         SOUTH_EAST,
         STATIC,
     }
+
     export namespace ImageType {
         export const $gtype: GObject.GType<ImageType>;
     }
@@ -313,6 +328,7 @@ export namespace Gdk {
         SHARED,
         FASTEST,
     }
+
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
@@ -322,6 +338,7 @@ export namespace Gdk {
         SCREEN,
         WINDOW,
     }
+
     export namespace InputSource {
         export const $gtype: GObject.GType<InputSource>;
     }
@@ -332,6 +349,7 @@ export namespace Gdk {
         ERASER,
         CURSOR,
     }
+
     export namespace JoinStyle {
         export const $gtype: GObject.GType<JoinStyle>;
     }
@@ -341,6 +359,7 @@ export namespace Gdk {
         ROUND,
         BEVEL,
     }
+
     export namespace LineStyle {
         export const $gtype: GObject.GType<LineStyle>;
     }
@@ -350,6 +369,7 @@ export namespace Gdk {
         ON_OFF_DASH,
         DOUBLE_DASH,
     }
+
     export namespace NotifyType {
         export const $gtype: GObject.GType<NotifyType>;
     }
@@ -362,6 +382,7 @@ export namespace Gdk {
         NONLINEAR_VIRTUAL,
         UNKNOWN,
     }
+
     export namespace OverlapType {
         export const $gtype: GObject.GType<OverlapType>;
     }
@@ -371,6 +392,7 @@ export namespace Gdk {
         OUT,
         PART,
     }
+
     export namespace OwnerChange {
         export const $gtype: GObject.GType<OwnerChange>;
     }
@@ -380,6 +402,7 @@ export namespace Gdk {
         DESTROY,
         CLOSE,
     }
+
     export namespace PropMode {
         export const $gtype: GObject.GType<PropMode>;
     }
@@ -389,6 +412,7 @@ export namespace Gdk {
         PREPEND,
         APPEND,
     }
+
     export namespace PropertyState {
         export const $gtype: GObject.GType<PropertyState>;
     }
@@ -397,6 +421,7 @@ export namespace Gdk {
         NEW_VALUE,
         DELETE,
     }
+
     export namespace RgbDither {
         export const $gtype: GObject.GType<RgbDither>;
     }
@@ -406,6 +431,7 @@ export namespace Gdk {
         NORMAL,
         MAX,
     }
+
     export namespace ScrollDirection {
         export const $gtype: GObject.GType<ScrollDirection>;
     }
@@ -416,6 +442,7 @@ export namespace Gdk {
         LEFT,
         RIGHT,
     }
+
     export namespace SettingAction {
         export const $gtype: GObject.GType<SettingAction>;
     }
@@ -425,6 +452,7 @@ export namespace Gdk {
         CHANGED,
         DELETED,
     }
+
     export namespace Status {
         export const $gtype: GObject.GType<Status>;
     }
@@ -436,6 +464,7 @@ export namespace Gdk {
         ERROR_FILE,
         ERROR_MEM,
     }
+
     export namespace SubwindowMode {
         export const $gtype: GObject.GType<SubwindowMode>;
     }
@@ -444,6 +473,7 @@ export namespace Gdk {
         CLIP_BY_CHILDREN,
         INCLUDE_INFERIORS,
     }
+
     export namespace VisibilityState {
         export const $gtype: GObject.GType<VisibilityState>;
     }
@@ -453,6 +483,7 @@ export namespace Gdk {
         PARTIAL,
         FULLY_OBSCURED,
     }
+
     export namespace VisualType {
         export const $gtype: GObject.GType<VisualType>;
     }
@@ -465,6 +496,7 @@ export namespace Gdk {
         TRUE_COLOR,
         DIRECT_COLOR,
     }
+
     export namespace WindowClass {
         export const $gtype: GObject.GType<WindowClass>;
     }
@@ -473,6 +505,7 @@ export namespace Gdk {
         OUTPUT,
         ONLY,
     }
+
     export namespace WindowEdge {
         export const $gtype: GObject.GType<WindowEdge>;
     }
@@ -487,6 +520,7 @@ export namespace Gdk {
         SOUTH,
         SOUTH_EAST,
     }
+
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }
@@ -500,6 +534,7 @@ export namespace Gdk {
         FOREIGN,
         OFFSCREEN,
     }
+
     export namespace WindowTypeHint {
         export const $gtype: GObject.GType<WindowTypeHint>;
     }
@@ -4714,6 +4749,7 @@ export namespace Gdk {
     interface SpanFunc {
         (span: Span, data?: any | null): void;
     }
+
     export namespace DragAction {
         export const $gtype: GObject.GType<DragAction>;
     }
@@ -4726,6 +4762,7 @@ export namespace Gdk {
         PRIVATE,
         ASK,
     }
+
     export namespace EventMask {
         export const $gtype: GObject.GType<EventMask>;
     }
@@ -4754,6 +4791,7 @@ export namespace Gdk {
         SCROLL_MASK,
         ALL_EVENTS_MASK,
     }
+
     export namespace GCValuesMask {
         export const $gtype: GObject.GType<GCValuesMask>;
     }
@@ -4778,6 +4816,7 @@ export namespace Gdk {
         CAP_STYLE,
         JOIN_STYLE,
     }
+
     export namespace InputCondition {
         export const $gtype: GObject.GType<InputCondition>;
     }
@@ -4787,6 +4826,7 @@ export namespace Gdk {
         WRITE,
         EXCEPTION,
     }
+
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -4811,6 +4851,7 @@ export namespace Gdk {
         RELEASE_MASK,
         MODIFIER_MASK,
     }
+
     export namespace WMDecoration {
         export const $gtype: GObject.GType<WMDecoration>;
     }
@@ -4824,6 +4865,7 @@ export namespace Gdk {
         MINIMIZE,
         MAXIMIZE,
     }
+
     export namespace WMFunction {
         export const $gtype: GObject.GType<WMFunction>;
     }
@@ -4836,6 +4878,7 @@ export namespace Gdk {
         MAXIMIZE,
         CLOSE,
     }
+
     export namespace WindowAttributesType {
         export const $gtype: GObject.GType<WindowAttributesType>;
     }
@@ -4851,6 +4894,7 @@ export namespace Gdk {
         NOREDIR,
         TYPE_HINT,
     }
+
     export namespace WindowHints {
         export const $gtype: GObject.GType<WindowHints>;
     }
@@ -4866,6 +4910,7 @@ export namespace Gdk {
         USER_POS,
         USER_SIZE,
     }
+
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }

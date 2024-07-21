@@ -121,13 +121,17 @@ export namespace GUPnP {
         _init(...args: any[]): void;
     }
 
-    export namespace ServiceActionArgDirection {
-        export const $gtype: GObject.GType<ServiceActionArgDirection>;
-    }
+    /**
+     * Represents the direction of a service state variable.
+     */
 
     /**
      * Represents the direction of a service state variable.
      */
+    export namespace ServiceActionArgDirection {
+        export const $gtype: GObject.GType<ServiceActionArgDirection>;
+    }
+
     enum ServiceActionArgDirection {
         /**
          * An "in" variable, to the service.

@@ -202,6 +202,7 @@ export namespace Vda {
         TIMEOUT,
         CONNECTED,
     }
+
     export namespace SqlExpressionOperatorType {
         export const $gtype: GObject.GType<SqlExpressionOperatorType>;
     }
@@ -251,6 +252,7 @@ export namespace Vda {
         BITNOT,
         ILIKE,
     }
+
     export namespace RoleGrant {
         export const $gtype: GObject.GType<RoleGrant>;
     }

@@ -54,6 +54,7 @@ export namespace GtkLayerShell {
          */
         ENTRY_NUMBER,
     }
+
     export namespace KeyboardMode {
         export const $gtype: GObject.GType<KeyboardMode>;
     }
@@ -78,6 +79,7 @@ export namespace GtkLayerShell {
          */
         ENTRY_NUMBER,
     }
+
     export namespace Layer {
         export const $gtype: GObject.GType<Layer>;
     }

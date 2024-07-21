@@ -28,6 +28,7 @@ export namespace Wp {
         PW_PROPERTY,
         G_PROPERTY,
     }
+
     export namespace ConstraintVerb {
         export const $gtype: GObject.GType<ConstraintVerb>;
     }
@@ -41,6 +42,7 @@ export namespace Wp {
         IS_PRESENT,
         IS_ABSENT,
     }
+
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
@@ -49,6 +51,7 @@ export namespace Wp {
         INPUT,
         OUTPUT,
     }
+
     export namespace LibraryErrorEnum {
         export const $gtype: GObject.GType<LibraryErrorEnum>;
     }
@@ -59,6 +62,7 @@ export namespace Wp {
         OPERATION_FAILED,
         SERVICE_UNAVAILABLE,
     }
+
     export namespace LinkState {
         export const $gtype: GObject.GType<LinkState>;
     }
@@ -72,6 +76,7 @@ export namespace Wp {
         PAUSED,
         ACTIVE,
     }
+
     export namespace NodeState {
         export const $gtype: GObject.GType<NodeState>;
     }
@@ -83,6 +88,7 @@ export namespace Wp {
         IDLE,
         RUNNING,
     }
+
     export namespace SettingsSpecType {
         export const $gtype: GObject.GType<SettingsSpecType>;
     }
@@ -96,6 +102,7 @@ export namespace Wp {
         ARRAY,
         OBJECT,
     }
+
     export namespace SiAdapterPortsState {
         export const $gtype: GObject.GType<SiAdapterPortsState>;
     }
@@ -105,6 +112,7 @@ export namespace Wp {
         CONFIGURING,
         CONFIGURED,
     }
+
     export namespace TransitionStep {
         export const $gtype: GObject.GType<TransitionStep>;
     }
@@ -382,6 +390,7 @@ export namespace Wp {
     interface SettingsChangedCallback {
         (obj: Settings, setting: string, value: SpaJson): void;
     }
+
     export namespace BaseDirsFlags {
         export const $gtype: GObject.GType<BaseDirsFlags>;
     }
@@ -403,6 +412,7 @@ export namespace Wp {
         DATA,
         MODULE,
     }
+
     export namespace CoreFeatures {
         export const $gtype: GObject.GType<CoreFeatures>;
     }
@@ -411,6 +421,7 @@ export namespace Wp {
         CONNECTED,
         COMPONENTS,
     }
+
     export namespace InitFlags {
         export const $gtype: GObject.GType<InitFlags>;
     }
@@ -422,6 +433,7 @@ export namespace Wp {
         SET_GLIB_LOG,
         ALL,
     }
+
     export namespace InterestMatch {
         export const $gtype: GObject.GType<InterestMatch>;
     }
@@ -434,6 +446,7 @@ export namespace Wp {
         G_PROPERTIES,
         ALL,
     }
+
     export namespace InterestMatchFlags {
         export const $gtype: GObject.GType<InterestMatchFlags>;
     }
@@ -442,6 +455,7 @@ export namespace Wp {
         NONE,
         CHECK_ALL,
     }
+
     export namespace LogTopicFlags {
         export const $gtype: GObject.GType<LogTopicFlags>;
     }
@@ -451,6 +465,7 @@ export namespace Wp {
         FLAG_STATIC,
         FLAG_INITIALIZED,
     }
+
     export namespace MetadataFeatures {
         export const $gtype: GObject.GType<MetadataFeatures>;
     }
@@ -458,6 +473,7 @@ export namespace Wp {
     enum MetadataFeatures {
         DATA,
     }
+
     export namespace NodeFeatures {
         export const $gtype: GObject.GType<NodeFeatures>;
     }
@@ -465,6 +481,7 @@ export namespace Wp {
     enum NodeFeatures {
         PORTS,
     }
+
     export namespace PluginFeatures {
         export const $gtype: GObject.GType<PluginFeatures>;
     }
@@ -472,6 +489,7 @@ export namespace Wp {
     enum PluginFeatures {
         ENABLED,
     }
+
     export namespace ProxyFeatures {
         export const $gtype: GObject.GType<ProxyFeatures>;
     }
@@ -487,6 +505,7 @@ export namespace Wp {
         PIPEWIRE_OBJECT_FEATURES_MINIMAL,
         PIPEWIRE_OBJECT_FEATURES_ALL,
     }
+
     export namespace SessionItemFeatures {
         export const $gtype: GObject.GType<SessionItemFeatures>;
     }
@@ -495,6 +514,7 @@ export namespace Wp {
         ACTIVE,
         EXPORTED,
     }
+
     export namespace SettingsFeatures {
         export const $gtype: GObject.GType<SettingsFeatures>;
     }
@@ -502,6 +522,7 @@ export namespace Wp {
     enum SettingsFeatures {
         LOADED,
     }
+
     export namespace SpaDeviceFeatures {
         export const $gtype: GObject.GType<SpaDeviceFeatures>;
     }

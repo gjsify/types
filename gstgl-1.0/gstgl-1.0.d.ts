@@ -197,6 +197,7 @@ export namespace GstGL {
          */
         RG16,
     }
+
     export namespace GLQueryType {
         export const $gtype: GObject.GType<GLQueryType>;
     }
@@ -244,10 +245,6 @@ export namespace GstGL {
         // Own static methods of GstGL.GLSLError
 
         static quark(): GLib.Quark;
-    }
-
-    export namespace GLSLVersion {
-        export const $gtype: GObject.GType<GLSLVersion>;
     }
 
     /**
@@ -335,13 +332,17 @@ export namespace GstGL {
         _init(...args: any[]): void;
     }
 
-    export namespace GLStereoDownmix {
-        export const $gtype: GObject.GType<GLStereoDownmix>;
-    }
+    /**
+     * Output anaglyph type to generate when downmixing to mono
+     */
 
     /**
      * Output anaglyph type to generate when downmixing to mono
      */
+    export namespace GLStereoDownmix {
+        export const $gtype: GObject.GType<GLStereoDownmix>;
+    }
+
     enum GLStereoDownmix {
         /**
          * Dubois optimised Green-Magenta anaglyph
@@ -356,9 +357,13 @@ export namespace GstGL {
          */
         AMBER_BLUE_DUBOIS,
     }
-    export namespace GLTextureTarget {
-        export const $gtype: GObject.GType<GLTextureTarget>;
-    }
+    /**
+     * The OpenGL texture target that an OpenGL texture can be bound to.  The
+     * gst_gl_value_set_texture_target_from_mask(),
+     * gst_gl_value_get_texture_target_mask(), and
+     * gst_gl_value_set_texture_target() functions can be used for handling texture
+     * targets with #GValue's when e.g. dealing with #GstCaps.
+     */
 
     /**
      * The OpenGL texture target that an OpenGL texture can be bound to.  The
@@ -367,6 +372,10 @@ export namespace GstGL {
      * gst_gl_value_set_texture_target() functions can be used for handling texture
      * targets with #GValue's when e.g. dealing with #GstCaps.
      */
+    export namespace GLTextureTarget {
+        export const $gtype: GObject.GType<GLTextureTarget>;
+    }
+
     enum GLTextureTarget {
         /**
          * no texture target
@@ -387,6 +396,7 @@ export namespace GstGL {
          */
         EXTERNAL_OES,
     }
+
     export namespace GLUploadReturn {
         export const $gtype: GObject.GType<GLUploadReturn>;
     }
@@ -822,6 +832,7 @@ export namespace GstGL {
     interface GLWindowResizeCB {
         (data: any | null, width: number, height: number): void;
     }
+
     export namespace GLAPI {
         export const $gtype: GObject.GType<GLAPI>;
     }
@@ -853,6 +864,7 @@ export namespace GstGL {
          */
         ANY,
     }
+
     export namespace GLBaseMemoryTransfer {
         export const $gtype: GObject.GType<GLBaseMemoryTransfer>;
     }
@@ -869,6 +881,7 @@ export namespace GstGL {
          */
         UPLOAD,
     }
+
     export namespace GLConfigSurfaceType {
         export const $gtype: GObject.GType<GLConfigSurfaceType>;
     }
@@ -891,6 +904,7 @@ export namespace GstGL {
          */
         PIXMAP,
     }
+
     export namespace GLDisplayType {
         export const $gtype: GObject.GType<GLDisplayType>;
     }
@@ -953,6 +967,7 @@ export namespace GstGL {
          */
         ANY,
     }
+
     export namespace GLPlatform {
         export const $gtype: GObject.GType<GLPlatform>;
     }
@@ -988,13 +1003,17 @@ export namespace GstGL {
          */
         ANY,
     }
-    export namespace GLSLProfile {
-        export const $gtype: GObject.GType<GLSLProfile>;
-    }
+    /**
+     * GLSL profiles
+     */
 
     /**
      * GLSL profiles
      */
+    export namespace GLSLProfile {
+        export const $gtype: GObject.GType<GLSLProfile>;
+    }
+
     enum GLSLProfile {
         /**
          * no profile supported/available

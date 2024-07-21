@@ -23,13 +23,17 @@ export namespace ECalendar {
      * ECalendar-1.2
      */
 
-    export namespace CalClientError {
-        export const $gtype: GObject.GType<CalClientError>;
-    }
+    /**
+     * FIXME: Document me.
+     */
 
     /**
      * FIXME: Document me.
      */
+    export namespace CalClientError {
+        export const $gtype: GObject.GType<CalClientError>;
+    }
+
     enum CalClientError {
         NO_SUCH_CALENDAR,
         OBJECT_NOT_FOUND,
@@ -38,19 +42,24 @@ export namespace ECalendar {
         OBJECT_ID_ALREADY_EXISTS,
         INVALID_RANGE,
     }
-    export namespace CalClientSourceType {
-        export const $gtype: GObject.GType<CalClientSourceType>;
-    }
+    /**
+     * FIXME: Document me.
+     */
 
     /**
      * FIXME: Document me.
      */
+    export namespace CalClientSourceType {
+        export const $gtype: GObject.GType<CalClientSourceType>;
+    }
+
     enum CalClientSourceType {
         EVENTS,
         TASKS,
         MEMOS,
         LAST,
     }
+
     export namespace CalClientSourceTypeEnum {
         export const $gtype: GObject.GType<CalClientSourceTypeEnum>;
     }
@@ -61,6 +70,7 @@ export namespace ECalendar {
         MEMOS,
         INVALID,
     }
+
     export namespace CalComponentAlarmAction {
         export const $gtype: GObject.GType<CalComponentAlarmAction>;
     }
@@ -73,6 +83,7 @@ export namespace ECalendar {
         PROCEDURE,
         UNKNOWN,
     }
+
     export namespace CalComponentAlarmTriggerType {
         export const $gtype: GObject.GType<CalComponentAlarmTriggerType>;
     }
@@ -83,6 +94,7 @@ export namespace ECalendar {
         RELATIVE_END,
         ABSOLUTE,
     }
+
     export namespace CalComponentClassification {
         export const $gtype: GObject.GType<CalComponentClassification>;
     }
@@ -94,6 +106,7 @@ export namespace ECalendar {
         CONFIDENTIAL,
         UNKNOWN,
     }
+
     export namespace CalComponentField {
         export const $gtype: GObject.GType<CalComponentField>;
     }
@@ -122,6 +135,7 @@ export namespace ECalendar {
         LOCATION,
         NUM_FIELDS,
     }
+
     export namespace CalComponentPeriodType {
         export const $gtype: GObject.GType<CalComponentPeriodType>;
     }
@@ -130,6 +144,7 @@ export namespace ECalendar {
         DATETIME,
         DURATION,
     }
+
     export namespace CalComponentRangeType {
         export const $gtype: GObject.GType<CalComponentRangeType>;
     }
@@ -139,6 +154,7 @@ export namespace ECalendar {
         THISPRIOR,
         THISFUTURE,
     }
+
     export namespace CalComponentTransparency {
         export const $gtype: GObject.GType<CalComponentTransparency>;
     }
@@ -149,6 +165,7 @@ export namespace ECalendar {
         OPAQUE,
         UNKNOWN,
     }
+
     export namespace CalComponentVType {
         export const $gtype: GObject.GType<CalComponentVType>;
     }
@@ -161,6 +178,7 @@ export namespace ECalendar {
         FREEBUSY,
         TIMEZONE,
     }
+
     export namespace CalLoadState {
         export const $gtype: GObject.GType<CalLoadState>;
     }
@@ -170,6 +188,7 @@ export namespace ECalendar {
         LOADING,
         LOADED,
     }
+
     export namespace CalSetModeStatus {
         export const $gtype: GObject.GType<CalSetModeStatus>;
     }
@@ -179,6 +198,7 @@ export namespace ECalendar {
         ERROR,
         NOT_SUPPORTED,
     }
+
     export namespace CalSetModeStatusEnum {
         export const $gtype: GObject.GType<CalSetModeStatusEnum>;
     }
@@ -188,6 +208,7 @@ export namespace ECalendar {
         ERROR,
         UNSUPPORTED,
     }
+
     export namespace CalSourceType {
         export const $gtype: GObject.GType<CalSourceType>;
     }
@@ -198,6 +219,7 @@ export namespace ECalendar {
         JOURNAL,
         LAST,
     }
+
     export namespace CalSourceTypeEnum {
         export const $gtype: GObject.GType<CalSourceTypeEnum>;
     }
@@ -208,6 +230,7 @@ export namespace ECalendar {
         JOURNAL,
         INVALID,
     }
+
     export namespace CalendarStatus {
         export const $gtype: GObject.GType<CalendarStatus>;
     }
@@ -235,13 +258,17 @@ export namespace ECalendar {
         INVALID_SERVER_VERSION,
         NOT_SUPPORTED,
     }
-    export namespace DataCalCallStatus {
-        export const $gtype: GObject.GType<DataCalCallStatus>;
-    }
+    /**
+     * FIXME Document me!
+     */
 
     /**
      * FIXME Document me!
      */
+    export namespace DataCalCallStatus {
+        export const $gtype: GObject.GType<DataCalCallStatus>;
+    }
+
     enum DataCalCallStatus {
         SUCCESS,
         BUSY,
@@ -275,6 +302,7 @@ export namespace ECalendar {
     interface CalRecurInstanceFn {
         (comp: CalComponent, instance_start: number, instance_end: number, data: any): boolean;
     }
+
     export namespace CalChangeType {
         export const $gtype: GObject.GType<CalChangeType>;
     }
@@ -284,49 +312,65 @@ export namespace ECalendar {
         MODIFIED,
         DELETED,
     }
-    export namespace CalClientViewFlags {
-        export const $gtype: GObject.GType<CalClientViewFlags>;
-    }
+    /**
+     * Flags that control the behaviour of an #ECalClientView.
+     */
 
     /**
      * Flags that control the behaviour of an #ECalClientView.
      */
+    export namespace CalClientViewFlags {
+        export const $gtype: GObject.GType<CalClientViewFlags>;
+    }
+
     enum CalClientViewFlags {
         NONE,
         NOTIFY_INITIAL,
     }
-    export namespace DataCalMode {
-        export const $gtype: GObject.GType<DataCalMode>;
-    }
+    /**
+     * FIXME: Document me.
+     */
 
     /**
      * FIXME: Document me.
      */
+    export namespace DataCalMode {
+        export const $gtype: GObject.GType<DataCalMode>;
+    }
+
     enum DataCalMode {
         OCAL,
         EMOTE,
         NYMODE,
     }
-    export namespace DataCalObjModType {
-        export const $gtype: GObject.GType<DataCalObjModType>;
-    }
+    /**
+     * FIXME Document me!
+     */
 
     /**
      * FIXME Document me!
      */
+    export namespace DataCalObjModType {
+        export const $gtype: GObject.GType<DataCalObjModType>;
+    }
+
     enum DataCalObjModType {
         THIS,
         THISANDPRIOR,
         THISANDFUTURE,
         ALL,
     }
-    export namespace DataCalObjType {
-        export const $gtype: GObject.GType<DataCalObjType>;
-    }
+    /**
+     * FIXME Document me!
+     */
 
     /**
      * FIXME Document me!
      */
+    export namespace DataCalObjType {
+        export const $gtype: GObject.GType<DataCalObjType>;
+    }
+
     enum DataCalObjType {
         EVENT,
         TODO,
