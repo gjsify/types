@@ -615,7 +615,6 @@ export namespace AppStream {
          * Parse AppStream metadata catalog (shipped by software distributors)
          */
         CATALOG,
-        COLLECTION,
     }
     /**
      * Format version / API level of the AppStream metadata.
@@ -630,53 +629,13 @@ export namespace AppStream {
 
     enum FormatVersion {
         /**
-         * 0.6
-         */
-        V0_6,
-        /**
-         * 0.7
-         */
-        V0_7,
-        /**
-         * 0.8
-         */
-        V0_8,
-        /**
-         * 0.9
-         */
-        V0_9,
-        /**
-         * 0.1
-         */
-        V0_10,
-        /**
-         * 0.11
-         */
-        V0_11,
-        /**
-         * 0.12
-         */
-        V0_12,
-        /**
-         * 0.13
-         */
-        V0_13,
-        /**
-         * 0.14
-         */
-        V0_14,
-        /**
-         * 0.15
-         */
-        V0_15,
-        /**
-         * 0.16
-         */
-        V0_16,
-        /**
-         * Unknown
+         * Unknown format version
          */
         UNKNOWN,
+        /**
+         * 1
+         */
+        V1_0,
     }
     /**
      * The icon type.
@@ -1624,12 +1583,6 @@ export namespace AppStream {
          */
         WEBM,
     }
-    const IMAGE_LARGE_HEIGHT: number;
-    const IMAGE_LARGE_WIDTH: number;
-    const IMAGE_NORMAL_HEIGHT: number;
-    const IMAGE_NORMAL_WIDTH: number;
-    const IMAGE_THUMBNAIL_HEIGHT: number;
-    const IMAGE_THUMBNAIL_WIDTH: number;
     const MAJOR_VERSION: number;
     const MICRO_VERSION: number;
     const MINOR_VERSION: number;
@@ -1840,12 +1793,6 @@ export namespace AppStream {
      */
     function format_version_to_string(version: FormatVersion): string;
     /**
-     * Get the version of the AppStream library that is currently used
-     * as a string.
-     * @returns The AppStream version.
-     */
-    function get_appstream_version(): string;
-    /**
      * Returns the component-ID of the current distribution based on contents
      * of the `/etc/os-release` file.
      * This function is a shorthand for %as_distro_details_get_cid
@@ -1870,14 +1817,6 @@ export namespace AppStream {
      */
     function get_license_url(license: string): string;
     /**
-     * Replaces all occurences of `find` with the string `replace` in a #GString.
-     * @param string a #GString
-     * @param find the string to find in @string
-     * @param replace the string to insert in place of @find
-     * @returns the number of find and replace operations performed.
-     */
-    function gstring_replace(string: GLib.String, find: string, replace: string): number;
-    /**
      * Replaces the string `find` with the string `replace` in a #GString up to
      * `limit` times. If the number of instances of `find` in the #GString is
      * less than `limit,` all instances are replaced. If `limit` is `0`,
@@ -1888,7 +1827,7 @@ export namespace AppStream {
      * @param limit the maximum instances of @find to replace with @replace, or `0` for no limit
      * @returns the number of find and replace operations performed.
      */
-    function gstring_replace2(string: GLib.String, find: string, replace: string, limit: number): number;
+    function gstring_replace(string: GLib.String, find: string, replace: string, limit: number): number;
     /**
      * Converts the text representation to an enumerated value.
      * @param kind_str the string.
@@ -2258,14 +2197,6 @@ export namespace AppStream {
         cid: string,
         branch: string,
     ): string;
-    /**
-     * Compare alpha and numeric segments of two versions.
-     * The version compare algorithm is also used by RPM.
-     * @param a
-     * @param b
-     * @returns 1: a is newer than b     0: a and b are the same version    -1: b is newer than a
-     */
-    function utils_compare_versions(a: string, b: string): number;
     /**
      * Checks two component data IDs for equality allowing globs to match.
      * @param data_id1 a data ID
@@ -3311,6 +3242,13 @@ export namespace AppStream {
          */
         add_icon(icon: Icon): void;
         /**
+         * Add a new keyword to the keywords list for the given locale. This function does not
+         * check for duplicate keywords.
+         * @param keyword The new keyword to add.
+         * @param locale BCP47 locale of the values, or %NULL to use current locale.
+         */
+        add_keyword(keyword: string, locale?: string | null): void;
+        /**
          * Adds a language to the component.
          * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
          * @param percentage the percentage completion of the translation, 0 for locales with unknown amount of translation
@@ -3383,6 +3321,11 @@ export namespace AppStream {
          * @param url the full URL.
          */
         add_url(url_kind: UrlKind, url: string): void;
+        /**
+         * Remove all keywords for the given locale.
+         * @param locale BCP47 locale of the values, or %NULL to use current locale.
+         */
+        clear_keywords(locale?: string | null): void;
         /**
          * Remove all registered language translation information.
          */
@@ -3489,24 +3432,6 @@ export namespace AppStream {
          * @returns the description.
          */
         get_description(): string;
-        /**
-         * Get the Desktop Entry ID for this component, if it is
-         * of type "desktop-application".
-         * For most desktop-application components, this is the name
-         * of the .desktop file.
-         *
-         * Refer to https://specifications.freedesktop.org/desktop-entry-spec/latest/ape.html for more
-         * information.
-         * @returns The desktop file id.
-         */
-        get_desktop_id(): string;
-        /**
-         * Get information about the component's developer or development team.
-         * The returned object may be empty if no developer information was
-         * available.
-         * @returns the developer as #AsDeveloper.
-         */
-        get_developer(): Developer;
         /**
          * Get the component's developer or development team name.
          * @returns the developer name.
@@ -3829,15 +3754,6 @@ export namespace AppStream {
          */
         load_from_bytes(context: Context, format: FormatKind, bytes: GLib.Bytes | Uint8Array): boolean;
         /**
-         * Load metadata for this component from an XML string.
-         * You normally do not want to use this method directly and instead use the more
-         * convenient API of #AsMetadata to create and update components.
-         * @param context an #AsContext instance.
-         * @param data The XML data to load.
-         * @returns %TRUE on success.
-         */
-        load_from_xml_data(context: Context, data: string): boolean;
-        /**
          * Load data from an external source, possibly a local file
          * or a network resource.
          * @param reload set to %TRUE to discard existing data and reload.
@@ -3914,11 +3830,6 @@ export namespace AppStream {
          */
         set_description(value: string, locale?: string | null): void;
         /**
-         * Set the the component's developer.
-         * @param developer the new #AsDeveloper
-         */
-        set_developer(developer: Developer): void;
-        /**
          * Set the the component's developer or development team name.
          * @param value the developer or developer team name
          * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
@@ -3930,11 +3841,12 @@ export namespace AppStream {
          */
         set_id(value: string): void;
         /**
-         * Set keywords for this component.
-         * @param value String-array of keywords
+         * Set keywords for this component, replacing all existing ones for the selected locale.
+         * @param new_keywords Array of keywords
          * @param locale BCP47 locale of the values, or %NULL to use current locale.
+         * @param deep_copy Set to %TRUE if the keywords array should be copied, %FALSE to set by reference.
          */
-        set_keywords(value: string[], locale?: string | null): void;
+        set_keywords(new_keywords: string[], locale: string | null, deep_copy: boolean): void;
         /**
          * Sets the #AsComponentKind of this component.
          * @param value the #AsComponentKind.
@@ -4207,88 +4119,6 @@ export namespace AppStream {
          * @param style the new document style.
          */
         set_style(style: FormatStyle): void;
-    }
-
-    module Developer {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    class Developer extends GObject.Object {
-        static $gtype: GObject.GType<Developer>;
-
-        // Constructors of AppStream.Developer
-
-        constructor(properties?: Partial<Developer.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): Developer;
-
-        // Own methods of AppStream.Developer
-
-        /**
-         * Gets a unique ID for this particular developer, e.g. "gnome" or "mozilla.org"
-         * @returns the unique developer ID, or %NULL if none was set.
-         */
-        get_id(): string;
-        /**
-         * Get a localized developer, or development team name.
-         * @returns the developer name.
-         */
-        get_name(): string;
-        /**
-         * Sets the unique ID of this developer.
-         * @param id a developer ID, e.g. "mozilla.org"
-         */
-        set_id(id: string): void;
-        /**
-         * Set the the developer or development team name.
-         * @param value the developer or developer team name
-         * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
-         */
-        set_name(value: string, locale?: string | null): void;
-    }
-
-    module DistroDetails {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            homepage: string;
-            id: string;
-            name: string;
-            version: string;
-        }
-    }
-
-    class DistroDetails extends GObject.Object {
-        static $gtype: GObject.GType<DistroDetails>;
-
-        // Own properties of AppStream.DistroDetails
-
-        get homepage(): string;
-        get id(): string;
-        get name(): string;
-        get version(): string;
-
-        // Constructors of AppStream.DistroDetails
-
-        constructor(properties?: Partial<DistroDetails.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): DistroDetails;
-
-        // Own methods of AppStream.DistroDetails
-
-        get_bool(key: string, default_val: boolean): boolean;
-        get_cid(): string;
-        get_homepage(): string;
-        get_id(): string;
-        get_name(): string;
-        get_str(key: string): string;
-        get_version(): string;
     }
 
     module Icon {
@@ -4586,12 +4416,6 @@ export namespace AppStream {
          * @returns A string containing the YAML or XML data. Free with g_free()
          */
         components_to_catalog(format: FormatKind): string;
-        /**
-         * Deprecated, use %as_metadata_components_to_catalog instead.
-         * @param format The format to serialize the data to (XML or YAML).
-         * @returns A string containing the YAML or XML data. Free with g_free()
-         */
-        components_to_collection(format: FormatKind): string;
         get_architecture(): string;
         /**
          * Gets the #AsComponent which has been parsed from the XML.
@@ -4622,29 +4446,31 @@ export namespace AppStream {
         get_write_header(): boolean;
         /**
          * Parses any AppStream metadata into one or more #AsComponent instances.
-         * @param data Metadata describing one or more software components as null-terminated string.
-         * @param format The format of the data (XML or YAML).
-         * @returns %TRUE on success.
-         */
-        parse(data: string, format: FormatKind): boolean;
-        /**
-         * Parses any AppStream metadata into one or more #AsComponent instances.
          * @param bytes Metadata describing one or more software components.
          * @param format The format of the data (XML or YAML).
          * @returns %TRUE on success.
          */
         parse_bytes(bytes: GLib.Bytes | Uint8Array, format: FormatKind): boolean;
         /**
+         * Parses any AppStream metadata into one or more #AsComponent instances.
+         * @param data Metadata describing one or more software components as string.
+         * @param data_len Length of @data, or -1 if length is unknown and @data is NULL-terminated.
+         * @param format The format of the data (XML or YAML).
+         * @returns %TRUE on success.
+         */
+        parse_data(data: string, data_len: number, format: FormatKind): boolean;
+        /**
          * Parses XDG Desktop Entry metadata and adds it to the list of parsed entities.
          *
          * Please note that not every desktop-entry file will result in a valid component
          * being generated, even if parsing succeeds without error (The desktiop-entry file
          * may be valid but not generate a component on purpose).
-         * @param data Metadata describing one or more software components.
          * @param cid The component-id the new #AsComponent should have.
+         * @param data Metadata describing one or more software components.
+         * @param data_len The data length, or -1 if unknown and null-terminated.
          * @returns %TRUE if the file was parsed without error.
          */
-        parse_desktop_data(data: string, cid: string): boolean;
+        parse_desktop_data(cid: string, data: string, data_len: number): boolean;
         /**
          * Parses an AppStream upstream metadata file.
          *
@@ -4683,13 +4509,6 @@ export namespace AppStream {
          * @returns %TRUE if the file was written without error.
          */
         save_catalog(fname: string, format: FormatKind): boolean;
-        /**
-         * Deprecated, use %as_metadata_save_catalog instead.
-         * @param fname The filename for the new metadata file.
-         * @param format
-         * @returns %TRUE if the file was written without error.
-         */
-        save_collection(fname: string, format: FormatKind): boolean;
         /**
          * Serialize #AsComponent instance to XML and save it to file.
          * An existing file at the same location will be overridden.
@@ -4799,12 +4618,6 @@ export namespace AppStream {
         // Own methods of AppStream.Pool
 
         /**
-         * Register a new component in the AppStream metadata pool.
-         * @param cpt The #AsComponent to add to the pool.
-         * @returns %TRUE if the new component was successfully added to the pool.
-         */
-        add_component(cpt: Component): boolean;
-        /**
          * Register a set of components with the pool temporarily.
          * Data from components added like this will not be cached.
          * @param cpts Array of components to add to the pool.
@@ -4826,13 +4639,6 @@ export namespace AppStream {
          */
         add_flags(flags: PoolFlags): void;
         /**
-         * Add a location for the data pool to read data from.
-         * If `directory` contains a "xml", "xmls", "yaml" or "icons" subdirectory (or all of them),
-         * those paths will be added to the search paths instead.
-         * @param directory An existing filesystem location.
-         */
-        add_metadata_location(directory: string): void;
-        /**
          * Splits up a string into an array of tokens that are suitable for searching.
          * This includes stripping whitespaces, casefolding the terms and removing greylist words.
          *
@@ -4848,23 +4654,6 @@ export namespace AppStream {
          * once %as_pool_load is called again.
          */
         clear(): void;
-        /**
-         * Remove all metadata from the pool.
-         */
-        clear2(): boolean;
-        /**
-         * Remove all metadata locations from the list of watched locations.
-         */
-        clear_metadata_locations(): void;
-        /**
-         * Get the #AsCacheFlags for this data pool.
-         */
-        get_cache_flags(): CacheFlags;
-        /**
-         * Gets the location of the session cache.
-         * @returns Location of the cache, or %NULL if unknown.
-         */
-        get_cache_location(): string;
         /**
          * Find components that are provided by a bundle with a specific ID by its prefix.
          * For example, given a AS_BUNDLE_KIND_FLATPAK and a bundle_id "org.kde.dolphin/",
@@ -4983,23 +4772,11 @@ export namespace AppStream {
          */
         load_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Load AppStream metadata from a cache file.
-         * @param fname Filename of the cache file to load into the pool.
-         */
-        load_cache_file(fname: string): boolean;
-        /**
          * Retrieve the result of as_pool_load_async().
          * @param result A #GAsyncResult
          * @returns %TRUE for success
          */
         load_finish(result: Gio.AsyncResult): boolean;
-        /**
-         * Update the AppStream cache. There is normally no need to call this function manually, because cache updates are handled
-         * transparently in the background.
-         * @param force Enforce refresh, even if source data has not changed.
-         * @returns %TRUE on success, %FALSE on error.
-         */
-        refresh_cache(force: boolean): boolean;
         /**
          * Convenience function to remove one or multiple #AsPoolFlags from
          * the flag set of this data pool.
@@ -5011,11 +4788,6 @@ export namespace AppStream {
          */
         reset_extra_data_locations(): void;
         /**
-         * Serialize AppStream metadata to a cache file.
-         * @param fname Filename of the cache file the pool contents should be dumped to.
-         */
-        save_cache_file(fname: string): boolean;
-        /**
          * Search for a list of components matching the search term.
          * The list will be ordered by match score.
          *
@@ -5025,18 +4797,6 @@ export namespace AppStream {
          * @returns an array of the found #AsComponent objects.
          */
         search(search: string): Component[];
-        /**
-         * Set the #AsCacheFlags for this data pool.
-         * @param flags The new #AsCacheFlags.
-         */
-        set_cache_flags(flags: CacheFlags): void;
-        /**
-         * Sets the name of the cache file. If `fname` is ":memory", the cache will be
-         * kept in memory, if it is set to ":temporary", the cache will be stored in
-         * a temporary directory. In any other case, the given filename is used.
-         * @param fname Filename of the cache file, or special identifier.
-         */
-        set_cache_location(fname: string): void;
         /**
          * Set the #AsPoolFlags for this data pool.
          * @param flags The new #AsPoolFlags.
@@ -5148,10 +4908,6 @@ export namespace AppStream {
          */
         get_kind(): RelationKind;
         /**
-         * Deprecated method. Use %as_relation_get_value_str instead.
-         */
-        get_value(): string;
-        /**
          * Get the value of this #AsRelation item as #AsControlKind if the
          * type of this relation is %AS_RELATION_ITEM_KIND_CONTROL.
          * Otherwise return %AS_CONTROL_KIND_UNKNOWN
@@ -5220,11 +4976,6 @@ export namespace AppStream {
          * @param kind the new #AsRelationKind
          */
         set_kind(kind: RelationKind): void;
-        /**
-         * Deprecated method. Use %as_relation_set_value_str instead.
-         * @param value the new value.
-         */
-        set_value(value: string): void;
         /**
          * Set relation item value from an #AsControlKind.
          * @param kind an #AsControlKind
@@ -5300,20 +5051,10 @@ export namespace AppStream {
          */
         add_artifact(artifact: Artifact): void;
         /**
-         * Add a checksum for the file associated with this release.
-         * @param cs The #AsChecksum.
-         */
-        add_checksum(cs: Checksum): void;
-        /**
          * Add information about a (resolved) issue to this release.
          * @param issue The #AsIssue.
          */
         add_issue(issue: Issue): void;
-        /**
-         * Adds a release location.
-         * @param location An URL of the download location
-         */
-        add_location(location: string): void;
         /**
          * Get the current active locale, which
          * is used to get localized messages.
@@ -5326,17 +5067,6 @@ export namespace AppStream {
          * @returns an array of #AsArtifact objects.
          */
         get_artifacts(): Artifact[];
-        /**
-         * Gets the release checksum
-         * @param kind
-         * @returns an #AsChecksum, or %NULL for not set or invalid
-         */
-        get_checksum(kind: ChecksumKind): Checksum | null;
-        /**
-         * Get a list of all checksums we have for this release.
-         * @returns an array of #AsChecksum objects.
-         */
-        get_checksums(): Checksum[];
         /**
          * Gets the release date.
          * @returns The date in ISO8601 format.
@@ -5362,17 +5092,6 @@ export namespace AppStream {
          * (development or stable release)
          */
         get_kind(): ReleaseKind;
-        /**
-         * Gets the release locations, typically URLs.
-         * @returns list of locations
-         */
-        get_locations(): string[];
-        /**
-         * Gets the release size.
-         * @param kind a #AsSizeKind
-         * @returns The size of the given kind of this release.
-         */
-        get_size(kind: SizeKind): number;
         /**
          * Gets the release timestamp.
          * @returns timestamp, or 0 for unset
@@ -5432,12 +5151,6 @@ export namespace AppStream {
          * @param kind the #AsReleaseKind
          */
         set_kind(kind: ReleaseKind): void;
-        /**
-         * Sets the release size for the given kind.
-         * @param size a size in bytes, or 0 for unknown
-         * @param kind a #AsSizeKind
-         */
-        set_size(size: number, kind: SizeKind): void;
         /**
          * Sets the release timestamp.
          * @param timestamp the timestamp value.
@@ -6189,11 +5902,6 @@ export namespace AppStream {
          */
         get_hint(): string;
         /**
-         * This function is deprecated and should not be used in new code.
-         * @returns a #AsIssueSeverity
-         */
-        get_importance(): IssueSeverity;
-        /**
          * Gets the line number where this issue was found.
          * @returns the line number where this issue occured, or -1 if unknown.
          */
@@ -6204,11 +5912,6 @@ export namespace AppStream {
          * @returns the location hint as string.
          */
         get_location(): string;
-        /**
-         * This function is deprecated.
-         * @returns the message
-         */
-        get_message(): string;
         /**
          * Gets the severity of this issue.
          * @returns a #AsIssueSeverity
@@ -6240,20 +5943,10 @@ export namespace AppStream {
          */
         set_hint(hint: string): void;
         /**
-         * This function is deprecated and should not be used in new code.
-         * @param importance the #AsIssueSeverity.
-         */
-        set_importance(importance: IssueSeverity): void;
-        /**
          * Sets the line number where this issue was found.
          * @param line the line number.
          */
         set_line(line: number): void;
-        /**
-         * This function is deprecated.
-         * @param message the message text.
-         */
-        set_message(message: string): void;
         /**
          * Sets the severity for this issue.
          * @param severity the #AsIssueSeverity.
@@ -6402,8 +6095,6 @@ export namespace AppStream {
     type ComponentClass = typeof Component;
     type ContentRatingClass = typeof ContentRating;
     type ContextClass = typeof Context;
-    type DeveloperClass = typeof Developer;
-    type DistroDetailsClass = typeof DistroDetails;
     type IconClass = typeof Icon;
     type ImageClass = typeof Image;
     type IssueClass = typeof Issue;

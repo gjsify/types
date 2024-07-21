@@ -331,7 +331,20 @@ export namespace Uhm {
 
         // Own virtual methods of Uhm.Server
 
+        /**
+         * Class handler for the #UhmServer::compare-messages signal. Subclasses may implement this to override
+         * the default handler for the signal. The handler should return %TRUE if `expected_message` and `actual_message` compare
+         * equal, and %FALSE otherwise.
+         * @param expected_message
+         * @param actual_message
+         */
         vfunc_compare_messages(expected_message: Message, actual_message: Message): boolean;
+        /**
+         * Class handler for the #UhmServer::handle-message signal. Subclasses may implement this to override the
+         * default handler for the signal. The default handler should always return %TRUE to indicate that it has handled
+         * the `message` from `client` by setting an appropriate response on the #SoupServerMessage.
+         * @param message
+         */
         vfunc_handle_message(message: Message): boolean;
 
         // Own methods of Uhm.Server

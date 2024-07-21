@@ -416,6 +416,13 @@ export namespace EBackend {
 
         // Own virtual methods of EBackend.Backend
 
+        /**
+         * Authenticate synchronously
+         * @param credentials
+         * @param out_certificate_pem
+         * @param out_certificate_errors
+         * @param cancellable
+         */
         vfunc_authenticate_sync(
             credentials: EDataServer.NamedParameters,
             out_certificate_pem: string,

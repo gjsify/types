@@ -772,7 +772,7 @@ export namespace GWeather {
         get_temp_max(): string;
         get_temp_min(): string;
         get_temp_summary(): string;
-        get_upcoming_moonphases(phases: never): boolean;
+        get_upcoming_moonphases(phases: number): boolean;
         get_update(): string;
         get_value_apparent(unit: TemperatureUnit): [boolean, number];
         /**

@@ -775,6 +775,10 @@ export namespace GstAudio {
          * samples in FLAC format (Since: 1.12)
          */
         FLAC,
+        /**
+         * samples in DSD format (Since: 1.24)
+         */
+        DSD,
     }
     /**
      * The state of the ringbuffer.
@@ -806,6 +810,55 @@ export namespace GstAudio {
          *     disconnected (Since: 1.2)
          */
         ERROR,
+    }
+    /**
+     * Enum value describing how DSD bits are grouped.
+     */
+
+    /**
+     * Enum value describing how DSD bits are grouped.
+     */
+    export namespace DsdFormat {
+        export const $gtype: GObject.GType<DsdFormat>;
+    }
+
+    enum DsdFormat {
+        /**
+         * unknown / invalid DSD format
+         */
+        DSD_FORMAT_UNKNOWN,
+        /**
+         * 8 DSD bits in 1 byte
+         */
+        DSD_FORMAT_U8,
+        /**
+         * 16 DSD bits in 2 bytes, little endian order
+         */
+        DSD_FORMAT_U16LE,
+        /**
+         * 16 DSD bits in 2 bytes, big endian order
+         */
+        DSD_FORMAT_U16BE,
+        /**
+         * 32 DSD bits in 4 bytes, little endian order
+         */
+        DSD_FORMAT_U32LE,
+        /**
+         * 32 DSD bits in 4 bytes, big endian order
+         */
+        DSD_FORMAT_U32BE,
+        /**
+         * number of valid DSD formats
+         */
+        NUM_DSD_FORMATS,
+        /**
+         * 16 DSD bits in 2 bytes, native endianness
+         */
+        DSD_FORMAT_U16,
+        /**
+         * 32 DSD bits in 4 bytes, native endianness
+         */
+        DSD_FORMAT_U32,
     }
     /**
      * Different representations of a stream volume. gst_stream_volume_convert_volume()
@@ -1022,6 +1075,26 @@ export namespace GstAudio {
     const AUDIO_RESAMPLER_QUALITY_MAX: number;
     const AUDIO_RESAMPLER_QUALITY_MIN: number;
     /**
+     * List of all DSD formats, for use in template caps strings.
+     *
+     * Big endian formats are preferred, since little-endian ones flip around
+     * the DSD bytes, and most DSD hardware uses big endian formats.
+     */
+    const DSD_FORMATS_ALL: string;
+    /**
+     * The GStreamer media type for DSD.
+     */
+    const DSD_MEDIA_TYPE: string;
+    /**
+     * Silence pattern for DSD data.
+     *
+     * In DSD, a nullbyte does not correspond to silence. To fill memory regions
+     * with "DSD silence", these regions must be filled with byte 0x69 instead
+     * (this is the DSD silence pattern). This constant provides that pattern
+     * in a more readable fashion.
+     */
+    const DSD_SILENCE_PATTERN_BYTE: number;
+    /**
      * This metadata stays relevant as long as channels are unchanged.
      */
     const META_TAG_AUDIO_CHANNELS_STR: string;
@@ -1033,6 +1106,10 @@ export namespace GstAudio {
      * This metadata is relevant for audio streams.
      */
     const META_TAG_AUDIO_STR: string;
+    /**
+     * This metadata stays relevant as long as the DSD plane offsets are unchanged.
+     */
+    const META_TAG_DSD_PLANE_OFFSETS_STR: string;
     /**
      * Clip the buffer to the given %GstSegment.
      *
@@ -1409,6 +1486,40 @@ export namespace GstAudio {
         offsets?: number | null,
     ): AudioMeta;
     /**
+     * Allocates and attaches a #GstDsdPlaneOffsetMeta on `buffer,` which must be
+     * writable for that purpose. The fields of the #GstDsdPlaneOffsetMeta are
+     * directly populated from the arguments of this function.
+     *
+     * If `offsets` is NULL, then the meta's offsets field is left uninitialized.
+     * This is useful if for example offset values are to be calculated in the
+     * meta's offsets field in-place. Similarly, `num_bytes_per_channel` can be
+     * set to 0, but only if `offsets` is NULL. This is useful if the number of
+     * bytes per channel is known only later.
+     *
+     * It is not allowed for channels to overlap in memory,
+     * i.e. for each i in [0, channels), the range
+     * [`offsets[`i], `offsets[`i] + `num_bytes_per_channel)` must not overlap
+     * with any other such range. This function will assert if the parameters
+     * specified cause this restriction to be violated.
+     *
+     * It is, obviously, also not allowed to specify parameters that would cause
+     * out-of-bounds memory access on `buffer`. This is also checked, which means
+     * that you must add enough memory on the `buffer` before adding this meta.
+     *
+     * This meta is only needed for non-interleaved (= planar) DSD data.
+     * @param buffer a #GstBuffer
+     * @param num_channels Number of channels in the DSD data
+     * @param num_bytes_per_channel Number of bytes per channel
+     * @param offsets the offsets (in bytes) where each channel plane starts   in the buffer
+     * @returns the #GstDsdPlaneOffsetMeta that was attached   on the @buffer
+     */
+    function buffer_add_dsd_plane_offset_meta(
+        buffer: Gst.Buffer,
+        num_channels: number,
+        num_bytes_per_channel: number,
+        offsets?: number | null,
+    ): DsdPlaneOffsetMeta;
+    /**
      * Find the #GstAudioDownmixMeta on `buffer` for the given destination
      * channel positions.
      * @param buffer a #GstBuffer
@@ -1425,6 +1536,75 @@ export namespace GstAudio {
      * @returns the #GstAudioLevelMeta or %NULL when there is no such metadata on @buffer.
      */
     function buffer_get_audio_level_meta(buffer: Gst.Buffer): AudioLevelMeta | null;
+    /**
+     * Converts DSD data from one layout and grouping format to another.
+     * `num_bytes` must be an integer multiple of the width of both input
+     * and output format. For example, if the input format is GST_DSD_FORMAT_U32LE,
+     * and the output format is GST_DSD_FORMAT_U16BE, then `num_bytes` must
+     * be an integer multiple of both 4 (U32LE width) and 2 (U16BE width).
+     *
+     * `reverse_byte_bits` is necessary if the bit order within the DSD bytes
+     * needs to be reversed. This is rarely necessary, and is not to be
+     * confused with the endianness of formats (which determines the ordering
+     * of *bytes*).
+     *
+     * `input_plane_offsets` must not be NULL if `input_layout` is set to
+     * #GST_AUDIO_LAYOUT_NON_INTERLEAVED. The same applies to `output_plane_offsets`.
+     * These plane offsets define the starting offset of the planes (there is
+     * exactly one plane per channel) within `input_data` and `output_data`
+     * respectively. If GST_AUDIO_LAYOUT_INTERLEAVED is used, the plane offsets
+     * are ignored.
+     * @param input_data the DSD format conversion's input source
+     * @param output_data the DSD format conversion's output destination
+     * @param input_format DSD format of the input data to convert from
+     * @param output_format DSD format of the output data to convert to
+     * @param input_layout Input data layout
+     * @param output_layout Output data layout
+     * @param input_plane_offsets Plane offsets for non-interleaved input data
+     * @param output_plane_offsets Plane offsets for non-interleaved output data
+     * @param num_dsd_bytes How many bytes with DSD data to convert
+     * @param num_channels Number of channels (must be at least 1)
+     * @param reverse_byte_bits If TRUE, reverse the bits in each DSD byte
+     */
+    function dsd_convert(
+        input_data: number,
+        output_data: number,
+        input_format: DsdFormat,
+        output_format: DsdFormat,
+        input_layout: AudioLayout,
+        output_layout: AudioLayout,
+        input_plane_offsets: number,
+        output_plane_offsets: number,
+        num_dsd_bytes: number,
+        num_channels: number,
+        reverse_byte_bits: boolean,
+    ): void;
+    /**
+     * Convert the DSD format string `str` to its #GstDsdFormat.
+     * @param str a DSD format string
+     * @returns the #GstDsdFormat for @format or GST_DSD_FORMAT_UNKNOWN when the string is not a known format.
+     */
+    function dsd_format_from_string(str: string): DsdFormat;
+    function dsd_format_get_width(format: DsdFormat): number;
+    /**
+     * Returns a string containing a descriptive name for
+     * the #GstDsdFormat if there is one, or NULL otherwise.
+     * @param format a #GstDsdFormat
+     * @returns the name corresponding to @format
+     */
+    function dsd_format_to_string(format: DsdFormat): string;
+    /**
+     * Parse `caps` and update `info`.
+     * @param caps a #GstCaps
+     * @returns TRUE if @caps could be parsed
+     */
+    function dsd_info_from_caps(caps: Gst.Caps): [boolean, DsdInfo];
+    /**
+     * Initialize `info` with default values.
+     */
+    function dsd_info_init(): DsdInfo;
+    function dsd_plane_offset_meta_api_get_type(): GObject.GType;
+    function dsd_plane_offset_meta_get_info(): Gst.MetaInfo;
     function stream_volume_convert_volume(from: StreamVolumeFormat, to: StreamVolumeFormat, val: number): number;
     interface AudioBaseSinkCustomSlavingCallback {
         (
@@ -4708,6 +4888,12 @@ export namespace GstAudio {
          */
         set_channel_positions(position: AudioChannelPosition[]): void;
         /**
+         * Mark the ringbuffer as errored after it has started.
+         *
+         * MT safe.
+         */
+        set_errored(): void;
+        /**
          * Set the ringbuffer to flushing mode or normal mode.
          *
          * MT safe.
@@ -5687,6 +5873,10 @@ export namespace GstAudio {
     type AudioRingBufferClass = typeof AudioRingBuffer;
     /**
      * The structure containing the format specification of the ringbuffer.
+     *
+     * When `type` is GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD, the `dsd_format`
+     * is valid (otherwise it is unused). Also, when DSD is the sample type,
+     * only the rate, channels, position, and bpf fields in `info` are populated.
      */
     class AudioRingBufferSpec {
         static $gtype: GObject.GType<AudioRingBufferSpec>;
@@ -5819,6 +6009,177 @@ export namespace GstAudio {
          * @param rate a new sample rate
          */
         set_rate(rate: number): void;
+    }
+
+    /**
+     * Information describing DSD audio properties.
+     *
+     * In DSD, the "sample format" is the bit. Unlike PCM, there are no further
+     * "sample formats" in DSD. However, in software, DSD bits are grouped into
+     * bytes (since dealing with individual bits is impractical), and these bytes
+     * in turn are grouped into words. This becomes relevant when interleaving
+     * channels and transmitting DSD data through audio APIs. The different
+     * types of grouping DSD bytes are referred to as the "DSD grouping forma"
+     * or just "DSD format". #GstDsdFormat has a list of valid ways of grouping
+     * DSD bytes into words.
+     *
+     * DSD rates are equivalent to PCM sample rates, except that they specify
+     * how many DSD bytes are consumed per second. This refers to the bytes per
+     * second _per channel_; the rate does not change when the number of channel
+     * changes. (Strictly speaking, it would be more correct to measure the
+     * *bits* per second, since the bit is the DSD "sample format", but it is
+     * more practical to use bytes.) In DSD, bit rates are always an integer
+     * multiple of the CD audio rate (44100) or the DAT rate (48000). DSD64-44x
+     * is 44100 * 64 = 2822400 bits per second, or 352800 bytes per second
+     * (the latter would be used in this info structure). DSD64-48x is
+     * 48000 * 64 = 3072000 bits per second, or 384000 bytes per second.
+     * #GST_DSD_MAKE_DSD_RATE_44x can be used for specifying DSD-44x rates,
+     * *and #GST_DSD_MAKE_DSD_RATE_48x can be used for specifying DSD-48x ones.
+     * Also, since DSD-48x is less well known, when the multiplier is given
+     * without the 44x/48x specifier, 44x is typically implied.
+     *
+     * It is important to know that in DSD, different format widths correspond
+     * to different playtimes. That is, a word with 32 DSD bits covers two times
+     * as much playtime as a word with 16 DSD bits. This is in contrast to PCM,
+     * where one word (= one PCM sample) always covers a time period of 1/samplerate,
+     * no matter how many bits a PCM sample is made of. For this reason, DSD
+     * and PCM widths and strides cannot be used the same way.
+     *
+     * Multiple channels are arranged in DSD data either interleaved or non-
+     * interleaved. This is similar to PCM. Interleaved layouts rotate between
+     * channels and words. First, word 0 of channel 0 is present. Then word
+     * 0 of channel 1 follows. Then word 0 of channel 2 etc. until all
+     * channels are through, then comes word 1 of channel 0 etc.
+     *
+     * Non-interleaved data is planar. First, all words of channel 0 are
+     * present, then all words of channel 1 etc. Unlike interleaved data,
+     * non-interleaved data can be sparse, that is, there can be space in
+     * between the planes. the `positions` array specifies the plane offsets.
+     *
+     * In uncommon cases, the DSD bits in the data bytes can be stored in reverse
+     * order. For example, normally, in DSDU8, the first byte contains DSD bits
+     * 0 to 7, and the most significant bit of that byte is DSD bit 0. If this
+     * order is reversed, then bit 7 is the first one instead. In that ase,
+     * `reversed_bytes` is set to TRUE.
+     *
+     * Use the provided macros to access the info in this structure.
+     */
+    class DsdInfo {
+        static $gtype: GObject.GType<DsdInfo>;
+
+        // Own fields of GstAudio.DsdInfo
+
+        format: DsdFormat;
+        rate: number;
+        channels: number;
+        layout: AudioLayout;
+        reversed_bytes: boolean;
+        positions: AudioChannelPosition[];
+        flags: AudioFlags;
+
+        // Constructors of GstAudio.DsdInfo
+
+        constructor(
+            properties?: Partial<{
+                format: DsdFormat;
+                rate: number;
+                channels: number;
+                layout: AudioLayout;
+                reversed_bytes: boolean;
+                positions: AudioChannelPosition[];
+                flags: AudioFlags;
+            }>,
+        );
+        _init(...args: any[]): void;
+
+        static ['new'](): DsdInfo;
+
+        static new_from_caps(caps: Gst.Caps): DsdInfo;
+
+        // Own static methods of GstAudio.DsdInfo
+
+        /**
+         * Parse `caps` and update `info`.
+         * @param caps a #GstCaps
+         */
+        static from_caps(caps: Gst.Caps): [boolean, DsdInfo];
+        /**
+         * Initialize `info` with default values.
+         */
+        static init(): DsdInfo;
+
+        // Own methods of GstAudio.DsdInfo
+
+        /**
+         * Copy a GstDsdInfo structure.
+         * @returns a new #GstDsdInfo. free with gst_dsd_info_free.
+         */
+        copy(): DsdInfo;
+        /**
+         * Free a GstDsdInfo structure previously allocated with gst_dsd_info_new()
+         * or gst_dsd_info_copy().
+         */
+        free(): void;
+        /**
+         * Compares two #GstDsdInfo and returns whether they are equal or not
+         * @param other a #GstDsdInfo
+         * @returns %TRUE if @info and @other are equal, else %FALSE.
+         */
+        is_equal(other: DsdInfo): boolean;
+        /**
+         * Set the default info for the DSD info of `format` and `rate` and `channels`.
+         *
+         * Note: This initializes `info` first, no values are preserved.
+         * @param format the format
+         * @param rate the DSD rate
+         * @param channels the number of channels
+         * @param positions the channel positions
+         */
+        set_format(format: DsdFormat, rate: number, channels: number, positions?: AudioChannelPosition[] | null): void;
+        /**
+         * Convert the values of `info` into a #GstCaps.
+         * @returns the new #GstCaps containing the          info of @info.
+         */
+        to_caps(): Gst.Caps;
+    }
+
+    /**
+     * Buffer metadata describing planar DSD contents in the buffer. This is not needed
+     * for interleaved DSD data, and is required for non-interleaved (= planar) data.
+     *
+     * The different channels in `offsets` are always in the GStreamer channel order.
+     * Zero-copy channel reordering can be implemented by swapping the values in
+     * `offsets`.
+     *
+     * It is not allowed for channels to overlap in memory,
+     * i.e. for each i in [0, channels), the range
+     * [`offsets[`i], `offsets[`i] + `num_bytes_per_channel)` must not overlap
+     * with any other such range.
+     *
+     * It is, however, allowed to have parts of the buffer memory unused, by using
+     * `offsets` and `num_bytes_per_channel` in such a way that leave gaps on it.
+     * This is used to implement zero-copy clipping in non-interleaved buffers.
+     *
+     * Obviously, due to the above, it is not safe to infer the
+     * number of valid bytes from the size of the buffer. You should always
+     * use the `num_bytes_per_channel` variable of this metadata.
+     */
+    class DsdPlaneOffsetMeta {
+        static $gtype: GObject.GType<DsdPlaneOffsetMeta>;
+
+        // Own fields of GstAudio.DsdPlaneOffsetMeta
+
+        num_channels: number;
+        num_bytes_per_channel: number;
+        offsets: number;
+
+        // Constructors of GstAudio.DsdPlaneOffsetMeta
+
+        _init(...args: any[]): void;
+
+        // Own static methods of GstAudio.DsdPlaneOffsetMeta
+
+        static get_info(): Gst.MetaInfo;
     }
 
     type StreamVolumeInterface = typeof StreamVolume;

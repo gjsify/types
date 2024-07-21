@@ -180,12 +180,6 @@ export namespace Dex {
      * @returns a #DexFuture
      */
     function file_make_directory(file: Gio.File, io_priority: number): Future;
-    /**
-     * Queries to see if `file` exists asynchronously.
-     * @param file a #GFile
-     * @returns a #DexFuture that will resolve with %TRUE   if the file exists, otherwise reject with error.
-     */
-    function file_query_exists(file: Gio.File): Future;
     function file_query_info(
         file: Gio.File,
         attributes: string,
@@ -342,12 +336,6 @@ export namespace Dex {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
     }
 
-    /**
-     * `DexAsyncResult` is used to integrate a `DexFuture` with `GAsyncResult`.
-     *
-     * Use this class when you need to expose the traditional async/finish
-     * behavior of `GAsyncResult`.
-     */
     class AsyncResult extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<AsyncResult>;
 
@@ -834,13 +822,6 @@ export namespace Dex {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    /**
-     * #DexBlock represents a callback closure that can be scheduled to run
-     * within a specific #GMainContext.
-     *
-     * You create these by chaining futures together using dex_future_then(),
-     * dex_future_catch(), dex_future_finally() and similar.
-     */
     class Block extends Future {
         static $gtype: GObject.GType<Block>;
 
@@ -866,14 +847,6 @@ export namespace Dex {
         get_scheduler(): Scheduler;
     }
 
-    /**
-     * `DexCancellable` is a simple cancellation primitive which allows
-     * for you to create `DexFuture` that will reject upon cancellation.
-     *
-     * Use this combined with other futures using dex_future_all_race()
-     * to create a future that resolves when all other futures complete
-     * or `dex_cancellable_cancel()` is called to reject.
-     */
     class Cancellable extends Future {
         static $gtype: GObject.GType<Cancellable>;
 
@@ -945,13 +918,6 @@ export namespace Dex {
         send(future: Future): Future;
     }
 
-    /**
-     * #DexDelayed is a future which will resolve or reject the value of another
-     * #DexFuture when dex_delayed_release() is called.
-     *
-     * This allows you to gate the resolution of a future which has already
-     * resolved or rejected until a later moment.
-     */
     class Delayed extends Future {
         static $gtype: GObject.GType<Delayed>;
 
@@ -975,25 +941,6 @@ export namespace Dex {
         release(): void;
     }
 
-    /**
-     * #DexFiber is a fiber (or coroutine) which itself is a #DexFuture.
-     *
-     * When the fiber completes execution it will either resolve or reject the
-     * with the result or error.
-     *
-     * You may treat a #DexFiber like any other #DexFuture which makes it simple
-     * to integrate fibers into other processing chains.
-     *
-     * #DexFiber are provided their own stack seperate from a threads main stack,
-     * They are automatically scheduled as necessary.
-     *
-     * Use dex_await() and similar functions to await the result of another future
-     * within the fiber and the fiber will be suspended allowing another fiber to
-     * run and/or the rest of the applications main loop.
-     *
-     * Once a fiber is created, it is pinned to that scheduler. Use
-     * dex_scheduler_spawn() to create a fiber on a specific scheduler.
-     */
     class Fiber extends Future {
         static $gtype: GObject.GType<Fiber>;
 
@@ -1002,20 +949,6 @@ export namespace Dex {
         _init(...args: any[]): void;
     }
 
-    /**
-     * #DexFuture is the base class representing a future which may resolve with
-     * a value or reject with error at some point in the future.
-     *
-     * It is the basis for libdex's concurrency and parallelism model.
-     *
-     * Use futures to represent work in progress and allow consumers to build
-     * robust processing chains up front which will complete or fail as futures
-     * resolve or reject.
-     *
-     * When running on a #DexFiber, you may use dex_await() and similar functions
-     * to suspend the current thread and return upon completion of the dependent
-     * future.
-     */
     class Future extends Object {
         static $gtype: GObject.GType<Future>;
 
@@ -1193,35 +1126,8 @@ export namespace Dex {
         get_name(): string;
         get_status(): FutureStatus;
         get_value(): unknown;
-        /**
-         * This is a convenience function equivalent to calling
-         * dex_future_get_status() and checking for %DEX_FUTURE_STATUS_PENDING.
-         * @returns %TRUE if the future is still pending; otherwise %FALSE
-         */
-        is_pending(): boolean;
-        /**
-         * This is a convenience function equivalent to calling
-         * dex_future_get_status() and checking for %DEX_FUTURE_STATUS_REJECTED.
-         * @returns %TRUE if the future was rejected with an error; otherwise %FALSE
-         */
-        is_rejected(): boolean;
-        /**
-         * This is a convenience function equivalent to calling
-         * dex_future_get_status() and checking for %DEX_FUTURE_STATUS_RESOLVED.
-         * @returns %TRUE if the future has successfully resolved with a value;   otherwise %FALSE
-         */
-        is_resolved(): boolean;
     }
 
-    /**
-     * #DexFutureSet represents a set of #DexFuture.
-     *
-     * You may retrieve each underlying #DexFuture using
-     * dex_future_set_get_future_at().
-     *
-     * The #DexFutureStatus of of the #DexFutureSet depends on how the set
-     * was created using dex_future_all(), dex_future_any(), and similar mmethods.
-     */
     class FutureSet extends Future {
         static $gtype: GObject.GType<FutureSet>;
 
@@ -1255,15 +1161,6 @@ export namespace Dex {
         get_value_at(position: number): unknown;
     }
 
-    /**
-     * #DexMainScheduler is the scheduler used on the default thread of an
-     * application. It is meant to integrate with your main loop.
-     *
-     * This scheduler does the bulk of the work in an application.
-     *
-     * Use #DexThreadPoolScheduler when you want to offload work to a thread
-     * and still use future-based programming.
-     */
     class MainScheduler extends Scheduler {
         static $gtype: GObject.GType<MainScheduler>;
 
@@ -1303,13 +1200,6 @@ export namespace Dex {
         unref(): void;
     }
 
-    /**
-     * #DexPromise is a convenient #DexFuture for prpoagating a result or
-     * rejection in appliction and library code.
-     *
-     * Use this when there is not a more specialized #DexFuture for your needs to
-     * propagate a result or rejection to the caller in an asynchronous fashion.
-     */
     class Promise extends Future {
         static $gtype: GObject.GType<Promise>;
 
@@ -1357,17 +1247,6 @@ export namespace Dex {
         resolve_ulong(value: number): void;
     }
 
-    /**
-     * #DexScheduler is the base class used by schedulers.
-     *
-     * Schedulers are responsible for ensuring asynchronous IO requests and
-     * completions are processed. They also schedule closures to be run as part
-     * of future result propagation. Additionally, they manage #DexFiber execution
-     * and suspension.
-     *
-     * Specialized schedulers such as #DexThreadPoolScheduler will do this for a
-     * number of threads and dispatch new work between them.
-     */
     abstract class Scheduler extends Object {
         static $gtype: GObject.GType<Scheduler>;
 
@@ -1428,16 +1307,6 @@ export namespace Dex {
         spawn(stack_size: number): Future;
     }
 
-    /**
-     * `DexStaticFuture` represents a future that is resolved from the initial
-     * state.
-     *
-     * Use this when you need to create a future for API reasons but already have
-     * the value or rejection at that point.
-     *
-     * #DexStaticFuture is used internally by functions like
-     * dex_future_new_for_boolean() and similar.
-     */
     class StaticFuture extends Future {
         static $gtype: GObject.GType<StaticFuture>;
 
@@ -1446,23 +1315,6 @@ export namespace Dex {
         _init(...args: any[]): void;
     }
 
-    /**
-     * #DexThreadPoolScheduler is a #DexScheduler that will dispatch work items
-     * and fibers to sub-schedulers on a specific operating system thread.
-     *
-     * #DexFiber will never migrate from the thread they are created on to reduce
-     * chances of safety issues involved in tracking state between CPU.
-     *
-     * New work items are placed into a global work queue and then dispatched
-     * efficiently to a single thread pool worker using a specialized async
-     * semaphore. On modern Linux using io_uring, this wakes up a single worker
-     * thread and therefore is not subject to "thundering herd" common with
-     * global work queues.
-     *
-     * When a worker creates a new work item, it is placed into a work stealing
-     * queue owned by the thread. Other worker threads may steal work items when
-     * they have exhausted their own work queue.
-     */
     class ThreadPoolScheduler extends Scheduler {
         static $gtype: GObject.GType<ThreadPoolScheduler>;
 
@@ -1484,10 +1336,6 @@ export namespace Dex {
         static get_default(): Scheduler;
     }
 
-    /**
-     * #DexTimeout is a #DexFuture that will resolve after the configured
-     * period of time.
-     */
     class Timeout extends Future {
         static $gtype: GObject.GType<Timeout>;
 
@@ -1508,15 +1356,6 @@ export namespace Dex {
         postpone_until(deadline: number): void;
     }
 
-    /**
-     * #DexUnixSignal is a #DexFuture that will resolve when a specific unix
-     * signal has been received.
-     *
-     * Use this when you want to handle a signal from your main loop rather than
-     * from a resticted operating signal handler.
-     *
-     * On Linux, this uses a signalfd.
-     */
     class UnixSignal extends Future {
         static $gtype: GObject.GType<UnixSignal>;
 

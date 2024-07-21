@@ -2284,6 +2284,10 @@ export namespace Gst {
     const ELEMENT_FACTORY_TYPE_SINK: ElementFactoryListType;
     const ELEMENT_FACTORY_TYPE_SRC: ElementFactoryListType;
     /**
+     * Timestamp correcting elements
+     */
+    const ELEMENT_FACTORY_TYPE_TIMESTAMPER: ElementFactoryListType;
+    /**
      * All encoders handling video or image media types
      */
     const ELEMENT_FACTORY_TYPE_VIDEO_ENCODER: ElementFactoryListType;
@@ -2556,6 +2560,13 @@ export namespace Gst {
      * container format the data is stored in (string)
      */
     const TAG_CONTAINER_FORMAT: string;
+    /**
+     * Unique identifier for the audio, video or text track this tag is associated
+     * with. The mappings for several container formats are defined in the [Sourcing
+     * In-band Media Resource Tracks from Media Containers into HTML
+     * specification](https://dev.w3.org/html5/html-sourcing-inband-tracks/).
+     */
+    const TAG_CONTAINER_SPECIFIC_TRACK_ID: string;
     /**
      * copyright notice of the data (string)
      */
@@ -3439,33 +3450,28 @@ export namespace Gst {
      */
     function meta_api_type_register(api: string, tags: string[]): GObject.GType;
     /**
+     * Recreate a #GstMeta from serialized data returned by
+     * gst_meta_serialize() and add it to `buffer`.
+     *
+     * Note that the meta must have been previously registered by calling one of
+     * `gst_*_meta_get_info ()` functions.
+     *
+     * `consumed` is set to the number of bytes that can be skipped from `data` to
+     * find the next meta serialization, if any. In case of parsing error that does
+     * not allow to determine that size, `consumed` is set to 0.
+     * @param buffer a #GstBuffer
+     * @param data serialization data obtained from gst_meta_serialize()
+     * @param size size of @data
+     * @returns the metadata owned by @buffer, or %NULL.
+     */
+    function meta_deserialize(buffer: Buffer, data: number, size: number): [Meta | null, number];
+    /**
      * Lookup a previously registered meta info structure by its implementation name
      * `impl`.
      * @param impl the name
      * @returns a #GstMetaInfo with @impl, or %NULL when no such metainfo exists.
      */
     function meta_get_info(impl: string): MetaInfo | null;
-    /**
-     * Register a new #GstMeta implementation.
-     *
-     * The same `info` can be retrieved later with gst_meta_get_info() by using
-     * `impl` as the key.
-     * @param api the type of the #GstMeta API
-     * @param impl the name of the #GstMeta implementation
-     * @param size the size of the #GstMeta structure
-     * @param init_func a #GstMetaInitFunction
-     * @param free_func a #GstMetaFreeFunction
-     * @param transform_func a #GstMetaTransformFunction
-     * @returns a #GstMetaInfo that can be used to access metadata.
-     */
-    function meta_register(
-        api: GObject.GType,
-        impl: string,
-        size: number,
-        init_func: MetaInitFunction,
-        free_func: MetaFreeFunction,
-        transform_func: MetaTransformFunction,
-    ): MetaInfo;
     /**
      * Register a new custom #GstMeta implementation, backed by an opaque
      * structure holding a #GstStructure.
@@ -3490,6 +3496,13 @@ export namespace Gst {
         tags: string[],
         transform_func?: CustomMetaTransformFunction | null,
     ): MetaInfo;
+    /**
+     * Simplified version of gst_meta_register_custom(), with no tags and no
+     * transform function.
+     * @param name the name of the #GstMeta implementation
+     * @returns a #GstMetaInfo that can be used to access metadata.
+     */
+    function meta_register_custom_simple(name: string): MetaInfo;
     /**
      * Atomically modifies a pointer to point to a new mini-object.
      * The reference count of `olddata` is decreased and the reference count of
@@ -4031,6 +4044,12 @@ export namespace Gst {
         search_data?: any | null,
     ): any | null;
     /**
+     * Return a max num of log2.
+     * @param v a #guint32 value.
+     * @returns a computed #guint val.
+     */
+    function util_ceil_log2(v: number): number;
+    /**
      * Transforms a #gdouble to a fraction and simplifies
      * the result.
      * @param src #gdouble to transform
@@ -4046,6 +4065,12 @@ export namespace Gst {
      * @param mem a pointer to the memory to dump
      */
     function util_dump_mem(mem: Uint8Array | string): void;
+    /**
+     * Compares the given filenames using natural ordering.
+     * @param a a filename to compare with @b
+     * @param b a filename to compare with @a
+     */
+    function util_filename_compare(a: string, b: string): number;
     /**
      * Adds the fractions `a_n/``a_d` and `b_n/``b_d` and stores
      * the result in `res_n` and `res_d`.
@@ -4174,6 +4199,22 @@ export namespace Gst {
      * @param value_str the string to get the value from
      */
     function util_set_value_from_string(value_str: string): unknown;
+    /**
+     * Calculates the simpler representation of `numerator` and `denominator` and
+     * update both values with the resulting simplified fraction.
+     *
+     * Simplify a fraction using a simple continued fraction decomposition.
+     * The idea here is to convert fractions such as 333333/10000000 to 1/30
+     * using 32 bit arithmetic only. The algorithm is not perfect and relies
+     * upon two arbitrary parameters to remove non-significative terms from
+     * the simple continued fraction decomposition. Using 8 and 333 for
+     * `n_terms` and `threshold` respectively seems to give nice results.
+     * @param numerator First value as #gint
+     * @param denominator Second value as #gint
+     * @param n_terms non-significative terms (typical value: 8)
+     * @param threshold threshold (typical value: 333)
+     */
+    function util_simplify_fraction(numerator: number, denominator: number, n_terms: number, threshold: number): void;
     /**
      * Scale `val` by the rational number `num` / `denom,` avoiding overflows and
      * underflows and without loss of precision.
@@ -4728,11 +4769,20 @@ export namespace Gst {
     interface MemoryUnmapFunction {
         (mem: Memory): void;
     }
+    interface MetaClearFunction {
+        (buffer: Buffer, meta: Meta): void;
+    }
+    interface MetaDeserializeFunction {
+        (info: MetaInfo, buffer: Buffer, data: number, size: number, version: number): Meta | null;
+    }
     interface MetaFreeFunction {
         (meta: Meta, buffer: Buffer): void;
     }
     interface MetaInitFunction {
         (meta: Meta, params: any | null, buffer: Buffer): boolean;
+    }
+    interface MetaSerializeFunction {
+        (meta: Meta, data: ByteArrayInterface): boolean;
     }
     interface MetaTransformFunction {
         (transbuf: Buffer, meta: Meta, buffer: Buffer, type: GLib.Quark, data?: any | null): boolean;
@@ -4859,8 +4909,18 @@ export namespace Gst {
     enum AllocatorFlags {
         /**
          * The allocator has a custom alloc function.
+         *    Only elements designed to work with this allocator should be using it,
+         *    other elements should ignore it from allocation propositions.
+         *    This implies %GST_ALLOCATOR_FLAG_NO_COPY.
          */
         CUSTOM_ALLOC,
+        /**
+         * When copying a #GstMemory allocated with this allocator, the copy will
+         * instead be allocated using the default allocator. Use this when allocating a
+         * new memory is an heavy opperation that should only be done with a
+         * #GstBufferPool for example.
+         */
+        NO_COPY,
         /**
          * first flag that can be used for custom purposes
          */
@@ -5815,6 +5875,15 @@ export namespace Gst {
          */
         MAY_BE_LEAKED,
         /**
+         * Flag that's set when the object has been constructed. This can be used by
+         * API such as base class setters to differentiate between the case where
+         * they're called from a subclass's instance init function (and where the
+         * object isn't fully constructed yet, and so one shouldn't do anything but
+         * set values in the instance structure), and the case where the object is
+         * constructed.
+         */
+        CONSTRUCTED,
+        /**
          * subclasses can add additional flags starting from this flag
          */
         LAST,
@@ -6536,6 +6605,11 @@ export namespace Gst {
          *                                      nested structures.
          */
         BACKWARD_COMPAT,
+        /**
+         * Serialization fails if a value cannot be serialized instead of using
+         * placeholder "NULL" value (e.g. pointers, objects).
+         */
+        STRICT,
     }
 
     export namespace StackTraceFlags {
@@ -6909,7 +6983,7 @@ export namespace Gst {
      *   sink is in the bin, the query fails.
      *
      * A #GstBin will by default forward any event sent to it to all sink
-     * ( %GST_EVENT_TYPE_DOWNSTREAM ) or source ( %GST_EVENT_TYPE_UPSTREAM ) elements
+     * ( %GST_EVENT_TYPE_UPSTREAM ) or source ( %GST_EVENT_TYPE_DOWNSTREAM ) elements
      * depending on the event type.
      *
      * If all the elements return %TRUE, the bin will also return %TRUE, else %FALSE
@@ -10130,6 +10204,24 @@ export namespace Gst {
          */
         create_all_pads(): void;
         /**
+         * Creates a stream-id for `element` by combining the upstream information with
+         * the `stream_id`.
+         *
+         * This function generates an unique stream-id by getting the upstream
+         * stream-start event stream ID and appending `stream_id` to it. If the element
+         * has no sinkpad it will generate an upstream stream-id by doing an URI query
+         * on the element and in the worst case just uses a random number. Source
+         * elements that don't implement the URI handler interface should ideally
+         * generate a unique, deterministic stream-id manually instead.
+         *
+         * Since stream IDs are sorted alphabetically, any numbers in the stream ID
+         * should be printed with a fixed number of characters, preceded by 0's, such as
+         * by using the format \%03u instead of \%u.
+         * @param stream_id The stream-id
+         * @returns A stream-id for @element.
+         */
+        decorate_stream_id(stream_id: string): string;
+        /**
          * Call `func` with `user_data` for each of `element'`s pads. `func` will be called
          * exactly once for each pad that exists at the time of this call, unless
          * one of the calls to `func` returns %FALSE in which case we will stop
@@ -12783,6 +12875,11 @@ export namespace Gst {
         // Conflicted with Gst.Element.get_bus
         get_bus(...args: never[]): any;
         /**
+         * Return the configured latency on `pipeline`.
+         * @returns @pipeline configured latency, or %GST_CLOCK_TIME_NONE if none has been configured because @pipeline did not reach the PLAYING state yet. MT safe.
+         */
+        get_configured_latency(): ClockTime;
+        /**
          * Get the configured delay (see gst_pipeline_set_delay()).
          * @returns The configured delay. MT safe.
          */
@@ -12801,6 +12898,11 @@ export namespace Gst {
          * @returns a #GstClock, unref after usage.
          */
         get_pipeline_clock(): Clock;
+        /**
+         * Check if `pipeline` is live.
+         * @returns %TRUE if @pipeline is live, %FALSE if not or if it did not reach the PAUSED state yet. MT safe.
+         */
+        is_live(): boolean;
         /**
          * Usually, when a pipeline goes from READY to NULL state, it automatically
          * flushes all pending messages on the bus, which is done for refcounting
@@ -13522,6 +13624,9 @@ export namespace Gst {
             names: string | null,
             flags: PluginDependencyFlags,
         ): void;
+        add_status_error(message: string): void;
+        add_status_info(message: string): void;
+        add_status_warning(message: string): void;
         /**
          * Gets the plugin specific data cache. If it is %NULL there is no cached data
          * stored. This is the case when the registry is getting rebuilt.
@@ -13577,6 +13682,9 @@ export namespace Gst {
          * @returns the source of the plugin
          */
         get_source(): string;
+        get_status_errors(): string[] | null;
+        get_status_infos(): string[] | null;
+        get_status_warnings(): string[] | null;
         /**
          * get the version of the plugin
          * @returns the version of the plugin
@@ -13660,8 +13768,13 @@ export namespace Gst {
         // Own methods of Gst.PluginFeature
 
         /**
-         * Checks whether the given plugin feature is at least
-         *  the required version
+         * Checks whether the given plugin feature is at least the required version.
+         *
+         * Note: Since version 1.24 this function no longer returns %TRUE if the
+         * version is a git development version (e.g. 1.23.0.1) and the check is
+         * for the "next" micro version, that is it will no longer return %TRUE for
+         * e.g. 1.23.0.1 if the check is for 1.23.1. It is still possible to parse
+         * the nano version from the string and do this check that way if needed.
          * @param min_major minimum required major version
          * @param min_minor minimum required minor version
          * @param min_micro minimum required micro version
@@ -14187,7 +14300,7 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface StreamNotify {
-            (object: Stream, p0: GObject.ParamSpec): void;
+            (prop_stream: Stream, prop: GObject.ParamSpec): void;
         }
 
         // Constructor properties interface
@@ -14221,8 +14334,14 @@ export namespace Gst {
 
         // Own properties of Gst.StreamCollection
 
+        /**
+         * stream-id
+         */
         get upstream_id(): string;
         set upstream_id(val: string);
+        /**
+         * stream-id
+         */
         get upstreamId(): string;
         set upstreamId(val: string);
 
@@ -14241,13 +14360,13 @@ export namespace Gst {
         emit(id: string, ...args: any[]): void;
         connect(
             signal: 'stream-notify',
-            callback: (_source: this, object: Stream, p0: GObject.ParamSpec) => void,
+            callback: (_source: this, prop_stream: Stream, prop: GObject.ParamSpec) => void,
         ): number;
         connect_after(
             signal: 'stream-notify',
-            callback: (_source: this, object: Stream, p0: GObject.ParamSpec) => void,
+            callback: (_source: this, prop_stream: Stream, prop: GObject.ParamSpec) => void,
         ): number;
-        emit(signal: 'stream-notify', object: Stream, p0: GObject.ParamSpec): void;
+        emit(signal: 'stream-notify', prop_stream: Stream, prop: GObject.ParamSpec): void;
 
         // Own virtual methods of Gst.StreamCollection
 
@@ -15791,6 +15910,34 @@ export namespace Gst {
     }
 
     /**
+     * Interface for an array of bytes. It is expected to be subclassed to implement
+     * `resize` virtual method using language native array implementation, such as
+     * GLib's #GByteArray, C++'s `std::vector<uint8_t>` or Rust's `Vec<u8>`.
+     *
+     * `resize` implementation could allocate more than requested to avoid repeated
+     * reallocations. It can return %FALSE, or be set to %NULL, in the case the
+     * array cannot grow.
+     */
+    class ByteArrayInterface {
+        static $gtype: GObject.GType<ByteArrayInterface>;
+
+        // Own fields of Gst.ByteArrayInterface
+
+        data: number;
+        len: number;
+
+        // Constructors of Gst.ByteArrayInterface
+
+        constructor(
+            properties?: Partial<{
+                data: number;
+                len: number;
+            }>,
+        );
+        _init(...args: any[]): void;
+    }
+
+    /**
      * Caps (capabilities) are lightweight refcounted objects describing media types.
      * They are composed of an array of #GstStructure.
      *
@@ -15905,10 +16052,9 @@ export namespace Gst {
         /**
          * Calls the provided function once for each structure and caps feature in the
          * #GstCaps. In contrast to gst_caps_foreach(), the function may modify the
-         * structure and features. In contrast to gst_caps_filter_and_map_in_place(),
-         * the structure and features are removed from the caps if %FALSE is returned
-         * from the function.
-         * The caps must be mutable.
+         * structure and features. In contrast to gst_caps_map_in_place(), the structure
+         * and features are removed from the caps if %FALSE is returned from the
+         * function. The caps must be mutable.
          * @param func a function to call for each field
          */
         filter_and_map_in_place(func: CapsFilterMapFunc): void;
@@ -16443,7 +16589,12 @@ export namespace Gst {
 
     type ControlSourceClass = typeof ControlSource;
     /**
-     * Simple typing wrapper around #GstMeta
+     * Extra custom metadata. The `structure` field is the same as returned by
+     * gst_custom_meta_get_structure().
+     *
+     * Since 1.24 it can be serialized using gst_meta_serialize() and
+     * gst_meta_deserialize(), but only if the #GstStructure does not contain any
+     * fields that cannot be serialized, see %GST_SERIALIZE_FLAG_STRICT.
      */
     class CustomMeta {
         static $gtype: GObject.GType<CustomMeta>;
@@ -18115,31 +18266,26 @@ export namespace Gst {
          */
         static api_type_register(api: string, tags: string[]): GObject.GType;
         /**
+         * Recreate a #GstMeta from serialized data returned by
+         * gst_meta_serialize() and add it to `buffer`.
+         *
+         * Note that the meta must have been previously registered by calling one of
+         * `gst_*_meta_get_info ()` functions.
+         *
+         * `consumed` is set to the number of bytes that can be skipped from `data` to
+         * find the next meta serialization, if any. In case of parsing error that does
+         * not allow to determine that size, `consumed` is set to 0.
+         * @param buffer a #GstBuffer
+         * @param data serialization data obtained from gst_meta_serialize()
+         * @param size size of @data
+         */
+        static deserialize(buffer: Buffer, data: number, size: number): [Meta | null, number];
+        /**
          * Lookup a previously registered meta info structure by its implementation name
          * `impl`.
          * @param impl the name
          */
         static get_info(impl: string): MetaInfo | null;
-        /**
-         * Register a new #GstMeta implementation.
-         *
-         * The same `info` can be retrieved later with gst_meta_get_info() by using
-         * `impl` as the key.
-         * @param api the type of the #GstMeta API
-         * @param impl the name of the #GstMeta implementation
-         * @param size the size of the #GstMeta structure
-         * @param init_func a #GstMetaInitFunction
-         * @param free_func a #GstMetaFreeFunction
-         * @param transform_func a #GstMetaTransformFunction
-         */
-        static register(
-            api: GObject.GType,
-            impl: string,
-            size: number,
-            init_func: MetaInitFunction,
-            free_func: MetaFreeFunction,
-            transform_func: MetaTransformFunction,
-        ): MetaInfo;
         /**
          * Register a new custom #GstMeta implementation, backed by an opaque
          * structure holding a #GstStructure.
@@ -18163,6 +18309,12 @@ export namespace Gst {
             tags: string[],
             transform_func?: CustomMetaTransformFunction | null,
         ): MetaInfo;
+        /**
+         * Simplified version of gst_meta_register_custom(), with no tags and no
+         * transform function.
+         * @param name the name of the #GstMeta implementation
+         */
+        static register_custom_simple(name: string): MetaInfo;
 
         // Own methods of Gst.Meta
 
@@ -18177,6 +18329,30 @@ export namespace Gst {
          * Gets seqnum for this meta.
          */
         get_seqnum(): number;
+        /**
+         * Serialize `meta` into a format that can be stored or transmitted and later
+         * deserialized by gst_meta_deserialize().
+         *
+         * This is only supported for meta that implements #GstMetaInfo.serialize_func,
+         * %FALSE is returned otherwise.
+         *
+         * Upon failure, `data->`data pointer could have been reallocated, but `data->`len
+         * won't be modified. This is intended to be able to append multiple metas
+         * into the same #GByteArray.
+         *
+         * Since serialization size is often the same for every buffer, caller may want
+         * to remember the size of previous data to preallocate the next.
+         * @param data #GstByteArrayInterface to append serialization data
+         * @returns %TRUE on success, %FALSE otherwise.
+         */
+        serialize(data: ByteArrayInterface): boolean;
+        /**
+         * Same as gst_meta_serialize() but with a #GByteArray instead of
+         * #GstByteArrayInterface.
+         * @param data #GByteArray to append serialization data
+         * @returns %TRUE on success, %FALSE otherwise.
+         */
+        serialize_simple(data: Uint8Array | string): boolean;
     }
 
     /**
@@ -18194,6 +18370,9 @@ export namespace Gst {
         init_func: MetaInitFunction;
         free_func: MetaFreeFunction;
         transform_func: MetaTransformFunction;
+        serialize_func: MetaSerializeFunction;
+        deserialize_func: MetaDeserializeFunction;
+        clear_func: MetaClearFunction;
 
         // Constructors of Gst.MetaInfo
 
@@ -18202,6 +18381,15 @@ export namespace Gst {
         // Own methods of Gst.MetaInfo
 
         is_custom(): boolean;
+        /**
+         * Registers a new meta.
+         *
+         * Use the structure returned by gst_meta_info_new(), it consumes it and the
+         * structure shouldnt be used after. The one returned by the function can be
+         * kept.
+         * @returns the registered meta
+         */
+        register(): MetaInfo;
     }
 
     /**
@@ -19453,6 +19641,9 @@ export namespace Gst {
      *    on a given PTP clock.
      *  * `timestamp/x-unix`: for timestamps based on the UNIX epoch according to
      *    the local clock.
+     *
+     * Since 1.24 it can be serialized using gst_meta_serialize() and
+     * gst_meta_deserialize().
      */
     class ReferenceTimestampMeta {
         static $gtype: GObject.GType<ReferenceTimestampMeta>;
@@ -20090,7 +20281,7 @@ export namespace Gst {
      * ```
      *
      * > *note*: gst_structure_to_string() won't use that syntax for backward
-     * > compatibility reason, gst_structure_serialize() has been added for
+     * > compatibility reason, gst_structure_serialize_full() has been added for
      * > that purpose.
      */
     class Structure {
@@ -20503,11 +20694,22 @@ export namespace Gst {
          * GStreamer prior to 1.20 unless #GST_SERIALIZE_FLAG_BACKWARD_COMPAT is passed
          * as `flag`.
          *
+         * %GST_SERIALIZE_FLAG_STRICT flags is not allowed because it would make this
+         * function nullable which is an API break for bindings.
+         * Use gst_structure_serialize_full() instead.
+         *
          * Free-function: g_free
          * @param flags The flags to use to serialize structure
          * @returns a pointer to string allocated by g_malloc().     g_free() after usage.
          */
         serialize(flags: SerializeFlags): string;
+        /**
+         * Alias for gst_structure_serialize() but with nullable annotation because it
+         * can return %NULL when %GST_SERIALIZE_FLAG_STRICT flag is set.
+         * @param flags The flags to use to serialize structure
+         * @returns a pointer to string allocated by g_malloc().     g_free() after usage.
+         */
+        serialize_full(flags: SerializeFlags): string | null;
         /**
          * This is useful in language bindings where unknown GValue types are not
          * supported. This function will convert a `array` to %GST_TYPE_ARRAY and set
@@ -20570,7 +20772,7 @@ export namespace Gst {
          *
          * This function will lead to unexpected results when there are nested #GstCaps
          * / #GstStructure deeper than one level, you should user
-         * gst_structure_serialize() instead for those cases.
+         * gst_structure_serialize_full() instead for those cases.
          *
          * Free-function: g_free
          * @returns a pointer to string allocated by g_malloc().     g_free() after usage.
@@ -21462,6 +21664,16 @@ export namespace Gst {
          */
         get_query_string(): string | null;
         /**
+         * Get a percent encoded URI query string from the `uri,` with query parameters
+         * in the order provided by the `keys` list. Only parameter keys in the list will
+         * be added to the resulting URI string. This method can be used by retrieving
+         * the keys with gst_uri_get_query_keys() and then sorting the list, for
+         * example.
+         * @param keys A GList containing the   query argument key strings.
+         * @returns A percent encoded query string. Use g_free() when no longer needed.
+         */
+        get_query_string_ordered(keys?: string[] | null): string | null;
+        /**
          * Get the query table from the URI. Keys and values in the table are freed
          * with g_free when they are deleted. A value may be %NULL to indicate that
          * the key should appear in the query string in the URI, but does not have a
@@ -21651,6 +21863,17 @@ export namespace Gst {
          * @returns The string version of the URI.
          */
         to_string(): string;
+        /**
+         * Convert the URI to a string, with the query arguments in a specific order.
+         * Only the keys in the `keys` list will be added to the resulting string.
+         *
+         * Returns the URI as held in this object as a #gchar* nul-terminated string.
+         * The caller should g_free() the string once they are finished with it.
+         * The string is put together as described in RFC 3986.
+         * @param keys A GList containing   the query argument key strings.
+         * @returns The string version of the URI.
+         */
+        to_string_with_keys(keys?: string[] | null): string;
     }
 
     /**

@@ -116,11 +116,6 @@ export namespace GUdev {
 
         // Own virtual methods of GUdev.Client
 
-        /**
-         * Signal class handler for the #GUdevClient::uevent signal.
-         * @param action
-         * @param device
-         */
         vfunc_uevent(action: string, device: Device): void;
 
         // Own methods of GUdev.Client

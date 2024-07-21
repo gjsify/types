@@ -1094,6 +1094,7 @@ export namespace GstRtp {
         interface ConstructorProps extends Gst.Element.ConstructorProps {
             auto_header_extension: boolean;
             autoHeaderExtension: boolean;
+            extensions: Gst.ValueArray;
             max_reorder: number;
             maxReorder: number;
             source_info: boolean;
@@ -1104,6 +1105,38 @@ export namespace GstRtp {
 
     /**
      * Provides a base class for RTP depayloaders
+     *
+     * In order to handle RTP header extensions correctly if the
+     * depayloader aggregates multiple RTP packet payloads into one output
+     * buffer this class provides the function
+     * gst_rtp_base_depayload_set_aggregate_hdrext_enabled(). If the
+     * aggregation is enabled the virtual functions
+     * `GstRTPBaseDepayload`.process or
+     * `GstRTPBaseDepayload`.process_rtp_packet must tell the base class
+     * what happens to the current RTP packet. By default the base class
+     * assumes that the packet payload is used with the next output
+     * buffer.
+     *
+     * If the RTP packet will not be used with an output buffer
+     * gst_rtp_base_depayload_dropped() must be called. A typical
+     * situation would be if we are waiting for a keyframe.
+     *
+     * If the RTP packet will be used but not with the current output
+     * buffer but with the next one gst_rtp_base_depayload_delayed() must
+     * be called. This may happen if the current RTP packet signals the
+     * start of a new output buffer and the currently processed output
+     * buffer will be pushed first. The undelay happens implicitly once
+     * the current buffer has been pushed or
+     * gst_rtp_base_depayload_flush() has been called.
+     *
+     * If gst_rtp_base_depayload_flush() is called all RTP packets that
+     * have not been dropped since the last output buffer are dropped,
+     * e.g. if an output buffer is discarded due to malformed data. This
+     * may or may not include the current RTP packet depending on the 2nd
+     * parameter `keep_current`.
+     *
+     * Be aware that in case gst_rtp_base_depayload_push_list() is used
+     * each buffer will see the same list of RTP header extensions.
      */
     abstract class RTPBaseDepayload extends Gst.Element {
         static $gtype: GObject.GType<RTPBaseDepayload>;
@@ -1126,6 +1159,19 @@ export namespace GstRtp {
          */
         get autoHeaderExtension(): boolean;
         set autoHeaderExtension(val: boolean);
+        /**
+         * A list of already enabled RTP header extensions. This may be useful for finding
+         * out which extensions are already enabled (with add-extension signal) and picking a non-conflicting
+         * ID for a new extension that needs to be added on top of the existing ones.
+         *
+         * Note that the value returned by reading this property is not dynamically updated when the set of
+         * enabled extensions changes by any of existing action signals. Rather, it represents the current state
+         * at the time the property is read.
+         *
+         * Dynamic updates of this property can be received by subscribing to its corresponding "notify" signal, i.e.
+         * "notify::extensions".
+         */
+        get extensions(): Gst.ValueArray;
         /**
          * Max seqnum reorder before the sender is assumed to have restarted.
          *
@@ -1248,6 +1294,61 @@ export namespace GstRtp {
         // Own methods of GstRtp.RTPBaseDepayload
 
         /**
+         * Called from `GstRTPBaseDepayload`.process or
+         * `GstRTPBaseDepayload`.process_rtp_packet when the depayloader needs
+         * to keep the current input RTP header for use with the next output
+         * buffer.
+         *
+         * The delayed buffer will remain until the end of processing the
+         * current output buffer and then enqueued for processing with the
+         * next output buffer.
+         *
+         * A typical use-case is when the depayloader implementation will
+         * start a new output buffer for the current input RTP buffer but push
+         * the current output buffer first.
+         *
+         * Must be called with the stream lock held.
+         */
+        delayed(): void;
+        /**
+         * Called from `GstRTPBaseDepayload`.process or
+         * `GstRTPBaseDepayload`.process_rtp_packet if the depayloader does not
+         * use the current buffer for the output buffer. This will either drop
+         * the delayed buffer or the last buffer from the header extension
+         * cache.
+         *
+         * A typical use-case is when the depayloader implementation is
+         * dropping an input RTP buffer while waiting for the first keyframe.
+         *
+         * Must be called with the stream lock held.
+         */
+        dropped(): void;
+        /**
+         * If `GstRTPBaseDepayload`.process or
+         * `GstRTPBaseDepayload`.process_rtp_packet drop an output buffer this
+         * function tells the base class to flush header extension cache as
+         * well.
+         *
+         * This will not drop an input RTP header marked as delayed from
+         * gst_rtp_base_depayload_delayed().
+         *
+         * If `keep_current` is %TRUE the current input RTP header will be kept
+         * and enqueued after flushing the previous input RTP headers.
+         *
+         * A typical use-case for `keep_current` is when the depayloader
+         * implementation invalidates the current output buffer and starts a
+         * new one with the current RTP input buffer.
+         *
+         * Must be called with the stream lock held.
+         * @param keep_current if the current RTP buffer shall be kept
+         */
+        flush(keep_current: boolean): void;
+        /**
+         * Queries whether header extensions will be aggregated per depayloaded buffers.
+         * @returns %TRUE if aggregate-header-extension is enabled.
+         */
+        is_aggregate_hdrext_enabled(): boolean;
+        /**
          * Queries whether #GstRTPSourceMeta will be added to depayloaded buffers.
          * @returns %TRUE if source-info is enabled.
          */
@@ -1269,6 +1370,11 @@ export namespace GstRtp {
          * @returns a #GstFlowReturn.
          */
         push_list(out_list: Gst.BufferList): Gst.FlowReturn;
+        /**
+         * Enable or disable aggregating header extensions.
+         * @param enable whether to aggregate header extensions per output buffer
+         */
+        set_aggregate_hdrext_enabled(enable: boolean): void;
         /**
          * Enable or disable adding #GstRTPSourceMeta to depayloaded buffers.
          * @param enable whether to add meta about RTP sources to buffer
@@ -1296,6 +1402,7 @@ export namespace GstRtp {
         interface ConstructorProps extends Gst.Element.ConstructorProps {
             auto_header_extension: boolean;
             autoHeaderExtension: boolean;
+            extensions: Gst.ValueArray;
             max_ptime: number;
             maxPtime: number;
             min_ptime: number;
@@ -1347,6 +1454,19 @@ export namespace GstRtp {
          */
         get autoHeaderExtension(): boolean;
         set autoHeaderExtension(val: boolean);
+        /**
+         * A list of already enabled RTP header extensions. This may be useful for finding
+         * out which extensions are already enabled (with add-extension signal) and picking a non-conflicting
+         * ID for a new extension that needs to be added on top of the existing ones.
+         *
+         * Note that the value returned by reading this property is not dynamically updated when the set of
+         * enabled extensions changes by any of existing action signals. Rather, it represents the current state
+         * at the time the property is read.
+         *
+         * Dynamic updates of this property can be received by subscribing to its corresponding "notify" signal, i.e.
+         * "notify::extensions".
+         */
+        get extensions(): Gst.ValueArray;
         get max_ptime(): number;
         set max_ptime(val: number);
         get maxPtime(): number;

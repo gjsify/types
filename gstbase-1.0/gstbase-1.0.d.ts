@@ -1753,10 +1753,13 @@ export namespace GstBase {
          */
         drain(): void;
         /**
-         * Collects parsed data and pushes this downstream.
+         * Collects parsed data and pushes it downstream.
          * Source pad caps must be set when this is called.
          *
-         * If `frame'`s out_buffer is set, that will be used as subsequent frame data.
+         * If `frame'`s out_buffer is set, that will be used as subsequent frame data,
+         * and `size` amount will be flushed from the input data. The output_buffer size
+         * can differ from the consumed size indicated by `size`.
+         *
          * Otherwise, `size` samples will be taken from the input and used for output,
          * and the output's metadata (timestamps etc) will be taken as (optionally)
          * set by the subclass on `frame'`s (input) buffer (which is otherwise
@@ -2577,6 +2580,8 @@ export namespace GstBase {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
+            automatic_eos: boolean;
+            automaticEos: boolean;
             blocksize: number;
             do_timestamp: boolean;
             doTimestamp: boolean;
@@ -2707,6 +2712,16 @@ export namespace GstBase {
 
         // Own properties of GstBase.BaseSrc
 
+        /**
+         * See gst_base_src_set_automatic_eos()
+         */
+        get automatic_eos(): boolean;
+        set automatic_eos(val: boolean);
+        /**
+         * See gst_base_src_set_automatic_eos()
+         */
+        get automaticEos(): boolean;
+        set automaticEos(val: boolean);
         get blocksize(): number;
         set blocksize(val: number);
         get do_timestamp(): boolean;
@@ -2929,6 +2944,25 @@ export namespace GstBase {
          * @returns %TRUE if preparation of new segment succeeded.
          */
         new_segment(segment: Gst.Segment): boolean;
+        /**
+         * Send a new segment downstream. This function must
+         * only be called by derived sub-classes, and only from the #GstBaseSrcClass::create function,
+         * as the stream-lock needs to be held.
+         * This method also requires that an out caps has been configured, so
+         * gst_base_src_set_caps() needs to have been called before.
+         *
+         * The format for the `segment` must be identical with the current format
+         * of the source, as configured with gst_base_src_set_format().
+         *
+         * The format of `src` must not be %GST_FORMAT_UNDEFINED and the format
+         * should be configured via gst_base_src_set_format() before calling this method.
+         *
+         * This is a variant of gst_base_src_new_segment() sending the segment right away,
+         * which can be useful to ensure events ordering.
+         * @param segment a pointer to a #GstSegment
+         * @returns %TRUE if sending of new segment succeeded.
+         */
+        push_segment(segment: Gst.Segment): boolean;
         /**
          * Query the source for the latency parameters. `live` will be %TRUE when `src` is
          * configured as a live source. `min_latency` and `max_latency` will be set

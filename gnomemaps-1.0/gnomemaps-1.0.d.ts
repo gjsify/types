@@ -8,51 +8,171 @@
  */
 
 // Module dependencies
-import type Shumate from '@girs/shumate-1.0';
-import type Gtk from '@girs/gtk-4.0';
-import type Gsk from '@girs/gsk-4.0';
-import type Graphene from '@girs/graphene-1.0';
+import type Rest from '@girs/rest-0.7';
+import type Soup from '@girs/soup-2.4';
+import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type Gdk from '@girs/gdk-4.0';
+import type GModule from '@girs/gmodule-2.0';
+import type GeocodeGlib from '@girs/geocodeglib-1.0';
+import type Json from '@girs/json-1.0';
+import type Champlain from '@girs/champlain-0.12';
+import type Clutter from '@girs/clutter-1.0';
 import type cairo from '@girs/cairo-1.0';
+import type GL from '@girs/gl-1.0';
+import type CoglPango from '@girs/coglpango-1.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type Cogl from '@girs/cogl-1.0';
+import type Atk from '@girs/atk-1.0';
 
 export namespace GnomeMaps {
     /**
      * GnomeMaps-1.0
      */
 
+    export namespace ContactStoreState {
+        export const $gtype: GObject.GType<ContactStoreState>;
+    }
+
+    enum ContactStoreState {
+        /**
+         * Initial state
+         */
+        INITIAL,
+        /**
+         * Loading
+         */
+        LOADING,
+        /**
+         * Loaded
+         */
+        LOADED,
+    }
     function osm_finalize(): void;
     function osm_init(): void;
     function osm_parse(content: string, length: number): OSMObject;
-    function osm_parse_user_details(content: string): string;
-    module FileDataSource {
+    interface ContactGeocodeCallback {
+        (contact: Contact): void;
+    }
+    interface ContactStoreLookupCallback {
+        (contact: Contact): void;
+    }
+    module Contact {
         // Constructor properties interface
 
-        interface ConstructorProps extends Shumate.DataSource.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            bounding_box: Champlain.BoundingBox;
+            boundingBox: Champlain.BoundingBox;
+            icon: Gio.Icon;
+            id: string;
+            name: string;
+        }
+    }
+
+    class Contact extends GObject.Object {
+        static $gtype: GObject.GType<Contact>;
+
+        // Own properties of GnomeMaps.Contact
+
+        /**
+         * The bounding box for the contact.
+         */
+        get bounding_box(): Champlain.BoundingBox;
+        /**
+         * The bounding box for the contact.
+         */
+        get boundingBox(): Champlain.BoundingBox;
+        /**
+         * The icon of the contact.
+         */
+        get icon(): Gio.Icon;
+        set icon(val: Gio.Icon);
+        /**
+         * The unique id of the contact.
+         */
+        get id(): string;
+        set id(val: string);
+        /**
+         * The name of the contact.
+         */
+        get name(): string;
+        set name(val: string);
+
+        // Constructors of GnomeMaps.Contact
+
+        constructor(properties?: Partial<Contact.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): Contact;
+
+        // Own methods of GnomeMaps.Contact
+
+        add_place(place: GeocodeGlib.Place): void;
+        geocode(callback: ContactGeocodeCallback): void;
+        get_places(): GeocodeGlib.Place[];
+    }
+
+    module ContactStore {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            state: ContactStoreState;
+        }
+    }
+
+    class ContactStore extends GObject.Object {
+        static $gtype: GObject.GType<ContactStore>;
+
+        // Own properties of GnomeMaps.ContactStore
+
+        /**
+         * The type of the contact.
+         */
+        get state(): ContactStoreState;
+
+        // Constructors of GnomeMaps.ContactStore
+
+        constructor(properties?: Partial<ContactStore.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): ContactStore;
+
+        // Own methods of GnomeMaps.ContactStore
+
+        get_contacts(): Contact[];
+        /**
+         * Load contacts from available backends.
+         */
+        load(): void;
+        lookup(id: string, callback: ContactStoreLookupCallback): void;
+    }
+
+    module FileTileSource {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Champlain.TileSource.ConstructorProps {
             max_zoom: number;
             maxZoom: number;
             min_zoom: number;
             minZoom: number;
             path: string;
+            world: Champlain.BoundingBox;
         }
     }
 
     /**
-     * The #MapsFileDataSource structure contains only private data
+     * The #MapsFileTileSource structure contains only private data
      * and should be accessed using the provided API
      */
-    class FileDataSource extends Shumate.DataSource {
-        static $gtype: GObject.GType<FileDataSource>;
+    class FileTileSource extends Champlain.TileSource {
+        static $gtype: GObject.GType<FileTileSource>;
 
-        // Own properties of GnomeMaps.FileDataSource
+        // Own properties of GnomeMaps.FileTileSource
 
         /**
          * The maximum zoom level of the tile source.
@@ -75,14 +195,20 @@ export namespace GnomeMaps {
          */
         get path(): string;
         set path(val: string);
+        /**
+         * Set a bounding box to limit the world to. No tiles will be loaded
+         * outside of this bounding box. It will not be possible to scroll outside
+         * of this bounding box.
+         */
+        get world(): Champlain.BoundingBox;
 
-        // Constructors of GnomeMaps.FileDataSource
+        // Constructors of GnomeMaps.FileTileSource
 
-        constructor(properties?: Partial<FileDataSource.ConstructorProps>, ...args: any[]);
+        constructor(properties?: Partial<FileTileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeMaps.FileDataSource
+        // Own methods of GnomeMaps.FileTileSource
 
         prepare(): boolean;
     }
@@ -159,6 +285,24 @@ export namespace GnomeMaps {
         static ['new'](id: number, version: number, changeset: number, longitude: number, latitude: number): OSMNode;
     }
 
+    module OSMOAuthProxyCall {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Rest.OAuthProxyCall.ConstructorProps {}
+    }
+
+    class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
+        static $gtype: GObject.GType<OSMOAuthProxyCall>;
+
+        // Constructors of GnomeMaps.OSMOAuthProxyCall
+
+        constructor(properties?: Partial<OSMOAuthProxyCall.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](proxy: Rest.OAuthProxy, content: string): OSMOAuthProxyCall;
+    }
+
     module OSMObject {
         // Constructor properties interface
 
@@ -200,7 +344,6 @@ export namespace GnomeMaps {
 
         delete_tag(key: string): void;
         get_tag(key: string): string;
-        get_tags(): GLib.HashTable<string, string>;
         serialize(): string;
         set_tag(key: string, value: string): void;
     }
@@ -249,98 +392,29 @@ export namespace GnomeMaps {
         add_node_id(id: number): void;
     }
 
-    module Shield {
-        // Constructor properties interface
+    type ContactClass = typeof Contact;
+    abstract class ContactPrivate {
+        static $gtype: GObject.GType<ContactPrivate>;
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    class Shield extends GObject.Object {
-        static $gtype: GObject.GType<Shield>;
-
-        // Constructors of GnomeMaps.Shield
-
-        constructor(properties?: Partial<Shield.ConstructorProps>, ...args: any[]);
+        // Constructors of GnomeMaps.ContactPrivate
 
         _init(...args: any[]): void;
-
-        // Own methods of GnomeMaps.Shield
-
-        draw(ref: string, name: string, color: string, scale: number): Shumate.VectorSprite;
     }
 
-    module SpriteSource {
-        // Constructor properties interface
+    type ContactStoreClass = typeof ContactStore;
+    abstract class ContactStorePrivate {
+        static $gtype: GObject.GType<ContactStorePrivate>;
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            color_scheme: string;
-            colorScheme: string;
-        }
-    }
-
-    class SpriteSource extends GObject.Object {
-        static $gtype: GObject.GType<SpriteSource>;
-
-        // Own properties of GnomeMaps.SpriteSource
-
-        get color_scheme(): string;
-        get colorScheme(): string;
-
-        // Constructors of GnomeMaps.SpriteSource
-
-        constructor(properties?: Partial<SpriteSource.ConstructorProps>, ...args: any[]);
+        // Constructors of GnomeMaps.ContactStorePrivate
 
         _init(...args: any[]): void;
-
-        static ['new'](color_scheme: string): SpriteSource;
-
-        // Own methods of GnomeMaps.SpriteSource
-
-        /**
-         * Loads shield definitions from a JSON string.
-         * @param json a JSON string
-         */
-        load_shield_defs(json: string): void;
-        /**
-         * Sets the sprite sheet's fallback function.
-         * @param sprite_sheet a [class@Shumate.VectorSpriteSheet]
-         */
-        set_fallback(sprite_sheet: Shumate.VectorSpriteSheet): void;
     }
 
-    module SyncMapSource {
-        // Constructor properties interface
+    type FileTileSourceClass = typeof FileTileSource;
+    abstract class FileTileSourcePrivate {
+        static $gtype: GObject.GType<FileTileSourcePrivate>;
 
-        interface ConstructorProps extends Shumate.MapSource.ConstructorProps {}
-    }
-
-    /**
-     * Wrapper of ShumateMapSource encapsulating fill_tile_async and
-     * fill_tile_finish into a synchronous file_tile vfunc as work-around for
-     * https://gitlab.gnome.org/GNOME/gjs/-/issues/72
-     *
-     * The #MapsSyncMapSource structure contains only private data
-     * and should be accessed using the provided API
-     */
-    abstract class SyncMapSource extends Shumate.MapSource {
-        static $gtype: GObject.GType<SyncMapSource>;
-
-        // Constructors of GnomeMaps.SyncMapSource
-
-        constructor(properties?: Partial<SyncMapSource.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Own virtual methods of GnomeMaps.SyncMapSource
-
-        vfunc_fill_tile(tile: Shumate.Tile): void;
-    }
-
-    type FileDataSourceClass = typeof FileDataSource;
-    abstract class FileDataSourcePrivate {
-        static $gtype: GObject.GType<FileDataSourcePrivate>;
-
-        // Constructors of GnomeMaps.FileDataSourcePrivate
+        // Constructors of GnomeMaps.FileTileSourcePrivate
 
         _init(...args: any[]): void;
     }
@@ -359,6 +433,15 @@ export namespace GnomeMaps {
         static $gtype: GObject.GType<OSMNodePrivate>;
 
         // Constructors of GnomeMaps.OSMNodePrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type OSMOAuthProxyCallClass = typeof OSMOAuthProxyCall;
+    abstract class OSMOAuthProxyCallPrivate {
+        static $gtype: GObject.GType<OSMOAuthProxyCallPrivate>;
+
+        // Constructors of GnomeMaps.OSMOAuthProxyCallPrivate
 
         _init(...args: any[]): void;
     }
@@ -390,13 +473,18 @@ export namespace GnomeMaps {
         _init(...args: any[]): void;
     }
 
-    type ShieldClass = typeof Shield;
-    type SpriteSourceClass = typeof SpriteSource;
-    type SyncMapSourceClass = typeof SyncMapSource;
-    abstract class SyncMapSourcePrivate {
-        static $gtype: GObject.GType<SyncMapSourcePrivate>;
+    abstract class _ContactClass {
+        static $gtype: GObject.GType<_ContactClass>;
 
-        // Constructors of GnomeMaps.SyncMapSourcePrivate
+        // Constructors of GnomeMaps._ContactClass
+
+        _init(...args: any[]): void;
+    }
+
+    abstract class _ContactStoreClass {
+        static $gtype: GObject.GType<_ContactStoreClass>;
+
+        // Constructors of GnomeMaps._ContactStoreClass
 
         _init(...args: any[]): void;
     }

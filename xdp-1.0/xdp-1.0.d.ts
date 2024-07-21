@@ -281,10 +281,6 @@ export namespace Xdp {
          * a remote desktop session.
          */
         REMOTE_DESKTOP,
-        /**
-         * an input capture session.
-         */
-        INPUT_CAPTURE,
     }
 
     export namespace UpdateInstallFlags {
@@ -451,35 +447,6 @@ export namespace Xdp {
          * Inhibit the session going idle
          */
         IDLE,
-    }
-    /**
-     * Flags to specify what input device capabilities should be captured
-     */
-
-    /**
-     * Flags to specify what input device capabilities should be captured
-     */
-    export namespace InputCapability {
-        export const $gtype: GObject.GType<InputCapability>;
-    }
-
-    enum InputCapability {
-        /**
-         * no device
-         */
-        NONE,
-        /**
-         * capture the keyboard
-         */
-        KEYBOARD,
-        /**
-         * capture pointer events
-         */
-        POINTER,
-        /**
-         * capture touchscreen events
-         */
-        TOUCHSCREEN,
     }
     /**
      * The type of a launcher.
@@ -696,305 +663,6 @@ export namespace Xdp {
          */
         PREVIEW,
     }
-    module InputCapturePointerBarrier {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            id: number;
-            is_active: boolean;
-            isActive: boolean;
-            x1: number;
-            x2: number;
-            y1: number;
-            y2: number;
-        }
-    }
-
-    /**
-     * A representation of a pointer barrier on an [class`InputCaptureZone]`.
-     * Barriers can be assigned with
-     * [method`InputCaptureSession`.set_pointer_barriers], once the Portal
-     * interaction is complete the barrier's "is-active" state indicates whether
-     * the barrier is active. Barriers can only be used once, subsequent calls to
-     * [method`InputCaptureSession`.set_pointer_barriers] will invalidate all
-     * current barriers.
-     */
-    class InputCapturePointerBarrier extends GObject.Object {
-        static $gtype: GObject.GType<InputCapturePointerBarrier>;
-
-        // Own properties of Xdp.InputCapturePointerBarrier
-
-        /**
-         * The caller-assigned unique id of this barrier
-         */
-        get id(): number;
-        /**
-         * A boolean indicating whether this barrier is active. A barrier cannot
-         * become active once it failed to apply, barriers that are not active can
-         * be thus cleaned up by the caller.
-         */
-        get is_active(): boolean;
-        /**
-         * A boolean indicating whether this barrier is active. A barrier cannot
-         * become active once it failed to apply, barriers that are not active can
-         * be thus cleaned up by the caller.
-         */
-        get isActive(): boolean;
-        /**
-         * The pointer barrier x offset in logical pixels
-         */
-        get x1(): number;
-        /**
-         * The pointer barrier x offset in logical pixels
-         */
-        get x2(): number;
-        /**
-         * The pointer barrier y offset in logical pixels
-         */
-        get y1(): number;
-        /**
-         * The pointer barrier y offset in logical pixels
-         */
-        get y2(): number;
-
-        // Constructors of Xdp.InputCapturePointerBarrier
-
-        constructor(properties?: Partial<InputCapturePointerBarrier.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-    }
-
-    module InputCaptureSession {
-        // Signal callback interfaces
-
-        interface Activated {
-            (activation_id: number, options: GLib.Variant): void;
-        }
-
-        interface Deactivated {
-            (activation_id: number, options: GLib.Variant): void;
-        }
-
-        interface Disabled {
-            (options: GLib.Variant): void;
-        }
-
-        interface ZonesChanged {
-            (options: GLib.Variant): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * A representation of a long-lived input capture portal interaction.
-     *
-     * The [class`InputCaptureSession]` object is used to represent portal
-     * interactions with the input capture desktop portal that extend over
-     * multiple portal calls. Usually a caller creates an input capture session,
-     * requests the available zones and sets up pointer barriers on those zones
-     * before enabling the session.
-     *
-     * To find available zones, call [method`InputCaptureSession`.get_zones].
-     * These [class`InputCaptureZone]` object represent the accessible desktop area
-     * for input capturing. [class`InputCapturePointerBarrier]` objects can be set
-     * up on these zones to trigger input capture.
-     *
-     * The [class`InputCaptureSession]` wraps a [class`Session]` object.
-     */
-    class InputCaptureSession extends GObject.Object {
-        static $gtype: GObject.GType<InputCaptureSession>;
-
-        // Constructors of Xdp.InputCaptureSession
-
-        constructor(properties?: Partial<InputCaptureSession.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Own signals of Xdp.InputCaptureSession
-
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'activated',
-            callback: (_source: this, activation_id: number, options: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'activated',
-            callback: (_source: this, activation_id: number, options: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'activated', activation_id: number, options: GLib.Variant): void;
-        connect(
-            signal: 'deactivated',
-            callback: (_source: this, activation_id: number, options: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'deactivated',
-            callback: (_source: this, activation_id: number, options: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'deactivated', activation_id: number, options: GLib.Variant): void;
-        connect(signal: 'disabled', callback: (_source: this, options: GLib.Variant) => void): number;
-        connect_after(signal: 'disabled', callback: (_source: this, options: GLib.Variant) => void): number;
-        emit(signal: 'disabled', options: GLib.Variant): void;
-        connect(signal: 'zones-changed', callback: (_source: this, options: GLib.Variant) => void): number;
-        connect_after(signal: 'zones-changed', callback: (_source: this, options: GLib.Variant) => void): number;
-        emit(signal: 'zones-changed', options: GLib.Variant): void;
-
-        // Own methods of Xdp.InputCaptureSession
-
-        /**
-         * Connect this session to an EIS implementation and return the fd.
-         * This fd can be passed into ei_setup_backend_fd(). See the libei
-         * documentation for details.
-         *
-         * This is a sync DBus invocation.
-         * @returns a socket to the EIS implementation for this input capture session or a negative errno on failure.
-         */
-        connect_to_eis(): number;
-        /**
-         * Disables this input capture session.
-         */
-        disable(): void;
-        /**
-         * Enables this input capture session. In the future, this client may receive
-         * input events.
-         */
-        enable(): void;
-        /**
-         * Return the [class`XdpSession]` for this InputCapture session.
-         * @returns a [class@Session] object
-         */
-        get_session(): Session;
-        /**
-         * Obtains the current set of [class`InputCaptureZone]` objects.
-         *
-         * The returned object is valid until the zones are invalidated by the
-         * [signal`InputCaptureSession:`:zones-changed] signal.
-         *
-         * Unless the session is active, this function returns `NULL`.
-         * @returns the available zones. The caller must keep a reference to the list or the elements if used outside the immediate scope.
-         */
-        get_zones(): InputCaptureZone[];
-        /**
-         * Releases this input capture session without a suggested cursor position.
-         * @param activation_id
-         */
-        release(activation_id: number): void;
-        /**
-         * Releases this input capture session with a suggested cursor position.
-         * Note that the implementation is not required to honour this position.
-         * @param activation_id
-         * @param cursor_x_position the suggested cursor x position once capture has been released
-         * @param cursor_y_position the suggested cursor y position once capture has been released
-         */
-        release_at(activation_id: number, cursor_x_position: number, cursor_y_position: number): void;
-        /**
-         * Sets the pointer barriers for this session. When the request is done,
-         * `callback` will be called. You can then call
-         * [method`InputCaptureSession`.set_pointer_barriers_finish] to
-         * get the results. The result of this request is the list of pointer barriers
-         * that failed to apply - barriers not present in the returned list are active.
-         *
-         * Once the pointer barrier is
-         * applied (i.e. the reply to the DBus Request has been received), the
-         * the [property`InputCapturePointerBarrier:`is-active] property is changed on
-         * that barrier. Failed barriers have the property set to a %FALSE value.
-         * @param barriers the pointer barriers to apply
-         * @param cancellable
-         * @param callback
-         */
-        set_pointer_barriers(
-            barriers: InputCapturePointerBarrier[],
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes the set-pointer-barriers request, and returns a GList with the pointer
-         * barriers that failed to apply and should be cleaned up by the caller.
-         * @param result a [iface@Gio.AsyncResult]
-         * @returns a list of failed pointer barriers
-         */
-        set_pointer_barriers_finish(result: Gio.AsyncResult): InputCapturePointerBarrier[];
-    }
-
-    module InputCaptureZone {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            height: number;
-            is_valid: boolean;
-            isValid: boolean;
-            width: number;
-            x: number;
-            y: number;
-            zone_set: number;
-            zoneSet: number;
-        }
-    }
-
-    /**
-     * A representation of a zone that supports input capture.
-     *
-     * The [class`XdpInputCaptureZone]` object is used to represent a zone on the
-     * user-visible desktop that may be used to set up
-     * [class`XdpInputCapturePointerBarrier]` objects. In most cases, the set of
-     * [class`XdpInputCaptureZone]` objects represent the available monitors but the
-     * exact implementation is up to the implementation.
-     */
-    class InputCaptureZone extends GObject.Object {
-        static $gtype: GObject.GType<InputCaptureZone>;
-
-        // Own properties of Xdp.InputCaptureZone
-
-        /**
-         * The height of this zone in logical pixels
-         */
-        get height(): number;
-        /**
-         * A boolean indicating whether this zone is currently valid. Zones are
-         * invalidated by the Portal's ZonesChanged signal, see
-         * [signal`InputCaptureSession:`:zones-changed].
-         *
-         * Once invalidated, a Zone can be discarded by the caller, it cannot become
-         * valid again.
-         */
-        get is_valid(): boolean;
-        set is_valid(val: boolean);
-        /**
-         * A boolean indicating whether this zone is currently valid. Zones are
-         * invalidated by the Portal's ZonesChanged signal, see
-         * [signal`InputCaptureSession:`:zones-changed].
-         *
-         * Once invalidated, a Zone can be discarded by the caller, it cannot become
-         * valid again.
-         */
-        get isValid(): boolean;
-        set isValid(val: boolean);
-        /**
-         * The width of this zone in logical pixels
-         */
-        get width(): number;
-        /**
-         * The x offset of this zone in logical pixels
-         */
-        get x(): number;
-        /**
-         * The x offset of this zone in logical pixels
-         */
-        get y(): number;
-        get zone_set(): number;
-        get zoneSet(): number;
-
-        // Constructors of Xdp.InputCaptureZone
-
-        constructor(properties?: Partial<InputCaptureZone.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-    }
-
     module Portal {
         // Signal callback interfaces
 
@@ -1324,30 +992,6 @@ export namespace Xdp {
          */
         compose_email_finish(result: Gio.AsyncResult): boolean;
         /**
-         * Creates a session for input capture
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call [method`Portal`.create_input_capture_session_finish] to get the results.
-         * @param parent parent window information
-         * @param capabilities which kinds of capabilities to request
-         * @param cancellable optional [class@Gio.Cancellable]
-         * @param callback a callback to call when the request is done
-         */
-        create_input_capture_session(
-            parent: Parent | null,
-            capabilities: InputCapability,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes the InputCapture CreateSession request, and returns a
-         * [class`InputCaptureSession]`. To get to the [class`Session]` within use
-         * xdp_input_capture_session_get_session().
-         * @param result a [iface@Gio.AsyncResult]
-         * @returns a [class@InputCaptureSession]
-         */
-        create_input_capture_session_finish(result: Gio.AsyncResult): InputCaptureSession;
-        /**
          * Creates a session for remote desktop.
          *
          * When the request is done, `callback` will be called. You can then
@@ -1373,30 +1017,6 @@ export namespace Xdp {
          * @returns a [class@Session]
          */
         create_remote_desktop_session_finish(result: Gio.AsyncResult): Session;
-        /**
-         * Creates a session for remote desktop.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call [method`Portal`.create_remote_desktop_session_finish] to get the results.
-         * @param devices which kinds of input devices to ofer in the new dialog
-         * @param outputs which kinds of source to offer in the dialog
-         * @param flags options for this call
-         * @param cursor_mode the cursor mode of the session
-         * @param persist_mode the persist mode of the session
-         * @param restore_token the token of a previous screencast session to restore
-         * @param cancellable optional [class@Gio.Cancellable]
-         * @param callback a callback to call when the request is done
-         */
-        create_remote_desktop_session_full(
-            devices: DeviceType,
-            outputs: OutputType,
-            flags: RemoteDesktopFlags,
-            cursor_mode: CursorMode,
-            persist_mode: PersistMode,
-            restore_token?: string | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
         /**
          * Creates a session for a screencast.
          *
@@ -1530,12 +1150,6 @@ export namespace Xdp {
          * @returns %TRUE if the uninstallation was successful, %FALSE with @error set   otherwise
          */
         dynamic_launcher_uninstall(desktop_file_id: string): boolean;
-        /**
-         * This function returns an object to access settings exposed through
-         * the portal.
-         * @returns a [class@Settings] new settings object.
-         */
-        get_settings(): Settings;
         /**
          * Gets information about the user.
          *
@@ -1844,7 +1458,7 @@ export namespace Xdp {
         request_background(
             parent: Parent | null,
             reason: string | null,
-            commandline: string[] | null,
+            commandline: string[],
             flags: BackgroundFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2111,7 +1725,7 @@ export namespace Xdp {
          * @param result a [iface@Gio.AsyncResult]
          * @returns the pid of the spawned process.
          */
-        spawn_finish(result: Gio.AsyncResult): never;
+        spawn_finish(result: Gio.AsyncResult): number;
         /**
          * Sends a Unix signal to a process that has been spawned
          * by [method`Portal`.spawn].
@@ -2119,7 +1733,7 @@ export namespace Xdp {
          * @param signal the Unix signal to send (see signal(7))
          * @param to_process_group whether to send the signal to the process     group of the process
          */
-        spawn_signal(pid: never, signal: number, to_process_group: boolean): void;
+        spawn_signal(pid: number, signal: number, to_process_group: boolean): void;
         /**
          * Takes a screenshot.
          *
@@ -2962,90 +2576,6 @@ export namespace Xdp {
         touch_up(slot: number): void;
     }
 
-    module Settings {
-        // Signal callback interfaces
-
-        interface Changed {
-            (namespace: string, key: string, value: GLib.Variant): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * A representation of the settings exposed by the portal.
-     *
-     * The [class`Settings]` object is used to access and observe the settings
-     * exposed by xdg-desktop-portal.
-     *
-     * It is obtained from [method`Portal`.get_settings]. Call
-     * [method`Settings`.read_value] to read a settings value. Connect to
-     * [signal`Settings:`:changed] to observe value changes.
-     */
-    class Settings extends GObject.Object {
-        static $gtype: GObject.GType<Settings>;
-
-        // Constructors of Xdp.Settings
-
-        constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Own signals of Xdp.Settings
-
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'changed',
-            callback: (_source: this, namespace: string, key: string, value: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'changed',
-            callback: (_source: this, namespace: string, key: string, value: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'changed', namespace: string, key: string, value: GLib.Variant): void;
-
-        // Own methods of Xdp.Settings
-
-        /**
-         * Read all the setting values within `namespace`.
-         * @param namespaces List of namespaces to filter results by, supports simple globbing explained below.
-         * @param cancellable a GCancellable or NULL.
-         * @returns a value containing all the values, or %NULL if not found. If @error is not NULL, then the error is returned.
-         */
-        read_all_values(namespaces: string, cancellable?: Gio.Cancellable | null): GLib.Variant;
-        /**
-         * Read a setting value as unsigned int within `namespace,` with `key`.
-         * @param namespace the namespace of the value.
-         * @param key the key of the value.
-         * @param cancellable a GCancellable or NULL.
-         * @returns the stringint value, or NULL if not found or not the right type. If @error is not NULL, then the error is returned.
-         */
-        read_string(namespace: string, key: string, cancellable?: Gio.Cancellable | null): string;
-        /**
-         * Read a setting value as unsigned int within `namespace,` with `key`.
-         * @param namespace the namespace of the value.
-         * @param key the key of the value.
-         * @param cancellable a GCancellable or NULL.
-         * @returns the uint value, or 0 if not found or not the right type. If @error is not NULL, then the error is returned.
-         */
-        read_uint(namespace: string, key: string, cancellable?: Gio.Cancellable | null): number;
-        /**
-         * Read a setting value within `namespace,` with `key`.
-         * @param namespace the namespace of the value.
-         * @param key the key of the value.
-         * @param cancellable a GCancellable or NULL.
-         * @returns the value, or %NULL if not found. If @error is not NULL, then the error is returned.
-         */
-        read_value(namespace: string, key: string, cancellable?: Gio.Cancellable | null): GLib.Variant;
-    }
-
-    type InputCapturePointerBarrierClass = typeof InputCapturePointerBarrier;
-    type InputCaptureSessionClass = typeof InputCaptureSession;
-    type InputCaptureZoneClass = typeof InputCaptureZone;
     /**
      * Parent window abstraction.
      *
@@ -3080,7 +2610,6 @@ export namespace Xdp {
 
     type PortalClass = typeof Portal;
     type SessionClass = typeof Session;
-    type SettingsClass = typeof Settings;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

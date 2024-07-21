@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./cambalacheprivate-4.0.d.ts"],
+    "readme": "./README.md",
+    "name": "CambalachePrivate-4.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -1595,6 +1595,12 @@ export namespace Graphene {
          */
         distance(b: Point): [number, number, number];
         /**
+         * Computes the squared distance between `a` and `b`.
+         * @param b a #graphene_point_t
+         * @returns the distance between the two points, squared
+         */
+        distance_squared(b: Point): number;
+        /**
          * Checks if the two points `a` and `b` point to the same
          * coordinates.
          *
