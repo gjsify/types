@@ -1,6 +1,6 @@
 {
     "name": "@girs/tepl-4",
-    "version": "4.0.0-4.0.0-beta.11",
+    "version": "4.0.0-4.0.0-beta.12",
     "description": "GJS TypeScript type definitions for Tepl-4, generated from library version 4.0.0",
     "type": "module",
     "module": "tepl-4.js",

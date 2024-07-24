@@ -1,6 +1,6 @@
 {
     "name": "@girs/mks-1",
-    "version": "0.1.5-4.0.0-beta.11",
+    "version": "0.1.5-4.0.0-beta.12",
     "description": "GJS TypeScript type definitions for Mks-1, generated from library version 0.1.5",
     "type": "module",
     "module": "mks-1.js",

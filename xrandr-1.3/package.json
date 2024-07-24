@@ -1,6 +1,6 @@
 {
     "name": "@girs/xrandr-1.3",
-    "version": "1.3.0-4.0.0-beta.11",
+    "version": "1.3.0-4.0.0-beta.12",
     "description": "GJS TypeScript type definitions for xrandr-1.3, generated from library version 1.3.0",
     "type": "module",
     "module": "xrandr-1.3.js",
